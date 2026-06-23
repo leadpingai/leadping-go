@@ -1,6 +1,17 @@
 name: Release Go SDK
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".github/**"
+      - "README.md"
+      - "LICENSE"
   workflow_dispatch:
     inputs:
       version:
@@ -31,13 +42,36 @@ jobs:
       - name: Prepare version
         id: version
         env:
-          VERSION_INPUT: ${{ inputs.version }}
+          VERSION_INPUT: ${{ github.event.inputs.version || '' }}
+          PRERELEASE_INPUT: ${{ github.event.inputs.prerelease || 'false' }}
         run: |
           set -euo pipefail
 
-          version="${VERSION_INPUT#v}"
+          if [ -n "${VERSION_INPUT}" ]; then
+            version="${VERSION_INPUT#v}"
+            prerelease="${PRERELEASE_INPUT}"
+          else
+            git fetch --tags --force
+            latest_tag="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | awk '/^v[0-9]+\.[0-9]+\.[0-9]+$/ { print; exit }')"
+
+            if [ -z "${latest_tag}" ]; then
+              version="0.1.0"
+            else
+              base="${latest_tag#v}"
+              IFS='.' read -r major minor patch <<< "${base}"
+              version="${major}.${minor}.$((patch + 1))"
+            fi
+
+            prerelease="false"
+          fi
+
           if [[ ! "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
             echo "::error::Version must look like 1.2.3 or 1.2.3-preview.1."
+            exit 1
+          fi
+
+          if [ "${prerelease}" != "true" ] && [ "${prerelease}" != "false" ]; then
+            echo "::error::Prerelease must be true or false."
             exit 1
           fi
 
@@ -49,6 +83,7 @@ jobs:
 
           echo "version=${version}" >> "${GITHUB_OUTPUT}"
           echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "prerelease=${prerelease}" >> "${GITHUB_OUTPUT}"
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -68,7 +103,7 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GH__TOKEN || secrets.GIT__TOKEN || github.token }}
-          PRERELEASE: ${{ inputs.prerelease }}
+          PRERELEASE: ${{ steps.version.outputs.prerelease }}
           TAG: ${{ steps.version.outputs.tag }}
           GIT_EMAIL: ${{ secrets.GIT__EMAIL || 'support@leadping.ai' }}
         run: |

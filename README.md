@@ -40,10 +40,6 @@ func main() {
 
 `CreateLeadpingRequestAdapter` should return a Kiota request adapter configured with your Leadping authentication and `https://api.leadping.ai` as the base URL.
 
-## Release
-
-Publishing is handled by this repository's `Release Go SDK` workflow. Go module consumers install released tags from `github.com/leadpingai/leadping-go`.
-
 ## Notes
 
 - Generated code comes from `leadpingai/openapi`; update the OpenAPI spec instead of hand-editing generated files.
