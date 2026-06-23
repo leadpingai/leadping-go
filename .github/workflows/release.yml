@@ -1,0 +1,90 @@
+name: Release Go SDK
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Module version to release, without a leading v.
+        required: true
+      prerelease:
+        description: Mark the GitHub release as a prerelease.
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GIT__TOKEN || secrets.GH__TOKEN || github.token }}
+
+      - name: Prepare version
+        id: version
+        env:
+          VERSION_INPUT: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+
+          version="${VERSION_INPUT#v}"
+          if [[ ! "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Version must look like 1.2.3 or 1.2.3-preview.1."
+            exit 1
+          fi
+
+          tag="v${version}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "::error::Tag ${tag} already exists."
+            exit 1
+          fi
+
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.x"
+
+      - name: Test
+        run: go test ./...
+
+      - name: Create release archive
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          mkdir -p artifacts
+          git archive --format=tar.gz --output "artifacts/leadping-go-${TAG}.tar.gz" HEAD
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GH__TOKEN || secrets.GIT__TOKEN || github.token }}
+          PRERELEASE: ${{ inputs.prerelease }}
+          TAG: ${{ steps.version.outputs.tag }}
+          GIT_EMAIL: ${{ secrets.GIT__EMAIL || 'support@leadping.ai' }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "leadpingai-bot"
+          git config user.email "${GIT_EMAIL}"
+          git tag "${TAG}"
+          git push origin "${TAG}"
+
+          prerelease_flag=()
+          if [ "${PRERELEASE}" = "true" ]; then
+            prerelease_flag=(--prerelease)
+          fi
+
+          gh release create "${TAG}" artifacts/* \
+            --title "${TAG}" \
+            --notes "Generated Leadping Go SDK ${TAG}. Go module consumers can install this version with go get github.com/leadpingai/leadping-go@${TAG}." \
+            "${prerelease_flag[@]}"
