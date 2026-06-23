@@ -1,6 +1,6 @@
 # Leadping Go SDK
 
-Typed Go client for the Leadping API, generated from `leadpingai/openapi` with Kiota.
+Type-safe Go client for the Leadping API.
 
 ## Install
 
@@ -8,7 +8,7 @@ Typed Go client for the Leadping API, generated from `leadpingai/openapi` with K
 go get github.com/leadpingai/leadping-go
 ```
 
-Use a Kiota request adapter, such as:
+The generated client uses a Kiota request adapter. Install the default HTTP adapter:
 
 ```bash
 go get github.com/microsoft/kiota-http-go
@@ -26,7 +26,7 @@ import (
 )
 
 func main() {
-    adapter := CreateLeadpingRequestAdapter()
+    adapter := createLeadpingRequestAdapter()
     client := leadping.NewLeadpingOpenApiClient(adapter)
 
     me, err := client.Users().Me().Get(context.Background(), nil)
@@ -38,10 +38,14 @@ func main() {
 }
 ```
 
-`CreateLeadpingRequestAdapter` should return a Kiota request adapter configured with your Leadping authentication and `https://api.leadping.ai` as the base URL.
+`createLeadpingRequestAdapter` is application code. Configure it to send one of:
 
-## Notes
+- `Authorization: Bearer <token>`
+- `X-Leadping-Api-Key: <key>`
 
-- Generated code comes from `leadpingai/openapi`; update the OpenAPI spec instead of hand-editing generated files.
-- Module path: `github.com/leadpingai/leadping-go`
-- License: see `LICENSE`
+The client defaults to `https://api.leadping.ai` when the adapter does not already have a base URL.
+
+## Links
+
+- [API reference](https://leadping.ai/docs/api-reference)
+- [License](LICENSE)
