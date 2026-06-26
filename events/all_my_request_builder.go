@@ -5,6 +5,7 @@ package events
 
 import (
     "context"
+    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
@@ -16,11 +17,13 @@ type AllMyRequestBuilder struct {
 // AllMyRequestBuilderPostQueryParameters lists event records visible to the current user with paging, sorting, and filters across lead, SMS, call, and automation events.
 type AllMyRequestBuilderPostQueryParameters struct {
     Category *string "uriparametername:\"category\""
+    EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
+    StartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"startAt\""
 }
 // NewAllMyRequestBuilderInternal instantiates a new AllMyRequestBuilder and sets the default values.
 func NewAllMyRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*AllMyRequestBuilder) {
     m := &AllMyRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/all/my{?category*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/all/my{?category*,endAt*,startAt*}", pathParameters),
     }
     return m
 }
