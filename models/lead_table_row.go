@@ -8,51 +8,51 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadTableRow aPI DTO containing lead data used by Leadping API contracts.
+// LeadTableRow list item schema for Leadping API lead table row results shown in searchable tables.
 type LeadTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The admin force enablement override on this lead.
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride LeadTableRow_adminEnablementOverrideable
-    // The date and time this lead left the active pipeline.
+    // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The user who archived the lead, if available.
+    // User ID of the person who archived this record.
     archivedByUserId *string
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
-    // The business ID associated with this lead.
+    // Business ID that owns this lead.
     businessId *string
-    // The business name value for this lead.
+    // Business display name shown for this lead.
     businessName *string
-    // The date and time for the created at value on this lead.
+    // UTC timestamp when this lead table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current lifecycle disposition for this lead.
+    // Current disposition summary that describes the lead outcome.
     currentDisposition LeadTableRow_currentDispositionable
-    // The email address associated with this lead.
+    // Email address for the person represented by this lead table row.
     email *string
-    // Whether this lead is enabled.
+    // Indicates whether this lead table row is active and available in the Leadping API.
     enabled *bool
-    // The first name value for this lead.
+    // First name of the lead, user, or contact represented by this lead table row.
     firstName *string
-    // The unique ID for this lead.
+    // Unique Leadping identifier for this lead table row.
     id *string
     // Whether this lead is archived.
     isArchived *bool
-    // The date and time for the last name value on this lead.
+    // Last name of the lead, user, or contact represented by this lead table row.
     lastName *string
-    // The phone number associated with this lead.
+    // Phone details for the lead, user, or business represented by this lead table row.
     phone *string
-    // The monetary price for this lead.
+    // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The source ID associated with this lead.
+    // Lead source ID that created or supplied this lead.
     sourceId *string
-    // The source name value for this lead.
+    // Lead source display name shown for this lead.
     sourceName *string
-    // The current status for this lead.
+    // Current lifecycle status for this lead table row in the Leadping API.
     status *string
-    // The status tone value for this lead.
+    // Presentation tone that helps clients style the current status of this lead table row.
     statusTone *string
-    // Compact tags assigned to the lead.
+    // Tags currently attached to this lead, source, or record.
     tags []TagSummaryable
 }
 // NewLeadTableRow instantiates a new LeadTableRow and sets the default values.
@@ -72,17 +72,17 @@ func CreateLeadTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *LeadTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The admin force enablement override on this lead.
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a LeadTableRow_adminEnablementOverrideable when successful
 func (m *LeadTableRow) GetAdminEnablementOverride()(LeadTableRow_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetArchivedAt gets the archivedAt property value. The date and time this lead left the active pipeline.
+// GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
 func (m *LeadTableRow) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.archivedAt
 }
-// GetArchivedByUserId gets the archivedByUserId property value. The user who archived the lead, if available.
+// GetArchivedByUserId gets the archivedByUserId property value. User ID of the person who archived this record.
 // returns a *string when successful
 func (m *LeadTableRow) GetArchivedByUserId()(*string) {
     return m.archivedByUserId
@@ -92,32 +92,32 @@ func (m *LeadTableRow) GetArchivedByUserId()(*string) {
 func (m *LeadTableRow) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this lead.
+// GetBusinessId gets the businessId property value. Business ID that owns this lead.
 // returns a *string when successful
 func (m *LeadTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessName gets the businessName property value. The business name value for this lead.
+// GetBusinessName gets the businessName property value. Business display name shown for this lead.
 // returns a *string when successful
 func (m *LeadTableRow) GetBusinessName()(*string) {
     return m.businessName
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this lead.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this lead table row was created.
 // returns a *Time when successful
 func (m *LeadTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCurrentDisposition gets the currentDisposition property value. The current lifecycle disposition for this lead.
+// GetCurrentDisposition gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 // returns a LeadTableRow_currentDispositionable when successful
 func (m *LeadTableRow) GetCurrentDisposition()(LeadTableRow_currentDispositionable) {
     return m.currentDisposition
 }
-// GetEmail gets the email property value. The email address associated with this lead.
+// GetEmail gets the email property value. Email address for the person represented by this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetEmail()(*string) {
     return m.email
 }
-// GetEnabled gets the enabled property value. Whether this lead is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this lead table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *LeadTableRow) GetEnabled()(*bool) {
     return m.enabled
@@ -344,12 +344,12 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this lead.
+// GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetFirstName()(*string) {
     return m.firstName
 }
-// GetId gets the id property value. The unique ID for this lead.
+// GetId gets the id property value. Unique Leadping identifier for this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetId()(*string) {
     return m.id
@@ -359,42 +359,42 @@ func (m *LeadTableRow) GetId()(*string) {
 func (m *LeadTableRow) GetIsArchived()(*bool) {
     return m.isArchived
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this lead.
+// GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetLastName()(*string) {
     return m.lastName
 }
-// GetPhone gets the phone property value. The phone number associated with this lead.
+// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetPhone()(*string) {
     return m.phone
 }
-// GetPrice gets the price property value. The monetary price for this lead.
+// GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a UntypedNodeable when successful
 func (m *LeadTableRow) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this lead.
+// GetSourceId gets the sourceId property value. Lead source ID that created or supplied this lead.
 // returns a *string when successful
 func (m *LeadTableRow) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetSourceName gets the sourceName property value. The source name value for this lead.
+// GetSourceName gets the sourceName property value. Lead source display name shown for this lead.
 // returns a *string when successful
 func (m *LeadTableRow) GetSourceName()(*string) {
     return m.sourceName
 }
-// GetStatus gets the status property value. The current status for this lead.
+// GetStatus gets the status property value. Current lifecycle status for this lead table row in the Leadping API.
 // returns a *string when successful
 func (m *LeadTableRow) GetStatus()(*string) {
     return m.status
 }
-// GetStatusTone gets the statusTone property value. The status tone value for this lead.
+// GetStatusTone gets the statusTone property value. Presentation tone that helps clients style the current status of this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetStatusTone()(*string) {
     return m.statusTone
 }
-// GetTags gets the tags property value. Compact tags assigned to the lead.
+// GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
 func (m *LeadTableRow) GetTags()([]TagSummaryable) {
     return m.tags
@@ -545,15 +545,15 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The admin force enablement override on this lead.
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *LeadTableRow) SetAdminEnablementOverride(value LeadTableRow_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetArchivedAt sets the archivedAt property value. The date and time this lead left the active pipeline.
+// SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *LeadTableRow) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
 }
-// SetArchivedByUserId sets the archivedByUserId property value. The user who archived the lead, if available.
+// SetArchivedByUserId sets the archivedByUserId property value. User ID of the person who archived this record.
 func (m *LeadTableRow) SetArchivedByUserId(value *string)() {
     m.archivedByUserId = value
 }
@@ -561,35 +561,35 @@ func (m *LeadTableRow) SetArchivedByUserId(value *string)() {
 func (m *LeadTableRow) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this lead.
+// SetBusinessId sets the businessId property value. Business ID that owns this lead.
 func (m *LeadTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessName sets the businessName property value. The business name value for this lead.
+// SetBusinessName sets the businessName property value. Business display name shown for this lead.
 func (m *LeadTableRow) SetBusinessName(value *string)() {
     m.businessName = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this lead.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this lead table row was created.
 func (m *LeadTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCurrentDisposition sets the currentDisposition property value. The current lifecycle disposition for this lead.
+// SetCurrentDisposition sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 func (m *LeadTableRow) SetCurrentDisposition(value LeadTableRow_currentDispositionable)() {
     m.currentDisposition = value
 }
-// SetEmail sets the email property value. The email address associated with this lead.
+// SetEmail sets the email property value. Email address for the person represented by this lead table row.
 func (m *LeadTableRow) SetEmail(value *string)() {
     m.email = value
 }
-// SetEnabled sets the enabled property value. Whether this lead is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this lead table row is active and available in the Leadping API.
 func (m *LeadTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetFirstName sets the firstName property value. The first name value for this lead.
+// SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead table row.
 func (m *LeadTableRow) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetId sets the id property value. The unique ID for this lead.
+// SetId sets the id property value. Unique Leadping identifier for this lead table row.
 func (m *LeadTableRow) SetId(value *string)() {
     m.id = value
 }
@@ -597,35 +597,35 @@ func (m *LeadTableRow) SetId(value *string)() {
 func (m *LeadTableRow) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this lead.
+// SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
 func (m *LeadTableRow) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetPhone sets the phone property value. The phone number associated with this lead.
+// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this lead table row.
 func (m *LeadTableRow) SetPhone(value *string)() {
     m.phone = value
 }
-// SetPrice sets the price property value. The monetary price for this lead.
+// SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
 func (m *LeadTableRow) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this lead.
+// SetSourceId sets the sourceId property value. Lead source ID that created or supplied this lead.
 func (m *LeadTableRow) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetSourceName sets the sourceName property value. The source name value for this lead.
+// SetSourceName sets the sourceName property value. Lead source display name shown for this lead.
 func (m *LeadTableRow) SetSourceName(value *string)() {
     m.sourceName = value
 }
-// SetStatus sets the status property value. The current status for this lead.
+// SetStatus sets the status property value. Current lifecycle status for this lead table row in the Leadping API.
 func (m *LeadTableRow) SetStatus(value *string)() {
     m.status = value
 }
-// SetStatusTone sets the statusTone property value. The status tone value for this lead.
+// SetStatusTone sets the statusTone property value. Presentation tone that helps clients style the current status of this lead table row.
 func (m *LeadTableRow) SetStatusTone(value *string)() {
     m.statusTone = value
 }
-// SetTags sets the tags property value. Compact tags assigned to the lead.
+// SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
 func (m *LeadTableRow) SetTags(value []TagSummaryable)() {
     m.tags = value
 }

@@ -8,55 +8,55 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceResponse aPI response containing source data returned to callers.
+// SourceResponse response schema for the Leadping API lead source response returned to authenticated clients.
 type SourceResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride SourceResponse_adminEnablementOverrideable
-    // The allowed products included with this source.
+    // Product allowlist used to accept or route leads from this source.
     allowedProducts []string
-    // The allowed states included with this source.
+    // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // The date and time for the API key issued at value on this source.
+    // UTC timestamp when Leadping issued the source API key.
     apiKeyIssuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The API key preview value for this source.
+    // Masked preview of the source API key for display without exposing the secret.
     apiKeyPreview *string
-    // The business value for this source.
+    // Business summary connected to this lead source response.
     business SourceResponse_businessable
-    // Whether this source is compliance approved.
+    // Indicates whether the business or sender passed compliance review.
     complianceApproved *bool
-    // The compliance notes value for this source.
+    // Compliance notes captured for admin review.
     complianceNotes *string
-    // The cost per lead value for this source.
+    // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The user that created this source.
+    // User summary for the person who created this lead source response.
     createdByUser SourceResponse_createdByUserable
-    // Tag ids applied automatically to leads created from this source.
+    // Tag IDs automatically assigned to leads created by this source.
     defaultTagIds []string
-    // Tags applied automatically to leads created from this source.
+    // Default tag summaries automatically applied to leads from this source.
     defaultTags []TagSummaryable
-    // The human-readable description of this source.
+    // Human-readable description that explains this lead source response to API users.
     description *string
-    // Whether this source is enabled.
+    // Indicates whether this lead source response is active and available in the Leadping API.
     enabled *bool
-    // The date and time when this source first accepted a lead.
+    // UTC timestamp when this source first delivered a lead to Leadping.
     firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The unique identifier for the entity.
     id *string
-    // The date and time when this source most recently accepted a lead.
+    // UTC timestamp when this source most recently delivered a lead to Leadping.
     lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The user that most recently modified this source.
+    // User summary for the person who last modified this lead source response.
     modifiedByUser SourceResponse_modifiedByUserable
     // The display name for the entity.
     name *string
-    // Whether this source requires TrustedForm.
+    // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
-    // The user value for this source.
+    // User summary connected to this lead source response.
     user SourceResponse_userable
 }
 // NewSourceResponse instantiates a new SourceResponse and sets the default values.
@@ -76,47 +76,47 @@ func CreateSourceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *SourceResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a SourceResponse_adminEnablementOverrideable when successful
 func (m *SourceResponse) GetAdminEnablementOverride()(SourceResponse_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetAllowedProducts gets the allowedProducts property value. The allowed products included with this source.
+// GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedProducts()([]string) {
     return m.allowedProducts
 }
-// GetAllowedStates gets the allowedStates property value. The allowed states included with this source.
+// GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. The date and time for the API key issued at value on this source.
+// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
 // returns a *Time when successful
 func (m *SourceResponse) GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.apiKeyIssuedAt
 }
-// GetApiKeyPreview gets the apiKeyPreview property value. The API key preview value for this source.
+// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 // returns a *string when successful
 func (m *SourceResponse) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
 }
-// GetBusiness gets the business property value. The business value for this source.
+// GetBusiness gets the business property value. Business summary connected to this lead source response.
 // returns a SourceResponse_businessable when successful
 func (m *SourceResponse) GetBusiness()(SourceResponse_businessable) {
     return m.business
 }
-// GetComplianceApproved gets the complianceApproved property value. Whether this source is compliance approved.
+// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 // returns a *bool when successful
 func (m *SourceResponse) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
-// GetComplianceNotes gets the complianceNotes property value. The compliance notes value for this source.
+// GetComplianceNotes gets the complianceNotes property value. Compliance notes captured for admin review.
 // returns a *string when successful
 func (m *SourceResponse) GetComplianceNotes()(*string) {
     return m.complianceNotes
 }
-// GetCostPerLead gets the costPerLead property value. The cost per lead value for this source.
+// GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
 func (m *SourceResponse) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
@@ -126,27 +126,27 @@ func (m *SourceResponse) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SourceResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedByUser gets the createdByUser property value. The user that created this source.
+// GetCreatedByUser gets the createdByUser property value. User summary for the person who created this lead source response.
 // returns a SourceResponse_createdByUserable when successful
 func (m *SourceResponse) GetCreatedByUser()(SourceResponse_createdByUserable) {
     return m.createdByUser
 }
-// GetDefaultTagIds gets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceResponse) GetDefaultTagIds()([]string) {
     return m.defaultTagIds
 }
-// GetDefaultTags gets the defaultTags property value. Tags applied automatically to leads created from this source.
+// GetDefaultTags gets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
 // returns a []TagSummaryable when successful
 func (m *SourceResponse) GetDefaultTags()([]TagSummaryable) {
     return m.defaultTags
 }
-// GetDescription gets the description property value. The human-readable description of this source.
+// GetDescription gets the description property value. Human-readable description that explains this lead source response to API users.
 // returns a *string when successful
 func (m *SourceResponse) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this source is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this lead source response is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *SourceResponse) GetEnabled()(*bool) {
     return m.enabled
@@ -411,7 +411,7 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
     }
     return res
 }
-// GetFirstLeadReceivedAt gets the firstLeadReceivedAt property value. The date and time when this source first accepted a lead.
+// GetFirstLeadReceivedAt gets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
 // returns a *Time when successful
 func (m *SourceResponse) GetFirstLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.firstLeadReceivedAt
@@ -421,7 +421,7 @@ func (m *SourceResponse) GetFirstLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad
 func (m *SourceResponse) GetId()(*string) {
     return m.id
 }
-// GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. The date and time when this source most recently accepted a lead.
+// GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 // returns a *Time when successful
 func (m *SourceResponse) GetLastLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastLeadReceivedAt
@@ -431,7 +431,7 @@ func (m *SourceResponse) GetLastLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad9
 func (m *SourceResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetModifiedByUser gets the modifiedByUser property value. The user that most recently modified this source.
+// GetModifiedByUser gets the modifiedByUser property value. User summary for the person who last modified this lead source response.
 // returns a SourceResponse_modifiedByUserable when successful
 func (m *SourceResponse) GetModifiedByUser()(SourceResponse_modifiedByUserable) {
     return m.modifiedByUser
@@ -441,12 +441,12 @@ func (m *SourceResponse) GetModifiedByUser()(SourceResponse_modifiedByUserable) 
 func (m *SourceResponse) GetName()(*string) {
     return m.name
 }
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceResponse) GetRequiresTrustedForm()(*bool) {
     return m.requiresTrustedForm
 }
-// GetUser gets the user property value. The user value for this source.
+// GetUser gets the user property value. User summary connected to this lead source response.
 // returns a SourceResponse_userable when successful
 func (m *SourceResponse) GetUser()(SourceResponse_userable) {
     return m.user
@@ -609,39 +609,39 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SourceResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *SourceResponse) SetAdminEnablementOverride(value SourceResponse_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetAllowedProducts sets the allowedProducts property value. The allowed products included with this source.
+// SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 func (m *SourceResponse) SetAllowedProducts(value []string)() {
     m.allowedProducts = value
 }
-// SetAllowedStates sets the allowedStates property value. The allowed states included with this source.
+// SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. The date and time for the API key issued at value on this source.
+// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
 func (m *SourceResponse) SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyIssuedAt = value
 }
-// SetApiKeyPreview sets the apiKeyPreview property value. The API key preview value for this source.
+// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }
-// SetBusiness sets the business property value. The business value for this source.
+// SetBusiness sets the business property value. Business summary connected to this lead source response.
 func (m *SourceResponse) SetBusiness(value SourceResponse_businessable)() {
     m.business = value
 }
-// SetComplianceApproved sets the complianceApproved property value. Whether this source is compliance approved.
+// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 func (m *SourceResponse) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
-// SetComplianceNotes sets the complianceNotes property value. The compliance notes value for this source.
+// SetComplianceNotes sets the complianceNotes property value. Compliance notes captured for admin review.
 func (m *SourceResponse) SetComplianceNotes(value *string)() {
     m.complianceNotes = value
 }
-// SetCostPerLead sets the costPerLead property value. The cost per lead value for this source.
+// SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceResponse) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
@@ -649,27 +649,27 @@ func (m *SourceResponse) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef2
 func (m *SourceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedByUser sets the createdByUser property value. The user that created this source.
+// SetCreatedByUser sets the createdByUser property value. User summary for the person who created this lead source response.
 func (m *SourceResponse) SetCreatedByUser(value SourceResponse_createdByUserable)() {
     m.createdByUser = value
 }
-// SetDefaultTagIds sets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceResponse) SetDefaultTagIds(value []string)() {
     m.defaultTagIds = value
 }
-// SetDefaultTags sets the defaultTags property value. Tags applied automatically to leads created from this source.
+// SetDefaultTags sets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
 func (m *SourceResponse) SetDefaultTags(value []TagSummaryable)() {
     m.defaultTags = value
 }
-// SetDescription sets the description property value. The human-readable description of this source.
+// SetDescription sets the description property value. Human-readable description that explains this lead source response to API users.
 func (m *SourceResponse) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this source is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this lead source response is active and available in the Leadping API.
 func (m *SourceResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetFirstLeadReceivedAt sets the firstLeadReceivedAt property value. The date and time when this source first accepted a lead.
+// SetFirstLeadReceivedAt sets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
 func (m *SourceResponse) SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.firstLeadReceivedAt = value
 }
@@ -677,7 +677,7 @@ func (m *SourceResponse) SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7f
 func (m *SourceResponse) SetId(value *string)() {
     m.id = value
 }
-// SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. The date and time when this source most recently accepted a lead.
+// SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 func (m *SourceResponse) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastLeadReceivedAt = value
 }
@@ -685,7 +685,7 @@ func (m *SourceResponse) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe
 func (m *SourceResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetModifiedByUser sets the modifiedByUser property value. The user that most recently modified this source.
+// SetModifiedByUser sets the modifiedByUser property value. User summary for the person who last modified this lead source response.
 func (m *SourceResponse) SetModifiedByUser(value SourceResponse_modifiedByUserable)() {
     m.modifiedByUser = value
 }
@@ -693,11 +693,11 @@ func (m *SourceResponse) SetModifiedByUser(value SourceResponse_modifiedByUserab
 func (m *SourceResponse) SetName(value *string)() {
     m.name = value
 }
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceResponse) SetRequiresTrustedForm(value *bool)() {
     m.requiresTrustedForm = value
 }
-// SetUser sets the user property value. The user value for this source.
+// SetUser sets the user property value. User summary connected to this lead source response.
 func (m *SourceResponse) SetUser(value SourceResponse_userable)() {
     m.user = value
 }

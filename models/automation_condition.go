@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationCondition aPI DTO containing automation condition data used by Leadping API contracts.
+// AutomationCondition public Leadping API schema for automation condition data.
 type AutomationCondition struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The unique ID for this automation condition.
+    // Unique Leadping identifier for this automation condition.
     id *string
-    // Whether this automation condition is enabled.
+    // Indicates whether this automation condition is active and allowed to run.
     isEnabled *bool
-    // The operator value for this automation condition.
+    // Automation comparison operator used by this condition.
     operator *string
-    // The settings key-value data carried with this automation condition; values must be safe to expose in API responses.
+    // Key-value settings that configure how this automation condition behaves.
     settings AutomationCondition_settingsable
-    // The type classification for this automation condition.
+    // Type classification used to route and interpret this automation condition in the Leadping API.
     typeEscaped *string
 }
 // NewAutomationCondition instantiates a new AutomationCondition and sets the default values.
@@ -95,27 +95,27 @@ func (m *AutomationCondition) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation condition.
+// GetId gets the id property value. Unique Leadping identifier for this automation condition.
 // returns a *string when successful
 func (m *AutomationCondition) GetId()(*string) {
     return m.id
 }
-// GetIsEnabled gets the isEnabled property value. Whether this automation condition is enabled.
+// GetIsEnabled gets the isEnabled property value. Indicates whether this automation condition is active and allowed to run.
 // returns a *bool when successful
 func (m *AutomationCondition) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
-// GetOperator gets the operator property value. The operator value for this automation condition.
+// GetOperator gets the operator property value. Automation comparison operator used by this condition.
 // returns a *string when successful
 func (m *AutomationCondition) GetOperator()(*string) {
     return m.operator
 }
-// GetSettings gets the settings property value. The settings key-value data carried with this automation condition; values must be safe to expose in API responses.
+// GetSettings gets the settings property value. Key-value settings that configure how this automation condition behaves.
 // returns a AutomationCondition_settingsable when successful
 func (m *AutomationCondition) GetSettings()(AutomationCondition_settingsable) {
     return m.settings
 }
-// GetTypeEscaped gets the type property value. The type classification for this automation condition.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this automation condition in the Leadping API.
 // returns a *string when successful
 func (m *AutomationCondition) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -164,23 +164,23 @@ func (m *AutomationCondition) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *AutomationCondition) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The unique ID for this automation condition.
+// SetId sets the id property value. Unique Leadping identifier for this automation condition.
 func (m *AutomationCondition) SetId(value *string)() {
     m.id = value
 }
-// SetIsEnabled sets the isEnabled property value. Whether this automation condition is enabled.
+// SetIsEnabled sets the isEnabled property value. Indicates whether this automation condition is active and allowed to run.
 func (m *AutomationCondition) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
-// SetOperator sets the operator property value. The operator value for this automation condition.
+// SetOperator sets the operator property value. Automation comparison operator used by this condition.
 func (m *AutomationCondition) SetOperator(value *string)() {
     m.operator = value
 }
-// SetSettings sets the settings property value. The settings key-value data carried with this automation condition; values must be safe to expose in API responses.
+// SetSettings sets the settings property value. Key-value settings that configure how this automation condition behaves.
 func (m *AutomationCondition) SetSettings(value AutomationCondition_settingsable)() {
     m.settings = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this automation condition.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this automation condition in the Leadping API.
 func (m *AutomationCondition) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

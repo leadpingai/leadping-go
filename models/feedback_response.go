@@ -8,59 +8,59 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// FeedbackResponse feedback item returned to admins and submitters.
+// FeedbackResponse response schema for the Leadping API feedback item response returned to authenticated clients.
 type FeedbackResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminNote property
+    // Internal admin note used to track feedback review or resolution.
     adminNote *string
-    // The allowContact property
+    // Indicates whether the submitter permits Leadping support to contact them about the feedback.
     allowContact *bool
-    // The area property
+    // Product area or app section connected to this feedback item response.
     area *string
-    // The businessId property
+    // Business ID connected to the feedback item, when the feedback came from a business workspace.
     businessId *string
-    // The businessNameSnapshot property
+    // Business name snapshot captured when the user submitted the feedback.
     businessNameSnapshot *string
-    // The clientVersion property
+    // Client application version that submitted this feedback item response.
     clientVersion *string
-    // The closedAt property
+    // UTC timestamp when this feedback item response was closed.
     closedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The closedByUserId property
+    // User ID of the person who closed this item.
     closedByUserId *string
-    // The createdAt property
+    // UTC timestamp when this feedback item response was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The duplicateOfFeedbackItemId property
+    // Feedback item ID that this item duplicates, when applicable.
     duplicateOfFeedbackItemId *string
-    // The environment property
+    // Deployment environment where this feedback item response was captured or processed.
     environment *string
-    // The externalIssueUrl property
+    // External issue tracker URL linked to this feedback item.
     externalIssueUrl *string
-    // The id property
+    // Unique Leadping identifier for this feedback item response.
     id *string
-    // The message property
+    // Message text supplied by the user or returned by the Leadping API for this feedback item response.
     message *string
-    // The reviewedAt property
+    // UTC timestamp when an admin reviewed this feedback item response.
     reviewedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The reviewedByUserId property
+    // User ID of the admin who reviewed this item.
     reviewedByUserId *string
-    // The route property
+    // Application route where this feedback item response originated or should direct the user.
     route *string
-    // The serverVersion property
+    // Leadping API server version that processed this feedback item response.
     serverVersion *string
-    // Defines admin triage statuses for durable product feedback.
+    // Current lifecycle status for this feedback item response in the Leadping API.
     status *FeedbackStatus
-    // The subscriptionPlanSnapshot property
+    // Billing plan snapshot captured when the user submitted the feedback.
     subscriptionPlanSnapshot *string
-    // Defines the type of product feedback submitted from inside Leadping.
+    // Type classification used to route and interpret this feedback item response in the Leadping API.
     typeEscaped *FeedbackType
-    // The userAgent property
+    // Browser or client user agent captured when this feedback item response was submitted.
     userAgent *string
-    // The userDisplayNameSnapshot property
+    // User display name snapshot captured when the user submitted the feedback.
     userDisplayNameSnapshot *string
-    // The userEmailSnapshot property
+    // User email snapshot captured when the user submitted the feedback.
     userEmailSnapshot *string
-    // The userId property
+    // User ID for the person who submitted the feedback.
     userId *string
 }
 // NewFeedbackResponse instantiates a new FeedbackResponse and sets the default values.
@@ -80,62 +80,62 @@ func CreateFeedbackResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 func (m *FeedbackResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminNote gets the adminNote property value. The adminNote property
+// GetAdminNote gets the adminNote property value. Internal admin note used to track feedback review or resolution.
 // returns a *string when successful
 func (m *FeedbackResponse) GetAdminNote()(*string) {
     return m.adminNote
 }
-// GetAllowContact gets the allowContact property value. The allowContact property
+// GetAllowContact gets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 // returns a *bool when successful
 func (m *FeedbackResponse) GetAllowContact()(*bool) {
     return m.allowContact
 }
-// GetArea gets the area property value. The area property
+// GetArea gets the area property value. Product area or app section connected to this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetArea()(*string) {
     return m.area
 }
-// GetBusinessId gets the businessId property value. The businessId property
+// GetBusinessId gets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
 // returns a *string when successful
 func (m *FeedbackResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessNameSnapshot gets the businessNameSnapshot property value. The businessNameSnapshot property
+// GetBusinessNameSnapshot gets the businessNameSnapshot property value. Business name snapshot captured when the user submitted the feedback.
 // returns a *string when successful
 func (m *FeedbackResponse) GetBusinessNameSnapshot()(*string) {
     return m.businessNameSnapshot
 }
-// GetClientVersion gets the clientVersion property value. The clientVersion property
+// GetClientVersion gets the clientVersion property value. Client application version that submitted this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetClientVersion()(*string) {
     return m.clientVersion
 }
-// GetClosedAt gets the closedAt property value. The closedAt property
+// GetClosedAt gets the closedAt property value. UTC timestamp when this feedback item response was closed.
 // returns a *Time when successful
 func (m *FeedbackResponse) GetClosedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.closedAt
 }
-// GetClosedByUserId gets the closedByUserId property value. The closedByUserId property
+// GetClosedByUserId gets the closedByUserId property value. User ID of the person who closed this item.
 // returns a *string when successful
 func (m *FeedbackResponse) GetClosedByUserId()(*string) {
     return m.closedByUserId
 }
-// GetCreatedAt gets the createdAt property value. The createdAt property
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this feedback item response was created.
 // returns a *Time when successful
 func (m *FeedbackResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDuplicateOfFeedbackItemId gets the duplicateOfFeedbackItemId property value. The duplicateOfFeedbackItemId property
+// GetDuplicateOfFeedbackItemId gets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
 // returns a *string when successful
 func (m *FeedbackResponse) GetDuplicateOfFeedbackItemId()(*string) {
     return m.duplicateOfFeedbackItemId
 }
-// GetEnvironment gets the environment property value. The environment property
+// GetEnvironment gets the environment property value. Deployment environment where this feedback item response was captured or processed.
 // returns a *string when successful
 func (m *FeedbackResponse) GetEnvironment()(*string) {
     return m.environment
 }
-// GetExternalIssueUrl gets the externalIssueUrl property value. The externalIssueUrl property
+// GetExternalIssueUrl gets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
 // returns a *string when successful
 func (m *FeedbackResponse) GetExternalIssueUrl()(*string) {
     return m.externalIssueUrl
@@ -396,67 +396,67 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetId()(*string) {
     return m.id
 }
-// GetMessage gets the message property value. The message property
+// GetMessage gets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetMessage()(*string) {
     return m.message
 }
-// GetReviewedAt gets the reviewedAt property value. The reviewedAt property
+// GetReviewedAt gets the reviewedAt property value. UTC timestamp when an admin reviewed this feedback item response.
 // returns a *Time when successful
 func (m *FeedbackResponse) GetReviewedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.reviewedAt
 }
-// GetReviewedByUserId gets the reviewedByUserId property value. The reviewedByUserId property
+// GetReviewedByUserId gets the reviewedByUserId property value. User ID of the admin who reviewed this item.
 // returns a *string when successful
 func (m *FeedbackResponse) GetReviewedByUserId()(*string) {
     return m.reviewedByUserId
 }
-// GetRoute gets the route property value. The route property
+// GetRoute gets the route property value. Application route where this feedback item response originated or should direct the user.
 // returns a *string when successful
 func (m *FeedbackResponse) GetRoute()(*string) {
     return m.route
 }
-// GetServerVersion gets the serverVersion property value. The serverVersion property
+// GetServerVersion gets the serverVersion property value. Leadping API server version that processed this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetServerVersion()(*string) {
     return m.serverVersion
 }
-// GetStatus gets the status property value. Defines admin triage statuses for durable product feedback.
+// GetStatus gets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
 // returns a *FeedbackStatus when successful
 func (m *FeedbackResponse) GetStatus()(*FeedbackStatus) {
     return m.status
 }
-// GetSubscriptionPlanSnapshot gets the subscriptionPlanSnapshot property value. The subscriptionPlanSnapshot property
+// GetSubscriptionPlanSnapshot gets the subscriptionPlanSnapshot property value. Billing plan snapshot captured when the user submitted the feedback.
 // returns a *string when successful
 func (m *FeedbackResponse) GetSubscriptionPlanSnapshot()(*string) {
     return m.subscriptionPlanSnapshot
 }
-// GetTypeEscaped gets the type property value. Defines the type of product feedback submitted from inside Leadping.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
 // returns a *FeedbackType when successful
 func (m *FeedbackResponse) GetTypeEscaped()(*FeedbackType) {
     return m.typeEscaped
 }
-// GetUserAgent gets the userAgent property value. The userAgent property
+// GetUserAgent gets the userAgent property value. Browser or client user agent captured when this feedback item response was submitted.
 // returns a *string when successful
 func (m *FeedbackResponse) GetUserAgent()(*string) {
     return m.userAgent
 }
-// GetUserDisplayNameSnapshot gets the userDisplayNameSnapshot property value. The userDisplayNameSnapshot property
+// GetUserDisplayNameSnapshot gets the userDisplayNameSnapshot property value. User display name snapshot captured when the user submitted the feedback.
 // returns a *string when successful
 func (m *FeedbackResponse) GetUserDisplayNameSnapshot()(*string) {
     return m.userDisplayNameSnapshot
 }
-// GetUserEmailSnapshot gets the userEmailSnapshot property value. The userEmailSnapshot property
+// GetUserEmailSnapshot gets the userEmailSnapshot property value. User email snapshot captured when the user submitted the feedback.
 // returns a *string when successful
 func (m *FeedbackResponse) GetUserEmailSnapshot()(*string) {
     return m.userEmailSnapshot
 }
-// GetUserId gets the userId property value. The userId property
+// GetUserId gets the userId property value. User ID for the person who submitted the feedback.
 // returns a *string when successful
 func (m *FeedbackResponse) GetUserId()(*string) {
     return m.userId
@@ -627,103 +627,103 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *FeedbackResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminNote sets the adminNote property value. The adminNote property
+// SetAdminNote sets the adminNote property value. Internal admin note used to track feedback review or resolution.
 func (m *FeedbackResponse) SetAdminNote(value *string)() {
     m.adminNote = value
 }
-// SetAllowContact sets the allowContact property value. The allowContact property
+// SetAllowContact sets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 func (m *FeedbackResponse) SetAllowContact(value *bool)() {
     m.allowContact = value
 }
-// SetArea sets the area property value. The area property
+// SetArea sets the area property value. Product area or app section connected to this feedback item response.
 func (m *FeedbackResponse) SetArea(value *string)() {
     m.area = value
 }
-// SetBusinessId sets the businessId property value. The businessId property
+// SetBusinessId sets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
 func (m *FeedbackResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessNameSnapshot sets the businessNameSnapshot property value. The businessNameSnapshot property
+// SetBusinessNameSnapshot sets the businessNameSnapshot property value. Business name snapshot captured when the user submitted the feedback.
 func (m *FeedbackResponse) SetBusinessNameSnapshot(value *string)() {
     m.businessNameSnapshot = value
 }
-// SetClientVersion sets the clientVersion property value. The clientVersion property
+// SetClientVersion sets the clientVersion property value. Client application version that submitted this feedback item response.
 func (m *FeedbackResponse) SetClientVersion(value *string)() {
     m.clientVersion = value
 }
-// SetClosedAt sets the closedAt property value. The closedAt property
+// SetClosedAt sets the closedAt property value. UTC timestamp when this feedback item response was closed.
 func (m *FeedbackResponse) SetClosedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.closedAt = value
 }
-// SetClosedByUserId sets the closedByUserId property value. The closedByUserId property
+// SetClosedByUserId sets the closedByUserId property value. User ID of the person who closed this item.
 func (m *FeedbackResponse) SetClosedByUserId(value *string)() {
     m.closedByUserId = value
 }
-// SetCreatedAt sets the createdAt property value. The createdAt property
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this feedback item response was created.
 func (m *FeedbackResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDuplicateOfFeedbackItemId sets the duplicateOfFeedbackItemId property value. The duplicateOfFeedbackItemId property
+// SetDuplicateOfFeedbackItemId sets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
 func (m *FeedbackResponse) SetDuplicateOfFeedbackItemId(value *string)() {
     m.duplicateOfFeedbackItemId = value
 }
-// SetEnvironment sets the environment property value. The environment property
+// SetEnvironment sets the environment property value. Deployment environment where this feedback item response was captured or processed.
 func (m *FeedbackResponse) SetEnvironment(value *string)() {
     m.environment = value
 }
-// SetExternalIssueUrl sets the externalIssueUrl property value. The externalIssueUrl property
+// SetExternalIssueUrl sets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
 func (m *FeedbackResponse) SetExternalIssueUrl(value *string)() {
     m.externalIssueUrl = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for this feedback item response.
 func (m *FeedbackResponse) SetId(value *string)() {
     m.id = value
 }
-// SetMessage sets the message property value. The message property
+// SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback item response.
 func (m *FeedbackResponse) SetMessage(value *string)() {
     m.message = value
 }
-// SetReviewedAt sets the reviewedAt property value. The reviewedAt property
+// SetReviewedAt sets the reviewedAt property value. UTC timestamp when an admin reviewed this feedback item response.
 func (m *FeedbackResponse) SetReviewedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.reviewedAt = value
 }
-// SetReviewedByUserId sets the reviewedByUserId property value. The reviewedByUserId property
+// SetReviewedByUserId sets the reviewedByUserId property value. User ID of the admin who reviewed this item.
 func (m *FeedbackResponse) SetReviewedByUserId(value *string)() {
     m.reviewedByUserId = value
 }
-// SetRoute sets the route property value. The route property
+// SetRoute sets the route property value. Application route where this feedback item response originated or should direct the user.
 func (m *FeedbackResponse) SetRoute(value *string)() {
     m.route = value
 }
-// SetServerVersion sets the serverVersion property value. The serverVersion property
+// SetServerVersion sets the serverVersion property value. Leadping API server version that processed this feedback item response.
 func (m *FeedbackResponse) SetServerVersion(value *string)() {
     m.serverVersion = value
 }
-// SetStatus sets the status property value. Defines admin triage statuses for durable product feedback.
+// SetStatus sets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
 func (m *FeedbackResponse) SetStatus(value *FeedbackStatus)() {
     m.status = value
 }
-// SetSubscriptionPlanSnapshot sets the subscriptionPlanSnapshot property value. The subscriptionPlanSnapshot property
+// SetSubscriptionPlanSnapshot sets the subscriptionPlanSnapshot property value. Billing plan snapshot captured when the user submitted the feedback.
 func (m *FeedbackResponse) SetSubscriptionPlanSnapshot(value *string)() {
     m.subscriptionPlanSnapshot = value
 }
-// SetTypeEscaped sets the type property value. Defines the type of product feedback submitted from inside Leadping.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
 func (m *FeedbackResponse) SetTypeEscaped(value *FeedbackType)() {
     m.typeEscaped = value
 }
-// SetUserAgent sets the userAgent property value. The userAgent property
+// SetUserAgent sets the userAgent property value. Browser or client user agent captured when this feedback item response was submitted.
 func (m *FeedbackResponse) SetUserAgent(value *string)() {
     m.userAgent = value
 }
-// SetUserDisplayNameSnapshot sets the userDisplayNameSnapshot property value. The userDisplayNameSnapshot property
+// SetUserDisplayNameSnapshot sets the userDisplayNameSnapshot property value. User display name snapshot captured when the user submitted the feedback.
 func (m *FeedbackResponse) SetUserDisplayNameSnapshot(value *string)() {
     m.userDisplayNameSnapshot = value
 }
-// SetUserEmailSnapshot sets the userEmailSnapshot property value. The userEmailSnapshot property
+// SetUserEmailSnapshot sets the userEmailSnapshot property value. User email snapshot captured when the user submitted the feedback.
 func (m *FeedbackResponse) SetUserEmailSnapshot(value *string)() {
     m.userEmailSnapshot = value
 }
-// SetUserId sets the userId property value. The userId property
+// SetUserId sets the userId property value. User ID for the person who submitted the feedback.
 func (m *FeedbackResponse) SetUserId(value *string)() {
     m.userId = value
 }

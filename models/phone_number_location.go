@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberLocation aPI DTO containing phone number location data used by Leadping API contracts.
+// PhoneNumberLocation public Leadping API schema for phone number location data.
 type PhoneNumberLocation struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The coordinate inferred for this phone number location.
+    // Latitude and longitude coordinate for this phone number location.
     coordinate PhoneNumberLocation_coordinateable
-    // The country code value for this phone number location.
+    // Country code for the phone number or location represented by this phone number location.
     countryCode *string
-    // The location value for this phone number location.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location *string
-    // The current state for this phone number location.
+    // State, province, or region for the lead or business postal address.
     state *string
-    // The IANA time zone identifier inferred for this phone number location.
+    // IANA or Windows time zone identifier used for local scheduling and reporting.
     timeZoneId *string
 }
 // NewPhoneNumberLocation instantiates a new PhoneNumberLocation and sets the default values.
@@ -39,12 +39,12 @@ func CreatePhoneNumberLocationFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberLocation) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCoordinate gets the coordinate property value. The coordinate inferred for this phone number location.
+// GetCoordinate gets the coordinate property value. Latitude and longitude coordinate for this phone number location.
 // returns a PhoneNumberLocation_coordinateable when successful
 func (m *PhoneNumberLocation) GetCoordinate()(PhoneNumberLocation_coordinateable) {
     return m.coordinate
 }
-// GetCountryCode gets the countryCode property value. The country code value for this phone number location.
+// GetCountryCode gets the countryCode property value. Country code for the phone number or location represented by this phone number location.
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetCountryCode()(*string) {
     return m.countryCode
@@ -105,17 +105,17 @@ func (m *PhoneNumberLocation) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetLocation gets the location property value. The location value for this phone number location.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetLocation()(*string) {
     return m.location
 }
-// GetState gets the state property value. The current state for this phone number location.
+// GetState gets the state property value. State, province, or region for the lead or business postal address.
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetState()(*string) {
     return m.state
 }
-// GetTimeZoneId gets the timeZoneId property value. The IANA time zone identifier inferred for this phone number location.
+// GetTimeZoneId gets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetTimeZoneId()(*string) {
     return m.timeZoneId
@@ -164,23 +164,23 @@ func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberLocation) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCoordinate sets the coordinate property value. The coordinate inferred for this phone number location.
+// SetCoordinate sets the coordinate property value. Latitude and longitude coordinate for this phone number location.
 func (m *PhoneNumberLocation) SetCoordinate(value PhoneNumberLocation_coordinateable)() {
     m.coordinate = value
 }
-// SetCountryCode sets the countryCode property value. The country code value for this phone number location.
+// SetCountryCode sets the countryCode property value. Country code for the phone number or location represented by this phone number location.
 func (m *PhoneNumberLocation) SetCountryCode(value *string)() {
     m.countryCode = value
 }
-// SetLocation sets the location property value. The location value for this phone number location.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberLocation) SetLocation(value *string)() {
     m.location = value
 }
-// SetState sets the state property value. The current state for this phone number location.
+// SetState sets the state property value. State, province, or region for the lead or business postal address.
 func (m *PhoneNumberLocation) SetState(value *string)() {
     m.state = value
 }
-// SetTimeZoneId sets the timeZoneId property value. The IANA time zone identifier inferred for this phone number location.
+// SetTimeZoneId sets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
 func (m *PhoneNumberLocation) SetTimeZoneId(value *string)() {
     m.timeZoneId = value
 }

@@ -7,35 +7,35 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationRequestSnapshot aPI DTO containing automation request snapshot data used by Leadping API contracts.
+// AutomationRequestSnapshot public Leadping API schema for automation request snapshot data.
 type AutomationRequestSnapshot struct {
-    // The actions included with this automation request snapshot.
+    // Automation actions configured or returned for this workflow.
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The business ID associated with this automation request snapshot.
+    // Business ID captured when the automation request snapshot was created.
     businessId *string
-    // The condition groups included with this automation request snapshot.
+    // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
-    // The created by user ID associated with this automation request snapshot.
+    // User ID of the person who created this automation request snapshot.
     createdByUserId *string
-    // The human-readable description of this automation request snapshot.
+    // Human-readable description that explains this automation request snapshot to API users.
     description *string
-    // Whether this automation request snapshot is enabled.
+    // Indicates whether this automation request snapshot is active and available in the Leadping API.
     enabled *bool
-    // The unique ID for this automation request snapshot.
+    // Unique Leadping identifier for this automation request snapshot.
     id *string
-    // Whether this automation request snapshot is system managed.
+    // Indicates whether Leadping manages this automation request snapshot automatically instead of a user.
     isSystemManaged *bool
-    // The management level value for this automation request snapshot.
+    // Management level that controls whether Leadping or the business owns this automation setting.
     managementLevel *string
-    // The human-readable name shown for this automation request snapshot.
+    // Display name for this automation request snapshot in the Leadping API.
     name *string
-    // The scope value for this automation request snapshot.
+    // Scope that limits where this automation request snapshot applies in Leadping.
     scope *string
-    // The triggers included with this automation request snapshot.
+    // Automation triggers that can start this workflow.
     triggers []AutomationTriggerable
-    // The visibility value for this automation request snapshot.
+    // Visibility level that controls who can see this automation request snapshot.
     visibility *string
 }
 // NewAutomationRequestSnapshot instantiates a new AutomationRequestSnapshot and sets the default values.
@@ -50,7 +50,7 @@ func NewAutomationRequestSnapshot()(*AutomationRequestSnapshot) {
 func CreateAutomationRequestSnapshotFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationRequestSnapshot(), nil
 }
-// GetActions gets the actions property value. The actions included with this automation request snapshot.
+// GetActions gets the actions property value. Automation actions configured or returned for this workflow.
 // returns a []AutomationActionable when successful
 func (m *AutomationRequestSnapshot) GetActions()([]AutomationActionable) {
     return m.actions
@@ -60,27 +60,27 @@ func (m *AutomationRequestSnapshot) GetActions()([]AutomationActionable) {
 func (m *AutomationRequestSnapshot) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this automation request snapshot.
+// GetBusinessId gets the businessId property value. Business ID captured when the automation request snapshot was created.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetConditionGroups gets the conditionGroups property value. The condition groups included with this automation request snapshot.
+// GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
 func (m *AutomationRequestSnapshot) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
 }
-// GetCreatedByUserId gets the createdByUserId property value. The created by user ID associated with this automation request snapshot.
+// GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation request snapshot.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetCreatedByUserId()(*string) {
     return m.createdByUserId
 }
-// GetDescription gets the description property value. The human-readable description of this automation request snapshot.
+// GetDescription gets the description property value. Human-readable description that explains this automation request snapshot to API users.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this automation request snapshot is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this automation request snapshot is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *AutomationRequestSnapshot) GetEnabled()(*bool) {
     return m.enabled
@@ -239,37 +239,37 @@ func (m *AutomationRequestSnapshot) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation request snapshot.
+// GetId gets the id property value. Unique Leadping identifier for this automation request snapshot.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetId()(*string) {
     return m.id
 }
-// GetIsSystemManaged gets the isSystemManaged property value. Whether this automation request snapshot is system managed.
+// GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation request snapshot automatically instead of a user.
 // returns a *bool when successful
 func (m *AutomationRequestSnapshot) GetIsSystemManaged()(*bool) {
     return m.isSystemManaged
 }
-// GetManagementLevel gets the managementLevel property value. The management level value for this automation request snapshot.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetManagementLevel()(*string) {
     return m.managementLevel
 }
-// GetName gets the name property value. The human-readable name shown for this automation request snapshot.
+// GetName gets the name property value. Display name for this automation request snapshot in the Leadping API.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetName()(*string) {
     return m.name
 }
-// GetScope gets the scope property value. The scope value for this automation request snapshot.
+// GetScope gets the scope property value. Scope that limits where this automation request snapshot applies in Leadping.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetScope()(*string) {
     return m.scope
 }
-// GetTriggers gets the triggers property value. The triggers included with this automation request snapshot.
+// GetTriggers gets the triggers property value. Automation triggers that can start this workflow.
 // returns a []AutomationTriggerable when successful
 func (m *AutomationRequestSnapshot) GetTriggers()([]AutomationTriggerable) {
     return m.triggers
 }
-// GetVisibility gets the visibility property value. The visibility value for this automation request snapshot.
+// GetVisibility gets the visibility property value. Visibility level that controls who can see this automation request snapshot.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetVisibility()(*string) {
     return m.visibility
@@ -380,7 +380,7 @@ func (m *AutomationRequestSnapshot) Serialize(writer i878a80d2330e89d26896388a3f
     }
     return nil
 }
-// SetActions sets the actions property value. The actions included with this automation request snapshot.
+// SetActions sets the actions property value. Automation actions configured or returned for this workflow.
 func (m *AutomationRequestSnapshot) SetActions(value []AutomationActionable)() {
     m.actions = value
 }
@@ -388,51 +388,51 @@ func (m *AutomationRequestSnapshot) SetActions(value []AutomationActionable)() {
 func (m *AutomationRequestSnapshot) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this automation request snapshot.
+// SetBusinessId sets the businessId property value. Business ID captured when the automation request snapshot was created.
 func (m *AutomationRequestSnapshot) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetConditionGroups sets the conditionGroups property value. The condition groups included with this automation request snapshot.
+// SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 func (m *AutomationRequestSnapshot) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
 }
-// SetCreatedByUserId sets the createdByUserId property value. The created by user ID associated with this automation request snapshot.
+// SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation request snapshot.
 func (m *AutomationRequestSnapshot) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
 }
-// SetDescription sets the description property value. The human-readable description of this automation request snapshot.
+// SetDescription sets the description property value. Human-readable description that explains this automation request snapshot to API users.
 func (m *AutomationRequestSnapshot) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this automation request snapshot is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this automation request snapshot is active and available in the Leadping API.
 func (m *AutomationRequestSnapshot) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique ID for this automation request snapshot.
+// SetId sets the id property value. Unique Leadping identifier for this automation request snapshot.
 func (m *AutomationRequestSnapshot) SetId(value *string)() {
     m.id = value
 }
-// SetIsSystemManaged sets the isSystemManaged property value. Whether this automation request snapshot is system managed.
+// SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation request snapshot automatically instead of a user.
 func (m *AutomationRequestSnapshot) SetIsSystemManaged(value *bool)() {
     m.isSystemManaged = value
 }
-// SetManagementLevel sets the managementLevel property value. The management level value for this automation request snapshot.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 func (m *AutomationRequestSnapshot) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
-// SetName sets the name property value. The human-readable name shown for this automation request snapshot.
+// SetName sets the name property value. Display name for this automation request snapshot in the Leadping API.
 func (m *AutomationRequestSnapshot) SetName(value *string)() {
     m.name = value
 }
-// SetScope sets the scope property value. The scope value for this automation request snapshot.
+// SetScope sets the scope property value. Scope that limits where this automation request snapshot applies in Leadping.
 func (m *AutomationRequestSnapshot) SetScope(value *string)() {
     m.scope = value
 }
-// SetTriggers sets the triggers property value. The triggers included with this automation request snapshot.
+// SetTriggers sets the triggers property value. Automation triggers that can start this workflow.
 func (m *AutomationRequestSnapshot) SetTriggers(value []AutomationTriggerable)() {
     m.triggers = value
 }
-// SetVisibility sets the visibility property value. The visibility value for this automation request snapshot.
+// SetVisibility sets the visibility property value. Visibility level that controls who can see this automation request snapshot.
 func (m *AutomationRequestSnapshot) SetVisibility(value *string)() {
     m.visibility = value
 }

@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberAvailabilityResponse aPI response containing phone number availability data returned to callers.
+// PhoneNumberAvailabilityResponse response schema for the Leadping API phone number availability result returned to authenticated clients.
 type PhoneNumberAvailabilityResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The ISO currency code for monetary values in this phone number availability.
+    // ISO currency code used for the monetary amounts in this phone number availability result.
     currency *string
-    // Whether this phone number availability is available.
+    // Indicates whether this phone number is available for purchase or assignment.
     isAvailable *bool
-    // The location value for this phone number availability.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneNumberAvailabilityResponse_locationable
-    // The phone number associated with this phone number availability.
+    // Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
     phoneNumber *string
-    // The monetary price for this phone number availability.
+    // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewPhoneNumberAvailabilityResponse instantiates a new PhoneNumberAvailabilityResponse and sets the default values.
@@ -39,7 +39,7 @@ func CreatePhoneNumberAvailabilityResponseFromDiscriminatorValue(parseNode i878a
 func (m *PhoneNumberAvailabilityResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCurrency gets the currency property value. The ISO currency code for monetary values in this phone number availability.
+// GetCurrency gets the currency property value. ISO currency code used for the monetary amounts in this phone number availability result.
 // returns a *string when successful
 func (m *PhoneNumberAvailabilityResponse) GetCurrency()(*string) {
     return m.currency
@@ -100,22 +100,22 @@ func (m *PhoneNumberAvailabilityResponse) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
-// GetIsAvailable gets the isAvailable property value. Whether this phone number availability is available.
+// GetIsAvailable gets the isAvailable property value. Indicates whether this phone number is available for purchase or assignment.
 // returns a *bool when successful
 func (m *PhoneNumberAvailabilityResponse) GetIsAvailable()(*bool) {
     return m.isAvailable
 }
-// GetLocation gets the location property value. The location value for this phone number availability.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a PhoneNumberAvailabilityResponse_locationable when successful
 func (m *PhoneNumberAvailabilityResponse) GetLocation()(PhoneNumberAvailabilityResponse_locationable) {
     return m.location
 }
-// GetPhoneNumber gets the phoneNumber property value. The phone number associated with this phone number availability.
+// GetPhoneNumber gets the phoneNumber property value. Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
 // returns a *string when successful
 func (m *PhoneNumberAvailabilityResponse) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
-// GetPrice gets the price property value. The monetary price for this phone number availability.
+// GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a UntypedNodeable when successful
 func (m *PhoneNumberAvailabilityResponse) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
@@ -164,23 +164,23 @@ func (m *PhoneNumberAvailabilityResponse) Serialize(writer i878a80d2330e89d26896
 func (m *PhoneNumberAvailabilityResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCurrency sets the currency property value. The ISO currency code for monetary values in this phone number availability.
+// SetCurrency sets the currency property value. ISO currency code used for the monetary amounts in this phone number availability result.
 func (m *PhoneNumberAvailabilityResponse) SetCurrency(value *string)() {
     m.currency = value
 }
-// SetIsAvailable sets the isAvailable property value. Whether this phone number availability is available.
+// SetIsAvailable sets the isAvailable property value. Indicates whether this phone number is available for purchase or assignment.
 func (m *PhoneNumberAvailabilityResponse) SetIsAvailable(value *bool)() {
     m.isAvailable = value
 }
-// SetLocation sets the location property value. The location value for this phone number availability.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberAvailabilityResponse) SetLocation(value PhoneNumberAvailabilityResponse_locationable)() {
     m.location = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The phone number associated with this phone number availability.
+// SetPhoneNumber sets the phoneNumber property value. Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
 func (m *PhoneNumberAvailabilityResponse) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
-// SetPrice sets the price property value. The monetary price for this phone number availability.
+// SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
 func (m *PhoneNumberAvailabilityResponse) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }

@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationValidationResult aPI DTO containing automation validation result data used by Leadping API contracts.
+// AutomationValidationResult result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
 type AutomationValidationResult struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The errors included with this automation validation result.
+    // Validation or processing errors returned for this automation validation result.
     errors []string
-    // The warnings included with this automation validation result.
+    // Warnings returned for this automation validation result that do not necessarily block processing.
     warnings []string
 }
 // NewAutomationValidationResult instantiates a new AutomationValidationResult and sets the default values.
@@ -33,7 +33,7 @@ func CreateAutomationValidationResultFromDiscriminatorValue(parseNode i878a80d23
 func (m *AutomationValidationResult) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetErrors gets the errors property value. The errors included with this automation validation result.
+// GetErrors gets the errors property value. Validation or processing errors returned for this automation validation result.
 // returns a []string when successful
 func (m *AutomationValidationResult) GetErrors()([]string) {
     return m.errors
@@ -76,7 +76,7 @@ func (m *AutomationValidationResult) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetWarnings gets the warnings property value. The warnings included with this automation validation result.
+// GetWarnings gets the warnings property value. Warnings returned for this automation validation result that do not necessarily block processing.
 // returns a []string when successful
 func (m *AutomationValidationResult) GetWarnings()([]string) {
     return m.warnings
@@ -107,11 +107,11 @@ func (m *AutomationValidationResult) Serialize(writer i878a80d2330e89d26896388a3
 func (m *AutomationValidationResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetErrors sets the errors property value. The errors included with this automation validation result.
+// SetErrors sets the errors property value. Validation or processing errors returned for this automation validation result.
 func (m *AutomationValidationResult) SetErrors(value []string)() {
     m.errors = value
 }
-// SetWarnings sets the warnings property value. The warnings included with this automation validation result.
+// SetWarnings sets the warnings property value. Warnings returned for this automation validation result that do not necessarily block processing.
 func (m *AutomationValidationResult) SetWarnings(value []string)() {
     m.warnings = value
 }

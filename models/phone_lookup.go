@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneLookup represents phone information retrieved from a phone number lookup
+// PhoneLookup public Leadping API schema for phone lookup result data.
 type PhoneLookup struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -18,15 +18,15 @@ type PhoneLookup struct {
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets id.
     id *string
-    // Whether this phone lookup is valid.
+    // Indicates whether this phone lookup result passed validation.
     isValid *bool
     // An enumerator describing phone line types
     lineType *PhoneLookup_lineType
-    // The location value for this phone lookup.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneLookup_locationable
     // Gets or sets modified at.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The number value for this phone lookup.
+    // E.164 phone number exposed by this phone lookup result.
     number *string
 }
 // NewPhoneLookup instantiates a new PhoneLookup and sets the default values.
@@ -147,7 +147,7 @@ func (m *PhoneLookup) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *PhoneLookup) GetId()(*string) {
     return m.id
 }
-// GetIsValid gets the isValid property value. Whether this phone lookup is valid.
+// GetIsValid gets the isValid property value. Indicates whether this phone lookup result passed validation.
 // returns a *bool when successful
 func (m *PhoneLookup) GetIsValid()(*bool) {
     return m.isValid
@@ -157,7 +157,7 @@ func (m *PhoneLookup) GetIsValid()(*bool) {
 func (m *PhoneLookup) GetLineType()(*PhoneLookup_lineType) {
     return m.lineType
 }
-// GetLocation gets the location property value. The location value for this phone lookup.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a PhoneLookup_locationable when successful
 func (m *PhoneLookup) GetLocation()(PhoneLookup_locationable) {
     return m.location
@@ -167,7 +167,7 @@ func (m *PhoneLookup) GetLocation()(PhoneLookup_locationable) {
 func (m *PhoneLookup) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetNumber gets the number property value. The number value for this phone lookup.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone lookup result.
 // returns a *string when successful
 func (m *PhoneLookup) GetNumber()(*string) {
     return m.number
@@ -248,7 +248,7 @@ func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f30
 func (m *PhoneLookup) SetId(value *string)() {
     m.id = value
 }
-// SetIsValid sets the isValid property value. Whether this phone lookup is valid.
+// SetIsValid sets the isValid property value. Indicates whether this phone lookup result passed validation.
 func (m *PhoneLookup) SetIsValid(value *bool)() {
     m.isValid = value
 }
@@ -256,7 +256,7 @@ func (m *PhoneLookup) SetIsValid(value *bool)() {
 func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType)() {
     m.lineType = value
 }
-// SetLocation sets the location property value. The location value for this phone lookup.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable)() {
     m.location = value
 }
@@ -264,7 +264,7 @@ func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable)() {
 func (m *PhoneLookup) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetNumber sets the number property value. The number value for this phone lookup.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone lookup result.
 func (m *PhoneLookup) SetNumber(value *string)() {
     m.number = value
 }

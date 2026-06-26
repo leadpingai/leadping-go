@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadResponse_currentDisposition compact current disposition state stored directly on a lead and surfaced with conversation data.
+// LeadResponse_currentDisposition current disposition summary that describes the lead outcome.
 type LeadResponse_currentDisposition struct {
     CurrentDispositionSummary
 }

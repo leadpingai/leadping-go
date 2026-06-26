@@ -7,27 +7,27 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberRoutingMetadata aPI DTO containing phone number routing metadata data used by Leadping API contracts.
+// PhoneNumberRoutingMetadata public Leadping API schema for phone number routing metadata data.
 type PhoneNumberRoutingMetadata struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The campaign ID associated with this phone number routing metadata.
+    // Messaging campaign identifier associated with this phone number routing metadata.
     campaignId *string
-    // Whether internal test only applies to this phone number routing metadata.
+    // Indicates whether this record is restricted to internal Leadping testing.
     internalTestOnly *bool
-    // The messaging profile ID associated with this phone number routing metadata.
+    // Messaging profile identifier used for SMS routing with the provider.
     messagingProfileId *string
-    // Whether SMS is enabled for this phone number routing metadata.
+    // Indicates whether the phone number can be used for SMS messaging.
     smsEnabled *bool
-    // The source ID associated with this phone number routing metadata.
+    // Lead source ID assigned to this phone number for attribution and routing.
     sourceId *string
-    // The team ID associated with this phone number routing metadata.
+    // Team ID used to route calls and messages for this phone number.
     teamId *string
-    // The voice connection ID associated with this phone number routing metadata.
+    // Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
     voiceConnectionId *string
-    // Whether voice is enabled for this phone number routing metadata.
+    // Indicates whether the phone number can be used for voice calls.
     voiceEnabled *bool
-    // Whether warmup only applies to this phone number routing metadata.
+    // Indicates whether this phone number should only be used for warmup traffic.
     warmupOnly *bool
 }
 // NewPhoneNumberRoutingMetadata instantiates a new PhoneNumberRoutingMetadata and sets the default values.
@@ -47,7 +47,7 @@ func CreatePhoneNumberRoutingMetadataFromDiscriminatorValue(parseNode i878a80d23
 func (m *PhoneNumberRoutingMetadata) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this phone number routing metadata.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone number routing metadata.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetCampaignId()(*string) {
     return m.campaignId
@@ -148,42 +148,42 @@ func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetInternalTestOnly gets the internalTestOnly property value. Whether internal test only applies to this phone number routing metadata.
+// GetInternalTestOnly gets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
 // returns a *bool when successful
 func (m *PhoneNumberRoutingMetadata) GetInternalTestOnly()(*bool) {
     return m.internalTestOnly
 }
-// GetMessagingProfileId gets the messagingProfileId property value. The messaging profile ID associated with this phone number routing metadata.
+// GetMessagingProfileId gets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetMessagingProfileId()(*string) {
     return m.messagingProfileId
 }
-// GetSmsEnabled gets the smsEnabled property value. Whether SMS is enabled for this phone number routing metadata.
+// GetSmsEnabled gets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
 // returns a *bool when successful
 func (m *PhoneNumberRoutingMetadata) GetSmsEnabled()(*bool) {
     return m.smsEnabled
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this phone number routing metadata.
+// GetSourceId gets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. The team ID associated with this phone number routing metadata.
+// GetTeamId gets the teamId property value. Team ID used to route calls and messages for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetTeamId()(*string) {
     return m.teamId
 }
-// GetVoiceConnectionId gets the voiceConnectionId property value. The voice connection ID associated with this phone number routing metadata.
+// GetVoiceConnectionId gets the voiceConnectionId property value. Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetVoiceConnectionId()(*string) {
     return m.voiceConnectionId
 }
-// GetVoiceEnabled gets the voiceEnabled property value. Whether voice is enabled for this phone number routing metadata.
+// GetVoiceEnabled gets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 // returns a *bool when successful
 func (m *PhoneNumberRoutingMetadata) GetVoiceEnabled()(*bool) {
     return m.voiceEnabled
 }
-// GetWarmupOnly gets the warmupOnly property value. Whether warmup only applies to this phone number routing metadata.
+// GetWarmupOnly gets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
 // returns a *bool when successful
 func (m *PhoneNumberRoutingMetadata) GetWarmupOnly()(*bool) {
     return m.warmupOnly
@@ -256,39 +256,39 @@ func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3
 func (m *PhoneNumberRoutingMetadata) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this phone number routing metadata.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone number routing metadata.
 func (m *PhoneNumberRoutingMetadata) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetInternalTestOnly sets the internalTestOnly property value. Whether internal test only applies to this phone number routing metadata.
+// SetInternalTestOnly sets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
 func (m *PhoneNumberRoutingMetadata) SetInternalTestOnly(value *bool)() {
     m.internalTestOnly = value
 }
-// SetMessagingProfileId sets the messagingProfileId property value. The messaging profile ID associated with this phone number routing metadata.
+// SetMessagingProfileId sets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
 func (m *PhoneNumberRoutingMetadata) SetMessagingProfileId(value *string)() {
     m.messagingProfileId = value
 }
-// SetSmsEnabled sets the smsEnabled property value. Whether SMS is enabled for this phone number routing metadata.
+// SetSmsEnabled sets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
 func (m *PhoneNumberRoutingMetadata) SetSmsEnabled(value *bool)() {
     m.smsEnabled = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this phone number routing metadata.
+// SetSourceId sets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
 func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. The team ID associated with this phone number routing metadata.
+// SetTeamId sets the teamId property value. Team ID used to route calls and messages for this phone number.
 func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string)() {
     m.teamId = value
 }
-// SetVoiceConnectionId sets the voiceConnectionId property value. The voice connection ID associated with this phone number routing metadata.
+// SetVoiceConnectionId sets the voiceConnectionId property value. Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
 func (m *PhoneNumberRoutingMetadata) SetVoiceConnectionId(value *string)() {
     m.voiceConnectionId = value
 }
-// SetVoiceEnabled sets the voiceEnabled property value. Whether voice is enabled for this phone number routing metadata.
+// SetVoiceEnabled sets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 func (m *PhoneNumberRoutingMetadata) SetVoiceEnabled(value *bool)() {
     m.voiceEnabled = value
 }
-// SetWarmupOnly sets the warmupOnly property value. Whether warmup only applies to this phone number routing metadata.
+// SetWarmupOnly sets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
 func (m *PhoneNumberRoutingMetadata) SetWarmupOnly(value *bool)() {
     m.warmupOnly = value
 }

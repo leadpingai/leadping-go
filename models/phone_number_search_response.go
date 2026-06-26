@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberSearchResponse aPI response containing phone number search data returned to callers.
+// PhoneNumberSearchResponse response schema for the Leadping API phone number search response returned to authenticated clients.
 type PhoneNumberSearchResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The numbers included with this phone number search.
+    // Phone numbers returned or evaluated by this phone number search response.
     numbers []PhoneNumberSearchResultable
 }
 // NewPhoneNumberSearchResponse instantiates a new PhoneNumberSearchResponse and sets the default values.
@@ -53,7 +53,7 @@ func (m *PhoneNumberSearchResponse) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetNumbers gets the numbers property value. The numbers included with this phone number search.
+// GetNumbers gets the numbers property value. Phone numbers returned or evaluated by this phone number search response.
 // returns a []PhoneNumberSearchResultable when successful
 func (m *PhoneNumberSearchResponse) GetNumbers()([]PhoneNumberSearchResultable) {
     return m.numbers
@@ -84,7 +84,7 @@ func (m *PhoneNumberSearchResponse) Serialize(writer i878a80d2330e89d26896388a3f
 func (m *PhoneNumberSearchResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetNumbers sets the numbers property value. The numbers included with this phone number search.
+// SetNumbers sets the numbers property value. Phone numbers returned or evaluated by this phone number search response.
 func (m *PhoneNumberSearchResponse) SetNumbers(value []PhoneNumberSearchResultable)() {
     m.numbers = value
 }

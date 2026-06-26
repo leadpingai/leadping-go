@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberSearchResult aPI response containing phone number search result data returned to callers.
+// PhoneNumberSearchResult result schema for the Leadping API phone number search result returned by lookup and validation endpoints.
 type PhoneNumberSearchResult struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The location value for this phone number search result.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneNumberSearchResult_locationable
-    // The number value for this phone number search result.
+    // E.164 phone number exposed by this phone number search result.
     number *string
 }
 // NewPhoneNumberSearchResult instantiates a new PhoneNumberSearchResult and sets the default values.
@@ -59,12 +59,12 @@ func (m *PhoneNumberSearchResult) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetLocation gets the location property value. The location value for this phone number search result.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a PhoneNumberSearchResult_locationable when successful
 func (m *PhoneNumberSearchResult) GetLocation()(PhoneNumberSearchResult_locationable) {
     return m.location
 }
-// GetNumber gets the number property value. The number value for this phone number search result.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number search result.
 // returns a *string when successful
 func (m *PhoneNumberSearchResult) GetNumber()(*string) {
     return m.number
@@ -95,11 +95,11 @@ func (m *PhoneNumberSearchResult) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *PhoneNumberSearchResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLocation sets the location property value. The location value for this phone number search result.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberSearchResult) SetLocation(value PhoneNumberSearchResult_locationable)() {
     m.location = value
 }
-// SetNumber sets the number property value. The number value for this phone number search result.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number search result.
 func (m *PhoneNumberSearchResult) SetNumber(value *string)() {
     m.number = value
 }

@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// BusinessRequest_activation the activation value for this business.
+// BusinessRequest_activation business activation state covering site, billing, compliance, and telephony readiness.
 type BusinessRequest_activation struct {
     BusinessActivationState
 }

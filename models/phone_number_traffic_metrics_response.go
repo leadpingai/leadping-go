@@ -8,21 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberTrafficMetricsResponse aPI response containing phone number traffic metrics data returned to callers.
+// PhoneNumberTrafficMetricsResponse response schema for the Leadping API phone number traffic metrics response returned to authenticated clients.
 type PhoneNumberTrafficMetricsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The call failed count for this phone number traffic metrics.
+    // Number of outbound calls that failed during this metrics window.
     callFailedCount *int32
-    // The call placed count for this phone number traffic metrics.
+    // Number of outbound calls placed during this metrics window.
     callPlacedCount *int32
-    // The SMS failed count for this phone number traffic metrics.
+    // Number of SMS messages that failed during this metrics window.
     smsFailedCount *int32
-    // The SMS sent count for this phone number traffic metrics.
+    // Number of SMS messages sent during this metrics window.
     smsSentCount *int32
-    // The date and time for the window days value on this phone number traffic metrics.
+    // Time-series buckets that show how the metric changes across the reporting window.
+    trend []PhoneNumberTrafficTrendPointable
+    // Number of days included in the metrics reporting window.
     windowDays *int32
-    // The date and time for the window started at value on this phone number traffic metrics.
+    // UTC timestamp when the metrics reporting window starts.
     windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewPhoneNumberTrafficMetricsResponse instantiates a new PhoneNumberTrafficMetricsResponse and sets the default values.
@@ -42,12 +44,12 @@ func CreatePhoneNumberTrafficMetricsResponseFromDiscriminatorValue(parseNode i87
 func (m *PhoneNumberTrafficMetricsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCallFailedCount gets the callFailedCount property value. The call failed count for this phone number traffic metrics.
+// GetCallFailedCount gets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetCallFailedCount()(*int32) {
     return m.callFailedCount
 }
-// GetCallPlacedCount gets the callPlacedCount property value. The call placed count for this phone number traffic metrics.
+// GetCallPlacedCount gets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetCallPlacedCount()(*int32) {
     return m.callPlacedCount
@@ -96,6 +98,22 @@ func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers()(map[string]f
         }
         return nil
     }
+    res["trend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]PhoneNumberTrafficTrendPointable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(PhoneNumberTrafficTrendPointable)
+                }
+            }
+            m.SetTrend(res)
+        }
+        return nil
+    }
     res["windowDays"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -118,22 +136,27 @@ func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers()(map[string]f
     }
     return res
 }
-// GetSmsFailedCount gets the smsFailedCount property value. The SMS failed count for this phone number traffic metrics.
+// GetSmsFailedCount gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetSmsFailedCount()(*int32) {
     return m.smsFailedCount
 }
-// GetSmsSentCount gets the smsSentCount property value. The SMS sent count for this phone number traffic metrics.
+// GetSmsSentCount gets the smsSentCount property value. Number of SMS messages sent during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetSmsSentCount()(*int32) {
     return m.smsSentCount
 }
-// GetWindowDays gets the windowDays property value. The date and time for the window days value on this phone number traffic metrics.
+// GetTrend gets the trend property value. Time-series buckets that show how the metric changes across the reporting window.
+// returns a []PhoneNumberTrafficTrendPointable when successful
+func (m *PhoneNumberTrafficMetricsResponse) GetTrend()([]PhoneNumberTrafficTrendPointable) {
+    return m.trend
+}
+// GetWindowDays gets the windowDays property value. Number of days included in the metrics reporting window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetWindowDays()(*int32) {
     return m.windowDays
 }
-// GetWindowStartedAt gets the windowStartedAt property value. The date and time for the window started at value on this phone number traffic metrics.
+// GetWindowStartedAt gets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 // returns a *Time when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.windowStartedAt
@@ -164,6 +187,18 @@ func (m *PhoneNumberTrafficMetricsResponse) Serialize(writer i878a80d2330e89d268
             return err
         }
     }
+    if m.GetTrend() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrend()))
+        for i, v := range m.GetTrend() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("trend", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteInt32Value("windowDays", m.GetWindowDays())
         if err != nil {
@@ -188,27 +223,31 @@ func (m *PhoneNumberTrafficMetricsResponse) Serialize(writer i878a80d2330e89d268
 func (m *PhoneNumberTrafficMetricsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCallFailedCount sets the callFailedCount property value. The call failed count for this phone number traffic metrics.
+// SetCallFailedCount sets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
 func (m *PhoneNumberTrafficMetricsResponse) SetCallFailedCount(value *int32)() {
     m.callFailedCount = value
 }
-// SetCallPlacedCount sets the callPlacedCount property value. The call placed count for this phone number traffic metrics.
+// SetCallPlacedCount sets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
 func (m *PhoneNumberTrafficMetricsResponse) SetCallPlacedCount(value *int32)() {
     m.callPlacedCount = value
 }
-// SetSmsFailedCount sets the smsFailedCount property value. The SMS failed count for this phone number traffic metrics.
+// SetSmsFailedCount sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 func (m *PhoneNumberTrafficMetricsResponse) SetSmsFailedCount(value *int32)() {
     m.smsFailedCount = value
 }
-// SetSmsSentCount sets the smsSentCount property value. The SMS sent count for this phone number traffic metrics.
+// SetSmsSentCount sets the smsSentCount property value. Number of SMS messages sent during this metrics window.
 func (m *PhoneNumberTrafficMetricsResponse) SetSmsSentCount(value *int32)() {
     m.smsSentCount = value
 }
-// SetWindowDays sets the windowDays property value. The date and time for the window days value on this phone number traffic metrics.
+// SetTrend sets the trend property value. Time-series buckets that show how the metric changes across the reporting window.
+func (m *PhoneNumberTrafficMetricsResponse) SetTrend(value []PhoneNumberTrafficTrendPointable)() {
+    m.trend = value
+}
+// SetWindowDays sets the windowDays property value. Number of days included in the metrics reporting window.
 func (m *PhoneNumberTrafficMetricsResponse) SetWindowDays(value *int32)() {
     m.windowDays = value
 }
-// SetWindowStartedAt sets the windowStartedAt property value. The date and time for the window started at value on this phone number traffic metrics.
+// SetWindowStartedAt sets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 func (m *PhoneNumberTrafficMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.windowStartedAt = value
 }
@@ -219,12 +258,14 @@ type PhoneNumberTrafficMetricsResponseable interface {
     GetCallPlacedCount()(*int32)
     GetSmsFailedCount()(*int32)
     GetSmsSentCount()(*int32)
+    GetTrend()([]PhoneNumberTrafficTrendPointable)
     GetWindowDays()(*int32)
     GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetCallFailedCount(value *int32)()
     SetCallPlacedCount(value *int32)()
     SetSmsFailedCount(value *int32)()
     SetSmsSentCount(value *int32)()
+    SetTrend(value []PhoneNumberTrafficTrendPointable)()
     SetWindowDays(value *int32)()
     SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

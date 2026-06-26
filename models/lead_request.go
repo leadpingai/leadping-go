@@ -7,25 +7,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadRequest request payload for lead.
+// LeadRequest request schema for the Leadping API lead request, including the fields clients can send.
 type LeadRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride LeadRequest_adminEnablementOverrideable
-    // The contact value for this lead.
+    // Contact details for the lead or customer represented by this lead request.
     contact LeadContactable
-    // The profile value for this lead.
+    // Demographic profile details for the lead represented by this lead request.
     customer LeadProfileable
-    // The enabled property
+    // Indicates whether this lead request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // Safe, non-secret metadata associated with this lead.
+    // Structured metadata used for attribution, integrations, and reporting on this lead request.
     metadata LeadMetadataable
-    // Existing business tag ids to apply when the lead is created.
+    // Tag IDs assigned to or filtered against this lead.
     tagIds []string
-    // Business tag names to apply when the lead is created. Missing names are created safely by lead creation flows.
+    // Tag names assigned to this lead when matching existing tags by name.
     tagNames []string
 }
 // NewLeadRequest instantiates a new LeadRequest and sets the default values.
@@ -45,22 +45,22 @@ func CreateLeadRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a LeadRequest_adminEnablementOverrideable when successful
 func (m *LeadRequest) GetAdminEnablementOverride()(LeadRequest_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetContact gets the contact property value. The contact value for this lead.
+// GetContact gets the contact property value. Contact details for the lead or customer represented by this lead request.
 // returns a LeadContactable when successful
 func (m *LeadRequest) GetContact()(LeadContactable) {
     return m.contact
 }
-// GetCustomer gets the customer property value. The profile value for this lead.
+// GetCustomer gets the customer property value. Demographic profile details for the lead represented by this lead request.
 // returns a LeadProfileable when successful
 func (m *LeadRequest) GetCustomer()(LeadProfileable) {
     return m.customer
 }
-// GetEnabled gets the enabled property value. The enabled property
+// GetEnabled gets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *LeadRequest) GetEnabled()(*bool) {
     return m.enabled
@@ -168,17 +168,17 @@ func (m *LeadRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *LeadRequest) GetId()(*string) {
     return m.id
 }
-// GetMetadata gets the metadata property value. Safe, non-secret metadata associated with this lead.
+// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
 // returns a LeadMetadataable when successful
 func (m *LeadRequest) GetMetadata()(LeadMetadataable) {
     return m.metadata
 }
-// GetTagIds gets the tagIds property value. Existing business tag ids to apply when the lead is created.
+// GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 // returns a []string when successful
 func (m *LeadRequest) GetTagIds()([]string) {
     return m.tagIds
 }
-// GetTagNames gets the tagNames property value. Business tag names to apply when the lead is created. Missing names are created safely by lead creation flows.
+// GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 // returns a []string when successful
 func (m *LeadRequest) GetTagNames()([]string) {
     return m.tagNames
@@ -245,19 +245,19 @@ func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *LeadRequest) SetAdminEnablementOverride(value LeadRequest_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetContact sets the contact property value. The contact value for this lead.
+// SetContact sets the contact property value. Contact details for the lead or customer represented by this lead request.
 func (m *LeadRequest) SetContact(value LeadContactable)() {
     m.contact = value
 }
-// SetCustomer sets the customer property value. The profile value for this lead.
+// SetCustomer sets the customer property value. Demographic profile details for the lead represented by this lead request.
 func (m *LeadRequest) SetCustomer(value LeadProfileable)() {
     m.customer = value
 }
-// SetEnabled sets the enabled property value. The enabled property
+// SetEnabled sets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
 func (m *LeadRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -265,15 +265,15 @@ func (m *LeadRequest) SetEnabled(value *bool)() {
 func (m *LeadRequest) SetId(value *string)() {
     m.id = value
 }
-// SetMetadata sets the metadata property value. Safe, non-secret metadata associated with this lead.
+// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
 func (m *LeadRequest) SetMetadata(value LeadMetadataable)() {
     m.metadata = value
 }
-// SetTagIds sets the tagIds property value. Existing business tag ids to apply when the lead is created.
+// SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 func (m *LeadRequest) SetTagIds(value []string)() {
     m.tagIds = value
 }
-// SetTagNames sets the tagNames property value. Business tag names to apply when the lead is created. Missing names are created safely by lead creation flows.
+// SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 func (m *LeadRequest) SetTagNames(value []string)() {
     m.tagNames = value
 }

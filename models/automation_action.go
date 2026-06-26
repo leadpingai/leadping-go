@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationAction aPI DTO containing automation action data used by Leadping API contracts.
+// AutomationAction public Leadping API schema for automation action data.
 type AutomationAction struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The unique ID for this automation action.
+    // Unique Leadping identifier for this automation action.
     id *string
-    // Whether this automation action is enabled.
+    // Indicates whether this automation action is active and allowed to run.
     isEnabled *bool
-    // The order value for this automation action.
+    // Sort order used to evaluate or display this automation action.
     order *int32
-    // The settings key-value data carried with this automation action; values must be safe to expose in API responses.
+    // Key-value settings that configure how this automation action behaves.
     settings AutomationAction_settingsable
-    // The type classification for this automation action.
+    // Type classification used to route and interpret this automation action in the Leadping API.
     typeEscaped *string
 }
 // NewAutomationAction instantiates a new AutomationAction and sets the default values.
@@ -95,27 +95,27 @@ func (m *AutomationAction) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation action.
+// GetId gets the id property value. Unique Leadping identifier for this automation action.
 // returns a *string when successful
 func (m *AutomationAction) GetId()(*string) {
     return m.id
 }
-// GetIsEnabled gets the isEnabled property value. Whether this automation action is enabled.
+// GetIsEnabled gets the isEnabled property value. Indicates whether this automation action is active and allowed to run.
 // returns a *bool when successful
 func (m *AutomationAction) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
-// GetOrder gets the order property value. The order value for this automation action.
+// GetOrder gets the order property value. Sort order used to evaluate or display this automation action.
 // returns a *int32 when successful
 func (m *AutomationAction) GetOrder()(*int32) {
     return m.order
 }
-// GetSettings gets the settings property value. The settings key-value data carried with this automation action; values must be safe to expose in API responses.
+// GetSettings gets the settings property value. Key-value settings that configure how this automation action behaves.
 // returns a AutomationAction_settingsable when successful
 func (m *AutomationAction) GetSettings()(AutomationAction_settingsable) {
     return m.settings
 }
-// GetTypeEscaped gets the type property value. The type classification for this automation action.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this automation action in the Leadping API.
 // returns a *string when successful
 func (m *AutomationAction) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -164,23 +164,23 @@ func (m *AutomationAction) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *AutomationAction) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The unique ID for this automation action.
+// SetId sets the id property value. Unique Leadping identifier for this automation action.
 func (m *AutomationAction) SetId(value *string)() {
     m.id = value
 }
-// SetIsEnabled sets the isEnabled property value. Whether this automation action is enabled.
+// SetIsEnabled sets the isEnabled property value. Indicates whether this automation action is active and allowed to run.
 func (m *AutomationAction) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
-// SetOrder sets the order property value. The order value for this automation action.
+// SetOrder sets the order property value. Sort order used to evaluate or display this automation action.
 func (m *AutomationAction) SetOrder(value *int32)() {
     m.order = value
 }
-// SetSettings sets the settings property value. The settings key-value data carried with this automation action; values must be safe to expose in API responses.
+// SetSettings sets the settings property value. Key-value settings that configure how this automation action behaves.
 func (m *AutomationAction) SetSettings(value AutomationAction_settingsable)() {
     m.settings = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this automation action.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this automation action in the Leadping API.
 func (m *AutomationAction) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

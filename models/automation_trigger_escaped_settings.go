@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationTrigger_settings the settings key-value data carried with this automation trigger; values must be safe to expose in API responses.
+// AutomationTrigger_settings key-value settings that configure how this automation trigger behaves.
 type AutomationTrigger_settings struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

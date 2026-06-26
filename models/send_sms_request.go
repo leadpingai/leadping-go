@@ -8,47 +8,47 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SendSmsRequest request payload for send SMS.
+// SendSmsRequest request schema for the Leadping API SMS send request, including the fields clients can send.
 type SendSmsRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automation ID responsible for this SMS, if applicable.
+    // Automation ID connected to this workflow, run, or event.
     automationId *string
-    // The campaign ID associated with this SMS.
+    // Messaging campaign identifier associated with this SMS send request.
     campaignId *string
-    // The conversation ID associated with this SMS.
+    // Conversation ID that links this SMS send request to the Leadping inbox thread.
     conversationId *string
-    // The from phone number ID associated with this SMS.
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // Whether required consent is known for this outbound SMS.
+    // Indicates whether the lead has the consent required for compliant outreach.
     hasRequiredConsent *bool
-    // The import batch ID responsible for this SMS, if applicable.
+    // Bulk import batch ID that created or updated this lead.
     importBatchId *string
-    // Whether this SMS is automated.
+    // Indicates whether automation created or triggered this SMS send request.
     isAutomated *bool
-    // Whether this SMS is for an imported lead.
+    // Indicates whether this record originated from a bulk import rather than a real-time lead source.
     isImportedLead *bool
-    // The outbound delivery request ID assigned by delivery control.
+    // Outbound delivery request ID connected to this decision or attempt.
     outboundDeliveryRequestId *string
-    // Optional idempotency key for retry-safe outbound delivery control.
+    // Idempotency key used to prevent duplicate outbound delivery.
     outboundIdempotencyKey *string
     // Defines priority classes used when pacing outbound delivery.
     outboundPriority *SendSmsRequest_outboundPriority
-    // The outbound reservation ID assigned by delivery control.
+    // Outbound reservation ID used to throttle and track delivery capacity.
     outboundReservationId *string
     // Defines the source that requested outbound delivery.
     outboundSource *SendSmsRequest_outboundSource
-    // The date and time for the scheduled for value on this SMS.
+    // UTC timestamp when Leadping should send the SMS message.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the supported Outgoing Number Selection Reason values.
     selectionReason *SendSmsRequest_selectionReason
-    // The SMS event ID associated with this SMS.
+    // Existing SMS event ID to reuse or update when retrying a send request.
     smsEventId *string
-    // The source ID associated with this SMS.
+    // Lead source ID used for attribution and sender selection.
     sourceId *string
-    // The text value for this SMS.
+    // Body text for the SMS message or communication represented by this SMS send request.
     text *string
-    // Whether this SMS was manually overridden.
+    // Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
     wasManuallyOverridden *bool
 }
 // NewSendSmsRequest instantiates a new SendSmsRequest and sets the default values.
@@ -68,17 +68,17 @@ func CreateSendSmsRequestFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *SendSmsRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. The automation ID responsible for this SMS, if applicable.
+// GetAutomationId gets the automationId property value. Automation ID connected to this workflow, run, or event.
 // returns a *string when successful
 func (m *SendSmsRequest) GetAutomationId()(*string) {
     return m.automationId
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this SMS.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
 // returns a *string when successful
 func (m *SendSmsRequest) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetConversationId gets the conversationId property value. The conversation ID associated with this SMS.
+// GetConversationId gets the conversationId property value. Conversation ID that links this SMS send request to the Leadping inbox thread.
 // returns a *string when successful
 func (m *SendSmsRequest) GetConversationId()(*string) {
     return m.conversationId
@@ -279,37 +279,37 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
     }
     return res
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The from phone number ID associated with this SMS.
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *SendSmsRequest) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetHasRequiredConsent gets the hasRequiredConsent property value. Whether required consent is known for this outbound SMS.
+// GetHasRequiredConsent gets the hasRequiredConsent property value. Indicates whether the lead has the consent required for compliant outreach.
 // returns a *bool when successful
 func (m *SendSmsRequest) GetHasRequiredConsent()(*bool) {
     return m.hasRequiredConsent
 }
-// GetImportBatchId gets the importBatchId property value. The import batch ID responsible for this SMS, if applicable.
+// GetImportBatchId gets the importBatchId property value. Bulk import batch ID that created or updated this lead.
 // returns a *string when successful
 func (m *SendSmsRequest) GetImportBatchId()(*string) {
     return m.importBatchId
 }
-// GetIsAutomated gets the isAutomated property value. Whether this SMS is automated.
+// GetIsAutomated gets the isAutomated property value. Indicates whether automation created or triggered this SMS send request.
 // returns a *bool when successful
 func (m *SendSmsRequest) GetIsAutomated()(*bool) {
     return m.isAutomated
 }
-// GetIsImportedLead gets the isImportedLead property value. Whether this SMS is for an imported lead.
+// GetIsImportedLead gets the isImportedLead property value. Indicates whether this record originated from a bulk import rather than a real-time lead source.
 // returns a *bool when successful
 func (m *SendSmsRequest) GetIsImportedLead()(*bool) {
     return m.isImportedLead
 }
-// GetOutboundDeliveryRequestId gets the outboundDeliveryRequestId property value. The outbound delivery request ID assigned by delivery control.
+// GetOutboundDeliveryRequestId gets the outboundDeliveryRequestId property value. Outbound delivery request ID connected to this decision or attempt.
 // returns a *string when successful
 func (m *SendSmsRequest) GetOutboundDeliveryRequestId()(*string) {
     return m.outboundDeliveryRequestId
 }
-// GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Optional idempotency key for retry-safe outbound delivery control.
+// GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
 func (m *SendSmsRequest) GetOutboundIdempotencyKey()(*string) {
     return m.outboundIdempotencyKey
@@ -319,7 +319,7 @@ func (m *SendSmsRequest) GetOutboundIdempotencyKey()(*string) {
 func (m *SendSmsRequest) GetOutboundPriority()(*SendSmsRequest_outboundPriority) {
     return m.outboundPriority
 }
-// GetOutboundReservationId gets the outboundReservationId property value. The outbound reservation ID assigned by delivery control.
+// GetOutboundReservationId gets the outboundReservationId property value. Outbound reservation ID used to throttle and track delivery capacity.
 // returns a *string when successful
 func (m *SendSmsRequest) GetOutboundReservationId()(*string) {
     return m.outboundReservationId
@@ -329,7 +329,7 @@ func (m *SendSmsRequest) GetOutboundReservationId()(*string) {
 func (m *SendSmsRequest) GetOutboundSource()(*SendSmsRequest_outboundSource) {
     return m.outboundSource
 }
-// GetScheduledFor gets the scheduledFor property value. The date and time for the scheduled for value on this SMS.
+// GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 // returns a *Time when successful
 func (m *SendSmsRequest) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledFor
@@ -339,22 +339,22 @@ func (m *SendSmsRequest) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f
 func (m *SendSmsRequest) GetSelectionReason()(*SendSmsRequest_selectionReason) {
     return m.selectionReason
 }
-// GetSmsEventId gets the smsEventId property value. The SMS event ID associated with this SMS.
+// GetSmsEventId gets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
 // returns a *string when successful
 func (m *SendSmsRequest) GetSmsEventId()(*string) {
     return m.smsEventId
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this SMS.
+// GetSourceId gets the sourceId property value. Lead source ID used for attribution and sender selection.
 // returns a *string when successful
 func (m *SendSmsRequest) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetText gets the text property value. The text value for this SMS.
+// GetText gets the text property value. Body text for the SMS message or communication represented by this SMS send request.
 // returns a *string when successful
 func (m *SendSmsRequest) GetText()(*string) {
     return m.text
 }
-// GetWasManuallyOverridden gets the wasManuallyOverridden property value. Whether this SMS was manually overridden.
+// GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
 // returns a *bool when successful
 func (m *SendSmsRequest) GetWasManuallyOverridden()(*bool) {
     return m.wasManuallyOverridden
@@ -490,43 +490,43 @@ func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SendSmsRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. The automation ID responsible for this SMS, if applicable.
+// SetAutomationId sets the automationId property value. Automation ID connected to this workflow, run, or event.
 func (m *SendSmsRequest) SetAutomationId(value *string)() {
     m.automationId = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this SMS.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
 func (m *SendSmsRequest) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetConversationId sets the conversationId property value. The conversation ID associated with this SMS.
+// SetConversationId sets the conversationId property value. Conversation ID that links this SMS send request to the Leadping inbox thread.
 func (m *SendSmsRequest) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The from phone number ID associated with this SMS.
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *SendSmsRequest) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetHasRequiredConsent sets the hasRequiredConsent property value. Whether required consent is known for this outbound SMS.
+// SetHasRequiredConsent sets the hasRequiredConsent property value. Indicates whether the lead has the consent required for compliant outreach.
 func (m *SendSmsRequest) SetHasRequiredConsent(value *bool)() {
     m.hasRequiredConsent = value
 }
-// SetImportBatchId sets the importBatchId property value. The import batch ID responsible for this SMS, if applicable.
+// SetImportBatchId sets the importBatchId property value. Bulk import batch ID that created or updated this lead.
 func (m *SendSmsRequest) SetImportBatchId(value *string)() {
     m.importBatchId = value
 }
-// SetIsAutomated sets the isAutomated property value. Whether this SMS is automated.
+// SetIsAutomated sets the isAutomated property value. Indicates whether automation created or triggered this SMS send request.
 func (m *SendSmsRequest) SetIsAutomated(value *bool)() {
     m.isAutomated = value
 }
-// SetIsImportedLead sets the isImportedLead property value. Whether this SMS is for an imported lead.
+// SetIsImportedLead sets the isImportedLead property value. Indicates whether this record originated from a bulk import rather than a real-time lead source.
 func (m *SendSmsRequest) SetIsImportedLead(value *bool)() {
     m.isImportedLead = value
 }
-// SetOutboundDeliveryRequestId sets the outboundDeliveryRequestId property value. The outbound delivery request ID assigned by delivery control.
+// SetOutboundDeliveryRequestId sets the outboundDeliveryRequestId property value. Outbound delivery request ID connected to this decision or attempt.
 func (m *SendSmsRequest) SetOutboundDeliveryRequestId(value *string)() {
     m.outboundDeliveryRequestId = value
 }
-// SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Optional idempotency key for retry-safe outbound delivery control.
+// SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string)() {
     m.outboundIdempotencyKey = value
 }
@@ -534,7 +534,7 @@ func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string)() {
 func (m *SendSmsRequest) SetOutboundPriority(value *SendSmsRequest_outboundPriority)() {
     m.outboundPriority = value
 }
-// SetOutboundReservationId sets the outboundReservationId property value. The outbound reservation ID assigned by delivery control.
+// SetOutboundReservationId sets the outboundReservationId property value. Outbound reservation ID used to throttle and track delivery capacity.
 func (m *SendSmsRequest) SetOutboundReservationId(value *string)() {
     m.outboundReservationId = value
 }
@@ -542,7 +542,7 @@ func (m *SendSmsRequest) SetOutboundReservationId(value *string)() {
 func (m *SendSmsRequest) SetOutboundSource(value *SendSmsRequest_outboundSource)() {
     m.outboundSource = value
 }
-// SetScheduledFor sets the scheduledFor property value. The date and time for the scheduled for value on this SMS.
+// SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledFor = value
 }
@@ -550,19 +550,19 @@ func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a
 func (m *SendSmsRequest) SetSelectionReason(value *SendSmsRequest_selectionReason)() {
     m.selectionReason = value
 }
-// SetSmsEventId sets the smsEventId property value. The SMS event ID associated with this SMS.
+// SetSmsEventId sets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
 func (m *SendSmsRequest) SetSmsEventId(value *string)() {
     m.smsEventId = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this SMS.
+// SetSourceId sets the sourceId property value. Lead source ID used for attribution and sender selection.
 func (m *SendSmsRequest) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetText sets the text property value. The text value for this SMS.
+// SetText sets the text property value. Body text for the SMS message or communication represented by this SMS send request.
 func (m *SendSmsRequest) SetText(value *string)() {
     m.text = value
 }
-// SetWasManuallyOverridden sets the wasManuallyOverridden property value. Whether this SMS was manually overridden.
+// SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
 func (m *SendSmsRequest) SetWasManuallyOverridden(value *bool)() {
     m.wasManuallyOverridden = value
 }

@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadArchiveRequest request payload for archiving a lead without deleting its history.
+// LeadArchiveRequest request schema for the Leadping API lead archive request, including the fields clients can send.
 type LeadArchiveRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Optional internal note explaining the archive decision.
+    // Optional archive note that gives additional context for why the lead was archived.
     note *string
-    // Reason the lead should leave the active working pipeline.
+    // Human-readable reason supplied for this request or result.
     reason *int32
 }
 // NewLeadArchiveRequest instantiates a new LeadArchiveRequest and sets the default values.
@@ -59,12 +59,12 @@ func (m *LeadArchiveRequest) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetNote gets the note property value. Optional internal note explaining the archive decision.
+// GetNote gets the note property value. Optional archive note that gives additional context for why the lead was archived.
 // returns a *string when successful
 func (m *LeadArchiveRequest) GetNote()(*string) {
     return m.note
 }
-// GetReason gets the reason property value. Reason the lead should leave the active working pipeline.
+// GetReason gets the reason property value. Human-readable reason supplied for this request or result.
 // returns a *int32 when successful
 func (m *LeadArchiveRequest) GetReason()(*int32) {
     return m.reason
@@ -95,11 +95,11 @@ func (m *LeadArchiveRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *LeadArchiveRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetNote sets the note property value. Optional internal note explaining the archive decision.
+// SetNote sets the note property value. Optional archive note that gives additional context for why the lead was archived.
 func (m *LeadArchiveRequest) SetNote(value *string)() {
     m.note = value
 }
-// SetReason sets the reason property value. Reason the lead should leave the active working pipeline.
+// SetReason sets the reason property value. Human-readable reason supplied for this request or result.
 func (m *LeadArchiveRequest) SetReason(value *int32)() {
     m.reason = value
 }

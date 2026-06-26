@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ContactRequest request model for submitting a contact form.
+// ContactRequest request schema for the Leadping API contact form request, including the fields clients can send.
 type ContactRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The email address associated with this contact.
+    // Email address for the person represented by this contact form request.
     email *string
-    // The message value for this contact.
+    // Message text supplied by the user or returned by the Leadping API for this contact form request.
     message *string
-    // The human-readable name shown for this contact.
+    // Display name for this contact form request in the Leadping API.
     name *string
-    // The token supplied to authorize or complete this contact.
+    // Invitation or workflow token used to authorize this request.
     token *string
 }
 // NewContactRequest instantiates a new ContactRequest and sets the default values.
@@ -37,7 +37,7 @@ func CreateContactRequestFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *ContactRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEmail gets the email property value. The email address associated with this contact.
+// GetEmail gets the email property value. Email address for the person represented by this contact form request.
 // returns a *string when successful
 func (m *ContactRequest) GetEmail()(*string) {
     return m.email
@@ -88,17 +88,17 @@ func (m *ContactRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
     }
     return res
 }
-// GetMessage gets the message property value. The message value for this contact.
+// GetMessage gets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form request.
 // returns a *string when successful
 func (m *ContactRequest) GetMessage()(*string) {
     return m.message
 }
-// GetName gets the name property value. The human-readable name shown for this contact.
+// GetName gets the name property value. Display name for this contact form request in the Leadping API.
 // returns a *string when successful
 func (m *ContactRequest) GetName()(*string) {
     return m.name
 }
-// GetToken gets the token property value. The token supplied to authorize or complete this contact.
+// GetToken gets the token property value. Invitation or workflow token used to authorize this request.
 // returns a *string when successful
 func (m *ContactRequest) GetToken()(*string) {
     return m.token
@@ -141,19 +141,19 @@ func (m *ContactRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *ContactRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEmail sets the email property value. The email address associated with this contact.
+// SetEmail sets the email property value. Email address for the person represented by this contact form request.
 func (m *ContactRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetMessage sets the message property value. The message value for this contact.
+// SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form request.
 func (m *ContactRequest) SetMessage(value *string)() {
     m.message = value
 }
-// SetName sets the name property value. The human-readable name shown for this contact.
+// SetName sets the name property value. Display name for this contact form request in the Leadping API.
 func (m *ContactRequest) SetName(value *string)() {
     m.name = value
 }
-// SetToken sets the token property value. The token supplied to authorize or complete this contact.
+// SetToken sets the token property value. Invitation or workflow token used to authorize this request.
 func (m *ContactRequest) SetToken(value *string)() {
     m.token = value
 }

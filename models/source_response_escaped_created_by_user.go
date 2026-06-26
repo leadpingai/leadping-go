@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceResponse_createdByUser the user that created this source.
+// SourceResponse_createdByUser user summary for the person who created this lead source response.
 type SourceResponse_createdByUser struct {
     IdNamePair
 }

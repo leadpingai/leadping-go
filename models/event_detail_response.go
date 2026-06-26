@@ -8,73 +8,73 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EventDetailResponse aPI response containing event detail data returned to callers.
+// EventDetailResponse response schema for the Leadping API event detail response returned to authenticated clients.
 type EventDetailResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The blockedAt property
+    // UTC timestamp when Leadping blocked this communication.
     blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The canceledAt property
+    // UTC timestamp when this delivery or workflow was canceled.
     canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The conversationId property
+    // Conversation ID that links this event detail response to the Leadping inbox thread.
     conversationId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The deliveredAt property
+    // UTC timestamp when the provider confirmed delivery.
     deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable description of this event detail.
+    // Human-readable description that explains this event detail response to API users.
     description *string
-    // The direction property
+    // Communication direction for this event detail response, such as inbound or outbound.
     direction *string
-    // The eventCategory property
+    // High-level category used to group this Leadping event.
     eventCategory *string
-    // The event type classification for this event detail.
+    // Event type used to classify this timeline, SMS, call, or automation event.
     eventType *string
-    // The failedAt property
+    // UTC timestamp when processing failed for this event detail response.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The fromPhoneNumber property
+    // Sender phone number used for this communication.
     fromPhoneNumber *string
-    // The fromPhoneNumberId property
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
     // The unique identifier for the entity.
     id *string
-    // The lead ID associated with this event detail.
+    // Lead ID associated with this event detail record.
     leadId *string
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The outboundPhoneNumberId property
+    // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // The providerMessageId property
+    // Provider message identifier for SMS delivery tracking and reconciliation.
     providerMessageId *string
-    // The queuedAt property
+    // UTC timestamp when Leadping queued this event detail response for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The receivedAt property
+    // UTC timestamp when Leadping received this inbound event or message.
     receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The scheduledFor property
+    // UTC timestamp when the related delivery or workflow action is scheduled to run.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The secondary event type classification for this event detail.
+    // Secondary event type used for additional event classification.
     secondaryEventType *string
-    // The sendingStartedAt property
+    // UTC timestamp when Leadping began sending this message.
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The sentAt property
+    // UTC timestamp when Leadping sent this message to the provider.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the supported Event status values.
     status *EventDetailResponse_status
-    // The statusReason property
+    // Human-readable reason explaining the current status of this event detail response.
     statusReason *string
-    // The summary property
+    // Short human-readable summary of this event detail response for lists, timelines, and notifications.
     summary *string
-    // The timelineCategory property
+    // Timeline category used to group events for display and filtering.
     timelineCategory *string
     // Defines the supported Event timeline type values.
     timelineType *EventDetailResponse_timelineType
-    // The toPhoneNumber property
+    // Recipient phone number used for this communication.
     toPhoneNumber *string
-    // The undeliverableAt property
+    // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // A minimal Record type with an (string), (string), and maximum JSON compatibility. The reason for this type (over something like KeyValuePair, dictionary) is because of JSON serialization support.
+    // User summary connected to this event detail response.
     user EventDetailResponse_userable
-    // The user ID associated with this event detail.
+    // User ID associated with the activity that created this event.
     userId *string
 }
 // NewEventDetailResponse instantiates a new EventDetailResponse and sets the default values.
@@ -94,17 +94,17 @@ func CreateEventDetailResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *EventDetailResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBlockedAt gets the blockedAt property value. The blockedAt property
+// GetBlockedAt gets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.blockedAt
 }
-// GetCanceledAt gets the canceledAt property value. The canceledAt property
+// GetCanceledAt gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.canceledAt
 }
-// GetConversationId gets the conversationId property value. The conversationId property
+// GetConversationId gets the conversationId property value. Conversation ID that links this event detail response to the Leadping inbox thread.
 // returns a *string when successful
 func (m *EventDetailResponse) GetConversationId()(*string) {
     return m.conversationId
@@ -114,32 +114,32 @@ func (m *EventDetailResponse) GetConversationId()(*string) {
 func (m *EventDetailResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDeliveredAt gets the deliveredAt property value. The deliveredAt property
+// GetDeliveredAt gets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.deliveredAt
 }
-// GetDescription gets the description property value. The human-readable description of this event detail.
+// GetDescription gets the description property value. Human-readable description that explains this event detail response to API users.
 // returns a *string when successful
 func (m *EventDetailResponse) GetDescription()(*string) {
     return m.description
 }
-// GetDirection gets the direction property value. The direction property
+// GetDirection gets the direction property value. Communication direction for this event detail response, such as inbound or outbound.
 // returns a *string when successful
 func (m *EventDetailResponse) GetDirection()(*string) {
     return m.direction
 }
-// GetEventCategory gets the eventCategory property value. The eventCategory property
+// GetEventCategory gets the eventCategory property value. High-level category used to group this Leadping event.
 // returns a *string when successful
 func (m *EventDetailResponse) GetEventCategory()(*string) {
     return m.eventCategory
 }
-// GetEventType gets the eventType property value. The event type classification for this event detail.
+// GetEventType gets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 // returns a *string when successful
 func (m *EventDetailResponse) GetEventType()(*string) {
     return m.eventType
 }
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this event detail response.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -470,12 +470,12 @@ func (m *EventDetailResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetFromPhoneNumber gets the fromPhoneNumber property value. The fromPhoneNumber property
+// GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
 func (m *EventDetailResponse) GetFromPhoneNumber()(*string) {
     return m.fromPhoneNumber
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The fromPhoneNumberId property
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *EventDetailResponse) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
@@ -485,7 +485,7 @@ func (m *EventDetailResponse) GetFromPhoneNumberId()(*string) {
 func (m *EventDetailResponse) GetId()(*string) {
     return m.id
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this event detail.
+// GetLeadId gets the leadId property value. Lead ID associated with this event detail record.
 // returns a *string when successful
 func (m *EventDetailResponse) GetLeadId()(*string) {
     return m.leadId
@@ -495,42 +495,42 @@ func (m *EventDetailResponse) GetLeadId()(*string) {
 func (m *EventDetailResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. The outboundPhoneNumberId property
+// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *EventDetailResponse) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
 }
-// GetProviderMessageId gets the providerMessageId property value. The providerMessageId property
+// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 // returns a *string when successful
 func (m *EventDetailResponse) GetProviderMessageId()(*string) {
     return m.providerMessageId
 }
-// GetQueuedAt gets the queuedAt property value. The queuedAt property
+// GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this event detail response for processing.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.queuedAt
 }
-// GetReceivedAt gets the receivedAt property value. The receivedAt property
+// GetReceivedAt gets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedAt
 }
-// GetScheduledFor gets the scheduledFor property value. The scheduledFor property
+// GetScheduledFor gets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledFor
 }
-// GetSecondaryEventType gets the secondaryEventType property value. The secondary event type classification for this event detail.
+// GetSecondaryEventType gets the secondaryEventType property value. Secondary event type used for additional event classification.
 // returns a *string when successful
 func (m *EventDetailResponse) GetSecondaryEventType()(*string) {
     return m.secondaryEventType
 }
-// GetSendingStartedAt gets the sendingStartedAt property value. The sendingStartedAt property
+// GetSendingStartedAt gets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sendingStartedAt
 }
-// GetSentAt gets the sentAt property value. The sentAt property
+// GetSentAt gets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
@@ -540,17 +540,17 @@ func (m *EventDetailResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3
 func (m *EventDetailResponse) GetStatus()(*EventDetailResponse_status) {
     return m.status
 }
-// GetStatusReason gets the statusReason property value. The statusReason property
+// GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this event detail response.
 // returns a *string when successful
 func (m *EventDetailResponse) GetStatusReason()(*string) {
     return m.statusReason
 }
-// GetSummary gets the summary property value. The summary property
+// GetSummary gets the summary property value. Short human-readable summary of this event detail response for lists, timelines, and notifications.
 // returns a *string when successful
 func (m *EventDetailResponse) GetSummary()(*string) {
     return m.summary
 }
-// GetTimelineCategory gets the timelineCategory property value. The timelineCategory property
+// GetTimelineCategory gets the timelineCategory property value. Timeline category used to group events for display and filtering.
 // returns a *string when successful
 func (m *EventDetailResponse) GetTimelineCategory()(*string) {
     return m.timelineCategory
@@ -560,22 +560,22 @@ func (m *EventDetailResponse) GetTimelineCategory()(*string) {
 func (m *EventDetailResponse) GetTimelineType()(*EventDetailResponse_timelineType) {
     return m.timelineType
 }
-// GetToPhoneNumber gets the toPhoneNumber property value. The toPhoneNumber property
+// GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
 func (m *EventDetailResponse) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
 }
-// GetUndeliverableAt gets the undeliverableAt property value. The undeliverableAt property
+// GetUndeliverableAt gets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.undeliverableAt
 }
-// GetUser gets the user property value. A minimal Record type with an (string), (string), and maximum JSON compatibility. The reason for this type (over something like KeyValuePair, dictionary) is because of JSON serialization support.
+// GetUser gets the user property value. User summary connected to this event detail response.
 // returns a EventDetailResponse_userable when successful
 func (m *EventDetailResponse) GetUser()(EventDetailResponse_userable) {
     return m.user
 }
-// GetUserId gets the userId property value. The user ID associated with this event detail.
+// GetUserId gets the userId property value. User ID associated with the activity that created this event.
 // returns a *string when successful
 func (m *EventDetailResponse) GetUserId()(*string) {
     return m.userId
@@ -788,15 +788,15 @@ func (m *EventDetailResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *EventDetailResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBlockedAt sets the blockedAt property value. The blockedAt property
+// SetBlockedAt sets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 func (m *EventDetailResponse) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.blockedAt = value
 }
-// SetCanceledAt sets the canceledAt property value. The canceledAt property
+// SetCanceledAt sets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 func (m *EventDetailResponse) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.canceledAt = value
 }
-// SetConversationId sets the conversationId property value. The conversationId property
+// SetConversationId sets the conversationId property value. Conversation ID that links this event detail response to the Leadping inbox thread.
 func (m *EventDetailResponse) SetConversationId(value *string)() {
     m.conversationId = value
 }
@@ -804,35 +804,35 @@ func (m *EventDetailResponse) SetConversationId(value *string)() {
 func (m *EventDetailResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDeliveredAt sets the deliveredAt property value. The deliveredAt property
+// SetDeliveredAt sets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 func (m *EventDetailResponse) SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.deliveredAt = value
 }
-// SetDescription sets the description property value. The human-readable description of this event detail.
+// SetDescription sets the description property value. Human-readable description that explains this event detail response to API users.
 func (m *EventDetailResponse) SetDescription(value *string)() {
     m.description = value
 }
-// SetDirection sets the direction property value. The direction property
+// SetDirection sets the direction property value. Communication direction for this event detail response, such as inbound or outbound.
 func (m *EventDetailResponse) SetDirection(value *string)() {
     m.direction = value
 }
-// SetEventCategory sets the eventCategory property value. The eventCategory property
+// SetEventCategory sets the eventCategory property value. High-level category used to group this Leadping event.
 func (m *EventDetailResponse) SetEventCategory(value *string)() {
     m.eventCategory = value
 }
-// SetEventType sets the eventType property value. The event type classification for this event detail.
+// SetEventType sets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 func (m *EventDetailResponse) SetEventType(value *string)() {
     m.eventType = value
 }
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this event detail response.
 func (m *EventDetailResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFromPhoneNumber sets the fromPhoneNumber property value. The fromPhoneNumber property
+// SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
 func (m *EventDetailResponse) SetFromPhoneNumber(value *string)() {
     m.fromPhoneNumber = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The fromPhoneNumberId property
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *EventDetailResponse) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
@@ -840,7 +840,7 @@ func (m *EventDetailResponse) SetFromPhoneNumberId(value *string)() {
 func (m *EventDetailResponse) SetId(value *string)() {
     m.id = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this event detail.
+// SetLeadId sets the leadId property value. Lead ID associated with this event detail record.
 func (m *EventDetailResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
@@ -848,35 +848,35 @@ func (m *EventDetailResponse) SetLeadId(value *string)() {
 func (m *EventDetailResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. The outboundPhoneNumberId property
+// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *EventDetailResponse) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
 }
-// SetProviderMessageId sets the providerMessageId property value. The providerMessageId property
+// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 func (m *EventDetailResponse) SetProviderMessageId(value *string)() {
     m.providerMessageId = value
 }
-// SetQueuedAt sets the queuedAt property value. The queuedAt property
+// SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this event detail response for processing.
 func (m *EventDetailResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.queuedAt = value
 }
-// SetReceivedAt sets the receivedAt property value. The receivedAt property
+// SetReceivedAt sets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 func (m *EventDetailResponse) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedAt = value
 }
-// SetScheduledFor sets the scheduledFor property value. The scheduledFor property
+// SetScheduledFor sets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
 func (m *EventDetailResponse) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledFor = value
 }
-// SetSecondaryEventType sets the secondaryEventType property value. The secondary event type classification for this event detail.
+// SetSecondaryEventType sets the secondaryEventType property value. Secondary event type used for additional event classification.
 func (m *EventDetailResponse) SetSecondaryEventType(value *string)() {
     m.secondaryEventType = value
 }
-// SetSendingStartedAt sets the sendingStartedAt property value. The sendingStartedAt property
+// SetSendingStartedAt sets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 func (m *EventDetailResponse) SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sendingStartedAt = value
 }
-// SetSentAt sets the sentAt property value. The sentAt property
+// SetSentAt sets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 func (m *EventDetailResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }
@@ -884,15 +884,15 @@ func (m *EventDetailResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6
 func (m *EventDetailResponse) SetStatus(value *EventDetailResponse_status)() {
     m.status = value
 }
-// SetStatusReason sets the statusReason property value. The statusReason property
+// SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this event detail response.
 func (m *EventDetailResponse) SetStatusReason(value *string)() {
     m.statusReason = value
 }
-// SetSummary sets the summary property value. The summary property
+// SetSummary sets the summary property value. Short human-readable summary of this event detail response for lists, timelines, and notifications.
 func (m *EventDetailResponse) SetSummary(value *string)() {
     m.summary = value
 }
-// SetTimelineCategory sets the timelineCategory property value. The timelineCategory property
+// SetTimelineCategory sets the timelineCategory property value. Timeline category used to group events for display and filtering.
 func (m *EventDetailResponse) SetTimelineCategory(value *string)() {
     m.timelineCategory = value
 }
@@ -900,19 +900,19 @@ func (m *EventDetailResponse) SetTimelineCategory(value *string)() {
 func (m *EventDetailResponse) SetTimelineType(value *EventDetailResponse_timelineType)() {
     m.timelineType = value
 }
-// SetToPhoneNumber sets the toPhoneNumber property value. The toPhoneNumber property
+// SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *EventDetailResponse) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }
-// SetUndeliverableAt sets the undeliverableAt property value. The undeliverableAt property
+// SetUndeliverableAt sets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 func (m *EventDetailResponse) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.undeliverableAt = value
 }
-// SetUser sets the user property value. A minimal Record type with an (string), (string), and maximum JSON compatibility. The reason for this type (over something like KeyValuePair, dictionary) is because of JSON serialization support.
+// SetUser sets the user property value. User summary connected to this event detail response.
 func (m *EventDetailResponse) SetUser(value EventDetailResponse_userable)() {
     m.user = value
 }
-// SetUserId sets the userId property value. The user ID associated with this event detail.
+// SetUserId sets the userId property value. User ID associated with the activity that created this event.
 func (m *EventDetailResponse) SetUserId(value *string)() {
     m.userId = value
 }

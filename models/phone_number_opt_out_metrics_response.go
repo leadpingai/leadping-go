@@ -8,19 +8,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberOptOutMetricsResponse aPI response containing phone number opt out metrics data returned to callers.
+// PhoneNumberOptOutMetricsResponse response schema for the Leadping API phone number opt-out metrics response returned to authenticated clients.
 type PhoneNumberOptOutMetricsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The distinct contacted count for this phone number opt out metrics.
+    // Number of distinct recipients contacted during this metrics window.
     distinctContactedCount *int32
-    // The opt out count for this phone number opt out metrics.
+    // Number of recipients who opted out during this metrics window.
     optOutCount *int32
-    // The opt out rate percent metric for this phone number opt out metrics.
+    // Percentage of contacted recipients who opted out during this metrics window.
     optOutRatePercent *float64
-    // The date and time for the window days value on this phone number opt out metrics.
+    // Number of days included in the metrics reporting window.
     windowDays *int32
-    // The date and time for the window started at value on this phone number opt out metrics.
+    // UTC timestamp when the metrics reporting window starts.
     windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewPhoneNumberOptOutMetricsResponse instantiates a new PhoneNumberOptOutMetricsResponse and sets the default values.
@@ -40,7 +40,7 @@ func CreatePhoneNumberOptOutMetricsResponseFromDiscriminatorValue(parseNode i878
 func (m *PhoneNumberOptOutMetricsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDistinctContactedCount gets the distinctContactedCount property value. The distinct contacted count for this phone number opt out metrics.
+// GetDistinctContactedCount gets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberOptOutMetricsResponse) GetDistinctContactedCount()(*int32) {
     return m.distinctContactedCount
@@ -101,22 +101,22 @@ func (m *PhoneNumberOptOutMetricsResponse) GetFieldDeserializers()(map[string]fu
     }
     return res
 }
-// GetOptOutCount gets the optOutCount property value. The opt out count for this phone number opt out metrics.
+// GetOptOutCount gets the optOutCount property value. Number of recipients who opted out during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberOptOutMetricsResponse) GetOptOutCount()(*int32) {
     return m.optOutCount
 }
-// GetOptOutRatePercent gets the optOutRatePercent property value. The opt out rate percent metric for this phone number opt out metrics.
+// GetOptOutRatePercent gets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
 // returns a *float64 when successful
 func (m *PhoneNumberOptOutMetricsResponse) GetOptOutRatePercent()(*float64) {
     return m.optOutRatePercent
 }
-// GetWindowDays gets the windowDays property value. The date and time for the window days value on this phone number opt out metrics.
+// GetWindowDays gets the windowDays property value. Number of days included in the metrics reporting window.
 // returns a *int32 when successful
 func (m *PhoneNumberOptOutMetricsResponse) GetWindowDays()(*int32) {
     return m.windowDays
 }
-// GetWindowStartedAt gets the windowStartedAt property value. The date and time for the window started at value on this phone number opt out metrics.
+// GetWindowStartedAt gets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 // returns a *Time when successful
 func (m *PhoneNumberOptOutMetricsResponse) GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.windowStartedAt
@@ -165,23 +165,23 @@ func (m *PhoneNumberOptOutMetricsResponse) Serialize(writer i878a80d2330e89d2689
 func (m *PhoneNumberOptOutMetricsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDistinctContactedCount sets the distinctContactedCount property value. The distinct contacted count for this phone number opt out metrics.
+// SetDistinctContactedCount sets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
 func (m *PhoneNumberOptOutMetricsResponse) SetDistinctContactedCount(value *int32)() {
     m.distinctContactedCount = value
 }
-// SetOptOutCount sets the optOutCount property value. The opt out count for this phone number opt out metrics.
+// SetOptOutCount sets the optOutCount property value. Number of recipients who opted out during this metrics window.
 func (m *PhoneNumberOptOutMetricsResponse) SetOptOutCount(value *int32)() {
     m.optOutCount = value
 }
-// SetOptOutRatePercent sets the optOutRatePercent property value. The opt out rate percent metric for this phone number opt out metrics.
+// SetOptOutRatePercent sets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
 func (m *PhoneNumberOptOutMetricsResponse) SetOptOutRatePercent(value *float64)() {
     m.optOutRatePercent = value
 }
-// SetWindowDays sets the windowDays property value. The date and time for the window days value on this phone number opt out metrics.
+// SetWindowDays sets the windowDays property value. Number of days included in the metrics reporting window.
 func (m *PhoneNumberOptOutMetricsResponse) SetWindowDays(value *int32)() {
     m.windowDays = value
 }
-// SetWindowStartedAt sets the windowStartedAt property value. The date and time for the window started at value on this phone number opt out metrics.
+// SetWindowStartedAt sets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 func (m *PhoneNumberOptOutMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.windowStartedAt = value
 }

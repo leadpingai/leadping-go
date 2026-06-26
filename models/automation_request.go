@@ -7,39 +7,39 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationRequest request payload for automation.
+// AutomationRequest request schema for the Leadping API automation configuration request, including the fields clients can send.
 type AutomationRequest struct {
-    // The actions included with this automation.
+    // Automation actions configured or returned for this workflow.
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride AutomationRequest_adminEnablementOverrideable
-    // The business ID associated with this automation.
+    // Business ID that owns this automation configuration.
     businessId *string
-    // The condition groups included with this automation.
+    // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
-    // The created by user ID associated with this automation.
+    // User ID of the person who created this automation configuration request.
     createdByUserId *string
-    // The human-readable description of this automation.
+    // Human-readable description that explains this automation configuration request to API users.
     description *string
-    // Whether this automation is enabled.
+    // Indicates whether this automation configuration request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // Whether this automation is system managed.
+    // Indicates whether Leadping manages this automation configuration request automatically instead of a user.
     isSystemManaged *bool
-    // The management level value for this automation.
+    // Management level that controls whether Leadping or the business owns this automation setting.
     managementLevel *string
     // The display name for the entity.
     name *string
-    // The scope value for this automation.
+    // Scope that limits where this automation configuration request applies in Leadping.
     scope *string
-    // The triggers included with this automation.
+    // Automation triggers that can start this workflow.
     triggers []AutomationTriggerable
-    // The version value for this automation.
+    // Version number for this automation configuration request schema or saved configuration.
     version *int32
-    // The visibility value for this automation.
+    // Visibility level that controls who can see this automation configuration request.
     visibility *string
 }
 // NewAutomationRequest instantiates a new AutomationRequest and sets the default values.
@@ -54,7 +54,7 @@ func NewAutomationRequest()(*AutomationRequest) {
 func CreateAutomationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationRequest(), nil
 }
-// GetActions gets the actions property value. The actions included with this automation.
+// GetActions gets the actions property value. Automation actions configured or returned for this workflow.
 // returns a []AutomationActionable when successful
 func (m *AutomationRequest) GetActions()([]AutomationActionable) {
     return m.actions
@@ -64,32 +64,32 @@ func (m *AutomationRequest) GetActions()([]AutomationActionable) {
 func (m *AutomationRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a AutomationRequest_adminEnablementOverrideable when successful
 func (m *AutomationRequest) GetAdminEnablementOverride()(AutomationRequest_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this automation.
+// GetBusinessId gets the businessId property value. Business ID that owns this automation configuration.
 // returns a *string when successful
 func (m *AutomationRequest) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetConditionGroups gets the conditionGroups property value. The condition groups included with this automation.
+// GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
 func (m *AutomationRequest) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
 }
-// GetCreatedByUserId gets the createdByUserId property value. The created by user ID associated with this automation.
+// GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation configuration request.
 // returns a *string when successful
 func (m *AutomationRequest) GetCreatedByUserId()(*string) {
     return m.createdByUserId
 }
-// GetDescription gets the description property value. The human-readable description of this automation.
+// GetDescription gets the description property value. Human-readable description that explains this automation configuration request to API users.
 // returns a *string when successful
 func (m *AutomationRequest) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this automation is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this automation configuration request is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *AutomationRequest) GetEnabled()(*bool) {
     return m.enabled
@@ -273,12 +273,12 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
 func (m *AutomationRequest) GetId()(*string) {
     return m.id
 }
-// GetIsSystemManaged gets the isSystemManaged property value. Whether this automation is system managed.
+// GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
 // returns a *bool when successful
 func (m *AutomationRequest) GetIsSystemManaged()(*bool) {
     return m.isSystemManaged
 }
-// GetManagementLevel gets the managementLevel property value. The management level value for this automation.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 // returns a *string when successful
 func (m *AutomationRequest) GetManagementLevel()(*string) {
     return m.managementLevel
@@ -288,22 +288,22 @@ func (m *AutomationRequest) GetManagementLevel()(*string) {
 func (m *AutomationRequest) GetName()(*string) {
     return m.name
 }
-// GetScope gets the scope property value. The scope value for this automation.
+// GetScope gets the scope property value. Scope that limits where this automation configuration request applies in Leadping.
 // returns a *string when successful
 func (m *AutomationRequest) GetScope()(*string) {
     return m.scope
 }
-// GetTriggers gets the triggers property value. The triggers included with this automation.
+// GetTriggers gets the triggers property value. Automation triggers that can start this workflow.
 // returns a []AutomationTriggerable when successful
 func (m *AutomationRequest) GetTriggers()([]AutomationTriggerable) {
     return m.triggers
 }
-// GetVersion gets the version property value. The version value for this automation.
+// GetVersion gets the version property value. Version number for this automation configuration request schema or saved configuration.
 // returns a *int32 when successful
 func (m *AutomationRequest) GetVersion()(*int32) {
     return m.version
 }
-// GetVisibility gets the visibility property value. The visibility value for this automation.
+// GetVisibility gets the visibility property value. Visibility level that controls who can see this automation configuration request.
 // returns a *string when successful
 func (m *AutomationRequest) GetVisibility()(*string) {
     return m.visibility
@@ -426,7 +426,7 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     return nil
 }
-// SetActions sets the actions property value. The actions included with this automation.
+// SetActions sets the actions property value. Automation actions configured or returned for this workflow.
 func (m *AutomationRequest) SetActions(value []AutomationActionable)() {
     m.actions = value
 }
@@ -434,27 +434,27 @@ func (m *AutomationRequest) SetActions(value []AutomationActionable)() {
 func (m *AutomationRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *AutomationRequest) SetAdminEnablementOverride(value AutomationRequest_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this automation.
+// SetBusinessId sets the businessId property value. Business ID that owns this automation configuration.
 func (m *AutomationRequest) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetConditionGroups sets the conditionGroups property value. The condition groups included with this automation.
+// SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 func (m *AutomationRequest) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
 }
-// SetCreatedByUserId sets the createdByUserId property value. The created by user ID associated with this automation.
+// SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation configuration request.
 func (m *AutomationRequest) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
 }
-// SetDescription sets the description property value. The human-readable description of this automation.
+// SetDescription sets the description property value. Human-readable description that explains this automation configuration request to API users.
 func (m *AutomationRequest) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this automation is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this automation configuration request is active and available in the Leadping API.
 func (m *AutomationRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -462,11 +462,11 @@ func (m *AutomationRequest) SetEnabled(value *bool)() {
 func (m *AutomationRequest) SetId(value *string)() {
     m.id = value
 }
-// SetIsSystemManaged sets the isSystemManaged property value. Whether this automation is system managed.
+// SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
 func (m *AutomationRequest) SetIsSystemManaged(value *bool)() {
     m.isSystemManaged = value
 }
-// SetManagementLevel sets the managementLevel property value. The management level value for this automation.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 func (m *AutomationRequest) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
@@ -474,19 +474,19 @@ func (m *AutomationRequest) SetManagementLevel(value *string)() {
 func (m *AutomationRequest) SetName(value *string)() {
     m.name = value
 }
-// SetScope sets the scope property value. The scope value for this automation.
+// SetScope sets the scope property value. Scope that limits where this automation configuration request applies in Leadping.
 func (m *AutomationRequest) SetScope(value *string)() {
     m.scope = value
 }
-// SetTriggers sets the triggers property value. The triggers included with this automation.
+// SetTriggers sets the triggers property value. Automation triggers that can start this workflow.
 func (m *AutomationRequest) SetTriggers(value []AutomationTriggerable)() {
     m.triggers = value
 }
-// SetVersion sets the version property value. The version value for this automation.
+// SetVersion sets the version property value. Version number for this automation configuration request schema or saved configuration.
 func (m *AutomationRequest) SetVersion(value *int32)() {
     m.version = value
 }
-// SetVisibility sets the visibility property value. The visibility value for this automation.
+// SetVisibility sets the visibility property value. Visibility level that controls who can see this automation configuration request.
 func (m *AutomationRequest) SetVisibility(value *string)() {
     m.visibility = value
 }

@@ -7,21 +7,21 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberRequest request payload for phone number.
+// PhoneNumberRequest request schema for the Leadping API phone number update request, including the fields clients can send.
 type PhoneNumberRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride PhoneNumberRequest_adminEnablementOverrideable
-    // The business ID associated with this phone number.
+    // Business ID that owns the phone number being created or updated.
     businessId *string
-    // Whether this phone number is enabled.
+    // Indicates whether this phone number update request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
     // The display name for the entity.
     name *string
-    // The number value for this phone number.
+    // E.164 phone number exposed by this phone number update request.
     number *string
 }
 // NewPhoneNumberRequest instantiates a new PhoneNumberRequest and sets the default values.
@@ -41,17 +41,17 @@ func CreatePhoneNumberRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *PhoneNumberRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a PhoneNumberRequest_adminEnablementOverrideable when successful
 func (m *PhoneNumberRequest) GetAdminEnablementOverride()(PhoneNumberRequest_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this phone number.
+// GetBusinessId gets the businessId property value. Business ID that owns the phone number being created or updated.
 // returns a *string when successful
 func (m *PhoneNumberRequest) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetEnabled gets the enabled property value. Whether this phone number is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberRequest) GetEnabled()(*bool) {
     return m.enabled
@@ -132,7 +132,7 @@ func (m *PhoneNumberRequest) GetId()(*string) {
 func (m *PhoneNumberRequest) GetName()(*string) {
     return m.name
 }
-// GetNumber gets the number property value. The number value for this phone number.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number update request.
 // returns a *string when successful
 func (m *PhoneNumberRequest) GetNumber()(*string) {
     return m.number
@@ -187,15 +187,15 @@ func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *PhoneNumberRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *PhoneNumberRequest) SetAdminEnablementOverride(value PhoneNumberRequest_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this phone number.
+// SetBusinessId sets the businessId property value. Business ID that owns the phone number being created or updated.
 func (m *PhoneNumberRequest) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetEnabled sets the enabled property value. Whether this phone number is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
 func (m *PhoneNumberRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -207,7 +207,7 @@ func (m *PhoneNumberRequest) SetId(value *string)() {
 func (m *PhoneNumberRequest) SetName(value *string)() {
     m.name = value
 }
-// SetNumber sets the number property value. The number value for this phone number.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number update request.
 func (m *PhoneNumberRequest) SetNumber(value *string)() {
     m.number = value
 }

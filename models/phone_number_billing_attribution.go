@@ -7,23 +7,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberBillingAttribution aPI DTO containing phone number billing attribution data used by Leadping API contracts.
+// PhoneNumberBillingAttribution public Leadping API schema for phone number billing attribution data.
 type PhoneNumberBillingAttribution struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The business ID associated with this phone number billing attribution.
+    // Business ID responsible for billing this phone number.
     businessId *string
-    // The business name value for this phone number billing attribution.
+    // Business display name used in phone number billing records.
     businessName *string
-    // The channel value for this phone number billing attribution.
+    // Communication channel used for this phone number billing attribution, such as SMS or voice.
     channel *string
-    // The monetary monthly amount for this phone number billing attribution.
+    // Monthly subscription amount for the business billing plan.
     monthlyAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The subscription item ID associated with this phone number billing attribution.
+    // Stripe subscription item identifier used for phone number billing.
     subscriptionItemId *string
-    // The user ID associated with this phone number billing attribution.
+    // User ID associated with phone number billing responsibility, when applicable.
     userId *string
-    // The user name value for this phone number billing attribution.
+    // Display name for the user connected to this phone number billing attribution.
     userName *string
 }
 // NewPhoneNumberBillingAttribution instantiates a new PhoneNumberBillingAttribution and sets the default values.
@@ -43,17 +43,17 @@ func CreatePhoneNumberBillingAttributionFromDiscriminatorValue(parseNode i878a80
 func (m *PhoneNumberBillingAttribution) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this phone number billing attribution.
+// GetBusinessId gets the businessId property value. Business ID responsible for billing this phone number.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessName gets the businessName property value. The business name value for this phone number billing attribution.
+// GetBusinessName gets the businessName property value. Business display name used in phone number billing records.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetBusinessName()(*string) {
     return m.businessName
 }
-// GetChannel gets the channel property value. The channel value for this phone number billing attribution.
+// GetChannel gets the channel property value. Communication channel used for this phone number billing attribution, such as SMS or voice.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetChannel()(*string) {
     return m.channel
@@ -134,22 +134,22 @@ func (m *PhoneNumberBillingAttribution) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetMonthlyAmount gets the monthlyAmount property value. The monetary monthly amount for this phone number billing attribution.
+// GetMonthlyAmount gets the monthlyAmount property value. Monthly subscription amount for the business billing plan.
 // returns a UntypedNodeable when successful
 func (m *PhoneNumberBillingAttribution) GetMonthlyAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.monthlyAmount
 }
-// GetSubscriptionItemId gets the subscriptionItemId property value. The subscription item ID associated with this phone number billing attribution.
+// GetSubscriptionItemId gets the subscriptionItemId property value. Stripe subscription item identifier used for phone number billing.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetSubscriptionItemId()(*string) {
     return m.subscriptionItemId
 }
-// GetUserId gets the userId property value. The user ID associated with this phone number billing attribution.
+// GetUserId gets the userId property value. User ID associated with phone number billing responsibility, when applicable.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetUserId()(*string) {
     return m.userId
 }
-// GetUserName gets the userName property value. The user name value for this phone number billing attribution.
+// GetUserName gets the userName property value. Display name for the user connected to this phone number billing attribution.
 // returns a *string when successful
 func (m *PhoneNumberBillingAttribution) GetUserName()(*string) {
     return m.userName
@@ -210,31 +210,31 @@ func (m *PhoneNumberBillingAttribution) Serialize(writer i878a80d2330e89d2689638
 func (m *PhoneNumberBillingAttribution) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this phone number billing attribution.
+// SetBusinessId sets the businessId property value. Business ID responsible for billing this phone number.
 func (m *PhoneNumberBillingAttribution) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessName sets the businessName property value. The business name value for this phone number billing attribution.
+// SetBusinessName sets the businessName property value. Business display name used in phone number billing records.
 func (m *PhoneNumberBillingAttribution) SetBusinessName(value *string)() {
     m.businessName = value
 }
-// SetChannel sets the channel property value. The channel value for this phone number billing attribution.
+// SetChannel sets the channel property value. Communication channel used for this phone number billing attribution, such as SMS or voice.
 func (m *PhoneNumberBillingAttribution) SetChannel(value *string)() {
     m.channel = value
 }
-// SetMonthlyAmount sets the monthlyAmount property value. The monetary monthly amount for this phone number billing attribution.
+// SetMonthlyAmount sets the monthlyAmount property value. Monthly subscription amount for the business billing plan.
 func (m *PhoneNumberBillingAttribution) SetMonthlyAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.monthlyAmount = value
 }
-// SetSubscriptionItemId sets the subscriptionItemId property value. The subscription item ID associated with this phone number billing attribution.
+// SetSubscriptionItemId sets the subscriptionItemId property value. Stripe subscription item identifier used for phone number billing.
 func (m *PhoneNumberBillingAttribution) SetSubscriptionItemId(value *string)() {
     m.subscriptionItemId = value
 }
-// SetUserId sets the userId property value. The user ID associated with this phone number billing attribution.
+// SetUserId sets the userId property value. User ID associated with phone number billing responsibility, when applicable.
 func (m *PhoneNumberBillingAttribution) SetUserId(value *string)() {
     m.userId = value
 }
-// SetUserName sets the userName property value. The user name value for this phone number billing attribution.
+// SetUserName sets the userName property value. Display name for the user connected to this phone number billing attribution.
 func (m *PhoneNumberBillingAttribution) SetUserName(value *string)() {
     m.userName = value
 }

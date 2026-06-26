@@ -7,21 +7,21 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationPreviewResponse aPI DTO containing automation preview response data.
+// AutomationPreviewResponse response schema for the Leadping API automation preview response returned to authenticated clients.
 type AutomationPreviewResponse struct {
-    // The action results included with this automation preview.
+    // Action preview results showing what the automation would do.
     actionResults []AutomationPreviewActionResultable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The condition results included with this automation preview.
+    // Condition evaluation results returned by the automation preview.
     conditionResults []AutomationPreviewConditionResultable
-    // The sample payload key-value data carried with this automation preview; values must be safe to expose in API responses.
+    // Example payload clients can use to understand this automation preview response format.
     samplePayload AutomationPreviewResponse_samplePayloadable
-    // The trigger type classification for this automation preview.
+    // Automation trigger type that starts the workflow.
     triggerType *string
-    // The validation value for this automation preview.
+    // Validation result returned for the automation configuration.
     validation AutomationValidationResultable
-    // The warnings included with this automation preview.
+    // Warnings returned for this automation preview response that do not necessarily block processing.
     warnings []string
 }
 // NewAutomationPreviewResponse instantiates a new AutomationPreviewResponse and sets the default values.
@@ -36,7 +36,7 @@ func NewAutomationPreviewResponse()(*AutomationPreviewResponse) {
 func CreateAutomationPreviewResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationPreviewResponse(), nil
 }
-// GetActionResults gets the actionResults property value. The action results included with this automation preview.
+// GetActionResults gets the actionResults property value. Action preview results showing what the automation would do.
 // returns a []AutomationPreviewActionResultable when successful
 func (m *AutomationPreviewResponse) GetActionResults()([]AutomationPreviewActionResultable) {
     return m.actionResults
@@ -46,7 +46,7 @@ func (m *AutomationPreviewResponse) GetActionResults()([]AutomationPreviewAction
 func (m *AutomationPreviewResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetConditionResults gets the conditionResults property value. The condition results included with this automation preview.
+// GetConditionResults gets the conditionResults property value. Condition evaluation results returned by the automation preview.
 // returns a []AutomationPreviewConditionResultable when successful
 func (m *AutomationPreviewResponse) GetConditionResults()([]AutomationPreviewConditionResultable) {
     return m.conditionResults
@@ -135,22 +135,22 @@ func (m *AutomationPreviewResponse) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetSamplePayload gets the samplePayload property value. The sample payload key-value data carried with this automation preview; values must be safe to expose in API responses.
+// GetSamplePayload gets the samplePayload property value. Example payload clients can use to understand this automation preview response format.
 // returns a AutomationPreviewResponse_samplePayloadable when successful
 func (m *AutomationPreviewResponse) GetSamplePayload()(AutomationPreviewResponse_samplePayloadable) {
     return m.samplePayload
 }
-// GetTriggerType gets the triggerType property value. The trigger type classification for this automation preview.
+// GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
 func (m *AutomationPreviewResponse) GetTriggerType()(*string) {
     return m.triggerType
 }
-// GetValidation gets the validation property value. The validation value for this automation preview.
+// GetValidation gets the validation property value. Validation result returned for the automation configuration.
 // returns a AutomationValidationResultable when successful
 func (m *AutomationPreviewResponse) GetValidation()(AutomationValidationResultable) {
     return m.validation
 }
-// GetWarnings gets the warnings property value. The warnings included with this automation preview.
+// GetWarnings gets the warnings property value. Warnings returned for this automation preview response that do not necessarily block processing.
 // returns a []string when successful
 func (m *AutomationPreviewResponse) GetWarnings()([]string) {
     return m.warnings
@@ -213,7 +213,7 @@ func (m *AutomationPreviewResponse) Serialize(writer i878a80d2330e89d26896388a3f
     }
     return nil
 }
-// SetActionResults sets the actionResults property value. The action results included with this automation preview.
+// SetActionResults sets the actionResults property value. Action preview results showing what the automation would do.
 func (m *AutomationPreviewResponse) SetActionResults(value []AutomationPreviewActionResultable)() {
     m.actionResults = value
 }
@@ -221,23 +221,23 @@ func (m *AutomationPreviewResponse) SetActionResults(value []AutomationPreviewAc
 func (m *AutomationPreviewResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetConditionResults sets the conditionResults property value. The condition results included with this automation preview.
+// SetConditionResults sets the conditionResults property value. Condition evaluation results returned by the automation preview.
 func (m *AutomationPreviewResponse) SetConditionResults(value []AutomationPreviewConditionResultable)() {
     m.conditionResults = value
 }
-// SetSamplePayload sets the samplePayload property value. The sample payload key-value data carried with this automation preview; values must be safe to expose in API responses.
+// SetSamplePayload sets the samplePayload property value. Example payload clients can use to understand this automation preview response format.
 func (m *AutomationPreviewResponse) SetSamplePayload(value AutomationPreviewResponse_samplePayloadable)() {
     m.samplePayload = value
 }
-// SetTriggerType sets the triggerType property value. The trigger type classification for this automation preview.
+// SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
 func (m *AutomationPreviewResponse) SetTriggerType(value *string)() {
     m.triggerType = value
 }
-// SetValidation sets the validation property value. The validation value for this automation preview.
+// SetValidation sets the validation property value. Validation result returned for the automation configuration.
 func (m *AutomationPreviewResponse) SetValidation(value AutomationValidationResultable)() {
     m.validation = value
 }
-// SetWarnings sets the warnings property value. The warnings included with this automation preview.
+// SetWarnings sets the warnings property value. Warnings returned for this automation preview response that do not necessarily block processing.
 func (m *AutomationPreviewResponse) SetWarnings(value []string)() {
     m.warnings = value
 }

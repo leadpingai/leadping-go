@@ -16,73 +16,73 @@ type IntakeRequestBuilder struct {
 }
 // IntakeRequestBuilderGetQueryParameters creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
 type IntakeRequestBuilderGetQueryParameters struct {
-    // The address1 value for this lead intake.
+    // First street address line submitted by the lead intake source.
     Address1 *string
-    // The address2 value for this lead intake.
+    // Second street address line submitted by the lead intake source.
     Address2 *string
-    // The date and time for the birth date value on this lead intake.
+    // Lead birth date used for demographic matching and insurance intake workflows.
     BirthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // The city value for this lead intake.
+    // City for the lead or business postal address.
     City *string
-    // The date and time for the date of birth value on this lead intake.
+    // Lead date of birth supplied by intake sources and normalized into the lead profile.
     DateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // The direct post price value for this lead intake.
+    // Direct-post price supplied by the lead source during intake.
     DirectPostPrice *float64
-    // The email address associated with this lead intake.
+    // Email address for the person represented by this lead intake request.
     Email *string
-    // The external ID associated with this lead intake.
+    // External system identifier used to reconcile this lead intake request across integrations.
     ExternalId *string
-    // The first name value for this lead intake.
+    // First name of the lead, user, or contact represented by this lead intake request.
     FirstName *string
-    // The gender value for this lead intake.
+    // Lead gender supplied by intake sources and normalized when possible.
     Gender *string
-    // The landing page value for this lead intake.
+    // Landing page URL where the lead submitted their information.
     LandingPage *string
-    // The date and time for the last name value on this lead intake.
+    // Last name of the lead, user, or contact represented by this lead intake request.
     LastName *string
-    // The phone number associated with this lead intake.
+    // Phone details for the lead, user, or business represented by this lead intake request.
     Phone *string
-    // The phone type classification for this lead intake.
+    // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
     PhoneType *string
-    // The postal code value for this lead intake.
+    // Postal code for the lead or business address.
     PostalCode *string
-    // The monetary price for this lead intake.
+    // Lead price or transaction price supplied to the Leadping API.
     Price *float64
-    // The product value for this lead intake.
+    // Product or offer associated with the lead or source.
     Product *string
-    // The referrer value for this lead intake.
+    // Referring page or traffic source that sent the lead into Leadping.
     Referrer *string
-    // The seller lead ID associated with this lead intake.
+    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
     SellerLeadId *string
-    // The seller lead identifier value for this lead intake.
+    // Alternate seller-provided lead identifier used during intake normalization.
     SellerLeadIdentifier *string
     // The Leadping source key supplied as a query string parameter.
     SourceKey *string "uriparametername:\"sourceKey\""
-    // The source metadata key-value data carried with this lead intake; values must be safe to expose in API responses.
+    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     SourceMetadata *string
-    // The current state for this lead intake.
+    // State, province, or region for the lead or business postal address.
     State *string
-    // The sub ID associated with this lead intake.
+    // Affiliate or publisher sub ID captured for lead attribution.
     SubId *string
-    // Existing business tag ids to assign as part of intake.
+    // Tag IDs assigned to or filtered against this lead.
     TagIds []string
-    // Business tag names to assign as part of intake.
+    // Tag names assigned to this lead when matching existing tags by name.
     TagNames []string
-    // The URL associated with this lead intake.
+    // TrustedForm certificate URL used as proof of consumer consent.
     TrustedFormUrl *string
-    // The utm campaign value for this lead intake.
+    // UTM campaign parameter captured for lead attribution reporting.
     UtmCampaign *string
-    // The utm content value for this lead intake.
+    // UTM content parameter captured for lead attribution reporting.
     UtmContent *string
-    // The utm medium value for this lead intake.
+    // UTM medium parameter captured for lead attribution reporting.
     UtmMedium *string
-    // The utm source value for this lead intake.
+    // UTM source parameter captured for lead attribution reporting.
     UtmSource *string
-    // The utm term value for this lead intake.
+    // UTM term parameter captured for lead attribution reporting.
     UtmTerm *string
-    // The vertical value for this lead intake.
+    // Industry vertical used for lead routing, compliance review, and reporting.
     Vertical *string
-    // The zip value for this lead intake.
+    // ZIP code submitted by the lead intake source.
     Zip *string
 }
 // IntakeRequestBuilderPostQueryParameters creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.

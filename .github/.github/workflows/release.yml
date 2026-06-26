@@ -8,6 +8,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "README.md"
+      - "CODE_OF_CONDUCT.md"
+      - "CONTRIBUTING.md"
+      - "SECURITY.md"
+      - "LICENSE"
+      - "renovate.json"
+      - ".github/**"
   workflow_dispatch:
 
 permissions:

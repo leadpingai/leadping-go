@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceTableRow_adminEnablementOverride the admin force enablement override on this source.
+// SourceTableRow_adminEnablementOverride admin override that can enable or disable this record independently of normal status checks.
 type SourceTableRow_adminEnablementOverride struct {
     AdminEnablementOverride
 }

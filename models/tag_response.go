@@ -8,31 +8,31 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TagResponse aPI response containing business tag data.
+// TagResponse response schema for the Leadping API tag response returned to authenticated clients.
 type TagResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The archivedAt property
+    // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The businessId property
+    // Business ID that owns this tag.
     businessId *string
-    // The color property
+    // Hex color used to display this tag or status in Leadping clients.
     color *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The createdByUserId property
+    // User ID of the person who created this tag response.
     createdByUserId *string
-    // The description property
+    // Human-readable description that explains this tag response to API users.
     description *string
     // The unique identifier for the entity.
     id *string
-    // The isArchived property
+    // Indicates whether this lead or record is archived.
     isArchived *bool
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The name property
+    // Display name for this tag response in the Leadping API.
     name *string
-    // The normalizedName property
+    // Normalized name used for case-insensitive tag matching and deduplication.
     normalizedName *string
 }
 // NewTagResponse instantiates a new TagResponse and sets the default values.
@@ -52,17 +52,17 @@ func CreateTagResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *TagResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetArchivedAt gets the archivedAt property value. The archivedAt property
+// GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
 func (m *TagResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.archivedAt
 }
-// GetBusinessId gets the businessId property value. The businessId property
+// GetBusinessId gets the businessId property value. Business ID that owns this tag.
 // returns a *string when successful
 func (m *TagResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetColor gets the color property value. The color property
+// GetColor gets the color property value. Hex color used to display this tag or status in Leadping clients.
 // returns a *string when successful
 func (m *TagResponse) GetColor()(*string) {
     return m.color
@@ -72,12 +72,12 @@ func (m *TagResponse) GetColor()(*string) {
 func (m *TagResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedByUserId gets the createdByUserId property value. The createdByUserId property
+// GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this tag response.
 // returns a *string when successful
 func (m *TagResponse) GetCreatedByUserId()(*string) {
     return m.createdByUserId
 }
-// GetDescription gets the description property value. The description property
+// GetDescription gets the description property value. Human-readable description that explains this tag response to API users.
 // returns a *string when successful
 func (m *TagResponse) GetDescription()(*string) {
     return m.description
@@ -203,7 +203,7 @@ func (m *TagResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *TagResponse) GetId()(*string) {
     return m.id
 }
-// GetIsArchived gets the isArchived property value. The isArchived property
+// GetIsArchived gets the isArchived property value. Indicates whether this lead or record is archived.
 // returns a *bool when successful
 func (m *TagResponse) GetIsArchived()(*bool) {
     return m.isArchived
@@ -213,12 +213,12 @@ func (m *TagResponse) GetIsArchived()(*bool) {
 func (m *TagResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The name property
+// GetName gets the name property value. Display name for this tag response in the Leadping API.
 // returns a *string when successful
 func (m *TagResponse) GetName()(*string) {
     return m.name
 }
-// GetNormalizedName gets the normalizedName property value. The normalizedName property
+// GetNormalizedName gets the normalizedName property value. Normalized name used for case-insensitive tag matching and deduplication.
 // returns a *string when successful
 func (m *TagResponse) GetNormalizedName()(*string) {
     return m.normalizedName
@@ -303,15 +303,15 @@ func (m *TagResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *TagResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetArchivedAt sets the archivedAt property value. The archivedAt property
+// SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *TagResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
 }
-// SetBusinessId sets the businessId property value. The businessId property
+// SetBusinessId sets the businessId property value. Business ID that owns this tag.
 func (m *TagResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetColor sets the color property value. The color property
+// SetColor sets the color property value. Hex color used to display this tag or status in Leadping clients.
 func (m *TagResponse) SetColor(value *string)() {
     m.color = value
 }
@@ -319,11 +319,11 @@ func (m *TagResponse) SetColor(value *string)() {
 func (m *TagResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedByUserId sets the createdByUserId property value. The createdByUserId property
+// SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this tag response.
 func (m *TagResponse) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
 }
-// SetDescription sets the description property value. The description property
+// SetDescription sets the description property value. Human-readable description that explains this tag response to API users.
 func (m *TagResponse) SetDescription(value *string)() {
     m.description = value
 }
@@ -331,7 +331,7 @@ func (m *TagResponse) SetDescription(value *string)() {
 func (m *TagResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsArchived sets the isArchived property value. The isArchived property
+// SetIsArchived sets the isArchived property value. Indicates whether this lead or record is archived.
 func (m *TagResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
@@ -339,11 +339,11 @@ func (m *TagResponse) SetIsArchived(value *bool)() {
 func (m *TagResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The name property
+// SetName sets the name property value. Display name for this tag response in the Leadping API.
 func (m *TagResponse) SetName(value *string)() {
     m.name = value
 }
-// SetNormalizedName sets the normalizedName property value. The normalizedName property
+// SetNormalizedName sets the normalizedName property value. Normalized name used for case-insensitive tag matching and deduplication.
 func (m *TagResponse) SetNormalizedName(value *string)() {
     m.normalizedName = value
 }

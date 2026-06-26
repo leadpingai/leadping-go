@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TagSummary compact tag data safe to embed on tagged entities.
+// TagSummary summary schema for Leadping API tag summary data used in dashboards and reports.
 type TagSummary struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The color property
+    // Hex color used to display this tag or status in Leadping clients.
     color *string
-    // The id property
+    // Unique Leadping identifier for this tag summary.
     id *string
-    // The name property
+    // Display name for this tag summary in the Leadping API.
     name *string
-    // The normalizedName property
+    // Normalized name used for case-insensitive tag matching and deduplication.
     normalizedName *string
 }
 // NewTagSummary instantiates a new TagSummary and sets the default values.
@@ -37,7 +37,7 @@ func CreateTagSummaryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3
 func (m *TagSummary) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetColor gets the color property value. The color property
+// GetColor gets the color property value. Hex color used to display this tag or status in Leadping clients.
 // returns a *string when successful
 func (m *TagSummary) GetColor()(*string) {
     return m.color
@@ -88,17 +88,17 @@ func (m *TagSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for this tag summary.
 // returns a *string when successful
 func (m *TagSummary) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The name property
+// GetName gets the name property value. Display name for this tag summary in the Leadping API.
 // returns a *string when successful
 func (m *TagSummary) GetName()(*string) {
     return m.name
 }
-// GetNormalizedName gets the normalizedName property value. The normalizedName property
+// GetNormalizedName gets the normalizedName property value. Normalized name used for case-insensitive tag matching and deduplication.
 // returns a *string when successful
 func (m *TagSummary) GetNormalizedName()(*string) {
     return m.normalizedName
@@ -141,19 +141,19 @@ func (m *TagSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *TagSummary) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetColor sets the color property value. The color property
+// SetColor sets the color property value. Hex color used to display this tag or status in Leadping clients.
 func (m *TagSummary) SetColor(value *string)() {
     m.color = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for this tag summary.
 func (m *TagSummary) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The name property
+// SetName sets the name property value. Display name for this tag summary in the Leadping API.
 func (m *TagSummary) SetName(value *string)() {
     m.name = value
 }
-// SetNormalizedName sets the normalizedName property value. The normalizedName property
+// SetNormalizedName sets the normalizedName property value. Normalized name used for case-insensitive tag matching and deduplication.
 func (m *TagSummary) SetNormalizedName(value *string)() {
     m.normalizedName = value
 }

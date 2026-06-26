@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberAvailabilityRequest request payload for phone number availability.
+// PhoneNumberAvailabilityRequest request schema for checking phone number availability before purchase or assignment.
 type PhoneNumberAvailabilityRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The phone number associated with this phone number availability.
+    // Phone number to check for availability, formatted for provider lookup.
     phoneNumber *string
 }
 // NewPhoneNumberAvailabilityRequest instantiates a new PhoneNumberAvailabilityRequest and sets the default values.
@@ -47,7 +47,7 @@ func (m *PhoneNumberAvailabilityRequest) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetPhoneNumber gets the phoneNumber property value. The phone number associated with this phone number availability.
+// GetPhoneNumber gets the phoneNumber property value. Phone number to check for availability, formatted for provider lookup.
 // returns a *string when successful
 func (m *PhoneNumberAvailabilityRequest) GetPhoneNumber()(*string) {
     return m.phoneNumber
@@ -72,7 +72,7 @@ func (m *PhoneNumberAvailabilityRequest) Serialize(writer i878a80d2330e89d268963
 func (m *PhoneNumberAvailabilityRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The phone number associated with this phone number availability.
+// SetPhoneNumber sets the phoneNumber property value. Phone number to check for availability, formatted for provider lookup.
 func (m *PhoneNumberAvailabilityRequest) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }

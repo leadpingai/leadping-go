@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ConversationResponse_phoneNumber the Leadping sender phone number associated with this conversation.
+// ConversationResponse_phoneNumber phone number used by this conversation response for calls, SMS, lookup, or routing.
 type ConversationResponse_phoneNumber struct {
     IdNameValue
 }

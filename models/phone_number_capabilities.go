@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberCapabilities aPI DTO containing phone number capabilities data used by Leadping API contracts.
+// PhoneNumberCapabilities public Leadping API schema for phone number capabilities data.
 type PhoneNumberCapabilities struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Whether SMS applies to this phone number capabilities.
+    // SMS readiness details for this phone number or business.
     sms *bool
-    // Whether testing applies to this phone number capabilities.
+    // Indicates whether the request should run in test mode.
     testing *bool
-    // Whether voice applies to this phone number capabilities.
+    // Voice readiness details for this phone number or business.
     voice *bool
-    // Whether warmup applies to this phone number capabilities.
+    // Warmup status data for this sender or phone number.
     warmup *bool
 }
 // NewPhoneNumberCapabilities instantiates a new PhoneNumberCapabilities and sets the default values.
@@ -83,22 +83,22 @@ func (m *PhoneNumberCapabilities) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetSms gets the sms property value. Whether SMS applies to this phone number capabilities.
+// GetSms gets the sms property value. SMS readiness details for this phone number or business.
 // returns a *bool when successful
 func (m *PhoneNumberCapabilities) GetSms()(*bool) {
     return m.sms
 }
-// GetTesting gets the testing property value. Whether testing applies to this phone number capabilities.
+// GetTesting gets the testing property value. Indicates whether the request should run in test mode.
 // returns a *bool when successful
 func (m *PhoneNumberCapabilities) GetTesting()(*bool) {
     return m.testing
 }
-// GetVoice gets the voice property value. Whether voice applies to this phone number capabilities.
+// GetVoice gets the voice property value. Voice readiness details for this phone number or business.
 // returns a *bool when successful
 func (m *PhoneNumberCapabilities) GetVoice()(*bool) {
     return m.voice
 }
-// GetWarmup gets the warmup property value. Whether warmup applies to this phone number capabilities.
+// GetWarmup gets the warmup property value. Warmup status data for this sender or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberCapabilities) GetWarmup()(*bool) {
     return m.warmup
@@ -141,19 +141,19 @@ func (m *PhoneNumberCapabilities) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *PhoneNumberCapabilities) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetSms sets the sms property value. Whether SMS applies to this phone number capabilities.
+// SetSms sets the sms property value. SMS readiness details for this phone number or business.
 func (m *PhoneNumberCapabilities) SetSms(value *bool)() {
     m.sms = value
 }
-// SetTesting sets the testing property value. Whether testing applies to this phone number capabilities.
+// SetTesting sets the testing property value. Indicates whether the request should run in test mode.
 func (m *PhoneNumberCapabilities) SetTesting(value *bool)() {
     m.testing = value
 }
-// SetVoice sets the voice property value. Whether voice applies to this phone number capabilities.
+// SetVoice sets the voice property value. Voice readiness details for this phone number or business.
 func (m *PhoneNumberCapabilities) SetVoice(value *bool)() {
     m.voice = value
 }
-// SetWarmup sets the warmup property value. Whether warmup applies to this phone number capabilities.
+// SetWarmup sets the warmup property value. Warmup status data for this sender or phone number.
 func (m *PhoneNumberCapabilities) SetWarmup(value *bool)() {
     m.warmup = value
 }

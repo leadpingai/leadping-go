@@ -8,87 +8,87 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SmsResponse aPI response containing SMS data returned to callers.
+// SmsResponse response schema for the Leadping API SMS message returned to authenticated clients.
 type SmsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The monetary billable amount for this SMS.
+    // Monetary amount billed for this Leadping communication or transaction.
     billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current billing status for this SMS.
+    // Billing state for this communication, charge, or transaction.
     billingStatus *string
-    // The date and time for the blocked at value on this SMS.
+    // UTC timestamp when Leadping blocked this communication.
     blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The campaign ID associated with this SMS.
+    // Messaging campaign identifier associated with this SMS message.
     campaignId *string
-    // The date and time for the canceled at value on this SMS.
+    // UTC timestamp when this delivery or workflow was canceled.
     canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable cancel reason explaining this SMS.
+    // Reason this delivery, run, or request was canceled.
     cancelReason *string
-    // The compliance action value for this SMS.
+    // Compliance action applied to this message, lead, or sender.
     complianceAction *string
-    // The conversation ID associated with this SMS.
+    // Conversation ID that links this SMS message to the Leadping inbox thread.
     conversationId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the delivered at value on this SMS.
+    // UTC timestamp when the provider confirmed delivery.
     deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The error code value for this SMS.
+    // Machine-readable error code returned while processing this SMS message.
     errorCode *string
-    // The error message value for this SMS.
+    // Human-readable error message returned while processing this SMS message.
     errorMessage *string
-    // The date and time for the failed at value on this SMS.
+    // UTC timestamp when processing failed for this SMS message.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The phone number associated with this SMS.
+    // Sender phone number used for this communication.
     fromPhoneNumber *string
-    // The from phone number ID associated with this SMS.
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
     // The unique identifier for the entity.
     id *string
-    // Whether this SMS is warmup.
+    // Indicates whether this SMS message is part of Leadping sender warmup traffic.
     isWarmup *bool
-    // The lead ID associated with this SMS.
+    // Lead ID associated with the SMS conversation or outreach attempt.
     leadId *string
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the next retry at value on this SMS.
+    // UTC timestamp when Leadping will retry this SMS message.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The outbound phone number ID associated with this SMS.
+    // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // The provider message ID associated with this SMS.
+    // Provider message identifier for SMS delivery tracking and reconciliation.
     providerMessageId *string
-    // The date and time for the queued at value on this SMS.
+    // UTC timestamp when Leadping queued this SMS message for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the received at value on this SMS.
+    // UTC timestamp when Leadping received this inbound event or message.
     receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The retry count for this SMS.
+    // Number of retry attempts already made for this SMS message.
     retryCount *int32
-    // The date and time for the scheduled for value on this SMS.
+    // UTC timestamp when Leadping is scheduled to send this SMS message.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable scheduled reason explaining this SMS.
+    // Reason Leadping scheduled this delivery for a later time.
     scheduledReason *string
     // Defines the supported Outgoing Number Selection Reason values.
     selectionReason *SmsResponse_selectionReason
-    // The date and time for the sending started at value on this SMS.
+    // UTC timestamp when Leadping began sending this message.
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the sent at value on this SMS.
+    // UTC timestamp when Leadping sent this message to the provider.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The source ID associated with this SMS.
+    // Lead source ID used for attribution and sender selection on this SMS message.
     sourceId *string
     // Defines the supported SMS Message Status values.
     status *SmsResponse_status
-    // The human-readable status reason explaining this SMS.
+    // Human-readable reason explaining the current status of this SMS message.
     statusReason *string
-    // The Telnyx ID associated with this SMS.
+    // Telnyx identifier connected to this phone number, call, or SMS event.
     telnyxId *string
-    // The 10DLC campaign ID associated with this SMS.
+    // 10DLC campaign identifier associated with this sender or SMS event.
     tenDlcCampaignId *string
-    // The text value for this SMS.
+    // Body text for the SMS message or communication represented by this SMS message.
     text *string
     // Defines the supported SMS Traffic Type values.
     trafficType *SmsResponse_trafficType
-    // The date and time for the undeliverable at value on this SMS.
+    // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Whether this SMS was manually overridden.
+    // Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
     wasManuallyOverridden *bool
 }
 // NewSmsResponse instantiates a new SmsResponse and sets the default values.
@@ -108,42 +108,42 @@ func CreateSmsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *SmsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillableAmount gets the billableAmount property value. The monetary billable amount for this SMS.
+// GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 // returns a UntypedNodeable when successful
 func (m *SmsResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableAmount
 }
-// GetBillingStatus gets the billingStatus property value. The current billing status for this SMS.
+// GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
 func (m *SmsResponse) GetBillingStatus()(*string) {
     return m.billingStatus
 }
-// GetBlockedAt gets the blockedAt property value. The date and time for the blocked at value on this SMS.
+// GetBlockedAt gets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 // returns a *Time when successful
 func (m *SmsResponse) GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.blockedAt
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this SMS.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetCanceledAt gets the canceledAt property value. The date and time for the canceled at value on this SMS.
+// GetCanceledAt gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 // returns a *Time when successful
 func (m *SmsResponse) GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.canceledAt
 }
-// GetCancelReason gets the cancelReason property value. The human-readable cancel reason explaining this SMS.
+// GetCancelReason gets the cancelReason property value. Reason this delivery, run, or request was canceled.
 // returns a *string when successful
 func (m *SmsResponse) GetCancelReason()(*string) {
     return m.cancelReason
 }
-// GetComplianceAction gets the complianceAction property value. The compliance action value for this SMS.
+// GetComplianceAction gets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 // returns a *string when successful
 func (m *SmsResponse) GetComplianceAction()(*string) {
     return m.complianceAction
 }
-// GetConversationId gets the conversationId property value. The conversation ID associated with this SMS.
+// GetConversationId gets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
 // returns a *string when successful
 func (m *SmsResponse) GetConversationId()(*string) {
     return m.conversationId
@@ -153,22 +153,22 @@ func (m *SmsResponse) GetConversationId()(*string) {
 func (m *SmsResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDeliveredAt gets the deliveredAt property value. The date and time for the delivered at value on this SMS.
+// GetDeliveredAt gets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 // returns a *Time when successful
 func (m *SmsResponse) GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.deliveredAt
 }
-// GetErrorCode gets the errorCode property value. The error code value for this SMS.
+// GetErrorCode gets the errorCode property value. Machine-readable error code returned while processing this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetErrorCode()(*string) {
     return m.errorCode
 }
-// GetErrorMessage gets the errorMessage property value. The error message value for this SMS.
+// GetErrorMessage gets the errorMessage property value. Human-readable error message returned while processing this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetErrorMessage()(*string) {
     return m.errorMessage
 }
-// GetFailedAt gets the failedAt property value. The date and time for the failed at value on this SMS.
+// GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this SMS message.
 // returns a *Time when successful
 func (m *SmsResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -569,12 +569,12 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetFromPhoneNumber gets the fromPhoneNumber property value. The phone number associated with this SMS.
+// GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
 func (m *SmsResponse) GetFromPhoneNumber()(*string) {
     return m.fromPhoneNumber
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The from phone number ID associated with this SMS.
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *SmsResponse) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
@@ -584,12 +584,12 @@ func (m *SmsResponse) GetFromPhoneNumberId()(*string) {
 func (m *SmsResponse) GetId()(*string) {
     return m.id
 }
-// GetIsWarmup gets the isWarmup property value. Whether this SMS is warmup.
+// GetIsWarmup gets the isWarmup property value. Indicates whether this SMS message is part of Leadping sender warmup traffic.
 // returns a *bool when successful
 func (m *SmsResponse) GetIsWarmup()(*bool) {
     return m.isWarmup
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this SMS.
+// GetLeadId gets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 // returns a *string when successful
 func (m *SmsResponse) GetLeadId()(*string) {
     return m.leadId
@@ -599,42 +599,42 @@ func (m *SmsResponse) GetLeadId()(*string) {
 func (m *SmsResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetNextRetryAt gets the nextRetryAt property value. The date and time for the next retry at value on this SMS.
+// GetNextRetryAt gets the nextRetryAt property value. UTC timestamp when Leadping will retry this SMS message.
 // returns a *Time when successful
 func (m *SmsResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
-// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. The outbound phone number ID associated with this SMS.
+// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *SmsResponse) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
 }
-// GetProviderMessageId gets the providerMessageId property value. The provider message ID associated with this SMS.
+// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 // returns a *string when successful
 func (m *SmsResponse) GetProviderMessageId()(*string) {
     return m.providerMessageId
 }
-// GetQueuedAt gets the queuedAt property value. The date and time for the queued at value on this SMS.
+// GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
 // returns a *Time when successful
 func (m *SmsResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.queuedAt
 }
-// GetReceivedAt gets the receivedAt property value. The date and time for the received at value on this SMS.
+// GetReceivedAt gets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 // returns a *Time when successful
 func (m *SmsResponse) GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedAt
 }
-// GetRetryCount gets the retryCount property value. The retry count for this SMS.
+// GetRetryCount gets the retryCount property value. Number of retry attempts already made for this SMS message.
 // returns a *int32 when successful
 func (m *SmsResponse) GetRetryCount()(*int32) {
     return m.retryCount
 }
-// GetScheduledFor gets the scheduledFor property value. The date and time for the scheduled for value on this SMS.
+// GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
 // returns a *Time when successful
 func (m *SmsResponse) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledFor
 }
-// GetScheduledReason gets the scheduledReason property value. The human-readable scheduled reason explaining this SMS.
+// GetScheduledReason gets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
 // returns a *string when successful
 func (m *SmsResponse) GetScheduledReason()(*string) {
     return m.scheduledReason
@@ -644,17 +644,17 @@ func (m *SmsResponse) GetScheduledReason()(*string) {
 func (m *SmsResponse) GetSelectionReason()(*SmsResponse_selectionReason) {
     return m.selectionReason
 }
-// GetSendingStartedAt gets the sendingStartedAt property value. The date and time for the sending started at value on this SMS.
+// GetSendingStartedAt gets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 // returns a *Time when successful
 func (m *SmsResponse) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sendingStartedAt
 }
-// GetSentAt gets the sentAt property value. The date and time for the sent at value on this SMS.
+// GetSentAt gets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 // returns a *Time when successful
 func (m *SmsResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this SMS.
+// GetSourceId gets the sourceId property value. Lead source ID used for attribution and sender selection on this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetSourceId()(*string) {
     return m.sourceId
@@ -664,22 +664,22 @@ func (m *SmsResponse) GetSourceId()(*string) {
 func (m *SmsResponse) GetStatus()(*SmsResponse_status) {
     return m.status
 }
-// GetStatusReason gets the statusReason property value. The human-readable status reason explaining this SMS.
+// GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetStatusReason()(*string) {
     return m.statusReason
 }
-// GetTelnyxId gets the telnyxId property value. The Telnyx ID associated with this SMS.
+// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 // returns a *string when successful
 func (m *SmsResponse) GetTelnyxId()(*string) {
     return m.telnyxId
 }
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. The 10DLC campaign ID associated with this SMS.
+// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 // returns a *string when successful
 func (m *SmsResponse) GetTenDlcCampaignId()(*string) {
     return m.tenDlcCampaignId
 }
-// GetText gets the text property value. The text value for this SMS.
+// GetText gets the text property value. Body text for the SMS message or communication represented by this SMS message.
 // returns a *string when successful
 func (m *SmsResponse) GetText()(*string) {
     return m.text
@@ -689,12 +689,12 @@ func (m *SmsResponse) GetText()(*string) {
 func (m *SmsResponse) GetTrafficType()(*SmsResponse_trafficType) {
     return m.trafficType
 }
-// GetUndeliverableAt gets the undeliverableAt property value. The date and time for the undeliverable at value on this SMS.
+// GetUndeliverableAt gets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 // returns a *Time when successful
 func (m *SmsResponse) GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.undeliverableAt
 }
-// GetWasManuallyOverridden gets the wasManuallyOverridden property value. Whether this SMS was manually overridden.
+// GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
 // returns a *bool when successful
 func (m *SmsResponse) GetWasManuallyOverridden()(*bool) {
     return m.wasManuallyOverridden
@@ -950,35 +950,35 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *SmsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillableAmount sets the billableAmount property value. The monetary billable amount for this SMS.
+// SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 func (m *SmsResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableAmount = value
 }
-// SetBillingStatus sets the billingStatus property value. The current billing status for this SMS.
+// SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
 func (m *SmsResponse) SetBillingStatus(value *string)() {
     m.billingStatus = value
 }
-// SetBlockedAt sets the blockedAt property value. The date and time for the blocked at value on this SMS.
+// SetBlockedAt sets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 func (m *SmsResponse) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.blockedAt = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this SMS.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this SMS message.
 func (m *SmsResponse) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetCanceledAt sets the canceledAt property value. The date and time for the canceled at value on this SMS.
+// SetCanceledAt sets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 func (m *SmsResponse) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.canceledAt = value
 }
-// SetCancelReason sets the cancelReason property value. The human-readable cancel reason explaining this SMS.
+// SetCancelReason sets the cancelReason property value. Reason this delivery, run, or request was canceled.
 func (m *SmsResponse) SetCancelReason(value *string)() {
     m.cancelReason = value
 }
-// SetComplianceAction sets the complianceAction property value. The compliance action value for this SMS.
+// SetComplianceAction sets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 func (m *SmsResponse) SetComplianceAction(value *string)() {
     m.complianceAction = value
 }
-// SetConversationId sets the conversationId property value. The conversation ID associated with this SMS.
+// SetConversationId sets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
 func (m *SmsResponse) SetConversationId(value *string)() {
     m.conversationId = value
 }
@@ -986,27 +986,27 @@ func (m *SmsResponse) SetConversationId(value *string)() {
 func (m *SmsResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDeliveredAt sets the deliveredAt property value. The date and time for the delivered at value on this SMS.
+// SetDeliveredAt sets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 func (m *SmsResponse) SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.deliveredAt = value
 }
-// SetErrorCode sets the errorCode property value. The error code value for this SMS.
+// SetErrorCode sets the errorCode property value. Machine-readable error code returned while processing this SMS message.
 func (m *SmsResponse) SetErrorCode(value *string)() {
     m.errorCode = value
 }
-// SetErrorMessage sets the errorMessage property value. The error message value for this SMS.
+// SetErrorMessage sets the errorMessage property value. Human-readable error message returned while processing this SMS message.
 func (m *SmsResponse) SetErrorMessage(value *string)() {
     m.errorMessage = value
 }
-// SetFailedAt sets the failedAt property value. The date and time for the failed at value on this SMS.
+// SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this SMS message.
 func (m *SmsResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFromPhoneNumber sets the fromPhoneNumber property value. The phone number associated with this SMS.
+// SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
 func (m *SmsResponse) SetFromPhoneNumber(value *string)() {
     m.fromPhoneNumber = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The from phone number ID associated with this SMS.
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *SmsResponse) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
@@ -1014,11 +1014,11 @@ func (m *SmsResponse) SetFromPhoneNumberId(value *string)() {
 func (m *SmsResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsWarmup sets the isWarmup property value. Whether this SMS is warmup.
+// SetIsWarmup sets the isWarmup property value. Indicates whether this SMS message is part of Leadping sender warmup traffic.
 func (m *SmsResponse) SetIsWarmup(value *bool)() {
     m.isWarmup = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this SMS.
+// SetLeadId sets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 func (m *SmsResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
@@ -1026,35 +1026,35 @@ func (m *SmsResponse) SetLeadId(value *string)() {
 func (m *SmsResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetNextRetryAt sets the nextRetryAt property value. The date and time for the next retry at value on this SMS.
+// SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this SMS message.
 func (m *SmsResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
-// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. The outbound phone number ID associated with this SMS.
+// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsResponse) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
 }
-// SetProviderMessageId sets the providerMessageId property value. The provider message ID associated with this SMS.
+// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 func (m *SmsResponse) SetProviderMessageId(value *string)() {
     m.providerMessageId = value
 }
-// SetQueuedAt sets the queuedAt property value. The date and time for the queued at value on this SMS.
+// SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
 func (m *SmsResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.queuedAt = value
 }
-// SetReceivedAt sets the receivedAt property value. The date and time for the received at value on this SMS.
+// SetReceivedAt sets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 func (m *SmsResponse) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedAt = value
 }
-// SetRetryCount sets the retryCount property value. The retry count for this SMS.
+// SetRetryCount sets the retryCount property value. Number of retry attempts already made for this SMS message.
 func (m *SmsResponse) SetRetryCount(value *int32)() {
     m.retryCount = value
 }
-// SetScheduledFor sets the scheduledFor property value. The date and time for the scheduled for value on this SMS.
+// SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
 func (m *SmsResponse) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledFor = value
 }
-// SetScheduledReason sets the scheduledReason property value. The human-readable scheduled reason explaining this SMS.
+// SetScheduledReason sets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
 func (m *SmsResponse) SetScheduledReason(value *string)() {
     m.scheduledReason = value
 }
@@ -1062,15 +1062,15 @@ func (m *SmsResponse) SetScheduledReason(value *string)() {
 func (m *SmsResponse) SetSelectionReason(value *SmsResponse_selectionReason)() {
     m.selectionReason = value
 }
-// SetSendingStartedAt sets the sendingStartedAt property value. The date and time for the sending started at value on this SMS.
+// SetSendingStartedAt sets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 func (m *SmsResponse) SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sendingStartedAt = value
 }
-// SetSentAt sets the sentAt property value. The date and time for the sent at value on this SMS.
+// SetSentAt sets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 func (m *SmsResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this SMS.
+// SetSourceId sets the sourceId property value. Lead source ID used for attribution and sender selection on this SMS message.
 func (m *SmsResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
@@ -1078,19 +1078,19 @@ func (m *SmsResponse) SetSourceId(value *string)() {
 func (m *SmsResponse) SetStatus(value *SmsResponse_status)() {
     m.status = value
 }
-// SetStatusReason sets the statusReason property value. The human-readable status reason explaining this SMS.
+// SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this SMS message.
 func (m *SmsResponse) SetStatusReason(value *string)() {
     m.statusReason = value
 }
-// SetTelnyxId sets the telnyxId property value. The Telnyx ID associated with this SMS.
+// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 func (m *SmsResponse) SetTelnyxId(value *string)() {
     m.telnyxId = value
 }
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. The 10DLC campaign ID associated with this SMS.
+// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 func (m *SmsResponse) SetTenDlcCampaignId(value *string)() {
     m.tenDlcCampaignId = value
 }
-// SetText sets the text property value. The text value for this SMS.
+// SetText sets the text property value. Body text for the SMS message or communication represented by this SMS message.
 func (m *SmsResponse) SetText(value *string)() {
     m.text = value
 }
@@ -1098,11 +1098,11 @@ func (m *SmsResponse) SetText(value *string)() {
 func (m *SmsResponse) SetTrafficType(value *SmsResponse_trafficType)() {
     m.trafficType = value
 }
-// SetUndeliverableAt sets the undeliverableAt property value. The date and time for the undeliverable at value on this SMS.
+// SetUndeliverableAt sets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 func (m *SmsResponse) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.undeliverableAt = value
 }
-// SetWasManuallyOverridden sets the wasManuallyOverridden property value. Whether this SMS was manually overridden.
+// SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
 func (m *SmsResponse) SetWasManuallyOverridden(value *bool)() {
     m.wasManuallyOverridden = value
 }

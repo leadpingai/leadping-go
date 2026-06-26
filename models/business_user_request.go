@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// BusinessUserRequest request payload for business user.
+// BusinessUserRequest request schema for the Leadping API business user request, including the fields clients can send.
 type BusinessUserRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The email address associated with this business user.
+    // Email address for the person represented by this business user request.
     email *string
-    // The role value for this business user.
+    // Business role assigned to the user.
     role *BusinessUserRole
-    // The user ID associated with this business user.
+    // User ID to add, update, or remove from the business.
     userId *string
 }
 // NewBusinessUserRequest instantiates a new BusinessUserRequest and sets the default values.
@@ -35,7 +35,7 @@ func CreateBusinessUserRequestFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *BusinessUserRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEmail gets the email property value. The email address associated with this business user.
+// GetEmail gets the email property value. Email address for the person represented by this business user request.
 // returns a *string when successful
 func (m *BusinessUserRequest) GetEmail()(*string) {
     return m.email
@@ -76,12 +76,12 @@ func (m *BusinessUserRequest) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetRole gets the role property value. The role value for this business user.
+// GetRole gets the role property value. Business role assigned to the user.
 // returns a *BusinessUserRole when successful
 func (m *BusinessUserRequest) GetRole()(*BusinessUserRole) {
     return m.role
 }
-// GetUserId gets the userId property value. The user ID associated with this business user.
+// GetUserId gets the userId property value. User ID to add, update, or remove from the business.
 // returns a *string when successful
 func (m *BusinessUserRequest) GetUserId()(*string) {
     return m.userId
@@ -119,15 +119,15 @@ func (m *BusinessUserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *BusinessUserRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEmail sets the email property value. The email address associated with this business user.
+// SetEmail sets the email property value. Email address for the person represented by this business user request.
 func (m *BusinessUserRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetRole sets the role property value. The role value for this business user.
+// SetRole sets the role property value. Business role assigned to the user.
 func (m *BusinessUserRequest) SetRole(value *BusinessUserRole)() {
     m.role = value
 }
-// SetUserId sets the userId property value. The user ID associated with this business user.
+// SetUserId sets the userId property value. User ID to add, update, or remove from the business.
 func (m *BusinessUserRequest) SetUserId(value *string)() {
     m.userId = value
 }

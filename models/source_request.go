@@ -7,39 +7,39 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceRequest request payload for source.
+// SourceRequest request schema for the Leadping API lead source request, including the fields clients can send.
 type SourceRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride SourceRequest_adminEnablementOverrideable
-    // The allowed products included with this source.
+    // Product allowlist used to accept or route leads from this source.
     allowedProducts []string
-    // The allowed states included with this source.
+    // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // The business ID associated with this source.
+    // Business ID that owns or will own this lead source.
     businessId *string
-    // Whether this source is compliance approved.
+    // Indicates whether the business or sender passed compliance review.
     complianceApproved *bool
-    // The compliance notes value for this source.
+    // Compliance notes captured for admin review.
     complianceNotes *string
-    // The cost per lead value for this source.
+    // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Tag ids applied automatically to leads created from this source.
+    // Tag IDs automatically assigned to leads created by this source.
     defaultTagIds []string
-    // Tag names applied automatically to leads created from this source, creating missing tags when allowed by the caller.
+    // Tag names automatically assigned to leads created by this source.
     defaultTagNames []string
-    // The human-readable description of this source.
+    // Human-readable description that explains this lead source request to API users.
     description *string
-    // Whether this source is enabled.
+    // Indicates whether this lead source request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
     // The display name for the entity.
     name *string
-    // Whether regenerate API key applies to this source.
+    // Indicates whether Leadping should issue a new API key for this source.
     regenerateApiKey *bool
-    // Whether this source requires TrustedForm.
+    // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
 }
 // NewSourceRequest instantiates a new SourceRequest and sets the default values.
@@ -59,57 +59,57 @@ func CreateSourceRequestFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *SourceRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a SourceRequest_adminEnablementOverrideable when successful
 func (m *SourceRequest) GetAdminEnablementOverride()(SourceRequest_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetAllowedProducts gets the allowedProducts property value. The allowed products included with this source.
+// GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
 func (m *SourceRequest) GetAllowedProducts()([]string) {
     return m.allowedProducts
 }
-// GetAllowedStates gets the allowedStates property value. The allowed states included with this source.
+// GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
 func (m *SourceRequest) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this source.
+// GetBusinessId gets the businessId property value. Business ID that owns or will own this lead source.
 // returns a *string when successful
 func (m *SourceRequest) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetComplianceApproved gets the complianceApproved property value. Whether this source is compliance approved.
+// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 // returns a *bool when successful
 func (m *SourceRequest) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
-// GetComplianceNotes gets the complianceNotes property value. The compliance notes value for this source.
+// GetComplianceNotes gets the complianceNotes property value. Compliance notes captured for admin review.
 // returns a *string when successful
 func (m *SourceRequest) GetComplianceNotes()(*string) {
     return m.complianceNotes
 }
-// GetCostPerLead gets the costPerLead property value. The cost per lead value for this source.
+// GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
 func (m *SourceRequest) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
 }
-// GetDefaultTagIds gets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceRequest) GetDefaultTagIds()([]string) {
     return m.defaultTagIds
 }
-// GetDefaultTagNames gets the defaultTagNames property value. Tag names applied automatically to leads created from this source, creating missing tags when allowed by the caller.
+// GetDefaultTagNames gets the defaultTagNames property value. Tag names automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceRequest) GetDefaultTagNames()([]string) {
     return m.defaultTagNames
 }
-// GetDescription gets the description property value. The human-readable description of this source.
+// GetDescription gets the description property value. Human-readable description that explains this lead source request to API users.
 // returns a *string when successful
 func (m *SourceRequest) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this source is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *SourceRequest) GetEnabled()(*bool) {
     return m.enabled
@@ -304,12 +304,12 @@ func (m *SourceRequest) GetId()(*string) {
 func (m *SourceRequest) GetName()(*string) {
     return m.name
 }
-// GetRegenerateApiKey gets the regenerateApiKey property value. Whether regenerate API key applies to this source.
+// GetRegenerateApiKey gets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
 // returns a *bool when successful
 func (m *SourceRequest) GetRegenerateApiKey()(*bool) {
     return m.regenerateApiKey
 }
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceRequest) GetRequiresTrustedForm()(*bool) {
     return m.requiresTrustedForm
@@ -418,47 +418,47 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *SourceRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *SourceRequest) SetAdminEnablementOverride(value SourceRequest_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetAllowedProducts sets the allowedProducts property value. The allowed products included with this source.
+// SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 func (m *SourceRequest) SetAllowedProducts(value []string)() {
     m.allowedProducts = value
 }
-// SetAllowedStates sets the allowedStates property value. The allowed states included with this source.
+// SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceRequest) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this source.
+// SetBusinessId sets the businessId property value. Business ID that owns or will own this lead source.
 func (m *SourceRequest) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetComplianceApproved sets the complianceApproved property value. Whether this source is compliance approved.
+// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 func (m *SourceRequest) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
-// SetComplianceNotes sets the complianceNotes property value. The compliance notes value for this source.
+// SetComplianceNotes sets the complianceNotes property value. Compliance notes captured for admin review.
 func (m *SourceRequest) SetComplianceNotes(value *string)() {
     m.complianceNotes = value
 }
-// SetCostPerLead sets the costPerLead property value. The cost per lead value for this source.
+// SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceRequest) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
-// SetDefaultTagIds sets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceRequest) SetDefaultTagIds(value []string)() {
     m.defaultTagIds = value
 }
-// SetDefaultTagNames sets the defaultTagNames property value. Tag names applied automatically to leads created from this source, creating missing tags when allowed by the caller.
+// SetDefaultTagNames sets the defaultTagNames property value. Tag names automatically assigned to leads created by this source.
 func (m *SourceRequest) SetDefaultTagNames(value []string)() {
     m.defaultTagNames = value
 }
-// SetDescription sets the description property value. The human-readable description of this source.
+// SetDescription sets the description property value. Human-readable description that explains this lead source request to API users.
 func (m *SourceRequest) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this source is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
 func (m *SourceRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -470,11 +470,11 @@ func (m *SourceRequest) SetId(value *string)() {
 func (m *SourceRequest) SetName(value *string)() {
     m.name = value
 }
-// SetRegenerateApiKey sets the regenerateApiKey property value. Whether regenerate API key applies to this source.
+// SetRegenerateApiKey sets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
 func (m *SourceRequest) SetRegenerateApiKey(value *bool)() {
     m.regenerateApiKey = value
 }
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceRequest) SetRequiresTrustedForm(value *bool)() {
     m.requiresTrustedForm = value
 }

@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadTagsRequest request payload for adding or replacing tags on a lead.
+// LeadTagsRequest request schema for the Leadping API lead tag update request, including the fields clients can send.
 type LeadTagsRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Whether missing tag names should be created for the lead's business.
+    // Indicates whether Leadping should create missing records while processing the request.
     createMissing *bool
-    // Existing tag ids to apply.
+    // Tag IDs assigned to or filtered against this lead.
     tagIds []string
-    // Tag names to apply. Missing names may be created when CreateMissing is true.
+    // Tag names assigned to this lead when matching existing tags by name.
     tagNames []string
 }
 // NewLeadTagsRequest instantiates a new LeadTagsRequest and sets the default values.
@@ -35,7 +35,7 @@ func CreateLeadTagsRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896
 func (m *LeadTagsRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreateMissing gets the createMissing property value. Whether missing tag names should be created for the lead's business.
+// GetCreateMissing gets the createMissing property value. Indicates whether Leadping should create missing records while processing the request.
 // returns a *bool when successful
 func (m *LeadTagsRequest) GetCreateMissing()(*bool) {
     return m.createMissing
@@ -88,12 +88,12 @@ func (m *LeadTagsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
     }
     return res
 }
-// GetTagIds gets the tagIds property value. Existing tag ids to apply.
+// GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 // returns a []string when successful
 func (m *LeadTagsRequest) GetTagIds()([]string) {
     return m.tagIds
 }
-// GetTagNames gets the tagNames property value. Tag names to apply. Missing names may be created when CreateMissing is true.
+// GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 // returns a []string when successful
 func (m *LeadTagsRequest) GetTagNames()([]string) {
     return m.tagNames
@@ -130,15 +130,15 @@ func (m *LeadTagsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
 func (m *LeadTagsRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreateMissing sets the createMissing property value. Whether missing tag names should be created for the lead's business.
+// SetCreateMissing sets the createMissing property value. Indicates whether Leadping should create missing records while processing the request.
 func (m *LeadTagsRequest) SetCreateMissing(value *bool)() {
     m.createMissing = value
 }
-// SetTagIds sets the tagIds property value. Existing tag ids to apply.
+// SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 func (m *LeadTagsRequest) SetTagIds(value []string)() {
     m.tagIds = value
 }
-// SetTagNames sets the tagNames property value. Tag names to apply. Missing names may be created when CreateMissing is true.
+// SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 func (m *LeadTagsRequest) SetTagNames(value []string)() {
     m.tagNames = value
 }

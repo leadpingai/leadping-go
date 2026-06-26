@@ -8,43 +8,43 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationActionRunRecord aPI DTO containing automation action run record data used by Leadping API contracts.
+// AutomationActionRunRecord history record schema for Leadping API automation action run record data exposed in automation and audit views.
 type AutomationActionRunRecord struct {
-    // The action ID associated with this automation action run record.
+    // Automation action ID executed or evaluated by this automation action run record.
     actionId *string
-    // The action type classification for this automation action run record.
+    // Automation action type, such as send SMS or create task.
     actionType *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automation run ID associated with this automation action run record.
+    // Automation run ID connected to this action or event record.
     automationRunId *string
-    // The date and time for the completed at value on this automation action run record.
+    // UTC timestamp when processing completed for this automation action run record.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The connection key value for this automation action run record.
+    // Stable integration connection key used by this automation action.
     connectionKey *string
-    // The error value for this automation action run record.
+    // Error text returned while processing this automation action run record.
     error *string
-    // The execution key value for this automation action run record.
+    // Idempotency key used to identify a unique automation workflow execution.
     executionKey *string
-    // The date and time when this action failed.
+    // UTC timestamp when processing failed for this automation action run record.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The failure code value for this automation action run record.
+    // Machine-readable failure code for troubleshooting this automation action run record.
     failureCode *string
-    // The unique ID for this automation action run record.
+    // Unique Leadping identifier for this automation action run record.
     id *string
-    // The date and time when this action will retry, if retrying is scheduled.
+    // UTC timestamp when Leadping will retry this automation action run record.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The order value for this automation action run record.
+    // Sort order used to evaluate or display this automation action run record.
     order *int32
-    // The output value for this automation action run record.
+    // Generated output returned by this automation action run record.
     output *string
-    // The processing attempts value for this automation action run record.
+    // Number of processing attempts made for this workflow or delivery request.
     processingAttempts *int32
-    // The date and time when this action was scheduled to run, if it is delayed.
+    // UTC timestamp when this automation action run record was scheduled.
     scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the started at value on this automation action run record.
+    // UTC timestamp when processing started for this automation action run record.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current status for this automation action run record.
+    // Current lifecycle status for this automation action run record in the Leadping API.
     status *string
 }
 // NewAutomationActionRunRecord instantiates a new AutomationActionRunRecord and sets the default values.
@@ -59,12 +59,12 @@ func NewAutomationActionRunRecord()(*AutomationActionRunRecord) {
 func CreateAutomationActionRunRecordFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationActionRunRecord(), nil
 }
-// GetActionId gets the actionId property value. The action ID associated with this automation action run record.
+// GetActionId gets the actionId property value. Automation action ID executed or evaluated by this automation action run record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetActionId()(*string) {
     return m.actionId
 }
-// GetActionType gets the actionType property value. The action type classification for this automation action run record.
+// GetActionType gets the actionType property value. Automation action type, such as send SMS or create task.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetActionType()(*string) {
     return m.actionType
@@ -74,37 +74,37 @@ func (m *AutomationActionRunRecord) GetActionType()(*string) {
 func (m *AutomationActionRunRecord) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationRunId gets the automationRunId property value. The automation run ID associated with this automation action run record.
+// GetAutomationRunId gets the automationRunId property value. Automation run ID connected to this action or event record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetAutomationRunId()(*string) {
     return m.automationRunId
 }
-// GetCompletedAt gets the completedAt property value. The date and time for the completed at value on this automation action run record.
+// GetCompletedAt gets the completedAt property value. UTC timestamp when processing completed for this automation action run record.
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetConnectionKey gets the connectionKey property value. The connection key value for this automation action run record.
+// GetConnectionKey gets the connectionKey property value. Stable integration connection key used by this automation action.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetConnectionKey()(*string) {
     return m.connectionKey
 }
-// GetError gets the error property value. The error value for this automation action run record.
+// GetError gets the error property value. Error text returned while processing this automation action run record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetError()(*string) {
     return m.error
 }
-// GetExecutionKey gets the executionKey property value. The execution key value for this automation action run record.
+// GetExecutionKey gets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetExecutionKey()(*string) {
     return m.executionKey
 }
-// GetFailedAt gets the failedAt property value. The date and time when this action failed.
+// GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
 }
-// GetFailureCode gets the failureCode property value. The failure code value for this automation action run record.
+// GetFailureCode gets the failureCode property value. Machine-readable failure code for troubleshooting this automation action run record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetFailureCode()(*string) {
     return m.failureCode
@@ -285,42 +285,42 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation action run record.
+// GetId gets the id property value. Unique Leadping identifier for this automation action run record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetId()(*string) {
     return m.id
 }
-// GetNextRetryAt gets the nextRetryAt property value. The date and time when this action will retry, if retrying is scheduled.
+// GetNextRetryAt gets the nextRetryAt property value. UTC timestamp when Leadping will retry this automation action run record.
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
-// GetOrder gets the order property value. The order value for this automation action run record.
+// GetOrder gets the order property value. Sort order used to evaluate or display this automation action run record.
 // returns a *int32 when successful
 func (m *AutomationActionRunRecord) GetOrder()(*int32) {
     return m.order
 }
-// GetOutput gets the output property value. The output value for this automation action run record.
+// GetOutput gets the output property value. Generated output returned by this automation action run record.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetOutput()(*string) {
     return m.output
 }
-// GetProcessingAttempts gets the processingAttempts property value. The processing attempts value for this automation action run record.
+// GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 // returns a *int32 when successful
 func (m *AutomationActionRunRecord) GetProcessingAttempts()(*int32) {
     return m.processingAttempts
 }
-// GetScheduledAt gets the scheduledAt property value. The date and time when this action was scheduled to run, if it is delayed.
+// GetScheduledAt gets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledAt
 }
-// GetStartedAt gets the startedAt property value. The date and time for the started at value on this automation action run record.
+// GetStartedAt gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startedAt
 }
-// GetStatus gets the status property value. The current status for this automation action run record.
+// GetStatus gets the status property value. Current lifecycle status for this automation action run record in the Leadping API.
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetStatus()(*string) {
     return m.status
@@ -437,11 +437,11 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
     }
     return nil
 }
-// SetActionId sets the actionId property value. The action ID associated with this automation action run record.
+// SetActionId sets the actionId property value. Automation action ID executed or evaluated by this automation action run record.
 func (m *AutomationActionRunRecord) SetActionId(value *string)() {
     m.actionId = value
 }
-// SetActionType sets the actionType property value. The action type classification for this automation action run record.
+// SetActionType sets the actionType property value. Automation action type, such as send SMS or create task.
 func (m *AutomationActionRunRecord) SetActionType(value *string)() {
     m.actionType = value
 }
@@ -449,63 +449,63 @@ func (m *AutomationActionRunRecord) SetActionType(value *string)() {
 func (m *AutomationActionRunRecord) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationRunId sets the automationRunId property value. The automation run ID associated with this automation action run record.
+// SetAutomationRunId sets the automationRunId property value. Automation run ID connected to this action or event record.
 func (m *AutomationActionRunRecord) SetAutomationRunId(value *string)() {
     m.automationRunId = value
 }
-// SetCompletedAt sets the completedAt property value. The date and time for the completed at value on this automation action run record.
+// SetCompletedAt sets the completedAt property value. UTC timestamp when processing completed for this automation action run record.
 func (m *AutomationActionRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetConnectionKey sets the connectionKey property value. The connection key value for this automation action run record.
+// SetConnectionKey sets the connectionKey property value. Stable integration connection key used by this automation action.
 func (m *AutomationActionRunRecord) SetConnectionKey(value *string)() {
     m.connectionKey = value
 }
-// SetError sets the error property value. The error value for this automation action run record.
+// SetError sets the error property value. Error text returned while processing this automation action run record.
 func (m *AutomationActionRunRecord) SetError(value *string)() {
     m.error = value
 }
-// SetExecutionKey sets the executionKey property value. The execution key value for this automation action run record.
+// SetExecutionKey sets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
 func (m *AutomationActionRunRecord) SetExecutionKey(value *string)() {
     m.executionKey = value
 }
-// SetFailedAt sets the failedAt property value. The date and time when this action failed.
+// SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
 func (m *AutomationActionRunRecord) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFailureCode sets the failureCode property value. The failure code value for this automation action run record.
+// SetFailureCode sets the failureCode property value. Machine-readable failure code for troubleshooting this automation action run record.
 func (m *AutomationActionRunRecord) SetFailureCode(value *string)() {
     m.failureCode = value
 }
-// SetId sets the id property value. The unique ID for this automation action run record.
+// SetId sets the id property value. Unique Leadping identifier for this automation action run record.
 func (m *AutomationActionRunRecord) SetId(value *string)() {
     m.id = value
 }
-// SetNextRetryAt sets the nextRetryAt property value. The date and time when this action will retry, if retrying is scheduled.
+// SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this automation action run record.
 func (m *AutomationActionRunRecord) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
-// SetOrder sets the order property value. The order value for this automation action run record.
+// SetOrder sets the order property value. Sort order used to evaluate or display this automation action run record.
 func (m *AutomationActionRunRecord) SetOrder(value *int32)() {
     m.order = value
 }
-// SetOutput sets the output property value. The output value for this automation action run record.
+// SetOutput sets the output property value. Generated output returned by this automation action run record.
 func (m *AutomationActionRunRecord) SetOutput(value *string)() {
     m.output = value
 }
-// SetProcessingAttempts sets the processingAttempts property value. The processing attempts value for this automation action run record.
+// SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 func (m *AutomationActionRunRecord) SetProcessingAttempts(value *int32)() {
     m.processingAttempts = value
 }
-// SetScheduledAt sets the scheduledAt property value. The date and time when this action was scheduled to run, if it is delayed.
+// SetScheduledAt sets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
 func (m *AutomationActionRunRecord) SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledAt = value
 }
-// SetStartedAt sets the startedAt property value. The date and time for the started at value on this automation action run record.
+// SetStartedAt sets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 func (m *AutomationActionRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
 }
-// SetStatus sets the status property value. The current status for this automation action run record.
+// SetStatus sets the status property value. Current lifecycle status for this automation action run record in the Leadping API.
 func (m *AutomationActionRunRecord) SetStatus(value *string)() {
     m.status = value
 }

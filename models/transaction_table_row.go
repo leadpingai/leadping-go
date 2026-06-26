@@ -8,39 +8,39 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TransactionTableRow aPI DTO containing transaction data used by Leadping API contracts.
+// TransactionTableRow list item schema for Leadping API billing transaction table row results shown in searchable tables.
 type TransactionTableRow struct {
-    // The account ID associated with this transaction.
+    // Leadping account identifier used for wallet and transaction reconciliation.
     accountId *string
-    // The account name value for this transaction.
+    // Display name of the wallet or account used for this transaction.
     accountName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The monetary amount for this transaction.
+    // Monetary amount for this billing transaction or wallet operation.
     amount *float64
-    // The business ID associated with this transaction.
+    // Business ID charged or credited by this wallet transaction.
     businessId *string
-    // The business name value for this transaction.
+    // Business display name shown for this wallet transaction.
     businessName *string
-    // The date and time for the created at value on this transaction.
+    // UTC timestamp when this billing transaction table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the created by value on this transaction.
+    // Display name or identifier for the person or system that created this billing transaction table row.
     createdBy *string
-    // The human-readable description of this transaction.
+    // Human-readable description that explains this billing transaction table row to API users.
     description *string
-    // The unique ID for this transaction.
+    // Unique Leadping identifier for this billing transaction table row.
     id *string
-    // The lead ID associated with this transaction.
+    // Lead ID connected to this transaction when the charge came from lead activity.
     leadId *string
-    // The lead name value for this transaction.
+    // Lead display name shown for lead-related wallet transactions.
     leadName *string
-    // The monetary net amount for this transaction.
+    // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
-    // The payment method display value for this transaction.
+    // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
-    // The current transaction status for this transaction.
+    // Processing status for this wallet transaction.
     transactionStatus *TransactionStatus
-    // The transaction type classification for this transaction.
+    // Debit or credit classification for this wallet transaction.
     transactionType *TransactionType
 }
 // NewTransactionTableRow instantiates a new TransactionTableRow and sets the default values.
@@ -55,12 +55,12 @@ func NewTransactionTableRow()(*TransactionTableRow) {
 func CreateTransactionTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTransactionTableRow(), nil
 }
-// GetAccountId gets the accountId property value. The account ID associated with this transaction.
+// GetAccountId gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
 // returns a *string when successful
 func (m *TransactionTableRow) GetAccountId()(*string) {
     return m.accountId
 }
-// GetAccountName gets the accountName property value. The account name value for this transaction.
+// GetAccountName gets the accountName property value. Display name of the wallet or account used for this transaction.
 // returns a *string when successful
 func (m *TransactionTableRow) GetAccountName()(*string) {
     return m.accountName
@@ -70,32 +70,32 @@ func (m *TransactionTableRow) GetAccountName()(*string) {
 func (m *TransactionTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAmount gets the amount property value. The monetary amount for this transaction.
+// GetAmount gets the amount property value. Monetary amount for this billing transaction or wallet operation.
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetAmount()(*float64) {
     return m.amount
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this transaction.
+// GetBusinessId gets the businessId property value. Business ID charged or credited by this wallet transaction.
 // returns a *string when successful
 func (m *TransactionTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessName gets the businessName property value. The business name value for this transaction.
+// GetBusinessName gets the businessName property value. Business display name shown for this wallet transaction.
 // returns a *string when successful
 func (m *TransactionTableRow) GetBusinessName()(*string) {
     return m.businessName
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this transaction.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 // returns a *Time when successful
 func (m *TransactionTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedBy gets the createdBy property value. The date and time for the created by value on this transaction.
+// GetCreatedBy gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
 // returns a *string when successful
 func (m *TransactionTableRow) GetCreatedBy()(*string) {
     return m.createdBy
 }
-// GetDescription gets the description property value. The human-readable description of this transaction.
+// GetDescription gets the description property value. Human-readable description that explains this billing transaction table row to API users.
 // returns a *string when successful
 func (m *TransactionTableRow) GetDescription()(*string) {
     return m.description
@@ -256,37 +256,37 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this transaction.
+// GetId gets the id property value. Unique Leadping identifier for this billing transaction table row.
 // returns a *string when successful
 func (m *TransactionTableRow) GetId()(*string) {
     return m.id
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this transaction.
+// GetLeadId gets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
 // returns a *string when successful
 func (m *TransactionTableRow) GetLeadId()(*string) {
     return m.leadId
 }
-// GetLeadName gets the leadName property value. The lead name value for this transaction.
+// GetLeadName gets the leadName property value. Lead display name shown for lead-related wallet transactions.
 // returns a *string when successful
 func (m *TransactionTableRow) GetLeadName()(*string) {
     return m.leadName
 }
-// GetNetAmount gets the netAmount property value. The monetary net amount for this transaction.
+// GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetNetAmount()(*float64) {
     return m.netAmount
 }
-// GetPaymentMethodDisplay gets the paymentMethodDisplay property value. The payment method display value for this transaction.
+// GetPaymentMethodDisplay gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 // returns a *string when successful
 func (m *TransactionTableRow) GetPaymentMethodDisplay()(*string) {
     return m.paymentMethodDisplay
 }
-// GetTransactionStatus gets the transactionStatus property value. The current transaction status for this transaction.
+// GetTransactionStatus gets the transactionStatus property value. Processing status for this wallet transaction.
 // returns a *TransactionStatus when successful
 func (m *TransactionTableRow) GetTransactionStatus()(*TransactionStatus) {
     return m.transactionStatus
 }
-// GetTransactionType gets the transactionType property value. The transaction type classification for this transaction.
+// GetTransactionType gets the transactionType property value. Debit or credit classification for this wallet transaction.
 // returns a *TransactionType when successful
 func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
     return m.transactionType
@@ -393,11 +393,11 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAccountId sets the accountId property value. The account ID associated with this transaction.
+// SetAccountId sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
 func (m *TransactionTableRow) SetAccountId(value *string)() {
     m.accountId = value
 }
-// SetAccountName sets the accountName property value. The account name value for this transaction.
+// SetAccountName sets the accountName property value. Display name of the wallet or account used for this transaction.
 func (m *TransactionTableRow) SetAccountName(value *string)() {
     m.accountName = value
 }
@@ -405,55 +405,55 @@ func (m *TransactionTableRow) SetAccountName(value *string)() {
 func (m *TransactionTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAmount sets the amount property value. The monetary amount for this transaction.
+// SetAmount sets the amount property value. Monetary amount for this billing transaction or wallet operation.
 func (m *TransactionTableRow) SetAmount(value *float64)() {
     m.amount = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this transaction.
+// SetBusinessId sets the businessId property value. Business ID charged or credited by this wallet transaction.
 func (m *TransactionTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessName sets the businessName property value. The business name value for this transaction.
+// SetBusinessName sets the businessName property value. Business display name shown for this wallet transaction.
 func (m *TransactionTableRow) SetBusinessName(value *string)() {
     m.businessName = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this transaction.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedBy sets the createdBy property value. The date and time for the created by value on this transaction.
+// SetCreatedBy sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
 func (m *TransactionTableRow) SetCreatedBy(value *string)() {
     m.createdBy = value
 }
-// SetDescription sets the description property value. The human-readable description of this transaction.
+// SetDescription sets the description property value. Human-readable description that explains this billing transaction table row to API users.
 func (m *TransactionTableRow) SetDescription(value *string)() {
     m.description = value
 }
-// SetId sets the id property value. The unique ID for this transaction.
+// SetId sets the id property value. Unique Leadping identifier for this billing transaction table row.
 func (m *TransactionTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this transaction.
+// SetLeadId sets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
 func (m *TransactionTableRow) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetLeadName sets the leadName property value. The lead name value for this transaction.
+// SetLeadName sets the leadName property value. Lead display name shown for lead-related wallet transactions.
 func (m *TransactionTableRow) SetLeadName(value *string)() {
     m.leadName = value
 }
-// SetNetAmount sets the netAmount property value. The monetary net amount for this transaction.
+// SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 func (m *TransactionTableRow) SetNetAmount(value *float64)() {
     m.netAmount = value
 }
-// SetPaymentMethodDisplay sets the paymentMethodDisplay property value. The payment method display value for this transaction.
+// SetPaymentMethodDisplay sets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
 }
-// SetTransactionStatus sets the transactionStatus property value. The current transaction status for this transaction.
+// SetTransactionStatus sets the transactionStatus property value. Processing status for this wallet transaction.
 func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus)() {
     m.transactionStatus = value
 }
-// SetTransactionType sets the transactionType property value. The transaction type classification for this transaction.
+// SetTransactionType sets the transactionType property value. Debit or credit classification for this wallet transaction.
 func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
     m.transactionType = value
 }

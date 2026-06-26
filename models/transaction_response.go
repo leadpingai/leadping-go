@@ -8,57 +8,57 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TransactionResponse aPI response containing transaction data returned to callers.
+// TransactionResponse response schema for the Leadping API billing transaction response returned to authenticated clients.
 type TransactionResponse struct {
-    // The account ID associated with this transaction.
+    // Leadping account identifier used for wallet and transaction reconciliation.
     accountId *string
-    // The account name value for this transaction.
+    // Display name of the wallet or account used for this transaction.
     accountName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The monetary amount for this transaction.
+    // Monetary amount for this billing transaction or wallet operation.
     amount *float64
-    // The business ID associated with this transaction.
+    // Business ID charged or credited by this wallet transaction.
     businessId *string
-    // The business name value for this transaction.
+    // Business display name shown for this wallet transaction.
     businessName *string
-    // The correlation ID associated with this transaction.
+    // Correlation ID used to trace this workflow or request across Leadping services.
     correlationId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the created by value on this transaction.
+    // Display name or identifier for the person or system that created this billing transaction response.
     createdBy *string
-    // The human-readable description of this transaction.
+    // Human-readable description that explains this billing transaction response to API users.
     description *string
-    // The monetary gateway fee amount for this transaction.
+    // Payment gateway fee amount charged for the wallet transaction.
     gatewayFeeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The gateway ID associated with this transaction.
+    // Payment gateway identifier linked to this transaction.
     gatewayId *string
-    // The current gateway status for this transaction.
+    // Payment gateway status returned for this transaction.
     gatewayStatus *string
     // The unique identifier for the entity.
     id *string
-    // The lead ID associated with this transaction.
+    // Lead ID connected to this transaction when the charge came from lead activity.
     leadId *string
-    // The lead name value for this transaction.
+    // Lead display name shown for lead-related wallet transactions.
     leadName *string
-    // Provider and wallet audit metadata for this transaction.
+    // Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
     metadata TransactionResponse_metadataable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The modified by value for this transaction.
+    // Display name or identifier for the person or system that last modified this billing transaction response.
     modifiedBy *string
-    // The monetary net amount for this transaction.
+    // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
-    // The operator or customer notes recorded for this transaction.
+    // Additional billing notes that explain the transaction for admins or customers.
     notes *string
-    // The payment method display value for this transaction.
+    // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
-    // The monetary platform fee amount for this transaction.
+    // Leadping platform fee amount included in the transaction.
     platformFeeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current transaction status for this transaction.
+    // Processing status for this wallet transaction.
     transactionStatus *TransactionStatus
-    // The transaction type classification for this transaction.
+    // Debit or credit classification for this wallet transaction.
     transactionType *TransactionType
 }
 // NewTransactionResponse instantiates a new TransactionResponse and sets the default values.
@@ -73,12 +73,12 @@ func NewTransactionResponse()(*TransactionResponse) {
 func CreateTransactionResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTransactionResponse(), nil
 }
-// GetAccountId gets the accountId property value. The account ID associated with this transaction.
+// GetAccountId gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
 // returns a *string when successful
 func (m *TransactionResponse) GetAccountId()(*string) {
     return m.accountId
 }
-// GetAccountName gets the accountName property value. The account name value for this transaction.
+// GetAccountName gets the accountName property value. Display name of the wallet or account used for this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetAccountName()(*string) {
     return m.accountName
@@ -88,22 +88,22 @@ func (m *TransactionResponse) GetAccountName()(*string) {
 func (m *TransactionResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAmount gets the amount property value. The monetary amount for this transaction.
+// GetAmount gets the amount property value. Monetary amount for this billing transaction or wallet operation.
 // returns a *float64 when successful
 func (m *TransactionResponse) GetAmount()(*float64) {
     return m.amount
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this transaction.
+// GetBusinessId gets the businessId property value. Business ID charged or credited by this wallet transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessName gets the businessName property value. The business name value for this transaction.
+// GetBusinessName gets the businessName property value. Business display name shown for this wallet transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetBusinessName()(*string) {
     return m.businessName
 }
-// GetCorrelationId gets the correlationId property value. The correlation ID associated with this transaction.
+// GetCorrelationId gets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
 // returns a *string when successful
 func (m *TransactionResponse) GetCorrelationId()(*string) {
     return m.correlationId
@@ -113,12 +113,12 @@ func (m *TransactionResponse) GetCorrelationId()(*string) {
 func (m *TransactionResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedBy gets the createdBy property value. The date and time for the created by value on this transaction.
+// GetCreatedBy gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
 // returns a *string when successful
 func (m *TransactionResponse) GetCreatedBy()(*string) {
     return m.createdBy
 }
-// GetDescription gets the description property value. The human-readable description of this transaction.
+// GetDescription gets the description property value. Human-readable description that explains this billing transaction response to API users.
 // returns a *string when successful
 func (m *TransactionResponse) GetDescription()(*string) {
     return m.description
@@ -369,17 +369,17 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetGatewayFeeAmount gets the gatewayFeeAmount property value. The monetary gateway fee amount for this transaction.
+// GetGatewayFeeAmount gets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
 // returns a UntypedNodeable when successful
 func (m *TransactionResponse) GetGatewayFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.gatewayFeeAmount
 }
-// GetGatewayId gets the gatewayId property value. The gateway ID associated with this transaction.
+// GetGatewayId gets the gatewayId property value. Payment gateway identifier linked to this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetGatewayId()(*string) {
     return m.gatewayId
 }
-// GetGatewayStatus gets the gatewayStatus property value. The current gateway status for this transaction.
+// GetGatewayStatus gets the gatewayStatus property value. Payment gateway status returned for this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetGatewayStatus()(*string) {
     return m.gatewayStatus
@@ -389,17 +389,17 @@ func (m *TransactionResponse) GetGatewayStatus()(*string) {
 func (m *TransactionResponse) GetId()(*string) {
     return m.id
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this transaction.
+// GetLeadId gets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
 // returns a *string when successful
 func (m *TransactionResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetLeadName gets the leadName property value. The lead name value for this transaction.
+// GetLeadName gets the leadName property value. Lead display name shown for lead-related wallet transactions.
 // returns a *string when successful
 func (m *TransactionResponse) GetLeadName()(*string) {
     return m.leadName
 }
-// GetMetadata gets the metadata property value. Provider and wallet audit metadata for this transaction.
+// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
 // returns a TransactionResponse_metadataable when successful
 func (m *TransactionResponse) GetMetadata()(TransactionResponse_metadataable) {
     return m.metadata
@@ -409,37 +409,37 @@ func (m *TransactionResponse) GetMetadata()(TransactionResponse_metadataable) {
 func (m *TransactionResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetModifiedBy gets the modifiedBy property value. The modified by value for this transaction.
+// GetModifiedBy gets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
 // returns a *string when successful
 func (m *TransactionResponse) GetModifiedBy()(*string) {
     return m.modifiedBy
 }
-// GetNetAmount gets the netAmount property value. The monetary net amount for this transaction.
+// GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 // returns a *float64 when successful
 func (m *TransactionResponse) GetNetAmount()(*float64) {
     return m.netAmount
 }
-// GetNotes gets the notes property value. The operator or customer notes recorded for this transaction.
+// GetNotes gets the notes property value. Additional billing notes that explain the transaction for admins or customers.
 // returns a *string when successful
 func (m *TransactionResponse) GetNotes()(*string) {
     return m.notes
 }
-// GetPaymentMethodDisplay gets the paymentMethodDisplay property value. The payment method display value for this transaction.
+// GetPaymentMethodDisplay gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetPaymentMethodDisplay()(*string) {
     return m.paymentMethodDisplay
 }
-// GetPlatformFeeAmount gets the platformFeeAmount property value. The monetary platform fee amount for this transaction.
+// GetPlatformFeeAmount gets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
 // returns a UntypedNodeable when successful
 func (m *TransactionResponse) GetPlatformFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.platformFeeAmount
 }
-// GetTransactionStatus gets the transactionStatus property value. The current transaction status for this transaction.
+// GetTransactionStatus gets the transactionStatus property value. Processing status for this wallet transaction.
 // returns a *TransactionStatus when successful
 func (m *TransactionResponse) GetTransactionStatus()(*TransactionStatus) {
     return m.transactionStatus
 }
-// GetTransactionType gets the transactionType property value. The transaction type classification for this transaction.
+// GetTransactionType gets the transactionType property value. Debit or credit classification for this wallet transaction.
 // returns a *TransactionType when successful
 func (m *TransactionResponse) GetTransactionType()(*TransactionType) {
     return m.transactionType
@@ -600,11 +600,11 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAccountId sets the accountId property value. The account ID associated with this transaction.
+// SetAccountId sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
 func (m *TransactionResponse) SetAccountId(value *string)() {
     m.accountId = value
 }
-// SetAccountName sets the accountName property value. The account name value for this transaction.
+// SetAccountName sets the accountName property value. Display name of the wallet or account used for this transaction.
 func (m *TransactionResponse) SetAccountName(value *string)() {
     m.accountName = value
 }
@@ -612,19 +612,19 @@ func (m *TransactionResponse) SetAccountName(value *string)() {
 func (m *TransactionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAmount sets the amount property value. The monetary amount for this transaction.
+// SetAmount sets the amount property value. Monetary amount for this billing transaction or wallet operation.
 func (m *TransactionResponse) SetAmount(value *float64)() {
     m.amount = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this transaction.
+// SetBusinessId sets the businessId property value. Business ID charged or credited by this wallet transaction.
 func (m *TransactionResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessName sets the businessName property value. The business name value for this transaction.
+// SetBusinessName sets the businessName property value. Business display name shown for this wallet transaction.
 func (m *TransactionResponse) SetBusinessName(value *string)() {
     m.businessName = value
 }
-// SetCorrelationId sets the correlationId property value. The correlation ID associated with this transaction.
+// SetCorrelationId sets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
 func (m *TransactionResponse) SetCorrelationId(value *string)() {
     m.correlationId = value
 }
@@ -632,23 +632,23 @@ func (m *TransactionResponse) SetCorrelationId(value *string)() {
 func (m *TransactionResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedBy sets the createdBy property value. The date and time for the created by value on this transaction.
+// SetCreatedBy sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
 func (m *TransactionResponse) SetCreatedBy(value *string)() {
     m.createdBy = value
 }
-// SetDescription sets the description property value. The human-readable description of this transaction.
+// SetDescription sets the description property value. Human-readable description that explains this billing transaction response to API users.
 func (m *TransactionResponse) SetDescription(value *string)() {
     m.description = value
 }
-// SetGatewayFeeAmount sets the gatewayFeeAmount property value. The monetary gateway fee amount for this transaction.
+// SetGatewayFeeAmount sets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
 func (m *TransactionResponse) SetGatewayFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.gatewayFeeAmount = value
 }
-// SetGatewayId sets the gatewayId property value. The gateway ID associated with this transaction.
+// SetGatewayId sets the gatewayId property value. Payment gateway identifier linked to this transaction.
 func (m *TransactionResponse) SetGatewayId(value *string)() {
     m.gatewayId = value
 }
-// SetGatewayStatus sets the gatewayStatus property value. The current gateway status for this transaction.
+// SetGatewayStatus sets the gatewayStatus property value. Payment gateway status returned for this transaction.
 func (m *TransactionResponse) SetGatewayStatus(value *string)() {
     m.gatewayStatus = value
 }
@@ -656,15 +656,15 @@ func (m *TransactionResponse) SetGatewayStatus(value *string)() {
 func (m *TransactionResponse) SetId(value *string)() {
     m.id = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this transaction.
+// SetLeadId sets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
 func (m *TransactionResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetLeadName sets the leadName property value. The lead name value for this transaction.
+// SetLeadName sets the leadName property value. Lead display name shown for lead-related wallet transactions.
 func (m *TransactionResponse) SetLeadName(value *string)() {
     m.leadName = value
 }
-// SetMetadata sets the metadata property value. Provider and wallet audit metadata for this transaction.
+// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
 func (m *TransactionResponse) SetMetadata(value TransactionResponse_metadataable)() {
     m.metadata = value
 }
@@ -672,31 +672,31 @@ func (m *TransactionResponse) SetMetadata(value TransactionResponse_metadataable
 func (m *TransactionResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetModifiedBy sets the modifiedBy property value. The modified by value for this transaction.
+// SetModifiedBy sets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
 func (m *TransactionResponse) SetModifiedBy(value *string)() {
     m.modifiedBy = value
 }
-// SetNetAmount sets the netAmount property value. The monetary net amount for this transaction.
+// SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 func (m *TransactionResponse) SetNetAmount(value *float64)() {
     m.netAmount = value
 }
-// SetNotes sets the notes property value. The operator or customer notes recorded for this transaction.
+// SetNotes sets the notes property value. Additional billing notes that explain the transaction for admins or customers.
 func (m *TransactionResponse) SetNotes(value *string)() {
     m.notes = value
 }
-// SetPaymentMethodDisplay sets the paymentMethodDisplay property value. The payment method display value for this transaction.
+// SetPaymentMethodDisplay sets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 func (m *TransactionResponse) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
 }
-// SetPlatformFeeAmount sets the platformFeeAmount property value. The monetary platform fee amount for this transaction.
+// SetPlatformFeeAmount sets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
 func (m *TransactionResponse) SetPlatformFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.platformFeeAmount = value
 }
-// SetTransactionStatus sets the transactionStatus property value. The current transaction status for this transaction.
+// SetTransactionStatus sets the transactionStatus property value. Processing status for this wallet transaction.
 func (m *TransactionResponse) SetTransactionStatus(value *TransactionStatus)() {
     m.transactionStatus = value
 }
-// SetTransactionType sets the transactionType property value. The transaction type classification for this transaction.
+// SetTransactionType sets the transactionType property value. Debit or credit classification for this wallet transaction.
 func (m *TransactionResponse) SetTransactionType(value *TransactionType)() {
     m.transactionType = value
 }

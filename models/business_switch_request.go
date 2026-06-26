@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// BusinessSwitchRequest request payload for business switch.
+// BusinessSwitchRequest request schema for the Leadping API business switch request, including the fields clients can send.
 type BusinessSwitchRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The business ID associated with this business switch.
+    // Business ID to switch into for the current Leadping session.
     businessId *string
 }
 // NewBusinessSwitchRequest instantiates a new BusinessSwitchRequest and sets the default values.
@@ -31,7 +31,7 @@ func CreateBusinessSwitchRequestFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *BusinessSwitchRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this business switch.
+// GetBusinessId gets the businessId property value. Business ID to switch into for the current Leadping session.
 // returns a *string when successful
 func (m *BusinessSwitchRequest) GetBusinessId()(*string) {
     return m.businessId
@@ -72,7 +72,7 @@ func (m *BusinessSwitchRequest) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *BusinessSwitchRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this business switch.
+// SetBusinessId sets the businessId property value. Business ID to switch into for the current Leadping session.
 func (m *BusinessSwitchRequest) SetBusinessId(value *string)() {
     m.businessId = value
 }

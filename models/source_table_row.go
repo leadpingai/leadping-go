@@ -8,59 +8,59 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceTableRow aPI DTO containing source data used by Leadping API contracts.
+// SourceTableRow list item schema for Leadping API lead source table row results shown in searchable tables.
 type SourceTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The admin force enablement override on this source.
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride SourceTableRow_adminEnablementOverrideable
-    // The allowed products included with this source.
+    // Product allowlist used to accept or route leads from this source.
     allowedProducts []string
-    // The allowed states included with this source.
+    // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // The date and time when the API key was issued.
+    // UTC timestamp when Leadping issued the source API key.
     apiKeyIssuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time this source API key was last used.
+    // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The API key preview value for this source.
+    // Masked preview of the source API key for display without exposing the secret.
     apiKeyPreview *string
-    // The total number of tracked uses for this source API key.
+    // Total number of authenticated requests made with this source API key.
     apiKeyTotalUses *int64
-    // The business value for this source.
+    // Business summary connected to this lead source table row.
     business SourceTableRow_businessable
-    // The business ID associated with this source.
+    // Business ID that owns this lead source.
     businessId *string
-    // Whether this source is compliance approved.
+    // Indicates whether the business or sender passed compliance review.
     complianceApproved *bool
-    // The cost per lead value for this source.
+    // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The date and time for the created at value on this source.
+    // UTC timestamp when this lead source table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The user that created this source.
+    // User summary for the person who created this lead source table row.
     createdByUser SourceTableRow_createdByUserable
-    // Tag ids applied automatically to leads created from this source.
+    // Tag IDs automatically assigned to leads created by this source.
     defaultTagIds []string
-    // Tags applied automatically to leads created from this source.
+    // Default tag summaries automatically applied to leads from this source.
     defaultTags []TagSummaryable
-    // The human-readable description of this source.
+    // Human-readable description that explains this lead source table row to API users.
     description *string
-    // Whether this source is enabled.
+    // Indicates whether this lead source table row is active and available in the Leadping API.
     enabled *bool
-    // The date and time when this source first accepted a lead.
+    // UTC timestamp when this source first delivered a lead to Leadping.
     firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique ID for this source.
+    // Unique Leadping identifier for this lead source table row.
     id *string
-    // The date and time when this source most recently accepted a lead.
+    // UTC timestamp when this source most recently delivered a lead to Leadping.
     lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the modified at value on this source.
+    // UTC timestamp when this lead source table row was last modified.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The user that most recently modified this source.
+    // User summary for the person who last modified this lead source table row.
     modifiedByUser SourceTableRow_modifiedByUserable
-    // The human-readable name shown for this source.
+    // Display name for this lead source table row in the Leadping API.
     name *string
-    // Whether this source requires TrustedForm.
+    // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
-    // The user value for this source.
+    // User summary connected to this lead source table row.
     user SourceTableRow_userable
 }
 // NewSourceTableRow instantiates a new SourceTableRow and sets the default values.
@@ -80,87 +80,87 @@ func CreateSourceTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *SourceTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The admin force enablement override on this source.
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a SourceTableRow_adminEnablementOverrideable when successful
 func (m *SourceTableRow) GetAdminEnablementOverride()(SourceTableRow_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetAllowedProducts gets the allowedProducts property value. The allowed products included with this source.
+// GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
 func (m *SourceTableRow) GetAllowedProducts()([]string) {
     return m.allowedProducts
 }
-// GetAllowedStates gets the allowedStates property value. The allowed states included with this source.
+// GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
 func (m *SourceTableRow) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. The date and time when the API key was issued.
+// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
 // returns a *Time when successful
 func (m *SourceTableRow) GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.apiKeyIssuedAt
 }
-// GetApiKeyLastUsedAt gets the apiKeyLastUsedAt property value. The date and time this source API key was last used.
+// GetApiKeyLastUsedAt gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 // returns a *Time when successful
 func (m *SourceTableRow) GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.apiKeyLastUsedAt
 }
-// GetApiKeyPreview gets the apiKeyPreview property value. The API key preview value for this source.
+// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 // returns a *string when successful
 func (m *SourceTableRow) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
 }
-// GetApiKeyTotalUses gets the apiKeyTotalUses property value. The total number of tracked uses for this source API key.
+// GetApiKeyTotalUses gets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
 // returns a *int64 when successful
 func (m *SourceTableRow) GetApiKeyTotalUses()(*int64) {
     return m.apiKeyTotalUses
 }
-// GetBusiness gets the business property value. The business value for this source.
+// GetBusiness gets the business property value. Business summary connected to this lead source table row.
 // returns a SourceTableRow_businessable when successful
 func (m *SourceTableRow) GetBusiness()(SourceTableRow_businessable) {
     return m.business
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this source.
+// GetBusinessId gets the businessId property value. Business ID that owns this lead source.
 // returns a *string when successful
 func (m *SourceTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetComplianceApproved gets the complianceApproved property value. Whether this source is compliance approved.
+// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 // returns a *bool when successful
 func (m *SourceTableRow) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
-// GetCostPerLead gets the costPerLead property value. The cost per lead value for this source.
+// GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
 func (m *SourceTableRow) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this source.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this lead source table row was created.
 // returns a *Time when successful
 func (m *SourceTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedByUser gets the createdByUser property value. The user that created this source.
+// GetCreatedByUser gets the createdByUser property value. User summary for the person who created this lead source table row.
 // returns a SourceTableRow_createdByUserable when successful
 func (m *SourceTableRow) GetCreatedByUser()(SourceTableRow_createdByUserable) {
     return m.createdByUser
 }
-// GetDefaultTagIds gets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceTableRow) GetDefaultTagIds()([]string) {
     return m.defaultTagIds
 }
-// GetDefaultTags gets the defaultTags property value. Tags applied automatically to leads created from this source.
+// GetDefaultTags gets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
 // returns a []TagSummaryable when successful
 func (m *SourceTableRow) GetDefaultTags()([]TagSummaryable) {
     return m.defaultTags
 }
-// GetDescription gets the description property value. The human-readable description of this source.
+// GetDescription gets the description property value. Human-readable description that explains this lead source table row to API users.
 // returns a *string when successful
 func (m *SourceTableRow) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this source is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this lead source table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *SourceTableRow) GetEnabled()(*bool) {
     return m.enabled
@@ -445,42 +445,42 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
     }
     return res
 }
-// GetFirstLeadReceivedAt gets the firstLeadReceivedAt property value. The date and time when this source first accepted a lead.
+// GetFirstLeadReceivedAt gets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
 // returns a *Time when successful
 func (m *SourceTableRow) GetFirstLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.firstLeadReceivedAt
 }
-// GetId gets the id property value. The unique ID for this source.
+// GetId gets the id property value. Unique Leadping identifier for this lead source table row.
 // returns a *string when successful
 func (m *SourceTableRow) GetId()(*string) {
     return m.id
 }
-// GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. The date and time when this source most recently accepted a lead.
+// GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 // returns a *Time when successful
 func (m *SourceTableRow) GetLastLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastLeadReceivedAt
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time for the modified at value on this source.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when this lead source table row was last modified.
 // returns a *Time when successful
 func (m *SourceTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetModifiedByUser gets the modifiedByUser property value. The user that most recently modified this source.
+// GetModifiedByUser gets the modifiedByUser property value. User summary for the person who last modified this lead source table row.
 // returns a SourceTableRow_modifiedByUserable when successful
 func (m *SourceTableRow) GetModifiedByUser()(SourceTableRow_modifiedByUserable) {
     return m.modifiedByUser
 }
-// GetName gets the name property value. The human-readable name shown for this source.
+// GetName gets the name property value. Display name for this lead source table row in the Leadping API.
 // returns a *string when successful
 func (m *SourceTableRow) GetName()(*string) {
     return m.name
 }
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceTableRow) GetRequiresTrustedForm()(*bool) {
     return m.requiresTrustedForm
 }
-// GetUser gets the user property value. The user value for this source.
+// GetUser gets the user property value. User summary connected to this lead source table row.
 // returns a SourceTableRow_userable when successful
 func (m *SourceTableRow) GetUser()(SourceTableRow_userable) {
     return m.user
@@ -655,103 +655,103 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SourceTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The admin force enablement override on this source.
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *SourceTableRow) SetAdminEnablementOverride(value SourceTableRow_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetAllowedProducts sets the allowedProducts property value. The allowed products included with this source.
+// SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 func (m *SourceTableRow) SetAllowedProducts(value []string)() {
     m.allowedProducts = value
 }
-// SetAllowedStates sets the allowedStates property value. The allowed states included with this source.
+// SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceTableRow) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. The date and time when the API key was issued.
+// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
 func (m *SourceTableRow) SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyIssuedAt = value
 }
-// SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. The date and time this source API key was last used.
+// SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
 }
-// SetApiKeyPreview sets the apiKeyPreview property value. The API key preview value for this source.
+// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 func (m *SourceTableRow) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }
-// SetApiKeyTotalUses sets the apiKeyTotalUses property value. The total number of tracked uses for this source API key.
+// SetApiKeyTotalUses sets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
 func (m *SourceTableRow) SetApiKeyTotalUses(value *int64)() {
     m.apiKeyTotalUses = value
 }
-// SetBusiness sets the business property value. The business value for this source.
+// SetBusiness sets the business property value. Business summary connected to this lead source table row.
 func (m *SourceTableRow) SetBusiness(value SourceTableRow_businessable)() {
     m.business = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this source.
+// SetBusinessId sets the businessId property value. Business ID that owns this lead source.
 func (m *SourceTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetComplianceApproved sets the complianceApproved property value. Whether this source is compliance approved.
+// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 func (m *SourceTableRow) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
-// SetCostPerLead sets the costPerLead property value. The cost per lead value for this source.
+// SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceTableRow) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this source.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this lead source table row was created.
 func (m *SourceTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedByUser sets the createdByUser property value. The user that created this source.
+// SetCreatedByUser sets the createdByUser property value. User summary for the person who created this lead source table row.
 func (m *SourceTableRow) SetCreatedByUser(value SourceTableRow_createdByUserable)() {
     m.createdByUser = value
 }
-// SetDefaultTagIds sets the defaultTagIds property value. Tag ids applied automatically to leads created from this source.
+// SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceTableRow) SetDefaultTagIds(value []string)() {
     m.defaultTagIds = value
 }
-// SetDefaultTags sets the defaultTags property value. Tags applied automatically to leads created from this source.
+// SetDefaultTags sets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
 func (m *SourceTableRow) SetDefaultTags(value []TagSummaryable)() {
     m.defaultTags = value
 }
-// SetDescription sets the description property value. The human-readable description of this source.
+// SetDescription sets the description property value. Human-readable description that explains this lead source table row to API users.
 func (m *SourceTableRow) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this source is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this lead source table row is active and available in the Leadping API.
 func (m *SourceTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetFirstLeadReceivedAt sets the firstLeadReceivedAt property value. The date and time when this source first accepted a lead.
+// SetFirstLeadReceivedAt sets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
 func (m *SourceTableRow) SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.firstLeadReceivedAt = value
 }
-// SetId sets the id property value. The unique ID for this source.
+// SetId sets the id property value. Unique Leadping identifier for this lead source table row.
 func (m *SourceTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. The date and time when this source most recently accepted a lead.
+// SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 func (m *SourceTableRow) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastLeadReceivedAt = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time for the modified at value on this source.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when this lead source table row was last modified.
 func (m *SourceTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetModifiedByUser sets the modifiedByUser property value. The user that most recently modified this source.
+// SetModifiedByUser sets the modifiedByUser property value. User summary for the person who last modified this lead source table row.
 func (m *SourceTableRow) SetModifiedByUser(value SourceTableRow_modifiedByUserable)() {
     m.modifiedByUser = value
 }
-// SetName sets the name property value. The human-readable name shown for this source.
+// SetName sets the name property value. Display name for this lead source table row in the Leadping API.
 func (m *SourceTableRow) SetName(value *string)() {
     m.name = value
 }
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Whether this source requires TrustedForm.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceTableRow) SetRequiresTrustedForm(value *bool)() {
     m.requiresTrustedForm = value
 }
-// SetUser sets the user property value. The user value for this source.
+// SetUser sets the user property value. User summary connected to this lead source table row.
 func (m *SourceTableRow) SetUser(value SourceTableRow_userable)() {
     m.user = value
 }

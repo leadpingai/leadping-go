@@ -7,75 +7,75 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadIntakeRequest request payload for lead intake.
+// LeadIntakeRequest request schema for the Leadping API lead intake request, including the fields clients can send.
 type LeadIntakeRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The address1 value for this lead intake.
+    // First street address line submitted by the lead intake source.
     address1 *string
-    // The address2 value for this lead intake.
+    // Second street address line submitted by the lead intake source.
     address2 *string
-    // The date and time for the birth date value on this lead intake.
+    // Lead birth date used for demographic matching and insurance intake workflows.
     birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // The city value for this lead intake.
+    // City for the lead or business postal address.
     city *string
-    // The date and time for the date of birth value on this lead intake.
+    // Lead date of birth supplied by intake sources and normalized into the lead profile.
     dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // The direct post price value for this lead intake.
+    // Direct-post price supplied by the lead source during intake.
     directPostPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The email address associated with this lead intake.
+    // Email address for the person represented by this lead intake request.
     email *string
-    // The external ID associated with this lead intake.
+    // External system identifier used to reconcile this lead intake request across integrations.
     externalId *string
-    // The first name value for this lead intake.
+    // First name of the lead, user, or contact represented by this lead intake request.
     firstName *string
-    // The gender value for this lead intake.
+    // Lead gender supplied by intake sources and normalized when possible.
     gender *string
-    // The landing page value for this lead intake.
+    // Landing page URL where the lead submitted their information.
     landingPage *string
-    // The date and time for the last name value on this lead intake.
+    // Last name of the lead, user, or contact represented by this lead intake request.
     lastName *string
-    // The phone number associated with this lead intake.
+    // Phone details for the lead, user, or business represented by this lead intake request.
     phone *string
-    // The phone type classification for this lead intake.
+    // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
     phoneType *string
-    // The postal code value for this lead intake.
+    // Postal code for the lead or business address.
     postalCode *string
-    // The monetary price for this lead intake.
+    // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The product value for this lead intake.
+    // Product or offer associated with the lead or source.
     product *string
-    // The referrer value for this lead intake.
+    // Referring page or traffic source that sent the lead into Leadping.
     referrer *string
-    // The seller lead ID associated with this lead intake.
+    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
     sellerLeadId *string
-    // The seller lead identifier value for this lead intake.
+    // Alternate seller-provided lead identifier used during intake normalization.
     sellerLeadIdentifier *string
-    // The source metadata key-value data carried with this lead intake; values must be safe to expose in API responses.
+    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     sourceMetadata LeadIntakeRequest_sourceMetadataable
-    // The current state for this lead intake.
+    // State, province, or region for the lead or business postal address.
     state *string
-    // The sub ID associated with this lead intake.
+    // Affiliate or publisher sub ID captured for lead attribution.
     subId *string
-    // Existing business tag ids to assign as part of intake.
+    // Tag IDs assigned to or filtered against this lead.
     tagIds []string
-    // Business tag names to assign as part of intake.
+    // Tag names assigned to this lead when matching existing tags by name.
     tagNames []string
-    // The URL associated with this lead intake.
+    // TrustedForm certificate URL used as proof of consumer consent.
     trustedFormUrl *string
-    // The utm campaign value for this lead intake.
+    // UTM campaign parameter captured for lead attribution reporting.
     utmCampaign *string
-    // The utm content value for this lead intake.
+    // UTM content parameter captured for lead attribution reporting.
     utmContent *string
-    // The utm medium value for this lead intake.
+    // UTM medium parameter captured for lead attribution reporting.
     utmMedium *string
-    // The utm source value for this lead intake.
+    // UTM source parameter captured for lead attribution reporting.
     utmSource *string
-    // The utm term value for this lead intake.
+    // UTM term parameter captured for lead attribution reporting.
     utmTerm *string
-    // The vertical value for this lead intake.
+    // Industry vertical used for lead routing, compliance review, and reporting.
     vertical *string
-    // The zip value for this lead intake.
+    // ZIP code submitted by the lead intake source.
     zip *string
 }
 // NewLeadIntakeRequest instantiates a new LeadIntakeRequest and sets the default values.
@@ -95,42 +95,42 @@ func CreateLeadIntakeRequestFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *LeadIntakeRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAddress1 gets the address1 property value. The address1 value for this lead intake.
+// GetAddress1 gets the address1 property value. First street address line submitted by the lead intake source.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetAddress1()(*string) {
     return m.address1
 }
-// GetAddress2 gets the address2 property value. The address2 value for this lead intake.
+// GetAddress2 gets the address2 property value. Second street address line submitted by the lead intake source.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetAddress2()(*string) {
     return m.address2
 }
-// GetBirthDate gets the birthDate property value. The date and time for the birth date value on this lead intake.
+// GetBirthDate gets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 // returns a *DateOnly when successful
 func (m *LeadIntakeRequest) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
     return m.birthDate
 }
-// GetCity gets the city property value. The city value for this lead intake.
+// GetCity gets the city property value. City for the lead or business postal address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetCity()(*string) {
     return m.city
 }
-// GetDateOfBirth gets the dateOfBirth property value. The date and time for the date of birth value on this lead intake.
+// GetDateOfBirth gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
 // returns a *DateOnly when successful
 func (m *LeadIntakeRequest) GetDateOfBirth()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
     return m.dateOfBirth
 }
-// GetDirectPostPrice gets the directPostPrice property value. The direct post price value for this lead intake.
+// GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
 // returns a UntypedNodeable when successful
 func (m *LeadIntakeRequest) GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.directPostPrice
 }
-// GetEmail gets the email property value. The email address associated with this lead intake.
+// GetEmail gets the email property value. Email address for the person represented by this lead intake request.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetEmail()(*string) {
     return m.email
 }
-// GetExternalId gets the externalId property value. The external ID associated with this lead intake.
+// GetExternalId gets the externalId property value. External system identifier used to reconcile this lead intake request across integrations.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetExternalId()(*string) {
     return m.externalId
@@ -483,127 +483,127 @@ func (m *LeadIntakeRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this lead intake.
+// GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead intake request.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetFirstName()(*string) {
     return m.firstName
 }
-// GetGender gets the gender property value. The gender value for this lead intake.
+// GetGender gets the gender property value. Lead gender supplied by intake sources and normalized when possible.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetGender()(*string) {
     return m.gender
 }
-// GetLandingPage gets the landingPage property value. The landing page value for this lead intake.
+// GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetLandingPage()(*string) {
     return m.landingPage
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this lead intake.
+// GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead intake request.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetLastName()(*string) {
     return m.lastName
 }
-// GetPhone gets the phone property value. The phone number associated with this lead intake.
+// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPhone()(*string) {
     return m.phone
 }
-// GetPhoneType gets the phoneType property value. The phone type classification for this lead intake.
+// GetPhoneType gets the phoneType property value. Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPhoneType()(*string) {
     return m.phoneType
 }
-// GetPostalCode gets the postalCode property value. The postal code value for this lead intake.
+// GetPostalCode gets the postalCode property value. Postal code for the lead or business address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPostalCode()(*string) {
     return m.postalCode
 }
-// GetPrice gets the price property value. The monetary price for this lead intake.
+// GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a UntypedNodeable when successful
 func (m *LeadIntakeRequest) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
-// GetProduct gets the product property value. The product value for this lead intake.
+// GetProduct gets the product property value. Product or offer associated with the lead or source.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetProduct()(*string) {
     return m.product
 }
-// GetReferrer gets the referrer property value. The referrer value for this lead intake.
+// GetReferrer gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetReferrer()(*string) {
     return m.referrer
 }
-// GetSellerLeadId gets the sellerLeadId property value. The seller lead ID associated with this lead intake.
+// GetSellerLeadId gets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetSellerLeadId()(*string) {
     return m.sellerLeadId
 }
-// GetSellerLeadIdentifier gets the sellerLeadIdentifier property value. The seller lead identifier value for this lead intake.
+// GetSellerLeadIdentifier gets the sellerLeadIdentifier property value. Alternate seller-provided lead identifier used during intake normalization.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetSellerLeadIdentifier()(*string) {
     return m.sellerLeadIdentifier
 }
-// GetSourceMetadata gets the sourceMetadata property value. The source metadata key-value data carried with this lead intake; values must be safe to expose in API responses.
+// GetSourceMetadata gets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 // returns a LeadIntakeRequest_sourceMetadataable when successful
 func (m *LeadIntakeRequest) GetSourceMetadata()(LeadIntakeRequest_sourceMetadataable) {
     return m.sourceMetadata
 }
-// GetState gets the state property value. The current state for this lead intake.
+// GetState gets the state property value. State, province, or region for the lead or business postal address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetState()(*string) {
     return m.state
 }
-// GetSubId gets the subId property value. The sub ID associated with this lead intake.
+// GetSubId gets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetSubId()(*string) {
     return m.subId
 }
-// GetTagIds gets the tagIds property value. Existing business tag ids to assign as part of intake.
+// GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 // returns a []string when successful
 func (m *LeadIntakeRequest) GetTagIds()([]string) {
     return m.tagIds
 }
-// GetTagNames gets the tagNames property value. Business tag names to assign as part of intake.
+// GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 // returns a []string when successful
 func (m *LeadIntakeRequest) GetTagNames()([]string) {
     return m.tagNames
 }
-// GetTrustedFormUrl gets the trustedFormUrl property value. The URL associated with this lead intake.
+// GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetTrustedFormUrl()(*string) {
     return m.trustedFormUrl
 }
-// GetUtmCampaign gets the utmCampaign property value. The utm campaign value for this lead intake.
+// GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmCampaign()(*string) {
     return m.utmCampaign
 }
-// GetUtmContent gets the utmContent property value. The utm content value for this lead intake.
+// GetUtmContent gets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmContent()(*string) {
     return m.utmContent
 }
-// GetUtmMedium gets the utmMedium property value. The utm medium value for this lead intake.
+// GetUtmMedium gets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmMedium()(*string) {
     return m.utmMedium
 }
-// GetUtmSource gets the utmSource property value. The utm source value for this lead intake.
+// GetUtmSource gets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmSource()(*string) {
     return m.utmSource
 }
-// GetUtmTerm gets the utmTerm property value. The utm term value for this lead intake.
+// GetUtmTerm gets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmTerm()(*string) {
     return m.utmTerm
 }
-// GetVertical gets the vertical property value. The vertical value for this lead intake.
+// GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetVertical()(*string) {
     return m.vertical
 }
-// GetZip gets the zip property value. The zip value for this lead intake.
+// GetZip gets the zip property value. ZIP code submitted by the lead intake source.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetZip()(*string) {
     return m.zip
@@ -820,135 +820,135 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *LeadIntakeRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAddress1 sets the address1 property value. The address1 value for this lead intake.
+// SetAddress1 sets the address1 property value. First street address line submitted by the lead intake source.
 func (m *LeadIntakeRequest) SetAddress1(value *string)() {
     m.address1 = value
 }
-// SetAddress2 sets the address2 property value. The address2 value for this lead intake.
+// SetAddress2 sets the address2 property value. Second street address line submitted by the lead intake source.
 func (m *LeadIntakeRequest) SetAddress2(value *string)() {
     m.address2 = value
 }
-// SetBirthDate sets the birthDate property value. The date and time for the birth date value on this lead intake.
+// SetBirthDate sets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
     m.birthDate = value
 }
-// SetCity sets the city property value. The city value for this lead intake.
+// SetCity sets the city property value. City for the lead or business postal address.
 func (m *LeadIntakeRequest) SetCity(value *string)() {
     m.city = value
 }
-// SetDateOfBirth sets the dateOfBirth property value. The date and time for the date of birth value on this lead intake.
+// SetDateOfBirth sets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
 func (m *LeadIntakeRequest) SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
     m.dateOfBirth = value
 }
-// SetDirectPostPrice sets the directPostPrice property value. The direct post price value for this lead intake.
+// SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
 func (m *LeadIntakeRequest) SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.directPostPrice = value
 }
-// SetEmail sets the email property value. The email address associated with this lead intake.
+// SetEmail sets the email property value. Email address for the person represented by this lead intake request.
 func (m *LeadIntakeRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetExternalId sets the externalId property value. The external ID associated with this lead intake.
+// SetExternalId sets the externalId property value. External system identifier used to reconcile this lead intake request across integrations.
 func (m *LeadIntakeRequest) SetExternalId(value *string)() {
     m.externalId = value
 }
-// SetFirstName sets the firstName property value. The first name value for this lead intake.
+// SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead intake request.
 func (m *LeadIntakeRequest) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetGender sets the gender property value. The gender value for this lead intake.
+// SetGender sets the gender property value. Lead gender supplied by intake sources and normalized when possible.
 func (m *LeadIntakeRequest) SetGender(value *string)() {
     m.gender = value
 }
-// SetLandingPage sets the landingPage property value. The landing page value for this lead intake.
+// SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadIntakeRequest) SetLandingPage(value *string)() {
     m.landingPage = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this lead intake.
+// SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead intake request.
 func (m *LeadIntakeRequest) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetPhone sets the phone property value. The phone number associated with this lead intake.
+// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
 func (m *LeadIntakeRequest) SetPhone(value *string)() {
     m.phone = value
 }
-// SetPhoneType sets the phoneType property value. The phone type classification for this lead intake.
+// SetPhoneType sets the phoneType property value. Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
 func (m *LeadIntakeRequest) SetPhoneType(value *string)() {
     m.phoneType = value
 }
-// SetPostalCode sets the postalCode property value. The postal code value for this lead intake.
+// SetPostalCode sets the postalCode property value. Postal code for the lead or business address.
 func (m *LeadIntakeRequest) SetPostalCode(value *string)() {
     m.postalCode = value
 }
-// SetPrice sets the price property value. The monetary price for this lead intake.
+// SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
 func (m *LeadIntakeRequest) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
-// SetProduct sets the product property value. The product value for this lead intake.
+// SetProduct sets the product property value. Product or offer associated with the lead or source.
 func (m *LeadIntakeRequest) SetProduct(value *string)() {
     m.product = value
 }
-// SetReferrer sets the referrer property value. The referrer value for this lead intake.
+// SetReferrer sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 func (m *LeadIntakeRequest) SetReferrer(value *string)() {
     m.referrer = value
 }
-// SetSellerLeadId sets the sellerLeadId property value. The seller lead ID associated with this lead intake.
+// SetSellerLeadId sets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 func (m *LeadIntakeRequest) SetSellerLeadId(value *string)() {
     m.sellerLeadId = value
 }
-// SetSellerLeadIdentifier sets the sellerLeadIdentifier property value. The seller lead identifier value for this lead intake.
+// SetSellerLeadIdentifier sets the sellerLeadIdentifier property value. Alternate seller-provided lead identifier used during intake normalization.
 func (m *LeadIntakeRequest) SetSellerLeadIdentifier(value *string)() {
     m.sellerLeadIdentifier = value
 }
-// SetSourceMetadata sets the sourceMetadata property value. The source metadata key-value data carried with this lead intake; values must be safe to expose in API responses.
+// SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 func (m *LeadIntakeRequest) SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)() {
     m.sourceMetadata = value
 }
-// SetState sets the state property value. The current state for this lead intake.
+// SetState sets the state property value. State, province, or region for the lead or business postal address.
 func (m *LeadIntakeRequest) SetState(value *string)() {
     m.state = value
 }
-// SetSubId sets the subId property value. The sub ID associated with this lead intake.
+// SetSubId sets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 func (m *LeadIntakeRequest) SetSubId(value *string)() {
     m.subId = value
 }
-// SetTagIds sets the tagIds property value. Existing business tag ids to assign as part of intake.
+// SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 func (m *LeadIntakeRequest) SetTagIds(value []string)() {
     m.tagIds = value
 }
-// SetTagNames sets the tagNames property value. Business tag names to assign as part of intake.
+// SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 func (m *LeadIntakeRequest) SetTagNames(value []string)() {
     m.tagNames = value
 }
-// SetTrustedFormUrl sets the trustedFormUrl property value. The URL associated with this lead intake.
+// SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 func (m *LeadIntakeRequest) SetTrustedFormUrl(value *string)() {
     m.trustedFormUrl = value
 }
-// SetUtmCampaign sets the utmCampaign property value. The utm campaign value for this lead intake.
+// SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmCampaign(value *string)() {
     m.utmCampaign = value
 }
-// SetUtmContent sets the utmContent property value. The utm content value for this lead intake.
+// SetUtmContent sets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmContent(value *string)() {
     m.utmContent = value
 }
-// SetUtmMedium sets the utmMedium property value. The utm medium value for this lead intake.
+// SetUtmMedium sets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmMedium(value *string)() {
     m.utmMedium = value
 }
-// SetUtmSource sets the utmSource property value. The utm source value for this lead intake.
+// SetUtmSource sets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmSource(value *string)() {
     m.utmSource = value
 }
-// SetUtmTerm sets the utmTerm property value. The utm term value for this lead intake.
+// SetUtmTerm sets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmTerm(value *string)() {
     m.utmTerm = value
 }
-// SetVertical sets the vertical property value. The vertical value for this lead intake.
+// SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 func (m *LeadIntakeRequest) SetVertical(value *string)() {
     m.vertical = value
 }
-// SetZip sets the zip property value. The zip value for this lead intake.
+// SetZip sets the zip property value. ZIP code submitted by the lead intake source.
 func (m *LeadIntakeRequest) SetZip(value *string)() {
     m.zip = value
 }

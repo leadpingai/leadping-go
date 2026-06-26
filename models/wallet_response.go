@@ -8,29 +8,29 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// WalletResponse aPI response containing wallet data returned to callers.
+// WalletResponse response schema for the Leadping API billing wallet response returned to authenticated clients.
 type WalletResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The amountPurchased property
+    // Amount of wallet credit purchased in this deposit.
     amountPurchased i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The amountRemaining property
+    // Amount of wallet credit still available for future usage.
     amountRemaining i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The monetary balance for this wallet.
+    // Wallet or account balance after this transaction is applied.
     balance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The date and time for the balance calculated at value on this wallet.
+    // UTC timestamp when Leadping last calculated the wallet balance.
     balanceCalculatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The businessId property
+    // Business ID that owns this wallet balance or credit.
     businessId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the lifecycle state for a wallet credit lot.
     creditStatus *WalletResponse_creditStatus
-    // The currency property
+    // ISO currency code used for the monetary amounts in this billing wallet response.
     currency *string
-    // The expiredCreditAmount property
+    // Amount of wallet credit that has expired.
     expiredCreditAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The expiresAt property
+    // UTC timestamp when the wallet credit expires.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The unique identifier for the entity.
     id *string
@@ -38,21 +38,21 @@ type WalletResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The nextCreditExpirationAt property
+    // UTC timestamp when the next wallet credit amount expires.
     nextCreditExpirationAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The nextExpiringCreditAmount property
+    // Amount of wallet credit scheduled to expire next.
     nextExpiringCreditAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The originalTransactionId property
+    // Original wallet transaction ID referenced by a reversal, refund, or adjustment.
     originalTransactionId *string
-    // The purchasedAt property
+    // UTC timestamp when the wallet credit was purchased.
     purchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the source that created a wallet credit lot.
     sourceType *WalletResponse_sourceType
-    // The stripeChargeId property
+    // Stripe charge identifier linked to this billing transaction.
     stripeChargeId *string
-    // The stripeInvoiceId property
+    // Stripe invoice identifier linked to this billing transaction.
     stripeInvoiceId *string
-    // The stripePaymentIntentId property
+    // Stripe payment intent identifier linked to this billing transaction.
     stripePaymentIntentId *string
 }
 // NewWalletResponse instantiates a new WalletResponse and sets the default values.
@@ -72,27 +72,27 @@ func CreateWalletResponseFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *WalletResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAmountPurchased gets the amountPurchased property value. The amountPurchased property
+// GetAmountPurchased gets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
 // returns a UntypedNodeable when successful
 func (m *WalletResponse) GetAmountPurchased()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amountPurchased
 }
-// GetAmountRemaining gets the amountRemaining property value. The amountRemaining property
+// GetAmountRemaining gets the amountRemaining property value. Amount of wallet credit still available for future usage.
 // returns a UntypedNodeable when successful
 func (m *WalletResponse) GetAmountRemaining()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amountRemaining
 }
-// GetBalance gets the balance property value. The monetary balance for this wallet.
+// GetBalance gets the balance property value. Wallet or account balance after this transaction is applied.
 // returns a UntypedNodeable when successful
 func (m *WalletResponse) GetBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.balance
 }
-// GetBalanceCalculatedAt gets the balanceCalculatedAt property value. The date and time for the balance calculated at value on this wallet.
+// GetBalanceCalculatedAt gets the balanceCalculatedAt property value. UTC timestamp when Leadping last calculated the wallet balance.
 // returns a *Time when successful
 func (m *WalletResponse) GetBalanceCalculatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.balanceCalculatedAt
 }
-// GetBusinessId gets the businessId property value. The businessId property
+// GetBusinessId gets the businessId property value. Business ID that owns this wallet balance or credit.
 // returns a *string when successful
 func (m *WalletResponse) GetBusinessId()(*string) {
     return m.businessId
@@ -107,17 +107,17 @@ func (m *WalletResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f307
 func (m *WalletResponse) GetCreditStatus()(*WalletResponse_creditStatus) {
     return m.creditStatus
 }
-// GetCurrency gets the currency property value. The currency property
+// GetCurrency gets the currency property value. ISO currency code used for the monetary amounts in this billing wallet response.
 // returns a *string when successful
 func (m *WalletResponse) GetCurrency()(*string) {
     return m.currency
 }
-// GetExpiredCreditAmount gets the expiredCreditAmount property value. The expiredCreditAmount property
+// GetExpiredCreditAmount gets the expiredCreditAmount property value. Amount of wallet credit that has expired.
 // returns a UntypedNodeable when successful
 func (m *WalletResponse) GetExpiredCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.expiredCreditAmount
 }
-// GetExpiresAt gets the expiresAt property value. The expiresAt property
+// GetExpiresAt gets the expiresAt property value. UTC timestamp when the wallet credit expires.
 // returns a *Time when successful
 func (m *WalletResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.expiresAt
@@ -353,22 +353,22 @@ func (m *WalletResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f30
 func (m *WalletResponse) GetName()(*string) {
     return m.name
 }
-// GetNextCreditExpirationAt gets the nextCreditExpirationAt property value. The nextCreditExpirationAt property
+// GetNextCreditExpirationAt gets the nextCreditExpirationAt property value. UTC timestamp when the next wallet credit amount expires.
 // returns a *Time when successful
 func (m *WalletResponse) GetNextCreditExpirationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextCreditExpirationAt
 }
-// GetNextExpiringCreditAmount gets the nextExpiringCreditAmount property value. The nextExpiringCreditAmount property
+// GetNextExpiringCreditAmount gets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
 // returns a UntypedNodeable when successful
 func (m *WalletResponse) GetNextExpiringCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.nextExpiringCreditAmount
 }
-// GetOriginalTransactionId gets the originalTransactionId property value. The originalTransactionId property
+// GetOriginalTransactionId gets the originalTransactionId property value. Original wallet transaction ID referenced by a reversal, refund, or adjustment.
 // returns a *string when successful
 func (m *WalletResponse) GetOriginalTransactionId()(*string) {
     return m.originalTransactionId
 }
-// GetPurchasedAt gets the purchasedAt property value. The purchasedAt property
+// GetPurchasedAt gets the purchasedAt property value. UTC timestamp when the wallet credit was purchased.
 // returns a *Time when successful
 func (m *WalletResponse) GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.purchasedAt
@@ -378,17 +378,17 @@ func (m *WalletResponse) GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3
 func (m *WalletResponse) GetSourceType()(*WalletResponse_sourceType) {
     return m.sourceType
 }
-// GetStripeChargeId gets the stripeChargeId property value. The stripeChargeId property
+// GetStripeChargeId gets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
 // returns a *string when successful
 func (m *WalletResponse) GetStripeChargeId()(*string) {
     return m.stripeChargeId
 }
-// GetStripeInvoiceId gets the stripeInvoiceId property value. The stripeInvoiceId property
+// GetStripeInvoiceId gets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
 // returns a *string when successful
 func (m *WalletResponse) GetStripeInvoiceId()(*string) {
     return m.stripeInvoiceId
 }
-// GetStripePaymentIntentId gets the stripePaymentIntentId property value. The stripePaymentIntentId property
+// GetStripePaymentIntentId gets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
 // returns a *string when successful
 func (m *WalletResponse) GetStripePaymentIntentId()(*string) {
     return m.stripePaymentIntentId
@@ -535,23 +535,23 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *WalletResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAmountPurchased sets the amountPurchased property value. The amountPurchased property
+// SetAmountPurchased sets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
 func (m *WalletResponse) SetAmountPurchased(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amountPurchased = value
 }
-// SetAmountRemaining sets the amountRemaining property value. The amountRemaining property
+// SetAmountRemaining sets the amountRemaining property value. Amount of wallet credit still available for future usage.
 func (m *WalletResponse) SetAmountRemaining(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amountRemaining = value
 }
-// SetBalance sets the balance property value. The monetary balance for this wallet.
+// SetBalance sets the balance property value. Wallet or account balance after this transaction is applied.
 func (m *WalletResponse) SetBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.balance = value
 }
-// SetBalanceCalculatedAt sets the balanceCalculatedAt property value. The date and time for the balance calculated at value on this wallet.
+// SetBalanceCalculatedAt sets the balanceCalculatedAt property value. UTC timestamp when Leadping last calculated the wallet balance.
 func (m *WalletResponse) SetBalanceCalculatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.balanceCalculatedAt = value
 }
-// SetBusinessId sets the businessId property value. The businessId property
+// SetBusinessId sets the businessId property value. Business ID that owns this wallet balance or credit.
 func (m *WalletResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
@@ -563,15 +563,15 @@ func (m *WalletResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6
 func (m *WalletResponse) SetCreditStatus(value *WalletResponse_creditStatus)() {
     m.creditStatus = value
 }
-// SetCurrency sets the currency property value. The currency property
+// SetCurrency sets the currency property value. ISO currency code used for the monetary amounts in this billing wallet response.
 func (m *WalletResponse) SetCurrency(value *string)() {
     m.currency = value
 }
-// SetExpiredCreditAmount sets the expiredCreditAmount property value. The expiredCreditAmount property
+// SetExpiredCreditAmount sets the expiredCreditAmount property value. Amount of wallet credit that has expired.
 func (m *WalletResponse) SetExpiredCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.expiredCreditAmount = value
 }
-// SetExpiresAt sets the expiresAt property value. The expiresAt property
+// SetExpiresAt sets the expiresAt property value. UTC timestamp when the wallet credit expires.
 func (m *WalletResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.expiresAt = value
 }
@@ -587,19 +587,19 @@ func (m *WalletResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a
 func (m *WalletResponse) SetName(value *string)() {
     m.name = value
 }
-// SetNextCreditExpirationAt sets the nextCreditExpirationAt property value. The nextCreditExpirationAt property
+// SetNextCreditExpirationAt sets the nextCreditExpirationAt property value. UTC timestamp when the next wallet credit amount expires.
 func (m *WalletResponse) SetNextCreditExpirationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextCreditExpirationAt = value
 }
-// SetNextExpiringCreditAmount sets the nextExpiringCreditAmount property value. The nextExpiringCreditAmount property
+// SetNextExpiringCreditAmount sets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
 func (m *WalletResponse) SetNextExpiringCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.nextExpiringCreditAmount = value
 }
-// SetOriginalTransactionId sets the originalTransactionId property value. The originalTransactionId property
+// SetOriginalTransactionId sets the originalTransactionId property value. Original wallet transaction ID referenced by a reversal, refund, or adjustment.
 func (m *WalletResponse) SetOriginalTransactionId(value *string)() {
     m.originalTransactionId = value
 }
-// SetPurchasedAt sets the purchasedAt property value. The purchasedAt property
+// SetPurchasedAt sets the purchasedAt property value. UTC timestamp when the wallet credit was purchased.
 func (m *WalletResponse) SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.purchasedAt = value
 }
@@ -607,15 +607,15 @@ func (m *WalletResponse) SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6
 func (m *WalletResponse) SetSourceType(value *WalletResponse_sourceType)() {
     m.sourceType = value
 }
-// SetStripeChargeId sets the stripeChargeId property value. The stripeChargeId property
+// SetStripeChargeId sets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
 func (m *WalletResponse) SetStripeChargeId(value *string)() {
     m.stripeChargeId = value
 }
-// SetStripeInvoiceId sets the stripeInvoiceId property value. The stripeInvoiceId property
+// SetStripeInvoiceId sets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
 func (m *WalletResponse) SetStripeInvoiceId(value *string)() {
     m.stripeInvoiceId = value
 }
-// SetStripePaymentIntentId sets the stripePaymentIntentId property value. The stripePaymentIntentId property
+// SetStripePaymentIntentId sets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
 func (m *WalletResponse) SetStripePaymentIntentId(value *string)() {
     m.stripePaymentIntentId = value
 }

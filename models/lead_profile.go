@@ -7,35 +7,35 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadProfile aPI DTO containing lead profile data used by Leadping API contracts.
+// LeadProfile public Leadping API schema for lead demographic profile data.
 type LeadProfile struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the birth date value on this lead profile.
+    // Lead birth date used for demographic matching and insurance intake workflows.
     birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // The credit score metric for this lead profile.
+    // Lead credit score range or score supplied by the intake source.
     creditScore i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Defines the supported Employment Type values.
     employmentType *LeadProfile_employmentType
     // Represents a gender classification used for demographic or identification purposes.
     gender *LeadProfile_gender
-    // Whether this lead profile has bankruptcy.
+    // Indicates whether the lead reported bankruptcy history.
     hasBankruptcy *bool
-    // Whether this lead profile has medical condition.
+    // Indicates whether the lead reported a medical condition relevant to qualification.
     hasMedicalCondition *bool
-    // The height value for this lead profile.
+    // Lead height provided for qualification workflows that require demographic details.
     height i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The income value for this lead profile.
+    // Lead income amount or range supplied for qualification workflows.
     income i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Whether this lead profile is homeowner.
+    // Indicates whether the lead owns their home.
     isHomeowner *bool
     // Defines the supported Marital Status Type values.
     maritalStatus *LeadProfile_maritalStatus
-    // The months at residence value for this lead profile.
+    // Number of months the lead has lived at the current residence.
     monthsAtResidence i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The number of dependents value for this lead profile.
+    // Number of dependents reported by the lead.
     numberOfDependents i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The weight value for this lead profile.
+    // Relative weighting used to rank or score this lead demographic profile.
     weight i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewLeadProfile instantiates a new LeadProfile and sets the default values.
@@ -55,12 +55,12 @@ func CreateLeadProfileFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadProfile) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBirthDate gets the birthDate property value. The date and time for the birth date value on this lead profile.
+// GetBirthDate gets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 // returns a *DateOnly when successful
 func (m *LeadProfile) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
     return m.birthDate
 }
-// GetCreditScore gets the creditScore property value. The credit score metric for this lead profile.
+// GetCreditScore gets the creditScore property value. Lead credit score range or score supplied by the intake source.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetCreditScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.creditScore
@@ -211,27 +211,27 @@ func (m *LeadProfile) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *LeadProfile) GetGender()(*LeadProfile_gender) {
     return m.gender
 }
-// GetHasBankruptcy gets the hasBankruptcy property value. Whether this lead profile has bankruptcy.
+// GetHasBankruptcy gets the hasBankruptcy property value. Indicates whether the lead reported bankruptcy history.
 // returns a *bool when successful
 func (m *LeadProfile) GetHasBankruptcy()(*bool) {
     return m.hasBankruptcy
 }
-// GetHasMedicalCondition gets the hasMedicalCondition property value. Whether this lead profile has medical condition.
+// GetHasMedicalCondition gets the hasMedicalCondition property value. Indicates whether the lead reported a medical condition relevant to qualification.
 // returns a *bool when successful
 func (m *LeadProfile) GetHasMedicalCondition()(*bool) {
     return m.hasMedicalCondition
 }
-// GetHeight gets the height property value. The height value for this lead profile.
+// GetHeight gets the height property value. Lead height provided for qualification workflows that require demographic details.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetHeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.height
 }
-// GetIncome gets the income property value. The income value for this lead profile.
+// GetIncome gets the income property value. Lead income amount or range supplied for qualification workflows.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetIncome()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.income
 }
-// GetIsHomeowner gets the isHomeowner property value. Whether this lead profile is homeowner.
+// GetIsHomeowner gets the isHomeowner property value. Indicates whether the lead owns their home.
 // returns a *bool when successful
 func (m *LeadProfile) GetIsHomeowner()(*bool) {
     return m.isHomeowner
@@ -241,17 +241,17 @@ func (m *LeadProfile) GetIsHomeowner()(*bool) {
 func (m *LeadProfile) GetMaritalStatus()(*LeadProfile_maritalStatus) {
     return m.maritalStatus
 }
-// GetMonthsAtResidence gets the monthsAtResidence property value. The months at residence value for this lead profile.
+// GetMonthsAtResidence gets the monthsAtResidence property value. Number of months the lead has lived at the current residence.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetMonthsAtResidence()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.monthsAtResidence
 }
-// GetNumberOfDependents gets the numberOfDependents property value. The number of dependents value for this lead profile.
+// GetNumberOfDependents gets the numberOfDependents property value. Number of dependents reported by the lead.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetNumberOfDependents()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.numberOfDependents
 }
-// GetWeight gets the weight property value. The weight value for this lead profile.
+// GetWeight gets the weight property value. Relative weighting used to rank or score this lead demographic profile.
 // returns a UntypedNodeable when successful
 func (m *LeadProfile) GetWeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.weight
@@ -351,11 +351,11 @@ func (m *LeadProfile) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadProfile) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBirthDate sets the birthDate property value. The date and time for the birth date value on this lead profile.
+// SetBirthDate sets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 func (m *LeadProfile) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
     m.birthDate = value
 }
-// SetCreditScore sets the creditScore property value. The credit score metric for this lead profile.
+// SetCreditScore sets the creditScore property value. Lead credit score range or score supplied by the intake source.
 func (m *LeadProfile) SetCreditScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.creditScore = value
 }
@@ -367,23 +367,23 @@ func (m *LeadProfile) SetEmploymentType(value *LeadProfile_employmentType)() {
 func (m *LeadProfile) SetGender(value *LeadProfile_gender)() {
     m.gender = value
 }
-// SetHasBankruptcy sets the hasBankruptcy property value. Whether this lead profile has bankruptcy.
+// SetHasBankruptcy sets the hasBankruptcy property value. Indicates whether the lead reported bankruptcy history.
 func (m *LeadProfile) SetHasBankruptcy(value *bool)() {
     m.hasBankruptcy = value
 }
-// SetHasMedicalCondition sets the hasMedicalCondition property value. Whether this lead profile has medical condition.
+// SetHasMedicalCondition sets the hasMedicalCondition property value. Indicates whether the lead reported a medical condition relevant to qualification.
 func (m *LeadProfile) SetHasMedicalCondition(value *bool)() {
     m.hasMedicalCondition = value
 }
-// SetHeight sets the height property value. The height value for this lead profile.
+// SetHeight sets the height property value. Lead height provided for qualification workflows that require demographic details.
 func (m *LeadProfile) SetHeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.height = value
 }
-// SetIncome sets the income property value. The income value for this lead profile.
+// SetIncome sets the income property value. Lead income amount or range supplied for qualification workflows.
 func (m *LeadProfile) SetIncome(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.income = value
 }
-// SetIsHomeowner sets the isHomeowner property value. Whether this lead profile is homeowner.
+// SetIsHomeowner sets the isHomeowner property value. Indicates whether the lead owns their home.
 func (m *LeadProfile) SetIsHomeowner(value *bool)() {
     m.isHomeowner = value
 }
@@ -391,15 +391,15 @@ func (m *LeadProfile) SetIsHomeowner(value *bool)() {
 func (m *LeadProfile) SetMaritalStatus(value *LeadProfile_maritalStatus)() {
     m.maritalStatus = value
 }
-// SetMonthsAtResidence sets the monthsAtResidence property value. The months at residence value for this lead profile.
+// SetMonthsAtResidence sets the monthsAtResidence property value. Number of months the lead has lived at the current residence.
 func (m *LeadProfile) SetMonthsAtResidence(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.monthsAtResidence = value
 }
-// SetNumberOfDependents sets the numberOfDependents property value. The number of dependents value for this lead profile.
+// SetNumberOfDependents sets the numberOfDependents property value. Number of dependents reported by the lead.
 func (m *LeadProfile) SetNumberOfDependents(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.numberOfDependents = value
 }
-// SetWeight sets the weight property value. The weight value for this lead profile.
+// SetWeight sets the weight property value. Relative weighting used to rank or score this lead demographic profile.
 func (m *LeadProfile) SetWeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.weight = value
 }

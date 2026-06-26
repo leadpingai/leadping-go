@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ContactResponse response model for contact form submissions.
+// ContactResponse response schema for the Leadping API contact form response returned to authenticated clients.
 type ContactResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The message value for this contact.
+    // Message text supplied by the user or returned by the Leadping API for this contact form response.
     message *string
 }
 // NewContactResponse instantiates a new ContactResponse and sets the default values.
@@ -47,7 +47,7 @@ func (m *ContactResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e8
     }
     return res
 }
-// GetMessage gets the message property value. The message value for this contact.
+// GetMessage gets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form response.
 // returns a *string when successful
 func (m *ContactResponse) GetMessage()(*string) {
     return m.message
@@ -72,7 +72,7 @@ func (m *ContactResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
 func (m *ContactResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetMessage sets the message property value. The message value for this contact.
+// SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form response.
 func (m *ContactResponse) SetMessage(value *string)() {
     m.message = value
 }

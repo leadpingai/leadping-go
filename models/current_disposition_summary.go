@@ -8,23 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CurrentDispositionSummary compact current disposition state stored directly on a lead and surfaced with conversation data.
+// CurrentDispositionSummary summary schema for Leadping API current disposition summary data used in dashboards and reports.
 type CurrentDispositionSummary struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Controlled disposition categories used for reporting, automation, and analytics.
     category *CurrentDispositionSummary_category
-    // The changedAt property
+    // UTC timestamp when the disposition last changed.
     changedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The changedByAutomationId property
+    // Automation ID that last changed the disposition.
     changedByAutomationId *string
-    // The changedByUserId property
+    // User ID of the person who last changed the disposition.
     changedByUserId *string
-    // The displayName property
+    // Human-readable display name shown for this current disposition summary.
     displayName *string
-    // The id property
+    // Unique Leadping identifier for this current disposition summary.
     id *string
-    // The outcome property
+    // Current disposition outcome assigned to the lead.
     outcome *string
     // Known sources that can change a lead's current disposition.
     source *CurrentDispositionSummary_source
@@ -51,22 +51,22 @@ func (m *CurrentDispositionSummary) GetAdditionalData()(map[string]any) {
 func (m *CurrentDispositionSummary) GetCategory()(*CurrentDispositionSummary_category) {
     return m.category
 }
-// GetChangedAt gets the changedAt property value. The changedAt property
+// GetChangedAt gets the changedAt property value. UTC timestamp when the disposition last changed.
 // returns a *Time when successful
 func (m *CurrentDispositionSummary) GetChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.changedAt
 }
-// GetChangedByAutomationId gets the changedByAutomationId property value. The changedByAutomationId property
+// GetChangedByAutomationId gets the changedByAutomationId property value. Automation ID that last changed the disposition.
 // returns a *string when successful
 func (m *CurrentDispositionSummary) GetChangedByAutomationId()(*string) {
     return m.changedByAutomationId
 }
-// GetChangedByUserId gets the changedByUserId property value. The changedByUserId property
+// GetChangedByUserId gets the changedByUserId property value. User ID of the person who last changed the disposition.
 // returns a *string when successful
 func (m *CurrentDispositionSummary) GetChangedByUserId()(*string) {
     return m.changedByUserId
 }
-// GetDisplayName gets the displayName property value. The displayName property
+// GetDisplayName gets the displayName property value. Human-readable display name shown for this current disposition summary.
 // returns a *string when successful
 func (m *CurrentDispositionSummary) GetDisplayName()(*string) {
     return m.displayName
@@ -157,12 +157,12 @@ func (m *CurrentDispositionSummary) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for this current disposition summary.
 // returns a *string when successful
 func (m *CurrentDispositionSummary) GetId()(*string) {
     return m.id
 }
-// GetOutcome gets the outcome property value. The outcome property
+// GetOutcome gets the outcome property value. Current disposition outcome assigned to the lead.
 // returns a *string when successful
 func (m *CurrentDispositionSummary) GetOutcome()(*string) {
     return m.outcome
@@ -240,27 +240,27 @@ func (m *CurrentDispositionSummary) SetAdditionalData(value map[string]any)() {
 func (m *CurrentDispositionSummary) SetCategory(value *CurrentDispositionSummary_category)() {
     m.category = value
 }
-// SetChangedAt sets the changedAt property value. The changedAt property
+// SetChangedAt sets the changedAt property value. UTC timestamp when the disposition last changed.
 func (m *CurrentDispositionSummary) SetChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.changedAt = value
 }
-// SetChangedByAutomationId sets the changedByAutomationId property value. The changedByAutomationId property
+// SetChangedByAutomationId sets the changedByAutomationId property value. Automation ID that last changed the disposition.
 func (m *CurrentDispositionSummary) SetChangedByAutomationId(value *string)() {
     m.changedByAutomationId = value
 }
-// SetChangedByUserId sets the changedByUserId property value. The changedByUserId property
+// SetChangedByUserId sets the changedByUserId property value. User ID of the person who last changed the disposition.
 func (m *CurrentDispositionSummary) SetChangedByUserId(value *string)() {
     m.changedByUserId = value
 }
-// SetDisplayName sets the displayName property value. The displayName property
+// SetDisplayName sets the displayName property value. Human-readable display name shown for this current disposition summary.
 func (m *CurrentDispositionSummary) SetDisplayName(value *string)() {
     m.displayName = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for this current disposition summary.
 func (m *CurrentDispositionSummary) SetId(value *string)() {
     m.id = value
 }
-// SetOutcome sets the outcome property value. The outcome property
+// SetOutcome sets the outcome property value. Current disposition outcome assigned to the lead.
 func (m *CurrentDispositionSummary) SetOutcome(value *string)() {
     m.outcome = value
 }

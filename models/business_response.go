@@ -8,39 +8,39 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// BusinessResponse aPI response containing business data returned to callers.
+// BusinessResponse response schema for the Leadping API business profile response returned to authenticated clients.
 type BusinessResponse struct {
-    // The wallet balance owned by this business.
+    // Current wallet balance available to the business.
     accountBalance *float64
-    // The activation value for this business.
+    // Business activation state covering site, billing, compliance, and telephony readiness.
     activation BusinessResponse_activationable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The postal address associated with this business.
+    // Postal address for the business, lead, or contact represented by this business profile response.
     address BusinessResponse_addressable
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride BusinessResponse_adminEnablementOverrideable
-    // The monetary auto refill amount for this business wallet.
+    // Wallet refill amount charged when automatic refill is triggered.
     autoRefillAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Whether auto refill is enabled for this business wallet.
+    // Indicates whether automatic wallet refill is enabled for the business.
     autoRefillEnabled *bool
-    // The auto refill trigger value for this business wallet.
+    // Wallet balance threshold that triggers automatic refill.
     autoRefillTrigger i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Defines the supported Billing Plan values.
     billingPlan *BusinessResponse_billingPlan
-    // The compliance policy value for this business.
+    // Compliance policy configuration for the business.
     compliancePolicy BusinessResponse_compliancePolicyable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable description of this business.
+    // Human-readable description that explains this business profile response to API users.
     description *string
-    // The domain name associated with this business.
+    // Domain name connected to the business website or activation workflow.
     domain *string
-    // The EIN value for this business.
+    // Employer Identification Number used for business and 10DLC verification.
     ein *string
-    // The EIN document value for this business.
+    // Uploaded EIN document reference used for business verification.
     einDocument BusinessResponse_einDocumentable
-    // The enabled property
+    // Indicates whether this business profile response is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity.
     id *string
@@ -48,27 +48,27 @@ type BusinessResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The phone number associated with this business.
+    // Phone details for the lead, user, or business represented by this business profile response.
     phone *string
-    // The phones included with this business.
+    // Phone numbers assigned to this business.
     phones []IdNameValueable
-    // The secondary name value for this business.
+    // Alternate business name or DBA shown in Leadping.
     secondaryName *string
     // Defines the supported Business Setup Step values.
     setupStep *BusinessResponse_setupStep
-    // The website value for this business.
+    // Leadping website record connected to this business.
     site BusinessResponse_siteable
     // Defines the supported Business Status values.
     status *BusinessResponse_status
-    // Stripe billing state owned by this business.
+    // Stripe customer and subscription state associated with this business or user.
     stripeInfo BusinessResponse_stripeInfoable
     // Defines the supported Subscription Status values.
     subscriptionStatus *BusinessResponse_subscriptionStatus
-    // The user value for this business.
+    // User summary connected to this business profile response.
     user BusinessResponse_userable
-    // The vertical value for this business.
+    // Industry vertical used for lead routing, compliance review, and reporting.
     vertical *string
-    // The website URL associated with this business.
+    // Business website URL used for compliance, brand review, and lead attribution.
     website *string
 }
 // NewBusinessResponse instantiates a new BusinessResponse and sets the default values.
@@ -83,12 +83,12 @@ func NewBusinessResponse()(*BusinessResponse) {
 func CreateBusinessResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewBusinessResponse(), nil
 }
-// GetAccountBalance gets the accountBalance property value. The wallet balance owned by this business.
+// GetAccountBalance gets the accountBalance property value. Current wallet balance available to the business.
 // returns a *float64 when successful
 func (m *BusinessResponse) GetAccountBalance()(*float64) {
     return m.accountBalance
 }
-// GetActivation gets the activation property value. The activation value for this business.
+// GetActivation gets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
 // returns a BusinessResponse_activationable when successful
 func (m *BusinessResponse) GetActivation()(BusinessResponse_activationable) {
     return m.activation
@@ -98,27 +98,27 @@ func (m *BusinessResponse) GetActivation()(BusinessResponse_activationable) {
 func (m *BusinessResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAddress gets the address property value. The postal address associated with this business.
+// GetAddress gets the address property value. Postal address for the business, lead, or contact represented by this business profile response.
 // returns a BusinessResponse_addressable when successful
 func (m *BusinessResponse) GetAddress()(BusinessResponse_addressable) {
     return m.address
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a BusinessResponse_adminEnablementOverrideable when successful
 func (m *BusinessResponse) GetAdminEnablementOverride()(BusinessResponse_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetAutoRefillAmount gets the autoRefillAmount property value. The monetary auto refill amount for this business wallet.
+// GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 // returns a UntypedNodeable when successful
 func (m *BusinessResponse) GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.autoRefillAmount
 }
-// GetAutoRefillEnabled gets the autoRefillEnabled property value. Whether auto refill is enabled for this business wallet.
+// GetAutoRefillEnabled gets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the business.
 // returns a *bool when successful
 func (m *BusinessResponse) GetAutoRefillEnabled()(*bool) {
     return m.autoRefillEnabled
 }
-// GetAutoRefillTrigger gets the autoRefillTrigger property value. The auto refill trigger value for this business wallet.
+// GetAutoRefillTrigger gets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
 // returns a UntypedNodeable when successful
 func (m *BusinessResponse) GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.autoRefillTrigger
@@ -128,7 +128,7 @@ func (m *BusinessResponse) GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487
 func (m *BusinessResponse) GetBillingPlan()(*BusinessResponse_billingPlan) {
     return m.billingPlan
 }
-// GetCompliancePolicy gets the compliancePolicy property value. The compliance policy value for this business.
+// GetCompliancePolicy gets the compliancePolicy property value. Compliance policy configuration for the business.
 // returns a BusinessResponse_compliancePolicyable when successful
 func (m *BusinessResponse) GetCompliancePolicy()(BusinessResponse_compliancePolicyable) {
     return m.compliancePolicy
@@ -138,27 +138,27 @@ func (m *BusinessResponse) GetCompliancePolicy()(BusinessResponse_compliancePoli
 func (m *BusinessResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDescription gets the description property value. The human-readable description of this business.
+// GetDescription gets the description property value. Human-readable description that explains this business profile response to API users.
 // returns a *string when successful
 func (m *BusinessResponse) GetDescription()(*string) {
     return m.description
 }
-// GetDomain gets the domain property value. The domain name associated with this business.
+// GetDomain gets the domain property value. Domain name connected to the business website or activation workflow.
 // returns a *string when successful
 func (m *BusinessResponse) GetDomain()(*string) {
     return m.domain
 }
-// GetEin gets the ein property value. The EIN value for this business.
+// GetEin gets the ein property value. Employer Identification Number used for business and 10DLC verification.
 // returns a *string when successful
 func (m *BusinessResponse) GetEin()(*string) {
     return m.ein
 }
-// GetEinDocument gets the einDocument property value. The EIN document value for this business.
+// GetEinDocument gets the einDocument property value. Uploaded EIN document reference used for business verification.
 // returns a BusinessResponse_einDocumentable when successful
 func (m *BusinessResponse) GetEinDocument()(BusinessResponse_einDocumentable) {
     return m.einDocument
 }
-// GetEnabled gets the enabled property value. The enabled property
+// GetEnabled gets the enabled property value. Indicates whether this business profile response is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *BusinessResponse) GetEnabled()(*bool) {
     return m.enabled
@@ -480,17 +480,17 @@ func (m *BusinessResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f
 func (m *BusinessResponse) GetName()(*string) {
     return m.name
 }
-// GetPhone gets the phone property value. The phone number associated with this business.
+// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this business profile response.
 // returns a *string when successful
 func (m *BusinessResponse) GetPhone()(*string) {
     return m.phone
 }
-// GetPhones gets the phones property value. The phones included with this business.
+// GetPhones gets the phones property value. Phone numbers assigned to this business.
 // returns a []IdNameValueable when successful
 func (m *BusinessResponse) GetPhones()([]IdNameValueable) {
     return m.phones
 }
-// GetSecondaryName gets the secondaryName property value. The secondary name value for this business.
+// GetSecondaryName gets the secondaryName property value. Alternate business name or DBA shown in Leadping.
 // returns a *string when successful
 func (m *BusinessResponse) GetSecondaryName()(*string) {
     return m.secondaryName
@@ -500,7 +500,7 @@ func (m *BusinessResponse) GetSecondaryName()(*string) {
 func (m *BusinessResponse) GetSetupStep()(*BusinessResponse_setupStep) {
     return m.setupStep
 }
-// GetSite gets the site property value. The website value for this business.
+// GetSite gets the site property value. Leadping website record connected to this business.
 // returns a BusinessResponse_siteable when successful
 func (m *BusinessResponse) GetSite()(BusinessResponse_siteable) {
     return m.site
@@ -510,7 +510,7 @@ func (m *BusinessResponse) GetSite()(BusinessResponse_siteable) {
 func (m *BusinessResponse) GetStatus()(*BusinessResponse_status) {
     return m.status
 }
-// GetStripeInfo gets the stripeInfo property value. Stripe billing state owned by this business.
+// GetStripeInfo gets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
 // returns a BusinessResponse_stripeInfoable when successful
 func (m *BusinessResponse) GetStripeInfo()(BusinessResponse_stripeInfoable) {
     return m.stripeInfo
@@ -520,17 +520,17 @@ func (m *BusinessResponse) GetStripeInfo()(BusinessResponse_stripeInfoable) {
 func (m *BusinessResponse) GetSubscriptionStatus()(*BusinessResponse_subscriptionStatus) {
     return m.subscriptionStatus
 }
-// GetUser gets the user property value. The user value for this business.
+// GetUser gets the user property value. User summary connected to this business profile response.
 // returns a BusinessResponse_userable when successful
 func (m *BusinessResponse) GetUser()(BusinessResponse_userable) {
     return m.user
 }
-// GetVertical gets the vertical property value. The vertical value for this business.
+// GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
 func (m *BusinessResponse) GetVertical()(*string) {
     return m.vertical
 }
-// GetWebsite gets the website property value. The website URL associated with this business.
+// GetWebsite gets the website property value. Business website URL used for compliance, brand review, and lead attribution.
 // returns a *string when successful
 func (m *BusinessResponse) GetWebsite()(*string) {
     return m.website
@@ -729,11 +729,11 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     return nil
 }
-// SetAccountBalance sets the accountBalance property value. The wallet balance owned by this business.
+// SetAccountBalance sets the accountBalance property value. Current wallet balance available to the business.
 func (m *BusinessResponse) SetAccountBalance(value *float64)() {
     m.accountBalance = value
 }
-// SetActivation sets the activation property value. The activation value for this business.
+// SetActivation sets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
 func (m *BusinessResponse) SetActivation(value BusinessResponse_activationable)() {
     m.activation = value
 }
@@ -741,23 +741,23 @@ func (m *BusinessResponse) SetActivation(value BusinessResponse_activationable)(
 func (m *BusinessResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAddress sets the address property value. The postal address associated with this business.
+// SetAddress sets the address property value. Postal address for the business, lead, or contact represented by this business profile response.
 func (m *BusinessResponse) SetAddress(value BusinessResponse_addressable)() {
     m.address = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *BusinessResponse) SetAdminEnablementOverride(value BusinessResponse_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetAutoRefillAmount sets the autoRefillAmount property value. The monetary auto refill amount for this business wallet.
+// SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 func (m *BusinessResponse) SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.autoRefillAmount = value
 }
-// SetAutoRefillEnabled sets the autoRefillEnabled property value. Whether auto refill is enabled for this business wallet.
+// SetAutoRefillEnabled sets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the business.
 func (m *BusinessResponse) SetAutoRefillEnabled(value *bool)() {
     m.autoRefillEnabled = value
 }
-// SetAutoRefillTrigger sets the autoRefillTrigger property value. The auto refill trigger value for this business wallet.
+// SetAutoRefillTrigger sets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
 func (m *BusinessResponse) SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.autoRefillTrigger = value
 }
@@ -765,7 +765,7 @@ func (m *BusinessResponse) SetAutoRefillTrigger(value i878a80d2330e89d26896388a3
 func (m *BusinessResponse) SetBillingPlan(value *BusinessResponse_billingPlan)() {
     m.billingPlan = value
 }
-// SetCompliancePolicy sets the compliancePolicy property value. The compliance policy value for this business.
+// SetCompliancePolicy sets the compliancePolicy property value. Compliance policy configuration for the business.
 func (m *BusinessResponse) SetCompliancePolicy(value BusinessResponse_compliancePolicyable)() {
     m.compliancePolicy = value
 }
@@ -773,23 +773,23 @@ func (m *BusinessResponse) SetCompliancePolicy(value BusinessResponse_compliance
 func (m *BusinessResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDescription sets the description property value. The human-readable description of this business.
+// SetDescription sets the description property value. Human-readable description that explains this business profile response to API users.
 func (m *BusinessResponse) SetDescription(value *string)() {
     m.description = value
 }
-// SetDomain sets the domain property value. The domain name associated with this business.
+// SetDomain sets the domain property value. Domain name connected to the business website or activation workflow.
 func (m *BusinessResponse) SetDomain(value *string)() {
     m.domain = value
 }
-// SetEin sets the ein property value. The EIN value for this business.
+// SetEin sets the ein property value. Employer Identification Number used for business and 10DLC verification.
 func (m *BusinessResponse) SetEin(value *string)() {
     m.ein = value
 }
-// SetEinDocument sets the einDocument property value. The EIN document value for this business.
+// SetEinDocument sets the einDocument property value. Uploaded EIN document reference used for business verification.
 func (m *BusinessResponse) SetEinDocument(value BusinessResponse_einDocumentable)() {
     m.einDocument = value
 }
-// SetEnabled sets the enabled property value. The enabled property
+// SetEnabled sets the enabled property value. Indicates whether this business profile response is active and available in the Leadping API.
 func (m *BusinessResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -805,15 +805,15 @@ func (m *BusinessResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a
 func (m *BusinessResponse) SetName(value *string)() {
     m.name = value
 }
-// SetPhone sets the phone property value. The phone number associated with this business.
+// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this business profile response.
 func (m *BusinessResponse) SetPhone(value *string)() {
     m.phone = value
 }
-// SetPhones sets the phones property value. The phones included with this business.
+// SetPhones sets the phones property value. Phone numbers assigned to this business.
 func (m *BusinessResponse) SetPhones(value []IdNameValueable)() {
     m.phones = value
 }
-// SetSecondaryName sets the secondaryName property value. The secondary name value for this business.
+// SetSecondaryName sets the secondaryName property value. Alternate business name or DBA shown in Leadping.
 func (m *BusinessResponse) SetSecondaryName(value *string)() {
     m.secondaryName = value
 }
@@ -821,7 +821,7 @@ func (m *BusinessResponse) SetSecondaryName(value *string)() {
 func (m *BusinessResponse) SetSetupStep(value *BusinessResponse_setupStep)() {
     m.setupStep = value
 }
-// SetSite sets the site property value. The website value for this business.
+// SetSite sets the site property value. Leadping website record connected to this business.
 func (m *BusinessResponse) SetSite(value BusinessResponse_siteable)() {
     m.site = value
 }
@@ -829,7 +829,7 @@ func (m *BusinessResponse) SetSite(value BusinessResponse_siteable)() {
 func (m *BusinessResponse) SetStatus(value *BusinessResponse_status)() {
     m.status = value
 }
-// SetStripeInfo sets the stripeInfo property value. Stripe billing state owned by this business.
+// SetStripeInfo sets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
 func (m *BusinessResponse) SetStripeInfo(value BusinessResponse_stripeInfoable)() {
     m.stripeInfo = value
 }
@@ -837,15 +837,15 @@ func (m *BusinessResponse) SetStripeInfo(value BusinessResponse_stripeInfoable)(
 func (m *BusinessResponse) SetSubscriptionStatus(value *BusinessResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
 }
-// SetUser sets the user property value. The user value for this business.
+// SetUser sets the user property value. User summary connected to this business profile response.
 func (m *BusinessResponse) SetUser(value BusinessResponse_userable)() {
     m.user = value
 }
-// SetVertical sets the vertical property value. The vertical value for this business.
+// SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 func (m *BusinessResponse) SetVertical(value *string)() {
     m.vertical = value
 }
-// SetWebsite sets the website property value. The website URL associated with this business.
+// SetWebsite sets the website property value. Business website URL used for compliance, brand review, and lead attribution.
 func (m *BusinessResponse) SetWebsite(value *string)() {
     m.website = value
 }

@@ -7,29 +7,29 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberStatusResponse aPI response containing phone number status data returned to callers.
+// PhoneNumberStatusResponse response schema for the Leadping API phone number readiness status returned to authenticated clients.
 type PhoneNumberStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The calls possible value for this phone number status.
+    // Indicates whether this phone number can currently place outbound calls.
     callsPossible *int32
-    // The voice call warmup value for this phone number status.
+    // Voice call warmup status for this phone number.
     callWarmup PhoneNumberStatusResponse_callWarmupable
-    // The messages possible value for this phone number status.
+    // Indicates whether this phone number can currently send SMS messages.
     messagesPossible *int32
-    // The messages warmed value for this phone number status.
+    // Number of warmup SMS messages completed for this sender.
     messagesWarmed *int32
-    // The number value for this phone number status.
+    // E.164 phone number exposed by this phone number readiness status.
     number *string
-    // The opt out metrics value for this phone number status.
+    // Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
     optOutMetrics PhoneNumberOptOutMetricsResponseable
-    // The recent events included with this phone number status.
+    // Recent workflow events returned for timeline and troubleshooting.
     recentEvents []PhoneNumberMessagingEventResponseable
-    // The SMS warmup value for this phone number status.
+    // SMS sender warmup status for this phone number.
     smsWarmup PhoneNumberStatusResponse_smsWarmupable
-    // The traffic metrics value for this phone number status.
+    // Phone number traffic metrics for recent SMS and call activity.
     trafficMetrics PhoneNumberTrafficMetricsResponseable
-    // The warmup calls made value for this phone number status.
+    // Number of voice warmup calls completed for this phone number.
     warmupCallsMade *int32
 }
 // NewPhoneNumberStatusResponse instantiates a new PhoneNumberStatusResponse and sets the default values.
@@ -49,12 +49,12 @@ func CreatePhoneNumberStatusResponseFromDiscriminatorValue(parseNode i878a80d233
 func (m *PhoneNumberStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCallsPossible gets the callsPossible property value. The calls possible value for this phone number status.
+// GetCallsPossible gets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetCallsPossible()(*int32) {
     return m.callsPossible
 }
-// GetCallWarmup gets the callWarmup property value. The voice call warmup value for this phone number status.
+// GetCallWarmup gets the callWarmup property value. Voice call warmup status for this phone number.
 // returns a PhoneNumberStatusResponse_callWarmupable when successful
 func (m *PhoneNumberStatusResponse) GetCallWarmup()(PhoneNumberStatusResponse_callWarmupable) {
     return m.callWarmup
@@ -171,42 +171,42 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetMessagesPossible gets the messagesPossible property value. The messages possible value for this phone number status.
+// GetMessagesPossible gets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetMessagesPossible()(*int32) {
     return m.messagesPossible
 }
-// GetMessagesWarmed gets the messagesWarmed property value. The messages warmed value for this phone number status.
+// GetMessagesWarmed gets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetMessagesWarmed()(*int32) {
     return m.messagesWarmed
 }
-// GetNumber gets the number property value. The number value for this phone number status.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number readiness status.
 // returns a *string when successful
 func (m *PhoneNumberStatusResponse) GetNumber()(*string) {
     return m.number
 }
-// GetOptOutMetrics gets the optOutMetrics property value. The opt out metrics value for this phone number status.
+// GetOptOutMetrics gets the optOutMetrics property value. Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
 // returns a PhoneNumberOptOutMetricsResponseable when successful
 func (m *PhoneNumberStatusResponse) GetOptOutMetrics()(PhoneNumberOptOutMetricsResponseable) {
     return m.optOutMetrics
 }
-// GetRecentEvents gets the recentEvents property value. The recent events included with this phone number status.
+// GetRecentEvents gets the recentEvents property value. Recent workflow events returned for timeline and troubleshooting.
 // returns a []PhoneNumberMessagingEventResponseable when successful
 func (m *PhoneNumberStatusResponse) GetRecentEvents()([]PhoneNumberMessagingEventResponseable) {
     return m.recentEvents
 }
-// GetSmsWarmup gets the smsWarmup property value. The SMS warmup value for this phone number status.
+// GetSmsWarmup gets the smsWarmup property value. SMS sender warmup status for this phone number.
 // returns a PhoneNumberStatusResponse_smsWarmupable when successful
 func (m *PhoneNumberStatusResponse) GetSmsWarmup()(PhoneNumberStatusResponse_smsWarmupable) {
     return m.smsWarmup
 }
-// GetTrafficMetrics gets the trafficMetrics property value. The traffic metrics value for this phone number status.
+// GetTrafficMetrics gets the trafficMetrics property value. Phone number traffic metrics for recent SMS and call activity.
 // returns a PhoneNumberTrafficMetricsResponseable when successful
 func (m *PhoneNumberStatusResponse) GetTrafficMetrics()(PhoneNumberTrafficMetricsResponseable) {
     return m.trafficMetrics
 }
-// GetWarmupCallsMade gets the warmupCallsMade property value. The warmup calls made value for this phone number status.
+// GetWarmupCallsMade gets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetWarmupCallsMade()(*int32) {
     return m.warmupCallsMade
@@ -291,43 +291,43 @@ func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f
 func (m *PhoneNumberStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCallsPossible sets the callsPossible property value. The calls possible value for this phone number status.
+// SetCallsPossible sets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
 func (m *PhoneNumberStatusResponse) SetCallsPossible(value *int32)() {
     m.callsPossible = value
 }
-// SetCallWarmup sets the callWarmup property value. The voice call warmup value for this phone number status.
+// SetCallWarmup sets the callWarmup property value. Voice call warmup status for this phone number.
 func (m *PhoneNumberStatusResponse) SetCallWarmup(value PhoneNumberStatusResponse_callWarmupable)() {
     m.callWarmup = value
 }
-// SetMessagesPossible sets the messagesPossible property value. The messages possible value for this phone number status.
+// SetMessagesPossible sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 func (m *PhoneNumberStatusResponse) SetMessagesPossible(value *int32)() {
     m.messagesPossible = value
 }
-// SetMessagesWarmed sets the messagesWarmed property value. The messages warmed value for this phone number status.
+// SetMessagesWarmed sets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
 func (m *PhoneNumberStatusResponse) SetMessagesWarmed(value *int32)() {
     m.messagesWarmed = value
 }
-// SetNumber sets the number property value. The number value for this phone number status.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number readiness status.
 func (m *PhoneNumberStatusResponse) SetNumber(value *string)() {
     m.number = value
 }
-// SetOptOutMetrics sets the optOutMetrics property value. The opt out metrics value for this phone number status.
+// SetOptOutMetrics sets the optOutMetrics property value. Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
 func (m *PhoneNumberStatusResponse) SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)() {
     m.optOutMetrics = value
 }
-// SetRecentEvents sets the recentEvents property value. The recent events included with this phone number status.
+// SetRecentEvents sets the recentEvents property value. Recent workflow events returned for timeline and troubleshooting.
 func (m *PhoneNumberStatusResponse) SetRecentEvents(value []PhoneNumberMessagingEventResponseable)() {
     m.recentEvents = value
 }
-// SetSmsWarmup sets the smsWarmup property value. The SMS warmup value for this phone number status.
+// SetSmsWarmup sets the smsWarmup property value. SMS sender warmup status for this phone number.
 func (m *PhoneNumberStatusResponse) SetSmsWarmup(value PhoneNumberStatusResponse_smsWarmupable)() {
     m.smsWarmup = value
 }
-// SetTrafficMetrics sets the trafficMetrics property value. The traffic metrics value for this phone number status.
+// SetTrafficMetrics sets the trafficMetrics property value. Phone number traffic metrics for recent SMS and call activity.
 func (m *PhoneNumberStatusResponse) SetTrafficMetrics(value PhoneNumberTrafficMetricsResponseable)() {
     m.trafficMetrics = value
 }
-// SetWarmupCallsMade sets the warmupCallsMade property value. The warmup calls made value for this phone number status.
+// SetWarmupCallsMade sets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
 func (m *PhoneNumberStatusResponse) SetWarmupCallsMade(value *int32)() {
     m.warmupCallsMade = value
 }

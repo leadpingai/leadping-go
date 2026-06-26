@@ -7,37 +7,37 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EligibleOutgoingNumberResponse aPI response containing eligible outgoing number data returned to callers.
+// EligibleOutgoingNumberResponse response schema for the Leadping API eligible outgoing phone number returned to authenticated clients.
 type EligibleOutgoingNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The campaign ID associated with this eligible outgoing number.
+    // Messaging campaign identifier associated with this eligible outgoing phone number.
     campaignId *string
-    // Whether the caller can send this eligible outgoing number.
+    // Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
     canSend *bool
-    // The display number value for this eligible outgoing number.
+    // Human-readable phone number shown in Leadping UI and API responses.
     displayNumber *string
-    // The health label value for this eligible outgoing number.
+    // Short label describing the health state for display in dashboards.
     healthLabel *string
     // Defines the supported SMS Warmup Health State values.
     healthStatus *EligibleOutgoingNumberResponse_healthStatus
-    // The health warning value for this eligible outgoing number.
+    // Warning text that explains a potential health or readiness issue.
     healthWarning *string
-    // Whether this eligible outgoing number is selected.
+    // Indicates whether this eligible outgoing phone number was selected for the requested operation.
     isSelected *bool
-    // The human-readable label shown for this eligible outgoing number.
+    // Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
     label *string
-    // The number value for this eligible outgoing number.
+    // E.164 phone number exposed by this eligible outgoing phone number.
     number *string
-    // The phone number ID associated with this eligible outgoing number.
+    // Leadping phone number ID connected to this eligible outgoing phone number.
     phoneNumberId *string
-    // The reason label value for this eligible outgoing number.
+    // Human-readable label for the reason code on this eligible outgoing phone number.
     reasonLabel *string
-    // The human-readable selection reason explaining this eligible outgoing number.
+    // Reason Leadping selected this outbound sender number.
     selectionReason *OutgoingNumberSelectionReason
-    // The source ID associated with this eligible outgoing number.
+    // Lead source ID used to determine this phone number's outbound eligibility.
     sourceId *string
-    // The team ID associated with this eligible outgoing number.
+    // Team ID used to determine this phone number's outbound eligibility.
     teamId *string
 }
 // NewEligibleOutgoingNumberResponse instantiates a new EligibleOutgoingNumberResponse and sets the default values.
@@ -57,17 +57,17 @@ func CreateEligibleOutgoingNumberResponseFromDiscriminatorValue(parseNode i878a8
 func (m *EligibleOutgoingNumberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this eligible outgoing number.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetCanSend gets the canSend property value. Whether the caller can send this eligible outgoing number.
+// GetCanSend gets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 // returns a *bool when successful
 func (m *EligibleOutgoingNumberResponse) GetCanSend()(*bool) {
     return m.canSend
 }
-// GetDisplayNumber gets the displayNumber property value. The display number value for this eligible outgoing number.
+// GetDisplayNumber gets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetDisplayNumber()(*string) {
     return m.displayNumber
@@ -218,7 +218,7 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetHealthLabel gets the healthLabel property value. The health label value for this eligible outgoing number.
+// GetHealthLabel gets the healthLabel property value. Short label describing the health state for display in dashboards.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetHealthLabel()(*string) {
     return m.healthLabel
@@ -228,47 +228,47 @@ func (m *EligibleOutgoingNumberResponse) GetHealthLabel()(*string) {
 func (m *EligibleOutgoingNumberResponse) GetHealthStatus()(*EligibleOutgoingNumberResponse_healthStatus) {
     return m.healthStatus
 }
-// GetHealthWarning gets the healthWarning property value. The health warning value for this eligible outgoing number.
+// GetHealthWarning gets the healthWarning property value. Warning text that explains a potential health or readiness issue.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetHealthWarning()(*string) {
     return m.healthWarning
 }
-// GetIsSelected gets the isSelected property value. Whether this eligible outgoing number is selected.
+// GetIsSelected gets the isSelected property value. Indicates whether this eligible outgoing phone number was selected for the requested operation.
 // returns a *bool when successful
 func (m *EligibleOutgoingNumberResponse) GetIsSelected()(*bool) {
     return m.isSelected
 }
-// GetLabel gets the label property value. The human-readable label shown for this eligible outgoing number.
+// GetLabel gets the label property value. Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetLabel()(*string) {
     return m.label
 }
-// GetNumber gets the number property value. The number value for this eligible outgoing number.
+// GetNumber gets the number property value. E.164 phone number exposed by this eligible outgoing phone number.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetNumber()(*string) {
     return m.number
 }
-// GetPhoneNumberId gets the phoneNumberId property value. The phone number ID associated with this eligible outgoing number.
+// GetPhoneNumberId gets the phoneNumberId property value. Leadping phone number ID connected to this eligible outgoing phone number.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
-// GetReasonLabel gets the reasonLabel property value. The reason label value for this eligible outgoing number.
+// GetReasonLabel gets the reasonLabel property value. Human-readable label for the reason code on this eligible outgoing phone number.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetReasonLabel()(*string) {
     return m.reasonLabel
 }
-// GetSelectionReason gets the selectionReason property value. The human-readable selection reason explaining this eligible outgoing number.
+// GetSelectionReason gets the selectionReason property value. Reason Leadping selected this outbound sender number.
 // returns a *OutgoingNumberSelectionReason when successful
 func (m *EligibleOutgoingNumberResponse) GetSelectionReason()(*OutgoingNumberSelectionReason) {
     return m.selectionReason
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this eligible outgoing number.
+// GetSourceId gets the sourceId property value. Lead source ID used to determine this phone number's outbound eligibility.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. The team ID associated with this eligible outgoing number.
+// GetTeamId gets the teamId property value. Team ID used to determine this phone number's outbound eligibility.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetTeamId()(*string) {
     return m.teamId
@@ -373,19 +373,19 @@ func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d268963
 func (m *EligibleOutgoingNumberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this eligible outgoing number.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetCanSend sets the canSend property value. Whether the caller can send this eligible outgoing number.
+// SetCanSend sets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetCanSend(value *bool)() {
     m.canSend = value
 }
-// SetDisplayNumber sets the displayNumber property value. The display number value for this eligible outgoing number.
+// SetDisplayNumber sets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
 func (m *EligibleOutgoingNumberResponse) SetDisplayNumber(value *string)() {
     m.displayNumber = value
 }
-// SetHealthLabel sets the healthLabel property value. The health label value for this eligible outgoing number.
+// SetHealthLabel sets the healthLabel property value. Short label describing the health state for display in dashboards.
 func (m *EligibleOutgoingNumberResponse) SetHealthLabel(value *string)() {
     m.healthLabel = value
 }
@@ -393,39 +393,39 @@ func (m *EligibleOutgoingNumberResponse) SetHealthLabel(value *string)() {
 func (m *EligibleOutgoingNumberResponse) SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)() {
     m.healthStatus = value
 }
-// SetHealthWarning sets the healthWarning property value. The health warning value for this eligible outgoing number.
+// SetHealthWarning sets the healthWarning property value. Warning text that explains a potential health or readiness issue.
 func (m *EligibleOutgoingNumberResponse) SetHealthWarning(value *string)() {
     m.healthWarning = value
 }
-// SetIsSelected sets the isSelected property value. Whether this eligible outgoing number is selected.
+// SetIsSelected sets the isSelected property value. Indicates whether this eligible outgoing phone number was selected for the requested operation.
 func (m *EligibleOutgoingNumberResponse) SetIsSelected(value *bool)() {
     m.isSelected = value
 }
-// SetLabel sets the label property value. The human-readable label shown for this eligible outgoing number.
+// SetLabel sets the label property value. Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
 func (m *EligibleOutgoingNumberResponse) SetLabel(value *string)() {
     m.label = value
 }
-// SetNumber sets the number property value. The number value for this eligible outgoing number.
+// SetNumber sets the number property value. E.164 phone number exposed by this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetNumber(value *string)() {
     m.number = value
 }
-// SetPhoneNumberId sets the phoneNumberId property value. The phone number ID associated with this eligible outgoing number.
+// SetPhoneNumberId sets the phoneNumberId property value. Leadping phone number ID connected to this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
-// SetReasonLabel sets the reasonLabel property value. The reason label value for this eligible outgoing number.
+// SetReasonLabel sets the reasonLabel property value. Human-readable label for the reason code on this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetReasonLabel(value *string)() {
     m.reasonLabel = value
 }
-// SetSelectionReason sets the selectionReason property value. The human-readable selection reason explaining this eligible outgoing number.
+// SetSelectionReason sets the selectionReason property value. Reason Leadping selected this outbound sender number.
 func (m *EligibleOutgoingNumberResponse) SetSelectionReason(value *OutgoingNumberSelectionReason)() {
     m.selectionReason = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this eligible outgoing number.
+// SetSourceId sets the sourceId property value. Lead source ID used to determine this phone number's outbound eligibility.
 func (m *EligibleOutgoingNumberResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. The team ID associated with this eligible outgoing number.
+// SetTeamId sets the teamId property value. Team ID used to determine this phone number's outbound eligibility.
 func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string)() {
     m.teamId = value
 }

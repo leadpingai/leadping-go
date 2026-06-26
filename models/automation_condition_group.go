@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationConditionGroup aPI DTO containing automation condition group data used by Leadping API contracts.
+// AutomationConditionGroup public Leadping API schema for automation condition group data.
 type AutomationConditionGroup struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The conditions included with this automation condition group.
+    // Automation conditions evaluated before an action or workflow runs.
     conditions []AutomationConditionable
-    // The unique ID for this automation condition group.
+    // Unique Leadping identifier for this automation condition group.
     id *string
-    // The mode value for this automation condition group.
+    // Execution mode that controls how this automation condition group is evaluated.
     mode *string
 }
 // NewAutomationConditionGroup instantiates a new AutomationConditionGroup and sets the default values.
@@ -35,7 +35,7 @@ func CreateAutomationConditionGroupFromDiscriminatorValue(parseNode i878a80d2330
 func (m *AutomationConditionGroup) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetConditions gets the conditions property value. The conditions included with this automation condition group.
+// GetConditions gets the conditions property value. Automation conditions evaluated before an action or workflow runs.
 // returns a []AutomationConditionable when successful
 func (m *AutomationConditionGroup) GetConditions()([]AutomationConditionable) {
     return m.conditions
@@ -82,12 +82,12 @@ func (m *AutomationConditionGroup) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation condition group.
+// GetId gets the id property value. Unique Leadping identifier for this automation condition group.
 // returns a *string when successful
 func (m *AutomationConditionGroup) GetId()(*string) {
     return m.id
 }
-// GetMode gets the mode property value. The mode value for this automation condition group.
+// GetMode gets the mode property value. Execution mode that controls how this automation condition group is evaluated.
 // returns a *string when successful
 func (m *AutomationConditionGroup) GetMode()(*string) {
     return m.mode
@@ -130,15 +130,15 @@ func (m *AutomationConditionGroup) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *AutomationConditionGroup) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetConditions sets the conditions property value. The conditions included with this automation condition group.
+// SetConditions sets the conditions property value. Automation conditions evaluated before an action or workflow runs.
 func (m *AutomationConditionGroup) SetConditions(value []AutomationConditionable)() {
     m.conditions = value
 }
-// SetId sets the id property value. The unique ID for this automation condition group.
+// SetId sets the id property value. Unique Leadping identifier for this automation condition group.
 func (m *AutomationConditionGroup) SetId(value *string)() {
     m.id = value
 }
-// SetMode sets the mode property value. The mode value for this automation condition group.
+// SetMode sets the mode property value. Execution mode that controls how this automation condition group is evaluated.
 func (m *AutomationConditionGroup) SetMode(value *string)() {
     m.mode = value
 }

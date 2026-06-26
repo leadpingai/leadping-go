@@ -8,45 +8,45 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ConversationResponse aPI response containing conversation data returned to callers.
+// ConversationResponse response schema for the Leadping API conversation response returned to authenticated clients.
 type ConversationResponse struct {
-    // The active outbound phone number ID associated with this conversation.
+    // Phone number ID currently active for outbound delivery.
     activeOutboundPhoneNumberId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The archivedAt property
+    // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
-    // The current lifecycle disposition for the conversation's lead.
+    // Current disposition summary that describes the lead outcome.
     currentDisposition ConversationResponse_currentDispositionable
-    // The first name value for this conversation.
+    // First name of the lead, user, or contact represented by this conversation response.
     firstName *string
-    // The unique ID for this conversation.
+    // Unique Leadping identifier for this conversation response.
     id *string
     // The isArchived property
     isArchived *bool
-    // Whether this conversation is unread.
+    // Indicates whether the current user has unread activity in the conversation.
     isUnread *bool
-    // The date and time for the last event at value on this conversation.
+    // UTC timestamp when the most recent conversation event occurred.
     lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the last name value on this conversation.
+    // Last name of the lead, user, or contact represented by this conversation response.
     lastName *string
-    // The date and time for the last snippet value on this conversation.
+    // Most recent message preview shown for the conversation.
     lastSnippet *string
-    // The lead ID associated with this conversation.
+    // Lead ID associated with this inbox conversation.
     leadId *string
-    // The lead's primary contact phone number for this conversation.
+    // Lead's phone number used for conversation matching and outreach.
     leadPhoneNumber *string
-    // The recommended next action for the inbox user.
+    // Recommended next step to move this conversation response forward.
     nextStep *string
-    // The outbound phone number override ID associated with this conversation.
+    // Phone number ID manually chosen to override automatic outbound selection.
     outboundPhoneNumberOverrideId *string
-    // The Leadping sender phone number associated with this conversation.
+    // Phone number used by this conversation response for calls, SMS, lookup, or routing.
     phoneNumber ConversationResponse_phoneNumberable
     // Defines the customer-facing operational status for an inbox conversation.
     status *ConversationResponse_status
-    // The human-readable reason explaining the current conversation status.
+    // Human-readable reason explaining the current status of this conversation response.
     statusReason *string
 }
 // NewConversationResponse instantiates a new ConversationResponse and sets the default values.
@@ -61,7 +61,7 @@ func NewConversationResponse()(*ConversationResponse) {
 func CreateConversationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewConversationResponse(), nil
 }
-// GetActiveOutboundPhoneNumberId gets the activeOutboundPhoneNumberId property value. The active outbound phone number ID associated with this conversation.
+// GetActiveOutboundPhoneNumberId gets the activeOutboundPhoneNumberId property value. Phone number ID currently active for outbound delivery.
 // returns a *string when successful
 func (m *ConversationResponse) GetActiveOutboundPhoneNumberId()(*string) {
     return m.activeOutboundPhoneNumberId
@@ -71,7 +71,7 @@ func (m *ConversationResponse) GetActiveOutboundPhoneNumberId()(*string) {
 func (m *ConversationResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetArchivedAt gets the archivedAt property value. The archivedAt property
+// GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
 func (m *ConversationResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.archivedAt
@@ -81,7 +81,7 @@ func (m *ConversationResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *ConversationResponse) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
-// GetCurrentDisposition gets the currentDisposition property value. The current lifecycle disposition for the conversation's lead.
+// GetCurrentDisposition gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 // returns a ConversationResponse_currentDispositionable when successful
 func (m *ConversationResponse) GetCurrentDisposition()(ConversationResponse_currentDispositionable) {
     return m.currentDisposition
@@ -272,12 +272,12 @@ func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this conversation.
+// GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetFirstName()(*string) {
     return m.firstName
 }
-// GetId gets the id property value. The unique ID for this conversation.
+// GetId gets the id property value. Unique Leadping identifier for this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetId()(*string) {
     return m.id
@@ -287,47 +287,47 @@ func (m *ConversationResponse) GetId()(*string) {
 func (m *ConversationResponse) GetIsArchived()(*bool) {
     return m.isArchived
 }
-// GetIsUnread gets the isUnread property value. Whether this conversation is unread.
+// GetIsUnread gets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsUnread()(*bool) {
     return m.isUnread
 }
-// GetLastEventAt gets the lastEventAt property value. The date and time for the last event at value on this conversation.
+// GetLastEventAt gets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
 // returns a *Time when successful
 func (m *ConversationResponse) GetLastEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastEventAt
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this conversation.
+// GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetLastName()(*string) {
     return m.lastName
 }
-// GetLastSnippet gets the lastSnippet property value. The date and time for the last snippet value on this conversation.
+// GetLastSnippet gets the lastSnippet property value. Most recent message preview shown for the conversation.
 // returns a *string when successful
 func (m *ConversationResponse) GetLastSnippet()(*string) {
     return m.lastSnippet
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this conversation.
+// GetLeadId gets the leadId property value. Lead ID associated with this inbox conversation.
 // returns a *string when successful
 func (m *ConversationResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetLeadPhoneNumber gets the leadPhoneNumber property value. The lead's primary contact phone number for this conversation.
+// GetLeadPhoneNumber gets the leadPhoneNumber property value. Lead's phone number used for conversation matching and outreach.
 // returns a *string when successful
 func (m *ConversationResponse) GetLeadPhoneNumber()(*string) {
     return m.leadPhoneNumber
 }
-// GetNextStep gets the nextStep property value. The recommended next action for the inbox user.
+// GetNextStep gets the nextStep property value. Recommended next step to move this conversation response forward.
 // returns a *string when successful
 func (m *ConversationResponse) GetNextStep()(*string) {
     return m.nextStep
 }
-// GetOutboundPhoneNumberOverrideId gets the outboundPhoneNumberOverrideId property value. The outbound phone number override ID associated with this conversation.
+// GetOutboundPhoneNumberOverrideId gets the outboundPhoneNumberOverrideId property value. Phone number ID manually chosen to override automatic outbound selection.
 // returns a *string when successful
 func (m *ConversationResponse) GetOutboundPhoneNumberOverrideId()(*string) {
     return m.outboundPhoneNumberOverrideId
 }
-// GetPhoneNumber gets the phoneNumber property value. The Leadping sender phone number associated with this conversation.
+// GetPhoneNumber gets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
 // returns a ConversationResponse_phoneNumberable when successful
 func (m *ConversationResponse) GetPhoneNumber()(ConversationResponse_phoneNumberable) {
     return m.phoneNumber
@@ -337,7 +337,7 @@ func (m *ConversationResponse) GetPhoneNumber()(ConversationResponse_phoneNumber
 func (m *ConversationResponse) GetStatus()(*ConversationResponse_status) {
     return m.status
 }
-// GetStatusReason gets the statusReason property value. The human-readable reason explaining the current conversation status.
+// GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetStatusReason()(*string) {
     return m.statusReason
@@ -461,7 +461,7 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     return nil
 }
-// SetActiveOutboundPhoneNumberId sets the activeOutboundPhoneNumberId property value. The active outbound phone number ID associated with this conversation.
+// SetActiveOutboundPhoneNumberId sets the activeOutboundPhoneNumberId property value. Phone number ID currently active for outbound delivery.
 func (m *ConversationResponse) SetActiveOutboundPhoneNumberId(value *string)() {
     m.activeOutboundPhoneNumberId = value
 }
@@ -469,7 +469,7 @@ func (m *ConversationResponse) SetActiveOutboundPhoneNumberId(value *string)() {
 func (m *ConversationResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetArchivedAt sets the archivedAt property value. The archivedAt property
+// SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
 }
@@ -477,15 +477,15 @@ func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3a
 func (m *ConversationResponse) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
-// SetCurrentDisposition sets the currentDisposition property value. The current lifecycle disposition for the conversation's lead.
+// SetCurrentDisposition sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 func (m *ConversationResponse) SetCurrentDisposition(value ConversationResponse_currentDispositionable)() {
     m.currentDisposition = value
 }
-// SetFirstName sets the firstName property value. The first name value for this conversation.
+// SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetId sets the id property value. The unique ID for this conversation.
+// SetId sets the id property value. Unique Leadping identifier for this conversation response.
 func (m *ConversationResponse) SetId(value *string)() {
     m.id = value
 }
@@ -493,39 +493,39 @@ func (m *ConversationResponse) SetId(value *string)() {
 func (m *ConversationResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
-// SetIsUnread sets the isUnread property value. Whether this conversation is unread.
+// SetIsUnread sets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 func (m *ConversationResponse) SetIsUnread(value *bool)() {
     m.isUnread = value
 }
-// SetLastEventAt sets the lastEventAt property value. The date and time for the last event at value on this conversation.
+// SetLastEventAt sets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
 func (m *ConversationResponse) SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastEventAt = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this conversation.
+// SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetLastSnippet sets the lastSnippet property value. The date and time for the last snippet value on this conversation.
+// SetLastSnippet sets the lastSnippet property value. Most recent message preview shown for the conversation.
 func (m *ConversationResponse) SetLastSnippet(value *string)() {
     m.lastSnippet = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this conversation.
+// SetLeadId sets the leadId property value. Lead ID associated with this inbox conversation.
 func (m *ConversationResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetLeadPhoneNumber sets the leadPhoneNumber property value. The lead's primary contact phone number for this conversation.
+// SetLeadPhoneNumber sets the leadPhoneNumber property value. Lead's phone number used for conversation matching and outreach.
 func (m *ConversationResponse) SetLeadPhoneNumber(value *string)() {
     m.leadPhoneNumber = value
 }
-// SetNextStep sets the nextStep property value. The recommended next action for the inbox user.
+// SetNextStep sets the nextStep property value. Recommended next step to move this conversation response forward.
 func (m *ConversationResponse) SetNextStep(value *string)() {
     m.nextStep = value
 }
-// SetOutboundPhoneNumberOverrideId sets the outboundPhoneNumberOverrideId property value. The outbound phone number override ID associated with this conversation.
+// SetOutboundPhoneNumberOverrideId sets the outboundPhoneNumberOverrideId property value. Phone number ID manually chosen to override automatic outbound selection.
 func (m *ConversationResponse) SetOutboundPhoneNumberOverrideId(value *string)() {
     m.outboundPhoneNumberOverrideId = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The Leadping sender phone number associated with this conversation.
+// SetPhoneNumber sets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
 func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNumberable)() {
     m.phoneNumber = value
 }
@@ -533,7 +533,7 @@ func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNu
 func (m *ConversationResponse) SetStatus(value *ConversationResponse_status)() {
     m.status = value
 }
-// SetStatusReason sets the statusReason property value. The human-readable reason explaining the current conversation status.
+// SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this conversation response.
 func (m *ConversationResponse) SetStatusReason(value *string)() {
     m.statusReason = value
 }

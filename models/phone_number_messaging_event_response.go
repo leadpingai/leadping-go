@@ -8,29 +8,29 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberMessagingEventResponse aPI response containing phone number messaging event data returned to callers.
+// PhoneNumberMessagingEventResponse response schema for the Leadping API phone number messaging event returned to authenticated clients.
 type PhoneNumberMessagingEventResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this phone number messaging event.
+    // UTC timestamp when this phone number messaging event was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The direction value for this phone number messaging event.
+    // Communication direction for this phone number messaging event, such as inbound or outbound.
     direction *string
-    // The event type classification for this phone number messaging event.
+    // Event type used to classify this timeline, SMS, call, or automation event.
     eventType *string
-    // The phone number associated with this phone number messaging event.
+    // Sender phone number used for this communication.
     fromPhoneNumber *string
-    // The unique ID for this phone number messaging event.
+    // Unique Leadping identifier for this phone number messaging event.
     id *string
-    // Whether this phone number messaging event is opt out.
+    // Indicates whether the recipient has opted out of further SMS communication.
     isOptOut *bool
-    // The human-readable label shown for this phone number messaging event.
+    // Short display label for this phone number messaging event, formatted for charts, filters, or list views.
     label *string
-    // The current provider status for this phone number messaging event.
+    // Provider lifecycle or delivery status for this phone number messaging event.
     providerStatus *string
-    // The text preview value for this phone number messaging event.
+    // Short preview of the SMS or conversation text for this phone number messaging event.
     textPreview *string
-    // The phone number associated with this phone number messaging event.
+    // Recipient phone number used for this communication.
     toPhoneNumber *string
 }
 // NewPhoneNumberMessagingEventResponse instantiates a new PhoneNumberMessagingEventResponse and sets the default values.
@@ -50,17 +50,17 @@ func CreatePhoneNumberMessagingEventResponseFromDiscriminatorValue(parseNode i87
 func (m *PhoneNumberMessagingEventResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this phone number messaging event.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this phone number messaging event was created.
 // returns a *Time when successful
 func (m *PhoneNumberMessagingEventResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDirection gets the direction property value. The direction value for this phone number messaging event.
+// GetDirection gets the direction property value. Communication direction for this phone number messaging event, such as inbound or outbound.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetDirection()(*string) {
     return m.direction
 }
-// GetEventType gets the eventType property value. The event type classification for this phone number messaging event.
+// GetEventType gets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetEventType()(*string) {
     return m.eventType
@@ -171,37 +171,37 @@ func (m *PhoneNumberMessagingEventResponse) GetFieldDeserializers()(map[string]f
     }
     return res
 }
-// GetFromPhoneNumber gets the fromPhoneNumber property value. The phone number associated with this phone number messaging event.
+// GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetFromPhoneNumber()(*string) {
     return m.fromPhoneNumber
 }
-// GetId gets the id property value. The unique ID for this phone number messaging event.
+// GetId gets the id property value. Unique Leadping identifier for this phone number messaging event.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetId()(*string) {
     return m.id
 }
-// GetIsOptOut gets the isOptOut property value. Whether this phone number messaging event is opt out.
+// GetIsOptOut gets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
 // returns a *bool when successful
 func (m *PhoneNumberMessagingEventResponse) GetIsOptOut()(*bool) {
     return m.isOptOut
 }
-// GetLabel gets the label property value. The human-readable label shown for this phone number messaging event.
+// GetLabel gets the label property value. Short display label for this phone number messaging event, formatted for charts, filters, or list views.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetLabel()(*string) {
     return m.label
 }
-// GetProviderStatus gets the providerStatus property value. The current provider status for this phone number messaging event.
+// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetProviderStatus()(*string) {
     return m.providerStatus
 }
-// GetTextPreview gets the textPreview property value. The text preview value for this phone number messaging event.
+// GetTextPreview gets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetTextPreview()(*string) {
     return m.textPreview
 }
-// GetToPhoneNumber gets the toPhoneNumber property value. The phone number associated with this phone number messaging event.
+// GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
@@ -280,43 +280,43 @@ func (m *PhoneNumberMessagingEventResponse) Serialize(writer i878a80d2330e89d268
 func (m *PhoneNumberMessagingEventResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this phone number messaging event.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this phone number messaging event was created.
 func (m *PhoneNumberMessagingEventResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDirection sets the direction property value. The direction value for this phone number messaging event.
+// SetDirection sets the direction property value. Communication direction for this phone number messaging event, such as inbound or outbound.
 func (m *PhoneNumberMessagingEventResponse) SetDirection(value *string)() {
     m.direction = value
 }
-// SetEventType sets the eventType property value. The event type classification for this phone number messaging event.
+// SetEventType sets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 func (m *PhoneNumberMessagingEventResponse) SetEventType(value *string)() {
     m.eventType = value
 }
-// SetFromPhoneNumber sets the fromPhoneNumber property value. The phone number associated with this phone number messaging event.
+// SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
 func (m *PhoneNumberMessagingEventResponse) SetFromPhoneNumber(value *string)() {
     m.fromPhoneNumber = value
 }
-// SetId sets the id property value. The unique ID for this phone number messaging event.
+// SetId sets the id property value. Unique Leadping identifier for this phone number messaging event.
 func (m *PhoneNumberMessagingEventResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsOptOut sets the isOptOut property value. Whether this phone number messaging event is opt out.
+// SetIsOptOut sets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
 func (m *PhoneNumberMessagingEventResponse) SetIsOptOut(value *bool)() {
     m.isOptOut = value
 }
-// SetLabel sets the label property value. The human-readable label shown for this phone number messaging event.
+// SetLabel sets the label property value. Short display label for this phone number messaging event, formatted for charts, filters, or list views.
 func (m *PhoneNumberMessagingEventResponse) SetLabel(value *string)() {
     m.label = value
 }
-// SetProviderStatus sets the providerStatus property value. The current provider status for this phone number messaging event.
+// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
 func (m *PhoneNumberMessagingEventResponse) SetProviderStatus(value *string)() {
     m.providerStatus = value
 }
-// SetTextPreview sets the textPreview property value. The text preview value for this phone number messaging event.
+// SetTextPreview sets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
 func (m *PhoneNumberMessagingEventResponse) SetTextPreview(value *string)() {
     m.textPreview = value
 }
-// SetToPhoneNumber sets the toPhoneNumber property value. The phone number associated with this phone number messaging event.
+// SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *PhoneNumberMessagingEventResponse) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }

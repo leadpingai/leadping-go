@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserRequest_currentBusiness the current business value for this user.
+// UserRequest_currentBusiness business currently selected for the user session or profile.
 type UserRequest_currentBusiness struct {
     IdNamePair
 }

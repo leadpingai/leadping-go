@@ -7,65 +7,65 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberTableRow aPI DTO containing phone number data used by Leadping API contracts.
+// PhoneNumberTableRow list item schema for Leadping API phone number table row results shown in searchable tables.
 type PhoneNumberTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The admin force enablement override on this phone number.
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride PhoneNumberTableRow_adminEnablementOverrideable
-    // The billing attribution value for this phone number.
+    // Billing attribution used to reconcile this phone number with subscription billing.
     billingAttribution *string
-    // The business value for this phone number.
+    // Business summary connected to this phone number table row.
     business *string
-    // The capabilities value for this phone number.
+    // SMS and voice capabilities available on this phone number.
     capabilities *string
-    // Whether this phone number is enabled.
+    // Indicates whether this phone number table row is active and available in the Leadping API.
     enabled *bool
     // Defines the supported SMS Warmup Health State values.
     healthStatus *PhoneNumberTableRow_healthStatus
-    // The unique ID for this phone number.
+    // Unique Leadping identifier for this phone number table row.
     id *string
-    // Whether internal test only applies to this phone number.
+    // Indicates whether this record is restricted to internal Leadping testing.
     internalTestOnly *bool
-    // The current inventory state for this phone number.
+    // Leadping inventory state for this phone number.
     inventoryState *PhoneNumberInventoryState
-    // Whether this phone number is messaging program approved.
+    // Indicates whether this phone number is approved for the configured messaging program.
     isMessagingProgramApproved *bool
-    // The location value for this phone number.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location *string
-    // The human-readable name shown for this phone number.
+    // Display name for this phone number table row in the Leadping API.
     name *string
-    // The number value for this phone number.
+    // E.164 phone number exposed by this phone number table row.
     number *string
-    // The ownership value for this phone number.
+    // Ownership classification for this phone number, such as Leadping-owned or customer-owned.
     ownership *string
-    // The current provider lifecycle state for this phone number.
+    // Provider lifecycle state used to determine phone number readiness.
     providerLifecycleState *PhoneNumberProviderLifecycleState
-    // The current provider reconciliation status for this phone number.
+    // Reconciliation status comparing Leadping data with provider data.
     providerReconciliationStatus *string
-    // The current provider status for this phone number.
+    // Provider lifecycle or delivery status for this phone number table row.
     providerStatus *string
-    // The routing summary value for this phone number.
+    // Human-readable routing summary for this phone number.
     routingSummary *string
-    // Whether this phone number is SMS ready.
+    // Indicates whether SMS messaging is ready for this business or phone number.
     smsReady *bool
-    // The current status for this phone number.
+    // Current lifecycle status for this phone number table row in the Leadping API.
     status *InternalPhoneNumberStatus
-    // The 10DLC campaign ID associated with this phone number.
+    // 10DLC campaign identifier associated with this sender or SMS event.
     tenDlcCampaignId *string
-    // The current 10DLC campaign status for this phone number.
+    // 10DLC campaign status associated with this sender or SMS event.
     tenDlcCampaignStatus *string
-    // The type classification for this phone number.
+    // Type classification used to route and interpret this phone number table row in the Leadping API.
     typeEscaped *string
-    // The user value for this phone number.
+    // User summary connected to this phone number table row.
     user *string
-    // Whether this phone number is voice ready.
+    // Indicates whether voice calling is ready for this business or phone number.
     voiceReady *bool
-    // The warmup health score metric for this phone number.
+    // Numeric sender warmup health score used by Leadping to assess deliverability readiness.
     warmupHealthScore *int32
-    // Whether warmup only applies to this phone number.
+    // Indicates whether this phone number should only be used for warmup traffic.
     warmupOnly *bool
-    // The warmup progress percent metric for this phone number.
+    // Percent complete for the SMS sender warmup plan.
     warmupProgressPercent *int32
     // Defines the supported SMS Warmup Health State values.
     warmupState *PhoneNumberTableRow_warmupState
@@ -87,27 +87,27 @@ func CreatePhoneNumberTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The admin force enablement override on this phone number.
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a PhoneNumberTableRow_adminEnablementOverrideable when successful
 func (m *PhoneNumberTableRow) GetAdminEnablementOverride()(PhoneNumberTableRow_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetBillingAttribution gets the billingAttribution property value. The billing attribution value for this phone number.
+// GetBillingAttribution gets the billingAttribution property value. Billing attribution used to reconcile this phone number with subscription billing.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetBillingAttribution()(*string) {
     return m.billingAttribution
 }
-// GetBusiness gets the business property value. The business value for this phone number.
+// GetBusiness gets the business property value. Business summary connected to this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetBusiness()(*string) {
     return m.business
 }
-// GetCapabilities gets the capabilities property value. The capabilities value for this phone number.
+// GetCapabilities gets the capabilities property value. SMS and voice capabilities available on this phone number.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetCapabilities()(*string) {
     return m.capabilities
 }
-// GetEnabled gets the enabled property value. Whether this phone number is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
     return m.enabled
@@ -413,112 +413,112 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *PhoneNumberTableRow) GetHealthStatus()(*PhoneNumberTableRow_healthStatus) {
     return m.healthStatus
 }
-// GetId gets the id property value. The unique ID for this phone number.
+// GetId gets the id property value. Unique Leadping identifier for this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetId()(*string) {
     return m.id
 }
-// GetInternalTestOnly gets the internalTestOnly property value. Whether internal test only applies to this phone number.
+// GetInternalTestOnly gets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetInternalTestOnly()(*bool) {
     return m.internalTestOnly
 }
-// GetInventoryState gets the inventoryState property value. The current inventory state for this phone number.
+// GetInventoryState gets the inventoryState property value. Leadping inventory state for this phone number.
 // returns a *PhoneNumberInventoryState when successful
 func (m *PhoneNumberTableRow) GetInventoryState()(*PhoneNumberInventoryState) {
     return m.inventoryState
 }
-// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Whether this phone number is messaging program approved.
+// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetIsMessagingProgramApproved()(*bool) {
     return m.isMessagingProgramApproved
 }
-// GetLocation gets the location property value. The location value for this phone number.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetLocation()(*string) {
     return m.location
 }
-// GetName gets the name property value. The human-readable name shown for this phone number.
+// GetName gets the name property value. Display name for this phone number table row in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetName()(*string) {
     return m.name
 }
-// GetNumber gets the number property value. The number value for this phone number.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetNumber()(*string) {
     return m.number
 }
-// GetOwnership gets the ownership property value. The ownership value for this phone number.
+// GetOwnership gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetOwnership()(*string) {
     return m.ownership
 }
-// GetProviderLifecycleState gets the providerLifecycleState property value. The current provider lifecycle state for this phone number.
+// GetProviderLifecycleState gets the providerLifecycleState property value. Provider lifecycle state used to determine phone number readiness.
 // returns a *PhoneNumberProviderLifecycleState when successful
 func (m *PhoneNumberTableRow) GetProviderLifecycleState()(*PhoneNumberProviderLifecycleState) {
     return m.providerLifecycleState
 }
-// GetProviderReconciliationStatus gets the providerReconciliationStatus property value. The current provider reconciliation status for this phone number.
+// GetProviderReconciliationStatus gets the providerReconciliationStatus property value. Reconciliation status comparing Leadping data with provider data.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetProviderReconciliationStatus()(*string) {
     return m.providerReconciliationStatus
 }
-// GetProviderStatus gets the providerStatus property value. The current provider status for this phone number.
+// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetProviderStatus()(*string) {
     return m.providerStatus
 }
-// GetRoutingSummary gets the routingSummary property value. The routing summary value for this phone number.
+// GetRoutingSummary gets the routingSummary property value. Human-readable routing summary for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetRoutingSummary()(*string) {
     return m.routingSummary
 }
-// GetSmsReady gets the smsReady property value. Whether this phone number is SMS ready.
+// GetSmsReady gets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetSmsReady()(*bool) {
     return m.smsReady
 }
-// GetStatus gets the status property value. The current status for this phone number.
+// GetStatus gets the status property value. Current lifecycle status for this phone number table row in the Leadping API.
 // returns a *InternalPhoneNumberStatus when successful
 func (m *PhoneNumberTableRow) GetStatus()(*InternalPhoneNumberStatus) {
     return m.status
 }
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. The 10DLC campaign ID associated with this phone number.
+// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetTenDlcCampaignId()(*string) {
     return m.tenDlcCampaignId
 }
-// GetTenDlcCampaignStatus gets the tenDlcCampaignStatus property value. The current 10DLC campaign status for this phone number.
+// GetTenDlcCampaignStatus gets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus()(*string) {
     return m.tenDlcCampaignStatus
 }
-// GetTypeEscaped gets the type property value. The type classification for this phone number.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this phone number table row in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetTypeEscaped()(*string) {
     return m.typeEscaped
 }
-// GetUser gets the user property value. The user value for this phone number.
+// GetUser gets the user property value. User summary connected to this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetUser()(*string) {
     return m.user
 }
-// GetVoiceReady gets the voiceReady property value. Whether this phone number is voice ready.
+// GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetVoiceReady()(*bool) {
     return m.voiceReady
 }
-// GetWarmupHealthScore gets the warmupHealthScore property value. The warmup health score metric for this phone number.
+// GetWarmupHealthScore gets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
 // returns a *int32 when successful
 func (m *PhoneNumberTableRow) GetWarmupHealthScore()(*int32) {
     return m.warmupHealthScore
 }
-// GetWarmupOnly gets the warmupOnly property value. Whether warmup only applies to this phone number.
+// GetWarmupOnly gets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetWarmupOnly()(*bool) {
     return m.warmupOnly
 }
-// GetWarmupProgressPercent gets the warmupProgressPercent property value. The warmup progress percent metric for this phone number.
+// GetWarmupProgressPercent gets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
 // returns a *int32 when successful
 func (m *PhoneNumberTableRow) GetWarmupProgressPercent()(*int32) {
     return m.warmupProgressPercent
@@ -721,23 +721,23 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The admin force enablement override on this phone number.
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *PhoneNumberTableRow) SetAdminEnablementOverride(value PhoneNumberTableRow_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetBillingAttribution sets the billingAttribution property value. The billing attribution value for this phone number.
+// SetBillingAttribution sets the billingAttribution property value. Billing attribution used to reconcile this phone number with subscription billing.
 func (m *PhoneNumberTableRow) SetBillingAttribution(value *string)() {
     m.billingAttribution = value
 }
-// SetBusiness sets the business property value. The business value for this phone number.
+// SetBusiness sets the business property value. Business summary connected to this phone number table row.
 func (m *PhoneNumberTableRow) SetBusiness(value *string)() {
     m.business = value
 }
-// SetCapabilities sets the capabilities property value. The capabilities value for this phone number.
+// SetCapabilities sets the capabilities property value. SMS and voice capabilities available on this phone number.
 func (m *PhoneNumberTableRow) SetCapabilities(value *string)() {
     m.capabilities = value
 }
-// SetEnabled sets the enabled property value. Whether this phone number is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -745,91 +745,91 @@ func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
 func (m *PhoneNumberTableRow) SetHealthStatus(value *PhoneNumberTableRow_healthStatus)() {
     m.healthStatus = value
 }
-// SetId sets the id property value. The unique ID for this phone number.
+// SetId sets the id property value. Unique Leadping identifier for this phone number table row.
 func (m *PhoneNumberTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetInternalTestOnly sets the internalTestOnly property value. Whether internal test only applies to this phone number.
+// SetInternalTestOnly sets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
 func (m *PhoneNumberTableRow) SetInternalTestOnly(value *bool)() {
     m.internalTestOnly = value
 }
-// SetInventoryState sets the inventoryState property value. The current inventory state for this phone number.
+// SetInventoryState sets the inventoryState property value. Leadping inventory state for this phone number.
 func (m *PhoneNumberTableRow) SetInventoryState(value *PhoneNumberInventoryState)() {
     m.inventoryState = value
 }
-// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Whether this phone number is messaging program approved.
+// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
 func (m *PhoneNumberTableRow) SetIsMessagingProgramApproved(value *bool)() {
     m.isMessagingProgramApproved = value
 }
-// SetLocation sets the location property value. The location value for this phone number.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberTableRow) SetLocation(value *string)() {
     m.location = value
 }
-// SetName sets the name property value. The human-readable name shown for this phone number.
+// SetName sets the name property value. Display name for this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetName(value *string)() {
     m.name = value
 }
-// SetNumber sets the number property value. The number value for this phone number.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number table row.
 func (m *PhoneNumberTableRow) SetNumber(value *string)() {
     m.number = value
 }
-// SetOwnership sets the ownership property value. The ownership value for this phone number.
+// SetOwnership sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
 func (m *PhoneNumberTableRow) SetOwnership(value *string)() {
     m.ownership = value
 }
-// SetProviderLifecycleState sets the providerLifecycleState property value. The current provider lifecycle state for this phone number.
+// SetProviderLifecycleState sets the providerLifecycleState property value. Provider lifecycle state used to determine phone number readiness.
 func (m *PhoneNumberTableRow) SetProviderLifecycleState(value *PhoneNumberProviderLifecycleState)() {
     m.providerLifecycleState = value
 }
-// SetProviderReconciliationStatus sets the providerReconciliationStatus property value. The current provider reconciliation status for this phone number.
+// SetProviderReconciliationStatus sets the providerReconciliationStatus property value. Reconciliation status comparing Leadping data with provider data.
 func (m *PhoneNumberTableRow) SetProviderReconciliationStatus(value *string)() {
     m.providerReconciliationStatus = value
 }
-// SetProviderStatus sets the providerStatus property value. The current provider status for this phone number.
+// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number table row.
 func (m *PhoneNumberTableRow) SetProviderStatus(value *string)() {
     m.providerStatus = value
 }
-// SetRoutingSummary sets the routingSummary property value. The routing summary value for this phone number.
+// SetRoutingSummary sets the routingSummary property value. Human-readable routing summary for this phone number.
 func (m *PhoneNumberTableRow) SetRoutingSummary(value *string)() {
     m.routingSummary = value
 }
-// SetSmsReady sets the smsReady property value. Whether this phone number is SMS ready.
+// SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
 func (m *PhoneNumberTableRow) SetSmsReady(value *bool)() {
     m.smsReady = value
 }
-// SetStatus sets the status property value. The current status for this phone number.
+// SetStatus sets the status property value. Current lifecycle status for this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetStatus(value *InternalPhoneNumberStatus)() {
     m.status = value
 }
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. The 10DLC campaign ID associated with this phone number.
+// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 func (m *PhoneNumberTableRow) SetTenDlcCampaignId(value *string)() {
     m.tenDlcCampaignId = value
 }
-// SetTenDlcCampaignStatus sets the tenDlcCampaignStatus property value. The current 10DLC campaign status for this phone number.
+// SetTenDlcCampaignStatus sets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
 func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string)() {
     m.tenDlcCampaignStatus = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this phone number.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }
-// SetUser sets the user property value. The user value for this phone number.
+// SetUser sets the user property value. User summary connected to this phone number table row.
 func (m *PhoneNumberTableRow) SetUser(value *string)() {
     m.user = value
 }
-// SetVoiceReady sets the voiceReady property value. Whether this phone number is voice ready.
+// SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
 func (m *PhoneNumberTableRow) SetVoiceReady(value *bool)() {
     m.voiceReady = value
 }
-// SetWarmupHealthScore sets the warmupHealthScore property value. The warmup health score metric for this phone number.
+// SetWarmupHealthScore sets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
 func (m *PhoneNumberTableRow) SetWarmupHealthScore(value *int32)() {
     m.warmupHealthScore = value
 }
-// SetWarmupOnly sets the warmupOnly property value. Whether warmup only applies to this phone number.
+// SetWarmupOnly sets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
 func (m *PhoneNumberTableRow) SetWarmupOnly(value *bool)() {
     m.warmupOnly = value
 }
-// SetWarmupProgressPercent sets the warmupProgressPercent property value. The warmup progress percent metric for this phone number.
+// SetWarmupProgressPercent sets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
 func (m *PhoneNumberTableRow) SetWarmupProgressPercent(value *int32)() {
     m.warmupProgressPercent = value
 }

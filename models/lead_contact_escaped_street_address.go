@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadContact_streetAddress the street address value for this lead contact.
+// LeadContact_streetAddress postal street address for the lead contact profile.
 type LeadContact_streetAddress struct {
     StreetAddress
 }

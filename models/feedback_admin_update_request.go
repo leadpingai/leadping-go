@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// FeedbackAdminUpdateRequest admin triage update request for product feedback.
+// FeedbackAdminUpdateRequest request schema for the Leadping API feedback admin update request, including the fields clients can send.
 type FeedbackAdminUpdateRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminNote property
+    // Internal admin note used to track feedback review or resolution.
     adminNote *string
-    // The area property
+    // Product area or app section connected to this feedback admin update request.
     area *string
-    // The duplicateOfFeedbackItemId property
+    // Feedback item ID that this item duplicates, when applicable.
     duplicateOfFeedbackItemId *string
-    // The externalIssueUrl property
+    // External issue tracker URL linked to this feedback item.
     externalIssueUrl *string
     // Defines admin triage statuses for durable product feedback.
     status *FeedbackAdminUpdateRequest_status
@@ -41,22 +41,22 @@ func CreateFeedbackAdminUpdateRequestFromDiscriminatorValue(parseNode i878a80d23
 func (m *FeedbackAdminUpdateRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminNote gets the adminNote property value. The adminNote property
+// GetAdminNote gets the adminNote property value. Internal admin note used to track feedback review or resolution.
 // returns a *string when successful
 func (m *FeedbackAdminUpdateRequest) GetAdminNote()(*string) {
     return m.adminNote
 }
-// GetArea gets the area property value. The area property
+// GetArea gets the area property value. Product area or app section connected to this feedback admin update request.
 // returns a *string when successful
 func (m *FeedbackAdminUpdateRequest) GetArea()(*string) {
     return m.area
 }
-// GetDuplicateOfFeedbackItemId gets the duplicateOfFeedbackItemId property value. The duplicateOfFeedbackItemId property
+// GetDuplicateOfFeedbackItemId gets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
 // returns a *string when successful
 func (m *FeedbackAdminUpdateRequest) GetDuplicateOfFeedbackItemId()(*string) {
     return m.duplicateOfFeedbackItemId
 }
-// GetExternalIssueUrl gets the externalIssueUrl property value. The externalIssueUrl property
+// GetExternalIssueUrl gets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
 // returns a *string when successful
 func (m *FeedbackAdminUpdateRequest) GetExternalIssueUrl()(*string) {
     return m.externalIssueUrl
@@ -189,19 +189,19 @@ func (m *FeedbackAdminUpdateRequest) Serialize(writer i878a80d2330e89d26896388a3
 func (m *FeedbackAdminUpdateRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminNote sets the adminNote property value. The adminNote property
+// SetAdminNote sets the adminNote property value. Internal admin note used to track feedback review or resolution.
 func (m *FeedbackAdminUpdateRequest) SetAdminNote(value *string)() {
     m.adminNote = value
 }
-// SetArea sets the area property value. The area property
+// SetArea sets the area property value. Product area or app section connected to this feedback admin update request.
 func (m *FeedbackAdminUpdateRequest) SetArea(value *string)() {
     m.area = value
 }
-// SetDuplicateOfFeedbackItemId sets the duplicateOfFeedbackItemId property value. The duplicateOfFeedbackItemId property
+// SetDuplicateOfFeedbackItemId sets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
 func (m *FeedbackAdminUpdateRequest) SetDuplicateOfFeedbackItemId(value *string)() {
     m.duplicateOfFeedbackItemId = value
 }
-// SetExternalIssueUrl sets the externalIssueUrl property value. The externalIssueUrl property
+// SetExternalIssueUrl sets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
 func (m *FeedbackAdminUpdateRequest) SetExternalIssueUrl(value *string)() {
     m.externalIssueUrl = value
 }

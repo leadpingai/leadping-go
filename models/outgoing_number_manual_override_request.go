@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OutgoingNumberManualOverrideRequest request payload for outgoing number manual override.
+// OutgoingNumberManualOverrideRequest request schema for the Leadping API outgoing number manual override request, including the fields clients can send.
 type OutgoingNumberManualOverrideRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The from phone number ID associated with this outgoing number manual override.
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The selection value for this outgoing number manual override.
+    // Selected outgoing number and selection rationale returned by Leadping.
     selection OutgoingNumberSelectionRequestable
 }
 // NewOutgoingNumberManualOverrideRequest instantiates a new OutgoingNumberManualOverrideRequest and sets the default values.
@@ -59,12 +59,12 @@ func (m *OutgoingNumberManualOverrideRequest) GetFieldDeserializers()(map[string
     }
     return res
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The from phone number ID associated with this outgoing number manual override.
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *OutgoingNumberManualOverrideRequest) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetSelection gets the selection property value. The selection value for this outgoing number manual override.
+// GetSelection gets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
 // returns a OutgoingNumberSelectionRequestable when successful
 func (m *OutgoingNumberManualOverrideRequest) GetSelection()(OutgoingNumberSelectionRequestable) {
     return m.selection
@@ -95,11 +95,11 @@ func (m *OutgoingNumberManualOverrideRequest) Serialize(writer i878a80d2330e89d2
 func (m *OutgoingNumberManualOverrideRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The from phone number ID associated with this outgoing number manual override.
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *OutgoingNumberManualOverrideRequest) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetSelection sets the selection property value. The selection value for this outgoing number manual override.
+// SetSelection sets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
 func (m *OutgoingNumberManualOverrideRequest) SetSelection(value OutgoingNumberSelectionRequestable)() {
     m.selection = value
 }

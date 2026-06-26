@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationPreviewRequest aPI DTO containing automation preview data used by Leadping API contracts.
+// AutomationPreviewRequest request schema for the Leadping API automation preview request, including the fields clients can send.
 type AutomationPreviewRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automation value for this automation preview.
+    // Automation configuration to evaluate without executing live actions.
     automation AutomationRequestSnapshotable
-    // The trigger type classification for this automation preview.
+    // Automation trigger type that starts the workflow.
     triggerType *string
 }
 // NewAutomationPreviewRequest instantiates a new AutomationPreviewRequest and sets the default values.
@@ -33,7 +33,7 @@ func CreateAutomationPreviewRequestFromDiscriminatorValue(parseNode i878a80d2330
 func (m *AutomationPreviewRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomation gets the automation property value. The automation value for this automation preview.
+// GetAutomation gets the automation property value. Automation configuration to evaluate without executing live actions.
 // returns a AutomationRequestSnapshotable when successful
 func (m *AutomationPreviewRequest) GetAutomation()(AutomationRequestSnapshotable) {
     return m.automation
@@ -64,7 +64,7 @@ func (m *AutomationPreviewRequest) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetTriggerType gets the triggerType property value. The trigger type classification for this automation preview.
+// GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
 func (m *AutomationPreviewRequest) GetTriggerType()(*string) {
     return m.triggerType
@@ -95,11 +95,11 @@ func (m *AutomationPreviewRequest) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *AutomationPreviewRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomation sets the automation property value. The automation value for this automation preview.
+// SetAutomation sets the automation property value. Automation configuration to evaluate without executing live actions.
 func (m *AutomationPreviewRequest) SetAutomation(value AutomationRequestSnapshotable)() {
     m.automation = value
 }
-// SetTriggerType sets the triggerType property value. The trigger type classification for this automation preview.
+// SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
 func (m *AutomationPreviewRequest) SetTriggerType(value *string)() {
     m.triggerType = value
 }

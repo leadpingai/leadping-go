@@ -8,25 +8,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberTenDlcAssociation aPI DTO containing phone number ten dlc association data used by Leadping API contracts.
+// PhoneNumberTenDlcAssociation public Leadping API schema for phone number 10DLC association data.
 type PhoneNumberTenDlcAssociation struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The current assignment status for this phone number 10DLC association.
+    // Provider assignment status for linking the phone number to a 10DLC campaign.
     assignmentStatus *string
-    // The brand ID associated with this phone number 10DLC association.
+    // 10DLC brand identifier associated with this phone number or campaign.
     brandId *string
-    // The campaign ID associated with this phone number 10DLC association.
+    // Messaging campaign identifier associated with this phone number 10DLC association.
     campaignId *string
-    // The current campaign status for this phone number 10DLC association.
+    // 10DLC campaign status reported by the messaging provider.
     campaignStatus *string
-    // The human-readable failure reason explaining this phone number 10DLC association.
+    // Human-readable reason explaining why this phone number 10DLC association failed.
     failureReason *string
-    // The last provider event ID associated with this phone number 10DLC association.
+    // Most recent provider event identifier processed for this phone number 10DLC association.
     lastProviderEventId *string
-    // The messaging profile ID associated with this phone number 10DLC association.
+    // Messaging profile identifier used for SMS routing with the provider.
     messagingProfileId *string
-    // The date and time for the status updated at value on this phone number 10DLC association.
+    // UTC timestamp when s ta tu su pd at e d occurred for this phone number 10DLC association.
     statusUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewPhoneNumberTenDlcAssociation instantiates a new PhoneNumberTenDlcAssociation and sets the default values.
@@ -46,27 +46,27 @@ func CreatePhoneNumberTenDlcAssociationFromDiscriminatorValue(parseNode i878a80d
 func (m *PhoneNumberTenDlcAssociation) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAssignmentStatus gets the assignmentStatus property value. The current assignment status for this phone number 10DLC association.
+// GetAssignmentStatus gets the assignmentStatus property value. Provider assignment status for linking the phone number to a 10DLC campaign.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetAssignmentStatus()(*string) {
     return m.assignmentStatus
 }
-// GetBrandId gets the brandId property value. The brand ID associated with this phone number 10DLC association.
+// GetBrandId gets the brandId property value. 10DLC brand identifier associated with this phone number or campaign.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetBrandId()(*string) {
     return m.brandId
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this phone number 10DLC association.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone number 10DLC association.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetCampaignStatus gets the campaignStatus property value. The current campaign status for this phone number 10DLC association.
+// GetCampaignStatus gets the campaignStatus property value. 10DLC campaign status reported by the messaging provider.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetCampaignStatus()(*string) {
     return m.campaignStatus
 }
-// GetFailureReason gets the failureReason property value. The human-readable failure reason explaining this phone number 10DLC association.
+// GetFailureReason gets the failureReason property value. Human-readable reason explaining why this phone number 10DLC association failed.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetFailureReason()(*string) {
     return m.failureReason
@@ -157,17 +157,17 @@ func (m *PhoneNumberTenDlcAssociation) GetFieldDeserializers()(map[string]func(i
     }
     return res
 }
-// GetLastProviderEventId gets the lastProviderEventId property value. The last provider event ID associated with this phone number 10DLC association.
+// GetLastProviderEventId gets the lastProviderEventId property value. Most recent provider event identifier processed for this phone number 10DLC association.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetLastProviderEventId()(*string) {
     return m.lastProviderEventId
 }
-// GetMessagingProfileId gets the messagingProfileId property value. The messaging profile ID associated with this phone number 10DLC association.
+// GetMessagingProfileId gets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
 // returns a *string when successful
 func (m *PhoneNumberTenDlcAssociation) GetMessagingProfileId()(*string) {
     return m.messagingProfileId
 }
-// GetStatusUpdatedAt gets the statusUpdatedAt property value. The date and time for the status updated at value on this phone number 10DLC association.
+// GetStatusUpdatedAt gets the statusUpdatedAt property value. UTC timestamp when s ta tu su pd at e d occurred for this phone number 10DLC association.
 // returns a *Time when successful
 func (m *PhoneNumberTenDlcAssociation) GetStatusUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.statusUpdatedAt
@@ -234,35 +234,35 @@ func (m *PhoneNumberTenDlcAssociation) Serialize(writer i878a80d2330e89d26896388
 func (m *PhoneNumberTenDlcAssociation) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAssignmentStatus sets the assignmentStatus property value. The current assignment status for this phone number 10DLC association.
+// SetAssignmentStatus sets the assignmentStatus property value. Provider assignment status for linking the phone number to a 10DLC campaign.
 func (m *PhoneNumberTenDlcAssociation) SetAssignmentStatus(value *string)() {
     m.assignmentStatus = value
 }
-// SetBrandId sets the brandId property value. The brand ID associated with this phone number 10DLC association.
+// SetBrandId sets the brandId property value. 10DLC brand identifier associated with this phone number or campaign.
 func (m *PhoneNumberTenDlcAssociation) SetBrandId(value *string)() {
     m.brandId = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this phone number 10DLC association.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone number 10DLC association.
 func (m *PhoneNumberTenDlcAssociation) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetCampaignStatus sets the campaignStatus property value. The current campaign status for this phone number 10DLC association.
+// SetCampaignStatus sets the campaignStatus property value. 10DLC campaign status reported by the messaging provider.
 func (m *PhoneNumberTenDlcAssociation) SetCampaignStatus(value *string)() {
     m.campaignStatus = value
 }
-// SetFailureReason sets the failureReason property value. The human-readable failure reason explaining this phone number 10DLC association.
+// SetFailureReason sets the failureReason property value. Human-readable reason explaining why this phone number 10DLC association failed.
 func (m *PhoneNumberTenDlcAssociation) SetFailureReason(value *string)() {
     m.failureReason = value
 }
-// SetLastProviderEventId sets the lastProviderEventId property value. The last provider event ID associated with this phone number 10DLC association.
+// SetLastProviderEventId sets the lastProviderEventId property value. Most recent provider event identifier processed for this phone number 10DLC association.
 func (m *PhoneNumberTenDlcAssociation) SetLastProviderEventId(value *string)() {
     m.lastProviderEventId = value
 }
-// SetMessagingProfileId sets the messagingProfileId property value. The messaging profile ID associated with this phone number 10DLC association.
+// SetMessagingProfileId sets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
 func (m *PhoneNumberTenDlcAssociation) SetMessagingProfileId(value *string)() {
     m.messagingProfileId = value
 }
-// SetStatusUpdatedAt sets the statusUpdatedAt property value. The date and time for the status updated at value on this phone number 10DLC association.
+// SetStatusUpdatedAt sets the statusUpdatedAt property value. UTC timestamp when s ta tu su pd at e d occurred for this phone number 10DLC association.
 func (m *PhoneNumberTenDlcAssociation) SetStatusUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.statusUpdatedAt = value
 }

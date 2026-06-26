@@ -7,23 +7,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OutgoingNumberSelectionRequest request payload for outgoing number selection.
+// OutgoingNumberSelectionRequest request schema for the Leadping API outgoing number selection request, including the fields clients can send.
 type OutgoingNumberSelectionRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The campaign ID associated with this outgoing number selection.
+    // Messaging campaign identifier associated with this outgoing number selection request.
     campaignId *string
     // Defines the supported Outgoing Number Channel values.
     channel *OutgoingNumberSelectionRequest_channel
-    // The conversation ID associated with this outgoing number selection.
+    // Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
     conversationId *string
-    // The lead ID associated with this outgoing number selection.
+    // Lead ID used to choose the best outgoing sender number.
     leadId *string
-    // The recipient phone number value for this outgoing number selection.
+    // Recipient phone number that receives the outbound message or call.
     recipientPhoneNumber *string
-    // The source ID associated with this outgoing number selection.
+    // Lead source ID used to choose the best outgoing sender number.
     sourceId *string
-    // The team ID associated with this outgoing number selection.
+    // Team ID used to choose the best outgoing sender number.
     teamId *string
 }
 // NewOutgoingNumberSelectionRequest instantiates a new OutgoingNumberSelectionRequest and sets the default values.
@@ -43,7 +43,7 @@ func CreateOutgoingNumberSelectionRequestFromDiscriminatorValue(parseNode i878a8
 func (m *OutgoingNumberSelectionRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this outgoing number selection.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this outgoing number selection request.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetCampaignId()(*string) {
     return m.campaignId
@@ -53,7 +53,7 @@ func (m *OutgoingNumberSelectionRequest) GetCampaignId()(*string) {
 func (m *OutgoingNumberSelectionRequest) GetChannel()(*OutgoingNumberSelectionRequest_channel) {
     return m.channel
 }
-// GetConversationId gets the conversationId property value. The conversation ID associated with this outgoing number selection.
+// GetConversationId gets the conversationId property value. Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetConversationId()(*string) {
     return m.conversationId
@@ -134,22 +134,22 @@ func (m *OutgoingNumberSelectionRequest) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this outgoing number selection.
+// GetLeadId gets the leadId property value. Lead ID used to choose the best outgoing sender number.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetLeadId()(*string) {
     return m.leadId
 }
-// GetRecipientPhoneNumber gets the recipientPhoneNumber property value. The recipient phone number value for this outgoing number selection.
+// GetRecipientPhoneNumber gets the recipientPhoneNumber property value. Recipient phone number that receives the outbound message or call.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetRecipientPhoneNumber()(*string) {
     return m.recipientPhoneNumber
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this outgoing number selection.
+// GetSourceId gets the sourceId property value. Lead source ID used to choose the best outgoing sender number.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. The team ID associated with this outgoing number selection.
+// GetTeamId gets the teamId property value. Team ID used to choose the best outgoing sender number.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetTeamId()(*string) {
     return m.teamId
@@ -211,7 +211,7 @@ func (m *OutgoingNumberSelectionRequest) Serialize(writer i878a80d2330e89d268963
 func (m *OutgoingNumberSelectionRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this outgoing number selection.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this outgoing number selection request.
 func (m *OutgoingNumberSelectionRequest) SetCampaignId(value *string)() {
     m.campaignId = value
 }
@@ -219,23 +219,23 @@ func (m *OutgoingNumberSelectionRequest) SetCampaignId(value *string)() {
 func (m *OutgoingNumberSelectionRequest) SetChannel(value *OutgoingNumberSelectionRequest_channel)() {
     m.channel = value
 }
-// SetConversationId sets the conversationId property value. The conversation ID associated with this outgoing number selection.
+// SetConversationId sets the conversationId property value. Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
 func (m *OutgoingNumberSelectionRequest) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this outgoing number selection.
+// SetLeadId sets the leadId property value. Lead ID used to choose the best outgoing sender number.
 func (m *OutgoingNumberSelectionRequest) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetRecipientPhoneNumber sets the recipientPhoneNumber property value. The recipient phone number value for this outgoing number selection.
+// SetRecipientPhoneNumber sets the recipientPhoneNumber property value. Recipient phone number that receives the outbound message or call.
 func (m *OutgoingNumberSelectionRequest) SetRecipientPhoneNumber(value *string)() {
     m.recipientPhoneNumber = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this outgoing number selection.
+// SetSourceId sets the sourceId property value. Lead source ID used to choose the best outgoing sender number.
 func (m *OutgoingNumberSelectionRequest) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. The team ID associated with this outgoing number selection.
+// SetTeamId sets the teamId property value. Team ID used to choose the best outgoing sender number.
 func (m *OutgoingNumberSelectionRequest) SetTeamId(value *string)() {
     m.teamId = value
 }

@@ -7,23 +7,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadContact aPI DTO containing lead contact data used by Leadping API contracts.
+// LeadContact public Leadping API schema for lead contact profile data.
 type LeadContact struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The coordinate inferred for this lead contact.
+    // Latitude and longitude coordinate for this lead contact profile.
     coordinate LeadContact_coordinateable
-    // The email address associated with this lead contact.
+    // Email address for the person represented by this lead contact profile.
     email *string
-    // The first name value for this lead contact.
+    // First name of the lead, user, or contact represented by this lead contact profile.
     firstName *string
-    // The date and time for the last name value on this lead contact.
+    // Last name of the lead, user, or contact represented by this lead contact profile.
     lastName *string
-    // The phone number associated with this lead contact.
+    // Phone details for the lead, user, or business represented by this lead contact profile.
     phone LeadContact_phoneable
-    // The street address value for this lead contact.
+    // Postal street address for the lead contact profile.
     streetAddress LeadContact_streetAddressable
-    // The IANA time zone identifier inferred for this lead contact.
+    // IANA or Windows time zone identifier used for local scheduling and reporting.
     timeZoneId *string
 }
 // NewLeadContact instantiates a new LeadContact and sets the default values.
@@ -43,12 +43,12 @@ func CreateLeadContactFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadContact) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCoordinate gets the coordinate property value. The coordinate inferred for this lead contact.
+// GetCoordinate gets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
 // returns a LeadContact_coordinateable when successful
 func (m *LeadContact) GetCoordinate()(LeadContact_coordinateable) {
     return m.coordinate
 }
-// GetEmail gets the email property value. The email address associated with this lead contact.
+// GetEmail gets the email property value. Email address for the person represented by this lead contact profile.
 // returns a *string when successful
 func (m *LeadContact) GetEmail()(*string) {
     return m.email
@@ -129,27 +129,27 @@ func (m *LeadContact) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this lead contact.
+// GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead contact profile.
 // returns a *string when successful
 func (m *LeadContact) GetFirstName()(*string) {
     return m.firstName
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this lead contact.
+// GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead contact profile.
 // returns a *string when successful
 func (m *LeadContact) GetLastName()(*string) {
     return m.lastName
 }
-// GetPhone gets the phone property value. The phone number associated with this lead contact.
+// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
 // returns a LeadContact_phoneable when successful
 func (m *LeadContact) GetPhone()(LeadContact_phoneable) {
     return m.phone
 }
-// GetStreetAddress gets the streetAddress property value. The street address value for this lead contact.
+// GetStreetAddress gets the streetAddress property value. Postal street address for the lead contact profile.
 // returns a LeadContact_streetAddressable when successful
 func (m *LeadContact) GetStreetAddress()(LeadContact_streetAddressable) {
     return m.streetAddress
 }
-// GetTimeZoneId gets the timeZoneId property value. The IANA time zone identifier inferred for this lead contact.
+// GetTimeZoneId gets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
 // returns a *string when successful
 func (m *LeadContact) GetTimeZoneId()(*string) {
     return m.timeZoneId
@@ -210,31 +210,31 @@ func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadContact) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCoordinate sets the coordinate property value. The coordinate inferred for this lead contact.
+// SetCoordinate sets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
 func (m *LeadContact) SetCoordinate(value LeadContact_coordinateable)() {
     m.coordinate = value
 }
-// SetEmail sets the email property value. The email address associated with this lead contact.
+// SetEmail sets the email property value. Email address for the person represented by this lead contact profile.
 func (m *LeadContact) SetEmail(value *string)() {
     m.email = value
 }
-// SetFirstName sets the firstName property value. The first name value for this lead contact.
+// SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead contact profile.
 func (m *LeadContact) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this lead contact.
+// SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead contact profile.
 func (m *LeadContact) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetPhone sets the phone property value. The phone number associated with this lead contact.
+// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
 func (m *LeadContact) SetPhone(value LeadContact_phoneable)() {
     m.phone = value
 }
-// SetStreetAddress sets the streetAddress property value. The street address value for this lead contact.
+// SetStreetAddress sets the streetAddress property value. Postal street address for the lead contact profile.
 func (m *LeadContact) SetStreetAddress(value LeadContact_streetAddressable)() {
     m.streetAddress = value
 }
-// SetTimeZoneId sets the timeZoneId property value. The IANA time zone identifier inferred for this lead contact.
+// SetTimeZoneId sets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
 func (m *LeadContact) SetTimeZoneId(value *string)() {
     m.timeZoneId = value
 }

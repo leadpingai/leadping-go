@@ -8,117 +8,117 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberResponse aPI response containing phone number data returned to callers.
+// PhoneNumberResponse response schema for the Leadping API phone number returned to authenticated clients.
 type PhoneNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride PhoneNumberResponse_adminEnablementOverrideable
-    // The billing value for this phone number.
+    // Billing attribution used to charge this phone number to the correct business and subscription item.
     billing PhoneNumberBillingAttributionable
-    // The business value for this phone number.
+    // Business summary connected to this phone number.
     business PhoneNumberResponse_businessable
-    // Whether controlled internal voice call warmup is enabled for this phone number.
+    // Indicates whether controlled voice call warmup is enabled for this phone number.
     callWarmupEnabled *bool
-    // The human-readable voice call warmup health reason for this phone number.
+    // Human-readable reason explaining voice call warmup health.
     callWarmupHealthReason *string
-    // The next voice call warmup action time for this phone number.
+    // UTC timestamp when the next voice call warmup action is due for this phone number.
     callWarmupNextActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable voice call warmup pause reason for this phone number.
+    // Human-readable reason voice call warmup is paused.
     callWarmupPauseReason *string
     // Defines the supported voice call warmup stages for a Leadping-managed phone number.
     callWarmupStage *PhoneNumberResponse_callWarmupStage
     // Defines the supported health states for controlled internal voice call warmup.
     callWarmupState *PhoneNumberResponse_callWarmupState
-    // The campaign ID associated with this phone number.
+    // Messaging campaign identifier associated with this phone number.
     campaignId *string
-    // The capabilities value for this phone number.
+    // SMS and voice capabilities available on this phone number.
     capabilities PhoneNumberCapabilitiesable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Whether this phone number is enabled.
+    // Indicates whether this phone number is active and available in the Leadping API.
     enabled *bool
-    // The events included with this phone number.
+    // Timeline events and provider events associated with this phone number.
     events []PhoneNumberEventRecordable
-    // The human-readable health reason explaining this phone number.
+    // Human-readable reason explaining the current health status.
     healthReason *string
     // Defines the supported SMS Warmup Health State values.
     healthStatus *PhoneNumberResponse_healthStatus
     // The unique identifier for the entity.
     id *string
-    // The current inventory state for this phone number.
+    // Leadping inventory state for this phone number.
     inventoryState *PhoneNumberInventoryState
-    // Whether this phone number is approved test destination.
+    // Indicates whether this phone number is approved for test messages or calls.
     isApprovedTestDestination *bool
-    // Whether this phone number is default.
+    // Indicates whether this phone number is the default sender for the business.
     isDefault *bool
-    // Whether this phone number is internal pool.
+    // Indicates whether this phone number belongs to an internal Leadping number pool.
     isInternalPool *bool
-    // Whether this phone number is messaging program approved.
+    // Indicates whether this phone number is approved for the configured messaging program.
     isMessagingProgramApproved *bool
-    // Whether this phone number is preferred.
+    // Indicates whether this phone number is preferred for outbound communication.
     isPreferred *bool
-    // Whether this phone number is Leadping owned.
+    // Indicates whether Leadping provisions and manages this phone number.
     leadpingOwned *bool
-    // The location value for this phone number.
+    // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneNumberResponse_locationable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The number value for this phone number.
+    // E.164 phone number exposed by this phone number.
     number *string
-    // The provider value for this phone number.
+    // Telephony or payment provider connected to this phone number.
     provider *string
-    // The provider error value for this phone number.
+    // Provider error message captured while syncing this phone number.
     providerError *string
-    // The provider order ID associated with this phone number.
+    // Provider order identifier returned during phone number provisioning.
     providerOrderId *string
-    // The current provider order status for this phone number.
+    // Provider order status returned during phone number provisioning.
     providerOrderStatus *string
-    // The provider phone number ID associated with this phone number.
+    // Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
     providerPhoneNumberId *string
-    // The date and time for the provider released at value on this phone number.
+    // UTC timestamp when the provider released this phone number.
     providerReleasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The providerReleaseHoldStartsAt property
+    // UTC timestamp when the provider release hold starts for this phone number.
     providerReleaseHoldStartsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The providerReleaseReason property
+    // Reason supplied when requesting provider release of this phone number.
     providerReleaseReason *string
-    // The providerReleaseRequestedAt property
+    // UTC timestamp when release was requested for this provider phone number.
     providerReleaseRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The providerReleaseRequestedByName property
+    // Display name of the person who requested provider release of this phone number.
     providerReleaseRequestedByName *string
-    // The providerReleaseRequestedByUserId property
+    // User ID of the person who requested provider release of this phone number.
     providerReleaseRequestedByUserId *string
-    // The providerReleaseScheduledAt property
+    // UTC timestamp when provider release is scheduled for this phone number.
     providerReleaseScheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The providerReleaseUnassignAtHoldStart property
+    // Indicates whether Leadping should unassign the phone number when the provider release hold starts.
     providerReleaseUnassignAtHoldStart *bool
-    // The current provider status for this phone number.
+    // Provider lifecycle or delivery status for this phone number.
     providerStatus *string
-    // The date and time for the provider synced at value on this phone number.
+    // UTC timestamp when Leadping last synchronized this phone number with the provider.
     providerSyncedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The routing value for this phone number.
+    // Routing metadata that connects this phone number to teams, campaigns, and sources.
     routing PhoneNumberRoutingMetadataable
-    // The source ID associated with this phone number.
+    // Lead source ID assigned to this phone number for attribution and routing.
     sourceId *string
-    // The current status for this phone number.
+    // Current lifecycle status for this phone number in the Leadping API.
     status *InternalPhoneNumberStatus
-    // The team ID associated with this phone number.
+    // Team ID used to route calls and messages for this phone number.
     teamId *string
-    // The 10DLC value for this phone number.
+    // 10DLC registration and campaign association for this phone number.
     tenDlc PhoneNumberTenDlcAssociationable
-    // The user value for this phone number.
+    // User summary connected to this phone number.
     user PhoneNumberResponse_userable
-    // Whether warmup is enabled for this phone number.
+    // Indicates whether SMS sender warmup is enabled for this phone number.
     warmupEnabled *bool
-    // The warmup health score metric for this phone number.
+    // Numeric sender warmup health score used by Leadping to assess deliverability readiness.
     warmupHealthScore *int32
-    // The date and time for the warmup next action at value on this phone number.
+    // UTC timestamp when the next SMS warmup action is due for this phone number.
     warmupNextActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable warmup pause reason explaining this phone number.
+    // Human-readable reason SMS sender warmup is paused.
     warmupPauseReason *string
-    // The warmup progress percent metric for this phone number.
+    // Percent complete for the SMS sender warmup plan.
     warmupProgressPercent *int32
     // Defines the supported SMS Warmup Health State values.
     warmupState *PhoneNumberResponse_warmupState
@@ -140,37 +140,37 @@ func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a PhoneNumberResponse_adminEnablementOverrideable when successful
 func (m *PhoneNumberResponse) GetAdminEnablementOverride()(PhoneNumberResponse_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetBilling gets the billing property value. The billing value for this phone number.
+// GetBilling gets the billing property value. Billing attribution used to charge this phone number to the correct business and subscription item.
 // returns a PhoneNumberBillingAttributionable when successful
 func (m *PhoneNumberResponse) GetBilling()(PhoneNumberBillingAttributionable) {
     return m.billing
 }
-// GetBusiness gets the business property value. The business value for this phone number.
+// GetBusiness gets the business property value. Business summary connected to this phone number.
 // returns a PhoneNumberResponse_businessable when successful
 func (m *PhoneNumberResponse) GetBusiness()(PhoneNumberResponse_businessable) {
     return m.business
 }
-// GetCallWarmupEnabled gets the callWarmupEnabled property value. Whether controlled internal voice call warmup is enabled for this phone number.
+// GetCallWarmupEnabled gets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetCallWarmupEnabled()(*bool) {
     return m.callWarmupEnabled
 }
-// GetCallWarmupHealthReason gets the callWarmupHealthReason property value. The human-readable voice call warmup health reason for this phone number.
+// GetCallWarmupHealthReason gets the callWarmupHealthReason property value. Human-readable reason explaining voice call warmup health.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetCallWarmupHealthReason()(*string) {
     return m.callWarmupHealthReason
 }
-// GetCallWarmupNextActionAt gets the callWarmupNextActionAt property value. The next voice call warmup action time for this phone number.
+// GetCallWarmupNextActionAt gets the callWarmupNextActionAt property value. UTC timestamp when the next voice call warmup action is due for this phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetCallWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.callWarmupNextActionAt
 }
-// GetCallWarmupPauseReason gets the callWarmupPauseReason property value. The human-readable voice call warmup pause reason for this phone number.
+// GetCallWarmupPauseReason gets the callWarmupPauseReason property value. Human-readable reason voice call warmup is paused.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetCallWarmupPauseReason()(*string) {
     return m.callWarmupPauseReason
@@ -185,12 +185,12 @@ func (m *PhoneNumberResponse) GetCallWarmupStage()(*PhoneNumberResponse_callWarm
 func (m *PhoneNumberResponse) GetCallWarmupState()(*PhoneNumberResponse_callWarmupState) {
     return m.callWarmupState
 }
-// GetCampaignId gets the campaignId property value. The campaign ID associated with this phone number.
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetCapabilities gets the capabilities property value. The capabilities value for this phone number.
+// GetCapabilities gets the capabilities property value. SMS and voice capabilities available on this phone number.
 // returns a PhoneNumberCapabilitiesable when successful
 func (m *PhoneNumberResponse) GetCapabilities()(PhoneNumberCapabilitiesable) {
     return m.capabilities
@@ -200,12 +200,12 @@ func (m *PhoneNumberResponse) GetCapabilities()(PhoneNumberCapabilitiesable) {
 func (m *PhoneNumberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetEnabled gets the enabled property value. Whether this phone number is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this phone number is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetEnabled()(*bool) {
     return m.enabled
 }
-// GetEvents gets the events property value. The events included with this phone number.
+// GetEvents gets the events property value. Timeline events and provider events associated with this phone number.
 // returns a []PhoneNumberEventRecordable when successful
 func (m *PhoneNumberResponse) GetEvents()([]PhoneNumberEventRecordable) {
     return m.events
@@ -772,7 +772,7 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetHealthReason gets the healthReason property value. The human-readable health reason explaining this phone number.
+// GetHealthReason gets the healthReason property value. Human-readable reason explaining the current health status.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetHealthReason()(*string) {
     return m.healthReason
@@ -787,42 +787,42 @@ func (m *PhoneNumberResponse) GetHealthStatus()(*PhoneNumberResponse_healthStatu
 func (m *PhoneNumberResponse) GetId()(*string) {
     return m.id
 }
-// GetInventoryState gets the inventoryState property value. The current inventory state for this phone number.
+// GetInventoryState gets the inventoryState property value. Leadping inventory state for this phone number.
 // returns a *PhoneNumberInventoryState when successful
 func (m *PhoneNumberResponse) GetInventoryState()(*PhoneNumberInventoryState) {
     return m.inventoryState
 }
-// GetIsApprovedTestDestination gets the isApprovedTestDestination property value. Whether this phone number is approved test destination.
+// GetIsApprovedTestDestination gets the isApprovedTestDestination property value. Indicates whether this phone number is approved for test messages or calls.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetIsApprovedTestDestination()(*bool) {
     return m.isApprovedTestDestination
 }
-// GetIsDefault gets the isDefault property value. Whether this phone number is default.
+// GetIsDefault gets the isDefault property value. Indicates whether this phone number is the default sender for the business.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetIsDefault()(*bool) {
     return m.isDefault
 }
-// GetIsInternalPool gets the isInternalPool property value. Whether this phone number is internal pool.
+// GetIsInternalPool gets the isInternalPool property value. Indicates whether this phone number belongs to an internal Leadping number pool.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetIsInternalPool()(*bool) {
     return m.isInternalPool
 }
-// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Whether this phone number is messaging program approved.
+// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetIsMessagingProgramApproved()(*bool) {
     return m.isMessagingProgramApproved
 }
-// GetIsPreferred gets the isPreferred property value. Whether this phone number is preferred.
+// GetIsPreferred gets the isPreferred property value. Indicates whether this phone number is preferred for outbound communication.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetIsPreferred()(*bool) {
     return m.isPreferred
 }
-// GetLeadpingOwned gets the leadpingOwned property value. Whether this phone number is Leadping owned.
+// GetLeadpingOwned gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetLeadpingOwned()(*bool) {
     return m.leadpingOwned
 }
-// GetLocation gets the location property value. The location value for this phone number.
+// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a PhoneNumberResponse_locationable when successful
 func (m *PhoneNumberResponse) GetLocation()(PhoneNumberResponse_locationable) {
     return m.location
@@ -837,137 +837,137 @@ func (m *PhoneNumberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *PhoneNumberResponse) GetName()(*string) {
     return m.name
 }
-// GetNumber gets the number property value. The number value for this phone number.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetNumber()(*string) {
     return m.number
 }
-// GetProvider gets the provider property value. The provider value for this phone number.
+// GetProvider gets the provider property value. Telephony or payment provider connected to this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProvider()(*string) {
     return m.provider
 }
-// GetProviderError gets the providerError property value. The provider error value for this phone number.
+// GetProviderError gets the providerError property value. Provider error message captured while syncing this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderError()(*string) {
     return m.providerError
 }
-// GetProviderOrderId gets the providerOrderId property value. The provider order ID associated with this phone number.
+// GetProviderOrderId gets the providerOrderId property value. Provider order identifier returned during phone number provisioning.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderOrderId()(*string) {
     return m.providerOrderId
 }
-// GetProviderOrderStatus gets the providerOrderStatus property value. The current provider order status for this phone number.
+// GetProviderOrderStatus gets the providerOrderStatus property value. Provider order status returned during phone number provisioning.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderOrderStatus()(*string) {
     return m.providerOrderStatus
 }
-// GetProviderPhoneNumberId gets the providerPhoneNumberId property value. The provider phone number ID associated with this phone number.
+// GetProviderPhoneNumberId gets the providerPhoneNumberId property value. Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderPhoneNumberId()(*string) {
     return m.providerPhoneNumberId
 }
-// GetProviderReleasedAt gets the providerReleasedAt property value. The date and time for the provider released at value on this phone number.
+// GetProviderReleasedAt gets the providerReleasedAt property value. UTC timestamp when the provider released this phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetProviderReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.providerReleasedAt
 }
-// GetProviderReleaseHoldStartsAt gets the providerReleaseHoldStartsAt property value. The providerReleaseHoldStartsAt property
+// GetProviderReleaseHoldStartsAt gets the providerReleaseHoldStartsAt property value. UTC timestamp when the provider release hold starts for this phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetProviderReleaseHoldStartsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.providerReleaseHoldStartsAt
 }
-// GetProviderReleaseReason gets the providerReleaseReason property value. The providerReleaseReason property
+// GetProviderReleaseReason gets the providerReleaseReason property value. Reason supplied when requesting provider release of this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderReleaseReason()(*string) {
     return m.providerReleaseReason
 }
-// GetProviderReleaseRequestedAt gets the providerReleaseRequestedAt property value. The providerReleaseRequestedAt property
+// GetProviderReleaseRequestedAt gets the providerReleaseRequestedAt property value. UTC timestamp when release was requested for this provider phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetProviderReleaseRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.providerReleaseRequestedAt
 }
-// GetProviderReleaseRequestedByName gets the providerReleaseRequestedByName property value. The providerReleaseRequestedByName property
+// GetProviderReleaseRequestedByName gets the providerReleaseRequestedByName property value. Display name of the person who requested provider release of this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderReleaseRequestedByName()(*string) {
     return m.providerReleaseRequestedByName
 }
-// GetProviderReleaseRequestedByUserId gets the providerReleaseRequestedByUserId property value. The providerReleaseRequestedByUserId property
+// GetProviderReleaseRequestedByUserId gets the providerReleaseRequestedByUserId property value. User ID of the person who requested provider release of this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderReleaseRequestedByUserId()(*string) {
     return m.providerReleaseRequestedByUserId
 }
-// GetProviderReleaseScheduledAt gets the providerReleaseScheduledAt property value. The providerReleaseScheduledAt property
+// GetProviderReleaseScheduledAt gets the providerReleaseScheduledAt property value. UTC timestamp when provider release is scheduled for this phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetProviderReleaseScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.providerReleaseScheduledAt
 }
-// GetProviderReleaseUnassignAtHoldStart gets the providerReleaseUnassignAtHoldStart property value. The providerReleaseUnassignAtHoldStart property
+// GetProviderReleaseUnassignAtHoldStart gets the providerReleaseUnassignAtHoldStart property value. Indicates whether Leadping should unassign the phone number when the provider release hold starts.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetProviderReleaseUnassignAtHoldStart()(*bool) {
     return m.providerReleaseUnassignAtHoldStart
 }
-// GetProviderStatus gets the providerStatus property value. The current provider status for this phone number.
+// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetProviderStatus()(*string) {
     return m.providerStatus
 }
-// GetProviderSyncedAt gets the providerSyncedAt property value. The date and time for the provider synced at value on this phone number.
+// GetProviderSyncedAt gets the providerSyncedAt property value. UTC timestamp when Leadping last synchronized this phone number with the provider.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetProviderSyncedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.providerSyncedAt
 }
-// GetRouting gets the routing property value. The routing value for this phone number.
+// GetRouting gets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 // returns a PhoneNumberRoutingMetadataable when successful
 func (m *PhoneNumberResponse) GetRouting()(PhoneNumberRoutingMetadataable) {
     return m.routing
 }
-// GetSourceId gets the sourceId property value. The source ID associated with this phone number.
+// GetSourceId gets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetStatus gets the status property value. The current status for this phone number.
+// GetStatus gets the status property value. Current lifecycle status for this phone number in the Leadping API.
 // returns a *InternalPhoneNumberStatus when successful
 func (m *PhoneNumberResponse) GetStatus()(*InternalPhoneNumberStatus) {
     return m.status
 }
-// GetTeamId gets the teamId property value. The team ID associated with this phone number.
+// GetTeamId gets the teamId property value. Team ID used to route calls and messages for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetTeamId()(*string) {
     return m.teamId
 }
-// GetTenDlc gets the tenDlc property value. The 10DLC value for this phone number.
+// GetTenDlc gets the tenDlc property value. 10DLC registration and campaign association for this phone number.
 // returns a PhoneNumberTenDlcAssociationable when successful
 func (m *PhoneNumberResponse) GetTenDlc()(PhoneNumberTenDlcAssociationable) {
     return m.tenDlc
 }
-// GetUser gets the user property value. The user value for this phone number.
+// GetUser gets the user property value. User summary connected to this phone number.
 // returns a PhoneNumberResponse_userable when successful
 func (m *PhoneNumberResponse) GetUser()(PhoneNumberResponse_userable) {
     return m.user
 }
-// GetWarmupEnabled gets the warmupEnabled property value. Whether warmup is enabled for this phone number.
+// GetWarmupEnabled gets the warmupEnabled property value. Indicates whether SMS sender warmup is enabled for this phone number.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetWarmupEnabled()(*bool) {
     return m.warmupEnabled
 }
-// GetWarmupHealthScore gets the warmupHealthScore property value. The warmup health score metric for this phone number.
+// GetWarmupHealthScore gets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
 // returns a *int32 when successful
 func (m *PhoneNumberResponse) GetWarmupHealthScore()(*int32) {
     return m.warmupHealthScore
 }
-// GetWarmupNextActionAt gets the warmupNextActionAt property value. The date and time for the warmup next action at value on this phone number.
+// GetWarmupNextActionAt gets the warmupNextActionAt property value. UTC timestamp when the next SMS warmup action is due for this phone number.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.warmupNextActionAt
 }
-// GetWarmupPauseReason gets the warmupPauseReason property value. The human-readable warmup pause reason explaining this phone number.
+// GetWarmupPauseReason gets the warmupPauseReason property value. Human-readable reason SMS sender warmup is paused.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetWarmupPauseReason()(*string) {
     return m.warmupPauseReason
 }
-// GetWarmupProgressPercent gets the warmupProgressPercent property value. The warmup progress percent metric for this phone number.
+// GetWarmupProgressPercent gets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
 // returns a *int32 when successful
 func (m *PhoneNumberResponse) GetWarmupProgressPercent()(*int32) {
     return m.warmupProgressPercent
@@ -1333,31 +1333,31 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *PhoneNumberResponse) SetAdminEnablementOverride(value PhoneNumberResponse_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetBilling sets the billing property value. The billing value for this phone number.
+// SetBilling sets the billing property value. Billing attribution used to charge this phone number to the correct business and subscription item.
 func (m *PhoneNumberResponse) SetBilling(value PhoneNumberBillingAttributionable)() {
     m.billing = value
 }
-// SetBusiness sets the business property value. The business value for this phone number.
+// SetBusiness sets the business property value. Business summary connected to this phone number.
 func (m *PhoneNumberResponse) SetBusiness(value PhoneNumberResponse_businessable)() {
     m.business = value
 }
-// SetCallWarmupEnabled sets the callWarmupEnabled property value. Whether controlled internal voice call warmup is enabled for this phone number.
+// SetCallWarmupEnabled sets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
 func (m *PhoneNumberResponse) SetCallWarmupEnabled(value *bool)() {
     m.callWarmupEnabled = value
 }
-// SetCallWarmupHealthReason sets the callWarmupHealthReason property value. The human-readable voice call warmup health reason for this phone number.
+// SetCallWarmupHealthReason sets the callWarmupHealthReason property value. Human-readable reason explaining voice call warmup health.
 func (m *PhoneNumberResponse) SetCallWarmupHealthReason(value *string)() {
     m.callWarmupHealthReason = value
 }
-// SetCallWarmupNextActionAt sets the callWarmupNextActionAt property value. The next voice call warmup action time for this phone number.
+// SetCallWarmupNextActionAt sets the callWarmupNextActionAt property value. UTC timestamp when the next voice call warmup action is due for this phone number.
 func (m *PhoneNumberResponse) SetCallWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.callWarmupNextActionAt = value
 }
-// SetCallWarmupPauseReason sets the callWarmupPauseReason property value. The human-readable voice call warmup pause reason for this phone number.
+// SetCallWarmupPauseReason sets the callWarmupPauseReason property value. Human-readable reason voice call warmup is paused.
 func (m *PhoneNumberResponse) SetCallWarmupPauseReason(value *string)() {
     m.callWarmupPauseReason = value
 }
@@ -1369,11 +1369,11 @@ func (m *PhoneNumberResponse) SetCallWarmupStage(value *PhoneNumberResponse_call
 func (m *PhoneNumberResponse) SetCallWarmupState(value *PhoneNumberResponse_callWarmupState)() {
     m.callWarmupState = value
 }
-// SetCampaignId sets the campaignId property value. The campaign ID associated with this phone number.
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone number.
 func (m *PhoneNumberResponse) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetCapabilities sets the capabilities property value. The capabilities value for this phone number.
+// SetCapabilities sets the capabilities property value. SMS and voice capabilities available on this phone number.
 func (m *PhoneNumberResponse) SetCapabilities(value PhoneNumberCapabilitiesable)() {
     m.capabilities = value
 }
@@ -1381,15 +1381,15 @@ func (m *PhoneNumberResponse) SetCapabilities(value PhoneNumberCapabilitiesable)
 func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetEnabled sets the enabled property value. Whether this phone number is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this phone number is active and available in the Leadping API.
 func (m *PhoneNumberResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetEvents sets the events property value. The events included with this phone number.
+// SetEvents sets the events property value. Timeline events and provider events associated with this phone number.
 func (m *PhoneNumberResponse) SetEvents(value []PhoneNumberEventRecordable)() {
     m.events = value
 }
-// SetHealthReason sets the healthReason property value. The human-readable health reason explaining this phone number.
+// SetHealthReason sets the healthReason property value. Human-readable reason explaining the current health status.
 func (m *PhoneNumberResponse) SetHealthReason(value *string)() {
     m.healthReason = value
 }
@@ -1401,35 +1401,35 @@ func (m *PhoneNumberResponse) SetHealthStatus(value *PhoneNumberResponse_healthS
 func (m *PhoneNumberResponse) SetId(value *string)() {
     m.id = value
 }
-// SetInventoryState sets the inventoryState property value. The current inventory state for this phone number.
+// SetInventoryState sets the inventoryState property value. Leadping inventory state for this phone number.
 func (m *PhoneNumberResponse) SetInventoryState(value *PhoneNumberInventoryState)() {
     m.inventoryState = value
 }
-// SetIsApprovedTestDestination sets the isApprovedTestDestination property value. Whether this phone number is approved test destination.
+// SetIsApprovedTestDestination sets the isApprovedTestDestination property value. Indicates whether this phone number is approved for test messages or calls.
 func (m *PhoneNumberResponse) SetIsApprovedTestDestination(value *bool)() {
     m.isApprovedTestDestination = value
 }
-// SetIsDefault sets the isDefault property value. Whether this phone number is default.
+// SetIsDefault sets the isDefault property value. Indicates whether this phone number is the default sender for the business.
 func (m *PhoneNumberResponse) SetIsDefault(value *bool)() {
     m.isDefault = value
 }
-// SetIsInternalPool sets the isInternalPool property value. Whether this phone number is internal pool.
+// SetIsInternalPool sets the isInternalPool property value. Indicates whether this phone number belongs to an internal Leadping number pool.
 func (m *PhoneNumberResponse) SetIsInternalPool(value *bool)() {
     m.isInternalPool = value
 }
-// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Whether this phone number is messaging program approved.
+// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
 func (m *PhoneNumberResponse) SetIsMessagingProgramApproved(value *bool)() {
     m.isMessagingProgramApproved = value
 }
-// SetIsPreferred sets the isPreferred property value. Whether this phone number is preferred.
+// SetIsPreferred sets the isPreferred property value. Indicates whether this phone number is preferred for outbound communication.
 func (m *PhoneNumberResponse) SetIsPreferred(value *bool)() {
     m.isPreferred = value
 }
-// SetLeadpingOwned sets the leadpingOwned property value. Whether this phone number is Leadping owned.
+// SetLeadpingOwned sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool)() {
     m.leadpingOwned = value
 }
-// SetLocation sets the location property value. The location value for this phone number.
+// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberResponse) SetLocation(value PhoneNumberResponse_locationable)() {
     m.location = value
 }
@@ -1441,111 +1441,111 @@ func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad
 func (m *PhoneNumberResponse) SetName(value *string)() {
     m.name = value
 }
-// SetNumber sets the number property value. The number value for this phone number.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number.
 func (m *PhoneNumberResponse) SetNumber(value *string)() {
     m.number = value
 }
-// SetProvider sets the provider property value. The provider value for this phone number.
+// SetProvider sets the provider property value. Telephony or payment provider connected to this phone number.
 func (m *PhoneNumberResponse) SetProvider(value *string)() {
     m.provider = value
 }
-// SetProviderError sets the providerError property value. The provider error value for this phone number.
+// SetProviderError sets the providerError property value. Provider error message captured while syncing this phone number.
 func (m *PhoneNumberResponse) SetProviderError(value *string)() {
     m.providerError = value
 }
-// SetProviderOrderId sets the providerOrderId property value. The provider order ID associated with this phone number.
+// SetProviderOrderId sets the providerOrderId property value. Provider order identifier returned during phone number provisioning.
 func (m *PhoneNumberResponse) SetProviderOrderId(value *string)() {
     m.providerOrderId = value
 }
-// SetProviderOrderStatus sets the providerOrderStatus property value. The current provider order status for this phone number.
+// SetProviderOrderStatus sets the providerOrderStatus property value. Provider order status returned during phone number provisioning.
 func (m *PhoneNumberResponse) SetProviderOrderStatus(value *string)() {
     m.providerOrderStatus = value
 }
-// SetProviderPhoneNumberId sets the providerPhoneNumberId property value. The provider phone number ID associated with this phone number.
+// SetProviderPhoneNumberId sets the providerPhoneNumberId property value. Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
 func (m *PhoneNumberResponse) SetProviderPhoneNumberId(value *string)() {
     m.providerPhoneNumberId = value
 }
-// SetProviderReleasedAt sets the providerReleasedAt property value. The date and time for the provider released at value on this phone number.
+// SetProviderReleasedAt sets the providerReleasedAt property value. UTC timestamp when the provider released this phone number.
 func (m *PhoneNumberResponse) SetProviderReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.providerReleasedAt = value
 }
-// SetProviderReleaseHoldStartsAt sets the providerReleaseHoldStartsAt property value. The providerReleaseHoldStartsAt property
+// SetProviderReleaseHoldStartsAt sets the providerReleaseHoldStartsAt property value. UTC timestamp when the provider release hold starts for this phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseHoldStartsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.providerReleaseHoldStartsAt = value
 }
-// SetProviderReleaseReason sets the providerReleaseReason property value. The providerReleaseReason property
+// SetProviderReleaseReason sets the providerReleaseReason property value. Reason supplied when requesting provider release of this phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseReason(value *string)() {
     m.providerReleaseReason = value
 }
-// SetProviderReleaseRequestedAt sets the providerReleaseRequestedAt property value. The providerReleaseRequestedAt property
+// SetProviderReleaseRequestedAt sets the providerReleaseRequestedAt property value. UTC timestamp when release was requested for this provider phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.providerReleaseRequestedAt = value
 }
-// SetProviderReleaseRequestedByName sets the providerReleaseRequestedByName property value. The providerReleaseRequestedByName property
+// SetProviderReleaseRequestedByName sets the providerReleaseRequestedByName property value. Display name of the person who requested provider release of this phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseRequestedByName(value *string)() {
     m.providerReleaseRequestedByName = value
 }
-// SetProviderReleaseRequestedByUserId sets the providerReleaseRequestedByUserId property value. The providerReleaseRequestedByUserId property
+// SetProviderReleaseRequestedByUserId sets the providerReleaseRequestedByUserId property value. User ID of the person who requested provider release of this phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseRequestedByUserId(value *string)() {
     m.providerReleaseRequestedByUserId = value
 }
-// SetProviderReleaseScheduledAt sets the providerReleaseScheduledAt property value. The providerReleaseScheduledAt property
+// SetProviderReleaseScheduledAt sets the providerReleaseScheduledAt property value. UTC timestamp when provider release is scheduled for this phone number.
 func (m *PhoneNumberResponse) SetProviderReleaseScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.providerReleaseScheduledAt = value
 }
-// SetProviderReleaseUnassignAtHoldStart sets the providerReleaseUnassignAtHoldStart property value. The providerReleaseUnassignAtHoldStart property
+// SetProviderReleaseUnassignAtHoldStart sets the providerReleaseUnassignAtHoldStart property value. Indicates whether Leadping should unassign the phone number when the provider release hold starts.
 func (m *PhoneNumberResponse) SetProviderReleaseUnassignAtHoldStart(value *bool)() {
     m.providerReleaseUnassignAtHoldStart = value
 }
-// SetProviderStatus sets the providerStatus property value. The current provider status for this phone number.
+// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number.
 func (m *PhoneNumberResponse) SetProviderStatus(value *string)() {
     m.providerStatus = value
 }
-// SetProviderSyncedAt sets the providerSyncedAt property value. The date and time for the provider synced at value on this phone number.
+// SetProviderSyncedAt sets the providerSyncedAt property value. UTC timestamp when Leadping last synchronized this phone number with the provider.
 func (m *PhoneNumberResponse) SetProviderSyncedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.providerSyncedAt = value
 }
-// SetRouting sets the routing property value. The routing value for this phone number.
+// SetRouting sets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable)() {
     m.routing = value
 }
-// SetSourceId sets the sourceId property value. The source ID associated with this phone number.
+// SetSourceId sets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
 func (m *PhoneNumberResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetStatus sets the status property value. The current status for this phone number.
+// SetStatus sets the status property value. Current lifecycle status for this phone number in the Leadping API.
 func (m *PhoneNumberResponse) SetStatus(value *InternalPhoneNumberStatus)() {
     m.status = value
 }
-// SetTeamId sets the teamId property value. The team ID associated with this phone number.
+// SetTeamId sets the teamId property value. Team ID used to route calls and messages for this phone number.
 func (m *PhoneNumberResponse) SetTeamId(value *string)() {
     m.teamId = value
 }
-// SetTenDlc sets the tenDlc property value. The 10DLC value for this phone number.
+// SetTenDlc sets the tenDlc property value. 10DLC registration and campaign association for this phone number.
 func (m *PhoneNumberResponse) SetTenDlc(value PhoneNumberTenDlcAssociationable)() {
     m.tenDlc = value
 }
-// SetUser sets the user property value. The user value for this phone number.
+// SetUser sets the user property value. User summary connected to this phone number.
 func (m *PhoneNumberResponse) SetUser(value PhoneNumberResponse_userable)() {
     m.user = value
 }
-// SetWarmupEnabled sets the warmupEnabled property value. Whether warmup is enabled for this phone number.
+// SetWarmupEnabled sets the warmupEnabled property value. Indicates whether SMS sender warmup is enabled for this phone number.
 func (m *PhoneNumberResponse) SetWarmupEnabled(value *bool)() {
     m.warmupEnabled = value
 }
-// SetWarmupHealthScore sets the warmupHealthScore property value. The warmup health score metric for this phone number.
+// SetWarmupHealthScore sets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
 func (m *PhoneNumberResponse) SetWarmupHealthScore(value *int32)() {
     m.warmupHealthScore = value
 }
-// SetWarmupNextActionAt sets the warmupNextActionAt property value. The date and time for the warmup next action at value on this phone number.
+// SetWarmupNextActionAt sets the warmupNextActionAt property value. UTC timestamp when the next SMS warmup action is due for this phone number.
 func (m *PhoneNumberResponse) SetWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.warmupNextActionAt = value
 }
-// SetWarmupPauseReason sets the warmupPauseReason property value. The human-readable warmup pause reason explaining this phone number.
+// SetWarmupPauseReason sets the warmupPauseReason property value. Human-readable reason SMS sender warmup is paused.
 func (m *PhoneNumberResponse) SetWarmupPauseReason(value *string)() {
     m.warmupPauseReason = value
 }
-// SetWarmupProgressPercent sets the warmupProgressPercent property value. The warmup progress percent metric for this phone number.
+// SetWarmupProgressPercent sets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
 func (m *PhoneNumberResponse) SetWarmupProgressPercent(value *int32)() {
     m.warmupProgressPercent = value
 }

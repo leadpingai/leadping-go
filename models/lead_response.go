@@ -8,39 +8,39 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadResponse aPI response containing lead data returned to callers.
+// LeadResponse response schema for the Leadping API lead response returned to authenticated clients.
 type LeadResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminEnablementOverride property
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride LeadResponse_adminEnablementOverrideable
-    // The archivedAt property
+    // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The archivedByUserId property
+    // User ID of the person who archived this record.
     archivedByUserId *string
-    // The archiveNote property
+    // Optional note explaining why the lead was archived.
     archiveNote *string
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
-    // The contact value for this lead.
+    // Contact details for the lead or customer represented by this lead response.
     contact LeadContactable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Compact current disposition state stored directly on a lead and surfaced with conversation data.
+    // Current disposition summary that describes the lead outcome.
     currentDisposition LeadResponse_currentDispositionable
-    // The profile value for this lead.
+    // Demographic profile details for the lead represented by this lead response.
     customer LeadProfileable
-    // The enabled property
+    // Indicates whether this lead response is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity.
     id *string
     // The isArchived property
     isArchived *bool
-    // Safe, non-secret metadata associated with this lead.
+    // Structured metadata used for attribution, integrations, and reporting on this lead response.
     metadata LeadMetadataable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Tags currently assigned to this lead.
+    // Tags currently attached to this lead, source, or record.
     tags []TagSummaryable
 }
 // NewLeadResponse instantiates a new LeadResponse and sets the default values.
@@ -60,22 +60,22 @@ func CreateLeadResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *LeadResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The adminEnablementOverride property
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a LeadResponse_adminEnablementOverrideable when successful
 func (m *LeadResponse) GetAdminEnablementOverride()(LeadResponse_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetArchivedAt gets the archivedAt property value. The archivedAt property
+// GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
 func (m *LeadResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.archivedAt
 }
-// GetArchivedByUserId gets the archivedByUserId property value. The archivedByUserId property
+// GetArchivedByUserId gets the archivedByUserId property value. User ID of the person who archived this record.
 // returns a *string when successful
 func (m *LeadResponse) GetArchivedByUserId()(*string) {
     return m.archivedByUserId
 }
-// GetArchiveNote gets the archiveNote property value. The archiveNote property
+// GetArchiveNote gets the archiveNote property value. Optional note explaining why the lead was archived.
 // returns a *string when successful
 func (m *LeadResponse) GetArchiveNote()(*string) {
     return m.archiveNote
@@ -85,7 +85,7 @@ func (m *LeadResponse) GetArchiveNote()(*string) {
 func (m *LeadResponse) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
-// GetContact gets the contact property value. The contact value for this lead.
+// GetContact gets the contact property value. Contact details for the lead or customer represented by this lead response.
 // returns a LeadContactable when successful
 func (m *LeadResponse) GetContact()(LeadContactable) {
     return m.contact
@@ -95,17 +95,17 @@ func (m *LeadResponse) GetContact()(LeadContactable) {
 func (m *LeadResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCurrentDisposition gets the currentDisposition property value. Compact current disposition state stored directly on a lead and surfaced with conversation data.
+// GetCurrentDisposition gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 // returns a LeadResponse_currentDispositionable when successful
 func (m *LeadResponse) GetCurrentDisposition()(LeadResponse_currentDispositionable) {
     return m.currentDisposition
 }
-// GetCustomer gets the customer property value. The profile value for this lead.
+// GetCustomer gets the customer property value. Demographic profile details for the lead represented by this lead response.
 // returns a LeadProfileable when successful
 func (m *LeadResponse) GetCustomer()(LeadProfileable) {
     return m.customer
 }
-// GetEnabled gets the enabled property value. The enabled property
+// GetEnabled gets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *LeadResponse) GetEnabled()(*bool) {
     return m.enabled
@@ -282,7 +282,7 @@ func (m *LeadResponse) GetId()(*string) {
 func (m *LeadResponse) GetIsArchived()(*bool) {
     return m.isArchived
 }
-// GetMetadata gets the metadata property value. Safe, non-secret metadata associated with this lead.
+// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead response.
 // returns a LeadMetadataable when successful
 func (m *LeadResponse) GetMetadata()(LeadMetadataable) {
     return m.metadata
@@ -292,7 +292,7 @@ func (m *LeadResponse) GetMetadata()(LeadMetadataable) {
 func (m *LeadResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetTags gets the tags property value. Tags currently assigned to this lead.
+// GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
 func (m *LeadResponse) GetTags()([]TagSummaryable) {
     return m.tags
@@ -407,19 +407,19 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The adminEnablementOverride property
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *LeadResponse) SetAdminEnablementOverride(value LeadResponse_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetArchivedAt sets the archivedAt property value. The archivedAt property
+// SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *LeadResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
 }
-// SetArchivedByUserId sets the archivedByUserId property value. The archivedByUserId property
+// SetArchivedByUserId sets the archivedByUserId property value. User ID of the person who archived this record.
 func (m *LeadResponse) SetArchivedByUserId(value *string)() {
     m.archivedByUserId = value
 }
-// SetArchiveNote sets the archiveNote property value. The archiveNote property
+// SetArchiveNote sets the archiveNote property value. Optional note explaining why the lead was archived.
 func (m *LeadResponse) SetArchiveNote(value *string)() {
     m.archiveNote = value
 }
@@ -427,7 +427,7 @@ func (m *LeadResponse) SetArchiveNote(value *string)() {
 func (m *LeadResponse) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
-// SetContact sets the contact property value. The contact value for this lead.
+// SetContact sets the contact property value. Contact details for the lead or customer represented by this lead response.
 func (m *LeadResponse) SetContact(value LeadContactable)() {
     m.contact = value
 }
@@ -435,15 +435,15 @@ func (m *LeadResponse) SetContact(value LeadContactable)() {
 func (m *LeadResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCurrentDisposition sets the currentDisposition property value. Compact current disposition state stored directly on a lead and surfaced with conversation data.
+// SetCurrentDisposition sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
 func (m *LeadResponse) SetCurrentDisposition(value LeadResponse_currentDispositionable)() {
     m.currentDisposition = value
 }
-// SetCustomer sets the customer property value. The profile value for this lead.
+// SetCustomer sets the customer property value. Demographic profile details for the lead represented by this lead response.
 func (m *LeadResponse) SetCustomer(value LeadProfileable)() {
     m.customer = value
 }
-// SetEnabled sets the enabled property value. The enabled property
+// SetEnabled sets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
 func (m *LeadResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
@@ -455,7 +455,7 @@ func (m *LeadResponse) SetId(value *string)() {
 func (m *LeadResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
-// SetMetadata sets the metadata property value. Safe, non-secret metadata associated with this lead.
+// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead response.
 func (m *LeadResponse) SetMetadata(value LeadMetadataable)() {
     m.metadata = value
 }
@@ -463,7 +463,7 @@ func (m *LeadResponse) SetMetadata(value LeadMetadataable)() {
 func (m *LeadResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetTags sets the tags property value. Tags currently assigned to this lead.
+// SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
 func (m *LeadResponse) SetTags(value []TagSummaryable)() {
     m.tags = value
 }

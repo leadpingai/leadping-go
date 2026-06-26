@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationPreviewConditionResult aPI DTO containing automation preview condition result data used by Leadping API contracts.
+// AutomationPreviewConditionResult result schema for the Leadping API automation preview condition result returned by lookup and validation endpoints.
 type AutomationPreviewConditionResult struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The condition ID associated with this automation preview condition result.
+    // Automation condition ID evaluated by this preview result.
     conditionId *string
-    // Whether this automation preview condition result is passed.
+    // Indicates whether this automation preview condition result passed the preview or validation check.
     passed *bool
-    // The summary value for this automation preview condition result.
+    // Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
     summary *string
 }
 // NewAutomationPreviewConditionResult instantiates a new AutomationPreviewConditionResult and sets the default values.
@@ -35,7 +35,7 @@ func CreateAutomationPreviewConditionResultFromDiscriminatorValue(parseNode i878
 func (m *AutomationPreviewConditionResult) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetConditionId gets the conditionId property value. The condition ID associated with this automation preview condition result.
+// GetConditionId gets the conditionId property value. Automation condition ID evaluated by this preview result.
 // returns a *string when successful
 func (m *AutomationPreviewConditionResult) GetConditionId()(*string) {
     return m.conditionId
@@ -76,12 +76,12 @@ func (m *AutomationPreviewConditionResult) GetFieldDeserializers()(map[string]fu
     }
     return res
 }
-// GetPassed gets the passed property value. Whether this automation preview condition result is passed.
+// GetPassed gets the passed property value. Indicates whether this automation preview condition result passed the preview or validation check.
 // returns a *bool when successful
 func (m *AutomationPreviewConditionResult) GetPassed()(*bool) {
     return m.passed
 }
-// GetSummary gets the summary property value. The summary value for this automation preview condition result.
+// GetSummary gets the summary property value. Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
 // returns a *string when successful
 func (m *AutomationPreviewConditionResult) GetSummary()(*string) {
     return m.summary
@@ -118,15 +118,15 @@ func (m *AutomationPreviewConditionResult) Serialize(writer i878a80d2330e89d2689
 func (m *AutomationPreviewConditionResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetConditionId sets the conditionId property value. The condition ID associated with this automation preview condition result.
+// SetConditionId sets the conditionId property value. Automation condition ID evaluated by this preview result.
 func (m *AutomationPreviewConditionResult) SetConditionId(value *string)() {
     m.conditionId = value
 }
-// SetPassed sets the passed property value. Whether this automation preview condition result is passed.
+// SetPassed sets the passed property value. Indicates whether this automation preview condition result passed the preview or validation check.
 func (m *AutomationPreviewConditionResult) SetPassed(value *bool)() {
     m.passed = value
 }
-// SetSummary sets the summary property value. The summary value for this automation preview condition result.
+// SetSummary sets the summary property value. Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
 func (m *AutomationPreviewConditionResult) SetSummary(value *string)() {
     m.summary = value
 }

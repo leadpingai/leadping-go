@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TagRequest request payload for creating or updating a business tag.
+// TagRequest request schema for the Leadping API tag request, including the fields clients can send.
 type TagRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Optional palette token used for compact tag display.
+    // Hex color used to display this tag or status in Leadping clients.
     color *string
-    // Optional internal description for the tag.
+    // Human-readable description that explains this tag request to API users.
     description *string
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // The business-facing tag name.
+    // Display name for this tag request in the Leadping API.
     name *string
 }
 // NewTagRequest instantiates a new TagRequest and sets the default values.
@@ -37,12 +37,12 @@ func CreateTagRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3
 func (m *TagRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetColor gets the color property value. Optional palette token used for compact tag display.
+// GetColor gets the color property value. Hex color used to display this tag or status in Leadping clients.
 // returns a *string when successful
 func (m *TagRequest) GetColor()(*string) {
     return m.color
 }
-// GetDescription gets the description property value. Optional internal description for the tag.
+// GetDescription gets the description property value. Human-readable description that explains this tag request to API users.
 // returns a *string when successful
 func (m *TagRequest) GetDescription()(*string) {
     return m.description
@@ -98,7 +98,7 @@ func (m *TagRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
 func (m *TagRequest) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The business-facing tag name.
+// GetName gets the name property value. Display name for this tag request in the Leadping API.
 // returns a *string when successful
 func (m *TagRequest) GetName()(*string) {
     return m.name
@@ -141,11 +141,11 @@ func (m *TagRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *TagRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetColor sets the color property value. Optional palette token used for compact tag display.
+// SetColor sets the color property value. Hex color used to display this tag or status in Leadping clients.
 func (m *TagRequest) SetColor(value *string)() {
     m.color = value
 }
-// SetDescription sets the description property value. Optional internal description for the tag.
+// SetDescription sets the description property value. Human-readable description that explains this tag request to API users.
 func (m *TagRequest) SetDescription(value *string)() {
     m.description = value
 }
@@ -153,7 +153,7 @@ func (m *TagRequest) SetDescription(value *string)() {
 func (m *TagRequest) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The business-facing tag name.
+// SetName sets the name property value. Display name for this tag request in the Leadping API.
 func (m *TagRequest) SetName(value *string)() {
     m.name = value
 }

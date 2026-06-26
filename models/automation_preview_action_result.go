@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationPreviewActionResult aPI DTO containing automation preview action result data used by Leadping API contracts.
+// AutomationPreviewActionResult result schema for the Leadping API automation preview action result returned by lookup and validation endpoints.
 type AutomationPreviewActionResult struct {
-    // The action ID associated with this automation preview action result.
+    // Automation action ID executed or evaluated by this automation preview action result.
     actionId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The rendered output value for this automation preview action result.
+    // Rendered preview output produced by this automation preview action result.
     renderedOutput *string
-    // The summary value for this automation preview action result.
+    // Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
     summary *string
-    // The warnings included with this automation preview action result.
+    // Warnings returned for this automation preview action result that do not necessarily block processing.
     warnings []string
-    // Whether this automation preview action result would have side effect.
+    // Indicates whether the automation preview would perform an external action if executed live.
     wouldHaveSideEffect *bool
 }
 // NewAutomationPreviewActionResult instantiates a new AutomationPreviewActionResult and sets the default values.
@@ -34,7 +34,7 @@ func NewAutomationPreviewActionResult()(*AutomationPreviewActionResult) {
 func CreateAutomationPreviewActionResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationPreviewActionResult(), nil
 }
-// GetActionId gets the actionId property value. The action ID associated with this automation preview action result.
+// GetActionId gets the actionId property value. Automation action ID executed or evaluated by this automation preview action result.
 // returns a *string when successful
 func (m *AutomationPreviewActionResult) GetActionId()(*string) {
     return m.actionId
@@ -106,22 +106,22 @@ func (m *AutomationPreviewActionResult) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetRenderedOutput gets the renderedOutput property value. The rendered output value for this automation preview action result.
+// GetRenderedOutput gets the renderedOutput property value. Rendered preview output produced by this automation preview action result.
 // returns a *string when successful
 func (m *AutomationPreviewActionResult) GetRenderedOutput()(*string) {
     return m.renderedOutput
 }
-// GetSummary gets the summary property value. The summary value for this automation preview action result.
+// GetSummary gets the summary property value. Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
 // returns a *string when successful
 func (m *AutomationPreviewActionResult) GetSummary()(*string) {
     return m.summary
 }
-// GetWarnings gets the warnings property value. The warnings included with this automation preview action result.
+// GetWarnings gets the warnings property value. Warnings returned for this automation preview action result that do not necessarily block processing.
 // returns a []string when successful
 func (m *AutomationPreviewActionResult) GetWarnings()([]string) {
     return m.warnings
 }
-// GetWouldHaveSideEffect gets the wouldHaveSideEffect property value. Whether this automation preview action result would have side effect.
+// GetWouldHaveSideEffect gets the wouldHaveSideEffect property value. Indicates whether the automation preview would perform an external action if executed live.
 // returns a *bool when successful
 func (m *AutomationPreviewActionResult) GetWouldHaveSideEffect()(*bool) {
     return m.wouldHaveSideEffect
@@ -166,7 +166,7 @@ func (m *AutomationPreviewActionResult) Serialize(writer i878a80d2330e89d2689638
     }
     return nil
 }
-// SetActionId sets the actionId property value. The action ID associated with this automation preview action result.
+// SetActionId sets the actionId property value. Automation action ID executed or evaluated by this automation preview action result.
 func (m *AutomationPreviewActionResult) SetActionId(value *string)() {
     m.actionId = value
 }
@@ -174,19 +174,19 @@ func (m *AutomationPreviewActionResult) SetActionId(value *string)() {
 func (m *AutomationPreviewActionResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetRenderedOutput sets the renderedOutput property value. The rendered output value for this automation preview action result.
+// SetRenderedOutput sets the renderedOutput property value. Rendered preview output produced by this automation preview action result.
 func (m *AutomationPreviewActionResult) SetRenderedOutput(value *string)() {
     m.renderedOutput = value
 }
-// SetSummary sets the summary property value. The summary value for this automation preview action result.
+// SetSummary sets the summary property value. Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
 func (m *AutomationPreviewActionResult) SetSummary(value *string)() {
     m.summary = value
 }
-// SetWarnings sets the warnings property value. The warnings included with this automation preview action result.
+// SetWarnings sets the warnings property value. Warnings returned for this automation preview action result that do not necessarily block processing.
 func (m *AutomationPreviewActionResult) SetWarnings(value []string)() {
     m.warnings = value
 }
-// SetWouldHaveSideEffect sets the wouldHaveSideEffect property value. Whether this automation preview action result would have side effect.
+// SetWouldHaveSideEffect sets the wouldHaveSideEffect property value. Indicates whether the automation preview would perform an external action if executed live.
 func (m *AutomationPreviewActionResult) SetWouldHaveSideEffect(value *bool)() {
     m.wouldHaveSideEffect = value
 }

@@ -8,25 +8,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberEventRecord aPI DTO containing phone number event record data used by Leadping API contracts.
+// PhoneNumberEventRecord history record schema for Leadping API phone number event record data exposed in automation and audit views.
 type PhoneNumberEventRecord struct {
-    // The actor ID associated with this phone number event record.
+    // Actor ID for the user, system, or integration that performed the action.
     actorId *string
-    // The actor name value for this phone number event record.
+    // Display name for the actor that performed the action.
     actorName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this phone number event record.
+    // UTC timestamp when this phone number event record was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The details value for this phone number event record.
+    // Additional human-readable details that explain this phone number event record.
     details *string
-    // The unique ID for this phone number event record.
+    // Unique Leadping identifier for this phone number event record.
     id *string
     // Leadping-owned inventory state for phone-number assignment and routing.
     state *PhoneNumberEventRecord_state
-    // The title value for this phone number event record.
+    // Short title displayed for this phone number event record.
     title *string
-    // The type classification for this phone number event record.
+    // Type classification used to route and interpret this phone number event record in the Leadping API.
     typeEscaped *string
 }
 // NewPhoneNumberEventRecord instantiates a new PhoneNumberEventRecord and sets the default values.
@@ -41,12 +41,12 @@ func NewPhoneNumberEventRecord()(*PhoneNumberEventRecord) {
 func CreatePhoneNumberEventRecordFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewPhoneNumberEventRecord(), nil
 }
-// GetActorId gets the actorId property value. The actor ID associated with this phone number event record.
+// GetActorId gets the actorId property value. Actor ID for the user, system, or integration that performed the action.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetActorId()(*string) {
     return m.actorId
 }
-// GetActorName gets the actorName property value. The actor name value for this phone number event record.
+// GetActorName gets the actorName property value. Display name for the actor that performed the action.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetActorName()(*string) {
     return m.actorName
@@ -56,12 +56,12 @@ func (m *PhoneNumberEventRecord) GetActorName()(*string) {
 func (m *PhoneNumberEventRecord) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this phone number event record.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this phone number event record was created.
 // returns a *Time when successful
 func (m *PhoneNumberEventRecord) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDetails gets the details property value. The details value for this phone number event record.
+// GetDetails gets the details property value. Additional human-readable details that explain this phone number event record.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetDetails()(*string) {
     return m.details
@@ -152,7 +152,7 @@ func (m *PhoneNumberEventRecord) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this phone number event record.
+// GetId gets the id property value. Unique Leadping identifier for this phone number event record.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetId()(*string) {
     return m.id
@@ -162,12 +162,12 @@ func (m *PhoneNumberEventRecord) GetId()(*string) {
 func (m *PhoneNumberEventRecord) GetState()(*PhoneNumberEventRecord_state) {
     return m.state
 }
-// GetTitle gets the title property value. The title value for this phone number event record.
+// GetTitle gets the title property value. Short title displayed for this phone number event record.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetTitle()(*string) {
     return m.title
 }
-// GetTypeEscaped gets the type property value. The type classification for this phone number event record.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this phone number event record in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberEventRecord) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -231,11 +231,11 @@ func (m *PhoneNumberEventRecord) Serialize(writer i878a80d2330e89d26896388a3f487
     }
     return nil
 }
-// SetActorId sets the actorId property value. The actor ID associated with this phone number event record.
+// SetActorId sets the actorId property value. Actor ID for the user, system, or integration that performed the action.
 func (m *PhoneNumberEventRecord) SetActorId(value *string)() {
     m.actorId = value
 }
-// SetActorName sets the actorName property value. The actor name value for this phone number event record.
+// SetActorName sets the actorName property value. Display name for the actor that performed the action.
 func (m *PhoneNumberEventRecord) SetActorName(value *string)() {
     m.actorName = value
 }
@@ -243,15 +243,15 @@ func (m *PhoneNumberEventRecord) SetActorName(value *string)() {
 func (m *PhoneNumberEventRecord) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this phone number event record.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this phone number event record was created.
 func (m *PhoneNumberEventRecord) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDetails sets the details property value. The details value for this phone number event record.
+// SetDetails sets the details property value. Additional human-readable details that explain this phone number event record.
 func (m *PhoneNumberEventRecord) SetDetails(value *string)() {
     m.details = value
 }
-// SetId sets the id property value. The unique ID for this phone number event record.
+// SetId sets the id property value. Unique Leadping identifier for this phone number event record.
 func (m *PhoneNumberEventRecord) SetId(value *string)() {
     m.id = value
 }
@@ -259,11 +259,11 @@ func (m *PhoneNumberEventRecord) SetId(value *string)() {
 func (m *PhoneNumberEventRecord) SetState(value *PhoneNumberEventRecord_state)() {
     m.state = value
 }
-// SetTitle sets the title property value. The title value for this phone number event record.
+// SetTitle sets the title property value. Short title displayed for this phone number event record.
 func (m *PhoneNumberEventRecord) SetTitle(value *string)() {
     m.title = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this phone number event record.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this phone number event record in the Leadping API.
 func (m *PhoneNumberEventRecord) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

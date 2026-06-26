@@ -8,55 +8,55 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationTableRow aPI DTO containing automation data used by Leadping API contracts.
+// AutomationTableRow list item schema for Leadping API automation table row results shown in searchable tables.
 type AutomationTableRow struct {
-    // The action summary value for this automation.
+    // Human-readable summary of the automation action outcome.
     actionSummary *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The admin force enablement override on this automation.
+    // Admin override that can enable or disable this record independently of normal status checks.
     adminEnablementOverride AutomationTableRow_adminEnablementOverrideable
-    // The business value for this automation.
+    // Business summary connected to this automation table row.
     business AutomationTableRow_businessable
-    // The business ID associated with this automation.
+    // Business ID that owns this automation.
     businessId *string
-    // The condition summary value for this automation.
+    // Human-readable summary of the automation condition evaluation.
     conditionSummary *string
-    // The created by user ID associated with this automation.
+    // User ID of the person who created this automation table row.
     createdByUserId *string
-    // The human-readable description of this automation.
+    // Human-readable description that explains this automation table row to API users.
     description *string
-    // Whether this automation is enabled.
+    // Indicates whether this automation table row is active and available in the Leadping API.
     enabled *bool
-    // The health summary value for this automation.
+    // Human-readable health summary for this automation table row.
     healthSummary *string
-    // The unique ID for this automation.
+    // Unique Leadping identifier for this automation table row.
     id *string
-    // Whether this automation is system managed.
+    // Indicates whether Leadping manages this automation table row automatically instead of a user.
     isSystemManaged *bool
-    // The date and time for the last run at value on this automation.
+    // UTC timestamp when this automation last ran.
     lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the last run error value on this automation.
+    // Most recent automation run error message, if the last run failed.
     lastRunError *string
-    // The current last run status for this automation.
+    // Status from the most recent automation run.
     lastRunStatus *string
-    // The management level value for this automation.
+    // Management level that controls whether Leadping or the business owns this automation setting.
     managementLevel *string
-    // The date and time this automation was last modified.
+    // UTC timestamp when this automation table row was last modified.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable name shown for this automation.
+    // Display name for this automation table row in the Leadping API.
     name *string
-    // The rule sentence value for this automation.
+    // Human-readable explanation of the automation rule being evaluated.
     ruleSentence *string
-    // The scope value for this automation.
+    // Scope that limits where this automation table row applies in Leadping.
     scope *string
-    // The trigger summary value for this automation.
+    // Human-readable summary of the automation trigger that started the workflow.
     triggerSummary *string
-    // The primary trigger type label for this automation.
+    // Automation trigger type that starts the workflow.
     triggerType *string
-    // The user value for this automation.
+    // User summary connected to this automation table row.
     user AutomationTableRow_userable
-    // The visibility value for this automation.
+    // Visibility level that controls who can see this automation table row.
     visibility *string
 }
 // NewAutomationTableRow instantiates a new AutomationTableRow and sets the default values.
@@ -71,7 +71,7 @@ func NewAutomationTableRow()(*AutomationTableRow) {
 func CreateAutomationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationTableRow(), nil
 }
-// GetActionSummary gets the actionSummary property value. The action summary value for this automation.
+// GetActionSummary gets the actionSummary property value. Human-readable summary of the automation action outcome.
 // returns a *string when successful
 func (m *AutomationTableRow) GetActionSummary()(*string) {
     return m.actionSummary
@@ -81,37 +81,37 @@ func (m *AutomationTableRow) GetActionSummary()(*string) {
 func (m *AutomationTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The admin force enablement override on this automation.
+// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 // returns a AutomationTableRow_adminEnablementOverrideable when successful
 func (m *AutomationTableRow) GetAdminEnablementOverride()(AutomationTableRow_adminEnablementOverrideable) {
     return m.adminEnablementOverride
 }
-// GetBusiness gets the business property value. The business value for this automation.
+// GetBusiness gets the business property value. Business summary connected to this automation table row.
 // returns a AutomationTableRow_businessable when successful
 func (m *AutomationTableRow) GetBusiness()(AutomationTableRow_businessable) {
     return m.business
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this automation.
+// GetBusinessId gets the businessId property value. Business ID that owns this automation.
 // returns a *string when successful
 func (m *AutomationTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetConditionSummary gets the conditionSummary property value. The condition summary value for this automation.
+// GetConditionSummary gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 // returns a *string when successful
 func (m *AutomationTableRow) GetConditionSummary()(*string) {
     return m.conditionSummary
 }
-// GetCreatedByUserId gets the createdByUserId property value. The created by user ID associated with this automation.
+// GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation table row.
 // returns a *string when successful
 func (m *AutomationTableRow) GetCreatedByUserId()(*string) {
     return m.createdByUserId
 }
-// GetDescription gets the description property value. The human-readable description of this automation.
+// GetDescription gets the description property value. Human-readable description that explains this automation table row to API users.
 // returns a *string when successful
 func (m *AutomationTableRow) GetDescription()(*string) {
     return m.description
 }
-// GetEnabled gets the enabled property value. Whether this automation is enabled.
+// GetEnabled gets the enabled property value. Indicates whether this automation table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *AutomationTableRow) GetEnabled()(*bool) {
     return m.enabled
@@ -352,77 +352,77 @@ func (m *AutomationTableRow) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetHealthSummary gets the healthSummary property value. The health summary value for this automation.
+// GetHealthSummary gets the healthSummary property value. Human-readable health summary for this automation table row.
 // returns a *string when successful
 func (m *AutomationTableRow) GetHealthSummary()(*string) {
     return m.healthSummary
 }
-// GetId gets the id property value. The unique ID for this automation.
+// GetId gets the id property value. Unique Leadping identifier for this automation table row.
 // returns a *string when successful
 func (m *AutomationTableRow) GetId()(*string) {
     return m.id
 }
-// GetIsSystemManaged gets the isSystemManaged property value. Whether this automation is system managed.
+// GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
 // returns a *bool when successful
 func (m *AutomationTableRow) GetIsSystemManaged()(*bool) {
     return m.isSystemManaged
 }
-// GetLastRunAt gets the lastRunAt property value. The date and time for the last run at value on this automation.
+// GetLastRunAt gets the lastRunAt property value. UTC timestamp when this automation last ran.
 // returns a *Time when successful
 func (m *AutomationTableRow) GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastRunAt
 }
-// GetLastRunError gets the lastRunError property value. The date and time for the last run error value on this automation.
+// GetLastRunError gets the lastRunError property value. Most recent automation run error message, if the last run failed.
 // returns a *string when successful
 func (m *AutomationTableRow) GetLastRunError()(*string) {
     return m.lastRunError
 }
-// GetLastRunStatus gets the lastRunStatus property value. The current last run status for this automation.
+// GetLastRunStatus gets the lastRunStatus property value. Status from the most recent automation run.
 // returns a *string when successful
 func (m *AutomationTableRow) GetLastRunStatus()(*string) {
     return m.lastRunStatus
 }
-// GetManagementLevel gets the managementLevel property value. The management level value for this automation.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 // returns a *string when successful
 func (m *AutomationTableRow) GetManagementLevel()(*string) {
     return m.managementLevel
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time this automation was last modified.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when this automation table row was last modified.
 // returns a *Time when successful
 func (m *AutomationTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The human-readable name shown for this automation.
+// GetName gets the name property value. Display name for this automation table row in the Leadping API.
 // returns a *string when successful
 func (m *AutomationTableRow) GetName()(*string) {
     return m.name
 }
-// GetRuleSentence gets the ruleSentence property value. The rule sentence value for this automation.
+// GetRuleSentence gets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
 // returns a *string when successful
 func (m *AutomationTableRow) GetRuleSentence()(*string) {
     return m.ruleSentence
 }
-// GetScope gets the scope property value. The scope value for this automation.
+// GetScope gets the scope property value. Scope that limits where this automation table row applies in Leadping.
 // returns a *string when successful
 func (m *AutomationTableRow) GetScope()(*string) {
     return m.scope
 }
-// GetTriggerSummary gets the triggerSummary property value. The trigger summary value for this automation.
+// GetTriggerSummary gets the triggerSummary property value. Human-readable summary of the automation trigger that started the workflow.
 // returns a *string when successful
 func (m *AutomationTableRow) GetTriggerSummary()(*string) {
     return m.triggerSummary
 }
-// GetTriggerType gets the triggerType property value. The primary trigger type label for this automation.
+// GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
 func (m *AutomationTableRow) GetTriggerType()(*string) {
     return m.triggerType
 }
-// GetUser gets the user property value. The user value for this automation.
+// GetUser gets the user property value. User summary connected to this automation table row.
 // returns a AutomationTableRow_userable when successful
 func (m *AutomationTableRow) GetUser()(AutomationTableRow_userable) {
     return m.user
 }
-// GetVisibility gets the visibility property value. The visibility value for this automation.
+// GetVisibility gets the visibility property value. Visibility level that controls who can see this automation table row.
 // returns a *string when successful
 func (m *AutomationTableRow) GetVisibility()(*string) {
     return m.visibility
@@ -575,7 +575,7 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     }
     return nil
 }
-// SetActionSummary sets the actionSummary property value. The action summary value for this automation.
+// SetActionSummary sets the actionSummary property value. Human-readable summary of the automation action outcome.
 func (m *AutomationTableRow) SetActionSummary(value *string)() {
     m.actionSummary = value
 }
@@ -583,91 +583,91 @@ func (m *AutomationTableRow) SetActionSummary(value *string)() {
 func (m *AutomationTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The admin force enablement override on this automation.
+// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
 func (m *AutomationTableRow) SetAdminEnablementOverride(value AutomationTableRow_adminEnablementOverrideable)() {
     m.adminEnablementOverride = value
 }
-// SetBusiness sets the business property value. The business value for this automation.
+// SetBusiness sets the business property value. Business summary connected to this automation table row.
 func (m *AutomationTableRow) SetBusiness(value AutomationTableRow_businessable)() {
     m.business = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this automation.
+// SetBusinessId sets the businessId property value. Business ID that owns this automation.
 func (m *AutomationTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetConditionSummary sets the conditionSummary property value. The condition summary value for this automation.
+// SetConditionSummary sets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 func (m *AutomationTableRow) SetConditionSummary(value *string)() {
     m.conditionSummary = value
 }
-// SetCreatedByUserId sets the createdByUserId property value. The created by user ID associated with this automation.
+// SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation table row.
 func (m *AutomationTableRow) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
 }
-// SetDescription sets the description property value. The human-readable description of this automation.
+// SetDescription sets the description property value. Human-readable description that explains this automation table row to API users.
 func (m *AutomationTableRow) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Whether this automation is enabled.
+// SetEnabled sets the enabled property value. Indicates whether this automation table row is active and available in the Leadping API.
 func (m *AutomationTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetHealthSummary sets the healthSummary property value. The health summary value for this automation.
+// SetHealthSummary sets the healthSummary property value. Human-readable health summary for this automation table row.
 func (m *AutomationTableRow) SetHealthSummary(value *string)() {
     m.healthSummary = value
 }
-// SetId sets the id property value. The unique ID for this automation.
+// SetId sets the id property value. Unique Leadping identifier for this automation table row.
 func (m *AutomationTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetIsSystemManaged sets the isSystemManaged property value. Whether this automation is system managed.
+// SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
 func (m *AutomationTableRow) SetIsSystemManaged(value *bool)() {
     m.isSystemManaged = value
 }
-// SetLastRunAt sets the lastRunAt property value. The date and time for the last run at value on this automation.
+// SetLastRunAt sets the lastRunAt property value. UTC timestamp when this automation last ran.
 func (m *AutomationTableRow) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastRunAt = value
 }
-// SetLastRunError sets the lastRunError property value. The date and time for the last run error value on this automation.
+// SetLastRunError sets the lastRunError property value. Most recent automation run error message, if the last run failed.
 func (m *AutomationTableRow) SetLastRunError(value *string)() {
     m.lastRunError = value
 }
-// SetLastRunStatus sets the lastRunStatus property value. The current last run status for this automation.
+// SetLastRunStatus sets the lastRunStatus property value. Status from the most recent automation run.
 func (m *AutomationTableRow) SetLastRunStatus(value *string)() {
     m.lastRunStatus = value
 }
-// SetManagementLevel sets the managementLevel property value. The management level value for this automation.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
 func (m *AutomationTableRow) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time this automation was last modified.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when this automation table row was last modified.
 func (m *AutomationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The human-readable name shown for this automation.
+// SetName sets the name property value. Display name for this automation table row in the Leadping API.
 func (m *AutomationTableRow) SetName(value *string)() {
     m.name = value
 }
-// SetRuleSentence sets the ruleSentence property value. The rule sentence value for this automation.
+// SetRuleSentence sets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
 func (m *AutomationTableRow) SetRuleSentence(value *string)() {
     m.ruleSentence = value
 }
-// SetScope sets the scope property value. The scope value for this automation.
+// SetScope sets the scope property value. Scope that limits where this automation table row applies in Leadping.
 func (m *AutomationTableRow) SetScope(value *string)() {
     m.scope = value
 }
-// SetTriggerSummary sets the triggerSummary property value. The trigger summary value for this automation.
+// SetTriggerSummary sets the triggerSummary property value. Human-readable summary of the automation trigger that started the workflow.
 func (m *AutomationTableRow) SetTriggerSummary(value *string)() {
     m.triggerSummary = value
 }
-// SetTriggerType sets the triggerType property value. The primary trigger type label for this automation.
+// SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
 func (m *AutomationTableRow) SetTriggerType(value *string)() {
     m.triggerType = value
 }
-// SetUser sets the user property value. The user value for this automation.
+// SetUser sets the user property value. User summary connected to this automation table row.
 func (m *AutomationTableRow) SetUser(value AutomationTableRow_userable)() {
     m.user = value
 }
-// SetVisibility sets the visibility property value. The visibility value for this automation.
+// SetVisibility sets the visibility property value. Visibility level that controls who can see this automation table row.
 func (m *AutomationTableRow) SetVisibility(value *string)() {
     m.visibility = value
 }

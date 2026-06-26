@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationTrigger aPI DTO containing automation trigger data used by Leadping API contracts.
+// AutomationTrigger public Leadping API schema for automation trigger data.
 type AutomationTrigger struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The human-readable display name shown for this automation trigger.
+    // Human-readable display name shown for this automation trigger.
     displayName *string
-    // The unique ID for this automation trigger.
+    // Unique Leadping identifier for this automation trigger.
     id *string
-    // Whether this automation trigger is enabled.
+    // Indicates whether this automation trigger is active and allowed to run.
     isEnabled *bool
-    // The settings key-value data carried with this automation trigger; values must be safe to expose in API responses.
+    // Key-value settings that configure how this automation trigger behaves.
     settings AutomationTrigger_settingsable
-    // The type classification for this automation trigger.
+    // Type classification used to route and interpret this automation trigger in the Leadping API.
     typeEscaped *string
 }
 // NewAutomationTrigger instantiates a new AutomationTrigger and sets the default values.
@@ -39,7 +39,7 @@ func CreateAutomationTriggerFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *AutomationTrigger) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDisplayName gets the displayName property value. The human-readable display name shown for this automation trigger.
+// GetDisplayName gets the displayName property value. Human-readable display name shown for this automation trigger.
 // returns a *string when successful
 func (m *AutomationTrigger) GetDisplayName()(*string) {
     return m.displayName
@@ -100,22 +100,22 @@ func (m *AutomationTrigger) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this automation trigger.
+// GetId gets the id property value. Unique Leadping identifier for this automation trigger.
 // returns a *string when successful
 func (m *AutomationTrigger) GetId()(*string) {
     return m.id
 }
-// GetIsEnabled gets the isEnabled property value. Whether this automation trigger is enabled.
+// GetIsEnabled gets the isEnabled property value. Indicates whether this automation trigger is active and allowed to run.
 // returns a *bool when successful
 func (m *AutomationTrigger) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
-// GetSettings gets the settings property value. The settings key-value data carried with this automation trigger; values must be safe to expose in API responses.
+// GetSettings gets the settings property value. Key-value settings that configure how this automation trigger behaves.
 // returns a AutomationTrigger_settingsable when successful
 func (m *AutomationTrigger) GetSettings()(AutomationTrigger_settingsable) {
     return m.settings
 }
-// GetTypeEscaped gets the type property value. The type classification for this automation trigger.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this automation trigger in the Leadping API.
 // returns a *string when successful
 func (m *AutomationTrigger) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -164,23 +164,23 @@ func (m *AutomationTrigger) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *AutomationTrigger) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDisplayName sets the displayName property value. The human-readable display name shown for this automation trigger.
+// SetDisplayName sets the displayName property value. Human-readable display name shown for this automation trigger.
 func (m *AutomationTrigger) SetDisplayName(value *string)() {
     m.displayName = value
 }
-// SetId sets the id property value. The unique ID for this automation trigger.
+// SetId sets the id property value. Unique Leadping identifier for this automation trigger.
 func (m *AutomationTrigger) SetId(value *string)() {
     m.id = value
 }
-// SetIsEnabled sets the isEnabled property value. Whether this automation trigger is enabled.
+// SetIsEnabled sets the isEnabled property value. Indicates whether this automation trigger is active and allowed to run.
 func (m *AutomationTrigger) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
-// SetSettings sets the settings property value. The settings key-value data carried with this automation trigger; values must be safe to expose in API responses.
+// SetSettings sets the settings property value. Key-value settings that configure how this automation trigger behaves.
 func (m *AutomationTrigger) SetSettings(value AutomationTrigger_settingsable)() {
     m.settings = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this automation trigger.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this automation trigger in the Leadping API.
 func (m *AutomationTrigger) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

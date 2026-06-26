@@ -8,103 +8,103 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EventTableRow aPI DTO containing event data used by Leadping API contracts.
+// EventTableRow list item schema for Leadping API event timeline table row results shown in searchable tables.
 type EventTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The billableAmount property
+    // Monetary amount billed for this Leadping communication or transaction.
     billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The billingStatus property
+    // Billing state for this communication, charge, or transaction.
     billingStatus *string
-    // The blockedAt property
+    // UTC timestamp when Leadping blocked this communication.
     blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The campaignId property
+    // Messaging campaign identifier associated with this event timeline table row.
     campaignId *string
-    // The canceledAt property
+    // UTC timestamp when this delivery or workflow was canceled.
     canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The cancelReason property
+    // Reason this delivery, run, or request was canceled.
     cancelReason *string
-    // The complianceAction property
+    // Compliance action applied to this message, lead, or sender.
     complianceAction *string
-    // The conversationId property
+    // Conversation ID that links this event timeline table row to the Leadping inbox thread.
     conversationId *string
-    // The date and time for the created at value on this event.
+    // UTC timestamp when this event timeline table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the created by value on this event.
+    // Display name or identifier for the person or system that created this event timeline table row.
     createdBy *string
-    // The deliveredAt property
+    // UTC timestamp when the provider confirmed delivery.
     deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable description of this event.
+    // Human-readable description that explains this event timeline table row to API users.
     description *string
-    // The direction property
+    // Communication direction for this event timeline table row, such as inbound or outbound.
     direction *string
-    // The errorCode property
+    // Machine-readable error code returned while processing this event timeline table row.
     errorCode *string
-    // The eventCategory property
+    // High-level category used to group this Leadping event.
     eventCategory *string
-    // The event type classification for this event.
+    // Event type used to classify this timeline, SMS, call, or automation event.
     eventType *string
-    // The failedAt property
+    // UTC timestamp when processing failed for this event timeline table row.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The fromPhoneNumber property
+    // Sender phone number used for this communication.
     fromPhoneNumber *string
-    // The fromPhoneNumberId property
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The unique ID for this event.
+    // Unique Leadping identifier for this event timeline table row.
     id *string
-    // The isWarmup property
+    // Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
     isWarmup *bool
-    // The leadId property
+    // Lead ID associated with this timeline event.
     leadId *string
-    // The nextRetryAt property
+    // UTC timestamp when Leadping will retry this event timeline table row.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The outboundPhoneNumberId property
+    // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // The providerMessageId property
+    // Provider message identifier for SMS delivery tracking and reconciliation.
     providerMessageId *string
-    // The queuedAt property
+    // UTC timestamp when Leadping queued this event timeline table row for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The receivedAt property
+    // UTC timestamp when Leadping received this inbound event or message.
     receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The relatedEntityId property
+    // Related entity ID connected to this event or notification.
     relatedEntityId *string
-    // The relatedEntityType property
+    // Related entity type connected to this event or notification.
     relatedEntityType *string
-    // The retryCount property
+    // Number of retry attempts already made for this event timeline table row.
     retryCount *int32
-    // The scheduledFor property
+    // UTC timestamp when the related delivery or workflow action is scheduled to run.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The scheduledReason property
+    // Reason Leadping scheduled this delivery for a later time.
     scheduledReason *string
     // Defines the supported Outgoing Number Selection Reason values.
     selectionReason *EventTableRow_selectionReason
-    // The sendingStartedAt property
+    // UTC timestamp when Leadping began sending this message.
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The sentAt property
+    // UTC timestamp when Leadping sent this message to the provider.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The sourceId property
+    // Lead source ID used for event attribution.
     sourceId *string
     // Defines the supported Event timeline status values.
     status *EventTableRow_status
-    // The statusReason property
+    // Human-readable reason explaining the current status of this event timeline table row.
     statusReason *string
-    // The summary property
+    // Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
     summary *string
-    // The telnyxId property
+    // Telnyx identifier connected to this phone number, call, or SMS event.
     telnyxId *string
-    // The tenDlcCampaignId property
+    // 10DLC campaign identifier associated with this sender or SMS event.
     tenDlcCampaignId *string
-    // The timelineCategory property
+    // Timeline category used to group events for display and filtering.
     timelineCategory *string
-    // Defines the supported Event timeline type values.
+    // Timeline type used to render this event in Leadping activity feeds.
     timelineType *EventTimelineType
-    // The toPhoneNumber property
+    // Recipient phone number used for this communication.
     toPhoneNumber *string
     // Defines the supported SMS Traffic Type values.
     trafficType *EventTableRow_trafficType
-    // The undeliverableAt property
+    // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The wasManuallyOverridden property
+    // Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
     wasManuallyOverridden *bool
 }
 // NewEventTableRow instantiates a new EventTableRow and sets the default values.
@@ -124,87 +124,87 @@ func CreateEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *EventTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillableAmount gets the billableAmount property value. The billableAmount property
+// GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 // returns a UntypedNodeable when successful
 func (m *EventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableAmount
 }
-// GetBillingStatus gets the billingStatus property value. The billingStatus property
+// GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
 func (m *EventTableRow) GetBillingStatus()(*string) {
     return m.billingStatus
 }
-// GetBlockedAt gets the blockedAt property value. The blockedAt property
+// GetBlockedAt gets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 // returns a *Time when successful
 func (m *EventTableRow) GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.blockedAt
 }
-// GetCampaignId gets the campaignId property value. The campaignId property
+// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetCanceledAt gets the canceledAt property value. The canceledAt property
+// GetCanceledAt gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 // returns a *Time when successful
 func (m *EventTableRow) GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.canceledAt
 }
-// GetCancelReason gets the cancelReason property value. The cancelReason property
+// GetCancelReason gets the cancelReason property value. Reason this delivery, run, or request was canceled.
 // returns a *string when successful
 func (m *EventTableRow) GetCancelReason()(*string) {
     return m.cancelReason
 }
-// GetComplianceAction gets the complianceAction property value. The complianceAction property
+// GetComplianceAction gets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 // returns a *string when successful
 func (m *EventTableRow) GetComplianceAction()(*string) {
     return m.complianceAction
 }
-// GetConversationId gets the conversationId property value. The conversationId property
+// GetConversationId gets the conversationId property value. Conversation ID that links this event timeline table row to the Leadping inbox thread.
 // returns a *string when successful
 func (m *EventTableRow) GetConversationId()(*string) {
     return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this event.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this event timeline table row was created.
 // returns a *Time when successful
 func (m *EventTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedBy gets the createdBy property value. The date and time for the created by value on this event.
+// GetCreatedBy gets the createdBy property value. Display name or identifier for the person or system that created this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetCreatedBy()(*string) {
     return m.createdBy
 }
-// GetDeliveredAt gets the deliveredAt property value. The deliveredAt property
+// GetDeliveredAt gets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 // returns a *Time when successful
 func (m *EventTableRow) GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.deliveredAt
 }
-// GetDescription gets the description property value. The human-readable description of this event.
+// GetDescription gets the description property value. Human-readable description that explains this event timeline table row to API users.
 // returns a *string when successful
 func (m *EventTableRow) GetDescription()(*string) {
     return m.description
 }
-// GetDirection gets the direction property value. The direction property
+// GetDirection gets the direction property value. Communication direction for this event timeline table row, such as inbound or outbound.
 // returns a *string when successful
 func (m *EventTableRow) GetDirection()(*string) {
     return m.direction
 }
-// GetErrorCode gets the errorCode property value. The errorCode property
+// GetErrorCode gets the errorCode property value. Machine-readable error code returned while processing this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetErrorCode()(*string) {
     return m.errorCode
 }
-// GetEventCategory gets the eventCategory property value. The eventCategory property
+// GetEventCategory gets the eventCategory property value. High-level category used to group this Leadping event.
 // returns a *string when successful
 func (m *EventTableRow) GetEventCategory()(*string) {
     return m.eventCategory
 }
-// GetEventType gets the eventType property value. The event type classification for this event.
+// GetEventType gets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 // returns a *string when successful
 func (m *EventTableRow) GetEventType()(*string) {
     return m.eventType
 }
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this event timeline table row.
 // returns a *Time when successful
 func (m *EventTableRow) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -685,77 +685,77 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
     }
     return res
 }
-// GetFromPhoneNumber gets the fromPhoneNumber property value. The fromPhoneNumber property
+// GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
 func (m *EventTableRow) GetFromPhoneNumber()(*string) {
     return m.fromPhoneNumber
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The fromPhoneNumberId property
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *EventTableRow) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique ID for this event.
+// GetId gets the id property value. Unique Leadping identifier for this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetId()(*string) {
     return m.id
 }
-// GetIsWarmup gets the isWarmup property value. The isWarmup property
+// GetIsWarmup gets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
 // returns a *bool when successful
 func (m *EventTableRow) GetIsWarmup()(*bool) {
     return m.isWarmup
 }
-// GetLeadId gets the leadId property value. The leadId property
+// GetLeadId gets the leadId property value. Lead ID associated with this timeline event.
 // returns a *string when successful
 func (m *EventTableRow) GetLeadId()(*string) {
     return m.leadId
 }
-// GetNextRetryAt gets the nextRetryAt property value. The nextRetryAt property
+// GetNextRetryAt gets the nextRetryAt property value. UTC timestamp when Leadping will retry this event timeline table row.
 // returns a *Time when successful
 func (m *EventTableRow) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
-// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. The outboundPhoneNumberId property
+// GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *EventTableRow) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
 }
-// GetProviderMessageId gets the providerMessageId property value. The providerMessageId property
+// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 // returns a *string when successful
 func (m *EventTableRow) GetProviderMessageId()(*string) {
     return m.providerMessageId
 }
-// GetQueuedAt gets the queuedAt property value. The queuedAt property
+// GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this event timeline table row for processing.
 // returns a *Time when successful
 func (m *EventTableRow) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.queuedAt
 }
-// GetReceivedAt gets the receivedAt property value. The receivedAt property
+// GetReceivedAt gets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 // returns a *Time when successful
 func (m *EventTableRow) GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedAt
 }
-// GetRelatedEntityId gets the relatedEntityId property value. The relatedEntityId property
+// GetRelatedEntityId gets the relatedEntityId property value. Related entity ID connected to this event or notification.
 // returns a *string when successful
 func (m *EventTableRow) GetRelatedEntityId()(*string) {
     return m.relatedEntityId
 }
-// GetRelatedEntityType gets the relatedEntityType property value. The relatedEntityType property
+// GetRelatedEntityType gets the relatedEntityType property value. Related entity type connected to this event or notification.
 // returns a *string when successful
 func (m *EventTableRow) GetRelatedEntityType()(*string) {
     return m.relatedEntityType
 }
-// GetRetryCount gets the retryCount property value. The retryCount property
+// GetRetryCount gets the retryCount property value. Number of retry attempts already made for this event timeline table row.
 // returns a *int32 when successful
 func (m *EventTableRow) GetRetryCount()(*int32) {
     return m.retryCount
 }
-// GetScheduledFor gets the scheduledFor property value. The scheduledFor property
+// GetScheduledFor gets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
 // returns a *Time when successful
 func (m *EventTableRow) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledFor
 }
-// GetScheduledReason gets the scheduledReason property value. The scheduledReason property
+// GetScheduledReason gets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
 // returns a *string when successful
 func (m *EventTableRow) GetScheduledReason()(*string) {
     return m.scheduledReason
@@ -765,17 +765,17 @@ func (m *EventTableRow) GetScheduledReason()(*string) {
 func (m *EventTableRow) GetSelectionReason()(*EventTableRow_selectionReason) {
     return m.selectionReason
 }
-// GetSendingStartedAt gets the sendingStartedAt property value. The sendingStartedAt property
+// GetSendingStartedAt gets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 // returns a *Time when successful
 func (m *EventTableRow) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sendingStartedAt
 }
-// GetSentAt gets the sentAt property value. The sentAt property
+// GetSentAt gets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 // returns a *Time when successful
 func (m *EventTableRow) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
 }
-// GetSourceId gets the sourceId property value. The sourceId property
+// GetSourceId gets the sourceId property value. Lead source ID used for event attribution.
 // returns a *string when successful
 func (m *EventTableRow) GetSourceId()(*string) {
     return m.sourceId
@@ -785,37 +785,37 @@ func (m *EventTableRow) GetSourceId()(*string) {
 func (m *EventTableRow) GetStatus()(*EventTableRow_status) {
     return m.status
 }
-// GetStatusReason gets the statusReason property value. The statusReason property
+// GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetStatusReason()(*string) {
     return m.statusReason
 }
-// GetSummary gets the summary property value. The summary property
+// GetSummary gets the summary property value. Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
 // returns a *string when successful
 func (m *EventTableRow) GetSummary()(*string) {
     return m.summary
 }
-// GetTelnyxId gets the telnyxId property value. The telnyxId property
+// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 // returns a *string when successful
 func (m *EventTableRow) GetTelnyxId()(*string) {
     return m.telnyxId
 }
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. The tenDlcCampaignId property
+// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 // returns a *string when successful
 func (m *EventTableRow) GetTenDlcCampaignId()(*string) {
     return m.tenDlcCampaignId
 }
-// GetTimelineCategory gets the timelineCategory property value. The timelineCategory property
+// GetTimelineCategory gets the timelineCategory property value. Timeline category used to group events for display and filtering.
 // returns a *string when successful
 func (m *EventTableRow) GetTimelineCategory()(*string) {
     return m.timelineCategory
 }
-// GetTimelineType gets the timelineType property value. Defines the supported Event timeline type values.
+// GetTimelineType gets the timelineType property value. Timeline type used to render this event in Leadping activity feeds.
 // returns a *EventTimelineType when successful
 func (m *EventTableRow) GetTimelineType()(*EventTimelineType) {
     return m.timelineType
 }
-// GetToPhoneNumber gets the toPhoneNumber property value. The toPhoneNumber property
+// GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
 func (m *EventTableRow) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
@@ -825,12 +825,12 @@ func (m *EventTableRow) GetToPhoneNumber()(*string) {
 func (m *EventTableRow) GetTrafficType()(*EventTableRow_trafficType) {
     return m.trafficType
 }
-// GetUndeliverableAt gets the undeliverableAt property value. The undeliverableAt property
+// GetUndeliverableAt gets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 // returns a *Time when successful
 func (m *EventTableRow) GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.undeliverableAt
 }
-// GetWasManuallyOverridden gets the wasManuallyOverridden property value. The wasManuallyOverridden property
+// GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
 // returns a *bool when successful
 func (m *EventTableRow) GetWasManuallyOverridden()(*bool) {
     return m.wasManuallyOverridden
@@ -1135,131 +1135,131 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *EventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillableAmount sets the billableAmount property value. The billableAmount property
+// SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 func (m *EventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableAmount = value
 }
-// SetBillingStatus sets the billingStatus property value. The billingStatus property
+// SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
 func (m *EventTableRow) SetBillingStatus(value *string)() {
     m.billingStatus = value
 }
-// SetBlockedAt sets the blockedAt property value. The blockedAt property
+// SetBlockedAt sets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 func (m *EventTableRow) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.blockedAt = value
 }
-// SetCampaignId sets the campaignId property value. The campaignId property
+// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this event timeline table row.
 func (m *EventTableRow) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetCanceledAt sets the canceledAt property value. The canceledAt property
+// SetCanceledAt sets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 func (m *EventTableRow) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.canceledAt = value
 }
-// SetCancelReason sets the cancelReason property value. The cancelReason property
+// SetCancelReason sets the cancelReason property value. Reason this delivery, run, or request was canceled.
 func (m *EventTableRow) SetCancelReason(value *string)() {
     m.cancelReason = value
 }
-// SetComplianceAction sets the complianceAction property value. The complianceAction property
+// SetComplianceAction sets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 func (m *EventTableRow) SetComplianceAction(value *string)() {
     m.complianceAction = value
 }
-// SetConversationId sets the conversationId property value. The conversationId property
+// SetConversationId sets the conversationId property value. Conversation ID that links this event timeline table row to the Leadping inbox thread.
 func (m *EventTableRow) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this event.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this event timeline table row was created.
 func (m *EventTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCreatedBy sets the createdBy property value. The date and time for the created by value on this event.
+// SetCreatedBy sets the createdBy property value. Display name or identifier for the person or system that created this event timeline table row.
 func (m *EventTableRow) SetCreatedBy(value *string)() {
     m.createdBy = value
 }
-// SetDeliveredAt sets the deliveredAt property value. The deliveredAt property
+// SetDeliveredAt sets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 func (m *EventTableRow) SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.deliveredAt = value
 }
-// SetDescription sets the description property value. The human-readable description of this event.
+// SetDescription sets the description property value. Human-readable description that explains this event timeline table row to API users.
 func (m *EventTableRow) SetDescription(value *string)() {
     m.description = value
 }
-// SetDirection sets the direction property value. The direction property
+// SetDirection sets the direction property value. Communication direction for this event timeline table row, such as inbound or outbound.
 func (m *EventTableRow) SetDirection(value *string)() {
     m.direction = value
 }
-// SetErrorCode sets the errorCode property value. The errorCode property
+// SetErrorCode sets the errorCode property value. Machine-readable error code returned while processing this event timeline table row.
 func (m *EventTableRow) SetErrorCode(value *string)() {
     m.errorCode = value
 }
-// SetEventCategory sets the eventCategory property value. The eventCategory property
+// SetEventCategory sets the eventCategory property value. High-level category used to group this Leadping event.
 func (m *EventTableRow) SetEventCategory(value *string)() {
     m.eventCategory = value
 }
-// SetEventType sets the eventType property value. The event type classification for this event.
+// SetEventType sets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 func (m *EventTableRow) SetEventType(value *string)() {
     m.eventType = value
 }
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this event timeline table row.
 func (m *EventTableRow) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFromPhoneNumber sets the fromPhoneNumber property value. The fromPhoneNumber property
+// SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
 func (m *EventTableRow) SetFromPhoneNumber(value *string)() {
     m.fromPhoneNumber = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The fromPhoneNumberId property
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *EventTableRow) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique ID for this event.
+// SetId sets the id property value. Unique Leadping identifier for this event timeline table row.
 func (m *EventTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetIsWarmup sets the isWarmup property value. The isWarmup property
+// SetIsWarmup sets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
 func (m *EventTableRow) SetIsWarmup(value *bool)() {
     m.isWarmup = value
 }
-// SetLeadId sets the leadId property value. The leadId property
+// SetLeadId sets the leadId property value. Lead ID associated with this timeline event.
 func (m *EventTableRow) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetNextRetryAt sets the nextRetryAt property value. The nextRetryAt property
+// SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this event timeline table row.
 func (m *EventTableRow) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
-// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. The outboundPhoneNumberId property
+// SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *EventTableRow) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
 }
-// SetProviderMessageId sets the providerMessageId property value. The providerMessageId property
+// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
 func (m *EventTableRow) SetProviderMessageId(value *string)() {
     m.providerMessageId = value
 }
-// SetQueuedAt sets the queuedAt property value. The queuedAt property
+// SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this event timeline table row for processing.
 func (m *EventTableRow) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.queuedAt = value
 }
-// SetReceivedAt sets the receivedAt property value. The receivedAt property
+// SetReceivedAt sets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 func (m *EventTableRow) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedAt = value
 }
-// SetRelatedEntityId sets the relatedEntityId property value. The relatedEntityId property
+// SetRelatedEntityId sets the relatedEntityId property value. Related entity ID connected to this event or notification.
 func (m *EventTableRow) SetRelatedEntityId(value *string)() {
     m.relatedEntityId = value
 }
-// SetRelatedEntityType sets the relatedEntityType property value. The relatedEntityType property
+// SetRelatedEntityType sets the relatedEntityType property value. Related entity type connected to this event or notification.
 func (m *EventTableRow) SetRelatedEntityType(value *string)() {
     m.relatedEntityType = value
 }
-// SetRetryCount sets the retryCount property value. The retryCount property
+// SetRetryCount sets the retryCount property value. Number of retry attempts already made for this event timeline table row.
 func (m *EventTableRow) SetRetryCount(value *int32)() {
     m.retryCount = value
 }
-// SetScheduledFor sets the scheduledFor property value. The scheduledFor property
+// SetScheduledFor sets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
 func (m *EventTableRow) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledFor = value
 }
-// SetScheduledReason sets the scheduledReason property value. The scheduledReason property
+// SetScheduledReason sets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
 func (m *EventTableRow) SetScheduledReason(value *string)() {
     m.scheduledReason = value
 }
@@ -1267,15 +1267,15 @@ func (m *EventTableRow) SetScheduledReason(value *string)() {
 func (m *EventTableRow) SetSelectionReason(value *EventTableRow_selectionReason)() {
     m.selectionReason = value
 }
-// SetSendingStartedAt sets the sendingStartedAt property value. The sendingStartedAt property
+// SetSendingStartedAt sets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 func (m *EventTableRow) SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sendingStartedAt = value
 }
-// SetSentAt sets the sentAt property value. The sentAt property
+// SetSentAt sets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 func (m *EventTableRow) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }
-// SetSourceId sets the sourceId property value. The sourceId property
+// SetSourceId sets the sourceId property value. Lead source ID used for event attribution.
 func (m *EventTableRow) SetSourceId(value *string)() {
     m.sourceId = value
 }
@@ -1283,31 +1283,31 @@ func (m *EventTableRow) SetSourceId(value *string)() {
 func (m *EventTableRow) SetStatus(value *EventTableRow_status)() {
     m.status = value
 }
-// SetStatusReason sets the statusReason property value. The statusReason property
+// SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this event timeline table row.
 func (m *EventTableRow) SetStatusReason(value *string)() {
     m.statusReason = value
 }
-// SetSummary sets the summary property value. The summary property
+// SetSummary sets the summary property value. Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
 func (m *EventTableRow) SetSummary(value *string)() {
     m.summary = value
 }
-// SetTelnyxId sets the telnyxId property value. The telnyxId property
+// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 func (m *EventTableRow) SetTelnyxId(value *string)() {
     m.telnyxId = value
 }
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. The tenDlcCampaignId property
+// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
 func (m *EventTableRow) SetTenDlcCampaignId(value *string)() {
     m.tenDlcCampaignId = value
 }
-// SetTimelineCategory sets the timelineCategory property value. The timelineCategory property
+// SetTimelineCategory sets the timelineCategory property value. Timeline category used to group events for display and filtering.
 func (m *EventTableRow) SetTimelineCategory(value *string)() {
     m.timelineCategory = value
 }
-// SetTimelineType sets the timelineType property value. Defines the supported Event timeline type values.
+// SetTimelineType sets the timelineType property value. Timeline type used to render this event in Leadping activity feeds.
 func (m *EventTableRow) SetTimelineType(value *EventTimelineType)() {
     m.timelineType = value
 }
-// SetToPhoneNumber sets the toPhoneNumber property value. The toPhoneNumber property
+// SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *EventTableRow) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }
@@ -1315,11 +1315,11 @@ func (m *EventTableRow) SetToPhoneNumber(value *string)() {
 func (m *EventTableRow) SetTrafficType(value *EventTableRow_trafficType)() {
     m.trafficType = value
 }
-// SetUndeliverableAt sets the undeliverableAt property value. The undeliverableAt property
+// SetUndeliverableAt sets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 func (m *EventTableRow) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.undeliverableAt = value
 }
-// SetWasManuallyOverridden sets the wasManuallyOverridden property value. The wasManuallyOverridden property
+// SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
 func (m *EventTableRow) SetWasManuallyOverridden(value *bool)() {
     m.wasManuallyOverridden = value
 }

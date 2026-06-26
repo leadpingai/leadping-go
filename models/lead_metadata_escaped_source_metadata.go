@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadMetadata_sourceMetadata the source metadata key-value data carried with this lead metadata; values must be safe to expose in API responses.
+// LeadMetadata_sourceMetadata source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 type LeadMetadata_sourceMetadata struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

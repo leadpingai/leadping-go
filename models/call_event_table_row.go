@@ -8,61 +8,61 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CallEventTableRow aPI DTO containing call event data used by Leadping API contracts.
+// CallEventTableRow list item schema for Leadping API call event table row results shown in searchable tables.
 type CallEventTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the answered at value on this call event.
+    // UTC timestamp when the call was answered.
     answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The monetary billable amount for this call event.
+    // Monetary amount billed for this Leadping communication or transaction.
     billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The billable seconds value for this call event.
+    // Billable call duration in seconds.
     billableSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The billing phone number ID associated with this call event.
+    // Phone number identifier used for billing reconciliation.
     billingPhoneNumberId *string
-    // The current billing status for this call event.
+    // Billing state for this communication, charge, or transaction.
     billingStatus *string
-    // The business value for this call event.
+    // Business summary connected to this call event table row.
     business *string
-    // The business ID associated with this call event.
+    // Business ID associated with this call event.
     businessId *string
-    // The caller ID associated with this call event.
+    // Caller ID phone number presented during the outbound call.
     callerId *string
-    // The conversation ID associated with this call event.
+    // Conversation ID that links this call event table row to the Leadping inbox thread.
     conversationId *string
-    // The date and time for the created at value on this call event.
+    // UTC timestamp when this call event table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The direction value for this call event.
+    // Communication direction for this call event table row, such as inbound or outbound.
     direction *string
-    // The duration value for this call event.
+    // Call duration or processing duration represented by this call event table row.
     duration i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The date and time for the ended at value on this call event.
+    // UTC timestamp when the call ended.
     endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The phone number associated with this call event.
+    // Sender phone number used for this communication.
     fromPhoneNumber *string
-    // The from phone number ID associated with this call event.
+    // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The unique ID for this call event.
+    // Unique Leadping identifier for this call event table row.
     id *string
-    // The lead ID associated with this call event.
+    // Lead ID associated with this call event.
     leadId *string
-    // The metadata key-value data carried with this call event; values must be safe to expose in API responses.
+    // Structured metadata used for attribution, integrations, and reporting on this call event table row.
     metadata CallEventTableRow_metadataable
-    // The current provider status for this call event.
+    // Provider lifecycle or delivery status for this call event table row.
     providerStatus *string
-    // The URL associated with this call event.
+    // URL for the call recording, when the provider makes one available.
     recordingUrl *string
     // Defines the supported Phone Call Status values.
     status *CallEventTableRow_status
-    // The human-readable status reason explaining this call event.
+    // Human-readable reason explaining the current status of this call event table row.
     statusReason *string
-    // The Telnyx ID associated with this call event.
+    // Telnyx identifier connected to this phone number, call, or SMS event.
     telnyxId *string
-    // The phone number associated with this call event.
+    // Recipient phone number used for this communication.
     toPhoneNumber *string
-    // The user value for this call event.
+    // User summary connected to this call event table row.
     user *string
-    // The user ID associated with this call event.
+    // User ID associated with the person or agent who initiated this call event.
     userId *string
 }
 // NewCallEventTableRow instantiates a new CallEventTableRow and sets the default values.
@@ -82,67 +82,67 @@ func CreateCallEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *CallEventTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAnsweredAt gets the answeredAt property value. The date and time for the answered at value on this call event.
+// GetAnsweredAt gets the answeredAt property value. UTC timestamp when the call was answered.
 // returns a *Time when successful
 func (m *CallEventTableRow) GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.answeredAt
 }
-// GetBillableAmount gets the billableAmount property value. The monetary billable amount for this call event.
+// GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 // returns a UntypedNodeable when successful
 func (m *CallEventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableAmount
 }
-// GetBillableSeconds gets the billableSeconds property value. The billable seconds value for this call event.
+// GetBillableSeconds gets the billableSeconds property value. Billable call duration in seconds.
 // returns a UntypedNodeable when successful
 func (m *CallEventTableRow) GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableSeconds
 }
-// GetBillingPhoneNumberId gets the billingPhoneNumberId property value. The billing phone number ID associated with this call event.
+// GetBillingPhoneNumberId gets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
 // returns a *string when successful
 func (m *CallEventTableRow) GetBillingPhoneNumberId()(*string) {
     return m.billingPhoneNumberId
 }
-// GetBillingStatus gets the billingStatus property value. The current billing status for this call event.
+// GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
 func (m *CallEventTableRow) GetBillingStatus()(*string) {
     return m.billingStatus
 }
-// GetBusiness gets the business property value. The business value for this call event.
+// GetBusiness gets the business property value. Business summary connected to this call event table row.
 // returns a *string when successful
 func (m *CallEventTableRow) GetBusiness()(*string) {
     return m.business
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this call event.
+// GetBusinessId gets the businessId property value. Business ID associated with this call event.
 // returns a *string when successful
 func (m *CallEventTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetCallerId gets the callerId property value. The caller ID associated with this call event.
+// GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
 func (m *CallEventTableRow) GetCallerId()(*string) {
     return m.callerId
 }
-// GetConversationId gets the conversationId property value. The conversation ID associated with this call event.
+// GetConversationId gets the conversationId property value. Conversation ID that links this call event table row to the Leadping inbox thread.
 // returns a *string when successful
 func (m *CallEventTableRow) GetConversationId()(*string) {
     return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this call event.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this call event table row was created.
 // returns a *Time when successful
 func (m *CallEventTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDirection gets the direction property value. The direction value for this call event.
+// GetDirection gets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
 // returns a *string when successful
 func (m *CallEventTableRow) GetDirection()(*string) {
     return m.direction
 }
-// GetDuration gets the duration property value. The duration value for this call event.
+// GetDuration gets the duration property value. Call duration or processing duration represented by this call event table row.
 // returns a UntypedNodeable when successful
 func (m *CallEventTableRow) GetDuration()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.duration
 }
-// GetEndedAt gets the endedAt property value. The date and time for the ended at value on this call event.
+// GetEndedAt gets the endedAt property value. UTC timestamp when the call ended.
 // returns a *Time when successful
 func (m *CallEventTableRow) GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.endedAt
@@ -413,37 +413,37 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetFromPhoneNumber gets the fromPhoneNumber property value. The phone number associated with this call event.
+// GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
 func (m *CallEventTableRow) GetFromPhoneNumber()(*string) {
     return m.fromPhoneNumber
 }
-// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The from phone number ID associated with this call event.
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
 func (m *CallEventTableRow) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique ID for this call event.
+// GetId gets the id property value. Unique Leadping identifier for this call event table row.
 // returns a *string when successful
 func (m *CallEventTableRow) GetId()(*string) {
     return m.id
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this call event.
+// GetLeadId gets the leadId property value. Lead ID associated with this call event.
 // returns a *string when successful
 func (m *CallEventTableRow) GetLeadId()(*string) {
     return m.leadId
 }
-// GetMetadata gets the metadata property value. The metadata key-value data carried with this call event; values must be safe to expose in API responses.
+// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
 // returns a CallEventTableRow_metadataable when successful
 func (m *CallEventTableRow) GetMetadata()(CallEventTableRow_metadataable) {
     return m.metadata
 }
-// GetProviderStatus gets the providerStatus property value. The current provider status for this call event.
+// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
 // returns a *string when successful
 func (m *CallEventTableRow) GetProviderStatus()(*string) {
     return m.providerStatus
 }
-// GetRecordingUrl gets the recordingUrl property value. The URL associated with this call event.
+// GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 // returns a *string when successful
 func (m *CallEventTableRow) GetRecordingUrl()(*string) {
     return m.recordingUrl
@@ -453,27 +453,27 @@ func (m *CallEventTableRow) GetRecordingUrl()(*string) {
 func (m *CallEventTableRow) GetStatus()(*CallEventTableRow_status) {
     return m.status
 }
-// GetStatusReason gets the statusReason property value. The human-readable status reason explaining this call event.
+// GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this call event table row.
 // returns a *string when successful
 func (m *CallEventTableRow) GetStatusReason()(*string) {
     return m.statusReason
 }
-// GetTelnyxId gets the telnyxId property value. The Telnyx ID associated with this call event.
+// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 // returns a *string when successful
 func (m *CallEventTableRow) GetTelnyxId()(*string) {
     return m.telnyxId
 }
-// GetToPhoneNumber gets the toPhoneNumber property value. The phone number associated with this call event.
+// GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
 func (m *CallEventTableRow) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
 }
-// GetUser gets the user property value. The user value for this call event.
+// GetUser gets the user property value. User summary connected to this call event table row.
 // returns a *string when successful
 func (m *CallEventTableRow) GetUser()(*string) {
     return m.user
 }
-// GetUserId gets the userId property value. The user ID associated with this call event.
+// GetUserId gets the userId property value. User ID associated with the person or agent who initiated this call event.
 // returns a *string when successful
 func (m *CallEventTableRow) GetUserId()(*string) {
     return m.userId
@@ -649,83 +649,83 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *CallEventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAnsweredAt sets the answeredAt property value. The date and time for the answered at value on this call event.
+// SetAnsweredAt sets the answeredAt property value. UTC timestamp when the call was answered.
 func (m *CallEventTableRow) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.answeredAt = value
 }
-// SetBillableAmount sets the billableAmount property value. The monetary billable amount for this call event.
+// SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 func (m *CallEventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableAmount = value
 }
-// SetBillableSeconds sets the billableSeconds property value. The billable seconds value for this call event.
+// SetBillableSeconds sets the billableSeconds property value. Billable call duration in seconds.
 func (m *CallEventTableRow) SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableSeconds = value
 }
-// SetBillingPhoneNumberId sets the billingPhoneNumberId property value. The billing phone number ID associated with this call event.
+// SetBillingPhoneNumberId sets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
 func (m *CallEventTableRow) SetBillingPhoneNumberId(value *string)() {
     m.billingPhoneNumberId = value
 }
-// SetBillingStatus sets the billingStatus property value. The current billing status for this call event.
+// SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
 func (m *CallEventTableRow) SetBillingStatus(value *string)() {
     m.billingStatus = value
 }
-// SetBusiness sets the business property value. The business value for this call event.
+// SetBusiness sets the business property value. Business summary connected to this call event table row.
 func (m *CallEventTableRow) SetBusiness(value *string)() {
     m.business = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this call event.
+// SetBusinessId sets the businessId property value. Business ID associated with this call event.
 func (m *CallEventTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetCallerId sets the callerId property value. The caller ID associated with this call event.
+// SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
 func (m *CallEventTableRow) SetCallerId(value *string)() {
     m.callerId = value
 }
-// SetConversationId sets the conversationId property value. The conversation ID associated with this call event.
+// SetConversationId sets the conversationId property value. Conversation ID that links this call event table row to the Leadping inbox thread.
 func (m *CallEventTableRow) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this call event.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this call event table row was created.
 func (m *CallEventTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDirection sets the direction property value. The direction value for this call event.
+// SetDirection sets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
 func (m *CallEventTableRow) SetDirection(value *string)() {
     m.direction = value
 }
-// SetDuration sets the duration property value. The duration value for this call event.
+// SetDuration sets the duration property value. Call duration or processing duration represented by this call event table row.
 func (m *CallEventTableRow) SetDuration(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.duration = value
 }
-// SetEndedAt sets the endedAt property value. The date and time for the ended at value on this call event.
+// SetEndedAt sets the endedAt property value. UTC timestamp when the call ended.
 func (m *CallEventTableRow) SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.endedAt = value
 }
-// SetFromPhoneNumber sets the fromPhoneNumber property value. The phone number associated with this call event.
+// SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
 func (m *CallEventTableRow) SetFromPhoneNumber(value *string)() {
     m.fromPhoneNumber = value
 }
-// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The from phone number ID associated with this call event.
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 func (m *CallEventTableRow) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique ID for this call event.
+// SetId sets the id property value. Unique Leadping identifier for this call event table row.
 func (m *CallEventTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this call event.
+// SetLeadId sets the leadId property value. Lead ID associated with this call event.
 func (m *CallEventTableRow) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetMetadata sets the metadata property value. The metadata key-value data carried with this call event; values must be safe to expose in API responses.
+// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
 func (m *CallEventTableRow) SetMetadata(value CallEventTableRow_metadataable)() {
     m.metadata = value
 }
-// SetProviderStatus sets the providerStatus property value. The current provider status for this call event.
+// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
 func (m *CallEventTableRow) SetProviderStatus(value *string)() {
     m.providerStatus = value
 }
-// SetRecordingUrl sets the recordingUrl property value. The URL associated with this call event.
+// SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
     m.recordingUrl = value
 }
@@ -733,23 +733,23 @@ func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
 func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status)() {
     m.status = value
 }
-// SetStatusReason sets the statusReason property value. The human-readable status reason explaining this call event.
+// SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this call event table row.
 func (m *CallEventTableRow) SetStatusReason(value *string)() {
     m.statusReason = value
 }
-// SetTelnyxId sets the telnyxId property value. The Telnyx ID associated with this call event.
+// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
 func (m *CallEventTableRow) SetTelnyxId(value *string)() {
     m.telnyxId = value
 }
-// SetToPhoneNumber sets the toPhoneNumber property value. The phone number associated with this call event.
+// SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *CallEventTableRow) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }
-// SetUser sets the user property value. The user value for this call event.
+// SetUser sets the user property value. User summary connected to this call event table row.
 func (m *CallEventTableRow) SetUser(value *string)() {
     m.user = value
 }
-// SetUserId sets the userId property value. The user ID associated with this call event.
+// SetUserId sets the userId property value. User ID associated with the person or agent who initiated this call event.
 func (m *CallEventTableRow) SetUserId(value *string)() {
     m.userId = value
 }

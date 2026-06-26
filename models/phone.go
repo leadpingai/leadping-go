@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Phone aPI DTO containing phone data used by Leadping API contracts.
+// Phone public Leadping API schema for lead phone number data.
 type Phone struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The lookup value for this phone.
+    // Phone lookup details returned by the provider or Leadping enrichment service.
     lookup Phone_lookupable
-    // The number value for this phone.
+    // E.164 phone number exposed by this lead phone number.
     number *string
-    // The type classification for this phone.
+    // Type classification used to route and interpret this lead phone number in the Leadping API.
     typeEscaped *string
 }
 // NewPhone instantiates a new Phone and sets the default values.
@@ -71,17 +71,17 @@ func (m *Phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388
     }
     return res
 }
-// GetLookup gets the lookup property value. The lookup value for this phone.
+// GetLookup gets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
 // returns a Phone_lookupable when successful
 func (m *Phone) GetLookup()(Phone_lookupable) {
     return m.lookup
 }
-// GetNumber gets the number property value. The number value for this phone.
+// GetNumber gets the number property value. E.164 phone number exposed by this lead phone number.
 // returns a *string when successful
 func (m *Phone) GetNumber()(*string) {
     return m.number
 }
-// GetTypeEscaped gets the type property value. The type classification for this phone.
+// GetTypeEscaped gets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
 // returns a *string when successful
 func (m *Phone) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -118,15 +118,15 @@ func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
 func (m *Phone) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLookup sets the lookup property value. The lookup value for this phone.
+// SetLookup sets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
 func (m *Phone) SetLookup(value Phone_lookupable)() {
     m.lookup = value
 }
-// SetNumber sets the number property value. The number value for this phone.
+// SetNumber sets the number property value. E.164 phone number exposed by this lead phone number.
 func (m *Phone) SetNumber(value *string)() {
     m.number = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this phone.
+// SetTypeEscaped sets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
 func (m *Phone) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

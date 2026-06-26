@@ -16,14 +16,23 @@ type AdminRequestBuilder struct {
 }
 // AdminRequestBuilderGetQueryParameters lists submitted feedback for admin triage with query filters, paging, status, and category review fields.
 type AdminRequestBuilderGetQueryParameters struct {
+    // Product area or app section connected to this feedback admin query request.
     Area *string
+    // Business ID used to filter feedback items for admin review.
     BusinessId *string
+    // Pagination token used to request the next page of Leadping API results.
     ContinuationToken *string
+    // End of the created-at date range filter for Leadping API results.
     CreatedEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Start of the created-at date range filter for Leadping API results.
     CreatedStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Maximum number of results requested for this Leadping API page.
     PageSize *int32
+    // Search text used to filter Leadping API results.
     Search *string
+    // Current lifecycle status for this feedback admin query request in the Leadping API.
     Status *string
+    // Type classification used to route and interpret this feedback admin query request in the Leadping API.
     Type *string
 }
 // ById gets an item from the github.com/leadpingai/leadping-go.feedback.admin.item collection

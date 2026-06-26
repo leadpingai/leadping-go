@@ -7,33 +7,33 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserRequest request payload for user.
+// UserRequest request schema for the Leadping API user profile request, including the fields clients can send.
 type UserRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Defines the supported Billing Plan values.
     billingPlan *UserRequest_billingPlan
-    // The business value for this user.
+    // Business summary connected to this user profile request.
     business UserRequest_businessable
-    // The compliance value for this user.
+    // User compliance settings and attestations captured for Leadping account review.
     compliance UserRequest_complianceable
-    // The current business value for this user.
+    // Business currently selected for the user session or profile.
     currentBusiness UserRequest_currentBusinessable
-    // The email address associated with this user.
+    // Email address for the person represented by this user profile request.
     email *string
-    // The first name value for this user.
+    // First name of the lead, user, or contact represented by this user profile request.
     firstName *string
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // The date and time for the last name value on this user.
+    // Last name of the lead, user, or contact represented by this user profile request.
     lastName *string
-    // The Leadping mobile device preferences for this user.
+    // Mobile notification preferences configured for the user.
     mobileDevicePreferences []MobileDevicePreferencesable
     // The display name for the entity.
     name *string
-    // The notification preferences value for this user.
+    // Notification preferences configured for the user.
     notificationPreferences UserRequest_notificationPreferencesable
-    // The phone number associated with this user.
+    // Phone details for the lead, user, or business represented by this user profile request.
     phone *string
     // Defines the supported Subscription Status values.
     subscriptionStatus *UserRequest_subscriptionStatus
@@ -60,22 +60,22 @@ func (m *UserRequest) GetAdditionalData()(map[string]any) {
 func (m *UserRequest) GetBillingPlan()(*UserRequest_billingPlan) {
     return m.billingPlan
 }
-// GetBusiness gets the business property value. The business value for this user.
+// GetBusiness gets the business property value. Business summary connected to this user profile request.
 // returns a UserRequest_businessable when successful
 func (m *UserRequest) GetBusiness()(UserRequest_businessable) {
     return m.business
 }
-// GetCompliance gets the compliance property value. The compliance value for this user.
+// GetCompliance gets the compliance property value. User compliance settings and attestations captured for Leadping account review.
 // returns a UserRequest_complianceable when successful
 func (m *UserRequest) GetCompliance()(UserRequest_complianceable) {
     return m.compliance
 }
-// GetCurrentBusiness gets the currentBusiness property value. The current business value for this user.
+// GetCurrentBusiness gets the currentBusiness property value. Business currently selected for the user session or profile.
 // returns a UserRequest_currentBusinessable when successful
 func (m *UserRequest) GetCurrentBusiness()(UserRequest_currentBusinessable) {
     return m.currentBusiness
 }
-// GetEmail gets the email property value. The email address associated with this user.
+// GetEmail gets the email property value. Email address for the person represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetEmail()(*string) {
     return m.email
@@ -222,7 +222,7 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this user.
+// GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetFirstName()(*string) {
     return m.firstName
@@ -232,12 +232,12 @@ func (m *UserRequest) GetFirstName()(*string) {
 func (m *UserRequest) GetId()(*string) {
     return m.id
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this user.
+// GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetLastName()(*string) {
     return m.lastName
 }
-// GetMobileDevicePreferences gets the mobileDevicePreferences property value. The Leadping mobile device preferences for this user.
+// GetMobileDevicePreferences gets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
 // returns a []MobileDevicePreferencesable when successful
 func (m *UserRequest) GetMobileDevicePreferences()([]MobileDevicePreferencesable) {
     return m.mobileDevicePreferences
@@ -247,12 +247,12 @@ func (m *UserRequest) GetMobileDevicePreferences()([]MobileDevicePreferencesable
 func (m *UserRequest) GetName()(*string) {
     return m.name
 }
-// GetNotificationPreferences gets the notificationPreferences property value. The notification preferences value for this user.
+// GetNotificationPreferences gets the notificationPreferences property value. Notification preferences configured for the user.
 // returns a UserRequest_notificationPreferencesable when successful
 func (m *UserRequest) GetNotificationPreferences()(UserRequest_notificationPreferencesable) {
     return m.notificationPreferences
 }
-// GetPhone gets the phone property value. The phone number associated with this user.
+// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetPhone()(*string) {
     return m.phone
@@ -366,23 +366,23 @@ func (m *UserRequest) SetAdditionalData(value map[string]any)() {
 func (m *UserRequest) SetBillingPlan(value *UserRequest_billingPlan)() {
     m.billingPlan = value
 }
-// SetBusiness sets the business property value. The business value for this user.
+// SetBusiness sets the business property value. Business summary connected to this user profile request.
 func (m *UserRequest) SetBusiness(value UserRequest_businessable)() {
     m.business = value
 }
-// SetCompliance sets the compliance property value. The compliance value for this user.
+// SetCompliance sets the compliance property value. User compliance settings and attestations captured for Leadping account review.
 func (m *UserRequest) SetCompliance(value UserRequest_complianceable)() {
     m.compliance = value
 }
-// SetCurrentBusiness sets the currentBusiness property value. The current business value for this user.
+// SetCurrentBusiness sets the currentBusiness property value. Business currently selected for the user session or profile.
 func (m *UserRequest) SetCurrentBusiness(value UserRequest_currentBusinessable)() {
     m.currentBusiness = value
 }
-// SetEmail sets the email property value. The email address associated with this user.
+// SetEmail sets the email property value. Email address for the person represented by this user profile request.
 func (m *UserRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetFirstName sets the firstName property value. The first name value for this user.
+// SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
 func (m *UserRequest) SetFirstName(value *string)() {
     m.firstName = value
 }
@@ -390,11 +390,11 @@ func (m *UserRequest) SetFirstName(value *string)() {
 func (m *UserRequest) SetId(value *string)() {
     m.id = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this user.
+// SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
 func (m *UserRequest) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetMobileDevicePreferences sets the mobileDevicePreferences property value. The Leadping mobile device preferences for this user.
+// SetMobileDevicePreferences sets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
 func (m *UserRequest) SetMobileDevicePreferences(value []MobileDevicePreferencesable)() {
     m.mobileDevicePreferences = value
 }
@@ -402,11 +402,11 @@ func (m *UserRequest) SetMobileDevicePreferences(value []MobileDevicePreferences
 func (m *UserRequest) SetName(value *string)() {
     m.name = value
 }
-// SetNotificationPreferences sets the notificationPreferences property value. The notification preferences value for this user.
+// SetNotificationPreferences sets the notificationPreferences property value. Notification preferences configured for the user.
 func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationPreferencesable)() {
     m.notificationPreferences = value
 }
-// SetPhone sets the phone property value. The phone number associated with this user.
+// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
 func (m *UserRequest) SetPhone(value *string)() {
     m.phone = value
 }

@@ -8,77 +8,77 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadMetadata metadata related to the origin, context, and attribution of a submitted lead.
+// LeadMetadata public Leadping API schema for lead attribution metadata data.
 type LeadMetadata struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The assigned phone number ID associated with this lead metadata.
+    // Phone number ID assigned to the lead, business, or source.
     assignedPhoneNumberId *string
-    // The business ID associated with this lead metadata.
+    // Business ID that owns this lead's attribution metadata.
     businessId *string
-    // The human-readable compliance blocked reason explaining this lead metadata.
+    // Reason Leadping blocked this operation for compliance.
     complianceBlockedReason *string
-    // The current compliance status for this lead metadata.
+    // Compliance status used to decide whether Leadping can send messages.
     complianceStatus *string
-    // The date and time for the created at value on this lead metadata.
+    // UTC timestamp when this lead attribution metadata was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The direct post price value for this lead metadata.
+    // Direct-post price supplied by the lead source during intake.
     directPostPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The external ID associated with this lead metadata.
+    // External system identifier used to reconcile this lead attribution metadata across integrations.
     externalId *string
-    // The import batch ID associated with this lead.
+    // Bulk import batch ID that created or updated this lead.
     importBatchId *string
-    // The IP address value for this lead metadata.
+    // IP address captured with the request for audit and compliance review.
     ipAddress *string
-    // Whether the lead was imported rather than received as a fresh inbound lead.
+    // Indicates whether this lead was imported rather than captured through a live source.
     isImported *bool
-    // The landing page value for this lead metadata.
+    // Landing page URL where the lead submitted their information.
     landingPage *string
-    // The lead origin used by outbound pacing and automation safeguards.
+    // System or workflow that created this event.
     origin *string
-    // The monetary price for this lead metadata.
+    // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The product value for this lead metadata.
+    // Product or offer associated with the lead or source.
     product *string
-    // The pub ID associated with this lead metadata.
+    // Publisher ID supplied by the lead source for attribution.
     pubId *string
-    // The referrer value for this lead metadata.
+    // Referring page or traffic source that sent the lead into Leadping.
     referrer *string
-    // The seller lead ID associated with this lead metadata.
+    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
     sellerLeadId *string
-    // The SMS consent phone number value for this lead metadata.
+    // Phone number where SMS consent was captured or evaluated.
     smsConsentPhoneNumber *string
-    // The current SMS consent status for this lead metadata.
+    // Current SMS consent status recorded for this lead.
     smsConsentStatus *string
-    // The date and time for the SMS help requested at value on this lead metadata.
+    // UTC timestamp when the lead requested SMS help instructions.
     smsHelpRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Whether SMS opted out applies to this lead metadata.
+    // Indicates whether the lead has opted out of SMS communication.
     smsOptedOut *bool
-    // The date and time for the SMS opt in at value on this lead metadata.
+    // UTC timestamp when the lead opted in to SMS communication.
     smsOptInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the SMS opt out at value on this lead metadata.
+    // UTC timestamp when the lead opted out of SMS communication.
     smsOptOutAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The source metadata key-value data carried with this lead metadata; values must be safe to expose in API responses.
+    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     sourceMetadata LeadMetadata_sourceMetadataable
-    // The sub ID associated with this lead metadata.
+    // Affiliate or publisher sub ID captured for lead attribution.
     subId *string
-    // The URL associated with this lead metadata.
+    // TrustedForm certificate URL used as proof of consumer consent.
     trustedFormUrl *string
-    // The user agent value for this lead metadata.
+    // Browser or client user agent captured when this lead attribution metadata was submitted.
     userAgent *string
-    // The user ID associated with this lead metadata.
+    // User ID associated with this lead's attribution metadata.
     userId *string
-    // The utm campaign value for this lead metadata.
+    // UTM campaign parameter captured for lead attribution reporting.
     utmCampaign *string
-    // The utm content value for this lead metadata.
+    // UTM content parameter captured for lead attribution reporting.
     utmContent *string
-    // The utm medium value for this lead metadata.
+    // UTM medium parameter captured for lead attribution reporting.
     utmMedium *string
-    // The utm source value for this lead metadata.
+    // UTM source parameter captured for lead attribution reporting.
     utmSource *string
-    // The utm term value for this lead metadata.
+    // UTM term parameter captured for lead attribution reporting.
     utmTerm *string
-    // The vertical value for this lead metadata.
+    // Industry vertical used for lead routing, compliance review, and reporting.
     vertical *string
 }
 // NewLeadMetadata instantiates a new LeadMetadata and sets the default values.
@@ -98,37 +98,37 @@ func CreateLeadMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *LeadMetadata) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAssignedPhoneNumberId gets the assignedPhoneNumberId property value. The assigned phone number ID associated with this lead metadata.
+// GetAssignedPhoneNumberId gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
 // returns a *string when successful
 func (m *LeadMetadata) GetAssignedPhoneNumberId()(*string) {
     return m.assignedPhoneNumberId
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this lead metadata.
+// GetBusinessId gets the businessId property value. Business ID that owns this lead's attribution metadata.
 // returns a *string when successful
 func (m *LeadMetadata) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetComplianceBlockedReason gets the complianceBlockedReason property value. The human-readable compliance blocked reason explaining this lead metadata.
+// GetComplianceBlockedReason gets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 // returns a *string when successful
 func (m *LeadMetadata) GetComplianceBlockedReason()(*string) {
     return m.complianceBlockedReason
 }
-// GetComplianceStatus gets the complianceStatus property value. The current compliance status for this lead metadata.
+// GetComplianceStatus gets the complianceStatus property value. Compliance status used to decide whether Leadping can send messages.
 // returns a *string when successful
 func (m *LeadMetadata) GetComplianceStatus()(*string) {
     return m.complianceStatus
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this lead metadata.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
 // returns a *Time when successful
 func (m *LeadMetadata) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDirectPostPrice gets the directPostPrice property value. The direct post price value for this lead metadata.
+// GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
 // returns a UntypedNodeable when successful
 func (m *LeadMetadata) GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.directPostPrice
 }
-// GetExternalId gets the externalId property value. The external ID associated with this lead metadata.
+// GetExternalId gets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
 // returns a *string when successful
 func (m *LeadMetadata) GetExternalId()(*string) {
     return m.externalId
@@ -479,137 +479,137 @@ func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetImportBatchId gets the importBatchId property value. The import batch ID associated with this lead.
+// GetImportBatchId gets the importBatchId property value. Bulk import batch ID that created or updated this lead.
 // returns a *string when successful
 func (m *LeadMetadata) GetImportBatchId()(*string) {
     return m.importBatchId
 }
-// GetIpAddress gets the ipAddress property value. The IP address value for this lead metadata.
+// GetIpAddress gets the ipAddress property value. IP address captured with the request for audit and compliance review.
 // returns a *string when successful
 func (m *LeadMetadata) GetIpAddress()(*string) {
     return m.ipAddress
 }
-// GetIsImported gets the isImported property value. Whether the lead was imported rather than received as a fresh inbound lead.
+// GetIsImported gets the isImported property value. Indicates whether this lead was imported rather than captured through a live source.
 // returns a *bool when successful
 func (m *LeadMetadata) GetIsImported()(*bool) {
     return m.isImported
 }
-// GetLandingPage gets the landingPage property value. The landing page value for this lead metadata.
+// GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
 func (m *LeadMetadata) GetLandingPage()(*string) {
     return m.landingPage
 }
-// GetOrigin gets the origin property value. The lead origin used by outbound pacing and automation safeguards.
+// GetOrigin gets the origin property value. System or workflow that created this event.
 // returns a *string when successful
 func (m *LeadMetadata) GetOrigin()(*string) {
     return m.origin
 }
-// GetPrice gets the price property value. The monetary price for this lead metadata.
+// GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a UntypedNodeable when successful
 func (m *LeadMetadata) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
-// GetProduct gets the product property value. The product value for this lead metadata.
+// GetProduct gets the product property value. Product or offer associated with the lead or source.
 // returns a *string when successful
 func (m *LeadMetadata) GetProduct()(*string) {
     return m.product
 }
-// GetPubId gets the pubId property value. The pub ID associated with this lead metadata.
+// GetPubId gets the pubId property value. Publisher ID supplied by the lead source for attribution.
 // returns a *string when successful
 func (m *LeadMetadata) GetPubId()(*string) {
     return m.pubId
 }
-// GetReferrer gets the referrer property value. The referrer value for this lead metadata.
+// GetReferrer gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 // returns a *string when successful
 func (m *LeadMetadata) GetReferrer()(*string) {
     return m.referrer
 }
-// GetSellerLeadId gets the sellerLeadId property value. The seller lead ID associated with this lead metadata.
+// GetSellerLeadId gets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 // returns a *string when successful
 func (m *LeadMetadata) GetSellerLeadId()(*string) {
     return m.sellerLeadId
 }
-// GetSmsConsentPhoneNumber gets the smsConsentPhoneNumber property value. The SMS consent phone number value for this lead metadata.
+// GetSmsConsentPhoneNumber gets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
 // returns a *string when successful
 func (m *LeadMetadata) GetSmsConsentPhoneNumber()(*string) {
     return m.smsConsentPhoneNumber
 }
-// GetSmsConsentStatus gets the smsConsentStatus property value. The current SMS consent status for this lead metadata.
+// GetSmsConsentStatus gets the smsConsentStatus property value. Current SMS consent status recorded for this lead.
 // returns a *string when successful
 func (m *LeadMetadata) GetSmsConsentStatus()(*string) {
     return m.smsConsentStatus
 }
-// GetSmsHelpRequestedAt gets the smsHelpRequestedAt property value. The date and time for the SMS help requested at value on this lead metadata.
+// GetSmsHelpRequestedAt gets the smsHelpRequestedAt property value. UTC timestamp when the lead requested SMS help instructions.
 // returns a *Time when successful
 func (m *LeadMetadata) GetSmsHelpRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.smsHelpRequestedAt
 }
-// GetSmsOptedOut gets the smsOptedOut property value. Whether SMS opted out applies to this lead metadata.
+// GetSmsOptedOut gets the smsOptedOut property value. Indicates whether the lead has opted out of SMS communication.
 // returns a *bool when successful
 func (m *LeadMetadata) GetSmsOptedOut()(*bool) {
     return m.smsOptedOut
 }
-// GetSmsOptInAt gets the smsOptInAt property value. The date and time for the SMS opt in at value on this lead metadata.
+// GetSmsOptInAt gets the smsOptInAt property value. UTC timestamp when the lead opted in to SMS communication.
 // returns a *Time when successful
 func (m *LeadMetadata) GetSmsOptInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.smsOptInAt
 }
-// GetSmsOptOutAt gets the smsOptOutAt property value. The date and time for the SMS opt out at value on this lead metadata.
+// GetSmsOptOutAt gets the smsOptOutAt property value. UTC timestamp when the lead opted out of SMS communication.
 // returns a *Time when successful
 func (m *LeadMetadata) GetSmsOptOutAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.smsOptOutAt
 }
-// GetSourceMetadata gets the sourceMetadata property value. The source metadata key-value data carried with this lead metadata; values must be safe to expose in API responses.
+// GetSourceMetadata gets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 // returns a LeadMetadata_sourceMetadataable when successful
 func (m *LeadMetadata) GetSourceMetadata()(LeadMetadata_sourceMetadataable) {
     return m.sourceMetadata
 }
-// GetSubId gets the subId property value. The sub ID associated with this lead metadata.
+// GetSubId gets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 // returns a *string when successful
 func (m *LeadMetadata) GetSubId()(*string) {
     return m.subId
 }
-// GetTrustedFormUrl gets the trustedFormUrl property value. The URL associated with this lead metadata.
+// GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 // returns a *string when successful
 func (m *LeadMetadata) GetTrustedFormUrl()(*string) {
     return m.trustedFormUrl
 }
-// GetUserAgent gets the userAgent property value. The user agent value for this lead metadata.
+// GetUserAgent gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 // returns a *string when successful
 func (m *LeadMetadata) GetUserAgent()(*string) {
     return m.userAgent
 }
-// GetUserId gets the userId property value. The user ID associated with this lead metadata.
+// GetUserId gets the userId property value. User ID associated with this lead's attribution metadata.
 // returns a *string when successful
 func (m *LeadMetadata) GetUserId()(*string) {
     return m.userId
 }
-// GetUtmCampaign gets the utmCampaign property value. The utm campaign value for this lead metadata.
+// GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetUtmCampaign()(*string) {
     return m.utmCampaign
 }
-// GetUtmContent gets the utmContent property value. The utm content value for this lead metadata.
+// GetUtmContent gets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetUtmContent()(*string) {
     return m.utmContent
 }
-// GetUtmMedium gets the utmMedium property value. The utm medium value for this lead metadata.
+// GetUtmMedium gets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetUtmMedium()(*string) {
     return m.utmMedium
 }
-// GetUtmSource gets the utmSource property value. The utm source value for this lead metadata.
+// GetUtmSource gets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetUtmSource()(*string) {
     return m.utmSource
 }
-// GetUtmTerm gets the utmTerm property value. The utm term value for this lead metadata.
+// GetUtmTerm gets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetUtmTerm()(*string) {
     return m.utmTerm
 }
-// GetVertical gets the vertical property value. The vertical value for this lead metadata.
+// GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
 func (m *LeadMetadata) GetVertical()(*string) {
     return m.vertical
@@ -832,139 +832,139 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadMetadata) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAssignedPhoneNumberId sets the assignedPhoneNumberId property value. The assigned phone number ID associated with this lead metadata.
+// SetAssignedPhoneNumberId sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
 func (m *LeadMetadata) SetAssignedPhoneNumberId(value *string)() {
     m.assignedPhoneNumberId = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this lead metadata.
+// SetBusinessId sets the businessId property value. Business ID that owns this lead's attribution metadata.
 func (m *LeadMetadata) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetComplianceBlockedReason sets the complianceBlockedReason property value. The human-readable compliance blocked reason explaining this lead metadata.
+// SetComplianceBlockedReason sets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 func (m *LeadMetadata) SetComplianceBlockedReason(value *string)() {
     m.complianceBlockedReason = value
 }
-// SetComplianceStatus sets the complianceStatus property value. The current compliance status for this lead metadata.
+// SetComplianceStatus sets the complianceStatus property value. Compliance status used to decide whether Leadping can send messages.
 func (m *LeadMetadata) SetComplianceStatus(value *string)() {
     m.complianceStatus = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this lead metadata.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
 func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDirectPostPrice sets the directPostPrice property value. The direct post price value for this lead metadata.
+// SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
 func (m *LeadMetadata) SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.directPostPrice = value
 }
-// SetExternalId sets the externalId property value. The external ID associated with this lead metadata.
+// SetExternalId sets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
 func (m *LeadMetadata) SetExternalId(value *string)() {
     m.externalId = value
 }
-// SetImportBatchId sets the importBatchId property value. The import batch ID associated with this lead.
+// SetImportBatchId sets the importBatchId property value. Bulk import batch ID that created or updated this lead.
 func (m *LeadMetadata) SetImportBatchId(value *string)() {
     m.importBatchId = value
 }
-// SetIpAddress sets the ipAddress property value. The IP address value for this lead metadata.
+// SetIpAddress sets the ipAddress property value. IP address captured with the request for audit and compliance review.
 func (m *LeadMetadata) SetIpAddress(value *string)() {
     m.ipAddress = value
 }
-// SetIsImported sets the isImported property value. Whether the lead was imported rather than received as a fresh inbound lead.
+// SetIsImported sets the isImported property value. Indicates whether this lead was imported rather than captured through a live source.
 func (m *LeadMetadata) SetIsImported(value *bool)() {
     m.isImported = value
 }
-// SetLandingPage sets the landingPage property value. The landing page value for this lead metadata.
+// SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadMetadata) SetLandingPage(value *string)() {
     m.landingPage = value
 }
-// SetOrigin sets the origin property value. The lead origin used by outbound pacing and automation safeguards.
+// SetOrigin sets the origin property value. System or workflow that created this event.
 func (m *LeadMetadata) SetOrigin(value *string)() {
     m.origin = value
 }
-// SetPrice sets the price property value. The monetary price for this lead metadata.
+// SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
 func (m *LeadMetadata) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
-// SetProduct sets the product property value. The product value for this lead metadata.
+// SetProduct sets the product property value. Product or offer associated with the lead or source.
 func (m *LeadMetadata) SetProduct(value *string)() {
     m.product = value
 }
-// SetPubId sets the pubId property value. The pub ID associated with this lead metadata.
+// SetPubId sets the pubId property value. Publisher ID supplied by the lead source for attribution.
 func (m *LeadMetadata) SetPubId(value *string)() {
     m.pubId = value
 }
-// SetReferrer sets the referrer property value. The referrer value for this lead metadata.
+// SetReferrer sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 func (m *LeadMetadata) SetReferrer(value *string)() {
     m.referrer = value
 }
-// SetSellerLeadId sets the sellerLeadId property value. The seller lead ID associated with this lead metadata.
+// SetSellerLeadId sets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 func (m *LeadMetadata) SetSellerLeadId(value *string)() {
     m.sellerLeadId = value
 }
-// SetSmsConsentPhoneNumber sets the smsConsentPhoneNumber property value. The SMS consent phone number value for this lead metadata.
+// SetSmsConsentPhoneNumber sets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
 func (m *LeadMetadata) SetSmsConsentPhoneNumber(value *string)() {
     m.smsConsentPhoneNumber = value
 }
-// SetSmsConsentStatus sets the smsConsentStatus property value. The current SMS consent status for this lead metadata.
+// SetSmsConsentStatus sets the smsConsentStatus property value. Current SMS consent status recorded for this lead.
 func (m *LeadMetadata) SetSmsConsentStatus(value *string)() {
     m.smsConsentStatus = value
 }
-// SetSmsHelpRequestedAt sets the smsHelpRequestedAt property value. The date and time for the SMS help requested at value on this lead metadata.
+// SetSmsHelpRequestedAt sets the smsHelpRequestedAt property value. UTC timestamp when the lead requested SMS help instructions.
 func (m *LeadMetadata) SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.smsHelpRequestedAt = value
 }
-// SetSmsOptedOut sets the smsOptedOut property value. Whether SMS opted out applies to this lead metadata.
+// SetSmsOptedOut sets the smsOptedOut property value. Indicates whether the lead has opted out of SMS communication.
 func (m *LeadMetadata) SetSmsOptedOut(value *bool)() {
     m.smsOptedOut = value
 }
-// SetSmsOptInAt sets the smsOptInAt property value. The date and time for the SMS opt in at value on this lead metadata.
+// SetSmsOptInAt sets the smsOptInAt property value. UTC timestamp when the lead opted in to SMS communication.
 func (m *LeadMetadata) SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.smsOptInAt = value
 }
-// SetSmsOptOutAt sets the smsOptOutAt property value. The date and time for the SMS opt out at value on this lead metadata.
+// SetSmsOptOutAt sets the smsOptOutAt property value. UTC timestamp when the lead opted out of SMS communication.
 func (m *LeadMetadata) SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.smsOptOutAt = value
 }
-// SetSourceMetadata sets the sourceMetadata property value. The source metadata key-value data carried with this lead metadata; values must be safe to expose in API responses.
+// SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 func (m *LeadMetadata) SetSourceMetadata(value LeadMetadata_sourceMetadataable)() {
     m.sourceMetadata = value
 }
-// SetSubId sets the subId property value. The sub ID associated with this lead metadata.
+// SetSubId sets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 func (m *LeadMetadata) SetSubId(value *string)() {
     m.subId = value
 }
-// SetTrustedFormUrl sets the trustedFormUrl property value. The URL associated with this lead metadata.
+// SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 func (m *LeadMetadata) SetTrustedFormUrl(value *string)() {
     m.trustedFormUrl = value
 }
-// SetUserAgent sets the userAgent property value. The user agent value for this lead metadata.
+// SetUserAgent sets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 func (m *LeadMetadata) SetUserAgent(value *string)() {
     m.userAgent = value
 }
-// SetUserId sets the userId property value. The user ID associated with this lead metadata.
+// SetUserId sets the userId property value. User ID associated with this lead's attribution metadata.
 func (m *LeadMetadata) SetUserId(value *string)() {
     m.userId = value
 }
-// SetUtmCampaign sets the utmCampaign property value. The utm campaign value for this lead metadata.
+// SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmCampaign(value *string)() {
     m.utmCampaign = value
 }
-// SetUtmContent sets the utmContent property value. The utm content value for this lead metadata.
+// SetUtmContent sets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmContent(value *string)() {
     m.utmContent = value
 }
-// SetUtmMedium sets the utmMedium property value. The utm medium value for this lead metadata.
+// SetUtmMedium sets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmMedium(value *string)() {
     m.utmMedium = value
 }
-// SetUtmSource sets the utmSource property value. The utm source value for this lead metadata.
+// SetUtmSource sets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmSource(value *string)() {
     m.utmSource = value
 }
-// SetUtmTerm sets the utmTerm property value. The utm term value for this lead metadata.
+// SetUtmTerm sets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmTerm(value *string)() {
     m.utmTerm = value
 }
-// SetVertical sets the vertical property value. The vertical value for this lead metadata.
+// SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 func (m *LeadMetadata) SetVertical(value *string)() {
     m.vertical = value
 }

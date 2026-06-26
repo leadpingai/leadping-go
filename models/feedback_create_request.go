@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// FeedbackCreateRequest user-facing request for product feedback capture.
+// FeedbackCreateRequest request schema for the Leadping API feedback creation request, including the fields clients can send.
 type FeedbackCreateRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The allowContact property
+    // Indicates whether the submitter permits Leadping support to contact them about the feedback.
     allowContact *bool
-    // The area property
+    // Product area or app section connected to this feedback creation request.
     area *string
-    // The clientVersion property
+    // Client application version that submitted this feedback creation request.
     clientVersion *string
-    // The message property
+    // Message text supplied by the user or returned by the Leadping API for this feedback creation request.
     message *string
-    // The route property
+    // Application route where this feedback creation request originated or should direct the user.
     route *string
     // Defines the type of product feedback submitted from inside Leadping.
     typeEscaped *FeedbackCreateRequest_type
@@ -41,17 +41,17 @@ func CreateFeedbackCreateRequestFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *FeedbackCreateRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAllowContact gets the allowContact property value. The allowContact property
+// GetAllowContact gets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 // returns a *bool when successful
 func (m *FeedbackCreateRequest) GetAllowContact()(*bool) {
     return m.allowContact
 }
-// GetArea gets the area property value. The area property
+// GetArea gets the area property value. Product area or app section connected to this feedback creation request.
 // returns a *string when successful
 func (m *FeedbackCreateRequest) GetArea()(*string) {
     return m.area
 }
-// GetClientVersion gets the clientVersion property value. The clientVersion property
+// GetClientVersion gets the clientVersion property value. Client application version that submitted this feedback creation request.
 // returns a *string when successful
 func (m *FeedbackCreateRequest) GetClientVersion()(*string) {
     return m.clientVersion
@@ -122,12 +122,12 @@ func (m *FeedbackCreateRequest) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetMessage gets the message property value. The message property
+// GetMessage gets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback creation request.
 // returns a *string when successful
 func (m *FeedbackCreateRequest) GetMessage()(*string) {
     return m.message
 }
-// GetRoute gets the route property value. The route property
+// GetRoute gets the route property value. Application route where this feedback creation request originated or should direct the user.
 // returns a *string when successful
 func (m *FeedbackCreateRequest) GetRoute()(*string) {
     return m.route
@@ -188,23 +188,23 @@ func (m *FeedbackCreateRequest) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *FeedbackCreateRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAllowContact sets the allowContact property value. The allowContact property
+// SetAllowContact sets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 func (m *FeedbackCreateRequest) SetAllowContact(value *bool)() {
     m.allowContact = value
 }
-// SetArea sets the area property value. The area property
+// SetArea sets the area property value. Product area or app section connected to this feedback creation request.
 func (m *FeedbackCreateRequest) SetArea(value *string)() {
     m.area = value
 }
-// SetClientVersion sets the clientVersion property value. The clientVersion property
+// SetClientVersion sets the clientVersion property value. Client application version that submitted this feedback creation request.
 func (m *FeedbackCreateRequest) SetClientVersion(value *string)() {
     m.clientVersion = value
 }
-// SetMessage sets the message property value. The message property
+// SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback creation request.
 func (m *FeedbackCreateRequest) SetMessage(value *string)() {
     m.message = value
 }
-// SetRoute sets the route property value. The route property
+// SetRoute sets the route property value. Application route where this feedback creation request originated or should direct the user.
 func (m *FeedbackCreateRequest) SetRoute(value *string)() {
     m.route = value
 }
