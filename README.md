@@ -47,5 +47,6 @@ The client defaults to `https://api.leadping.ai` when the adapter does not alrea
 
 ## Links
 
+- [Documentation](https://leadping.ai/docs)
 - [API reference](https://leadping.ai/docs/api-reference)
 - [License](LICENSE)
