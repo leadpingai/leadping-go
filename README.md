@@ -1,3 +1,8 @@
+[![](https://img.shields.io/github/v/release/leadpingai/leadping-go?style=for-the-badge)](https://github.com/leadpingai/leadping-go/releases)
+[![](https://img.shields.io/github/actions/workflow/status/leadpingai/leadping-go/release.yml?style=for-the-badge)](https://github.com/leadpingai/leadping-go/actions/workflows/release.yml)
+[![](https://img.shields.io/github/go-mod/go-version/leadpingai/leadping-go?style=for-the-badge)](https://pkg.go.dev/github.com/leadpingai/leadping-go)
+[![](https://img.shields.io/github/actions/workflow/status/leadpingai/leadping-go/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/leadpingai/leadping-go/actions/workflows/codeql.yml)
+
 # Leadping Go SDK
 
 Type-safe Go client for the Leadping API.
