@@ -56,7 +56,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     SellerLeadId *string
     // Alternate seller-provided lead identifier used during intake normalization.
     SellerLeadIdentifier *string
-    // The Leadping source key supplied as a query string parameter.
+    // The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
     SourceKey *string "uriparametername:\"sourceKey\""
     // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     SourceMetadata *string
@@ -87,7 +87,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
 }
 // IntakeRequestBuilderPostQueryParameters creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.
 type IntakeRequestBuilderPostQueryParameters struct {
-    // The Leadping source key supplied as a query string parameter.
+    // The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
     SourceKey *string "uriparametername:\"sourceKey\""
 }
 // NewIntakeRequestBuilderInternal instantiates a new IntakeRequestBuilder and sets the default values.

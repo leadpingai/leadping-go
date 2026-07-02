@@ -15,7 +15,7 @@ type LeadsRequestBuilder struct {
 }
 // LeadsRequestBuilderPostQueryParameters creates a source-authenticated lead captured outside Leadping, starting follow-up, routing, and automation from structured lead data.
 type LeadsRequestBuilderPostQueryParameters struct {
-    // The Leadping source key supplied as a query string parameter.
+    // The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
     SourceKey *string "uriparametername:\"sourceKey\""
 }
 // All the all property
