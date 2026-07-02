@@ -17,6 +17,14 @@ type PhoneNumberTableRow struct {
     billingAttribution *string
     // Business summary connected to this phone number table row.
     business *string
+    // Unique Leadping business identifier connected to this phone number table row.
+    businessId *string
+    // Indicates whether controlled voice call warmup is enabled for this phone number.
+    callWarmupEnabled *bool
+    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
+    callWarmupStage *PhoneNumberTableRow_callWarmupStage
+    // Defines the supported health states for controlled internal voice call warmup.
+    callWarmupState *PhoneNumberTableRow_callWarmupState
     // SMS and voice capabilities available on this phone number.
     capabilities *string
     // Indicates whether this phone number table row is active and available in the Leadping API.
@@ -102,6 +110,26 @@ func (m *PhoneNumberTableRow) GetBillingAttribution()(*string) {
 func (m *PhoneNumberTableRow) GetBusiness()(*string) {
     return m.business
 }
+// GetBusinessId gets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
+// returns a *string when successful
+func (m *PhoneNumberTableRow) GetBusinessId()(*string) {
+    return m.businessId
+}
+// GetCallWarmupEnabled gets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
+// returns a *bool when successful
+func (m *PhoneNumberTableRow) GetCallWarmupEnabled()(*bool) {
+    return m.callWarmupEnabled
+}
+// GetCallWarmupStage gets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+// returns a *PhoneNumberTableRow_callWarmupStage when successful
+func (m *PhoneNumberTableRow) GetCallWarmupStage()(*PhoneNumberTableRow_callWarmupStage) {
+    return m.callWarmupStage
+}
+// GetCallWarmupState gets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
+// returns a *PhoneNumberTableRow_callWarmupState when successful
+func (m *PhoneNumberTableRow) GetCallWarmupState()(*PhoneNumberTableRow_callWarmupState) {
+    return m.callWarmupState
+}
 // GetCapabilities gets the capabilities property value. SMS and voice capabilities available on this phone number.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetCapabilities()(*string) {
@@ -143,6 +171,46 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetBusiness(val)
+        }
+        return nil
+    }
+    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBusinessId(val)
+        }
+        return nil
+    }
+    res["callWarmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCallWarmupEnabled(val)
+        }
+        return nil
+    }
+    res["callWarmupStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_callWarmupStage)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCallWarmupStage(val.(*PhoneNumberTableRow_callWarmupStage))
+        }
+        return nil
+    }
+    res["callWarmupState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_callWarmupState)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCallWarmupState(val.(*PhoneNumberTableRow_callWarmupState))
         }
         return nil
     }
@@ -549,6 +617,32 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
+        err := writer.WriteStringValue("businessId", m.GetBusinessId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("callWarmupEnabled", m.GetCallWarmupEnabled())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetCallWarmupStage() != nil {
+        cast := (*m.GetCallWarmupStage()).String()
+        err := writer.WriteStringValue("callWarmupStage", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetCallWarmupState() != nil {
+        cast := (*m.GetCallWarmupState()).String()
+        err := writer.WriteStringValue("callWarmupState", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("capabilities", m.GetCapabilities())
         if err != nil {
             return err
@@ -733,6 +827,22 @@ func (m *PhoneNumberTableRow) SetBillingAttribution(value *string)() {
 func (m *PhoneNumberTableRow) SetBusiness(value *string)() {
     m.business = value
 }
+// SetBusinessId sets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
+func (m *PhoneNumberTableRow) SetBusinessId(value *string)() {
+    m.businessId = value
+}
+// SetCallWarmupEnabled sets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
+func (m *PhoneNumberTableRow) SetCallWarmupEnabled(value *bool)() {
+    m.callWarmupEnabled = value
+}
+// SetCallWarmupStage sets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+func (m *PhoneNumberTableRow) SetCallWarmupStage(value *PhoneNumberTableRow_callWarmupStage)() {
+    m.callWarmupStage = value
+}
+// SetCallWarmupState sets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
+func (m *PhoneNumberTableRow) SetCallWarmupState(value *PhoneNumberTableRow_callWarmupState)() {
+    m.callWarmupState = value
+}
 // SetCapabilities sets the capabilities property value. SMS and voice capabilities available on this phone number.
 func (m *PhoneNumberTableRow) SetCapabilities(value *string)() {
     m.capabilities = value
@@ -843,6 +953,10 @@ type PhoneNumberTableRowable interface {
     GetAdminEnablementOverride()(PhoneNumberTableRow_adminEnablementOverrideable)
     GetBillingAttribution()(*string)
     GetBusiness()(*string)
+    GetBusinessId()(*string)
+    GetCallWarmupEnabled()(*bool)
+    GetCallWarmupStage()(*PhoneNumberTableRow_callWarmupStage)
+    GetCallWarmupState()(*PhoneNumberTableRow_callWarmupState)
     GetCapabilities()(*string)
     GetEnabled()(*bool)
     GetHealthStatus()(*PhoneNumberTableRow_healthStatus)
@@ -872,6 +986,10 @@ type PhoneNumberTableRowable interface {
     SetAdminEnablementOverride(value PhoneNumberTableRow_adminEnablementOverrideable)()
     SetBillingAttribution(value *string)()
     SetBusiness(value *string)()
+    SetBusinessId(value *string)()
+    SetCallWarmupEnabled(value *bool)()
+    SetCallWarmupStage(value *PhoneNumberTableRow_callWarmupStage)()
+    SetCallWarmupState(value *PhoneNumberTableRow_callWarmupState)()
     SetCapabilities(value *string)()
     SetEnabled(value *bool)()
     SetHealthStatus(value *PhoneNumberTableRow_healthStatus)()

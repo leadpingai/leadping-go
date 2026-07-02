@@ -18,8 +18,6 @@ type SourceTableRow struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // UTC timestamp when Leadping issued the source API key.
-    apiKeyIssuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Masked preview of the source API key for display without exposing the secret.
@@ -94,11 +92,6 @@ func (m *SourceTableRow) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceTableRow) GetAllowedStates()([]string) {
     return m.allowedStates
-}
-// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-// returns a *Time when successful
-func (m *SourceTableRow) GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.apiKeyIssuedAt
 }
 // GetApiKeyLastUsedAt gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 // returns a *Time when successful
@@ -208,16 +201,6 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
                 }
             }
             m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["apiKeyIssuedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKeyIssuedAt(val)
         }
         return nil
     }
@@ -506,12 +489,6 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteTimeValue("apiKeyIssuedAt", m.GetApiKeyIssuedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("apiKeyLastUsedAt", m.GetApiKeyLastUsedAt())
         if err != nil {
             return err
@@ -667,10 +644,6 @@ func (m *SourceTableRow) SetAllowedProducts(value []string)() {
 func (m *SourceTableRow) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-func (m *SourceTableRow) SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.apiKeyIssuedAt = value
-}
 // SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
@@ -761,7 +734,6 @@ type SourceTableRowable interface {
     GetAdminEnablementOverride()(SourceTableRow_adminEnablementOverrideable)
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
@@ -786,7 +758,6 @@ type SourceTableRowable interface {
     SetAdminEnablementOverride(value SourceTableRow_adminEnablementOverrideable)()
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()

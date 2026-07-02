@@ -26,6 +26,10 @@ type BusinessResponse struct {
     autoRefillEnabled *bool
     // Wallet balance threshold that triggers automatic refill.
     autoRefillTrigger i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    // Postal address used for invoices, receipts, and payment processor billing records.
+    billingAddress BusinessResponse_billingAddressable
+    // Name used for invoices, receipts, and payment processor billing records.
+    billingName *string
     // Defines the supported Billing Plan values.
     billingPlan *BusinessResponse_billingPlan
     // Compliance policy configuration for the business.
@@ -122,6 +126,16 @@ func (m *BusinessResponse) GetAutoRefillEnabled()(*bool) {
 // returns a UntypedNodeable when successful
 func (m *BusinessResponse) GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.autoRefillTrigger
+}
+// GetBillingAddress gets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+// returns a BusinessResponse_billingAddressable when successful
+func (m *BusinessResponse) GetBillingAddress()(BusinessResponse_billingAddressable) {
+    return m.billingAddress
+}
+// GetBillingName gets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
+// returns a *string when successful
+func (m *BusinessResponse) GetBillingName()(*string) {
+    return m.billingName
 }
 // GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
 // returns a *BusinessResponse_billingPlan when successful
@@ -234,6 +248,26 @@ func (m *BusinessResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetAutoRefillTrigger(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+        }
+        return nil
+    }
+    res["billingAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateBusinessResponse_billingAddressFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingAddress(val.(BusinessResponse_billingAddressable))
+        }
+        return nil
+    }
+    res["billingName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingName(val)
         }
         return nil
     }
@@ -579,6 +613,18 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
+    {
+        err := writer.WriteObjectValue("billingAddress", m.GetBillingAddress())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("billingName", m.GetBillingName())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetBillingPlan() != nil {
         cast := (*m.GetBillingPlan()).String()
         err := writer.WriteStringValue("billingPlan", &cast)
@@ -761,6 +807,14 @@ func (m *BusinessResponse) SetAutoRefillEnabled(value *bool)() {
 func (m *BusinessResponse) SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.autoRefillTrigger = value
 }
+// SetBillingAddress sets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+func (m *BusinessResponse) SetBillingAddress(value BusinessResponse_billingAddressable)() {
+    m.billingAddress = value
+}
+// SetBillingName sets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
+func (m *BusinessResponse) SetBillingName(value *string)() {
+    m.billingName = value
+}
 // SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
 func (m *BusinessResponse) SetBillingPlan(value *BusinessResponse_billingPlan)() {
     m.billingPlan = value
@@ -859,6 +913,8 @@ type BusinessResponseable interface {
     GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetAutoRefillEnabled()(*bool)
     GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillingAddress()(BusinessResponse_billingAddressable)
+    GetBillingName()(*string)
     GetBillingPlan()(*BusinessResponse_billingPlan)
     GetCompliancePolicy()(BusinessResponse_compliancePolicyable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -888,6 +944,8 @@ type BusinessResponseable interface {
     SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetAutoRefillEnabled(value *bool)()
     SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillingAddress(value BusinessResponse_billingAddressable)()
+    SetBillingName(value *string)()
     SetBillingPlan(value *BusinessResponse_billingPlan)()
     SetCompliancePolicy(value BusinessResponse_compliancePolicyable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

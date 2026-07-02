@@ -16,10 +16,30 @@ type OutboundPhoneNumberCapacity struct {
     phoneNumber *string
     // The phoneNumberId property
     phoneNumberId *string
+    // The smsLimitThisHour property
+    smsLimitThisHour *int32
+    // The smsLimitToday property
+    smsLimitToday *int32
+    // The smsRemainingThisHour property
+    smsRemainingThisHour *int32
     // The smsRemainingToday property
     smsRemainingToday *int32
+    // The smsUsedThisHour property
+    smsUsedThisHour *int32
+    // The smsUsedToday property
+    smsUsedToday *int32
+    // The voiceLimitThisHour property
+    voiceLimitThisHour *int32
+    // The voiceLimitToday property
+    voiceLimitToday *int32
+    // The voiceRemainingThisHour property
+    voiceRemainingThisHour *int32
     // The voiceRemainingToday property
     voiceRemainingToday *int32
+    // The voiceUsedThisHour property
+    voiceUsedThisHour *int32
+    // The voiceUsedToday property
+    voiceUsedToday *int32
 }
 // NewOutboundPhoneNumberCapacity instantiates a new OutboundPhoneNumberCapacity and sets the default values.
 func NewOutboundPhoneNumberCapacity()(*OutboundPhoneNumberCapacity) {
@@ -72,6 +92,36 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         return nil
     }
+    res["smsLimitThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsLimitThisHour(val)
+        }
+        return nil
+    }
+    res["smsLimitToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsLimitToday(val)
+        }
+        return nil
+    }
+    res["smsRemainingThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsRemainingThisHour(val)
+        }
+        return nil
+    }
     res["smsRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -82,6 +132,56 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         return nil
     }
+    res["smsUsedThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsUsedThisHour(val)
+        }
+        return nil
+    }
+    res["smsUsedToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsUsedToday(val)
+        }
+        return nil
+    }
+    res["voiceLimitThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceLimitThisHour(val)
+        }
+        return nil
+    }
+    res["voiceLimitToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceLimitToday(val)
+        }
+        return nil
+    }
+    res["voiceRemainingThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceRemainingThisHour(val)
+        }
+        return nil
+    }
     res["voiceRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -89,6 +189,26 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         if val != nil {
             m.SetVoiceRemainingToday(val)
+        }
+        return nil
+    }
+    res["voiceUsedThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceUsedThisHour(val)
+        }
+        return nil
+    }
+    res["voiceUsedToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceUsedToday(val)
         }
         return nil
     }
@@ -109,15 +229,65 @@ func (m *OutboundPhoneNumberCapacity) GetPhoneNumber()(*string) {
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
+// GetSmsLimitThisHour gets the smsLimitThisHour property value. The smsLimitThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisHour()(*int32) {
+    return m.smsLimitThisHour
+}
+// GetSmsLimitToday gets the smsLimitToday property value. The smsLimitToday property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsLimitToday()(*int32) {
+    return m.smsLimitToday
+}
+// GetSmsRemainingThisHour gets the smsRemainingThisHour property value. The smsRemainingThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisHour()(*int32) {
+    return m.smsRemainingThisHour
+}
 // GetSmsRemainingToday gets the smsRemainingToday property value. The smsRemainingToday property
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsRemainingToday()(*int32) {
     return m.smsRemainingToday
 }
+// GetSmsUsedThisHour gets the smsUsedThisHour property value. The smsUsedThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisHour()(*int32) {
+    return m.smsUsedThisHour
+}
+// GetSmsUsedToday gets the smsUsedToday property value. The smsUsedToday property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsUsedToday()(*int32) {
+    return m.smsUsedToday
+}
+// GetVoiceLimitThisHour gets the voiceLimitThisHour property value. The voiceLimitThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisHour()(*int32) {
+    return m.voiceLimitThisHour
+}
+// GetVoiceLimitToday gets the voiceLimitToday property value. The voiceLimitToday property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday()(*int32) {
+    return m.voiceLimitToday
+}
+// GetVoiceRemainingThisHour gets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisHour()(*int32) {
+    return m.voiceRemainingThisHour
+}
 // GetVoiceRemainingToday gets the voiceRemainingToday property value. The voiceRemainingToday property
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingToday()(*int32) {
     return m.voiceRemainingToday
+}
+// GetVoiceUsedThisHour gets the voiceUsedThisHour property value. The voiceUsedThisHour property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisHour()(*int32) {
+    return m.voiceUsedThisHour
+}
+// GetVoiceUsedToday gets the voiceUsedToday property value. The voiceUsedToday property
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceUsedToday()(*int32) {
+    return m.voiceUsedToday
 }
 // Serialize serializes information the current object
 func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -141,13 +311,73 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
+        err := writer.WriteInt32Value("smsLimitThisHour", m.GetSmsLimitThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("smsLimitToday", m.GetSmsLimitToday())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("smsRemainingThisHour", m.GetSmsRemainingThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("smsRemainingToday", m.GetSmsRemainingToday())
         if err != nil {
             return err
         }
     }
     {
+        err := writer.WriteInt32Value("smsUsedThisHour", m.GetSmsUsedThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("smsUsedToday", m.GetSmsUsedToday())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("voiceLimitThisHour", m.GetVoiceLimitThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("voiceLimitToday", m.GetVoiceLimitToday())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("voiceRemainingThisHour", m.GetVoiceRemainingThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("voiceRemainingToday", m.GetVoiceRemainingToday())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("voiceUsedThisHour", m.GetVoiceUsedThisHour())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("voiceUsedToday", m.GetVoiceUsedToday())
         if err != nil {
             return err
         }
@@ -176,13 +406,53 @@ func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string)() {
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
+// SetSmsLimitThisHour sets the smsLimitThisHour property value. The smsLimitThisHour property
+func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisHour(value *int32)() {
+    m.smsLimitThisHour = value
+}
+// SetSmsLimitToday sets the smsLimitToday property value. The smsLimitToday property
+func (m *OutboundPhoneNumberCapacity) SetSmsLimitToday(value *int32)() {
+    m.smsLimitToday = value
+}
+// SetSmsRemainingThisHour sets the smsRemainingThisHour property value. The smsRemainingThisHour property
+func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisHour(value *int32)() {
+    m.smsRemainingThisHour = value
+}
 // SetSmsRemainingToday sets the smsRemainingToday property value. The smsRemainingToday property
 func (m *OutboundPhoneNumberCapacity) SetSmsRemainingToday(value *int32)() {
     m.smsRemainingToday = value
 }
+// SetSmsUsedThisHour sets the smsUsedThisHour property value. The smsUsedThisHour property
+func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisHour(value *int32)() {
+    m.smsUsedThisHour = value
+}
+// SetSmsUsedToday sets the smsUsedToday property value. The smsUsedToday property
+func (m *OutboundPhoneNumberCapacity) SetSmsUsedToday(value *int32)() {
+    m.smsUsedToday = value
+}
+// SetVoiceLimitThisHour sets the voiceLimitThisHour property value. The voiceLimitThisHour property
+func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisHour(value *int32)() {
+    m.voiceLimitThisHour = value
+}
+// SetVoiceLimitToday sets the voiceLimitToday property value. The voiceLimitToday property
+func (m *OutboundPhoneNumberCapacity) SetVoiceLimitToday(value *int32)() {
+    m.voiceLimitToday = value
+}
+// SetVoiceRemainingThisHour sets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisHour(value *int32)() {
+    m.voiceRemainingThisHour = value
+}
 // SetVoiceRemainingToday sets the voiceRemainingToday property value. The voiceRemainingToday property
 func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingToday(value *int32)() {
     m.voiceRemainingToday = value
+}
+// SetVoiceUsedThisHour sets the voiceUsedThisHour property value. The voiceUsedThisHour property
+func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisHour(value *int32)() {
+    m.voiceUsedThisHour = value
+}
+// SetVoiceUsedToday sets the voiceUsedToday property value. The voiceUsedToday property
+func (m *OutboundPhoneNumberCapacity) SetVoiceUsedToday(value *int32)() {
+    m.voiceUsedToday = value
 }
 type OutboundPhoneNumberCapacityable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
@@ -190,11 +460,31 @@ type OutboundPhoneNumberCapacityable interface {
     GetHealthStatus()(*PhoneNumberOutboundHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
+    GetSmsLimitThisHour()(*int32)
+    GetSmsLimitToday()(*int32)
+    GetSmsRemainingThisHour()(*int32)
     GetSmsRemainingToday()(*int32)
+    GetSmsUsedThisHour()(*int32)
+    GetSmsUsedToday()(*int32)
+    GetVoiceLimitThisHour()(*int32)
+    GetVoiceLimitToday()(*int32)
+    GetVoiceRemainingThisHour()(*int32)
     GetVoiceRemainingToday()(*int32)
+    GetVoiceUsedThisHour()(*int32)
+    GetVoiceUsedToday()(*int32)
     SetHealthStatus(value *PhoneNumberOutboundHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
+    SetSmsLimitThisHour(value *int32)()
+    SetSmsLimitToday(value *int32)()
+    SetSmsRemainingThisHour(value *int32)()
     SetSmsRemainingToday(value *int32)()
+    SetSmsUsedThisHour(value *int32)()
+    SetSmsUsedToday(value *int32)()
+    SetVoiceLimitThisHour(value *int32)()
+    SetVoiceLimitToday(value *int32)()
+    SetVoiceRemainingThisHour(value *int32)()
     SetVoiceRemainingToday(value *int32)()
+    SetVoiceUsedThisHour(value *int32)()
+    SetVoiceUsedToday(value *int32)()
 }

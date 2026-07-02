@@ -23,6 +23,8 @@ type PhoneNumberStatusResponse struct {
     number *string
     // Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
     optOutMetrics PhoneNumberOptOutMetricsResponseable
+    // Current outbound SMS and voice capacity for this phone number.
+    outboundCapacity PhoneNumberStatusResponse_outboundCapacityable
     // Recent workflow events returned for timeline and troubleshooting.
     recentEvents []PhoneNumberMessagingEventResponseable
     // SMS sender warmup status for this phone number.
@@ -123,6 +125,16 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
+    res["outboundCapacity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberStatusResponse_outboundCapacityFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOutboundCapacity(val.(PhoneNumberStatusResponse_outboundCapacityable))
+        }
+        return nil
+    }
     res["recentEvents"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreatePhoneNumberMessagingEventResponseFromDiscriminatorValue)
         if err != nil {
@@ -191,6 +203,11 @@ func (m *PhoneNumberStatusResponse) GetNumber()(*string) {
 func (m *PhoneNumberStatusResponse) GetOptOutMetrics()(PhoneNumberOptOutMetricsResponseable) {
     return m.optOutMetrics
 }
+// GetOutboundCapacity gets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+// returns a PhoneNumberStatusResponse_outboundCapacityable when successful
+func (m *PhoneNumberStatusResponse) GetOutboundCapacity()(PhoneNumberStatusResponse_outboundCapacityable) {
+    return m.outboundCapacity
+}
 // GetRecentEvents gets the recentEvents property value. Recent workflow events returned for timeline and troubleshooting.
 // returns a []PhoneNumberMessagingEventResponseable when successful
 func (m *PhoneNumberStatusResponse) GetRecentEvents()([]PhoneNumberMessagingEventResponseable) {
@@ -245,6 +262,12 @@ func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f
     }
     {
         err := writer.WriteObjectValue("optOutMetrics", m.GetOptOutMetrics())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteObjectValue("outboundCapacity", m.GetOutboundCapacity())
         if err != nil {
             return err
         }
@@ -315,6 +338,10 @@ func (m *PhoneNumberStatusResponse) SetNumber(value *string)() {
 func (m *PhoneNumberStatusResponse) SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)() {
     m.optOutMetrics = value
 }
+// SetOutboundCapacity sets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+func (m *PhoneNumberStatusResponse) SetOutboundCapacity(value PhoneNumberStatusResponse_outboundCapacityable)() {
+    m.outboundCapacity = value
+}
 // SetRecentEvents sets the recentEvents property value. Recent workflow events returned for timeline and troubleshooting.
 func (m *PhoneNumberStatusResponse) SetRecentEvents(value []PhoneNumberMessagingEventResponseable)() {
     m.recentEvents = value
@@ -340,6 +367,7 @@ type PhoneNumberStatusResponseable interface {
     GetMessagesWarmed()(*int32)
     GetNumber()(*string)
     GetOptOutMetrics()(PhoneNumberOptOutMetricsResponseable)
+    GetOutboundCapacity()(PhoneNumberStatusResponse_outboundCapacityable)
     GetRecentEvents()([]PhoneNumberMessagingEventResponseable)
     GetSmsWarmup()(PhoneNumberStatusResponse_smsWarmupable)
     GetTrafficMetrics()(PhoneNumberTrafficMetricsResponseable)
@@ -350,6 +378,7 @@ type PhoneNumberStatusResponseable interface {
     SetMessagesWarmed(value *int32)()
     SetNumber(value *string)()
     SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)()
+    SetOutboundCapacity(value PhoneNumberStatusResponse_outboundCapacityable)()
     SetRecentEvents(value []PhoneNumberMessagingEventResponseable)()
     SetSmsWarmup(value PhoneNumberStatusResponse_smsWarmupable)()
     SetTrafficMetrics(value PhoneNumberTrafficMetricsResponseable)()

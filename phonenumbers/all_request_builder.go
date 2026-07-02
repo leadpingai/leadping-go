@@ -11,6 +11,11 @@ import (
 type AllRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// Business the business property
+// returns a *AllBusinessRequestBuilder when successful
+func (m *AllRequestBuilder) Business()(*AllBusinessRequestBuilder) {
+    return NewAllBusinessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewAllRequestBuilderInternal instantiates a new AllRequestBuilder and sets the default values.
 func NewAllRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*AllRequestBuilder) {
     m := &AllRequestBuilder{
@@ -23,9 +28,4 @@ func NewAllRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewAllRequestBuilderInternal(urlParams, requestAdapter)
-}
-// My the my property
-// returns a *AllMyRequestBuilder when successful
-func (m *AllRequestBuilder) My()(*AllMyRequestBuilder) {
-    return NewAllMyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

@@ -14,7 +14,7 @@ import (
 type ItemMetricsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemMetricsRequestBuilderGetQueryParameters the source lead creation metrics.
+// ItemMetricsRequestBuilderGetQueryParameters returns lead creation metrics for one business intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
 type ItemMetricsRequestBuilderGetQueryParameters struct {
     // Optional rolling day count when explicit dates are not provided.
     Days *int32 "uriparametername:\"days\""
@@ -36,7 +36,7 @@ func NewItemMetricsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
     urlParams["request-raw-url"] = rawUrl
     return NewItemMetricsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get the source lead creation metrics.
+// Get returns lead creation metrics for one business intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
 // returns a SourceMetricsResponseable when successful
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *ItemMetricsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemMetricsRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SourceMetricsResponseable, error) {
@@ -56,7 +56,7 @@ func (m *ItemMetricsRequestBuilder) Get(ctx context.Context, requestConfiguratio
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SourceMetricsResponseable), nil
 }
-// ToGetRequestInformation the source lead creation metrics.
+// ToGetRequestInformation returns lead creation metrics for one business intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
 // returns a *RequestInformation when successful
 func (m *ItemMetricsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemMetricsRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

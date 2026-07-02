@@ -18,8 +18,6 @@ type SourceResponse struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // UTC timestamp when Leadping issued the source API key.
-    apiKeyIssuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Masked preview of the source API key for display without exposing the secret.
     apiKeyPreview *string
     // Business summary connected to this lead source response.
@@ -90,11 +88,6 @@ func (m *SourceResponse) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
-}
-// GetApiKeyIssuedAt gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-// returns a *Time when successful
-func (m *SourceResponse) GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.apiKeyIssuedAt
 }
 // GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 // returns a *string when successful
@@ -194,16 +187,6 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
                 }
             }
             m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["apiKeyIssuedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKeyIssuedAt(val)
         }
         return nil
     }
@@ -472,12 +455,6 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteTimeValue("apiKeyIssuedAt", m.GetApiKeyIssuedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
         if err != nil {
             return err
@@ -621,10 +598,6 @@ func (m *SourceResponse) SetAllowedProducts(value []string)() {
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKeyIssuedAt sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-func (m *SourceResponse) SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.apiKeyIssuedAt = value
-}
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
@@ -707,7 +680,6 @@ type SourceResponseable interface {
     GetAdminEnablementOverride()(SourceResponse_adminEnablementOverrideable)
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
     GetBusiness()(SourceResponse_businessable)
     GetComplianceApproved()(*bool)
@@ -730,7 +702,6 @@ type SourceResponseable interface {
     SetAdminEnablementOverride(value SourceResponse_adminEnablementOverrideable)()
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
     SetBusiness(value SourceResponse_businessable)()
     SetComplianceApproved(value *bool)()
