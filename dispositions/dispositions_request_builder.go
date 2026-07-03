@@ -46,6 +46,7 @@ func (m *DispositionsRequestBuilder) Lead()(*LeadRequestBuilder) {
 // Post sets a lead's current structured outcome while recording the disposition change in history for audit, automation, and reporting.
 // returns a DispositionResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *DispositionsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.DispositionRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.DispositionResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
@@ -54,6 +55,7 @@ func (m *DispositionsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateDispositionResponseFromDiscriminatorValue, errorMapping)

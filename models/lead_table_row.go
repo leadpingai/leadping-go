@@ -54,6 +54,8 @@ type LeadTableRow struct {
     statusTone *string
     // Tags currently attached to this lead, source, or record.
     tags []TagSummaryable
+    // UTC timestamp when this lead table row was last updated.
+    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewLeadTableRow instantiates a new LeadTableRow and sets the default values.
 func NewLeadTableRow()(*LeadTableRow) {
@@ -342,6 +344,16 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUpdatedAt(val)
+        }
+        return nil
+    }
     return res
 }
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead table row.
@@ -398,6 +410,11 @@ func (m *LeadTableRow) GetStatusTone()(*string) {
 // returns a []TagSummaryable when successful
 func (m *LeadTableRow) GetTags()([]TagSummaryable) {
     return m.tags
+}
+// GetUpdatedAt gets the updatedAt property value. UTC timestamp when this lead table row was last updated.
+// returns a *Time when successful
+func (m *LeadTableRow) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.updatedAt
 }
 // Serialize serializes information the current object
 func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -534,6 +551,12 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -629,6 +652,10 @@ func (m *LeadTableRow) SetStatusTone(value *string)() {
 func (m *LeadTableRow) SetTags(value []TagSummaryable)() {
     m.tags = value
 }
+// SetUpdatedAt sets the updatedAt property value. UTC timestamp when this lead table row was last updated.
+func (m *LeadTableRow) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.updatedAt = value
+}
 type LeadTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -653,6 +680,7 @@ type LeadTableRowable interface {
     GetStatus()(*string)
     GetStatusTone()(*string)
     GetTags()([]TagSummaryable)
+    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetAdminEnablementOverride(value LeadTableRow_adminEnablementOverrideable)()
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
@@ -674,4 +702,5 @@ type LeadTableRowable interface {
     SetStatus(value *string)()
     SetStatusTone(value *string)()
     SetTags(value []TagSummaryable)()
+    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

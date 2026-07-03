@@ -10,6 +10,10 @@ import (
 
 // EventTableRow list item schema for Leadping API event timeline table row results shown in searchable tables.
 type EventTableRow struct {
+    // Display name for the person or system that created this event timeline table row.
+    actorDisplayName *string
+    // User ID for the person or system that created this event timeline table row.
+    actorUserId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
@@ -119,6 +123,16 @@ func NewEventTableRow()(*EventTableRow) {
 func CreateEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewEventTableRow(), nil
 }
+// GetActorDisplayName gets the actorDisplayName property value. Display name for the person or system that created this event timeline table row.
+// returns a *string when successful
+func (m *EventTableRow) GetActorDisplayName()(*string) {
+    return m.actorDisplayName
+}
+// GetActorUserId gets the actorUserId property value. User ID for the person or system that created this event timeline table row.
+// returns a *string when successful
+func (m *EventTableRow) GetActorUserId()(*string) {
+    return m.actorUserId
+}
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
 func (m *EventTableRow) GetAdditionalData()(map[string]any) {
@@ -213,6 +227,26 @@ func (m *EventTableRow) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["actorDisplayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetActorDisplayName(val)
+        }
+        return nil
+    }
+    res["actorUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetActorUserId(val)
+        }
+        return nil
+    }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
@@ -838,6 +872,18 @@ func (m *EventTableRow) GetWasManuallyOverridden()(*bool) {
 // Serialize serializes information the current object
 func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
+        err := writer.WriteStringValue("actorDisplayName", m.GetActorDisplayName())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("actorUserId", m.GetActorUserId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
@@ -1131,6 +1177,14 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     return nil
 }
+// SetActorDisplayName sets the actorDisplayName property value. Display name for the person or system that created this event timeline table row.
+func (m *EventTableRow) SetActorDisplayName(value *string)() {
+    m.actorDisplayName = value
+}
+// SetActorUserId sets the actorUserId property value. User ID for the person or system that created this event timeline table row.
+func (m *EventTableRow) SetActorUserId(value *string)() {
+    m.actorUserId = value
+}
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *EventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
@@ -1326,6 +1380,8 @@ func (m *EventTableRow) SetWasManuallyOverridden(value *bool)() {
 type EventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetActorDisplayName()(*string)
+    GetActorUserId()(*string)
     GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1373,6 +1429,8 @@ type EventTableRowable interface {
     GetTrafficType()(*EventTableRow_trafficType)
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetWasManuallyOverridden()(*bool)
+    SetActorDisplayName(value *string)()
+    SetActorUserId(value *string)()
     SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

@@ -35,6 +35,11 @@ type AdminRequestBuilderGetQueryParameters struct {
     // Type classification used to route and interpret this feedback admin query request in the Leadping API.
     Type *string
 }
+// All the all property
+// returns a *AdminAllRequestBuilder when successful
+func (m *AdminRequestBuilder) All()(*AdminAllRequestBuilder) {
+    return NewAdminAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ById gets an item from the github.com/leadpingai/leadping-go.feedback.admin.item collection
 // returns a *AdminAdminItemRequestBuilder when successful
 func (m *AdminRequestBuilder) ById(id string)(*AdminAdminItemRequestBuilder) {
@@ -62,12 +67,16 @@ func NewAdminRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
 }
 // Get lists submitted feedback for admin triage with query filters, paging, status, and category review fields.
 // returns a PagedResultOfFeedbackResponseable when successful
+// returns a ProblemDetails error when the service returns a 401 status code
 func (m *AdminRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[AdminRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PagedResultOfFeedbackResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreatePagedResultOfFeedbackResponseFromDiscriminatorValue, nil)
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreatePagedResultOfFeedbackResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
         return nil, err
     }

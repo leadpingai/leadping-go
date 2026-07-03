@@ -41,6 +41,7 @@ func NewItemTagsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
 // Post adds one or more current-business tags to a lead so users can segment, filter, route, and review follow-up work.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *ItemTagsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadTagsRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
@@ -49,6 +50,7 @@ func (m *ItemTagsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6e
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateLeadResponseFromDiscriminatorValue, errorMapping)
@@ -63,6 +65,7 @@ func (m *ItemTagsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6e
 // Put replaces all tags on a lead with the supplied current-business tags, keeping segmentation and routing labels in sync.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *ItemTagsRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadTagsRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
@@ -71,6 +74,7 @@ func (m *ItemTagsRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateLeadResponseFromDiscriminatorValue, errorMapping)

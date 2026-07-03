@@ -33,6 +33,7 @@ func (m *LeadWithLeadItemRequestBuilder) Export()(*LeadItemExportRequestBuilder)
 }
 // Get lists disposition outcome history for one lead, including prior outcomes, notes, follow-up context, timestamps, and actor details used for audit review.
 // returns a []DispositionResponseable when successful
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *LeadWithLeadItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.DispositionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
@@ -40,6 +41,7 @@ func (m *LeadWithLeadItemRequestBuilder) Get(ctx context.Context, requestConfigu
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateDispositionResponseFromDiscriminatorValue, errorMapping)

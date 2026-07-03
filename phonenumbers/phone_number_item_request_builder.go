@@ -28,6 +28,7 @@ func NewPhoneNumberItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 }
 // Delete deletes a phone number from the current business when it should no longer be used for lead communication.
 // returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 // returns a ProblemDetails error when the service returns a 500 status code
 func (m *PhoneNumberItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(error) {
@@ -37,6 +38,7 @@ func (m *PhoneNumberItemRequestBuilder) Delete(ctx context.Context, requestConfi
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "500": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
@@ -48,6 +50,7 @@ func (m *PhoneNumberItemRequestBuilder) Delete(ctx context.Context, requestConfi
 }
 // Get returns one phone number visible to the current user, including messaging status, assignment, warmup, and purchase metadata.
 // returns a PhoneNumberResponseable when successful
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *PhoneNumberItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
@@ -55,6 +58,7 @@ func (m *PhoneNumberItemRequestBuilder) Get(ctx context.Context, requestConfigur
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreatePhoneNumberResponseFromDiscriminatorValue, errorMapping)
@@ -69,6 +73,7 @@ func (m *PhoneNumberItemRequestBuilder) Get(ctx context.Context, requestConfigur
 // Put updates phone number settings such as display name, assignment, messaging options, or warmup configuration.
 // returns a PhoneNumberResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 // returns a ProblemDetails error when the service returns a 500 status code
 func (m *PhoneNumberItemRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberResponseable, error) {
@@ -78,6 +83,7 @@ func (m *PhoneNumberItemRequestBuilder) Put(ctx context.Context, body i01c1fcf10
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "500": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }

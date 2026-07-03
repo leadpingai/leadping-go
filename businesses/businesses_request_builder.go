@@ -11,6 +11,11 @@ import (
 type BusinessesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// ApiKeys the apiKeys property
+// returns a *ApiKeysRequestBuilder when successful
+func (m *BusinessesRequestBuilder) ApiKeys()(*ApiKeysRequestBuilder) {
+    return NewApiKeysRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewBusinessesRequestBuilderInternal instantiates a new BusinessesRequestBuilder and sets the default values.
 func NewBusinessesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*BusinessesRequestBuilder) {
     m := &BusinessesRequestBuilder{
