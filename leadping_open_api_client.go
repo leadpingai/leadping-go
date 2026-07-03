@@ -14,6 +14,7 @@ import (
     i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7 "github.com/leadpingai/leadping-go/leads"
     i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad "github.com/leadpingai/leadping-go/users"
     i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7 "github.com/leadpingai/leadping-go/conversations"
+    i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c "github.com/leadpingai/leadping-go/phonecall"
     i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
     i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
     i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
@@ -28,9 +29,11 @@ import (
     ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500 "github.com/leadpingai/leadping-go/wallets"
     iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a "github.com/leadpingai/leadping-go/usage"
     ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf "github.com/leadpingai/leadping-go/paymentmethods"
+    ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c "github.com/leadpingai/leadping-go/suppressions"
     idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7 "github.com/leadpingai/leadping-go/automations"
     ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df "github.com/leadpingai/leadping-go/sms"
     ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa "github.com/leadpingai/leadping-go/phonenumbers"
+    ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0 "github.com/leadpingai/leadping-go/telephony"
 )
 
 // LeadpingOpenApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
@@ -115,6 +118,11 @@ func (m *LeadpingOpenApiClient) Outbound()(*i27b355d98f0b224eb13f630f35f620f34d5
 func (m *LeadpingOpenApiClient) PaymentMethods()(*ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.PaymentMethodsRequestBuilder) {
     return ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.NewPaymentMethodsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// PhoneCall the phoneCall property
+// returns a *PhoneCallRequestBuilder when successful
+func (m *LeadpingOpenApiClient) PhoneCall()(*i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.PhoneCallRequestBuilder) {
+    return i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.NewPhoneCallRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // PhoneNumbers the phoneNumbers property
 // returns a *PhoneNumbersRequestBuilder when successful
 func (m *LeadpingOpenApiClient) PhoneNumbers()(*ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa.PhoneNumbersRequestBuilder) {
@@ -135,10 +143,20 @@ func (m *LeadpingOpenApiClient) Sms()(*ie1c865592d857e5d0ccc4d4dc79742dabdbbfdca
 func (m *LeadpingOpenApiClient) Sources()(*i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.SourcesRequestBuilder) {
     return i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.NewSourcesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Suppressions the suppressions property
+// returns a *SuppressionsRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Suppressions()(*ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.SuppressionsRequestBuilder) {
+    return ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.NewSuppressionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Tags the tags property
 // returns a *TagsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Tags()(*i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.TagsRequestBuilder) {
     return i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.NewTagsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Telephony the telephony property
+// returns a *TelephonyRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Telephony()(*ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.TelephonyRequestBuilder) {
+    return ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.NewTelephonyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Transactions the transactions property
 // returns a *TransactionsRequestBuilder when successful
