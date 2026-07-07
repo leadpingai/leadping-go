@@ -26,7 +26,7 @@ func NewReleaseRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
     urlParams["request-raw-url"] = rawUrl
     return NewReleaseRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post returns the suppression entry response.
+// Post releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
 // returns a SuppressionEntryResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *ReleaseRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SuppressionEntryResponseable), nil
 }
-// ToPostRequestInformation returns the suppression entry response.
+// ToPostRequestInformation releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
 // returns a *RequestInformation when successful
 func (m *ReleaseRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SuppressionEntryRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

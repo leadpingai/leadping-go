@@ -26,7 +26,7 @@ func NewApiKeysMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
     urlParams["request-raw-url"] = rawUrl
     return NewApiKeysMyRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post returns a paged result of current-business API keys.
+// Post retrieves a paged list of API keys owned by the caller's current Leadping business, with support for filtering, sorting, and pagination.
 // returns a PagedResultOfBusinessTableRowable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *ApiKeysMyRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PagedResultOfBusinessTableRowable), nil
 }
-// ToPostRequestInformation returns a paged result of current-business API keys.
+// ToPostRequestInformation retrieves a paged list of API keys owned by the caller's current Leadping business, with support for filtering, sorting, and pagination.
 // returns a *RequestInformation when successful
 func (m *ApiKeysMyRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.RequestDataOptionsable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

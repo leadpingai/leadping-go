@@ -26,7 +26,7 @@ func NewInitiateRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     urlParams["request-raw-url"] = rawUrl
     return NewInitiateRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post returns the call details with a 200 status code.
+// Post starts an outbound Leadping phone call for an authenticated user and returns the provider call identifiers, status, and routing details.
 // returns a PhoneCallResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *InitiateRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6e
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneCallResponseable), nil
 }
-// ToPostRequestInformation returns the call details with a 200 status code.
+// ToPostRequestInformation starts an outbound Leadping phone call for an authenticated user and returns the provider call identifiers, status, and routing details.
 // returns a *RequestInformation when successful
 func (m *InitiateRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.InitiateCallRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

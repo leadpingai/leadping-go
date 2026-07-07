@@ -26,7 +26,7 @@ func NewCheckRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     urlParams["request-raw-url"] = rawUrl
     return NewCheckRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post returns the suppression check result.
+// Post checks whether a recipient is blocked by an active Leadping suppression entry before sending messages or placing calls through the selected channel.
 // returns a SuppressionCheckResultable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *CheckRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SuppressionCheckResultable), nil
 }
-// ToPostRequestInformation returns the suppression check result.
+// ToPostRequestInformation checks whether a recipient is blocked by an active Leadping suppression entry before sending messages or placing calls through the selected channel.
 // returns a *RequestInformation when successful
 func (m *CheckRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SuppressionEntryRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
