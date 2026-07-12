@@ -8,8 +8,8 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserSubscriptionCancellationInfo captured subscription cancellation feedback for retention and churn analysis.
-type UserSubscriptionCancellationInfo struct {
+// BusinessSubscriptionCancellationInfo captured subscription cancellation feedback for retention and churn analysis.
+type BusinessSubscriptionCancellationInfo struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Whether the cancellation was scheduled for period end.
@@ -31,36 +31,36 @@ type UserSubscriptionCancellationInfo struct {
     // The technical issue details supplied by the user, when applicable.
     technicalIssues *string
 }
-// NewUserSubscriptionCancellationInfo instantiates a new UserSubscriptionCancellationInfo and sets the default values.
-func NewUserSubscriptionCancellationInfo()(*UserSubscriptionCancellationInfo) {
-    m := &UserSubscriptionCancellationInfo{
+// NewBusinessSubscriptionCancellationInfo instantiates a new BusinessSubscriptionCancellationInfo and sets the default values.
+func NewBusinessSubscriptionCancellationInfo()(*BusinessSubscriptionCancellationInfo) {
+    m := &BusinessSubscriptionCancellationInfo{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreateUserSubscriptionCancellationInfoFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateBusinessSubscriptionCancellationInfoFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserSubscriptionCancellationInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserSubscriptionCancellationInfo(), nil
+func CreateBusinessSubscriptionCancellationInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewBusinessSubscriptionCancellationInfo(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserSubscriptionCancellationInfo) GetAdditionalData()(map[string]any) {
+func (m *BusinessSubscriptionCancellationInfo) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetCancelAtPeriodEnd gets the cancelAtPeriodEnd property value. Whether the cancellation was scheduled for period end.
 // returns a *bool when successful
-func (m *UserSubscriptionCancellationInfo) GetCancelAtPeriodEnd()(*bool) {
+func (m *BusinessSubscriptionCancellationInfo) GetCancelAtPeriodEnd()(*bool) {
     return m.cancelAtPeriodEnd
 }
 // GetCompetitor gets the competitor property value. The competitor named by the user, when applicable.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetCompetitor()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetCompetitor()(*string) {
     return m.competitor
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserSubscriptionCancellationInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *BusinessSubscriptionCancellationInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["cancelAtPeriodEnd"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
@@ -156,41 +156,41 @@ func (m *UserSubscriptionCancellationInfo) GetFieldDeserializers()(map[string]fu
 }
 // GetMissingFeature gets the missingFeature property value. The missing feature named by the user, when applicable.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetMissingFeature()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetMissingFeature()(*string) {
     return m.missingFeature
 }
 // GetNotes gets the notes property value. Additional cancellation notes supplied by the user.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetNotes()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetNotes()(*string) {
     return m.notes
 }
 // GetReason gets the reason property value. The human-readable cancellation reason selected by the user.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetReason()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetReason()(*string) {
     return m.reason
 }
 // GetReasonCode gets the reasonCode property value. The normalized cancellation reason code selected by the user.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetReasonCode()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetReasonCode()(*string) {
     return m.reasonCode
 }
 // GetRequestedAt gets the requestedAt property value. The date and time when cancellation was requested.
 // returns a *Time when successful
-func (m *UserSubscriptionCancellationInfo) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessSubscriptionCancellationInfo) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.requestedAt
 }
 // GetRequestedByUserId gets the requestedByUserId property value. The user who requested cancellation.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetRequestedByUserId()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetRequestedByUserId()(*string) {
     return m.requestedByUserId
 }
 // GetTechnicalIssues gets the technicalIssues property value. The technical issue details supplied by the user, when applicable.
 // returns a *string when successful
-func (m *UserSubscriptionCancellationInfo) GetTechnicalIssues()(*string) {
+func (m *BusinessSubscriptionCancellationInfo) GetTechnicalIssues()(*string) {
     return m.technicalIssues
 }
 // Serialize serializes information the current object
-func (m *UserSubscriptionCancellationInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *BusinessSubscriptionCancellationInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteBoolValue("cancelAtPeriodEnd", m.GetCancelAtPeriodEnd())
         if err != nil {
@@ -254,46 +254,46 @@ func (m *UserSubscriptionCancellationInfo) Serialize(writer i878a80d2330e89d2689
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserSubscriptionCancellationInfo) SetAdditionalData(value map[string]any)() {
+func (m *BusinessSubscriptionCancellationInfo) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetCancelAtPeriodEnd sets the cancelAtPeriodEnd property value. Whether the cancellation was scheduled for period end.
-func (m *UserSubscriptionCancellationInfo) SetCancelAtPeriodEnd(value *bool)() {
+func (m *BusinessSubscriptionCancellationInfo) SetCancelAtPeriodEnd(value *bool)() {
     m.cancelAtPeriodEnd = value
 }
 // SetCompetitor sets the competitor property value. The competitor named by the user, when applicable.
-func (m *UserSubscriptionCancellationInfo) SetCompetitor(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetCompetitor(value *string)() {
     m.competitor = value
 }
 // SetMissingFeature sets the missingFeature property value. The missing feature named by the user, when applicable.
-func (m *UserSubscriptionCancellationInfo) SetMissingFeature(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetMissingFeature(value *string)() {
     m.missingFeature = value
 }
 // SetNotes sets the notes property value. Additional cancellation notes supplied by the user.
-func (m *UserSubscriptionCancellationInfo) SetNotes(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetNotes(value *string)() {
     m.notes = value
 }
 // SetReason sets the reason property value. The human-readable cancellation reason selected by the user.
-func (m *UserSubscriptionCancellationInfo) SetReason(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetReason(value *string)() {
     m.reason = value
 }
 // SetReasonCode sets the reasonCode property value. The normalized cancellation reason code selected by the user.
-func (m *UserSubscriptionCancellationInfo) SetReasonCode(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetReasonCode(value *string)() {
     m.reasonCode = value
 }
 // SetRequestedAt sets the requestedAt property value. The date and time when cancellation was requested.
-func (m *UserSubscriptionCancellationInfo) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessSubscriptionCancellationInfo) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.requestedAt = value
 }
 // SetRequestedByUserId sets the requestedByUserId property value. The user who requested cancellation.
-func (m *UserSubscriptionCancellationInfo) SetRequestedByUserId(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetRequestedByUserId(value *string)() {
     m.requestedByUserId = value
 }
 // SetTechnicalIssues sets the technicalIssues property value. The technical issue details supplied by the user, when applicable.
-func (m *UserSubscriptionCancellationInfo) SetTechnicalIssues(value *string)() {
+func (m *BusinessSubscriptionCancellationInfo) SetTechnicalIssues(value *string)() {
     m.technicalIssues = value
 }
-type UserSubscriptionCancellationInfoable interface {
+type BusinessSubscriptionCancellationInfoable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetCancelAtPeriodEnd()(*bool)

@@ -9,12 +9,12 @@ import (
 
 // BusinessStripeInfo_cancellation captured subscription cancellation feedback for retention and churn analysis.
 type BusinessStripeInfo_cancellation struct {
-    UserSubscriptionCancellationInfo
+    BusinessSubscriptionCancellationInfo
 }
 // NewBusinessStripeInfo_cancellation instantiates a new BusinessStripeInfo_cancellation and sets the default values.
 func NewBusinessStripeInfo_cancellation()(*BusinessStripeInfo_cancellation) {
     m := &BusinessStripeInfo_cancellation{
-        UserSubscriptionCancellationInfo: *NewUserSubscriptionCancellationInfo(),
+        BusinessSubscriptionCancellationInfo: *NewBusinessSubscriptionCancellationInfo(),
     }
     return m
 }
@@ -26,18 +26,18 @@ func CreateBusinessStripeInfo_cancellationFromDiscriminatorValue(parseNode i878a
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *BusinessStripeInfo_cancellation) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.UserSubscriptionCancellationInfo.GetFieldDeserializers()
+    res := m.BusinessSubscriptionCancellationInfo.GetFieldDeserializers()
     return res
 }
 // Serialize serializes information the current object
 func (m *BusinessStripeInfo_cancellation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.UserSubscriptionCancellationInfo.Serialize(writer)
+    err := m.BusinessSubscriptionCancellationInfo.Serialize(writer)
     if err != nil {
         return err
     }
     return nil
 }
 type BusinessStripeInfo_cancellationable interface {
+    BusinessSubscriptionCancellationInfoable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    UserSubscriptionCancellationInfoable
 }

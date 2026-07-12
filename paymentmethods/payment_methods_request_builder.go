@@ -4,7 +4,9 @@
 package paymentmethods
 
 import (
+    "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
 // PaymentMethodsRequestBuilder builds and executes requests for operations under \payment-methods
@@ -35,4 +37,40 @@ func NewPaymentMethodsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewPaymentMethodsRequestBuilderInternal(urlParams, requestAdapter)
+}
+// Get gets all cards attached to the current business billing customer.
+// returns a []StripePaymentMethodResponseable when successful
+// returns a ProblemDetails error when the service returns a 401 status code
+func (m *PaymentMethodsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripePaymentMethodResponseable, error) {
+    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
+    if err != nil {
+        return nil, err
+    }
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateStripePaymentMethodResponseFromDiscriminatorValue, errorMapping)
+    if err != nil {
+        return nil, err
+    }
+    val := make([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripePaymentMethodResponseable, len(res))
+    for i, v := range res {
+        if v != nil {
+            val[i] = v.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripePaymentMethodResponseable)
+        }
+    }
+    return val, nil
+}
+// ToGetRequestInformation gets all cards attached to the current business billing customer.
+// returns a *RequestInformation when successful
+func (m *PaymentMethodsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PaymentMethodsRequestBuilder when successful
+func (m *PaymentMethodsRequestBuilder) WithUrl(rawUrl string)(*PaymentMethodsRequestBuilder) {
+    return NewPaymentMethodsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

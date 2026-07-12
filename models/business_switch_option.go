@@ -18,6 +18,8 @@ type BusinessSwitchOption struct {
     additionalData map[string]any
     // Defines the supported Business Status values.
     businessStatus *BusinessSwitchOption_businessStatus
+    // Whether the business has a default billing payment method.
+    hasPaymentMethod *bool
     // The unique ID for this business switch option.
     id *string
     // Whether this business switch option is current.
@@ -99,6 +101,16 @@ func (m *BusinessSwitchOption) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["hasPaymentMethod"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetHasPaymentMethod(val)
+        }
+        return nil
+    }
     res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -171,6 +183,11 @@ func (m *BusinessSwitchOption) GetFieldDeserializers()(map[string]func(i878a80d2
     }
     return res
 }
+// GetHasPaymentMethod gets the hasPaymentMethod property value. Whether the business has a default billing payment method.
+// returns a *bool when successful
+func (m *BusinessSwitchOption) GetHasPaymentMethod()(*bool) {
+    return m.hasPaymentMethod
+}
 // GetId gets the id property value. The unique ID for this business switch option.
 // returns a *string when successful
 func (m *BusinessSwitchOption) GetId()(*string) {
@@ -224,6 +241,12 @@ func (m *BusinessSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f487ee
     if m.GetBusinessStatus() != nil {
         cast := (*m.GetBusinessStatus()).String()
         err := writer.WriteStringValue("businessStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("hasPaymentMethod", m.GetHasPaymentMethod())
         if err != nil {
             return err
         }
@@ -295,6 +318,10 @@ func (m *BusinessSwitchOption) SetAdditionalData(value map[string]any)() {
 func (m *BusinessSwitchOption) SetBusinessStatus(value *BusinessSwitchOption_businessStatus)() {
     m.businessStatus = value
 }
+// SetHasPaymentMethod sets the hasPaymentMethod property value. Whether the business has a default billing payment method.
+func (m *BusinessSwitchOption) SetHasPaymentMethod(value *bool)() {
+    m.hasPaymentMethod = value
+}
 // SetId sets the id property value. The unique ID for this business switch option.
 func (m *BusinessSwitchOption) SetId(value *string)() {
     m.id = value
@@ -329,6 +356,7 @@ type BusinessSwitchOptionable interface {
     GetActivationStatus()(*BusinessSwitchOption_activationStatus)
     GetActivationSummary()(*string)
     GetBusinessStatus()(*BusinessSwitchOption_businessStatus)
+    GetHasPaymentMethod()(*bool)
     GetId()(*string)
     GetIsCurrent()(*bool)
     GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -339,6 +367,7 @@ type BusinessSwitchOptionable interface {
     SetActivationStatus(value *BusinessSwitchOption_activationStatus)()
     SetActivationSummary(value *string)()
     SetBusinessStatus(value *BusinessSwitchOption_businessStatus)()
+    SetHasPaymentMethod(value *bool)()
     SetId(value *string)()
     SetIsCurrent(value *bool)()
     SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

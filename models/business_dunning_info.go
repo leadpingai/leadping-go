@@ -8,8 +8,8 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserDunningInfo dunning state recorded after a failed recurring payment.
-type UserDunningInfo struct {
+// BusinessDunningInfo dunning state recorded after a failed recurring payment.
+type BusinessDunningInfo struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The finalCancellationAt property
@@ -35,26 +35,26 @@ type UserDunningInfo struct {
     // The stage property
     stage *string
 }
-// NewUserDunningInfo instantiates a new UserDunningInfo and sets the default values.
-func NewUserDunningInfo()(*UserDunningInfo) {
-    m := &UserDunningInfo{
+// NewBusinessDunningInfo instantiates a new BusinessDunningInfo and sets the default values.
+func NewBusinessDunningInfo()(*BusinessDunningInfo) {
+    m := &BusinessDunningInfo{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreateUserDunningInfoFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateBusinessDunningInfoFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserDunningInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserDunningInfo(), nil
+func CreateBusinessDunningInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewBusinessDunningInfo(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserDunningInfo) GetAdditionalData()(map[string]any) {
+func (m *BusinessDunningInfo) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserDunningInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *BusinessDunningInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["finalCancellationAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
@@ -170,61 +170,61 @@ func (m *UserDunningInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e8
 }
 // GetFinalCancellationAt gets the finalCancellationAt property value. The finalCancellationAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetFinalCancellationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetFinalCancellationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.finalCancellationAt
 }
 // GetGracePeriodEndsAt gets the gracePeriodEndsAt property value. The gracePeriodEndsAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetGracePeriodEndsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetGracePeriodEndsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.gracePeriodEndsAt
 }
 // GetLastFailedInvoiceId gets the lastFailedInvoiceId property value. The lastFailedInvoiceId property
 // returns a *string when successful
-func (m *UserDunningInfo) GetLastFailedInvoiceId()(*string) {
+func (m *BusinessDunningInfo) GetLastFailedInvoiceId()(*string) {
     return m.lastFailedInvoiceId
 }
 // GetLastFailedInvoiceStatus gets the lastFailedInvoiceStatus property value. The lastFailedInvoiceStatus property
 // returns a *string when successful
-func (m *UserDunningInfo) GetLastFailedInvoiceStatus()(*string) {
+func (m *BusinessDunningInfo) GetLastFailedInvoiceStatus()(*string) {
     return m.lastFailedInvoiceStatus
 }
 // GetLastUpdatedAt gets the lastUpdatedAt property value. The lastUpdatedAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetLastUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetLastUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastUpdatedAt
 }
 // GetNextRetryAt gets the nextRetryAt property value. The nextRetryAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
 // GetOutboundRestrictedAt gets the outboundRestrictedAt property value. The outboundRestrictedAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetOutboundRestrictedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetOutboundRestrictedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.outboundRestrictedAt
 }
 // GetOutboundSuspendedAt gets the outboundSuspendedAt property value. The outboundSuspendedAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetOutboundSuspendedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetOutboundSuspendedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.outboundSuspendedAt
 }
 // GetPaymentFailedAt gets the paymentFailedAt property value. The paymentFailedAt property
 // returns a *Time when successful
-func (m *UserDunningInfo) GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *BusinessDunningInfo) GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.paymentFailedAt
 }
 // GetRetryAttemptCount gets the retryAttemptCount property value. The retryAttemptCount property
 // returns a *int32 when successful
-func (m *UserDunningInfo) GetRetryAttemptCount()(*int32) {
+func (m *BusinessDunningInfo) GetRetryAttemptCount()(*int32) {
     return m.retryAttemptCount
 }
 // GetStage gets the stage property value. The stage property
 // returns a *string when successful
-func (m *UserDunningInfo) GetStage()(*string) {
+func (m *BusinessDunningInfo) GetStage()(*string) {
     return m.stage
 }
 // Serialize serializes information the current object
-func (m *UserDunningInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *BusinessDunningInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteTimeValue("finalCancellationAt", m.GetFinalCancellationAt())
         if err != nil {
@@ -300,54 +300,54 @@ func (m *UserDunningInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserDunningInfo) SetAdditionalData(value map[string]any)() {
+func (m *BusinessDunningInfo) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetFinalCancellationAt sets the finalCancellationAt property value. The finalCancellationAt property
-func (m *UserDunningInfo) SetFinalCancellationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetFinalCancellationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.finalCancellationAt = value
 }
 // SetGracePeriodEndsAt sets the gracePeriodEndsAt property value. The gracePeriodEndsAt property
-func (m *UserDunningInfo) SetGracePeriodEndsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetGracePeriodEndsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.gracePeriodEndsAt = value
 }
 // SetLastFailedInvoiceId sets the lastFailedInvoiceId property value. The lastFailedInvoiceId property
-func (m *UserDunningInfo) SetLastFailedInvoiceId(value *string)() {
+func (m *BusinessDunningInfo) SetLastFailedInvoiceId(value *string)() {
     m.lastFailedInvoiceId = value
 }
 // SetLastFailedInvoiceStatus sets the lastFailedInvoiceStatus property value. The lastFailedInvoiceStatus property
-func (m *UserDunningInfo) SetLastFailedInvoiceStatus(value *string)() {
+func (m *BusinessDunningInfo) SetLastFailedInvoiceStatus(value *string)() {
     m.lastFailedInvoiceStatus = value
 }
 // SetLastUpdatedAt sets the lastUpdatedAt property value. The lastUpdatedAt property
-func (m *UserDunningInfo) SetLastUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetLastUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastUpdatedAt = value
 }
 // SetNextRetryAt sets the nextRetryAt property value. The nextRetryAt property
-func (m *UserDunningInfo) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
 // SetOutboundRestrictedAt sets the outboundRestrictedAt property value. The outboundRestrictedAt property
-func (m *UserDunningInfo) SetOutboundRestrictedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetOutboundRestrictedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.outboundRestrictedAt = value
 }
 // SetOutboundSuspendedAt sets the outboundSuspendedAt property value. The outboundSuspendedAt property
-func (m *UserDunningInfo) SetOutboundSuspendedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetOutboundSuspendedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.outboundSuspendedAt = value
 }
 // SetPaymentFailedAt sets the paymentFailedAt property value. The paymentFailedAt property
-func (m *UserDunningInfo) SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *BusinessDunningInfo) SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.paymentFailedAt = value
 }
 // SetRetryAttemptCount sets the retryAttemptCount property value. The retryAttemptCount property
-func (m *UserDunningInfo) SetRetryAttemptCount(value *int32)() {
+func (m *BusinessDunningInfo) SetRetryAttemptCount(value *int32)() {
     m.retryAttemptCount = value
 }
 // SetStage sets the stage property value. The stage property
-func (m *UserDunningInfo) SetStage(value *string)() {
+func (m *BusinessDunningInfo) SetStage(value *string)() {
     m.stage = value
 }
-type UserDunningInfoable interface {
+type BusinessDunningInfoable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetFinalCancellationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

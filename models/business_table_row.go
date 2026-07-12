@@ -30,6 +30,8 @@ type BusinessTableRow struct {
     apiKeyPreview *string
     // The total number of tracked uses for this business API key.
     apiKeyTotalUses *int64
+    // Defines the supported Billing Plan values.
+    billingPlan *BusinessTableRow_billingPlan
     // The business ID that owns this row when the row represents a child business resource.
     businessId *string
     // The business name that owns this row when the row represents a child business resource.
@@ -40,18 +42,26 @@ type BusinessTableRow struct {
     id *string
     // The industry value for this business.
     industry *string
+    // The lastSubscriptionEventAt property
+    lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time for the modified at value on this business.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The human-readable name shown for this business.
     name *string
     // Whether needs admin review applies to this business.
     needsAdminReview *bool
+    // The paymentFailedAt property
+    paymentFailedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The phone number associated with this business.
     phone *string
     // Defines the supported Business Setup Step values.
     setupStep *BusinessTableRow_setupStep
     // Defines the supported Business Status values.
     status *BusinessTableRow_status
+    // The subscriptionCancelAt property
+    subscriptionCancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Defines the supported Subscription Status values.
+    subscriptionStatus *BusinessTableRow_subscriptionStatus
     // Defines the supported 10DLC Application Status values.
     tenDlcStatus *BusinessTableRow_tenDlcStatus
     // The user count for this business.
@@ -126,6 +136,11 @@ func (m *BusinessTableRow) GetApiKeyPreview()(*string) {
 // returns a *int64 when successful
 func (m *BusinessTableRow) GetApiKeyTotalUses()(*int64) {
     return m.apiKeyTotalUses
+}
+// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+// returns a *BusinessTableRow_billingPlan when successful
+func (m *BusinessTableRow) GetBillingPlan()(*BusinessTableRow_billingPlan) {
+    return m.billingPlan
 }
 // GetBusinessId gets the businessId property value. The business ID that owns this row when the row represents a child business resource.
 // returns a *string when successful
@@ -236,6 +251,16 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
+    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessTableRow_billingPlan)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingPlan(val.(*BusinessTableRow_billingPlan))
+        }
+        return nil
+    }
     res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -286,6 +311,16 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
+    res["lastSubscriptionEventAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetLastSubscriptionEventAt(val)
+        }
+        return nil
+    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -316,6 +351,16 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
+    res["paymentFailedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPaymentFailedAt(val)
+        }
+        return nil
+    }
     res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -343,6 +388,26 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetStatus(val.(*BusinessTableRow_status))
+        }
+        return nil
+    }
+    res["subscriptionCancelAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSubscriptionCancelAt(val)
+        }
+        return nil
+    }
+    res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessTableRow_subscriptionStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSubscriptionStatus(val.(*BusinessTableRow_subscriptionStatus))
         }
         return nil
     }
@@ -418,6 +483,11 @@ func (m *BusinessTableRow) GetId()(*string) {
 func (m *BusinessTableRow) GetIndustry()(*string) {
     return m.industry
 }
+// GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+// returns a *Time when successful
+func (m *BusinessTableRow) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.lastSubscriptionEventAt
+}
 // GetModifiedAt gets the modifiedAt property value. The date and time for the modified at value on this business.
 // returns a *Time when successful
 func (m *BusinessTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -433,6 +503,11 @@ func (m *BusinessTableRow) GetName()(*string) {
 func (m *BusinessTableRow) GetNeedsAdminReview()(*bool) {
     return m.needsAdminReview
 }
+// GetPaymentFailedAt gets the paymentFailedAt property value. The paymentFailedAt property
+// returns a *Time when successful
+func (m *BusinessTableRow) GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.paymentFailedAt
+}
 // GetPhone gets the phone property value. The phone number associated with this business.
 // returns a *string when successful
 func (m *BusinessTableRow) GetPhone()(*string) {
@@ -447,6 +522,16 @@ func (m *BusinessTableRow) GetSetupStep()(*BusinessTableRow_setupStep) {
 // returns a *BusinessTableRow_status when successful
 func (m *BusinessTableRow) GetStatus()(*BusinessTableRow_status) {
     return m.status
+}
+// GetSubscriptionCancelAt gets the subscriptionCancelAt property value. The subscriptionCancelAt property
+// returns a *Time when successful
+func (m *BusinessTableRow) GetSubscriptionCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.subscriptionCancelAt
+}
+// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// returns a *BusinessTableRow_subscriptionStatus when successful
+func (m *BusinessTableRow) GetSubscriptionStatus()(*BusinessTableRow_subscriptionStatus) {
+    return m.subscriptionStatus
 }
 // GetTenDlcStatus gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
 // returns a *BusinessTableRow_tenDlcStatus when successful
@@ -535,6 +620,13 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
+    if m.GetBillingPlan() != nil {
+        cast := (*m.GetBillingPlan()).String()
+        err := writer.WriteStringValue("billingPlan", &cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
@@ -566,6 +658,12 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
+        err := writer.WriteTimeValue("lastSubscriptionEventAt", m.GetLastSubscriptionEventAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
         if err != nil {
             return err
@@ -579,6 +677,12 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteBoolValue("needsAdminReview", m.GetNeedsAdminReview())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("paymentFailedAt", m.GetPaymentFailedAt())
         if err != nil {
             return err
         }
@@ -599,6 +703,19 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     if m.GetStatus() != nil {
         cast := (*m.GetStatus()).String()
         err := writer.WriteStringValue("status", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("subscriptionCancelAt", m.GetSubscriptionCancelAt())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetSubscriptionStatus() != nil {
+        cast := (*m.GetSubscriptionStatus()).String()
+        err := writer.WriteStringValue("subscriptionStatus", &cast)
         if err != nil {
             return err
         }
@@ -689,6 +806,10 @@ func (m *BusinessTableRow) SetApiKeyPreview(value *string)() {
 func (m *BusinessTableRow) SetApiKeyTotalUses(value *int64)() {
     m.apiKeyTotalUses = value
 }
+// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
+func (m *BusinessTableRow) SetBillingPlan(value *BusinessTableRow_billingPlan)() {
+    m.billingPlan = value
+}
 // SetBusinessId sets the businessId property value. The business ID that owns this row when the row represents a child business resource.
 func (m *BusinessTableRow) SetBusinessId(value *string)() {
     m.businessId = value
@@ -709,6 +830,10 @@ func (m *BusinessTableRow) SetId(value *string)() {
 func (m *BusinessTableRow) SetIndustry(value *string)() {
     m.industry = value
 }
+// SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+func (m *BusinessTableRow) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.lastSubscriptionEventAt = value
+}
 // SetModifiedAt sets the modifiedAt property value. The date and time for the modified at value on this business.
 func (m *BusinessTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
@@ -721,6 +846,10 @@ func (m *BusinessTableRow) SetName(value *string)() {
 func (m *BusinessTableRow) SetNeedsAdminReview(value *bool)() {
     m.needsAdminReview = value
 }
+// SetPaymentFailedAt sets the paymentFailedAt property value. The paymentFailedAt property
+func (m *BusinessTableRow) SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.paymentFailedAt = value
+}
 // SetPhone sets the phone property value. The phone number associated with this business.
 func (m *BusinessTableRow) SetPhone(value *string)() {
     m.phone = value
@@ -732,6 +861,14 @@ func (m *BusinessTableRow) SetSetupStep(value *BusinessTableRow_setupStep)() {
 // SetStatus sets the status property value. Defines the supported Business Status values.
 func (m *BusinessTableRow) SetStatus(value *BusinessTableRow_status)() {
     m.status = value
+}
+// SetSubscriptionCancelAt sets the subscriptionCancelAt property value. The subscriptionCancelAt property
+func (m *BusinessTableRow) SetSubscriptionCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.subscriptionCancelAt = value
+}
+// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+func (m *BusinessTableRow) SetSubscriptionStatus(value *BusinessTableRow_subscriptionStatus)() {
+    m.subscriptionStatus = value
 }
 // SetTenDlcStatus sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
 func (m *BusinessTableRow) SetTenDlcStatus(value *BusinessTableRow_tenDlcStatus)() {
@@ -769,17 +906,22 @@ type BusinessTableRowable interface {
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
+    GetBillingPlan()(*BusinessTableRow_billingPlan)
     GetBusinessId()(*string)
     GetBusinessName()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
     GetIndustry()(*string)
+    GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNeedsAdminReview()(*bool)
+    GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPhone()(*string)
     GetSetupStep()(*BusinessTableRow_setupStep)
     GetStatus()(*BusinessTableRow_status)
+    GetSubscriptionCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetSubscriptionStatus()(*BusinessTableRow_subscriptionStatus)
     GetTenDlcStatus()(*BusinessTableRow_tenDlcStatus)
     GetUserCount()(*int32)
     GetUserId()(*string)
@@ -795,17 +937,22 @@ type BusinessTableRowable interface {
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()
+    SetBillingPlan(value *BusinessTableRow_billingPlan)()
     SetBusinessId(value *string)()
     SetBusinessName(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetIndustry(value *string)()
+    SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNeedsAdminReview(value *bool)()
+    SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPhone(value *string)()
     SetSetupStep(value *BusinessTableRow_setupStep)()
     SetStatus(value *BusinessTableRow_status)()
+    SetSubscriptionCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetSubscriptionStatus(value *BusinessTableRow_subscriptionStatus)()
     SetTenDlcStatus(value *BusinessTableRow_tenDlcStatus)()
     SetUserCount(value *int32)()
     SetUserId(value *string)()

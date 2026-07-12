@@ -18,7 +18,7 @@ type SourceResponse struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Masked preview of the source API key for display without exposing the secret.
+    // Masked preview of the source API key for compact display.
     apiKeyPreview *string
     // Business summary connected to this lead source response.
     business SourceResponse_businessable
@@ -89,7 +89,7 @@ func (m *SourceResponse) GetAllowedProducts()([]string) {
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 // returns a *string when successful
 func (m *SourceResponse) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
@@ -598,7 +598,7 @@ func (m *SourceResponse) SetAllowedProducts(value []string)() {
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }

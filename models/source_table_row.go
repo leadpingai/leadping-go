@@ -20,7 +20,7 @@ type SourceTableRow struct {
     allowedStates []string
     // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Masked preview of the source API key for display without exposing the secret.
+    // Masked preview of the source API key for compact display.
     apiKeyPreview *string
     // Total number of authenticated requests made with this source API key.
     apiKeyTotalUses *int64
@@ -98,7 +98,7 @@ func (m *SourceTableRow) GetAllowedStates()([]string) {
 func (m *SourceTableRow) GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.apiKeyLastUsedAt
 }
-// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+// GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 // returns a *string when successful
 func (m *SourceTableRow) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
@@ -648,7 +648,7 @@ func (m *SourceTableRow) SetAllowedStates(value []string)() {
 func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
 }
-// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+// SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceTableRow) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }

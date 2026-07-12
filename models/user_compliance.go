@@ -21,10 +21,6 @@ type UserCompliance struct {
     acceptedToSubscription *bool
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The licensed products included with this user compliance.
-    licensedProducts []string
-    // The licensed states included with this user compliance.
-    licensedStates []string
     // The TrustedForm certificates included with this user compliance.
     trustedFormCertificates []TrustedFormCertificateable
 }
@@ -124,38 +120,6 @@ func (m *UserCompliance) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["licensedProducts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetLicensedProducts(res)
-        }
-        return nil
-    }
-    res["licensedStates"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetLicensedStates(res)
-        }
-        return nil
-    }
     res["trustedFormCertificates"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateTrustedFormCertificateFromDiscriminatorValue)
         if err != nil {
@@ -173,16 +137,6 @@ func (m *UserCompliance) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     return res
-}
-// GetLicensedProducts gets the licensedProducts property value. The licensed products included with this user compliance.
-// returns a []string when successful
-func (m *UserCompliance) GetLicensedProducts()([]string) {
-    return m.licensedProducts
-}
-// GetLicensedStates gets the licensedStates property value. The licensed states included with this user compliance.
-// returns a []string when successful
-func (m *UserCompliance) GetLicensedStates()([]string) {
-    return m.licensedStates
 }
 // GetTrustedFormCertificates gets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
 // returns a []TrustedFormCertificateable when successful
@@ -217,18 +171,6 @@ func (m *UserCompliance) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteBoolValue("acceptedToSubscription", m.GetAcceptedToSubscription())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLicensedProducts() != nil {
-        err := writer.WriteCollectionOfStringValues("licensedProducts", m.GetLicensedProducts())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLicensedStates() != nil {
-        err := writer.WriteCollectionOfStringValues("licensedStates", m.GetLicensedStates())
         if err != nil {
             return err
         }
@@ -277,14 +219,6 @@ func (m *UserCompliance) SetAcceptedToSubscription(value *bool)() {
 func (m *UserCompliance) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLicensedProducts sets the licensedProducts property value. The licensed products included with this user compliance.
-func (m *UserCompliance) SetLicensedProducts(value []string)() {
-    m.licensedProducts = value
-}
-// SetLicensedStates sets the licensedStates property value. The licensed states included with this user compliance.
-func (m *UserCompliance) SetLicensedStates(value []string)() {
-    m.licensedStates = value
-}
 // SetTrustedFormCertificates sets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
 func (m *UserCompliance) SetTrustedFormCertificates(value []TrustedFormCertificateable)() {
     m.trustedFormCertificates = value
@@ -297,15 +231,11 @@ type UserComplianceable interface {
     GetAcceptedSms()(*bool)
     GetAcceptedTerms()(*bool)
     GetAcceptedToSubscription()(*bool)
-    GetLicensedProducts()([]string)
-    GetLicensedStates()([]string)
     GetTrustedFormCertificates()([]TrustedFormCertificateable)
     SetAcceptedBaa(value *bool)()
     SetAcceptedEmail(value *bool)()
     SetAcceptedSms(value *bool)()
     SetAcceptedTerms(value *bool)()
     SetAcceptedToSubscription(value *bool)()
-    SetLicensedProducts(value []string)()
-    SetLicensedStates(value []string)()
     SetTrustedFormCertificates(value []TrustedFormCertificateable)()
 }

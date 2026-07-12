@@ -13,8 +13,6 @@ type UserRequest struct {
     additionalData map[string]any
     // Defines the supported Billing Plan values.
     billingPlan *UserRequest_billingPlan
-    // Business summary connected to this user profile request.
-    business UserRequest_businessable
     // User compliance settings and attestations captured for Leadping account review.
     compliance UserRequest_complianceable
     // Business currently selected for the user session or profile.
@@ -35,8 +33,6 @@ type UserRequest struct {
     notificationPreferences UserRequest_notificationPreferencesable
     // Phone details for the lead, user, or business represented by this user profile request.
     phone *string
-    // Defines the supported Subscription Status values.
-    subscriptionStatus *UserRequest_subscriptionStatus
 }
 // NewUserRequest instantiates a new UserRequest and sets the default values.
 func NewUserRequest()(*UserRequest) {
@@ -59,11 +55,6 @@ func (m *UserRequest) GetAdditionalData()(map[string]any) {
 // returns a *UserRequest_billingPlan when successful
 func (m *UserRequest) GetBillingPlan()(*UserRequest_billingPlan) {
     return m.billingPlan
-}
-// GetBusiness gets the business property value. Business summary connected to this user profile request.
-// returns a UserRequest_businessable when successful
-func (m *UserRequest) GetBusiness()(UserRequest_businessable) {
-    return m.business
 }
 // GetCompliance gets the compliance property value. User compliance settings and attestations captured for Leadping account review.
 // returns a UserRequest_complianceable when successful
@@ -91,16 +82,6 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetBillingPlan(val.(*UserRequest_billingPlan))
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserRequest_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(UserRequest_businessable))
         }
         return nil
     }
@@ -210,16 +191,6 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
-    res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUserRequest_subscriptionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionStatus(val.(*UserRequest_subscriptionStatus))
-        }
-        return nil
-    }
     return res
 }
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
@@ -257,22 +228,11 @@ func (m *UserRequest) GetNotificationPreferences()(UserRequest_notificationPrefe
 func (m *UserRequest) GetPhone()(*string) {
     return m.phone
 }
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
-// returns a *UserRequest_subscriptionStatus when successful
-func (m *UserRequest) GetSubscriptionStatus()(*UserRequest_subscriptionStatus) {
-    return m.subscriptionStatus
-}
 // Serialize serializes information the current object
 func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     if m.GetBillingPlan() != nil {
         cast := (*m.GetBillingPlan()).String()
         err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -343,13 +303,6 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
             return err
         }
     }
-    if m.GetSubscriptionStatus() != nil {
-        cast := (*m.GetSubscriptionStatus()).String()
-        err := writer.WriteStringValue("subscriptionStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
@@ -365,10 +318,6 @@ func (m *UserRequest) SetAdditionalData(value map[string]any)() {
 // SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
 func (m *UserRequest) SetBillingPlan(value *UserRequest_billingPlan)() {
     m.billingPlan = value
-}
-// SetBusiness sets the business property value. Business summary connected to this user profile request.
-func (m *UserRequest) SetBusiness(value UserRequest_businessable)() {
-    m.business = value
 }
 // SetCompliance sets the compliance property value. User compliance settings and attestations captured for Leadping account review.
 func (m *UserRequest) SetCompliance(value UserRequest_complianceable)() {
@@ -410,15 +359,10 @@ func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationP
 func (m *UserRequest) SetPhone(value *string)() {
     m.phone = value
 }
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
-func (m *UserRequest) SetSubscriptionStatus(value *UserRequest_subscriptionStatus)() {
-    m.subscriptionStatus = value
-}
 type UserRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlan()(*UserRequest_billingPlan)
-    GetBusiness()(UserRequest_businessable)
     GetCompliance()(UserRequest_complianceable)
     GetCurrentBusiness()(UserRequest_currentBusinessable)
     GetEmail()(*string)
@@ -429,9 +373,7 @@ type UserRequestable interface {
     GetName()(*string)
     GetNotificationPreferences()(UserRequest_notificationPreferencesable)
     GetPhone()(*string)
-    GetSubscriptionStatus()(*UserRequest_subscriptionStatus)
     SetBillingPlan(value *UserRequest_billingPlan)()
-    SetBusiness(value UserRequest_businessable)()
     SetCompliance(value UserRequest_complianceable)()
     SetCurrentBusiness(value UserRequest_currentBusinessable)()
     SetEmail(value *string)()
@@ -442,5 +384,4 @@ type UserRequestable interface {
     SetName(value *string)()
     SetNotificationPreferences(value UserRequest_notificationPreferencesable)()
     SetPhone(value *string)()
-    SetSubscriptionStatus(value *UserRequest_subscriptionStatus)()
 }

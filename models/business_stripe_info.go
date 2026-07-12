@@ -12,6 +12,8 @@ import (
 type BusinessStripeInfo struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Number of paid business-user seats currently assigned to a member or open invitation.This can be lower than long? BusinessStripeInfo.BusinessUserQuantity while an annual seat isavailable for reassignment during its paid term.
+    businessUserAssignedQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The businessUserQuantity property
     businessUserQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The businessUserSubscriptionItemId property
@@ -60,6 +62,11 @@ func CreateBusinessStripeInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *BusinessStripeInfo) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetBusinessUserAssignedQuantity gets the businessUserAssignedQuantity property value. Number of paid business-user seats currently assigned to a member or open invitation.This can be lower than long? BusinessStripeInfo.BusinessUserQuantity while an annual seat isavailable for reassignment during its paid term.
+// returns a UntypedNodeable when successful
+func (m *BusinessStripeInfo) GetBusinessUserAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+    return m.businessUserAssignedQuantity
+}
 // GetBusinessUserQuantity gets the businessUserQuantity property value. The businessUserQuantity property
 // returns a UntypedNodeable when successful
 func (m *BusinessStripeInfo) GetBusinessUserQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
@@ -99,6 +106,16 @@ func (m *BusinessStripeInfo) GetDunning()(BusinessStripeInfo_dunningable) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *BusinessStripeInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["businessUserAssignedQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBusinessUserAssignedQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+        }
+        return nil
+    }
     res["businessUserQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
@@ -300,6 +317,12 @@ func (m *BusinessStripeInfo) GetSubscriptionIds()([]string) {
 // Serialize serializes information the current object
 func (m *BusinessStripeInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
+        err := writer.WriteObjectValue("businessUserAssignedQuantity", m.GetBusinessUserAssignedQuantity())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("businessUserQuantity", m.GetBusinessUserQuantity())
         if err != nil {
             return err
@@ -401,6 +424,10 @@ func (m *BusinessStripeInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *BusinessStripeInfo) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetBusinessUserAssignedQuantity sets the businessUserAssignedQuantity property value. Number of paid business-user seats currently assigned to a member or open invitation.This can be lower than long? BusinessStripeInfo.BusinessUserQuantity while an annual seat isavailable for reassignment during its paid term.
+func (m *BusinessStripeInfo) SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+    m.businessUserAssignedQuantity = value
+}
 // SetBusinessUserQuantity sets the businessUserQuantity property value. The businessUserQuantity property
 func (m *BusinessStripeInfo) SetBusinessUserQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.businessUserQuantity = value
@@ -464,6 +491,7 @@ func (m *BusinessStripeInfo) SetSubscriptionIds(value []string)() {
 type BusinessStripeInfoable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetBusinessUserAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBusinessUserQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBusinessUserSubscriptionItemId()(*string)
     GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -479,6 +507,7 @@ type BusinessStripeInfoable interface {
     GetPlanSubscriptionId()(*string)
     GetPlanSubscriptionItemId()(*string)
     GetSubscriptionIds()([]string)
+    SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBusinessUserQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBusinessUserSubscriptionItemId(value *string)()
     SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

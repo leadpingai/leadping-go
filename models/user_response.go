@@ -14,8 +14,6 @@ type UserResponse struct {
     additionalData map[string]any
     // Defines the supported Billing Plan values.
     billingPlan *UserResponse_billingPlan
-    // The business value for this user.
-    business UserResponse_businessable
     // The compliance value for this user.
     compliance UserResponse_complianceable
     // The date and time when the entity was created.
@@ -54,7 +52,7 @@ type UserResponse struct {
     phone *string
     // The roles included with this user.
     roles i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The Stripe info value for this user.
+    // Stripe state for the user's currently selected business.
     stripeInfo UserResponse_stripeInfoable
     // Defines the supported Subscription Status values.
     subscriptionStatus *UserResponse_subscriptionStatus
@@ -80,11 +78,6 @@ func (m *UserResponse) GetAdditionalData()(map[string]any) {
 // returns a *UserResponse_billingPlan when successful
 func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
     return m.billingPlan
-}
-// GetBusiness gets the business property value. The business value for this user.
-// returns a UserResponse_businessable when successful
-func (m *UserResponse) GetBusiness()(UserResponse_businessable) {
-    return m.business
 }
 // GetCompliance gets the compliance property value. The compliance value for this user.
 // returns a UserResponse_complianceable when successful
@@ -117,16 +110,6 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetBillingPlan(val.(*UserResponse_billingPlan))
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(UserResponse_businessable))
         }
         return nil
     }
@@ -429,7 +412,7 @@ func (m *UserResponse) GetPhone()(*string) {
 func (m *UserResponse) GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.roles
 }
-// GetStripeInfo gets the stripeInfo property value. The Stripe info value for this user.
+// GetStripeInfo gets the stripeInfo property value. Stripe state for the user's currently selected business.
 // returns a UserResponse_stripeInfoable when successful
 func (m *UserResponse) GetStripeInfo()(UserResponse_stripeInfoable) {
     return m.stripeInfo
@@ -444,12 +427,6 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
     if m.GetBillingPlan() != nil {
         cast := (*m.GetBillingPlan()).String()
         err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -609,10 +586,6 @@ func (m *UserResponse) SetAdditionalData(value map[string]any)() {
 func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
     m.billingPlan = value
 }
-// SetBusiness sets the business property value. The business value for this user.
-func (m *UserResponse) SetBusiness(value UserResponse_businessable)() {
-    m.business = value
-}
 // SetCompliance sets the compliance property value. The compliance value for this user.
 func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
     m.compliance = value
@@ -689,7 +662,7 @@ func (m *UserResponse) SetPhone(value *string)() {
 func (m *UserResponse) SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.roles = value
 }
-// SetStripeInfo sets the stripeInfo property value. The Stripe info value for this user.
+// SetStripeInfo sets the stripeInfo property value. Stripe state for the user's currently selected business.
 func (m *UserResponse) SetStripeInfo(value UserResponse_stripeInfoable)() {
     m.stripeInfo = value
 }
@@ -701,7 +674,6 @@ type UserResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlan()(*UserResponse_billingPlan)
-    GetBusiness()(UserResponse_businessable)
     GetCompliance()(UserResponse_complianceable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentBusiness()(UserResponse_currentBusinessable)
@@ -724,7 +696,6 @@ type UserResponseable interface {
     GetStripeInfo()(UserResponse_stripeInfoable)
     GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
     SetBillingPlan(value *UserResponse_billingPlan)()
-    SetBusiness(value UserResponse_businessable)()
     SetCompliance(value UserResponse_complianceable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentBusiness(value UserResponse_currentBusinessable)()

@@ -15,6 +15,8 @@ type Phone struct {
     lookup Phone_lookupable
     // E.164 phone number exposed by this lead phone number.
     number *string
+    // Identifier of the canonical phone identity stored by Leadping.
+    phoneIdentityId *string
     // Type classification used to route and interpret this lead phone number in the Leadping API.
     typeEscaped *string
 }
@@ -59,6 +61,16 @@ func (m *Phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388
         }
         return nil
     }
+    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPhoneIdentityId(val)
+        }
+        return nil
+    }
     res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -81,6 +93,11 @@ func (m *Phone) GetLookup()(Phone_lookupable) {
 func (m *Phone) GetNumber()(*string) {
     return m.number
 }
+// GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+// returns a *string when successful
+func (m *Phone) GetPhoneIdentityId()(*string) {
+    return m.phoneIdentityId
+}
 // GetTypeEscaped gets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
 // returns a *string when successful
 func (m *Phone) GetTypeEscaped()(*string) {
@@ -96,6 +113,12 @@ func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
     }
     {
         err := writer.WriteStringValue("number", m.GetNumber())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
         if err != nil {
             return err
         }
@@ -126,6 +149,10 @@ func (m *Phone) SetLookup(value Phone_lookupable)() {
 func (m *Phone) SetNumber(value *string)() {
     m.number = value
 }
+// SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+func (m *Phone) SetPhoneIdentityId(value *string)() {
+    m.phoneIdentityId = value
+}
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
 func (m *Phone) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
@@ -135,8 +162,10 @@ type Phoneable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetLookup()(Phone_lookupable)
     GetNumber()(*string)
+    GetPhoneIdentityId()(*string)
     GetTypeEscaped()(*string)
     SetLookup(value Phone_lookupable)()
     SetNumber(value *string)()
+    SetPhoneIdentityId(value *string)()
     SetTypeEscaped(value *string)()
 }

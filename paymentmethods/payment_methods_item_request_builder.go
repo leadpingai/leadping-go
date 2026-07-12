@@ -26,6 +26,11 @@ func NewPaymentMethodsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f
     urlParams["request-raw-url"] = rawUrl
     return NewPaymentMethodsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
+// DefaultEscaped the default property
+// returns a *ItemDefaultRequestBuilder when successful
+func (m *PaymentMethodsItemRequestBuilder) DefaultEscaped()(*ItemDefaultRequestBuilder) {
+    return NewItemDefaultRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Delete deletes a payment method so it is no longer available for wallet funding, invoices, or billing account management.
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code

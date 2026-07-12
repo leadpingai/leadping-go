@@ -10,13 +10,12 @@ const (
     PROMO_WALLETRESPONSE_SOURCETYPE
     ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
     REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-    MIGRATION_WALLETRESPONSE_SOURCETYPE
     CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
     COMPROMISE_RESTORATION_WALLETRESPONSE_SOURCETYPE
 )
 
 func (i WalletResponse_sourceType) String() string {
-    return []string{"purchase", "promo", "admin_adjustment", "refund_adjustment", "migration", "chargeback_reversal", "compromise_restoration"}[i]
+    return []string{"purchase", "promo", "admin_adjustment", "refund_adjustment", "chargeback_reversal", "compromise_restoration"}[i]
 }
 func ParseWalletResponse_sourceType(v string) (any, error) {
     result := PURCHASE_WALLETRESPONSE_SOURCETYPE
@@ -29,8 +28,6 @@ func ParseWalletResponse_sourceType(v string) (any, error) {
             result = ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
         case "refund_adjustment":
             result = REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-        case "migration":
-            result = MIGRATION_WALLETRESPONSE_SOURCETYPE
         case "chargeback_reversal":
             result = CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
         case "compromise_restoration":
