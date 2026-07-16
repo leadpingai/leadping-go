@@ -10,11 +10,11 @@ import (
 type CustomerLeadSourceBreakdown struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The leads property
+    // Number of leads represented by this Leadping customer lead source breakdown.
     leads *int32
-    // The percent property
+    // Percent expressed as a percentage.
     percent *float64
-    // The source property
+    // Source classification for this Leadping customer lead source breakdown.
     source *string
 }
 // NewCustomerLeadSourceBreakdown instantiates a new CustomerLeadSourceBreakdown and sets the default values.
@@ -70,17 +70,17 @@ func (m *CustomerLeadSourceBreakdown) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetLeads gets the leads property value. The leads property
+// GetLeads gets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
 // returns a *int32 when successful
 func (m *CustomerLeadSourceBreakdown) GetLeads()(*int32) {
     return m.leads
 }
-// GetPercent gets the percent property value. The percent property
+// GetPercent gets the percent property value. Percent expressed as a percentage.
 // returns a *float64 when successful
 func (m *CustomerLeadSourceBreakdown) GetPercent()(*float64) {
     return m.percent
 }
-// GetSource gets the source property value. The source property
+// GetSource gets the source property value. Source classification for this Leadping customer lead source breakdown.
 // returns a *string when successful
 func (m *CustomerLeadSourceBreakdown) GetSource()(*string) {
     return m.source
@@ -117,15 +117,15 @@ func (m *CustomerLeadSourceBreakdown) Serialize(writer i878a80d2330e89d26896388a
 func (m *CustomerLeadSourceBreakdown) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLeads sets the leads property value. The leads property
+// SetLeads sets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
 func (m *CustomerLeadSourceBreakdown) SetLeads(value *int32)() {
     m.leads = value
 }
-// SetPercent sets the percent property value. The percent property
+// SetPercent sets the percent property value. Percent expressed as a percentage.
 func (m *CustomerLeadSourceBreakdown) SetPercent(value *float64)() {
     m.percent = value
 }
-// SetSource sets the source property value. The source property
+// SetSource sets the source property value. Source classification for this Leadping customer lead source breakdown.
 func (m *CustomerLeadSourceBreakdown) SetSource(value *string)() {
     m.source = value
 }

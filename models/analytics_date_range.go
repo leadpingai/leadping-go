@@ -8,14 +8,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// AnalyticsDateRange range associated with this Leadping customer analytics.
 type AnalyticsDateRange struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The bucketSize property
+    // Bucket size associated with this Leadping analytics date range.
     bucketSize *int32
-    // The endAt property
+    // Date and time when this Leadping analytics date range was end.
     endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The startAt property
+    // Date and time when this Leadping analytics date range was start.
     startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewAnalyticsDateRange instantiates a new AnalyticsDateRange and sets the default values.
@@ -35,12 +36,12 @@ func CreateAnalyticsDateRangeFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *AnalyticsDateRange) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBucketSize gets the bucketSize property value. The bucketSize property
+// GetBucketSize gets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
 // returns a *int32 when successful
 func (m *AnalyticsDateRange) GetBucketSize()(*int32) {
     return m.bucketSize
 }
-// GetEndAt gets the endAt property value. The endAt property
+// GetEndAt gets the endAt property value. Date and time when this Leadping analytics date range was end.
 // returns a *Time when successful
 func (m *AnalyticsDateRange) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.endAt
@@ -81,7 +82,7 @@ func (m *AnalyticsDateRange) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetStartAt gets the startAt property value. The startAt property
+// GetStartAt gets the startAt property value. Date and time when this Leadping analytics date range was start.
 // returns a *Time when successful
 func (m *AnalyticsDateRange) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startAt
@@ -118,15 +119,15 @@ func (m *AnalyticsDateRange) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *AnalyticsDateRange) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBucketSize sets the bucketSize property value. The bucketSize property
+// SetBucketSize sets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
 func (m *AnalyticsDateRange) SetBucketSize(value *int32)() {
     m.bucketSize = value
 }
-// SetEndAt sets the endAt property value. The endAt property
+// SetEndAt sets the endAt property value. Date and time when this Leadping analytics date range was end.
 func (m *AnalyticsDateRange) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.endAt = value
 }
-// SetStartAt sets the startAt property value. The startAt property
+// SetStartAt sets the startAt property value. Date and time when this Leadping analytics date range was start.
 func (m *AnalyticsDateRange) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startAt = value
 }

@@ -14,28 +14,20 @@ type UsageSummaryResponse struct {
     additionalData map[string]any
     // The billable quantity total for this usage summary.
     billableQuantityTotal *float64
-    // The billing blocked count for this usage summary.
-    billingBlockedCount *int32
     // The named usage counters included with this usage summary.
     counters []UsageCounterLineable
     // The customer charge total for this usage summary.
     customerChargeTotal *float64
     // The failed count for this usage summary.
     failedCount *int32
-    // The internal cost total for this usage summary.
-    internalCostTotal *float64
     // The lines included with this usage summary.
     lines []UsageSummaryLineable
-    // The non billable internal count for this usage summary.
-    nonBillableInternalCount *int32
     // The pending invoice count for this usage summary.
     pendingInvoiceCount *int32
     // The date and time for the period end value on this usage summary.
     periodEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time for the period start value on this usage summary.
     periodStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The provider cost total for this usage summary.
-    providerCostTotal *float64
     // The usage record count for this usage summary.
     usageRecordCount *int32
 }
@@ -60,11 +52,6 @@ func (m *UsageSummaryResponse) GetAdditionalData()(map[string]any) {
 // returns a *float64 when successful
 func (m *UsageSummaryResponse) GetBillableQuantityTotal()(*float64) {
     return m.billableQuantityTotal
-}
-// GetBillingBlockedCount gets the billingBlockedCount property value. The billing blocked count for this usage summary.
-// returns a *int32 when successful
-func (m *UsageSummaryResponse) GetBillingBlockedCount()(*int32) {
-    return m.billingBlockedCount
 }
 // GetCounters gets the counters property value. The named usage counters included with this usage summary.
 // returns a []UsageCounterLineable when successful
@@ -92,16 +79,6 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         if val != nil {
             m.SetBillableQuantityTotal(val)
-        }
-        return nil
-    }
-    res["billingBlockedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingBlockedCount(val)
         }
         return nil
     }
@@ -141,16 +118,6 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
-    res["internalCostTotal"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalCostTotal(val)
-        }
-        return nil
-    }
     res["lines"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateUsageSummaryLineFromDiscriminatorValue)
         if err != nil {
@@ -164,16 +131,6 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
                 }
             }
             m.SetLines(res)
-        }
-        return nil
-    }
-    res["nonBillableInternalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNonBillableInternalCount(val)
         }
         return nil
     }
@@ -207,16 +164,6 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
-    res["providerCostTotal"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderCostTotal(val)
-        }
-        return nil
-    }
     res["usageRecordCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -229,20 +176,10 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
     }
     return res
 }
-// GetInternalCostTotal gets the internalCostTotal property value. The internal cost total for this usage summary.
-// returns a *float64 when successful
-func (m *UsageSummaryResponse) GetInternalCostTotal()(*float64) {
-    return m.internalCostTotal
-}
 // GetLines gets the lines property value. The lines included with this usage summary.
 // returns a []UsageSummaryLineable when successful
 func (m *UsageSummaryResponse) GetLines()([]UsageSummaryLineable) {
     return m.lines
-}
-// GetNonBillableInternalCount gets the nonBillableInternalCount property value. The non billable internal count for this usage summary.
-// returns a *int32 when successful
-func (m *UsageSummaryResponse) GetNonBillableInternalCount()(*int32) {
-    return m.nonBillableInternalCount
 }
 // GetPendingInvoiceCount gets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
 // returns a *int32 when successful
@@ -259,11 +196,6 @@ func (m *UsageSummaryResponse) GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *UsageSummaryResponse) GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.periodStart
 }
-// GetProviderCostTotal gets the providerCostTotal property value. The provider cost total for this usage summary.
-// returns a *float64 when successful
-func (m *UsageSummaryResponse) GetProviderCostTotal()(*float64) {
-    return m.providerCostTotal
-}
 // GetUsageRecordCount gets the usageRecordCount property value. The usage record count for this usage summary.
 // returns a *int32 when successful
 func (m *UsageSummaryResponse) GetUsageRecordCount()(*int32) {
@@ -273,12 +205,6 @@ func (m *UsageSummaryResponse) GetUsageRecordCount()(*int32) {
 func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteFloat64Value("billableQuantityTotal", m.GetBillableQuantityTotal())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("billingBlockedCount", m.GetBillingBlockedCount())
         if err != nil {
             return err
         }
@@ -307,12 +233,6 @@ func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
             return err
         }
     }
-    {
-        err := writer.WriteFloat64Value("internalCostTotal", m.GetInternalCostTotal())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetLines() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLines()))
         for i, v := range m.GetLines() {
@@ -321,12 +241,6 @@ func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
             }
         }
         err := writer.WriteCollectionOfObjectValues("lines", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("nonBillableInternalCount", m.GetNonBillableInternalCount())
         if err != nil {
             return err
         }
@@ -345,12 +259,6 @@ func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     {
         err := writer.WriteTimeValue("periodStart", m.GetPeriodStart())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("providerCostTotal", m.GetProviderCostTotal())
         if err != nil {
             return err
         }
@@ -377,10 +285,6 @@ func (m *UsageSummaryResponse) SetAdditionalData(value map[string]any)() {
 func (m *UsageSummaryResponse) SetBillableQuantityTotal(value *float64)() {
     m.billableQuantityTotal = value
 }
-// SetBillingBlockedCount sets the billingBlockedCount property value. The billing blocked count for this usage summary.
-func (m *UsageSummaryResponse) SetBillingBlockedCount(value *int32)() {
-    m.billingBlockedCount = value
-}
 // SetCounters sets the counters property value. The named usage counters included with this usage summary.
 func (m *UsageSummaryResponse) SetCounters(value []UsageCounterLineable)() {
     m.counters = value
@@ -393,17 +297,9 @@ func (m *UsageSummaryResponse) SetCustomerChargeTotal(value *float64)() {
 func (m *UsageSummaryResponse) SetFailedCount(value *int32)() {
     m.failedCount = value
 }
-// SetInternalCostTotal sets the internalCostTotal property value. The internal cost total for this usage summary.
-func (m *UsageSummaryResponse) SetInternalCostTotal(value *float64)() {
-    m.internalCostTotal = value
-}
 // SetLines sets the lines property value. The lines included with this usage summary.
 func (m *UsageSummaryResponse) SetLines(value []UsageSummaryLineable)() {
     m.lines = value
-}
-// SetNonBillableInternalCount sets the nonBillableInternalCount property value. The non billable internal count for this usage summary.
-func (m *UsageSummaryResponse) SetNonBillableInternalCount(value *int32)() {
-    m.nonBillableInternalCount = value
 }
 // SetPendingInvoiceCount sets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
 func (m *UsageSummaryResponse) SetPendingInvoiceCount(value *int32)() {
@@ -417,10 +313,6 @@ func (m *UsageSummaryResponse) SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad
 func (m *UsageSummaryResponse) SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.periodStart = value
 }
-// SetProviderCostTotal sets the providerCostTotal property value. The provider cost total for this usage summary.
-func (m *UsageSummaryResponse) SetProviderCostTotal(value *float64)() {
-    m.providerCostTotal = value
-}
 // SetUsageRecordCount sets the usageRecordCount property value. The usage record count for this usage summary.
 func (m *UsageSummaryResponse) SetUsageRecordCount(value *int32)() {
     m.usageRecordCount = value
@@ -429,29 +321,21 @@ type UsageSummaryResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillableQuantityTotal()(*float64)
-    GetBillingBlockedCount()(*int32)
     GetCounters()([]UsageCounterLineable)
     GetCustomerChargeTotal()(*float64)
     GetFailedCount()(*int32)
-    GetInternalCostTotal()(*float64)
     GetLines()([]UsageSummaryLineable)
-    GetNonBillableInternalCount()(*int32)
     GetPendingInvoiceCount()(*int32)
     GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProviderCostTotal()(*float64)
     GetUsageRecordCount()(*int32)
     SetBillableQuantityTotal(value *float64)()
-    SetBillingBlockedCount(value *int32)()
     SetCounters(value []UsageCounterLineable)()
     SetCustomerChargeTotal(value *float64)()
     SetFailedCount(value *int32)()
-    SetInternalCostTotal(value *float64)()
     SetLines(value []UsageSummaryLineable)()
-    SetNonBillableInternalCount(value *int32)()
     SetPendingInvoiceCount(value *int32)()
     SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProviderCostTotal(value *float64)()
     SetUsageRecordCount(value *int32)()
 }

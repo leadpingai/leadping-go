@@ -10,8 +10,6 @@ import (
 
 // TransactionTableRow list item schema for Leadping API billing transaction table row results shown in searchable tables.
 type TransactionTableRow struct {
-    // Leadping account identifier used for wallet and transaction reconciliation.
-    accountId *string
     // Display name of the wallet or account used for this transaction.
     accountName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -24,8 +22,6 @@ type TransactionTableRow struct {
     businessName *string
     // UTC timestamp when this billing transaction table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name or identifier for the person or system that created this billing transaction table row.
-    createdBy *string
     // Human-readable description that explains this billing transaction table row to API users.
     description *string
     // Unique Leadping identifier for this billing transaction table row.
@@ -54,11 +50,6 @@ func NewTransactionTableRow()(*TransactionTableRow) {
 // returns a Parsable when successful
 func CreateTransactionTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTransactionTableRow(), nil
-}
-// GetAccountId gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-// returns a *string when successful
-func (m *TransactionTableRow) GetAccountId()(*string) {
-    return m.accountId
 }
 // GetAccountName gets the accountName property value. Display name of the wallet or account used for this transaction.
 // returns a *string when successful
@@ -90,11 +81,6 @@ func (m *TransactionTableRow) GetBusinessName()(*string) {
 func (m *TransactionTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCreatedBy gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
-// returns a *string when successful
-func (m *TransactionTableRow) GetCreatedBy()(*string) {
-    return m.createdBy
-}
 // GetDescription gets the description property value. Human-readable description that explains this billing transaction table row to API users.
 // returns a *string when successful
 func (m *TransactionTableRow) GetDescription()(*string) {
@@ -104,16 +90,6 @@ func (m *TransactionTableRow) GetDescription()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["accountId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAccountId(val)
-        }
-        return nil
-    }
     res["accountName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -161,16 +137,6 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["createdBy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedBy(val)
         }
         return nil
     }
@@ -294,12 +260,6 @@ func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
 // Serialize serializes information the current object
 func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("accountId", m.GetAccountId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("accountName", m.GetAccountName())
         if err != nil {
             return err
@@ -325,12 +285,6 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdBy", m.GetCreatedBy())
         if err != nil {
             return err
         }
@@ -393,10 +347,6 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAccountId sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-func (m *TransactionTableRow) SetAccountId(value *string)() {
-    m.accountId = value
-}
 // SetAccountName sets the accountName property value. Display name of the wallet or account used for this transaction.
 func (m *TransactionTableRow) SetAccountName(value *string)() {
     m.accountName = value
@@ -420,10 +370,6 @@ func (m *TransactionTableRow) SetBusinessName(value *string)() {
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
-}
-// SetCreatedBy sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
-func (m *TransactionTableRow) SetCreatedBy(value *string)() {
-    m.createdBy = value
 }
 // SetDescription sets the description property value. Human-readable description that explains this billing transaction table row to API users.
 func (m *TransactionTableRow) SetDescription(value *string)() {
@@ -460,13 +406,11 @@ func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
 type TransactionTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountId()(*string)
     GetAccountName()(*string)
     GetAmount()(*float64)
     GetBusinessId()(*string)
     GetBusinessName()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCreatedBy()(*string)
     GetDescription()(*string)
     GetId()(*string)
     GetLeadId()(*string)
@@ -475,13 +419,11 @@ type TransactionTableRowable interface {
     GetPaymentMethodDisplay()(*string)
     GetTransactionStatus()(*TransactionStatus)
     GetTransactionType()(*TransactionType)
-    SetAccountId(value *string)()
     SetAccountName(value *string)()
     SetAmount(value *float64)()
     SetBusinessId(value *string)()
     SetBusinessName(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCreatedBy(value *string)()
     SetDescription(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()

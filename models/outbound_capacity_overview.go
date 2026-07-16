@@ -10,23 +10,23 @@ import (
 type OutboundCapacityOverview struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The blockedCount property
+    // Total number of blocked records represented by this Leadping outbound capacity overview.
     blockedCount *int32
-    // The coolingPhoneNumbers property
+    // Number of cooling phone numbers represented by this Leadping outbound capacity overview.
     coolingPhoneNumbers *int32
-    // The healthyPhoneNumbers property
+    // Number of healthy phone numbers represented by this Leadping outbound capacity overview.
     healthyPhoneNumbers *int32
-    // The limitedPhoneNumbers property
+    // Number of limited phone numbers represented by this Leadping outbound capacity overview.
     limitedPhoneNumbers *int32
-    // The phoneNumbers property
+    // Collection of phone numbers included with this Leadping outbound capacity overview.
     phoneNumbers []OutboundPhoneNumberCapacityable
-    // The recentDecisions property
+    // Collection of recent decisions included with this Leadping outbound capacity overview.
     recentDecisions []OutboundQueueItemable
-    // The scheduledCount property
+    // Total number of scheduled records represented by this Leadping outbound capacity overview.
     scheduledCount *int32
-    // The smsCapacityRemainingToday property
+    // SMS capacity remaining today for the applicable messaging or voice capacity window.
     smsCapacityRemainingToday *int32
-    // The voiceCapacityRemainingToday property
+    // Voice capacity remaining today for the applicable messaging or voice capacity window.
     voiceCapacityRemainingToday *int32
 }
 // NewOutboundCapacityOverview instantiates a new OutboundCapacityOverview and sets the default values.
@@ -46,12 +46,12 @@ func CreateOutboundCapacityOverviewFromDiscriminatorValue(parseNode i878a80d2330
 func (m *OutboundCapacityOverview) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBlockedCount gets the blockedCount property value. The blockedCount property
+// GetBlockedCount gets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetBlockedCount()(*int32) {
     return m.blockedCount
 }
-// GetCoolingPhoneNumbers gets the coolingPhoneNumbers property value. The coolingPhoneNumbers property
+// GetCoolingPhoneNumbers gets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers()(*int32) {
     return m.coolingPhoneNumbers
@@ -164,37 +164,37 @@ func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetHealthyPhoneNumbers gets the healthyPhoneNumbers property value. The healthyPhoneNumbers property
+// GetHealthyPhoneNumbers gets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetHealthyPhoneNumbers()(*int32) {
     return m.healthyPhoneNumbers
 }
-// GetLimitedPhoneNumbers gets the limitedPhoneNumbers property value. The limitedPhoneNumbers property
+// GetLimitedPhoneNumbers gets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers()(*int32) {
     return m.limitedPhoneNumbers
 }
-// GetPhoneNumbers gets the phoneNumbers property value. The phoneNumbers property
+// GetPhoneNumbers gets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
 // returns a []OutboundPhoneNumberCapacityable when successful
 func (m *OutboundCapacityOverview) GetPhoneNumbers()([]OutboundPhoneNumberCapacityable) {
     return m.phoneNumbers
 }
-// GetRecentDecisions gets the recentDecisions property value. The recentDecisions property
+// GetRecentDecisions gets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
 // returns a []OutboundQueueItemable when successful
 func (m *OutboundCapacityOverview) GetRecentDecisions()([]OutboundQueueItemable) {
     return m.recentDecisions
 }
-// GetScheduledCount gets the scheduledCount property value. The scheduledCount property
+// GetScheduledCount gets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetScheduledCount()(*int32) {
     return m.scheduledCount
 }
-// GetSmsCapacityRemainingToday gets the smsCapacityRemainingToday property value. The smsCapacityRemainingToday property
+// GetSmsCapacityRemainingToday gets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetSmsCapacityRemainingToday()(*int32) {
     return m.smsCapacityRemainingToday
 }
-// GetVoiceCapacityRemainingToday gets the voiceCapacityRemainingToday property value. The voiceCapacityRemainingToday property
+// GetVoiceCapacityRemainingToday gets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundCapacityOverview) GetVoiceCapacityRemainingToday()(*int32) {
     return m.voiceCapacityRemainingToday
@@ -279,39 +279,39 @@ func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *OutboundCapacityOverview) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBlockedCount sets the blockedCount property value. The blockedCount property
+// SetBlockedCount sets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetBlockedCount(value *int32)() {
     m.blockedCount = value
 }
-// SetCoolingPhoneNumbers sets the coolingPhoneNumbers property value. The coolingPhoneNumbers property
+// SetCoolingPhoneNumbers sets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetCoolingPhoneNumbers(value *int32)() {
     m.coolingPhoneNumbers = value
 }
-// SetHealthyPhoneNumbers sets the healthyPhoneNumbers property value. The healthyPhoneNumbers property
+// SetHealthyPhoneNumbers sets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetHealthyPhoneNumbers(value *int32)() {
     m.healthyPhoneNumbers = value
 }
-// SetLimitedPhoneNumbers sets the limitedPhoneNumbers property value. The limitedPhoneNumbers property
+// SetLimitedPhoneNumbers sets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value *int32)() {
     m.limitedPhoneNumbers = value
 }
-// SetPhoneNumbers sets the phoneNumbers property value. The phoneNumbers property
+// SetPhoneNumbers sets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)() {
     m.phoneNumbers = value
 }
-// SetRecentDecisions sets the recentDecisions property value. The recentDecisions property
+// SetRecentDecisions sets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetRecentDecisions(value []OutboundQueueItemable)() {
     m.recentDecisions = value
 }
-// SetScheduledCount sets the scheduledCount property value. The scheduledCount property
+// SetScheduledCount sets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetScheduledCount(value *int32)() {
     m.scheduledCount = value
 }
-// SetSmsCapacityRemainingToday sets the smsCapacityRemainingToday property value. The smsCapacityRemainingToday property
+// SetSmsCapacityRemainingToday sets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
 func (m *OutboundCapacityOverview) SetSmsCapacityRemainingToday(value *int32)() {
     m.smsCapacityRemainingToday = value
 }
-// SetVoiceCapacityRemainingToday sets the voiceCapacityRemainingToday property value. The voiceCapacityRemainingToday property
+// SetVoiceCapacityRemainingToday sets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
 func (m *OutboundCapacityOverview) SetVoiceCapacityRemainingToday(value *int32)() {
     m.voiceCapacityRemainingToday = value
 }

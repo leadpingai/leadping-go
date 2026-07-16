@@ -20,12 +20,6 @@ type AutomationRunRecord struct {
     businessId *string
     // UTC timestamp when processing completed for this automation run record.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Snapshot of request context captured when this automation run record was created.
-    contextSnapshot AutomationRunRecord_contextSnapshotable
-    // Error text returned while processing this automation run record.
-    error *string
-    // Idempotency key used to identify a unique automation workflow execution.
-    executionKey *string
     // Execution mode used for automation preview or live workflow processing.
     executionMode *string
     // Machine-readable failure code for troubleshooting this automation run record.
@@ -40,8 +34,6 @@ type AutomationRunRecord struct {
     processingAttempts *int32
     // Human-readable reason explaining why Leadping skipped this automation run.
     skippedReason *string
-    // Source event ID that triggered this workflow or outbound delivery.
-    sourceEventId *string
     // UTC timestamp when processing started for this automation run record.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current lifecycle status for this automation run record in the Leadping API.
@@ -85,21 +77,6 @@ func (m *AutomationRunRecord) GetBusinessId()(*string) {
 // returns a *Time when successful
 func (m *AutomationRunRecord) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
-}
-// GetContextSnapshot gets the contextSnapshot property value. Snapshot of request context captured when this automation run record was created.
-// returns a AutomationRunRecord_contextSnapshotable when successful
-func (m *AutomationRunRecord) GetContextSnapshot()(AutomationRunRecord_contextSnapshotable) {
-    return m.contextSnapshot
-}
-// GetError gets the error property value. Error text returned while processing this automation run record.
-// returns a *string when successful
-func (m *AutomationRunRecord) GetError()(*string) {
-    return m.error
-}
-// GetExecutionKey gets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-// returns a *string when successful
-func (m *AutomationRunRecord) GetExecutionKey()(*string) {
-    return m.executionKey
 }
 // GetExecutionMode gets the executionMode property value. Execution mode used for automation preview or live workflow processing.
 // returns a *string when successful
@@ -158,36 +135,6 @@ func (m *AutomationRunRecord) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetCompletedAt(val)
-        }
-        return nil
-    }
-    res["contextSnapshot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationRunRecord_contextSnapshotFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContextSnapshot(val.(AutomationRunRecord_contextSnapshotable))
-        }
-        return nil
-    }
-    res["error"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetError(val)
-        }
-        return nil
-    }
-    res["executionKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExecutionKey(val)
         }
         return nil
     }
@@ -261,16 +208,6 @@ func (m *AutomationRunRecord) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
     res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -328,11 +265,6 @@ func (m *AutomationRunRecord) GetProcessingAttempts()(*int32) {
 func (m *AutomationRunRecord) GetSkippedReason()(*string) {
     return m.skippedReason
 }
-// GetSourceEventId gets the sourceEventId property value. Source event ID that triggered this workflow or outbound delivery.
-// returns a *string when successful
-func (m *AutomationRunRecord) GetSourceEventId()(*string) {
-    return m.sourceEventId
-}
 // GetStartedAt gets the startedAt property value. UTC timestamp when processing started for this automation run record.
 // returns a *Time when successful
 func (m *AutomationRunRecord) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -381,24 +313,6 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("contextSnapshot", m.GetContextSnapshot())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("error", m.GetError())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("executionKey", m.GetExecutionKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("executionMode", m.GetExecutionMode())
         if err != nil {
             return err
@@ -436,12 +350,6 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteStringValue("skippedReason", m.GetSkippedReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
         if err != nil {
             return err
         }
@@ -492,18 +400,6 @@ func (m *AutomationRunRecord) SetBusinessId(value *string)() {
 func (m *AutomationRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetContextSnapshot sets the contextSnapshot property value. Snapshot of request context captured when this automation run record was created.
-func (m *AutomationRunRecord) SetContextSnapshot(value AutomationRunRecord_contextSnapshotable)() {
-    m.contextSnapshot = value
-}
-// SetError sets the error property value. Error text returned while processing this automation run record.
-func (m *AutomationRunRecord) SetError(value *string)() {
-    m.error = value
-}
-// SetExecutionKey sets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-func (m *AutomationRunRecord) SetExecutionKey(value *string)() {
-    m.executionKey = value
-}
 // SetExecutionMode sets the executionMode property value. Execution mode used for automation preview or live workflow processing.
 func (m *AutomationRunRecord) SetExecutionMode(value *string)() {
     m.executionMode = value
@@ -532,10 +428,6 @@ func (m *AutomationRunRecord) SetProcessingAttempts(value *int32)() {
 func (m *AutomationRunRecord) SetSkippedReason(value *string)() {
     m.skippedReason = value
 }
-// SetSourceEventId sets the sourceEventId property value. Source event ID that triggered this workflow or outbound delivery.
-func (m *AutomationRunRecord) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
-}
 // SetStartedAt sets the startedAt property value. UTC timestamp when processing started for this automation run record.
 func (m *AutomationRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
@@ -555,9 +447,6 @@ type AutomationRunRecordable interface {
     GetAutomationId()(*string)
     GetBusinessId()(*string)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetContextSnapshot()(AutomationRunRecord_contextSnapshotable)
-    GetError()(*string)
-    GetExecutionKey()(*string)
     GetExecutionMode()(*string)
     GetFailureCode()(*string)
     GetId()(*string)
@@ -565,7 +454,6 @@ type AutomationRunRecordable interface {
     GetLeadId()(*string)
     GetProcessingAttempts()(*int32)
     GetSkippedReason()(*string)
-    GetSourceEventId()(*string)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*string)
     GetTriggerType()(*string)
@@ -573,9 +461,6 @@ type AutomationRunRecordable interface {
     SetAutomationId(value *string)()
     SetBusinessId(value *string)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetContextSnapshot(value AutomationRunRecord_contextSnapshotable)()
-    SetError(value *string)()
-    SetExecutionKey(value *string)()
     SetExecutionMode(value *string)()
     SetFailureCode(value *string)()
     SetId(value *string)()
@@ -583,7 +468,6 @@ type AutomationRunRecordable interface {
     SetLeadId(value *string)()
     SetProcessingAttempts(value *int32)()
     SetSkippedReason(value *string)()
-    SetSourceEventId(value *string)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *string)()
     SetTriggerType(value *string)()

@@ -11,13 +11,13 @@ import (
 type AnalyticsTrendPointOfdecimal struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The endAt property
+    // Date and time when this Leadping analytics trend point was end.
     endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The label property
+    // Human-readable label for this Leadping analytics trend point.
     label *string
-    // The startAt property
+    // Date and time when this Leadping analytics trend point was start.
     startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The value property
+    // Value associated with this Leadping analytics trend point.
     value *float64
 }
 // NewAnalyticsTrendPointOfdecimal instantiates a new AnalyticsTrendPointOfdecimal and sets the default values.
@@ -37,7 +37,7 @@ func CreateAnalyticsTrendPointOfdecimalFromDiscriminatorValue(parseNode i878a80d
 func (m *AnalyticsTrendPointOfdecimal) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEndAt gets the endAt property value. The endAt property
+// GetEndAt gets the endAt property value. Date and time when this Leadping analytics trend point was end.
 // returns a *Time when successful
 func (m *AnalyticsTrendPointOfdecimal) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.endAt
@@ -88,17 +88,17 @@ func (m *AnalyticsTrendPointOfdecimal) GetFieldDeserializers()(map[string]func(i
     }
     return res
 }
-// GetLabel gets the label property value. The label property
+// GetLabel gets the label property value. Human-readable label for this Leadping analytics trend point.
 // returns a *string when successful
 func (m *AnalyticsTrendPointOfdecimal) GetLabel()(*string) {
     return m.label
 }
-// GetStartAt gets the startAt property value. The startAt property
+// GetStartAt gets the startAt property value. Date and time when this Leadping analytics trend point was start.
 // returns a *Time when successful
 func (m *AnalyticsTrendPointOfdecimal) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startAt
 }
-// GetValue gets the value property value. The value property
+// GetValue gets the value property value. Value associated with this Leadping analytics trend point.
 // returns a *float64 when successful
 func (m *AnalyticsTrendPointOfdecimal) GetValue()(*float64) {
     return m.value
@@ -141,19 +141,19 @@ func (m *AnalyticsTrendPointOfdecimal) Serialize(writer i878a80d2330e89d26896388
 func (m *AnalyticsTrendPointOfdecimal) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEndAt sets the endAt property value. The endAt property
+// SetEndAt sets the endAt property value. Date and time when this Leadping analytics trend point was end.
 func (m *AnalyticsTrendPointOfdecimal) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.endAt = value
 }
-// SetLabel sets the label property value. The label property
+// SetLabel sets the label property value. Human-readable label for this Leadping analytics trend point.
 func (m *AnalyticsTrendPointOfdecimal) SetLabel(value *string)() {
     m.label = value
 }
-// SetStartAt sets the startAt property value. The startAt property
+// SetStartAt sets the startAt property value. Date and time when this Leadping analytics trend point was start.
 func (m *AnalyticsTrendPointOfdecimal) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startAt = value
 }
-// SetValue sets the value property value. The value property
+// SetValue sets the value property value. Value associated with this Leadping analytics trend point.
 func (m *AnalyticsTrendPointOfdecimal) SetValue(value *float64)() {
     m.value = value
 }

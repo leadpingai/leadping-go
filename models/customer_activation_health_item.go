@@ -8,17 +8,17 @@ import (
 )
 
 type CustomerActivationHealthItem struct {
-    // The actionHref property
+    // Relative URL for the recommended follow-up action.
     actionHref *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The detail property
+    // Human-readable detail for this Leadping customer activation health item.
     detail *string
-    // The key property
+    // Key associated with this Leadping customer activation health item.
     key *string
-    // The label property
+    // Human-readable label for this Leadping customer activation health item.
     label *string
-    // The status property
+    // Current status for this Leadping customer activation health item.
     status *string
 }
 // NewCustomerActivationHealthItem instantiates a new CustomerActivationHealthItem and sets the default values.
@@ -33,7 +33,7 @@ func NewCustomerActivationHealthItem()(*CustomerActivationHealthItem) {
 func CreateCustomerActivationHealthItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewCustomerActivationHealthItem(), nil
 }
-// GetActionHref gets the actionHref property value. The actionHref property
+// GetActionHref gets the actionHref property value. Relative URL for the recommended follow-up action.
 // returns a *string when successful
 func (m *CustomerActivationHealthItem) GetActionHref()(*string) {
     return m.actionHref
@@ -43,7 +43,7 @@ func (m *CustomerActivationHealthItem) GetActionHref()(*string) {
 func (m *CustomerActivationHealthItem) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDetail gets the detail property value. The detail property
+// GetDetail gets the detail property value. Human-readable detail for this Leadping customer activation health item.
 // returns a *string when successful
 func (m *CustomerActivationHealthItem) GetDetail()(*string) {
     return m.detail
@@ -104,17 +104,17 @@ func (m *CustomerActivationHealthItem) GetFieldDeserializers()(map[string]func(i
     }
     return res
 }
-// GetKey gets the key property value. The key property
+// GetKey gets the key property value. Key associated with this Leadping customer activation health item.
 // returns a *string when successful
 func (m *CustomerActivationHealthItem) GetKey()(*string) {
     return m.key
 }
-// GetLabel gets the label property value. The label property
+// GetLabel gets the label property value. Human-readable label for this Leadping customer activation health item.
 // returns a *string when successful
 func (m *CustomerActivationHealthItem) GetLabel()(*string) {
     return m.label
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Current status for this Leadping customer activation health item.
 // returns a *string when successful
 func (m *CustomerActivationHealthItem) GetStatus()(*string) {
     return m.status
@@ -159,7 +159,7 @@ func (m *CustomerActivationHealthItem) Serialize(writer i878a80d2330e89d26896388
     }
     return nil
 }
-// SetActionHref sets the actionHref property value. The actionHref property
+// SetActionHref sets the actionHref property value. Relative URL for the recommended follow-up action.
 func (m *CustomerActivationHealthItem) SetActionHref(value *string)() {
     m.actionHref = value
 }
@@ -167,19 +167,19 @@ func (m *CustomerActivationHealthItem) SetActionHref(value *string)() {
 func (m *CustomerActivationHealthItem) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDetail sets the detail property value. The detail property
+// SetDetail sets the detail property value. Human-readable detail for this Leadping customer activation health item.
 func (m *CustomerActivationHealthItem) SetDetail(value *string)() {
     m.detail = value
 }
-// SetKey sets the key property value. The key property
+// SetKey sets the key property value. Key associated with this Leadping customer activation health item.
 func (m *CustomerActivationHealthItem) SetKey(value *string)() {
     m.key = value
 }
-// SetLabel sets the label property value. The label property
+// SetLabel sets the label property value. Human-readable label for this Leadping customer activation health item.
 func (m *CustomerActivationHealthItem) SetLabel(value *string)() {
     m.label = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Current status for this Leadping customer activation health item.
 func (m *CustomerActivationHealthItem) SetStatus(value *string)() {
     m.status = value
 }

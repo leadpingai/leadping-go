@@ -11,27 +11,27 @@ import (
 type UserNotificationPreferences struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationFailedEmailEnabled property
+    // Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
     automationFailedEmailEnabled *bool
     // Whether automation failed notifications are enabled for this user notification preferences.
     automationFailedEnabled *bool
-    // The automationFailedSmsEnabled property
+    // Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
     automationFailedSmsEnabled *bool
     // Whether billing email is enabled for this user notification preferences.
     billingEmailEnabled *bool
     // Whether billing SMS is enabled for this user notification preferences.
     billingSmsEnabled *bool
-    // The lowWalletBalanceEmailEnabled property
+    // Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
     lowWalletBalanceEmailEnabled *bool
     // Whether low wallet balance notifications are enabled for this user notification preferences.
     lowWalletBalanceEnabled *bool
-    // The lowWalletBalanceSmsEnabled property
+    // Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
     lowWalletBalanceSmsEnabled *bool
-    // The missedCallEmailEnabled property
+    // Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
     missedCallEmailEnabled *bool
     // Whether missed call notifications are enabled for this user notification preferences.
     missedCallEnabled *bool
-    // The missedCallSmsEnabled property
+    // Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
     missedCallSmsEnabled *bool
     // Whether new lead email is enabled for this user notification preferences.
     newLeadEmailEnabled *bool
@@ -41,21 +41,21 @@ type UserNotificationPreferences struct {
     newLeadSmsEnabled *bool
     // Whether payment failed notifications are enabled for this user notification preferences.
     paymentFailedEnabled *bool
-    // The paymentFailedSmsEnabled property
+    // Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
     paymentFailedSmsEnabled *bool
-    // The subscriptionRenewingEmailEnabled property
+    // Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
     subscriptionRenewingEmailEnabled *bool
     // Whether subscription renewing notifications are enabled for this user notification preferences.
     subscriptionRenewingEnabled *bool
-    // The subscriptionRenewingSmsEnabled property
+    // Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
     subscriptionRenewingSmsEnabled *bool
     // Whether 10DLC status notifications are enabled for this user notification preferences.
     tenDlcStatusEnabled *bool
-    // The unreadSmsEmailEnabled property
+    // Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
     unreadSmsEmailEnabled *bool
     // Whether unread SMS notifications are enabled for this user notification preferences.
     unreadSmsEnabled *bool
-    // The unreadSmsSmsEnabled property
+    // Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
     unreadSmsSmsEnabled *bool
     // Whether usage limit hit notifications are enabled for this user notification preferences.
     usageLimitHitEnabled *bool
@@ -77,7 +77,7 @@ func CreateUserNotificationPreferencesFromDiscriminatorValue(parseNode i878a80d2
 func (m *UserNotificationPreferences) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationFailedEmailEnabled gets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+// GetAutomationFailedEmailEnabled gets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetAutomationFailedEmailEnabled()(*bool) {
     return m.automationFailedEmailEnabled
@@ -87,7 +87,7 @@ func (m *UserNotificationPreferences) GetAutomationFailedEmailEnabled()(*bool) {
 func (m *UserNotificationPreferences) GetAutomationFailedEnabled()(*bool) {
     return m.automationFailedEnabled
 }
-// GetAutomationFailedSmsEnabled gets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+// GetAutomationFailedSmsEnabled gets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetAutomationFailedSmsEnabled()(*bool) {
     return m.automationFailedSmsEnabled
@@ -348,7 +348,7 @@ func (m *UserNotificationPreferences) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetLowWalletBalanceEmailEnabled gets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+// GetLowWalletBalanceEmailEnabled gets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetLowWalletBalanceEmailEnabled()(*bool) {
     return m.lowWalletBalanceEmailEnabled
@@ -358,12 +358,12 @@ func (m *UserNotificationPreferences) GetLowWalletBalanceEmailEnabled()(*bool) {
 func (m *UserNotificationPreferences) GetLowWalletBalanceEnabled()(*bool) {
     return m.lowWalletBalanceEnabled
 }
-// GetLowWalletBalanceSmsEnabled gets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+// GetLowWalletBalanceSmsEnabled gets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetLowWalletBalanceSmsEnabled()(*bool) {
     return m.lowWalletBalanceSmsEnabled
 }
-// GetMissedCallEmailEnabled gets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+// GetMissedCallEmailEnabled gets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetMissedCallEmailEnabled()(*bool) {
     return m.missedCallEmailEnabled
@@ -373,7 +373,7 @@ func (m *UserNotificationPreferences) GetMissedCallEmailEnabled()(*bool) {
 func (m *UserNotificationPreferences) GetMissedCallEnabled()(*bool) {
     return m.missedCallEnabled
 }
-// GetMissedCallSmsEnabled gets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+// GetMissedCallSmsEnabled gets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetMissedCallSmsEnabled()(*bool) {
     return m.missedCallSmsEnabled
@@ -398,12 +398,12 @@ func (m *UserNotificationPreferences) GetNewLeadSmsEnabled()(*bool) {
 func (m *UserNotificationPreferences) GetPaymentFailedEnabled()(*bool) {
     return m.paymentFailedEnabled
 }
-// GetPaymentFailedSmsEnabled gets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+// GetPaymentFailedSmsEnabled gets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled()(*bool) {
     return m.paymentFailedSmsEnabled
 }
-// GetSubscriptionRenewingEmailEnabled gets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+// GetSubscriptionRenewingEmailEnabled gets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetSubscriptionRenewingEmailEnabled()(*bool) {
     return m.subscriptionRenewingEmailEnabled
@@ -413,7 +413,7 @@ func (m *UserNotificationPreferences) GetSubscriptionRenewingEmailEnabled()(*boo
 func (m *UserNotificationPreferences) GetSubscriptionRenewingEnabled()(*bool) {
     return m.subscriptionRenewingEnabled
 }
-// GetSubscriptionRenewingSmsEnabled gets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+// GetSubscriptionRenewingSmsEnabled gets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetSubscriptionRenewingSmsEnabled()(*bool) {
     return m.subscriptionRenewingSmsEnabled
@@ -423,7 +423,7 @@ func (m *UserNotificationPreferences) GetSubscriptionRenewingSmsEnabled()(*bool)
 func (m *UserNotificationPreferences) GetTenDlcStatusEnabled()(*bool) {
     return m.tenDlcStatusEnabled
 }
-// GetUnreadSmsEmailEnabled gets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+// GetUnreadSmsEmailEnabled gets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetUnreadSmsEmailEnabled()(*bool) {
     return m.unreadSmsEmailEnabled
@@ -433,7 +433,7 @@ func (m *UserNotificationPreferences) GetUnreadSmsEmailEnabled()(*bool) {
 func (m *UserNotificationPreferences) GetUnreadSmsEnabled()(*bool) {
     return m.unreadSmsEnabled
 }
-// GetUnreadSmsSmsEnabled gets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+// GetUnreadSmsSmsEnabled gets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetUnreadSmsSmsEnabled()(*bool) {
     return m.unreadSmsSmsEnabled
@@ -601,7 +601,7 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 func (m *UserNotificationPreferences) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationFailedEmailEnabled sets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+// SetAutomationFailedEmailEnabled sets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetAutomationFailedEmailEnabled(value *bool)() {
     m.automationFailedEmailEnabled = value
 }
@@ -609,7 +609,7 @@ func (m *UserNotificationPreferences) SetAutomationFailedEmailEnabled(value *boo
 func (m *UserNotificationPreferences) SetAutomationFailedEnabled(value *bool)() {
     m.automationFailedEnabled = value
 }
-// SetAutomationFailedSmsEnabled sets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+// SetAutomationFailedSmsEnabled sets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetAutomationFailedSmsEnabled(value *bool)() {
     m.automationFailedSmsEnabled = value
 }
@@ -621,7 +621,7 @@ func (m *UserNotificationPreferences) SetBillingEmailEnabled(value *bool)() {
 func (m *UserNotificationPreferences) SetBillingSmsEnabled(value *bool)() {
     m.billingSmsEnabled = value
 }
-// SetLowWalletBalanceEmailEnabled sets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+// SetLowWalletBalanceEmailEnabled sets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetLowWalletBalanceEmailEnabled(value *bool)() {
     m.lowWalletBalanceEmailEnabled = value
 }
@@ -629,11 +629,11 @@ func (m *UserNotificationPreferences) SetLowWalletBalanceEmailEnabled(value *boo
 func (m *UserNotificationPreferences) SetLowWalletBalanceEnabled(value *bool)() {
     m.lowWalletBalanceEnabled = value
 }
-// SetLowWalletBalanceSmsEnabled sets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+// SetLowWalletBalanceSmsEnabled sets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetLowWalletBalanceSmsEnabled(value *bool)() {
     m.lowWalletBalanceSmsEnabled = value
 }
-// SetMissedCallEmailEnabled sets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+// SetMissedCallEmailEnabled sets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetMissedCallEmailEnabled(value *bool)() {
     m.missedCallEmailEnabled = value
 }
@@ -641,7 +641,7 @@ func (m *UserNotificationPreferences) SetMissedCallEmailEnabled(value *bool)() {
 func (m *UserNotificationPreferences) SetMissedCallEnabled(value *bool)() {
     m.missedCallEnabled = value
 }
-// SetMissedCallSmsEnabled sets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+// SetMissedCallSmsEnabled sets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetMissedCallSmsEnabled(value *bool)() {
     m.missedCallSmsEnabled = value
 }
@@ -661,11 +661,11 @@ func (m *UserNotificationPreferences) SetNewLeadSmsEnabled(value *bool)() {
 func (m *UserNotificationPreferences) SetPaymentFailedEnabled(value *bool)() {
     m.paymentFailedEnabled = value
 }
-// SetPaymentFailedSmsEnabled sets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+// SetPaymentFailedSmsEnabled sets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool)() {
     m.paymentFailedSmsEnabled = value
 }
-// SetSubscriptionRenewingEmailEnabled sets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+// SetSubscriptionRenewingEmailEnabled sets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetSubscriptionRenewingEmailEnabled(value *bool)() {
     m.subscriptionRenewingEmailEnabled = value
 }
@@ -673,7 +673,7 @@ func (m *UserNotificationPreferences) SetSubscriptionRenewingEmailEnabled(value 
 func (m *UserNotificationPreferences) SetSubscriptionRenewingEnabled(value *bool)() {
     m.subscriptionRenewingEnabled = value
 }
-// SetSubscriptionRenewingSmsEnabled sets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+// SetSubscriptionRenewingSmsEnabled sets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetSubscriptionRenewingSmsEnabled(value *bool)() {
     m.subscriptionRenewingSmsEnabled = value
 }
@@ -681,7 +681,7 @@ func (m *UserNotificationPreferences) SetSubscriptionRenewingSmsEnabled(value *b
 func (m *UserNotificationPreferences) SetTenDlcStatusEnabled(value *bool)() {
     m.tenDlcStatusEnabled = value
 }
-// SetUnreadSmsEmailEnabled sets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+// SetUnreadSmsEmailEnabled sets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetUnreadSmsEmailEnabled(value *bool)() {
     m.unreadSmsEmailEnabled = value
 }
@@ -689,7 +689,7 @@ func (m *UserNotificationPreferences) SetUnreadSmsEmailEnabled(value *bool)() {
 func (m *UserNotificationPreferences) SetUnreadSmsEnabled(value *bool)() {
     m.unreadSmsEnabled = value
 }
-// SetUnreadSmsSmsEnabled sets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+// SetUnreadSmsSmsEnabled sets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetUnreadSmsSmsEnabled(value *bool)() {
     m.unreadSmsSmsEnabled = value
 }

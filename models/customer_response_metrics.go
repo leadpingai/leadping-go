@@ -7,24 +7,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerResponseMetrics response metrics associated with this Leadping customer analytics.
 type CustomerResponseMetrics struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The averageMinutes property
+    // Average minutes measured in minutes.
     averageMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The averageMinutesTrend property
+    // Collection of average minutes trend included with this Leadping customer response metrics.
     averageMinutesTrend []AnalyticsTrendPointOfdecimalable
-    // The medianMinutes property
+    // Median minutes measured in minutes.
     medianMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The missedCalls property
+    // Number of calls missed during the reporting period.
     missedCalls *int32
-    // The respondedLeads property
+    // Number of responded leads represented by this Leadping customer response metrics.
     respondedLeads *int32
-    // The respondedWithinFiveMinutesPercent property
+    // Responded within five minutes percent expressed as a percentage.
     respondedWithinFiveMinutesPercent *float64
-    // The unreadMessages property
+    // Number of unread messages represented by this Leadping customer response metrics.
     unreadMessages *int32
-    // The unrespondedLeads property
+    // Number of unresponded leads represented by this Leadping customer response metrics.
     unrespondedLeads *int32
 }
 // NewCustomerResponseMetrics instantiates a new CustomerResponseMetrics and sets the default values.
@@ -44,12 +45,12 @@ func CreateCustomerResponseMetricsFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *CustomerResponseMetrics) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAverageMinutes gets the averageMinutes property value. The averageMinutes property
+// GetAverageMinutes gets the averageMinutes property value. Average minutes measured in minutes.
 // returns a UntypedNodeable when successful
 func (m *CustomerResponseMetrics) GetAverageMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.averageMinutes
 }
-// GetAverageMinutesTrend gets the averageMinutesTrend property value. The averageMinutesTrend property
+// GetAverageMinutesTrend gets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
 // returns a []AnalyticsTrendPointOfdecimalable when successful
 func (m *CustomerResponseMetrics) GetAverageMinutesTrend()([]AnalyticsTrendPointOfdecimalable) {
     return m.averageMinutesTrend
@@ -146,32 +147,32 @@ func (m *CustomerResponseMetrics) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetMedianMinutes gets the medianMinutes property value. The medianMinutes property
+// GetMedianMinutes gets the medianMinutes property value. Median minutes measured in minutes.
 // returns a UntypedNodeable when successful
 func (m *CustomerResponseMetrics) GetMedianMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.medianMinutes
 }
-// GetMissedCalls gets the missedCalls property value. The missedCalls property
+// GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerResponseMetrics) GetMissedCalls()(*int32) {
     return m.missedCalls
 }
-// GetRespondedLeads gets the respondedLeads property value. The respondedLeads property
+// GetRespondedLeads gets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
 // returns a *int32 when successful
 func (m *CustomerResponseMetrics) GetRespondedLeads()(*int32) {
     return m.respondedLeads
 }
-// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
 // returns a *float64 when successful
 func (m *CustomerResponseMetrics) GetRespondedWithinFiveMinutesPercent()(*float64) {
     return m.respondedWithinFiveMinutesPercent
 }
-// GetUnreadMessages gets the unreadMessages property value. The unreadMessages property
+// GetUnreadMessages gets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
 // returns a *int32 when successful
 func (m *CustomerResponseMetrics) GetUnreadMessages()(*int32) {
     return m.unreadMessages
 }
-// GetUnrespondedLeads gets the unrespondedLeads property value. The unrespondedLeads property
+// GetUnrespondedLeads gets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
 // returns a *int32 when successful
 func (m *CustomerResponseMetrics) GetUnrespondedLeads()(*int32) {
     return m.unrespondedLeads
@@ -244,35 +245,35 @@ func (m *CustomerResponseMetrics) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *CustomerResponseMetrics) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAverageMinutes sets the averageMinutes property value. The averageMinutes property
+// SetAverageMinutes sets the averageMinutes property value. Average minutes measured in minutes.
 func (m *CustomerResponseMetrics) SetAverageMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.averageMinutes = value
 }
-// SetAverageMinutesTrend sets the averageMinutesTrend property value. The averageMinutesTrend property
+// SetAverageMinutesTrend sets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
 func (m *CustomerResponseMetrics) SetAverageMinutesTrend(value []AnalyticsTrendPointOfdecimalable)() {
     m.averageMinutesTrend = value
 }
-// SetMedianMinutes sets the medianMinutes property value. The medianMinutes property
+// SetMedianMinutes sets the medianMinutes property value. Median minutes measured in minutes.
 func (m *CustomerResponseMetrics) SetMedianMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.medianMinutes = value
 }
-// SetMissedCalls sets the missedCalls property value. The missedCalls property
+// SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
 func (m *CustomerResponseMetrics) SetMissedCalls(value *int32)() {
     m.missedCalls = value
 }
-// SetRespondedLeads sets the respondedLeads property value. The respondedLeads property
+// SetRespondedLeads sets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
 func (m *CustomerResponseMetrics) SetRespondedLeads(value *int32)() {
     m.respondedLeads = value
 }
-// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
 func (m *CustomerResponseMetrics) SetRespondedWithinFiveMinutesPercent(value *float64)() {
     m.respondedWithinFiveMinutesPercent = value
 }
-// SetUnreadMessages sets the unreadMessages property value. The unreadMessages property
+// SetUnreadMessages sets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
 func (m *CustomerResponseMetrics) SetUnreadMessages(value *int32)() {
     m.unreadMessages = value
 }
-// SetUnrespondedLeads sets the unrespondedLeads property value. The unrespondedLeads property
+// SetUnrespondedLeads sets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
 func (m *CustomerResponseMetrics) SetUnrespondedLeads(value *int32)() {
     m.unrespondedLeads = value
 }

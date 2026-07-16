@@ -7,16 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// AnalyticsComparison date and time when this Leadping customer analytics summary was leads comparison.
 type AnalyticsComparison struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The changePercent property
+    // Percentage change between the current and previous reporting periods.
     changePercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current property
+    // Metric value for the current reporting period.
     current *float64
-    // The direction property
+    // Direction classification for this Leadping analytics comparison.
     direction *string
-    // The previous property
+    // Metric value for the preceding comparison period.
     previous *float64
 }
 // NewAnalyticsComparison instantiates a new AnalyticsComparison and sets the default values.
@@ -36,17 +37,17 @@ func CreateAnalyticsComparisonFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *AnalyticsComparison) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetChangePercent gets the changePercent property value. The changePercent property
+// GetChangePercent gets the changePercent property value. Percentage change between the current and previous reporting periods.
 // returns a UntypedNodeable when successful
 func (m *AnalyticsComparison) GetChangePercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.changePercent
 }
-// GetCurrent gets the current property value. The current property
+// GetCurrent gets the current property value. Metric value for the current reporting period.
 // returns a *float64 when successful
 func (m *AnalyticsComparison) GetCurrent()(*float64) {
     return m.current
 }
-// GetDirection gets the direction property value. The direction property
+// GetDirection gets the direction property value. Direction classification for this Leadping analytics comparison.
 // returns a *string when successful
 func (m *AnalyticsComparison) GetDirection()(*string) {
     return m.direction
@@ -97,7 +98,7 @@ func (m *AnalyticsComparison) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetPrevious gets the previous property value. The previous property
+// GetPrevious gets the previous property value. Metric value for the preceding comparison period.
 // returns a *float64 when successful
 func (m *AnalyticsComparison) GetPrevious()(*float64) {
     return m.previous
@@ -140,19 +141,19 @@ func (m *AnalyticsComparison) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *AnalyticsComparison) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetChangePercent sets the changePercent property value. The changePercent property
+// SetChangePercent sets the changePercent property value. Percentage change between the current and previous reporting periods.
 func (m *AnalyticsComparison) SetChangePercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.changePercent = value
 }
-// SetCurrent sets the current property value. The current property
+// SetCurrent sets the current property value. Metric value for the current reporting period.
 func (m *AnalyticsComparison) SetCurrent(value *float64)() {
     m.current = value
 }
-// SetDirection sets the direction property value. The direction property
+// SetDirection sets the direction property value. Direction classification for this Leadping analytics comparison.
 func (m *AnalyticsComparison) SetDirection(value *string)() {
     m.direction = value
 }
-// SetPrevious sets the previous property value. The previous property
+// SetPrevious sets the previous property value. Metric value for the preceding comparison period.
 func (m *AnalyticsComparison) SetPrevious(value *float64)() {
     m.previous = value
 }

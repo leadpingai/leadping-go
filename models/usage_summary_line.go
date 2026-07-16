@@ -17,10 +17,6 @@ type UsageSummaryLine struct {
     channel *UsageChannel
     // The monetary customer charge amount for this usage summary line.
     customerChargeAmount *float64
-    // The monetary internal cost amount for this usage summary line.
-    internalCostAmount *float64
-    // The monetary provider cost amount for this usage summary line.
-    providerCostAmount *float64
     // The quantity value for this usage summary line.
     quantity *float64
     // The record count for this usage summary line.
@@ -94,26 +90,6 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["internalCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalCostAmount(val)
-        }
-        return nil
-    }
-    res["providerCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderCostAmount(val)
-        }
-        return nil
-    }
     res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -145,16 +121,6 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     return res
-}
-// GetInternalCostAmount gets the internalCostAmount property value. The monetary internal cost amount for this usage summary line.
-// returns a *float64 when successful
-func (m *UsageSummaryLine) GetInternalCostAmount()(*float64) {
-    return m.internalCostAmount
-}
-// GetProviderCostAmount gets the providerCostAmount property value. The monetary provider cost amount for this usage summary line.
-// returns a *float64 when successful
-func (m *UsageSummaryLine) GetProviderCostAmount()(*float64) {
-    return m.providerCostAmount
 }
 // GetQuantity gets the quantity property value. The quantity value for this usage summary line.
 // returns a *float64 when successful
@@ -189,18 +155,6 @@ func (m *UsageSummaryLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteFloat64Value("customerChargeAmount", m.GetCustomerChargeAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("internalCostAmount", m.GetInternalCostAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("providerCostAmount", m.GetProviderCostAmount())
         if err != nil {
             return err
         }
@@ -248,14 +202,6 @@ func (m *UsageSummaryLine) SetChannel(value *UsageChannel)() {
 func (m *UsageSummaryLine) SetCustomerChargeAmount(value *float64)() {
     m.customerChargeAmount = value
 }
-// SetInternalCostAmount sets the internalCostAmount property value. The monetary internal cost amount for this usage summary line.
-func (m *UsageSummaryLine) SetInternalCostAmount(value *float64)() {
-    m.internalCostAmount = value
-}
-// SetProviderCostAmount sets the providerCostAmount property value. The monetary provider cost amount for this usage summary line.
-func (m *UsageSummaryLine) SetProviderCostAmount(value *float64)() {
-    m.providerCostAmount = value
-}
 // SetQuantity sets the quantity property value. The quantity value for this usage summary line.
 func (m *UsageSummaryLine) SetQuantity(value *float64)() {
     m.quantity = value
@@ -274,16 +220,12 @@ type UsageSummaryLineable interface {
     GetBillableUnit()(*BillableUnit)
     GetChannel()(*UsageChannel)
     GetCustomerChargeAmount()(*float64)
-    GetInternalCostAmount()(*float64)
-    GetProviderCostAmount()(*float64)
     GetQuantity()(*float64)
     GetRecordCount()(*int32)
     GetStatus()(*UsageRecordStatus)
     SetBillableUnit(value *BillableUnit)()
     SetChannel(value *UsageChannel)()
     SetCustomerChargeAmount(value *float64)()
-    SetInternalCostAmount(value *float64)()
-    SetProviderCostAmount(value *float64)()
     SetQuantity(value *float64)()
     SetRecordCount(value *int32)()
     SetStatus(value *UsageRecordStatus)()

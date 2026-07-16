@@ -11,9 +11,9 @@ import (
 type AutomationWorkflowStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The leadId property
+    // Unique identifier of the lead associated with this Leadping automation workflow status.
     leadId *string
-    // The runs property
+    // Collection of runs included with this Leadping automation workflow status.
     runs []AutomationWorkflowRunResponseable
 }
 // NewAutomationWorkflowStatusResponse instantiates a new AutomationWorkflowStatusResponse and sets the default values.
@@ -65,12 +65,12 @@ func (m *AutomationWorkflowStatusResponse) GetFieldDeserializers()(map[string]fu
     }
     return res
 }
-// GetLeadId gets the leadId property value. The leadId property
+// GetLeadId gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
 // returns a *string when successful
 func (m *AutomationWorkflowStatusResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetRuns gets the runs property value. The runs property
+// GetRuns gets the runs property value. Collection of runs included with this Leadping automation workflow status.
 // returns a []AutomationWorkflowRunResponseable when successful
 func (m *AutomationWorkflowStatusResponse) GetRuns()([]AutomationWorkflowRunResponseable) {
     return m.runs
@@ -107,11 +107,11 @@ func (m *AutomationWorkflowStatusResponse) Serialize(writer i878a80d2330e89d2689
 func (m *AutomationWorkflowStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLeadId sets the leadId property value. The leadId property
+// SetLeadId sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
 func (m *AutomationWorkflowStatusResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetRuns sets the runs property value. The runs property
+// SetRuns sets the runs property value. Collection of runs included with this Leadping automation workflow status.
 func (m *AutomationWorkflowStatusResponse) SetRuns(value []AutomationWorkflowRunResponseable)() {
     m.runs = value
 }

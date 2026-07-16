@@ -10,45 +10,43 @@ import (
 
 // AutomationWorkflowActionResponse user-safe action status returned for lead automation workflow visibility.
 type AutomationWorkflowActionResponse struct {
-    // The actionType property
+    // Action type classification for this Leadping automation workflow action.
     actionType *string
-    // The actionTypeDisplay property
+    // Human-readable action type display for this Leadping automation workflow action.
     actionTypeDisplay *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminDiagnostics property
-    adminDiagnostics *string
-    // The completedAt property
+    // Date and time when the automation workflow action completed.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The failedAt property
+    // Date and time when the automation workflow action failed.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The failureCode property
+    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow action.
     failureCode *string
-    // The id property
+    // Unique Leadping identifier for the automation workflow action.
     id *string
-    // The nextRetryAt property
+    // Date and time when the next retry is scheduled.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The retryCount property
+    // Total number of retry records represented by this Leadping automation workflow action.
     retryCount *int32
-    // The safeReason property
+    // Safe reason associated with this Leadping automation workflow action.
     safeReason *string
-    // The scheduledAt property
+    // Date and time when the automation workflow action was scheduled.
     scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The skippedAt property
+    // Date and time when the workflow action was skipped.
     skippedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The startedAt property
+    // Date and time when the automation workflow action started.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The status property
+    // Current status for this Leadping automation workflow action.
     status *string
-    // The statusDisplay property
+    // Human-readable status display for this Leadping automation workflow action.
     statusDisplay *string
-    // The stepDisplayName property
+    // Human-readable step display name associated with this Leadping automation workflow action.
     stepDisplayName *string
-    // The stepId property
+    // Unique identifier of the step associated with this Leadping automation workflow action.
     stepId *string
-    // The stepOrder property
+    // Step order associated with this Leadping automation workflow action.
     stepOrder *int32
-    // The userSummary property
+    // Human-readable user summary for this Leadping automation workflow action.
     userSummary *string
 }
 // NewAutomationWorkflowActionResponse instantiates a new AutomationWorkflowActionResponse and sets the default values.
@@ -63,12 +61,12 @@ func NewAutomationWorkflowActionResponse()(*AutomationWorkflowActionResponse) {
 func CreateAutomationWorkflowActionResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationWorkflowActionResponse(), nil
 }
-// GetActionType gets the actionType property value. The actionType property
+// GetActionType gets the actionType property value. Action type classification for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetActionType()(*string) {
     return m.actionType
 }
-// GetActionTypeDisplay gets the actionTypeDisplay property value. The actionTypeDisplay property
+// GetActionTypeDisplay gets the actionTypeDisplay property value. Human-readable action type display for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetActionTypeDisplay()(*string) {
     return m.actionTypeDisplay
@@ -78,22 +76,17 @@ func (m *AutomationWorkflowActionResponse) GetActionTypeDisplay()(*string) {
 func (m *AutomationWorkflowActionResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminDiagnostics gets the adminDiagnostics property value. The adminDiagnostics property
-// returns a *string when successful
-func (m *AutomationWorkflowActionResponse) GetAdminDiagnostics()(*string) {
-    return m.adminDiagnostics
-}
-// GetCompletedAt gets the completedAt property value. The completedAt property
+// GetCompletedAt gets the completedAt property value. Date and time when the automation workflow action completed.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. Date and time when the automation workflow action failed.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
 }
-// GetFailureCode gets the failureCode property value. The failureCode property
+// GetFailureCode gets the failureCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetFailureCode()(*string) {
     return m.failureCode
@@ -119,16 +112,6 @@ func (m *AutomationWorkflowActionResponse) GetFieldDeserializers()(map[string]fu
         }
         if val != nil {
             m.SetActionTypeDisplay(val)
-        }
-        return nil
-    }
-    res["adminDiagnostics"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminDiagnostics(val)
         }
         return nil
     }
@@ -294,67 +277,67 @@ func (m *AutomationWorkflowActionResponse) GetFieldDeserializers()(map[string]fu
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for the automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetId()(*string) {
     return m.id
 }
-// GetNextRetryAt gets the nextRetryAt property value. The nextRetryAt property
+// GetNextRetryAt gets the nextRetryAt property value. Date and time when the next retry is scheduled.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
-// GetRetryCount gets the retryCount property value. The retryCount property
+// GetRetryCount gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
 // returns a *int32 when successful
 func (m *AutomationWorkflowActionResponse) GetRetryCount()(*int32) {
     return m.retryCount
 }
-// GetSafeReason gets the safeReason property value. The safeReason property
+// GetSafeReason gets the safeReason property value. Safe reason associated with this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetSafeReason()(*string) {
     return m.safeReason
 }
-// GetScheduledAt gets the scheduledAt property value. The scheduledAt property
+// GetScheduledAt gets the scheduledAt property value. Date and time when the automation workflow action was scheduled.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledAt
 }
-// GetSkippedAt gets the skippedAt property value. The skippedAt property
+// GetSkippedAt gets the skippedAt property value. Date and time when the workflow action was skipped.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetSkippedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.skippedAt
 }
-// GetStartedAt gets the startedAt property value. The startedAt property
+// GetStartedAt gets the startedAt property value. Date and time when the automation workflow action started.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startedAt
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Current status for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetStatus()(*string) {
     return m.status
 }
-// GetStatusDisplay gets the statusDisplay property value. The statusDisplay property
+// GetStatusDisplay gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetStatusDisplay()(*string) {
     return m.statusDisplay
 }
-// GetStepDisplayName gets the stepDisplayName property value. The stepDisplayName property
+// GetStepDisplayName gets the stepDisplayName property value. Human-readable step display name associated with this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetStepDisplayName()(*string) {
     return m.stepDisplayName
 }
-// GetStepId gets the stepId property value. The stepId property
+// GetStepId gets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetStepId()(*string) {
     return m.stepId
 }
-// GetStepOrder gets the stepOrder property value. The stepOrder property
+// GetStepOrder gets the stepOrder property value. Step order associated with this Leadping automation workflow action.
 // returns a *int32 when successful
 func (m *AutomationWorkflowActionResponse) GetStepOrder()(*int32) {
     return m.stepOrder
 }
-// GetUserSummary gets the userSummary property value. The userSummary property
+// GetUserSummary gets the userSummary property value. Human-readable user summary for this Leadping automation workflow action.
 // returns a *string when successful
 func (m *AutomationWorkflowActionResponse) GetUserSummary()(*string) {
     return m.userSummary
@@ -369,12 +352,6 @@ func (m *AutomationWorkflowActionResponse) Serialize(writer i878a80d2330e89d2689
     }
     {
         err := writer.WriteStringValue("actionTypeDisplay", m.GetActionTypeDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("adminDiagnostics", m.GetAdminDiagnostics())
         if err != nil {
             return err
         }
@@ -483,11 +460,11 @@ func (m *AutomationWorkflowActionResponse) Serialize(writer i878a80d2330e89d2689
     }
     return nil
 }
-// SetActionType sets the actionType property value. The actionType property
+// SetActionType sets the actionType property value. Action type classification for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetActionType(value *string)() {
     m.actionType = value
 }
-// SetActionTypeDisplay sets the actionTypeDisplay property value. The actionTypeDisplay property
+// SetActionTypeDisplay sets the actionTypeDisplay property value. Human-readable action type display for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetActionTypeDisplay(value *string)() {
     m.actionTypeDisplay = value
 }
@@ -495,71 +472,67 @@ func (m *AutomationWorkflowActionResponse) SetActionTypeDisplay(value *string)()
 func (m *AutomationWorkflowActionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminDiagnostics sets the adminDiagnostics property value. The adminDiagnostics property
-func (m *AutomationWorkflowActionResponse) SetAdminDiagnostics(value *string)() {
-    m.adminDiagnostics = value
-}
-// SetCompletedAt sets the completedAt property value. The completedAt property
+// SetCompletedAt sets the completedAt property value. Date and time when the automation workflow action completed.
 func (m *AutomationWorkflowActionResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. Date and time when the automation workflow action failed.
 func (m *AutomationWorkflowActionResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFailureCode sets the failureCode property value. The failureCode property
+// SetFailureCode sets the failureCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetFailureCode(value *string)() {
     m.failureCode = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for the automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetId(value *string)() {
     m.id = value
 }
-// SetNextRetryAt sets the nextRetryAt property value. The nextRetryAt property
+// SetNextRetryAt sets the nextRetryAt property value. Date and time when the next retry is scheduled.
 func (m *AutomationWorkflowActionResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
-// SetRetryCount sets the retryCount property value. The retryCount property
+// SetRetryCount sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetRetryCount(value *int32)() {
     m.retryCount = value
 }
-// SetSafeReason sets the safeReason property value. The safeReason property
+// SetSafeReason sets the safeReason property value. Safe reason associated with this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetSafeReason(value *string)() {
     m.safeReason = value
 }
-// SetScheduledAt sets the scheduledAt property value. The scheduledAt property
+// SetScheduledAt sets the scheduledAt property value. Date and time when the automation workflow action was scheduled.
 func (m *AutomationWorkflowActionResponse) SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledAt = value
 }
-// SetSkippedAt sets the skippedAt property value. The skippedAt property
+// SetSkippedAt sets the skippedAt property value. Date and time when the workflow action was skipped.
 func (m *AutomationWorkflowActionResponse) SetSkippedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.skippedAt = value
 }
-// SetStartedAt sets the startedAt property value. The startedAt property
+// SetStartedAt sets the startedAt property value. Date and time when the automation workflow action started.
 func (m *AutomationWorkflowActionResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Current status for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetStatus(value *string)() {
     m.status = value
 }
-// SetStatusDisplay sets the statusDisplay property value. The statusDisplay property
+// SetStatusDisplay sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetStatusDisplay(value *string)() {
     m.statusDisplay = value
 }
-// SetStepDisplayName sets the stepDisplayName property value. The stepDisplayName property
+// SetStepDisplayName sets the stepDisplayName property value. Human-readable step display name associated with this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetStepDisplayName(value *string)() {
     m.stepDisplayName = value
 }
-// SetStepId sets the stepId property value. The stepId property
+// SetStepId sets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetStepId(value *string)() {
     m.stepId = value
 }
-// SetStepOrder sets the stepOrder property value. The stepOrder property
+// SetStepOrder sets the stepOrder property value. Step order associated with this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetStepOrder(value *int32)() {
     m.stepOrder = value
 }
-// SetUserSummary sets the userSummary property value. The userSummary property
+// SetUserSummary sets the userSummary property value. Human-readable user summary for this Leadping automation workflow action.
 func (m *AutomationWorkflowActionResponse) SetUserSummary(value *string)() {
     m.userSummary = value
 }
@@ -568,7 +541,6 @@ type AutomationWorkflowActionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActionType()(*string)
     GetActionTypeDisplay()(*string)
-    GetAdminDiagnostics()(*string)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetFailureCode()(*string)
@@ -587,7 +559,6 @@ type AutomationWorkflowActionResponseable interface {
     GetUserSummary()(*string)
     SetActionType(value *string)()
     SetActionTypeDisplay(value *string)()
-    SetAdminDiagnostics(value *string)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetFailureCode(value *string)()

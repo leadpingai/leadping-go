@@ -13,12 +13,8 @@ type PhoneNumberStatusResponse struct {
     additionalData map[string]any
     // Indicates whether this phone number can currently place outbound calls.
     callsPossible *int32
-    // Voice call warmup status for this phone number.
-    callWarmup PhoneNumberStatusResponse_callWarmupable
     // Indicates whether this phone number can currently send SMS messages.
     messagesPossible *int32
-    // Number of warmup SMS messages completed for this sender.
-    messagesWarmed *int32
     // E.164 phone number exposed by this phone number readiness status.
     number *string
     // Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
@@ -31,8 +27,6 @@ type PhoneNumberStatusResponse struct {
     smsWarmup PhoneNumberStatusResponse_smsWarmupable
     // Phone number traffic metrics for recent SMS and call activity.
     trafficMetrics PhoneNumberTrafficMetricsResponseable
-    // Number of voice warmup calls completed for this phone number.
-    warmupCallsMade *int32
 }
 // NewPhoneNumberStatusResponse instantiates a new PhoneNumberStatusResponse and sets the default values.
 func NewPhoneNumberStatusResponse()(*PhoneNumberStatusResponse) {
@@ -56,11 +50,6 @@ func (m *PhoneNumberStatusResponse) GetAdditionalData()(map[string]any) {
 func (m *PhoneNumberStatusResponse) GetCallsPossible()(*int32) {
     return m.callsPossible
 }
-// GetCallWarmup gets the callWarmup property value. Voice call warmup status for this phone number.
-// returns a PhoneNumberStatusResponse_callWarmupable when successful
-func (m *PhoneNumberStatusResponse) GetCallWarmup()(PhoneNumberStatusResponse_callWarmupable) {
-    return m.callWarmup
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -75,16 +64,6 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
-    res["callWarmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberStatusResponse_callWarmupFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmup(val.(PhoneNumberStatusResponse_callWarmupable))
-        }
-        return nil
-    }
     res["messagesPossible"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -92,16 +71,6 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
         }
         if val != nil {
             m.SetMessagesPossible(val)
-        }
-        return nil
-    }
-    res["messagesWarmed"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessagesWarmed(val)
         }
         return nil
     }
@@ -171,27 +140,12 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
-    res["warmupCallsMade"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupCallsMade(val)
-        }
-        return nil
-    }
     return res
 }
 // GetMessagesPossible gets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetMessagesPossible()(*int32) {
     return m.messagesPossible
-}
-// GetMessagesWarmed gets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
-// returns a *int32 when successful
-func (m *PhoneNumberStatusResponse) GetMessagesWarmed()(*int32) {
-    return m.messagesWarmed
 }
 // GetNumber gets the number property value. E.164 phone number exposed by this phone number readiness status.
 // returns a *string when successful
@@ -223,11 +177,6 @@ func (m *PhoneNumberStatusResponse) GetSmsWarmup()(PhoneNumberStatusResponse_sms
 func (m *PhoneNumberStatusResponse) GetTrafficMetrics()(PhoneNumberTrafficMetricsResponseable) {
     return m.trafficMetrics
 }
-// GetWarmupCallsMade gets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
-// returns a *int32 when successful
-func (m *PhoneNumberStatusResponse) GetWarmupCallsMade()(*int32) {
-    return m.warmupCallsMade
-}
 // Serialize serializes information the current object
 func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
@@ -237,19 +186,7 @@ func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
-        err := writer.WriteObjectValue("callWarmup", m.GetCallWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteInt32Value("messagesPossible", m.GetMessagesPossible())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("messagesWarmed", m.GetMessagesWarmed())
         if err != nil {
             return err
         }
@@ -297,12 +234,6 @@ func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
-        err := writer.WriteInt32Value("warmupCallsMade", m.GetWarmupCallsMade())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -318,17 +249,9 @@ func (m *PhoneNumberStatusResponse) SetAdditionalData(value map[string]any)() {
 func (m *PhoneNumberStatusResponse) SetCallsPossible(value *int32)() {
     m.callsPossible = value
 }
-// SetCallWarmup sets the callWarmup property value. Voice call warmup status for this phone number.
-func (m *PhoneNumberStatusResponse) SetCallWarmup(value PhoneNumberStatusResponse_callWarmupable)() {
-    m.callWarmup = value
-}
 // SetMessagesPossible sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 func (m *PhoneNumberStatusResponse) SetMessagesPossible(value *int32)() {
     m.messagesPossible = value
-}
-// SetMessagesWarmed sets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
-func (m *PhoneNumberStatusResponse) SetMessagesWarmed(value *int32)() {
-    m.messagesWarmed = value
 }
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number readiness status.
 func (m *PhoneNumberStatusResponse) SetNumber(value *string)() {
@@ -354,33 +277,23 @@ func (m *PhoneNumberStatusResponse) SetSmsWarmup(value PhoneNumberStatusResponse
 func (m *PhoneNumberStatusResponse) SetTrafficMetrics(value PhoneNumberTrafficMetricsResponseable)() {
     m.trafficMetrics = value
 }
-// SetWarmupCallsMade sets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
-func (m *PhoneNumberStatusResponse) SetWarmupCallsMade(value *int32)() {
-    m.warmupCallsMade = value
-}
 type PhoneNumberStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetCallsPossible()(*int32)
-    GetCallWarmup()(PhoneNumberStatusResponse_callWarmupable)
     GetMessagesPossible()(*int32)
-    GetMessagesWarmed()(*int32)
     GetNumber()(*string)
     GetOptOutMetrics()(PhoneNumberOptOutMetricsResponseable)
     GetOutboundCapacity()(PhoneNumberStatusResponse_outboundCapacityable)
     GetRecentEvents()([]PhoneNumberMessagingEventResponseable)
     GetSmsWarmup()(PhoneNumberStatusResponse_smsWarmupable)
     GetTrafficMetrics()(PhoneNumberTrafficMetricsResponseable)
-    GetWarmupCallsMade()(*int32)
     SetCallsPossible(value *int32)()
-    SetCallWarmup(value PhoneNumberStatusResponse_callWarmupable)()
     SetMessagesPossible(value *int32)()
-    SetMessagesWarmed(value *int32)()
     SetNumber(value *string)()
     SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)()
     SetOutboundCapacity(value PhoneNumberStatusResponse_outboundCapacityable)()
     SetRecentEvents(value []PhoneNumberMessagingEventResponseable)()
     SetSmsWarmup(value PhoneNumberStatusResponse_smsWarmupable)()
     SetTrafficMetrics(value PhoneNumberTrafficMetricsResponseable)()
-    SetWarmupCallsMade(value *int32)()
 }

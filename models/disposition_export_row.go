@@ -22,11 +22,11 @@ type DispositionExportRow struct {
     callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Controlled disposition categories used for reporting, automation, and analytics.
     category *DispositionExportRow_category
-    // The changedAt property
+    // Date and time when the disposition change occurred.
     changedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The changedByAutomationId property
+    // Unique identifier of the automation that changed the disposition, when applicable.
     changedByAutomationId *string
-    // The changedByUserId property
+    // Unique identifier of the Leadping user who made the change.
     changedByUserId *string
     // Known sources that can change a lead's current disposition.
     changeSource *DispositionExportRow_changeSource
@@ -40,19 +40,19 @@ type DispositionExportRow struct {
     isMissedCallFollowUp *bool
     // The lead ID associated with this disposition export row.
     leadId *string
-    // The newDispositionId property
+    // Unique identifier of the new disposition associated with this Leadping disposition export row.
     newDispositionId *string
     // The operator or customer notes recorded for this disposition export row.
     notes *string
-    // The oldDispositionId property
+    // Unique identifier of the old disposition associated with this Leadping disposition export row.
     oldDispositionId *string
-    // The oldDispositionOutcome property
+    // Old disposition outcome associated with this Leadping disposition export row.
     oldDispositionOutcome *string
-    // The oldDispositionType property
+    // Old disposition type classification for this Leadping disposition export row.
     oldDispositionType *string
     // The outcome value for this disposition export row.
     outcome *string
-    // The reason property
+    // Human-readable explanation for the current disposition export row outcome.
     reason *string
     // The related call event ID associated with this disposition export row.
     relatedCallEventId *string
@@ -107,17 +107,17 @@ func (m *DispositionExportRow) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *DispositionExportRow) GetCategory()(*DispositionExportRow_category) {
     return m.category
 }
-// GetChangedAt gets the changedAt property value. The changedAt property
+// GetChangedAt gets the changedAt property value. Date and time when the disposition change occurred.
 // returns a *Time when successful
 func (m *DispositionExportRow) GetChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.changedAt
 }
-// GetChangedByAutomationId gets the changedByAutomationId property value. The changedByAutomationId property
+// GetChangedByAutomationId gets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
 // returns a *string when successful
 func (m *DispositionExportRow) GetChangedByAutomationId()(*string) {
     return m.changedByAutomationId
 }
-// GetChangedByUserId gets the changedByUserId property value. The changedByUserId property
+// GetChangedByUserId gets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
 // returns a *string when successful
 func (m *DispositionExportRow) GetChangedByUserId()(*string) {
     return m.changedByUserId
@@ -418,7 +418,7 @@ func (m *DispositionExportRow) GetIsMissedCallFollowUp()(*bool) {
 func (m *DispositionExportRow) GetLeadId()(*string) {
     return m.leadId
 }
-// GetNewDispositionId gets the newDispositionId property value. The newDispositionId property
+// GetNewDispositionId gets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition export row.
 // returns a *string when successful
 func (m *DispositionExportRow) GetNewDispositionId()(*string) {
     return m.newDispositionId
@@ -428,17 +428,17 @@ func (m *DispositionExportRow) GetNewDispositionId()(*string) {
 func (m *DispositionExportRow) GetNotes()(*string) {
     return m.notes
 }
-// GetOldDispositionId gets the oldDispositionId property value. The oldDispositionId property
+// GetOldDispositionId gets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition export row.
 // returns a *string when successful
 func (m *DispositionExportRow) GetOldDispositionId()(*string) {
     return m.oldDispositionId
 }
-// GetOldDispositionOutcome gets the oldDispositionOutcome property value. The oldDispositionOutcome property
+// GetOldDispositionOutcome gets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition export row.
 // returns a *string when successful
 func (m *DispositionExportRow) GetOldDispositionOutcome()(*string) {
     return m.oldDispositionOutcome
 }
-// GetOldDispositionType gets the oldDispositionType property value. The oldDispositionType property
+// GetOldDispositionType gets the oldDispositionType property value. Old disposition type classification for this Leadping disposition export row.
 // returns a *string when successful
 func (m *DispositionExportRow) GetOldDispositionType()(*string) {
     return m.oldDispositionType
@@ -448,7 +448,7 @@ func (m *DispositionExportRow) GetOldDispositionType()(*string) {
 func (m *DispositionExportRow) GetOutcome()(*string) {
     return m.outcome
 }
-// GetReason gets the reason property value. The reason property
+// GetReason gets the reason property value. Human-readable explanation for the current disposition export row outcome.
 // returns a *string when successful
 func (m *DispositionExportRow) GetReason()(*string) {
     return m.reason
@@ -670,15 +670,15 @@ func (m *DispositionExportRow) SetCallbackAt(value *i336074805fc853987abe6f7fe3a
 func (m *DispositionExportRow) SetCategory(value *DispositionExportRow_category)() {
     m.category = value
 }
-// SetChangedAt sets the changedAt property value. The changedAt property
+// SetChangedAt sets the changedAt property value. Date and time when the disposition change occurred.
 func (m *DispositionExportRow) SetChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.changedAt = value
 }
-// SetChangedByAutomationId sets the changedByAutomationId property value. The changedByAutomationId property
+// SetChangedByAutomationId sets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
 func (m *DispositionExportRow) SetChangedByAutomationId(value *string)() {
     m.changedByAutomationId = value
 }
-// SetChangedByUserId sets the changedByUserId property value. The changedByUserId property
+// SetChangedByUserId sets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
 func (m *DispositionExportRow) SetChangedByUserId(value *string)() {
     m.changedByUserId = value
 }
@@ -706,7 +706,7 @@ func (m *DispositionExportRow) SetIsMissedCallFollowUp(value *bool)() {
 func (m *DispositionExportRow) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetNewDispositionId sets the newDispositionId property value. The newDispositionId property
+// SetNewDispositionId sets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition export row.
 func (m *DispositionExportRow) SetNewDispositionId(value *string)() {
     m.newDispositionId = value
 }
@@ -714,15 +714,15 @@ func (m *DispositionExportRow) SetNewDispositionId(value *string)() {
 func (m *DispositionExportRow) SetNotes(value *string)() {
     m.notes = value
 }
-// SetOldDispositionId sets the oldDispositionId property value. The oldDispositionId property
+// SetOldDispositionId sets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition export row.
 func (m *DispositionExportRow) SetOldDispositionId(value *string)() {
     m.oldDispositionId = value
 }
-// SetOldDispositionOutcome sets the oldDispositionOutcome property value. The oldDispositionOutcome property
+// SetOldDispositionOutcome sets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition export row.
 func (m *DispositionExportRow) SetOldDispositionOutcome(value *string)() {
     m.oldDispositionOutcome = value
 }
-// SetOldDispositionType sets the oldDispositionType property value. The oldDispositionType property
+// SetOldDispositionType sets the oldDispositionType property value. Old disposition type classification for this Leadping disposition export row.
 func (m *DispositionExportRow) SetOldDispositionType(value *string)() {
     m.oldDispositionType = value
 }
@@ -730,7 +730,7 @@ func (m *DispositionExportRow) SetOldDispositionType(value *string)() {
 func (m *DispositionExportRow) SetOutcome(value *string)() {
     m.outcome = value
 }
-// SetReason sets the reason property value. The reason property
+// SetReason sets the reason property value. Human-readable explanation for the current disposition export row outcome.
 func (m *DispositionExportRow) SetReason(value *string)() {
     m.reason = value
 }

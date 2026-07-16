@@ -24,7 +24,7 @@ type ConversationResponse struct {
     firstName *string
     // Unique Leadping identifier for this conversation response.
     id *string
-    // The isArchived property
+    // Indicates whether the Leadping conversation has been archived.
     isArchived *bool
     // Indicates whether the current user has unread activity in the conversation.
     isUnread *bool
@@ -282,7 +282,7 @@ func (m *ConversationResponse) GetFirstName()(*string) {
 func (m *ConversationResponse) GetId()(*string) {
     return m.id
 }
-// GetIsArchived gets the isArchived property value. The isArchived property
+// GetIsArchived gets the isArchived property value. Indicates whether the Leadping conversation has been archived.
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsArchived()(*bool) {
     return m.isArchived
@@ -489,7 +489,7 @@ func (m *ConversationResponse) SetFirstName(value *string)() {
 func (m *ConversationResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsArchived sets the isArchived property value. The isArchived property
+// SetIsArchived sets the isArchived property value. Indicates whether the Leadping conversation has been archived.
 func (m *ConversationResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }

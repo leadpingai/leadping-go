@@ -10,27 +10,25 @@ import (
 
 // AutomationWorkflowEventResponse user-safe workflow history event returned for lead automation status.
 type AutomationWorkflowEventResponse struct {
-    // The actionId property
+    // Unique identifier of the action associated with this Leadping automation workflow event.
     actionId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The adminDiagnostics property
-    adminDiagnostics *string
-    // The eventType property
+    // Event type classification for this Leadping automation workflow event.
     eventType *string
-    // The id property
+    // Unique Leadping identifier for the automation workflow event.
     id *string
-    // The occurredAt property
+    // Date and time when the automation workflow event event occurred.
     occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The reasonCode property
+    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
     reasonCode *string
-    // The status property
+    // Current status for this Leadping automation workflow event.
     status *string
-    // The statusDisplay property
+    // Human-readable status display for this Leadping automation workflow event.
     statusDisplay *string
-    // The stepId property
+    // Unique identifier of the step associated with this Leadping automation workflow event.
     stepId *string
-    // The summary property
+    // Human-readable summary for this Leadping automation workflow event.
     summary *string
 }
 // NewAutomationWorkflowEventResponse instantiates a new AutomationWorkflowEventResponse and sets the default values.
@@ -45,7 +43,7 @@ func NewAutomationWorkflowEventResponse()(*AutomationWorkflowEventResponse) {
 func CreateAutomationWorkflowEventResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationWorkflowEventResponse(), nil
 }
-// GetActionId gets the actionId property value. The actionId property
+// GetActionId gets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetActionId()(*string) {
     return m.actionId
@@ -55,12 +53,7 @@ func (m *AutomationWorkflowEventResponse) GetActionId()(*string) {
 func (m *AutomationWorkflowEventResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminDiagnostics gets the adminDiagnostics property value. The adminDiagnostics property
-// returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetAdminDiagnostics()(*string) {
-    return m.adminDiagnostics
-}
-// GetEventType gets the eventType property value. The eventType property
+// GetEventType gets the eventType property value. Event type classification for this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetEventType()(*string) {
     return m.eventType
@@ -76,16 +69,6 @@ func (m *AutomationWorkflowEventResponse) GetFieldDeserializers()(map[string]fun
         }
         if val != nil {
             m.SetActionId(val)
-        }
-        return nil
-    }
-    res["adminDiagnostics"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminDiagnostics(val)
         }
         return nil
     }
@@ -171,37 +154,37 @@ func (m *AutomationWorkflowEventResponse) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for the automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetId()(*string) {
     return m.id
 }
-// GetOccurredAt gets the occurredAt property value. The occurredAt property
+// GetOccurredAt gets the occurredAt property value. Date and time when the automation workflow event event occurred.
 // returns a *Time when successful
 func (m *AutomationWorkflowEventResponse) GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.occurredAt
 }
-// GetReasonCode gets the reasonCode property value. The reasonCode property
+// GetReasonCode gets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetReasonCode()(*string) {
     return m.reasonCode
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Current status for this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetStatus()(*string) {
     return m.status
 }
-// GetStatusDisplay gets the statusDisplay property value. The statusDisplay property
+// GetStatusDisplay gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetStatusDisplay()(*string) {
     return m.statusDisplay
 }
-// GetStepId gets the stepId property value. The stepId property
+// GetStepId gets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetStepId()(*string) {
     return m.stepId
 }
-// GetSummary gets the summary property value. The summary property
+// GetSummary gets the summary property value. Human-readable summary for this Leadping automation workflow event.
 // returns a *string when successful
 func (m *AutomationWorkflowEventResponse) GetSummary()(*string) {
     return m.summary
@@ -210,12 +193,6 @@ func (m *AutomationWorkflowEventResponse) GetSummary()(*string) {
 func (m *AutomationWorkflowEventResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("actionId", m.GetActionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("adminDiagnostics", m.GetAdminDiagnostics())
         if err != nil {
             return err
         }
@@ -276,7 +253,7 @@ func (m *AutomationWorkflowEventResponse) Serialize(writer i878a80d2330e89d26896
     }
     return nil
 }
-// SetActionId sets the actionId property value. The actionId property
+// SetActionId sets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetActionId(value *string)() {
     m.actionId = value
 }
@@ -284,39 +261,35 @@ func (m *AutomationWorkflowEventResponse) SetActionId(value *string)() {
 func (m *AutomationWorkflowEventResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminDiagnostics sets the adminDiagnostics property value. The adminDiagnostics property
-func (m *AutomationWorkflowEventResponse) SetAdminDiagnostics(value *string)() {
-    m.adminDiagnostics = value
-}
-// SetEventType sets the eventType property value. The eventType property
+// SetEventType sets the eventType property value. Event type classification for this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetEventType(value *string)() {
     m.eventType = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for the automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetId(value *string)() {
     m.id = value
 }
-// SetOccurredAt sets the occurredAt property value. The occurredAt property
+// SetOccurredAt sets the occurredAt property value. Date and time when the automation workflow event event occurred.
 func (m *AutomationWorkflowEventResponse) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.occurredAt = value
 }
-// SetReasonCode sets the reasonCode property value. The reasonCode property
+// SetReasonCode sets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetReasonCode(value *string)() {
     m.reasonCode = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Current status for this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetStatus(value *string)() {
     m.status = value
 }
-// SetStatusDisplay sets the statusDisplay property value. The statusDisplay property
+// SetStatusDisplay sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetStatusDisplay(value *string)() {
     m.statusDisplay = value
 }
-// SetStepId sets the stepId property value. The stepId property
+// SetStepId sets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetStepId(value *string)() {
     m.stepId = value
 }
-// SetSummary sets the summary property value. The summary property
+// SetSummary sets the summary property value. Human-readable summary for this Leadping automation workflow event.
 func (m *AutomationWorkflowEventResponse) SetSummary(value *string)() {
     m.summary = value
 }
@@ -324,7 +297,6 @@ type AutomationWorkflowEventResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActionId()(*string)
-    GetAdminDiagnostics()(*string)
     GetEventType()(*string)
     GetId()(*string)
     GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -334,7 +306,6 @@ type AutomationWorkflowEventResponseable interface {
     GetStepId()(*string)
     GetSummary()(*string)
     SetActionId(value *string)()
-    SetAdminDiagnostics(value *string)()
     SetEventType(value *string)()
     SetId(value *string)()
     SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

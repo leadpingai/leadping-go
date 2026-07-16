@@ -13,11 +13,6 @@ import (
 type FeedbackRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// Admin the admin property
-// returns a *AdminRequestBuilder when successful
-func (m *FeedbackRequestBuilder) Admin()(*AdminRequestBuilder) {
-    return NewAdminRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // NewFeedbackRequestBuilderInternal instantiates a new FeedbackRequestBuilder and sets the default values.
 func NewFeedbackRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*FeedbackRequestBuilder) {
     m := &FeedbackRequestBuilder{

@@ -11,13 +11,13 @@ import (
 type SourceMetricsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The generatedAt property
+    // Date and time when the source metrics was generated.
     generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The points property
+    // Collection of points included with this Leadping source metrics.
     points []AnalyticsTrendPointOfintable
-    // The range property
+    // Range associated with this Leadping source metrics.
     rangeEscaped AnalyticsDateRangeable
-    // The totalLeads property
+    // Total number of leads records represented by this Leadping source metrics.
     totalLeads *int32
 }
 // NewSourceMetricsResponse instantiates a new SourceMetricsResponse and sets the default values.
@@ -89,22 +89,22 @@ func (m *SourceMetricsResponse) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetGeneratedAt gets the generatedAt property value. The generatedAt property
+// GetGeneratedAt gets the generatedAt property value. Date and time when the source metrics was generated.
 // returns a *Time when successful
 func (m *SourceMetricsResponse) GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.generatedAt
 }
-// GetPoints gets the points property value. The points property
+// GetPoints gets the points property value. Collection of points included with this Leadping source metrics.
 // returns a []AnalyticsTrendPointOfintable when successful
 func (m *SourceMetricsResponse) GetPoints()([]AnalyticsTrendPointOfintable) {
     return m.points
 }
-// GetRangeEscaped gets the range property value. The range property
+// GetRangeEscaped gets the range property value. Range associated with this Leadping source metrics.
 // returns a AnalyticsDateRangeable when successful
 func (m *SourceMetricsResponse) GetRangeEscaped()(AnalyticsDateRangeable) {
     return m.rangeEscaped
 }
-// GetTotalLeads gets the totalLeads property value. The totalLeads property
+// GetTotalLeads gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
 // returns a *int32 when successful
 func (m *SourceMetricsResponse) GetTotalLeads()(*int32) {
     return m.totalLeads
@@ -153,19 +153,19 @@ func (m *SourceMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *SourceMetricsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetGeneratedAt sets the generatedAt property value. The generatedAt property
+// SetGeneratedAt sets the generatedAt property value. Date and time when the source metrics was generated.
 func (m *SourceMetricsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.generatedAt = value
 }
-// SetPoints sets the points property value. The points property
+// SetPoints sets the points property value. Collection of points included with this Leadping source metrics.
 func (m *SourceMetricsResponse) SetPoints(value []AnalyticsTrendPointOfintable)() {
     m.points = value
 }
-// SetRangeEscaped sets the range property value. The range property
+// SetRangeEscaped sets the range property value. Range associated with this Leadping source metrics.
 func (m *SourceMetricsResponse) SetRangeEscaped(value AnalyticsDateRangeable)() {
     m.rangeEscaped = value
 }
-// SetTotalLeads sets the totalLeads property value. The totalLeads property
+// SetTotalLeads sets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
 func (m *SourceMetricsResponse) SetTotalLeads(value *int32)() {
     m.totalLeads = value
 }

@@ -11,18 +11,10 @@ import (
 type SourceRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride SourceRequest_adminEnablementOverrideable
     // Product allowlist used to accept or route leads from this source.
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Business ID that owns or will own this lead source.
-    businessId *string
-    // Indicates whether the business or sender passed compliance review.
-    complianceApproved *bool
-    // Compliance notes captured for admin review.
-    complianceNotes *string
     // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Tag IDs automatically assigned to leads created by this source.
@@ -59,11 +51,6 @@ func CreateSourceRequestFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *SourceRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a SourceRequest_adminEnablementOverrideable when successful
-func (m *SourceRequest) GetAdminEnablementOverride()(SourceRequest_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
 // GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
 func (m *SourceRequest) GetAllowedProducts()([]string) {
@@ -73,21 +60,6 @@ func (m *SourceRequest) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceRequest) GetAllowedStates()([]string) {
     return m.allowedStates
-}
-// GetBusinessId gets the businessId property value. Business ID that owns or will own this lead source.
-// returns a *string when successful
-func (m *SourceRequest) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
-// returns a *bool when successful
-func (m *SourceRequest) GetComplianceApproved()(*bool) {
-    return m.complianceApproved
-}
-// GetComplianceNotes gets the complianceNotes property value. Compliance notes captured for admin review.
-// returns a *string when successful
-func (m *SourceRequest) GetComplianceNotes()(*string) {
-    return m.complianceNotes
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
@@ -118,16 +90,6 @@ func (m *SourceRequest) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceRequest_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(SourceRequest_adminEnablementOverrideable))
-        }
-        return nil
-    }
     res["allowedProducts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfPrimitiveValues("string")
         if err != nil {
@@ -157,36 +119,6 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
                 }
             }
             m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["complianceApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceApproved(val)
-        }
-        return nil
-    }
-    res["complianceNotes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceNotes(val)
         }
         return nil
     }
@@ -316,12 +248,6 @@ func (m *SourceRequest) GetRequiresTrustedForm()(*bool) {
 }
 // Serialize serializes information the current object
 func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetAllowedProducts() != nil {
         err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
         if err != nil {
@@ -330,24 +256,6 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     if m.GetAllowedStates() != nil {
         err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("complianceApproved", m.GetComplianceApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceNotes", m.GetComplianceNotes())
         if err != nil {
             return err
         }
@@ -418,10 +326,6 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *SourceRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *SourceRequest) SetAdminEnablementOverride(value SourceRequest_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 func (m *SourceRequest) SetAllowedProducts(value []string)() {
     m.allowedProducts = value
@@ -429,18 +333,6 @@ func (m *SourceRequest) SetAllowedProducts(value []string)() {
 // SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceRequest) SetAllowedStates(value []string)() {
     m.allowedStates = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns or will own this lead source.
-func (m *SourceRequest) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
-func (m *SourceRequest) SetComplianceApproved(value *bool)() {
-    m.complianceApproved = value
-}
-// SetComplianceNotes sets the complianceNotes property value. Compliance notes captured for admin review.
-func (m *SourceRequest) SetComplianceNotes(value *string)() {
-    m.complianceNotes = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceRequest) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -481,12 +373,8 @@ func (m *SourceRequest) SetRequiresTrustedForm(value *bool)() {
 type SourceRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(SourceRequest_adminEnablementOverrideable)
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetBusinessId()(*string)
-    GetComplianceApproved()(*bool)
-    GetComplianceNotes()(*string)
     GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetDefaultTagIds()([]string)
     GetDefaultTagNames()([]string)
@@ -496,12 +384,8 @@ type SourceRequestable interface {
     GetName()(*string)
     GetRegenerateApiKey()(*bool)
     GetRequiresTrustedForm()(*bool)
-    SetAdminEnablementOverride(value SourceRequest_adminEnablementOverrideable)()
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetBusinessId(value *string)()
-    SetComplianceApproved(value *bool)()
-    SetComplianceNotes(value *string)()
     SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetDefaultTagIds(value []string)()
     SetDefaultTagNames(value []string)()

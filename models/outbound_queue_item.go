@@ -11,21 +11,21 @@ import (
 type OutboundQueueItem struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Defines outbound delivery channels protected by delivery control.
+    // Channel classification for this Leadping outbound queue item.
     channel *OutboundDeliveryChannel
-    // The id property
+    // Unique Leadping identifier for the outbound queue item.
     id *string
-    // The phoneNumber property
+    // Phone number associated with this Leadping outbound queue item.
     phoneNumber *string
-    // The reason property
+    // Human-readable explanation for the current outbound queue item outcome.
     reason *string
     // Structured reason codes for outbound pacing and blocking decisions.
     reasonCode *OutboundQueueItem_reasonCode
-    // The scheduledSendAt property
+    // Date and time when this Leadping outbound queue item was scheduled send.
     scheduledSendAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the source that requested outbound delivery.
+    // Source classification for this Leadping outbound queue item.
     source *OutboundDeliverySource
-    // Defines durable outbound delivery request statuses.
+    // Current status for this Leadping outbound queue item.
     status *OutboundDeliveryStatus
 }
 // NewOutboundQueueItem instantiates a new OutboundQueueItem and sets the default values.
@@ -45,7 +45,7 @@ func CreateOutboundQueueItemFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *OutboundQueueItem) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetChannel gets the channel property value. Defines outbound delivery channels protected by delivery control.
+// GetChannel gets the channel property value. Channel classification for this Leadping outbound queue item.
 // returns a *OutboundDeliveryChannel when successful
 func (m *OutboundQueueItem) GetChannel()(*OutboundDeliveryChannel) {
     return m.channel
@@ -136,17 +136,17 @@ func (m *OutboundQueueItem) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for the outbound queue item.
 // returns a *string when successful
 func (m *OutboundQueueItem) GetId()(*string) {
     return m.id
 }
-// GetPhoneNumber gets the phoneNumber property value. The phoneNumber property
+// GetPhoneNumber gets the phoneNumber property value. Phone number associated with this Leadping outbound queue item.
 // returns a *string when successful
 func (m *OutboundQueueItem) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
-// GetReason gets the reason property value. The reason property
+// GetReason gets the reason property value. Human-readable explanation for the current outbound queue item outcome.
 // returns a *string when successful
 func (m *OutboundQueueItem) GetReason()(*string) {
     return m.reason
@@ -156,17 +156,17 @@ func (m *OutboundQueueItem) GetReason()(*string) {
 func (m *OutboundQueueItem) GetReasonCode()(*OutboundQueueItem_reasonCode) {
     return m.reasonCode
 }
-// GetScheduledSendAt gets the scheduledSendAt property value. The scheduledSendAt property
+// GetScheduledSendAt gets the scheduledSendAt property value. Date and time when this Leadping outbound queue item was scheduled send.
 // returns a *Time when successful
 func (m *OutboundQueueItem) GetScheduledSendAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledSendAt
 }
-// GetSource gets the source property value. Defines the source that requested outbound delivery.
+// GetSource gets the source property value. Source classification for this Leadping outbound queue item.
 // returns a *OutboundDeliverySource when successful
 func (m *OutboundQueueItem) GetSource()(*OutboundDeliverySource) {
     return m.source
 }
-// GetStatus gets the status property value. Defines durable outbound delivery request statuses.
+// GetStatus gets the status property value. Current status for this Leadping outbound queue item.
 // returns a *OutboundDeliveryStatus when successful
 func (m *OutboundQueueItem) GetStatus()(*OutboundDeliveryStatus) {
     return m.status
@@ -237,19 +237,19 @@ func (m *OutboundQueueItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *OutboundQueueItem) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetChannel sets the channel property value. Defines outbound delivery channels protected by delivery control.
+// SetChannel sets the channel property value. Channel classification for this Leadping outbound queue item.
 func (m *OutboundQueueItem) SetChannel(value *OutboundDeliveryChannel)() {
     m.channel = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for the outbound queue item.
 func (m *OutboundQueueItem) SetId(value *string)() {
     m.id = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The phoneNumber property
+// SetPhoneNumber sets the phoneNumber property value. Phone number associated with this Leadping outbound queue item.
 func (m *OutboundQueueItem) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
-// SetReason sets the reason property value. The reason property
+// SetReason sets the reason property value. Human-readable explanation for the current outbound queue item outcome.
 func (m *OutboundQueueItem) SetReason(value *string)() {
     m.reason = value
 }
@@ -257,15 +257,15 @@ func (m *OutboundQueueItem) SetReason(value *string)() {
 func (m *OutboundQueueItem) SetReasonCode(value *OutboundQueueItem_reasonCode)() {
     m.reasonCode = value
 }
-// SetScheduledSendAt sets the scheduledSendAt property value. The scheduledSendAt property
+// SetScheduledSendAt sets the scheduledSendAt property value. Date and time when this Leadping outbound queue item was scheduled send.
 func (m *OutboundQueueItem) SetScheduledSendAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledSendAt = value
 }
-// SetSource sets the source property value. Defines the source that requested outbound delivery.
+// SetSource sets the source property value. Source classification for this Leadping outbound queue item.
 func (m *OutboundQueueItem) SetSource(value *OutboundDeliverySource)() {
     m.source = value
 }
-// SetStatus sets the status property value. Defines durable outbound delivery request statuses.
+// SetStatus sets the status property value. Current status for this Leadping outbound queue item.
 func (m *OutboundQueueItem) SetStatus(value *OutboundDeliveryStatus)() {
     m.status = value
 }

@@ -7,12 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerActivationHealth activation health associated with this Leadping customer analytics.
 type CustomerActivationHealth struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The items property
+    // Collection of items included with this Leadping customer activation health.
     items []CustomerActivationHealthItemable
-    // The overallStatus property
+    // Current overall status for this Leadping customer activation health.
     overallStatus *string
 }
 // NewCustomerActivationHealth instantiates a new CustomerActivationHealth and sets the default values.
@@ -64,12 +65,12 @@ func (m *CustomerActivationHealth) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetItems gets the items property value. The items property
+// GetItems gets the items property value. Collection of items included with this Leadping customer activation health.
 // returns a []CustomerActivationHealthItemable when successful
 func (m *CustomerActivationHealth) GetItems()([]CustomerActivationHealthItemable) {
     return m.items
 }
-// GetOverallStatus gets the overallStatus property value. The overallStatus property
+// GetOverallStatus gets the overallStatus property value. Current overall status for this Leadping customer activation health.
 // returns a *string when successful
 func (m *CustomerActivationHealth) GetOverallStatus()(*string) {
     return m.overallStatus
@@ -106,11 +107,11 @@ func (m *CustomerActivationHealth) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *CustomerActivationHealth) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetItems sets the items property value. The items property
+// SetItems sets the items property value. Collection of items included with this Leadping customer activation health.
 func (m *CustomerActivationHealth) SetItems(value []CustomerActivationHealthItemable)() {
     m.items = value
 }
-// SetOverallStatus sets the overallStatus property value. The overallStatus property
+// SetOverallStatus sets the overallStatus property value. Current overall status for this Leadping customer activation health.
 func (m *CustomerActivationHealth) SetOverallStatus(value *string)() {
     m.overallStatus = value
 }

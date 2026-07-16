@@ -24,8 +24,6 @@ type SuppressionEntryResponse struct {
     normalizedEmail *string
     // The phone number associated with this ion entry.
     normalizedPhoneNumber *string
-    // The provider event ID associated with this ion entry.
-    providerEventId *string
     // The human-readable reason explaining this ion entry.
     reason *string
     // The recipient identifier value for this ion entry.
@@ -34,8 +32,6 @@ type SuppressionEntryResponse struct {
     releasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The source value for this ion entry.
     source *string
-    // The source event ID associated with this ion entry.
-    sourceEventId *string
     // The current status for this ion entry.
     status *string
     // The date and time for the suppressed at value on this ion entry.
@@ -143,16 +139,6 @@ func (m *SuppressionEntryResponse) GetFieldDeserializers()(map[string]func(i878a
         }
         return nil
     }
-    res["providerEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderEventId(val)
-        }
-        return nil
-    }
     res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -193,16 +179,6 @@ func (m *SuppressionEntryResponse) GetFieldDeserializers()(map[string]func(i878a
         }
         return nil
     }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -240,11 +216,6 @@ func (m *SuppressionEntryResponse) GetNormalizedEmail()(*string) {
 func (m *SuppressionEntryResponse) GetNormalizedPhoneNumber()(*string) {
     return m.normalizedPhoneNumber
 }
-// GetProviderEventId gets the providerEventId property value. The provider event ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryResponse) GetProviderEventId()(*string) {
-    return m.providerEventId
-}
 // GetReason gets the reason property value. The human-readable reason explaining this ion entry.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetReason()(*string) {
@@ -264,11 +235,6 @@ func (m *SuppressionEntryResponse) GetReleasedAt()(*i336074805fc853987abe6f7fe3a
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetSource()(*string) {
     return m.source
-}
-// GetSourceEventId gets the sourceEventId property value. The source event ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryResponse) GetSourceEventId()(*string) {
-    return m.sourceEventId
 }
 // GetStatus gets the status property value. The current status for this ion entry.
 // returns a *string when successful
@@ -325,12 +291,6 @@ func (m *SuppressionEntryResponse) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteStringValue("providerEventId", m.GetProviderEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("reason", m.GetReason())
         if err != nil {
             return err
@@ -350,12 +310,6 @@ func (m *SuppressionEntryResponse) Serialize(writer i878a80d2330e89d26896388a3f4
     }
     {
         err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
         if err != nil {
             return err
         }
@@ -408,10 +362,6 @@ func (m *SuppressionEntryResponse) SetNormalizedEmail(value *string)() {
 func (m *SuppressionEntryResponse) SetNormalizedPhoneNumber(value *string)() {
     m.normalizedPhoneNumber = value
 }
-// SetProviderEventId sets the providerEventId property value. The provider event ID associated with this ion entry.
-func (m *SuppressionEntryResponse) SetProviderEventId(value *string)() {
-    m.providerEventId = value
-}
 // SetReason sets the reason property value. The human-readable reason explaining this ion entry.
 func (m *SuppressionEntryResponse) SetReason(value *string)() {
     m.reason = value
@@ -427,10 +377,6 @@ func (m *SuppressionEntryResponse) SetReleasedAt(value *i336074805fc853987abe6f7
 // SetSource sets the source property value. The source value for this ion entry.
 func (m *SuppressionEntryResponse) SetSource(value *string)() {
     m.source = value
-}
-// SetSourceEventId sets the sourceEventId property value. The source event ID associated with this ion entry.
-func (m *SuppressionEntryResponse) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
 }
 // SetStatus sets the status property value. The current status for this ion entry.
 func (m *SuppressionEntryResponse) SetStatus(value *string)() {
@@ -449,12 +395,10 @@ type SuppressionEntryResponseable interface {
     GetId()(*string)
     GetNormalizedEmail()(*string)
     GetNormalizedPhoneNumber()(*string)
-    GetProviderEventId()(*string)
     GetReason()(*string)
     GetRecipientIdentifier()(*string)
     GetReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSource()(*string)
-    GetSourceEventId()(*string)
     GetStatus()(*string)
     GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetAudit(value []SuppressionEntryAuditable)()
@@ -463,12 +407,10 @@ type SuppressionEntryResponseable interface {
     SetId(value *string)()
     SetNormalizedEmail(value *string)()
     SetNormalizedPhoneNumber(value *string)()
-    SetProviderEventId(value *string)()
     SetReason(value *string)()
     SetRecipientIdentifier(value *string)()
     SetReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSource(value *string)()
-    SetSourceEventId(value *string)()
     SetStatus(value *string)()
     SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

@@ -4,7 +4,6 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -12,58 +11,14 @@ import (
 type SmsWarmupStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The human-readable block reason explaining this SMS warmup status.
-    blockReason *string
-    // Whether the caller can pause this SMS warmup status.
-    canPause *bool
-    // Whether the caller can resume this SMS warmup status.
-    canResume *bool
-    // The carrier rejection count for this SMS warmup status.
-    carrierRejectionCount *int32
-    // The date and time for the completed at value on this SMS warmup status.
-    completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The delivered count for this SMS warmup status.
-    deliveredCount *int32
-    // The delivery success rate metric for this SMS warmup status.
-    deliverySuccessRate *float64
-    // The failure count for this SMS warmup status.
-    failureCount *int32
-    // Whether global warmup is enabled for this SMS warmup status.
-    globalWarmupEnabled *bool
     // The health score metric for this SMS warmup status.
     healthScore *int32
-    // Whether this SMS warmup status is approved test destination.
-    isApprovedTestDestination *bool
-    // Whether this SMS warmup status is internal pool.
-    isInternalPool *bool
-    // Whether this SMS warmup status is messaging program approved.
-    isMessagingProgramApproved *bool
-    // The date and time for the last health snapshot at value on this SMS warmup status.
-    lastHealthSnapshotAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the last successful message at value on this SMS warmup status.
-    lastSuccessfulMessageAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the next scheduled action at value on this SMS warmup status.
-    nextScheduledActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The opt out signal count for this SMS warmup status.
-    optOutSignalCount *int32
-    // The human-readable pause reason explaining this SMS warmup status.
-    pauseReason *string
     // The phone number associated with this SMS warmup status.
     phoneNumber *string
     // The phone number ID associated with this SMS warmup status.
     phoneNumberId *string
     // The progress percent metric for this SMS warmup status.
     progressPercent *int32
-    // The received count for this SMS warmup status.
-    receivedCount *int32
-    // The recent actions included with this SMS warmup status.
-    recentActions []SmsWarmupActionResponseable
-    // The sent count for this SMS warmup status.
-    sentCount *int32
-    // The spam signal count for this SMS warmup status.
-    spamSignalCount *int32
-    // The date and time for the started at value on this SMS warmup status.
-    startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current status for this SMS warmup status.
     status *SmsWarmupHealthState
     // The current UI state for this SMS warmup status.
@@ -88,140 +43,10 @@ func CreateSmsWarmupStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *SmsWarmupStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBlockReason gets the blockReason property value. The human-readable block reason explaining this SMS warmup status.
-// returns a *string when successful
-func (m *SmsWarmupStatusResponse) GetBlockReason()(*string) {
-    return m.blockReason
-}
-// GetCanPause gets the canPause property value. Whether the caller can pause this SMS warmup status.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetCanPause()(*bool) {
-    return m.canPause
-}
-// GetCanResume gets the canResume property value. Whether the caller can resume this SMS warmup status.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetCanResume()(*bool) {
-    return m.canResume
-}
-// GetCarrierRejectionCount gets the carrierRejectionCount property value. The carrier rejection count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetCarrierRejectionCount()(*int32) {
-    return m.carrierRejectionCount
-}
-// GetCompletedAt gets the completedAt property value. The date and time for the completed at value on this SMS warmup status.
-// returns a *Time when successful
-func (m *SmsWarmupStatusResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.completedAt
-}
-// GetDeliveredCount gets the deliveredCount property value. The delivered count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetDeliveredCount()(*int32) {
-    return m.deliveredCount
-}
-// GetDeliverySuccessRate gets the deliverySuccessRate property value. The delivery success rate metric for this SMS warmup status.
-// returns a *float64 when successful
-func (m *SmsWarmupStatusResponse) GetDeliverySuccessRate()(*float64) {
-    return m.deliverySuccessRate
-}
-// GetFailureCount gets the failureCount property value. The failure count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetFailureCount()(*int32) {
-    return m.failureCount
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["blockReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBlockReason(val)
-        }
-        return nil
-    }
-    res["canPause"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCanPause(val)
-        }
-        return nil
-    }
-    res["canResume"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCanResume(val)
-        }
-        return nil
-    }
-    res["carrierRejectionCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCarrierRejectionCount(val)
-        }
-        return nil
-    }
-    res["completedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompletedAt(val)
-        }
-        return nil
-    }
-    res["deliveredCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDeliveredCount(val)
-        }
-        return nil
-    }
-    res["deliverySuccessRate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDeliverySuccessRate(val)
-        }
-        return nil
-    }
-    res["failureCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailureCount(val)
-        }
-        return nil
-    }
-    res["globalWarmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGlobalWarmupEnabled(val)
-        }
-        return nil
-    }
     res["healthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -229,86 +54,6 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetHealthScore(val)
-        }
-        return nil
-    }
-    res["isApprovedTestDestination"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsApprovedTestDestination(val)
-        }
-        return nil
-    }
-    res["isInternalPool"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsInternalPool(val)
-        }
-        return nil
-    }
-    res["isMessagingProgramApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMessagingProgramApproved(val)
-        }
-        return nil
-    }
-    res["lastHealthSnapshotAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastHealthSnapshotAt(val)
-        }
-        return nil
-    }
-    res["lastSuccessfulMessageAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastSuccessfulMessageAt(val)
-        }
-        return nil
-    }
-    res["nextScheduledActionAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextScheduledActionAt(val)
-        }
-        return nil
-    }
-    res["optOutSignalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOptOutSignalCount(val)
-        }
-        return nil
-    }
-    res["pauseReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPauseReason(val)
         }
         return nil
     }
@@ -339,62 +84,6 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetProgressPercent(val)
-        }
-        return nil
-    }
-    res["receivedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReceivedCount(val)
-        }
-        return nil
-    }
-    res["recentActions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateSmsWarmupActionResponseFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]SmsWarmupActionResponseable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(SmsWarmupActionResponseable)
-                }
-            }
-            m.SetRecentActions(res)
-        }
-        return nil
-    }
-    res["sentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentCount(val)
-        }
-        return nil
-    }
-    res["spamSignalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSpamSignalCount(val)
-        }
-        return nil
-    }
-    res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartedAt(val)
         }
         return nil
     }
@@ -430,55 +119,10 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetGlobalWarmupEnabled gets the globalWarmupEnabled property value. Whether global warmup is enabled for this SMS warmup status.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetGlobalWarmupEnabled()(*bool) {
-    return m.globalWarmupEnabled
-}
 // GetHealthScore gets the healthScore property value. The health score metric for this SMS warmup status.
 // returns a *int32 when successful
 func (m *SmsWarmupStatusResponse) GetHealthScore()(*int32) {
     return m.healthScore
-}
-// GetIsApprovedTestDestination gets the isApprovedTestDestination property value. Whether this SMS warmup status is approved test destination.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetIsApprovedTestDestination()(*bool) {
-    return m.isApprovedTestDestination
-}
-// GetIsInternalPool gets the isInternalPool property value. Whether this SMS warmup status is internal pool.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetIsInternalPool()(*bool) {
-    return m.isInternalPool
-}
-// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Whether this SMS warmup status is messaging program approved.
-// returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetIsMessagingProgramApproved()(*bool) {
-    return m.isMessagingProgramApproved
-}
-// GetLastHealthSnapshotAt gets the lastHealthSnapshotAt property value. The date and time for the last health snapshot at value on this SMS warmup status.
-// returns a *Time when successful
-func (m *SmsWarmupStatusResponse) GetLastHealthSnapshotAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastHealthSnapshotAt
-}
-// GetLastSuccessfulMessageAt gets the lastSuccessfulMessageAt property value. The date and time for the last successful message at value on this SMS warmup status.
-// returns a *Time when successful
-func (m *SmsWarmupStatusResponse) GetLastSuccessfulMessageAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastSuccessfulMessageAt
-}
-// GetNextScheduledActionAt gets the nextScheduledActionAt property value. The date and time for the next scheduled action at value on this SMS warmup status.
-// returns a *Time when successful
-func (m *SmsWarmupStatusResponse) GetNextScheduledActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.nextScheduledActionAt
-}
-// GetOptOutSignalCount gets the optOutSignalCount property value. The opt out signal count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetOptOutSignalCount()(*int32) {
-    return m.optOutSignalCount
-}
-// GetPauseReason gets the pauseReason property value. The human-readable pause reason explaining this SMS warmup status.
-// returns a *string when successful
-func (m *SmsWarmupStatusResponse) GetPauseReason()(*string) {
-    return m.pauseReason
 }
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this SMS warmup status.
 // returns a *string when successful
@@ -494,31 +138,6 @@ func (m *SmsWarmupStatusResponse) GetPhoneNumberId()(*string) {
 // returns a *int32 when successful
 func (m *SmsWarmupStatusResponse) GetProgressPercent()(*int32) {
     return m.progressPercent
-}
-// GetReceivedCount gets the receivedCount property value. The received count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetReceivedCount()(*int32) {
-    return m.receivedCount
-}
-// GetRecentActions gets the recentActions property value. The recent actions included with this SMS warmup status.
-// returns a []SmsWarmupActionResponseable when successful
-func (m *SmsWarmupStatusResponse) GetRecentActions()([]SmsWarmupActionResponseable) {
-    return m.recentActions
-}
-// GetSentCount gets the sentCount property value. The sent count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetSentCount()(*int32) {
-    return m.sentCount
-}
-// GetSpamSignalCount gets the spamSignalCount property value. The spam signal count for this SMS warmup status.
-// returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetSpamSignalCount()(*int32) {
-    return m.spamSignalCount
-}
-// GetStartedAt gets the startedAt property value. The date and time for the started at value on this SMS warmup status.
-// returns a *Time when successful
-func (m *SmsWarmupStatusResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startedAt
 }
 // GetStatus gets the status property value. The current status for this SMS warmup status.
 // returns a *SmsWarmupHealthState when successful
@@ -538,109 +157,7 @@ func (m *SmsWarmupStatusResponse) GetWarmupEnabled()(*bool) {
 // Serialize serializes information the current object
 func (m *SmsWarmupStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("blockReason", m.GetBlockReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("canPause", m.GetCanPause())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("canResume", m.GetCanResume())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("carrierRejectionCount", m.GetCarrierRejectionCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("deliveredCount", m.GetDeliveredCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("deliverySuccessRate", m.GetDeliverySuccessRate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("failureCount", m.GetFailureCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("globalWarmupEnabled", m.GetGlobalWarmupEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteInt32Value("healthScore", m.GetHealthScore())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isApprovedTestDestination", m.GetIsApprovedTestDestination())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isInternalPool", m.GetIsInternalPool())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isMessagingProgramApproved", m.GetIsMessagingProgramApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastHealthSnapshotAt", m.GetLastHealthSnapshotAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastSuccessfulMessageAt", m.GetLastSuccessfulMessageAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("nextScheduledActionAt", m.GetNextScheduledActionAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("optOutSignalCount", m.GetOptOutSignalCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("pauseReason", m.GetPauseReason())
         if err != nil {
             return err
         }
@@ -659,42 +176,6 @@ func (m *SmsWarmupStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f48
     }
     {
         err := writer.WriteInt32Value("progressPercent", m.GetProgressPercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("receivedCount", m.GetReceivedCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRecentActions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRecentActions()))
-        for i, v := range m.GetRecentActions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("recentActions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("sentCount", m.GetSentCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("spamSignalCount", m.GetSpamSignalCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
         if err != nil {
             return err
         }
@@ -730,77 +211,9 @@ func (m *SmsWarmupStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *SmsWarmupStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBlockReason sets the blockReason property value. The human-readable block reason explaining this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetBlockReason(value *string)() {
-    m.blockReason = value
-}
-// SetCanPause sets the canPause property value. Whether the caller can pause this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetCanPause(value *bool)() {
-    m.canPause = value
-}
-// SetCanResume sets the canResume property value. Whether the caller can resume this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetCanResume(value *bool)() {
-    m.canResume = value
-}
-// SetCarrierRejectionCount sets the carrierRejectionCount property value. The carrier rejection count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetCarrierRejectionCount(value *int32)() {
-    m.carrierRejectionCount = value
-}
-// SetCompletedAt sets the completedAt property value. The date and time for the completed at value on this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.completedAt = value
-}
-// SetDeliveredCount sets the deliveredCount property value. The delivered count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetDeliveredCount(value *int32)() {
-    m.deliveredCount = value
-}
-// SetDeliverySuccessRate sets the deliverySuccessRate property value. The delivery success rate metric for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetDeliverySuccessRate(value *float64)() {
-    m.deliverySuccessRate = value
-}
-// SetFailureCount sets the failureCount property value. The failure count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetFailureCount(value *int32)() {
-    m.failureCount = value
-}
-// SetGlobalWarmupEnabled sets the globalWarmupEnabled property value. Whether global warmup is enabled for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetGlobalWarmupEnabled(value *bool)() {
-    m.globalWarmupEnabled = value
-}
 // SetHealthScore sets the healthScore property value. The health score metric for this SMS warmup status.
 func (m *SmsWarmupStatusResponse) SetHealthScore(value *int32)() {
     m.healthScore = value
-}
-// SetIsApprovedTestDestination sets the isApprovedTestDestination property value. Whether this SMS warmup status is approved test destination.
-func (m *SmsWarmupStatusResponse) SetIsApprovedTestDestination(value *bool)() {
-    m.isApprovedTestDestination = value
-}
-// SetIsInternalPool sets the isInternalPool property value. Whether this SMS warmup status is internal pool.
-func (m *SmsWarmupStatusResponse) SetIsInternalPool(value *bool)() {
-    m.isInternalPool = value
-}
-// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Whether this SMS warmup status is messaging program approved.
-func (m *SmsWarmupStatusResponse) SetIsMessagingProgramApproved(value *bool)() {
-    m.isMessagingProgramApproved = value
-}
-// SetLastHealthSnapshotAt sets the lastHealthSnapshotAt property value. The date and time for the last health snapshot at value on this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetLastHealthSnapshotAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastHealthSnapshotAt = value
-}
-// SetLastSuccessfulMessageAt sets the lastSuccessfulMessageAt property value. The date and time for the last successful message at value on this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetLastSuccessfulMessageAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastSuccessfulMessageAt = value
-}
-// SetNextScheduledActionAt sets the nextScheduledActionAt property value. The date and time for the next scheduled action at value on this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetNextScheduledActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.nextScheduledActionAt = value
-}
-// SetOptOutSignalCount sets the optOutSignalCount property value. The opt out signal count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetOptOutSignalCount(value *int32)() {
-    m.optOutSignalCount = value
-}
-// SetPauseReason sets the pauseReason property value. The human-readable pause reason explaining this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetPauseReason(value *string)() {
-    m.pauseReason = value
 }
 // SetPhoneNumber sets the phoneNumber property value. The phone number associated with this SMS warmup status.
 func (m *SmsWarmupStatusResponse) SetPhoneNumber(value *string)() {
@@ -813,26 +226,6 @@ func (m *SmsWarmupStatusResponse) SetPhoneNumberId(value *string)() {
 // SetProgressPercent sets the progressPercent property value. The progress percent metric for this SMS warmup status.
 func (m *SmsWarmupStatusResponse) SetProgressPercent(value *int32)() {
     m.progressPercent = value
-}
-// SetReceivedCount sets the receivedCount property value. The received count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetReceivedCount(value *int32)() {
-    m.receivedCount = value
-}
-// SetRecentActions sets the recentActions property value. The recent actions included with this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetRecentActions(value []SmsWarmupActionResponseable)() {
-    m.recentActions = value
-}
-// SetSentCount sets the sentCount property value. The sent count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetSentCount(value *int32)() {
-    m.sentCount = value
-}
-// SetSpamSignalCount sets the spamSignalCount property value. The spam signal count for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetSpamSignalCount(value *int32)() {
-    m.spamSignalCount = value
-}
-// SetStartedAt sets the startedAt property value. The date and time for the started at value on this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startedAt = value
 }
 // SetStatus sets the status property value. The current status for this SMS warmup status.
 func (m *SmsWarmupStatusResponse) SetStatus(value *SmsWarmupHealthState)() {
@@ -849,61 +242,17 @@ func (m *SmsWarmupStatusResponse) SetWarmupEnabled(value *bool)() {
 type SmsWarmupStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBlockReason()(*string)
-    GetCanPause()(*bool)
-    GetCanResume()(*bool)
-    GetCarrierRejectionCount()(*int32)
-    GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDeliveredCount()(*int32)
-    GetDeliverySuccessRate()(*float64)
-    GetFailureCount()(*int32)
-    GetGlobalWarmupEnabled()(*bool)
     GetHealthScore()(*int32)
-    GetIsApprovedTestDestination()(*bool)
-    GetIsInternalPool()(*bool)
-    GetIsMessagingProgramApproved()(*bool)
-    GetLastHealthSnapshotAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastSuccessfulMessageAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNextScheduledActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOptOutSignalCount()(*int32)
-    GetPauseReason()(*string)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
     GetProgressPercent()(*int32)
-    GetReceivedCount()(*int32)
-    GetRecentActions()([]SmsWarmupActionResponseable)
-    GetSentCount()(*int32)
-    GetSpamSignalCount()(*int32)
-    GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*SmsWarmupHealthState)
     GetUiState()(SmsWarmupUiStateable)
     GetWarmupEnabled()(*bool)
-    SetBlockReason(value *string)()
-    SetCanPause(value *bool)()
-    SetCanResume(value *bool)()
-    SetCarrierRejectionCount(value *int32)()
-    SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDeliveredCount(value *int32)()
-    SetDeliverySuccessRate(value *float64)()
-    SetFailureCount(value *int32)()
-    SetGlobalWarmupEnabled(value *bool)()
     SetHealthScore(value *int32)()
-    SetIsApprovedTestDestination(value *bool)()
-    SetIsInternalPool(value *bool)()
-    SetIsMessagingProgramApproved(value *bool)()
-    SetLastHealthSnapshotAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastSuccessfulMessageAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNextScheduledActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOptOutSignalCount(value *int32)()
-    SetPauseReason(value *string)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
     SetProgressPercent(value *int32)()
-    SetReceivedCount(value *int32)()
-    SetRecentActions(value []SmsWarmupActionResponseable)()
-    SetSentCount(value *int32)()
-    SetSpamSignalCount(value *int32)()
-    SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *SmsWarmupHealthState)()
     SetUiState(value SmsWarmupUiStateable)()
     SetWarmupEnabled(value *bool)()

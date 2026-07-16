@@ -11,21 +11,21 @@ import (
 type CustomerCommunicationUsagePoint struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The callMinutes property
+    // Total connected call duration, in minutes, during the reporting period.
     callMinutes *float64
-    // The calls property
+    // Number of calls represented by this Leadping customer communication usage point.
     calls *int32
-    // The endAt property
+    // Date and time when this Leadping customer communication usage point was end.
     endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The label property
+    // Human-readable label for this Leadping customer communication usage point.
     label *string
-    // The smsReceived property
+    // Number of SMS messages received during the reporting period.
     smsReceived *int32
-    // The smsSent property
+    // Number of SMS messages sent during the reporting period.
     smsSent *int32
-    // The spend property
+    // Spend represented by this Leadping customer communication usage point.
     spend *float64
-    // The startAt property
+    // Date and time when this Leadping customer communication usage point was start.
     startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewCustomerCommunicationUsagePoint instantiates a new CustomerCommunicationUsagePoint and sets the default values.
@@ -45,17 +45,17 @@ func CreateCustomerCommunicationUsagePointFromDiscriminatorValue(parseNode i878a
 func (m *CustomerCommunicationUsagePoint) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCallMinutes gets the callMinutes property value. The callMinutes property
+// GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 // returns a *float64 when successful
 func (m *CustomerCommunicationUsagePoint) GetCallMinutes()(*float64) {
     return m.callMinutes
 }
-// GetCalls gets the calls property value. The calls property
+// GetCalls gets the calls property value. Number of calls represented by this Leadping customer communication usage point.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsagePoint) GetCalls()(*int32) {
     return m.calls
 }
-// GetEndAt gets the endAt property value. The endAt property
+// GetEndAt gets the endAt property value. Date and time when this Leadping customer communication usage point was end.
 // returns a *Time when successful
 func (m *CustomerCommunicationUsagePoint) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.endAt
@@ -146,27 +146,27 @@ func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
-// GetLabel gets the label property value. The label property
+// GetLabel gets the label property value. Human-readable label for this Leadping customer communication usage point.
 // returns a *string when successful
 func (m *CustomerCommunicationUsagePoint) GetLabel()(*string) {
     return m.label
 }
-// GetSmsReceived gets the smsReceived property value. The smsReceived property
+// GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsagePoint) GetSmsReceived()(*int32) {
     return m.smsReceived
 }
-// GetSmsSent gets the smsSent property value. The smsSent property
+// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsagePoint) GetSmsSent()(*int32) {
     return m.smsSent
 }
-// GetSpend gets the spend property value. The spend property
+// GetSpend gets the spend property value. Spend represented by this Leadping customer communication usage point.
 // returns a *float64 when successful
 func (m *CustomerCommunicationUsagePoint) GetSpend()(*float64) {
     return m.spend
 }
-// GetStartAt gets the startAt property value. The startAt property
+// GetStartAt gets the startAt property value. Date and time when this Leadping customer communication usage point was start.
 // returns a *Time when successful
 func (m *CustomerCommunicationUsagePoint) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startAt
@@ -233,35 +233,35 @@ func (m *CustomerCommunicationUsagePoint) Serialize(writer i878a80d2330e89d26896
 func (m *CustomerCommunicationUsagePoint) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCallMinutes sets the callMinutes property value. The callMinutes property
+// SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 func (m *CustomerCommunicationUsagePoint) SetCallMinutes(value *float64)() {
     m.callMinutes = value
 }
-// SetCalls sets the calls property value. The calls property
+// SetCalls sets the calls property value. Number of calls represented by this Leadping customer communication usage point.
 func (m *CustomerCommunicationUsagePoint) SetCalls(value *int32)() {
     m.calls = value
 }
-// SetEndAt sets the endAt property value. The endAt property
+// SetEndAt sets the endAt property value. Date and time when this Leadping customer communication usage point was end.
 func (m *CustomerCommunicationUsagePoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.endAt = value
 }
-// SetLabel sets the label property value. The label property
+// SetLabel sets the label property value. Human-readable label for this Leadping customer communication usage point.
 func (m *CustomerCommunicationUsagePoint) SetLabel(value *string)() {
     m.label = value
 }
-// SetSmsReceived sets the smsReceived property value. The smsReceived property
+// SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
 func (m *CustomerCommunicationUsagePoint) SetSmsReceived(value *int32)() {
     m.smsReceived = value
 }
-// SetSmsSent sets the smsSent property value. The smsSent property
+// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
 func (m *CustomerCommunicationUsagePoint) SetSmsSent(value *int32)() {
     m.smsSent = value
 }
-// SetSpend sets the spend property value. The spend property
+// SetSpend sets the spend property value. Spend represented by this Leadping customer communication usage point.
 func (m *CustomerCommunicationUsagePoint) SetSpend(value *float64)() {
     m.spend = value
 }
-// SetStartAt sets the startAt property value. The startAt property
+// SetStartAt sets the startAt property value. Date and time when this Leadping customer communication usage point was start.
 func (m *CustomerCommunicationUsagePoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startAt = value
 }

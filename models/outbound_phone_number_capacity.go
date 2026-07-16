@@ -10,35 +10,35 @@ import (
 type OutboundPhoneNumberCapacity struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Defines phone-number outbound health states used by pacing.
+    // Current health status for this Leadping outbound phone number capacity.
     healthStatus *PhoneNumberOutboundHealthStatus
-    // The phoneNumber property
+    // Phone number associated with this Leadping outbound phone number capacity.
     phoneNumber *string
-    // The phoneNumberId property
+    // Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
     phoneNumberId *string
-    // The smsLimitThisHour property
+    // Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
     smsLimitThisHour *int32
-    // The smsLimitToday property
+    // Number of SMS limit today represented by this Leadping outbound phone number capacity.
     smsLimitToday *int32
-    // The smsRemainingThisHour property
+    // SMS remaining this hour for the applicable messaging or voice capacity window.
     smsRemainingThisHour *int32
-    // The smsRemainingToday property
+    // SMS remaining today for the applicable messaging or voice capacity window.
     smsRemainingToday *int32
-    // The smsUsedThisHour property
+    // SMS used this hour for the applicable messaging or voice capacity window.
     smsUsedThisHour *int32
-    // The smsUsedToday property
+    // SMS used today for the applicable messaging or voice capacity window.
     smsUsedToday *int32
-    // The voiceLimitThisHour property
+    // Voice limit this hour associated with this Leadping outbound phone number capacity.
     voiceLimitThisHour *int32
-    // The voiceLimitToday property
+    // Voice limit today associated with this Leadping outbound phone number capacity.
     voiceLimitToday *int32
-    // The voiceRemainingThisHour property
+    // Voice remaining this hour for the applicable messaging or voice capacity window.
     voiceRemainingThisHour *int32
-    // The voiceRemainingToday property
+    // Voice remaining today for the applicable messaging or voice capacity window.
     voiceRemainingToday *int32
-    // The voiceUsedThisHour property
+    // Voice used this hour for the applicable messaging or voice capacity window.
     voiceUsedThisHour *int32
-    // The voiceUsedToday property
+    // Voice used today for the applicable messaging or voice capacity window.
     voiceUsedToday *int32
 }
 // NewOutboundPhoneNumberCapacity instantiates a new OutboundPhoneNumberCapacity and sets the default values.
@@ -214,77 +214,77 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetHealthStatus gets the healthStatus property value. Defines phone-number outbound health states used by pacing.
+// GetHealthStatus gets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
 // returns a *PhoneNumberOutboundHealthStatus when successful
 func (m *OutboundPhoneNumberCapacity) GetHealthStatus()(*PhoneNumberOutboundHealthStatus) {
     return m.healthStatus
 }
-// GetPhoneNumber gets the phoneNumber property value. The phoneNumber property
+// GetPhoneNumber gets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
 // returns a *string when successful
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
-// GetPhoneNumberId gets the phoneNumberId property value. The phoneNumberId property
+// GetPhoneNumberId gets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
 // returns a *string when successful
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
-// GetSmsLimitThisHour gets the smsLimitThisHour property value. The smsLimitThisHour property
+// GetSmsLimitThisHour gets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisHour()(*int32) {
     return m.smsLimitThisHour
 }
-// GetSmsLimitToday gets the smsLimitToday property value. The smsLimitToday property
+// GetSmsLimitToday gets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsLimitToday()(*int32) {
     return m.smsLimitToday
 }
-// GetSmsRemainingThisHour gets the smsRemainingThisHour property value. The smsRemainingThisHour property
+// GetSmsRemainingThisHour gets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisHour()(*int32) {
     return m.smsRemainingThisHour
 }
-// GetSmsRemainingToday gets the smsRemainingToday property value. The smsRemainingToday property
+// GetSmsRemainingToday gets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsRemainingToday()(*int32) {
     return m.smsRemainingToday
 }
-// GetSmsUsedThisHour gets the smsUsedThisHour property value. The smsUsedThisHour property
+// GetSmsUsedThisHour gets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisHour()(*int32) {
     return m.smsUsedThisHour
 }
-// GetSmsUsedToday gets the smsUsedToday property value. The smsUsedToday property
+// GetSmsUsedToday gets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsUsedToday()(*int32) {
     return m.smsUsedToday
 }
-// GetVoiceLimitThisHour gets the voiceLimitThisHour property value. The voiceLimitThisHour property
+// GetVoiceLimitThisHour gets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisHour()(*int32) {
     return m.voiceLimitThisHour
 }
-// GetVoiceLimitToday gets the voiceLimitToday property value. The voiceLimitToday property
+// GetVoiceLimitToday gets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday()(*int32) {
     return m.voiceLimitToday
 }
-// GetVoiceRemainingThisHour gets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+// GetVoiceRemainingThisHour gets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisHour()(*int32) {
     return m.voiceRemainingThisHour
 }
-// GetVoiceRemainingToday gets the voiceRemainingToday property value. The voiceRemainingToday property
+// GetVoiceRemainingToday gets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingToday()(*int32) {
     return m.voiceRemainingToday
 }
-// GetVoiceUsedThisHour gets the voiceUsedThisHour property value. The voiceUsedThisHour property
+// GetVoiceUsedThisHour gets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisHour()(*int32) {
     return m.voiceUsedThisHour
 }
-// GetVoiceUsedToday gets the voiceUsedToday property value. The voiceUsedToday property
+// GetVoiceUsedToday gets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceUsedToday()(*int32) {
     return m.voiceUsedToday
@@ -394,63 +394,63 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
 func (m *OutboundPhoneNumberCapacity) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines phone-number outbound health states used by pacing.
+// SetHealthStatus sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutboundHealthStatus)() {
     m.healthStatus = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The phoneNumber property
+// SetPhoneNumber sets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
-// SetPhoneNumberId sets the phoneNumberId property value. The phoneNumberId property
+// SetPhoneNumberId sets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
-// SetSmsLimitThisHour sets the smsLimitThisHour property value. The smsLimitThisHour property
+// SetSmsLimitThisHour sets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisHour(value *int32)() {
     m.smsLimitThisHour = value
 }
-// SetSmsLimitToday sets the smsLimitToday property value. The smsLimitToday property
+// SetSmsLimitToday sets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetSmsLimitToday(value *int32)() {
     m.smsLimitToday = value
 }
-// SetSmsRemainingThisHour sets the smsRemainingThisHour property value. The smsRemainingThisHour property
+// SetSmsRemainingThisHour sets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisHour(value *int32)() {
     m.smsRemainingThisHour = value
 }
-// SetSmsRemainingToday sets the smsRemainingToday property value. The smsRemainingToday property
+// SetSmsRemainingToday sets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsRemainingToday(value *int32)() {
     m.smsRemainingToday = value
 }
-// SetSmsUsedThisHour sets the smsUsedThisHour property value. The smsUsedThisHour property
+// SetSmsUsedThisHour sets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisHour(value *int32)() {
     m.smsUsedThisHour = value
 }
-// SetSmsUsedToday sets the smsUsedToday property value. The smsUsedToday property
+// SetSmsUsedToday sets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsUsedToday(value *int32)() {
     m.smsUsedToday = value
 }
-// SetVoiceLimitThisHour sets the voiceLimitThisHour property value. The voiceLimitThisHour property
+// SetVoiceLimitThisHour sets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisHour(value *int32)() {
     m.voiceLimitThisHour = value
 }
-// SetVoiceLimitToday sets the voiceLimitToday property value. The voiceLimitToday property
+// SetVoiceLimitToday sets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetVoiceLimitToday(value *int32)() {
     m.voiceLimitToday = value
 }
-// SetVoiceRemainingThisHour sets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+// SetVoiceRemainingThisHour sets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisHour(value *int32)() {
     m.voiceRemainingThisHour = value
 }
-// SetVoiceRemainingToday sets the voiceRemainingToday property value. The voiceRemainingToday property
+// SetVoiceRemainingToday sets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingToday(value *int32)() {
     m.voiceRemainingToday = value
 }
-// SetVoiceUsedThisHour sets the voiceUsedThisHour property value. The voiceUsedThisHour property
+// SetVoiceUsedThisHour sets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisHour(value *int32)() {
     m.voiceUsedThisHour = value
 }
-// SetVoiceUsedToday sets the voiceUsedToday property value. The voiceUsedToday property
+// SetVoiceUsedToday sets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetVoiceUsedToday(value *int32)() {
     m.voiceUsedToday = value
 }

@@ -18,8 +18,6 @@ type BusinessResponse struct {
     additionalData map[string]any
     // Postal address for the business, lead, or contact represented by this business profile response.
     address BusinessResponse_addressable
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride BusinessResponse_adminEnablementOverrideable
     // Wallet refill amount charged when automatic refill is triggered.
     autoRefillAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Indicates whether automatic wallet refill is enabled for the business.
@@ -64,8 +62,6 @@ type BusinessResponse struct {
     site BusinessResponse_siteable
     // Defines the supported Business Status values.
     status *BusinessResponse_status
-    // Stripe customer and subscription state associated with this business or user.
-    stripeInfo BusinessResponse_stripeInfoable
     // Defines the supported Subscription Status values.
     subscriptionStatus *BusinessResponse_subscriptionStatus
     // User summary connected to this business profile response.
@@ -106,11 +102,6 @@ func (m *BusinessResponse) GetAdditionalData()(map[string]any) {
 // returns a BusinessResponse_addressable when successful
 func (m *BusinessResponse) GetAddress()(BusinessResponse_addressable) {
     return m.address
-}
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a BusinessResponse_adminEnablementOverrideable when successful
-func (m *BusinessResponse) GetAdminEnablementOverride()(BusinessResponse_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
 }
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 // returns a UntypedNodeable when successful
@@ -208,16 +199,6 @@ func (m *BusinessResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetAddress(val.(BusinessResponse_addressable))
-        }
-        return nil
-    }
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessResponse_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(BusinessResponse_adminEnablementOverrideable))
         }
         return nil
     }
@@ -447,16 +428,6 @@ func (m *BusinessResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["stripeInfo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessResponse_stripeInfoFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripeInfo(val.(BusinessResponse_stripeInfoable))
-        }
-        return nil
-    }
     res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseBusinessResponse_subscriptionStatus)
         if err != nil {
@@ -544,11 +515,6 @@ func (m *BusinessResponse) GetSite()(BusinessResponse_siteable) {
 func (m *BusinessResponse) GetStatus()(*BusinessResponse_status) {
     return m.status
 }
-// GetStripeInfo gets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-// returns a BusinessResponse_stripeInfoable when successful
-func (m *BusinessResponse) GetStripeInfo()(BusinessResponse_stripeInfoable) {
-    return m.stripeInfo
-}
 // GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
 // returns a *BusinessResponse_subscriptionStatus when successful
 func (m *BusinessResponse) GetSubscriptionStatus()(*BusinessResponse_subscriptionStatus) {
@@ -585,12 +551,6 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteObjectValue("address", m.GetAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
         if err != nil {
             return err
         }
@@ -736,12 +696,6 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
-    {
-        err := writer.WriteObjectValue("stripeInfo", m.GetStripeInfo())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetSubscriptionStatus() != nil {
         cast := (*m.GetSubscriptionStatus()).String()
         err := writer.WriteStringValue("subscriptionStatus", &cast)
@@ -790,10 +744,6 @@ func (m *BusinessResponse) SetAdditionalData(value map[string]any)() {
 // SetAddress sets the address property value. Postal address for the business, lead, or contact represented by this business profile response.
 func (m *BusinessResponse) SetAddress(value BusinessResponse_addressable)() {
     m.address = value
-}
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *BusinessResponse) SetAdminEnablementOverride(value BusinessResponse_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
 }
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 func (m *BusinessResponse) SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -883,10 +833,6 @@ func (m *BusinessResponse) SetSite(value BusinessResponse_siteable)() {
 func (m *BusinessResponse) SetStatus(value *BusinessResponse_status)() {
     m.status = value
 }
-// SetStripeInfo sets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-func (m *BusinessResponse) SetStripeInfo(value BusinessResponse_stripeInfoable)() {
-    m.stripeInfo = value
-}
 // SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
 func (m *BusinessResponse) SetSubscriptionStatus(value *BusinessResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
@@ -909,7 +855,6 @@ type BusinessResponseable interface {
     GetAccountBalance()(*float64)
     GetActivation()(BusinessResponse_activationable)
     GetAddress()(BusinessResponse_addressable)
-    GetAdminEnablementOverride()(BusinessResponse_adminEnablementOverrideable)
     GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetAutoRefillEnabled()(*bool)
     GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
@@ -932,7 +877,6 @@ type BusinessResponseable interface {
     GetSetupStep()(*BusinessResponse_setupStep)
     GetSite()(BusinessResponse_siteable)
     GetStatus()(*BusinessResponse_status)
-    GetStripeInfo()(BusinessResponse_stripeInfoable)
     GetSubscriptionStatus()(*BusinessResponse_subscriptionStatus)
     GetUser()(BusinessResponse_userable)
     GetVertical()(*string)
@@ -940,7 +884,6 @@ type BusinessResponseable interface {
     SetAccountBalance(value *float64)()
     SetActivation(value BusinessResponse_activationable)()
     SetAddress(value BusinessResponse_addressable)()
-    SetAdminEnablementOverride(value BusinessResponse_adminEnablementOverrideable)()
     SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetAutoRefillEnabled(value *bool)()
     SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
@@ -963,7 +906,6 @@ type BusinessResponseable interface {
     SetSetupStep(value *BusinessResponse_setupStep)()
     SetSite(value BusinessResponse_siteable)()
     SetStatus(value *BusinessResponse_status)()
-    SetStripeInfo(value BusinessResponse_stripeInfoable)()
     SetSubscriptionStatus(value *BusinessResponse_subscriptionStatus)()
     SetUser(value BusinessResponse_userable)()
     SetVertical(value *string)()

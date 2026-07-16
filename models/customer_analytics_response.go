@@ -9,27 +9,27 @@ import (
 )
 
 type CustomerAnalyticsResponse struct {
-    // The activationHealth property
+    // Activation health associated with this Leadping customer analytics.
     activationHealth CustomerActivationHealthable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationHealth property
+    // Automation health associated with this Leadping customer analytics.
     automationHealth CustomerAutomationHealthable
-    // The communicationUsage property
+    // Communication usage associated with this Leadping customer analytics.
     communicationUsage CustomerCommunicationUsageable
-    // The generatedAt property
+    // Date and time when this Leadping customer analytics was generated.
     generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The leadSources property
+    // Collection of lead sources included with this Leadping customer analytics.
     leadSources []CustomerLeadSourceBreakdownable
-    // The leadTrend property
+    // Lead trend associated with this Leadping customer analytics.
     leadTrend CustomerLeadTrendable
-    // The needsAttention property
+    // Date and time when this Leadping customer analytics was needs attention.
     needsAttention []CustomerNeedsAttentionItemable
-    // The range property
+    // Range associated with this Leadping customer analytics.
     rangeEscaped AnalyticsDateRangeable
-    // The responseMetrics property
+    // Response metrics associated with this Leadping customer analytics.
     responseMetrics CustomerResponseMetricsable
-    // The summary property
+    // Human-readable summary for this Leadping customer analytics.
     summary CustomerAnalyticsSummaryable
 }
 // NewCustomerAnalyticsResponse instantiates a new CustomerAnalyticsResponse and sets the default values.
@@ -44,7 +44,7 @@ func NewCustomerAnalyticsResponse()(*CustomerAnalyticsResponse) {
 func CreateCustomerAnalyticsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewCustomerAnalyticsResponse(), nil
 }
-// GetActivationHealth gets the activationHealth property value. The activationHealth property
+// GetActivationHealth gets the activationHealth property value. Activation health associated with this Leadping customer analytics.
 // returns a CustomerActivationHealthable when successful
 func (m *CustomerAnalyticsResponse) GetActivationHealth()(CustomerActivationHealthable) {
     return m.activationHealth
@@ -54,12 +54,12 @@ func (m *CustomerAnalyticsResponse) GetActivationHealth()(CustomerActivationHeal
 func (m *CustomerAnalyticsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationHealth gets the automationHealth property value. The automationHealth property
+// GetAutomationHealth gets the automationHealth property value. Automation health associated with this Leadping customer analytics.
 // returns a CustomerAutomationHealthable when successful
 func (m *CustomerAnalyticsResponse) GetAutomationHealth()(CustomerAutomationHealthable) {
     return m.automationHealth
 }
-// GetCommunicationUsage gets the communicationUsage property value. The communicationUsage property
+// GetCommunicationUsage gets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
 // returns a CustomerCommunicationUsageable when successful
 func (m *CustomerAnalyticsResponse) GetCommunicationUsage()(CustomerCommunicationUsageable) {
     return m.communicationUsage
@@ -182,37 +182,37 @@ func (m *CustomerAnalyticsResponse) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetGeneratedAt gets the generatedAt property value. The generatedAt property
+// GetGeneratedAt gets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
 // returns a *Time when successful
 func (m *CustomerAnalyticsResponse) GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.generatedAt
 }
-// GetLeadSources gets the leadSources property value. The leadSources property
+// GetLeadSources gets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
 // returns a []CustomerLeadSourceBreakdownable when successful
 func (m *CustomerAnalyticsResponse) GetLeadSources()([]CustomerLeadSourceBreakdownable) {
     return m.leadSources
 }
-// GetLeadTrend gets the leadTrend property value. The leadTrend property
+// GetLeadTrend gets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
 // returns a CustomerLeadTrendable when successful
 func (m *CustomerAnalyticsResponse) GetLeadTrend()(CustomerLeadTrendable) {
     return m.leadTrend
 }
-// GetNeedsAttention gets the needsAttention property value. The needsAttention property
+// GetNeedsAttention gets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
 // returns a []CustomerNeedsAttentionItemable when successful
 func (m *CustomerAnalyticsResponse) GetNeedsAttention()([]CustomerNeedsAttentionItemable) {
     return m.needsAttention
 }
-// GetRangeEscaped gets the range property value. The range property
+// GetRangeEscaped gets the range property value. Range associated with this Leadping customer analytics.
 // returns a AnalyticsDateRangeable when successful
 func (m *CustomerAnalyticsResponse) GetRangeEscaped()(AnalyticsDateRangeable) {
     return m.rangeEscaped
 }
-// GetResponseMetrics gets the responseMetrics property value. The responseMetrics property
+// GetResponseMetrics gets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
 // returns a CustomerResponseMetricsable when successful
 func (m *CustomerAnalyticsResponse) GetResponseMetrics()(CustomerResponseMetricsable) {
     return m.responseMetrics
 }
-// GetSummary gets the summary property value. The summary property
+// GetSummary gets the summary property value. Human-readable summary for this Leadping customer analytics.
 // returns a CustomerAnalyticsSummaryable when successful
 func (m *CustomerAnalyticsResponse) GetSummary()(CustomerAnalyticsSummaryable) {
     return m.summary
@@ -299,7 +299,7 @@ func (m *CustomerAnalyticsResponse) Serialize(writer i878a80d2330e89d26896388a3f
     }
     return nil
 }
-// SetActivationHealth sets the activationHealth property value. The activationHealth property
+// SetActivationHealth sets the activationHealth property value. Activation health associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetActivationHealth(value CustomerActivationHealthable)() {
     m.activationHealth = value
 }
@@ -307,39 +307,39 @@ func (m *CustomerAnalyticsResponse) SetActivationHealth(value CustomerActivation
 func (m *CustomerAnalyticsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationHealth sets the automationHealth property value. The automationHealth property
+// SetAutomationHealth sets the automationHealth property value. Automation health associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetAutomationHealth(value CustomerAutomationHealthable)() {
     m.automationHealth = value
 }
-// SetCommunicationUsage sets the communicationUsage property value. The communicationUsage property
+// SetCommunicationUsage sets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetCommunicationUsage(value CustomerCommunicationUsageable)() {
     m.communicationUsage = value
 }
-// SetGeneratedAt sets the generatedAt property value. The generatedAt property
+// SetGeneratedAt sets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
 func (m *CustomerAnalyticsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.generatedAt = value
 }
-// SetLeadSources sets the leadSources property value. The leadSources property
+// SetLeadSources sets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetLeadSources(value []CustomerLeadSourceBreakdownable)() {
     m.leadSources = value
 }
-// SetLeadTrend sets the leadTrend property value. The leadTrend property
+// SetLeadTrend sets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetLeadTrend(value CustomerLeadTrendable)() {
     m.leadTrend = value
 }
-// SetNeedsAttention sets the needsAttention property value. The needsAttention property
+// SetNeedsAttention sets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
 func (m *CustomerAnalyticsResponse) SetNeedsAttention(value []CustomerNeedsAttentionItemable)() {
     m.needsAttention = value
 }
-// SetRangeEscaped sets the range property value. The range property
+// SetRangeEscaped sets the range property value. Range associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetRangeEscaped(value AnalyticsDateRangeable)() {
     m.rangeEscaped = value
 }
-// SetResponseMetrics sets the responseMetrics property value. The responseMetrics property
+// SetResponseMetrics sets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetResponseMetrics(value CustomerResponseMetricsable)() {
     m.responseMetrics = value
 }
-// SetSummary sets the summary property value. The summary property
+// SetSummary sets the summary property value. Human-readable summary for this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetSummary(value CustomerAnalyticsSummaryable)() {
     m.summary = value
 }

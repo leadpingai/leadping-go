@@ -28,10 +28,6 @@ type BusinessUserResponse struct {
     licenseQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The renewal date used for this user's license proration.
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The Stripe subscription ID containing this user's business license item.
-    licenseStripeSubscriptionId *string
-    // The Stripe subscription item ID used for business user licenses.
-    licenseStripeSubscriptionItemId *string
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
@@ -163,26 +159,6 @@ func (m *BusinessUserResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
-    res["licenseStripeSubscriptionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLicenseStripeSubscriptionId(val)
-        }
-        return nil
-    }
-    res["licenseStripeSubscriptionItemId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLicenseStripeSubscriptionItemId(val)
-        }
-        return nil
-    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -280,16 +256,6 @@ func (m *BusinessUserResponse) GetLicenseQuantity()(i878a80d2330e89d26896388a3f4
 func (m *BusinessUserResponse) GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.licenseRenewalDate
 }
-// GetLicenseStripeSubscriptionId gets the licenseStripeSubscriptionId property value. The Stripe subscription ID containing this user's business license item.
-// returns a *string when successful
-func (m *BusinessUserResponse) GetLicenseStripeSubscriptionId()(*string) {
-    return m.licenseStripeSubscriptionId
-}
-// GetLicenseStripeSubscriptionItemId gets the licenseStripeSubscriptionItemId property value. The Stripe subscription item ID used for business user licenses.
-// returns a *string when successful
-func (m *BusinessUserResponse) GetLicenseStripeSubscriptionItemId()(*string) {
-    return m.licenseStripeSubscriptionItemId
-}
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
 func (m *BusinessUserResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -371,18 +337,6 @@ func (m *BusinessUserResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     {
         err := writer.WriteTimeValue("licenseRenewalDate", m.GetLicenseRenewalDate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("licenseStripeSubscriptionId", m.GetLicenseStripeSubscriptionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("licenseStripeSubscriptionItemId", m.GetLicenseStripeSubscriptionItemId())
         if err != nil {
             return err
         }
@@ -474,14 +428,6 @@ func (m *BusinessUserResponse) SetLicenseQuantity(value i878a80d2330e89d26896388
 func (m *BusinessUserResponse) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.licenseRenewalDate = value
 }
-// SetLicenseStripeSubscriptionId sets the licenseStripeSubscriptionId property value. The Stripe subscription ID containing this user's business license item.
-func (m *BusinessUserResponse) SetLicenseStripeSubscriptionId(value *string)() {
-    m.licenseStripeSubscriptionId = value
-}
-// SetLicenseStripeSubscriptionItemId sets the licenseStripeSubscriptionItemId property value. The Stripe subscription item ID used for business user licenses.
-func (m *BusinessUserResponse) SetLicenseStripeSubscriptionItemId(value *string)() {
-    m.licenseStripeSubscriptionItemId = value
-}
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *BusinessUserResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
@@ -521,8 +467,6 @@ type BusinessUserResponseable interface {
     GetLicenseBillingStatus()(*string)
     GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLicenseStripeSubscriptionId()(*string)
-    GetLicenseStripeSubscriptionItemId()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetRemovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -538,8 +482,6 @@ type BusinessUserResponseable interface {
     SetLicenseBillingStatus(value *string)()
     SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLicenseStripeSubscriptionId(value *string)()
-    SetLicenseStripeSubscriptionItemId(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

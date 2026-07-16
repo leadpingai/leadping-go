@@ -13,22 +13,14 @@ type PhoneNumberRoutingMetadata struct {
     additionalData map[string]any
     // Messaging campaign identifier associated with this phone number routing metadata.
     campaignId *string
-    // Indicates whether this record is restricted to internal Leadping testing.
-    internalTestOnly *bool
-    // Messaging profile identifier used for SMS routing with the provider.
-    messagingProfileId *string
     // Indicates whether the phone number can be used for SMS messaging.
     smsEnabled *bool
     // Lead source ID assigned to this phone number for attribution and routing.
     sourceId *string
     // Team ID used to route calls and messages for this phone number.
     teamId *string
-    // Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
-    voiceConnectionId *string
     // Indicates whether the phone number can be used for voice calls.
     voiceEnabled *bool
-    // Indicates whether this phone number should only be used for warmup traffic.
-    warmupOnly *bool
 }
 // NewPhoneNumberRoutingMetadata instantiates a new PhoneNumberRoutingMetadata and sets the default values.
 func NewPhoneNumberRoutingMetadata()(*PhoneNumberRoutingMetadata) {
@@ -66,26 +58,6 @@ func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i87
         }
         return nil
     }
-    res["internalTestOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalTestOnly(val)
-        }
-        return nil
-    }
-    res["messagingProfileId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessagingProfileId(val)
-        }
-        return nil
-    }
     res["smsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -116,16 +88,6 @@ func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i87
         }
         return nil
     }
-    res["voiceConnectionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceConnectionId(val)
-        }
-        return nil
-    }
     res["voiceEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -136,27 +98,7 @@ func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i87
         }
         return nil
     }
-    res["warmupOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupOnly(val)
-        }
-        return nil
-    }
     return res
-}
-// GetInternalTestOnly gets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
-// returns a *bool when successful
-func (m *PhoneNumberRoutingMetadata) GetInternalTestOnly()(*bool) {
-    return m.internalTestOnly
-}
-// GetMessagingProfileId gets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
-// returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetMessagingProfileId()(*string) {
-    return m.messagingProfileId
 }
 // GetSmsEnabled gets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
 // returns a *bool when successful
@@ -173,37 +115,15 @@ func (m *PhoneNumberRoutingMetadata) GetSourceId()(*string) {
 func (m *PhoneNumberRoutingMetadata) GetTeamId()(*string) {
     return m.teamId
 }
-// GetVoiceConnectionId gets the voiceConnectionId property value. Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
-// returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetVoiceConnectionId()(*string) {
-    return m.voiceConnectionId
-}
 // GetVoiceEnabled gets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 // returns a *bool when successful
 func (m *PhoneNumberRoutingMetadata) GetVoiceEnabled()(*bool) {
     return m.voiceEnabled
 }
-// GetWarmupOnly gets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
-// returns a *bool when successful
-func (m *PhoneNumberRoutingMetadata) GetWarmupOnly()(*bool) {
-    return m.warmupOnly
-}
 // Serialize serializes information the current object
 func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("internalTestOnly", m.GetInternalTestOnly())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("messagingProfileId", m.GetMessagingProfileId())
         if err != nil {
             return err
         }
@@ -227,19 +147,7 @@ func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3
         }
     }
     {
-        err := writer.WriteStringValue("voiceConnectionId", m.GetVoiceConnectionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteBoolValue("voiceEnabled", m.GetVoiceEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("warmupOnly", m.GetWarmupOnly())
         if err != nil {
             return err
         }
@@ -260,14 +168,6 @@ func (m *PhoneNumberRoutingMetadata) SetAdditionalData(value map[string]any)() {
 func (m *PhoneNumberRoutingMetadata) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetInternalTestOnly sets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
-func (m *PhoneNumberRoutingMetadata) SetInternalTestOnly(value *bool)() {
-    m.internalTestOnly = value
-}
-// SetMessagingProfileId sets the messagingProfileId property value. Messaging profile identifier used for SMS routing with the provider.
-func (m *PhoneNumberRoutingMetadata) SetMessagingProfileId(value *string)() {
-    m.messagingProfileId = value
-}
 // SetSmsEnabled sets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
 func (m *PhoneNumberRoutingMetadata) SetSmsEnabled(value *bool)() {
     m.smsEnabled = value
@@ -280,37 +180,21 @@ func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string)() {
 func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string)() {
     m.teamId = value
 }
-// SetVoiceConnectionId sets the voiceConnectionId property value. Leadping v oi ce co nn ec ti o n ID that links this phone number routing metadata to the related record.
-func (m *PhoneNumberRoutingMetadata) SetVoiceConnectionId(value *string)() {
-    m.voiceConnectionId = value
-}
 // SetVoiceEnabled sets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 func (m *PhoneNumberRoutingMetadata) SetVoiceEnabled(value *bool)() {
     m.voiceEnabled = value
-}
-// SetWarmupOnly sets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
-func (m *PhoneNumberRoutingMetadata) SetWarmupOnly(value *bool)() {
-    m.warmupOnly = value
 }
 type PhoneNumberRoutingMetadataable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetCampaignId()(*string)
-    GetInternalTestOnly()(*bool)
-    GetMessagingProfileId()(*string)
     GetSmsEnabled()(*bool)
     GetSourceId()(*string)
     GetTeamId()(*string)
-    GetVoiceConnectionId()(*string)
     GetVoiceEnabled()(*bool)
-    GetWarmupOnly()(*bool)
     SetCampaignId(value *string)()
-    SetInternalTestOnly(value *bool)()
-    SetMessagingProfileId(value *string)()
     SetSmsEnabled(value *bool)()
     SetSourceId(value *string)()
     SetTeamId(value *string)()
-    SetVoiceConnectionId(value *string)()
     SetVoiceEnabled(value *bool)()
-    SetWarmupOnly(value *bool)()
 }

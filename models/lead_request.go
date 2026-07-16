@@ -11,8 +11,6 @@ import (
 type LeadRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride LeadRequest_adminEnablementOverrideable
     // Contact details for the lead or customer represented by this lead request.
     contact LeadContactable
     // Demographic profile details for the lead represented by this lead request.
@@ -45,11 +43,6 @@ func CreateLeadRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a LeadRequest_adminEnablementOverrideable when successful
-func (m *LeadRequest) GetAdminEnablementOverride()(LeadRequest_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
 // GetContact gets the contact property value. Contact details for the lead or customer represented by this lead request.
 // returns a LeadContactable when successful
 func (m *LeadRequest) GetContact()(LeadContactable) {
@@ -69,16 +62,6 @@ func (m *LeadRequest) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *LeadRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadRequest_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(LeadRequest_adminEnablementOverrideable))
-        }
-        return nil
-    }
     res["contact"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateLeadContactFromDiscriminatorValue)
         if err != nil {
@@ -186,12 +169,6 @@ func (m *LeadRequest) GetTagNames()([]string) {
 // Serialize serializes information the current object
 func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteObjectValue("contact", m.GetContact())
         if err != nil {
             return err
@@ -245,10 +222,6 @@ func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *LeadRequest) SetAdminEnablementOverride(value LeadRequest_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetContact sets the contact property value. Contact details for the lead or customer represented by this lead request.
 func (m *LeadRequest) SetContact(value LeadContactable)() {
     m.contact = value
@@ -280,7 +253,6 @@ func (m *LeadRequest) SetTagNames(value []string)() {
 type LeadRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(LeadRequest_adminEnablementOverrideable)
     GetContact()(LeadContactable)
     GetCustomer()(LeadProfileable)
     GetEnabled()(*bool)
@@ -288,7 +260,6 @@ type LeadRequestable interface {
     GetMetadata()(LeadMetadataable)
     GetTagIds()([]string)
     GetTagNames()([]string)
-    SetAdminEnablementOverride(value LeadRequest_adminEnablementOverrideable)()
     SetContact(value LeadContactable)()
     SetCustomer(value LeadProfileable)()
     SetEnabled(value *bool)()

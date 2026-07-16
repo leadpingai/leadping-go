@@ -8,16 +8,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerFailingAutomation last failure associated with this Leadping customer automation health.
 type CustomerFailingAutomation struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationId property
+    // Unique identifier of the automation associated with this Leadping customer failing automation.
     automationId *string
-    // The error property
+    // Error associated with this Leadping customer failing automation.
     error *string
-    // The failedAt property
+    // Date and time when the customer failing automation failed.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The name property
+    // Human-readable name of the customer failing automation.
     name *string
 }
 // NewCustomerFailingAutomation instantiates a new CustomerFailingAutomation and sets the default values.
@@ -37,17 +38,17 @@ func CreateCustomerFailingAutomationFromDiscriminatorValue(parseNode i878a80d233
 func (m *CustomerFailingAutomation) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. The automationId property
+// GetAutomationId gets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
 // returns a *string when successful
 func (m *CustomerFailingAutomation) GetAutomationId()(*string) {
     return m.automationId
 }
-// GetError gets the error property value. The error property
+// GetError gets the error property value. Error associated with this Leadping customer failing automation.
 // returns a *string when successful
 func (m *CustomerFailingAutomation) GetError()(*string) {
     return m.error
 }
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. Date and time when the customer failing automation failed.
 // returns a *Time when successful
 func (m *CustomerFailingAutomation) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -98,7 +99,7 @@ func (m *CustomerFailingAutomation) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetName gets the name property value. The name property
+// GetName gets the name property value. Human-readable name of the customer failing automation.
 // returns a *string when successful
 func (m *CustomerFailingAutomation) GetName()(*string) {
     return m.name
@@ -141,19 +142,19 @@ func (m *CustomerFailingAutomation) Serialize(writer i878a80d2330e89d26896388a3f
 func (m *CustomerFailingAutomation) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. The automationId property
+// SetAutomationId sets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
 func (m *CustomerFailingAutomation) SetAutomationId(value *string)() {
     m.automationId = value
 }
-// SetError sets the error property value. The error property
+// SetError sets the error property value. Error associated with this Leadping customer failing automation.
 func (m *CustomerFailingAutomation) SetError(value *string)() {
     m.error = value
 }
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. Date and time when the customer failing automation failed.
 func (m *CustomerFailingAutomation) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetName sets the name property value. The name property
+// SetName sets the name property value. Human-readable name of the customer failing automation.
 func (m *CustomerFailingAutomation) SetName(value *string)() {
     m.name = value
 }

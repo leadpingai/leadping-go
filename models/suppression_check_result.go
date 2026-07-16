@@ -12,8 +12,6 @@ import (
 type SuppressionCheckResult struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The human-readable admin reason explaining this ion check result.
-    adminReason *string
     // Whether this ion check result allows ed.
     allowed *bool
     // The business ID associated with this ion check result.
@@ -52,11 +50,6 @@ func CreateSuppressionCheckResultFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *SuppressionCheckResult) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminReason gets the adminReason property value. The human-readable admin reason explaining this ion check result.
-// returns a *string when successful
-func (m *SuppressionCheckResult) GetAdminReason()(*string) {
-    return m.adminReason
-}
 // GetAllowed gets the allowed property value. Whether this ion check result allows ed.
 // returns a *bool when successful
 func (m *SuppressionCheckResult) GetAllowed()(*bool) {
@@ -81,16 +74,6 @@ func (m *SuppressionCheckResult) GetCustomerReason()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SuppressionCheckResult) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminReason(val)
-        }
-        return nil
-    }
     res["allowed"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -226,12 +209,6 @@ func (m *SuppressionCheckResult) GetSuppressionEntryId()(*string) {
 // Serialize serializes information the current object
 func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("adminReason", m.GetAdminReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteBoolValue("allowed", m.GetAllowed())
         if err != nil {
             return err
@@ -303,10 +280,6 @@ func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *SuppressionCheckResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminReason sets the adminReason property value. The human-readable admin reason explaining this ion check result.
-func (m *SuppressionCheckResult) SetAdminReason(value *string)() {
-    m.adminReason = value
-}
 // SetAllowed sets the allowed property value. Whether this ion check result allows ed.
 func (m *SuppressionCheckResult) SetAllowed(value *bool)() {
     m.allowed = value
@@ -350,7 +323,6 @@ func (m *SuppressionCheckResult) SetSuppressionEntryId(value *string)() {
 type SuppressionCheckResultable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminReason()(*string)
     GetAllowed()(*bool)
     GetBusinessId()(*string)
     GetChannel()(*string)
@@ -361,7 +333,6 @@ type SuppressionCheckResultable interface {
     GetSource()(*string)
     GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSuppressionEntryId()(*string)
-    SetAdminReason(value *string)()
     SetAllowed(value *bool)()
     SetBusinessId(value *string)()
     SetChannel(value *string)()

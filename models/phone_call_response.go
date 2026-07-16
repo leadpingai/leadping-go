@@ -40,8 +40,6 @@ type PhoneCallResponse struct {
     id *string
     // Lead ID associated with the call conversation or outreach attempt.
     leadId *string
-    // Structured metadata used for attribution, integrations, and reporting on this phone call.
-    metadata PhoneCallResponse_metadataable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number used by this phone call for calls, SMS, lookup, or routing.
@@ -276,16 +274,6 @@ func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
-    res["metadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneCallResponse_metadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMetadata(val.(PhoneCallResponse_metadataable))
-        }
-        return nil
-    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -417,11 +405,6 @@ func (m *PhoneCallResponse) GetId()(*string) {
 // returns a *string when successful
 func (m *PhoneCallResponse) GetLeadId()(*string) {
     return m.leadId
-}
-// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this phone call.
-// returns a PhoneCallResponse_metadataable when successful
-func (m *PhoneCallResponse) GetMetadata()(PhoneCallResponse_metadataable) {
-    return m.metadata
 }
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
@@ -565,12 +548,6 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("metadata", m.GetMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
         if err != nil {
             return err
@@ -706,10 +683,6 @@ func (m *PhoneCallResponse) SetId(value *string)() {
 func (m *PhoneCallResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this phone call.
-func (m *PhoneCallResponse) SetMetadata(value PhoneCallResponse_metadataable)() {
-    m.metadata = value
-}
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *PhoneCallResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
@@ -771,7 +744,6 @@ type PhoneCallResponseable interface {
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetLeadId()(*string)
-    GetMetadata()(PhoneCallResponse_metadataable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPhoneNumber()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -797,7 +769,6 @@ type PhoneCallResponseable interface {
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()
-    SetMetadata(value PhoneCallResponse_metadataable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPhoneNumber(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

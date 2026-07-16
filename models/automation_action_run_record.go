@@ -20,12 +20,6 @@ type AutomationActionRunRecord struct {
     automationRunId *string
     // UTC timestamp when processing completed for this automation action run record.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Stable integration connection key used by this automation action.
-    connectionKey *string
-    // Error text returned while processing this automation action run record.
-    error *string
-    // Idempotency key used to identify a unique automation workflow execution.
-    executionKey *string
     // UTC timestamp when processing failed for this automation action run record.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Machine-readable failure code for troubleshooting this automation action run record.
@@ -36,8 +30,6 @@ type AutomationActionRunRecord struct {
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Sort order used to evaluate or display this automation action run record.
     order *int32
-    // Generated output returned by this automation action run record.
-    output *string
     // Number of processing attempts made for this workflow or delivery request.
     processingAttempts *int32
     // UTC timestamp when this automation action run record was scheduled.
@@ -83,21 +75,6 @@ func (m *AutomationActionRunRecord) GetAutomationRunId()(*string) {
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
-}
-// GetConnectionKey gets the connectionKey property value. Stable integration connection key used by this automation action.
-// returns a *string when successful
-func (m *AutomationActionRunRecord) GetConnectionKey()(*string) {
-    return m.connectionKey
-}
-// GetError gets the error property value. Error text returned while processing this automation action run record.
-// returns a *string when successful
-func (m *AutomationActionRunRecord) GetError()(*string) {
-    return m.error
-}
-// GetExecutionKey gets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-// returns a *string when successful
-func (m *AutomationActionRunRecord) GetExecutionKey()(*string) {
-    return m.executionKey
 }
 // GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
 // returns a *Time when successful
@@ -153,36 +130,6 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
-    res["connectionKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConnectionKey(val)
-        }
-        return nil
-    }
-    res["error"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetError(val)
-        }
-        return nil
-    }
-    res["executionKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExecutionKey(val)
-        }
-        return nil
-    }
     res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -230,16 +177,6 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878
         }
         if val != nil {
             m.SetOrder(val)
-        }
-        return nil
-    }
-    res["output"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutput(val)
         }
         return nil
     }
@@ -300,11 +237,6 @@ func (m *AutomationActionRunRecord) GetNextRetryAt()(*i336074805fc853987abe6f7fe
 func (m *AutomationActionRunRecord) GetOrder()(*int32) {
     return m.order
 }
-// GetOutput gets the output property value. Generated output returned by this automation action run record.
-// returns a *string when successful
-func (m *AutomationActionRunRecord) GetOutput()(*string) {
-    return m.output
-}
 // GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 // returns a *int32 when successful
 func (m *AutomationActionRunRecord) GetProcessingAttempts()(*int32) {
@@ -352,24 +284,6 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
-        err := writer.WriteStringValue("connectionKey", m.GetConnectionKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("error", m.GetError())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("executionKey", m.GetExecutionKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
         if err != nil {
             return err
@@ -395,12 +309,6 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
     }
     {
         err := writer.WriteInt32Value("order", m.GetOrder())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("output", m.GetOutput())
         if err != nil {
             return err
         }
@@ -457,18 +365,6 @@ func (m *AutomationActionRunRecord) SetAutomationRunId(value *string)() {
 func (m *AutomationActionRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetConnectionKey sets the connectionKey property value. Stable integration connection key used by this automation action.
-func (m *AutomationActionRunRecord) SetConnectionKey(value *string)() {
-    m.connectionKey = value
-}
-// SetError sets the error property value. Error text returned while processing this automation action run record.
-func (m *AutomationActionRunRecord) SetError(value *string)() {
-    m.error = value
-}
-// SetExecutionKey sets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-func (m *AutomationActionRunRecord) SetExecutionKey(value *string)() {
-    m.executionKey = value
-}
 // SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
 func (m *AutomationActionRunRecord) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
@@ -488,10 +384,6 @@ func (m *AutomationActionRunRecord) SetNextRetryAt(value *i336074805fc853987abe6
 // SetOrder sets the order property value. Sort order used to evaluate or display this automation action run record.
 func (m *AutomationActionRunRecord) SetOrder(value *int32)() {
     m.order = value
-}
-// SetOutput sets the output property value. Generated output returned by this automation action run record.
-func (m *AutomationActionRunRecord) SetOutput(value *string)() {
-    m.output = value
 }
 // SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 func (m *AutomationActionRunRecord) SetProcessingAttempts(value *int32)() {
@@ -516,15 +408,11 @@ type AutomationActionRunRecordable interface {
     GetActionType()(*string)
     GetAutomationRunId()(*string)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetConnectionKey()(*string)
-    GetError()(*string)
-    GetExecutionKey()(*string)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetFailureCode()(*string)
     GetId()(*string)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOrder()(*int32)
-    GetOutput()(*string)
     GetProcessingAttempts()(*int32)
     GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -533,15 +421,11 @@ type AutomationActionRunRecordable interface {
     SetActionType(value *string)()
     SetAutomationRunId(value *string)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetConnectionKey(value *string)()
-    SetError(value *string)()
-    SetExecutionKey(value *string)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetFailureCode(value *string)()
     SetId(value *string)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOrder(value *int32)()
-    SetOutput(value *string)()
     SetProcessingAttempts(value *int32)()
     SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

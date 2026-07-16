@@ -12,8 +12,6 @@ import (
 type LeadTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride LeadTableRow_adminEnablementOverrideable
     // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User ID of the person who archived this record.
@@ -74,11 +72,6 @@ func CreateLeadTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *LeadTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a LeadTableRow_adminEnablementOverrideable when successful
-func (m *LeadTableRow) GetAdminEnablementOverride()(LeadTableRow_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
 // GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
 func (m *LeadTableRow) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -128,16 +121,6 @@ func (m *LeadTableRow) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadTableRow_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(LeadTableRow_adminEnablementOverrideable))
-        }
-        return nil
-    }
     res["archivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -419,12 +402,6 @@ func (m *LeadTableRow) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a
 // Serialize serializes information the current object
 func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
         if err != nil {
             return err
@@ -568,10 +545,6 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *LeadTableRow) SetAdminEnablementOverride(value LeadTableRow_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *LeadTableRow) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
@@ -659,7 +632,6 @@ func (m *LeadTableRow) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
 type LeadTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(LeadTableRow_adminEnablementOverrideable)
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchivedByUserId()(*string)
     GetArchiveReason()(*int32)
@@ -681,7 +653,6 @@ type LeadTableRowable interface {
     GetStatusTone()(*string)
     GetTags()([]TagSummaryable)
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetAdminEnablementOverride(value LeadTableRow_adminEnablementOverrideable)()
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
     SetArchiveReason(value *int32)()

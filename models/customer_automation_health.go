@@ -7,22 +7,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerAutomationHealth automation health associated with this Leadping customer analytics.
 type CustomerAutomationHealth struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationCount property
+    // Total number of automation records represented by this Leadping customer automation health.
     automationCount *int32
-    // The enabledCount property
+    // Total number of enabled records represented by this Leadping customer automation health.
     enabledCount *int32
-    // The executions property
+    // Number of executions represented by this Leadping customer automation health.
     executions *int32
-    // The failingAutomations property
+    // Collection of failing automations included with this Leadping customer automation health.
     failingAutomations []CustomerFailingAutomationable
-    // The failureCount property
+    // Total number of failure records represented by this Leadping customer automation health.
     failureCount *int32
-    // The lastFailure property
+    // Last failure associated with this Leadping customer automation health.
     lastFailure CustomerAutomationHealth_lastFailureable
-    // The successCount property
+    // Total number of success records represented by this Leadping customer automation health.
     successCount *int32
 }
 // NewCustomerAutomationHealth instantiates a new CustomerAutomationHealth and sets the default values.
@@ -42,27 +43,27 @@ func CreateCustomerAutomationHealthFromDiscriminatorValue(parseNode i878a80d2330
 func (m *CustomerAutomationHealth) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationCount gets the automationCount property value. The automationCount property
+// GetAutomationCount gets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetAutomationCount()(*int32) {
     return m.automationCount
 }
-// GetEnabledCount gets the enabledCount property value. The enabledCount property
+// GetEnabledCount gets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetEnabledCount()(*int32) {
     return m.enabledCount
 }
-// GetExecutions gets the executions property value. The executions property
+// GetExecutions gets the executions property value. Number of executions represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetExecutions()(*int32) {
     return m.executions
 }
-// GetFailingAutomations gets the failingAutomations property value. The failingAutomations property
+// GetFailingAutomations gets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
 // returns a []CustomerFailingAutomationable when successful
 func (m *CustomerAutomationHealth) GetFailingAutomations()([]CustomerFailingAutomationable) {
     return m.failingAutomations
 }
-// GetFailureCount gets the failureCount property value. The failureCount property
+// GetFailureCount gets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetFailureCount()(*int32) {
     return m.failureCount
@@ -149,12 +150,12 @@ func (m *CustomerAutomationHealth) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetLastFailure gets the lastFailure property value. The lastFailure property
+// GetLastFailure gets the lastFailure property value. Last failure associated with this Leadping customer automation health.
 // returns a CustomerAutomationHealth_lastFailureable when successful
 func (m *CustomerAutomationHealth) GetLastFailure()(CustomerAutomationHealth_lastFailureable) {
     return m.lastFailure
 }
-// GetSuccessCount gets the successCount property value. The successCount property
+// GetSuccessCount gets the successCount property value. Total number of success records represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetSuccessCount()(*int32) {
     return m.successCount
@@ -221,31 +222,31 @@ func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *CustomerAutomationHealth) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationCount sets the automationCount property value. The automationCount property
+// SetAutomationCount sets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetAutomationCount(value *int32)() {
     m.automationCount = value
 }
-// SetEnabledCount sets the enabledCount property value. The enabledCount property
+// SetEnabledCount sets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetEnabledCount(value *int32)() {
     m.enabledCount = value
 }
-// SetExecutions sets the executions property value. The executions property
+// SetExecutions sets the executions property value. Number of executions represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetExecutions(value *int32)() {
     m.executions = value
 }
-// SetFailingAutomations sets the failingAutomations property value. The failingAutomations property
+// SetFailingAutomations sets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetFailingAutomations(value []CustomerFailingAutomationable)() {
     m.failingAutomations = value
 }
-// SetFailureCount sets the failureCount property value. The failureCount property
+// SetFailureCount sets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetFailureCount(value *int32)() {
     m.failureCount = value
 }
-// SetLastFailure sets the lastFailure property value. The lastFailure property
+// SetLastFailure sets the lastFailure property value. Last failure associated with this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetLastFailure(value CustomerAutomationHealth_lastFailureable)() {
     m.lastFailure = value
 }
-// SetSuccessCount sets the successCount property value. The successCount property
+// SetSuccessCount sets the successCount property value. Total number of success records represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetSuccessCount(value *int32)() {
     m.successCount = value
 }

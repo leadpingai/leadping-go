@@ -24,11 +24,11 @@ type DispositionResponse struct {
     callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Controlled disposition categories used for reporting, automation, and analytics.
     category *DispositionResponse_category
-    // The changedAt property
+    // Date and time when the disposition change occurred.
     changedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The changedByAutomationId property
+    // Unique identifier of the automation that changed the disposition, when applicable.
     changedByAutomationId *string
-    // The changedByUserId property
+    // Unique identifier of the Leadping user who made the change.
     changedByUserId *string
     // Known sources that can change a lead's current disposition.
     changeSource *DispositionResponse_changeSource
@@ -42,15 +42,15 @@ type DispositionResponse struct {
     isMissedCallFollowUp *bool
     // The lead ID associated with this disposition.
     leadId *string
-    // The newDispositionId property
+    // Unique identifier of the new disposition associated with this Leadping disposition.
     newDispositionId *string
     // The operator or customer notes recorded for this disposition.
     notes *string
-    // The oldDispositionId property
+    // Unique identifier of the old disposition associated with this Leadping disposition.
     oldDispositionId *string
-    // The oldDispositionOutcome property
+    // Old disposition outcome associated with this Leadping disposition.
     oldDispositionOutcome *string
-    // The oldDispositionType property
+    // Old disposition type classification for this Leadping disposition.
     oldDispositionType *string
     // The outcome value for this disposition.
     outcome *string
@@ -116,17 +116,17 @@ func (m *DispositionResponse) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *DispositionResponse) GetCategory()(*DispositionResponse_category) {
     return m.category
 }
-// GetChangedAt gets the changedAt property value. The changedAt property
+// GetChangedAt gets the changedAt property value. Date and time when the disposition change occurred.
 // returns a *Time when successful
 func (m *DispositionResponse) GetChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.changedAt
 }
-// GetChangedByAutomationId gets the changedByAutomationId property value. The changedByAutomationId property
+// GetChangedByAutomationId gets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
 // returns a *string when successful
 func (m *DispositionResponse) GetChangedByAutomationId()(*string) {
     return m.changedByAutomationId
 }
-// GetChangedByUserId gets the changedByUserId property value. The changedByUserId property
+// GetChangedByUserId gets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
 // returns a *string when successful
 func (m *DispositionResponse) GetChangedByUserId()(*string) {
     return m.changedByUserId
@@ -447,7 +447,7 @@ func (m *DispositionResponse) GetIsMissedCallFollowUp()(*bool) {
 func (m *DispositionResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetNewDispositionId gets the newDispositionId property value. The newDispositionId property
+// GetNewDispositionId gets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition.
 // returns a *string when successful
 func (m *DispositionResponse) GetNewDispositionId()(*string) {
     return m.newDispositionId
@@ -457,17 +457,17 @@ func (m *DispositionResponse) GetNewDispositionId()(*string) {
 func (m *DispositionResponse) GetNotes()(*string) {
     return m.notes
 }
-// GetOldDispositionId gets the oldDispositionId property value. The oldDispositionId property
+// GetOldDispositionId gets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition.
 // returns a *string when successful
 func (m *DispositionResponse) GetOldDispositionId()(*string) {
     return m.oldDispositionId
 }
-// GetOldDispositionOutcome gets the oldDispositionOutcome property value. The oldDispositionOutcome property
+// GetOldDispositionOutcome gets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition.
 // returns a *string when successful
 func (m *DispositionResponse) GetOldDispositionOutcome()(*string) {
     return m.oldDispositionOutcome
 }
-// GetOldDispositionType gets the oldDispositionType property value. The oldDispositionType property
+// GetOldDispositionType gets the oldDispositionType property value. Old disposition type classification for this Leadping disposition.
 // returns a *string when successful
 func (m *DispositionResponse) GetOldDispositionType()(*string) {
     return m.oldDispositionType
@@ -720,15 +720,15 @@ func (m *DispositionResponse) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad
 func (m *DispositionResponse) SetCategory(value *DispositionResponse_category)() {
     m.category = value
 }
-// SetChangedAt sets the changedAt property value. The changedAt property
+// SetChangedAt sets the changedAt property value. Date and time when the disposition change occurred.
 func (m *DispositionResponse) SetChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.changedAt = value
 }
-// SetChangedByAutomationId sets the changedByAutomationId property value. The changedByAutomationId property
+// SetChangedByAutomationId sets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
 func (m *DispositionResponse) SetChangedByAutomationId(value *string)() {
     m.changedByAutomationId = value
 }
-// SetChangedByUserId sets the changedByUserId property value. The changedByUserId property
+// SetChangedByUserId sets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
 func (m *DispositionResponse) SetChangedByUserId(value *string)() {
     m.changedByUserId = value
 }
@@ -756,7 +756,7 @@ func (m *DispositionResponse) SetIsMissedCallFollowUp(value *bool)() {
 func (m *DispositionResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetNewDispositionId sets the newDispositionId property value. The newDispositionId property
+// SetNewDispositionId sets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition.
 func (m *DispositionResponse) SetNewDispositionId(value *string)() {
     m.newDispositionId = value
 }
@@ -764,15 +764,15 @@ func (m *DispositionResponse) SetNewDispositionId(value *string)() {
 func (m *DispositionResponse) SetNotes(value *string)() {
     m.notes = value
 }
-// SetOldDispositionId sets the oldDispositionId property value. The oldDispositionId property
+// SetOldDispositionId sets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition.
 func (m *DispositionResponse) SetOldDispositionId(value *string)() {
     m.oldDispositionId = value
 }
-// SetOldDispositionOutcome sets the oldDispositionOutcome property value. The oldDispositionOutcome property
+// SetOldDispositionOutcome sets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition.
 func (m *DispositionResponse) SetOldDispositionOutcome(value *string)() {
     m.oldDispositionOutcome = value
 }
-// SetOldDispositionType sets the oldDispositionType property value. The oldDispositionType property
+// SetOldDispositionType sets the oldDispositionType property value. Old disposition type classification for this Leadping disposition.
 func (m *DispositionResponse) SetOldDispositionType(value *string)() {
     m.oldDispositionType = value
 }

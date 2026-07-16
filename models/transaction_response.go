@@ -10,8 +10,6 @@ import (
 
 // TransactionResponse response schema for the Leadping API billing transaction response returned to authenticated clients.
 type TransactionResponse struct {
-    // Leadping account identifier used for wallet and transaction reconciliation.
-    accountId *string
     // Display name of the wallet or account used for this transaction.
     accountName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -22,18 +20,12 @@ type TransactionResponse struct {
     businessId *string
     // Business display name shown for this wallet transaction.
     businessName *string
-    // Correlation ID used to trace this workflow or request across Leadping services.
-    correlationId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name or identifier for the person or system that created this billing transaction response.
-    createdBy *string
     // Human-readable description that explains this billing transaction response to API users.
     description *string
     // Payment gateway fee amount charged for the wallet transaction.
     gatewayFeeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Payment gateway identifier linked to this transaction.
-    gatewayId *string
     // Payment gateway status returned for this transaction.
     gatewayStatus *string
     // The unique identifier for the entity.
@@ -42,12 +34,8 @@ type TransactionResponse struct {
     leadId *string
     // Lead display name shown for lead-related wallet transactions.
     leadName *string
-    // Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-    metadata TransactionResponse_metadataable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name or identifier for the person or system that last modified this billing transaction response.
-    modifiedBy *string
     // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
     // Additional billing notes that explain the transaction for admins or customers.
@@ -72,11 +60,6 @@ func NewTransactionResponse()(*TransactionResponse) {
 // returns a Parsable when successful
 func CreateTransactionResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTransactionResponse(), nil
-}
-// GetAccountId gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-// returns a *string when successful
-func (m *TransactionResponse) GetAccountId()(*string) {
-    return m.accountId
 }
 // GetAccountName gets the accountName property value. Display name of the wallet or account used for this transaction.
 // returns a *string when successful
@@ -103,20 +86,10 @@ func (m *TransactionResponse) GetBusinessId()(*string) {
 func (m *TransactionResponse) GetBusinessName()(*string) {
     return m.businessName
 }
-// GetCorrelationId gets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
-// returns a *string when successful
-func (m *TransactionResponse) GetCorrelationId()(*string) {
-    return m.correlationId
-}
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
 func (m *TransactionResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
-}
-// GetCreatedBy gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
-// returns a *string when successful
-func (m *TransactionResponse) GetCreatedBy()(*string) {
-    return m.createdBy
 }
 // GetDescription gets the description property value. Human-readable description that explains this billing transaction response to API users.
 // returns a *string when successful
@@ -127,16 +100,6 @@ func (m *TransactionResponse) GetDescription()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["accountId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAccountId(val)
-        }
-        return nil
-    }
     res["accountName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -177,16 +140,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["correlationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCorrelationId(val)
-        }
-        return nil
-    }
     res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -194,16 +147,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["createdBy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedBy(val)
         }
         return nil
     }
@@ -224,16 +167,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetGatewayFeeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["gatewayId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGatewayId(val)
         }
         return nil
     }
@@ -277,16 +210,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["metadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTransactionResponse_metadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMetadata(val.(TransactionResponse_metadataable))
-        }
-        return nil
-    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -294,16 +217,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["modifiedBy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedBy(val)
         }
         return nil
     }
@@ -374,11 +287,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *TransactionResponse) GetGatewayFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.gatewayFeeAmount
 }
-// GetGatewayId gets the gatewayId property value. Payment gateway identifier linked to this transaction.
-// returns a *string when successful
-func (m *TransactionResponse) GetGatewayId()(*string) {
-    return m.gatewayId
-}
 // GetGatewayStatus gets the gatewayStatus property value. Payment gateway status returned for this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetGatewayStatus()(*string) {
@@ -399,20 +307,10 @@ func (m *TransactionResponse) GetLeadId()(*string) {
 func (m *TransactionResponse) GetLeadName()(*string) {
     return m.leadName
 }
-// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-// returns a TransactionResponse_metadataable when successful
-func (m *TransactionResponse) GetMetadata()(TransactionResponse_metadataable) {
-    return m.metadata
-}
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
 func (m *TransactionResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
-}
-// GetModifiedBy gets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
-// returns a *string when successful
-func (m *TransactionResponse) GetModifiedBy()(*string) {
-    return m.modifiedBy
 }
 // GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 // returns a *float64 when successful
@@ -447,12 +345,6 @@ func (m *TransactionResponse) GetTransactionType()(*TransactionType) {
 // Serialize serializes information the current object
 func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("accountId", m.GetAccountId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("accountName", m.GetAccountName())
         if err != nil {
             return err
@@ -477,19 +369,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("correlationId", m.GetCorrelationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdBy", m.GetCreatedBy())
         if err != nil {
             return err
         }
@@ -502,12 +382,6 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteObjectValue("gatewayFeeAmount", m.GetGatewayFeeAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("gatewayId", m.GetGatewayId())
         if err != nil {
             return err
         }
@@ -537,19 +411,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("metadata", m.GetMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("modifiedBy", m.GetModifiedBy())
         if err != nil {
             return err
         }
@@ -600,10 +462,6 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAccountId sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-func (m *TransactionResponse) SetAccountId(value *string)() {
-    m.accountId = value
-}
 // SetAccountName sets the accountName property value. Display name of the wallet or account used for this transaction.
 func (m *TransactionResponse) SetAccountName(value *string)() {
     m.accountName = value
@@ -624,17 +482,9 @@ func (m *TransactionResponse) SetBusinessId(value *string)() {
 func (m *TransactionResponse) SetBusinessName(value *string)() {
     m.businessName = value
 }
-// SetCorrelationId sets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
-func (m *TransactionResponse) SetCorrelationId(value *string)() {
-    m.correlationId = value
-}
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *TransactionResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
-}
-// SetCreatedBy sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
-func (m *TransactionResponse) SetCreatedBy(value *string)() {
-    m.createdBy = value
 }
 // SetDescription sets the description property value. Human-readable description that explains this billing transaction response to API users.
 func (m *TransactionResponse) SetDescription(value *string)() {
@@ -643,10 +493,6 @@ func (m *TransactionResponse) SetDescription(value *string)() {
 // SetGatewayFeeAmount sets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
 func (m *TransactionResponse) SetGatewayFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.gatewayFeeAmount = value
-}
-// SetGatewayId sets the gatewayId property value. Payment gateway identifier linked to this transaction.
-func (m *TransactionResponse) SetGatewayId(value *string)() {
-    m.gatewayId = value
 }
 // SetGatewayStatus sets the gatewayStatus property value. Payment gateway status returned for this transaction.
 func (m *TransactionResponse) SetGatewayStatus(value *string)() {
@@ -664,17 +510,9 @@ func (m *TransactionResponse) SetLeadId(value *string)() {
 func (m *TransactionResponse) SetLeadName(value *string)() {
     m.leadName = value
 }
-// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-func (m *TransactionResponse) SetMetadata(value TransactionResponse_metadataable)() {
-    m.metadata = value
-}
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *TransactionResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
-}
-// SetModifiedBy sets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
-func (m *TransactionResponse) SetModifiedBy(value *string)() {
-    m.modifiedBy = value
 }
 // SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 func (m *TransactionResponse) SetNetAmount(value *float64)() {
@@ -703,48 +541,36 @@ func (m *TransactionResponse) SetTransactionType(value *TransactionType)() {
 type TransactionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountId()(*string)
     GetAccountName()(*string)
     GetAmount()(*float64)
     GetBusinessId()(*string)
     GetBusinessName()(*string)
-    GetCorrelationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCreatedBy()(*string)
     GetDescription()(*string)
     GetGatewayFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetGatewayId()(*string)
     GetGatewayStatus()(*string)
     GetId()(*string)
     GetLeadId()(*string)
     GetLeadName()(*string)
-    GetMetadata()(TransactionResponse_metadataable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetModifiedBy()(*string)
     GetNetAmount()(*float64)
     GetNotes()(*string)
     GetPaymentMethodDisplay()(*string)
     GetPlatformFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetTransactionStatus()(*TransactionStatus)
     GetTransactionType()(*TransactionType)
-    SetAccountId(value *string)()
     SetAccountName(value *string)()
     SetAmount(value *float64)()
     SetBusinessId(value *string)()
     SetBusinessName(value *string)()
-    SetCorrelationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCreatedBy(value *string)()
     SetDescription(value *string)()
     SetGatewayFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetGatewayId(value *string)()
     SetGatewayStatus(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()
     SetLeadName(value *string)()
-    SetMetadata(value TransactionResponse_metadataable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetModifiedBy(value *string)()
     SetNetAmount(value *float64)()
     SetNotes(value *string)()
     SetPaymentMethodDisplay(value *string)()

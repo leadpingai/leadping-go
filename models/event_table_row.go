@@ -56,16 +56,12 @@ type EventTableRow struct {
     fromPhoneNumberId *string
     // Unique Leadping identifier for this event timeline table row.
     id *string
-    // Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-    isWarmup *bool
     // Lead ID associated with this timeline event.
     leadId *string
     // UTC timestamp when Leadping will retry this event timeline table row.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // Provider message identifier for SMS delivery tracking and reconciliation.
-    providerMessageId *string
     // UTC timestamp when Leadping queued this event timeline table row for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping received this inbound event or message.
@@ -94,10 +90,6 @@ type EventTableRow struct {
     statusReason *string
     // Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
     summary *string
-    // Telnyx identifier connected to this phone number, call, or SMS event.
-    telnyxId *string
-    // 10DLC campaign identifier associated with this sender or SMS event.
-    tenDlcCampaignId *string
     // Timeline category used to group events for display and filtering.
     timelineCategory *string
     // Timeline type used to render this event in Leadping activity feeds.
@@ -447,16 +439,6 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         return nil
     }
-    res["isWarmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsWarmup(val)
-        }
-        return nil
-    }
     res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -484,16 +466,6 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         if val != nil {
             m.SetOutboundPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["providerMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderMessageId(val)
         }
         return nil
     }
@@ -637,26 +609,6 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         return nil
     }
-    res["telnyxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelnyxId(val)
-        }
-        return nil
-    }
-    res["tenDlcCampaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcCampaignId(val)
-        }
-        return nil
-    }
     res["timelineCategory"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -734,11 +686,6 @@ func (m *EventTableRow) GetFromPhoneNumberId()(*string) {
 func (m *EventTableRow) GetId()(*string) {
     return m.id
 }
-// GetIsWarmup gets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-// returns a *bool when successful
-func (m *EventTableRow) GetIsWarmup()(*bool) {
-    return m.isWarmup
-}
 // GetLeadId gets the leadId property value. Lead ID associated with this timeline event.
 // returns a *string when successful
 func (m *EventTableRow) GetLeadId()(*string) {
@@ -753,11 +700,6 @@ func (m *EventTableRow) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f30
 // returns a *string when successful
 func (m *EventTableRow) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
-}
-// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-// returns a *string when successful
-func (m *EventTableRow) GetProviderMessageId()(*string) {
-    return m.providerMessageId
 }
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this event timeline table row for processing.
 // returns a *Time when successful
@@ -828,16 +770,6 @@ func (m *EventTableRow) GetStatusReason()(*string) {
 // returns a *string when successful
 func (m *EventTableRow) GetSummary()(*string) {
     return m.summary
-}
-// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-// returns a *string when successful
-func (m *EventTableRow) GetTelnyxId()(*string) {
-    return m.telnyxId
-}
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-// returns a *string when successful
-func (m *EventTableRow) GetTenDlcCampaignId()(*string) {
-    return m.tenDlcCampaignId
 }
 // GetTimelineCategory gets the timelineCategory property value. Timeline category used to group events for display and filtering.
 // returns a *string when successful
@@ -1004,12 +936,6 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
-        err := writer.WriteBoolValue("isWarmup", m.GetIsWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
         if err != nil {
             return err
@@ -1023,12 +949,6 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     {
         err := writer.WriteStringValue("outboundPhoneNumberId", m.GetOutboundPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerMessageId", m.GetProviderMessageId())
         if err != nil {
             return err
         }
@@ -1115,18 +1035,6 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     {
         err := writer.WriteStringValue("summary", m.GetSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("telnyxId", m.GetTelnyxId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcCampaignId", m.GetTenDlcCampaignId())
         if err != nil {
             return err
         }
@@ -1269,10 +1177,6 @@ func (m *EventTableRow) SetFromPhoneNumberId(value *string)() {
 func (m *EventTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetIsWarmup sets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-func (m *EventTableRow) SetIsWarmup(value *bool)() {
-    m.isWarmup = value
-}
 // SetLeadId sets the leadId property value. Lead ID associated with this timeline event.
 func (m *EventTableRow) SetLeadId(value *string)() {
     m.leadId = value
@@ -1284,10 +1188,6 @@ func (m *EventTableRow) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *EventTableRow) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
-}
-// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-func (m *EventTableRow) SetProviderMessageId(value *string)() {
-    m.providerMessageId = value
 }
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this event timeline table row for processing.
 func (m *EventTableRow) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -1345,14 +1245,6 @@ func (m *EventTableRow) SetStatusReason(value *string)() {
 func (m *EventTableRow) SetSummary(value *string)() {
     m.summary = value
 }
-// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-func (m *EventTableRow) SetTelnyxId(value *string)() {
-    m.telnyxId = value
-}
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-func (m *EventTableRow) SetTenDlcCampaignId(value *string)() {
-    m.tenDlcCampaignId = value
-}
 // SetTimelineCategory sets the timelineCategory property value. Timeline category used to group events for display and filtering.
 func (m *EventTableRow) SetTimelineCategory(value *string)() {
     m.timelineCategory = value
@@ -1402,11 +1294,9 @@ type EventTableRowable interface {
     GetFromPhoneNumber()(*string)
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
-    GetIsWarmup()(*bool)
     GetLeadId()(*string)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOutboundPhoneNumberId()(*string)
-    GetProviderMessageId()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRelatedEntityId()(*string)
@@ -1421,8 +1311,6 @@ type EventTableRowable interface {
     GetStatus()(*EventTableRow_status)
     GetStatusReason()(*string)
     GetSummary()(*string)
-    GetTelnyxId()(*string)
-    GetTenDlcCampaignId()(*string)
     GetTimelineCategory()(*string)
     GetTimelineType()(*EventTimelineType)
     GetToPhoneNumber()(*string)
@@ -1451,11 +1339,9 @@ type EventTableRowable interface {
     SetFromPhoneNumber(value *string)()
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
-    SetIsWarmup(value *bool)()
     SetLeadId(value *string)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOutboundPhoneNumberId(value *string)()
-    SetProviderMessageId(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRelatedEntityId(value *string)()
@@ -1470,8 +1356,6 @@ type EventTableRowable interface {
     SetStatus(value *EventTableRow_status)()
     SetStatusReason(value *string)()
     SetSummary(value *string)()
-    SetTelnyxId(value *string)()
-    SetTenDlcCampaignId(value *string)()
     SetTimelineCategory(value *string)()
     SetTimelineType(value *EventTimelineType)()
     SetToPhoneNumber(value *string)()

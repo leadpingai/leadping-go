@@ -22,8 +22,6 @@ type UsageLedgerTableRow struct {
     businessName *string
     // The channel value for this usage ledger.
     channel *UsageChannel
-    // The correlation ID associated with this usage ledger.
-    correlationId *string
     // The date and time for the created at value on this usage ledger.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The monetary customer charge amount for this usage ledger.
@@ -34,14 +32,8 @@ type UsageLedgerTableRow struct {
     durationSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The unique ID for this usage ledger.
     id *string
-    // The idempotency key value for this usage ledger.
-    idempotencyKey *string
-    // The monetary internal cost amount for this usage ledger.
-    internalCostAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Whether this usage ledger is billable.
     isBillable *bool
-    // Whether this usage ledger is internal.
-    isInternal *bool
     // The lead ID associated with this usage ledger.
     leadId *string
     // The lead name value for this usage ledger.
@@ -50,14 +42,10 @@ type UsageLedgerTableRow struct {
     phoneNumber *string
     // The phone number ID associated with this usage ledger.
     phoneNumberId *string
-    // The monetary provider cost amount for this usage ledger.
-    providerCostAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The quantity value for this usage ledger.
     quantity *float64
     // The SMS segments value for this usage ledger.
     smsSegments i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The source event ID associated with this usage ledger.
-    sourceEventId *string
     // The current status for this usage ledger.
     status *UsageRecordStatus
     // The unit price value for this usage ledger.
@@ -108,11 +96,6 @@ func (m *UsageLedgerTableRow) GetBusinessName()(*string) {
 // returns a *UsageChannel when successful
 func (m *UsageLedgerTableRow) GetChannel()(*UsageChannel) {
     return m.channel
-}
-// GetCorrelationId gets the correlationId property value. The correlation ID associated with this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetCorrelationId()(*string) {
-    return m.correlationId
 }
 // GetCreatedAt gets the createdAt property value. The date and time for the created at value on this usage ledger.
 // returns a *Time when successful
@@ -188,16 +171,6 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["correlationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCorrelationId(val)
-        }
-        return nil
-    }
     res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -248,26 +221,6 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["idempotencyKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIdempotencyKey(val)
-        }
-        return nil
-    }
-    res["internalCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalCostAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
     res["isBillable"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -275,16 +228,6 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetIsBillable(val)
-        }
-        return nil
-    }
-    res["isInternal"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsInternal(val)
         }
         return nil
     }
@@ -328,16 +271,6 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["providerCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderCostAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
     res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -355,16 +288,6 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetSmsSegments(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
         }
         return nil
     }
@@ -415,25 +338,10 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *UsageLedgerTableRow) GetId()(*string) {
     return m.id
 }
-// GetIdempotencyKey gets the idempotencyKey property value. The idempotency key value for this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetIdempotencyKey()(*string) {
-    return m.idempotencyKey
-}
-// GetInternalCostAmount gets the internalCostAmount property value. The monetary internal cost amount for this usage ledger.
-// returns a UntypedNodeable when successful
-func (m *UsageLedgerTableRow) GetInternalCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.internalCostAmount
-}
 // GetIsBillable gets the isBillable property value. Whether this usage ledger is billable.
 // returns a *bool when successful
 func (m *UsageLedgerTableRow) GetIsBillable()(*bool) {
     return m.isBillable
-}
-// GetIsInternal gets the isInternal property value. Whether this usage ledger is internal.
-// returns a *bool when successful
-func (m *UsageLedgerTableRow) GetIsInternal()(*bool) {
-    return m.isInternal
 }
 // GetLeadId gets the leadId property value. The lead ID associated with this usage ledger.
 // returns a *string when successful
@@ -455,11 +363,6 @@ func (m *UsageLedgerTableRow) GetPhoneNumber()(*string) {
 func (m *UsageLedgerTableRow) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
-// GetProviderCostAmount gets the providerCostAmount property value. The monetary provider cost amount for this usage ledger.
-// returns a UntypedNodeable when successful
-func (m *UsageLedgerTableRow) GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.providerCostAmount
-}
 // GetQuantity gets the quantity property value. The quantity value for this usage ledger.
 // returns a *float64 when successful
 func (m *UsageLedgerTableRow) GetQuantity()(*float64) {
@@ -469,11 +372,6 @@ func (m *UsageLedgerTableRow) GetQuantity()(*float64) {
 // returns a UntypedNodeable when successful
 func (m *UsageLedgerTableRow) GetSmsSegments()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.smsSegments
-}
-// GetSourceEventId gets the sourceEventId property value. The source event ID associated with this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetSourceEventId()(*string) {
-    return m.sourceEventId
 }
 // GetStatus gets the status property value. The current status for this usage ledger.
 // returns a *UsageRecordStatus when successful
@@ -530,12 +428,6 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("correlationId", m.GetCorrelationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
         if err != nil {
             return err
@@ -566,25 +458,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("idempotencyKey", m.GetIdempotencyKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("internalCostAmount", m.GetInternalCostAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteBoolValue("isBillable", m.GetIsBillable())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isInternal", m.GetIsInternal())
         if err != nil {
             return err
         }
@@ -614,12 +488,6 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("providerCostAmount", m.GetProviderCostAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteFloat64Value("quantity", m.GetQuantity())
         if err != nil {
             return err
@@ -627,12 +495,6 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteObjectValue("smsSegments", m.GetSmsSegments())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
         if err != nil {
             return err
         }
@@ -694,10 +556,6 @@ func (m *UsageLedgerTableRow) SetBusinessName(value *string)() {
 func (m *UsageLedgerTableRow) SetChannel(value *UsageChannel)() {
     m.channel = value
 }
-// SetCorrelationId sets the correlationId property value. The correlation ID associated with this usage ledger.
-func (m *UsageLedgerTableRow) SetCorrelationId(value *string)() {
-    m.correlationId = value
-}
 // SetCreatedAt sets the createdAt property value. The date and time for the created at value on this usage ledger.
 func (m *UsageLedgerTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -718,21 +576,9 @@ func (m *UsageLedgerTableRow) SetDurationSeconds(value i878a80d2330e89d26896388a
 func (m *UsageLedgerTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetIdempotencyKey sets the idempotencyKey property value. The idempotency key value for this usage ledger.
-func (m *UsageLedgerTableRow) SetIdempotencyKey(value *string)() {
-    m.idempotencyKey = value
-}
-// SetInternalCostAmount sets the internalCostAmount property value. The monetary internal cost amount for this usage ledger.
-func (m *UsageLedgerTableRow) SetInternalCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.internalCostAmount = value
-}
 // SetIsBillable sets the isBillable property value. Whether this usage ledger is billable.
 func (m *UsageLedgerTableRow) SetIsBillable(value *bool)() {
     m.isBillable = value
-}
-// SetIsInternal sets the isInternal property value. Whether this usage ledger is internal.
-func (m *UsageLedgerTableRow) SetIsInternal(value *bool)() {
-    m.isInternal = value
 }
 // SetLeadId sets the leadId property value. The lead ID associated with this usage ledger.
 func (m *UsageLedgerTableRow) SetLeadId(value *string)() {
@@ -750,10 +596,6 @@ func (m *UsageLedgerTableRow) SetPhoneNumber(value *string)() {
 func (m *UsageLedgerTableRow) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
-// SetProviderCostAmount sets the providerCostAmount property value. The monetary provider cost amount for this usage ledger.
-func (m *UsageLedgerTableRow) SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.providerCostAmount = value
-}
 // SetQuantity sets the quantity property value. The quantity value for this usage ledger.
 func (m *UsageLedgerTableRow) SetQuantity(value *float64)() {
     m.quantity = value
@@ -761,10 +603,6 @@ func (m *UsageLedgerTableRow) SetQuantity(value *float64)() {
 // SetSmsSegments sets the smsSegments property value. The SMS segments value for this usage ledger.
 func (m *UsageLedgerTableRow) SetSmsSegments(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.smsSegments = value
-}
-// SetSourceEventId sets the sourceEventId property value. The source event ID associated with this usage ledger.
-func (m *UsageLedgerTableRow) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
 }
 // SetStatus sets the status property value. The current status for this usage ledger.
 func (m *UsageLedgerTableRow) SetStatus(value *UsageRecordStatus)() {
@@ -790,24 +628,18 @@ type UsageLedgerTableRowable interface {
     GetBusinessId()(*string)
     GetBusinessName()(*string)
     GetChannel()(*UsageChannel)
-    GetCorrelationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCustomerChargeAmount()(*float64)
     GetDescription()(*string)
     GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetId()(*string)
-    GetIdempotencyKey()(*string)
-    GetInternalCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetIsBillable()(*bool)
-    GetIsInternal()(*bool)
     GetLeadId()(*string)
     GetLeadName()(*string)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
-    GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetQuantity()(*float64)
     GetSmsSegments()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSourceEventId()(*string)
     GetStatus()(*UsageRecordStatus)
     GetUnitPrice()(*float64)
     GetUserId()(*string)
@@ -817,24 +649,18 @@ type UsageLedgerTableRowable interface {
     SetBusinessId(value *string)()
     SetBusinessName(value *string)()
     SetChannel(value *UsageChannel)()
-    SetCorrelationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCustomerChargeAmount(value *float64)()
     SetDescription(value *string)()
     SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetId(value *string)()
-    SetIdempotencyKey(value *string)()
-    SetInternalCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetIsBillable(value *bool)()
-    SetIsInternal(value *bool)()
     SetLeadId(value *string)()
     SetLeadName(value *string)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
-    SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetQuantity(value *float64)()
     SetSmsSegments(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSourceEventId(value *string)()
     SetStatus(value *UsageRecordStatus)()
     SetUnitPrice(value *float64)()
     SetUserId(value *string)()

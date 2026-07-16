@@ -11,8 +11,6 @@ import (
 type UsageCounterLine struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Whether this usage counter is only shown to admins.
-    adminOnly *bool
     // The stable key for this usage counter.
     key *string
     // The human-readable label for this usage counter.
@@ -41,25 +39,10 @@ func CreateUsageCounterLineFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 func (m *UsageCounterLine) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminOnly gets the adminOnly property value. Whether this usage counter is only shown to admins.
-// returns a *bool when successful
-func (m *UsageCounterLine) GetAdminOnly()(*bool) {
-    return m.adminOnly
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *UsageCounterLine) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminOnly(val)
-        }
-        return nil
-    }
     res["key"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -140,12 +123,6 @@ func (m *UsageCounterLine) GetValue()(*float64) {
 // Serialize serializes information the current object
 func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteBoolValue("adminOnly", m.GetAdminOnly())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("key", m.GetKey())
         if err != nil {
             return err
@@ -187,10 +164,6 @@ func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *UsageCounterLine) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminOnly sets the adminOnly property value. Whether this usage counter is only shown to admins.
-func (m *UsageCounterLine) SetAdminOnly(value *bool)() {
-    m.adminOnly = value
-}
 // SetKey sets the key property value. The stable key for this usage counter.
 func (m *UsageCounterLine) SetKey(value *string)() {
     m.key = value
@@ -214,13 +187,11 @@ func (m *UsageCounterLine) SetValue(value *float64)() {
 type UsageCounterLineable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminOnly()(*bool)
     GetKey()(*string)
     GetLabel()(*string)
     GetSortOrder()(*int32)
     GetUnit()(*string)
     GetValue()(*float64)
-    SetAdminOnly(value *bool)()
     SetKey(value *string)()
     SetLabel(value *string)()
     SetSortOrder(value *int32)()

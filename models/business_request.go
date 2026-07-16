@@ -9,14 +9,10 @@ import (
 
 // BusinessRequest request schema for the Leadping API business profile request, including the fields clients can send.
 type BusinessRequest struct {
-    // Business activation state covering site, billing, compliance, and telephony readiness.
-    activation BusinessRequest_activationable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Postal address for the business, lead, or contact represented by this business profile request.
     address BusinessRequest_addressable
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride BusinessRequest_adminEnablementOverrideable
     // Wallet refill amount charged when automatic refill is triggered.
     autoRefillAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Indicates whether automatic wallet refill is enabled for the business.
@@ -27,8 +23,6 @@ type BusinessRequest struct {
     billingAddress BusinessRequest_billingAddressable
     // Name used for invoices, receipts, and payment processor billing records.
     billingName *string
-    // Defines the supported Billing Plan values.
-    billingPlan *BusinessRequest_billingPlan
     // Compliance policy configuration for the business.
     compliancePolicy BusinessRequest_compliancePolicyable
     // Human-readable description that explains this business profile request to API users.
@@ -51,14 +45,8 @@ type BusinessRequest struct {
     phones []IdNameValueable
     // Alternate business name or DBA shown in Leadping.
     secondaryName *string
-    // Defines the supported Business Setup Step values.
-    setupStep *BusinessRequest_setupStep
     // Defines the supported Business Status values.
     status *BusinessRequest_status
-    // Stripe customer and subscription state associated with this business or user.
-    stripeInfo BusinessRequest_stripeInfoable
-    // Defines the supported Subscription Status values.
-    subscriptionStatus *BusinessRequest_subscriptionStatus
     // Industry vertical used for lead routing, compliance review, and reporting.
     vertical *string
     // Business website URL used for compliance, brand review, and lead attribution.
@@ -76,11 +64,6 @@ func NewBusinessRequest()(*BusinessRequest) {
 func CreateBusinessRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewBusinessRequest(), nil
 }
-// GetActivation gets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
-// returns a BusinessRequest_activationable when successful
-func (m *BusinessRequest) GetActivation()(BusinessRequest_activationable) {
-    return m.activation
-}
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
 func (m *BusinessRequest) GetAdditionalData()(map[string]any) {
@@ -90,11 +73,6 @@ func (m *BusinessRequest) GetAdditionalData()(map[string]any) {
 // returns a BusinessRequest_addressable when successful
 func (m *BusinessRequest) GetAddress()(BusinessRequest_addressable) {
     return m.address
-}
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a BusinessRequest_adminEnablementOverrideable when successful
-func (m *BusinessRequest) GetAdminEnablementOverride()(BusinessRequest_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
 }
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 // returns a UntypedNodeable when successful
@@ -120,11 +98,6 @@ func (m *BusinessRequest) GetBillingAddress()(BusinessRequest_billingAddressable
 // returns a *string when successful
 func (m *BusinessRequest) GetBillingName()(*string) {
     return m.billingName
-}
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
-// returns a *BusinessRequest_billingPlan when successful
-func (m *BusinessRequest) GetBillingPlan()(*BusinessRequest_billingPlan) {
-    return m.billingPlan
 }
 // GetCompliancePolicy gets the compliancePolicy property value. Compliance policy configuration for the business.
 // returns a BusinessRequest_compliancePolicyable when successful
@@ -155,16 +128,6 @@ func (m *BusinessRequest) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["activation"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessRequest_activationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivation(val.(BusinessRequest_activationable))
-        }
-        return nil
-    }
     res["address"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateBusinessRequest_addressFromDiscriminatorValue)
         if err != nil {
@@ -172,16 +135,6 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         }
         if val != nil {
             m.SetAddress(val.(BusinessRequest_addressable))
-        }
-        return nil
-    }
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessRequest_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(BusinessRequest_adminEnablementOverrideable))
         }
         return nil
     }
@@ -232,16 +185,6 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         }
         if val != nil {
             m.SetBillingName(val)
-        }
-        return nil
-    }
-    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseBusinessRequest_billingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlan(val.(*BusinessRequest_billingPlan))
         }
         return nil
     }
@@ -361,16 +304,6 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         }
         return nil
     }
-    res["setupStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseBusinessRequest_setupStep)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSetupStep(val.(*BusinessRequest_setupStep))
-        }
-        return nil
-    }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseBusinessRequest_status)
         if err != nil {
@@ -378,26 +311,6 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         }
         if val != nil {
             m.SetStatus(val.(*BusinessRequest_status))
-        }
-        return nil
-    }
-    res["stripeInfo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessRequest_stripeInfoFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripeInfo(val.(BusinessRequest_stripeInfoable))
-        }
-        return nil
-    }
-    res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseBusinessRequest_subscriptionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionStatus(val.(*BusinessRequest_subscriptionStatus))
         }
         return nil
     }
@@ -453,25 +366,10 @@ func (m *BusinessRequest) GetPhones()([]IdNameValueable) {
 func (m *BusinessRequest) GetSecondaryName()(*string) {
     return m.secondaryName
 }
-// GetSetupStep gets the setupStep property value. Defines the supported Business Setup Step values.
-// returns a *BusinessRequest_setupStep when successful
-func (m *BusinessRequest) GetSetupStep()(*BusinessRequest_setupStep) {
-    return m.setupStep
-}
 // GetStatus gets the status property value. Defines the supported Business Status values.
 // returns a *BusinessRequest_status when successful
 func (m *BusinessRequest) GetStatus()(*BusinessRequest_status) {
     return m.status
-}
-// GetStripeInfo gets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-// returns a BusinessRequest_stripeInfoable when successful
-func (m *BusinessRequest) GetStripeInfo()(BusinessRequest_stripeInfoable) {
-    return m.stripeInfo
-}
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
-// returns a *BusinessRequest_subscriptionStatus when successful
-func (m *BusinessRequest) GetSubscriptionStatus()(*BusinessRequest_subscriptionStatus) {
-    return m.subscriptionStatus
 }
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
@@ -486,19 +384,7 @@ func (m *BusinessRequest) GetWebsite()(*string) {
 // Serialize serializes information the current object
 func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("activation", m.GetActivation())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteObjectValue("address", m.GetAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
         if err != nil {
             return err
         }
@@ -529,13 +415,6 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
     }
     {
         err := writer.WriteStringValue("billingName", m.GetBillingName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetBillingPlan() != nil {
-        cast := (*m.GetBillingPlan()).String()
-        err := writer.WriteStringValue("billingPlan", &cast)
         if err != nil {
             return err
         }
@@ -612,29 +491,9 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
             return err
         }
     }
-    if m.GetSetupStep() != nil {
-        cast := (*m.GetSetupStep()).String()
-        err := writer.WriteStringValue("setupStep", &cast)
-        if err != nil {
-            return err
-        }
-    }
     if m.GetStatus() != nil {
         cast := (*m.GetStatus()).String()
         err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("stripeInfo", m.GetStripeInfo())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSubscriptionStatus() != nil {
-        cast := (*m.GetSubscriptionStatus()).String()
-        err := writer.WriteStringValue("subscriptionStatus", &cast)
         if err != nil {
             return err
         }
@@ -659,10 +518,6 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
     }
     return nil
 }
-// SetActivation sets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
-func (m *BusinessRequest) SetActivation(value BusinessRequest_activationable)() {
-    m.activation = value
-}
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *BusinessRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
@@ -670,10 +525,6 @@ func (m *BusinessRequest) SetAdditionalData(value map[string]any)() {
 // SetAddress sets the address property value. Postal address for the business, lead, or contact represented by this business profile request.
 func (m *BusinessRequest) SetAddress(value BusinessRequest_addressable)() {
     m.address = value
-}
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *BusinessRequest) SetAdminEnablementOverride(value BusinessRequest_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
 }
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 func (m *BusinessRequest) SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -694,10 +545,6 @@ func (m *BusinessRequest) SetBillingAddress(value BusinessRequest_billingAddress
 // SetBillingName sets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
 func (m *BusinessRequest) SetBillingName(value *string)() {
     m.billingName = value
-}
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
-func (m *BusinessRequest) SetBillingPlan(value *BusinessRequest_billingPlan)() {
-    m.billingPlan = value
 }
 // SetCompliancePolicy sets the compliancePolicy property value. Compliance policy configuration for the business.
 func (m *BusinessRequest) SetCompliancePolicy(value BusinessRequest_compliancePolicyable)() {
@@ -743,21 +590,9 @@ func (m *BusinessRequest) SetPhones(value []IdNameValueable)() {
 func (m *BusinessRequest) SetSecondaryName(value *string)() {
     m.secondaryName = value
 }
-// SetSetupStep sets the setupStep property value. Defines the supported Business Setup Step values.
-func (m *BusinessRequest) SetSetupStep(value *BusinessRequest_setupStep)() {
-    m.setupStep = value
-}
 // SetStatus sets the status property value. Defines the supported Business Status values.
 func (m *BusinessRequest) SetStatus(value *BusinessRequest_status)() {
     m.status = value
-}
-// SetStripeInfo sets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-func (m *BusinessRequest) SetStripeInfo(value BusinessRequest_stripeInfoable)() {
-    m.stripeInfo = value
-}
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
-func (m *BusinessRequest) SetSubscriptionStatus(value *BusinessRequest_subscriptionStatus)() {
-    m.subscriptionStatus = value
 }
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 func (m *BusinessRequest) SetVertical(value *string)() {
@@ -770,15 +605,12 @@ func (m *BusinessRequest) SetWebsite(value *string)() {
 type BusinessRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActivation()(BusinessRequest_activationable)
     GetAddress()(BusinessRequest_addressable)
-    GetAdminEnablementOverride()(BusinessRequest_adminEnablementOverrideable)
     GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetAutoRefillEnabled()(*bool)
     GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingAddress()(BusinessRequest_billingAddressable)
     GetBillingName()(*string)
-    GetBillingPlan()(*BusinessRequest_billingPlan)
     GetCompliancePolicy()(BusinessRequest_compliancePolicyable)
     GetDescription()(*string)
     GetEin()(*string)
@@ -790,21 +622,15 @@ type BusinessRequestable interface {
     GetPhone()(*string)
     GetPhones()([]IdNameValueable)
     GetSecondaryName()(*string)
-    GetSetupStep()(*BusinessRequest_setupStep)
     GetStatus()(*BusinessRequest_status)
-    GetStripeInfo()(BusinessRequest_stripeInfoable)
-    GetSubscriptionStatus()(*BusinessRequest_subscriptionStatus)
     GetVertical()(*string)
     GetWebsite()(*string)
-    SetActivation(value BusinessRequest_activationable)()
     SetAddress(value BusinessRequest_addressable)()
-    SetAdminEnablementOverride(value BusinessRequest_adminEnablementOverrideable)()
     SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetAutoRefillEnabled(value *bool)()
     SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingAddress(value BusinessRequest_billingAddressable)()
     SetBillingName(value *string)()
-    SetBillingPlan(value *BusinessRequest_billingPlan)()
     SetCompliancePolicy(value BusinessRequest_compliancePolicyable)()
     SetDescription(value *string)()
     SetEin(value *string)()
@@ -816,10 +642,7 @@ type BusinessRequestable interface {
     SetPhone(value *string)()
     SetPhones(value []IdNameValueable)()
     SetSecondaryName(value *string)()
-    SetSetupStep(value *BusinessRequest_setupStep)()
     SetStatus(value *BusinessRequest_status)()
-    SetStripeInfo(value BusinessRequest_stripeInfoable)()
-    SetSubscriptionStatus(value *BusinessRequest_subscriptionStatus)()
     SetVertical(value *string)()
     SetWebsite(value *string)()
 }

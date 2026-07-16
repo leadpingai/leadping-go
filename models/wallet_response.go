@@ -48,12 +48,6 @@ type WalletResponse struct {
     purchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the source that created a wallet credit lot.
     sourceType *WalletResponse_sourceType
-    // Stripe charge identifier linked to this billing transaction.
-    stripeChargeId *string
-    // Stripe invoice identifier linked to this billing transaction.
-    stripeInvoiceId *string
-    // Stripe payment intent identifier linked to this billing transaction.
-    stripePaymentIntentId *string
 }
 // NewWalletResponse instantiates a new WalletResponse and sets the default values.
 func NewWalletResponse()(*WalletResponse) {
@@ -306,36 +300,6 @@ func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["stripeChargeId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripeChargeId(val)
-        }
-        return nil
-    }
-    res["stripeInvoiceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripeInvoiceId(val)
-        }
-        return nil
-    }
-    res["stripePaymentIntentId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripePaymentIntentId(val)
-        }
-        return nil
-    }
     return res
 }
 // GetId gets the id property value. The unique identifier for the entity.
@@ -377,21 +341,6 @@ func (m *WalletResponse) GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3
 // returns a *WalletResponse_sourceType when successful
 func (m *WalletResponse) GetSourceType()(*WalletResponse_sourceType) {
     return m.sourceType
-}
-// GetStripeChargeId gets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
-// returns a *string when successful
-func (m *WalletResponse) GetStripeChargeId()(*string) {
-    return m.stripeChargeId
-}
-// GetStripeInvoiceId gets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
-// returns a *string when successful
-func (m *WalletResponse) GetStripeInvoiceId()(*string) {
-    return m.stripeInvoiceId
-}
-// GetStripePaymentIntentId gets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
-// returns a *string when successful
-func (m *WalletResponse) GetStripePaymentIntentId()(*string) {
-    return m.stripePaymentIntentId
 }
 // Serialize serializes information the current object
 func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -506,24 +455,6 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteStringValue("stripeChargeId", m.GetStripeChargeId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("stripeInvoiceId", m.GetStripeInvoiceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("stripePaymentIntentId", m.GetStripePaymentIntentId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -607,18 +538,6 @@ func (m *WalletResponse) SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6
 func (m *WalletResponse) SetSourceType(value *WalletResponse_sourceType)() {
     m.sourceType = value
 }
-// SetStripeChargeId sets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
-func (m *WalletResponse) SetStripeChargeId(value *string)() {
-    m.stripeChargeId = value
-}
-// SetStripeInvoiceId sets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
-func (m *WalletResponse) SetStripeInvoiceId(value *string)() {
-    m.stripeInvoiceId = value
-}
-// SetStripePaymentIntentId sets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
-func (m *WalletResponse) SetStripePaymentIntentId(value *string)() {
-    m.stripePaymentIntentId = value
-}
 type WalletResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -640,9 +559,6 @@ type WalletResponseable interface {
     GetOriginalTransactionId()(*string)
     GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSourceType()(*WalletResponse_sourceType)
-    GetStripeChargeId()(*string)
-    GetStripeInvoiceId()(*string)
-    GetStripePaymentIntentId()(*string)
     SetAmountPurchased(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetAmountRemaining(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
@@ -661,7 +577,4 @@ type WalletResponseable interface {
     SetOriginalTransactionId(value *string)()
     SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSourceType(value *WalletResponse_sourceType)()
-    SetStripeChargeId(value *string)()
-    SetStripeInvoiceId(value *string)()
-    SetStripePaymentIntentId(value *string)()
 }

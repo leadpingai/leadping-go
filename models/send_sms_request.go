@@ -12,36 +12,16 @@ import (
 type SendSmsRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Automation ID connected to this workflow, run, or event.
-    automationId *string
     // Messaging campaign identifier associated with this SMS send request.
     campaignId *string
     // Conversation ID that links this SMS send request to the Leadping inbox thread.
     conversationId *string
     // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // Indicates whether the lead has the consent required for compliant outreach.
-    hasRequiredConsent *bool
-    // Bulk import batch ID that created or updated this lead.
-    importBatchId *string
-    // Indicates whether automation created or triggered this SMS send request.
-    isAutomated *bool
-    // Indicates whether this record originated from a bulk import rather than a real-time lead source.
-    isImportedLead *bool
-    // Outbound delivery request ID connected to this decision or attempt.
-    outboundDeliveryRequestId *string
     // Idempotency key used to prevent duplicate outbound delivery.
     outboundIdempotencyKey *string
-    // Defines priority classes used when pacing outbound delivery.
-    outboundPriority *SendSmsRequest_outboundPriority
-    // Outbound reservation ID used to throttle and track delivery capacity.
-    outboundReservationId *string
-    // Defines the source that requested outbound delivery.
-    outboundSource *SendSmsRequest_outboundSource
     // UTC timestamp when Leadping should send the SMS message.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported Outgoing Number Selection Reason values.
-    selectionReason *SendSmsRequest_selectionReason
     // Existing SMS event ID to reuse or update when retrying a send request.
     smsEventId *string
     // Lead source ID used for attribution and sender selection.
@@ -68,11 +48,6 @@ func CreateSendSmsRequestFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *SendSmsRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. Automation ID connected to this workflow, run, or event.
-// returns a *string when successful
-func (m *SendSmsRequest) GetAutomationId()(*string) {
-    return m.automationId
-}
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
 // returns a *string when successful
 func (m *SendSmsRequest) GetCampaignId()(*string) {
@@ -87,16 +62,6 @@ func (m *SendSmsRequest) GetConversationId()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["automationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationId(val)
-        }
-        return nil
-    }
     res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -127,56 +92,6 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["hasRequiredConsent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasRequiredConsent(val)
-        }
-        return nil
-    }
-    res["importBatchId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetImportBatchId(val)
-        }
-        return nil
-    }
-    res["isAutomated"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsAutomated(val)
-        }
-        return nil
-    }
-    res["isImportedLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsImportedLead(val)
-        }
-        return nil
-    }
-    res["outboundDeliveryRequestId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundDeliveryRequestId(val)
-        }
-        return nil
-    }
     res["outboundIdempotencyKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -187,36 +102,6 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["outboundPriority"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSendSmsRequest_outboundPriority)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundPriority(val.(*SendSmsRequest_outboundPriority))
-        }
-        return nil
-    }
-    res["outboundReservationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundReservationId(val)
-        }
-        return nil
-    }
-    res["outboundSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSendSmsRequest_outboundSource)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundSource(val.(*SendSmsRequest_outboundSource))
-        }
-        return nil
-    }
     res["scheduledFor"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -224,16 +109,6 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetScheduledFor(val)
-        }
-        return nil
-    }
-    res["selectionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSendSmsRequest_selectionReason)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelectionReason(val.(*SendSmsRequest_selectionReason))
         }
         return nil
     }
@@ -284,60 +159,15 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
 func (m *SendSmsRequest) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetHasRequiredConsent gets the hasRequiredConsent property value. Indicates whether the lead has the consent required for compliant outreach.
-// returns a *bool when successful
-func (m *SendSmsRequest) GetHasRequiredConsent()(*bool) {
-    return m.hasRequiredConsent
-}
-// GetImportBatchId gets the importBatchId property value. Bulk import batch ID that created or updated this lead.
-// returns a *string when successful
-func (m *SendSmsRequest) GetImportBatchId()(*string) {
-    return m.importBatchId
-}
-// GetIsAutomated gets the isAutomated property value. Indicates whether automation created or triggered this SMS send request.
-// returns a *bool when successful
-func (m *SendSmsRequest) GetIsAutomated()(*bool) {
-    return m.isAutomated
-}
-// GetIsImportedLead gets the isImportedLead property value. Indicates whether this record originated from a bulk import rather than a real-time lead source.
-// returns a *bool when successful
-func (m *SendSmsRequest) GetIsImportedLead()(*bool) {
-    return m.isImportedLead
-}
-// GetOutboundDeliveryRequestId gets the outboundDeliveryRequestId property value. Outbound delivery request ID connected to this decision or attempt.
-// returns a *string when successful
-func (m *SendSmsRequest) GetOutboundDeliveryRequestId()(*string) {
-    return m.outboundDeliveryRequestId
-}
 // GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
 func (m *SendSmsRequest) GetOutboundIdempotencyKey()(*string) {
     return m.outboundIdempotencyKey
 }
-// GetOutboundPriority gets the outboundPriority property value. Defines priority classes used when pacing outbound delivery.
-// returns a *SendSmsRequest_outboundPriority when successful
-func (m *SendSmsRequest) GetOutboundPriority()(*SendSmsRequest_outboundPriority) {
-    return m.outboundPriority
-}
-// GetOutboundReservationId gets the outboundReservationId property value. Outbound reservation ID used to throttle and track delivery capacity.
-// returns a *string when successful
-func (m *SendSmsRequest) GetOutboundReservationId()(*string) {
-    return m.outboundReservationId
-}
-// GetOutboundSource gets the outboundSource property value. Defines the source that requested outbound delivery.
-// returns a *SendSmsRequest_outboundSource when successful
-func (m *SendSmsRequest) GetOutboundSource()(*SendSmsRequest_outboundSource) {
-    return m.outboundSource
-}
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 // returns a *Time when successful
 func (m *SendSmsRequest) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledFor
-}
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
-// returns a *SendSmsRequest_selectionReason when successful
-func (m *SendSmsRequest) GetSelectionReason()(*SendSmsRequest_selectionReason) {
-    return m.selectionReason
 }
 // GetSmsEventId gets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
 // returns a *string when successful
@@ -362,12 +192,6 @@ func (m *SendSmsRequest) GetWasManuallyOverridden()(*bool) {
 // Serialize serializes information the current object
 func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("automationId", m.GetAutomationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("campaignId", m.GetCampaignId())
         if err != nil {
             return err
@@ -386,70 +210,13 @@ func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteBoolValue("hasRequiredConsent", m.GetHasRequiredConsent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("importBatchId", m.GetImportBatchId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isAutomated", m.GetIsAutomated())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isImportedLead", m.GetIsImportedLead())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundDeliveryRequestId", m.GetOutboundDeliveryRequestId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetOutboundPriority() != nil {
-        cast := (*m.GetOutboundPriority()).String()
-        err := writer.WriteStringValue("outboundPriority", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundReservationId", m.GetOutboundReservationId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetOutboundSource() != nil {
-        cast := (*m.GetOutboundSource()).String()
-        err := writer.WriteStringValue("outboundSource", &cast)
         if err != nil {
             return err
         }
     }
     {
         err := writer.WriteTimeValue("scheduledFor", m.GetScheduledFor())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSelectionReason() != nil {
-        cast := (*m.GetSelectionReason()).String()
-        err := writer.WriteStringValue("selectionReason", &cast)
         if err != nil {
             return err
         }
@@ -490,10 +257,6 @@ func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SendSmsRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. Automation ID connected to this workflow, run, or event.
-func (m *SendSmsRequest) SetAutomationId(value *string)() {
-    m.automationId = value
-}
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
 func (m *SendSmsRequest) SetCampaignId(value *string)() {
     m.campaignId = value
@@ -506,49 +269,13 @@ func (m *SendSmsRequest) SetConversationId(value *string)() {
 func (m *SendSmsRequest) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetHasRequiredConsent sets the hasRequiredConsent property value. Indicates whether the lead has the consent required for compliant outreach.
-func (m *SendSmsRequest) SetHasRequiredConsent(value *bool)() {
-    m.hasRequiredConsent = value
-}
-// SetImportBatchId sets the importBatchId property value. Bulk import batch ID that created or updated this lead.
-func (m *SendSmsRequest) SetImportBatchId(value *string)() {
-    m.importBatchId = value
-}
-// SetIsAutomated sets the isAutomated property value. Indicates whether automation created or triggered this SMS send request.
-func (m *SendSmsRequest) SetIsAutomated(value *bool)() {
-    m.isAutomated = value
-}
-// SetIsImportedLead sets the isImportedLead property value. Indicates whether this record originated from a bulk import rather than a real-time lead source.
-func (m *SendSmsRequest) SetIsImportedLead(value *bool)() {
-    m.isImportedLead = value
-}
-// SetOutboundDeliveryRequestId sets the outboundDeliveryRequestId property value. Outbound delivery request ID connected to this decision or attempt.
-func (m *SendSmsRequest) SetOutboundDeliveryRequestId(value *string)() {
-    m.outboundDeliveryRequestId = value
-}
 // SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string)() {
     m.outboundIdempotencyKey = value
 }
-// SetOutboundPriority sets the outboundPriority property value. Defines priority classes used when pacing outbound delivery.
-func (m *SendSmsRequest) SetOutboundPriority(value *SendSmsRequest_outboundPriority)() {
-    m.outboundPriority = value
-}
-// SetOutboundReservationId sets the outboundReservationId property value. Outbound reservation ID used to throttle and track delivery capacity.
-func (m *SendSmsRequest) SetOutboundReservationId(value *string)() {
-    m.outboundReservationId = value
-}
-// SetOutboundSource sets the outboundSource property value. Defines the source that requested outbound delivery.
-func (m *SendSmsRequest) SetOutboundSource(value *SendSmsRequest_outboundSource)() {
-    m.outboundSource = value
-}
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledFor = value
-}
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
-func (m *SendSmsRequest) SetSelectionReason(value *SendSmsRequest_selectionReason)() {
-    m.selectionReason = value
 }
 // SetSmsEventId sets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
 func (m *SendSmsRequest) SetSmsEventId(value *string)() {
@@ -569,40 +296,20 @@ func (m *SendSmsRequest) SetWasManuallyOverridden(value *bool)() {
 type SendSmsRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAutomationId()(*string)
     GetCampaignId()(*string)
     GetConversationId()(*string)
     GetFromPhoneNumberId()(*string)
-    GetHasRequiredConsent()(*bool)
-    GetImportBatchId()(*string)
-    GetIsAutomated()(*bool)
-    GetIsImportedLead()(*bool)
-    GetOutboundDeliveryRequestId()(*string)
     GetOutboundIdempotencyKey()(*string)
-    GetOutboundPriority()(*SendSmsRequest_outboundPriority)
-    GetOutboundReservationId()(*string)
-    GetOutboundSource()(*SendSmsRequest_outboundSource)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSelectionReason()(*SendSmsRequest_selectionReason)
     GetSmsEventId()(*string)
     GetSourceId()(*string)
     GetText()(*string)
     GetWasManuallyOverridden()(*bool)
-    SetAutomationId(value *string)()
     SetCampaignId(value *string)()
     SetConversationId(value *string)()
     SetFromPhoneNumberId(value *string)()
-    SetHasRequiredConsent(value *bool)()
-    SetImportBatchId(value *string)()
-    SetIsAutomated(value *bool)()
-    SetIsImportedLead(value *bool)()
-    SetOutboundDeliveryRequestId(value *string)()
     SetOutboundIdempotencyKey(value *string)()
-    SetOutboundPriority(value *SendSmsRequest_outboundPriority)()
-    SetOutboundReservationId(value *string)()
-    SetOutboundSource(value *SendSmsRequest_outboundSource)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSelectionReason(value *SendSmsRequest_selectionReason)()
     SetSmsEventId(value *string)()
     SetSourceId(value *string)()
     SetText(value *string)()

@@ -12,8 +12,8 @@ import (
 type PhoneLookup struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // An enumerator describing carrier types
-    carrierType *PhoneLookup_carrierType
+    // Complete carrier metadata reported for this phone number.
+    carrier PhoneLookup_carrierable
     // Gets or sets created at.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets id.
@@ -46,10 +46,10 @@ func CreatePhoneLookupFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *PhoneLookup) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCarrierType gets the carrierType property value. An enumerator describing carrier types
-// returns a *PhoneLookup_carrierType when successful
-func (m *PhoneLookup) GetCarrierType()(*PhoneLookup_carrierType) {
-    return m.carrierType
+// GetCarrier gets the carrier property value. Complete carrier metadata reported for this phone number.
+// returns a PhoneLookup_carrierable when successful
+func (m *PhoneLookup) GetCarrier()(PhoneLookup_carrierable) {
+    return m.carrier
 }
 // GetCreatedAt gets the createdAt property value. Gets or sets created at.
 // returns a *Time when successful
@@ -60,13 +60,13 @@ func (m *PhoneLookup) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a1
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneLookup) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["carrierType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneLookup_carrierType)
+    res["carrier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneLookup_carrierFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCarrierType(val.(*PhoneLookup_carrierType))
+            m.SetCarrier(val.(PhoneLookup_carrierable))
         }
         return nil
     }
@@ -174,9 +174,8 @@ func (m *PhoneLookup) GetNumber()(*string) {
 }
 // Serialize serializes information the current object
 func (m *PhoneLookup) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetCarrierType() != nil {
-        cast := (*m.GetCarrierType()).String()
-        err := writer.WriteStringValue("carrierType", &cast)
+    {
+        err := writer.WriteObjectValue("carrier", m.GetCarrier())
         if err != nil {
             return err
         }
@@ -236,9 +235,9 @@ func (m *PhoneLookup) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *PhoneLookup) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCarrierType sets the carrierType property value. An enumerator describing carrier types
-func (m *PhoneLookup) SetCarrierType(value *PhoneLookup_carrierType)() {
-    m.carrierType = value
+// SetCarrier sets the carrier property value. Complete carrier metadata reported for this phone number.
+func (m *PhoneLookup) SetCarrier(value PhoneLookup_carrierable)() {
+    m.carrier = value
 }
 // SetCreatedAt sets the createdAt property value. Gets or sets created at.
 func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -271,7 +270,7 @@ func (m *PhoneLookup) SetNumber(value *string)() {
 type PhoneLookupable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCarrierType()(*PhoneLookup_carrierType)
+    GetCarrier()(PhoneLookup_carrierable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetId()(*string)
     GetIsValid()(*bool)
@@ -279,7 +278,7 @@ type PhoneLookupable interface {
     GetLocation()(PhoneLookup_locationable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNumber()(*string)
-    SetCarrierType(value *PhoneLookup_carrierType)()
+    SetCarrier(value PhoneLookup_carrierable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()
     SetIsValid(value *bool)()

@@ -12,8 +12,6 @@ import (
 type SourceResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride SourceResponse_adminEnablementOverrideable
     // Product allowlist used to accept or route leads from this source.
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
@@ -24,8 +22,6 @@ type SourceResponse struct {
     business SourceResponse_businessable
     // Indicates whether the business or sender passed compliance review.
     complianceApproved *bool
-    // Compliance notes captured for admin review.
-    complianceNotes *string
     // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The date and time when the entity was created.
@@ -74,11 +70,6 @@ func CreateSourceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 func (m *SourceResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a SourceResponse_adminEnablementOverrideable when successful
-func (m *SourceResponse) GetAdminEnablementOverride()(SourceResponse_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
 // GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedProducts()([]string) {
@@ -103,11 +94,6 @@ func (m *SourceResponse) GetBusiness()(SourceResponse_businessable) {
 // returns a *bool when successful
 func (m *SourceResponse) GetComplianceApproved()(*bool) {
     return m.complianceApproved
-}
-// GetComplianceNotes gets the complianceNotes property value. Compliance notes captured for admin review.
-// returns a *string when successful
-func (m *SourceResponse) GetComplianceNotes()(*string) {
-    return m.complianceNotes
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
@@ -148,16 +134,6 @@ func (m *SourceResponse) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(SourceResponse_adminEnablementOverrideable))
-        }
-        return nil
-    }
     res["allowedProducts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfPrimitiveValues("string")
         if err != nil {
@@ -217,16 +193,6 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetComplianceApproved(val)
-        }
-        return nil
-    }
-    res["complianceNotes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceNotes(val)
         }
         return nil
     }
@@ -436,12 +402,6 @@ func (m *SourceResponse) GetUser()(SourceResponse_userable) {
 }
 // Serialize serializes information the current object
 func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetAllowedProducts() != nil {
         err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
         if err != nil {
@@ -468,12 +428,6 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteBoolValue("complianceApproved", m.GetComplianceApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceNotes", m.GetComplianceNotes())
         if err != nil {
             return err
         }
@@ -586,10 +540,6 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *SourceResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *SourceResponse) SetAdminEnablementOverride(value SourceResponse_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 func (m *SourceResponse) SetAllowedProducts(value []string)() {
     m.allowedProducts = value
@@ -609,10 +559,6 @@ func (m *SourceResponse) SetBusiness(value SourceResponse_businessable)() {
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
 func (m *SourceResponse) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
-}
-// SetComplianceNotes sets the complianceNotes property value. Compliance notes captured for admin review.
-func (m *SourceResponse) SetComplianceNotes(value *string)() {
-    m.complianceNotes = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceResponse) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -677,13 +623,11 @@ func (m *SourceResponse) SetUser(value SourceResponse_userable)() {
 type SourceResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(SourceResponse_adminEnablementOverrideable)
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
     GetApiKeyPreview()(*string)
     GetBusiness()(SourceResponse_businessable)
     GetComplianceApproved()(*bool)
-    GetComplianceNotes()(*string)
     GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUser()(SourceResponse_createdByUserable)
@@ -699,13 +643,11 @@ type SourceResponseable interface {
     GetName()(*string)
     GetRequiresTrustedForm()(*bool)
     GetUser()(SourceResponse_userable)
-    SetAdminEnablementOverride(value SourceResponse_adminEnablementOverrideable)()
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
     SetApiKeyPreview(value *string)()
     SetBusiness(value SourceResponse_businessable)()
     SetComplianceApproved(value *bool)()
-    SetComplianceNotes(value *string)()
     SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUser(value SourceResponse_createdByUserable)()

@@ -12,8 +12,6 @@ import (
 type LeadResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride LeadResponse_adminEnablementOverrideable
     // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User ID of the person who archived this record.
@@ -34,7 +32,7 @@ type LeadResponse struct {
     enabled *bool
     // The unique identifier for the entity.
     id *string
-    // The isArchived property
+    // Indicates whether the lead has been archived in Leadping.
     isArchived *bool
     // Structured metadata used for attribution, integrations, and reporting on this lead response.
     metadata LeadMetadataable
@@ -59,11 +57,6 @@ func CreateLeadResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 // returns a map[string]any when successful
 func (m *LeadResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
-}
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a LeadResponse_adminEnablementOverrideable when successful
-func (m *LeadResponse) GetAdminEnablementOverride()(LeadResponse_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
 }
 // GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
@@ -114,16 +107,6 @@ func (m *LeadResponse) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadResponse_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(LeadResponse_adminEnablementOverrideable))
-        }
-        return nil
-    }
     res["archivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -277,7 +260,7 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
 func (m *LeadResponse) GetId()(*string) {
     return m.id
 }
-// GetIsArchived gets the isArchived property value. The isArchived property
+// GetIsArchived gets the isArchived property value. Indicates whether the lead has been archived in Leadping.
 // returns a *bool when successful
 func (m *LeadResponse) GetIsArchived()(*bool) {
     return m.isArchived
@@ -299,12 +282,6 @@ func (m *LeadResponse) GetTags()([]TagSummaryable) {
 }
 // Serialize serializes information the current object
 func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
         if err != nil {
@@ -407,10 +384,6 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *LeadResponse) SetAdminEnablementOverride(value LeadResponse_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *LeadResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
@@ -451,7 +424,7 @@ func (m *LeadResponse) SetEnabled(value *bool)() {
 func (m *LeadResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsArchived sets the isArchived property value. The isArchived property
+// SetIsArchived sets the isArchived property value. Indicates whether the lead has been archived in Leadping.
 func (m *LeadResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
@@ -470,7 +443,6 @@ func (m *LeadResponse) SetTags(value []TagSummaryable)() {
 type LeadResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(LeadResponse_adminEnablementOverrideable)
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchivedByUserId()(*string)
     GetArchiveNote()(*string)
@@ -485,7 +457,6 @@ type LeadResponseable interface {
     GetMetadata()(LeadMetadataable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetTags()([]TagSummaryable)
-    SetAdminEnablementOverride(value LeadResponse_adminEnablementOverrideable)()
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
     SetArchiveNote(value *string)()

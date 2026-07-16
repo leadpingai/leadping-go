@@ -16,8 +16,6 @@ type BusinessTableRow struct {
     activationStatus *BusinessTableRow_activationStatus
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The admin force enablement override on this business.
-    adminEnablementOverride BusinessTableRow_adminEnablementOverrideable
     // The date and time this business API key expires, or null when it has no expiration.
     apiKeyExpiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time this business API key was first used.
@@ -42,7 +40,7 @@ type BusinessTableRow struct {
     id *string
     // The industry value for this business.
     industry *string
-    // The lastSubscriptionEventAt property
+    // Date and time when this Leadping business table row was last subscription event.
     lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time for the modified at value on this business.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -50,7 +48,7 @@ type BusinessTableRow struct {
     name *string
     // Whether needs admin review applies to this business.
     needsAdminReview *bool
-    // The paymentFailedAt property
+    // Date and time when this Leadping business table row was payment failed.
     paymentFailedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The phone number associated with this business.
     phone *string
@@ -58,7 +56,7 @@ type BusinessTableRow struct {
     setupStep *BusinessTableRow_setupStep
     // Defines the supported Business Status values.
     status *BusinessTableRow_status
-    // The subscriptionCancelAt property
+    // Date and time when this Leadping business table row was subscription cancel.
     subscriptionCancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the supported Subscription Status values.
     subscriptionStatus *BusinessTableRow_subscriptionStatus
@@ -101,11 +99,6 @@ func (m *BusinessTableRow) GetActivationStatus()(*BusinessTableRow_activationSta
 // returns a map[string]any when successful
 func (m *BusinessTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
-}
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. The admin force enablement override on this business.
-// returns a BusinessTableRow_adminEnablementOverrideable when successful
-func (m *BusinessTableRow) GetAdminEnablementOverride()(BusinessTableRow_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
 }
 // GetApiKeyExpiresAt gets the apiKeyExpiresAt property value. The date and time this business API key expires, or null when it has no expiration.
 // returns a *Time when successful
@@ -178,16 +171,6 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetActivationStatus(val.(*BusinessTableRow_activationStatus))
-        }
-        return nil
-    }
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateBusinessTableRow_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(BusinessTableRow_adminEnablementOverrideable))
         }
         return nil
     }
@@ -483,7 +466,7 @@ func (m *BusinessTableRow) GetId()(*string) {
 func (m *BusinessTableRow) GetIndustry()(*string) {
     return m.industry
 }
-// GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+// GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. Date and time when this Leadping business table row was last subscription event.
 // returns a *Time when successful
 func (m *BusinessTableRow) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastSubscriptionEventAt
@@ -503,7 +486,7 @@ func (m *BusinessTableRow) GetName()(*string) {
 func (m *BusinessTableRow) GetNeedsAdminReview()(*bool) {
     return m.needsAdminReview
 }
-// GetPaymentFailedAt gets the paymentFailedAt property value. The paymentFailedAt property
+// GetPaymentFailedAt gets the paymentFailedAt property value. Date and time when this Leadping business table row was payment failed.
 // returns a *Time when successful
 func (m *BusinessTableRow) GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.paymentFailedAt
@@ -523,7 +506,7 @@ func (m *BusinessTableRow) GetSetupStep()(*BusinessTableRow_setupStep) {
 func (m *BusinessTableRow) GetStatus()(*BusinessTableRow_status) {
     return m.status
 }
-// GetSubscriptionCancelAt gets the subscriptionCancelAt property value. The subscriptionCancelAt property
+// GetSubscriptionCancelAt gets the subscriptionCancelAt property value. Date and time when this Leadping business table row was subscription cancel.
 // returns a *Time when successful
 func (m *BusinessTableRow) GetSubscriptionCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.subscriptionCancelAt
@@ -574,12 +557,6 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     if m.GetActivationStatus() != nil {
         cast := (*m.GetActivationStatus()).String()
         err := writer.WriteStringValue("activationStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
         if err != nil {
             return err
         }
@@ -778,10 +755,6 @@ func (m *BusinessTableRow) SetActivationStatus(value *BusinessTableRow_activatio
 func (m *BusinessTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. The admin force enablement override on this business.
-func (m *BusinessTableRow) SetAdminEnablementOverride(value BusinessTableRow_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetApiKeyExpiresAt sets the apiKeyExpiresAt property value. The date and time this business API key expires, or null when it has no expiration.
 func (m *BusinessTableRow) SetApiKeyExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyExpiresAt = value
@@ -830,7 +803,7 @@ func (m *BusinessTableRow) SetId(value *string)() {
 func (m *BusinessTableRow) SetIndustry(value *string)() {
     m.industry = value
 }
-// SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+// SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. Date and time when this Leadping business table row was last subscription event.
 func (m *BusinessTableRow) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastSubscriptionEventAt = value
 }
@@ -846,7 +819,7 @@ func (m *BusinessTableRow) SetName(value *string)() {
 func (m *BusinessTableRow) SetNeedsAdminReview(value *bool)() {
     m.needsAdminReview = value
 }
-// SetPaymentFailedAt sets the paymentFailedAt property value. The paymentFailedAt property
+// SetPaymentFailedAt sets the paymentFailedAt property value. Date and time when this Leadping business table row was payment failed.
 func (m *BusinessTableRow) SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.paymentFailedAt = value
 }
@@ -862,7 +835,7 @@ func (m *BusinessTableRow) SetSetupStep(value *BusinessTableRow_setupStep)() {
 func (m *BusinessTableRow) SetStatus(value *BusinessTableRow_status)() {
     m.status = value
 }
-// SetSubscriptionCancelAt sets the subscriptionCancelAt property value. The subscriptionCancelAt property
+// SetSubscriptionCancelAt sets the subscriptionCancelAt property value. Date and time when this Leadping business table row was subscription cancel.
 func (m *BusinessTableRow) SetSubscriptionCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.subscriptionCancelAt = value
 }
@@ -899,7 +872,6 @@ type BusinessTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetActivationStatus()(*BusinessTableRow_activationStatus)
-    GetAdminEnablementOverride()(BusinessTableRow_adminEnablementOverrideable)
     GetApiKeyExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyFirstUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -930,7 +902,6 @@ type BusinessTableRowable interface {
     GetWebsiteStatus()(*BusinessTableRow_websiteStatus)
     SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetActivationStatus(value *BusinessTableRow_activationStatus)()
-    SetAdminEnablementOverride(value BusinessTableRow_adminEnablementOverrideable)()
     SetApiKeyExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyFirstUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

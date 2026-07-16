@@ -13,24 +13,14 @@ type AutomationRequest struct {
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride AutomationRequest_adminEnablementOverrideable
-    // Business ID that owns this automation configuration.
-    businessId *string
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
-    // User ID of the person who created this automation configuration request.
-    createdByUserId *string
     // Human-readable description that explains this automation configuration request to API users.
     description *string
     // Indicates whether this automation configuration request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-    isSystemManaged *bool
-    // Management level that controls whether Leadping or the business owns this automation setting.
-    managementLevel *string
     // The display name for the entity.
     name *string
     // Scope that limits where this automation configuration request applies in Leadping.
@@ -64,25 +54,10 @@ func (m *AutomationRequest) GetActions()([]AutomationActionable) {
 func (m *AutomationRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a AutomationRequest_adminEnablementOverrideable when successful
-func (m *AutomationRequest) GetAdminEnablementOverride()(AutomationRequest_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this automation configuration.
-// returns a *string when successful
-func (m *AutomationRequest) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
 func (m *AutomationRequest) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
-}
-// GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation configuration request.
-// returns a *string when successful
-func (m *AutomationRequest) GetCreatedByUserId()(*string) {
-    return m.createdByUserId
 }
 // GetDescription gets the description property value. Human-readable description that explains this automation configuration request to API users.
 // returns a *string when successful
@@ -114,26 +89,6 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationRequest_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(AutomationRequest_adminEnablementOverrideable))
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
     res["conditionGroups"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateAutomationConditionGroupFromDiscriminatorValue)
         if err != nil {
@@ -147,16 +102,6 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
                 }
             }
             m.SetConditionGroups(res)
-        }
-        return nil
-    }
-    res["createdByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedByUserId(val)
         }
         return nil
     }
@@ -187,26 +132,6 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetId(val)
-        }
-        return nil
-    }
-    res["isSystemManaged"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsSystemManaged(val)
-        }
-        return nil
-    }
-    res["managementLevel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetManagementLevel(val)
         }
         return nil
     }
@@ -273,16 +198,6 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
 func (m *AutomationRequest) GetId()(*string) {
     return m.id
 }
-// GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-// returns a *bool when successful
-func (m *AutomationRequest) GetIsSystemManaged()(*bool) {
-    return m.isSystemManaged
-}
-// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
-// returns a *string when successful
-func (m *AutomationRequest) GetManagementLevel()(*string) {
-    return m.managementLevel
-}
 // GetName gets the name property value. The display name for the entity.
 // returns a *string when successful
 func (m *AutomationRequest) GetName()(*string) {
@@ -322,18 +237,6 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
             return err
         }
     }
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetConditionGroups() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConditionGroups()))
         for i, v := range m.GetConditionGroups() {
@@ -342,12 +245,6 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
             }
         }
         err := writer.WriteCollectionOfObjectValues("conditionGroups", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
         if err != nil {
             return err
         }
@@ -366,18 +263,6 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isSystemManaged", m.GetIsSystemManaged())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("managementLevel", m.GetManagementLevel())
         if err != nil {
             return err
         }
@@ -434,21 +319,9 @@ func (m *AutomationRequest) SetActions(value []AutomationActionable)() {
 func (m *AutomationRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *AutomationRequest) SetAdminEnablementOverride(value AutomationRequest_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this automation configuration.
-func (m *AutomationRequest) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 func (m *AutomationRequest) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
-}
-// SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation configuration request.
-func (m *AutomationRequest) SetCreatedByUserId(value *string)() {
-    m.createdByUserId = value
 }
 // SetDescription sets the description property value. Human-readable description that explains this automation configuration request to API users.
 func (m *AutomationRequest) SetDescription(value *string)() {
@@ -461,14 +334,6 @@ func (m *AutomationRequest) SetEnabled(value *bool)() {
 // SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
 func (m *AutomationRequest) SetId(value *string)() {
     m.id = value
-}
-// SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-func (m *AutomationRequest) SetIsSystemManaged(value *bool)() {
-    m.isSystemManaged = value
-}
-// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
-func (m *AutomationRequest) SetManagementLevel(value *string)() {
-    m.managementLevel = value
 }
 // SetName sets the name property value. The display name for the entity.
 func (m *AutomationRequest) SetName(value *string)() {
@@ -494,30 +359,20 @@ type AutomationRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionable)
-    GetAdminEnablementOverride()(AutomationRequest_adminEnablementOverrideable)
-    GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
-    GetCreatedByUserId()(*string)
     GetDescription()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
-    GetIsSystemManaged()(*bool)
-    GetManagementLevel()(*string)
     GetName()(*string)
     GetScope()(*string)
     GetTriggers()([]AutomationTriggerable)
     GetVersion()(*int32)
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
-    SetAdminEnablementOverride(value AutomationRequest_adminEnablementOverrideable)()
-    SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
-    SetCreatedByUserId(value *string)()
     SetDescription(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()
-    SetIsSystemManaged(value *bool)()
-    SetManagementLevel(value *string)()
     SetName(value *string)()
     SetScope(value *string)()
     SetTriggers(value []AutomationTriggerable)()

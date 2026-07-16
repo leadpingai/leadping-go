@@ -11,34 +11,14 @@ import (
 type PhoneNumberTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride PhoneNumberTableRow_adminEnablementOverrideable
-    // Billing attribution used to reconcile this phone number with subscription billing.
-    billingAttribution *string
     // Business summary connected to this phone number table row.
     business *string
     // Unique Leadping business identifier connected to this phone number table row.
     businessId *string
-    // Indicates whether controlled voice call warmup is enabled for this phone number.
-    callWarmupEnabled *bool
-    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
-    callWarmupStage *PhoneNumberTableRow_callWarmupStage
-    // Defines the supported health states for controlled internal voice call warmup.
-    callWarmupState *PhoneNumberTableRow_callWarmupState
-    // SMS and voice capabilities available on this phone number.
-    capabilities *string
     // Indicates whether this phone number table row is active and available in the Leadping API.
     enabled *bool
-    // Defines the supported SMS Warmup Health State values.
-    healthStatus *PhoneNumberTableRow_healthStatus
     // Unique Leadping identifier for this phone number table row.
     id *string
-    // Indicates whether this record is restricted to internal Leadping testing.
-    internalTestOnly *bool
-    // Leadping inventory state for this phone number.
-    inventoryState *PhoneNumberInventoryState
-    // Indicates whether this phone number is approved for the configured messaging program.
-    isMessagingProgramApproved *bool
     // Geographic location metadata for the phone number, lead, or lookup result.
     location *string
     // Display name for this phone number table row in the Leadping API.
@@ -47,36 +27,18 @@ type PhoneNumberTableRow struct {
     number *string
     // Ownership classification for this phone number, such as Leadping-owned or customer-owned.
     ownership *string
-    // Provider lifecycle state used to determine phone number readiness.
-    providerLifecycleState *PhoneNumberProviderLifecycleState
-    // Reconciliation status comparing Leadping data with provider data.
-    providerReconciliationStatus *string
-    // Provider lifecycle or delivery status for this phone number table row.
-    providerStatus *string
     // Human-readable routing summary for this phone number.
     routingSummary *string
     // Indicates whether SMS messaging is ready for this business or phone number.
     smsReady *bool
-    // Current lifecycle status for this phone number table row in the Leadping API.
-    status *InternalPhoneNumberStatus
-    // 10DLC campaign identifier associated with this sender or SMS event.
-    tenDlcCampaignId *string
     // 10DLC campaign status associated with this sender or SMS event.
     tenDlcCampaignStatus *string
     // Type classification used to route and interpret this phone number table row in the Leadping API.
     typeEscaped *string
-    // User summary connected to this phone number table row.
-    user *string
     // Indicates whether voice calling is ready for this business or phone number.
     voiceReady *bool
-    // Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-    warmupHealthScore *int32
-    // Indicates whether this phone number should only be used for warmup traffic.
-    warmupOnly *bool
-    // Percent complete for the SMS sender warmup plan.
-    warmupProgressPercent *int32
-    // Defines the supported SMS Warmup Health State values.
-    warmupState *PhoneNumberTableRow_warmupState
+    // Warmup state for this phone number.
+    warmup PhoneNumberWarmupable
 }
 // NewPhoneNumberTableRow instantiates a new PhoneNumberTableRow and sets the default values.
 func NewPhoneNumberTableRow()(*PhoneNumberTableRow) {
@@ -95,16 +57,6 @@ func CreatePhoneNumberTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a PhoneNumberTableRow_adminEnablementOverrideable when successful
-func (m *PhoneNumberTableRow) GetAdminEnablementOverride()(PhoneNumberTableRow_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
-// GetBillingAttribution gets the billingAttribution property value. Billing attribution used to reconcile this phone number with subscription billing.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetBillingAttribution()(*string) {
-    return m.billingAttribution
-}
 // GetBusiness gets the business property value. Business summary connected to this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetBusiness()(*string) {
@@ -115,26 +67,6 @@ func (m *PhoneNumberTableRow) GetBusiness()(*string) {
 func (m *PhoneNumberTableRow) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetCallWarmupEnabled gets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
-// returns a *bool when successful
-func (m *PhoneNumberTableRow) GetCallWarmupEnabled()(*bool) {
-    return m.callWarmupEnabled
-}
-// GetCallWarmupStage gets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
-// returns a *PhoneNumberTableRow_callWarmupStage when successful
-func (m *PhoneNumberTableRow) GetCallWarmupStage()(*PhoneNumberTableRow_callWarmupStage) {
-    return m.callWarmupStage
-}
-// GetCallWarmupState gets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
-// returns a *PhoneNumberTableRow_callWarmupState when successful
-func (m *PhoneNumberTableRow) GetCallWarmupState()(*PhoneNumberTableRow_callWarmupState) {
-    return m.callWarmupState
-}
-// GetCapabilities gets the capabilities property value. SMS and voice capabilities available on this phone number.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetCapabilities()(*string) {
-    return m.capabilities
-}
 // GetEnabled gets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
@@ -144,26 +76,6 @@ func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberTableRow_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(PhoneNumberTableRow_adminEnablementOverrideable))
-        }
-        return nil
-    }
-    res["billingAttribution"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingAttribution(val)
-        }
-        return nil
-    }
     res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -184,46 +96,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["callWarmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupEnabled(val)
-        }
-        return nil
-    }
-    res["callWarmupStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_callWarmupStage)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupStage(val.(*PhoneNumberTableRow_callWarmupStage))
-        }
-        return nil
-    }
-    res["callWarmupState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_callWarmupState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupState(val.(*PhoneNumberTableRow_callWarmupState))
-        }
-        return nil
-    }
-    res["capabilities"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCapabilities(val)
-        }
-        return nil
-    }
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -234,16 +106,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_healthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*PhoneNumberTableRow_healthStatus))
-        }
-        return nil
-    }
     res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -251,36 +113,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetId(val)
-        }
-        return nil
-    }
-    res["internalTestOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalTestOnly(val)
-        }
-        return nil
-    }
-    res["inventoryState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberInventoryState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInventoryState(val.(*PhoneNumberInventoryState))
-        }
-        return nil
-    }
-    res["isMessagingProgramApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMessagingProgramApproved(val)
         }
         return nil
     }
@@ -324,36 +156,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["providerLifecycleState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberProviderLifecycleState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderLifecycleState(val.(*PhoneNumberProviderLifecycleState))
-        }
-        return nil
-    }
-    res["providerReconciliationStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReconciliationStatus(val)
-        }
-        return nil
-    }
-    res["providerStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderStatus(val)
-        }
-        return nil
-    }
     res["routingSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -371,26 +173,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetSmsReady(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseInternalPhoneNumberStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*InternalPhoneNumberStatus))
-        }
-        return nil
-    }
-    res["tenDlcCampaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcCampaignId(val)
         }
         return nil
     }
@@ -414,16 +196,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val)
-        }
-        return nil
-    }
     res["voiceReady"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -434,72 +206,22 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["warmupHealthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+    res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberWarmupFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetWarmupHealthScore(val)
-        }
-        return nil
-    }
-    res["warmupOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupOnly(val)
-        }
-        return nil
-    }
-    res["warmupProgressPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupProgressPercent(val)
-        }
-        return nil
-    }
-    res["warmupState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberTableRow_warmupState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupState(val.(*PhoneNumberTableRow_warmupState))
+            m.SetWarmup(val.(PhoneNumberWarmupable))
         }
         return nil
     }
     return res
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberTableRow_healthStatus when successful
-func (m *PhoneNumberTableRow) GetHealthStatus()(*PhoneNumberTableRow_healthStatus) {
-    return m.healthStatus
-}
 // GetId gets the id property value. Unique Leadping identifier for this phone number table row.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetId()(*string) {
     return m.id
-}
-// GetInternalTestOnly gets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
-// returns a *bool when successful
-func (m *PhoneNumberTableRow) GetInternalTestOnly()(*bool) {
-    return m.internalTestOnly
-}
-// GetInventoryState gets the inventoryState property value. Leadping inventory state for this phone number.
-// returns a *PhoneNumberInventoryState when successful
-func (m *PhoneNumberTableRow) GetInventoryState()(*PhoneNumberInventoryState) {
-    return m.inventoryState
-}
-// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
-// returns a *bool when successful
-func (m *PhoneNumberTableRow) GetIsMessagingProgramApproved()(*bool) {
-    return m.isMessagingProgramApproved
 }
 // GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 // returns a *string when successful
@@ -521,21 +243,6 @@ func (m *PhoneNumberTableRow) GetNumber()(*string) {
 func (m *PhoneNumberTableRow) GetOwnership()(*string) {
     return m.ownership
 }
-// GetProviderLifecycleState gets the providerLifecycleState property value. Provider lifecycle state used to determine phone number readiness.
-// returns a *PhoneNumberProviderLifecycleState when successful
-func (m *PhoneNumberTableRow) GetProviderLifecycleState()(*PhoneNumberProviderLifecycleState) {
-    return m.providerLifecycleState
-}
-// GetProviderReconciliationStatus gets the providerReconciliationStatus property value. Reconciliation status comparing Leadping data with provider data.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetProviderReconciliationStatus()(*string) {
-    return m.providerReconciliationStatus
-}
-// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number table row.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetProviderStatus()(*string) {
-    return m.providerStatus
-}
 // GetRoutingSummary gets the routingSummary property value. Human-readable routing summary for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetRoutingSummary()(*string) {
@@ -545,16 +252,6 @@ func (m *PhoneNumberTableRow) GetRoutingSummary()(*string) {
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetSmsReady()(*bool) {
     return m.smsReady
-}
-// GetStatus gets the status property value. Current lifecycle status for this phone number table row in the Leadping API.
-// returns a *InternalPhoneNumberStatus when successful
-func (m *PhoneNumberTableRow) GetStatus()(*InternalPhoneNumberStatus) {
-    return m.status
-}
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetTenDlcCampaignId()(*string) {
-    return m.tenDlcCampaignId
 }
 // GetTenDlcCampaignStatus gets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
 // returns a *string when successful
@@ -566,50 +263,18 @@ func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus()(*string) {
 func (m *PhoneNumberTableRow) GetTypeEscaped()(*string) {
     return m.typeEscaped
 }
-// GetUser gets the user property value. User summary connected to this phone number table row.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetUser()(*string) {
-    return m.user
-}
 // GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetVoiceReady()(*bool) {
     return m.voiceReady
 }
-// GetWarmupHealthScore gets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-// returns a *int32 when successful
-func (m *PhoneNumberTableRow) GetWarmupHealthScore()(*int32) {
-    return m.warmupHealthScore
-}
-// GetWarmupOnly gets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
-// returns a *bool when successful
-func (m *PhoneNumberTableRow) GetWarmupOnly()(*bool) {
-    return m.warmupOnly
-}
-// GetWarmupProgressPercent gets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
-// returns a *int32 when successful
-func (m *PhoneNumberTableRow) GetWarmupProgressPercent()(*int32) {
-    return m.warmupProgressPercent
-}
-// GetWarmupState gets the warmupState property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberTableRow_warmupState when successful
-func (m *PhoneNumberTableRow) GetWarmupState()(*PhoneNumberTableRow_warmupState) {
-    return m.warmupState
+// GetWarmup gets the warmup property value. Warmup state for this phone number.
+// returns a PhoneNumberWarmupable when successful
+func (m *PhoneNumberTableRow) GetWarmup()(PhoneNumberWarmupable) {
+    return m.warmup
 }
 // Serialize serializes information the current object
 func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingAttribution", m.GetBillingAttribution())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("business", m.GetBusiness())
         if err != nil {
@@ -623,65 +288,13 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteBoolValue("callWarmupEnabled", m.GetCallWarmupEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCallWarmupStage() != nil {
-        cast := (*m.GetCallWarmupStage()).String()
-        err := writer.WriteStringValue("callWarmupStage", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCallWarmupState() != nil {
-        cast := (*m.GetCallWarmupState()).String()
-        err := writer.WriteStringValue("callWarmupState", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("capabilities", m.GetCapabilities())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
         if err != nil {
             return err
         }
     }
     {
         err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("internalTestOnly", m.GetInternalTestOnly())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetInventoryState() != nil {
-        cast := (*m.GetInventoryState()).String()
-        err := writer.WriteStringValue("inventoryState", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isMessagingProgramApproved", m.GetIsMessagingProgramApproved())
         if err != nil {
             return err
         }
@@ -710,25 +323,6 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
             return err
         }
     }
-    if m.GetProviderLifecycleState() != nil {
-        cast := (*m.GetProviderLifecycleState()).String()
-        err := writer.WriteStringValue("providerLifecycleState", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerReconciliationStatus", m.GetProviderReconciliationStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerStatus", m.GetProviderStatus())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("routingSummary", m.GetRoutingSummary())
         if err != nil {
@@ -737,19 +331,6 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcCampaignId", m.GetTenDlcCampaignId())
         if err != nil {
             return err
         }
@@ -767,38 +348,13 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteBoolValue("voiceReady", m.GetVoiceReady())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteInt32Value("warmupHealthScore", m.GetWarmupHealthScore())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("warmupOnly", m.GetWarmupOnly())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("warmupProgressPercent", m.GetWarmupProgressPercent())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWarmupState() != nil {
-        cast := (*m.GetWarmupState()).String()
-        err := writer.WriteStringValue("warmupState", &cast)
+        err := writer.WriteObjectValue("warmup", m.GetWarmup())
         if err != nil {
             return err
         }
@@ -815,14 +371,6 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *PhoneNumberTableRow) SetAdminEnablementOverride(value PhoneNumberTableRow_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
-// SetBillingAttribution sets the billingAttribution property value. Billing attribution used to reconcile this phone number with subscription billing.
-func (m *PhoneNumberTableRow) SetBillingAttribution(value *string)() {
-    m.billingAttribution = value
-}
 // SetBusiness sets the business property value. Business summary connected to this phone number table row.
 func (m *PhoneNumberTableRow) SetBusiness(value *string)() {
     m.business = value
@@ -831,45 +379,13 @@ func (m *PhoneNumberTableRow) SetBusiness(value *string)() {
 func (m *PhoneNumberTableRow) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetCallWarmupEnabled sets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
-func (m *PhoneNumberTableRow) SetCallWarmupEnabled(value *bool)() {
-    m.callWarmupEnabled = value
-}
-// SetCallWarmupStage sets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
-func (m *PhoneNumberTableRow) SetCallWarmupStage(value *PhoneNumberTableRow_callWarmupStage)() {
-    m.callWarmupStage = value
-}
-// SetCallWarmupState sets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
-func (m *PhoneNumberTableRow) SetCallWarmupState(value *PhoneNumberTableRow_callWarmupState)() {
-    m.callWarmupState = value
-}
-// SetCapabilities sets the capabilities property value. SMS and voice capabilities available on this phone number.
-func (m *PhoneNumberTableRow) SetCapabilities(value *string)() {
-    m.capabilities = value
-}
 // SetEnabled sets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberTableRow) SetHealthStatus(value *PhoneNumberTableRow_healthStatus)() {
-    m.healthStatus = value
-}
 // SetId sets the id property value. Unique Leadping identifier for this phone number table row.
 func (m *PhoneNumberTableRow) SetId(value *string)() {
     m.id = value
-}
-// SetInternalTestOnly sets the internalTestOnly property value. Indicates whether this record is restricted to internal Leadping testing.
-func (m *PhoneNumberTableRow) SetInternalTestOnly(value *bool)() {
-    m.internalTestOnly = value
-}
-// SetInventoryState sets the inventoryState property value. Leadping inventory state for this phone number.
-func (m *PhoneNumberTableRow) SetInventoryState(value *PhoneNumberInventoryState)() {
-    m.inventoryState = value
-}
-// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
-func (m *PhoneNumberTableRow) SetIsMessagingProgramApproved(value *bool)() {
-    m.isMessagingProgramApproved = value
 }
 // SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberTableRow) SetLocation(value *string)() {
@@ -887,18 +403,6 @@ func (m *PhoneNumberTableRow) SetNumber(value *string)() {
 func (m *PhoneNumberTableRow) SetOwnership(value *string)() {
     m.ownership = value
 }
-// SetProviderLifecycleState sets the providerLifecycleState property value. Provider lifecycle state used to determine phone number readiness.
-func (m *PhoneNumberTableRow) SetProviderLifecycleState(value *PhoneNumberProviderLifecycleState)() {
-    m.providerLifecycleState = value
-}
-// SetProviderReconciliationStatus sets the providerReconciliationStatus property value. Reconciliation status comparing Leadping data with provider data.
-func (m *PhoneNumberTableRow) SetProviderReconciliationStatus(value *string)() {
-    m.providerReconciliationStatus = value
-}
-// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number table row.
-func (m *PhoneNumberTableRow) SetProviderStatus(value *string)() {
-    m.providerStatus = value
-}
 // SetRoutingSummary sets the routingSummary property value. Human-readable routing summary for this phone number.
 func (m *PhoneNumberTableRow) SetRoutingSummary(value *string)() {
     m.routingSummary = value
@@ -906,14 +410,6 @@ func (m *PhoneNumberTableRow) SetRoutingSummary(value *string)() {
 // SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
 func (m *PhoneNumberTableRow) SetSmsReady(value *bool)() {
     m.smsReady = value
-}
-// SetStatus sets the status property value. Current lifecycle status for this phone number table row in the Leadping API.
-func (m *PhoneNumberTableRow) SetStatus(value *InternalPhoneNumberStatus)() {
-    m.status = value
-}
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-func (m *PhoneNumberTableRow) SetTenDlcCampaignId(value *string)() {
-    m.tenDlcCampaignId = value
 }
 // SetTenDlcCampaignStatus sets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
 func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string)() {
@@ -923,97 +419,43 @@ func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string)() {
 func (m *PhoneNumberTableRow) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }
-// SetUser sets the user property value. User summary connected to this phone number table row.
-func (m *PhoneNumberTableRow) SetUser(value *string)() {
-    m.user = value
-}
 // SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
 func (m *PhoneNumberTableRow) SetVoiceReady(value *bool)() {
     m.voiceReady = value
 }
-// SetWarmupHealthScore sets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-func (m *PhoneNumberTableRow) SetWarmupHealthScore(value *int32)() {
-    m.warmupHealthScore = value
-}
-// SetWarmupOnly sets the warmupOnly property value. Indicates whether this phone number should only be used for warmup traffic.
-func (m *PhoneNumberTableRow) SetWarmupOnly(value *bool)() {
-    m.warmupOnly = value
-}
-// SetWarmupProgressPercent sets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
-func (m *PhoneNumberTableRow) SetWarmupProgressPercent(value *int32)() {
-    m.warmupProgressPercent = value
-}
-// SetWarmupState sets the warmupState property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberTableRow) SetWarmupState(value *PhoneNumberTableRow_warmupState)() {
-    m.warmupState = value
+// SetWarmup sets the warmup property value. Warmup state for this phone number.
+func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberWarmupable)() {
+    m.warmup = value
 }
 type PhoneNumberTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(PhoneNumberTableRow_adminEnablementOverrideable)
-    GetBillingAttribution()(*string)
     GetBusiness()(*string)
     GetBusinessId()(*string)
-    GetCallWarmupEnabled()(*bool)
-    GetCallWarmupStage()(*PhoneNumberTableRow_callWarmupStage)
-    GetCallWarmupState()(*PhoneNumberTableRow_callWarmupState)
-    GetCapabilities()(*string)
     GetEnabled()(*bool)
-    GetHealthStatus()(*PhoneNumberTableRow_healthStatus)
     GetId()(*string)
-    GetInternalTestOnly()(*bool)
-    GetInventoryState()(*PhoneNumberInventoryState)
-    GetIsMessagingProgramApproved()(*bool)
     GetLocation()(*string)
     GetName()(*string)
     GetNumber()(*string)
     GetOwnership()(*string)
-    GetProviderLifecycleState()(*PhoneNumberProviderLifecycleState)
-    GetProviderReconciliationStatus()(*string)
-    GetProviderStatus()(*string)
     GetRoutingSummary()(*string)
     GetSmsReady()(*bool)
-    GetStatus()(*InternalPhoneNumberStatus)
-    GetTenDlcCampaignId()(*string)
     GetTenDlcCampaignStatus()(*string)
     GetTypeEscaped()(*string)
-    GetUser()(*string)
     GetVoiceReady()(*bool)
-    GetWarmupHealthScore()(*int32)
-    GetWarmupOnly()(*bool)
-    GetWarmupProgressPercent()(*int32)
-    GetWarmupState()(*PhoneNumberTableRow_warmupState)
-    SetAdminEnablementOverride(value PhoneNumberTableRow_adminEnablementOverrideable)()
-    SetBillingAttribution(value *string)()
+    GetWarmup()(PhoneNumberWarmupable)
     SetBusiness(value *string)()
     SetBusinessId(value *string)()
-    SetCallWarmupEnabled(value *bool)()
-    SetCallWarmupStage(value *PhoneNumberTableRow_callWarmupStage)()
-    SetCallWarmupState(value *PhoneNumberTableRow_callWarmupState)()
-    SetCapabilities(value *string)()
     SetEnabled(value *bool)()
-    SetHealthStatus(value *PhoneNumberTableRow_healthStatus)()
     SetId(value *string)()
-    SetInternalTestOnly(value *bool)()
-    SetInventoryState(value *PhoneNumberInventoryState)()
-    SetIsMessagingProgramApproved(value *bool)()
     SetLocation(value *string)()
     SetName(value *string)()
     SetNumber(value *string)()
     SetOwnership(value *string)()
-    SetProviderLifecycleState(value *PhoneNumberProviderLifecycleState)()
-    SetProviderReconciliationStatus(value *string)()
-    SetProviderStatus(value *string)()
     SetRoutingSummary(value *string)()
     SetSmsReady(value *bool)()
-    SetStatus(value *InternalPhoneNumberStatus)()
-    SetTenDlcCampaignId(value *string)()
     SetTenDlcCampaignStatus(value *string)()
     SetTypeEscaped(value *string)()
-    SetUser(value *string)()
     SetVoiceReady(value *bool)()
-    SetWarmupHealthScore(value *int32)()
-    SetWarmupOnly(value *bool)()
-    SetWarmupProgressPercent(value *int32)()
-    SetWarmupState(value *PhoneNumberTableRow_warmupState)()
+    SetWarmup(value PhoneNumberWarmupable)()
 }

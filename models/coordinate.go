@@ -11,9 +11,9 @@ import (
 type Coordinate struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The latitude property
+    // Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
     latitude *float64
-    // The longitude property
+    // Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
     longitude *float64
 }
 // NewCoordinate instantiates a new Coordinate and sets the default values.
@@ -59,12 +59,12 @@ func (m *Coordinate) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     }
     return res
 }
-// GetLatitude gets the latitude property value. The latitude property
+// GetLatitude gets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
 // returns a *float64 when successful
 func (m *Coordinate) GetLatitude()(*float64) {
     return m.latitude
 }
-// GetLongitude gets the longitude property value. The longitude property
+// GetLongitude gets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
 // returns a *float64 when successful
 func (m *Coordinate) GetLongitude()(*float64) {
     return m.longitude
@@ -95,11 +95,11 @@ func (m *Coordinate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *Coordinate) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLatitude sets the latitude property value. The latitude property
+// SetLatitude sets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
 func (m *Coordinate) SetLatitude(value *float64)() {
     m.latitude = value
 }
-// SetLongitude sets the longitude property value. The longitude property
+// SetLongitude sets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
 func (m *Coordinate) SetLongitude(value *float64)() {
     m.longitude = value
 }

@@ -18,8 +18,6 @@ type CallEventTableRow struct {
     billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Billable call duration in seconds.
     billableSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Phone number identifier used for billing reconciliation.
-    billingPhoneNumberId *string
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // Business summary connected to this call event table row.
@@ -46,18 +44,12 @@ type CallEventTableRow struct {
     id *string
     // Lead ID associated with this call event.
     leadId *string
-    // Structured metadata used for attribution, integrations, and reporting on this call event table row.
-    metadata CallEventTableRow_metadataable
-    // Provider lifecycle or delivery status for this call event table row.
-    providerStatus *string
     // URL for the call recording, when the provider makes one available.
     recordingUrl *string
     // Defines the supported Phone Call Status values.
     status *CallEventTableRow_status
     // Human-readable reason explaining the current status of this call event table row.
     statusReason *string
-    // Telnyx identifier connected to this phone number, call, or SMS event.
-    telnyxId *string
     // Recipient phone number used for this communication.
     toPhoneNumber *string
     // User summary connected to this call event table row.
@@ -96,11 +88,6 @@ func (m *CallEventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487ee
 // returns a UntypedNodeable when successful
 func (m *CallEventTableRow) GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableSeconds
-}
-// GetBillingPhoneNumberId gets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
-// returns a *string when successful
-func (m *CallEventTableRow) GetBillingPhoneNumberId()(*string) {
-    return m.billingPhoneNumberId
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
@@ -178,16 +165,6 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetBillableSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["billingPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPhoneNumberId(val)
         }
         return nil
     }
@@ -321,26 +298,6 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
-    res["metadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCallEventTableRow_metadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMetadata(val.(CallEventTableRow_metadataable))
-        }
-        return nil
-    }
-    res["providerStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderStatus(val)
-        }
-        return nil
-    }
     res["recordingUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -368,16 +325,6 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetStatusReason(val)
-        }
-        return nil
-    }
-    res["telnyxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelnyxId(val)
         }
         return nil
     }
@@ -433,16 +380,6 @@ func (m *CallEventTableRow) GetId()(*string) {
 func (m *CallEventTableRow) GetLeadId()(*string) {
     return m.leadId
 }
-// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
-// returns a CallEventTableRow_metadataable when successful
-func (m *CallEventTableRow) GetMetadata()(CallEventTableRow_metadataable) {
-    return m.metadata
-}
-// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
-// returns a *string when successful
-func (m *CallEventTableRow) GetProviderStatus()(*string) {
-    return m.providerStatus
-}
 // GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 // returns a *string when successful
 func (m *CallEventTableRow) GetRecordingUrl()(*string) {
@@ -457,11 +394,6 @@ func (m *CallEventTableRow) GetStatus()(*CallEventTableRow_status) {
 // returns a *string when successful
 func (m *CallEventTableRow) GetStatusReason()(*string) {
     return m.statusReason
-}
-// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-// returns a *string when successful
-func (m *CallEventTableRow) GetTelnyxId()(*string) {
-    return m.telnyxId
 }
 // GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
@@ -494,12 +426,6 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteObjectValue("billableSeconds", m.GetBillableSeconds())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingPhoneNumberId", m.GetBillingPhoneNumberId())
         if err != nil {
             return err
         }
@@ -583,18 +509,6 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("metadata", m.GetMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerStatus", m.GetProviderStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("recordingUrl", m.GetRecordingUrl())
         if err != nil {
             return err
@@ -609,12 +523,6 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("telnyxId", m.GetTelnyxId())
         if err != nil {
             return err
         }
@@ -660,10 +568,6 @@ func (m *CallEventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f4
 // SetBillableSeconds sets the billableSeconds property value. Billable call duration in seconds.
 func (m *CallEventTableRow) SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableSeconds = value
-}
-// SetBillingPhoneNumberId sets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
-func (m *CallEventTableRow) SetBillingPhoneNumberId(value *string)() {
-    m.billingPhoneNumberId = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
 func (m *CallEventTableRow) SetBillingStatus(value *string)() {
@@ -717,14 +621,6 @@ func (m *CallEventTableRow) SetId(value *string)() {
 func (m *CallEventTableRow) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
-func (m *CallEventTableRow) SetMetadata(value CallEventTableRow_metadataable)() {
-    m.metadata = value
-}
-// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
-func (m *CallEventTableRow) SetProviderStatus(value *string)() {
-    m.providerStatus = value
-}
 // SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
     m.recordingUrl = value
@@ -736,10 +632,6 @@ func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status)() {
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this call event table row.
 func (m *CallEventTableRow) SetStatusReason(value *string)() {
     m.statusReason = value
-}
-// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-func (m *CallEventTableRow) SetTelnyxId(value *string)() {
-    m.telnyxId = value
 }
 // SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *CallEventTableRow) SetToPhoneNumber(value *string)() {
@@ -759,7 +651,6 @@ type CallEventTableRowable interface {
     GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillingPhoneNumberId()(*string)
     GetBillingStatus()(*string)
     GetBusiness()(*string)
     GetBusinessId()(*string)
@@ -773,19 +664,15 @@ type CallEventTableRowable interface {
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetLeadId()(*string)
-    GetMetadata()(CallEventTableRow_metadataable)
-    GetProviderStatus()(*string)
     GetRecordingUrl()(*string)
     GetStatus()(*CallEventTableRow_status)
     GetStatusReason()(*string)
-    GetTelnyxId()(*string)
     GetToPhoneNumber()(*string)
     GetUser()(*string)
     GetUserId()(*string)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillingPhoneNumberId(value *string)()
     SetBillingStatus(value *string)()
     SetBusiness(value *string)()
     SetBusinessId(value *string)()
@@ -799,12 +686,9 @@ type CallEventTableRowable interface {
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()
-    SetMetadata(value CallEventTableRow_metadataable)()
-    SetProviderStatus(value *string)()
     SetRecordingUrl(value *string)()
     SetStatus(value *CallEventTableRow_status)()
     SetStatusReason(value *string)()
-    SetTelnyxId(value *string)()
     SetToPhoneNumber(value *string)()
     SetUser(value *string)()
     SetUserId(value *string)()

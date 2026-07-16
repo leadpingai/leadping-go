@@ -7,42 +7,43 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerAnalyticsSummary human-readable summary for this Leadping customer analytics.
 type CustomerAnalyticsSummary struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The averageResponseMinutes property
+    // Average time, in minutes, before a lead receives a response.
     averageResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The billingStatus property
+    // Current billing status for this Leadping customer analytics summary.
     billingStatus *string
-    // The callMinutes property
+    // Total connected call duration, in minutes, during the reporting period.
     callMinutes *float64
-    // The callsPlaced property
+    // Number of outbound calls placed during the reporting period.
     callsPlaced *int32
-    // The callsReceived property
+    // Number of inbound calls received during the reporting period.
     callsReceived *int32
-    // The leads property
+    // Number of leads represented by this Leadping customer analytics summary.
     leads *int32
-    // The leadsComparison property
+    // Date and time when this Leadping customer analytics summary was leads comparison.
     leadsComparison AnalyticsComparisonable
-    // The medianResponseMinutes property
+    // Median response minutes measured in minutes.
     medianResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The missedCalls property
+    // Number of calls missed during the reporting period.
     missedCalls *int32
-    // The missedLeads property
+    // Number of missed leads represented by this Leadping customer analytics summary.
     missedLeads *int32
-    // The respondedWithinFiveMinutesPercent property
+    // Responded within five minutes percent expressed as a percentage.
     respondedWithinFiveMinutesPercent *float64
-    // The smsReceived property
+    // Number of SMS messages received during the reporting period.
     smsReceived *int32
-    // The smsSent property
+    // Number of SMS messages sent during the reporting period.
     smsSent *int32
-    // The unreadMessages property
+    // Number of unread messages represented by this Leadping customer analytics summary.
     unreadMessages *int32
-    // The usageSpend property
+    // Usage spend represented by this Leadping customer analytics summary.
     usageSpend *float64
-    // The walletBalance property
+    // Wallet balance represented by this Leadping customer analytics summary.
     walletBalance *float64
-    // The walletStatus property
+    // Current wallet status for this Leadping customer analytics summary.
     walletStatus *string
 }
 // NewCustomerAnalyticsSummary instantiates a new CustomerAnalyticsSummary and sets the default values.
@@ -62,27 +63,27 @@ func CreateCustomerAnalyticsSummaryFromDiscriminatorValue(parseNode i878a80d2330
 func (m *CustomerAnalyticsSummary) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAverageResponseMinutes gets the averageResponseMinutes property value. The averageResponseMinutes property
+// GetAverageResponseMinutes gets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
 // returns a UntypedNodeable when successful
 func (m *CustomerAnalyticsSummary) GetAverageResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.averageResponseMinutes
 }
-// GetBillingStatus gets the billingStatus property value. The billingStatus property
+// GetBillingStatus gets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
 // returns a *string when successful
 func (m *CustomerAnalyticsSummary) GetBillingStatus()(*string) {
     return m.billingStatus
 }
-// GetCallMinutes gets the callMinutes property value. The callMinutes property
+// GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 // returns a *float64 when successful
 func (m *CustomerAnalyticsSummary) GetCallMinutes()(*float64) {
     return m.callMinutes
 }
-// GetCallsPlaced gets the callsPlaced property value. The callsPlaced property
+// GetCallsPlaced gets the callsPlaced property value. Number of outbound calls placed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetCallsPlaced()(*int32) {
     return m.callsPlaced
 }
-// GetCallsReceived gets the callsReceived property value. The callsReceived property
+// GetCallsReceived gets the callsReceived property value. Number of inbound calls received during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetCallsReceived()(*int32) {
     return m.callsReceived
@@ -263,62 +264,62 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetLeads gets the leads property value. The leads property
+// GetLeads gets the leads property value. Number of leads represented by this Leadping customer analytics summary.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetLeads()(*int32) {
     return m.leads
 }
-// GetLeadsComparison gets the leadsComparison property value. The leadsComparison property
+// GetLeadsComparison gets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
 // returns a AnalyticsComparisonable when successful
 func (m *CustomerAnalyticsSummary) GetLeadsComparison()(AnalyticsComparisonable) {
     return m.leadsComparison
 }
-// GetMedianResponseMinutes gets the medianResponseMinutes property value. The medianResponseMinutes property
+// GetMedianResponseMinutes gets the medianResponseMinutes property value. Median response minutes measured in minutes.
 // returns a UntypedNodeable when successful
 func (m *CustomerAnalyticsSummary) GetMedianResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.medianResponseMinutes
 }
-// GetMissedCalls gets the missedCalls property value. The missedCalls property
+// GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetMissedCalls()(*int32) {
     return m.missedCalls
 }
-// GetMissedLeads gets the missedLeads property value. The missedLeads property
+// GetMissedLeads gets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetMissedLeads()(*int32) {
     return m.missedLeads
 }
-// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
 // returns a *float64 when successful
 func (m *CustomerAnalyticsSummary) GetRespondedWithinFiveMinutesPercent()(*float64) {
     return m.respondedWithinFiveMinutesPercent
 }
-// GetSmsReceived gets the smsReceived property value. The smsReceived property
+// GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetSmsReceived()(*int32) {
     return m.smsReceived
 }
-// GetSmsSent gets the smsSent property value. The smsSent property
+// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetSmsSent()(*int32) {
     return m.smsSent
 }
-// GetUnreadMessages gets the unreadMessages property value. The unreadMessages property
+// GetUnreadMessages gets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetUnreadMessages()(*int32) {
     return m.unreadMessages
 }
-// GetUsageSpend gets the usageSpend property value. The usageSpend property
+// GetUsageSpend gets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
 // returns a *float64 when successful
 func (m *CustomerAnalyticsSummary) GetUsageSpend()(*float64) {
     return m.usageSpend
 }
-// GetWalletBalance gets the walletBalance property value. The walletBalance property
+// GetWalletBalance gets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
 // returns a *float64 when successful
 func (m *CustomerAnalyticsSummary) GetWalletBalance()(*float64) {
     return m.walletBalance
 }
-// GetWalletStatus gets the walletStatus property value. The walletStatus property
+// GetWalletStatus gets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
 // returns a *string when successful
 func (m *CustomerAnalyticsSummary) GetWalletStatus()(*string) {
     return m.walletStatus
@@ -439,71 +440,71 @@ func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *CustomerAnalyticsSummary) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAverageResponseMinutes sets the averageResponseMinutes property value. The averageResponseMinutes property
+// SetAverageResponseMinutes sets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
 func (m *CustomerAnalyticsSummary) SetAverageResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.averageResponseMinutes = value
 }
-// SetBillingStatus sets the billingStatus property value. The billingStatus property
+// SetBillingStatus sets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetBillingStatus(value *string)() {
     m.billingStatus = value
 }
-// SetCallMinutes sets the callMinutes property value. The callMinutes property
+// SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 func (m *CustomerAnalyticsSummary) SetCallMinutes(value *float64)() {
     m.callMinutes = value
 }
-// SetCallsPlaced sets the callsPlaced property value. The callsPlaced property
+// SetCallsPlaced sets the callsPlaced property value. Number of outbound calls placed during the reporting period.
 func (m *CustomerAnalyticsSummary) SetCallsPlaced(value *int32)() {
     m.callsPlaced = value
 }
-// SetCallsReceived sets the callsReceived property value. The callsReceived property
+// SetCallsReceived sets the callsReceived property value. Number of inbound calls received during the reporting period.
 func (m *CustomerAnalyticsSummary) SetCallsReceived(value *int32)() {
     m.callsReceived = value
 }
-// SetLeads sets the leads property value. The leads property
+// SetLeads sets the leads property value. Number of leads represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetLeads(value *int32)() {
     m.leads = value
 }
-// SetLeadsComparison sets the leadsComparison property value. The leadsComparison property
+// SetLeadsComparison sets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
 func (m *CustomerAnalyticsSummary) SetLeadsComparison(value AnalyticsComparisonable)() {
     m.leadsComparison = value
 }
-// SetMedianResponseMinutes sets the medianResponseMinutes property value. The medianResponseMinutes property
+// SetMedianResponseMinutes sets the medianResponseMinutes property value. Median response minutes measured in minutes.
 func (m *CustomerAnalyticsSummary) SetMedianResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.medianResponseMinutes = value
 }
-// SetMissedCalls sets the missedCalls property value. The missedCalls property
+// SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
 func (m *CustomerAnalyticsSummary) SetMissedCalls(value *int32)() {
     m.missedCalls = value
 }
-// SetMissedLeads sets the missedLeads property value. The missedLeads property
+// SetMissedLeads sets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetMissedLeads(value *int32)() {
     m.missedLeads = value
 }
-// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
 func (m *CustomerAnalyticsSummary) SetRespondedWithinFiveMinutesPercent(value *float64)() {
     m.respondedWithinFiveMinutesPercent = value
 }
-// SetSmsReceived sets the smsReceived property value. The smsReceived property
+// SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
 func (m *CustomerAnalyticsSummary) SetSmsReceived(value *int32)() {
     m.smsReceived = value
 }
-// SetSmsSent sets the smsSent property value. The smsSent property
+// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
 func (m *CustomerAnalyticsSummary) SetSmsSent(value *int32)() {
     m.smsSent = value
 }
-// SetUnreadMessages sets the unreadMessages property value. The unreadMessages property
+// SetUnreadMessages sets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetUnreadMessages(value *int32)() {
     m.unreadMessages = value
 }
-// SetUsageSpend sets the usageSpend property value. The usageSpend property
+// SetUsageSpend sets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetUsageSpend(value *float64)() {
     m.usageSpend = value
 }
-// SetWalletBalance sets the walletBalance property value. The walletBalance property
+// SetWalletBalance sets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetWalletBalance(value *float64)() {
     m.walletBalance = value
 }
-// SetWalletStatus sets the walletStatus property value. The walletStatus property
+// SetWalletStatus sets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetWalletStatus(value *string)() {
     m.walletStatus = value
 }

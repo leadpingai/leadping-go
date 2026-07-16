@@ -12,52 +12,14 @@ import (
 type PhoneNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride PhoneNumberResponse_adminEnablementOverrideable
-    // Billing attribution used to charge this phone number to the correct business and subscription item.
-    billing PhoneNumberBillingAttributionable
     // Business summary connected to this phone number.
     business PhoneNumberResponse_businessable
-    // Indicates whether controlled voice call warmup is enabled for this phone number.
-    callWarmupEnabled *bool
-    // Human-readable reason explaining voice call warmup health.
-    callWarmupHealthReason *string
-    // UTC timestamp when the next voice call warmup action is due for this phone number.
-    callWarmupNextActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable reason voice call warmup is paused.
-    callWarmupPauseReason *string
-    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
-    callWarmupStage *PhoneNumberResponse_callWarmupStage
-    // Defines the supported health states for controlled internal voice call warmup.
-    callWarmupState *PhoneNumberResponse_callWarmupState
-    // Messaging campaign identifier associated with this phone number.
-    campaignId *string
-    // SMS and voice capabilities available on this phone number.
-    capabilities PhoneNumberCapabilitiesable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Indicates whether this phone number is active and available in the Leadping API.
     enabled *bool
-    // Timeline events and provider events associated with this phone number.
-    events []PhoneNumberEventRecordable
-    // Human-readable reason explaining the current health status.
-    healthReason *string
-    // Defines the supported SMS Warmup Health State values.
-    healthStatus *PhoneNumberResponse_healthStatus
     // The unique identifier for the entity.
     id *string
-    // Leadping inventory state for this phone number.
-    inventoryState *PhoneNumberInventoryState
-    // Indicates whether this phone number is approved for test messages or calls.
-    isApprovedTestDestination *bool
-    // Indicates whether this phone number is the default sender for the business.
-    isDefault *bool
-    // Indicates whether this phone number belongs to an internal Leadping number pool.
-    isInternalPool *bool
-    // Indicates whether this phone number is approved for the configured messaging program.
-    isMessagingProgramApproved *bool
-    // Indicates whether this phone number is preferred for outbound communication.
-    isPreferred *bool
     // Indicates whether Leadping provisions and manages this phone number.
     leadpingOwned *bool
     // Geographic location metadata for the phone number, lead, or lookup result.
@@ -68,60 +30,10 @@ type PhoneNumberResponse struct {
     name *string
     // E.164 phone number exposed by this phone number.
     number *string
-    // Telephony or payment provider connected to this phone number.
-    provider *string
-    // Provider error message captured while syncing this phone number.
-    providerError *string
-    // Provider order identifier returned during phone number provisioning.
-    providerOrderId *string
-    // Provider order status returned during phone number provisioning.
-    providerOrderStatus *string
-    // Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
-    providerPhoneNumberId *string
-    // UTC timestamp when the provider released this phone number.
-    providerReleasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when the provider release hold starts for this phone number.
-    providerReleaseHoldStartsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Reason supplied when requesting provider release of this phone number.
-    providerReleaseReason *string
-    // UTC timestamp when release was requested for this provider phone number.
-    providerReleaseRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name of the person who requested provider release of this phone number.
-    providerReleaseRequestedByName *string
-    // User ID of the person who requested provider release of this phone number.
-    providerReleaseRequestedByUserId *string
-    // UTC timestamp when provider release is scheduled for this phone number.
-    providerReleaseScheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether Leadping should unassign the phone number when the provider release hold starts.
-    providerReleaseUnassignAtHoldStart *bool
-    // Provider lifecycle or delivery status for this phone number.
-    providerStatus *string
-    // UTC timestamp when Leadping last synchronized this phone number with the provider.
-    providerSyncedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Routing metadata that connects this phone number to teams, campaigns, and sources.
     routing PhoneNumberRoutingMetadataable
-    // Lead source ID assigned to this phone number for attribution and routing.
-    sourceId *string
-    // Current lifecycle status for this phone number in the Leadping API.
-    status *InternalPhoneNumberStatus
-    // Team ID used to route calls and messages for this phone number.
-    teamId *string
-    // 10DLC registration and campaign association for this phone number.
-    tenDlc PhoneNumberTenDlcAssociationable
-    // User summary connected to this phone number.
-    user PhoneNumberResponse_userable
-    // Indicates whether SMS sender warmup is enabled for this phone number.
-    warmupEnabled *bool
-    // Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-    warmupHealthScore *int32
-    // UTC timestamp when the next SMS warmup action is due for this phone number.
-    warmupNextActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable reason SMS sender warmup is paused.
-    warmupPauseReason *string
-    // Percent complete for the SMS sender warmup plan.
-    warmupProgressPercent *int32
-    // Defines the supported SMS Warmup Health State values.
-    warmupState *PhoneNumberResponse_warmupState
+    // SMS and voice warmup state for this phone number.
+    warmup PhoneNumberWarmupable
 }
 // NewPhoneNumberResponse instantiates a new PhoneNumberResponse and sets the default values.
 func NewPhoneNumberResponse()(*PhoneNumberResponse) {
@@ -140,60 +52,10 @@ func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a PhoneNumberResponse_adminEnablementOverrideable when successful
-func (m *PhoneNumberResponse) GetAdminEnablementOverride()(PhoneNumberResponse_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
-}
-// GetBilling gets the billing property value. Billing attribution used to charge this phone number to the correct business and subscription item.
-// returns a PhoneNumberBillingAttributionable when successful
-func (m *PhoneNumberResponse) GetBilling()(PhoneNumberBillingAttributionable) {
-    return m.billing
-}
 // GetBusiness gets the business property value. Business summary connected to this phone number.
 // returns a PhoneNumberResponse_businessable when successful
 func (m *PhoneNumberResponse) GetBusiness()(PhoneNumberResponse_businessable) {
     return m.business
-}
-// GetCallWarmupEnabled gets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetCallWarmupEnabled()(*bool) {
-    return m.callWarmupEnabled
-}
-// GetCallWarmupHealthReason gets the callWarmupHealthReason property value. Human-readable reason explaining voice call warmup health.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetCallWarmupHealthReason()(*string) {
-    return m.callWarmupHealthReason
-}
-// GetCallWarmupNextActionAt gets the callWarmupNextActionAt property value. UTC timestamp when the next voice call warmup action is due for this phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetCallWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.callWarmupNextActionAt
-}
-// GetCallWarmupPauseReason gets the callWarmupPauseReason property value. Human-readable reason voice call warmup is paused.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetCallWarmupPauseReason()(*string) {
-    return m.callWarmupPauseReason
-}
-// GetCallWarmupStage gets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
-// returns a *PhoneNumberResponse_callWarmupStage when successful
-func (m *PhoneNumberResponse) GetCallWarmupStage()(*PhoneNumberResponse_callWarmupStage) {
-    return m.callWarmupStage
-}
-// GetCallWarmupState gets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
-// returns a *PhoneNumberResponse_callWarmupState when successful
-func (m *PhoneNumberResponse) GetCallWarmupState()(*PhoneNumberResponse_callWarmupState) {
-    return m.callWarmupState
-}
-// GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetCampaignId()(*string) {
-    return m.campaignId
-}
-// GetCapabilities gets the capabilities property value. SMS and voice capabilities available on this phone number.
-// returns a PhoneNumberCapabilitiesable when successful
-func (m *PhoneNumberResponse) GetCapabilities()(PhoneNumberCapabilitiesable) {
-    return m.capabilities
 }
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
@@ -205,35 +67,10 @@ func (m *PhoneNumberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a
 func (m *PhoneNumberResponse) GetEnabled()(*bool) {
     return m.enabled
 }
-// GetEvents gets the events property value. Timeline events and provider events associated with this phone number.
-// returns a []PhoneNumberEventRecordable when successful
-func (m *PhoneNumberResponse) GetEvents()([]PhoneNumberEventRecordable) {
-    return m.events
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberResponse_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(PhoneNumberResponse_adminEnablementOverrideable))
-        }
-        return nil
-    }
-    res["billing"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberBillingAttributionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBilling(val.(PhoneNumberBillingAttributionable))
-        }
-        return nil
-    }
     res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreatePhoneNumberResponse_businessFromDiscriminatorValue)
         if err != nil {
@@ -241,86 +78,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetBusiness(val.(PhoneNumberResponse_businessable))
-        }
-        return nil
-    }
-    res["callWarmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupEnabled(val)
-        }
-        return nil
-    }
-    res["callWarmupHealthReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupHealthReason(val)
-        }
-        return nil
-    }
-    res["callWarmupNextActionAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupNextActionAt(val)
-        }
-        return nil
-    }
-    res["callWarmupPauseReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupPauseReason(val)
-        }
-        return nil
-    }
-    res["callWarmupStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberResponse_callWarmupStage)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupStage(val.(*PhoneNumberResponse_callWarmupStage))
-        }
-        return nil
-    }
-    res["callWarmupState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberResponse_callWarmupState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallWarmupState(val.(*PhoneNumberResponse_callWarmupState))
-        }
-        return nil
-    }
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["capabilities"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberCapabilitiesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCapabilities(val.(PhoneNumberCapabilitiesable))
         }
         return nil
     }
@@ -344,42 +101,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["events"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreatePhoneNumberEventRecordFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]PhoneNumberEventRecordable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(PhoneNumberEventRecordable)
-                }
-            }
-            m.SetEvents(res)
-        }
-        return nil
-    }
-    res["healthReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthReason(val)
-        }
-        return nil
-    }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberResponse_healthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*PhoneNumberResponse_healthStatus))
-        }
-        return nil
-    }
     res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -387,66 +108,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetId(val)
-        }
-        return nil
-    }
-    res["inventoryState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberInventoryState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInventoryState(val.(*PhoneNumberInventoryState))
-        }
-        return nil
-    }
-    res["isApprovedTestDestination"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsApprovedTestDestination(val)
-        }
-        return nil
-    }
-    res["isDefault"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsDefault(val)
-        }
-        return nil
-    }
-    res["isInternalPool"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsInternalPool(val)
-        }
-        return nil
-    }
-    res["isMessagingProgramApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMessagingProgramApproved(val)
-        }
-        return nil
-    }
-    res["isPreferred"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsPreferred(val)
         }
         return nil
     }
@@ -500,156 +161,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["provider"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProvider(val)
-        }
-        return nil
-    }
-    res["providerError"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderError(val)
-        }
-        return nil
-    }
-    res["providerOrderId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderOrderId(val)
-        }
-        return nil
-    }
-    res["providerOrderStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderOrderStatus(val)
-        }
-        return nil
-    }
-    res["providerPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["providerReleasedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleasedAt(val)
-        }
-        return nil
-    }
-    res["providerReleaseHoldStartsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseHoldStartsAt(val)
-        }
-        return nil
-    }
-    res["providerReleaseReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseReason(val)
-        }
-        return nil
-    }
-    res["providerReleaseRequestedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseRequestedAt(val)
-        }
-        return nil
-    }
-    res["providerReleaseRequestedByName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseRequestedByName(val)
-        }
-        return nil
-    }
-    res["providerReleaseRequestedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseRequestedByUserId(val)
-        }
-        return nil
-    }
-    res["providerReleaseScheduledAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseScheduledAt(val)
-        }
-        return nil
-    }
-    res["providerReleaseUnassignAtHoldStart"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderReleaseUnassignAtHoldStart(val)
-        }
-        return nil
-    }
-    res["providerStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderStatus(val)
-        }
-        return nil
-    }
-    res["providerSyncedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderSyncedAt(val)
-        }
-        return nil
-    }
     res["routing"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreatePhoneNumberRoutingMetadataFromDiscriminatorValue)
         if err != nil {
@@ -660,162 +171,22 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberWarmupFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseInternalPhoneNumberStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*InternalPhoneNumberStatus))
-        }
-        return nil
-    }
-    res["teamId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTeamId(val)
-        }
-        return nil
-    }
-    res["tenDlc"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberTenDlcAssociationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlc(val.(PhoneNumberTenDlcAssociationable))
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberResponse_userFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val.(PhoneNumberResponse_userable))
-        }
-        return nil
-    }
-    res["warmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupEnabled(val)
-        }
-        return nil
-    }
-    res["warmupHealthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupHealthScore(val)
-        }
-        return nil
-    }
-    res["warmupNextActionAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupNextActionAt(val)
-        }
-        return nil
-    }
-    res["warmupPauseReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupPauseReason(val)
-        }
-        return nil
-    }
-    res["warmupProgressPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupProgressPercent(val)
-        }
-        return nil
-    }
-    res["warmupState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberResponse_warmupState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupState(val.(*PhoneNumberResponse_warmupState))
+            m.SetWarmup(val.(PhoneNumberWarmupable))
         }
         return nil
     }
     return res
 }
-// GetHealthReason gets the healthReason property value. Human-readable reason explaining the current health status.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetHealthReason()(*string) {
-    return m.healthReason
-}
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberResponse_healthStatus when successful
-func (m *PhoneNumberResponse) GetHealthStatus()(*PhoneNumberResponse_healthStatus) {
-    return m.healthStatus
-}
 // GetId gets the id property value. The unique identifier for the entity.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetId()(*string) {
     return m.id
-}
-// GetInventoryState gets the inventoryState property value. Leadping inventory state for this phone number.
-// returns a *PhoneNumberInventoryState when successful
-func (m *PhoneNumberResponse) GetInventoryState()(*PhoneNumberInventoryState) {
-    return m.inventoryState
-}
-// GetIsApprovedTestDestination gets the isApprovedTestDestination property value. Indicates whether this phone number is approved for test messages or calls.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetIsApprovedTestDestination()(*bool) {
-    return m.isApprovedTestDestination
-}
-// GetIsDefault gets the isDefault property value. Indicates whether this phone number is the default sender for the business.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetIsDefault()(*bool) {
-    return m.isDefault
-}
-// GetIsInternalPool gets the isInternalPool property value. Indicates whether this phone number belongs to an internal Leadping number pool.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetIsInternalPool()(*bool) {
-    return m.isInternalPool
-}
-// GetIsMessagingProgramApproved gets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetIsMessagingProgramApproved()(*bool) {
-    return m.isMessagingProgramApproved
-}
-// GetIsPreferred gets the isPreferred property value. Indicates whether this phone number is preferred for outbound communication.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetIsPreferred()(*bool) {
-    return m.isPreferred
 }
 // GetLeadpingOwned gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 // returns a *bool when successful
@@ -842,207 +213,20 @@ func (m *PhoneNumberResponse) GetName()(*string) {
 func (m *PhoneNumberResponse) GetNumber()(*string) {
     return m.number
 }
-// GetProvider gets the provider property value. Telephony or payment provider connected to this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProvider()(*string) {
-    return m.provider
-}
-// GetProviderError gets the providerError property value. Provider error message captured while syncing this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderError()(*string) {
-    return m.providerError
-}
-// GetProviderOrderId gets the providerOrderId property value. Provider order identifier returned during phone number provisioning.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderOrderId()(*string) {
-    return m.providerOrderId
-}
-// GetProviderOrderStatus gets the providerOrderStatus property value. Provider order status returned during phone number provisioning.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderOrderStatus()(*string) {
-    return m.providerOrderStatus
-}
-// GetProviderPhoneNumberId gets the providerPhoneNumberId property value. Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderPhoneNumberId()(*string) {
-    return m.providerPhoneNumberId
-}
-// GetProviderReleasedAt gets the providerReleasedAt property value. UTC timestamp when the provider released this phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetProviderReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.providerReleasedAt
-}
-// GetProviderReleaseHoldStartsAt gets the providerReleaseHoldStartsAt property value. UTC timestamp when the provider release hold starts for this phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetProviderReleaseHoldStartsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.providerReleaseHoldStartsAt
-}
-// GetProviderReleaseReason gets the providerReleaseReason property value. Reason supplied when requesting provider release of this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderReleaseReason()(*string) {
-    return m.providerReleaseReason
-}
-// GetProviderReleaseRequestedAt gets the providerReleaseRequestedAt property value. UTC timestamp when release was requested for this provider phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetProviderReleaseRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.providerReleaseRequestedAt
-}
-// GetProviderReleaseRequestedByName gets the providerReleaseRequestedByName property value. Display name of the person who requested provider release of this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderReleaseRequestedByName()(*string) {
-    return m.providerReleaseRequestedByName
-}
-// GetProviderReleaseRequestedByUserId gets the providerReleaseRequestedByUserId property value. User ID of the person who requested provider release of this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderReleaseRequestedByUserId()(*string) {
-    return m.providerReleaseRequestedByUserId
-}
-// GetProviderReleaseScheduledAt gets the providerReleaseScheduledAt property value. UTC timestamp when provider release is scheduled for this phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetProviderReleaseScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.providerReleaseScheduledAt
-}
-// GetProviderReleaseUnassignAtHoldStart gets the providerReleaseUnassignAtHoldStart property value. Indicates whether Leadping should unassign the phone number when the provider release hold starts.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetProviderReleaseUnassignAtHoldStart()(*bool) {
-    return m.providerReleaseUnassignAtHoldStart
-}
-// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetProviderStatus()(*string) {
-    return m.providerStatus
-}
-// GetProviderSyncedAt gets the providerSyncedAt property value. UTC timestamp when Leadping last synchronized this phone number with the provider.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetProviderSyncedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.providerSyncedAt
-}
 // GetRouting gets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 // returns a PhoneNumberRoutingMetadataable when successful
 func (m *PhoneNumberResponse) GetRouting()(PhoneNumberRoutingMetadataable) {
     return m.routing
 }
-// GetSourceId gets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetSourceId()(*string) {
-    return m.sourceId
-}
-// GetStatus gets the status property value. Current lifecycle status for this phone number in the Leadping API.
-// returns a *InternalPhoneNumberStatus when successful
-func (m *PhoneNumberResponse) GetStatus()(*InternalPhoneNumberStatus) {
-    return m.status
-}
-// GetTeamId gets the teamId property value. Team ID used to route calls and messages for this phone number.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetTeamId()(*string) {
-    return m.teamId
-}
-// GetTenDlc gets the tenDlc property value. 10DLC registration and campaign association for this phone number.
-// returns a PhoneNumberTenDlcAssociationable when successful
-func (m *PhoneNumberResponse) GetTenDlc()(PhoneNumberTenDlcAssociationable) {
-    return m.tenDlc
-}
-// GetUser gets the user property value. User summary connected to this phone number.
-// returns a PhoneNumberResponse_userable when successful
-func (m *PhoneNumberResponse) GetUser()(PhoneNumberResponse_userable) {
-    return m.user
-}
-// GetWarmupEnabled gets the warmupEnabled property value. Indicates whether SMS sender warmup is enabled for this phone number.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetWarmupEnabled()(*bool) {
-    return m.warmupEnabled
-}
-// GetWarmupHealthScore gets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-// returns a *int32 when successful
-func (m *PhoneNumberResponse) GetWarmupHealthScore()(*int32) {
-    return m.warmupHealthScore
-}
-// GetWarmupNextActionAt gets the warmupNextActionAt property value. UTC timestamp when the next SMS warmup action is due for this phone number.
-// returns a *Time when successful
-func (m *PhoneNumberResponse) GetWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.warmupNextActionAt
-}
-// GetWarmupPauseReason gets the warmupPauseReason property value. Human-readable reason SMS sender warmup is paused.
-// returns a *string when successful
-func (m *PhoneNumberResponse) GetWarmupPauseReason()(*string) {
-    return m.warmupPauseReason
-}
-// GetWarmupProgressPercent gets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
-// returns a *int32 when successful
-func (m *PhoneNumberResponse) GetWarmupProgressPercent()(*int32) {
-    return m.warmupProgressPercent
-}
-// GetWarmupState gets the warmupState property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberResponse_warmupState when successful
-func (m *PhoneNumberResponse) GetWarmupState()(*PhoneNumberResponse_warmupState) {
-    return m.warmupState
+// GetWarmup gets the warmup property value. SMS and voice warmup state for this phone number.
+// returns a PhoneNumberWarmupable when successful
+func (m *PhoneNumberResponse) GetWarmup()(PhoneNumberWarmupable) {
+    return m.warmup
 }
 // Serialize serializes information the current object
 func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("billing", m.GetBilling())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("callWarmupEnabled", m.GetCallWarmupEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("callWarmupHealthReason", m.GetCallWarmupHealthReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("callWarmupNextActionAt", m.GetCallWarmupNextActionAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("callWarmupPauseReason", m.GetCallWarmupPauseReason())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCallWarmupStage() != nil {
-        cast := (*m.GetCallWarmupStage()).String()
-        err := writer.WriteStringValue("callWarmupStage", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCallWarmupState() != nil {
-        cast := (*m.GetCallWarmupState()).String()
-        err := writer.WriteStringValue("callWarmupState", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("capabilities", m.GetCapabilities())
         if err != nil {
             return err
         }
@@ -1059,70 +243,8 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
             return err
         }
     }
-    if m.GetEvents() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetEvents()))
-        for i, v := range m.GetEvents() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("events", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("healthReason", m.GetHealthReason())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetInventoryState() != nil {
-        cast := (*m.GetInventoryState()).String()
-        err := writer.WriteStringValue("inventoryState", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isApprovedTestDestination", m.GetIsApprovedTestDestination())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isDefault", m.GetIsDefault())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isInternalPool", m.GetIsInternalPool())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isMessagingProgramApproved", m.GetIsMessagingProgramApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isPreferred", m.GetIsPreferred())
         if err != nil {
             return err
         }
@@ -1158,165 +280,13 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("provider", m.GetProvider())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerError", m.GetProviderError())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerOrderId", m.GetProviderOrderId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerOrderStatus", m.GetProviderOrderStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerPhoneNumberId", m.GetProviderPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("providerReleasedAt", m.GetProviderReleasedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("providerReleaseHoldStartsAt", m.GetProviderReleaseHoldStartsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerReleaseReason", m.GetProviderReleaseReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("providerReleaseRequestedAt", m.GetProviderReleaseRequestedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerReleaseRequestedByName", m.GetProviderReleaseRequestedByName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerReleaseRequestedByUserId", m.GetProviderReleaseRequestedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("providerReleaseScheduledAt", m.GetProviderReleaseScheduledAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("providerReleaseUnassignAtHoldStart", m.GetProviderReleaseUnassignAtHoldStart())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerStatus", m.GetProviderStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("providerSyncedAt", m.GetProviderSyncedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteObjectValue("routing", m.GetRouting())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("teamId", m.GetTeamId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("tenDlc", m.GetTenDlc())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("warmupEnabled", m.GetWarmupEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("warmupHealthScore", m.GetWarmupHealthScore())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("warmupNextActionAt", m.GetWarmupNextActionAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("warmupPauseReason", m.GetWarmupPauseReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("warmupProgressPercent", m.GetWarmupProgressPercent())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWarmupState() != nil {
-        cast := (*m.GetWarmupState()).String()
-        err := writer.WriteStringValue("warmupState", &cast)
+        err := writer.WriteObjectValue("warmup", m.GetWarmup())
         if err != nil {
             return err
         }
@@ -1333,49 +303,9 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *PhoneNumberResponse) SetAdminEnablementOverride(value PhoneNumberResponse_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
-// SetBilling sets the billing property value. Billing attribution used to charge this phone number to the correct business and subscription item.
-func (m *PhoneNumberResponse) SetBilling(value PhoneNumberBillingAttributionable)() {
-    m.billing = value
-}
 // SetBusiness sets the business property value. Business summary connected to this phone number.
 func (m *PhoneNumberResponse) SetBusiness(value PhoneNumberResponse_businessable)() {
     m.business = value
-}
-// SetCallWarmupEnabled sets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
-func (m *PhoneNumberResponse) SetCallWarmupEnabled(value *bool)() {
-    m.callWarmupEnabled = value
-}
-// SetCallWarmupHealthReason sets the callWarmupHealthReason property value. Human-readable reason explaining voice call warmup health.
-func (m *PhoneNumberResponse) SetCallWarmupHealthReason(value *string)() {
-    m.callWarmupHealthReason = value
-}
-// SetCallWarmupNextActionAt sets the callWarmupNextActionAt property value. UTC timestamp when the next voice call warmup action is due for this phone number.
-func (m *PhoneNumberResponse) SetCallWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.callWarmupNextActionAt = value
-}
-// SetCallWarmupPauseReason sets the callWarmupPauseReason property value. Human-readable reason voice call warmup is paused.
-func (m *PhoneNumberResponse) SetCallWarmupPauseReason(value *string)() {
-    m.callWarmupPauseReason = value
-}
-// SetCallWarmupStage sets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
-func (m *PhoneNumberResponse) SetCallWarmupStage(value *PhoneNumberResponse_callWarmupStage)() {
-    m.callWarmupStage = value
-}
-// SetCallWarmupState sets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
-func (m *PhoneNumberResponse) SetCallWarmupState(value *PhoneNumberResponse_callWarmupState)() {
-    m.callWarmupState = value
-}
-// SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone number.
-func (m *PhoneNumberResponse) SetCampaignId(value *string)() {
-    m.campaignId = value
-}
-// SetCapabilities sets the capabilities property value. SMS and voice capabilities available on this phone number.
-func (m *PhoneNumberResponse) SetCapabilities(value PhoneNumberCapabilitiesable)() {
-    m.capabilities = value
 }
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -1385,45 +315,9 @@ func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad9
 func (m *PhoneNumberResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetEvents sets the events property value. Timeline events and provider events associated with this phone number.
-func (m *PhoneNumberResponse) SetEvents(value []PhoneNumberEventRecordable)() {
-    m.events = value
-}
-// SetHealthReason sets the healthReason property value. Human-readable reason explaining the current health status.
-func (m *PhoneNumberResponse) SetHealthReason(value *string)() {
-    m.healthReason = value
-}
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberResponse) SetHealthStatus(value *PhoneNumberResponse_healthStatus)() {
-    m.healthStatus = value
-}
 // SetId sets the id property value. The unique identifier for the entity.
 func (m *PhoneNumberResponse) SetId(value *string)() {
     m.id = value
-}
-// SetInventoryState sets the inventoryState property value. Leadping inventory state for this phone number.
-func (m *PhoneNumberResponse) SetInventoryState(value *PhoneNumberInventoryState)() {
-    m.inventoryState = value
-}
-// SetIsApprovedTestDestination sets the isApprovedTestDestination property value. Indicates whether this phone number is approved for test messages or calls.
-func (m *PhoneNumberResponse) SetIsApprovedTestDestination(value *bool)() {
-    m.isApprovedTestDestination = value
-}
-// SetIsDefault sets the isDefault property value. Indicates whether this phone number is the default sender for the business.
-func (m *PhoneNumberResponse) SetIsDefault(value *bool)() {
-    m.isDefault = value
-}
-// SetIsInternalPool sets the isInternalPool property value. Indicates whether this phone number belongs to an internal Leadping number pool.
-func (m *PhoneNumberResponse) SetIsInternalPool(value *bool)() {
-    m.isInternalPool = value
-}
-// SetIsMessagingProgramApproved sets the isMessagingProgramApproved property value. Indicates whether this phone number is approved for the configured messaging program.
-func (m *PhoneNumberResponse) SetIsMessagingProgramApproved(value *bool)() {
-    m.isMessagingProgramApproved = value
-}
-// SetIsPreferred sets the isPreferred property value. Indicates whether this phone number is preferred for outbound communication.
-func (m *PhoneNumberResponse) SetIsPreferred(value *bool)() {
-    m.isPreferred = value
 }
 // SetLeadpingOwned sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool)() {
@@ -1445,225 +339,37 @@ func (m *PhoneNumberResponse) SetName(value *string)() {
 func (m *PhoneNumberResponse) SetNumber(value *string)() {
     m.number = value
 }
-// SetProvider sets the provider property value. Telephony or payment provider connected to this phone number.
-func (m *PhoneNumberResponse) SetProvider(value *string)() {
-    m.provider = value
-}
-// SetProviderError sets the providerError property value. Provider error message captured while syncing this phone number.
-func (m *PhoneNumberResponse) SetProviderError(value *string)() {
-    m.providerError = value
-}
-// SetProviderOrderId sets the providerOrderId property value. Provider order identifier returned during phone number provisioning.
-func (m *PhoneNumberResponse) SetProviderOrderId(value *string)() {
-    m.providerOrderId = value
-}
-// SetProviderOrderStatus sets the providerOrderStatus property value. Provider order status returned during phone number provisioning.
-func (m *PhoneNumberResponse) SetProviderOrderStatus(value *string)() {
-    m.providerOrderStatus = value
-}
-// SetProviderPhoneNumberId sets the providerPhoneNumberId property value. Provider phone number identifier used to reconcile Leadping inventory with Telnyx.
-func (m *PhoneNumberResponse) SetProviderPhoneNumberId(value *string)() {
-    m.providerPhoneNumberId = value
-}
-// SetProviderReleasedAt sets the providerReleasedAt property value. UTC timestamp when the provider released this phone number.
-func (m *PhoneNumberResponse) SetProviderReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.providerReleasedAt = value
-}
-// SetProviderReleaseHoldStartsAt sets the providerReleaseHoldStartsAt property value. UTC timestamp when the provider release hold starts for this phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseHoldStartsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.providerReleaseHoldStartsAt = value
-}
-// SetProviderReleaseReason sets the providerReleaseReason property value. Reason supplied when requesting provider release of this phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseReason(value *string)() {
-    m.providerReleaseReason = value
-}
-// SetProviderReleaseRequestedAt sets the providerReleaseRequestedAt property value. UTC timestamp when release was requested for this provider phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.providerReleaseRequestedAt = value
-}
-// SetProviderReleaseRequestedByName sets the providerReleaseRequestedByName property value. Display name of the person who requested provider release of this phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseRequestedByName(value *string)() {
-    m.providerReleaseRequestedByName = value
-}
-// SetProviderReleaseRequestedByUserId sets the providerReleaseRequestedByUserId property value. User ID of the person who requested provider release of this phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseRequestedByUserId(value *string)() {
-    m.providerReleaseRequestedByUserId = value
-}
-// SetProviderReleaseScheduledAt sets the providerReleaseScheduledAt property value. UTC timestamp when provider release is scheduled for this phone number.
-func (m *PhoneNumberResponse) SetProviderReleaseScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.providerReleaseScheduledAt = value
-}
-// SetProviderReleaseUnassignAtHoldStart sets the providerReleaseUnassignAtHoldStart property value. Indicates whether Leadping should unassign the phone number when the provider release hold starts.
-func (m *PhoneNumberResponse) SetProviderReleaseUnassignAtHoldStart(value *bool)() {
-    m.providerReleaseUnassignAtHoldStart = value
-}
-// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number.
-func (m *PhoneNumberResponse) SetProviderStatus(value *string)() {
-    m.providerStatus = value
-}
-// SetProviderSyncedAt sets the providerSyncedAt property value. UTC timestamp when Leadping last synchronized this phone number with the provider.
-func (m *PhoneNumberResponse) SetProviderSyncedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.providerSyncedAt = value
-}
 // SetRouting sets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable)() {
     m.routing = value
 }
-// SetSourceId sets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
-func (m *PhoneNumberResponse) SetSourceId(value *string)() {
-    m.sourceId = value
-}
-// SetStatus sets the status property value. Current lifecycle status for this phone number in the Leadping API.
-func (m *PhoneNumberResponse) SetStatus(value *InternalPhoneNumberStatus)() {
-    m.status = value
-}
-// SetTeamId sets the teamId property value. Team ID used to route calls and messages for this phone number.
-func (m *PhoneNumberResponse) SetTeamId(value *string)() {
-    m.teamId = value
-}
-// SetTenDlc sets the tenDlc property value. 10DLC registration and campaign association for this phone number.
-func (m *PhoneNumberResponse) SetTenDlc(value PhoneNumberTenDlcAssociationable)() {
-    m.tenDlc = value
-}
-// SetUser sets the user property value. User summary connected to this phone number.
-func (m *PhoneNumberResponse) SetUser(value PhoneNumberResponse_userable)() {
-    m.user = value
-}
-// SetWarmupEnabled sets the warmupEnabled property value. Indicates whether SMS sender warmup is enabled for this phone number.
-func (m *PhoneNumberResponse) SetWarmupEnabled(value *bool)() {
-    m.warmupEnabled = value
-}
-// SetWarmupHealthScore sets the warmupHealthScore property value. Numeric sender warmup health score used by Leadping to assess deliverability readiness.
-func (m *PhoneNumberResponse) SetWarmupHealthScore(value *int32)() {
-    m.warmupHealthScore = value
-}
-// SetWarmupNextActionAt sets the warmupNextActionAt property value. UTC timestamp when the next SMS warmup action is due for this phone number.
-func (m *PhoneNumberResponse) SetWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.warmupNextActionAt = value
-}
-// SetWarmupPauseReason sets the warmupPauseReason property value. Human-readable reason SMS sender warmup is paused.
-func (m *PhoneNumberResponse) SetWarmupPauseReason(value *string)() {
-    m.warmupPauseReason = value
-}
-// SetWarmupProgressPercent sets the warmupProgressPercent property value. Percent complete for the SMS sender warmup plan.
-func (m *PhoneNumberResponse) SetWarmupProgressPercent(value *int32)() {
-    m.warmupProgressPercent = value
-}
-// SetWarmupState sets the warmupState property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberResponse) SetWarmupState(value *PhoneNumberResponse_warmupState)() {
-    m.warmupState = value
+// SetWarmup sets the warmup property value. SMS and voice warmup state for this phone number.
+func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberWarmupable)() {
+    m.warmup = value
 }
 type PhoneNumberResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminEnablementOverride()(PhoneNumberResponse_adminEnablementOverrideable)
-    GetBilling()(PhoneNumberBillingAttributionable)
     GetBusiness()(PhoneNumberResponse_businessable)
-    GetCallWarmupEnabled()(*bool)
-    GetCallWarmupHealthReason()(*string)
-    GetCallWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCallWarmupPauseReason()(*string)
-    GetCallWarmupStage()(*PhoneNumberResponse_callWarmupStage)
-    GetCallWarmupState()(*PhoneNumberResponse_callWarmupState)
-    GetCampaignId()(*string)
-    GetCapabilities()(PhoneNumberCapabilitiesable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetEnabled()(*bool)
-    GetEvents()([]PhoneNumberEventRecordable)
-    GetHealthReason()(*string)
-    GetHealthStatus()(*PhoneNumberResponse_healthStatus)
     GetId()(*string)
-    GetInventoryState()(*PhoneNumberInventoryState)
-    GetIsApprovedTestDestination()(*bool)
-    GetIsDefault()(*bool)
-    GetIsInternalPool()(*bool)
-    GetIsMessagingProgramApproved()(*bool)
-    GetIsPreferred()(*bool)
     GetLeadpingOwned()(*bool)
     GetLocation()(PhoneNumberResponse_locationable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNumber()(*string)
-    GetProvider()(*string)
-    GetProviderError()(*string)
-    GetProviderOrderId()(*string)
-    GetProviderOrderStatus()(*string)
-    GetProviderPhoneNumberId()(*string)
-    GetProviderReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProviderReleaseHoldStartsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProviderReleaseReason()(*string)
-    GetProviderReleaseRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProviderReleaseRequestedByName()(*string)
-    GetProviderReleaseRequestedByUserId()(*string)
-    GetProviderReleaseScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProviderReleaseUnassignAtHoldStart()(*bool)
-    GetProviderStatus()(*string)
-    GetProviderSyncedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRouting()(PhoneNumberRoutingMetadataable)
-    GetSourceId()(*string)
-    GetStatus()(*InternalPhoneNumberStatus)
-    GetTeamId()(*string)
-    GetTenDlc()(PhoneNumberTenDlcAssociationable)
-    GetUser()(PhoneNumberResponse_userable)
-    GetWarmupEnabled()(*bool)
-    GetWarmupHealthScore()(*int32)
-    GetWarmupNextActionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetWarmupPauseReason()(*string)
-    GetWarmupProgressPercent()(*int32)
-    GetWarmupState()(*PhoneNumberResponse_warmupState)
-    SetAdminEnablementOverride(value PhoneNumberResponse_adminEnablementOverrideable)()
-    SetBilling(value PhoneNumberBillingAttributionable)()
+    GetWarmup()(PhoneNumberWarmupable)
     SetBusiness(value PhoneNumberResponse_businessable)()
-    SetCallWarmupEnabled(value *bool)()
-    SetCallWarmupHealthReason(value *string)()
-    SetCallWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCallWarmupPauseReason(value *string)()
-    SetCallWarmupStage(value *PhoneNumberResponse_callWarmupStage)()
-    SetCallWarmupState(value *PhoneNumberResponse_callWarmupState)()
-    SetCampaignId(value *string)()
-    SetCapabilities(value PhoneNumberCapabilitiesable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetEnabled(value *bool)()
-    SetEvents(value []PhoneNumberEventRecordable)()
-    SetHealthReason(value *string)()
-    SetHealthStatus(value *PhoneNumberResponse_healthStatus)()
     SetId(value *string)()
-    SetInventoryState(value *PhoneNumberInventoryState)()
-    SetIsApprovedTestDestination(value *bool)()
-    SetIsDefault(value *bool)()
-    SetIsInternalPool(value *bool)()
-    SetIsMessagingProgramApproved(value *bool)()
-    SetIsPreferred(value *bool)()
     SetLeadpingOwned(value *bool)()
     SetLocation(value PhoneNumberResponse_locationable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNumber(value *string)()
-    SetProvider(value *string)()
-    SetProviderError(value *string)()
-    SetProviderOrderId(value *string)()
-    SetProviderOrderStatus(value *string)()
-    SetProviderPhoneNumberId(value *string)()
-    SetProviderReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProviderReleaseHoldStartsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProviderReleaseReason(value *string)()
-    SetProviderReleaseRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProviderReleaseRequestedByName(value *string)()
-    SetProviderReleaseRequestedByUserId(value *string)()
-    SetProviderReleaseScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProviderReleaseUnassignAtHoldStart(value *bool)()
-    SetProviderStatus(value *string)()
-    SetProviderSyncedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRouting(value PhoneNumberRoutingMetadataable)()
-    SetSourceId(value *string)()
-    SetStatus(value *InternalPhoneNumberStatus)()
-    SetTeamId(value *string)()
-    SetTenDlc(value PhoneNumberTenDlcAssociationable)()
-    SetUser(value PhoneNumberResponse_userable)()
-    SetWarmupEnabled(value *bool)()
-    SetWarmupHealthScore(value *int32)()
-    SetWarmupNextActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetWarmupPauseReason(value *string)()
-    SetWarmupProgressPercent(value *int32)()
-    SetWarmupState(value *PhoneNumberResponse_warmupState)()
+    SetWarmup(value PhoneNumberWarmupable)()
 }

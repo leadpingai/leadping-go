@@ -4,14 +4,11 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SuppressionEntryRequest request payload for suppression entry.
 type SuppressionEntryRequest struct {
-    // The actor ID associated with this ion entry.
-    actorId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The business ID associated with this ion entry.
@@ -22,20 +19,10 @@ type SuppressionEntryRequest struct {
     email *string
     // The phone number associated with this ion entry.
     phoneNumber *string
-    // The provider event ID associated with this ion entry.
-    providerEventId *string
     // The human-readable reason explaining this ion entry.
     reason *string
     // The recipient identifier value for this ion entry.
     recipientIdentifier *string
-    // The safe metadata key-value data carried with this ion entry; values must be safe to expose in API responses.
-    safeMetadata SuppressionEntryRequest_safeMetadataable
-    // The source value for this ion entry.
-    source *string
-    // The source event ID associated with this ion entry.
-    sourceEventId *string
-    // The date and time for the timestamp value on this ion entry.
-    timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewSuppressionEntryRequest instantiates a new SuppressionEntryRequest and sets the default values.
 func NewSuppressionEntryRequest()(*SuppressionEntryRequest) {
@@ -48,11 +35,6 @@ func NewSuppressionEntryRequest()(*SuppressionEntryRequest) {
 // returns a Parsable when successful
 func CreateSuppressionEntryRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewSuppressionEntryRequest(), nil
-}
-// GetActorId gets the actorId property value. The actor ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetActorId()(*string) {
-    return m.actorId
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
@@ -78,16 +60,6 @@ func (m *SuppressionEntryRequest) GetEmail()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actorId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActorId(val)
-        }
-        return nil
-    }
     res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -128,16 +100,6 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["providerEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderEventId(val)
-        }
-        return nil
-    }
     res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -158,57 +120,12 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["safeMetadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSuppressionEntryRequest_safeMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSafeMetadata(val.(SuppressionEntryRequest_safeMetadataable))
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val)
-        }
-        return nil
-    }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
-    res["timestamp"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimestamp(val)
-        }
-        return nil
-    }
     return res
 }
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this ion entry.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetPhoneNumber()(*string) {
     return m.phoneNumber
-}
-// GetProviderEventId gets the providerEventId property value. The provider event ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetProviderEventId()(*string) {
-    return m.providerEventId
 }
 // GetReason gets the reason property value. The human-readable reason explaining this ion entry.
 // returns a *string when successful
@@ -220,34 +137,8 @@ func (m *SuppressionEntryRequest) GetReason()(*string) {
 func (m *SuppressionEntryRequest) GetRecipientIdentifier()(*string) {
     return m.recipientIdentifier
 }
-// GetSafeMetadata gets the safeMetadata property value. The safe metadata key-value data carried with this ion entry; values must be safe to expose in API responses.
-// returns a SuppressionEntryRequest_safeMetadataable when successful
-func (m *SuppressionEntryRequest) GetSafeMetadata()(SuppressionEntryRequest_safeMetadataable) {
-    return m.safeMetadata
-}
-// GetSource gets the source property value. The source value for this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetSource()(*string) {
-    return m.source
-}
-// GetSourceEventId gets the sourceEventId property value. The source event ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetSourceEventId()(*string) {
-    return m.sourceEventId
-}
-// GetTimestamp gets the timestamp property value. The date and time for the timestamp value on this ion entry.
-// returns a *Time when successful
-func (m *SuppressionEntryRequest) GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.timestamp
-}
 // Serialize serializes information the current object
 func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actorId", m.GetActorId())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
@@ -273,12 +164,6 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteStringValue("providerEventId", m.GetProviderEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("reason", m.GetReason())
         if err != nil {
             return err
@@ -291,40 +176,12 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteObjectValue("safeMetadata", m.GetSafeMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("timestamp", m.GetTimestamp())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
         }
     }
     return nil
-}
-// SetActorId sets the actorId property value. The actor ID associated with this ion entry.
-func (m *SuppressionEntryRequest) SetActorId(value *string)() {
-    m.actorId = value
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SuppressionEntryRequest) SetAdditionalData(value map[string]any)() {
@@ -346,10 +203,6 @@ func (m *SuppressionEntryRequest) SetEmail(value *string)() {
 func (m *SuppressionEntryRequest) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
-// SetProviderEventId sets the providerEventId property value. The provider event ID associated with this ion entry.
-func (m *SuppressionEntryRequest) SetProviderEventId(value *string)() {
-    m.providerEventId = value
-}
 // SetReason sets the reason property value. The human-readable reason explaining this ion entry.
 func (m *SuppressionEntryRequest) SetReason(value *string)() {
     m.reason = value
@@ -358,47 +211,19 @@ func (m *SuppressionEntryRequest) SetReason(value *string)() {
 func (m *SuppressionEntryRequest) SetRecipientIdentifier(value *string)() {
     m.recipientIdentifier = value
 }
-// SetSafeMetadata sets the safeMetadata property value. The safe metadata key-value data carried with this ion entry; values must be safe to expose in API responses.
-func (m *SuppressionEntryRequest) SetSafeMetadata(value SuppressionEntryRequest_safeMetadataable)() {
-    m.safeMetadata = value
-}
-// SetSource sets the source property value. The source value for this ion entry.
-func (m *SuppressionEntryRequest) SetSource(value *string)() {
-    m.source = value
-}
-// SetSourceEventId sets the sourceEventId property value. The source event ID associated with this ion entry.
-func (m *SuppressionEntryRequest) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
-}
-// SetTimestamp sets the timestamp property value. The date and time for the timestamp value on this ion entry.
-func (m *SuppressionEntryRequest) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.timestamp = value
-}
 type SuppressionEntryRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActorId()(*string)
     GetBusinessId()(*string)
     GetChannel()(*string)
     GetEmail()(*string)
     GetPhoneNumber()(*string)
-    GetProviderEventId()(*string)
     GetReason()(*string)
     GetRecipientIdentifier()(*string)
-    GetSafeMetadata()(SuppressionEntryRequest_safeMetadataable)
-    GetSource()(*string)
-    GetSourceEventId()(*string)
-    GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetActorId(value *string)()
     SetBusinessId(value *string)()
     SetChannel(value *string)()
     SetEmail(value *string)()
     SetPhoneNumber(value *string)()
-    SetProviderEventId(value *string)()
     SetReason(value *string)()
     SetRecipientIdentifier(value *string)()
-    SetSafeMetadata(value SuppressionEntryRequest_safeMetadataable)()
-    SetSource(value *string)()
-    SetSourceEventId(value *string)()
-    SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

@@ -12,15 +12,15 @@ type ProblemDetails struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ApiError
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The detail property
+    // Human-readable explanation specific to this occurrence of the problem.
     detail *string
-    // The instance property
+    // URI reference that identifies this specific occurrence of the problem.
     instance *string
-    // The status property
+    // HTTP status code returned for the problem.
     status i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The title property
+    // Short, human-readable summary of the problem.
     title *string
-    // The type property
+    // URI reference that identifies the problem type.
     typeEscaped *string
 }
 // NewProblemDetails instantiates a new ProblemDetails and sets the default values.
@@ -46,7 +46,7 @@ func (m *ProblemDetails) Error()(string) {
 func (m *ProblemDetails) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDetail gets the detail property value. The detail property
+// GetDetail gets the detail property value. Human-readable explanation specific to this occurrence of the problem.
 // returns a *string when successful
 func (m *ProblemDetails) GetDetail()(*string) {
     return m.detail
@@ -107,22 +107,22 @@ func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89
     }
     return res
 }
-// GetInstance gets the instance property value. The instance property
+// GetInstance gets the instance property value. URI reference that identifies this specific occurrence of the problem.
 // returns a *string when successful
 func (m *ProblemDetails) GetInstance()(*string) {
     return m.instance
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. HTTP status code returned for the problem.
 // returns a UntypedNodeable when successful
 func (m *ProblemDetails) GetStatus()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.status
 }
-// GetTitle gets the title property value. The title property
+// GetTitle gets the title property value. Short, human-readable summary of the problem.
 // returns a *string when successful
 func (m *ProblemDetails) GetTitle()(*string) {
     return m.title
 }
-// GetTypeEscaped gets the type property value. The type property
+// GetTypeEscaped gets the type property value. URI reference that identifies the problem type.
 // returns a *string when successful
 func (m *ProblemDetails) GetTypeEscaped()(*string) {
     return m.typeEscaped
@@ -171,23 +171,23 @@ func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 func (m *ProblemDetails) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDetail sets the detail property value. The detail property
+// SetDetail sets the detail property value. Human-readable explanation specific to this occurrence of the problem.
 func (m *ProblemDetails) SetDetail(value *string)() {
     m.detail = value
 }
-// SetInstance sets the instance property value. The instance property
+// SetInstance sets the instance property value. URI reference that identifies this specific occurrence of the problem.
 func (m *ProblemDetails) SetInstance(value *string)() {
     m.instance = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. HTTP status code returned for the problem.
 func (m *ProblemDetails) SetStatus(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.status = value
 }
-// SetTitle sets the title property value. The title property
+// SetTitle sets the title property value. Short, human-readable summary of the problem.
 func (m *ProblemDetails) SetTitle(value *string)() {
     m.title = value
 }
-// SetTypeEscaped sets the type property value. The type property
+// SetTypeEscaped sets the type property value. URI reference that identifies the problem type.
 func (m *ProblemDetails) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }

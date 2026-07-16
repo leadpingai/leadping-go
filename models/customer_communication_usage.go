@@ -7,28 +7,29 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerCommunicationUsage communication usage associated with this Leadping customer analytics.
 type CustomerCommunicationUsage struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The answeredCalls property
+    // Number of calls answered during the reporting period.
     answeredCalls *int32
-    // The callMinutes property
+    // Total connected call duration, in minutes, during the reporting period.
     callMinutes *float64
-    // The callsPlaced property
+    // Number of outbound calls placed during the reporting period.
     callsPlaced *int32
-    // The callsReceived property
+    // Number of inbound calls received during the reporting period.
     callsReceived *int32
-    // The failedOrBlockedSms property
+    // Number of SMS messages that failed or were blocked during the reporting period.
     failedOrBlockedSms *int32
-    // The missedCalls property
+    // Number of calls missed during the reporting period.
     missedCalls *int32
-    // The smsReceived property
+    // Number of SMS messages received during the reporting period.
     smsReceived *int32
-    // The smsSent property
+    // Number of SMS messages sent during the reporting period.
     smsSent *int32
-    // The trend property
+    // Collection of trend included with this Leadping customer communication usage.
     trend []CustomerCommunicationUsagePointable
-    // The usageSpend property
+    // Usage spend represented by this Leadping customer communication usage.
     usageSpend *float64
 }
 // NewCustomerCommunicationUsage instantiates a new CustomerCommunicationUsage and sets the default values.
@@ -48,27 +49,27 @@ func CreateCustomerCommunicationUsageFromDiscriminatorValue(parseNode i878a80d23
 func (m *CustomerCommunicationUsage) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAnsweredCalls gets the answeredCalls property value. The answeredCalls property
+// GetAnsweredCalls gets the answeredCalls property value. Number of calls answered during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetAnsweredCalls()(*int32) {
     return m.answeredCalls
 }
-// GetCallMinutes gets the callMinutes property value. The callMinutes property
+// GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 // returns a *float64 when successful
 func (m *CustomerCommunicationUsage) GetCallMinutes()(*float64) {
     return m.callMinutes
 }
-// GetCallsPlaced gets the callsPlaced property value. The callsPlaced property
+// GetCallsPlaced gets the callsPlaced property value. Number of outbound calls placed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetCallsPlaced()(*int32) {
     return m.callsPlaced
 }
-// GetCallsReceived gets the callsReceived property value. The callsReceived property
+// GetCallsReceived gets the callsReceived property value. Number of inbound calls received during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetCallsReceived()(*int32) {
     return m.callsReceived
 }
-// GetFailedOrBlockedSms gets the failedOrBlockedSms property value. The failedOrBlockedSms property
+// GetFailedOrBlockedSms gets the failedOrBlockedSms property value. Number of SMS messages that failed or were blocked during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetFailedOrBlockedSms()(*int32) {
     return m.failedOrBlockedSms
@@ -185,27 +186,27 @@ func (m *CustomerCommunicationUsage) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetMissedCalls gets the missedCalls property value. The missedCalls property
+// GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetMissedCalls()(*int32) {
     return m.missedCalls
 }
-// GetSmsReceived gets the smsReceived property value. The smsReceived property
+// GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetSmsReceived()(*int32) {
     return m.smsReceived
 }
-// GetSmsSent gets the smsSent property value. The smsSent property
+// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetSmsSent()(*int32) {
     return m.smsSent
 }
-// GetTrend gets the trend property value. The trend property
+// GetTrend gets the trend property value. Collection of trend included with this Leadping customer communication usage.
 // returns a []CustomerCommunicationUsagePointable when successful
 func (m *CustomerCommunicationUsage) GetTrend()([]CustomerCommunicationUsagePointable) {
     return m.trend
 }
-// GetUsageSpend gets the usageSpend property value. The usageSpend property
+// GetUsageSpend gets the usageSpend property value. Usage spend represented by this Leadping customer communication usage.
 // returns a *float64 when successful
 func (m *CustomerCommunicationUsage) GetUsageSpend()(*float64) {
     return m.usageSpend
@@ -290,43 +291,43 @@ func (m *CustomerCommunicationUsage) Serialize(writer i878a80d2330e89d26896388a3
 func (m *CustomerCommunicationUsage) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAnsweredCalls sets the answeredCalls property value. The answeredCalls property
+// SetAnsweredCalls sets the answeredCalls property value. Number of calls answered during the reporting period.
 func (m *CustomerCommunicationUsage) SetAnsweredCalls(value *int32)() {
     m.answeredCalls = value
 }
-// SetCallMinutes sets the callMinutes property value. The callMinutes property
+// SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 func (m *CustomerCommunicationUsage) SetCallMinutes(value *float64)() {
     m.callMinutes = value
 }
-// SetCallsPlaced sets the callsPlaced property value. The callsPlaced property
+// SetCallsPlaced sets the callsPlaced property value. Number of outbound calls placed during the reporting period.
 func (m *CustomerCommunicationUsage) SetCallsPlaced(value *int32)() {
     m.callsPlaced = value
 }
-// SetCallsReceived sets the callsReceived property value. The callsReceived property
+// SetCallsReceived sets the callsReceived property value. Number of inbound calls received during the reporting period.
 func (m *CustomerCommunicationUsage) SetCallsReceived(value *int32)() {
     m.callsReceived = value
 }
-// SetFailedOrBlockedSms sets the failedOrBlockedSms property value. The failedOrBlockedSms property
+// SetFailedOrBlockedSms sets the failedOrBlockedSms property value. Number of SMS messages that failed or were blocked during the reporting period.
 func (m *CustomerCommunicationUsage) SetFailedOrBlockedSms(value *int32)() {
     m.failedOrBlockedSms = value
 }
-// SetMissedCalls sets the missedCalls property value. The missedCalls property
+// SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
 func (m *CustomerCommunicationUsage) SetMissedCalls(value *int32)() {
     m.missedCalls = value
 }
-// SetSmsReceived sets the smsReceived property value. The smsReceived property
+// SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
 func (m *CustomerCommunicationUsage) SetSmsReceived(value *int32)() {
     m.smsReceived = value
 }
-// SetSmsSent sets the smsSent property value. The smsSent property
+// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
 func (m *CustomerCommunicationUsage) SetSmsSent(value *int32)() {
     m.smsSent = value
 }
-// SetTrend sets the trend property value. The trend property
+// SetTrend sets the trend property value. Collection of trend included with this Leadping customer communication usage.
 func (m *CustomerCommunicationUsage) SetTrend(value []CustomerCommunicationUsagePointable)() {
     m.trend = value
 }
-// SetUsageSpend sets the usageSpend property value. The usageSpend property
+// SetUsageSpend sets the usageSpend property value. Usage spend represented by this Leadping customer communication usage.
 func (m *CustomerCommunicationUsage) SetUsageSpend(value *float64)() {
     m.usageSpend = value
 }

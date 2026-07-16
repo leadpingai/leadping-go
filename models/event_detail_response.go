@@ -44,8 +44,6 @@ type EventDetailResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // Provider message identifier for SMS delivery tracking and reconciliation.
-    providerMessageId *string
     // UTC timestamp when Leadping queued this event detail response for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping received this inbound event or message.
@@ -308,16 +306,6 @@ func (m *EventDetailResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["providerMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderMessageId(val)
-        }
-        return nil
-    }
     res["queuedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -500,11 +488,6 @@ func (m *EventDetailResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *EventDetailResponse) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
 }
-// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-// returns a *string when successful
-func (m *EventDetailResponse) GetProviderMessageId()(*string) {
-    return m.providerMessageId
-}
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this event detail response for processing.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -679,12 +662,6 @@ func (m *EventDetailResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("providerMessageId", m.GetProviderMessageId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("queuedAt", m.GetQueuedAt())
         if err != nil {
             return err
@@ -852,10 +829,6 @@ func (m *EventDetailResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad
 func (m *EventDetailResponse) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
 }
-// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-func (m *EventDetailResponse) SetProviderMessageId(value *string)() {
-    m.providerMessageId = value
-}
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this event detail response for processing.
 func (m *EventDetailResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.queuedAt = value
@@ -935,7 +908,6 @@ type EventDetailResponseable interface {
     GetLeadId()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOutboundPhoneNumberId()(*string)
-    GetProviderMessageId()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -967,7 +939,6 @@ type EventDetailResponseable interface {
     SetLeadId(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOutboundPhoneNumberId(value *string)()
-    SetProviderMessageId(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

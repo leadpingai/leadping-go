@@ -10,13 +10,13 @@ import (
 type UserDataExportFile struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The category property
+    // Category classification for this Leadping user data export file.
     category *string
-    // The contentType property
+    // Media type of the generated file or response content.
     contentType *string
-    // The fileName property
+    // Human-readable file name associated with this Leadping user data export file.
     fileName *string
-    // The rowCount property
+    // Total number of row records represented by this Leadping user data export file.
     rowCount *int32
 }
 // NewUserDataExportFile instantiates a new UserDataExportFile and sets the default values.
@@ -36,12 +36,12 @@ func CreateUserDataExportFileFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *UserDataExportFile) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCategory gets the category property value. The category property
+// GetCategory gets the category property value. Category classification for this Leadping user data export file.
 // returns a *string when successful
 func (m *UserDataExportFile) GetCategory()(*string) {
     return m.category
 }
-// GetContentType gets the contentType property value. The contentType property
+// GetContentType gets the contentType property value. Media type of the generated file or response content.
 // returns a *string when successful
 func (m *UserDataExportFile) GetContentType()(*string) {
     return m.contentType
@@ -92,12 +92,12 @@ func (m *UserDataExportFile) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetFileName gets the fileName property value. The fileName property
+// GetFileName gets the fileName property value. Human-readable file name associated with this Leadping user data export file.
 // returns a *string when successful
 func (m *UserDataExportFile) GetFileName()(*string) {
     return m.fileName
 }
-// GetRowCount gets the rowCount property value. The rowCount property
+// GetRowCount gets the rowCount property value. Total number of row records represented by this Leadping user data export file.
 // returns a *int32 when successful
 func (m *UserDataExportFile) GetRowCount()(*int32) {
     return m.rowCount
@@ -140,19 +140,19 @@ func (m *UserDataExportFile) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *UserDataExportFile) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCategory sets the category property value. The category property
+// SetCategory sets the category property value. Category classification for this Leadping user data export file.
 func (m *UserDataExportFile) SetCategory(value *string)() {
     m.category = value
 }
-// SetContentType sets the contentType property value. The contentType property
+// SetContentType sets the contentType property value. Media type of the generated file or response content.
 func (m *UserDataExportFile) SetContentType(value *string)() {
     m.contentType = value
 }
-// SetFileName sets the fileName property value. The fileName property
+// SetFileName sets the fileName property value. Human-readable file name associated with this Leadping user data export file.
 func (m *UserDataExportFile) SetFileName(value *string)() {
     m.fileName = value
 }
-// SetRowCount sets the rowCount property value. The rowCount property
+// SetRowCount sets the rowCount property value. Total number of row records represented by this Leadping user data export file.
 func (m *UserDataExportFile) SetRowCount(value *int32)() {
     m.rowCount = value
 }

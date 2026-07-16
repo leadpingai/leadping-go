@@ -14,8 +14,6 @@ type AutomationResponse struct {
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Admin override that can enable or disable this record independently of normal status checks.
-    adminEnablementOverride AutomationResponse_adminEnablementOverrideable
     // Business summary connected to this automation configuration response.
     business AutomationResponse_businessable
     // Business ID that owns this automation.
@@ -36,8 +34,6 @@ type AutomationResponse struct {
     isSystemManaged *bool
     // UTC timestamp when this automation last ran.
     lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Most recent automation run error message, if the last run failed.
-    lastRunError *string
     // Status from the most recent automation run.
     lastRunStatus *string
     // Management level that controls whether Leadping or the business owns this automation setting.
@@ -80,11 +76,6 @@ func (m *AutomationResponse) GetActions()([]AutomationActionable) {
 // returns a map[string]any when successful
 func (m *AutomationResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
-}
-// GetAdminEnablementOverride gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-// returns a AutomationResponse_adminEnablementOverrideable when successful
-func (m *AutomationResponse) GetAdminEnablementOverride()(AutomationResponse_adminEnablementOverrideable) {
-    return m.adminEnablementOverride
 }
 // GetBusiness gets the business property value. Business summary connected to this automation configuration response.
 // returns a AutomationResponse_businessable when successful
@@ -138,16 +129,6 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
                 }
             }
             m.SetActions(res)
-        }
-        return nil
-    }
-    res["adminEnablementOverride"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationResponse_adminEnablementOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminEnablementOverride(val.(AutomationResponse_adminEnablementOverrideable))
         }
         return nil
     }
@@ -254,16 +235,6 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         if val != nil {
             m.SetLastRunAt(val)
-        }
-        return nil
-    }
-    res["lastRunError"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastRunError(val)
         }
         return nil
     }
@@ -396,11 +367,6 @@ func (m *AutomationResponse) GetIsSystemManaged()(*bool) {
 func (m *AutomationResponse) GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastRunAt
 }
-// GetLastRunError gets the lastRunError property value. Most recent automation run error message, if the last run failed.
-// returns a *string when successful
-func (m *AutomationResponse) GetLastRunError()(*string) {
-    return m.lastRunError
-}
 // GetLastRunStatus gets the lastRunStatus property value. Status from the most recent automation run.
 // returns a *string when successful
 func (m *AutomationResponse) GetLastRunStatus()(*string) {
@@ -461,12 +427,6 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             }
         }
         err := writer.WriteCollectionOfObjectValues("actions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("adminEnablementOverride", m.GetAdminEnablementOverride())
         if err != nil {
             return err
         }
@@ -533,12 +493,6 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     }
     {
         err := writer.WriteTimeValue("lastRunAt", m.GetLastRunAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastRunError", m.GetLastRunError())
         if err != nil {
             return err
         }
@@ -631,10 +585,6 @@ func (m *AutomationResponse) SetActions(value []AutomationActionable)() {
 func (m *AutomationResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminEnablementOverride sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-func (m *AutomationResponse) SetAdminEnablementOverride(value AutomationResponse_adminEnablementOverrideable)() {
-    m.adminEnablementOverride = value
-}
 // SetBusiness sets the business property value. Business summary connected to this automation configuration response.
 func (m *AutomationResponse) SetBusiness(value AutomationResponse_businessable)() {
     m.business = value
@@ -674,10 +624,6 @@ func (m *AutomationResponse) SetIsSystemManaged(value *bool)() {
 // SetLastRunAt sets the lastRunAt property value. UTC timestamp when this automation last ran.
 func (m *AutomationResponse) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastRunAt = value
-}
-// SetLastRunError sets the lastRunError property value. Most recent automation run error message, if the last run failed.
-func (m *AutomationResponse) SetLastRunError(value *string)() {
-    m.lastRunError = value
 }
 // SetLastRunStatus sets the lastRunStatus property value. Status from the most recent automation run.
 func (m *AutomationResponse) SetLastRunStatus(value *string)() {
@@ -723,7 +669,6 @@ type AutomationResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionable)
-    GetAdminEnablementOverride()(AutomationResponse_adminEnablementOverrideable)
     GetBusiness()(AutomationResponse_businessable)
     GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
@@ -734,7 +679,6 @@ type AutomationResponseable interface {
     GetId()(*string)
     GetIsSystemManaged()(*bool)
     GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastRunError()(*string)
     GetLastRunStatus()(*string)
     GetManagementLevel()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -746,7 +690,6 @@ type AutomationResponseable interface {
     GetVersion()(*int32)
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
-    SetAdminEnablementOverride(value AutomationResponse_adminEnablementOverrideable)()
     SetBusiness(value AutomationResponse_businessable)()
     SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
@@ -757,7 +700,6 @@ type AutomationResponseable interface {
     SetId(value *string)()
     SetIsSystemManaged(value *bool)()
     SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastRunError(value *string)()
     SetLastRunStatus(value *string)()
     SetManagementLevel(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

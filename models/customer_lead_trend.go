@@ -7,14 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerLeadTrend lead trend associated with this Leadping customer analytics.
 type CustomerLeadTrend struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The comparison property
+    // Date and time when this Leadping customer lead trend was comparison.
     comparison AnalyticsComparisonable
-    // The points property
+    // Collection of points included with this Leadping customer lead trend.
     points []AnalyticsTrendPointOfintable
-    // The total property
+    // Total number of total records represented by this Leadping customer lead trend.
     total *int32
 }
 // NewCustomerLeadTrend instantiates a new CustomerLeadTrend and sets the default values.
@@ -34,7 +35,7 @@ func CreateCustomerLeadTrendFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *CustomerLeadTrend) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetComparison gets the comparison property value. The comparison property
+// GetComparison gets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
 // returns a AnalyticsComparisonable when successful
 func (m *CustomerLeadTrend) GetComparison()(AnalyticsComparisonable) {
     return m.comparison
@@ -81,12 +82,12 @@ func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetPoints gets the points property value. The points property
+// GetPoints gets the points property value. Collection of points included with this Leadping customer lead trend.
 // returns a []AnalyticsTrendPointOfintable when successful
 func (m *CustomerLeadTrend) GetPoints()([]AnalyticsTrendPointOfintable) {
     return m.points
 }
-// GetTotal gets the total property value. The total property
+// GetTotal gets the total property value. Total number of total records represented by this Leadping customer lead trend.
 // returns a *int32 when successful
 func (m *CustomerLeadTrend) GetTotal()(*int32) {
     return m.total
@@ -129,15 +130,15 @@ func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *CustomerLeadTrend) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetComparison sets the comparison property value. The comparison property
+// SetComparison sets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
 func (m *CustomerLeadTrend) SetComparison(value AnalyticsComparisonable)() {
     m.comparison = value
 }
-// SetPoints sets the points property value. The points property
+// SetPoints sets the points property value. Collection of points included with this Leadping customer lead trend.
 func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable)() {
     m.points = value
 }
-// SetTotal sets the total property value. The total property
+// SetTotal sets the total property value. Total number of total records represented by this Leadping customer lead trend.
 func (m *CustomerLeadTrend) SetTotal(value *int32)() {
     m.total = value
 }

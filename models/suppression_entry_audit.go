@@ -16,16 +16,12 @@ type SuppressionEntryAudit struct {
     additionalData map[string]any
     // The unique ID for this ion entry audit.
     id *string
-    // The provider event ID associated with this ion entry audit.
-    providerEventId *string
     // The human-readable reason explaining this ion entry audit.
     reason *string
     // The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
     safeMetadata SuppressionEntryAudit_safeMetadataable
     // The source value for this ion entry audit.
     source *string
-    // The source event ID associated with this ion entry audit.
-    sourceEventId *string
     // The current status for this ion entry audit.
     status *string
     // The date and time for the timestamp value on this ion entry audit.
@@ -77,16 +73,6 @@ func (m *SuppressionEntryAudit) GetFieldDeserializers()(map[string]func(i878a80d
         }
         return nil
     }
-    res["providerEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderEventId(val)
-        }
-        return nil
-    }
     res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -117,16 +103,6 @@ func (m *SuppressionEntryAudit) GetFieldDeserializers()(map[string]func(i878a80d
         }
         return nil
     }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -154,11 +130,6 @@ func (m *SuppressionEntryAudit) GetFieldDeserializers()(map[string]func(i878a80d
 func (m *SuppressionEntryAudit) GetId()(*string) {
     return m.id
 }
-// GetProviderEventId gets the providerEventId property value. The provider event ID associated with this ion entry audit.
-// returns a *string when successful
-func (m *SuppressionEntryAudit) GetProviderEventId()(*string) {
-    return m.providerEventId
-}
 // GetReason gets the reason property value. The human-readable reason explaining this ion entry audit.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetReason()(*string) {
@@ -173,11 +144,6 @@ func (m *SuppressionEntryAudit) GetSafeMetadata()(SuppressionEntryAudit_safeMeta
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetSource()(*string) {
     return m.source
-}
-// GetSourceEventId gets the sourceEventId property value. The source event ID associated with this ion entry audit.
-// returns a *string when successful
-func (m *SuppressionEntryAudit) GetSourceEventId()(*string) {
-    return m.sourceEventId
 }
 // GetStatus gets the status property value. The current status for this ion entry audit.
 // returns a *string when successful
@@ -204,12 +170,6 @@ func (m *SuppressionEntryAudit) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     {
-        err := writer.WriteStringValue("providerEventId", m.GetProviderEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("reason", m.GetReason())
         if err != nil {
             return err
@@ -223,12 +183,6 @@ func (m *SuppressionEntryAudit) Serialize(writer i878a80d2330e89d26896388a3f487e
     }
     {
         err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
         if err != nil {
             return err
         }
@@ -265,10 +219,6 @@ func (m *SuppressionEntryAudit) SetAdditionalData(value map[string]any)() {
 func (m *SuppressionEntryAudit) SetId(value *string)() {
     m.id = value
 }
-// SetProviderEventId sets the providerEventId property value. The provider event ID associated with this ion entry audit.
-func (m *SuppressionEntryAudit) SetProviderEventId(value *string)() {
-    m.providerEventId = value
-}
 // SetReason sets the reason property value. The human-readable reason explaining this ion entry audit.
 func (m *SuppressionEntryAudit) SetReason(value *string)() {
     m.reason = value
@@ -280,10 +230,6 @@ func (m *SuppressionEntryAudit) SetSafeMetadata(value SuppressionEntryAudit_safe
 // SetSource sets the source property value. The source value for this ion entry audit.
 func (m *SuppressionEntryAudit) SetSource(value *string)() {
     m.source = value
-}
-// SetSourceEventId sets the sourceEventId property value. The source event ID associated with this ion entry audit.
-func (m *SuppressionEntryAudit) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
 }
 // SetStatus sets the status property value. The current status for this ion entry audit.
 func (m *SuppressionEntryAudit) SetStatus(value *string)() {
@@ -298,20 +244,16 @@ type SuppressionEntryAuditable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActorId()(*string)
     GetId()(*string)
-    GetProviderEventId()(*string)
     GetReason()(*string)
     GetSafeMetadata()(SuppressionEntryAudit_safeMetadataable)
     GetSource()(*string)
-    GetSourceEventId()(*string)
     GetStatus()(*string)
     GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetActorId(value *string)()
     SetId(value *string)()
-    SetProviderEventId(value *string)()
     SetReason(value *string)()
     SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable)()
     SetSource(value *string)()
-    SetSourceEventId(value *string)()
     SetStatus(value *string)()
     SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

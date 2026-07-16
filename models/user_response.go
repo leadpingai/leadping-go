@@ -52,8 +52,6 @@ type UserResponse struct {
     phone *string
     // The roles included with this user.
     roles i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Stripe state for the user's currently selected business.
-    stripeInfo UserResponse_stripeInfoable
     // Defines the supported Subscription Status values.
     subscriptionStatus *UserResponse_subscriptionStatus
 }
@@ -315,16 +313,6 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
-    res["stripeInfo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_stripeInfoFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStripeInfo(val.(UserResponse_stripeInfoable))
-        }
-        return nil
-    }
     res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseUserResponse_subscriptionStatus)
         if err != nil {
@@ -411,11 +399,6 @@ func (m *UserResponse) GetPhone()(*string) {
 // returns a UntypedNodeable when successful
 func (m *UserResponse) GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.roles
-}
-// GetStripeInfo gets the stripeInfo property value. Stripe state for the user's currently selected business.
-// returns a UserResponse_stripeInfoable when successful
-func (m *UserResponse) GetStripeInfo()(UserResponse_stripeInfoable) {
-    return m.stripeInfo
 }
 // GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
 // returns a *UserResponse_subscriptionStatus when successful
@@ -557,12 +540,6 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
             return err
         }
     }
-    {
-        err := writer.WriteObjectValue("stripeInfo", m.GetStripeInfo())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetSubscriptionStatus() != nil {
         cast := (*m.GetSubscriptionStatus()).String()
         err := writer.WriteStringValue("subscriptionStatus", &cast)
@@ -662,10 +639,6 @@ func (m *UserResponse) SetPhone(value *string)() {
 func (m *UserResponse) SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.roles = value
 }
-// SetStripeInfo sets the stripeInfo property value. Stripe state for the user's currently selected business.
-func (m *UserResponse) SetStripeInfo(value UserResponse_stripeInfoable)() {
-    m.stripeInfo = value
-}
 // SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
 func (m *UserResponse) SetSubscriptionStatus(value *UserResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
@@ -693,7 +666,6 @@ type UserResponseable interface {
     GetPersonalDataDeletionStatus()(*string)
     GetPhone()(*string)
     GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetStripeInfo()(UserResponse_stripeInfoable)
     GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
     SetBillingPlan(value *UserResponse_billingPlan)()
     SetCompliance(value UserResponse_complianceable)()
@@ -715,6 +687,5 @@ type UserResponseable interface {
     SetPersonalDataDeletionStatus(value *string)()
     SetPhone(value *string)()
     SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetStripeInfo(value UserResponse_stripeInfoable)()
     SetSubscriptionStatus(value *UserResponse_subscriptionStatus)()
 }

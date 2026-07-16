@@ -10,73 +10,65 @@ import (
 
 // AutomationWorkflowRunResponse user-safe automation workflow run status returned for a lead.
 type AutomationWorkflowRunResponse struct {
-    // The actions property
+    // Collection of actions included with this Leadping automation workflow run.
     actions []AutomationWorkflowActionResponseable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationId property
+    // Unique identifier of the automation associated with this Leadping automation workflow run.
     automationId *string
-    // The automationName property
+    // Human-readable automation name associated with this Leadping automation workflow run.
     automationName *string
-    // The businessId property
+    // Unique identifier of the business associated with this Leadping automation workflow run.
     businessId *string
-    // The cancelledAt property
+    // Date and time when the automation workflow run was cancelled.
     cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The completedAt property
+    // Date and time when the automation workflow run completed.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The correlationId property
-    correlationId *string
-    // The currentStepId property
+    // Unique identifier of the current step associated with this Leadping automation workflow run.
     currentStepId *string
-    // The currentStepName property
+    // Human-readable current step name associated with this Leadping automation workflow run.
     currentStepName *string
-    // The currentStepOrder property
+    // Current step order associated with this Leadping automation workflow run.
     currentStepOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The events property
+    // Collection of events included with this Leadping automation workflow run.
     events []AutomationWorkflowEventResponseable
-    // The executionKey property
-    executionKey *string
-    // The failedAt property
+    // Date and time when the automation workflow run failed.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The id property
+    // Unique Leadping identifier for the automation workflow run.
     id *string
-    // The internalErrorDetails property
-    internalErrorDetails *string
-    // The lastActionSummary property
+    // Human-readable last action summary for this Leadping automation workflow run.
     lastActionSummary *string
-    // The lastErrorCode property
+    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
     lastErrorCode *string
-    // The lastErrorMessage property
+    // Human-readable last error message for this Leadping automation workflow run.
     lastErrorMessage *string
-    // The lastExecutionAt property
+    // Date and time of the most recent execution for this Leadping automation workflow run.
     lastExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The leadId property
+    // Unique identifier of the lead associated with this Leadping automation workflow run.
     leadId *string
-    // The maxRetryCount property
+    // Total number of max retry records represented by this Leadping automation workflow run.
     maxRetryCount *int32
-    // The nextExecutionAt property
+    // Date and time when the next execution is scheduled.
     nextExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The nextRetryAt property
+    // Date and time when the next retry is scheduled.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The retryCount property
+    // Total number of retry records represented by this Leadping automation workflow run.
     retryCount *int32
-    // The skipReasonCode property
+    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
     skipReasonCode *string
-    // The skipReasonDisplay property
+    // Human-readable skip reason display for this Leadping automation workflow run.
     skipReasonDisplay *string
-    // The sourceEventId property
-    sourceEventId *string
-    // The startedAt property
+    // Date and time when the automation workflow run started.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The status property
+    // Current status for this Leadping automation workflow run.
     status *string
-    // The statusDisplay property
+    // Human-readable status display for this Leadping automation workflow run.
     statusDisplay *string
-    // The triggerDisplay property
+    // Human-readable trigger display for this Leadping automation workflow run.
     triggerDisplay *string
-    // The triggerType property
+    // Trigger type classification for this Leadping automation workflow run.
     triggerType *string
-    // The updatedAt property
+    // Date and time when the automation workflow run was last updated.
     updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewAutomationWorkflowRunResponse instantiates a new AutomationWorkflowRunResponse and sets the default values.
@@ -91,7 +83,7 @@ func NewAutomationWorkflowRunResponse()(*AutomationWorkflowRunResponse) {
 func CreateAutomationWorkflowRunResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAutomationWorkflowRunResponse(), nil
 }
-// GetActions gets the actions property value. The actions property
+// GetActions gets the actions property value. Collection of actions included with this Leadping automation workflow run.
 // returns a []AutomationWorkflowActionResponseable when successful
 func (m *AutomationWorkflowRunResponse) GetActions()([]AutomationWorkflowActionResponseable) {
     return m.actions
@@ -101,62 +93,52 @@ func (m *AutomationWorkflowRunResponse) GetActions()([]AutomationWorkflowActionR
 func (m *AutomationWorkflowRunResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. The automationId property
+// GetAutomationId gets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetAutomationId()(*string) {
     return m.automationId
 }
-// GetAutomationName gets the automationName property value. The automationName property
+// GetAutomationName gets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetAutomationName()(*string) {
     return m.automationName
 }
-// GetBusinessId gets the businessId property value. The businessId property
+// GetBusinessId gets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetCancelledAt gets the cancelledAt property value. The cancelledAt property
+// GetCancelledAt gets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.cancelledAt
 }
-// GetCompletedAt gets the completedAt property value. The completedAt property
+// GetCompletedAt gets the completedAt property value. Date and time when the automation workflow run completed.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetCorrelationId gets the correlationId property value. The correlationId property
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetCorrelationId()(*string) {
-    return m.correlationId
-}
-// GetCurrentStepId gets the currentStepId property value. The currentStepId property
+// GetCurrentStepId gets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetCurrentStepId()(*string) {
     return m.currentStepId
 }
-// GetCurrentStepName gets the currentStepName property value. The currentStepName property
+// GetCurrentStepName gets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetCurrentStepName()(*string) {
     return m.currentStepName
 }
-// GetCurrentStepOrder gets the currentStepOrder property value. The currentStepOrder property
+// GetCurrentStepOrder gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
 // returns a UntypedNodeable when successful
 func (m *AutomationWorkflowRunResponse) GetCurrentStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.currentStepOrder
 }
-// GetEvents gets the events property value. The events property
+// GetEvents gets the events property value. Collection of events included with this Leadping automation workflow run.
 // returns a []AutomationWorkflowEventResponseable when successful
 func (m *AutomationWorkflowRunResponse) GetEvents()([]AutomationWorkflowEventResponseable) {
     return m.events
 }
-// GetExecutionKey gets the executionKey property value. The executionKey property
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetExecutionKey()(*string) {
-    return m.executionKey
-}
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. Date and time when the automation workflow run failed.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -231,16 +213,6 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
-    res["correlationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCorrelationId(val)
-        }
-        return nil
-    }
     res["currentStepId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -287,16 +259,6 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
-    res["executionKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExecutionKey(val)
-        }
-        return nil
-    }
     res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -314,16 +276,6 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         if val != nil {
             m.SetId(val)
-        }
-        return nil
-    }
-    res["internalErrorDetails"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternalErrorDetails(val)
         }
         return nil
     }
@@ -437,16 +389,6 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
     res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -509,102 +451,92 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for the automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetId()(*string) {
     return m.id
 }
-// GetInternalErrorDetails gets the internalErrorDetails property value. The internalErrorDetails property
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetInternalErrorDetails()(*string) {
-    return m.internalErrorDetails
-}
-// GetLastActionSummary gets the lastActionSummary property value. The lastActionSummary property
+// GetLastActionSummary gets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLastActionSummary()(*string) {
     return m.lastActionSummary
 }
-// GetLastErrorCode gets the lastErrorCode property value. The lastErrorCode property
+// GetLastErrorCode gets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLastErrorCode()(*string) {
     return m.lastErrorCode
 }
-// GetLastErrorMessage gets the lastErrorMessage property value. The lastErrorMessage property
+// GetLastErrorMessage gets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLastErrorMessage()(*string) {
     return m.lastErrorMessage
 }
-// GetLastExecutionAt gets the lastExecutionAt property value. The lastExecutionAt property
+// GetLastExecutionAt gets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetLastExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastExecutionAt
 }
-// GetLeadId gets the leadId property value. The leadId property
+// GetLeadId gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetMaxRetryCount gets the maxRetryCount property value. The maxRetryCount property
+// GetMaxRetryCount gets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
 // returns a *int32 when successful
 func (m *AutomationWorkflowRunResponse) GetMaxRetryCount()(*int32) {
     return m.maxRetryCount
 }
-// GetNextExecutionAt gets the nextExecutionAt property value. The nextExecutionAt property
+// GetNextExecutionAt gets the nextExecutionAt property value. Date and time when the next execution is scheduled.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetNextExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextExecutionAt
 }
-// GetNextRetryAt gets the nextRetryAt property value. The nextRetryAt property
+// GetNextRetryAt gets the nextRetryAt property value. Date and time when the next retry is scheduled.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
-// GetRetryCount gets the retryCount property value. The retryCount property
+// GetRetryCount gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
 // returns a *int32 when successful
 func (m *AutomationWorkflowRunResponse) GetRetryCount()(*int32) {
     return m.retryCount
 }
-// GetSkipReasonCode gets the skipReasonCode property value. The skipReasonCode property
+// GetSkipReasonCode gets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetSkipReasonCode()(*string) {
     return m.skipReasonCode
 }
-// GetSkipReasonDisplay gets the skipReasonDisplay property value. The skipReasonDisplay property
+// GetSkipReasonDisplay gets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetSkipReasonDisplay()(*string) {
     return m.skipReasonDisplay
 }
-// GetSourceEventId gets the sourceEventId property value. The sourceEventId property
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetSourceEventId()(*string) {
-    return m.sourceEventId
-}
-// GetStartedAt gets the startedAt property value. The startedAt property
+// GetStartedAt gets the startedAt property value. Date and time when the automation workflow run started.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startedAt
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Current status for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetStatus()(*string) {
     return m.status
 }
-// GetStatusDisplay gets the statusDisplay property value. The statusDisplay property
+// GetStatusDisplay gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetStatusDisplay()(*string) {
     return m.statusDisplay
 }
-// GetTriggerDisplay gets the triggerDisplay property value. The triggerDisplay property
+// GetTriggerDisplay gets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetTriggerDisplay()(*string) {
     return m.triggerDisplay
 }
-// GetTriggerType gets the triggerType property value. The triggerType property
+// GetTriggerType gets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetTriggerType()(*string) {
     return m.triggerType
 }
-// GetUpdatedAt gets the updatedAt property value. The updatedAt property
+// GetUpdatedAt gets the updatedAt property value. Date and time when the automation workflow run was last updated.
 // returns a *Time when successful
 func (m *AutomationWorkflowRunResponse) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.updatedAt
@@ -654,12 +586,6 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteStringValue("correlationId", m.GetCorrelationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("currentStepId", m.GetCurrentStepId())
         if err != nil {
             return err
@@ -690,12 +616,6 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteStringValue("executionKey", m.GetExecutionKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
         if err != nil {
             return err
@@ -703,12 +623,6 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
     }
     {
         err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("internalErrorDetails", m.GetInternalErrorDetails())
         if err != nil {
             return err
         }
@@ -780,12 +694,6 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
         if err != nil {
             return err
@@ -829,7 +737,7 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
     }
     return nil
 }
-// SetActions sets the actions property value. The actions property
+// SetActions sets the actions property value. Collection of actions included with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowActionResponseable)() {
     m.actions = value
 }
@@ -837,131 +745,115 @@ func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowAct
 func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. The automationId property
+// SetAutomationId sets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetAutomationId(value *string)() {
     m.automationId = value
 }
-// SetAutomationName sets the automationName property value. The automationName property
+// SetAutomationName sets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetAutomationName(value *string)() {
     m.automationName = value
 }
-// SetBusinessId sets the businessId property value. The businessId property
+// SetBusinessId sets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetCancelledAt sets the cancelledAt property value. The cancelledAt property
+// SetCancelledAt sets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
 func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.cancelledAt = value
 }
-// SetCompletedAt sets the completedAt property value. The completedAt property
+// SetCompletedAt sets the completedAt property value. Date and time when the automation workflow run completed.
 func (m *AutomationWorkflowRunResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetCorrelationId sets the correlationId property value. The correlationId property
-func (m *AutomationWorkflowRunResponse) SetCorrelationId(value *string)() {
-    m.correlationId = value
-}
-// SetCurrentStepId sets the currentStepId property value. The currentStepId property
+// SetCurrentStepId sets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetCurrentStepId(value *string)() {
     m.currentStepId = value
 }
-// SetCurrentStepName sets the currentStepName property value. The currentStepName property
+// SetCurrentStepName sets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetCurrentStepName(value *string)() {
     m.currentStepName = value
 }
-// SetCurrentStepOrder sets the currentStepOrder property value. The currentStepOrder property
+// SetCurrentStepOrder sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.currentStepOrder = value
 }
-// SetEvents sets the events property value. The events property
+// SetEvents sets the events property value. Collection of events included with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetEvents(value []AutomationWorkflowEventResponseable)() {
     m.events = value
 }
-// SetExecutionKey sets the executionKey property value. The executionKey property
-func (m *AutomationWorkflowRunResponse) SetExecutionKey(value *string)() {
-    m.executionKey = value
-}
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. Date and time when the automation workflow run failed.
 func (m *AutomationWorkflowRunResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for the automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetId(value *string)() {
     m.id = value
 }
-// SetInternalErrorDetails sets the internalErrorDetails property value. The internalErrorDetails property
-func (m *AutomationWorkflowRunResponse) SetInternalErrorDetails(value *string)() {
-    m.internalErrorDetails = value
-}
-// SetLastActionSummary sets the lastActionSummary property value. The lastActionSummary property
+// SetLastActionSummary sets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLastActionSummary(value *string)() {
     m.lastActionSummary = value
 }
-// SetLastErrorCode sets the lastErrorCode property value. The lastErrorCode property
+// SetLastErrorCode sets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLastErrorCode(value *string)() {
     m.lastErrorCode = value
 }
-// SetLastErrorMessage sets the lastErrorMessage property value. The lastErrorMessage property
+// SetLastErrorMessage sets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLastErrorMessage(value *string)() {
     m.lastErrorMessage = value
 }
-// SetLastExecutionAt sets the lastExecutionAt property value. The lastExecutionAt property
+// SetLastExecutionAt sets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLastExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastExecutionAt = value
 }
-// SetLeadId sets the leadId property value. The leadId property
+// SetLeadId sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetMaxRetryCount sets the maxRetryCount property value. The maxRetryCount property
+// SetMaxRetryCount sets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetMaxRetryCount(value *int32)() {
     m.maxRetryCount = value
 }
-// SetNextExecutionAt sets the nextExecutionAt property value. The nextExecutionAt property
+// SetNextExecutionAt sets the nextExecutionAt property value. Date and time when the next execution is scheduled.
 func (m *AutomationWorkflowRunResponse) SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextExecutionAt = value
 }
-// SetNextRetryAt sets the nextRetryAt property value. The nextRetryAt property
+// SetNextRetryAt sets the nextRetryAt property value. Date and time when the next retry is scheduled.
 func (m *AutomationWorkflowRunResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
-// SetRetryCount sets the retryCount property value. The retryCount property
+// SetRetryCount sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetRetryCount(value *int32)() {
     m.retryCount = value
 }
-// SetSkipReasonCode sets the skipReasonCode property value. The skipReasonCode property
+// SetSkipReasonCode sets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetSkipReasonCode(value *string)() {
     m.skipReasonCode = value
 }
-// SetSkipReasonDisplay sets the skipReasonDisplay property value. The skipReasonDisplay property
+// SetSkipReasonDisplay sets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetSkipReasonDisplay(value *string)() {
     m.skipReasonDisplay = value
 }
-// SetSourceEventId sets the sourceEventId property value. The sourceEventId property
-func (m *AutomationWorkflowRunResponse) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
-}
-// SetStartedAt sets the startedAt property value. The startedAt property
+// SetStartedAt sets the startedAt property value. Date and time when the automation workflow run started.
 func (m *AutomationWorkflowRunResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Current status for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetStatus(value *string)() {
     m.status = value
 }
-// SetStatusDisplay sets the statusDisplay property value. The statusDisplay property
+// SetStatusDisplay sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetStatusDisplay(value *string)() {
     m.statusDisplay = value
 }
-// SetTriggerDisplay sets the triggerDisplay property value. The triggerDisplay property
+// SetTriggerDisplay sets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetTriggerDisplay(value *string)() {
     m.triggerDisplay = value
 }
-// SetTriggerType sets the triggerType property value. The triggerType property
+// SetTriggerType sets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetTriggerType(value *string)() {
     m.triggerType = value
 }
-// SetUpdatedAt sets the updatedAt property value. The updatedAt property
+// SetUpdatedAt sets the updatedAt property value. Date and time when the automation workflow run was last updated.
 func (m *AutomationWorkflowRunResponse) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.updatedAt = value
 }
@@ -974,15 +866,12 @@ type AutomationWorkflowRunResponseable interface {
     GetBusinessId()(*string)
     GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCorrelationId()(*string)
     GetCurrentStepId()(*string)
     GetCurrentStepName()(*string)
     GetCurrentStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetEvents()([]AutomationWorkflowEventResponseable)
-    GetExecutionKey()(*string)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetId()(*string)
-    GetInternalErrorDetails()(*string)
     GetLastActionSummary()(*string)
     GetLastErrorCode()(*string)
     GetLastErrorMessage()(*string)
@@ -994,7 +883,6 @@ type AutomationWorkflowRunResponseable interface {
     GetRetryCount()(*int32)
     GetSkipReasonCode()(*string)
     GetSkipReasonDisplay()(*string)
-    GetSourceEventId()(*string)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*string)
     GetStatusDisplay()(*string)
@@ -1007,15 +895,12 @@ type AutomationWorkflowRunResponseable interface {
     SetBusinessId(value *string)()
     SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCorrelationId(value *string)()
     SetCurrentStepId(value *string)()
     SetCurrentStepName(value *string)()
     SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetEvents(value []AutomationWorkflowEventResponseable)()
-    SetExecutionKey(value *string)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()
-    SetInternalErrorDetails(value *string)()
     SetLastActionSummary(value *string)()
     SetLastErrorCode(value *string)()
     SetLastErrorMessage(value *string)()
@@ -1027,7 +912,6 @@ type AutomationWorkflowRunResponseable interface {
     SetRetryCount(value *int32)()
     SetSkipReasonCode(value *string)()
     SetSkipReasonDisplay(value *string)()
-    SetSourceEventId(value *string)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *string)()
     SetStatusDisplay(value *string)()

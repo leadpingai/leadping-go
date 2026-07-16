@@ -12,54 +12,26 @@ import (
 type FeedbackResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Internal admin note used to track feedback review or resolution.
-    adminNote *string
     // Indicates whether the submitter permits Leadping support to contact them about the feedback.
     allowContact *bool
     // Product area or app section connected to this feedback item response.
     area *string
     // Business ID connected to the feedback item, when the feedback came from a business workspace.
     businessId *string
-    // Business name snapshot captured when the user submitted the feedback.
-    businessNameSnapshot *string
     // Client application version that submitted this feedback item response.
     clientVersion *string
-    // UTC timestamp when this feedback item response was closed.
-    closedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // User ID of the person who closed this item.
-    closedByUserId *string
     // UTC timestamp when this feedback item response was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Feedback item ID that this item duplicates, when applicable.
-    duplicateOfFeedbackItemId *string
-    // Deployment environment where this feedback item response was captured or processed.
-    environment *string
-    // External issue tracker URL linked to this feedback item.
-    externalIssueUrl *string
     // Unique Leadping identifier for this feedback item response.
     id *string
     // Message text supplied by the user or returned by the Leadping API for this feedback item response.
     message *string
-    // UTC timestamp when an admin reviewed this feedback item response.
-    reviewedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // User ID of the admin who reviewed this item.
-    reviewedByUserId *string
     // Application route where this feedback item response originated or should direct the user.
     route *string
-    // Leadping API server version that processed this feedback item response.
-    serverVersion *string
     // Current lifecycle status for this feedback item response in the Leadping API.
     status *FeedbackStatus
-    // Billing plan snapshot captured when the user submitted the feedback.
-    subscriptionPlanSnapshot *string
     // Type classification used to route and interpret this feedback item response in the Leadping API.
     typeEscaped *FeedbackType
-    // Browser or client user agent captured when this feedback item response was submitted.
-    userAgent *string
-    // User display name snapshot captured when the user submitted the feedback.
-    userDisplayNameSnapshot *string
-    // User email snapshot captured when the user submitted the feedback.
-    userEmailSnapshot *string
     // User ID for the person who submitted the feedback.
     userId *string
 }
@@ -80,11 +52,6 @@ func CreateFeedbackResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 func (m *FeedbackResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdminNote gets the adminNote property value. Internal admin note used to track feedback review or resolution.
-// returns a *string when successful
-func (m *FeedbackResponse) GetAdminNote()(*string) {
-    return m.adminNote
-}
 // GetAllowContact gets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 // returns a *bool when successful
 func (m *FeedbackResponse) GetAllowContact()(*bool) {
@@ -100,60 +67,20 @@ func (m *FeedbackResponse) GetArea()(*string) {
 func (m *FeedbackResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetBusinessNameSnapshot gets the businessNameSnapshot property value. Business name snapshot captured when the user submitted the feedback.
-// returns a *string when successful
-func (m *FeedbackResponse) GetBusinessNameSnapshot()(*string) {
-    return m.businessNameSnapshot
-}
 // GetClientVersion gets the clientVersion property value. Client application version that submitted this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetClientVersion()(*string) {
     return m.clientVersion
-}
-// GetClosedAt gets the closedAt property value. UTC timestamp when this feedback item response was closed.
-// returns a *Time when successful
-func (m *FeedbackResponse) GetClosedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.closedAt
-}
-// GetClosedByUserId gets the closedByUserId property value. User ID of the person who closed this item.
-// returns a *string when successful
-func (m *FeedbackResponse) GetClosedByUserId()(*string) {
-    return m.closedByUserId
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this feedback item response was created.
 // returns a *Time when successful
 func (m *FeedbackResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDuplicateOfFeedbackItemId gets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
-// returns a *string when successful
-func (m *FeedbackResponse) GetDuplicateOfFeedbackItemId()(*string) {
-    return m.duplicateOfFeedbackItemId
-}
-// GetEnvironment gets the environment property value. Deployment environment where this feedback item response was captured or processed.
-// returns a *string when successful
-func (m *FeedbackResponse) GetEnvironment()(*string) {
-    return m.environment
-}
-// GetExternalIssueUrl gets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
-// returns a *string when successful
-func (m *FeedbackResponse) GetExternalIssueUrl()(*string) {
-    return m.externalIssueUrl
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["adminNote"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAdminNote(val)
-        }
-        return nil
-    }
     res["allowContact"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -184,16 +111,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["businessNameSnapshot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessNameSnapshot(val)
-        }
-        return nil
-    }
     res["clientVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -204,26 +121,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["closedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetClosedAt(val)
-        }
-        return nil
-    }
-    res["closedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetClosedByUserId(val)
-        }
-        return nil
-    }
     res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -231,36 +128,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["duplicateOfFeedbackItemId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDuplicateOfFeedbackItemId(val)
-        }
-        return nil
-    }
-    res["environment"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnvironment(val)
-        }
-        return nil
-    }
-    res["externalIssueUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExternalIssueUrl(val)
         }
         return nil
     }
@@ -284,26 +151,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["reviewedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReviewedAt(val)
-        }
-        return nil
-    }
-    res["reviewedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReviewedByUserId(val)
-        }
-        return nil
-    }
     res["route"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -311,16 +158,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetRoute(val)
-        }
-        return nil
-    }
-    res["serverVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetServerVersion(val)
         }
         return nil
     }
@@ -334,16 +171,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["subscriptionPlanSnapshot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionPlanSnapshot(val)
-        }
-        return nil
-    }
     res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseFeedbackType)
         if err != nil {
@@ -351,36 +178,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetTypeEscaped(val.(*FeedbackType))
-        }
-        return nil
-    }
-    res["userAgent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserAgent(val)
-        }
-        return nil
-    }
-    res["userDisplayNameSnapshot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserDisplayNameSnapshot(val)
-        }
-        return nil
-    }
-    res["userEmailSnapshot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserEmailSnapshot(val)
         }
         return nil
     }
@@ -406,55 +203,20 @@ func (m *FeedbackResponse) GetId()(*string) {
 func (m *FeedbackResponse) GetMessage()(*string) {
     return m.message
 }
-// GetReviewedAt gets the reviewedAt property value. UTC timestamp when an admin reviewed this feedback item response.
-// returns a *Time when successful
-func (m *FeedbackResponse) GetReviewedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.reviewedAt
-}
-// GetReviewedByUserId gets the reviewedByUserId property value. User ID of the admin who reviewed this item.
-// returns a *string when successful
-func (m *FeedbackResponse) GetReviewedByUserId()(*string) {
-    return m.reviewedByUserId
-}
 // GetRoute gets the route property value. Application route where this feedback item response originated or should direct the user.
 // returns a *string when successful
 func (m *FeedbackResponse) GetRoute()(*string) {
     return m.route
-}
-// GetServerVersion gets the serverVersion property value. Leadping API server version that processed this feedback item response.
-// returns a *string when successful
-func (m *FeedbackResponse) GetServerVersion()(*string) {
-    return m.serverVersion
 }
 // GetStatus gets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
 // returns a *FeedbackStatus when successful
 func (m *FeedbackResponse) GetStatus()(*FeedbackStatus) {
     return m.status
 }
-// GetSubscriptionPlanSnapshot gets the subscriptionPlanSnapshot property value. Billing plan snapshot captured when the user submitted the feedback.
-// returns a *string when successful
-func (m *FeedbackResponse) GetSubscriptionPlanSnapshot()(*string) {
-    return m.subscriptionPlanSnapshot
-}
 // GetTypeEscaped gets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
 // returns a *FeedbackType when successful
 func (m *FeedbackResponse) GetTypeEscaped()(*FeedbackType) {
     return m.typeEscaped
-}
-// GetUserAgent gets the userAgent property value. Browser or client user agent captured when this feedback item response was submitted.
-// returns a *string when successful
-func (m *FeedbackResponse) GetUserAgent()(*string) {
-    return m.userAgent
-}
-// GetUserDisplayNameSnapshot gets the userDisplayNameSnapshot property value. User display name snapshot captured when the user submitted the feedback.
-// returns a *string when successful
-func (m *FeedbackResponse) GetUserDisplayNameSnapshot()(*string) {
-    return m.userDisplayNameSnapshot
-}
-// GetUserEmailSnapshot gets the userEmailSnapshot property value. User email snapshot captured when the user submitted the feedback.
-// returns a *string when successful
-func (m *FeedbackResponse) GetUserEmailSnapshot()(*string) {
-    return m.userEmailSnapshot
 }
 // GetUserId gets the userId property value. User ID for the person who submitted the feedback.
 // returns a *string when successful
@@ -463,12 +225,6 @@ func (m *FeedbackResponse) GetUserId()(*string) {
 }
 // Serialize serializes information the current object
 func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("adminNote", m.GetAdminNote())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteBoolValue("allowContact", m.GetAllowContact())
         if err != nil {
@@ -488,49 +244,13 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("businessNameSnapshot", m.GetBusinessNameSnapshot())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("clientVersion", m.GetClientVersion())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteTimeValue("closedAt", m.GetClosedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("closedByUserId", m.GetClosedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("duplicateOfFeedbackItemId", m.GetDuplicateOfFeedbackItemId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("environment", m.GetEnvironment())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("externalIssueUrl", m.GetExternalIssueUrl())
         if err != nil {
             return err
         }
@@ -548,25 +268,7 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteTimeValue("reviewedAt", m.GetReviewedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reviewedByUserId", m.GetReviewedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("route", m.GetRoute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("serverVersion", m.GetServerVersion())
         if err != nil {
             return err
         }
@@ -578,33 +280,9 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
-    {
-        err := writer.WriteStringValue("subscriptionPlanSnapshot", m.GetSubscriptionPlanSnapshot())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetTypeEscaped() != nil {
         cast := (*m.GetTypeEscaped()).String()
         err := writer.WriteStringValue("type", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userAgent", m.GetUserAgent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userDisplayNameSnapshot", m.GetUserDisplayNameSnapshot())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userEmailSnapshot", m.GetUserEmailSnapshot())
         if err != nil {
             return err
         }
@@ -627,10 +305,6 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *FeedbackResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdminNote sets the adminNote property value. Internal admin note used to track feedback review or resolution.
-func (m *FeedbackResponse) SetAdminNote(value *string)() {
-    m.adminNote = value
-}
 // SetAllowContact sets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 func (m *FeedbackResponse) SetAllowContact(value *bool)() {
     m.allowContact = value
@@ -643,37 +317,13 @@ func (m *FeedbackResponse) SetArea(value *string)() {
 func (m *FeedbackResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetBusinessNameSnapshot sets the businessNameSnapshot property value. Business name snapshot captured when the user submitted the feedback.
-func (m *FeedbackResponse) SetBusinessNameSnapshot(value *string)() {
-    m.businessNameSnapshot = value
-}
 // SetClientVersion sets the clientVersion property value. Client application version that submitted this feedback item response.
 func (m *FeedbackResponse) SetClientVersion(value *string)() {
     m.clientVersion = value
 }
-// SetClosedAt sets the closedAt property value. UTC timestamp when this feedback item response was closed.
-func (m *FeedbackResponse) SetClosedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.closedAt = value
-}
-// SetClosedByUserId sets the closedByUserId property value. User ID of the person who closed this item.
-func (m *FeedbackResponse) SetClosedByUserId(value *string)() {
-    m.closedByUserId = value
-}
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this feedback item response was created.
 func (m *FeedbackResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
-}
-// SetDuplicateOfFeedbackItemId sets the duplicateOfFeedbackItemId property value. Feedback item ID that this item duplicates, when applicable.
-func (m *FeedbackResponse) SetDuplicateOfFeedbackItemId(value *string)() {
-    m.duplicateOfFeedbackItemId = value
-}
-// SetEnvironment sets the environment property value. Deployment environment where this feedback item response was captured or processed.
-func (m *FeedbackResponse) SetEnvironment(value *string)() {
-    m.environment = value
-}
-// SetExternalIssueUrl sets the externalIssueUrl property value. External issue tracker URL linked to this feedback item.
-func (m *FeedbackResponse) SetExternalIssueUrl(value *string)() {
-    m.externalIssueUrl = value
 }
 // SetId sets the id property value. Unique Leadping identifier for this feedback item response.
 func (m *FeedbackResponse) SetId(value *string)() {
@@ -683,45 +333,17 @@ func (m *FeedbackResponse) SetId(value *string)() {
 func (m *FeedbackResponse) SetMessage(value *string)() {
     m.message = value
 }
-// SetReviewedAt sets the reviewedAt property value. UTC timestamp when an admin reviewed this feedback item response.
-func (m *FeedbackResponse) SetReviewedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.reviewedAt = value
-}
-// SetReviewedByUserId sets the reviewedByUserId property value. User ID of the admin who reviewed this item.
-func (m *FeedbackResponse) SetReviewedByUserId(value *string)() {
-    m.reviewedByUserId = value
-}
 // SetRoute sets the route property value. Application route where this feedback item response originated or should direct the user.
 func (m *FeedbackResponse) SetRoute(value *string)() {
     m.route = value
-}
-// SetServerVersion sets the serverVersion property value. Leadping API server version that processed this feedback item response.
-func (m *FeedbackResponse) SetServerVersion(value *string)() {
-    m.serverVersion = value
 }
 // SetStatus sets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
 func (m *FeedbackResponse) SetStatus(value *FeedbackStatus)() {
     m.status = value
 }
-// SetSubscriptionPlanSnapshot sets the subscriptionPlanSnapshot property value. Billing plan snapshot captured when the user submitted the feedback.
-func (m *FeedbackResponse) SetSubscriptionPlanSnapshot(value *string)() {
-    m.subscriptionPlanSnapshot = value
-}
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
 func (m *FeedbackResponse) SetTypeEscaped(value *FeedbackType)() {
     m.typeEscaped = value
-}
-// SetUserAgent sets the userAgent property value. Browser or client user agent captured when this feedback item response was submitted.
-func (m *FeedbackResponse) SetUserAgent(value *string)() {
-    m.userAgent = value
-}
-// SetUserDisplayNameSnapshot sets the userDisplayNameSnapshot property value. User display name snapshot captured when the user submitted the feedback.
-func (m *FeedbackResponse) SetUserDisplayNameSnapshot(value *string)() {
-    m.userDisplayNameSnapshot = value
-}
-// SetUserEmailSnapshot sets the userEmailSnapshot property value. User email snapshot captured when the user submitted the feedback.
-func (m *FeedbackResponse) SetUserEmailSnapshot(value *string)() {
-    m.userEmailSnapshot = value
 }
 // SetUserId sets the userId property value. User ID for the person who submitted the feedback.
 func (m *FeedbackResponse) SetUserId(value *string)() {
@@ -730,54 +352,26 @@ func (m *FeedbackResponse) SetUserId(value *string)() {
 type FeedbackResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAdminNote()(*string)
     GetAllowContact()(*bool)
     GetArea()(*string)
     GetBusinessId()(*string)
-    GetBusinessNameSnapshot()(*string)
     GetClientVersion()(*string)
-    GetClosedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetClosedByUserId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDuplicateOfFeedbackItemId()(*string)
-    GetEnvironment()(*string)
-    GetExternalIssueUrl()(*string)
     GetId()(*string)
     GetMessage()(*string)
-    GetReviewedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetReviewedByUserId()(*string)
     GetRoute()(*string)
-    GetServerVersion()(*string)
     GetStatus()(*FeedbackStatus)
-    GetSubscriptionPlanSnapshot()(*string)
     GetTypeEscaped()(*FeedbackType)
-    GetUserAgent()(*string)
-    GetUserDisplayNameSnapshot()(*string)
-    GetUserEmailSnapshot()(*string)
     GetUserId()(*string)
-    SetAdminNote(value *string)()
     SetAllowContact(value *bool)()
     SetArea(value *string)()
     SetBusinessId(value *string)()
-    SetBusinessNameSnapshot(value *string)()
     SetClientVersion(value *string)()
-    SetClosedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetClosedByUserId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDuplicateOfFeedbackItemId(value *string)()
-    SetEnvironment(value *string)()
-    SetExternalIssueUrl(value *string)()
     SetId(value *string)()
     SetMessage(value *string)()
-    SetReviewedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetReviewedByUserId(value *string)()
     SetRoute(value *string)()
-    SetServerVersion(value *string)()
     SetStatus(value *FeedbackStatus)()
-    SetSubscriptionPlanSnapshot(value *string)()
     SetTypeEscaped(value *FeedbackType)()
-    SetUserAgent(value *string)()
-    SetUserDisplayNameSnapshot(value *string)()
-    SetUserEmailSnapshot(value *string)()
     SetUserId(value *string)()
 }

@@ -8,17 +8,17 @@ import (
 )
 
 type CustomerNeedsAttentionItem struct {
-    // The actionHref property
+    // Relative URL for the recommended follow-up action.
     actionHref *string
-    // The actionText property
+    // Action text associated with this Leadping customer needs attention item.
     actionText *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The detail property
+    // Human-readable detail for this Leadping customer needs attention item.
     detail *string
-    // The severity property
+    // Severity associated with this Leadping customer needs attention item.
     severity *string
-    // The title property
+    // Human-readable title for this Leadping customer needs attention item.
     title *string
 }
 // NewCustomerNeedsAttentionItem instantiates a new CustomerNeedsAttentionItem and sets the default values.
@@ -33,12 +33,12 @@ func NewCustomerNeedsAttentionItem()(*CustomerNeedsAttentionItem) {
 func CreateCustomerNeedsAttentionItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewCustomerNeedsAttentionItem(), nil
 }
-// GetActionHref gets the actionHref property value. The actionHref property
+// GetActionHref gets the actionHref property value. Relative URL for the recommended follow-up action.
 // returns a *string when successful
 func (m *CustomerNeedsAttentionItem) GetActionHref()(*string) {
     return m.actionHref
 }
-// GetActionText gets the actionText property value. The actionText property
+// GetActionText gets the actionText property value. Action text associated with this Leadping customer needs attention item.
 // returns a *string when successful
 func (m *CustomerNeedsAttentionItem) GetActionText()(*string) {
     return m.actionText
@@ -48,7 +48,7 @@ func (m *CustomerNeedsAttentionItem) GetActionText()(*string) {
 func (m *CustomerNeedsAttentionItem) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDetail gets the detail property value. The detail property
+// GetDetail gets the detail property value. Human-readable detail for this Leadping customer needs attention item.
 // returns a *string when successful
 func (m *CustomerNeedsAttentionItem) GetDetail()(*string) {
     return m.detail
@@ -109,12 +109,12 @@ func (m *CustomerNeedsAttentionItem) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetSeverity gets the severity property value. The severity property
+// GetSeverity gets the severity property value. Severity associated with this Leadping customer needs attention item.
 // returns a *string when successful
 func (m *CustomerNeedsAttentionItem) GetSeverity()(*string) {
     return m.severity
 }
-// GetTitle gets the title property value. The title property
+// GetTitle gets the title property value. Human-readable title for this Leadping customer needs attention item.
 // returns a *string when successful
 func (m *CustomerNeedsAttentionItem) GetTitle()(*string) {
     return m.title
@@ -159,11 +159,11 @@ func (m *CustomerNeedsAttentionItem) Serialize(writer i878a80d2330e89d26896388a3
     }
     return nil
 }
-// SetActionHref sets the actionHref property value. The actionHref property
+// SetActionHref sets the actionHref property value. Relative URL for the recommended follow-up action.
 func (m *CustomerNeedsAttentionItem) SetActionHref(value *string)() {
     m.actionHref = value
 }
-// SetActionText sets the actionText property value. The actionText property
+// SetActionText sets the actionText property value. Action text associated with this Leadping customer needs attention item.
 func (m *CustomerNeedsAttentionItem) SetActionText(value *string)() {
     m.actionText = value
 }
@@ -171,15 +171,15 @@ func (m *CustomerNeedsAttentionItem) SetActionText(value *string)() {
 func (m *CustomerNeedsAttentionItem) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDetail sets the detail property value. The detail property
+// SetDetail sets the detail property value. Human-readable detail for this Leadping customer needs attention item.
 func (m *CustomerNeedsAttentionItem) SetDetail(value *string)() {
     m.detail = value
 }
-// SetSeverity sets the severity property value. The severity property
+// SetSeverity sets the severity property value. Severity associated with this Leadping customer needs attention item.
 func (m *CustomerNeedsAttentionItem) SetSeverity(value *string)() {
     m.severity = value
 }
-// SetTitle sets the title property value. The title property
+// SetTitle sets the title property value. Human-readable title for this Leadping customer needs attention item.
 func (m *CustomerNeedsAttentionItem) SetTitle(value *string)() {
     m.title = value
 }

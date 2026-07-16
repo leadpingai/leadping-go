@@ -11,35 +11,35 @@ import (
 type UserDataExportResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The completedAt property
+    // Date and time when the user data export completed.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The contentType property
+    // Media type of the generated file or response content.
     contentType *string
-    // The downloadCount property
+    // Total number of download records represented by this Leadping user data export.
     downloadCount *int32
-    // The downloadUrl property
+    // Temporary URL for downloading the completed Leadping data export.
     downloadUrl *string
-    // The expiresAt property
+    // Date and time when the user data export expires.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The failedAt property
+    // Date and time when the user data export failed.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The fileName property
+    // Human-readable file name associated with this Leadping user data export.
     fileName *string
-    // The files property
+    // Collection of files included with this Leadping user data export.
     files []UserDataExportFileable
-    // The id property
+    // Unique Leadping identifier for the user data export.
     id *string
-    // The maxDownloadCount property
+    // Total number of max download records represented by this Leadping user data export.
     maxDownloadCount *int32
-    // The message property
+    // Human-readable message for this Leadping user data export.
     message *string
-    // The requestedAt property
+    // Date and time when the user data export was requested.
     requestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The sizeBytes property
+    // File size in bytes.
     sizeBytes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The startedAt property
+    // Date and time when the user data export started.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported user data export statuses values.
+    // Current status for this Leadping user data export.
     status *UserDataExportStatuses
 }
 // NewUserDataExportResponse instantiates a new UserDataExportResponse and sets the default values.
@@ -59,32 +59,32 @@ func CreateUserDataExportResponseFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *UserDataExportResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCompletedAt gets the completedAt property value. The completedAt property
+// GetCompletedAt gets the completedAt property value. Date and time when the user data export completed.
 // returns a *Time when successful
 func (m *UserDataExportResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetContentType gets the contentType property value. The contentType property
+// GetContentType gets the contentType property value. Media type of the generated file or response content.
 // returns a *string when successful
 func (m *UserDataExportResponse) GetContentType()(*string) {
     return m.contentType
 }
-// GetDownloadCount gets the downloadCount property value. The downloadCount property
+// GetDownloadCount gets the downloadCount property value. Total number of download records represented by this Leadping user data export.
 // returns a *int32 when successful
 func (m *UserDataExportResponse) GetDownloadCount()(*int32) {
     return m.downloadCount
 }
-// GetDownloadUrl gets the downloadUrl property value. The downloadUrl property
+// GetDownloadUrl gets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
 // returns a *string when successful
 func (m *UserDataExportResponse) GetDownloadUrl()(*string) {
     return m.downloadUrl
 }
-// GetExpiresAt gets the expiresAt property value. The expiresAt property
+// GetExpiresAt gets the expiresAt property value. Date and time when the user data export expires.
 // returns a *Time when successful
 func (m *UserDataExportResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.expiresAt
 }
-// GetFailedAt gets the failedAt property value. The failedAt property
+// GetFailedAt gets the failedAt property value. Date and time when the user data export failed.
 // returns a *Time when successful
 func (m *UserDataExportResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -251,47 +251,47 @@ func (m *UserDataExportResponse) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetFileName gets the fileName property value. The fileName property
+// GetFileName gets the fileName property value. Human-readable file name associated with this Leadping user data export.
 // returns a *string when successful
 func (m *UserDataExportResponse) GetFileName()(*string) {
     return m.fileName
 }
-// GetFiles gets the files property value. The files property
+// GetFiles gets the files property value. Collection of files included with this Leadping user data export.
 // returns a []UserDataExportFileable when successful
 func (m *UserDataExportResponse) GetFiles()([]UserDataExportFileable) {
     return m.files
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier for the user data export.
 // returns a *string when successful
 func (m *UserDataExportResponse) GetId()(*string) {
     return m.id
 }
-// GetMaxDownloadCount gets the maxDownloadCount property value. The maxDownloadCount property
+// GetMaxDownloadCount gets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
 // returns a *int32 when successful
 func (m *UserDataExportResponse) GetMaxDownloadCount()(*int32) {
     return m.maxDownloadCount
 }
-// GetMessage gets the message property value. The message property
+// GetMessage gets the message property value. Human-readable message for this Leadping user data export.
 // returns a *string when successful
 func (m *UserDataExportResponse) GetMessage()(*string) {
     return m.message
 }
-// GetRequestedAt gets the requestedAt property value. The requestedAt property
+// GetRequestedAt gets the requestedAt property value. Date and time when the user data export was requested.
 // returns a *Time when successful
 func (m *UserDataExportResponse) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.requestedAt
 }
-// GetSizeBytes gets the sizeBytes property value. The sizeBytes property
+// GetSizeBytes gets the sizeBytes property value. File size in bytes.
 // returns a UntypedNodeable when successful
 func (m *UserDataExportResponse) GetSizeBytes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.sizeBytes
 }
-// GetStartedAt gets the startedAt property value. The startedAt property
+// GetStartedAt gets the startedAt property value. Date and time when the user data export started.
 // returns a *Time when successful
 func (m *UserDataExportResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startedAt
 }
-// GetStatus gets the status property value. Defines the supported user data export statuses values.
+// GetStatus gets the status property value. Current status for this Leadping user data export.
 // returns a *UserDataExportStatuses when successful
 func (m *UserDataExportResponse) GetStatus()(*UserDataExportStatuses) {
     return m.status
@@ -407,63 +407,63 @@ func (m *UserDataExportResponse) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *UserDataExportResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCompletedAt sets the completedAt property value. The completedAt property
+// SetCompletedAt sets the completedAt property value. Date and time when the user data export completed.
 func (m *UserDataExportResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetContentType sets the contentType property value. The contentType property
+// SetContentType sets the contentType property value. Media type of the generated file or response content.
 func (m *UserDataExportResponse) SetContentType(value *string)() {
     m.contentType = value
 }
-// SetDownloadCount sets the downloadCount property value. The downloadCount property
+// SetDownloadCount sets the downloadCount property value. Total number of download records represented by this Leadping user data export.
 func (m *UserDataExportResponse) SetDownloadCount(value *int32)() {
     m.downloadCount = value
 }
-// SetDownloadUrl sets the downloadUrl property value. The downloadUrl property
+// SetDownloadUrl sets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
 func (m *UserDataExportResponse) SetDownloadUrl(value *string)() {
     m.downloadUrl = value
 }
-// SetExpiresAt sets the expiresAt property value. The expiresAt property
+// SetExpiresAt sets the expiresAt property value. Date and time when the user data export expires.
 func (m *UserDataExportResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.expiresAt = value
 }
-// SetFailedAt sets the failedAt property value. The failedAt property
+// SetFailedAt sets the failedAt property value. Date and time when the user data export failed.
 func (m *UserDataExportResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetFileName sets the fileName property value. The fileName property
+// SetFileName sets the fileName property value. Human-readable file name associated with this Leadping user data export.
 func (m *UserDataExportResponse) SetFileName(value *string)() {
     m.fileName = value
 }
-// SetFiles sets the files property value. The files property
+// SetFiles sets the files property value. Collection of files included with this Leadping user data export.
 func (m *UserDataExportResponse) SetFiles(value []UserDataExportFileable)() {
     m.files = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier for the user data export.
 func (m *UserDataExportResponse) SetId(value *string)() {
     m.id = value
 }
-// SetMaxDownloadCount sets the maxDownloadCount property value. The maxDownloadCount property
+// SetMaxDownloadCount sets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
 func (m *UserDataExportResponse) SetMaxDownloadCount(value *int32)() {
     m.maxDownloadCount = value
 }
-// SetMessage sets the message property value. The message property
+// SetMessage sets the message property value. Human-readable message for this Leadping user data export.
 func (m *UserDataExportResponse) SetMessage(value *string)() {
     m.message = value
 }
-// SetRequestedAt sets the requestedAt property value. The requestedAt property
+// SetRequestedAt sets the requestedAt property value. Date and time when the user data export was requested.
 func (m *UserDataExportResponse) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.requestedAt = value
 }
-// SetSizeBytes sets the sizeBytes property value. The sizeBytes property
+// SetSizeBytes sets the sizeBytes property value. File size in bytes.
 func (m *UserDataExportResponse) SetSizeBytes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.sizeBytes = value
 }
-// SetStartedAt sets the startedAt property value. The startedAt property
+// SetStartedAt sets the startedAt property value. Date and time when the user data export started.
 func (m *UserDataExportResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
 }
-// SetStatus sets the status property value. Defines the supported user data export statuses values.
+// SetStatus sets the status property value. Current status for this Leadping user data export.
 func (m *UserDataExportResponse) SetStatus(value *UserDataExportStatuses)() {
     m.status = value
 }

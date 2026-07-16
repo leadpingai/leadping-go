@@ -26,8 +26,6 @@ type PhoneNumberMessagingEventResponse struct {
     isOptOut *bool
     // Short display label for this phone number messaging event, formatted for charts, filters, or list views.
     label *string
-    // Provider lifecycle or delivery status for this phone number messaging event.
-    providerStatus *string
     // Short preview of the SMS or conversation text for this phone number messaging event.
     textPreview *string
     // Recipient phone number used for this communication.
@@ -139,16 +137,6 @@ func (m *PhoneNumberMessagingEventResponse) GetFieldDeserializers()(map[string]f
         }
         return nil
     }
-    res["providerStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderStatus(val)
-        }
-        return nil
-    }
     res["textPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -190,11 +178,6 @@ func (m *PhoneNumberMessagingEventResponse) GetIsOptOut()(*bool) {
 // returns a *string when successful
 func (m *PhoneNumberMessagingEventResponse) GetLabel()(*string) {
     return m.label
-}
-// GetProviderStatus gets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
-// returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetProviderStatus()(*string) {
-    return m.providerStatus
 }
 // GetTextPreview gets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
 // returns a *string when successful
@@ -251,12 +234,6 @@ func (m *PhoneNumberMessagingEventResponse) Serialize(writer i878a80d2330e89d268
         }
     }
     {
-        err := writer.WriteStringValue("providerStatus", m.GetProviderStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("textPreview", m.GetTextPreview())
         if err != nil {
             return err
@@ -308,10 +285,6 @@ func (m *PhoneNumberMessagingEventResponse) SetIsOptOut(value *bool)() {
 func (m *PhoneNumberMessagingEventResponse) SetLabel(value *string)() {
     m.label = value
 }
-// SetProviderStatus sets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
-func (m *PhoneNumberMessagingEventResponse) SetProviderStatus(value *string)() {
-    m.providerStatus = value
-}
 // SetTextPreview sets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
 func (m *PhoneNumberMessagingEventResponse) SetTextPreview(value *string)() {
     m.textPreview = value
@@ -330,7 +303,6 @@ type PhoneNumberMessagingEventResponseable interface {
     GetId()(*string)
     GetIsOptOut()(*bool)
     GetLabel()(*string)
-    GetProviderStatus()(*string)
     GetTextPreview()(*string)
     GetToPhoneNumber()(*string)
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -340,7 +312,6 @@ type PhoneNumberMessagingEventResponseable interface {
     SetId(value *string)()
     SetIsOptOut(value *bool)()
     SetLabel(value *string)()
-    SetProviderStatus(value *string)()
     SetTextPreview(value *string)()
     SetToPhoneNumber(value *string)()
 }

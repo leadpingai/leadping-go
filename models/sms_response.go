@@ -44,8 +44,6 @@ type SmsResponse struct {
     fromPhoneNumberId *string
     // The unique identifier for the entity.
     id *string
-    // Indicates whether this SMS message is part of Leadping sender warmup traffic.
-    isWarmup *bool
     // Lead ID associated with the SMS conversation or outreach attempt.
     leadId *string
     // The date and time when the entity was last modified, if applicable.
@@ -54,8 +52,6 @@ type SmsResponse struct {
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
-    // Provider message identifier for SMS delivery tracking and reconciliation.
-    providerMessageId *string
     // UTC timestamp when Leadping queued this SMS message for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping received this inbound event or message.
@@ -78,10 +74,6 @@ type SmsResponse struct {
     status *SmsResponse_status
     // Human-readable reason explaining the current status of this SMS message.
     statusReason *string
-    // Telnyx identifier connected to this phone number, call, or SMS event.
-    telnyxId *string
-    // 10DLC campaign identifier associated with this sender or SMS event.
-    tenDlcCampaignId *string
     // Body text for the SMS message or communication represented by this SMS message.
     text *string
     // Defines the supported SMS Traffic Type values.
@@ -337,16 +329,6 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
-    res["isWarmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsWarmup(val)
-        }
-        return nil
-    }
     res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -384,16 +366,6 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetOutboundPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["providerMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderMessageId(val)
         }
         return nil
     }
@@ -507,26 +479,6 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
-    res["telnyxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelnyxId(val)
-        }
-        return nil
-    }
-    res["tenDlcCampaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcCampaignId(val)
-        }
-        return nil
-    }
     res["text"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -584,11 +536,6 @@ func (m *SmsResponse) GetFromPhoneNumberId()(*string) {
 func (m *SmsResponse) GetId()(*string) {
     return m.id
 }
-// GetIsWarmup gets the isWarmup property value. Indicates whether this SMS message is part of Leadping sender warmup traffic.
-// returns a *bool when successful
-func (m *SmsResponse) GetIsWarmup()(*bool) {
-    return m.isWarmup
-}
 // GetLeadId gets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 // returns a *string when successful
 func (m *SmsResponse) GetLeadId()(*string) {
@@ -608,11 +555,6 @@ func (m *SmsResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077
 // returns a *string when successful
 func (m *SmsResponse) GetOutboundPhoneNumberId()(*string) {
     return m.outboundPhoneNumberId
-}
-// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-// returns a *string when successful
-func (m *SmsResponse) GetProviderMessageId()(*string) {
-    return m.providerMessageId
 }
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
 // returns a *Time when successful
@@ -668,16 +610,6 @@ func (m *SmsResponse) GetStatus()(*SmsResponse_status) {
 // returns a *string when successful
 func (m *SmsResponse) GetStatusReason()(*string) {
     return m.statusReason
-}
-// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-// returns a *string when successful
-func (m *SmsResponse) GetTelnyxId()(*string) {
-    return m.telnyxId
-}
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-// returns a *string when successful
-func (m *SmsResponse) GetTenDlcCampaignId()(*string) {
-    return m.tenDlcCampaignId
 }
 // GetText gets the text property value. Body text for the SMS message or communication represented by this SMS message.
 // returns a *string when successful
@@ -798,12 +730,6 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
-        err := writer.WriteBoolValue("isWarmup", m.GetIsWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
         if err != nil {
             return err
@@ -823,12 +749,6 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     {
         err := writer.WriteStringValue("outboundPhoneNumberId", m.GetOutboundPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerMessageId", m.GetProviderMessageId())
         if err != nil {
             return err
         }
@@ -897,18 +817,6 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     {
         err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("telnyxId", m.GetTelnyxId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcCampaignId", m.GetTenDlcCampaignId())
         if err != nil {
             return err
         }
@@ -1014,10 +922,6 @@ func (m *SmsResponse) SetFromPhoneNumberId(value *string)() {
 func (m *SmsResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsWarmup sets the isWarmup property value. Indicates whether this SMS message is part of Leadping sender warmup traffic.
-func (m *SmsResponse) SetIsWarmup(value *bool)() {
-    m.isWarmup = value
-}
 // SetLeadId sets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 func (m *SmsResponse) SetLeadId(value *string)() {
     m.leadId = value
@@ -1033,10 +937,6 @@ func (m *SmsResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsResponse) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
-}
-// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-func (m *SmsResponse) SetProviderMessageId(value *string)() {
-    m.providerMessageId = value
 }
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
 func (m *SmsResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -1082,14 +982,6 @@ func (m *SmsResponse) SetStatus(value *SmsResponse_status)() {
 func (m *SmsResponse) SetStatusReason(value *string)() {
     m.statusReason = value
 }
-// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-func (m *SmsResponse) SetTelnyxId(value *string)() {
-    m.telnyxId = value
-}
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-func (m *SmsResponse) SetTenDlcCampaignId(value *string)() {
-    m.tenDlcCampaignId = value
-}
 // SetText sets the text property value. Body text for the SMS message or communication represented by this SMS message.
 func (m *SmsResponse) SetText(value *string)() {
     m.text = value
@@ -1125,12 +1017,10 @@ type SmsResponseable interface {
     GetFromPhoneNumber()(*string)
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
-    GetIsWarmup()(*bool)
     GetLeadId()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOutboundPhoneNumberId()(*string)
-    GetProviderMessageId()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRetryCount()(*int32)
@@ -1142,8 +1032,6 @@ type SmsResponseable interface {
     GetSourceId()(*string)
     GetStatus()(*SmsResponse_status)
     GetStatusReason()(*string)
-    GetTelnyxId()(*string)
-    GetTenDlcCampaignId()(*string)
     GetText()(*string)
     GetTrafficType()(*SmsResponse_trafficType)
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1164,12 +1052,10 @@ type SmsResponseable interface {
     SetFromPhoneNumber(value *string)()
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
-    SetIsWarmup(value *bool)()
     SetLeadId(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOutboundPhoneNumberId(value *string)()
-    SetProviderMessageId(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRetryCount(value *int32)()
@@ -1181,8 +1067,6 @@ type SmsResponseable interface {
     SetSourceId(value *string)()
     SetStatus(value *SmsResponse_status)()
     SetStatusReason(value *string)()
-    SetTelnyxId(value *string)()
-    SetTenDlcCampaignId(value *string)()
     SetText(value *string)()
     SetTrafficType(value *SmsResponse_trafficType)()
     SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

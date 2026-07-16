@@ -54,8 +54,6 @@ type SmsEventTableRow struct {
     id *string
     // Indicates whether automation created or triggered this SMS event table row.
     isAutomated *bool
-    // Indicates whether this SMS event table row is part of Leadping sender warmup traffic.
-    isWarmup *bool
     // Lead ID associated with this SMS event.
     leadId *string
     // Lead display name shown for this SMS event.
@@ -64,8 +62,6 @@ type SmsEventTableRow struct {
     outboundPhoneNumberId *string
     // Defines the source that requested outbound delivery.
     outboundSource *SmsEventTableRow_outboundSource
-    // Provider message identifier for SMS delivery tracking and reconciliation.
-    providerMessageId *string
     // UTC timestamp when Leadping queued this SMS event table row for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping received this inbound event or message.
@@ -84,10 +80,6 @@ type SmsEventTableRow struct {
     status *SmsEventTableRow_status
     // Human-readable reason explaining the current status of this SMS event table row.
     statusReason *string
-    // Telnyx identifier connected to this phone number, call, or SMS event.
-    telnyxId *string
-    // 10DLC campaign identifier associated with this sender or SMS event.
-    tenDlcCampaignId *string
     // Body text for the SMS message or communication represented by this SMS event table row.
     text *string
     // Recipient phone number used for this communication.
@@ -417,16 +409,6 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["isWarmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsWarmup(val)
-        }
-        return nil
-    }
     res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -464,16 +446,6 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetOutboundSource(val.(*SmsEventTableRow_outboundSource))
-        }
-        return nil
-    }
-    res["providerMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderMessageId(val)
         }
         return nil
     }
@@ -567,26 +539,6 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["telnyxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelnyxId(val)
-        }
-        return nil
-    }
-    res["tenDlcCampaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcCampaignId(val)
-        }
-        return nil
-    }
     res["text"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -669,11 +621,6 @@ func (m *SmsEventTableRow) GetId()(*string) {
 func (m *SmsEventTableRow) GetIsAutomated()(*bool) {
     return m.isAutomated
 }
-// GetIsWarmup gets the isWarmup property value. Indicates whether this SMS event table row is part of Leadping sender warmup traffic.
-// returns a *bool when successful
-func (m *SmsEventTableRow) GetIsWarmup()(*bool) {
-    return m.isWarmup
-}
 // GetLeadId gets the leadId property value. Lead ID associated with this SMS event.
 // returns a *string when successful
 func (m *SmsEventTableRow) GetLeadId()(*string) {
@@ -693,11 +640,6 @@ func (m *SmsEventTableRow) GetOutboundPhoneNumberId()(*string) {
 // returns a *SmsEventTableRow_outboundSource when successful
 func (m *SmsEventTableRow) GetOutboundSource()(*SmsEventTableRow_outboundSource) {
     return m.outboundSource
-}
-// GetProviderMessageId gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetProviderMessageId()(*string) {
-    return m.providerMessageId
 }
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this SMS event table row for processing.
 // returns a *Time when successful
@@ -743,16 +685,6 @@ func (m *SmsEventTableRow) GetStatus()(*SmsEventTableRow_status) {
 // returns a *string when successful
 func (m *SmsEventTableRow) GetStatusReason()(*string) {
     return m.statusReason
-}
-// GetTelnyxId gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetTelnyxId()(*string) {
-    return m.telnyxId
-}
-// GetTenDlcCampaignId gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetTenDlcCampaignId()(*string) {
-    return m.tenDlcCampaignId
 }
 // GetText gets the text property value. Body text for the SMS message or communication represented by this SMS event table row.
 // returns a *string when successful
@@ -913,12 +845,6 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteBoolValue("isWarmup", m.GetIsWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
         if err != nil {
             return err
@@ -939,12 +865,6 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     if m.GetOutboundSource() != nil {
         cast := (*m.GetOutboundSource()).String()
         err := writer.WriteStringValue("outboundSource", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerMessageId", m.GetProviderMessageId())
         if err != nil {
             return err
         }
@@ -1000,18 +920,6 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("telnyxId", m.GetTelnyxId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcCampaignId", m.GetTenDlcCampaignId())
         if err != nil {
             return err
         }
@@ -1149,10 +1057,6 @@ func (m *SmsEventTableRow) SetId(value *string)() {
 func (m *SmsEventTableRow) SetIsAutomated(value *bool)() {
     m.isAutomated = value
 }
-// SetIsWarmup sets the isWarmup property value. Indicates whether this SMS event table row is part of Leadping sender warmup traffic.
-func (m *SmsEventTableRow) SetIsWarmup(value *bool)() {
-    m.isWarmup = value
-}
 // SetLeadId sets the leadId property value. Lead ID associated with this SMS event.
 func (m *SmsEventTableRow) SetLeadId(value *string)() {
     m.leadId = value
@@ -1168,10 +1072,6 @@ func (m *SmsEventTableRow) SetOutboundPhoneNumberId(value *string)() {
 // SetOutboundSource sets the outboundSource property value. Defines the source that requested outbound delivery.
 func (m *SmsEventTableRow) SetOutboundSource(value *SmsEventTableRow_outboundSource)() {
     m.outboundSource = value
-}
-// SetProviderMessageId sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-func (m *SmsEventTableRow) SetProviderMessageId(value *string)() {
-    m.providerMessageId = value
 }
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this SMS event table row for processing.
 func (m *SmsEventTableRow) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -1208,14 +1108,6 @@ func (m *SmsEventTableRow) SetStatus(value *SmsEventTableRow_status)() {
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this SMS event table row.
 func (m *SmsEventTableRow) SetStatusReason(value *string)() {
     m.statusReason = value
-}
-// SetTelnyxId sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-func (m *SmsEventTableRow) SetTelnyxId(value *string)() {
-    m.telnyxId = value
-}
-// SetTenDlcCampaignId sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-func (m *SmsEventTableRow) SetTenDlcCampaignId(value *string)() {
-    m.tenDlcCampaignId = value
 }
 // SetText sets the text property value. Body text for the SMS message or communication represented by this SMS event table row.
 func (m *SmsEventTableRow) SetText(value *string)() {
@@ -1265,12 +1157,10 @@ type SmsEventTableRowable interface {
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetIsAutomated()(*bool)
-    GetIsWarmup()(*bool)
     GetLeadId()(*string)
     GetLeadName()(*string)
     GetOutboundPhoneNumberId()(*string)
     GetOutboundSource()(*SmsEventTableRow_outboundSource)
-    GetProviderMessageId()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1280,8 +1170,6 @@ type SmsEventTableRowable interface {
     GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*SmsEventTableRow_status)
     GetStatusReason()(*string)
-    GetTelnyxId()(*string)
-    GetTenDlcCampaignId()(*string)
     GetText()(*string)
     GetToPhoneNumber()(*string)
     GetTrafficType()(*SmsEventTableRow_trafficType)
@@ -1309,12 +1197,10 @@ type SmsEventTableRowable interface {
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetIsAutomated(value *bool)()
-    SetIsWarmup(value *bool)()
     SetLeadId(value *string)()
     SetLeadName(value *string)()
     SetOutboundPhoneNumberId(value *string)()
     SetOutboundSource(value *SmsEventTableRow_outboundSource)()
-    SetProviderMessageId(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -1324,8 +1210,6 @@ type SmsEventTableRowable interface {
     SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *SmsEventTableRow_status)()
     SetStatusReason(value *string)()
-    SetTelnyxId(value *string)()
-    SetTenDlcCampaignId(value *string)()
     SetText(value *string)()
     SetToPhoneNumber(value *string)()
     SetTrafficType(value *SmsEventTableRow_trafficType)()
