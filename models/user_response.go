@@ -14,6 +14,8 @@ type UserResponse struct {
     additionalData map[string]any
     // Defines the supported Billing Plan values.
     billingPlan *UserResponse_billingPlan
+    // Customer-safe billing state for the user's currently selected business.
+    billingState UserResponse_billingStateable
     // The compliance value for this user.
     compliance UserResponse_complianceable
     // The date and time when the entity was created.
@@ -77,6 +79,11 @@ func (m *UserResponse) GetAdditionalData()(map[string]any) {
 func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
     return m.billingPlan
 }
+// GetBillingState gets the billingState property value. Customer-safe billing state for the user's currently selected business.
+// returns a UserResponse_billingStateable when successful
+func (m *UserResponse) GetBillingState()(UserResponse_billingStateable) {
+    return m.billingState
+}
 // GetCompliance gets the compliance property value. The compliance value for this user.
 // returns a UserResponse_complianceable when successful
 func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
@@ -108,6 +115,16 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetBillingPlan(val.(*UserResponse_billingPlan))
+        }
+        return nil
+    }
+    res["billingState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUserResponse_billingStateFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingState(val.(UserResponse_billingStateable))
         }
         return nil
     }
@@ -415,6 +432,12 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteObjectValue("billingState", m.GetBillingState())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("compliance", m.GetCompliance())
         if err != nil {
             return err
@@ -563,6 +586,10 @@ func (m *UserResponse) SetAdditionalData(value map[string]any)() {
 func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
     m.billingPlan = value
 }
+// SetBillingState sets the billingState property value. Customer-safe billing state for the user's currently selected business.
+func (m *UserResponse) SetBillingState(value UserResponse_billingStateable)() {
+    m.billingState = value
+}
 // SetCompliance sets the compliance property value. The compliance value for this user.
 func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
     m.compliance = value
@@ -647,6 +674,7 @@ type UserResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlan()(*UserResponse_billingPlan)
+    GetBillingState()(UserResponse_billingStateable)
     GetCompliance()(UserResponse_complianceable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentBusiness()(UserResponse_currentBusinessable)
@@ -668,6 +696,7 @@ type UserResponseable interface {
     GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
     SetBillingPlan(value *UserResponse_billingPlan)()
+    SetBillingState(value UserResponse_billingStateable)()
     SetCompliance(value UserResponse_complianceable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentBusiness(value UserResponse_currentBusinessable)()

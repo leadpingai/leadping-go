@@ -8,6 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// CustomerAnalyticsResponse response model containing customer analytics data returned by the Leadping API.
 type CustomerAnalyticsResponse struct {
     // Activation health associated with this Leadping customer analytics.
     activationHealth CustomerActivationHealthable
