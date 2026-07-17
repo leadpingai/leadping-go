@@ -30,10 +30,8 @@ type BusinessTableRow struct {
     apiKeyTotalUses *int64
     // Defines the supported Billing Plan values.
     billingPlan *BusinessTableRow_billingPlan
-    // The business ID that owns this row when the row represents a child business resource.
-    businessId *string
-    // The business name that owns this row when the row represents a child business resource.
-    businessName *string
+    // The ID and name for this business.
+    business BusinessTableRow_businessable
     // Whether this business is enabled.
     enabled *bool
     // The unique ID for this business.
@@ -64,10 +62,6 @@ type BusinessTableRow struct {
     tenDlcStatus *BusinessTableRow_tenDlcStatus
     // The user count for this business.
     userCount *int32
-    // The user ID value for this business.
-    userId *string
-    // The user name value for this business.
-    userName *string
     // The website URL associated with this business.
     website *string
     // Defines the supported Website Lifecycle Status values.
@@ -135,15 +129,10 @@ func (m *BusinessTableRow) GetApiKeyTotalUses()(*int64) {
 func (m *BusinessTableRow) GetBillingPlan()(*BusinessTableRow_billingPlan) {
     return m.billingPlan
 }
-// GetBusinessId gets the businessId property value. The business ID that owns this row when the row represents a child business resource.
-// returns a *string when successful
-func (m *BusinessTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. The business name that owns this row when the row represents a child business resource.
-// returns a *string when successful
-func (m *BusinessTableRow) GetBusinessName()(*string) {
-    return m.businessName
+// GetBusiness gets the business property value. The ID and name for this business.
+// returns a BusinessTableRow_businessable when successful
+func (m *BusinessTableRow) GetBusiness()(BusinessTableRow_businessable) {
+    return m.business
 }
 // GetEnabled gets the enabled property value. Whether this business is enabled.
 // returns a *bool when successful
@@ -244,23 +233,13 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateBusinessTableRow_businessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
+            m.SetBusiness(val.(BusinessTableRow_businessable))
         }
         return nil
     }
@@ -414,26 +393,6 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    res["userName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserName(val)
-        }
-        return nil
-    }
     res["website"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -526,16 +485,6 @@ func (m *BusinessTableRow) GetTenDlcStatus()(*BusinessTableRow_tenDlcStatus) {
 func (m *BusinessTableRow) GetUserCount()(*int32) {
     return m.userCount
 }
-// GetUserId gets the userId property value. The user ID value for this business.
-// returns a *string when successful
-func (m *BusinessTableRow) GetUserId()(*string) {
-    return m.userId
-}
-// GetUserName gets the userName property value. The user name value for this business.
-// returns a *string when successful
-func (m *BusinessTableRow) GetUserName()(*string) {
-    return m.userName
-}
 // GetWebsite gets the website property value. The website URL associated with this business.
 // returns a *string when successful
 func (m *BusinessTableRow) GetWebsite()(*string) {
@@ -605,13 +554,7 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
+        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -711,18 +654,6 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userName", m.GetUserName())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("website", m.GetWebsite())
         if err != nil {
             return err
@@ -783,13 +714,9 @@ func (m *BusinessTableRow) SetApiKeyTotalUses(value *int64)() {
 func (m *BusinessTableRow) SetBillingPlan(value *BusinessTableRow_billingPlan)() {
     m.billingPlan = value
 }
-// SetBusinessId sets the businessId property value. The business ID that owns this row when the row represents a child business resource.
-func (m *BusinessTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. The business name that owns this row when the row represents a child business resource.
-func (m *BusinessTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
+// SetBusiness sets the business property value. The ID and name for this business.
+func (m *BusinessTableRow) SetBusiness(value BusinessTableRow_businessable)() {
+    m.business = value
 }
 // SetEnabled sets the enabled property value. Whether this business is enabled.
 func (m *BusinessTableRow) SetEnabled(value *bool)() {
@@ -851,14 +778,6 @@ func (m *BusinessTableRow) SetTenDlcStatus(value *BusinessTableRow_tenDlcStatus)
 func (m *BusinessTableRow) SetUserCount(value *int32)() {
     m.userCount = value
 }
-// SetUserId sets the userId property value. The user ID value for this business.
-func (m *BusinessTableRow) SetUserId(value *string)() {
-    m.userId = value
-}
-// SetUserName sets the userName property value. The user name value for this business.
-func (m *BusinessTableRow) SetUserName(value *string)() {
-    m.userName = value
-}
 // SetWebsite sets the website property value. The website URL associated with this business.
 func (m *BusinessTableRow) SetWebsite(value *string)() {
     m.website = value
@@ -879,8 +798,7 @@ type BusinessTableRowable interface {
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
     GetBillingPlan()(*BusinessTableRow_billingPlan)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
+    GetBusiness()(BusinessTableRow_businessable)
     GetEnabled()(*bool)
     GetId()(*string)
     GetIndustry()(*string)
@@ -896,8 +814,6 @@ type BusinessTableRowable interface {
     GetSubscriptionStatus()(*BusinessTableRow_subscriptionStatus)
     GetTenDlcStatus()(*BusinessTableRow_tenDlcStatus)
     GetUserCount()(*int32)
-    GetUserId()(*string)
-    GetUserName()(*string)
     GetWebsite()(*string)
     GetWebsiteStatus()(*BusinessTableRow_websiteStatus)
     SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
@@ -909,8 +825,7 @@ type BusinessTableRowable interface {
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()
     SetBillingPlan(value *BusinessTableRow_billingPlan)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
+    SetBusiness(value BusinessTableRow_businessable)()
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetIndustry(value *string)()
@@ -926,8 +841,6 @@ type BusinessTableRowable interface {
     SetSubscriptionStatus(value *BusinessTableRow_subscriptionStatus)()
     SetTenDlcStatus(value *BusinessTableRow_tenDlcStatus)()
     SetUserCount(value *int32)()
-    SetUserId(value *string)()
-    SetUserName(value *string)()
     SetWebsite(value *string)()
     SetWebsiteStatus(value *BusinessTableRow_websiteStatus)()
 }

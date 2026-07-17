@@ -19,8 +19,6 @@ type PhoneNumberTableRow struct {
     enabled *bool
     // Unique Leadping identifier for this phone number table row.
     id *string
-    // Geographic location metadata for the phone number, lead, or lookup result.
-    location *string
     // Display name for this phone number table row in the Leadping API.
     name *string
     // E.164 phone number exposed by this phone number table row.
@@ -113,16 +111,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetId(val)
-        }
-        return nil
-    }
-    res["location"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLocation(val)
         }
         return nil
     }
@@ -223,11 +211,6 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *PhoneNumberTableRow) GetId()(*string) {
     return m.id
 }
-// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetLocation()(*string) {
-    return m.location
-}
 // GetName gets the name property value. Display name for this phone number table row in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetName()(*string) {
@@ -295,12 +278,6 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("location", m.GetLocation())
         if err != nil {
             return err
         }
@@ -387,10 +364,6 @@ func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
 func (m *PhoneNumberTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-func (m *PhoneNumberTableRow) SetLocation(value *string)() {
-    m.location = value
-}
 // SetName sets the name property value. Display name for this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetName(value *string)() {
     m.name = value
@@ -434,7 +407,6 @@ type PhoneNumberTableRowable interface {
     GetBusinessId()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
-    GetLocation()(*string)
     GetName()(*string)
     GetNumber()(*string)
     GetOwnership()(*string)
@@ -448,7 +420,6 @@ type PhoneNumberTableRowable interface {
     SetBusinessId(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()
-    SetLocation(value *string)()
     SetName(value *string)()
     SetNumber(value *string)()
     SetOwnership(value *string)()

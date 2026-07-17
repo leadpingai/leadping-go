@@ -54,10 +54,8 @@ type SmsEventTableRow struct {
     id *string
     // Indicates whether automation created or triggered this SMS event table row.
     isAutomated *bool
-    // Lead ID associated with this SMS event.
-    leadId *string
-    // Lead display name shown for this SMS event.
-    leadName *string
+    // The ID and name for this lead.
+    lead IdNamePairable
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
     // Defines the source that requested outbound delivery.
@@ -409,23 +407,13 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["lead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["leadName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadName(val)
+            m.SetLead(val.(IdNamePairable))
         }
         return nil
     }
@@ -621,15 +609,10 @@ func (m *SmsEventTableRow) GetId()(*string) {
 func (m *SmsEventTableRow) GetIsAutomated()(*bool) {
     return m.isAutomated
 }
-// GetLeadId gets the leadId property value. Lead ID associated with this SMS event.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetLeadId()(*string) {
-    return m.leadId
-}
-// GetLeadName gets the leadName property value. Lead display name shown for this SMS event.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetLeadName()(*string) {
-    return m.leadName
+// GetLead gets the lead property value. The ID and name for this lead.
+// returns a IdNamePairable when successful
+func (m *SmsEventTableRow) GetLead()(IdNamePairable) {
+    return m.lead
 }
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
@@ -845,13 +828,7 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadName", m.GetLeadName())
+        err := writer.WriteObjectValue("lead", m.GetLead())
         if err != nil {
             return err
         }
@@ -1057,13 +1034,9 @@ func (m *SmsEventTableRow) SetId(value *string)() {
 func (m *SmsEventTableRow) SetIsAutomated(value *bool)() {
     m.isAutomated = value
 }
-// SetLeadId sets the leadId property value. Lead ID associated with this SMS event.
-func (m *SmsEventTableRow) SetLeadId(value *string)() {
-    m.leadId = value
-}
-// SetLeadName sets the leadName property value. Lead display name shown for this SMS event.
-func (m *SmsEventTableRow) SetLeadName(value *string)() {
-    m.leadName = value
+// SetLead sets the lead property value. The ID and name for this lead.
+func (m *SmsEventTableRow) SetLead(value IdNamePairable)() {
+    m.lead = value
 }
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsEventTableRow) SetOutboundPhoneNumberId(value *string)() {
@@ -1157,8 +1130,7 @@ type SmsEventTableRowable interface {
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetIsAutomated()(*bool)
-    GetLeadId()(*string)
-    GetLeadName()(*string)
+    GetLead()(IdNamePairable)
     GetOutboundPhoneNumberId()(*string)
     GetOutboundSource()(*SmsEventTableRow_outboundSource)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1197,8 +1169,7 @@ type SmsEventTableRowable interface {
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetIsAutomated(value *bool)()
-    SetLeadId(value *string)()
-    SetLeadName(value *string)()
+    SetLead(value IdNamePairable)()
     SetOutboundPhoneNumberId(value *string)()
     SetOutboundSource(value *SmsEventTableRow_outboundSource)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

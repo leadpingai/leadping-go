@@ -14,20 +14,16 @@ type AutomationWorkflowRunResponse struct {
     actions []AutomationWorkflowActionResponseable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Unique identifier of the automation associated with this Leadping automation workflow run.
-    automationId *string
-    // Human-readable automation name associated with this Leadping automation workflow run.
-    automationName *string
+    // The ID and name for this automation.
+    automation AutomationWorkflowRunResponse_automationable
     // Unique identifier of the business associated with this Leadping automation workflow run.
     businessId *string
     // Date and time when the automation workflow run was cancelled.
     cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Date and time when the automation workflow run completed.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Unique identifier of the current step associated with this Leadping automation workflow run.
-    currentStepId *string
-    // Human-readable current step name associated with this Leadping automation workflow run.
-    currentStepName *string
+    // The ID and name for this currentStep.
+    currentStep AutomationWorkflowRunResponse_currentStepable
     // Current step order associated with this Leadping automation workflow run.
     currentStepOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Collection of events included with this Leadping automation workflow run.
@@ -93,15 +89,10 @@ func (m *AutomationWorkflowRunResponse) GetActions()([]AutomationWorkflowActionR
 func (m *AutomationWorkflowRunResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetAutomationId()(*string) {
-    return m.automationId
-}
-// GetAutomationName gets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetAutomationName()(*string) {
-    return m.automationName
+// GetAutomation gets the automation property value. The ID and name for this automation.
+// returns a AutomationWorkflowRunResponse_automationable when successful
+func (m *AutomationWorkflowRunResponse) GetAutomation()(AutomationWorkflowRunResponse_automationable) {
+    return m.automation
 }
 // GetBusinessId gets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
 // returns a *string when successful
@@ -118,15 +109,10 @@ func (m *AutomationWorkflowRunResponse) GetCancelledAt()(*i336074805fc853987abe6
 func (m *AutomationWorkflowRunResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetCurrentStepId gets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetCurrentStepId()(*string) {
-    return m.currentStepId
-}
-// GetCurrentStepName gets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetCurrentStepName()(*string) {
-    return m.currentStepName
+// GetCurrentStep gets the currentStep property value. The ID and name for this currentStep.
+// returns a AutomationWorkflowRunResponse_currentStepable when successful
+func (m *AutomationWorkflowRunResponse) GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable) {
+    return m.currentStep
 }
 // GetCurrentStepOrder gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
 // returns a UntypedNodeable when successful
@@ -163,23 +149,13 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
-    res["automationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["automation"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_automationFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAutomationId(val)
-        }
-        return nil
-    }
-    res["automationName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationName(val)
+            m.SetAutomation(val.(AutomationWorkflowRunResponse_automationable))
         }
         return nil
     }
@@ -213,23 +189,13 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
-    res["currentStepId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["currentStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentStepId(val)
-        }
-        return nil
-    }
-    res["currentStepName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentStepName(val)
+            m.SetCurrentStep(val.(AutomationWorkflowRunResponse_currentStepable))
         }
         return nil
     }
@@ -556,13 +522,7 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteStringValue("automationId", m.GetAutomationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("automationName", m.GetAutomationName())
+        err := writer.WriteObjectValue("automation", m.GetAutomation())
         if err != nil {
             return err
         }
@@ -586,13 +546,7 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteStringValue("currentStepId", m.GetCurrentStepId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("currentStepName", m.GetCurrentStepName())
+        err := writer.WriteObjectValue("currentStep", m.GetCurrentStep())
         if err != nil {
             return err
         }
@@ -745,13 +699,9 @@ func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowAct
 func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetAutomationId(value *string)() {
-    m.automationId = value
-}
-// SetAutomationName sets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetAutomationName(value *string)() {
-    m.automationName = value
+// SetAutomation sets the automation property value. The ID and name for this automation.
+func (m *AutomationWorkflowRunResponse) SetAutomation(value AutomationWorkflowRunResponse_automationable)() {
+    m.automation = value
 }
 // SetBusinessId sets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetBusinessId(value *string)() {
@@ -765,13 +715,9 @@ func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987
 func (m *AutomationWorkflowRunResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetCurrentStepId sets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetCurrentStepId(value *string)() {
-    m.currentStepId = value
-}
-// SetCurrentStepName sets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetCurrentStepName(value *string)() {
-    m.currentStepName = value
+// SetCurrentStep sets the currentStep property value. The ID and name for this currentStep.
+func (m *AutomationWorkflowRunResponse) SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)() {
+    m.currentStep = value
 }
 // SetCurrentStepOrder sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -861,13 +807,11 @@ type AutomationWorkflowRunResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationWorkflowActionResponseable)
-    GetAutomationId()(*string)
-    GetAutomationName()(*string)
+    GetAutomation()(AutomationWorkflowRunResponse_automationable)
     GetBusinessId()(*string)
     GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentStepId()(*string)
-    GetCurrentStepName()(*string)
+    GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable)
     GetCurrentStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetEvents()([]AutomationWorkflowEventResponseable)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -890,13 +834,11 @@ type AutomationWorkflowRunResponseable interface {
     GetTriggerType()(*string)
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetActions(value []AutomationWorkflowActionResponseable)()
-    SetAutomationId(value *string)()
-    SetAutomationName(value *string)()
+    SetAutomation(value AutomationWorkflowRunResponse_automationable)()
     SetBusinessId(value *string)()
     SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentStepId(value *string)()
-    SetCurrentStepName(value *string)()
+    SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)()
     SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetEvents(value []AutomationWorkflowEventResponseable)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

@@ -18,10 +18,8 @@ type LeadTableRow struct {
     archivedByUserId *string
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
-    // Business ID that owns this lead.
-    businessId *string
-    // Business display name shown for this lead.
-    businessName *string
+    // The ID and name for this business.
+    business LeadTableRow_businessable
     // UTC timestamp when this lead table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current disposition summary that describes the lead outcome.
@@ -42,10 +40,8 @@ type LeadTableRow struct {
     phone *string
     // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Lead source ID that created or supplied this lead.
-    sourceId *string
-    // Lead source display name shown for this lead.
-    sourceName *string
+    // The ID and name for this source.
+    source LeadTableRow_sourceable
     // Current lifecycle status for this lead table row in the Leadping API.
     status *string
     // Presentation tone that helps clients style the current status of this lead table row.
@@ -87,15 +83,10 @@ func (m *LeadTableRow) GetArchivedByUserId()(*string) {
 func (m *LeadTableRow) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
-// GetBusinessId gets the businessId property value. Business ID that owns this lead.
-// returns a *string when successful
-func (m *LeadTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. Business display name shown for this lead.
-// returns a *string when successful
-func (m *LeadTableRow) GetBusinessName()(*string) {
-    return m.businessName
+// GetBusiness gets the business property value. The ID and name for this business.
+// returns a LeadTableRow_businessable when successful
+func (m *LeadTableRow) GetBusiness()(LeadTableRow_businessable) {
+    return m.business
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead table row was created.
 // returns a *Time when successful
@@ -151,23 +142,13 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadTableRow_businessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
+            m.SetBusiness(val.(LeadTableRow_businessable))
         }
         return nil
     }
@@ -271,23 +252,13 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadTableRow_sourceFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["sourceName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceName(val)
+            m.SetSource(val.(LeadTableRow_sourceable))
         }
         return nil
     }
@@ -369,15 +340,10 @@ func (m *LeadTableRow) GetPhone()(*string) {
 func (m *LeadTableRow) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
-// GetSourceId gets the sourceId property value. Lead source ID that created or supplied this lead.
-// returns a *string when successful
-func (m *LeadTableRow) GetSourceId()(*string) {
-    return m.sourceId
-}
-// GetSourceName gets the sourceName property value. Lead source display name shown for this lead.
-// returns a *string when successful
-func (m *LeadTableRow) GetSourceName()(*string) {
-    return m.sourceName
+// GetSource gets the source property value. The ID and name for this source.
+// returns a LeadTableRow_sourceable when successful
+func (m *LeadTableRow) GetSource()(LeadTableRow_sourceable) {
+    return m.source
 }
 // GetStatus gets the status property value. Current lifecycle status for this lead table row in the Leadping API.
 // returns a *string when successful
@@ -420,13 +386,7 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
+        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -492,13 +452,7 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceName", m.GetSourceName())
+        err := writer.WriteObjectValue("source", m.GetSource())
         if err != nil {
             return err
         }
@@ -557,13 +511,9 @@ func (m *LeadTableRow) SetArchivedByUserId(value *string)() {
 func (m *LeadTableRow) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
-// SetBusinessId sets the businessId property value. Business ID that owns this lead.
-func (m *LeadTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. Business display name shown for this lead.
-func (m *LeadTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
+// SetBusiness sets the business property value. The ID and name for this business.
+func (m *LeadTableRow) SetBusiness(value LeadTableRow_businessable)() {
+    m.business = value
 }
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead table row was created.
 func (m *LeadTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -605,13 +555,9 @@ func (m *LeadTableRow) SetPhone(value *string)() {
 func (m *LeadTableRow) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
-// SetSourceId sets the sourceId property value. Lead source ID that created or supplied this lead.
-func (m *LeadTableRow) SetSourceId(value *string)() {
-    m.sourceId = value
-}
-// SetSourceName sets the sourceName property value. Lead source display name shown for this lead.
-func (m *LeadTableRow) SetSourceName(value *string)() {
-    m.sourceName = value
+// SetSource sets the source property value. The ID and name for this source.
+func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable)() {
+    m.source = value
 }
 // SetStatus sets the status property value. Current lifecycle status for this lead table row in the Leadping API.
 func (m *LeadTableRow) SetStatus(value *string)() {
@@ -635,8 +581,7 @@ type LeadTableRowable interface {
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchivedByUserId()(*string)
     GetArchiveReason()(*int32)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
+    GetBusiness()(LeadTableRow_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentDisposition()(LeadTableRow_currentDispositionable)
     GetEmail()(*string)
@@ -647,8 +592,7 @@ type LeadTableRowable interface {
     GetLastName()(*string)
     GetPhone()(*string)
     GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSourceId()(*string)
-    GetSourceName()(*string)
+    GetSource()(LeadTableRow_sourceable)
     GetStatus()(*string)
     GetStatusTone()(*string)
     GetTags()([]TagSummaryable)
@@ -656,8 +600,7 @@ type LeadTableRowable interface {
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
     SetArchiveReason(value *int32)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
+    SetBusiness(value LeadTableRow_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentDisposition(value LeadTableRow_currentDispositionable)()
     SetEmail(value *string)()
@@ -668,8 +611,7 @@ type LeadTableRowable interface {
     SetLastName(value *string)()
     SetPhone(value *string)()
     SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSourceId(value *string)()
-    SetSourceName(value *string)()
+    SetSource(value LeadTableRow_sourceable)()
     SetStatus(value *string)()
     SetStatusTone(value *string)()
     SetTags(value []TagSummaryable)()

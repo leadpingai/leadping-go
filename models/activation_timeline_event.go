@@ -10,8 +10,8 @@ import (
 
 // ActivationTimelineEvent aPI DTO containing activation timeline event data used by Leadping API contracts.
 type ActivationTimelineEvent struct {
-    // The actor name value for this activation timeline event.
-    actorName *string
+    // The ID and name for this actor.
+    actor ActivationTimelineEvent_actorable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The date and time for the created at value on this activation timeline event.
@@ -41,10 +41,10 @@ func NewActivationTimelineEvent()(*ActivationTimelineEvent) {
 func CreateActivationTimelineEventFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewActivationTimelineEvent(), nil
 }
-// GetActorName gets the actorName property value. The actor name value for this activation timeline event.
-// returns a *string when successful
-func (m *ActivationTimelineEvent) GetActorName()(*string) {
-    return m.actorName
+// GetActor gets the actor property value. The ID and name for this actor.
+// returns a ActivationTimelineEvent_actorable when successful
+func (m *ActivationTimelineEvent) GetActor()(ActivationTimelineEvent_actorable) {
+    return m.actor
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
@@ -70,13 +70,13 @@ func (m *ActivationTimelineEvent) GetFailureReason()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *ActivationTimelineEvent) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actorName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["actor"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateActivationTimelineEvent_actorFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetActorName(val)
+            m.SetActor(val.(ActivationTimelineEvent_actorable))
         }
         return nil
     }
@@ -175,7 +175,7 @@ func (m *ActivationTimelineEvent) GetTypeEscaped()(*string) {
 // Serialize serializes information the current object
 func (m *ActivationTimelineEvent) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("actorName", m.GetActorName())
+        err := writer.WriteObjectValue("actor", m.GetActor())
         if err != nil {
             return err
         }
@@ -230,9 +230,9 @@ func (m *ActivationTimelineEvent) Serialize(writer i878a80d2330e89d26896388a3f48
     }
     return nil
 }
-// SetActorName sets the actorName property value. The actor name value for this activation timeline event.
-func (m *ActivationTimelineEvent) SetActorName(value *string)() {
-    m.actorName = value
+// SetActor sets the actor property value. The ID and name for this actor.
+func (m *ActivationTimelineEvent) SetActor(value ActivationTimelineEvent_actorable)() {
+    m.actor = value
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ActivationTimelineEvent) SetAdditionalData(value map[string]any)() {
@@ -269,7 +269,7 @@ func (m *ActivationTimelineEvent) SetTypeEscaped(value *string)() {
 type ActivationTimelineEventable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActorName()(*string)
+    GetActor()(ActivationTimelineEvent_actorable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDetails()(*string)
     GetFailureReason()(*string)
@@ -277,7 +277,7 @@ type ActivationTimelineEventable interface {
     GetStatus()(*string)
     GetTitle()(*string)
     GetTypeEscaped()(*string)
-    SetActorName(value *string)()
+    SetActor(value ActivationTimelineEvent_actorable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDetails(value *string)()
     SetFailureReason(value *string)()

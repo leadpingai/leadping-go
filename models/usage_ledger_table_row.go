@@ -16,10 +16,8 @@ type UsageLedgerTableRow struct {
     billableSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The billable unit value for this usage ledger.
     billableUnit *BillableUnit
-    // The business ID associated with this usage ledger.
-    businessId *string
-    // The business name value for this usage ledger.
-    businessName *string
+    // The ID and name for this business.
+    business UsageLedgerTableRow_businessable
     // The channel value for this usage ledger.
     channel *UsageChannel
     // The date and time for the created at value on this usage ledger.
@@ -34,10 +32,8 @@ type UsageLedgerTableRow struct {
     id *string
     // Whether this usage ledger is billable.
     isBillable *bool
-    // The lead ID associated with this usage ledger.
-    leadId *string
-    // The lead name value for this usage ledger.
-    leadName *string
+    // The ID and name for this lead.
+    lead UsageLedgerTableRow_leadable
     // The phone number associated with this usage ledger.
     phoneNumber *string
     // The phone number ID associated with this usage ledger.
@@ -50,10 +46,8 @@ type UsageLedgerTableRow struct {
     status *UsageRecordStatus
     // The unit price value for this usage ledger.
     unitPrice *float64
-    // The user ID associated with this usage ledger.
-    userId *string
-    // The user name value for this usage ledger.
-    userName *string
+    // The ID and name for this user.
+    user UsageLedgerTableRow_userable
 }
 // NewUsageLedgerTableRow instantiates a new UsageLedgerTableRow and sets the default values.
 func NewUsageLedgerTableRow()(*UsageLedgerTableRow) {
@@ -82,15 +76,10 @@ func (m *UsageLedgerTableRow) GetBillableSeconds()(i878a80d2330e89d26896388a3f48
 func (m *UsageLedgerTableRow) GetBillableUnit()(*BillableUnit) {
     return m.billableUnit
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. The business name value for this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetBusinessName()(*string) {
-    return m.businessName
+// GetBusiness gets the business property value. The ID and name for this business.
+// returns a UsageLedgerTableRow_businessable when successful
+func (m *UsageLedgerTableRow) GetBusiness()(UsageLedgerTableRow_businessable) {
+    return m.business
 }
 // GetChannel gets the channel property value. The channel value for this usage ledger.
 // returns a *UsageChannel when successful
@@ -141,23 +130,13 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUsageLedgerTableRow_businessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
+            m.SetBusiness(val.(UsageLedgerTableRow_businessable))
         }
         return nil
     }
@@ -231,23 +210,13 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["lead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUsageLedgerTableRow_leadFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["leadName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadName(val)
+            m.SetLead(val.(UsageLedgerTableRow_leadable))
         }
         return nil
     }
@@ -311,23 +280,13 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUsageLedgerTableRow_userFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    res["userName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserName(val)
+            m.SetUser(val.(UsageLedgerTableRow_userable))
         }
         return nil
     }
@@ -343,15 +302,10 @@ func (m *UsageLedgerTableRow) GetId()(*string) {
 func (m *UsageLedgerTableRow) GetIsBillable()(*bool) {
     return m.isBillable
 }
-// GetLeadId gets the leadId property value. The lead ID associated with this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetLeadId()(*string) {
-    return m.leadId
-}
-// GetLeadName gets the leadName property value. The lead name value for this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetLeadName()(*string) {
-    return m.leadName
+// GetLead gets the lead property value. The ID and name for this lead.
+// returns a UsageLedgerTableRow_leadable when successful
+func (m *UsageLedgerTableRow) GetLead()(UsageLedgerTableRow_leadable) {
+    return m.lead
 }
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this usage ledger.
 // returns a *string when successful
@@ -383,15 +337,10 @@ func (m *UsageLedgerTableRow) GetStatus()(*UsageRecordStatus) {
 func (m *UsageLedgerTableRow) GetUnitPrice()(*float64) {
     return m.unitPrice
 }
-// GetUserId gets the userId property value. The user ID associated with this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetUserId()(*string) {
-    return m.userId
-}
-// GetUserName gets the userName property value. The user name value for this usage ledger.
-// returns a *string when successful
-func (m *UsageLedgerTableRow) GetUserName()(*string) {
-    return m.userName
+// GetUser gets the user property value. The ID and name for this user.
+// returns a UsageLedgerTableRow_userable when successful
+func (m *UsageLedgerTableRow) GetUser()(UsageLedgerTableRow_userable) {
+    return m.user
 }
 // Serialize serializes information the current object
 func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -409,13 +358,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
+        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -464,13 +407,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadName", m.GetLeadName())
+        err := writer.WriteObjectValue("lead", m.GetLead())
         if err != nil {
             return err
         }
@@ -513,13 +450,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userName", m.GetUserName())
+        err := writer.WriteObjectValue("user", m.GetUser())
         if err != nil {
             return err
         }
@@ -544,13 +475,9 @@ func (m *UsageLedgerTableRow) SetBillableSeconds(value i878a80d2330e89d26896388a
 func (m *UsageLedgerTableRow) SetBillableUnit(value *BillableUnit)() {
     m.billableUnit = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this usage ledger.
-func (m *UsageLedgerTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. The business name value for this usage ledger.
-func (m *UsageLedgerTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
+// SetBusiness sets the business property value. The ID and name for this business.
+func (m *UsageLedgerTableRow) SetBusiness(value UsageLedgerTableRow_businessable)() {
+    m.business = value
 }
 // SetChannel sets the channel property value. The channel value for this usage ledger.
 func (m *UsageLedgerTableRow) SetChannel(value *UsageChannel)() {
@@ -580,13 +507,9 @@ func (m *UsageLedgerTableRow) SetId(value *string)() {
 func (m *UsageLedgerTableRow) SetIsBillable(value *bool)() {
     m.isBillable = value
 }
-// SetLeadId sets the leadId property value. The lead ID associated with this usage ledger.
-func (m *UsageLedgerTableRow) SetLeadId(value *string)() {
-    m.leadId = value
-}
-// SetLeadName sets the leadName property value. The lead name value for this usage ledger.
-func (m *UsageLedgerTableRow) SetLeadName(value *string)() {
-    m.leadName = value
+// SetLead sets the lead property value. The ID and name for this lead.
+func (m *UsageLedgerTableRow) SetLead(value UsageLedgerTableRow_leadable)() {
+    m.lead = value
 }
 // SetPhoneNumber sets the phoneNumber property value. The phone number associated with this usage ledger.
 func (m *UsageLedgerTableRow) SetPhoneNumber(value *string)() {
@@ -612,21 +535,16 @@ func (m *UsageLedgerTableRow) SetStatus(value *UsageRecordStatus)() {
 func (m *UsageLedgerTableRow) SetUnitPrice(value *float64)() {
     m.unitPrice = value
 }
-// SetUserId sets the userId property value. The user ID associated with this usage ledger.
-func (m *UsageLedgerTableRow) SetUserId(value *string)() {
-    m.userId = value
-}
-// SetUserName sets the userName property value. The user name value for this usage ledger.
-func (m *UsageLedgerTableRow) SetUserName(value *string)() {
-    m.userName = value
+// SetUser sets the user property value. The ID and name for this user.
+func (m *UsageLedgerTableRow) SetUser(value UsageLedgerTableRow_userable)() {
+    m.user = value
 }
 type UsageLedgerTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillableUnit()(*BillableUnit)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
+    GetBusiness()(UsageLedgerTableRow_businessable)
     GetChannel()(*UsageChannel)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCustomerChargeAmount()(*float64)
@@ -634,20 +552,17 @@ type UsageLedgerTableRowable interface {
     GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetId()(*string)
     GetIsBillable()(*bool)
-    GetLeadId()(*string)
-    GetLeadName()(*string)
+    GetLead()(UsageLedgerTableRow_leadable)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
     GetQuantity()(*float64)
     GetSmsSegments()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetStatus()(*UsageRecordStatus)
     GetUnitPrice()(*float64)
-    GetUserId()(*string)
-    GetUserName()(*string)
+    GetUser()(UsageLedgerTableRow_userable)
     SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillableUnit(value *BillableUnit)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
+    SetBusiness(value UsageLedgerTableRow_businessable)()
     SetChannel(value *UsageChannel)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCustomerChargeAmount(value *float64)()
@@ -655,14 +570,12 @@ type UsageLedgerTableRowable interface {
     SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetId(value *string)()
     SetIsBillable(value *bool)()
-    SetLeadId(value *string)()
-    SetLeadName(value *string)()
+    SetLead(value UsageLedgerTableRow_leadable)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
     SetQuantity(value *float64)()
     SetSmsSegments(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetStatus(value *UsageRecordStatus)()
     SetUnitPrice(value *float64)()
-    SetUserId(value *string)()
-    SetUserName(value *string)()
+    SetUser(value UsageLedgerTableRow_userable)()
 }

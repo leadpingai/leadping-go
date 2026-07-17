@@ -22,12 +22,10 @@ type BusinessUserTableRow struct {
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The role value for this business user.
     role *BusinessUserRole
+    // The ID and name for this user.
+    user IdNamePairable
     // The user email value for this business user.
     userEmail *string
-    // The user ID associated with this business user.
-    userId *string
-    // The user name value for this business user.
-    userName *string
 }
 // NewBusinessUserTableRow instantiates a new BusinessUserTableRow and sets the default values.
 func NewBusinessUserTableRow()(*BusinessUserTableRow) {
@@ -105,6 +103,16 @@ func (m *BusinessUserTableRow) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUser(val.(IdNamePairable))
+        }
+        return nil
+    }
     res["userEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -112,26 +120,6 @@ func (m *BusinessUserTableRow) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         if val != nil {
             m.SetUserEmail(val)
-        }
-        return nil
-    }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    res["userName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserName(val)
         }
         return nil
     }
@@ -157,20 +145,15 @@ func (m *BusinessUserTableRow) GetLicenseRenewalDate()(*i336074805fc853987abe6f7
 func (m *BusinessUserTableRow) GetRole()(*BusinessUserRole) {
     return m.role
 }
+// GetUser gets the user property value. The ID and name for this user.
+// returns a IdNamePairable when successful
+func (m *BusinessUserTableRow) GetUser()(IdNamePairable) {
+    return m.user
+}
 // GetUserEmail gets the userEmail property value. The user email value for this business user.
 // returns a *string when successful
 func (m *BusinessUserTableRow) GetUserEmail()(*string) {
     return m.userEmail
-}
-// GetUserId gets the userId property value. The user ID associated with this business user.
-// returns a *string when successful
-func (m *BusinessUserTableRow) GetUserId()(*string) {
-    return m.userId
-}
-// GetUserName gets the userName property value. The user name value for this business user.
-// returns a *string when successful
-func (m *BusinessUserTableRow) GetUserName()(*string) {
-    return m.userName
 }
 // Serialize serializes information the current object
 func (m *BusinessUserTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -206,19 +189,13 @@ func (m *BusinessUserTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
+        err := writer.WriteObjectValue("user", m.GetUser())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("userEmail", m.GetUserEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userName", m.GetUserName())
         if err != nil {
             return err
         }
@@ -255,17 +232,13 @@ func (m *BusinessUserTableRow) SetLicenseRenewalDate(value *i336074805fc853987ab
 func (m *BusinessUserTableRow) SetRole(value *BusinessUserRole)() {
     m.role = value
 }
+// SetUser sets the user property value. The ID and name for this user.
+func (m *BusinessUserTableRow) SetUser(value IdNamePairable)() {
+    m.user = value
+}
 // SetUserEmail sets the userEmail property value. The user email value for this business user.
 func (m *BusinessUserTableRow) SetUserEmail(value *string)() {
     m.userEmail = value
-}
-// SetUserId sets the userId property value. The user ID associated with this business user.
-func (m *BusinessUserTableRow) SetUserId(value *string)() {
-    m.userId = value
-}
-// SetUserName sets the userName property value. The user name value for this business user.
-func (m *BusinessUserTableRow) SetUserName(value *string)() {
-    m.userName = value
 }
 type BusinessUserTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
@@ -275,15 +248,13 @@ type BusinessUserTableRowable interface {
     GetLicenseBillingStatus()(*string)
     GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRole()(*BusinessUserRole)
+    GetUser()(IdNamePairable)
     GetUserEmail()(*string)
-    GetUserId()(*string)
-    GetUserName()(*string)
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()
     SetLicenseBillingStatus(value *string)()
     SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRole(value *BusinessUserRole)()
+    SetUser(value IdNamePairable)()
     SetUserEmail(value *string)()
-    SetUserId(value *string)()
-    SetUserName(value *string)()
 }

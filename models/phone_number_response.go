@@ -22,14 +22,14 @@ type PhoneNumberResponse struct {
     id *string
     // Indicates whether Leadping provisions and manages this phone number.
     leadpingOwned *bool
-    // Geographic location metadata for the phone number, lead, or lookup result.
-    location PhoneNumberResponse_locationable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
     // E.164 phone number exposed by this phone number.
     number *string
+    // Identifier of the canonical phone identity for this number.
+    phoneIdentityId *string
     // Routing metadata that connects this phone number to teams, campaigns, and sources.
     routing PhoneNumberRoutingMetadataable
     // SMS and voice warmup state for this phone number.
@@ -121,16 +121,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["location"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberResponse_locationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLocation(val.(PhoneNumberResponse_locationable))
-        }
-        return nil
-    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -158,6 +148,16 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetNumber(val)
+        }
+        return nil
+    }
+    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPhoneIdentityId(val)
         }
         return nil
     }
@@ -193,11 +193,6 @@ func (m *PhoneNumberResponse) GetId()(*string) {
 func (m *PhoneNumberResponse) GetLeadpingOwned()(*bool) {
     return m.leadpingOwned
 }
-// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-// returns a PhoneNumberResponse_locationable when successful
-func (m *PhoneNumberResponse) GetLocation()(PhoneNumberResponse_locationable) {
-    return m.location
-}
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -212,6 +207,11 @@ func (m *PhoneNumberResponse) GetName()(*string) {
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetNumber()(*string) {
     return m.number
+}
+// GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
+// returns a *string when successful
+func (m *PhoneNumberResponse) GetPhoneIdentityId()(*string) {
+    return m.phoneIdentityId
 }
 // GetRouting gets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 // returns a PhoneNumberRoutingMetadataable when successful
@@ -256,12 +256,6 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("location", m.GetLocation())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
         if err != nil {
             return err
@@ -275,6 +269,12 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteStringValue("number", m.GetNumber())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
         if err != nil {
             return err
         }
@@ -323,10 +323,6 @@ func (m *PhoneNumberResponse) SetId(value *string)() {
 func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool)() {
     m.leadpingOwned = value
 }
-// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-func (m *PhoneNumberResponse) SetLocation(value PhoneNumberResponse_locationable)() {
-    m.location = value
-}
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
@@ -338,6 +334,10 @@ func (m *PhoneNumberResponse) SetName(value *string)() {
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number.
 func (m *PhoneNumberResponse) SetNumber(value *string)() {
     m.number = value
+}
+// SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
+func (m *PhoneNumberResponse) SetPhoneIdentityId(value *string)() {
+    m.phoneIdentityId = value
 }
 // SetRouting sets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
 func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable)() {
@@ -355,10 +355,10 @@ type PhoneNumberResponseable interface {
     GetEnabled()(*bool)
     GetId()(*string)
     GetLeadpingOwned()(*bool)
-    GetLocation()(PhoneNumberResponse_locationable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNumber()(*string)
+    GetPhoneIdentityId()(*string)
     GetRouting()(PhoneNumberRoutingMetadataable)
     GetWarmup()(PhoneNumberWarmupable)
     SetBusiness(value PhoneNumberResponse_businessable)()
@@ -366,10 +366,10 @@ type PhoneNumberResponseable interface {
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetLeadpingOwned(value *bool)()
-    SetLocation(value PhoneNumberResponse_locationable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNumber(value *string)()
+    SetPhoneIdentityId(value *string)()
     SetRouting(value PhoneNumberRoutingMetadataable)()
     SetWarmup(value PhoneNumberWarmupable)()
 }

@@ -10,26 +10,20 @@ import (
 
 // TransactionTableRow list item schema for Leadping API billing transaction table row results shown in searchable tables.
 type TransactionTableRow struct {
-    // Display name of the wallet or account used for this transaction.
-    accountName *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount for this billing transaction or wallet operation.
     amount *float64
-    // Business ID charged or credited by this wallet transaction.
-    businessId *string
-    // Business display name shown for this wallet transaction.
-    businessName *string
+    // The ID and name for this business.
+    business TransactionTableRow_businessable
     // UTC timestamp when this billing transaction table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Human-readable description that explains this billing transaction table row to API users.
     description *string
     // Unique Leadping identifier for this billing transaction table row.
     id *string
-    // Lead ID connected to this transaction when the charge came from lead activity.
-    leadId *string
-    // Lead display name shown for lead-related wallet transactions.
-    leadName *string
+    // The ID and name for this lead.
+    lead TransactionTableRow_leadable
     // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
     // Masked or human-readable payment method shown for this transaction.
@@ -51,11 +45,6 @@ func NewTransactionTableRow()(*TransactionTableRow) {
 func CreateTransactionTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTransactionTableRow(), nil
 }
-// GetAccountName gets the accountName property value. Display name of the wallet or account used for this transaction.
-// returns a *string when successful
-func (m *TransactionTableRow) GetAccountName()(*string) {
-    return m.accountName
-}
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
 func (m *TransactionTableRow) GetAdditionalData()(map[string]any) {
@@ -66,15 +55,10 @@ func (m *TransactionTableRow) GetAdditionalData()(map[string]any) {
 func (m *TransactionTableRow) GetAmount()(*float64) {
     return m.amount
 }
-// GetBusinessId gets the businessId property value. Business ID charged or credited by this wallet transaction.
-// returns a *string when successful
-func (m *TransactionTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. Business display name shown for this wallet transaction.
-// returns a *string when successful
-func (m *TransactionTableRow) GetBusinessName()(*string) {
-    return m.businessName
+// GetBusiness gets the business property value. The ID and name for this business.
+// returns a TransactionTableRow_businessable when successful
+func (m *TransactionTableRow) GetBusiness()(TransactionTableRow_businessable) {
+    return m.business
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 // returns a *Time when successful
@@ -90,16 +74,6 @@ func (m *TransactionTableRow) GetDescription()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["accountName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAccountName(val)
-        }
-        return nil
-    }
     res["amount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -110,23 +84,13 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateTransactionTableRow_businessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
+            m.SetBusiness(val.(TransactionTableRow_businessable))
         }
         return nil
     }
@@ -160,23 +124,13 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["lead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateTransactionTableRow_leadFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["leadName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadName(val)
+            m.SetLead(val.(TransactionTableRow_leadable))
         }
         return nil
     }
@@ -227,15 +181,10 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *TransactionTableRow) GetId()(*string) {
     return m.id
 }
-// GetLeadId gets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
-// returns a *string when successful
-func (m *TransactionTableRow) GetLeadId()(*string) {
-    return m.leadId
-}
-// GetLeadName gets the leadName property value. Lead display name shown for lead-related wallet transactions.
-// returns a *string when successful
-func (m *TransactionTableRow) GetLeadName()(*string) {
-    return m.leadName
+// GetLead gets the lead property value. The ID and name for this lead.
+// returns a TransactionTableRow_leadable when successful
+func (m *TransactionTableRow) GetLead()(TransactionTableRow_leadable) {
+    return m.lead
 }
 // GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 // returns a *float64 when successful
@@ -260,25 +209,13 @@ func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
 // Serialize serializes information the current object
 func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("accountName", m.GetAccountName())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteFloat64Value("amount", m.GetAmount())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
+        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -302,13 +239,7 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadName", m.GetLeadName())
+        err := writer.WriteObjectValue("lead", m.GetLead())
         if err != nil {
             return err
         }
@@ -347,10 +278,6 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAccountName sets the accountName property value. Display name of the wallet or account used for this transaction.
-func (m *TransactionTableRow) SetAccountName(value *string)() {
-    m.accountName = value
-}
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *TransactionTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
@@ -359,13 +286,9 @@ func (m *TransactionTableRow) SetAdditionalData(value map[string]any)() {
 func (m *TransactionTableRow) SetAmount(value *float64)() {
     m.amount = value
 }
-// SetBusinessId sets the businessId property value. Business ID charged or credited by this wallet transaction.
-func (m *TransactionTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. Business display name shown for this wallet transaction.
-func (m *TransactionTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
+// SetBusiness sets the business property value. The ID and name for this business.
+func (m *TransactionTableRow) SetBusiness(value TransactionTableRow_businessable)() {
+    m.business = value
 }
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -379,13 +302,9 @@ func (m *TransactionTableRow) SetDescription(value *string)() {
 func (m *TransactionTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLeadId sets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
-func (m *TransactionTableRow) SetLeadId(value *string)() {
-    m.leadId = value
-}
-// SetLeadName sets the leadName property value. Lead display name shown for lead-related wallet transactions.
-func (m *TransactionTableRow) SetLeadName(value *string)() {
-    m.leadName = value
+// SetLead sets the lead property value. The ID and name for this lead.
+func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable)() {
+    m.lead = value
 }
 // SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 func (m *TransactionTableRow) SetNetAmount(value *float64)() {
@@ -406,28 +325,22 @@ func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
 type TransactionTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountName()(*string)
     GetAmount()(*float64)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
+    GetBusiness()(TransactionTableRow_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
     GetId()(*string)
-    GetLeadId()(*string)
-    GetLeadName()(*string)
+    GetLead()(TransactionTableRow_leadable)
     GetNetAmount()(*float64)
     GetPaymentMethodDisplay()(*string)
     GetTransactionStatus()(*TransactionStatus)
     GetTransactionType()(*TransactionType)
-    SetAccountName(value *string)()
     SetAmount(value *float64)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
+    SetBusiness(value TransactionTableRow_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()
     SetId(value *string)()
-    SetLeadId(value *string)()
-    SetLeadName(value *string)()
+    SetLead(value TransactionTableRow_leadable)()
     SetNetAmount(value *float64)()
     SetPaymentMethodDisplay(value *string)()
     SetTransactionStatus(value *TransactionStatus)()

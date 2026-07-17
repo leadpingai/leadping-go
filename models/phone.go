@@ -11,8 +11,6 @@ import (
 type Phone struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Phone lookup details returned by the provider or Leadping enrichment service.
-    lookup Phone_lookupable
     // E.164 phone number exposed by this lead phone number.
     number *string
     // Identifier of the canonical phone identity stored by Leadping.
@@ -41,16 +39,6 @@ func (m *Phone) GetAdditionalData()(map[string]any) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["lookup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhone_lookupFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLookup(val.(Phone_lookupable))
-        }
-        return nil
-    }
     res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -83,11 +71,6 @@ func (m *Phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388
     }
     return res
 }
-// GetLookup gets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
-// returns a Phone_lookupable when successful
-func (m *Phone) GetLookup()(Phone_lookupable) {
-    return m.lookup
-}
 // GetNumber gets the number property value. E.164 phone number exposed by this lead phone number.
 // returns a *string when successful
 func (m *Phone) GetNumber()(*string) {
@@ -105,12 +88,6 @@ func (m *Phone) GetTypeEscaped()(*string) {
 }
 // Serialize serializes information the current object
 func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("lookup", m.GetLookup())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("number", m.GetNumber())
         if err != nil {
@@ -141,10 +118,6 @@ func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
 func (m *Phone) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLookup sets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
-func (m *Phone) SetLookup(value Phone_lookupable)() {
-    m.lookup = value
-}
 // SetNumber sets the number property value. E.164 phone number exposed by this lead phone number.
 func (m *Phone) SetNumber(value *string)() {
     m.number = value
@@ -160,11 +133,9 @@ func (m *Phone) SetTypeEscaped(value *string)() {
 type Phoneable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLookup()(Phone_lookupable)
     GetNumber()(*string)
     GetPhoneIdentityId()(*string)
     GetTypeEscaped()(*string)
-    SetLookup(value Phone_lookupable)()
     SetNumber(value *string)()
     SetPhoneIdentityId(value *string)()
     SetTypeEscaped(value *string)()

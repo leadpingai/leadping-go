@@ -14,10 +14,8 @@ type BusinessInvitationResponse struct {
     acceptedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The business ID associated with this business invitation.
-    businessId *string
-    // The business name value for this business invitation.
-    businessName *string
+    // The ID and name for this business.
+    business IdNamePairable
     // The date and time for the created at value on this business invitation.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The email address associated with this business invitation.
@@ -73,15 +71,10 @@ func (m *BusinessInvitationResponse) GetAcceptedAt()(*i336074805fc853987abe6f7fe
 func (m *BusinessInvitationResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this business invitation.
-// returns a *string when successful
-func (m *BusinessInvitationResponse) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. The business name value for this business invitation.
-// returns a *string when successful
-func (m *BusinessInvitationResponse) GetBusinessName()(*string) {
-    return m.businessName
+// GetBusiness gets the business property value. The ID and name for this business.
+// returns a IdNamePairable when successful
+func (m *BusinessInvitationResponse) GetBusiness()(IdNamePairable) {
+    return m.business
 }
 // GetCreatedAt gets the createdAt property value. The date and time for the created at value on this business invitation.
 // returns a *Time when successful
@@ -112,23 +105,13 @@ func (m *BusinessInvitationResponse) GetFieldDeserializers()(map[string]func(i87
         }
         return nil
     }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
+            m.SetBusiness(val.(IdNamePairable))
         }
         return nil
     }
@@ -368,13 +351,7 @@ func (m *BusinessInvitationResponse) Serialize(writer i878a80d2330e89d26896388a3
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
+        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -493,13 +470,9 @@ func (m *BusinessInvitationResponse) SetAcceptedAt(value *i336074805fc853987abe6
 func (m *BusinessInvitationResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this business invitation.
-func (m *BusinessInvitationResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. The business name value for this business invitation.
-func (m *BusinessInvitationResponse) SetBusinessName(value *string)() {
-    m.businessName = value
+// SetBusiness sets the business property value. The ID and name for this business.
+func (m *BusinessInvitationResponse) SetBusiness(value IdNamePairable)() {
+    m.business = value
 }
 // SetCreatedAt sets the createdAt property value. The date and time for the created at value on this business invitation.
 func (m *BusinessInvitationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -569,8 +542,7 @@ type BusinessInvitationResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAcceptedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
+    GetBusiness()(IdNamePairable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetEmail()(*string)
     GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -588,8 +560,7 @@ type BusinessInvitationResponseable interface {
     GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*BusinessInvitationStatus)
     SetAcceptedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
+    SetBusiness(value IdNamePairable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetEmail(value *string)()
     SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
