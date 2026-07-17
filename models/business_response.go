@@ -58,6 +58,8 @@ type BusinessResponse struct {
     phones []IdNameValueable
     // Alternate business name or DBA shown in Leadping.
     secondaryName *string
+    // Defines the supported User Setup Status values.
+    setupStatus *BusinessResponse_setupStatus
     // Defines the supported Business Setup Step values.
     setupStep *BusinessResponse_setupStep
     // Leadping website record connected to this business.
@@ -415,6 +417,16 @@ func (m *BusinessResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         return nil
     }
+    res["setupStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessResponse_setupStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSetupStatus(val.(*BusinessResponse_setupStatus))
+        }
+        return nil
+    }
     res["setupStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseBusinessResponse_setupStep)
         if err != nil {
@@ -516,6 +528,11 @@ func (m *BusinessResponse) GetPhones()([]IdNameValueable) {
 // returns a *string when successful
 func (m *BusinessResponse) GetSecondaryName()(*string) {
     return m.secondaryName
+}
+// GetSetupStatus gets the setupStatus property value. Defines the supported User Setup Status values.
+// returns a *BusinessResponse_setupStatus when successful
+func (m *BusinessResponse) GetSetupStatus()(*BusinessResponse_setupStatus) {
+    return m.setupStatus
 }
 // GetSetupStep gets the setupStep property value. Defines the supported Business Setup Step values.
 // returns a *BusinessResponse_setupStep when successful
@@ -699,6 +716,13 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
+    if m.GetSetupStatus() != nil {
+        cast := (*m.GetSetupStatus()).String()
+        err := writer.WriteStringValue("setupStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
     if m.GetSetupStep() != nil {
         cast := (*m.GetSetupStep()).String()
         err := writer.WriteStringValue("setupStep", &cast)
@@ -848,6 +872,10 @@ func (m *BusinessResponse) SetPhones(value []IdNameValueable)() {
 func (m *BusinessResponse) SetSecondaryName(value *string)() {
     m.secondaryName = value
 }
+// SetSetupStatus sets the setupStatus property value. Defines the supported User Setup Status values.
+func (m *BusinessResponse) SetSetupStatus(value *BusinessResponse_setupStatus)() {
+    m.setupStatus = value
+}
 // SetSetupStep sets the setupStep property value. Defines the supported Business Setup Step values.
 func (m *BusinessResponse) SetSetupStep(value *BusinessResponse_setupStep)() {
     m.setupStep = value
@@ -902,6 +930,7 @@ type BusinessResponseable interface {
     GetPhone()(*string)
     GetPhones()([]IdNameValueable)
     GetSecondaryName()(*string)
+    GetSetupStatus()(*BusinessResponse_setupStatus)
     GetSetupStep()(*BusinessResponse_setupStep)
     GetSite()(BusinessResponse_siteable)
     GetStatus()(*BusinessResponse_status)
@@ -932,6 +961,7 @@ type BusinessResponseable interface {
     SetPhone(value *string)()
     SetPhones(value []IdNameValueable)()
     SetSecondaryName(value *string)()
+    SetSetupStatus(value *BusinessResponse_setupStatus)()
     SetSetupStep(value *BusinessResponse_setupStep)()
     SetSite(value BusinessResponse_siteable)()
     SetStatus(value *BusinessResponse_status)()
