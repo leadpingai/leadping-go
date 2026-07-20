@@ -12,6 +12,8 @@ import (
 type BusinessBillingState struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Date and time when the scheduled billing plan change takes effect.
+    billingPlanChangeEffectiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets the number of user licenses currently assigned by the business.
     businessUserAssignedQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Gets or sets the number of user licenses included in the business subscription.
@@ -28,8 +30,12 @@ type BusinessBillingState struct {
     lastPaymentMethodEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets when Leadping last processed a subscription event for the business.
     lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Defines the supported Billing Plan values.
+    pendingBillingPlan *BusinessBillingState_pendingBillingPlan
     // Gets or sets the number of phone numbers included in the business subscription.
     phoneNumberQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    // Current plan renewal date.
+    planRenewalAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewBusinessBillingState instantiates a new BusinessBillingState and sets the default values.
 func NewBusinessBillingState()(*BusinessBillingState) {
@@ -47,6 +53,11 @@ func CreateBusinessBillingStateFromDiscriminatorValue(parseNode i878a80d2330e89d
 // returns a map[string]any when successful
 func (m *BusinessBillingState) GetAdditionalData()(map[string]any) {
     return m.additionalData
+}
+// GetBillingPlanChangeEffectiveAt gets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
+// returns a *Time when successful
+func (m *BusinessBillingState) GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.billingPlanChangeEffectiveAt
 }
 // GetBusinessUserAssignedQuantity gets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
 // returns a UntypedNodeable when successful
@@ -72,6 +83,16 @@ func (m *BusinessBillingState) GetDunning()(BusinessBillingState_dunningable) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *BusinessBillingState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["billingPlanChangeEffectiveAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingPlanChangeEffectiveAt(val)
+        }
+        return nil
+    }
     res["businessUserAssignedQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
@@ -152,6 +173,16 @@ func (m *BusinessBillingState) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["pendingBillingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessBillingState_pendingBillingPlan)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPendingBillingPlan(val.(*BusinessBillingState_pendingBillingPlan))
+        }
+        return nil
+    }
     res["phoneNumberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
@@ -159,6 +190,16 @@ func (m *BusinessBillingState) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         if val != nil {
             m.SetPhoneNumberQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+        }
+        return nil
+    }
+    res["planRenewalAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPlanRenewalAt(val)
         }
         return nil
     }
@@ -184,13 +225,29 @@ func (m *BusinessBillingState) GetLastPaymentMethodEventAt()(*i336074805fc853987
 func (m *BusinessBillingState) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastSubscriptionEventAt
 }
+// GetPendingBillingPlan gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+// returns a *BusinessBillingState_pendingBillingPlan when successful
+func (m *BusinessBillingState) GetPendingBillingPlan()(*BusinessBillingState_pendingBillingPlan) {
+    return m.pendingBillingPlan
+}
 // GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
 // returns a UntypedNodeable when successful
 func (m *BusinessBillingState) GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.phoneNumberQuantity
 }
+// GetPlanRenewalAt gets the planRenewalAt property value. Current plan renewal date.
+// returns a *Time when successful
+func (m *BusinessBillingState) GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.planRenewalAt
+}
 // Serialize serializes information the current object
 func (m *BusinessBillingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+    {
+        err := writer.WriteTimeValue("billingPlanChangeEffectiveAt", m.GetBillingPlanChangeEffectiveAt())
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteObjectValue("businessUserAssignedQuantity", m.GetBusinessUserAssignedQuantity())
         if err != nil {
@@ -239,8 +296,21 @@ func (m *BusinessBillingState) Serialize(writer i878a80d2330e89d26896388a3f487ee
             return err
         }
     }
+    if m.GetPendingBillingPlan() != nil {
+        cast := (*m.GetPendingBillingPlan()).String()
+        err := writer.WriteStringValue("pendingBillingPlan", &cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteObjectValue("phoneNumberQuantity", m.GetPhoneNumberQuantity())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("planRenewalAt", m.GetPlanRenewalAt())
         if err != nil {
             return err
         }
@@ -256,6 +326,10 @@ func (m *BusinessBillingState) Serialize(writer i878a80d2330e89d26896388a3f487ee
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *BusinessBillingState) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
+}
+// SetBillingPlanChangeEffectiveAt sets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
+func (m *BusinessBillingState) SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.billingPlanChangeEffectiveAt = value
 }
 // SetBusinessUserAssignedQuantity sets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
 func (m *BusinessBillingState) SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
@@ -289,13 +363,22 @@ func (m *BusinessBillingState) SetLastPaymentMethodEventAt(value *i336074805fc85
 func (m *BusinessBillingState) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastSubscriptionEventAt = value
 }
+// SetPendingBillingPlan sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+func (m *BusinessBillingState) SetPendingBillingPlan(value *BusinessBillingState_pendingBillingPlan)() {
+    m.pendingBillingPlan = value
+}
 // SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
 func (m *BusinessBillingState) SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.phoneNumberQuantity = value
 }
+// SetPlanRenewalAt sets the planRenewalAt property value. Current plan renewal date.
+func (m *BusinessBillingState) SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.planRenewalAt = value
+}
 type BusinessBillingStateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetBusinessUserAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBusinessUserQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -304,7 +387,10 @@ type BusinessBillingStateable interface {
     GetHasStripeCustomer()(*bool)
     GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetPendingBillingPlan()(*BusinessBillingState_pendingBillingPlan)
     GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBusinessUserQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -313,5 +399,7 @@ type BusinessBillingStateable interface {
     SetHasStripeCustomer(value *bool)()
     SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetPendingBillingPlan(value *BusinessBillingState_pendingBillingPlan)()
     SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

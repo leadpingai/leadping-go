@@ -58,6 +58,28 @@ func (m *MeRequestBuilder) Invitations()(*MeInvitationsRequestBuilder) {
 func (m *MeRequestBuilder) OptionsPath()(*MeOptionsRequestBuilder) {
     return NewMeOptionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Post creates a business owned by the current user and selects it as their active business.
+// returns a BusinessResponseable when successful
+// returns a ProblemDetails error when the service returns a 400 status code
+// returns a ProblemDetails error when the service returns a 401 status code
+func (m *MeRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessResponseable, error) {
+    requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
+    if err != nil {
+        return nil, err
+    }
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateBusinessResponseFromDiscriminatorValue, errorMapping)
+    if err != nil {
+        return nil, err
+    }
+    if res == nil {
+        return nil, nil
+    }
+    return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessResponseable), nil
+}
 // Put updates the authenticated user's current business profile, including contact, settings, and communication configuration.
 // returns a BusinessResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
@@ -91,6 +113,18 @@ func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestC
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
     requestInfo.Headers.TryAdd("Accept", "application/json")
+    return requestInfo, nil
+}
+// ToPostRequestInformation creates a business owned by the current user and selects it as their active business.
+// returns a *RequestInformation when successful
+func (m *MeRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     return requestInfo, nil
 }
 // ToPutRequestInformation updates the authenticated user's current business profile, including contact, settings, and communication configuration.

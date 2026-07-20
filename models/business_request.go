@@ -23,6 +23,8 @@ type BusinessRequest struct {
     billingAddress BusinessRequest_billingAddressable
     // Name used for invoices, receipts, and payment processor billing records.
     billingName *string
+    // Tax identifier printed on billing documents. This may differ from the business verification EIN.
+    billingTaxId *string
     // Compliance policy configuration for the business.
     compliancePolicy BusinessRequest_compliancePolicyable
     // Human-readable description that explains this business profile request to API users.
@@ -98,6 +100,11 @@ func (m *BusinessRequest) GetBillingAddress()(BusinessRequest_billingAddressable
 // returns a *string when successful
 func (m *BusinessRequest) GetBillingName()(*string) {
     return m.billingName
+}
+// GetBillingTaxId gets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+// returns a *string when successful
+func (m *BusinessRequest) GetBillingTaxId()(*string) {
+    return m.billingTaxId
 }
 // GetCompliancePolicy gets the compliancePolicy property value. Compliance policy configuration for the business.
 // returns a BusinessRequest_compliancePolicyable when successful
@@ -185,6 +192,16 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         }
         if val != nil {
             m.SetBillingName(val)
+        }
+        return nil
+    }
+    res["billingTaxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingTaxId(val)
         }
         return nil
     }
@@ -420,6 +437,12 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
         }
     }
     {
+        err := writer.WriteStringValue("billingTaxId", m.GetBillingTaxId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("compliancePolicy", m.GetCompliancePolicy())
         if err != nil {
             return err
@@ -546,6 +569,10 @@ func (m *BusinessRequest) SetBillingAddress(value BusinessRequest_billingAddress
 func (m *BusinessRequest) SetBillingName(value *string)() {
     m.billingName = value
 }
+// SetBillingTaxId sets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+func (m *BusinessRequest) SetBillingTaxId(value *string)() {
+    m.billingTaxId = value
+}
 // SetCompliancePolicy sets the compliancePolicy property value. Compliance policy configuration for the business.
 func (m *BusinessRequest) SetCompliancePolicy(value BusinessRequest_compliancePolicyable)() {
     m.compliancePolicy = value
@@ -611,6 +638,7 @@ type BusinessRequestable interface {
     GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingAddress()(BusinessRequest_billingAddressable)
     GetBillingName()(*string)
+    GetBillingTaxId()(*string)
     GetCompliancePolicy()(BusinessRequest_compliancePolicyable)
     GetDescription()(*string)
     GetEin()(*string)
@@ -631,6 +659,7 @@ type BusinessRequestable interface {
     SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingAddress(value BusinessRequest_billingAddressable)()
     SetBillingName(value *string)()
+    SetBillingTaxId(value *string)()
     SetCompliancePolicy(value BusinessRequest_compliancePolicyable)()
     SetDescription(value *string)()
     SetEin(value *string)()

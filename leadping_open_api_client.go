@@ -15,6 +15,7 @@ import (
     i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad "github.com/leadpingai/leadping-go/users"
     i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7 "github.com/leadpingai/leadping-go/conversations"
     i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c "github.com/leadpingai/leadping-go/phonecall"
+    i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443 "github.com/leadpingai/leadping-go/leadstatuses"
     i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
     i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
     i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
@@ -102,6 +103,11 @@ func (m *LeadpingOpenApiClient) Feedback()(*i6dd7ba29a5b5bbde963c24314b7f1b4b0ad
 // returns a *LeadsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Leads()(*i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.LeadsRequestBuilder) {
     return i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.NewLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// LeadStatuses the leadStatuses property
+// returns a *LeadStatusesRequestBuilder when successful
+func (m *LeadpingOpenApiClient) LeadStatuses()(*i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.LeadStatusesRequestBuilder) {
+    return i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.NewLeadStatusesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Notifications the notifications property
 // returns a *NotificationsRequestBuilder when successful

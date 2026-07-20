@@ -32,6 +32,8 @@ type BusinessResponse struct {
     billingPlan *BusinessResponse_billingPlan
     // Customer-safe billing state for this business.
     billingState BusinessResponse_billingStateable
+    // Tax identifier printed on billing documents. This may differ from the business verification EIN.
+    billingTaxId *string
     // Compliance policy configuration for the business.
     compliancePolicy BusinessResponse_compliancePolicyable
     // The date and time when the entity was created.
@@ -141,6 +143,11 @@ func (m *BusinessResponse) GetBillingPlan()(*BusinessResponse_billingPlan) {
 // returns a BusinessResponse_billingStateable when successful
 func (m *BusinessResponse) GetBillingState()(BusinessResponse_billingStateable) {
     return m.billingState
+}
+// GetBillingTaxId gets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+// returns a *string when successful
+func (m *BusinessResponse) GetBillingTaxId()(*string) {
+    return m.billingTaxId
 }
 // GetCompliancePolicy gets the compliancePolicy property value. Compliance policy configuration for the business.
 // returns a BusinessResponse_compliancePolicyable when successful
@@ -278,6 +285,16 @@ func (m *BusinessResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetBillingState(val.(BusinessResponse_billingStateable))
+        }
+        return nil
+    }
+    res["billingTaxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingTaxId(val)
         }
         return nil
     }
@@ -633,6 +650,12 @@ func (m *BusinessResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
+        err := writer.WriteStringValue("billingTaxId", m.GetBillingTaxId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("compliancePolicy", m.GetCompliancePolicy())
         if err != nil {
             return err
@@ -820,6 +843,10 @@ func (m *BusinessResponse) SetBillingPlan(value *BusinessResponse_billingPlan)()
 func (m *BusinessResponse) SetBillingState(value BusinessResponse_billingStateable)() {
     m.billingState = value
 }
+// SetBillingTaxId sets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+func (m *BusinessResponse) SetBillingTaxId(value *string)() {
+    m.billingTaxId = value
+}
 // SetCompliancePolicy sets the compliancePolicy property value. Compliance policy configuration for the business.
 func (m *BusinessResponse) SetCompliancePolicy(value BusinessResponse_compliancePolicyable)() {
     m.compliancePolicy = value
@@ -917,6 +944,7 @@ type BusinessResponseable interface {
     GetBillingName()(*string)
     GetBillingPlan()(*BusinessResponse_billingPlan)
     GetBillingState()(BusinessResponse_billingStateable)
+    GetBillingTaxId()(*string)
     GetCompliancePolicy()(BusinessResponse_compliancePolicyable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
@@ -948,6 +976,7 @@ type BusinessResponseable interface {
     SetBillingName(value *string)()
     SetBillingPlan(value *BusinessResponse_billingPlan)()
     SetBillingState(value BusinessResponse_billingStateable)()
+    SetBillingTaxId(value *string)()
     SetCompliancePolicy(value BusinessResponse_compliancePolicyable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()

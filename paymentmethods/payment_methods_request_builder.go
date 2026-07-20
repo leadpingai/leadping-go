@@ -61,6 +61,11 @@ func (m *PaymentMethodsRequestBuilder) Get(ctx context.Context, requestConfigura
     }
     return val, nil
 }
+// Invoices the invoices property
+// returns a *InvoicesRequestBuilder when successful
+func (m *PaymentMethodsRequestBuilder) Invoices()(*InvoicesRequestBuilder) {
+    return NewInvoicesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ToGetRequestInformation list payment methods
 // returns a *RequestInformation when successful
 func (m *PaymentMethodsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
