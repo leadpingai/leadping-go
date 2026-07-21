@@ -38,7 +38,7 @@ func NewPaymentMethodsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
     urlParams["request-raw-url"] = rawUrl
     return NewPaymentMethodsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get list payment methods
+// Get lists the payment methods available to the current business for billing, invoice payments, and wallet funding.
 // returns a []StripePaymentMethodResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 func (m *PaymentMethodsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripePaymentMethodResponseable, error) {
@@ -66,7 +66,7 @@ func (m *PaymentMethodsRequestBuilder) Get(ctx context.Context, requestConfigura
 func (m *PaymentMethodsRequestBuilder) Invoices()(*InvoicesRequestBuilder) {
     return NewInvoicesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ToGetRequestInformation list payment methods
+// ToGetRequestInformation lists the payment methods available to the current business for billing, invoice payments, and wallet funding.
 // returns a *RequestInformation when successful
 func (m *PaymentMethodsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

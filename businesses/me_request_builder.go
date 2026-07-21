@@ -53,12 +53,17 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
 func (m *MeRequestBuilder) Invitations()(*MeInvitationsRequestBuilder) {
     return NewMeInvitationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// OneZerodlc the OneZerodlc property
+// returns a *MeOneZerodlcRequestBuilder when successful
+func (m *MeRequestBuilder) OneZerodlc()(*MeOneZerodlcRequestBuilder) {
+    return NewMeOneZerodlcRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // OptionsPath the optionsPath property
 // returns a *MeOptionsRequestBuilder when successful
 func (m *MeRequestBuilder) OptionsPath()(*MeOptionsRequestBuilder) {
     return NewMeOptionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Post creates a business owned by the current user and selects it as their active business.
+// Post creates a business account for the authenticated user, assigns them as its owner, and makes it their active business context.
 // returns a BusinessResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -115,7 +120,7 @@ func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestC
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation creates a business owned by the current user and selects it as their active business.
+// ToPostRequestInformation creates a business account for the authenticated user, assigns them as its owner, and makes it their active business context.
 // returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

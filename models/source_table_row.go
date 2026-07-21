@@ -16,6 +16,8 @@ type SourceTableRow struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
+    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+    apiKey *string
     // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Masked preview of the source API key for compact display.
@@ -85,6 +87,11 @@ func (m *SourceTableRow) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceTableRow) GetAllowedStates()([]string) {
     return m.allowedStates
+}
+// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// returns a *string when successful
+func (m *SourceTableRow) GetApiKey()(*string) {
+    return m.apiKey
 }
 // GetApiKeyLastUsedAt gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 // returns a *Time when successful
@@ -184,6 +191,16 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
                 }
             }
             m.SetAllowedStates(res)
+        }
+        return nil
+    }
+    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetApiKey(val)
         }
         return nil
     }
@@ -466,6 +483,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
+        err := writer.WriteStringValue("apiKey", m.GetApiKey())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteTimeValue("apiKeyLastUsedAt", m.GetApiKeyLastUsedAt())
         if err != nil {
             return err
@@ -617,6 +640,10 @@ func (m *SourceTableRow) SetAllowedProducts(value []string)() {
 func (m *SourceTableRow) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
+// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+func (m *SourceTableRow) SetApiKey(value *string)() {
+    m.apiKey = value
+}
 // SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
@@ -706,6 +733,7 @@ type SourceTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
+    GetApiKey()(*string)
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
@@ -729,6 +757,7 @@ type SourceTableRowable interface {
     GetUser()(SourceTableRow_userable)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
+    SetApiKey(value *string)()
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()

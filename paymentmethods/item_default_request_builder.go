@@ -26,7 +26,7 @@ func NewItemDefaultRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
     urlParams["request-raw-url"] = rawUrl
     return NewItemDefaultRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post set default payment method
+// Post sets a payment method as the default for the current business's future invoices and billing activity.
 // returns a StripePaymentMethodResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *ItemDefaultRequestBuilder) Post(ctx context.Context, requestConfigurati
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripePaymentMethodResponseable), nil
 }
-// ToPostRequestInformation set default payment method
+// ToPostRequestInformation sets a payment method as the default for the current business's future invoices and billing activity.
 // returns a *RequestInformation when successful
 func (m *ItemDefaultRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

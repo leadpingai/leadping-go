@@ -16,6 +16,8 @@ type SourceResponse struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
+    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+    apiKey *string
     // Masked preview of the source API key for compact display.
     apiKeyPreview *string
     // Business summary connected to this lead source response.
@@ -79,6 +81,11 @@ func (m *SourceResponse) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
+}
+// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// returns a *string when successful
+func (m *SourceResponse) GetApiKey()(*string) {
+    return m.apiKey
 }
 // GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 // returns a *string when successful
@@ -163,6 +170,16 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
                 }
             }
             m.SetAllowedStates(res)
+        }
+        return nil
+    }
+    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetApiKey(val)
         }
         return nil
     }
@@ -415,6 +432,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
+        err := writer.WriteStringValue("apiKey", m.GetApiKey())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
         if err != nil {
             return err
@@ -548,6 +571,10 @@ func (m *SourceResponse) SetAllowedProducts(value []string)() {
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
+// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+func (m *SourceResponse) SetApiKey(value *string)() {
+    m.apiKey = value
+}
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
@@ -625,6 +652,7 @@ type SourceResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
+    GetApiKey()(*string)
     GetApiKeyPreview()(*string)
     GetBusiness()(SourceResponse_businessable)
     GetComplianceApproved()(*bool)
@@ -645,6 +673,7 @@ type SourceResponseable interface {
     GetUser()(SourceResponse_userable)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
+    SetApiKey(value *string)()
     SetApiKeyPreview(value *string)()
     SetBusiness(value SourceResponse_businessable)()
     SetComplianceApproved(value *bool)()

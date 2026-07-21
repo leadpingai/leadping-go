@@ -13,6 +13,18 @@ import (
 type InvoicesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// ByInvoiceId gets an item from the github.com/leadpingai/leadping-go.paymentMethods.invoices.item collection
+// returns a *InvoicesWithInvoiceItemRequestBuilder when successful
+func (m *InvoicesRequestBuilder) ByInvoiceId(invoiceId string)(*InvoicesWithInvoiceItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if invoiceId != "" {
+        urlTplParams["invoiceId"] = invoiceId
+    }
+    return NewInvoicesWithInvoiceItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewInvoicesRequestBuilderInternal instantiates a new InvoicesRequestBuilder and sets the default values.
 func NewInvoicesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InvoicesRequestBuilder) {
     m := &InvoicesRequestBuilder{
@@ -26,7 +38,7 @@ func NewInvoicesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     urlParams["request-raw-url"] = rawUrl
     return NewInvoicesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get lists actual Stripe invoices for the current business.
+// Get returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
 // returns a []StripeInvoiceResponseable when successful
 func (m *InvoicesRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
@@ -45,7 +57,7 @@ func (m *InvoicesRequestBuilder) Get(ctx context.Context, requestConfiguration *
     }
     return val, nil
 }
-// ToGetRequestInformation lists actual Stripe invoices for the current business.
+// ToGetRequestInformation returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
 // returns a *RequestInformation when successful
 func (m *InvoicesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

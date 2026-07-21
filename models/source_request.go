@@ -15,6 +15,8 @@ type SourceRequest struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
+    // Source API key used to authenticate inbound lead delivery to Leadping.
+    apiKey *string
     // Configured cost charged when this source creates a billable lead.
     costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Tag IDs automatically assigned to leads created by this source.
@@ -60,6 +62,11 @@ func (m *SourceRequest) GetAllowedProducts()([]string) {
 // returns a []string when successful
 func (m *SourceRequest) GetAllowedStates()([]string) {
     return m.allowedStates
+}
+// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
+// returns a *string when successful
+func (m *SourceRequest) GetApiKey()(*string) {
+    return m.apiKey
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a UntypedNodeable when successful
@@ -119,6 +126,16 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
                 }
             }
             m.SetAllowedStates(res)
+        }
+        return nil
+    }
+    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetApiKey(val)
         }
         return nil
     }
@@ -261,6 +278,12 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
+        err := writer.WriteStringValue("apiKey", m.GetApiKey())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
@@ -334,6 +357,10 @@ func (m *SourceRequest) SetAllowedProducts(value []string)() {
 func (m *SourceRequest) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
+// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
+func (m *SourceRequest) SetApiKey(value *string)() {
+    m.apiKey = value
+}
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 func (m *SourceRequest) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
@@ -375,6 +402,7 @@ type SourceRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
+    GetApiKey()(*string)
     GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetDefaultTagIds()([]string)
     GetDefaultTagNames()([]string)
@@ -386,6 +414,7 @@ type SourceRequestable interface {
     GetRequiresTrustedForm()(*bool)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
+    SetApiKey(value *string)()
     SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetDefaultTagIds(value []string)()
     SetDefaultTagNames(value []string)()

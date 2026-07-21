@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// StripeInvoiceResponse customer-safe Stripe invoice summary for billing history.
+// StripeInvoiceResponse customer-safe Leadping invoice summary for billing.
 type StripeInvoiceResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -16,8 +16,8 @@ type StripeInvoiceResponse struct {
     amount *float64
     // The createdAt property
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The hostedInvoiceUrl property
-    hostedInvoiceUrl *string
+    // The hasPdf property
+    hasPdf *bool
     // The id property
     id *string
     // The number property
@@ -76,13 +76,13 @@ func (m *StripeInvoiceResponse) GetFieldDeserializers()(map[string]func(i878a80d
         }
         return nil
     }
-    res["hostedInvoiceUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
+    res["hasPdf"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetHostedInvoiceUrl(val)
+            m.SetHasPdf(val)
         }
         return nil
     }
@@ -118,10 +118,10 @@ func (m *StripeInvoiceResponse) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetHostedInvoiceUrl gets the hostedInvoiceUrl property value. The hostedInvoiceUrl property
-// returns a *string when successful
-func (m *StripeInvoiceResponse) GetHostedInvoiceUrl()(*string) {
-    return m.hostedInvoiceUrl
+// GetHasPdf gets the hasPdf property value. The hasPdf property
+// returns a *bool when successful
+func (m *StripeInvoiceResponse) GetHasPdf()(*bool) {
+    return m.hasPdf
 }
 // GetId gets the id property value. The id property
 // returns a *string when successful
@@ -153,7 +153,7 @@ func (m *StripeInvoiceResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     {
-        err := writer.WriteStringValue("hostedInvoiceUrl", m.GetHostedInvoiceUrl())
+        err := writer.WriteBoolValue("hasPdf", m.GetHasPdf())
         if err != nil {
             return err
         }
@@ -196,9 +196,9 @@ func (m *StripeInvoiceResponse) SetAmount(value *float64)() {
 func (m *StripeInvoiceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetHostedInvoiceUrl sets the hostedInvoiceUrl property value. The hostedInvoiceUrl property
-func (m *StripeInvoiceResponse) SetHostedInvoiceUrl(value *string)() {
-    m.hostedInvoiceUrl = value
+// SetHasPdf sets the hasPdf property value. The hasPdf property
+func (m *StripeInvoiceResponse) SetHasPdf(value *bool)() {
+    m.hasPdf = value
 }
 // SetId sets the id property value. The id property
 func (m *StripeInvoiceResponse) SetId(value *string)() {
@@ -217,13 +217,13 @@ type StripeInvoiceResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAmount()(*float64)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetHostedInvoiceUrl()(*string)
+    GetHasPdf()(*bool)
     GetId()(*string)
     GetNumber()(*string)
     GetStatus()(*string)
     SetAmount(value *float64)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetHostedInvoiceUrl(value *string)()
+    SetHasPdf(value *bool)()
     SetId(value *string)()
     SetNumber(value *string)()
     SetStatus(value *string)()

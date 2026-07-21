@@ -11,6 +11,8 @@ import (
 type OutboundPhoneNumberCapacity struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Indicates whether Leadping successfully calculated capacity for this phone number.
+    capacityAvailable *bool
     // Current health status for this Leadping outbound phone number capacity.
     healthStatus *PhoneNumberOutboundHealthStatus
     // Phone number associated with this Leadping outbound phone number capacity.
@@ -59,10 +61,25 @@ func CreateOutboundPhoneNumberCapacityFromDiscriminatorValue(parseNode i878a80d2
 func (m *OutboundPhoneNumberCapacity) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetCapacityAvailable gets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
+// returns a *bool when successful
+func (m *OutboundPhoneNumberCapacity) GetCapacityAvailable()(*bool) {
+    return m.capacityAvailable
+}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["capacityAvailable"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCapacityAvailable(val)
+        }
+        return nil
+    }
     res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParsePhoneNumberOutboundHealthStatus)
         if err != nil {
@@ -292,6 +309,12 @@ func (m *OutboundPhoneNumberCapacity) GetVoiceUsedToday()(*int32) {
 }
 // Serialize serializes information the current object
 func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+    {
+        err := writer.WriteBoolValue("capacityAvailable", m.GetCapacityAvailable())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetHealthStatus() != nil {
         cast := (*m.GetHealthStatus()).String()
         err := writer.WriteStringValue("healthStatus", &cast)
@@ -395,6 +418,10 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
 func (m *OutboundPhoneNumberCapacity) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetCapacityAvailable sets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
+func (m *OutboundPhoneNumberCapacity) SetCapacityAvailable(value *bool)() {
+    m.capacityAvailable = value
+}
 // SetHealthStatus sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutboundHealthStatus)() {
     m.healthStatus = value
@@ -458,6 +485,7 @@ func (m *OutboundPhoneNumberCapacity) SetVoiceUsedToday(value *int32)() {
 type OutboundPhoneNumberCapacityable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetCapacityAvailable()(*bool)
     GetHealthStatus()(*PhoneNumberOutboundHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
@@ -473,6 +501,7 @@ type OutboundPhoneNumberCapacityable interface {
     GetVoiceRemainingToday()(*int32)
     GetVoiceUsedThisHour()(*int32)
     GetVoiceUsedToday()(*int32)
+    SetCapacityAvailable(value *bool)()
     SetHealthStatus(value *PhoneNumberOutboundHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
