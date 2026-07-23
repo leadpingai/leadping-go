@@ -4,6 +4,7 @@
 package models
 
 import (
+    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -19,6 +20,10 @@ type OutboundPhoneNumberCapacity struct {
     phoneNumber *string
     // Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
     phoneNumberId *string
+    // Next midnight Eastern time, when SMS daily capacity resets.
+    smsDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Start of the next Eastern time hour, when SMS hourly capacity resets.
+    smsHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
     smsLimitThisHour *int32
     // Number of SMS limit today represented by this Leadping outbound phone number capacity.
@@ -31,6 +36,10 @@ type OutboundPhoneNumberCapacity struct {
     smsUsedThisHour *int32
     // SMS used today for the applicable messaging or voice capacity window.
     smsUsedToday *int32
+    // Next midnight Eastern time, when voice daily capacity resets.
+    voiceDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Start of the next Eastern time hour, when voice hourly capacity resets.
+    voiceHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Voice limit this hour associated with this Leadping outbound phone number capacity.
     voiceLimitThisHour *int32
     // Voice limit today associated with this Leadping outbound phone number capacity.
@@ -110,6 +119,26 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         return nil
     }
+    res["smsDailyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsDailyResetsAt(val)
+        }
+        return nil
+    }
+    res["smsHourlyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsHourlyResetsAt(val)
+        }
+        return nil
+    }
     res["smsLimitThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -167,6 +196,26 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         if val != nil {
             m.SetSmsUsedToday(val)
+        }
+        return nil
+    }
+    res["voiceDailyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceDailyResetsAt(val)
+        }
+        return nil
+    }
+    res["voiceHourlyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceHourlyResetsAt(val)
         }
         return nil
     }
@@ -247,6 +296,16 @@ func (m *OutboundPhoneNumberCapacity) GetPhoneNumber()(*string) {
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
+// GetSmsDailyResetsAt gets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
+// returns a *Time when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.smsDailyResetsAt
+}
+// GetSmsHourlyResetsAt gets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
+// returns a *Time when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.smsHourlyResetsAt
+}
 // GetSmsLimitThisHour gets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisHour()(*int32) {
@@ -276,6 +335,16 @@ func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisHour()(*int32) {
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsUsedToday()(*int32) {
     return m.smsUsedToday
+}
+// GetVoiceDailyResetsAt gets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
+// returns a *Time when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.voiceDailyResetsAt
+}
+// GetVoiceHourlyResetsAt gets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
+// returns a *Time when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.voiceHourlyResetsAt
 }
 // GetVoiceLimitThisHour gets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
 // returns a *int32 when successful
@@ -335,6 +404,18 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
+        err := writer.WriteTimeValue("smsDailyResetsAt", m.GetSmsDailyResetsAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("smsHourlyResetsAt", m.GetSmsHourlyResetsAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("smsLimitThisHour", m.GetSmsLimitThisHour())
         if err != nil {
             return err
@@ -366,6 +447,18 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
     }
     {
         err := writer.WriteInt32Value("smsUsedToday", m.GetSmsUsedToday())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("voiceDailyResetsAt", m.GetVoiceDailyResetsAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("voiceHourlyResetsAt", m.GetVoiceHourlyResetsAt())
         if err != nil {
             return err
         }
@@ -434,6 +527,14 @@ func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string)() {
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
+// SetSmsDailyResetsAt sets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
+func (m *OutboundPhoneNumberCapacity) SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.smsDailyResetsAt = value
+}
+// SetSmsHourlyResetsAt sets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
+func (m *OutboundPhoneNumberCapacity) SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.smsHourlyResetsAt = value
+}
 // SetSmsLimitThisHour sets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisHour(value *int32)() {
     m.smsLimitThisHour = value
@@ -457,6 +558,14 @@ func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisHour(value *int32)() {
 // SetSmsUsedToday sets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsUsedToday(value *int32)() {
     m.smsUsedToday = value
+}
+// SetVoiceDailyResetsAt sets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
+func (m *OutboundPhoneNumberCapacity) SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.voiceDailyResetsAt = value
+}
+// SetVoiceHourlyResetsAt sets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
+func (m *OutboundPhoneNumberCapacity) SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.voiceHourlyResetsAt = value
 }
 // SetVoiceLimitThisHour sets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisHour(value *int32)() {
@@ -489,12 +598,16 @@ type OutboundPhoneNumberCapacityable interface {
     GetHealthStatus()(*PhoneNumberOutboundHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
+    GetSmsDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetSmsHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSmsLimitThisHour()(*int32)
     GetSmsLimitToday()(*int32)
     GetSmsRemainingThisHour()(*int32)
     GetSmsRemainingToday()(*int32)
     GetSmsUsedThisHour()(*int32)
     GetSmsUsedToday()(*int32)
+    GetVoiceDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetVoiceHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetVoiceLimitThisHour()(*int32)
     GetVoiceLimitToday()(*int32)
     GetVoiceRemainingThisHour()(*int32)
@@ -505,12 +618,16 @@ type OutboundPhoneNumberCapacityable interface {
     SetHealthStatus(value *PhoneNumberOutboundHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
+    SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSmsLimitThisHour(value *int32)()
     SetSmsLimitToday(value *int32)()
     SetSmsRemainingThisHour(value *int32)()
     SetSmsRemainingToday(value *int32)()
     SetSmsUsedThisHour(value *int32)()
     SetSmsUsedToday(value *int32)()
+    SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetVoiceLimitThisHour(value *int32)()
     SetVoiceLimitToday(value *int32)()
     SetVoiceRemainingThisHour(value *int32)()

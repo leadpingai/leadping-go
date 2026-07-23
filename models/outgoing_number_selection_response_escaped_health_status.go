@@ -2,39 +2,33 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS Warmup Health State values.
+// Defines the supported SMS readiness health assessments.
 type OutgoingNumberSelectionResponse_healthStatus int
 
 const (
-    NOTSTARTED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS OutgoingNumberSelectionResponse_healthStatus = iota
-    WARMING_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
+    NOTEVALUATED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS OutgoingNumberSelectionResponse_healthStatus = iota
+    EVALUATING_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
     HEALTHY_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
     NEEDSATTENTION_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
-    PAUSED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
     BLOCKED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
-    READY_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
 )
 
 func (i OutgoingNumberSelectionResponse_healthStatus) String() string {
-    return []string{"Not Started", "Warming", "Healthy", "Needs Attention", "Paused", "Blocked", "Ready"}[i]
+    return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
 }
 func ParseOutgoingNumberSelectionResponse_healthStatus(v string) (any, error) {
-    result := NOTSTARTED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
+    result := NOTEVALUATED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
     switch v {
-        case "Not Started":
-            result = NOTSTARTED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
-        case "Warming":
-            result = WARMING_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
+        case "Not Evaluated":
+            result = NOTEVALUATED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
+        case "Evaluating":
+            result = EVALUATING_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
         case "Healthy":
             result = HEALTHY_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
         case "Needs Attention":
             result = NEEDSATTENTION_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
-        case "Paused":
-            result = PAUSED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
         case "Blocked":
             result = BLOCKED_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
-        case "Ready":
-            result = READY_OUTGOINGNUMBERSELECTIONRESPONSE_HEALTHSTATUS
         default:
             return nil, nil
     }

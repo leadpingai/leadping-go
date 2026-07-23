@@ -20,6 +20,8 @@ type ConversationResponse struct {
     archiveReason *int32
     // Current disposition summary that describes the lead outcome.
     currentDisposition ConversationResponse_currentDispositionable
+    // Email address used to resolve the lead's avatar when available.
+    email *string
     // First name of the lead, user, or contact represented by this conversation response.
     firstName *string
     // Unique Leadping identifier for this conversation response.
@@ -86,6 +88,11 @@ func (m *ConversationResponse) GetArchiveReason()(*int32) {
 func (m *ConversationResponse) GetCurrentDisposition()(ConversationResponse_currentDispositionable) {
     return m.currentDisposition
 }
+// GetEmail gets the email property value. Email address used to resolve the lead's avatar when available.
+// returns a *string when successful
+func (m *ConversationResponse) GetEmail()(*string) {
+    return m.email
+}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -127,6 +134,16 @@ func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         if val != nil {
             m.SetCurrentDisposition(val.(ConversationResponse_currentDispositionable))
+        }
+        return nil
+    }
+    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetEmail(val)
         }
         return nil
     }
@@ -369,6 +386,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
+        err := writer.WriteStringValue("email", m.GetEmail())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("firstName", m.GetFirstName())
         if err != nil {
             return err
@@ -481,6 +504,10 @@ func (m *ConversationResponse) SetArchiveReason(value *int32)() {
 func (m *ConversationResponse) SetCurrentDisposition(value ConversationResponse_currentDispositionable)() {
     m.currentDisposition = value
 }
+// SetEmail sets the email property value. Email address used to resolve the lead's avatar when available.
+func (m *ConversationResponse) SetEmail(value *string)() {
+    m.email = value
+}
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetFirstName(value *string)() {
     m.firstName = value
@@ -544,6 +571,7 @@ type ConversationResponseable interface {
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchiveReason()(*int32)
     GetCurrentDisposition()(ConversationResponse_currentDispositionable)
+    GetEmail()(*string)
     GetFirstName()(*string)
     GetId()(*string)
     GetIsArchived()(*bool)
@@ -562,6 +590,7 @@ type ConversationResponseable interface {
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchiveReason(value *int32)()
     SetCurrentDisposition(value ConversationResponse_currentDispositionable)()
+    SetEmail(value *string)()
     SetFirstName(value *string)()
     SetId(value *string)()
     SetIsArchived(value *bool)()

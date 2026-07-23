@@ -7,45 +7,47 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SmsWarmupStatusResponse aPI response containing SMS warmup status data returned to callers.
-type SmsWarmupStatusResponse struct {
+// SmsReadinessStatusResponse aPI response containing SMS warmup status data returned to callers.
+type SmsReadinessStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The health score metric for this SMS warmup status.
     healthScore *int32
+    // The current delivery-health assessment for this SMS warmup status.
+    healthStatus *SmsReadinessHealthStatus
     // The phone number associated with this SMS warmup status.
     phoneNumber *string
     // The phone number ID associated with this SMS warmup status.
     phoneNumberId *string
     // The progress percent metric for this SMS warmup status.
     progressPercent *int32
-    // The current status for this SMS warmup status.
-    status *SmsWarmupHealthState
+    // The current state for this SMS warmup status.
+    status *SmsReadinessState
     // The current UI state for this SMS warmup status.
-    uiState SmsWarmupUiStateable
+    uiState SmsReadinessUiStateable
     // Whether warmup is enabled for this SMS warmup status.
     warmupEnabled *bool
 }
-// NewSmsWarmupStatusResponse instantiates a new SmsWarmupStatusResponse and sets the default values.
-func NewSmsWarmupStatusResponse()(*SmsWarmupStatusResponse) {
-    m := &SmsWarmupStatusResponse{
+// NewSmsReadinessStatusResponse instantiates a new SmsReadinessStatusResponse and sets the default values.
+func NewSmsReadinessStatusResponse()(*SmsReadinessStatusResponse) {
+    m := &SmsReadinessStatusResponse{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreateSmsWarmupStatusResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateSmsReadinessStatusResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSmsWarmupStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSmsWarmupStatusResponse(), nil
+func CreateSmsReadinessStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewSmsReadinessStatusResponse(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SmsWarmupStatusResponse) GetAdditionalData()(map[string]any) {
+func (m *SmsReadinessStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *SmsReadinessStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["healthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
@@ -54,6 +56,16 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetHealthScore(val)
+        }
+        return nil
+    }
+    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseSmsReadinessHealthStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetHealthStatus(val.(*SmsReadinessHealthStatus))
         }
         return nil
     }
@@ -88,22 +100,22 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
         return nil
     }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsWarmupHealthState)
+        val, err := n.GetEnumValue(ParseSmsReadinessState)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetStatus(val.(*SmsWarmupHealthState))
+            m.SetStatus(val.(*SmsReadinessState))
         }
         return nil
     }
     res["uiState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSmsWarmupUiStateFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateSmsReadinessUiStateFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetUiState(val.(SmsWarmupUiStateable))
+            m.SetUiState(val.(SmsReadinessUiStateable))
         }
         return nil
     }
@@ -121,43 +133,55 @@ func (m *SmsWarmupStatusResponse) GetFieldDeserializers()(map[string]func(i878a8
 }
 // GetHealthScore gets the healthScore property value. The health score metric for this SMS warmup status.
 // returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetHealthScore()(*int32) {
+func (m *SmsReadinessStatusResponse) GetHealthScore()(*int32) {
     return m.healthScore
+}
+// GetHealthStatus gets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
+// returns a *SmsReadinessHealthStatus when successful
+func (m *SmsReadinessStatusResponse) GetHealthStatus()(*SmsReadinessHealthStatus) {
+    return m.healthStatus
 }
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this SMS warmup status.
 // returns a *string when successful
-func (m *SmsWarmupStatusResponse) GetPhoneNumber()(*string) {
+func (m *SmsReadinessStatusResponse) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
 // GetPhoneNumberId gets the phoneNumberId property value. The phone number ID associated with this SMS warmup status.
 // returns a *string when successful
-func (m *SmsWarmupStatusResponse) GetPhoneNumberId()(*string) {
+func (m *SmsReadinessStatusResponse) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
 // GetProgressPercent gets the progressPercent property value. The progress percent metric for this SMS warmup status.
 // returns a *int32 when successful
-func (m *SmsWarmupStatusResponse) GetProgressPercent()(*int32) {
+func (m *SmsReadinessStatusResponse) GetProgressPercent()(*int32) {
     return m.progressPercent
 }
-// GetStatus gets the status property value. The current status for this SMS warmup status.
-// returns a *SmsWarmupHealthState when successful
-func (m *SmsWarmupStatusResponse) GetStatus()(*SmsWarmupHealthState) {
+// GetStatus gets the status property value. The current state for this SMS warmup status.
+// returns a *SmsReadinessState when successful
+func (m *SmsReadinessStatusResponse) GetStatus()(*SmsReadinessState) {
     return m.status
 }
 // GetUiState gets the uiState property value. The current UI state for this SMS warmup status.
-// returns a SmsWarmupUiStateable when successful
-func (m *SmsWarmupStatusResponse) GetUiState()(SmsWarmupUiStateable) {
+// returns a SmsReadinessUiStateable when successful
+func (m *SmsReadinessStatusResponse) GetUiState()(SmsReadinessUiStateable) {
     return m.uiState
 }
 // GetWarmupEnabled gets the warmupEnabled property value. Whether warmup is enabled for this SMS warmup status.
 // returns a *bool when successful
-func (m *SmsWarmupStatusResponse) GetWarmupEnabled()(*bool) {
+func (m *SmsReadinessStatusResponse) GetWarmupEnabled()(*bool) {
     return m.warmupEnabled
 }
 // Serialize serializes information the current object
-func (m *SmsWarmupStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *SmsReadinessStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteInt32Value("healthScore", m.GetHealthScore())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetHealthStatus() != nil {
+        cast := (*m.GetHealthStatus()).String()
+        err := writer.WriteStringValue("healthStatus", &cast)
         if err != nil {
             return err
         }
@@ -208,52 +232,58 @@ func (m *SmsWarmupStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f48
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SmsWarmupStatusResponse) SetAdditionalData(value map[string]any)() {
+func (m *SmsReadinessStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetHealthScore sets the healthScore property value. The health score metric for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetHealthScore(value *int32)() {
+func (m *SmsReadinessStatusResponse) SetHealthScore(value *int32)() {
     m.healthScore = value
 }
+// SetHealthStatus sets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
+func (m *SmsReadinessStatusResponse) SetHealthStatus(value *SmsReadinessHealthStatus)() {
+    m.healthStatus = value
+}
 // SetPhoneNumber sets the phoneNumber property value. The phone number associated with this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetPhoneNumber(value *string)() {
+func (m *SmsReadinessStatusResponse) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
 // SetPhoneNumberId sets the phoneNumberId property value. The phone number ID associated with this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetPhoneNumberId(value *string)() {
+func (m *SmsReadinessStatusResponse) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
 // SetProgressPercent sets the progressPercent property value. The progress percent metric for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetProgressPercent(value *int32)() {
+func (m *SmsReadinessStatusResponse) SetProgressPercent(value *int32)() {
     m.progressPercent = value
 }
-// SetStatus sets the status property value. The current status for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetStatus(value *SmsWarmupHealthState)() {
+// SetStatus sets the status property value. The current state for this SMS warmup status.
+func (m *SmsReadinessStatusResponse) SetStatus(value *SmsReadinessState)() {
     m.status = value
 }
 // SetUiState sets the uiState property value. The current UI state for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetUiState(value SmsWarmupUiStateable)() {
+func (m *SmsReadinessStatusResponse) SetUiState(value SmsReadinessUiStateable)() {
     m.uiState = value
 }
 // SetWarmupEnabled sets the warmupEnabled property value. Whether warmup is enabled for this SMS warmup status.
-func (m *SmsWarmupStatusResponse) SetWarmupEnabled(value *bool)() {
+func (m *SmsReadinessStatusResponse) SetWarmupEnabled(value *bool)() {
     m.warmupEnabled = value
 }
-type SmsWarmupStatusResponseable interface {
+type SmsReadinessStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetHealthScore()(*int32)
+    GetHealthStatus()(*SmsReadinessHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
     GetProgressPercent()(*int32)
-    GetStatus()(*SmsWarmupHealthState)
-    GetUiState()(SmsWarmupUiStateable)
+    GetStatus()(*SmsReadinessState)
+    GetUiState()(SmsReadinessUiStateable)
     GetWarmupEnabled()(*bool)
     SetHealthScore(value *int32)()
+    SetHealthStatus(value *SmsReadinessHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
     SetProgressPercent(value *int32)()
-    SetStatus(value *SmsWarmupHealthState)()
-    SetUiState(value SmsWarmupUiStateable)()
+    SetStatus(value *SmsReadinessState)()
+    SetUiState(value SmsReadinessUiStateable)()
     SetWarmupEnabled(value *bool)()
 }

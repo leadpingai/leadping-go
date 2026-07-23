@@ -32,8 +32,8 @@ type PhoneNumberResponse struct {
     phoneIdentityId *string
     // Routing metadata that connects this phone number to teams, campaigns, and sources.
     routing PhoneNumberRoutingMetadataable
-    // SMS and voice warmup state for this phone number.
-    warmup PhoneNumberWarmupable
+    // SMS and call warmup for this phone number.
+    warmup PhoneNumberReadinessable
 }
 // NewPhoneNumberResponse instantiates a new PhoneNumberResponse and sets the default values.
 func NewPhoneNumberResponse()(*PhoneNumberResponse) {
@@ -172,12 +172,12 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberWarmupFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetWarmup(val.(PhoneNumberWarmupable))
+            m.SetWarmup(val.(PhoneNumberReadinessable))
         }
         return nil
     }
@@ -218,9 +218,9 @@ func (m *PhoneNumberResponse) GetPhoneIdentityId()(*string) {
 func (m *PhoneNumberResponse) GetRouting()(PhoneNumberRoutingMetadataable) {
     return m.routing
 }
-// GetWarmup gets the warmup property value. SMS and voice warmup state for this phone number.
-// returns a PhoneNumberWarmupable when successful
-func (m *PhoneNumberResponse) GetWarmup()(PhoneNumberWarmupable) {
+// GetWarmup gets the warmup property value. SMS and call warmup for this phone number.
+// returns a PhoneNumberReadinessable when successful
+func (m *PhoneNumberResponse) GetWarmup()(PhoneNumberReadinessable) {
     return m.warmup
 }
 // Serialize serializes information the current object
@@ -343,8 +343,8 @@ func (m *PhoneNumberResponse) SetPhoneIdentityId(value *string)() {
 func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable)() {
     m.routing = value
 }
-// SetWarmup sets the warmup property value. SMS and voice warmup state for this phone number.
-func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberWarmupable)() {
+// SetWarmup sets the warmup property value. SMS and call warmup for this phone number.
+func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberReadinessable)() {
     m.warmup = value
 }
 type PhoneNumberResponseable interface {
@@ -360,7 +360,7 @@ type PhoneNumberResponseable interface {
     GetNumber()(*string)
     GetPhoneIdentityId()(*string)
     GetRouting()(PhoneNumberRoutingMetadataable)
-    GetWarmup()(PhoneNumberWarmupable)
+    GetWarmup()(PhoneNumberReadinessable)
     SetBusiness(value PhoneNumberResponse_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetEnabled(value *bool)()
@@ -371,5 +371,5 @@ type PhoneNumberResponseable interface {
     SetNumber(value *string)()
     SetPhoneIdentityId(value *string)()
     SetRouting(value PhoneNumberRoutingMetadataable)()
-    SetWarmup(value PhoneNumberWarmupable)()
+    SetWarmup(value PhoneNumberReadinessable)()
 }

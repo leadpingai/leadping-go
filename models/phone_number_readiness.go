@@ -7,46 +7,46 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberWarmup warmup state for a Leadping phone number.
-type PhoneNumberWarmup struct {
+// PhoneNumberReadiness messaging and calling warmup for a Leadping phone number.
+type PhoneNumberReadiness struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Indicates whether the phone number warmup is enabled in Leadping.
+    // Indicates whether phone number warmup is enabled in Leadping.
     enabled *bool
-    // Current warmup health score used to assess phone number readiness.
+    // Current warmup health score used to assess phone number warmup.
     healthScore *int32
-    // Defines the supported SMS Warmup Health State values.
-    healthStatus *PhoneNumberWarmup_healthStatus
+    // Defines the supported SMS readiness health assessments.
+    healthStatus *PhoneNumberReadiness_healthStatus
     // Warmup completion percentage, from 0 through 100.
     progressPercent *int32
-    // Defines the supported SMS Warmup Health State values.
-    state *PhoneNumberWarmup_state
+    // Defines the supported SMS readiness states.
+    state *PhoneNumberReadiness_state
 }
-// NewPhoneNumberWarmup instantiates a new PhoneNumberWarmup and sets the default values.
-func NewPhoneNumberWarmup()(*PhoneNumberWarmup) {
-    m := &PhoneNumberWarmup{
+// NewPhoneNumberReadiness instantiates a new PhoneNumberReadiness and sets the default values.
+func NewPhoneNumberReadiness()(*PhoneNumberReadiness) {
+    m := &PhoneNumberReadiness{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreatePhoneNumberWarmupFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreatePhoneNumberReadinessFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberWarmupFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberWarmup(), nil
+func CreatePhoneNumberReadinessFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewPhoneNumberReadiness(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberWarmup) GetAdditionalData()(map[string]any) {
+func (m *PhoneNumberReadiness) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEnabled gets the enabled property value. Indicates whether the phone number warmup is enabled in Leadping.
+// GetEnabled gets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
 // returns a *bool when successful
-func (m *PhoneNumberWarmup) GetEnabled()(*bool) {
+func (m *PhoneNumberReadiness) GetEnabled()(*bool) {
     return m.enabled
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberWarmup) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *PhoneNumberReadiness) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
@@ -69,12 +69,12 @@ func (m *PhoneNumberWarmup) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberWarmup_healthStatus)
+        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_healthStatus)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetHealthStatus(val.(*PhoneNumberWarmup_healthStatus))
+            m.SetHealthStatus(val.(*PhoneNumberReadiness_healthStatus))
         }
         return nil
     }
@@ -89,39 +89,39 @@ func (m *PhoneNumberWarmup) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["state"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberWarmup_state)
+        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_state)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetState(val.(*PhoneNumberWarmup_state))
+            m.SetState(val.(*PhoneNumberReadiness_state))
         }
         return nil
     }
     return res
 }
-// GetHealthScore gets the healthScore property value. Current warmup health score used to assess phone number readiness.
+// GetHealthScore gets the healthScore property value. Current warmup health score used to assess phone number warmup.
 // returns a *int32 when successful
-func (m *PhoneNumberWarmup) GetHealthScore()(*int32) {
+func (m *PhoneNumberReadiness) GetHealthScore()(*int32) {
     return m.healthScore
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberWarmup_healthStatus when successful
-func (m *PhoneNumberWarmup) GetHealthStatus()(*PhoneNumberWarmup_healthStatus) {
+// GetHealthStatus gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+// returns a *PhoneNumberReadiness_healthStatus when successful
+func (m *PhoneNumberReadiness) GetHealthStatus()(*PhoneNumberReadiness_healthStatus) {
     return m.healthStatus
 }
 // GetProgressPercent gets the progressPercent property value. Warmup completion percentage, from 0 through 100.
 // returns a *int32 when successful
-func (m *PhoneNumberWarmup) GetProgressPercent()(*int32) {
+func (m *PhoneNumberReadiness) GetProgressPercent()(*int32) {
     return m.progressPercent
 }
-// GetState gets the state property value. Defines the supported SMS Warmup Health State values.
-// returns a *PhoneNumberWarmup_state when successful
-func (m *PhoneNumberWarmup) GetState()(*PhoneNumberWarmup_state) {
+// GetState gets the state property value. Defines the supported SMS readiness states.
+// returns a *PhoneNumberReadiness_state when successful
+func (m *PhoneNumberReadiness) GetState()(*PhoneNumberReadiness_state) {
     return m.state
 }
 // Serialize serializes information the current object
-func (m *PhoneNumberWarmup) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
         if err != nil {
@@ -163,40 +163,40 @@ func (m *PhoneNumberWarmup) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberWarmup) SetAdditionalData(value map[string]any)() {
+func (m *PhoneNumberReadiness) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEnabled sets the enabled property value. Indicates whether the phone number warmup is enabled in Leadping.
-func (m *PhoneNumberWarmup) SetEnabled(value *bool)() {
+// SetEnabled sets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
+func (m *PhoneNumberReadiness) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetHealthScore sets the healthScore property value. Current warmup health score used to assess phone number readiness.
-func (m *PhoneNumberWarmup) SetHealthScore(value *int32)() {
+// SetHealthScore sets the healthScore property value. Current warmup health score used to assess phone number warmup.
+func (m *PhoneNumberReadiness) SetHealthScore(value *int32)() {
     m.healthScore = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberWarmup) SetHealthStatus(value *PhoneNumberWarmup_healthStatus)() {
+// SetHealthStatus sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+func (m *PhoneNumberReadiness) SetHealthStatus(value *PhoneNumberReadiness_healthStatus)() {
     m.healthStatus = value
 }
 // SetProgressPercent sets the progressPercent property value. Warmup completion percentage, from 0 through 100.
-func (m *PhoneNumberWarmup) SetProgressPercent(value *int32)() {
+func (m *PhoneNumberReadiness) SetProgressPercent(value *int32)() {
     m.progressPercent = value
 }
-// SetState sets the state property value. Defines the supported SMS Warmup Health State values.
-func (m *PhoneNumberWarmup) SetState(value *PhoneNumberWarmup_state)() {
+// SetState sets the state property value. Defines the supported SMS readiness states.
+func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state)() {
     m.state = value
 }
-type PhoneNumberWarmupable interface {
+type PhoneNumberReadinessable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetEnabled()(*bool)
     GetHealthScore()(*int32)
-    GetHealthStatus()(*PhoneNumberWarmup_healthStatus)
+    GetHealthStatus()(*PhoneNumberReadiness_healthStatus)
     GetProgressPercent()(*int32)
-    GetState()(*PhoneNumberWarmup_state)
+    GetState()(*PhoneNumberReadiness_state)
     SetEnabled(value *bool)()
     SetHealthScore(value *int32)()
-    SetHealthStatus(value *PhoneNumberWarmup_healthStatus)()
+    SetHealthStatus(value *PhoneNumberReadiness_healthStatus)()
     SetProgressPercent(value *int32)()
-    SetState(value *PhoneNumberWarmup_state)()
+    SetState(value *PhoneNumberReadiness_state)()
 }

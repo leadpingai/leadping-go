@@ -19,7 +19,7 @@ type PhoneNumberTableRow struct {
     enabled *bool
     // Unique Leadping identifier for this phone number table row.
     id *string
-    // Display name for this phone number table row in the Leadping API.
+    // Optional display label for this phone number table row in the Leadping API.
     name *string
     // E.164 phone number exposed by this phone number table row.
     number *string
@@ -36,7 +36,7 @@ type PhoneNumberTableRow struct {
     // Indicates whether voice calling is ready for this business or phone number.
     voiceReady *bool
     // Warmup state for this phone number.
-    warmup PhoneNumberWarmupable
+    warmup PhoneNumberReadinessable
 }
 // NewPhoneNumberTableRow instantiates a new PhoneNumberTableRow and sets the default values.
 func NewPhoneNumberTableRow()(*PhoneNumberTableRow) {
@@ -195,12 +195,12 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberWarmupFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetWarmup(val.(PhoneNumberWarmupable))
+            m.SetWarmup(val.(PhoneNumberReadinessable))
         }
         return nil
     }
@@ -211,7 +211,7 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *PhoneNumberTableRow) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. Display name for this phone number table row in the Leadping API.
+// GetName gets the name property value. Optional display label for this phone number table row in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetName()(*string) {
     return m.name
@@ -252,8 +252,8 @@ func (m *PhoneNumberTableRow) GetVoiceReady()(*bool) {
     return m.voiceReady
 }
 // GetWarmup gets the warmup property value. Warmup state for this phone number.
-// returns a PhoneNumberWarmupable when successful
-func (m *PhoneNumberTableRow) GetWarmup()(PhoneNumberWarmupable) {
+// returns a PhoneNumberReadinessable when successful
+func (m *PhoneNumberTableRow) GetWarmup()(PhoneNumberReadinessable) {
     return m.warmup
 }
 // Serialize serializes information the current object
@@ -364,7 +364,7 @@ func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
 func (m *PhoneNumberTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. Display name for this phone number table row in the Leadping API.
+// SetName sets the name property value. Optional display label for this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetName(value *string)() {
     m.name = value
 }
@@ -397,7 +397,7 @@ func (m *PhoneNumberTableRow) SetVoiceReady(value *bool)() {
     m.voiceReady = value
 }
 // SetWarmup sets the warmup property value. Warmup state for this phone number.
-func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberWarmupable)() {
+func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberReadinessable)() {
     m.warmup = value
 }
 type PhoneNumberTableRowable interface {
@@ -415,7 +415,7 @@ type PhoneNumberTableRowable interface {
     GetTenDlcCampaignStatus()(*string)
     GetTypeEscaped()(*string)
     GetVoiceReady()(*bool)
-    GetWarmup()(PhoneNumberWarmupable)
+    GetWarmup()(PhoneNumberReadinessable)
     SetBusiness(value *string)()
     SetBusinessId(value *string)()
     SetEnabled(value *bool)()
@@ -428,5 +428,5 @@ type PhoneNumberTableRowable interface {
     SetTenDlcCampaignStatus(value *string)()
     SetTypeEscaped(value *string)()
     SetVoiceReady(value *bool)()
-    SetWarmup(value PhoneNumberWarmupable)()
+    SetWarmup(value PhoneNumberReadinessable)()
 }

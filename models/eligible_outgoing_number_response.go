@@ -19,7 +19,7 @@ type EligibleOutgoingNumberResponse struct {
     displayNumber *string
     // Short label describing the health state for display in dashboards.
     healthLabel *string
-    // Defines the supported SMS Warmup Health State values.
+    // Defines the supported SMS readiness health assessments.
     healthStatus *EligibleOutgoingNumberResponse_healthStatus
     // Warning text that explains a potential health or readiness issue.
     healthWarning *string
@@ -223,7 +223,7 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers()(map[string]func
 func (m *EligibleOutgoingNumberResponse) GetHealthLabel()(*string) {
     return m.healthLabel
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+// GetHealthStatus gets the healthStatus property value. Defines the supported SMS readiness health assessments.
 // returns a *EligibleOutgoingNumberResponse_healthStatus when successful
 func (m *EligibleOutgoingNumberResponse) GetHealthStatus()(*EligibleOutgoingNumberResponse_healthStatus) {
     return m.healthStatus
@@ -389,7 +389,7 @@ func (m *EligibleOutgoingNumberResponse) SetDisplayNumber(value *string)() {
 func (m *EligibleOutgoingNumberResponse) SetHealthLabel(value *string)() {
     m.healthLabel = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+// SetHealthStatus sets the healthStatus property value. Defines the supported SMS readiness health assessments.
 func (m *EligibleOutgoingNumberResponse) SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)() {
     m.healthStatus = value
 }

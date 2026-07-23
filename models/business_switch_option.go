@@ -34,6 +34,8 @@ type BusinessSwitchOption struct {
     readyForCustomerTraffic *bool
     // The role value for this business switch option.
     role *BusinessUserRole
+    // Defines the supported 10DLC Application Status values.
+    tenDlcStatus *BusinessSwitchOption_tenDlcStatus
 }
 // NewBusinessSwitchOption instantiates a new BusinessSwitchOption and sets the default values.
 func NewBusinessSwitchOption()(*BusinessSwitchOption) {
@@ -181,6 +183,16 @@ func (m *BusinessSwitchOption) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["tenDlcStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessSwitchOption_tenDlcStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTenDlcStatus(val.(*BusinessSwitchOption_tenDlcStatus))
+        }
+        return nil
+    }
     return res
 }
 // GetHasPaymentMethod gets the hasPaymentMethod property value. Whether the business has a default billing payment method.
@@ -222,6 +234,11 @@ func (m *BusinessSwitchOption) GetReadyForCustomerTraffic()(*bool) {
 // returns a *BusinessUserRole when successful
 func (m *BusinessSwitchOption) GetRole()(*BusinessUserRole) {
     return m.role
+}
+// GetTenDlcStatus gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+// returns a *BusinessSwitchOption_tenDlcStatus when successful
+func (m *BusinessSwitchOption) GetTenDlcStatus()(*BusinessSwitchOption_tenDlcStatus) {
+    return m.tenDlcStatus
 }
 // Serialize serializes information the current object
 func (m *BusinessSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -294,6 +311,13 @@ func (m *BusinessSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f487ee
             return err
         }
     }
+    if m.GetTenDlcStatus() != nil {
+        cast := (*m.GetTenDlcStatus()).String()
+        err := writer.WriteStringValue("tenDlcStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
@@ -350,6 +374,10 @@ func (m *BusinessSwitchOption) SetReadyForCustomerTraffic(value *bool)() {
 func (m *BusinessSwitchOption) SetRole(value *BusinessUserRole)() {
     m.role = value
 }
+// SetTenDlcStatus sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+func (m *BusinessSwitchOption) SetTenDlcStatus(value *BusinessSwitchOption_tenDlcStatus)() {
+    m.tenDlcStatus = value
+}
 type BusinessSwitchOptionable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -364,6 +392,7 @@ type BusinessSwitchOptionable interface {
     GetNeedsAdminReview()(*bool)
     GetReadyForCustomerTraffic()(*bool)
     GetRole()(*BusinessUserRole)
+    GetTenDlcStatus()(*BusinessSwitchOption_tenDlcStatus)
     SetActivationStatus(value *BusinessSwitchOption_activationStatus)()
     SetActivationSummary(value *string)()
     SetBusinessStatus(value *BusinessSwitchOption_businessStatus)()
@@ -375,4 +404,5 @@ type BusinessSwitchOptionable interface {
     SetNeedsAdminReview(value *bool)()
     SetReadyForCustomerTraffic(value *bool)()
     SetRole(value *BusinessUserRole)()
+    SetTenDlcStatus(value *BusinessSwitchOption_tenDlcStatus)()
 }

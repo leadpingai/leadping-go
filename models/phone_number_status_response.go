@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberStatusResponse response schema for the Leadping API phone number readiness status returned to authenticated clients.
+// PhoneNumberStatusResponse response schema for the Leadping API phone number warmup status returned to authenticated clients.
 type PhoneNumberStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -15,7 +15,7 @@ type PhoneNumberStatusResponse struct {
     callsPossible *int32
     // Indicates whether this phone number can currently send SMS messages.
     messagesPossible *int32
-    // E.164 phone number exposed by this phone number readiness status.
+    // E.164 phone number exposed by this phone number warmup status.
     number *string
     // Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
     optOutMetrics PhoneNumberOptOutMetricsResponseable
@@ -23,7 +23,7 @@ type PhoneNumberStatusResponse struct {
     outboundCapacity PhoneNumberStatusResponse_outboundCapacityable
     // Recent workflow events returned for timeline and troubleshooting.
     recentEvents []PhoneNumberMessagingEventResponseable
-    // SMS sender warmup status for this phone number.
+    // SMS warmup status for this phone number.
     smsWarmup PhoneNumberStatusResponse_smsWarmupable
     // Phone number traffic metrics for recent SMS and call activity.
     trafficMetrics PhoneNumberTrafficMetricsResponseable
@@ -147,7 +147,7 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
 func (m *PhoneNumberStatusResponse) GetMessagesPossible()(*int32) {
     return m.messagesPossible
 }
-// GetNumber gets the number property value. E.164 phone number exposed by this phone number readiness status.
+// GetNumber gets the number property value. E.164 phone number exposed by this phone number warmup status.
 // returns a *string when successful
 func (m *PhoneNumberStatusResponse) GetNumber()(*string) {
     return m.number
@@ -167,7 +167,7 @@ func (m *PhoneNumberStatusResponse) GetOutboundCapacity()(PhoneNumberStatusRespo
 func (m *PhoneNumberStatusResponse) GetRecentEvents()([]PhoneNumberMessagingEventResponseable) {
     return m.recentEvents
 }
-// GetSmsWarmup gets the smsWarmup property value. SMS sender warmup status for this phone number.
+// GetSmsWarmup gets the smsWarmup property value. SMS warmup status for this phone number.
 // returns a PhoneNumberStatusResponse_smsWarmupable when successful
 func (m *PhoneNumberStatusResponse) GetSmsWarmup()(PhoneNumberStatusResponse_smsWarmupable) {
     return m.smsWarmup
@@ -253,7 +253,7 @@ func (m *PhoneNumberStatusResponse) SetCallsPossible(value *int32)() {
 func (m *PhoneNumberStatusResponse) SetMessagesPossible(value *int32)() {
     m.messagesPossible = value
 }
-// SetNumber sets the number property value. E.164 phone number exposed by this phone number readiness status.
+// SetNumber sets the number property value. E.164 phone number exposed by this phone number warmup status.
 func (m *PhoneNumberStatusResponse) SetNumber(value *string)() {
     m.number = value
 }
@@ -269,7 +269,7 @@ func (m *PhoneNumberStatusResponse) SetOutboundCapacity(value PhoneNumberStatusR
 func (m *PhoneNumberStatusResponse) SetRecentEvents(value []PhoneNumberMessagingEventResponseable)() {
     m.recentEvents = value
 }
-// SetSmsWarmup sets the smsWarmup property value. SMS sender warmup status for this phone number.
+// SetSmsWarmup sets the smsWarmup property value. SMS warmup status for this phone number.
 func (m *PhoneNumberStatusResponse) SetSmsWarmup(value PhoneNumberStatusResponse_smsWarmupable)() {
     m.smsWarmup = value
 }

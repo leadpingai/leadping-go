@@ -14,7 +14,7 @@ import (
 type ItemStatusRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemStatusRequestBuilderGetQueryParameters returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+// ItemStatusRequestBuilderGetQueryParameters returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
 type ItemStatusRequestBuilderGetQueryParameters struct {
     // The end date.
     EndDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly "uriparametername:\"endDate\""
@@ -36,7 +36,7 @@ func NewItemStatusRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
     urlParams["request-raw-url"] = rawUrl
     return NewItemStatusRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+// Get returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
 // returns a PhoneNumberStatusResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -60,7 +60,7 @@ func (m *ItemStatusRequestBuilder) Get(ctx context.Context, requestConfiguration
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberStatusResponseable), nil
 }
-// ToGetRequestInformation returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+// ToGetRequestInformation returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
 // returns a *RequestInformation when successful
 func (m *ItemStatusRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemStatusRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

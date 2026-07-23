@@ -7,42 +7,42 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SmsWarmupUiState aPI DTO containing SMS warmup ui state data used by Leadping API contracts.
-type SmsWarmupUiState struct {
+// SmsReadinessUiState aPI DTO containing SMS readiness UI state data used by Leadping API contracts.
+type SmsReadinessUiState struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The human-readable description of this SMS warmup UI state.
+    // The human-readable description of this SMS readiness UI state.
     description *string
-    // The human-readable label shown for this SMS warmup UI state.
-    label *SmsWarmupHealthState
-    // The tone value for this SMS warmup UI state.
+    // The human-readable label shown for this SMS readiness UI state.
+    label *SmsReadinessState
+    // The tone value for this SMS readiness UI state.
     tone *string
 }
-// NewSmsWarmupUiState instantiates a new SmsWarmupUiState and sets the default values.
-func NewSmsWarmupUiState()(*SmsWarmupUiState) {
-    m := &SmsWarmupUiState{
+// NewSmsReadinessUiState instantiates a new SmsReadinessUiState and sets the default values.
+func NewSmsReadinessUiState()(*SmsReadinessUiState) {
+    m := &SmsReadinessUiState{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreateSmsWarmupUiStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateSmsReadinessUiStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSmsWarmupUiStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSmsWarmupUiState(), nil
+func CreateSmsReadinessUiStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewSmsReadinessUiState(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SmsWarmupUiState) GetAdditionalData()(map[string]any) {
+func (m *SmsReadinessUiState) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDescription gets the description property value. The human-readable description of this SMS warmup UI state.
+// GetDescription gets the description property value. The human-readable description of this SMS readiness UI state.
 // returns a *string when successful
-func (m *SmsWarmupUiState) GetDescription()(*string) {
+func (m *SmsReadinessUiState) GetDescription()(*string) {
     return m.description
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SmsWarmupUiState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *SmsReadinessUiState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
@@ -55,12 +55,12 @@ func (m *SmsWarmupUiState) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsWarmupHealthState)
+        val, err := n.GetEnumValue(ParseSmsReadinessState)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLabel(val.(*SmsWarmupHealthState))
+            m.SetLabel(val.(*SmsReadinessState))
         }
         return nil
     }
@@ -76,18 +76,18 @@ func (m *SmsWarmupUiState) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
-// GetLabel gets the label property value. The human-readable label shown for this SMS warmup UI state.
-// returns a *SmsWarmupHealthState when successful
-func (m *SmsWarmupUiState) GetLabel()(*SmsWarmupHealthState) {
+// GetLabel gets the label property value. The human-readable label shown for this SMS readiness UI state.
+// returns a *SmsReadinessState when successful
+func (m *SmsReadinessUiState) GetLabel()(*SmsReadinessState) {
     return m.label
 }
-// GetTone gets the tone property value. The tone value for this SMS warmup UI state.
+// GetTone gets the tone property value. The tone value for this SMS readiness UI state.
 // returns a *string when successful
-func (m *SmsWarmupUiState) GetTone()(*string) {
+func (m *SmsReadinessUiState) GetTone()(*string) {
     return m.tone
 }
 // Serialize serializes information the current object
-func (m *SmsWarmupUiState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *SmsReadinessUiState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("description", m.GetDescription())
         if err != nil {
@@ -116,28 +116,28 @@ func (m *SmsWarmupUiState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SmsWarmupUiState) SetAdditionalData(value map[string]any)() {
+func (m *SmsReadinessUiState) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDescription sets the description property value. The human-readable description of this SMS warmup UI state.
-func (m *SmsWarmupUiState) SetDescription(value *string)() {
+// SetDescription sets the description property value. The human-readable description of this SMS readiness UI state.
+func (m *SmsReadinessUiState) SetDescription(value *string)() {
     m.description = value
 }
-// SetLabel sets the label property value. The human-readable label shown for this SMS warmup UI state.
-func (m *SmsWarmupUiState) SetLabel(value *SmsWarmupHealthState)() {
+// SetLabel sets the label property value. The human-readable label shown for this SMS readiness UI state.
+func (m *SmsReadinessUiState) SetLabel(value *SmsReadinessState)() {
     m.label = value
 }
-// SetTone sets the tone property value. The tone value for this SMS warmup UI state.
-func (m *SmsWarmupUiState) SetTone(value *string)() {
+// SetTone sets the tone property value. The tone value for this SMS readiness UI state.
+func (m *SmsReadinessUiState) SetTone(value *string)() {
     m.tone = value
 }
-type SmsWarmupUiStateable interface {
+type SmsReadinessUiStateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetDescription()(*string)
-    GetLabel()(*SmsWarmupHealthState)
+    GetLabel()(*SmsReadinessState)
     GetTone()(*string)
     SetDescription(value *string)()
-    SetLabel(value *SmsWarmupHealthState)()
+    SetLabel(value *SmsReadinessState)()
     SetTone(value *string)()
 }
