@@ -33,6 +33,8 @@ type UserRequest struct {
     notificationPreferences UserRequest_notificationPreferencesable
     // Phone details for the lead, user, or business represented by this user profile request.
     phone *string
+    // IANA time zone identifier used when displaying dates and times for this user.
+    timeZoneId *string
 }
 // NewUserRequest instantiates a new UserRequest and sets the default values.
 func NewUserRequest()(*UserRequest) {
@@ -191,6 +193,16 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
+    res["timeZoneId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTimeZoneId(val)
+        }
+        return nil
+    }
     return res
 }
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
@@ -227,6 +239,11 @@ func (m *UserRequest) GetNotificationPreferences()(UserRequest_notificationPrefe
 // returns a *string when successful
 func (m *UserRequest) GetPhone()(*string) {
     return m.phone
+}
+// GetTimeZoneId gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+// returns a *string when successful
+func (m *UserRequest) GetTimeZoneId()(*string) {
+    return m.timeZoneId
 }
 // Serialize serializes information the current object
 func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -304,6 +321,12 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
+        err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -359,6 +382,10 @@ func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationP
 func (m *UserRequest) SetPhone(value *string)() {
     m.phone = value
 }
+// SetTimeZoneId sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+func (m *UserRequest) SetTimeZoneId(value *string)() {
+    m.timeZoneId = value
+}
 type UserRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -373,6 +400,7 @@ type UserRequestable interface {
     GetName()(*string)
     GetNotificationPreferences()(UserRequest_notificationPreferencesable)
     GetPhone()(*string)
+    GetTimeZoneId()(*string)
     SetBillingPlan(value *UserRequest_billingPlan)()
     SetCompliance(value UserRequest_complianceable)()
     SetCurrentBusiness(value UserRequest_currentBusinessable)()
@@ -384,4 +412,5 @@ type UserRequestable interface {
     SetName(value *string)()
     SetNotificationPreferences(value UserRequest_notificationPreferencesable)()
     SetPhone(value *string)()
+    SetTimeZoneId(value *string)()
 }

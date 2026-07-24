@@ -56,6 +56,8 @@ type UserResponse struct {
     roles i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Defines the supported Subscription Status values.
     subscriptionStatus *UserResponse_subscriptionStatus
+    // IANA time zone identifier used when displaying dates and times for this user.
+    timeZoneId *string
 }
 // NewUserResponse instantiates a new UserResponse and sets the default values.
 func NewUserResponse()(*UserResponse) {
@@ -340,6 +342,16 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["timeZoneId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTimeZoneId(val)
+        }
+        return nil
+    }
     return res
 }
 // GetFirstName gets the firstName property value. The first name value for this user.
@@ -421,6 +433,11 @@ func (m *UserResponse) GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c
 // returns a *UserResponse_subscriptionStatus when successful
 func (m *UserResponse) GetSubscriptionStatus()(*UserResponse_subscriptionStatus) {
     return m.subscriptionStatus
+}
+// GetTimeZoneId gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+// returns a *string when successful
+func (m *UserResponse) GetTimeZoneId()(*string) {
+    return m.timeZoneId
 }
 // Serialize serializes information the current object
 func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -571,6 +588,12 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -670,6 +693,10 @@ func (m *UserResponse) SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *UserResponse) SetSubscriptionStatus(value *UserResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
 }
+// SetTimeZoneId sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+func (m *UserResponse) SetTimeZoneId(value *string)() {
+    m.timeZoneId = value
+}
 type UserResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -695,6 +722,7 @@ type UserResponseable interface {
     GetPhone()(*string)
     GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
+    GetTimeZoneId()(*string)
     SetBillingPlan(value *UserResponse_billingPlan)()
     SetBillingState(value UserResponse_billingStateable)()
     SetCompliance(value UserResponse_complianceable)()
@@ -717,4 +745,5 @@ type UserResponseable interface {
     SetPhone(value *string)()
     SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetSubscriptionStatus(value *UserResponse_subscriptionStatus)()
+    SetTimeZoneId(value *string)()
 }
