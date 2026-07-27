@@ -38,6 +38,8 @@ type LeadResponse struct {
     metadata LeadMetadataable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Canonical phone identity and provider lookup details for this lead.
+    phoneIdentity LeadResponse_phoneIdentityable
     // Tags currently attached to this lead, source, or record.
     tags []TagSummaryable
 }
@@ -237,6 +239,16 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["phoneIdentity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadResponse_phoneIdentityFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPhoneIdentity(val.(LeadResponse_phoneIdentityable))
+        }
+        return nil
+    }
     res["tags"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
         if err != nil {
@@ -274,6 +286,11 @@ func (m *LeadResponse) GetMetadata()(LeadMetadataable) {
 // returns a *Time when successful
 func (m *LeadResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
+}
+// GetPhoneIdentity gets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+// returns a LeadResponse_phoneIdentityable when successful
+func (m *LeadResponse) GetPhoneIdentity()(LeadResponse_phoneIdentityable) {
+    return m.phoneIdentity
 }
 // GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
@@ -360,6 +377,12 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
             return err
         }
     }
+    {
+        err := writer.WriteObjectValue("phoneIdentity", m.GetPhoneIdentity())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetTags() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTags()))
         for i, v := range m.GetTags() {
@@ -436,6 +459,10 @@ func (m *LeadResponse) SetMetadata(value LeadMetadataable)() {
 func (m *LeadResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
+// SetPhoneIdentity sets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+func (m *LeadResponse) SetPhoneIdentity(value LeadResponse_phoneIdentityable)() {
+    m.phoneIdentity = value
+}
 // SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
 func (m *LeadResponse) SetTags(value []TagSummaryable)() {
     m.tags = value
@@ -456,6 +483,7 @@ type LeadResponseable interface {
     GetIsArchived()(*bool)
     GetMetadata()(LeadMetadataable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetPhoneIdentity()(LeadResponse_phoneIdentityable)
     GetTags()([]TagSummaryable)
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
@@ -470,5 +498,6 @@ type LeadResponseable interface {
     SetIsArchived(value *bool)()
     SetMetadata(value LeadMetadataable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetPhoneIdentity(value LeadResponse_phoneIdentityable)()
     SetTags(value []TagSummaryable)()
 }

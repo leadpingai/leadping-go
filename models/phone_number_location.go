@@ -11,8 +11,14 @@ import (
 type PhoneNumberLocation struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Canonical city resolved by Leadping from its ZIP-code geography data.
+    canonicalCity *string
+    // Canonical state or territory abbreviation resolved by Leadping.
+    canonicalState *string
     // Latitude and longitude coordinate for this phone number location.
     coordinate PhoneNumberLocation_coordinateable
+    // Describes how the coordinate was resolved.
+    coordinateSource PhoneNumberLocation_coordinateSourceable
     // Country code for the phone number or location represented by this phone number location.
     countryCode *string
     // Geographic location metadata for the phone number, lead, or lookup result.
@@ -21,6 +27,8 @@ type PhoneNumberLocation struct {
     state *string
     // IANA or Windows time zone identifier used for local scheduling and reporting.
     timeZoneId *string
+    // Describes how the time zone was resolved.
+    timeZoneSource PhoneNumberLocation_timeZoneSourceable
 }
 // NewPhoneNumberLocation instantiates a new PhoneNumberLocation and sets the default values.
 func NewPhoneNumberLocation()(*PhoneNumberLocation) {
@@ -39,10 +47,25 @@ func CreatePhoneNumberLocationFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberLocation) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetCanonicalCity gets the canonicalCity property value. Canonical city resolved by Leadping from its ZIP-code geography data.
+// returns a *string when successful
+func (m *PhoneNumberLocation) GetCanonicalCity()(*string) {
+    return m.canonicalCity
+}
+// GetCanonicalState gets the canonicalState property value. Canonical state or territory abbreviation resolved by Leadping.
+// returns a *string when successful
+func (m *PhoneNumberLocation) GetCanonicalState()(*string) {
+    return m.canonicalState
+}
 // GetCoordinate gets the coordinate property value. Latitude and longitude coordinate for this phone number location.
 // returns a PhoneNumberLocation_coordinateable when successful
 func (m *PhoneNumberLocation) GetCoordinate()(PhoneNumberLocation_coordinateable) {
     return m.coordinate
+}
+// GetCoordinateSource gets the coordinateSource property value. Describes how the coordinate was resolved.
+// returns a PhoneNumberLocation_coordinateSourceable when successful
+func (m *PhoneNumberLocation) GetCoordinateSource()(PhoneNumberLocation_coordinateSourceable) {
+    return m.coordinateSource
 }
 // GetCountryCode gets the countryCode property value. Country code for the phone number or location represented by this phone number location.
 // returns a *string when successful
@@ -53,6 +76,26 @@ func (m *PhoneNumberLocation) GetCountryCode()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberLocation) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["canonicalCity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCanonicalCity(val)
+        }
+        return nil
+    }
+    res["canonicalState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCanonicalState(val)
+        }
+        return nil
+    }
     res["coordinate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreatePhoneNumberLocation_coordinateFromDiscriminatorValue)
         if err != nil {
@@ -60,6 +103,16 @@ func (m *PhoneNumberLocation) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetCoordinate(val.(PhoneNumberLocation_coordinateable))
+        }
+        return nil
+    }
+    res["coordinateSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberLocation_coordinateSourceFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCoordinateSource(val.(PhoneNumberLocation_coordinateSourceable))
         }
         return nil
     }
@@ -103,6 +156,16 @@ func (m *PhoneNumberLocation) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
+    res["timeZoneSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberLocation_timeZoneSourceFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTimeZoneSource(val.(PhoneNumberLocation_timeZoneSourceable))
+        }
+        return nil
+    }
     return res
 }
 // GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
@@ -120,10 +183,33 @@ func (m *PhoneNumberLocation) GetState()(*string) {
 func (m *PhoneNumberLocation) GetTimeZoneId()(*string) {
     return m.timeZoneId
 }
+// GetTimeZoneSource gets the timeZoneSource property value. Describes how the time zone was resolved.
+// returns a PhoneNumberLocation_timeZoneSourceable when successful
+func (m *PhoneNumberLocation) GetTimeZoneSource()(PhoneNumberLocation_timeZoneSourceable) {
+    return m.timeZoneSource
+}
 // Serialize serializes information the current object
 func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
+        err := writer.WriteStringValue("canonicalCity", m.GetCanonicalCity())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("canonicalState", m.GetCanonicalState())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("coordinate", m.GetCoordinate())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteObjectValue("coordinateSource", m.GetCoordinateSource())
         if err != nil {
             return err
         }
@@ -153,6 +239,12 @@ func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
+        err := writer.WriteObjectValue("timeZoneSource", m.GetTimeZoneSource())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -164,9 +256,21 @@ func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberLocation) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetCanonicalCity sets the canonicalCity property value. Canonical city resolved by Leadping from its ZIP-code geography data.
+func (m *PhoneNumberLocation) SetCanonicalCity(value *string)() {
+    m.canonicalCity = value
+}
+// SetCanonicalState sets the canonicalState property value. Canonical state or territory abbreviation resolved by Leadping.
+func (m *PhoneNumberLocation) SetCanonicalState(value *string)() {
+    m.canonicalState = value
+}
 // SetCoordinate sets the coordinate property value. Latitude and longitude coordinate for this phone number location.
 func (m *PhoneNumberLocation) SetCoordinate(value PhoneNumberLocation_coordinateable)() {
     m.coordinate = value
+}
+// SetCoordinateSource sets the coordinateSource property value. Describes how the coordinate was resolved.
+func (m *PhoneNumberLocation) SetCoordinateSource(value PhoneNumberLocation_coordinateSourceable)() {
+    m.coordinateSource = value
 }
 // SetCountryCode sets the countryCode property value. Country code for the phone number or location represented by this phone number location.
 func (m *PhoneNumberLocation) SetCountryCode(value *string)() {
@@ -184,17 +288,29 @@ func (m *PhoneNumberLocation) SetState(value *string)() {
 func (m *PhoneNumberLocation) SetTimeZoneId(value *string)() {
     m.timeZoneId = value
 }
+// SetTimeZoneSource sets the timeZoneSource property value. Describes how the time zone was resolved.
+func (m *PhoneNumberLocation) SetTimeZoneSource(value PhoneNumberLocation_timeZoneSourceable)() {
+    m.timeZoneSource = value
+}
 type PhoneNumberLocationable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetCanonicalCity()(*string)
+    GetCanonicalState()(*string)
     GetCoordinate()(PhoneNumberLocation_coordinateable)
+    GetCoordinateSource()(PhoneNumberLocation_coordinateSourceable)
     GetCountryCode()(*string)
     GetLocation()(*string)
     GetState()(*string)
     GetTimeZoneId()(*string)
+    GetTimeZoneSource()(PhoneNumberLocation_timeZoneSourceable)
+    SetCanonicalCity(value *string)()
+    SetCanonicalState(value *string)()
     SetCoordinate(value PhoneNumberLocation_coordinateable)()
+    SetCoordinateSource(value PhoneNumberLocation_coordinateSourceable)()
     SetCountryCode(value *string)()
     SetLocation(value *string)()
     SetState(value *string)()
     SetTimeZoneId(value *string)()
+    SetTimeZoneSource(value PhoneNumberLocation_timeZoneSourceable)()
 }

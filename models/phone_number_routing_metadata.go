@@ -19,6 +19,8 @@ type PhoneNumberRoutingMetadata struct {
     sourceId *string
     // Team ID used to route calls and messages for this phone number.
     teamId *string
+    // Leadping 10DLC application entity associated with this phone number.
+    tenDlcApplicationId *string
     // Indicates whether the phone number can be used for voice calls.
     voiceEnabled *bool
 }
@@ -88,6 +90,16 @@ func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i87
         }
         return nil
     }
+    res["tenDlcApplicationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTenDlcApplicationId(val)
+        }
+        return nil
+    }
     res["voiceEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -114,6 +126,11 @@ func (m *PhoneNumberRoutingMetadata) GetSourceId()(*string) {
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetTeamId()(*string) {
     return m.teamId
+}
+// GetTenDlcApplicationId gets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
+// returns a *string when successful
+func (m *PhoneNumberRoutingMetadata) GetTenDlcApplicationId()(*string) {
+    return m.tenDlcApplicationId
 }
 // GetVoiceEnabled gets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 // returns a *bool when successful
@@ -142,6 +159,12 @@ func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3
     }
     {
         err := writer.WriteStringValue("teamId", m.GetTeamId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
         if err != nil {
             return err
         }
@@ -180,6 +203,10 @@ func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string)() {
 func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string)() {
     m.teamId = value
 }
+// SetTenDlcApplicationId sets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
+func (m *PhoneNumberRoutingMetadata) SetTenDlcApplicationId(value *string)() {
+    m.tenDlcApplicationId = value
+}
 // SetVoiceEnabled sets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 func (m *PhoneNumberRoutingMetadata) SetVoiceEnabled(value *bool)() {
     m.voiceEnabled = value
@@ -191,10 +218,12 @@ type PhoneNumberRoutingMetadataable interface {
     GetSmsEnabled()(*bool)
     GetSourceId()(*string)
     GetTeamId()(*string)
+    GetTenDlcApplicationId()(*string)
     GetVoiceEnabled()(*bool)
     SetCampaignId(value *string)()
     SetSmsEnabled(value *bool)()
     SetSourceId(value *string)()
     SetTeamId(value *string)()
+    SetTenDlcApplicationId(value *string)()
     SetVoiceEnabled(value *bool)()
 }

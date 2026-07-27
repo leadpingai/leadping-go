@@ -11,6 +11,8 @@ import (
 type PhoneNumberReadiness struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
+    callStage *PhoneNumberReadiness_callStage
     // Indicates whether phone number warmup is enabled in Leadping.
     enabled *bool
     // Current warmup health score used to assess phone number warmup.
@@ -39,6 +41,11 @@ func CreatePhoneNumberReadinessFromDiscriminatorValue(parseNode i878a80d2330e89d
 func (m *PhoneNumberReadiness) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetCallStage gets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+// returns a *PhoneNumberReadiness_callStage when successful
+func (m *PhoneNumberReadiness) GetCallStage()(*PhoneNumberReadiness_callStage) {
+    return m.callStage
+}
 // GetEnabled gets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
 // returns a *bool when successful
 func (m *PhoneNumberReadiness) GetEnabled()(*bool) {
@@ -48,6 +55,16 @@ func (m *PhoneNumberReadiness) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberReadiness) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["callStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_callStage)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCallStage(val.(*PhoneNumberReadiness_callStage))
+        }
+        return nil
+    }
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -122,6 +139,13 @@ func (m *PhoneNumberReadiness) GetState()(*PhoneNumberReadiness_state) {
 }
 // Serialize serializes information the current object
 func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+    if m.GetCallStage() != nil {
+        cast := (*m.GetCallStage()).String()
+        err := writer.WriteStringValue("callStage", &cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
         if err != nil {
@@ -166,6 +190,10 @@ func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487ee
 func (m *PhoneNumberReadiness) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetCallStage sets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+func (m *PhoneNumberReadiness) SetCallStage(value *PhoneNumberReadiness_callStage)() {
+    m.callStage = value
+}
 // SetEnabled sets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
 func (m *PhoneNumberReadiness) SetEnabled(value *bool)() {
     m.enabled = value
@@ -189,11 +217,13 @@ func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state)() {
 type PhoneNumberReadinessable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetCallStage()(*PhoneNumberReadiness_callStage)
     GetEnabled()(*bool)
     GetHealthScore()(*int32)
     GetHealthStatus()(*PhoneNumberReadiness_healthStatus)
     GetProgressPercent()(*int32)
     GetState()(*PhoneNumberReadiness_state)
+    SetCallStage(value *PhoneNumberReadiness_callStage)()
     SetEnabled(value *bool)()
     SetHealthScore(value *int32)()
     SetHealthStatus(value *PhoneNumberReadiness_healthStatus)()

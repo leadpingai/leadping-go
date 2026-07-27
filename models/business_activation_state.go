@@ -70,6 +70,8 @@ type BusinessActivationState struct {
     telephonyReadyAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current telephony status for this business activation state.
     telephonyStatus *ActivationTelephonyStatus
+    // Identifier of the first-class 10DLC application entity for this business.
+    tenDlcApplicationId *string
     // The 10DLC draft value for this business activation state.
     tenDlcDraft BusinessActivationState_tenDlcDraftable
     // The current 10DLC status for this business activation state.
@@ -461,6 +463,16 @@ func (m *BusinessActivationState) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
+    res["tenDlcApplicationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTenDlcApplicationId(val)
+        }
+        return nil
+    }
     res["tenDlcDraft"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateBusinessActivationState_tenDlcDraftFromDiscriminatorValue)
         if err != nil {
@@ -612,6 +624,11 @@ func (m *BusinessActivationState) GetTelephonyReadyAt()(*i336074805fc853987abe6f
 // returns a *ActivationTelephonyStatus when successful
 func (m *BusinessActivationState) GetTelephonyStatus()(*ActivationTelephonyStatus) {
     return m.telephonyStatus
+}
+// GetTenDlcApplicationId gets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this business.
+// returns a *string when successful
+func (m *BusinessActivationState) GetTenDlcApplicationId()(*string) {
+    return m.tenDlcApplicationId
 }
 // GetTenDlcDraft gets the tenDlcDraft property value. The 10DLC draft value for this business activation state.
 // returns a BusinessActivationState_tenDlcDraftable when successful
@@ -838,6 +855,12 @@ func (m *BusinessActivationState) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
+        err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("tenDlcDraft", m.GetTenDlcDraft())
         if err != nil {
             return err
@@ -1003,6 +1026,10 @@ func (m *BusinessActivationState) SetTelephonyReadyAt(value *i336074805fc853987a
 func (m *BusinessActivationState) SetTelephonyStatus(value *ActivationTelephonyStatus)() {
     m.telephonyStatus = value
 }
+// SetTenDlcApplicationId sets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this business.
+func (m *BusinessActivationState) SetTenDlcApplicationId(value *string)() {
+    m.tenDlcApplicationId = value
+}
 // SetTenDlcDraft sets the tenDlcDraft property value. The 10DLC draft value for this business activation state.
 func (m *BusinessActivationState) SetTenDlcDraft(value BusinessActivationState_tenDlcDraftable)() {
     m.tenDlcDraft = value
@@ -1059,6 +1086,7 @@ type BusinessActivationStateable interface {
     GetTelephonyProvisioningStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetTelephonyReadyAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetTelephonyStatus()(*ActivationTelephonyStatus)
+    GetTenDlcApplicationId()(*string)
     GetTenDlcDraft()(BusinessActivationState_tenDlcDraftable)
     GetTenDlcStatus()(*TenDlcApplicationStatus)
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1094,6 +1122,7 @@ type BusinessActivationStateable interface {
     SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetTelephonyStatus(value *ActivationTelephonyStatus)()
+    SetTenDlcApplicationId(value *string)()
     SetTenDlcDraft(value BusinessActivationState_tenDlcDraftable)()
     SetTenDlcStatus(value *TenDlcApplicationStatus)()
     SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

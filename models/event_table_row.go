@@ -12,6 +12,8 @@ import (
 type EventTableRow struct {
     // Display name for the person or system that created this event timeline table row.
     actorDisplayName *string
+    // Email address for the person who created this event timeline table row.
+    actorEmail *string
     // User ID for the person or system that created this event timeline table row.
     actorUserId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -120,6 +122,11 @@ func CreateEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *EventTableRow) GetActorDisplayName()(*string) {
     return m.actorDisplayName
 }
+// GetActorEmail gets the actorEmail property value. Email address for the person who created this event timeline table row.
+// returns a *string when successful
+func (m *EventTableRow) GetActorEmail()(*string) {
+    return m.actorEmail
+}
 // GetActorUserId gets the actorUserId property value. User ID for the person or system that created this event timeline table row.
 // returns a *string when successful
 func (m *EventTableRow) GetActorUserId()(*string) {
@@ -226,6 +233,16 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         if val != nil {
             m.SetActorDisplayName(val)
+        }
+        return nil
+    }
+    res["actorEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetActorEmail(val)
         }
         return nil
     }
@@ -810,6 +827,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
+        err := writer.WriteStringValue("actorEmail", m.GetActorEmail())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("actorUserId", m.GetActorUserId())
         if err != nil {
             return err
@@ -1089,6 +1112,10 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *EventTableRow) SetActorDisplayName(value *string)() {
     m.actorDisplayName = value
 }
+// SetActorEmail sets the actorEmail property value. Email address for the person who created this event timeline table row.
+func (m *EventTableRow) SetActorEmail(value *string)() {
+    m.actorEmail = value
+}
 // SetActorUserId sets the actorUserId property value. User ID for the person or system that created this event timeline table row.
 func (m *EventTableRow) SetActorUserId(value *string)() {
     m.actorUserId = value
@@ -1273,6 +1300,7 @@ type EventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActorDisplayName()(*string)
+    GetActorEmail()(*string)
     GetActorUserId()(*string)
     GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingStatus()(*string)
@@ -1318,6 +1346,7 @@ type EventTableRowable interface {
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetWasManuallyOverridden()(*bool)
     SetActorDisplayName(value *string)()
+    SetActorEmail(value *string)()
     SetActorUserId(value *string)()
     SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingStatus(value *string)()
