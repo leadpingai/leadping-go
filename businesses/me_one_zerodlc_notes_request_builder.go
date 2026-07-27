@@ -26,7 +26,7 @@ func NewMeOneZerodlcNotesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
     urlParams["request-raw-url"] = rawUrl
     return NewMeOneZerodlcNotesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Put updates the shared 10DLC notes for the current business.
+// Put updates the shared 10DLC registration notes for the current business, keeping carrier review context and messaging compliance details current.
 // returns a BusinessResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -48,7 +48,7 @@ func (m *MeOneZerodlcNotesRequestBuilder) Put(ctx context.Context, body i01c1fcf
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BusinessResponseable), nil
 }
-// ToPutRequestInformation updates the shared 10DLC notes for the current business.
+// ToPutRequestInformation updates the shared 10DLC registration notes for the current business, keeping carrier review context and messaging compliance details current.
 // returns a *RequestInformation when successful
 func (m *MeOneZerodlcNotesRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TenDlcNotesRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
