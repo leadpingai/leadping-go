@@ -8,7 +8,7 @@ type TenDlcApplicationStatus int
 const (
     NOTSTARTED_TENDLCAPPLICATIONSTATUS TenDlcApplicationStatus = iota
     DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
-    DRAFTNEEDSADMINREVIEW_TENDLCAPPLICATIONSTATUS
+    DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
     READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
     SUBMITTED_TENDLCAPPLICATIONSTATUS
     PENDINGTELNYXREVIEW_TENDLCAPPLICATIONSTATUS
@@ -20,7 +20,7 @@ const (
 )
 
 func (i TenDlcApplicationStatus) String() string {
-    return []string{"NotStarted", "DraftGenerated", "DraftNeedsAdminReview", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
+    return []string{"NotStarted", "DraftGenerated", "DraftIncomplete", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
 }
 func ParseTenDlcApplicationStatus(v string) (any, error) {
     result := NOTSTARTED_TENDLCAPPLICATIONSTATUS
@@ -29,8 +29,8 @@ func ParseTenDlcApplicationStatus(v string) (any, error) {
             result = NOTSTARTED_TENDLCAPPLICATIONSTATUS
         case "DraftGenerated":
             result = DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
-        case "DraftNeedsAdminReview":
-            result = DRAFTNEEDSADMINREVIEW_TENDLCAPPLICATIONSTATUS
+        case "DraftIncomplete":
+            result = DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
         case "ReadyToSubmit":
             result = READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
         case "Submitted":

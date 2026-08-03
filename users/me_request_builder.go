@@ -48,11 +48,6 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UserResponseable), nil
 }
-// LastLogin the lastLogin property
-// returns a *MeLastLoginRequestBuilder when successful
-func (m *MeRequestBuilder) LastLogin()(*MeLastLoginRequestBuilder) {
-    return NewMeLastLoginRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // Paymentmethod the paymentmethod property
 // returns a *MePaymentmethodRequestBuilder when successful
 func (m *MeRequestBuilder) Paymentmethod()(*MePaymentmethodRequestBuilder) {

@@ -12,7 +12,7 @@ type CustomerAnalyticsSummary struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Average time, in minutes, before a lead receives a response.
-    averageResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    averageResponseMinutes *float64
     // Current billing status for this Leadping customer analytics summary.
     billingStatus *string
     // Total connected call duration, in minutes, during the reporting period.
@@ -26,7 +26,7 @@ type CustomerAnalyticsSummary struct {
     // Date and time when this Leadping customer analytics summary was leads comparison.
     leadsComparison AnalyticsComparisonable
     // Median response minutes measured in minutes.
-    medianResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    medianResponseMinutes *float64
     // Number of calls missed during the reporting period.
     missedCalls *int32
     // Number of missed leads represented by this Leadping customer analytics summary.
@@ -64,8 +64,8 @@ func (m *CustomerAnalyticsSummary) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAverageResponseMinutes gets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetAverageResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetAverageResponseMinutes()(*float64) {
     return m.averageResponseMinutes
 }
 // GetBillingStatus gets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
@@ -93,12 +93,12 @@ func (m *CustomerAnalyticsSummary) GetCallsReceived()(*int32) {
 func (m *CustomerAnalyticsSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["averageResponseMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAverageResponseMinutes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetAverageResponseMinutes(val)
         }
         return nil
     }
@@ -163,12 +163,12 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers()(map[string]func(i878a
         return nil
     }
     res["medianResponseMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetMedianResponseMinutes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetMedianResponseMinutes(val)
         }
         return nil
     }
@@ -275,8 +275,8 @@ func (m *CustomerAnalyticsSummary) GetLeadsComparison()(AnalyticsComparisonable)
     return m.leadsComparison
 }
 // GetMedianResponseMinutes gets the medianResponseMinutes property value. Median response minutes measured in minutes.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetMedianResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetMedianResponseMinutes()(*float64) {
     return m.medianResponseMinutes
 }
 // GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
@@ -327,7 +327,7 @@ func (m *CustomerAnalyticsSummary) GetWalletStatus()(*string) {
 // Serialize serializes information the current object
 func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("averageResponseMinutes", m.GetAverageResponseMinutes())
+        err := writer.WriteFloat64Value("averageResponseMinutes", m.GetAverageResponseMinutes())
         if err != nil {
             return err
         }
@@ -369,7 +369,7 @@ func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteObjectValue("medianResponseMinutes", m.GetMedianResponseMinutes())
+        err := writer.WriteFloat64Value("medianResponseMinutes", m.GetMedianResponseMinutes())
         if err != nil {
             return err
         }
@@ -441,7 +441,7 @@ func (m *CustomerAnalyticsSummary) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAverageResponseMinutes sets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
-func (m *CustomerAnalyticsSummary) SetAverageResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *CustomerAnalyticsSummary) SetAverageResponseMinutes(value *float64)() {
     m.averageResponseMinutes = value
 }
 // SetBillingStatus sets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
@@ -469,7 +469,7 @@ func (m *CustomerAnalyticsSummary) SetLeadsComparison(value AnalyticsComparisona
     m.leadsComparison = value
 }
 // SetMedianResponseMinutes sets the medianResponseMinutes property value. Median response minutes measured in minutes.
-func (m *CustomerAnalyticsSummary) SetMedianResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *CustomerAnalyticsSummary) SetMedianResponseMinutes(value *float64)() {
     m.medianResponseMinutes = value
 }
 // SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
@@ -511,14 +511,14 @@ func (m *CustomerAnalyticsSummary) SetWalletStatus(value *string)() {
 type CustomerAnalyticsSummaryable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAverageResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAverageResponseMinutes()(*float64)
     GetBillingStatus()(*string)
     GetCallMinutes()(*float64)
     GetCallsPlaced()(*int32)
     GetCallsReceived()(*int32)
     GetLeads()(*int32)
     GetLeadsComparison()(AnalyticsComparisonable)
-    GetMedianResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetMedianResponseMinutes()(*float64)
     GetMissedCalls()(*int32)
     GetMissedLeads()(*int32)
     GetRespondedWithinFiveMinutesPercent()(*float64)
@@ -528,14 +528,14 @@ type CustomerAnalyticsSummaryable interface {
     GetUsageSpend()(*float64)
     GetWalletBalance()(*float64)
     GetWalletStatus()(*string)
-    SetAverageResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAverageResponseMinutes(value *float64)()
     SetBillingStatus(value *string)()
     SetCallMinutes(value *float64)()
     SetCallsPlaced(value *int32)()
     SetCallsReceived(value *int32)()
     SetLeads(value *int32)()
     SetLeadsComparison(value AnalyticsComparisonable)()
-    SetMedianResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetMedianResponseMinutes(value *float64)()
     SetMissedCalls(value *int32)()
     SetMissedLeads(value *int32)()
     SetRespondedWithinFiveMinutesPercent(value *float64)()

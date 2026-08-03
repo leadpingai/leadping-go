@@ -13,6 +13,11 @@ import (
 type DispositionsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// All the all property
+// returns a *AllRequestBuilder when successful
+func (m *DispositionsRequestBuilder) All()(*AllRequestBuilder) {
+    return NewAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ById gets an item from the github.com/leadpingai/leadping-go.dispositions.item collection
 // returns a *DispositionsItemRequestBuilder when successful
 func (m *DispositionsRequestBuilder) ById(id string)(*DispositionsItemRequestBuilder) {

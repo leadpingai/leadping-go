@@ -25,7 +25,7 @@ type BusinessUserResponse struct {
     // The billing status for this user's business license.
     licenseBillingStatus *string
     // The quantity on the shared business user license item after this change.
-    licenseQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    licenseQuantity *int64
     // The renewal date used for this user's license proration.
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time when the entity was last modified, if applicable.
@@ -140,12 +140,12 @@ func (m *BusinessUserResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["licenseQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLicenseQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetLicenseQuantity(val)
         }
         return nil
     }
@@ -247,8 +247,8 @@ func (m *BusinessUserResponse) GetLicenseBillingStatus()(*string) {
     return m.licenseBillingStatus
 }
 // GetLicenseQuantity gets the licenseQuantity property value. The quantity on the shared business user license item after this change.
-// returns a UntypedNodeable when successful
-func (m *BusinessUserResponse) GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *BusinessUserResponse) GetLicenseQuantity()(*int64) {
     return m.licenseQuantity
 }
 // GetLicenseRenewalDate gets the licenseRenewalDate property value. The renewal date used for this user's license proration.
@@ -330,7 +330,7 @@ func (m *BusinessUserResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("licenseQuantity", m.GetLicenseQuantity())
+        err := writer.WriteInt64Value("licenseQuantity", m.GetLicenseQuantity())
         if err != nil {
             return err
         }
@@ -421,7 +421,7 @@ func (m *BusinessUserResponse) SetLicenseBillingStatus(value *string)() {
     m.licenseBillingStatus = value
 }
 // SetLicenseQuantity sets the licenseQuantity property value. The quantity on the shared business user license item after this change.
-func (m *BusinessUserResponse) SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessUserResponse) SetLicenseQuantity(value *int64)() {
     m.licenseQuantity = value
 }
 // SetLicenseRenewalDate sets the licenseRenewalDate property value. The renewal date used for this user's license proration.
@@ -465,7 +465,7 @@ type BusinessUserResponseable interface {
     GetId()(*string)
     GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLicenseBillingStatus()(*string)
-    GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetLicenseQuantity()(*int64)
     GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
@@ -480,7 +480,7 @@ type BusinessUserResponseable interface {
     SetId(value *string)()
     SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLicenseBillingStatus(value *string)()
-    SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetLicenseQuantity(value *int64)()
     SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()

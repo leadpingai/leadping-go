@@ -13,6 +13,23 @@ import (
 type SuppressionsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// All the all property
+// returns a *AllRequestBuilder when successful
+func (m *SuppressionsRequestBuilder) All()(*AllRequestBuilder) {
+    return NewAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// ById gets an item from the github.com/leadpingai/leadping-go.suppressions.item collection
+// returns a *SuppressionsItemRequestBuilder when successful
+func (m *SuppressionsRequestBuilder) ById(id string)(*SuppressionsItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if id != "" {
+        urlTplParams["id"] = id
+    }
+    return NewSuppressionsItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // Check the check property
 // returns a *CheckRequestBuilder when successful
 func (m *SuppressionsRequestBuilder) Check()(*CheckRequestBuilder) {

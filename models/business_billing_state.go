@@ -15,9 +15,9 @@ type BusinessBillingState struct {
     // Date and time when the scheduled billing plan change takes effect.
     billingPlanChangeEffectiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets the number of user licenses currently assigned by the business.
-    businessUserAssignedQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    businessUserAssignedQuantity *int64
     // Gets or sets the number of user licenses included in the business subscription.
-    businessUserQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    businessUserQuantity *int64
     // Gets or sets when the active subscription is scheduled to cancel.
     cancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Gets or sets the customer-safe payment recovery state for the business.
@@ -33,7 +33,9 @@ type BusinessBillingState struct {
     // Defines the supported Billing Plan values.
     pendingBillingPlan *BusinessBillingState_pendingBillingPlan
     // Gets or sets the number of phone numbers included in the business subscription.
-    phoneNumberQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    phoneNumberQuantity *int64
+    // Start of the current plan billing period.
+    planPeriodStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current plan renewal date.
     planRenewalAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
@@ -60,13 +62,13 @@ func (m *BusinessBillingState) GetBillingPlanChangeEffectiveAt()(*i336074805fc85
     return m.billingPlanChangeEffectiveAt
 }
 // GetBusinessUserAssignedQuantity gets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
-// returns a UntypedNodeable when successful
-func (m *BusinessBillingState) GetBusinessUserAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *BusinessBillingState) GetBusinessUserAssignedQuantity()(*int64) {
     return m.businessUserAssignedQuantity
 }
 // GetBusinessUserQuantity gets the businessUserQuantity property value. Gets or sets the number of user licenses included in the business subscription.
-// returns a UntypedNodeable when successful
-func (m *BusinessBillingState) GetBusinessUserQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *BusinessBillingState) GetBusinessUserQuantity()(*int64) {
     return m.businessUserQuantity
 }
 // GetCancelAt gets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
@@ -94,22 +96,22 @@ func (m *BusinessBillingState) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["businessUserAssignedQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessUserAssignedQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBusinessUserAssignedQuantity(val)
         }
         return nil
     }
     res["businessUserQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBusinessUserQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBusinessUserQuantity(val)
         }
         return nil
     }
@@ -184,12 +186,22 @@ func (m *BusinessBillingState) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["phoneNumberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPhoneNumberQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPhoneNumberQuantity(val)
+        }
+        return nil
+    }
+    res["planPeriodStartAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPlanPeriodStartAt(val)
         }
         return nil
     }
@@ -231,9 +243,14 @@ func (m *BusinessBillingState) GetPendingBillingPlan()(*BusinessBillingState_pen
     return m.pendingBillingPlan
 }
 // GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
-// returns a UntypedNodeable when successful
-func (m *BusinessBillingState) GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *BusinessBillingState) GetPhoneNumberQuantity()(*int64) {
     return m.phoneNumberQuantity
+}
+// GetPlanPeriodStartAt gets the planPeriodStartAt property value. Start of the current plan billing period.
+// returns a *Time when successful
+func (m *BusinessBillingState) GetPlanPeriodStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.planPeriodStartAt
 }
 // GetPlanRenewalAt gets the planRenewalAt property value. Current plan renewal date.
 // returns a *Time when successful
@@ -249,13 +266,13 @@ func (m *BusinessBillingState) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("businessUserAssignedQuantity", m.GetBusinessUserAssignedQuantity())
+        err := writer.WriteInt64Value("businessUserAssignedQuantity", m.GetBusinessUserAssignedQuantity())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("businessUserQuantity", m.GetBusinessUserQuantity())
+        err := writer.WriteInt64Value("businessUserQuantity", m.GetBusinessUserQuantity())
         if err != nil {
             return err
         }
@@ -304,7 +321,13 @@ func (m *BusinessBillingState) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("phoneNumberQuantity", m.GetPhoneNumberQuantity())
+        err := writer.WriteInt64Value("phoneNumberQuantity", m.GetPhoneNumberQuantity())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("planPeriodStartAt", m.GetPlanPeriodStartAt())
         if err != nil {
             return err
         }
@@ -332,11 +355,11 @@ func (m *BusinessBillingState) SetBillingPlanChangeEffectiveAt(value *i336074805
     m.billingPlanChangeEffectiveAt = value
 }
 // SetBusinessUserAssignedQuantity sets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
-func (m *BusinessBillingState) SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessBillingState) SetBusinessUserAssignedQuantity(value *int64)() {
     m.businessUserAssignedQuantity = value
 }
 // SetBusinessUserQuantity sets the businessUserQuantity property value. Gets or sets the number of user licenses included in the business subscription.
-func (m *BusinessBillingState) SetBusinessUserQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessBillingState) SetBusinessUserQuantity(value *int64)() {
     m.businessUserQuantity = value
 }
 // SetCancelAt sets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
@@ -368,8 +391,12 @@ func (m *BusinessBillingState) SetPendingBillingPlan(value *BusinessBillingState
     m.pendingBillingPlan = value
 }
 // SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
-func (m *BusinessBillingState) SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessBillingState) SetPhoneNumberQuantity(value *int64)() {
     m.phoneNumberQuantity = value
+}
+// SetPlanPeriodStartAt sets the planPeriodStartAt property value. Start of the current plan billing period.
+func (m *BusinessBillingState) SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.planPeriodStartAt = value
 }
 // SetPlanRenewalAt sets the planRenewalAt property value. Current plan renewal date.
 func (m *BusinessBillingState) SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -379,8 +406,8 @@ type BusinessBillingStateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBusinessUserAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBusinessUserQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBusinessUserAssignedQuantity()(*int64)
+    GetBusinessUserQuantity()(*int64)
     GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDunning()(BusinessBillingState_dunningable)
     GetHasPaymentMethod()(*bool)
@@ -388,11 +415,12 @@ type BusinessBillingStateable interface {
     GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPendingBillingPlan()(*BusinessBillingState_pendingBillingPlan)
-    GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPhoneNumberQuantity()(*int64)
+    GetPlanPeriodStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBusinessUserAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBusinessUserQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBusinessUserAssignedQuantity(value *int64)()
+    SetBusinessUserQuantity(value *int64)()
     SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDunning(value BusinessBillingState_dunningable)()
     SetHasPaymentMethod(value *bool)()
@@ -400,6 +428,7 @@ type BusinessBillingStateable interface {
     SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPendingBillingPlan(value *BusinessBillingState_pendingBillingPlan)()
-    SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPhoneNumberQuantity(value *int64)()
+    SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

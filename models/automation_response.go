@@ -20,6 +20,8 @@ type AutomationResponse struct {
     businessId *string
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
+    // Directed connections between nodes in this automation graph.
+    connections []AutomationConnectionable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User ID of the person who created this automation configuration response.
@@ -91,6 +93,11 @@ func (m *AutomationResponse) GetBusinessId()(*string) {
 // returns a []AutomationConditionGroupable when successful
 func (m *AutomationResponse) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
+}
+// GetConnections gets the connections property value. Directed connections between nodes in this automation graph.
+// returns a []AutomationConnectionable when successful
+func (m *AutomationResponse) GetConnections()([]AutomationConnectionable) {
+    return m.connections
 }
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
@@ -165,6 +172,22 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
                 }
             }
             m.SetConditionGroups(res)
+        }
+        return nil
+    }
+    res["connections"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateAutomationConnectionFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]AutomationConnectionable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(AutomationConnectionable)
+                }
+            }
+            m.SetConnections(res)
         }
         return nil
     }
@@ -455,6 +478,18 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             return err
         }
     }
+    if m.GetConnections() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConnections()))
+        for i, v := range m.GetConnections() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("connections", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
         if err != nil {
@@ -597,6 +632,10 @@ func (m *AutomationResponse) SetBusinessId(value *string)() {
 func (m *AutomationResponse) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
 }
+// SetConnections sets the connections property value. Directed connections between nodes in this automation graph.
+func (m *AutomationResponse) SetConnections(value []AutomationConnectionable)() {
+    m.connections = value
+}
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *AutomationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -672,6 +711,7 @@ type AutomationResponseable interface {
     GetBusiness()(AutomationResponse_businessable)
     GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
+    GetConnections()([]AutomationConnectionable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUserId()(*string)
     GetDescription()(*string)
@@ -693,6 +733,7 @@ type AutomationResponseable interface {
     SetBusiness(value AutomationResponse_businessable)()
     SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
+    SetConnections(value []AutomationConnectionable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUserId(value *string)()
     SetDescription(value *string)()

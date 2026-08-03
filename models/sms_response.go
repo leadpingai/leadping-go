@@ -13,7 +13,7 @@ type SmsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableAmount *float64
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
@@ -46,6 +46,8 @@ type SmsResponse struct {
     id *string
     // Lead ID associated with the SMS conversation or outreach attempt.
     leadId *string
+    // Media attached to this message. A non-empty collection identifies an MMS message.
+    media []MessageMediaAttachmentable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping will retry this SMS message.
@@ -101,8 +103,8 @@ func (m *SmsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *SmsResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *SmsResponse) GetBillableAmount()(*float64) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -170,12 +172,12 @@ func (m *SmsResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16
 func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableAmount(val)
         }
         return nil
     }
@@ -336,6 +338,22 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetLeadId(val)
+        }
+        return nil
+    }
+    res["media"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateMessageMediaAttachmentFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]MessageMediaAttachmentable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(MessageMediaAttachmentable)
+                }
+            }
+            m.SetMedia(res)
         }
         return nil
     }
@@ -541,6 +559,11 @@ func (m *SmsResponse) GetId()(*string) {
 func (m *SmsResponse) GetLeadId()(*string) {
     return m.leadId
 }
+// GetMedia gets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
+// returns a []MessageMediaAttachmentable when successful
+func (m *SmsResponse) GetMedia()([]MessageMediaAttachmentable) {
+    return m.media
+}
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
 func (m *SmsResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -634,7 +657,7 @@ func (m *SmsResponse) GetWasManuallyOverridden()(*bool) {
 // Serialize serializes information the current object
 func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
+        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -731,6 +754,18 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetMedia() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMedia()))
+        for i, v := range m.GetMedia() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("media", cast)
         if err != nil {
             return err
         }
@@ -859,7 +894,7 @@ func (m *SmsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *SmsResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SmsResponse) SetBillableAmount(value *float64)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -925,6 +960,10 @@ func (m *SmsResponse) SetId(value *string)() {
 // SetLeadId sets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 func (m *SmsResponse) SetLeadId(value *string)() {
     m.leadId = value
+}
+// SetMedia sets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
+func (m *SmsResponse) SetMedia(value []MessageMediaAttachmentable)() {
+    m.media = value
 }
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *SmsResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -1001,7 +1040,7 @@ func (m *SmsResponse) SetWasManuallyOverridden(value *bool)() {
 type SmsResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillableAmount()(*float64)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCampaignId()(*string)
@@ -1018,6 +1057,7 @@ type SmsResponseable interface {
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetLeadId()(*string)
+    GetMedia()([]MessageMediaAttachmentable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOutboundPhoneNumberId()(*string)
@@ -1036,7 +1076,7 @@ type SmsResponseable interface {
     GetTrafficType()(*SmsResponse_trafficType)
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetWasManuallyOverridden()(*bool)
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillableAmount(value *float64)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCampaignId(value *string)()
@@ -1053,6 +1093,7 @@ type SmsResponseable interface {
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()
+    SetMedia(value []MessageMediaAttachmentable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOutboundPhoneNumberId(value *string)()

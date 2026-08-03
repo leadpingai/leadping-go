@@ -14,11 +14,11 @@ type BusinessRequest struct {
     // Postal address for the business, lead, or contact represented by this business profile request.
     address BusinessRequest_addressable
     // Wallet refill amount charged when automatic refill is triggered.
-    autoRefillAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    autoRefillAmount *float64
     // Indicates whether automatic wallet refill is enabled for the business.
     autoRefillEnabled *bool
     // Wallet balance threshold that triggers automatic refill.
-    autoRefillTrigger i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    autoRefillTrigger *float64
     // Postal address used for invoices, receipts, and payment processor billing records.
     billingAddress BusinessRequest_billingAddressable
     // Name used for invoices, receipts, and payment processor billing records.
@@ -77,8 +77,8 @@ func (m *BusinessRequest) GetAddress()(BusinessRequest_addressable) {
     return m.address
 }
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-// returns a UntypedNodeable when successful
-func (m *BusinessRequest) GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *BusinessRequest) GetAutoRefillAmount()(*float64) {
     return m.autoRefillAmount
 }
 // GetAutoRefillEnabled gets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the business.
@@ -87,8 +87,8 @@ func (m *BusinessRequest) GetAutoRefillEnabled()(*bool) {
     return m.autoRefillEnabled
 }
 // GetAutoRefillTrigger gets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-// returns a UntypedNodeable when successful
-func (m *BusinessRequest) GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *BusinessRequest) GetAutoRefillTrigger()(*float64) {
     return m.autoRefillTrigger
 }
 // GetBillingAddress gets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
@@ -146,12 +146,12 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         return nil
     }
     res["autoRefillAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAutoRefillAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetAutoRefillAmount(val)
         }
         return nil
     }
@@ -166,12 +166,12 @@ func (m *BusinessRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e8
         return nil
     }
     res["autoRefillTrigger"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAutoRefillTrigger(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetAutoRefillTrigger(val)
         }
         return nil
     }
@@ -407,7 +407,7 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
         }
     }
     {
-        err := writer.WriteObjectValue("autoRefillAmount", m.GetAutoRefillAmount())
+        err := writer.WriteFloat64Value("autoRefillAmount", m.GetAutoRefillAmount())
         if err != nil {
             return err
         }
@@ -419,7 +419,7 @@ func (m *BusinessRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
         }
     }
     {
-        err := writer.WriteObjectValue("autoRefillTrigger", m.GetAutoRefillTrigger())
+        err := writer.WriteFloat64Value("autoRefillTrigger", m.GetAutoRefillTrigger())
         if err != nil {
             return err
         }
@@ -550,7 +550,7 @@ func (m *BusinessRequest) SetAddress(value BusinessRequest_addressable)() {
     m.address = value
 }
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-func (m *BusinessRequest) SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessRequest) SetAutoRefillAmount(value *float64)() {
     m.autoRefillAmount = value
 }
 // SetAutoRefillEnabled sets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the business.
@@ -558,7 +558,7 @@ func (m *BusinessRequest) SetAutoRefillEnabled(value *bool)() {
     m.autoRefillEnabled = value
 }
 // SetAutoRefillTrigger sets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-func (m *BusinessRequest) SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessRequest) SetAutoRefillTrigger(value *float64)() {
     m.autoRefillTrigger = value
 }
 // SetBillingAddress sets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
@@ -633,9 +633,9 @@ type BusinessRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAddress()(BusinessRequest_addressable)
-    GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAutoRefillAmount()(*float64)
     GetAutoRefillEnabled()(*bool)
-    GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAutoRefillTrigger()(*float64)
     GetBillingAddress()(BusinessRequest_billingAddressable)
     GetBillingName()(*string)
     GetBillingTaxId()(*string)
@@ -654,9 +654,9 @@ type BusinessRequestable interface {
     GetVertical()(*string)
     GetWebsite()(*string)
     SetAddress(value BusinessRequest_addressable)()
-    SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAutoRefillAmount(value *float64)()
     SetAutoRefillEnabled(value *bool)()
-    SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAutoRefillTrigger(value *float64)()
     SetBillingAddress(value BusinessRequest_billingAddressable)()
     SetBillingName(value *string)()
     SetBillingTaxId(value *string)()

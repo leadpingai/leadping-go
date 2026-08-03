@@ -18,7 +18,7 @@ type PagedResultOfCallEventTableRow struct {
     // The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
     pageSize *int32
     // The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-    totalCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    totalCount *int32
 }
 // NewPagedResultOfCallEventTableRow instantiates a new PagedResultOfCallEventTableRow and sets the default values.
 func NewPagedResultOfCallEventTableRow()(*PagedResultOfCallEventTableRow) {
@@ -83,12 +83,12 @@ func (m *PagedResultOfCallEventTableRow) GetFieldDeserializers()(map[string]func
         return nil
     }
     res["totalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotalCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetTotalCount(val)
         }
         return nil
     }
@@ -105,8 +105,8 @@ func (m *PagedResultOfCallEventTableRow) GetPageSize()(*int32) {
     return m.pageSize
 }
 // GetTotalCount gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-// returns a UntypedNodeable when successful
-func (m *PagedResultOfCallEventTableRow) GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PagedResultOfCallEventTableRow) GetTotalCount()(*int32) {
     return m.totalCount
 }
 // Serialize serializes information the current object
@@ -136,7 +136,7 @@ func (m *PagedResultOfCallEventTableRow) Serialize(writer i878a80d2330e89d268963
         }
     }
     {
-        err := writer.WriteObjectValue("totalCount", m.GetTotalCount())
+        err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
         if err != nil {
             return err
         }
@@ -166,7 +166,7 @@ func (m *PagedResultOfCallEventTableRow) SetPageSize(value *int32)() {
     m.pageSize = value
 }
 // SetTotalCount sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-func (m *PagedResultOfCallEventTableRow) SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PagedResultOfCallEventTableRow) SetTotalCount(value *int32)() {
     m.totalCount = value
 }
 type PagedResultOfCallEventTableRowable interface {
@@ -175,9 +175,9 @@ type PagedResultOfCallEventTableRowable interface {
     GetContinuationToken()(*string)
     GetItems()([]CallEventTableRowable)
     GetPageSize()(*int32)
-    GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetTotalCount()(*int32)
     SetContinuationToken(value *string)()
     SetItems(value []CallEventTableRowable)()
     SetPageSize(value *int32)()
-    SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetTotalCount(value *int32)()
 }

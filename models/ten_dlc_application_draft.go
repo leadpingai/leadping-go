@@ -12,6 +12,10 @@ import (
 type TenDlcApplicationDraft struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // The current provider review status for the submitted brand.
+    brandStatus *TenDlcRegistrationStatus
+    // The current provider review status for the submitted campaign.
+    campaignStatus *TenDlcRegistrationStatus
     // The company name value for this 10DLC application draft.
     companyName *string
     // The compliance warnings included with this 10DLC application draft.
@@ -25,7 +29,7 @@ type TenDlcApplicationDraft struct {
     // The EIN value for this 10DLC application draft.
     ein *string
     // The expected monthly volume value for this 10DLC application draft.
-    expectedMonthlyVolume i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    expectedMonthlyVolume *int32
     // The industry value for this 10DLC application draft.
     industry *string
     // The date and time for the last submitted at value on this 10DLC application draft.
@@ -74,6 +78,16 @@ func CreateTenDlcApplicationDraftFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *TenDlcApplicationDraft) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetBrandStatus gets the brandStatus property value. The current provider review status for the submitted brand.
+// returns a *TenDlcRegistrationStatus when successful
+func (m *TenDlcApplicationDraft) GetBrandStatus()(*TenDlcRegistrationStatus) {
+    return m.brandStatus
+}
+// GetCampaignStatus gets the campaignStatus property value. The current provider review status for the submitted campaign.
+// returns a *TenDlcRegistrationStatus when successful
+func (m *TenDlcApplicationDraft) GetCampaignStatus()(*TenDlcRegistrationStatus) {
+    return m.campaignStatus
+}
 // GetCompanyName gets the companyName property value. The company name value for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetCompanyName()(*string) {
@@ -105,14 +119,34 @@ func (m *TenDlcApplicationDraft) GetEin()(*string) {
     return m.ein
 }
 // GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
-// returns a UntypedNodeable when successful
-func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(*int32) {
     return m.expectedMonthlyVolume
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["brandStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBrandStatus(val.(*TenDlcRegistrationStatus))
+        }
+        return nil
+    }
+    res["campaignStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCampaignStatus(val.(*TenDlcRegistrationStatus))
+        }
+        return nil
+    }
     res["companyName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -180,12 +214,12 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["expectedMonthlyVolume"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetExpectedMonthlyVolume(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetExpectedMonthlyVolume(val)
         }
         return nil
     }
@@ -430,6 +464,20 @@ func (m *TenDlcApplicationDraft) GetWebsiteUrl()(*string) {
 }
 // Serialize serializes information the current object
 func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+    if m.GetBrandStatus() != nil {
+        cast := (*m.GetBrandStatus()).String()
+        err := writer.WriteStringValue("brandStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetCampaignStatus() != nil {
+        cast := (*m.GetCampaignStatus()).String()
+        err := writer.WriteStringValue("campaignStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("companyName", m.GetCompanyName())
         if err != nil {
@@ -467,7 +515,7 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteObjectValue("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
+        err := writer.WriteInt32Value("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
         if err != nil {
             return err
         }
@@ -574,6 +622,14 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *TenDlcApplicationDraft) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetBrandStatus sets the brandStatus property value. The current provider review status for the submitted brand.
+func (m *TenDlcApplicationDraft) SetBrandStatus(value *TenDlcRegistrationStatus)() {
+    m.brandStatus = value
+}
+// SetCampaignStatus sets the campaignStatus property value. The current provider review status for the submitted campaign.
+func (m *TenDlcApplicationDraft) SetCampaignStatus(value *TenDlcRegistrationStatus)() {
+    m.campaignStatus = value
+}
 // SetCompanyName sets the companyName property value. The company name value for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetCompanyName(value *string)() {
     m.companyName = value
@@ -599,7 +655,7 @@ func (m *TenDlcApplicationDraft) SetEin(value *string)() {
     m.ein = value
 }
 // SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32)() {
     m.expectedMonthlyVolume = value
 }
 // SetIndustry sets the industry property value. The industry value for this 10DLC application draft.
@@ -665,13 +721,15 @@ func (m *TenDlcApplicationDraft) SetWebsiteUrl(value *string)() {
 type TenDlcApplicationDraftable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetBrandStatus()(*TenDlcRegistrationStatus)
+    GetCampaignStatus()(*TenDlcRegistrationStatus)
     GetCompanyName()(*string)
     GetComplianceWarnings()([]string)
     GetContactEmail()(*string)
     GetContactName()(*string)
     GetContactPhone()(*string)
     GetEin()(*string)
-    GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetExpectedMonthlyVolume()(*int32)
     GetIndustry()(*string)
     GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLeadSource()(*string)
@@ -687,13 +745,15 @@ type TenDlcApplicationDraftable interface {
     GetUseCaseDescription()(*string)
     GetVersion()(*int32)
     GetWebsiteUrl()(*string)
+    SetBrandStatus(value *TenDlcRegistrationStatus)()
+    SetCampaignStatus(value *TenDlcRegistrationStatus)()
     SetCompanyName(value *string)()
     SetComplianceWarnings(value []string)()
     SetContactEmail(value *string)()
     SetContactName(value *string)()
     SetContactPhone(value *string)()
     SetEin(value *string)()
-    SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetExpectedMonthlyVolume(value *int32)()
     SetIndustry(value *string)()
     SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLeadSource(value *string)()

@@ -29,7 +29,7 @@ type UsageSummaryResponse struct {
     // The date and time for the period start value on this usage summary.
     periodStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The usage record count for this usage summary.
-    usageRecordCount *int32
+    transactionCount *int32
 }
 // NewUsageSummaryResponse instantiates a new UsageSummaryResponse and sets the default values.
 func NewUsageSummaryResponse()(*UsageSummaryResponse) {
@@ -164,13 +164,13 @@ func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
-    res["usageRecordCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["transactionCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetUsageRecordCount(val)
+            m.SetTransactionCount(val)
         }
         return nil
     }
@@ -196,10 +196,10 @@ func (m *UsageSummaryResponse) GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *UsageSummaryResponse) GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.periodStart
 }
-// GetUsageRecordCount gets the usageRecordCount property value. The usage record count for this usage summary.
+// GetTransactionCount gets the transactionCount property value. The usage record count for this usage summary.
 // returns a *int32 when successful
-func (m *UsageSummaryResponse) GetUsageRecordCount()(*int32) {
-    return m.usageRecordCount
+func (m *UsageSummaryResponse) GetTransactionCount()(*int32) {
+    return m.transactionCount
 }
 // Serialize serializes information the current object
 func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -264,7 +264,7 @@ func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteInt32Value("usageRecordCount", m.GetUsageRecordCount())
+        err := writer.WriteInt32Value("transactionCount", m.GetTransactionCount())
         if err != nil {
             return err
         }
@@ -313,9 +313,9 @@ func (m *UsageSummaryResponse) SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad
 func (m *UsageSummaryResponse) SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.periodStart = value
 }
-// SetUsageRecordCount sets the usageRecordCount property value. The usage record count for this usage summary.
-func (m *UsageSummaryResponse) SetUsageRecordCount(value *int32)() {
-    m.usageRecordCount = value
+// SetTransactionCount sets the transactionCount property value. The usage record count for this usage summary.
+func (m *UsageSummaryResponse) SetTransactionCount(value *int32)() {
+    m.transactionCount = value
 }
 type UsageSummaryResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
@@ -328,7 +328,7 @@ type UsageSummaryResponseable interface {
     GetPendingInvoiceCount()(*int32)
     GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetUsageRecordCount()(*int32)
+    GetTransactionCount()(*int32)
     SetBillableQuantityTotal(value *float64)()
     SetCounters(value []UsageCounterLineable)()
     SetCustomerChargeTotal(value *float64)()
@@ -337,5 +337,5 @@ type UsageSummaryResponseable interface {
     SetPendingInvoiceCount(value *int32)()
     SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetUsageRecordCount(value *int32)()
+    SetTransactionCount(value *int32)()
 }

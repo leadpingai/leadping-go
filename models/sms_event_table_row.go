@@ -17,7 +17,7 @@ type SmsEventTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableAmount *float64
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
@@ -56,6 +56,8 @@ type SmsEventTableRow struct {
     isAutomated *bool
     // The ID and name for this lead.
     lead IdNamePairable
+    // Media attached to this SMS/MMS event.
+    media []MessageMediaAttachmentable
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
     // Defines the source that requested outbound delivery.
@@ -119,8 +121,8 @@ func (m *SmsEventTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *SmsEventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *SmsEventTableRow) GetBillableAmount()(*float64) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -218,12 +220,12 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableAmount(val)
         }
         return nil
     }
@@ -414,6 +416,22 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetLead(val.(IdNamePairable))
+        }
+        return nil
+    }
+    res["media"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateMessageMediaAttachmentFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]MessageMediaAttachmentable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(MessageMediaAttachmentable)
+                }
+            }
+            m.SetMedia(res)
         }
         return nil
     }
@@ -614,6 +632,11 @@ func (m *SmsEventTableRow) GetIsAutomated()(*bool) {
 func (m *SmsEventTableRow) GetLead()(IdNamePairable) {
     return m.lead
 }
+// GetMedia gets the media property value. Media attached to this SMS/MMS event.
+// returns a []MessageMediaAttachmentable when successful
+func (m *SmsEventTableRow) GetMedia()([]MessageMediaAttachmentable) {
+    return m.media
+}
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *SmsEventTableRow) GetOutboundPhoneNumberId()(*string) {
@@ -714,7 +737,7 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
+        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -829,6 +852,18 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteObjectValue("lead", m.GetLead())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetMedia() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMedia()))
+        for i, v := range m.GetMedia() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("media", cast)
         if err != nil {
             return err
         }
@@ -959,7 +994,7 @@ func (m *SmsEventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *SmsEventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SmsEventTableRow) SetBillableAmount(value *float64)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -1038,6 +1073,10 @@ func (m *SmsEventTableRow) SetIsAutomated(value *bool)() {
 func (m *SmsEventTableRow) SetLead(value IdNamePairable)() {
     m.lead = value
 }
+// SetMedia sets the media property value. Media attached to this SMS/MMS event.
+func (m *SmsEventTableRow) SetMedia(value []MessageMediaAttachmentable)() {
+    m.media = value
+}
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsEventTableRow) SetOutboundPhoneNumberId(value *string)() {
     m.outboundPhoneNumberId = value
@@ -1111,7 +1150,7 @@ type SmsEventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActorDisplayName()(*string)
     GetActorUserId()(*string)
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillableAmount()(*float64)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetBusiness()(*string)
@@ -1131,6 +1170,7 @@ type SmsEventTableRowable interface {
     GetId()(*string)
     GetIsAutomated()(*bool)
     GetLead()(IdNamePairable)
+    GetMedia()([]MessageMediaAttachmentable)
     GetOutboundPhoneNumberId()(*string)
     GetOutboundSource()(*SmsEventTableRow_outboundSource)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1150,7 +1190,7 @@ type SmsEventTableRowable interface {
     GetUserName()(*string)
     SetActorDisplayName(value *string)()
     SetActorUserId(value *string)()
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillableAmount(value *float64)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBusiness(value *string)()
@@ -1170,6 +1210,7 @@ type SmsEventTableRowable interface {
     SetId(value *string)()
     SetIsAutomated(value *bool)()
     SetLead(value IdNamePairable)()
+    SetMedia(value []MessageMediaAttachmentable)()
     SetOutboundPhoneNumberId(value *string)()
     SetOutboundSource(value *SmsEventTableRow_outboundSource)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

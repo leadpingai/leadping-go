@@ -18,6 +18,8 @@ type SendSmsRequest struct {
     conversationId *string
     // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
+    // Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+    mediaUrls []string
     // Idempotency key used to prevent duplicate outbound delivery.
     outboundIdempotencyKey *string
     // UTC timestamp when Leadping should send the SMS message.
@@ -92,6 +94,22 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["mediaUrls"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]string, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = *(v.(*string))
+                }
+            }
+            m.SetMediaUrls(res)
+        }
+        return nil
+    }
     res["outboundIdempotencyKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -159,6 +177,11 @@ func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89
 func (m *SendSmsRequest) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
+// GetMediaUrls gets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+// returns a []string when successful
+func (m *SendSmsRequest) GetMediaUrls()([]string) {
+    return m.mediaUrls
+}
 // GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
 func (m *SendSmsRequest) GetOutboundIdempotencyKey()(*string) {
@@ -205,6 +228,12 @@ func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetMediaUrls() != nil {
+        err := writer.WriteCollectionOfStringValues("mediaUrls", m.GetMediaUrls())
         if err != nil {
             return err
         }
@@ -269,6 +298,10 @@ func (m *SendSmsRequest) SetConversationId(value *string)() {
 func (m *SendSmsRequest) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
+// SetMediaUrls sets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+func (m *SendSmsRequest) SetMediaUrls(value []string)() {
+    m.mediaUrls = value
+}
 // SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string)() {
     m.outboundIdempotencyKey = value
@@ -299,6 +332,7 @@ type SendSmsRequestable interface {
     GetCampaignId()(*string)
     GetConversationId()(*string)
     GetFromPhoneNumberId()(*string)
+    GetMediaUrls()([]string)
     GetOutboundIdempotencyKey()(*string)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSmsEventId()(*string)
@@ -308,6 +342,7 @@ type SendSmsRequestable interface {
     SetCampaignId(value *string)()
     SetConversationId(value *string)()
     SetFromPhoneNumberId(value *string)()
+    SetMediaUrls(value []string)()
     SetOutboundIdempotencyKey(value *string)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSmsEventId(value *string)()

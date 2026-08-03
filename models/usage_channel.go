@@ -6,13 +6,15 @@ package models
 type UsageChannel int
 
 const (
-    SMS_USAGECHANNEL UsageChannel = iota
+    LEAD_USAGECHANNEL UsageChannel = iota
+    SMS_USAGECHANNEL
     MMS_USAGECHANNEL
     EMAIL_USAGECHANNEL
     VOICE_USAGECHANNEL
     PHONE_NUMBER_USAGECHANNEL
     WARMUP_USAGECHANNEL
     WEBSITE_USAGECHANNEL
+    OPENAI_USAGECHANNEL
     DOMAIN_USAGECHANNEL
     ONEZERODLC_USAGECHANNEL
     CONNECTION_USAGECHANNEL
@@ -20,11 +22,13 @@ const (
 )
 
 func (i UsageChannel) String() string {
-    return []string{"sms", "mms", "email", "voice", "phone_number", "warmup", "website", "domain", "10dlc", "connection", "automation"}[i]
+    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "connection", "automation"}[i]
 }
 func ParseUsageChannel(v string) (any, error) {
-    result := SMS_USAGECHANNEL
+    result := LEAD_USAGECHANNEL
     switch v {
+        case "lead":
+            result = LEAD_USAGECHANNEL
         case "sms":
             result = SMS_USAGECHANNEL
         case "mms":
@@ -39,6 +43,8 @@ func ParseUsageChannel(v string) (any, error) {
             result = WARMUP_USAGECHANNEL
         case "website":
             result = WEBSITE_USAGECHANNEL
+        case "openai":
+            result = OPENAI_USAGECHANNEL
         case "domain":
             result = DOMAIN_USAGECHANNEL
         case "10dlc":

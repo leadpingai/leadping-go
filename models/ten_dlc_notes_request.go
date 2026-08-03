@@ -7,10 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// TenDlcNotesRequest updates the internal notes associated with a 10DLC application.
 type TenDlcNotesRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The notes property
+    // Notes to store with the 10DLC application, or null to clear them.
     notes *string
 }
 // NewTenDlcNotesRequest instantiates a new TenDlcNotesRequest and sets the default values.
@@ -46,7 +47,7 @@ func (m *TenDlcNotesRequest) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetNotes gets the notes property value. The notes property
+// GetNotes gets the notes property value. Notes to store with the 10DLC application, or null to clear them.
 // returns a *string when successful
 func (m *TenDlcNotesRequest) GetNotes()(*string) {
     return m.notes
@@ -71,7 +72,7 @@ func (m *TenDlcNotesRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *TenDlcNotesRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetNotes sets the notes property value. The notes property
+// SetNotes sets the notes property value. Notes to store with the 10DLC application, or null to clear them.
 func (m *TenDlcNotesRequest) SetNotes(value *string)() {
     m.notes = value
 }

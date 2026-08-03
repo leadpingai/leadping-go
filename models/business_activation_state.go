@@ -14,6 +14,8 @@ type BusinessActivationState struct {
     activatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // The number of registrar-verified domains found by the current search.
+    availableDomainCount *int32
     // The current billing subscription status for this business activation state.
     billingSubscriptionStatus *ActivationSubscriptionStatus
     // The business description value for this business activation state.
@@ -30,6 +32,16 @@ type BusinessActivationState struct {
     domainApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The domain options included with this business activation state.
     domainOptions []ActivationDomainOptionable
+    // The date and time the selected domain was purchased.
+    domainPurchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // The current domain generation attempt.
+    domainSearchAttempt *int32
+    // Identifies the active domain search run.
+    domainSearchId *string
+    // Defines the stages of a domain search.
+    domainSearchStage *BusinessActivationState_domainSearchStage
+    // The last time domain search progress changed.
+    domainSearchUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The events included with this business activation state.
     events []ActivationTimelineEventable
     // The date and time for the failed at value on this business activation state.
@@ -78,6 +90,8 @@ type BusinessActivationState struct {
     tenDlcStatus *TenDlcApplicationStatus
     // The date and time for the updated at value on this business activation state.
     updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // The latest persisted website generation progress message.
+    websiteGenerationResult *string
     // The website needs value for this business activation state.
     websiteNeeds *string
     // The current website status for this business activation state.
@@ -106,6 +120,11 @@ func (m *BusinessActivationState) GetActivatedAt()(*i336074805fc853987abe6f7fe3a
 // returns a map[string]any when successful
 func (m *BusinessActivationState) GetAdditionalData()(map[string]any) {
     return m.additionalData
+}
+// GetAvailableDomainCount gets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
+// returns a *int32 when successful
+func (m *BusinessActivationState) GetAvailableDomainCount()(*int32) {
+    return m.availableDomainCount
 }
 // GetBillingSubscriptionStatus gets the billingSubscriptionStatus property value. The current billing subscription status for this business activation state.
 // returns a *ActivationSubscriptionStatus when successful
@@ -147,6 +166,31 @@ func (m *BusinessActivationState) GetDomainApprovedAt()(*i336074805fc853987abe6f
 func (m *BusinessActivationState) GetDomainOptions()([]ActivationDomainOptionable) {
     return m.domainOptions
 }
+// GetDomainPurchasedAt gets the domainPurchasedAt property value. The date and time the selected domain was purchased.
+// returns a *Time when successful
+func (m *BusinessActivationState) GetDomainPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.domainPurchasedAt
+}
+// GetDomainSearchAttempt gets the domainSearchAttempt property value. The current domain generation attempt.
+// returns a *int32 when successful
+func (m *BusinessActivationState) GetDomainSearchAttempt()(*int32) {
+    return m.domainSearchAttempt
+}
+// GetDomainSearchId gets the domainSearchId property value. Identifies the active domain search run.
+// returns a *string when successful
+func (m *BusinessActivationState) GetDomainSearchId()(*string) {
+    return m.domainSearchId
+}
+// GetDomainSearchStage gets the domainSearchStage property value. Defines the stages of a domain search.
+// returns a *BusinessActivationState_domainSearchStage when successful
+func (m *BusinessActivationState) GetDomainSearchStage()(*BusinessActivationState_domainSearchStage) {
+    return m.domainSearchStage
+}
+// GetDomainSearchUpdatedAt gets the domainSearchUpdatedAt property value. The last time domain search progress changed.
+// returns a *Time when successful
+func (m *BusinessActivationState) GetDomainSearchUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.domainSearchUpdatedAt
+}
 // GetEvents gets the events property value. The events included with this business activation state.
 // returns a []ActivationTimelineEventable when successful
 func (m *BusinessActivationState) GetEvents()([]ActivationTimelineEventable) {
@@ -168,6 +212,16 @@ func (m *BusinessActivationState) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetActivatedAt(val)
+        }
+        return nil
+    }
+    res["availableDomainCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAvailableDomainCount(val)
         }
         return nil
     }
@@ -254,6 +308,56 @@ func (m *BusinessActivationState) GetFieldDeserializers()(map[string]func(i878a8
                 }
             }
             m.SetDomainOptions(res)
+        }
+        return nil
+    }
+    res["domainPurchasedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDomainPurchasedAt(val)
+        }
+        return nil
+    }
+    res["domainSearchAttempt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDomainSearchAttempt(val)
+        }
+        return nil
+    }
+    res["domainSearchId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDomainSearchId(val)
+        }
+        return nil
+    }
+    res["domainSearchStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseBusinessActivationState_domainSearchStage)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDomainSearchStage(val.(*BusinessActivationState_domainSearchStage))
+        }
+        return nil
+    }
+    res["domainSearchUpdatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDomainSearchUpdatedAt(val)
         }
         return nil
     }
@@ -503,6 +607,16 @@ func (m *BusinessActivationState) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
+    res["websiteGenerationResult"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetWebsiteGenerationResult(val)
+        }
+        return nil
+    }
     res["websiteNeeds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -645,6 +759,11 @@ func (m *BusinessActivationState) GetTenDlcStatus()(*TenDlcApplicationStatus) {
 func (m *BusinessActivationState) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.updatedAt
 }
+// GetWebsiteGenerationResult gets the websiteGenerationResult property value. The latest persisted website generation progress message.
+// returns a *string when successful
+func (m *BusinessActivationState) GetWebsiteGenerationResult()(*string) {
+    return m.websiteGenerationResult
+}
 // GetWebsiteNeeds gets the websiteNeeds property value. The website needs value for this business activation state.
 // returns a *string when successful
 func (m *BusinessActivationState) GetWebsiteNeeds()(*string) {
@@ -664,6 +783,12 @@ func (m *BusinessActivationState) GetWebsiteUrl()(*string) {
 func (m *BusinessActivationState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteTimeValue("activatedAt", m.GetActivatedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("availableDomainCount", m.GetAvailableDomainCount())
         if err != nil {
             return err
         }
@@ -719,6 +844,37 @@ func (m *BusinessActivationState) Serialize(writer i878a80d2330e89d26896388a3f48
             }
         }
         err := writer.WriteCollectionOfObjectValues("domainOptions", cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("domainPurchasedAt", m.GetDomainPurchasedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("domainSearchAttempt", m.GetDomainSearchAttempt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("domainSearchId", m.GetDomainSearchId())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetDomainSearchStage() != nil {
+        cast := (*m.GetDomainSearchStage()).String()
+        err := writer.WriteStringValue("domainSearchStage", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("domainSearchUpdatedAt", m.GetDomainSearchUpdatedAt())
         if err != nil {
             return err
         }
@@ -880,6 +1036,12 @@ func (m *BusinessActivationState) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
+        err := writer.WriteStringValue("websiteGenerationResult", m.GetWebsiteGenerationResult())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("websiteNeeds", m.GetWebsiteNeeds())
         if err != nil {
             return err
@@ -914,6 +1076,10 @@ func (m *BusinessActivationState) SetActivatedAt(value *i336074805fc853987abe6f7
 func (m *BusinessActivationState) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetAvailableDomainCount sets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
+func (m *BusinessActivationState) SetAvailableDomainCount(value *int32)() {
+    m.availableDomainCount = value
+}
 // SetBillingSubscriptionStatus sets the billingSubscriptionStatus property value. The current billing subscription status for this business activation state.
 func (m *BusinessActivationState) SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)() {
     m.billingSubscriptionStatus = value
@@ -945,6 +1111,26 @@ func (m *BusinessActivationState) SetDomainApprovedAt(value *i336074805fc853987a
 // SetDomainOptions sets the domainOptions property value. The domain options included with this business activation state.
 func (m *BusinessActivationState) SetDomainOptions(value []ActivationDomainOptionable)() {
     m.domainOptions = value
+}
+// SetDomainPurchasedAt sets the domainPurchasedAt property value. The date and time the selected domain was purchased.
+func (m *BusinessActivationState) SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.domainPurchasedAt = value
+}
+// SetDomainSearchAttempt sets the domainSearchAttempt property value. The current domain generation attempt.
+func (m *BusinessActivationState) SetDomainSearchAttempt(value *int32)() {
+    m.domainSearchAttempt = value
+}
+// SetDomainSearchId sets the domainSearchId property value. Identifies the active domain search run.
+func (m *BusinessActivationState) SetDomainSearchId(value *string)() {
+    m.domainSearchId = value
+}
+// SetDomainSearchStage sets the domainSearchStage property value. Defines the stages of a domain search.
+func (m *BusinessActivationState) SetDomainSearchStage(value *BusinessActivationState_domainSearchStage)() {
+    m.domainSearchStage = value
+}
+// SetDomainSearchUpdatedAt sets the domainSearchUpdatedAt property value. The last time domain search progress changed.
+func (m *BusinessActivationState) SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.domainSearchUpdatedAt = value
 }
 // SetEvents sets the events property value. The events included with this business activation state.
 func (m *BusinessActivationState) SetEvents(value []ActivationTimelineEventable)() {
@@ -1042,6 +1228,10 @@ func (m *BusinessActivationState) SetTenDlcStatus(value *TenDlcApplicationStatus
 func (m *BusinessActivationState) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.updatedAt = value
 }
+// SetWebsiteGenerationResult sets the websiteGenerationResult property value. The latest persisted website generation progress message.
+func (m *BusinessActivationState) SetWebsiteGenerationResult(value *string)() {
+    m.websiteGenerationResult = value
+}
 // SetWebsiteNeeds sets the websiteNeeds property value. The website needs value for this business activation state.
 func (m *BusinessActivationState) SetWebsiteNeeds(value *string)() {
     m.websiteNeeds = value
@@ -1058,6 +1248,7 @@ type BusinessActivationStateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetAvailableDomainCount()(*int32)
     GetBillingSubscriptionStatus()(*ActivationSubscriptionStatus)
     GetBusinessDescription()(*string)
     GetComplianceNotes()(*string)
@@ -1066,6 +1257,11 @@ type BusinessActivationStateable interface {
     GetCustomerFacingStatus()(*string)
     GetDomainApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDomainOptions()([]ActivationDomainOptionable)
+    GetDomainPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetDomainSearchAttempt()(*int32)
+    GetDomainSearchId()(*string)
+    GetDomainSearchStage()(*BusinessActivationState_domainSearchStage)
+    GetDomainSearchUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetEvents()([]ActivationTimelineEventable)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetIndustry()(*string)
@@ -1090,10 +1286,12 @@ type BusinessActivationStateable interface {
     GetTenDlcDraft()(BusinessActivationState_tenDlcDraftable)
     GetTenDlcStatus()(*TenDlcApplicationStatus)
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetWebsiteGenerationResult()(*string)
     GetWebsiteNeeds()(*string)
     GetWebsiteStatus()(*WebsiteLifecycleStatus)
     GetWebsiteUrl()(*string)
     SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetAvailableDomainCount(value *int32)()
     SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)()
     SetBusinessDescription(value *string)()
     SetComplianceNotes(value *string)()
@@ -1102,6 +1300,11 @@ type BusinessActivationStateable interface {
     SetCustomerFacingStatus(value *string)()
     SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDomainOptions(value []ActivationDomainOptionable)()
+    SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetDomainSearchAttempt(value *int32)()
+    SetDomainSearchId(value *string)()
+    SetDomainSearchStage(value *BusinessActivationState_domainSearchStage)()
+    SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetEvents(value []ActivationTimelineEventable)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetIndustry(value *string)()
@@ -1126,6 +1329,7 @@ type BusinessActivationStateable interface {
     SetTenDlcDraft(value BusinessActivationState_tenDlcDraftable)()
     SetTenDlcStatus(value *TenDlcApplicationStatus)()
     SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetWebsiteGenerationResult(value *string)()
     SetWebsiteNeeds(value *string)()
     SetWebsiteStatus(value *WebsiteLifecycleStatus)()
     SetWebsiteUrl(value *string)()

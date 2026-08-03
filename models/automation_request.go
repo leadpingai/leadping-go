@@ -15,6 +15,8 @@ type AutomationRequest struct {
     additionalData map[string]any
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
+    // Directed connections between nodes in this automation graph.
+    connections []AutomationConnectionable
     // Human-readable description that explains this automation configuration request to API users.
     description *string
     // Indicates whether this automation configuration request is active and available in the Leadping API.
@@ -59,6 +61,11 @@ func (m *AutomationRequest) GetAdditionalData()(map[string]any) {
 func (m *AutomationRequest) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
 }
+// GetConnections gets the connections property value. Directed connections between nodes in this automation graph.
+// returns a []AutomationConnectionable when successful
+func (m *AutomationRequest) GetConnections()([]AutomationConnectionable) {
+    return m.connections
+}
 // GetDescription gets the description property value. Human-readable description that explains this automation configuration request to API users.
 // returns a *string when successful
 func (m *AutomationRequest) GetDescription()(*string) {
@@ -102,6 +109,22 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
                 }
             }
             m.SetConditionGroups(res)
+        }
+        return nil
+    }
+    res["connections"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateAutomationConnectionFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]AutomationConnectionable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(AutomationConnectionable)
+                }
+            }
+            m.SetConnections(res)
         }
         return nil
     }
@@ -249,6 +272,18 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
             return err
         }
     }
+    if m.GetConnections() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConnections()))
+        for i, v := range m.GetConnections() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("connections", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("description", m.GetDescription())
         if err != nil {
@@ -323,6 +358,10 @@ func (m *AutomationRequest) SetAdditionalData(value map[string]any)() {
 func (m *AutomationRequest) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
 }
+// SetConnections sets the connections property value. Directed connections between nodes in this automation graph.
+func (m *AutomationRequest) SetConnections(value []AutomationConnectionable)() {
+    m.connections = value
+}
 // SetDescription sets the description property value. Human-readable description that explains this automation configuration request to API users.
 func (m *AutomationRequest) SetDescription(value *string)() {
     m.description = value
@@ -360,6 +399,7 @@ type AutomationRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionable)
     GetConditionGroups()([]AutomationConditionGroupable)
+    GetConnections()([]AutomationConnectionable)
     GetDescription()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
@@ -370,6 +410,7 @@ type AutomationRequestable interface {
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
     SetConditionGroups(value []AutomationConditionGroupable)()
+    SetConnections(value []AutomationConnectionable)()
     SetDescription(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()

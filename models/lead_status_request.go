@@ -7,17 +7,18 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// LeadStatusRequest defines the editable values used to create or update a lead status.
 type LeadStatusRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Controlled disposition categories used for reporting, automation, and analytics.
     category *LeadStatusRequest_category
-    // The color property
+    // Display color for the lead status.
     color *string
-    // The name property
+    // Display name for the lead status.
     name *string
-    // The sortOrder property
-    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    // Relative display order for the lead status.
+    sortOrder *int32
 }
 // NewLeadStatusRequest instantiates a new LeadStatusRequest and sets the default values.
 func NewLeadStatusRequest()(*LeadStatusRequest) {
@@ -41,7 +42,7 @@ func (m *LeadStatusRequest) GetAdditionalData()(map[string]any) {
 func (m *LeadStatusRequest) GetCategory()(*LeadStatusRequest_category) {
     return m.category
 }
-// GetColor gets the color property value. The color property
+// GetColor gets the color property value. Display color for the lead status.
 // returns a *string when successful
 func (m *LeadStatusRequest) GetColor()(*string) {
     return m.color
@@ -81,25 +82,25 @@ func (m *LeadStatusRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetSortOrder(val)
         }
         return nil
     }
     return res
 }
-// GetName gets the name property value. The name property
+// GetName gets the name property value. Display name for the lead status.
 // returns a *string when successful
 func (m *LeadStatusRequest) GetName()(*string) {
     return m.name
 }
-// GetSortOrder gets the sortOrder property value. The sortOrder property
-// returns a UntypedNodeable when successful
-func (m *LeadStatusRequest) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// GetSortOrder gets the sortOrder property value. Relative display order for the lead status.
+// returns a *int32 when successful
+func (m *LeadStatusRequest) GetSortOrder()(*int32) {
     return m.sortOrder
 }
 // Serialize serializes information the current object
@@ -124,7 +125,7 @@ func (m *LeadStatusRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
+        err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
         if err != nil {
             return err
         }
@@ -145,16 +146,16 @@ func (m *LeadStatusRequest) SetAdditionalData(value map[string]any)() {
 func (m *LeadStatusRequest) SetCategory(value *LeadStatusRequest_category)() {
     m.category = value
 }
-// SetColor sets the color property value. The color property
+// SetColor sets the color property value. Display color for the lead status.
 func (m *LeadStatusRequest) SetColor(value *string)() {
     m.color = value
 }
-// SetName sets the name property value. The name property
+// SetName sets the name property value. Display name for the lead status.
 func (m *LeadStatusRequest) SetName(value *string)() {
     m.name = value
 }
-// SetSortOrder sets the sortOrder property value. The sortOrder property
-func (m *LeadStatusRequest) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+// SetSortOrder sets the sortOrder property value. Relative display order for the lead status.
+func (m *LeadStatusRequest) SetSortOrder(value *int32)() {
     m.sortOrder = value
 }
 type LeadStatusRequestable interface {
@@ -163,9 +164,9 @@ type LeadStatusRequestable interface {
     GetCategory()(*LeadStatusRequest_category)
     GetColor()(*string)
     GetName()(*string)
-    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetSortOrder()(*int32)
     SetCategory(value *LeadStatusRequest_category)()
     SetColor(value *string)()
     SetName(value *string)()
-    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetSortOrder(value *int32)()
 }

@@ -32,6 +32,8 @@ type ConversationResponse struct {
     isUnread *bool
     // UTC timestamp when the most recent conversation event occurred.
     lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Indicates that the most recent conversation activity is an internal note.
+    lastEventIsInternalNote *bool
     // Last name of the lead, user, or contact represented by this conversation response.
     lastName *string
     // Most recent message preview shown for the conversation.
@@ -197,6 +199,16 @@ func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["lastEventIsInternalNote"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetLastEventIsInternalNote(val)
+        }
+        return nil
+    }
     res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -314,6 +326,11 @@ func (m *ConversationResponse) GetIsUnread()(*bool) {
 func (m *ConversationResponse) GetLastEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastEventAt
 }
+// GetLastEventIsInternalNote gets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
+// returns a *bool when successful
+func (m *ConversationResponse) GetLastEventIsInternalNote()(*bool) {
+    return m.lastEventIsInternalNote
+}
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetLastName()(*string) {
@@ -417,6 +434,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     {
         err := writer.WriteTimeValue("lastEventAt", m.GetLastEventAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("lastEventIsInternalNote", m.GetLastEventIsInternalNote())
         if err != nil {
             return err
         }
@@ -528,6 +551,10 @@ func (m *ConversationResponse) SetIsUnread(value *bool)() {
 func (m *ConversationResponse) SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastEventAt = value
 }
+// SetLastEventIsInternalNote sets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
+func (m *ConversationResponse) SetLastEventIsInternalNote(value *bool)() {
+    m.lastEventIsInternalNote = value
+}
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetLastName(value *string)() {
     m.lastName = value
@@ -577,6 +604,7 @@ type ConversationResponseable interface {
     GetIsArchived()(*bool)
     GetIsUnread()(*bool)
     GetLastEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetLastEventIsInternalNote()(*bool)
     GetLastName()(*string)
     GetLastSnippet()(*string)
     GetLeadId()(*string)
@@ -596,6 +624,7 @@ type ConversationResponseable interface {
     SetIsArchived(value *bool)()
     SetIsUnread(value *bool)()
     SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetLastEventIsInternalNote(value *bool)()
     SetLastName(value *string)()
     SetLastSnippet(value *string)()
     SetLeadId(value *string)()

@@ -14,6 +14,12 @@ type TransactionTableRow struct {
     additionalData map[string]any
     // Monetary amount for this billing transaction or wallet operation.
     amount *float64
+    // Defines the supported Billable Unit values.
+    billableUnit *TransactionTableRow_billableUnit
+    // The billedAmount property
+    billedAmount *float64
+    // Defines the supported Usage Channel values.
+    billingChannel *TransactionTableRow_billingChannel
     // The ID and name for this business.
     business TransactionTableRow_businessable
     // UTC timestamp when this billing transaction table row was created.
@@ -28,10 +34,20 @@ type TransactionTableRow struct {
     netAmount *float64
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
+    // The pricingVersion property
+    pricingVersion *string
+    // The quantity property
+    quantity *float64
+    // The sourceEventId property
+    sourceEventId *string
+    // The sourceEventType property
+    sourceEventType *string
     // Processing status for this wallet transaction.
     transactionStatus *TransactionStatus
     // Debit or credit classification for this wallet transaction.
     transactionType *TransactionType
+    // The unitPrice property
+    unitPrice *float64
 }
 // NewTransactionTableRow instantiates a new TransactionTableRow and sets the default values.
 func NewTransactionTableRow()(*TransactionTableRow) {
@@ -54,6 +70,21 @@ func (m *TransactionTableRow) GetAdditionalData()(map[string]any) {
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetAmount()(*float64) {
     return m.amount
+}
+// GetBillableUnit gets the billableUnit property value. Defines the supported Billable Unit values.
+// returns a *TransactionTableRow_billableUnit when successful
+func (m *TransactionTableRow) GetBillableUnit()(*TransactionTableRow_billableUnit) {
+    return m.billableUnit
+}
+// GetBilledAmount gets the billedAmount property value. The billedAmount property
+// returns a *float64 when successful
+func (m *TransactionTableRow) GetBilledAmount()(*float64) {
+    return m.billedAmount
+}
+// GetBillingChannel gets the billingChannel property value. Defines the supported Usage Channel values.
+// returns a *TransactionTableRow_billingChannel when successful
+func (m *TransactionTableRow) GetBillingChannel()(*TransactionTableRow_billingChannel) {
+    return m.billingChannel
 }
 // GetBusiness gets the business property value. The ID and name for this business.
 // returns a TransactionTableRow_businessable when successful
@@ -81,6 +112,36 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetAmount(val)
+        }
+        return nil
+    }
+    res["billableUnit"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTransactionTableRow_billableUnit)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillableUnit(val.(*TransactionTableRow_billableUnit))
+        }
+        return nil
+    }
+    res["billedAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetFloat64Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBilledAmount(val)
+        }
+        return nil
+    }
+    res["billingChannel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTransactionTableRow_billingChannel)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBillingChannel(val.(*TransactionTableRow_billingChannel))
         }
         return nil
     }
@@ -154,6 +215,46 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
+    res["pricingVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPricingVersion(val)
+        }
+        return nil
+    }
+    res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetFloat64Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetQuantity(val)
+        }
+        return nil
+    }
+    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSourceEventId(val)
+        }
+        return nil
+    }
+    res["sourceEventType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSourceEventType(val)
+        }
+        return nil
+    }
     res["transactionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseTransactionStatus)
         if err != nil {
@@ -171,6 +272,16 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetTransactionType(val.(*TransactionType))
+        }
+        return nil
+    }
+    res["unitPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetFloat64Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUnitPrice(val)
         }
         return nil
     }
@@ -196,6 +307,26 @@ func (m *TransactionTableRow) GetNetAmount()(*float64) {
 func (m *TransactionTableRow) GetPaymentMethodDisplay()(*string) {
     return m.paymentMethodDisplay
 }
+// GetPricingVersion gets the pricingVersion property value. The pricingVersion property
+// returns a *string when successful
+func (m *TransactionTableRow) GetPricingVersion()(*string) {
+    return m.pricingVersion
+}
+// GetQuantity gets the quantity property value. The quantity property
+// returns a *float64 when successful
+func (m *TransactionTableRow) GetQuantity()(*float64) {
+    return m.quantity
+}
+// GetSourceEventId gets the sourceEventId property value. The sourceEventId property
+// returns a *string when successful
+func (m *TransactionTableRow) GetSourceEventId()(*string) {
+    return m.sourceEventId
+}
+// GetSourceEventType gets the sourceEventType property value. The sourceEventType property
+// returns a *string when successful
+func (m *TransactionTableRow) GetSourceEventType()(*string) {
+    return m.sourceEventType
+}
 // GetTransactionStatus gets the transactionStatus property value. Processing status for this wallet transaction.
 // returns a *TransactionStatus when successful
 func (m *TransactionTableRow) GetTransactionStatus()(*TransactionStatus) {
@@ -206,10 +337,35 @@ func (m *TransactionTableRow) GetTransactionStatus()(*TransactionStatus) {
 func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
     return m.transactionType
 }
+// GetUnitPrice gets the unitPrice property value. The unitPrice property
+// returns a *float64 when successful
+func (m *TransactionTableRow) GetUnitPrice()(*float64) {
+    return m.unitPrice
+}
 // Serialize serializes information the current object
 func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteFloat64Value("amount", m.GetAmount())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetBillableUnit() != nil {
+        cast := (*m.GetBillableUnit()).String()
+        err := writer.WriteStringValue("billableUnit", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteFloat64Value("billedAmount", m.GetBilledAmount())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetBillingChannel() != nil {
+        cast := (*m.GetBillingChannel()).String()
+        err := writer.WriteStringValue("billingChannel", &cast)
         if err != nil {
             return err
         }
@@ -256,6 +412,30 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
             return err
         }
     }
+    {
+        err := writer.WriteStringValue("pricingVersion", m.GetPricingVersion())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteFloat64Value("quantity", m.GetQuantity())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("sourceEventType", m.GetSourceEventType())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetTransactionStatus() != nil {
         cast := (*m.GetTransactionStatus()).String()
         err := writer.WriteStringValue("transactionStatus", &cast)
@@ -266,6 +446,12 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     if m.GetTransactionType() != nil {
         cast := (*m.GetTransactionType()).String()
         err := writer.WriteStringValue("transactionType", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteFloat64Value("unitPrice", m.GetUnitPrice())
         if err != nil {
             return err
         }
@@ -285,6 +471,18 @@ func (m *TransactionTableRow) SetAdditionalData(value map[string]any)() {
 // SetAmount sets the amount property value. Monetary amount for this billing transaction or wallet operation.
 func (m *TransactionTableRow) SetAmount(value *float64)() {
     m.amount = value
+}
+// SetBillableUnit sets the billableUnit property value. Defines the supported Billable Unit values.
+func (m *TransactionTableRow) SetBillableUnit(value *TransactionTableRow_billableUnit)() {
+    m.billableUnit = value
+}
+// SetBilledAmount sets the billedAmount property value. The billedAmount property
+func (m *TransactionTableRow) SetBilledAmount(value *float64)() {
+    m.billedAmount = value
+}
+// SetBillingChannel sets the billingChannel property value. Defines the supported Usage Channel values.
+func (m *TransactionTableRow) SetBillingChannel(value *TransactionTableRow_billingChannel)() {
+    m.billingChannel = value
 }
 // SetBusiness sets the business property value. The ID and name for this business.
 func (m *TransactionTableRow) SetBusiness(value TransactionTableRow_businessable)() {
@@ -314,6 +512,22 @@ func (m *TransactionTableRow) SetNetAmount(value *float64)() {
 func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
 }
+// SetPricingVersion sets the pricingVersion property value. The pricingVersion property
+func (m *TransactionTableRow) SetPricingVersion(value *string)() {
+    m.pricingVersion = value
+}
+// SetQuantity sets the quantity property value. The quantity property
+func (m *TransactionTableRow) SetQuantity(value *float64)() {
+    m.quantity = value
+}
+// SetSourceEventId sets the sourceEventId property value. The sourceEventId property
+func (m *TransactionTableRow) SetSourceEventId(value *string)() {
+    m.sourceEventId = value
+}
+// SetSourceEventType sets the sourceEventType property value. The sourceEventType property
+func (m *TransactionTableRow) SetSourceEventType(value *string)() {
+    m.sourceEventType = value
+}
 // SetTransactionStatus sets the transactionStatus property value. Processing status for this wallet transaction.
 func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus)() {
     m.transactionStatus = value
@@ -322,10 +536,17 @@ func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus)() {
 func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
     m.transactionType = value
 }
+// SetUnitPrice sets the unitPrice property value. The unitPrice property
+func (m *TransactionTableRow) SetUnitPrice(value *float64)() {
+    m.unitPrice = value
+}
 type TransactionTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAmount()(*float64)
+    GetBillableUnit()(*TransactionTableRow_billableUnit)
+    GetBilledAmount()(*float64)
+    GetBillingChannel()(*TransactionTableRow_billingChannel)
     GetBusiness()(TransactionTableRow_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
@@ -333,9 +554,17 @@ type TransactionTableRowable interface {
     GetLead()(TransactionTableRow_leadable)
     GetNetAmount()(*float64)
     GetPaymentMethodDisplay()(*string)
+    GetPricingVersion()(*string)
+    GetQuantity()(*float64)
+    GetSourceEventId()(*string)
+    GetSourceEventType()(*string)
     GetTransactionStatus()(*TransactionStatus)
     GetTransactionType()(*TransactionType)
+    GetUnitPrice()(*float64)
     SetAmount(value *float64)()
+    SetBillableUnit(value *TransactionTableRow_billableUnit)()
+    SetBilledAmount(value *float64)()
+    SetBillingChannel(value *TransactionTableRow_billingChannel)()
     SetBusiness(value TransactionTableRow_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()
@@ -343,6 +572,11 @@ type TransactionTableRowable interface {
     SetLead(value TransactionTableRow_leadable)()
     SetNetAmount(value *float64)()
     SetPaymentMethodDisplay(value *string)()
+    SetPricingVersion(value *string)()
+    SetQuantity(value *float64)()
+    SetSourceEventId(value *string)()
+    SetSourceEventType(value *string)()
     SetTransactionStatus(value *TransactionStatus)()
     SetTransactionType(value *TransactionType)()
+    SetUnitPrice(value *float64)()
 }

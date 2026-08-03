@@ -17,6 +17,8 @@ type AutomationRequestSnapshot struct {
     businessId *string
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
+    // Directed connections between nodes in this automation graph.
+    connections []AutomationConnectionable
     // User ID of the person who created this automation request snapshot.
     createdByUserId *string
     // Human-readable description that explains this automation request snapshot to API users.
@@ -69,6 +71,11 @@ func (m *AutomationRequestSnapshot) GetBusinessId()(*string) {
 // returns a []AutomationConditionGroupable when successful
 func (m *AutomationRequestSnapshot) GetConditionGroups()([]AutomationConditionGroupable) {
     return m.conditionGroups
+}
+// GetConnections gets the connections property value. Directed connections between nodes in this automation graph.
+// returns a []AutomationConnectionable when successful
+func (m *AutomationRequestSnapshot) GetConnections()([]AutomationConnectionable) {
+    return m.connections
 }
 // GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation request snapshot.
 // returns a *string when successful
@@ -128,6 +135,22 @@ func (m *AutomationRequestSnapshot) GetFieldDeserializers()(map[string]func(i878
                 }
             }
             m.SetConditionGroups(res)
+        }
+        return nil
+    }
+    res["connections"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateAutomationConnectionFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]AutomationConnectionable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(AutomationConnectionable)
+                }
+            }
+            m.SetConnections(res)
         }
         return nil
     }
@@ -306,6 +329,18 @@ func (m *AutomationRequestSnapshot) Serialize(writer i878a80d2330e89d26896388a3f
             return err
         }
     }
+    if m.GetConnections() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConnections()))
+        for i, v := range m.GetConnections() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("connections", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
         if err != nil {
@@ -396,6 +431,10 @@ func (m *AutomationRequestSnapshot) SetBusinessId(value *string)() {
 func (m *AutomationRequestSnapshot) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
 }
+// SetConnections sets the connections property value. Directed connections between nodes in this automation graph.
+func (m *AutomationRequestSnapshot) SetConnections(value []AutomationConnectionable)() {
+    m.connections = value
+}
 // SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation request snapshot.
 func (m *AutomationRequestSnapshot) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
@@ -442,6 +481,7 @@ type AutomationRequestSnapshotable interface {
     GetActions()([]AutomationActionable)
     GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
+    GetConnections()([]AutomationConnectionable)
     GetCreatedByUserId()(*string)
     GetDescription()(*string)
     GetEnabled()(*bool)
@@ -455,6 +495,7 @@ type AutomationRequestSnapshotable interface {
     SetActions(value []AutomationActionable)()
     SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
+    SetConnections(value []AutomationConnectionable)()
     SetCreatedByUserId(value *string)()
     SetDescription(value *string)()
     SetEnabled(value *bool)()

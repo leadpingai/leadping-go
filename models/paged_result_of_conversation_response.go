@@ -18,7 +18,7 @@ type PagedResultOfConversationResponse struct {
     // The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
     pageSize *int32
     // The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-    totalCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    totalCount *int32
 }
 // NewPagedResultOfConversationResponse instantiates a new PagedResultOfConversationResponse and sets the default values.
 func NewPagedResultOfConversationResponse()(*PagedResultOfConversationResponse) {
@@ -83,12 +83,12 @@ func (m *PagedResultOfConversationResponse) GetFieldDeserializers()(map[string]f
         return nil
     }
     res["totalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotalCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetTotalCount(val)
         }
         return nil
     }
@@ -105,8 +105,8 @@ func (m *PagedResultOfConversationResponse) GetPageSize()(*int32) {
     return m.pageSize
 }
 // GetTotalCount gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-// returns a UntypedNodeable when successful
-func (m *PagedResultOfConversationResponse) GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PagedResultOfConversationResponse) GetTotalCount()(*int32) {
     return m.totalCount
 }
 // Serialize serializes information the current object
@@ -136,7 +136,7 @@ func (m *PagedResultOfConversationResponse) Serialize(writer i878a80d2330e89d268
         }
     }
     {
-        err := writer.WriteObjectValue("totalCount", m.GetTotalCount())
+        err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
         if err != nil {
             return err
         }
@@ -166,7 +166,7 @@ func (m *PagedResultOfConversationResponse) SetPageSize(value *int32)() {
     m.pageSize = value
 }
 // SetTotalCount sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-func (m *PagedResultOfConversationResponse) SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PagedResultOfConversationResponse) SetTotalCount(value *int32)() {
     m.totalCount = value
 }
 type PagedResultOfConversationResponseable interface {
@@ -175,9 +175,9 @@ type PagedResultOfConversationResponseable interface {
     GetContinuationToken()(*string)
     GetItems()([]ConversationResponseable)
     GetPageSize()(*int32)
-    GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetTotalCount()(*int32)
     SetContinuationToken(value *string)()
     SetItems(value []ConversationResponseable)()
     SetPageSize(value *int32)()
-    SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetTotalCount(value *int32)()
 }

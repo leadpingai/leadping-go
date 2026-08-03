@@ -22,7 +22,7 @@ type UsageSummaryLine struct {
     // The record count for this usage summary line.
     recordCount *int32
     // The current status for this usage summary line.
-    status *UsageRecordStatus
+    status *UsageStatus
 }
 // NewUsageSummaryLine instantiates a new UsageSummaryLine and sets the default values.
 func NewUsageSummaryLine()(*UsageSummaryLine) {
@@ -111,12 +111,12 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUsageRecordStatus)
+        val, err := n.GetEnumValue(ParseUsageStatus)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetStatus(val.(*UsageRecordStatus))
+            m.SetStatus(val.(*UsageStatus))
         }
         return nil
     }
@@ -133,8 +133,8 @@ func (m *UsageSummaryLine) GetRecordCount()(*int32) {
     return m.recordCount
 }
 // GetStatus gets the status property value. The current status for this usage summary line.
-// returns a *UsageRecordStatus when successful
-func (m *UsageSummaryLine) GetStatus()(*UsageRecordStatus) {
+// returns a *UsageStatus when successful
+func (m *UsageSummaryLine) GetStatus()(*UsageStatus) {
     return m.status
 }
 // Serialize serializes information the current object
@@ -211,7 +211,7 @@ func (m *UsageSummaryLine) SetRecordCount(value *int32)() {
     m.recordCount = value
 }
 // SetStatus sets the status property value. The current status for this usage summary line.
-func (m *UsageSummaryLine) SetStatus(value *UsageRecordStatus)() {
+func (m *UsageSummaryLine) SetStatus(value *UsageStatus)() {
     m.status = value
 }
 type UsageSummaryLineable interface {
@@ -222,11 +222,11 @@ type UsageSummaryLineable interface {
     GetCustomerChargeAmount()(*float64)
     GetQuantity()(*float64)
     GetRecordCount()(*int32)
-    GetStatus()(*UsageRecordStatus)
+    GetStatus()(*UsageStatus)
     SetBillableUnit(value *BillableUnit)()
     SetChannel(value *UsageChannel)()
     SetCustomerChargeAmount(value *float64)()
     SetQuantity(value *float64)()
     SetRecordCount(value *int32)()
-    SetStatus(value *UsageRecordStatus)()
+    SetStatus(value *UsageStatus)()
 }

@@ -20,7 +20,7 @@ type PhoneNumberAvailabilityResponse struct {
     // Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
     phoneNumber *string
     // Lead price or transaction price supplied to the Leadping API.
-    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    price *float64
 }
 // NewPhoneNumberAvailabilityResponse instantiates a new PhoneNumberAvailabilityResponse and sets the default values.
 func NewPhoneNumberAvailabilityResponse()(*PhoneNumberAvailabilityResponse) {
@@ -89,12 +89,12 @@ func (m *PhoneNumberAvailabilityResponse) GetFieldDeserializers()(map[string]fun
         return nil
     }
     res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPrice(val)
         }
         return nil
     }
@@ -116,8 +116,8 @@ func (m *PhoneNumberAvailabilityResponse) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberAvailabilityResponse) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *PhoneNumberAvailabilityResponse) GetPrice()(*float64) {
     return m.price
 }
 // Serialize serializes information the current object
@@ -147,7 +147,7 @@ func (m *PhoneNumberAvailabilityResponse) Serialize(writer i878a80d2330e89d26896
         }
     }
     {
-        err := writer.WriteObjectValue("price", m.GetPrice())
+        err := writer.WriteFloat64Value("price", m.GetPrice())
         if err != nil {
             return err
         }
@@ -181,7 +181,7 @@ func (m *PhoneNumberAvailabilityResponse) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *PhoneNumberAvailabilityResponse) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PhoneNumberAvailabilityResponse) SetPrice(value *float64)() {
     m.price = value
 }
 type PhoneNumberAvailabilityResponseable interface {
@@ -191,10 +191,10 @@ type PhoneNumberAvailabilityResponseable interface {
     GetIsAvailable()(*bool)
     GetLocation()(PhoneNumberAvailabilityResponse_locationable)
     GetPhoneNumber()(*string)
-    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPrice()(*float64)
     SetCurrency(value *string)()
     SetIsAvailable(value *bool)()
     SetLocation(value PhoneNumberAvailabilityResponse_locationable)()
     SetPhoneNumber(value *string)()
-    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPrice(value *float64)()
 }

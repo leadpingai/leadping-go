@@ -37,7 +37,7 @@ type UserDataExportResponse struct {
     // Date and time when the user data export was requested.
     requestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // File size in bytes.
-    sizeBytes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    sizeBytes *int64
     // Date and time when the user data export started.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current status for this Leadping user data export.
@@ -221,12 +221,12 @@ func (m *UserDataExportResponse) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["sizeBytes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSizeBytes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetSizeBytes(val)
         }
         return nil
     }
@@ -283,8 +283,8 @@ func (m *UserDataExportResponse) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad
     return m.requestedAt
 }
 // GetSizeBytes gets the sizeBytes property value. File size in bytes.
-// returns a UntypedNodeable when successful
-func (m *UserDataExportResponse) GetSizeBytes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *UserDataExportResponse) GetSizeBytes()(*int64) {
     return m.sizeBytes
 }
 // GetStartedAt gets the startedAt property value. Date and time when the user data export started.
@@ -378,7 +378,7 @@ func (m *UserDataExportResponse) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteObjectValue("sizeBytes", m.GetSizeBytes())
+        err := writer.WriteInt64Value("sizeBytes", m.GetSizeBytes())
         if err != nil {
             return err
         }
@@ -457,7 +457,7 @@ func (m *UserDataExportResponse) SetRequestedAt(value *i336074805fc853987abe6f7f
     m.requestedAt = value
 }
 // SetSizeBytes sets the sizeBytes property value. File size in bytes.
-func (m *UserDataExportResponse) SetSizeBytes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *UserDataExportResponse) SetSizeBytes(value *int64)() {
     m.sizeBytes = value
 }
 // SetStartedAt sets the startedAt property value. Date and time when the user data export started.
@@ -483,7 +483,7 @@ type UserDataExportResponseable interface {
     GetMaxDownloadCount()(*int32)
     GetMessage()(*string)
     GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSizeBytes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetSizeBytes()(*int64)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*UserDataExportStatuses)
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -498,7 +498,7 @@ type UserDataExportResponseable interface {
     SetMaxDownloadCount(value *int32)()
     SetMessage(value *string)()
     SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSizeBytes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetSizeBytes(value *int64)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *UserDataExportStatuses)()
 }

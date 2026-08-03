@@ -6,7 +6,9 @@ package models
 type BillableUnit int
 
 const (
-    SMS_SEGMENT_BILLABLEUNIT BillableUnit = iota
+    LEAD_RECEIVED_BILLABLEUNIT BillableUnit = iota
+    PHONE_IDENTITY_LOOKUP_BILLABLEUNIT
+    SMS_SEGMENT_BILLABLEUNIT
     MMS_MESSAGE_BILLABLEUNIT
     EMAIL_MESSAGE_BILLABLEUNIT
     VOICE_MINUTE_BILLABLEUNIT
@@ -14,6 +16,7 @@ const (
     WARMUP_SMS_SEGMENT_BILLABLEUNIT
     WARMUP_VOICE_MINUTE_BILLABLEUNIT
     WEBSITE_SETUP_BILLABLEUNIT
+    OPENAI_OPERATION_BILLABLEUNIT
     DOMAIN_REGISTRATION_BILLABLEUNIT
     ONEZERODLC_APPLICATION_BILLABLEUNIT
     CONNECTION_ACTION_BILLABLEUNIT
@@ -21,11 +24,15 @@ const (
 )
 
 func (i BillableUnit) String() string {
-    return []string{"sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "domain_registration", "10dlc_application", "connection_action", "automation_run"}[i]
+    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "connection_action", "automation_run"}[i]
 }
 func ParseBillableUnit(v string) (any, error) {
-    result := SMS_SEGMENT_BILLABLEUNIT
+    result := LEAD_RECEIVED_BILLABLEUNIT
     switch v {
+        case "lead_received":
+            result = LEAD_RECEIVED_BILLABLEUNIT
+        case "phone_identity_lookup":
+            result = PHONE_IDENTITY_LOOKUP_BILLABLEUNIT
         case "sms_segment":
             result = SMS_SEGMENT_BILLABLEUNIT
         case "mms_message":
@@ -42,6 +49,8 @@ func ParseBillableUnit(v string) (any, error) {
             result = WARMUP_VOICE_MINUTE_BILLABLEUNIT
         case "website_setup":
             result = WEBSITE_SETUP_BILLABLEUNIT
+        case "openai_operation":
+            result = OPENAI_OPERATION_BILLABLEUNIT
         case "domain_registration":
             result = DOMAIN_REGISTRATION_BILLABLEUNIT
         case "10dlc_application":

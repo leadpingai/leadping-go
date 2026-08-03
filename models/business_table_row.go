@@ -11,7 +11,7 @@ import (
 // BusinessTableRow aPI DTO containing business data used by Leadping API contracts.
 type BusinessTableRow struct {
     // The account balance value for this business.
-    accountBalance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    accountBalance *float64
     // Defines the supported Customer Activation Status values.
     activationStatus *BusinessTableRow_activationStatus
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -24,6 +24,8 @@ type BusinessTableRow struct {
     apiKeyIssuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time this business API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // WorkOS permission slugs granted to this business API key.
+    apiKeyPermissions []string
     // The masked API key preview owned by this business.
     apiKeyPreview *string
     // The total number of tracked uses for this business API key.
@@ -80,8 +82,8 @@ func CreateBusinessTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2689
     return NewBusinessTableRow(), nil
 }
 // GetAccountBalance gets the accountBalance property value. The account balance value for this business.
-// returns a UntypedNodeable when successful
-func (m *BusinessTableRow) GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *BusinessTableRow) GetAccountBalance()(*float64) {
     return m.accountBalance
 }
 // GetActivationStatus gets the activationStatus property value. Defines the supported Customer Activation Status values.
@@ -114,6 +116,11 @@ func (m *BusinessTableRow) GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *BusinessTableRow) GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.apiKeyLastUsedAt
 }
+// GetApiKeyPermissions gets the apiKeyPermissions property value. WorkOS permission slugs granted to this business API key.
+// returns a []string when successful
+func (m *BusinessTableRow) GetApiKeyPermissions()([]string) {
+    return m.apiKeyPermissions
+}
 // GetApiKeyPreview gets the apiKeyPreview property value. The masked API key preview owned by this business.
 // returns a *string when successful
 func (m *BusinessTableRow) GetApiKeyPreview()(*string) {
@@ -144,12 +151,12 @@ func (m *BusinessTableRow) GetEnabled()(*bool) {
 func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["accountBalance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAccountBalance(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetAccountBalance(val)
         }
         return nil
     }
@@ -200,6 +207,22 @@ func (m *BusinessTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetApiKeyLastUsedAt(val)
+        }
+        return nil
+    }
+    res["apiKeyPermissions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]string, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = *(v.(*string))
+                }
+            }
+            m.SetApiKeyPermissions(res)
         }
         return nil
     }
@@ -498,7 +521,7 @@ func (m *BusinessTableRow) GetWebsiteStatus()(*BusinessTableRow_websiteStatus) {
 // Serialize serializes information the current object
 func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("accountBalance", m.GetAccountBalance())
+        err := writer.WriteFloat64Value("accountBalance", m.GetAccountBalance())
         if err != nil {
             return err
         }
@@ -530,6 +553,12 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteTimeValue("apiKeyLastUsedAt", m.GetApiKeyLastUsedAt())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetApiKeyPermissions() != nil {
+        err := writer.WriteCollectionOfStringValues("apiKeyPermissions", m.GetApiKeyPermissions())
         if err != nil {
             return err
         }
@@ -675,7 +704,7 @@ func (m *BusinessTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     return nil
 }
 // SetAccountBalance sets the accountBalance property value. The account balance value for this business.
-func (m *BusinessTableRow) SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *BusinessTableRow) SetAccountBalance(value *float64)() {
     m.accountBalance = value
 }
 // SetActivationStatus sets the activationStatus property value. Defines the supported Customer Activation Status values.
@@ -701,6 +730,10 @@ func (m *BusinessTableRow) SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3a
 // SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. The date and time this business API key was last used.
 func (m *BusinessTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
+}
+// SetApiKeyPermissions sets the apiKeyPermissions property value. WorkOS permission slugs granted to this business API key.
+func (m *BusinessTableRow) SetApiKeyPermissions(value []string)() {
+    m.apiKeyPermissions = value
 }
 // SetApiKeyPreview sets the apiKeyPreview property value. The masked API key preview owned by this business.
 func (m *BusinessTableRow) SetApiKeyPreview(value *string)() {
@@ -789,12 +822,13 @@ func (m *BusinessTableRow) SetWebsiteStatus(value *BusinessTableRow_websiteStatu
 type BusinessTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAccountBalance()(*float64)
     GetActivationStatus()(*BusinessTableRow_activationStatus)
     GetApiKeyExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyFirstUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyIssuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetApiKeyPermissions()([]string)
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
     GetBillingPlan()(*BusinessTableRow_billingPlan)
@@ -816,12 +850,13 @@ type BusinessTableRowable interface {
     GetUserCount()(*int32)
     GetWebsite()(*string)
     GetWebsiteStatus()(*BusinessTableRow_websiteStatus)
-    SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAccountBalance(value *float64)()
     SetActivationStatus(value *BusinessTableRow_activationStatus)()
     SetApiKeyExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyFirstUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyIssuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetApiKeyPermissions(value []string)()
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()
     SetBillingPlan(value *BusinessTableRow_billingPlan)()

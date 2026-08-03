@@ -12,9 +12,6 @@ const (
     PHONE_NUMBER_DAILY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
     PHONE_NUMBER_HOURLY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
     PHONE_NUMBER_MINUTE_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-    BUSINESS_DAILY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-    BUSINESS_HOURLY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-    BUSINESS_MINUTE_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
     LEAD_DAILY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
     LEAD_HOURLY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
     LEAD_RECENTLY_CONTACTED_OUTBOUNDQUEUEITEM_REASONCODE
@@ -32,7 +29,7 @@ const (
 )
 
 func (i OutboundQueueItem_reasonCode) String() string {
-    return []string{"allowed", "no_eligible_phone_number", "ten_dlc_not_approved", "phone_number_daily_limit_reached", "phone_number_hourly_limit_reached", "phone_number_minute_limit_reached", "business_daily_limit_reached", "business_hourly_limit_reached", "business_minute_limit_reached", "lead_daily_limit_reached", "lead_hourly_limit_reached", "lead_recently_contacted", "lead_archived", "quiet_hours", "wallet_insufficient", "contact_opted_out", "imported_lead_requires_consent", "automation_bulk_import_disabled", "number_cooling_down", "number_health_blocked", "provider_failure_backoff", "campaign_daily_limit_reached", "reservation_unavailable"}[i]
+    return []string{"allowed", "no_eligible_phone_number", "ten_dlc_not_approved", "phone_number_daily_limit_reached", "phone_number_hourly_limit_reached", "phone_number_minute_limit_reached", "lead_daily_limit_reached", "lead_hourly_limit_reached", "lead_recently_contacted", "lead_archived", "quiet_hours", "wallet_insufficient", "contact_opted_out", "imported_lead_requires_consent", "automation_bulk_import_disabled", "number_cooling_down", "number_health_blocked", "provider_failure_backoff", "campaign_daily_limit_reached", "reservation_unavailable"}[i]
 }
 func ParseOutboundQueueItem_reasonCode(v string) (any, error) {
     result := ALLOWED_OUTBOUNDQUEUEITEM_REASONCODE
@@ -49,12 +46,6 @@ func ParseOutboundQueueItem_reasonCode(v string) (any, error) {
             result = PHONE_NUMBER_HOURLY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
         case "phone_number_minute_limit_reached":
             result = PHONE_NUMBER_MINUTE_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-        case "business_daily_limit_reached":
-            result = BUSINESS_DAILY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-        case "business_hourly_limit_reached":
-            result = BUSINESS_HOURLY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
-        case "business_minute_limit_reached":
-            result = BUSINESS_MINUTE_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
         case "lead_daily_limit_reached":
             result = LEAD_DAILY_LIMIT_REACHED_OUTBOUNDQUEUEITEM_REASONCODE
         case "lead_hourly_limit_reached":

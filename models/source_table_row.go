@@ -31,7 +31,7 @@ type SourceTableRow struct {
     // Indicates whether the business or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
-    costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    costPerLead *float64
     // UTC timestamp when this lead source table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User summary for the person who created this lead source table row.
@@ -124,8 +124,8 @@ func (m *SourceTableRow) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-// returns a UntypedNodeable when successful
-func (m *SourceTableRow) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *SourceTableRow) GetCostPerLead()(*float64) {
     return m.costPerLead
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead source table row was created.
@@ -265,12 +265,12 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCostPerLead(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetCostPerLead(val)
         }
         return nil
     }
@@ -525,7 +525,7 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteObjectValue("costPerLead", m.GetCostPerLead())
+        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
         }
@@ -669,7 +669,7 @@ func (m *SourceTableRow) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceTableRow) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SourceTableRow) SetCostPerLead(value *float64)() {
     m.costPerLead = value
 }
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead source table row was created.
@@ -740,7 +740,7 @@ type SourceTableRowable interface {
     GetBusiness()(SourceTableRow_businessable)
     GetBusinessId()(*string)
     GetComplianceApproved()(*bool)
-    GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetCostPerLead()(*float64)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUser()(SourceTableRow_createdByUserable)
     GetDefaultTagIds()([]string)
@@ -764,7 +764,7 @@ type SourceTableRowable interface {
     SetBusiness(value SourceTableRow_businessable)()
     SetBusinessId(value *string)()
     SetComplianceApproved(value *bool)()
-    SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetCostPerLead(value *float64)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUser(value SourceTableRow_createdByUserable)()
     SetDefaultTagIds(value []string)()

@@ -58,6 +58,11 @@ func (m *ContactRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
     }
     return requestInfo, nil
 }
+// Website the website property
+// returns a *WebsiteRequestBuilder when successful
+func (m *ContactRequestBuilder) Website()(*WebsiteRequestBuilder) {
+    return NewWebsiteRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *ContactRequestBuilder when successful
 func (m *ContactRequestBuilder) WithUrl(rawUrl string)(*ContactRequestBuilder) {

@@ -8,7 +8,7 @@ type BusinessSwitchOption_tenDlcStatus int
 const (
     NOTSTARTED_BUSINESSSWITCHOPTION_TENDLCSTATUS BusinessSwitchOption_tenDlcStatus = iota
     DRAFTGENERATED_BUSINESSSWITCHOPTION_TENDLCSTATUS
-    DRAFTNEEDSADMINREVIEW_BUSINESSSWITCHOPTION_TENDLCSTATUS
+    DRAFTINCOMPLETE_BUSINESSSWITCHOPTION_TENDLCSTATUS
     READYTOSUBMIT_BUSINESSSWITCHOPTION_TENDLCSTATUS
     SUBMITTED_BUSINESSSWITCHOPTION_TENDLCSTATUS
     PENDINGTELNYXREVIEW_BUSINESSSWITCHOPTION_TENDLCSTATUS
@@ -20,7 +20,7 @@ const (
 )
 
 func (i BusinessSwitchOption_tenDlcStatus) String() string {
-    return []string{"NotStarted", "DraftGenerated", "DraftNeedsAdminReview", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
+    return []string{"NotStarted", "DraftGenerated", "DraftIncomplete", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
 }
 func ParseBusinessSwitchOption_tenDlcStatus(v string) (any, error) {
     result := NOTSTARTED_BUSINESSSWITCHOPTION_TENDLCSTATUS
@@ -29,8 +29,8 @@ func ParseBusinessSwitchOption_tenDlcStatus(v string) (any, error) {
             result = NOTSTARTED_BUSINESSSWITCHOPTION_TENDLCSTATUS
         case "DraftGenerated":
             result = DRAFTGENERATED_BUSINESSSWITCHOPTION_TENDLCSTATUS
-        case "DraftNeedsAdminReview":
-            result = DRAFTNEEDSADMINREVIEW_BUSINESSSWITCHOPTION_TENDLCSTATUS
+        case "DraftIncomplete":
+            result = DRAFTINCOMPLETE_BUSINESSSWITCHOPTION_TENDLCSTATUS
         case "ReadyToSubmit":
             result = READYTOSUBMIT_BUSINESSSWITCHOPTION_TENDLCSTATUS
         case "Submitted":

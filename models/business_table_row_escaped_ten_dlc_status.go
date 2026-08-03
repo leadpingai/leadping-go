@@ -8,7 +8,7 @@ type BusinessTableRow_tenDlcStatus int
 const (
     NOTSTARTED_BUSINESSTABLEROW_TENDLCSTATUS BusinessTableRow_tenDlcStatus = iota
     DRAFTGENERATED_BUSINESSTABLEROW_TENDLCSTATUS
-    DRAFTNEEDSADMINREVIEW_BUSINESSTABLEROW_TENDLCSTATUS
+    DRAFTINCOMPLETE_BUSINESSTABLEROW_TENDLCSTATUS
     READYTOSUBMIT_BUSINESSTABLEROW_TENDLCSTATUS
     SUBMITTED_BUSINESSTABLEROW_TENDLCSTATUS
     PENDINGTELNYXREVIEW_BUSINESSTABLEROW_TENDLCSTATUS
@@ -20,7 +20,7 @@ const (
 )
 
 func (i BusinessTableRow_tenDlcStatus) String() string {
-    return []string{"NotStarted", "DraftGenerated", "DraftNeedsAdminReview", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
+    return []string{"NotStarted", "DraftGenerated", "DraftIncomplete", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
 }
 func ParseBusinessTableRow_tenDlcStatus(v string) (any, error) {
     result := NOTSTARTED_BUSINESSTABLEROW_TENDLCSTATUS
@@ -29,8 +29,8 @@ func ParseBusinessTableRow_tenDlcStatus(v string) (any, error) {
             result = NOTSTARTED_BUSINESSTABLEROW_TENDLCSTATUS
         case "DraftGenerated":
             result = DRAFTGENERATED_BUSINESSTABLEROW_TENDLCSTATUS
-        case "DraftNeedsAdminReview":
-            result = DRAFTNEEDSADMINREVIEW_BUSINESSTABLEROW_TENDLCSTATUS
+        case "DraftIncomplete":
+            result = DRAFTINCOMPLETE_BUSINESSTABLEROW_TENDLCSTATUS
         case "ReadyToSubmit":
             result = READYTOSUBMIT_BUSINESSTABLEROW_TENDLCSTATUS
         case "Submitted":

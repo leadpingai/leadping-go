@@ -12,17 +12,17 @@ import (
 type StripeInvoiceResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The amount property
+    // Total invoice amount in the invoice currency.
     amount *float64
-    // The createdAt property
+    // Date and time when the invoice was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The hasPdf property
+    // Indicates whether a downloadable PDF is available for the invoice.
     hasPdf *bool
-    // The id property
+    // Provider identifier for the invoice.
     id *string
-    // The number property
+    // Human-readable invoice number, when assigned.
     number *string
-    // The status property
+    // Current provider-reported invoice status.
     status *string
 }
 // NewStripeInvoiceResponse instantiates a new StripeInvoiceResponse and sets the default values.
@@ -42,12 +42,12 @@ func CreateStripeInvoiceResponseFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *StripeInvoiceResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAmount gets the amount property value. The amount property
+// GetAmount gets the amount property value. Total invoice amount in the invoice currency.
 // returns a *float64 when successful
 func (m *StripeInvoiceResponse) GetAmount()(*float64) {
     return m.amount
 }
-// GetCreatedAt gets the createdAt property value. The createdAt property
+// GetCreatedAt gets the createdAt property value. Date and time when the invoice was created.
 // returns a *Time when successful
 func (m *StripeInvoiceResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -118,22 +118,22 @@ func (m *StripeInvoiceResponse) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetHasPdf gets the hasPdf property value. The hasPdf property
+// GetHasPdf gets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
 // returns a *bool when successful
 func (m *StripeInvoiceResponse) GetHasPdf()(*bool) {
     return m.hasPdf
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Provider identifier for the invoice.
 // returns a *string when successful
 func (m *StripeInvoiceResponse) GetId()(*string) {
     return m.id
 }
-// GetNumber gets the number property value. The number property
+// GetNumber gets the number property value. Human-readable invoice number, when assigned.
 // returns a *string when successful
 func (m *StripeInvoiceResponse) GetNumber()(*string) {
     return m.number
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Current provider-reported invoice status.
 // returns a *string when successful
 func (m *StripeInvoiceResponse) GetStatus()(*string) {
     return m.status
@@ -188,27 +188,27 @@ func (m *StripeInvoiceResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *StripeInvoiceResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAmount sets the amount property value. The amount property
+// SetAmount sets the amount property value. Total invoice amount in the invoice currency.
 func (m *StripeInvoiceResponse) SetAmount(value *float64)() {
     m.amount = value
 }
-// SetCreatedAt sets the createdAt property value. The createdAt property
+// SetCreatedAt sets the createdAt property value. Date and time when the invoice was created.
 func (m *StripeInvoiceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetHasPdf sets the hasPdf property value. The hasPdf property
+// SetHasPdf sets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
 func (m *StripeInvoiceResponse) SetHasPdf(value *bool)() {
     m.hasPdf = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Provider identifier for the invoice.
 func (m *StripeInvoiceResponse) SetId(value *string)() {
     m.id = value
 }
-// SetNumber sets the number property value. The number property
+// SetNumber sets the number property value. Human-readable invoice number, when assigned.
 func (m *StripeInvoiceResponse) SetNumber(value *string)() {
     m.number = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Current provider-reported invoice status.
 func (m *StripeInvoiceResponse) SetStatus(value *string)() {
     m.status = value
 }

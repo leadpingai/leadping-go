@@ -15,15 +15,17 @@ type CallEventTableRow struct {
     // UTC timestamp when the call was answered.
     answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableAmount *float64
     // Billable call duration in seconds.
-    billableSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableSeconds *int32
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // Business summary connected to this call event table row.
     business *string
     // Business ID associated with this call event.
     businessId *string
+    // Display name for the business associated with this call event.
+    businessName *string
     // Caller ID phone number presented during the outbound call.
     callerId *string
     // Conversation ID that links this call event table row to the Leadping inbox thread.
@@ -33,7 +35,7 @@ type CallEventTableRow struct {
     // Communication direction for this call event table row, such as inbound or outbound.
     direction *string
     // Call duration or processing duration represented by this call event table row.
-    duration i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    duration *int32
     // UTC timestamp when the call ended.
     endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Sender phone number used for this communication.
@@ -44,6 +46,8 @@ type CallEventTableRow struct {
     id *string
     // Lead ID associated with this call event.
     leadId *string
+    // Display name for the lead associated with this call event.
+    leadName *string
     // URL for the call recording, when the provider makes one available.
     recordingUrl *string
     // Defines the supported Phone Call Status values.
@@ -80,13 +84,13 @@ func (m *CallEventTableRow) GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6
     return m.answeredAt
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *CallEventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *CallEventTableRow) GetBillableAmount()(*float64) {
     return m.billableAmount
 }
 // GetBillableSeconds gets the billableSeconds property value. Billable call duration in seconds.
-// returns a UntypedNodeable when successful
-func (m *CallEventTableRow) GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *CallEventTableRow) GetBillableSeconds()(*int32) {
     return m.billableSeconds
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -103,6 +107,11 @@ func (m *CallEventTableRow) GetBusiness()(*string) {
 // returns a *string when successful
 func (m *CallEventTableRow) GetBusinessId()(*string) {
     return m.businessId
+}
+// GetBusinessName gets the businessName property value. Display name for the business associated with this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetBusinessName()(*string) {
+    return m.businessName
 }
 // GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
@@ -125,8 +134,8 @@ func (m *CallEventTableRow) GetDirection()(*string) {
     return m.direction
 }
 // GetDuration gets the duration property value. Call duration or processing duration represented by this call event table row.
-// returns a UntypedNodeable when successful
-func (m *CallEventTableRow) GetDuration()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *CallEventTableRow) GetDuration()(*int32) {
     return m.duration
 }
 // GetEndedAt gets the endedAt property value. UTC timestamp when the call ended.
@@ -149,22 +158,22 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableAmount(val)
         }
         return nil
     }
     res["billableSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableSeconds(val)
         }
         return nil
     }
@@ -195,6 +204,16 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetBusinessId(val)
+        }
+        return nil
+    }
+    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetBusinessName(val)
         }
         return nil
     }
@@ -239,12 +258,12 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["duration"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDuration(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetDuration(val)
         }
         return nil
     }
@@ -295,6 +314,16 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetLeadId(val)
+        }
+        return nil
+    }
+    res["leadName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetLeadName(val)
         }
         return nil
     }
@@ -380,6 +409,11 @@ func (m *CallEventTableRow) GetId()(*string) {
 func (m *CallEventTableRow) GetLeadId()(*string) {
     return m.leadId
 }
+// GetLeadName gets the leadName property value. Display name for the lead associated with this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetLeadName()(*string) {
+    return m.leadName
+}
 // GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 // returns a *string when successful
 func (m *CallEventTableRow) GetRecordingUrl()(*string) {
@@ -419,13 +453,13 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
+        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("billableSeconds", m.GetBillableSeconds())
+        err := writer.WriteInt32Value("billableSeconds", m.GetBillableSeconds())
         if err != nil {
             return err
         }
@@ -444,6 +478,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("businessId", m.GetBusinessId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("businessName", m.GetBusinessName())
         if err != nil {
             return err
         }
@@ -473,7 +513,7 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("duration", m.GetDuration())
+        err := writer.WriteInt32Value("duration", m.GetDuration())
         if err != nil {
             return err
         }
@@ -504,6 +544,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("leadName", m.GetLeadName())
         if err != nil {
             return err
         }
@@ -562,11 +608,11 @@ func (m *CallEventTableRow) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97
     m.answeredAt = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *CallEventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *CallEventTableRow) SetBillableAmount(value *float64)() {
     m.billableAmount = value
 }
 // SetBillableSeconds sets the billableSeconds property value. Billable call duration in seconds.
-func (m *CallEventTableRow) SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *CallEventTableRow) SetBillableSeconds(value *int32)() {
     m.billableSeconds = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -580,6 +626,10 @@ func (m *CallEventTableRow) SetBusiness(value *string)() {
 // SetBusinessId sets the businessId property value. Business ID associated with this call event.
 func (m *CallEventTableRow) SetBusinessId(value *string)() {
     m.businessId = value
+}
+// SetBusinessName sets the businessName property value. Display name for the business associated with this call event.
+func (m *CallEventTableRow) SetBusinessName(value *string)() {
+    m.businessName = value
 }
 // SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
 func (m *CallEventTableRow) SetCallerId(value *string)() {
@@ -598,7 +648,7 @@ func (m *CallEventTableRow) SetDirection(value *string)() {
     m.direction = value
 }
 // SetDuration sets the duration property value. Call duration or processing duration represented by this call event table row.
-func (m *CallEventTableRow) SetDuration(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *CallEventTableRow) SetDuration(value *int32)() {
     m.duration = value
 }
 // SetEndedAt sets the endedAt property value. UTC timestamp when the call ended.
@@ -620,6 +670,10 @@ func (m *CallEventTableRow) SetId(value *string)() {
 // SetLeadId sets the leadId property value. Lead ID associated with this call event.
 func (m *CallEventTableRow) SetLeadId(value *string)() {
     m.leadId = value
+}
+// SetLeadName sets the leadName property value. Display name for the lead associated with this call event.
+func (m *CallEventTableRow) SetLeadName(value *string)() {
+    m.leadName = value
 }
 // SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
@@ -649,21 +703,23 @@ type CallEventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillableAmount()(*float64)
+    GetBillableSeconds()(*int32)
     GetBillingStatus()(*string)
     GetBusiness()(*string)
     GetBusinessId()(*string)
+    GetBusinessName()(*string)
     GetCallerId()(*string)
     GetConversationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDirection()(*string)
-    GetDuration()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetDuration()(*int32)
     GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetFromPhoneNumber()(*string)
     GetFromPhoneNumberId()(*string)
     GetId()(*string)
     GetLeadId()(*string)
+    GetLeadName()(*string)
     GetRecordingUrl()(*string)
     GetStatus()(*CallEventTableRow_status)
     GetStatusReason()(*string)
@@ -671,21 +727,23 @@ type CallEventTableRowable interface {
     GetUser()(*string)
     GetUserId()(*string)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillableAmount(value *float64)()
+    SetBillableSeconds(value *int32)()
     SetBillingStatus(value *string)()
     SetBusiness(value *string)()
     SetBusinessId(value *string)()
+    SetBusinessName(value *string)()
     SetCallerId(value *string)()
     SetConversationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDirection(value *string)()
-    SetDuration(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetDuration(value *int32)()
     SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetFromPhoneNumber(value *string)()
     SetFromPhoneNumberId(value *string)()
     SetId(value *string)()
     SetLeadId(value *string)()
+    SetLeadName(value *string)()
     SetRecordingUrl(value *string)()
     SetStatus(value *CallEventTableRow_status)()
     SetStatusReason(value *string)()

@@ -25,7 +25,7 @@ type AutomationWorkflowRunResponse struct {
     // The ID and name for this currentStep.
     currentStep AutomationWorkflowRunResponse_currentStepable
     // Current step order associated with this Leadping automation workflow run.
-    currentStepOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    currentStepOrder *int32
     // Collection of events included with this Leadping automation workflow run.
     events []AutomationWorkflowEventResponseable
     // Date and time when the automation workflow run failed.
@@ -115,8 +115,8 @@ func (m *AutomationWorkflowRunResponse) GetCurrentStep()(AutomationWorkflowRunRe
     return m.currentStep
 }
 // GetCurrentStepOrder gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
-// returns a UntypedNodeable when successful
-func (m *AutomationWorkflowRunResponse) GetCurrentStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *AutomationWorkflowRunResponse) GetCurrentStepOrder()(*int32) {
     return m.currentStepOrder
 }
 // GetEvents gets the events property value. Collection of events included with this Leadping automation workflow run.
@@ -200,12 +200,12 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         return nil
     }
     res["currentStepOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentStepOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetCurrentStepOrder(val)
         }
         return nil
     }
@@ -552,7 +552,7 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
-        err := writer.WriteObjectValue("currentStepOrder", m.GetCurrentStepOrder())
+        err := writer.WriteInt32Value("currentStepOrder", m.GetCurrentStepOrder())
         if err != nil {
             return err
         }
@@ -720,7 +720,7 @@ func (m *AutomationWorkflowRunResponse) SetCurrentStep(value AutomationWorkflowR
     m.currentStep = value
 }
 // SetCurrentStepOrder sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value *int32)() {
     m.currentStepOrder = value
 }
 // SetEvents sets the events property value. Collection of events included with this Leadping automation workflow run.
@@ -812,7 +812,7 @@ type AutomationWorkflowRunResponseable interface {
     GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable)
-    GetCurrentStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetCurrentStepOrder()(*int32)
     GetEvents()([]AutomationWorkflowEventResponseable)
     GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetId()(*string)
@@ -839,7 +839,7 @@ type AutomationWorkflowRunResponseable interface {
     SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)()
-    SetCurrentStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetCurrentStepOrder(value *int32)()
     SetEvents(value []AutomationWorkflowEventResponseable)()
     SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()

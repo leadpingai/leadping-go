@@ -12,9 +12,9 @@ import (
 type InvoicePdfAccessResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The expiresAt property
+    // Date and time after which the download URL is no longer valid.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The url property
+    // Short-lived URL that can be used to download the invoice PDF.
     url *string
 }
 // NewInvoicePdfAccessResponse instantiates a new InvoicePdfAccessResponse and sets the default values.
@@ -34,7 +34,7 @@ func CreateInvoicePdfAccessResponseFromDiscriminatorValue(parseNode i878a80d2330
 func (m *InvoicePdfAccessResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetExpiresAt gets the expiresAt property value. The expiresAt property
+// GetExpiresAt gets the expiresAt property value. Date and time after which the download URL is no longer valid.
 // returns a *Time when successful
 func (m *InvoicePdfAccessResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.expiresAt
@@ -65,7 +65,7 @@ func (m *InvoicePdfAccessResponse) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetUrl gets the url property value. The url property
+// GetUrl gets the url property value. Short-lived URL that can be used to download the invoice PDF.
 // returns a *string when successful
 func (m *InvoicePdfAccessResponse) GetUrl()(*string) {
     return m.url
@@ -96,11 +96,11 @@ func (m *InvoicePdfAccessResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *InvoicePdfAccessResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetExpiresAt sets the expiresAt property value. The expiresAt property
+// SetExpiresAt sets the expiresAt property value. Date and time after which the download URL is no longer valid.
 func (m *InvoicePdfAccessResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.expiresAt = value
 }
-// SetUrl sets the url property value. The url property
+// SetUrl sets the url property value. Short-lived URL that can be used to download the invoice PDF.
 func (m *InvoicePdfAccessResponse) SetUrl(value *string)() {
     m.url = value
 }

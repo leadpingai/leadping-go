@@ -8,24 +8,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// LeadStatusResponse represents a configurable status that can be assigned to leads.
 type LeadStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The businessId property
+    // Identifier of the business that owns the lead status.
     businessId *string
-    // Controlled disposition categories used for reporting, automation, and analytics.
+    // Disposition category represented by the lead status.
     category *DispositionCategory
-    // The color property
+    // Display color assigned to the lead status.
     color *string
-    // The id property
+    // Unique identifier for the lead status.
     id *string
-    // The isArchived property
+    // Indicates whether the lead status has been archived.
     isArchived *bool
-    // The modifiedAt property
+    // Date and time when the lead status was last modified.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The name property
+    // Display name of the lead status.
     name *string
-    // The sortOrder property
+    // Relative display order of the lead status.
     sortOrder *int32
 }
 // NewLeadStatusResponse instantiates a new LeadStatusResponse and sets the default values.
@@ -45,17 +46,17 @@ func CreateLeadStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *LeadStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The businessId property
+// GetBusinessId gets the businessId property value. Identifier of the business that owns the lead status.
 // returns a *string when successful
 func (m *LeadStatusResponse) GetBusinessId()(*string) {
     return m.businessId
 }
-// GetCategory gets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+// GetCategory gets the category property value. Disposition category represented by the lead status.
 // returns a *DispositionCategory when successful
 func (m *LeadStatusResponse) GetCategory()(*DispositionCategory) {
     return m.category
 }
-// GetColor gets the color property value. The color property
+// GetColor gets the color property value. Display color assigned to the lead status.
 // returns a *string when successful
 func (m *LeadStatusResponse) GetColor()(*string) {
     return m.color
@@ -146,27 +147,27 @@ func (m *LeadStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique identifier for the lead status.
 // returns a *string when successful
 func (m *LeadStatusResponse) GetId()(*string) {
     return m.id
 }
-// GetIsArchived gets the isArchived property value. The isArchived property
+// GetIsArchived gets the isArchived property value. Indicates whether the lead status has been archived.
 // returns a *bool when successful
 func (m *LeadStatusResponse) GetIsArchived()(*bool) {
     return m.isArchived
 }
-// GetModifiedAt gets the modifiedAt property value. The modifiedAt property
+// GetModifiedAt gets the modifiedAt property value. Date and time when the lead status was last modified.
 // returns a *Time when successful
 func (m *LeadStatusResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The name property
+// GetName gets the name property value. Display name of the lead status.
 // returns a *string when successful
 func (m *LeadStatusResponse) GetName()(*string) {
     return m.name
 }
-// GetSortOrder gets the sortOrder property value. The sortOrder property
+// GetSortOrder gets the sortOrder property value. Relative display order of the lead status.
 // returns a *int32 when successful
 func (m *LeadStatusResponse) GetSortOrder()(*int32) {
     return m.sortOrder
@@ -234,35 +235,35 @@ func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *LeadStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The businessId property
+// SetBusinessId sets the businessId property value. Identifier of the business that owns the lead status.
 func (m *LeadStatusResponse) SetBusinessId(value *string)() {
     m.businessId = value
 }
-// SetCategory sets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+// SetCategory sets the category property value. Disposition category represented by the lead status.
 func (m *LeadStatusResponse) SetCategory(value *DispositionCategory)() {
     m.category = value
 }
-// SetColor sets the color property value. The color property
+// SetColor sets the color property value. Display color assigned to the lead status.
 func (m *LeadStatusResponse) SetColor(value *string)() {
     m.color = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique identifier for the lead status.
 func (m *LeadStatusResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsArchived sets the isArchived property value. The isArchived property
+// SetIsArchived sets the isArchived property value. Indicates whether the lead status has been archived.
 func (m *LeadStatusResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
-// SetModifiedAt sets the modifiedAt property value. The modifiedAt property
+// SetModifiedAt sets the modifiedAt property value. Date and time when the lead status was last modified.
 func (m *LeadStatusResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The name property
+// SetName sets the name property value. Display name of the lead status.
 func (m *LeadStatusResponse) SetName(value *string)() {
     m.name = value
 }
-// SetSortOrder sets the sortOrder property value. The sortOrder property
+// SetSortOrder sets the sortOrder property value. Relative display order of the lead status.
 func (m *LeadStatusResponse) SetSortOrder(value *int32)() {
     m.sortOrder = value
 }
