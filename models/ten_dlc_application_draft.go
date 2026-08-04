@@ -30,7 +30,7 @@ type TenDlcApplicationDraft struct {
     ein *string
     // The expected monthly volume value for this 10DLC application draft.
     expectedMonthlyVolume *int32
-    // The industry value for this 10DLC application draft.
+    // The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
     industry *string
     // The date and time for the last submitted at value on this 10DLC application draft.
     lastSubmittedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -387,7 +387,7 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetIndustry gets the industry property value. The industry value for this 10DLC application draft.
+// GetIndustry gets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetIndustry()(*string) {
     return m.industry
@@ -658,7 +658,7 @@ func (m *TenDlcApplicationDraft) SetEin(value *string)() {
 func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32)() {
     m.expectedMonthlyVolume = value
 }
-// SetIndustry sets the industry property value. The industry value for this 10DLC application draft.
+// SetIndustry sets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 func (m *TenDlcApplicationDraft) SetIndustry(value *string)() {
     m.industry = value
 }

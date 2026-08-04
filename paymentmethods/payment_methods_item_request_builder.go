@@ -51,7 +51,7 @@ func (m *PaymentMethodsItemRequestBuilder) Delete(ctx context.Context, requestCo
     }
     return nil
 }
-// Get returns one payment method for the current user or business, including card metadata used for billing management.
+// Get returns one payment method for the current user or organization, including card metadata used for billing management.
 // returns a StripePaymentMethodResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -83,7 +83,7 @@ func (m *PaymentMethodsItemRequestBuilder) ToDeleteRequestInformation(ctx contex
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToGetRequestInformation returns one payment method for the current user or business, including card metadata used for billing management.
+// ToGetRequestInformation returns one payment method for the current user or organization, including card metadata used for billing management.
 // returns a *RequestInformation when successful
 func (m *PaymentMethodsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

@@ -13,8 +13,6 @@ type AutomationRequestSnapshot struct {
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business ID captured when the automation request snapshot was created.
-    businessId *string
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
     // Directed connections between nodes in this automation graph.
@@ -29,10 +27,12 @@ type AutomationRequestSnapshot struct {
     id *string
     // Indicates whether Leadping manages this automation request snapshot automatically instead of a user.
     isSystemManaged *bool
-    // Management level that controls whether Leadping or the business owns this automation setting.
+    // Management level that controls whether Leadping or the organization owns this automation setting.
     managementLevel *string
     // Display name for this automation request snapshot in the Leadping API.
     name *string
+    // Organization ID captured when the automation request snapshot was created.
+    organizationId *string
     // Scope that limits where this automation request snapshot applies in Leadping.
     scope *string
     // Automation triggers that can start this workflow.
@@ -61,11 +61,6 @@ func (m *AutomationRequestSnapshot) GetActions()([]AutomationActionable) {
 // returns a map[string]any when successful
 func (m *AutomationRequestSnapshot) GetAdditionalData()(map[string]any) {
     return m.additionalData
-}
-// GetBusinessId gets the businessId property value. Business ID captured when the automation request snapshot was created.
-// returns a *string when successful
-func (m *AutomationRequestSnapshot) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
@@ -109,16 +104,6 @@ func (m *AutomationRequestSnapshot) GetFieldDeserializers()(map[string]func(i878
                 }
             }
             m.SetActions(res)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -224,6 +209,16 @@ func (m *AutomationRequestSnapshot) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["scope"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -272,7 +267,7 @@ func (m *AutomationRequestSnapshot) GetId()(*string) {
 func (m *AutomationRequestSnapshot) GetIsSystemManaged()(*bool) {
     return m.isSystemManaged
 }
-// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetManagementLevel()(*string) {
     return m.managementLevel
@@ -281,6 +276,11 @@ func (m *AutomationRequestSnapshot) GetManagementLevel()(*string) {
 // returns a *string when successful
 func (m *AutomationRequestSnapshot) GetName()(*string) {
     return m.name
+}
+// GetOrganizationId gets the organizationId property value. Organization ID captured when the automation request snapshot was created.
+// returns a *string when successful
+func (m *AutomationRequestSnapshot) GetOrganizationId()(*string) {
+    return m.organizationId
 }
 // GetScope gets the scope property value. Scope that limits where this automation request snapshot applies in Leadping.
 // returns a *string when successful
@@ -307,12 +307,6 @@ func (m *AutomationRequestSnapshot) Serialize(writer i878a80d2330e89d26896388a3f
             }
         }
         err := writer.WriteCollectionOfObjectValues("actions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -384,6 +378,12 @@ func (m *AutomationRequestSnapshot) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("scope", m.GetScope())
         if err != nil {
             return err
@@ -423,10 +423,6 @@ func (m *AutomationRequestSnapshot) SetActions(value []AutomationActionable)() {
 func (m *AutomationRequestSnapshot) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. Business ID captured when the automation request snapshot was created.
-func (m *AutomationRequestSnapshot) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 func (m *AutomationRequestSnapshot) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
@@ -455,13 +451,17 @@ func (m *AutomationRequestSnapshot) SetId(value *string)() {
 func (m *AutomationRequestSnapshot) SetIsSystemManaged(value *bool)() {
     m.isSystemManaged = value
 }
-// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 func (m *AutomationRequestSnapshot) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
 // SetName sets the name property value. Display name for this automation request snapshot in the Leadping API.
 func (m *AutomationRequestSnapshot) SetName(value *string)() {
     m.name = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID captured when the automation request snapshot was created.
+func (m *AutomationRequestSnapshot) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetScope sets the scope property value. Scope that limits where this automation request snapshot applies in Leadping.
 func (m *AutomationRequestSnapshot) SetScope(value *string)() {
@@ -479,7 +479,6 @@ type AutomationRequestSnapshotable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionable)
-    GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
     GetConnections()([]AutomationConnectionable)
     GetCreatedByUserId()(*string)
@@ -489,11 +488,11 @@ type AutomationRequestSnapshotable interface {
     GetIsSystemManaged()(*bool)
     GetManagementLevel()(*string)
     GetName()(*string)
+    GetOrganizationId()(*string)
     GetScope()(*string)
     GetTriggers()([]AutomationTriggerable)
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
-    SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
     SetConnections(value []AutomationConnectionable)()
     SetCreatedByUserId(value *string)()
@@ -503,6 +502,7 @@ type AutomationRequestSnapshotable interface {
     SetIsSystemManaged(value *bool)()
     SetManagementLevel(value *string)()
     SetName(value *string)()
+    SetOrganizationId(value *string)()
     SetScope(value *string)()
     SetTriggers(value []AutomationTriggerable)()
     SetVisibility(value *string)()

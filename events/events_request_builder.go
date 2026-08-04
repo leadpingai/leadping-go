@@ -16,11 +16,6 @@ type EventsRequestBuilder struct {
 func (m *EventsRequestBuilder) All()(*AllRequestBuilder) {
     return NewAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Businesses the businesses property
-// returns a *BusinessesRequestBuilder when successful
-func (m *EventsRequestBuilder) Businesses()(*BusinessesRequestBuilder) {
-    return NewBusinessesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // ByEventId gets an item from the github.com/leadpingai/leadping-go.events.item collection
 // returns a *WithEventItemRequestBuilder when successful
 func (m *EventsRequestBuilder) ByEventId(eventId string)(*WithEventItemRequestBuilder) {
@@ -60,6 +55,11 @@ func (m *EventsRequestBuilder) Conversations()(*ConversationsRequestBuilder) {
 // returns a *LeadsRequestBuilder when successful
 func (m *EventsRequestBuilder) Leads()(*LeadsRequestBuilder) {
     return NewLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Organizations the organizations property
+// returns a *OrganizationsRequestBuilder when successful
+func (m *EventsRequestBuilder) Organizations()(*OrganizationsRequestBuilder) {
+    return NewOrganizationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Sms the sms property
 // returns a *SmsRequestBuilder when successful

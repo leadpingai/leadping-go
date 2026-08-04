@@ -23,7 +23,7 @@ type PhoneNumberLocation struct {
     countryCode *string
     // Geographic location metadata for the phone number, lead, or lookup result.
     location *string
-    // State, province, or region for the lead or business postal address.
+    // State, province, or region for the lead or organization postal address.
     state *string
     // IANA or Windows time zone identifier used for local scheduling and reporting.
     timeZoneId *string
@@ -173,7 +173,7 @@ func (m *PhoneNumberLocation) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *PhoneNumberLocation) GetLocation()(*string) {
     return m.location
 }
-// GetState gets the state property value. State, province, or region for the lead or business postal address.
+// GetState gets the state property value. State, province, or region for the lead or organization postal address.
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetState()(*string) {
     return m.state
@@ -280,7 +280,7 @@ func (m *PhoneNumberLocation) SetCountryCode(value *string)() {
 func (m *PhoneNumberLocation) SetLocation(value *string)() {
     m.location = value
 }
-// SetState sets the state property value. State, province, or region for the lead or business postal address.
+// SetState sets the state property value. State, province, or region for the lead or organization postal address.
 func (m *PhoneNumberLocation) SetState(value *string)() {
     m.state = value
 }

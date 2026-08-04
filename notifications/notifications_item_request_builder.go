@@ -26,7 +26,7 @@ func NewNotificationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
     urlParams["request-raw-url"] = rawUrl
     return NewNotificationsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns one notification for the current user and business, including its content, read state, delivery context, and relevant account activity.
+// Get returns one notification for the current user and organization, including its content, read state, delivery context, and relevant account activity.
 // returns a NotificationResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -53,7 +53,7 @@ func (m *NotificationsItemRequestBuilder) Get(ctx context.Context, requestConfig
 func (m *NotificationsItemRequestBuilder) MarkRead()(*ItemMarkReadRequestBuilder) {
     return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ToGetRequestInformation returns one notification for the current user and business, including its content, read state, delivery context, and relevant account activity.
+// ToGetRequestInformation returns one notification for the current user and organization, including its content, read state, delivery context, and relevant account activity.
 // returns a *RequestInformation when successful
 func (m *NotificationsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

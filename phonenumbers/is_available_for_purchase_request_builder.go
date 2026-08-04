@@ -26,7 +26,7 @@ func NewIsAvailableForPurchaseRequestBuilder(rawUrl string, requestAdapter i2ae4
     urlParams["request-raw-url"] = rawUrl
     return NewIsAvailableForPurchaseRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post checks whether a phone number can be purchased for the current business before creating or assigning it.
+// Post checks whether a phone number can be purchased for the current organization before creating or assigning it.
 // returns a PhoneNumberAvailabilityResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -50,7 +50,7 @@ func (m *IsAvailableForPurchaseRequestBuilder) Post(ctx context.Context, body i0
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberAvailabilityResponseable), nil
 }
-// ToPostRequestInformation checks whether a phone number can be purchased for the current business before creating or assigning it.
+// ToPostRequestInformation checks whether a phone number can be purchased for the current organization before creating or assigning it.
 // returns a *RequestInformation when successful
 func (m *IsAvailableForPurchaseRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberAvailabilityRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

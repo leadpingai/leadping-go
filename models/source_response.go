@@ -16,13 +16,11 @@ type SourceResponse struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
     apiKey *string
     // Masked preview of the source API key for compact display.
     apiKeyPreview *string
-    // Business summary connected to this lead source response.
-    business SourceResponse_businessable
-    // Indicates whether the business or sender passed compliance review.
+    // Indicates whether the organization or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
     costPerLead *float64
@@ -50,6 +48,8 @@ type SourceResponse struct {
     modifiedByUser SourceResponse_modifiedByUserable
     // The display name for the entity.
     name *string
+    // Organization summary connected to this lead source response.
+    organization SourceResponse_organizationable
     // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
     // User summary connected to this lead source response.
@@ -82,7 +82,7 @@ func (m *SourceResponse) GetAllowedProducts()([]string) {
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
 // returns a *string when successful
 func (m *SourceResponse) GetApiKey()(*string) {
     return m.apiKey
@@ -92,12 +92,7 @@ func (m *SourceResponse) GetApiKey()(*string) {
 func (m *SourceResponse) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
 }
-// GetBusiness gets the business property value. Business summary connected to this lead source response.
-// returns a SourceResponse_businessable when successful
-func (m *SourceResponse) GetBusiness()(SourceResponse_businessable) {
-    return m.business
-}
-// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+// GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 // returns a *bool when successful
 func (m *SourceResponse) GetComplianceApproved()(*bool) {
     return m.complianceApproved
@@ -190,16 +185,6 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetApiKeyPreview(val)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(SourceResponse_businessable))
         }
         return nil
     }
@@ -355,6 +340,16 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateSourceResponse_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(SourceResponse_organizationable))
+        }
+        return nil
+    }
     res["requiresTrustedForm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -407,6 +402,11 @@ func (m *SourceResponse) GetModifiedByUser()(SourceResponse_modifiedByUserable) 
 func (m *SourceResponse) GetName()(*string) {
     return m.name
 }
+// GetOrganization gets the organization property value. Organization summary connected to this lead source response.
+// returns a SourceResponse_organizationable when successful
+func (m *SourceResponse) GetOrganization()(SourceResponse_organizationable) {
+    return m.organization
+}
 // GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceResponse) GetRequiresTrustedForm()(*bool) {
@@ -439,12 +439,6 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -540,6 +534,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
         if err != nil {
             return err
@@ -571,7 +571,7 @@ func (m *SourceResponse) SetAllowedProducts(value []string)() {
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
 func (m *SourceResponse) SetApiKey(value *string)() {
     m.apiKey = value
 }
@@ -579,11 +579,7 @@ func (m *SourceResponse) SetApiKey(value *string)() {
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }
-// SetBusiness sets the business property value. Business summary connected to this lead source response.
-func (m *SourceResponse) SetBusiness(value SourceResponse_businessable)() {
-    m.business = value
-}
-// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+// SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 func (m *SourceResponse) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
@@ -639,6 +635,10 @@ func (m *SourceResponse) SetModifiedByUser(value SourceResponse_modifiedByUserab
 func (m *SourceResponse) SetName(value *string)() {
     m.name = value
 }
+// SetOrganization sets the organization property value. Organization summary connected to this lead source response.
+func (m *SourceResponse) SetOrganization(value SourceResponse_organizationable)() {
+    m.organization = value
+}
 // SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceResponse) SetRequiresTrustedForm(value *bool)() {
     m.requiresTrustedForm = value
@@ -654,7 +654,6 @@ type SourceResponseable interface {
     GetAllowedStates()([]string)
     GetApiKey()(*string)
     GetApiKeyPreview()(*string)
-    GetBusiness()(SourceResponse_businessable)
     GetComplianceApproved()(*bool)
     GetCostPerLead()(*float64)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -669,13 +668,13 @@ type SourceResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetModifiedByUser()(SourceResponse_modifiedByUserable)
     GetName()(*string)
+    GetOrganization()(SourceResponse_organizationable)
     GetRequiresTrustedForm()(*bool)
     GetUser()(SourceResponse_userable)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
     SetApiKey(value *string)()
     SetApiKeyPreview(value *string)()
-    SetBusiness(value SourceResponse_businessable)()
     SetComplianceApproved(value *bool)()
     SetCostPerLead(value *float64)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -690,6 +689,7 @@ type SourceResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetModifiedByUser(value SourceResponse_modifiedByUserable)()
     SetName(value *string)()
+    SetOrganization(value SourceResponse_organizationable)()
     SetRequiresTrustedForm(value *bool)()
     SetUser(value SourceResponse_userable)()
 }

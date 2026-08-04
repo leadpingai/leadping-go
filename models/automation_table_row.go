@@ -14,10 +14,6 @@ type AutomationTableRow struct {
     actionSummary *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business summary connected to this automation table row.
-    business AutomationTableRow_businessable
-    // Business ID that owns this automation.
-    businessId *string
     // Human-readable summary of the automation condition evaluation.
     conditionSummary *string
     // User ID of the person who created this automation table row.
@@ -36,12 +32,16 @@ type AutomationTableRow struct {
     lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Status from the most recent automation run.
     lastRunStatus *string
-    // Management level that controls whether Leadping or the business owns this automation setting.
+    // Management level that controls whether Leadping or the organization owns this automation setting.
     managementLevel *string
     // UTC timestamp when this automation table row was last modified.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Display name for this automation table row in the Leadping API.
     name *string
+    // Organization summary connected to this automation table row.
+    organization AutomationTableRow_organizationable
+    // Organization ID that owns this automation.
+    organizationId *string
     // Human-readable explanation of the automation rule being evaluated.
     ruleSentence *string
     // Scope that limits where this automation table row applies in Leadping.
@@ -77,16 +77,6 @@ func (m *AutomationTableRow) GetActionSummary()(*string) {
 func (m *AutomationTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusiness gets the business property value. Business summary connected to this automation table row.
-// returns a AutomationTableRow_businessable when successful
-func (m *AutomationTableRow) GetBusiness()(AutomationTableRow_businessable) {
-    return m.business
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this automation.
-// returns a *string when successful
-func (m *AutomationTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetConditionSummary gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 // returns a *string when successful
 func (m *AutomationTableRow) GetConditionSummary()(*string) {
@@ -118,26 +108,6 @@ func (m *AutomationTableRow) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         if val != nil {
             m.SetActionSummary(val)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationTableRow_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(AutomationTableRow_businessable))
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -261,6 +231,26 @@ func (m *AutomationTableRow) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateAutomationTableRow_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(AutomationTableRow_organizationable))
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["ruleSentence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -348,7 +338,7 @@ func (m *AutomationTableRow) GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6
 func (m *AutomationTableRow) GetLastRunStatus()(*string) {
     return m.lastRunStatus
 }
-// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 // returns a *string when successful
 func (m *AutomationTableRow) GetManagementLevel()(*string) {
     return m.managementLevel
@@ -362,6 +352,16 @@ func (m *AutomationTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a
 // returns a *string when successful
 func (m *AutomationTableRow) GetName()(*string) {
     return m.name
+}
+// GetOrganization gets the organization property value. Organization summary connected to this automation table row.
+// returns a AutomationTableRow_organizationable when successful
+func (m *AutomationTableRow) GetOrganization()(AutomationTableRow_organizationable) {
+    return m.organization
+}
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this automation.
+// returns a *string when successful
+func (m *AutomationTableRow) GetOrganizationId()(*string) {
+    return m.organizationId
 }
 // GetRuleSentence gets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
 // returns a *string when successful
@@ -397,18 +397,6 @@ func (m *AutomationTableRow) GetVisibility()(*string) {
 func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("actionSummary", m.GetActionSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -486,6 +474,18 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("ruleSentence", m.GetRuleSentence())
         if err != nil {
             return err
@@ -537,14 +537,6 @@ func (m *AutomationTableRow) SetActionSummary(value *string)() {
 func (m *AutomationTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusiness sets the business property value. Business summary connected to this automation table row.
-func (m *AutomationTableRow) SetBusiness(value AutomationTableRow_businessable)() {
-    m.business = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this automation.
-func (m *AutomationTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetConditionSummary sets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 func (m *AutomationTableRow) SetConditionSummary(value *string)() {
     m.conditionSummary = value
@@ -581,7 +573,7 @@ func (m *AutomationTableRow) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97
 func (m *AutomationTableRow) SetLastRunStatus(value *string)() {
     m.lastRunStatus = value
 }
-// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 func (m *AutomationTableRow) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
@@ -592,6 +584,14 @@ func (m *AutomationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad9
 // SetName sets the name property value. Display name for this automation table row in the Leadping API.
 func (m *AutomationTableRow) SetName(value *string)() {
     m.name = value
+}
+// SetOrganization sets the organization property value. Organization summary connected to this automation table row.
+func (m *AutomationTableRow) SetOrganization(value AutomationTableRow_organizationable)() {
+    m.organization = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this automation.
+func (m *AutomationTableRow) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetRuleSentence sets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
 func (m *AutomationTableRow) SetRuleSentence(value *string)() {
@@ -621,8 +621,6 @@ type AutomationTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActionSummary()(*string)
-    GetBusiness()(AutomationTableRow_businessable)
-    GetBusinessId()(*string)
     GetConditionSummary()(*string)
     GetCreatedByUserId()(*string)
     GetDescription()(*string)
@@ -635,6 +633,8 @@ type AutomationTableRowable interface {
     GetManagementLevel()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
+    GetOrganization()(AutomationTableRow_organizationable)
+    GetOrganizationId()(*string)
     GetRuleSentence()(*string)
     GetScope()(*string)
     GetTriggerSummary()(*string)
@@ -642,8 +642,6 @@ type AutomationTableRowable interface {
     GetUser()(AutomationTableRow_userable)
     GetVisibility()(*string)
     SetActionSummary(value *string)()
-    SetBusiness(value AutomationTableRow_businessable)()
-    SetBusinessId(value *string)()
     SetConditionSummary(value *string)()
     SetCreatedByUserId(value *string)()
     SetDescription(value *string)()
@@ -656,6 +654,8 @@ type AutomationTableRowable interface {
     SetManagementLevel(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
+    SetOrganization(value AutomationTableRow_organizationable)()
+    SetOrganizationId(value *string)()
     SetRuleSentence(value *string)()
     SetScope(value *string)()
     SetTriggerSummary(value *string)()

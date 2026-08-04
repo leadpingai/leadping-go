@@ -22,7 +22,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     Address2 *string
     // Lead birth date used for demographic matching and insurance intake workflows.
     BirthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // City for the lead or business postal address.
+    // City for the lead or organization postal address.
     City *string
     // Lead date of birth supplied by intake sources and normalized into the lead profile.
     DateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
@@ -40,11 +40,11 @@ type IntakeRequestBuilderGetQueryParameters struct {
     LandingPage *string
     // Last name of the lead, user, or contact represented by this lead intake request.
     LastName *string
-    // Phone details for the lead, user, or business represented by this lead intake request.
+    // Phone details for the lead, user, or organization represented by this lead intake request.
     Phone *string
     // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
     PhoneType *string
-    // Postal code for the lead or business address.
+    // Postal code for the lead or organization address.
     PostalCode *string
     // Lead price or transaction price supplied to the Leadping API.
     Price *float64
@@ -60,7 +60,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     SourceKey *string "uriparametername:\"sourceKey\""
     // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     SourceMetadata *string
-    // State, province, or region for the lead or business postal address.
+    // State, province, or region for the lead or organization postal address.
     State *string
     // Affiliate or publisher sub ID captured for lead attribution.
     SubId *string

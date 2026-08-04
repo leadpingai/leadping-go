@@ -17,7 +17,7 @@ type LeadIntakeRequest struct {
     address2 *string
     // Lead birth date used for demographic matching and insurance intake workflows.
     birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // City for the lead or business postal address.
+    // City for the lead or organization postal address.
     city *string
     // Lead date of birth supplied by intake sources and normalized into the lead profile.
     dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
@@ -35,11 +35,11 @@ type LeadIntakeRequest struct {
     landingPage *string
     // Last name of the lead, user, or contact represented by this lead intake request.
     lastName *string
-    // Phone details for the lead, user, or business represented by this lead intake request.
+    // Phone details for the lead, user, or organization represented by this lead intake request.
     phone *string
     // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
     phoneType *string
-    // Postal code for the lead or business address.
+    // Postal code for the lead or organization address.
     postalCode *string
     // Lead price or transaction price supplied to the Leadping API.
     price *float64
@@ -53,7 +53,7 @@ type LeadIntakeRequest struct {
     sellerLeadIdentifier *string
     // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     sourceMetadata LeadIntakeRequest_sourceMetadataable
-    // State, province, or region for the lead or business postal address.
+    // State, province, or region for the lead or organization postal address.
     state *string
     // Affiliate or publisher sub ID captured for lead attribution.
     subId *string
@@ -110,7 +110,7 @@ func (m *LeadIntakeRequest) GetAddress2()(*string) {
 func (m *LeadIntakeRequest) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
     return m.birthDate
 }
-// GetCity gets the city property value. City for the lead or business postal address.
+// GetCity gets the city property value. City for the lead or organization postal address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetCity()(*string) {
     return m.city
@@ -503,7 +503,7 @@ func (m *LeadIntakeRequest) GetLandingPage()(*string) {
 func (m *LeadIntakeRequest) GetLastName()(*string) {
     return m.lastName
 }
-// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
+// GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPhone()(*string) {
     return m.phone
@@ -513,7 +513,7 @@ func (m *LeadIntakeRequest) GetPhone()(*string) {
 func (m *LeadIntakeRequest) GetPhoneType()(*string) {
     return m.phoneType
 }
-// GetPostalCode gets the postalCode property value. Postal code for the lead or business address.
+// GetPostalCode gets the postalCode property value. Postal code for the lead or organization address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPostalCode()(*string) {
     return m.postalCode
@@ -548,7 +548,7 @@ func (m *LeadIntakeRequest) GetSellerLeadIdentifier()(*string) {
 func (m *LeadIntakeRequest) GetSourceMetadata()(LeadIntakeRequest_sourceMetadataable) {
     return m.sourceMetadata
 }
-// GetState gets the state property value. State, province, or region for the lead or business postal address.
+// GetState gets the state property value. State, province, or region for the lead or organization postal address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetState()(*string) {
     return m.state
@@ -832,7 +832,7 @@ func (m *LeadIntakeRequest) SetAddress2(value *string)() {
 func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
     m.birthDate = value
 }
-// SetCity sets the city property value. City for the lead or business postal address.
+// SetCity sets the city property value. City for the lead or organization postal address.
 func (m *LeadIntakeRequest) SetCity(value *string)() {
     m.city = value
 }
@@ -868,7 +868,7 @@ func (m *LeadIntakeRequest) SetLandingPage(value *string)() {
 func (m *LeadIntakeRequest) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
+// SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
 func (m *LeadIntakeRequest) SetPhone(value *string)() {
     m.phone = value
 }
@@ -876,7 +876,7 @@ func (m *LeadIntakeRequest) SetPhone(value *string)() {
 func (m *LeadIntakeRequest) SetPhoneType(value *string)() {
     m.phoneType = value
 }
-// SetPostalCode sets the postalCode property value. Postal code for the lead or business address.
+// SetPostalCode sets the postalCode property value. Postal code for the lead or organization address.
 func (m *LeadIntakeRequest) SetPostalCode(value *string)() {
     m.postalCode = value
 }
@@ -904,7 +904,7 @@ func (m *LeadIntakeRequest) SetSellerLeadIdentifier(value *string)() {
 func (m *LeadIntakeRequest) SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)() {
     m.sourceMetadata = value
 }
-// SetState sets the state property value. State, province, or region for the lead or business postal address.
+// SetState sets the state property value. State, province, or region for the lead or organization postal address.
 func (m *LeadIntakeRequest) SetState(value *string)() {
     m.state = value
 }

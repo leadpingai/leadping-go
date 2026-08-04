@@ -9,14 +9,14 @@ import (
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
-// ItemWorkflowStatusRequestBuilder builds and executes requests for operations under \leads\{id}\workflow-status
+// ItemWorkflowStatusRequestBuilder builds and executes requests for operations under \leads\{-id}\workflow-status
 type ItemWorkflowStatusRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // NewItemWorkflowStatusRequestBuilderInternal instantiates a new ItemWorkflowStatusRequestBuilder and sets the default values.
 func NewItemWorkflowStatusRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemWorkflowStatusRequestBuilder) {
     m := &ItemWorkflowStatusRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{id}/workflow-status", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{%2Did}/workflow-status", pathParameters),
     }
     return m
 }
@@ -26,7 +26,7 @@ func NewItemWorkflowStatusRequestBuilder(rawUrl string, requestAdapter i2ae4187f
     urlParams["request-raw-url"] = rawUrl
     return NewItemWorkflowStatusRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current business.
+// Get returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current organization.
 // returns a AutomationWorkflowStatusResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -48,7 +48,7 @@ func (m *ItemWorkflowStatusRequestBuilder) Get(ctx context.Context, requestConfi
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationWorkflowStatusResponseable), nil
 }
-// ToGetRequestInformation returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current business.
+// ToGetRequestInformation returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current organization.
 // returns a *RequestInformation when successful
 func (m *ItemWorkflowStatusRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

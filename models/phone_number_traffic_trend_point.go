@@ -20,6 +20,10 @@ type PhoneNumberTrafficTrendPoint struct {
     endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
     label *string
+    // Number of MMS messages that failed during this metrics window.
+    mmsFailedCount *int32
+    // Number of MMS messages sent during this metrics window.
+    mmsSentCount *int32
     // Number of SMS messages that failed during this metrics window.
     smsFailedCount *int32
     // Number of SMS messages sent during this metrics window.
@@ -103,6 +107,26 @@ func (m *PhoneNumberTrafficTrendPoint) GetFieldDeserializers()(map[string]func(i
         }
         return nil
     }
+    res["mmsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMmsFailedCount(val)
+        }
+        return nil
+    }
+    res["mmsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMmsSentCount(val)
+        }
+        return nil
+    }
     res["smsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -139,6 +163,16 @@ func (m *PhoneNumberTrafficTrendPoint) GetFieldDeserializers()(map[string]func(i
 // returns a *string when successful
 func (m *PhoneNumberTrafficTrendPoint) GetLabel()(*string) {
     return m.label
+}
+// GetMmsFailedCount gets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
+// returns a *int32 when successful
+func (m *PhoneNumberTrafficTrendPoint) GetMmsFailedCount()(*int32) {
+    return m.mmsFailedCount
+}
+// GetMmsSentCount gets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
+// returns a *int32 when successful
+func (m *PhoneNumberTrafficTrendPoint) GetMmsSentCount()(*int32) {
+    return m.mmsSentCount
 }
 // GetSmsFailedCount gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 // returns a *int32 when successful
@@ -177,6 +211,18 @@ func (m *PhoneNumberTrafficTrendPoint) Serialize(writer i878a80d2330e89d26896388
     }
     {
         err := writer.WriteStringValue("label", m.GetLabel())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
         if err != nil {
             return err
         }
@@ -227,6 +273,14 @@ func (m *PhoneNumberTrafficTrendPoint) SetEndAt(value *i336074805fc853987abe6f7f
 func (m *PhoneNumberTrafficTrendPoint) SetLabel(value *string)() {
     m.label = value
 }
+// SetMmsFailedCount sets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
+func (m *PhoneNumberTrafficTrendPoint) SetMmsFailedCount(value *int32)() {
+    m.mmsFailedCount = value
+}
+// SetMmsSentCount sets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
+func (m *PhoneNumberTrafficTrendPoint) SetMmsSentCount(value *int32)() {
+    m.mmsSentCount = value
+}
 // SetSmsFailedCount sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 func (m *PhoneNumberTrafficTrendPoint) SetSmsFailedCount(value *int32)() {
     m.smsFailedCount = value
@@ -246,6 +300,8 @@ type PhoneNumberTrafficTrendPointable interface {
     GetCallPlacedCount()(*int32)
     GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLabel()(*string)
+    GetMmsFailedCount()(*int32)
+    GetMmsSentCount()(*int32)
     GetSmsFailedCount()(*int32)
     GetSmsSentCount()(*int32)
     GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -253,6 +309,8 @@ type PhoneNumberTrafficTrendPointable interface {
     SetCallPlacedCount(value *int32)()
     SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLabel(value *string)()
+    SetMmsFailedCount(value *int32)()
+    SetMmsSentCount(value *int32)()
     SetSmsFailedCount(value *int32)()
     SetSmsSentCount(value *int32)()
     SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

@@ -16,8 +16,6 @@ type AutomationRunRecord struct {
     additionalData map[string]any
     // Automation ID connected to this workflow, run, or event.
     automationId *string
-    // Business ID that owns this automation run.
-    businessId *string
     // UTC timestamp when processing completed for this automation run record.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Execution mode used for automation preview or live workflow processing.
@@ -30,6 +28,8 @@ type AutomationRunRecord struct {
     lastAttemptAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Lead ID that triggered this automation run, when the run is lead-based.
     leadId *string
+    // Organization ID that owns this automation run.
+    organizationId *string
     // Number of processing attempts made for this workflow or delivery request.
     processingAttempts *int32
     // Human-readable reason explaining why Leadping skipped this automation run.
@@ -67,11 +67,6 @@ func (m *AutomationRunRecord) GetAdditionalData()(map[string]any) {
 // returns a *string when successful
 func (m *AutomationRunRecord) GetAutomationId()(*string) {
     return m.automationId
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this automation run.
-// returns a *string when successful
-func (m *AutomationRunRecord) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetCompletedAt gets the completedAt property value. UTC timestamp when processing completed for this automation run record.
 // returns a *Time when successful
@@ -115,16 +110,6 @@ func (m *AutomationRunRecord) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetAutomationId(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -185,6 +170,16 @@ func (m *AutomationRunRecord) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetLeadId(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -255,6 +250,11 @@ func (m *AutomationRunRecord) GetLastAttemptAt()(*i336074805fc853987abe6f7fe3ad9
 func (m *AutomationRunRecord) GetLeadId()(*string) {
     return m.leadId
 }
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this automation run.
+// returns a *string when successful
+func (m *AutomationRunRecord) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 // returns a *int32 when successful
 func (m *AutomationRunRecord) GetProcessingAttempts()(*int32) {
@@ -301,12 +301,6 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
         if err != nil {
             return err
@@ -338,6 +332,12 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteStringValue("leadId", m.GetLeadId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -392,10 +392,6 @@ func (m *AutomationRunRecord) SetAdditionalData(value map[string]any)() {
 func (m *AutomationRunRecord) SetAutomationId(value *string)() {
     m.automationId = value
 }
-// SetBusinessId sets the businessId property value. Business ID that owns this automation run.
-func (m *AutomationRunRecord) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetCompletedAt sets the completedAt property value. UTC timestamp when processing completed for this automation run record.
 func (m *AutomationRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
@@ -419,6 +415,10 @@ func (m *AutomationRunRecord) SetLastAttemptAt(value *i336074805fc853987abe6f7fe
 // SetLeadId sets the leadId property value. Lead ID that triggered this automation run, when the run is lead-based.
 func (m *AutomationRunRecord) SetLeadId(value *string)() {
     m.leadId = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this automation run.
+func (m *AutomationRunRecord) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
 func (m *AutomationRunRecord) SetProcessingAttempts(value *int32)() {
@@ -445,13 +445,13 @@ type AutomationRunRecordable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionRunRecordable)
     GetAutomationId()(*string)
-    GetBusinessId()(*string)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetExecutionMode()(*string)
     GetFailureCode()(*string)
     GetId()(*string)
     GetLastAttemptAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLeadId()(*string)
+    GetOrganizationId()(*string)
     GetProcessingAttempts()(*int32)
     GetSkippedReason()(*string)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -459,13 +459,13 @@ type AutomationRunRecordable interface {
     GetTriggerType()(*string)
     SetActions(value []AutomationActionRunRecordable)()
     SetAutomationId(value *string)()
-    SetBusinessId(value *string)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetExecutionMode(value *string)()
     SetFailureCode(value *string)()
     SetId(value *string)()
     SetLastAttemptAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLeadId(value *string)()
+    SetOrganizationId(value *string)()
     SetProcessingAttempts(value *int32)()
     SetSkippedReason(value *string)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

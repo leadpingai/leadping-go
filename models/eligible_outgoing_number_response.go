@@ -37,7 +37,7 @@ type EligibleOutgoingNumberResponse struct {
     selectionReason *OutgoingNumberSelectionReason
     // Lead source ID used to determine this phone number's outbound eligibility.
     sourceId *string
-    // Team ID used to determine this phone number's outbound eligibility.
+    // Organization ID used to determine this phone number's outbound eligibility.
     teamId *string
 }
 // NewEligibleOutgoingNumberResponse instantiates a new EligibleOutgoingNumberResponse and sets the default values.
@@ -268,7 +268,7 @@ func (m *EligibleOutgoingNumberResponse) GetSelectionReason()(*OutgoingNumberSel
 func (m *EligibleOutgoingNumberResponse) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. Team ID used to determine this phone number's outbound eligibility.
+// GetTeamId gets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetTeamId()(*string) {
     return m.teamId
@@ -425,7 +425,7 @@ func (m *EligibleOutgoingNumberResponse) SetSelectionReason(value *OutgoingNumbe
 func (m *EligibleOutgoingNumberResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. Team ID used to determine this phone number's outbound eligibility.
+// SetTeamId sets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
 func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string)() {
     m.teamId = value
 }

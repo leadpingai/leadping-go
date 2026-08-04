@@ -22,11 +22,11 @@ import (
     i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b "github.com/leadpingai/leadping-go/events"
     i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b "github.com/leadpingai/leadping-go/tags"
     i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3 "github.com/leadpingai/leadping-go/sources"
-    i61fe22c413e6735519f4ae308ace676c2b39648b27f16e6dba770e8dce5cdfa7 "github.com/leadpingai/leadping-go/businesses"
     i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67 "github.com/leadpingai/leadping-go/feedback"
-    i80e9d882aa8213f3deae5c26d6d8852644f507db0bedb9c4c3c0d9f8ab7daf43 "github.com/leadpingai/leadping-go/dispositions"
+    i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef "github.com/leadpingai/leadping-go/organizations"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
     i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e "github.com/leadpingai/leadping-go/transactions"
+    ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5 "github.com/leadpingai/leadping-go/leadstatuschanges"
     ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500 "github.com/leadpingai/leadping-go/wallets"
     iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a "github.com/leadpingai/leadping-go/usage"
     ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf "github.com/leadpingai/leadping-go/paymentmethods"
@@ -50,11 +50,6 @@ func (m *LeadpingOpenApiClient) Analytics()(*i34516b56a10fcbbab4a4a54729850b2a71
 // returns a *AutomationsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Automations()(*idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.AutomationsRequestBuilder) {
     return idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.NewAutomationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
-// Businesses the businesses property
-// returns a *BusinessesRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Businesses()(*i61fe22c413e6735519f4ae308ace676c2b39648b27f16e6dba770e8dce5cdfa7.BusinessesRequestBuilder) {
-    return i61fe22c413e6735519f4ae308ace676c2b39648b27f16e6dba770e8dce5cdfa7.NewBusinessesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewLeadpingOpenApiClient instantiates a new LeadpingOpenApiClient and sets the default values.
 func NewLeadpingOpenApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadpingOpenApiClient) {
@@ -84,11 +79,6 @@ func (m *LeadpingOpenApiClient) Contact()(*i030ff393e2b9426e4ee3335a8e4a0156e12c
 func (m *LeadpingOpenApiClient) Conversations()(*i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.ConversationsRequestBuilder) {
     return i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.NewConversationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Dispositions the dispositions property
-// returns a *DispositionsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Dispositions()(*i80e9d882aa8213f3deae5c26d6d8852644f507db0bedb9c4c3c0d9f8ab7daf43.DispositionsRequestBuilder) {
-    return i80e9d882aa8213f3deae5c26d6d8852644f507db0bedb9c4c3c0d9f8ab7daf43.NewDispositionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // Events the events property
 // returns a *EventsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Events()(*i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b.EventsRequestBuilder) {
@@ -104,6 +94,11 @@ func (m *LeadpingOpenApiClient) Feedback()(*i6dd7ba29a5b5bbde963c24314b7f1b4b0ad
 func (m *LeadpingOpenApiClient) Leads()(*i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.LeadsRequestBuilder) {
     return i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.NewLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// LeadStatusChanges the leadStatusChanges property
+// returns a *LeadStatusChangesRequestBuilder when successful
+func (m *LeadpingOpenApiClient) LeadStatusChanges()(*ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.LeadStatusChangesRequestBuilder) {
+    return ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.NewLeadStatusChangesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // LeadStatuses the leadStatuses property
 // returns a *LeadStatusesRequestBuilder when successful
 func (m *LeadpingOpenApiClient) LeadStatuses()(*i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.LeadStatusesRequestBuilder) {
@@ -113,6 +108,11 @@ func (m *LeadpingOpenApiClient) LeadStatuses()(*i24c67ea8c73b4fa413df95e940f2136
 // returns a *NotificationsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Notifications()(*i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NotificationsRequestBuilder) {
     return i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NewNotificationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Organizations the organizations property
+// returns a *OrganizationsRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Organizations()(*i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.OrganizationsRequestBuilder) {
+    return i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.NewOrganizationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Outbound the outbound property
 // returns a *OutboundRequestBuilder when successful

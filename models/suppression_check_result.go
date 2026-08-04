@@ -14,8 +14,6 @@ type SuppressionCheckResult struct {
     additionalData map[string]any
     // Whether this ion check result allows ed.
     allowed *bool
-    // The business ID associated with this ion check result.
-    businessId *string
     // The channel value for this ion check result.
     channel *string
     // The human-readable customer reason explaining this ion check result.
@@ -24,6 +22,8 @@ type SuppressionCheckResult struct {
     normalizedEmail *string
     // The phone number associated with this ion check result.
     normalizedPhoneNumber *string
+    // The organization ID associated with this ion check result.
+    organizationId *string
     // The recipient identifier value for this ion check result.
     recipientIdentifier *string
     // The source value on the active suppression entry that blocked this check.
@@ -55,11 +55,6 @@ func (m *SuppressionCheckResult) GetAdditionalData()(map[string]any) {
 func (m *SuppressionCheckResult) GetAllowed()(*bool) {
     return m.allowed
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this ion check result.
-// returns a *string when successful
-func (m *SuppressionCheckResult) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetChannel gets the channel property value. The channel value for this ion check result.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetChannel()(*string) {
@@ -81,16 +76,6 @@ func (m *SuppressionCheckResult) GetFieldDeserializers()(map[string]func(i878a80
         }
         if val != nil {
             m.SetAllowed(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -131,6 +116,16 @@ func (m *SuppressionCheckResult) GetFieldDeserializers()(map[string]func(i878a80
         }
         if val != nil {
             m.SetNormalizedPhoneNumber(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -186,6 +181,11 @@ func (m *SuppressionCheckResult) GetNormalizedEmail()(*string) {
 func (m *SuppressionCheckResult) GetNormalizedPhoneNumber()(*string) {
     return m.normalizedPhoneNumber
 }
+// GetOrganizationId gets the organizationId property value. The organization ID associated with this ion check result.
+// returns a *string when successful
+func (m *SuppressionCheckResult) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetRecipientIdentifier gets the recipientIdentifier property value. The recipient identifier value for this ion check result.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetRecipientIdentifier()(*string) {
@@ -215,12 +215,6 @@ func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("channel", m.GetChannel())
         if err != nil {
             return err
@@ -240,6 +234,12 @@ func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487
     }
     {
         err := writer.WriteStringValue("normalizedPhoneNumber", m.GetNormalizedPhoneNumber())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -284,10 +284,6 @@ func (m *SuppressionCheckResult) SetAdditionalData(value map[string]any)() {
 func (m *SuppressionCheckResult) SetAllowed(value *bool)() {
     m.allowed = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this ion check result.
-func (m *SuppressionCheckResult) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetChannel sets the channel property value. The channel value for this ion check result.
 func (m *SuppressionCheckResult) SetChannel(value *string)() {
     m.channel = value
@@ -303,6 +299,10 @@ func (m *SuppressionCheckResult) SetNormalizedEmail(value *string)() {
 // SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. The phone number associated with this ion check result.
 func (m *SuppressionCheckResult) SetNormalizedPhoneNumber(value *string)() {
     m.normalizedPhoneNumber = value
+}
+// SetOrganizationId sets the organizationId property value. The organization ID associated with this ion check result.
+func (m *SuppressionCheckResult) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetRecipientIdentifier sets the recipientIdentifier property value. The recipient identifier value for this ion check result.
 func (m *SuppressionCheckResult) SetRecipientIdentifier(value *string)() {
@@ -324,21 +324,21 @@ type SuppressionCheckResultable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowed()(*bool)
-    GetBusinessId()(*string)
     GetChannel()(*string)
     GetCustomerReason()(*string)
     GetNormalizedEmail()(*string)
     GetNormalizedPhoneNumber()(*string)
+    GetOrganizationId()(*string)
     GetRecipientIdentifier()(*string)
     GetSource()(*string)
     GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSuppressionEntryId()(*string)
     SetAllowed(value *bool)()
-    SetBusinessId(value *string)()
     SetChannel(value *string)()
     SetCustomerReason(value *string)()
     SetNormalizedEmail(value *string)()
     SetNormalizedPhoneNumber(value *string)()
+    SetOrganizationId(value *string)()
     SetRecipientIdentifier(value *string)()
     SetSource(value *string)()
     SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

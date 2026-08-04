@@ -14,8 +14,6 @@ type TagResponse struct {
     additionalData map[string]any
     // UTC timestamp when this record was archived.
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Business ID that owns this tag.
-    businessId *string
     // Hex color used to display this tag or status in Leadping clients.
     color *string
     // The date and time when the entity was created.
@@ -34,6 +32,8 @@ type TagResponse struct {
     name *string
     // Normalized name used for case-insensitive tag matching and deduplication.
     normalizedName *string
+    // Organization ID that owns this tag.
+    organizationId *string
 }
 // NewTagResponse instantiates a new TagResponse and sets the default values.
 func NewTagResponse()(*TagResponse) {
@@ -56,11 +56,6 @@ func (m *TagResponse) GetAdditionalData()(map[string]any) {
 // returns a *Time when successful
 func (m *TagResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.archivedAt
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this tag.
-// returns a *string when successful
-func (m *TagResponse) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetColor gets the color property value. Hex color used to display this tag or status in Leadping clients.
 // returns a *string when successful
@@ -93,16 +88,6 @@ func (m *TagResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetArchivedAt(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -196,6 +181,16 @@ func (m *TagResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     return res
 }
 // GetId gets the id property value. The unique identifier for the entity.
@@ -223,16 +218,15 @@ func (m *TagResponse) GetName()(*string) {
 func (m *TagResponse) GetNormalizedName()(*string) {
     return m.normalizedName
 }
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this tag.
+// returns a *string when successful
+func (m *TagResponse) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // Serialize serializes information the current object
 func (m *TagResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -292,6 +286,12 @@ func (m *TagResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -306,10 +306,6 @@ func (m *TagResponse) SetAdditionalData(value map[string]any)() {
 // SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
 func (m *TagResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.archivedAt = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this tag.
-func (m *TagResponse) SetBusinessId(value *string)() {
-    m.businessId = value
 }
 // SetColor sets the color property value. Hex color used to display this tag or status in Leadping clients.
 func (m *TagResponse) SetColor(value *string)() {
@@ -347,11 +343,14 @@ func (m *TagResponse) SetName(value *string)() {
 func (m *TagResponse) SetNormalizedName(value *string)() {
     m.normalizedName = value
 }
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this tag.
+func (m *TagResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 type TagResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBusinessId()(*string)
     GetColor()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUserId()(*string)
@@ -361,8 +360,8 @@ type TagResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNormalizedName()(*string)
+    GetOrganizationId()(*string)
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBusinessId(value *string)()
     SetColor(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUserId(value *string)()
@@ -372,4 +371,5 @@ type TagResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNormalizedName(value *string)()
+    SetOrganizationId(value *string)()
 }

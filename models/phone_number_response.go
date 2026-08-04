@@ -12,8 +12,6 @@ import (
 type PhoneNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business summary connected to this phone number.
-    business PhoneNumberResponse_businessable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Indicates whether this phone number is active and available in the Leadping API.
@@ -28,6 +26,8 @@ type PhoneNumberResponse struct {
     name *string
     // E.164 phone number exposed by this phone number.
     number *string
+    // Organization summary connected to this phone number.
+    organization PhoneNumberResponse_organizationable
     // Identifier of the canonical phone identity for this number.
     phoneIdentityId *string
     // Routing metadata that connects this phone number to teams, campaigns, and sources.
@@ -52,11 +52,6 @@ func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusiness gets the business property value. Business summary connected to this phone number.
-// returns a PhoneNumberResponse_businessable when successful
-func (m *PhoneNumberResponse) GetBusiness()(PhoneNumberResponse_businessable) {
-    return m.business
-}
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -71,16 +66,6 @@ func (m *PhoneNumberResponse) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberResponse_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(PhoneNumberResponse_businessable))
-        }
-        return nil
-    }
     res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -151,6 +136,16 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePhoneNumberResponse_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(PhoneNumberResponse_organizationable))
+        }
+        return nil
+    }
     res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -208,6 +203,11 @@ func (m *PhoneNumberResponse) GetName()(*string) {
 func (m *PhoneNumberResponse) GetNumber()(*string) {
     return m.number
 }
+// GetOrganization gets the organization property value. Organization summary connected to this phone number.
+// returns a PhoneNumberResponse_organizationable when successful
+func (m *PhoneNumberResponse) GetOrganization()(PhoneNumberResponse_organizationable) {
+    return m.organization
+}
 // GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetPhoneIdentityId()(*string) {
@@ -225,12 +225,6 @@ func (m *PhoneNumberResponse) GetWarmup()(PhoneNumberReadinessable) {
 }
 // Serialize serializes information the current object
 func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
         if err != nil {
@@ -274,6 +268,12 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
         if err != nil {
             return err
@@ -303,10 +303,6 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusiness sets the business property value. Business summary connected to this phone number.
-func (m *PhoneNumberResponse) SetBusiness(value PhoneNumberResponse_businessable)() {
-    m.business = value
-}
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -335,6 +331,10 @@ func (m *PhoneNumberResponse) SetName(value *string)() {
 func (m *PhoneNumberResponse) SetNumber(value *string)() {
     m.number = value
 }
+// SetOrganization sets the organization property value. Organization summary connected to this phone number.
+func (m *PhoneNumberResponse) SetOrganization(value PhoneNumberResponse_organizationable)() {
+    m.organization = value
+}
 // SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
 func (m *PhoneNumberResponse) SetPhoneIdentityId(value *string)() {
     m.phoneIdentityId = value
@@ -350,7 +350,6 @@ func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberReadinessable)() {
 type PhoneNumberResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBusiness()(PhoneNumberResponse_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetEnabled()(*bool)
     GetId()(*string)
@@ -358,10 +357,10 @@ type PhoneNumberResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNumber()(*string)
+    GetOrganization()(PhoneNumberResponse_organizationable)
     GetPhoneIdentityId()(*string)
     GetRouting()(PhoneNumberRoutingMetadataable)
     GetWarmup()(PhoneNumberReadinessable)
-    SetBusiness(value PhoneNumberResponse_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetEnabled(value *bool)()
     SetId(value *string)()
@@ -369,6 +368,7 @@ type PhoneNumberResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNumber(value *string)()
+    SetOrganization(value PhoneNumberResponse_organizationable)()
     SetPhoneIdentityId(value *string)()
     SetRouting(value PhoneNumberRoutingMetadataable)()
     SetWarmup(value PhoneNumberReadinessable)()

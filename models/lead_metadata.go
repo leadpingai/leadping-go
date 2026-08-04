@@ -12,10 +12,8 @@ import (
 type LeadMetadata struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Phone number ID assigned to the lead, business, or source.
+    // Phone number ID assigned to the lead, organization, or source.
     assignedPhoneNumberId *string
-    // Business ID that owns this lead's attribution metadata.
-    businessId *string
     // Reason Leadping blocked this operation for compliance.
     complianceBlockedReason *string
     // Compliance status used to decide whether Leadping can send messages.
@@ -34,6 +32,8 @@ type LeadMetadata struct {
     isImported *bool
     // Landing page URL where the lead submitted their information.
     landingPage *string
+    // Organization ID that owns this lead's attribution metadata.
+    organizationId *string
     // System or workflow that created this event.
     origin *string
     // Lead price or transaction price supplied to the Leadping API.
@@ -100,15 +100,10 @@ func CreateLeadMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *LeadMetadata) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAssignedPhoneNumberId gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
+// GetAssignedPhoneNumberId gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
 // returns a *string when successful
 func (m *LeadMetadata) GetAssignedPhoneNumberId()(*string) {
     return m.assignedPhoneNumberId
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this lead's attribution metadata.
-// returns a *string when successful
-func (m *LeadMetadata) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetComplianceBlockedReason gets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 // returns a *string when successful
@@ -146,16 +141,6 @@ func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetAssignedPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -246,6 +231,16 @@ func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetLandingPage(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -511,6 +506,11 @@ func (m *LeadMetadata) GetIsImported()(*bool) {
 func (m *LeadMetadata) GetLandingPage()(*string) {
     return m.landingPage
 }
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this lead's attribution metadata.
+// returns a *string when successful
+func (m *LeadMetadata) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetOrigin gets the origin property value. System or workflow that created this event.
 // returns a *string when successful
 func (m *LeadMetadata) GetOrigin()(*string) {
@@ -640,12 +640,6 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("complianceBlockedReason", m.GetComplianceBlockedReason())
         if err != nil {
             return err
@@ -695,6 +689,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
     }
     {
         err := writer.WriteStringValue("landingPage", m.GetLandingPage())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -855,13 +855,9 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *LeadMetadata) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAssignedPhoneNumberId sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
+// SetAssignedPhoneNumberId sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
 func (m *LeadMetadata) SetAssignedPhoneNumberId(value *string)() {
     m.assignedPhoneNumberId = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this lead's attribution metadata.
-func (m *LeadMetadata) SetBusinessId(value *string)() {
-    m.businessId = value
 }
 // SetComplianceBlockedReason sets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 func (m *LeadMetadata) SetComplianceBlockedReason(value *string)() {
@@ -898,6 +894,10 @@ func (m *LeadMetadata) SetIsImported(value *bool)() {
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadMetadata) SetLandingPage(value *string)() {
     m.landingPage = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this lead's attribution metadata.
+func (m *LeadMetadata) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetOrigin sets the origin property value. System or workflow that created this event.
 func (m *LeadMetadata) SetOrigin(value *string)() {
@@ -999,7 +999,6 @@ type LeadMetadataable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAssignedPhoneNumberId()(*string)
-    GetBusinessId()(*string)
     GetComplianceBlockedReason()(*string)
     GetComplianceStatus()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1009,6 +1008,7 @@ type LeadMetadataable interface {
     GetIpAddress()(*string)
     GetIsImported()(*bool)
     GetLandingPage()(*string)
+    GetOrganizationId()(*string)
     GetOrigin()(*string)
     GetPrice()(*float64)
     GetProduct()(*string)
@@ -1034,7 +1034,6 @@ type LeadMetadataable interface {
     GetUtmTerm()(*string)
     GetVertical()(*string)
     SetAssignedPhoneNumberId(value *string)()
-    SetBusinessId(value *string)()
     SetComplianceBlockedReason(value *string)()
     SetComplianceStatus(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -1044,6 +1043,7 @@ type LeadMetadataable interface {
     SetIpAddress(value *string)()
     SetIsImported(value *bool)()
     SetLandingPage(value *string)()
+    SetOrganizationId(value *string)()
     SetOrigin(value *string)()
     SetPrice(value *float64)()
     SetProduct(value *string)()

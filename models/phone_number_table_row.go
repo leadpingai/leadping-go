@@ -11,10 +11,6 @@ import (
 type PhoneNumberTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business summary connected to this phone number table row.
-    business *string
-    // Unique Leadping business identifier connected to this phone number table row.
-    businessId *string
     // Indicates whether this phone number table row is active and available in the Leadping API.
     enabled *bool
     // Unique Leadping identifier for this phone number table row.
@@ -23,17 +19,21 @@ type PhoneNumberTableRow struct {
     name *string
     // E.164 phone number exposed by this phone number table row.
     number *string
+    // Organization summary connected to this phone number table row.
+    organization *string
+    // Unique Leadping organization identifier connected to this phone number table row.
+    organizationId *string
     // Ownership classification for this phone number, such as Leadping-owned or customer-owned.
     ownership *string
     // Human-readable routing summary for this phone number.
     routingSummary *string
-    // Indicates whether SMS messaging is ready for this business or phone number.
+    // Indicates whether SMS messaging is ready for this organization or phone number.
     smsReady *bool
     // 10DLC campaign status associated with this sender or SMS event.
     tenDlcCampaignStatus *string
     // Type classification used to route and interpret this phone number table row in the Leadping API.
     typeEscaped *string
-    // Indicates whether voice calling is ready for this business or phone number.
+    // Indicates whether voice calling is ready for this organization or phone number.
     voiceReady *bool
     // Warmup state for this phone number.
     warmup PhoneNumberReadinessable
@@ -55,16 +55,6 @@ func CreatePhoneNumberTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusiness gets the business property value. Business summary connected to this phone number table row.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetBusiness()(*string) {
-    return m.business
-}
-// GetBusinessId gets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetEnabled gets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
@@ -74,26 +64,6 @@ func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -131,6 +101,26 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetNumber(val)
+        }
+        return nil
+    }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -221,6 +211,16 @@ func (m *PhoneNumberTableRow) GetName()(*string) {
 func (m *PhoneNumberTableRow) GetNumber()(*string) {
     return m.number
 }
+// GetOrganization gets the organization property value. Organization summary connected to this phone number table row.
+// returns a *string when successful
+func (m *PhoneNumberTableRow) GetOrganization()(*string) {
+    return m.organization
+}
+// GetOrganizationId gets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
+// returns a *string when successful
+func (m *PhoneNumberTableRow) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetOwnership gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetOwnership()(*string) {
@@ -231,7 +231,7 @@ func (m *PhoneNumberTableRow) GetOwnership()(*string) {
 func (m *PhoneNumberTableRow) GetRoutingSummary()(*string) {
     return m.routingSummary
 }
-// GetSmsReady gets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
+// GetSmsReady gets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetSmsReady()(*bool) {
     return m.smsReady
@@ -246,7 +246,7 @@ func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus()(*string) {
 func (m *PhoneNumberTableRow) GetTypeEscaped()(*string) {
     return m.typeEscaped
 }
-// GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
+// GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetVoiceReady()(*bool) {
     return m.voiceReady
@@ -258,18 +258,6 @@ func (m *PhoneNumberTableRow) GetWarmup()(PhoneNumberReadinessable) {
 }
 // Serialize serializes information the current object
 func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
         if err != nil {
@@ -290,6 +278,18 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteStringValue("number", m.GetNumber())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -348,14 +348,6 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusiness sets the business property value. Business summary connected to this phone number table row.
-func (m *PhoneNumberTableRow) SetBusiness(value *string)() {
-    m.business = value
-}
-// SetBusinessId sets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
-func (m *PhoneNumberTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetEnabled sets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
     m.enabled = value
@@ -372,6 +364,14 @@ func (m *PhoneNumberTableRow) SetName(value *string)() {
 func (m *PhoneNumberTableRow) SetNumber(value *string)() {
     m.number = value
 }
+// SetOrganization sets the organization property value. Organization summary connected to this phone number table row.
+func (m *PhoneNumberTableRow) SetOrganization(value *string)() {
+    m.organization = value
+}
+// SetOrganizationId sets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
+func (m *PhoneNumberTableRow) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 // SetOwnership sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
 func (m *PhoneNumberTableRow) SetOwnership(value *string)() {
     m.ownership = value
@@ -380,7 +380,7 @@ func (m *PhoneNumberTableRow) SetOwnership(value *string)() {
 func (m *PhoneNumberTableRow) SetRoutingSummary(value *string)() {
     m.routingSummary = value
 }
-// SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
+// SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
 func (m *PhoneNumberTableRow) SetSmsReady(value *bool)() {
     m.smsReady = value
 }
@@ -392,7 +392,7 @@ func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string)() {
 func (m *PhoneNumberTableRow) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }
-// SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
+// SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
 func (m *PhoneNumberTableRow) SetVoiceReady(value *bool)() {
     m.voiceReady = value
 }
@@ -403,12 +403,12 @@ func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberReadinessable)() {
 type PhoneNumberTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBusiness()(*string)
-    GetBusinessId()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
     GetName()(*string)
     GetNumber()(*string)
+    GetOrganization()(*string)
+    GetOrganizationId()(*string)
     GetOwnership()(*string)
     GetRoutingSummary()(*string)
     GetSmsReady()(*bool)
@@ -416,12 +416,12 @@ type PhoneNumberTableRowable interface {
     GetTypeEscaped()(*string)
     GetVoiceReady()(*bool)
     GetWarmup()(PhoneNumberReadinessable)
-    SetBusiness(value *string)()
-    SetBusinessId(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetName(value *string)()
     SetNumber(value *string)()
+    SetOrganization(value *string)()
+    SetOrganizationId(value *string)()
     SetOwnership(value *string)()
     SetRoutingSummary(value *string)()
     SetSmsReady(value *bool)()

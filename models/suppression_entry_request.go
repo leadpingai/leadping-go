@@ -11,12 +11,12 @@ import (
 type SuppressionEntryRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The business ID associated with this ion entry.
-    businessId *string
     // The channel value for this ion entry.
     channel *string
     // The email address associated with this ion entry.
     email *string
+    // The organization ID associated with this ion entry.
+    organizationId *string
     // The phone number associated with this ion entry.
     phoneNumber *string
     // The human-readable reason explaining this ion entry.
@@ -41,11 +41,6 @@ func CreateSuppressionEntryRequestFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *SuppressionEntryRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. The business ID associated with this ion entry.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetChannel gets the channel property value. The channel value for this ion entry.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetChannel()(*string) {
@@ -60,16 +55,6 @@ func (m *SuppressionEntryRequest) GetEmail()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
     res["channel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -87,6 +72,16 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetEmail(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -122,6 +117,11 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
+// GetOrganizationId gets the organizationId property value. The organization ID associated with this ion entry.
+// returns a *string when successful
+func (m *SuppressionEntryRequest) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this ion entry.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetPhoneNumber()(*string) {
@@ -140,12 +140,6 @@ func (m *SuppressionEntryRequest) GetRecipientIdentifier()(*string) {
 // Serialize serializes information the current object
 func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("channel", m.GetChannel())
         if err != nil {
             return err
@@ -153,6 +147,12 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
     }
     {
         err := writer.WriteStringValue("email", m.GetEmail())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -187,10 +187,6 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *SuppressionEntryRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. The business ID associated with this ion entry.
-func (m *SuppressionEntryRequest) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetChannel sets the channel property value. The channel value for this ion entry.
 func (m *SuppressionEntryRequest) SetChannel(value *string)() {
     m.channel = value
@@ -198,6 +194,10 @@ func (m *SuppressionEntryRequest) SetChannel(value *string)() {
 // SetEmail sets the email property value. The email address associated with this ion entry.
 func (m *SuppressionEntryRequest) SetEmail(value *string)() {
     m.email = value
+}
+// SetOrganizationId sets the organizationId property value. The organization ID associated with this ion entry.
+func (m *SuppressionEntryRequest) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetPhoneNumber sets the phoneNumber property value. The phone number associated with this ion entry.
 func (m *SuppressionEntryRequest) SetPhoneNumber(value *string)() {
@@ -214,15 +214,15 @@ func (m *SuppressionEntryRequest) SetRecipientIdentifier(value *string)() {
 type SuppressionEntryRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBusinessId()(*string)
     GetChannel()(*string)
     GetEmail()(*string)
+    GetOrganizationId()(*string)
     GetPhoneNumber()(*string)
     GetReason()(*string)
     GetRecipientIdentifier()(*string)
-    SetBusinessId(value *string)()
     SetChannel(value *string)()
     SetEmail(value *string)()
+    SetOrganizationId(value *string)()
     SetPhoneNumber(value *string)()
     SetReason(value *string)()
     SetRecipientIdentifier(value *string)()

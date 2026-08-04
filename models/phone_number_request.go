@@ -11,8 +11,6 @@ import (
 type PhoneNumberRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business ID that owns the phone number being created or updated.
-    businessId *string
     // Indicates whether this phone number update request is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
@@ -21,6 +19,8 @@ type PhoneNumberRequest struct {
     name *string
     // E.164 phone number exposed by this phone number update request.
     number *string
+    // Organization ID that owns the phone number being created or updated.
+    organizationId *string
 }
 // NewPhoneNumberRequest instantiates a new PhoneNumberRequest and sets the default values.
 func NewPhoneNumberRequest()(*PhoneNumberRequest) {
@@ -39,11 +39,6 @@ func CreatePhoneNumberRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *PhoneNumberRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. Business ID that owns the phone number being created or updated.
-// returns a *string when successful
-func (m *PhoneNumberRequest) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetEnabled gets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
 // returns a *bool when successful
 func (m *PhoneNumberRequest) GetEnabled()(*bool) {
@@ -53,16 +48,6 @@ func (m *PhoneNumberRequest) GetEnabled()(*bool) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -103,6 +88,16 @@ func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     return res
 }
 // GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
@@ -120,14 +115,13 @@ func (m *PhoneNumberRequest) GetName()(*string) {
 func (m *PhoneNumberRequest) GetNumber()(*string) {
     return m.number
 }
+// GetOrganizationId gets the organizationId property value. Organization ID that owns the phone number being created or updated.
+// returns a *string when successful
+func (m *PhoneNumberRequest) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // Serialize serializes information the current object
 func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
         if err != nil {
@@ -153,6 +147,12 @@ func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -163,10 +163,6 @@ func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *PhoneNumberRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns the phone number being created or updated.
-func (m *PhoneNumberRequest) SetBusinessId(value *string)() {
-    m.businessId = value
 }
 // SetEnabled sets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
 func (m *PhoneNumberRequest) SetEnabled(value *bool)() {
@@ -184,17 +180,21 @@ func (m *PhoneNumberRequest) SetName(value *string)() {
 func (m *PhoneNumberRequest) SetNumber(value *string)() {
     m.number = value
 }
+// SetOrganizationId sets the organizationId property value. Organization ID that owns the phone number being created or updated.
+func (m *PhoneNumberRequest) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 type PhoneNumberRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBusinessId()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
     GetName()(*string)
     GetNumber()(*string)
-    SetBusinessId(value *string)()
+    GetOrganizationId()(*string)
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetName(value *string)()
     SetNumber(value *string)()
+    SetOrganizationId(value *string)()
 }

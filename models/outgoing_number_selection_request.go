@@ -23,7 +23,7 @@ type OutgoingNumberSelectionRequest struct {
     recipientPhoneNumber *string
     // Lead source ID used to choose the best outgoing sender number.
     sourceId *string
-    // Team ID used to choose the best outgoing sender number.
+    // Organization ID used to choose the best outgoing sender number.
     teamId *string
 }
 // NewOutgoingNumberSelectionRequest instantiates a new OutgoingNumberSelectionRequest and sets the default values.
@@ -149,7 +149,7 @@ func (m *OutgoingNumberSelectionRequest) GetRecipientPhoneNumber()(*string) {
 func (m *OutgoingNumberSelectionRequest) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. Team ID used to choose the best outgoing sender number.
+// GetTeamId gets the teamId property value. Organization ID used to choose the best outgoing sender number.
 // returns a *string when successful
 func (m *OutgoingNumberSelectionRequest) GetTeamId()(*string) {
     return m.teamId
@@ -235,7 +235,7 @@ func (m *OutgoingNumberSelectionRequest) SetRecipientPhoneNumber(value *string)(
 func (m *OutgoingNumberSelectionRequest) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. Team ID used to choose the best outgoing sender number.
+// SetTeamId sets the teamId property value. Organization ID used to choose the best outgoing sender number.
 func (m *OutgoingNumberSelectionRequest) SetTeamId(value *string)() {
     m.teamId = value
 }

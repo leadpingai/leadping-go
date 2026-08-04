@@ -14,7 +14,7 @@ import (
 type SummaryMyRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// SummaryMyRequestBuilderGetQueryParameters returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+// SummaryMyRequestBuilderGetQueryParameters returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
 type SummaryMyRequestBuilderGetQueryParameters struct {
     // The period end.
     PeriodEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"periodEnd\""
@@ -34,7 +34,7 @@ func NewSummaryMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
     urlParams["request-raw-url"] = rawUrl
     return NewSummaryMyRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+// Get returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
 // returns a UsageSummaryResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 func (m *SummaryMyRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[SummaryMyRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UsageSummaryResponseable, error) {
@@ -54,7 +54,7 @@ func (m *SummaryMyRequestBuilder) Get(ctx context.Context, requestConfiguration 
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UsageSummaryResponseable), nil
 }
-// ToGetRequestInformation returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+// ToGetRequestInformation returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
 // returns a *RequestInformation when successful
 func (m *SummaryMyRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[SummaryMyRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

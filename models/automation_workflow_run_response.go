@@ -16,8 +16,6 @@ type AutomationWorkflowRunResponse struct {
     additionalData map[string]any
     // The ID and name for this automation.
     automation AutomationWorkflowRunResponse_automationable
-    // Unique identifier of the business associated with this Leadping automation workflow run.
-    businessId *string
     // Date and time when the automation workflow run was cancelled.
     cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Date and time when the automation workflow run completed.
@@ -48,6 +46,8 @@ type AutomationWorkflowRunResponse struct {
     nextExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Date and time when the next retry is scheduled.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Unique identifier of the organization associated with this Leadping automation workflow run.
+    organizationId *string
     // Total number of retry records represented by this Leadping automation workflow run.
     retryCount *int32
     // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
@@ -93,11 +93,6 @@ func (m *AutomationWorkflowRunResponse) GetAdditionalData()(map[string]any) {
 // returns a AutomationWorkflowRunResponse_automationable when successful
 func (m *AutomationWorkflowRunResponse) GetAutomation()(AutomationWorkflowRunResponse_automationable) {
     return m.automation
-}
-// GetBusinessId gets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
-// returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetCancelledAt gets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
 // returns a *Time when successful
@@ -156,16 +151,6 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         if val != nil {
             m.SetAutomation(val.(AutomationWorkflowRunResponse_automationable))
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -325,6 +310,16 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -462,6 +457,11 @@ func (m *AutomationWorkflowRunResponse) GetNextExecutionAt()(*i336074805fc853987
 func (m *AutomationWorkflowRunResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.nextRetryAt
 }
+// GetOrganizationId gets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
+// returns a *string when successful
+func (m *AutomationWorkflowRunResponse) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetRetryCount gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
 // returns a *int32 when successful
 func (m *AutomationWorkflowRunResponse) GetRetryCount()(*int32) {
@@ -523,12 +523,6 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
     }
     {
         err := writer.WriteObjectValue("automation", m.GetAutomation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -630,6 +624,12 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
         if err != nil {
             return err
@@ -703,10 +703,6 @@ func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any)(
 func (m *AutomationWorkflowRunResponse) SetAutomation(value AutomationWorkflowRunResponse_automationable)() {
     m.automation = value
 }
-// SetBusinessId sets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetCancelledAt sets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
 func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.cancelledAt = value
@@ -767,6 +763,10 @@ func (m *AutomationWorkflowRunResponse) SetNextExecutionAt(value *i336074805fc85
 func (m *AutomationWorkflowRunResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.nextRetryAt = value
 }
+// SetOrganizationId sets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
+func (m *AutomationWorkflowRunResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 // SetRetryCount sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetRetryCount(value *int32)() {
     m.retryCount = value
@@ -808,7 +808,6 @@ type AutomationWorkflowRunResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationWorkflowActionResponseable)
     GetAutomation()(AutomationWorkflowRunResponse_automationable)
-    GetBusinessId()(*string)
     GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable)
@@ -824,6 +823,7 @@ type AutomationWorkflowRunResponseable interface {
     GetMaxRetryCount()(*int32)
     GetNextExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetOrganizationId()(*string)
     GetRetryCount()(*int32)
     GetSkipReasonCode()(*string)
     GetSkipReasonDisplay()(*string)
@@ -835,7 +835,6 @@ type AutomationWorkflowRunResponseable interface {
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetActions(value []AutomationWorkflowActionResponseable)()
     SetAutomation(value AutomationWorkflowRunResponse_automationable)()
-    SetBusinessId(value *string)()
     SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)()
@@ -851,6 +850,7 @@ type AutomationWorkflowRunResponseable interface {
     SetMaxRetryCount(value *int32)()
     SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetOrganizationId(value *string)()
     SetRetryCount(value *int32)()
     SetSkipReasonCode(value *string)()
     SetSkipReasonDisplay(value *string)()

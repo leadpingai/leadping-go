@@ -9,14 +9,14 @@ import (
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
-// ItemArchiveRequestBuilder builds and executes requests for operations under \leads\{id}\archive
+// ItemArchiveRequestBuilder builds and executes requests for operations under \leads\{-id}\archive
 type ItemArchiveRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // NewItemArchiveRequestBuilderInternal instantiates a new ItemArchiveRequestBuilder and sets the default values.
 func NewItemArchiveRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemArchiveRequestBuilder) {
     m := &ItemArchiveRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{id}/archive", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{%2Did}/archive", pathParameters),
     }
     return m
 }

@@ -14,10 +14,6 @@ type AutomationResponse struct {
     actions []AutomationActionable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Business summary connected to this automation configuration response.
-    business AutomationResponse_businessable
-    // Business ID that owns this automation.
-    businessId *string
     // Grouped automation conditions used to decide whether this workflow should run.
     conditionGroups []AutomationConditionGroupable
     // Directed connections between nodes in this automation graph.
@@ -38,12 +34,16 @@ type AutomationResponse struct {
     lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Status from the most recent automation run.
     lastRunStatus *string
-    // Management level that controls whether Leadping or the business owns this automation setting.
+    // Management level that controls whether Leadping or the organization owns this automation setting.
     managementLevel *string
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
+    // Organization summary connected to this automation configuration response.
+    organization AutomationResponse_organizationable
+    // Organization ID that owns this automation.
+    organizationId *string
     // Recent automation runs returned for history and troubleshooting.
     recentRuns []AutomationRunRecordable
     // Scope that limits where this automation configuration response applies in Leadping.
@@ -78,16 +78,6 @@ func (m *AutomationResponse) GetActions()([]AutomationActionable) {
 // returns a map[string]any when successful
 func (m *AutomationResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
-}
-// GetBusiness gets the business property value. Business summary connected to this automation configuration response.
-// returns a AutomationResponse_businessable when successful
-func (m *AutomationResponse) GetBusiness()(AutomationResponse_businessable) {
-    return m.business
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this automation.
-// returns a *string when successful
-func (m *AutomationResponse) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
@@ -136,26 +126,6 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
                 }
             }
             m.SetActions(res)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationResponse_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(AutomationResponse_businessable))
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -301,6 +271,26 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateAutomationResponse_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(AutomationResponse_organizationable))
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["recentRuns"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateAutomationRunRecordFromDiscriminatorValue)
         if err != nil {
@@ -395,7 +385,7 @@ func (m *AutomationResponse) GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6
 func (m *AutomationResponse) GetLastRunStatus()(*string) {
     return m.lastRunStatus
 }
-// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 // returns a *string when successful
 func (m *AutomationResponse) GetManagementLevel()(*string) {
     return m.managementLevel
@@ -409,6 +399,16 @@ func (m *AutomationResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a
 // returns a *string when successful
 func (m *AutomationResponse) GetName()(*string) {
     return m.name
+}
+// GetOrganization gets the organization property value. Organization summary connected to this automation configuration response.
+// returns a AutomationResponse_organizationable when successful
+func (m *AutomationResponse) GetOrganization()(AutomationResponse_organizationable) {
+    return m.organization
+}
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this automation.
+// returns a *string when successful
+func (m *AutomationResponse) GetOrganizationId()(*string) {
+    return m.organizationId
 }
 // GetRecentRuns gets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
 // returns a []AutomationRunRecordable when successful
@@ -450,18 +450,6 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             }
         }
         err := writer.WriteCollectionOfObjectValues("actions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -556,6 +544,18 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             return err
         }
     }
+    {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetRecentRuns() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRecentRuns()))
         for i, v := range m.GetRecentRuns() {
@@ -620,14 +620,6 @@ func (m *AutomationResponse) SetActions(value []AutomationActionable)() {
 func (m *AutomationResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusiness sets the business property value. Business summary connected to this automation configuration response.
-func (m *AutomationResponse) SetBusiness(value AutomationResponse_businessable)() {
-    m.business = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this automation.
-func (m *AutomationResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 func (m *AutomationResponse) SetConditionGroups(value []AutomationConditionGroupable)() {
     m.conditionGroups = value
@@ -668,7 +660,7 @@ func (m *AutomationResponse) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97
 func (m *AutomationResponse) SetLastRunStatus(value *string)() {
     m.lastRunStatus = value
 }
-// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+// SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 func (m *AutomationResponse) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
@@ -679,6 +671,14 @@ func (m *AutomationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad9
 // SetName sets the name property value. The display name for the entity.
 func (m *AutomationResponse) SetName(value *string)() {
     m.name = value
+}
+// SetOrganization sets the organization property value. Organization summary connected to this automation configuration response.
+func (m *AutomationResponse) SetOrganization(value AutomationResponse_organizationable)() {
+    m.organization = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this automation.
+func (m *AutomationResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetRecentRuns sets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
 func (m *AutomationResponse) SetRecentRuns(value []AutomationRunRecordable)() {
@@ -708,8 +708,6 @@ type AutomationResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActions()([]AutomationActionable)
-    GetBusiness()(AutomationResponse_businessable)
-    GetBusinessId()(*string)
     GetConditionGroups()([]AutomationConditionGroupable)
     GetConnections()([]AutomationConnectionable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -723,6 +721,8 @@ type AutomationResponseable interface {
     GetManagementLevel()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
+    GetOrganization()(AutomationResponse_organizationable)
+    GetOrganizationId()(*string)
     GetRecentRuns()([]AutomationRunRecordable)
     GetScope()(*string)
     GetTriggers()([]AutomationTriggerable)
@@ -730,8 +730,6 @@ type AutomationResponseable interface {
     GetVersion()(*int32)
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
-    SetBusiness(value AutomationResponse_businessable)()
-    SetBusinessId(value *string)()
     SetConditionGroups(value []AutomationConditionGroupable)()
     SetConnections(value []AutomationConnectionable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -745,6 +743,8 @@ type AutomationResponseable interface {
     SetManagementLevel(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
+    SetOrganization(value AutomationResponse_organizationable)()
+    SetOrganizationId(value *string)()
     SetRecentRuns(value []AutomationRunRecordable)()
     SetScope(value *string)()
     SetTriggers(value []AutomationTriggerable)()

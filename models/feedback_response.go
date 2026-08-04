@@ -16,8 +16,6 @@ type FeedbackResponse struct {
     allowContact *bool
     // Product area or app section connected to this feedback item response.
     area *string
-    // Business ID connected to the feedback item, when the feedback came from a business workspace.
-    businessId *string
     // Client application version that submitted this feedback item response.
     clientVersion *string
     // UTC timestamp when this feedback item response was created.
@@ -26,6 +24,8 @@ type FeedbackResponse struct {
     id *string
     // Message text supplied by the user or returned by the Leadping API for this feedback item response.
     message *string
+    // Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+    organizationId *string
     // Application route where this feedback item response originated or should direct the user.
     route *string
     // Current lifecycle status for this feedback item response in the Leadping API.
@@ -62,11 +62,6 @@ func (m *FeedbackResponse) GetAllowContact()(*bool) {
 func (m *FeedbackResponse) GetArea()(*string) {
     return m.area
 }
-// GetBusinessId gets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
-// returns a *string when successful
-func (m *FeedbackResponse) GetBusinessId()(*string) {
-    return m.businessId
-}
 // GetClientVersion gets the clientVersion property value. Client application version that submitted this feedback item response.
 // returns a *string when successful
 func (m *FeedbackResponse) GetClientVersion()(*string) {
@@ -98,16 +93,6 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetArea(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -148,6 +133,16 @@ func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetMessage(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
         }
         return nil
     }
@@ -203,6 +198,11 @@ func (m *FeedbackResponse) GetId()(*string) {
 func (m *FeedbackResponse) GetMessage()(*string) {
     return m.message
 }
+// GetOrganizationId gets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+// returns a *string when successful
+func (m *FeedbackResponse) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetRoute gets the route property value. Application route where this feedback item response originated or should direct the user.
 // returns a *string when successful
 func (m *FeedbackResponse) GetRoute()(*string) {
@@ -238,12 +238,6 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("clientVersion", m.GetClientVersion())
         if err != nil {
             return err
@@ -263,6 +257,12 @@ func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
     }
     {
         err := writer.WriteStringValue("message", m.GetMessage())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -313,10 +313,6 @@ func (m *FeedbackResponse) SetAllowContact(value *bool)() {
 func (m *FeedbackResponse) SetArea(value *string)() {
     m.area = value
 }
-// SetBusinessId sets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
-func (m *FeedbackResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetClientVersion sets the clientVersion property value. Client application version that submitted this feedback item response.
 func (m *FeedbackResponse) SetClientVersion(value *string)() {
     m.clientVersion = value
@@ -332,6 +328,10 @@ func (m *FeedbackResponse) SetId(value *string)() {
 // SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback item response.
 func (m *FeedbackResponse) SetMessage(value *string)() {
     m.message = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+func (m *FeedbackResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
 }
 // SetRoute sets the route property value. Application route where this feedback item response originated or should direct the user.
 func (m *FeedbackResponse) SetRoute(value *string)() {
@@ -354,22 +354,22 @@ type FeedbackResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowContact()(*bool)
     GetArea()(*string)
-    GetBusinessId()(*string)
     GetClientVersion()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetId()(*string)
     GetMessage()(*string)
+    GetOrganizationId()(*string)
     GetRoute()(*string)
     GetStatus()(*FeedbackStatus)
     GetTypeEscaped()(*FeedbackType)
     GetUserId()(*string)
     SetAllowContact(value *bool)()
     SetArea(value *string)()
-    SetBusinessId(value *string)()
     SetClientVersion(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()
     SetMessage(value *string)()
+    SetOrganizationId(value *string)()
     SetRoute(value *string)()
     SetStatus(value *FeedbackStatus)()
     SetTypeEscaped(value *FeedbackType)()

@@ -7,14 +7,14 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserResponse_billingState customer-safe billing state for the user's currently selected business.
+// UserResponse_billingState customer-safe billing state for the user's currently selected organization.
 type UserResponse_billingState struct {
-    BusinessBillingState
+    OrganizationBillingState
 }
 // NewUserResponse_billingState instantiates a new UserResponse_billingState and sets the default values.
 func NewUserResponse_billingState()(*UserResponse_billingState) {
     m := &UserResponse_billingState{
-        BusinessBillingState: *NewBusinessBillingState(),
+        OrganizationBillingState: *NewOrganizationBillingState(),
     }
     return m
 }
@@ -26,18 +26,18 @@ func CreateUserResponse_billingStateFromDiscriminatorValue(parseNode i878a80d233
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *UserResponse_billingState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.BusinessBillingState.GetFieldDeserializers()
+    res := m.OrganizationBillingState.GetFieldDeserializers()
     return res
 }
 // Serialize serializes information the current object
 func (m *UserResponse_billingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.BusinessBillingState.Serialize(writer)
+    err := m.OrganizationBillingState.Serialize(writer)
     if err != nil {
         return err
     }
     return nil
 }
 type UserResponse_billingStateable interface {
-    BusinessBillingStateable
+    OrganizationBillingStateable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

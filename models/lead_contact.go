@@ -19,7 +19,7 @@ type LeadContact struct {
     firstName *string
     // Last name of the lead, user, or contact represented by this lead contact profile.
     lastName *string
-    // Phone details for the lead, user, or business represented by this lead contact profile.
+    // Phone details for the lead, user, or organization represented by this lead contact profile.
     phone LeadContact_phoneable
     // Postal street address for the lead contact profile.
     streetAddress LeadContact_streetAddressable
@@ -139,7 +139,7 @@ func (m *LeadContact) GetFirstName()(*string) {
 func (m *LeadContact) GetLastName()(*string) {
     return m.lastName
 }
-// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
+// GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
 // returns a LeadContact_phoneable when successful
 func (m *LeadContact) GetPhone()(LeadContact_phoneable) {
     return m.phone
@@ -226,7 +226,7 @@ func (m *LeadContact) SetFirstName(value *string)() {
 func (m *LeadContact) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
+// SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
 func (m *LeadContact) SetPhone(value LeadContact_phoneable)() {
     m.phone = value
 }

@@ -26,7 +26,7 @@ func NewTagsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     urlParams["request-raw-url"] = rawUrl
     return NewTagsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete archives a tag for the current business so it stops being used for new segmentation while historical lead labels remain available.
+// Delete archives a tag for the current organization so it stops being used for new segmentation while historical lead labels remain available.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -48,7 +48,7 @@ func (m *TagsItemRequestBuilder) Delete(ctx context.Context, requestConfiguratio
     }
     return res.(*bool), nil
 }
-// Put updates a current-business tag's name, color, or archived state so lead segmentation and filters stay consistent.
+// Put updates a current-organization tag's name, color, or archived state so lead segmentation and filters stay consistent.
 // returns a TagResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -72,7 +72,7 @@ func (m *TagsItemRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TagResponseable), nil
 }
-// ToDeleteRequestInformation archives a tag for the current business so it stops being used for new segmentation while historical lead labels remain available.
+// ToDeleteRequestInformation archives a tag for the current organization so it stops being used for new segmentation while historical lead labels remain available.
 // returns a *RequestInformation when successful
 func (m *TagsItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -80,7 +80,7 @@ func (m *TagsItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context,
     requestInfo.Headers.TryAdd("Accept", "text/plain;q=0.9")
     return requestInfo, nil
 }
-// ToPutRequestInformation updates a current-business tag's name, color, or archived state so lead segmentation and filters stay consistent.
+// ToPutRequestInformation updates a current-organization tag's name, color, or archived state so lead segmentation and filters stay consistent.
 // returns a *RequestInformation when successful
 func (m *TagsItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TagRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

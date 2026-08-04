@@ -24,16 +24,16 @@ func (m *LeadsRequestBuilder) All()(*AllRequestBuilder) {
     return NewAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ById gets an item from the github.com/leadpingai/leadping-go.leads.item collection
-// returns a *LeadsItemRequestBuilder when successful
-func (m *LeadsRequestBuilder) ById(id string)(*LeadsItemRequestBuilder) {
+// returns a *ItemRequestBuilder when successful
+func (m *LeadsRequestBuilder) ById(id string)(*ItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["id"] = id
+        urlTplParams["%2Did"] = id
     }
-    return NewLeadsItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+    return NewItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewLeadsRequestBuilderInternal instantiates a new LeadsRequestBuilder and sets the default values.
 func NewLeadsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadsRequestBuilder) {

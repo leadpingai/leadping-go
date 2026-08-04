@@ -9,7 +9,7 @@ import (
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
-// ItemTagsRequestBuilder builds and executes requests for operations under \leads\{id}\tags
+// ItemTagsRequestBuilder builds and executes requests for operations under \leads\{-id}\tags
 type ItemTagsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -28,7 +28,7 @@ func (m *ItemTagsRequestBuilder) ByTagId(tagId string)(*ItemTagsWithTagItemReque
 // NewItemTagsRequestBuilderInternal instantiates a new ItemTagsRequestBuilder and sets the default values.
 func NewItemTagsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemTagsRequestBuilder) {
     m := &ItemTagsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{id}/tags", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{%2Did}/tags", pathParameters),
     }
     return m
 }
@@ -38,7 +38,7 @@ func NewItemTagsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     urlParams["request-raw-url"] = rawUrl
     return NewItemTagsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post adds one or more current-business tags to a lead so users can segment, filter, route, and review follow-up work.
+// Post adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -62,7 +62,7 @@ func (m *ItemTagsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6e
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
 }
-// Put replaces all tags on a lead with the supplied current-business tags, keeping segmentation and routing labels in sync.
+// Put replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -86,7 +86,7 @@ func (m *ItemTagsRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
 }
-// ToPostRequestInformation adds one or more current-business tags to a lead so users can segment, filter, route, and review follow-up work.
+// ToPostRequestInformation adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
 // returns a *RequestInformation when successful
 func (m *ItemTagsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadTagsRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -98,7 +98,7 @@ func (m *ItemTagsRequestBuilder) ToPostRequestInformation(ctx context.Context, b
     }
     return requestInfo, nil
 }
-// ToPutRequestInformation replaces all tags on a lead with the supplied current-business tags, keeping segmentation and routing labels in sync.
+// ToPutRequestInformation replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
 // returns a *RequestInformation when successful
 func (m *ItemTagsRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadTagsRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

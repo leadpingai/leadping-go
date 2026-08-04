@@ -26,7 +26,7 @@ func NewSourcesItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
     urlParams["request-raw-url"] = rawUrl
     return NewSourcesItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete deletes a lead source from the current business so it can no longer accept or route newly captured leads.
+// Delete deletes a lead source from the current organization so it can no longer accept or route newly captured leads.
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *SourcesItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(error) {
@@ -44,7 +44,7 @@ func (m *SourcesItemRequestBuilder) Delete(ctx context.Context, requestConfigura
     }
     return nil
 }
-// Get returns one lead source for the current business, including intake settings, credentials metadata, and routing context.
+// Get returns one lead source for the current organization, including intake settings, credentials metadata, and routing context.
 // returns a SourceResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -71,7 +71,7 @@ func (m *SourcesItemRequestBuilder) Get(ctx context.Context, requestConfiguratio
 func (m *SourcesItemRequestBuilder) Metrics()(*ItemMetricsRequestBuilder) {
     return NewItemMetricsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Put updates a lead source for the current business, changing intake settings, credentials, routing context, or active status.
+// Put updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
 // returns a SourceResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -93,7 +93,7 @@ func (m *SourcesItemRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SourceResponseable), nil
 }
-// ToDeleteRequestInformation deletes a lead source from the current business so it can no longer accept or route newly captured leads.
+// ToDeleteRequestInformation deletes a lead source from the current organization so it can no longer accept or route newly captured leads.
 // returns a *RequestInformation when successful
 func (m *SourcesItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -101,7 +101,7 @@ func (m *SourcesItemRequestBuilder) ToDeleteRequestInformation(ctx context.Conte
     requestInfo.Headers.TryAdd("Accept", "application/json, text/plain;q=0.9")
     return requestInfo, nil
 }
-// ToGetRequestInformation returns one lead source for the current business, including intake settings, credentials metadata, and routing context.
+// ToGetRequestInformation returns one lead source for the current organization, including intake settings, credentials metadata, and routing context.
 // returns a *RequestInformation when successful
 func (m *SourcesItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -109,7 +109,7 @@ func (m *SourcesItemRequestBuilder) ToGetRequestInformation(ctx context.Context,
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPutRequestInformation updates a lead source for the current business, changing intake settings, credentials, routing context, or active status.
+// ToPutRequestInformation updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
 // returns a *RequestInformation when successful
 func (m *SourcesItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SourceRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

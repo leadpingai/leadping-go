@@ -14,14 +14,14 @@ type UserResponse struct {
     additionalData map[string]any
     // Defines the supported Billing Plan values.
     billingPlan *UserResponse_billingPlan
-    // Customer-safe billing state for the user's currently selected business.
+    // Customer-safe billing state for the user's currently selected organization.
     billingState UserResponse_billingStateable
     // The compliance value for this user.
     compliance UserResponse_complianceable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current business value for this user.
-    currentBusiness UserResponse_currentBusinessable
+    // The current organization value for this user.
+    currentOrganization UserResponse_currentOrganizationable
     // The email address associated with this user.
     email *string
     // The first name value for this user.
@@ -81,7 +81,7 @@ func (m *UserResponse) GetAdditionalData()(map[string]any) {
 func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
     return m.billingPlan
 }
-// GetBillingState gets the billingState property value. Customer-safe billing state for the user's currently selected business.
+// GetBillingState gets the billingState property value. Customer-safe billing state for the user's currently selected organization.
 // returns a UserResponse_billingStateable when successful
 func (m *UserResponse) GetBillingState()(UserResponse_billingStateable) {
     return m.billingState
@@ -96,10 +96,10 @@ func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
 func (m *UserResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCurrentBusiness gets the currentBusiness property value. The current business value for this user.
-// returns a UserResponse_currentBusinessable when successful
-func (m *UserResponse) GetCurrentBusiness()(UserResponse_currentBusinessable) {
-    return m.currentBusiness
+// GetCurrentOrganization gets the currentOrganization property value. The current organization value for this user.
+// returns a UserResponse_currentOrganizationable when successful
+func (m *UserResponse) GetCurrentOrganization()(UserResponse_currentOrganizationable) {
+    return m.currentOrganization
 }
 // GetEmail gets the email property value. The email address associated with this user.
 // returns a *string when successful
@@ -150,13 +150,13 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
-    res["currentBusiness"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_currentBusinessFromDiscriminatorValue)
+    res["currentOrganization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUserResponse_currentOrganizationFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentBusiness(val.(UserResponse_currentBusinessable))
+            m.SetCurrentOrganization(val.(UserResponse_currentOrganizationable))
         }
         return nil
     }
@@ -467,7 +467,7 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteObjectValue("currentBusiness", m.GetCurrentBusiness())
+        err := writer.WriteObjectValue("currentOrganization", m.GetCurrentOrganization())
         if err != nil {
             return err
         }
@@ -609,7 +609,7 @@ func (m *UserResponse) SetAdditionalData(value map[string]any)() {
 func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
     m.billingPlan = value
 }
-// SetBillingState sets the billingState property value. Customer-safe billing state for the user's currently selected business.
+// SetBillingState sets the billingState property value. Customer-safe billing state for the user's currently selected organization.
 func (m *UserResponse) SetBillingState(value UserResponse_billingStateable)() {
     m.billingState = value
 }
@@ -621,9 +621,9 @@ func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
 func (m *UserResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCurrentBusiness sets the currentBusiness property value. The current business value for this user.
-func (m *UserResponse) SetCurrentBusiness(value UserResponse_currentBusinessable)() {
-    m.currentBusiness = value
+// SetCurrentOrganization sets the currentOrganization property value. The current organization value for this user.
+func (m *UserResponse) SetCurrentOrganization(value UserResponse_currentOrganizationable)() {
+    m.currentOrganization = value
 }
 // SetEmail sets the email property value. The email address associated with this user.
 func (m *UserResponse) SetEmail(value *string)() {
@@ -704,7 +704,7 @@ type UserResponseable interface {
     GetBillingState()(UserResponse_billingStateable)
     GetCompliance()(UserResponse_complianceable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentBusiness()(UserResponse_currentBusinessable)
+    GetCurrentOrganization()(UserResponse_currentOrganizationable)
     GetEmail()(*string)
     GetFirstName()(*string)
     GetId()(*string)
@@ -727,7 +727,7 @@ type UserResponseable interface {
     SetBillingState(value UserResponse_billingStateable)()
     SetCompliance(value UserResponse_complianceable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentBusiness(value UserResponse_currentBusinessable)()
+    SetCurrentOrganization(value UserResponse_currentOrganizationable)()
     SetEmail(value *string)()
     SetFirstName(value *string)()
     SetId(value *string)()

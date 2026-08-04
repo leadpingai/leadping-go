@@ -24,8 +24,8 @@ type LeadResponse struct {
     contact LeadContactable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current disposition summary that describes the lead outcome.
-    currentDisposition LeadResponse_currentDispositionable
+    // Current lead status change summary that describes the lead outcome.
+    currentLeadStatus LeadResponse_currentLeadStatusable
     // Demographic profile details for the lead represented by this lead response.
     customer LeadProfileable
     // Indicates whether this lead response is active and available in the Leadping API.
@@ -90,10 +90,10 @@ func (m *LeadResponse) GetContact()(LeadContactable) {
 func (m *LeadResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCurrentDisposition gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-// returns a LeadResponse_currentDispositionable when successful
-func (m *LeadResponse) GetCurrentDisposition()(LeadResponse_currentDispositionable) {
-    return m.currentDisposition
+// GetCurrentLeadStatus gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+// returns a LeadResponse_currentLeadStatusable when successful
+func (m *LeadResponse) GetCurrentLeadStatus()(LeadResponse_currentLeadStatusable) {
+    return m.currentLeadStatus
 }
 // GetCustomer gets the customer property value. Demographic profile details for the lead represented by this lead response.
 // returns a LeadProfileable when successful
@@ -169,13 +169,13 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
-    res["currentDisposition"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadResponse_currentDispositionFromDiscriminatorValue)
+    res["currentLeadStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadResponse_currentLeadStatusFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentDisposition(val.(LeadResponse_currentDispositionable))
+            m.SetCurrentLeadStatus(val.(LeadResponse_currentLeadStatusable))
         }
         return nil
     }
@@ -336,7 +336,7 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteObjectValue("currentDisposition", m.GetCurrentDisposition())
+        err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
         if err != nil {
             return err
         }
@@ -431,9 +431,9 @@ func (m *LeadResponse) SetContact(value LeadContactable)() {
 func (m *LeadResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCurrentDisposition sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-func (m *LeadResponse) SetCurrentDisposition(value LeadResponse_currentDispositionable)() {
-    m.currentDisposition = value
+// SetCurrentLeadStatus sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+func (m *LeadResponse) SetCurrentLeadStatus(value LeadResponse_currentLeadStatusable)() {
+    m.currentLeadStatus = value
 }
 // SetCustomer sets the customer property value. Demographic profile details for the lead represented by this lead response.
 func (m *LeadResponse) SetCustomer(value LeadProfileable)() {
@@ -476,7 +476,7 @@ type LeadResponseable interface {
     GetArchiveReason()(*int32)
     GetContact()(LeadContactable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentDisposition()(LeadResponse_currentDispositionable)
+    GetCurrentLeadStatus()(LeadResponse_currentLeadStatusable)
     GetCustomer()(LeadProfileable)
     GetEnabled()(*bool)
     GetId()(*string)
@@ -491,7 +491,7 @@ type LeadResponseable interface {
     SetArchiveReason(value *int32)()
     SetContact(value LeadContactable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentDisposition(value LeadResponse_currentDispositionable)()
+    SetCurrentLeadStatus(value LeadResponse_currentLeadStatusable)()
     SetCustomer(value LeadProfileable)()
     SetEnabled(value *bool)()
     SetId(value *string)()

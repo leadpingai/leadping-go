@@ -17,7 +17,7 @@ type PhoneNumberRoutingMetadata struct {
     smsEnabled *bool
     // Lead source ID assigned to this phone number for attribution and routing.
     sourceId *string
-    // Team ID used to route calls and messages for this phone number.
+    // Organization ID used to route calls and messages for this phone number.
     teamId *string
     // Leadping 10DLC application entity associated with this phone number.
     tenDlcApplicationId *string
@@ -122,7 +122,7 @@ func (m *PhoneNumberRoutingMetadata) GetSmsEnabled()(*bool) {
 func (m *PhoneNumberRoutingMetadata) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTeamId gets the teamId property value. Team ID used to route calls and messages for this phone number.
+// GetTeamId gets the teamId property value. Organization ID used to route calls and messages for this phone number.
 // returns a *string when successful
 func (m *PhoneNumberRoutingMetadata) GetTeamId()(*string) {
     return m.teamId
@@ -199,7 +199,7 @@ func (m *PhoneNumberRoutingMetadata) SetSmsEnabled(value *bool)() {
 func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTeamId sets the teamId property value. Team ID used to route calls and messages for this phone number.
+// SetTeamId sets the teamId property value. Organization ID used to route calls and messages for this phone number.
 func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string)() {
     m.teamId = value
 }

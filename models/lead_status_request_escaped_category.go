@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Controlled disposition categories used for reporting, automation, and analytics.
+// Controlled lead status change categories used for reporting, automation, and analytics.
 type LeadStatusRequest_category int
 
 const (

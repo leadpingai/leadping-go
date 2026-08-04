@@ -20,12 +20,6 @@ type CallEventTableRow struct {
     billableSeconds *int32
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
-    // Business summary connected to this call event table row.
-    business *string
-    // Business ID associated with this call event.
-    businessId *string
-    // Display name for the business associated with this call event.
-    businessName *string
     // Caller ID phone number presented during the outbound call.
     callerId *string
     // Conversation ID that links this call event table row to the Leadping inbox thread.
@@ -48,6 +42,12 @@ type CallEventTableRow struct {
     leadId *string
     // Display name for the lead associated with this call event.
     leadName *string
+    // Organization summary connected to this call event table row.
+    organization *string
+    // Organization ID associated with this call event.
+    organizationId *string
+    // Display name for the organization associated with this call event.
+    organizationName *string
     // URL for the call recording, when the provider makes one available.
     recordingUrl *string
     // Defines the supported Phone Call Status values.
@@ -97,21 +97,6 @@ func (m *CallEventTableRow) GetBillableSeconds()(*int32) {
 // returns a *string when successful
 func (m *CallEventTableRow) GetBillingStatus()(*string) {
     return m.billingStatus
-}
-// GetBusiness gets the business property value. Business summary connected to this call event table row.
-// returns a *string when successful
-func (m *CallEventTableRow) GetBusiness()(*string) {
-    return m.business
-}
-// GetBusinessId gets the businessId property value. Business ID associated with this call event.
-// returns a *string when successful
-func (m *CallEventTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetBusinessName gets the businessName property value. Display name for the business associated with this call event.
-// returns a *string when successful
-func (m *CallEventTableRow) GetBusinessName()(*string) {
-    return m.businessName
 }
 // GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
@@ -184,36 +169,6 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetBillingStatus(val)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
         }
         return nil
     }
@@ -327,6 +282,36 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val)
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
+    res["organizationName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationName(val)
+        }
+        return nil
+    }
     res["recordingUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -414,6 +399,21 @@ func (m *CallEventTableRow) GetLeadId()(*string) {
 func (m *CallEventTableRow) GetLeadName()(*string) {
     return m.leadName
 }
+// GetOrganization gets the organization property value. Organization summary connected to this call event table row.
+// returns a *string when successful
+func (m *CallEventTableRow) GetOrganization()(*string) {
+    return m.organization
+}
+// GetOrganizationId gets the organizationId property value. Organization ID associated with this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetOrganizationId()(*string) {
+    return m.organizationId
+}
+// GetOrganizationName gets the organizationName property value. Display name for the organization associated with this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetOrganizationName()(*string) {
+    return m.organizationName
+}
 // GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 // returns a *string when successful
 func (m *CallEventTableRow) GetRecordingUrl()(*string) {
@@ -466,24 +466,6 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
         if err != nil {
             return err
         }
@@ -555,6 +537,24 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
+        err := writer.WriteStringValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationName", m.GetOrganizationName())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("recordingUrl", m.GetRecordingUrl())
         if err != nil {
             return err
@@ -619,18 +619,6 @@ func (m *CallEventTableRow) SetBillableSeconds(value *int32)() {
 func (m *CallEventTableRow) SetBillingStatus(value *string)() {
     m.billingStatus = value
 }
-// SetBusiness sets the business property value. Business summary connected to this call event table row.
-func (m *CallEventTableRow) SetBusiness(value *string)() {
-    m.business = value
-}
-// SetBusinessId sets the businessId property value. Business ID associated with this call event.
-func (m *CallEventTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetBusinessName sets the businessName property value. Display name for the business associated with this call event.
-func (m *CallEventTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
-}
 // SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
 func (m *CallEventTableRow) SetCallerId(value *string)() {
     m.callerId = value
@@ -675,6 +663,18 @@ func (m *CallEventTableRow) SetLeadId(value *string)() {
 func (m *CallEventTableRow) SetLeadName(value *string)() {
     m.leadName = value
 }
+// SetOrganization sets the organization property value. Organization summary connected to this call event table row.
+func (m *CallEventTableRow) SetOrganization(value *string)() {
+    m.organization = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID associated with this call event.
+func (m *CallEventTableRow) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
+// SetOrganizationName sets the organizationName property value. Display name for the organization associated with this call event.
+func (m *CallEventTableRow) SetOrganizationName(value *string)() {
+    m.organizationName = value
+}
 // SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
 func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
     m.recordingUrl = value
@@ -706,9 +706,6 @@ type CallEventTableRowable interface {
     GetBillableAmount()(*float64)
     GetBillableSeconds()(*int32)
     GetBillingStatus()(*string)
-    GetBusiness()(*string)
-    GetBusinessId()(*string)
-    GetBusinessName()(*string)
     GetCallerId()(*string)
     GetConversationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -720,6 +717,9 @@ type CallEventTableRowable interface {
     GetId()(*string)
     GetLeadId()(*string)
     GetLeadName()(*string)
+    GetOrganization()(*string)
+    GetOrganizationId()(*string)
+    GetOrganizationName()(*string)
     GetRecordingUrl()(*string)
     GetStatus()(*CallEventTableRow_status)
     GetStatusReason()(*string)
@@ -730,9 +730,6 @@ type CallEventTableRowable interface {
     SetBillableAmount(value *float64)()
     SetBillableSeconds(value *int32)()
     SetBillingStatus(value *string)()
-    SetBusiness(value *string)()
-    SetBusinessId(value *string)()
-    SetBusinessName(value *string)()
     SetCallerId(value *string)()
     SetConversationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -744,6 +741,9 @@ type CallEventTableRowable interface {
     SetId(value *string)()
     SetLeadId(value *string)()
     SetLeadName(value *string)()
+    SetOrganization(value *string)()
+    SetOrganizationId(value *string)()
+    SetOrganizationName(value *string)()
     SetRecordingUrl(value *string)()
     SetStatus(value *CallEventTableRow_status)()
     SetStatusReason(value *string)()

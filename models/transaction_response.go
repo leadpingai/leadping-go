@@ -20,8 +20,6 @@ type TransactionResponse struct {
     billedAmount *float64
     // Defines the supported Usage Channel values.
     billingChannel *TransactionResponse_billingChannel
-    // The ID and name for this business.
-    business TransactionResponse_businessable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Human-readable description that explains this billing transaction response to API users.
@@ -40,6 +38,8 @@ type TransactionResponse struct {
     netAmount *float64
     // Additional billing notes that explain the transaction for admins or customers.
     notes *string
+    // The ID and name for this organization.
+    organization TransactionResponse_organizationable
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
     // Leadping platform fee amount included in the transaction.
@@ -85,11 +85,6 @@ func (m *TransactionResponse) GetBilledAmount()(*float64) {
 // returns a *TransactionResponse_billingChannel when successful
 func (m *TransactionResponse) GetBillingChannel()(*TransactionResponse_billingChannel) {
     return m.billingChannel
-}
-// GetBusiness gets the business property value. The ID and name for this business.
-// returns a TransactionResponse_businessable when successful
-func (m *TransactionResponse) GetBusiness()(TransactionResponse_businessable) {
-    return m.business
 }
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
@@ -142,16 +137,6 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetBillingChannel(val.(*TransactionResponse_billingChannel))
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTransactionResponse_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(TransactionResponse_businessable))
         }
         return nil
     }
@@ -245,6 +230,16 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateTransactionResponse_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(TransactionResponse_organizationable))
+        }
+        return nil
+    }
     res["paymentMethodDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -322,6 +317,11 @@ func (m *TransactionResponse) GetNetAmount()(*float64) {
 func (m *TransactionResponse) GetNotes()(*string) {
     return m.notes
 }
+// GetOrganization gets the organization property value. The ID and name for this organization.
+// returns a TransactionResponse_organizationable when successful
+func (m *TransactionResponse) GetOrganization()(TransactionResponse_organizationable) {
+    return m.organization
+}
 // GetPaymentMethodDisplay gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 // returns a *string when successful
 func (m *TransactionResponse) GetPaymentMethodDisplay()(*string) {
@@ -366,12 +366,6 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
     if m.GetBillingChannel() != nil {
         cast := (*m.GetBillingChannel()).String()
         err := writer.WriteStringValue("billingChannel", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
         if err != nil {
             return err
         }
@@ -431,6 +425,12 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("paymentMethodDisplay", m.GetPaymentMethodDisplay())
         if err != nil {
             return err
@@ -484,10 +484,6 @@ func (m *TransactionResponse) SetBilledAmount(value *float64)() {
 func (m *TransactionResponse) SetBillingChannel(value *TransactionResponse_billingChannel)() {
     m.billingChannel = value
 }
-// SetBusiness sets the business property value. The ID and name for this business.
-func (m *TransactionResponse) SetBusiness(value TransactionResponse_businessable)() {
-    m.business = value
-}
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *TransactionResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -524,6 +520,10 @@ func (m *TransactionResponse) SetNetAmount(value *float64)() {
 func (m *TransactionResponse) SetNotes(value *string)() {
     m.notes = value
 }
+// SetOrganization sets the organization property value. The ID and name for this organization.
+func (m *TransactionResponse) SetOrganization(value TransactionResponse_organizationable)() {
+    m.organization = value
+}
 // SetPaymentMethodDisplay sets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 func (m *TransactionResponse) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
@@ -547,7 +547,6 @@ type TransactionResponseable interface {
     GetBillableUnit()(*TransactionResponse_billableUnit)
     GetBilledAmount()(*float64)
     GetBillingChannel()(*TransactionResponse_billingChannel)
-    GetBusiness()(TransactionResponse_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
     GetGatewayFeeAmount()(*float64)
@@ -557,6 +556,7 @@ type TransactionResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNetAmount()(*float64)
     GetNotes()(*string)
+    GetOrganization()(TransactionResponse_organizationable)
     GetPaymentMethodDisplay()(*string)
     GetPlatformFeeAmount()(*float64)
     GetTransactionStatus()(*TransactionStatus)
@@ -565,7 +565,6 @@ type TransactionResponseable interface {
     SetBillableUnit(value *TransactionResponse_billableUnit)()
     SetBilledAmount(value *float64)()
     SetBillingChannel(value *TransactionResponse_billingChannel)()
-    SetBusiness(value TransactionResponse_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()
     SetGatewayFeeAmount(value *float64)()
@@ -575,6 +574,7 @@ type TransactionResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetNetAmount(value *float64)()
     SetNotes(value *string)()
+    SetOrganization(value TransactionResponse_organizationable)()
     SetPaymentMethodDisplay(value *string)()
     SetPlatformFeeAmount(value *float64)()
     SetTransactionStatus(value *TransactionStatus)()

@@ -16,7 +16,7 @@ type SourceTableRow struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
     apiKey *string
     // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -24,11 +24,7 @@ type SourceTableRow struct {
     apiKeyPreview *string
     // Total number of authenticated requests made with this source API key.
     apiKeyTotalUses *int64
-    // Business summary connected to this lead source table row.
-    business SourceTableRow_businessable
-    // Business ID that owns this lead source.
-    businessId *string
-    // Indicates whether the business or sender passed compliance review.
+    // Indicates whether the organization or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
     costPerLead *float64
@@ -56,6 +52,10 @@ type SourceTableRow struct {
     modifiedByUser SourceTableRow_modifiedByUserable
     // Display name for this lead source table row in the Leadping API.
     name *string
+    // Organization summary connected to this lead source table row.
+    organization SourceTableRow_organizationable
+    // Organization ID that owns this lead source.
+    organizationId *string
     // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
     // User summary connected to this lead source table row.
@@ -88,7 +88,7 @@ func (m *SourceTableRow) GetAllowedProducts()([]string) {
 func (m *SourceTableRow) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
 // returns a *string when successful
 func (m *SourceTableRow) GetApiKey()(*string) {
     return m.apiKey
@@ -108,17 +108,7 @@ func (m *SourceTableRow) GetApiKeyPreview()(*string) {
 func (m *SourceTableRow) GetApiKeyTotalUses()(*int64) {
     return m.apiKeyTotalUses
 }
-// GetBusiness gets the business property value. Business summary connected to this lead source table row.
-// returns a SourceTableRow_businessable when successful
-func (m *SourceTableRow) GetBusiness()(SourceTableRow_businessable) {
-    return m.business
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this lead source.
-// returns a *string when successful
-func (m *SourceTableRow) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetComplianceApproved gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+// GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 // returns a *bool when successful
 func (m *SourceTableRow) GetComplianceApproved()(*bool) {
     return m.complianceApproved
@@ -231,26 +221,6 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetApiKeyTotalUses(val)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceTableRow_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(SourceTableRow_businessable))
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -406,6 +376,26 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateSourceTableRow_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(SourceTableRow_organizationable))
+        }
+        return nil
+    }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["requiresTrustedForm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -458,6 +448,16 @@ func (m *SourceTableRow) GetModifiedByUser()(SourceTableRow_modifiedByUserable) 
 func (m *SourceTableRow) GetName()(*string) {
     return m.name
 }
+// GetOrganization gets the organization property value. Organization summary connected to this lead source table row.
+// returns a SourceTableRow_organizationable when successful
+func (m *SourceTableRow) GetOrganization()(SourceTableRow_organizationable) {
+    return m.organization
+}
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this lead source.
+// returns a *string when successful
+func (m *SourceTableRow) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceTableRow) GetRequiresTrustedForm()(*bool) {
@@ -502,18 +502,6 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteInt64Value("apiKeyTotalUses", m.GetApiKeyTotalUses())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -609,6 +597,18 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
         if err != nil {
             return err
@@ -640,7 +640,7 @@ func (m *SourceTableRow) SetAllowedProducts(value []string)() {
 func (m *SourceTableRow) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
 func (m *SourceTableRow) SetApiKey(value *string)() {
     m.apiKey = value
 }
@@ -656,15 +656,7 @@ func (m *SourceTableRow) SetApiKeyPreview(value *string)() {
 func (m *SourceTableRow) SetApiKeyTotalUses(value *int64)() {
     m.apiKeyTotalUses = value
 }
-// SetBusiness sets the business property value. Business summary connected to this lead source table row.
-func (m *SourceTableRow) SetBusiness(value SourceTableRow_businessable)() {
-    m.business = value
-}
-// SetBusinessId sets the businessId property value. Business ID that owns this lead source.
-func (m *SourceTableRow) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetComplianceApproved sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+// SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 func (m *SourceTableRow) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
@@ -720,6 +712,14 @@ func (m *SourceTableRow) SetModifiedByUser(value SourceTableRow_modifiedByUserab
 func (m *SourceTableRow) SetName(value *string)() {
     m.name = value
 }
+// SetOrganization sets the organization property value. Organization summary connected to this lead source table row.
+func (m *SourceTableRow) SetOrganization(value SourceTableRow_organizationable)() {
+    m.organization = value
+}
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this lead source.
+func (m *SourceTableRow) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 // SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceTableRow) SetRequiresTrustedForm(value *bool)() {
     m.requiresTrustedForm = value
@@ -737,8 +737,6 @@ type SourceTableRowable interface {
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
     GetApiKeyTotalUses()(*int64)
-    GetBusiness()(SourceTableRow_businessable)
-    GetBusinessId()(*string)
     GetComplianceApproved()(*bool)
     GetCostPerLead()(*float64)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -753,6 +751,8 @@ type SourceTableRowable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetModifiedByUser()(SourceTableRow_modifiedByUserable)
     GetName()(*string)
+    GetOrganization()(SourceTableRow_organizationable)
+    GetOrganizationId()(*string)
     GetRequiresTrustedForm()(*bool)
     GetUser()(SourceTableRow_userable)
     SetAllowedProducts(value []string)()
@@ -761,8 +761,6 @@ type SourceTableRowable interface {
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
     SetApiKeyTotalUses(value *int64)()
-    SetBusiness(value SourceTableRow_businessable)()
-    SetBusinessId(value *string)()
     SetComplianceApproved(value *bool)()
     SetCostPerLead(value *float64)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -777,6 +775,8 @@ type SourceTableRowable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetModifiedByUser(value SourceTableRow_modifiedByUserable)()
     SetName(value *string)()
+    SetOrganization(value SourceTableRow_organizationable)()
+    SetOrganizationId(value *string)()
     SetRequiresTrustedForm(value *bool)()
     SetUser(value SourceTableRow_userable)()
 }

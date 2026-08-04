@@ -22,6 +22,10 @@ type PhoneNumberTrafficMetricsResponse struct {
     callPlacedCount *int32
     // Number of connected outbound calls shorter than 30 seconds during this metrics window.
     callShortCount *int32
+    // Number of MMS messages that failed during this metrics window.
+    mmsFailedCount *int32
+    // Number of MMS messages sent during this metrics window.
+    mmsSentCount *int32
     // Number of SMS messages that failed during this metrics window.
     smsFailedCount *int32
     // Number of SMS messages sent during this metrics window.
@@ -129,6 +133,26 @@ func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers()(map[string]f
         }
         return nil
     }
+    res["mmsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMmsFailedCount(val)
+        }
+        return nil
+    }
+    res["mmsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMmsSentCount(val)
+        }
+        return nil
+    }
     res["smsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -187,6 +211,16 @@ func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers()(map[string]f
     }
     return res
 }
+// GetMmsFailedCount gets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
+// returns a *int32 when successful
+func (m *PhoneNumberTrafficMetricsResponse) GetMmsFailedCount()(*int32) {
+    return m.mmsFailedCount
+}
+// GetMmsSentCount gets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
+// returns a *int32 when successful
+func (m *PhoneNumberTrafficMetricsResponse) GetMmsSentCount()(*int32) {
+    return m.mmsSentCount
+}
 // GetSmsFailedCount gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficMetricsResponse) GetSmsFailedCount()(*int32) {
@@ -240,6 +274,18 @@ func (m *PhoneNumberTrafficMetricsResponse) Serialize(writer i878a80d2330e89d268
     }
     {
         err := writer.WriteInt32Value("callShortCount", m.GetCallShortCount())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
         if err != nil {
             return err
         }
@@ -312,6 +358,14 @@ func (m *PhoneNumberTrafficMetricsResponse) SetCallPlacedCount(value *int32)() {
 func (m *PhoneNumberTrafficMetricsResponse) SetCallShortCount(value *int32)() {
     m.callShortCount = value
 }
+// SetMmsFailedCount sets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
+func (m *PhoneNumberTrafficMetricsResponse) SetMmsFailedCount(value *int32)() {
+    m.mmsFailedCount = value
+}
+// SetMmsSentCount sets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
+func (m *PhoneNumberTrafficMetricsResponse) SetMmsSentCount(value *int32)() {
+    m.mmsSentCount = value
+}
 // SetSmsFailedCount sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 func (m *PhoneNumberTrafficMetricsResponse) SetSmsFailedCount(value *int32)() {
     m.smsFailedCount = value
@@ -340,6 +394,8 @@ type PhoneNumberTrafficMetricsResponseable interface {
     GetCallInvalidNumberCount()(*int32)
     GetCallPlacedCount()(*int32)
     GetCallShortCount()(*int32)
+    GetMmsFailedCount()(*int32)
+    GetMmsSentCount()(*int32)
     GetSmsFailedCount()(*int32)
     GetSmsSentCount()(*int32)
     GetTrend()([]PhoneNumberTrafficTrendPointable)
@@ -350,6 +406,8 @@ type PhoneNumberTrafficMetricsResponseable interface {
     SetCallInvalidNumberCount(value *int32)()
     SetCallPlacedCount(value *int32)()
     SetCallShortCount(value *int32)()
+    SetMmsFailedCount(value *int32)()
+    SetMmsSentCount(value *int32)()
     SetSmsFailedCount(value *int32)()
     SetSmsSentCount(value *int32)()
     SetTrend(value []PhoneNumberTrafficTrendPointable)()

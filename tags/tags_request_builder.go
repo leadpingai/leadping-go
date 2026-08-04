@@ -13,7 +13,7 @@ import (
 type TagsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// TagsRequestBuilderGetQueryParameters lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+// TagsRequestBuilderGetQueryParameters lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
 type TagsRequestBuilderGetQueryParameters struct {
     IncludeArchived *bool "uriparametername:\"includeArchived\""
 }
@@ -42,7 +42,7 @@ func NewTagsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1
     urlParams["request-raw-url"] = rawUrl
     return NewTagsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+// Get lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
 // returns a []TagResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 func (m *TagsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[TagsRequestBuilderGetQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TagResponseable, error) {
@@ -65,7 +65,7 @@ func (m *TagsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae
     }
     return val, nil
 }
-// Post creates a tag for the current business so leads can be segmented, filtered, routed, and reviewed by label.
+// Post creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
 // returns a TagResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -87,7 +87,7 @@ func (m *TagsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TagResponseable), nil
 }
-// ToGetRequestInformation lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+// ToGetRequestInformation lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
 // returns a *RequestInformation when successful
 func (m *TagsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[TagsRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -95,7 +95,7 @@ func (m *TagsRequestBuilder) ToGetRequestInformation(ctx context.Context, reques
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation creates a tag for the current business so leads can be segmented, filtered, routed, and reviewed by label.
+// ToPostRequestInformation creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
 // returns a *RequestInformation when successful
 func (m *TagsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.TagRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

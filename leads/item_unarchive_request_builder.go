@@ -9,14 +9,14 @@ import (
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
-// ItemUnarchiveRequestBuilder builds and executes requests for operations under \leads\{id}\unarchive
+// ItemUnarchiveRequestBuilder builds and executes requests for operations under \leads\{-id}\unarchive
 type ItemUnarchiveRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // NewItemUnarchiveRequestBuilderInternal instantiates a new ItemUnarchiveRequestBuilder and sets the default values.
 func NewItemUnarchiveRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemUnarchiveRequestBuilder) {
     m := &ItemUnarchiveRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{id}/unarchive", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/{%2Did}/unarchive", pathParameters),
     }
     return m
 }

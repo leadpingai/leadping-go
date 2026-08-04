@@ -22,10 +22,6 @@ type SmsEventTableRow struct {
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
     blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Business summary connected to this SMS event table row.
-    business *string
-    // Business display name shown for this SMS event.
-    businessName *string
     // UTC timestamp when this delivery or workflow was canceled.
     canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Reason this delivery, run, or request was canceled.
@@ -58,6 +54,10 @@ type SmsEventTableRow struct {
     lead IdNamePairable
     // Media attached to this SMS/MMS event.
     media []MessageMediaAttachmentable
+    // Organization summary connected to this SMS event table row.
+    organization *string
+    // Organization display name shown for this SMS event.
+    organizationName *string
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
     // Defines the source that requested outbound delivery.
@@ -134,16 +134,6 @@ func (m *SmsEventTableRow) GetBillingStatus()(*string) {
 // returns a *Time when successful
 func (m *SmsEventTableRow) GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.blockedAt
-}
-// GetBusiness gets the business property value. Business summary connected to this SMS event table row.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetBusiness()(*string) {
-    return m.business
-}
-// GetBusinessName gets the businessName property value. Business display name shown for this SMS event.
-// returns a *string when successful
-func (m *SmsEventTableRow) GetBusinessName()(*string) {
-    return m.businessName
 }
 // GetCanceledAt gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 // returns a *Time when successful
@@ -246,26 +236,6 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         }
         if val != nil {
             m.SetBlockedAt(val)
-        }
-        return nil
-    }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val)
-        }
-        return nil
-    }
-    res["businessName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessName(val)
         }
         return nil
     }
@@ -432,6 +402,26 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
                 }
             }
             m.SetMedia(res)
+        }
+        return nil
+    }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val)
+        }
+        return nil
+    }
+    res["organizationName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationName(val)
         }
         return nil
     }
@@ -637,6 +627,16 @@ func (m *SmsEventTableRow) GetLead()(IdNamePairable) {
 func (m *SmsEventTableRow) GetMedia()([]MessageMediaAttachmentable) {
     return m.media
 }
+// GetOrganization gets the organization property value. Organization summary connected to this SMS event table row.
+// returns a *string when successful
+func (m *SmsEventTableRow) GetOrganization()(*string) {
+    return m.organization
+}
+// GetOrganizationName gets the organizationName property value. Organization display name shown for this SMS event.
+// returns a *string when successful
+func (m *SmsEventTableRow) GetOrganizationName()(*string) {
+    return m.organizationName
+}
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *SmsEventTableRow) GetOutboundPhoneNumberId()(*string) {
@@ -755,18 +755,6 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteStringValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessName", m.GetBusinessName())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("canceledAt", m.GetCanceledAt())
         if err != nil {
             return err
@@ -864,6 +852,18 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             }
         }
         err := writer.WriteCollectionOfObjectValues("media", cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organization", m.GetOrganization())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("organizationName", m.GetOrganizationName())
         if err != nil {
             return err
         }
@@ -1005,14 +1005,6 @@ func (m *SmsEventTableRow) SetBillingStatus(value *string)() {
 func (m *SmsEventTableRow) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.blockedAt = value
 }
-// SetBusiness sets the business property value. Business summary connected to this SMS event table row.
-func (m *SmsEventTableRow) SetBusiness(value *string)() {
-    m.business = value
-}
-// SetBusinessName sets the businessName property value. Business display name shown for this SMS event.
-func (m *SmsEventTableRow) SetBusinessName(value *string)() {
-    m.businessName = value
-}
 // SetCanceledAt sets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 func (m *SmsEventTableRow) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.canceledAt = value
@@ -1076,6 +1068,14 @@ func (m *SmsEventTableRow) SetLead(value IdNamePairable)() {
 // SetMedia sets the media property value. Media attached to this SMS/MMS event.
 func (m *SmsEventTableRow) SetMedia(value []MessageMediaAttachmentable)() {
     m.media = value
+}
+// SetOrganization sets the organization property value. Organization summary connected to this SMS event table row.
+func (m *SmsEventTableRow) SetOrganization(value *string)() {
+    m.organization = value
+}
+// SetOrganizationName sets the organizationName property value. Organization display name shown for this SMS event.
+func (m *SmsEventTableRow) SetOrganizationName(value *string)() {
+    m.organizationName = value
 }
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsEventTableRow) SetOutboundPhoneNumberId(value *string)() {
@@ -1153,8 +1153,6 @@ type SmsEventTableRowable interface {
     GetBillableAmount()(*float64)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBusiness()(*string)
-    GetBusinessName()(*string)
     GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCancelReason()(*string)
     GetComplianceAction()(*string)
@@ -1171,6 +1169,8 @@ type SmsEventTableRowable interface {
     GetIsAutomated()(*bool)
     GetLead()(IdNamePairable)
     GetMedia()([]MessageMediaAttachmentable)
+    GetOrganization()(*string)
+    GetOrganizationName()(*string)
     GetOutboundPhoneNumberId()(*string)
     GetOutboundSource()(*SmsEventTableRow_outboundSource)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1193,8 +1193,6 @@ type SmsEventTableRowable interface {
     SetBillableAmount(value *float64)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBusiness(value *string)()
-    SetBusinessName(value *string)()
     SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCancelReason(value *string)()
     SetComplianceAction(value *string)()
@@ -1211,6 +1209,8 @@ type SmsEventTableRowable interface {
     SetIsAutomated(value *bool)()
     SetLead(value IdNamePairable)()
     SetMedia(value []MessageMediaAttachmentable)()
+    SetOrganization(value *string)()
+    SetOrganizationName(value *string)()
     SetOutboundPhoneNumberId(value *string)()
     SetOutboundSource(value *SmsEventTableRow_outboundSource)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

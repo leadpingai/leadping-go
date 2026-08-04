@@ -18,8 +18,8 @@ type ConversationResponse struct {
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
-    // Current disposition summary that describes the lead outcome.
-    currentDisposition ConversationResponse_currentDispositionable
+    // Current lead status change summary that describes the lead outcome.
+    currentLeadStatus ConversationResponse_currentLeadStatusable
     // Email address used to resolve the lead's avatar when available.
     email *string
     // First name of the lead, user, or contact represented by this conversation response.
@@ -85,10 +85,10 @@ func (m *ConversationResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *ConversationResponse) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
-// GetCurrentDisposition gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-// returns a ConversationResponse_currentDispositionable when successful
-func (m *ConversationResponse) GetCurrentDisposition()(ConversationResponse_currentDispositionable) {
-    return m.currentDisposition
+// GetCurrentLeadStatus gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+// returns a ConversationResponse_currentLeadStatusable when successful
+func (m *ConversationResponse) GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable) {
+    return m.currentLeadStatus
 }
 // GetEmail gets the email property value. Email address used to resolve the lead's avatar when available.
 // returns a *string when successful
@@ -129,13 +129,13 @@ func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
-    res["currentDisposition"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateConversationResponse_currentDispositionFromDiscriminatorValue)
+    res["currentLeadStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateConversationResponse_currentLeadStatusFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentDisposition(val.(ConversationResponse_currentDispositionable))
+            m.SetCurrentLeadStatus(val.(ConversationResponse_currentLeadStatusable))
         }
         return nil
     }
@@ -397,7 +397,7 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("currentDisposition", m.GetCurrentDisposition())
+        err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
         if err != nil {
             return err
         }
@@ -523,9 +523,9 @@ func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3a
 func (m *ConversationResponse) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
-// SetCurrentDisposition sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-func (m *ConversationResponse) SetCurrentDisposition(value ConversationResponse_currentDispositionable)() {
-    m.currentDisposition = value
+// SetCurrentLeadStatus sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+func (m *ConversationResponse) SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)() {
+    m.currentLeadStatus = value
 }
 // SetEmail sets the email property value. Email address used to resolve the lead's avatar when available.
 func (m *ConversationResponse) SetEmail(value *string)() {
@@ -597,7 +597,7 @@ type ConversationResponseable interface {
     GetActiveOutboundPhoneNumberId()(*string)
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchiveReason()(*int32)
-    GetCurrentDisposition()(ConversationResponse_currentDispositionable)
+    GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable)
     GetEmail()(*string)
     GetFirstName()(*string)
     GetId()(*string)
@@ -617,7 +617,7 @@ type ConversationResponseable interface {
     SetActiveOutboundPhoneNumberId(value *string)()
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchiveReason(value *int32)()
-    SetCurrentDisposition(value ConversationResponse_currentDispositionable)()
+    SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)()
     SetEmail(value *string)()
     SetFirstName(value *string)()
     SetId(value *string)()

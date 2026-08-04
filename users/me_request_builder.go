@@ -26,7 +26,7 @@ func NewMeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
     urlParams["request-raw-url"] = rawUrl
     return NewMeRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns the current user's profile, roles, business context, billing state, and compliance settings for portal sessions.
+// Get returns the current user's profile, roles, organization context, billing state, and compliance settings for portal sessions.
 // returns a UserResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -53,7 +53,7 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
 func (m *MeRequestBuilder) Paymentmethod()(*MePaymentmethodRequestBuilder) {
     return NewMePaymentmethodRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Put updates the current user's profile fields, contact details, preferences, or business context used across Leadping.
+// Put updates the current user's profile fields, contact details, preferences, or organization context used across Leadping.
 // returns a UserResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -75,7 +75,7 @@ func (m *MeRequestBuilder) Put(ctx context.Context, body i01c1fcf104a8c6ee60f7ac
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UserResponseable), nil
 }
-// ToGetRequestInformation returns the current user's profile, roles, business context, billing state, and compliance settings for portal sessions.
+// ToGetRequestInformation returns the current user's profile, roles, organization context, billing state, and compliance settings for portal sessions.
 // returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -83,7 +83,7 @@ func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestC
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPutRequestInformation updates the current user's profile fields, contact details, preferences, or business context used across Leadping.
+// ToPutRequestInformation updates the current user's profile fields, contact details, preferences, or organization context used across Leadping.
 // returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UserRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

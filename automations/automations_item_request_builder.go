@@ -26,7 +26,7 @@ func NewAutomationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
     urlParams["request-raw-url"] = rawUrl
     return NewAutomationsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete deletes an automation for the current business so it no longer schedules follow-up or routing work for captured leads.
+// Delete deletes an automation for the current organization so it no longer schedules follow-up or routing work for captured leads.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -48,7 +48,7 @@ func (m *AutomationsItemRequestBuilder) Delete(ctx context.Context, requestConfi
     }
     return res.(*bool), nil
 }
-// Get returns one automation for the current business, including trigger criteria, message steps, routing settings, and enabled state.
+// Get returns one automation for the current organization, including trigger criteria, message steps, routing settings, and enabled state.
 // returns a AutomationResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
@@ -70,7 +70,7 @@ func (m *AutomationsItemRequestBuilder) Get(ctx context.Context, requestConfigur
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationResponseable), nil
 }
-// Put updates an automation for current-business leads, changing triggers, message steps, routing, or active follow-up settings.
+// Put updates an automation for current-organization leads, changing triggers, message steps, routing, or active follow-up settings.
 // returns a AutomationResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -94,7 +94,7 @@ func (m *AutomationsItemRequestBuilder) Put(ctx context.Context, body i01c1fcf10
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationResponseable), nil
 }
-// ToDeleteRequestInformation deletes an automation for the current business so it no longer schedules follow-up or routing work for captured leads.
+// ToDeleteRequestInformation deletes an automation for the current organization so it no longer schedules follow-up or routing work for captured leads.
 // returns a *RequestInformation when successful
 func (m *AutomationsItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -102,7 +102,7 @@ func (m *AutomationsItemRequestBuilder) ToDeleteRequestInformation(ctx context.C
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToGetRequestInformation returns one automation for the current business, including trigger criteria, message steps, routing settings, and enabled state.
+// ToGetRequestInformation returns one automation for the current organization, including trigger criteria, message steps, routing settings, and enabled state.
 // returns a *RequestInformation when successful
 func (m *AutomationsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -110,7 +110,7 @@ func (m *AutomationsItemRequestBuilder) ToGetRequestInformation(ctx context.Cont
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPutRequestInformation updates an automation for current-business leads, changing triggers, message steps, routing, or active follow-up settings.
+// ToPutRequestInformation updates an automation for current-organization leads, changing triggers, message steps, routing, or active follow-up settings.
 // returns a *RequestInformation when successful
 func (m *AutomationsItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

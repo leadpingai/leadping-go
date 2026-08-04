@@ -11,7 +11,7 @@ import (
 type LeadStatusRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Controlled disposition categories used for reporting, automation, and analytics.
+    // Controlled lead status change categories used for reporting, automation, and analytics.
     category *LeadStatusRequest_category
     // Display color for the lead status.
     color *string
@@ -37,7 +37,7 @@ func CreateLeadStatusRequestFromDiscriminatorValue(parseNode i878a80d2330e89d268
 func (m *LeadStatusRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCategory gets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+// GetCategory gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 // returns a *LeadStatusRequest_category when successful
 func (m *LeadStatusRequest) GetCategory()(*LeadStatusRequest_category) {
     return m.category
@@ -142,7 +142,7 @@ func (m *LeadStatusRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *LeadStatusRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCategory sets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+// SetCategory sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 func (m *LeadStatusRequest) SetCategory(value *LeadStatusRequest_category)() {
     m.category = value
 }

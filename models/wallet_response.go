@@ -20,8 +20,6 @@ type WalletResponse struct {
     balance *float64
     // UTC timestamp when Leadping last calculated the wallet balance.
     balanceCalculatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Business ID that owns this wallet balance or credit.
-    businessId *string
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines the lifecycle state for a wallet credit lot.
@@ -42,6 +40,8 @@ type WalletResponse struct {
     nextCreditExpirationAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Amount of wallet credit scheduled to expire next.
     nextExpiringCreditAmount *float64
+    // Organization ID that owns this wallet balance or credit.
+    organizationId *string
     // Original wallet transaction ID referenced by a reversal, refund, or adjustment.
     originalTransactionId *string
     // UTC timestamp when the wallet credit was purchased.
@@ -85,11 +85,6 @@ func (m *WalletResponse) GetBalance()(*float64) {
 // returns a *Time when successful
 func (m *WalletResponse) GetBalanceCalculatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.balanceCalculatedAt
-}
-// GetBusinessId gets the businessId property value. Business ID that owns this wallet balance or credit.
-// returns a *string when successful
-func (m *WalletResponse) GetBusinessId()(*string) {
-    return m.businessId
 }
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
 // returns a *Time when successful
@@ -157,16 +152,6 @@ func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetBalanceCalculatedAt(val)
-        }
-        return nil
-    }
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
         }
         return nil
     }
@@ -270,6 +255,16 @@ func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["originalTransactionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -327,6 +322,11 @@ func (m *WalletResponse) GetNextCreditExpirationAt()(*i336074805fc853987abe6f7fe
 func (m *WalletResponse) GetNextExpiringCreditAmount()(*float64) {
     return m.nextExpiringCreditAmount
 }
+// GetOrganizationId gets the organizationId property value. Organization ID that owns this wallet balance or credit.
+// returns a *string when successful
+func (m *WalletResponse) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetOriginalTransactionId gets the originalTransactionId property value. Original wallet transaction ID referenced by a reversal, refund, or adjustment.
 // returns a *string when successful
 func (m *WalletResponse) GetOriginalTransactionId()(*string) {
@@ -364,12 +364,6 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteTimeValue("balanceCalculatedAt", m.GetBalanceCalculatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
         if err != nil {
             return err
         }
@@ -436,6 +430,12 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("originalTransactionId", m.GetOriginalTransactionId())
         if err != nil {
             return err
@@ -482,10 +482,6 @@ func (m *WalletResponse) SetBalance(value *float64)() {
 func (m *WalletResponse) SetBalanceCalculatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.balanceCalculatedAt = value
 }
-// SetBusinessId sets the businessId property value. Business ID that owns this wallet balance or credit.
-func (m *WalletResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
 func (m *WalletResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -526,6 +522,10 @@ func (m *WalletResponse) SetNextCreditExpirationAt(value *i336074805fc853987abe6
 func (m *WalletResponse) SetNextExpiringCreditAmount(value *float64)() {
     m.nextExpiringCreditAmount = value
 }
+// SetOrganizationId sets the organizationId property value. Organization ID that owns this wallet balance or credit.
+func (m *WalletResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 // SetOriginalTransactionId sets the originalTransactionId property value. Original wallet transaction ID referenced by a reversal, refund, or adjustment.
 func (m *WalletResponse) SetOriginalTransactionId(value *string)() {
     m.originalTransactionId = value
@@ -545,7 +545,6 @@ type WalletResponseable interface {
     GetAmountRemaining()(*float64)
     GetBalance()(*float64)
     GetBalanceCalculatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBusinessId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreditStatus()(*WalletResponse_creditStatus)
     GetCurrency()(*string)
@@ -556,6 +555,7 @@ type WalletResponseable interface {
     GetName()(*string)
     GetNextCreditExpirationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetNextExpiringCreditAmount()(*float64)
+    GetOrganizationId()(*string)
     GetOriginalTransactionId()(*string)
     GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSourceType()(*WalletResponse_sourceType)
@@ -563,7 +563,6 @@ type WalletResponseable interface {
     SetAmountRemaining(value *float64)()
     SetBalance(value *float64)()
     SetBalanceCalculatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBusinessId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreditStatus(value *WalletResponse_creditStatus)()
     SetCurrency(value *string)()
@@ -574,6 +573,7 @@ type WalletResponseable interface {
     SetName(value *string)()
     SetNextCreditExpirationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetNextExpiringCreditAmount(value *float64)()
+    SetOrganizationId(value *string)()
     SetOriginalTransactionId(value *string)()
     SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSourceType(value *WalletResponse_sourceType)()

@@ -14,7 +14,7 @@ import (
 type MyRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// MyRequestBuilderGetQueryParameters returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+// MyRequestBuilderGetQueryParameters returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 type MyRequestBuilderGetQueryParameters struct {
     Days *int32 "uriparametername:\"days\""
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
@@ -33,7 +33,7 @@ func NewMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
     urlParams["request-raw-url"] = rawUrl
     return NewMyRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+// Get returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 // returns a CustomerAnalyticsResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -57,7 +57,7 @@ func (m *MyRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CustomerAnalyticsResponseable), nil
 }
-// ToGetRequestInformation returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+// ToGetRequestInformation returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 // returns a *RequestInformation when successful
 func (m *MyRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[MyRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

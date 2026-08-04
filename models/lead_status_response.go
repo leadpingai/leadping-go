@@ -12,10 +12,8 @@ import (
 type LeadStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Identifier of the business that owns the lead status.
-    businessId *string
-    // Disposition category represented by the lead status.
-    category *DispositionCategory
+    // LeadStatusChange category represented by the lead status.
+    category *LeadStatusCategory
     // Display color assigned to the lead status.
     color *string
     // Unique identifier for the lead status.
@@ -26,6 +24,8 @@ type LeadStatusResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Display name of the lead status.
     name *string
+    // Identifier of the organization that owns the lead status.
+    organizationId *string
     // Relative display order of the lead status.
     sortOrder *int32
 }
@@ -46,14 +46,9 @@ func CreateLeadStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *LeadStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBusinessId gets the businessId property value. Identifier of the business that owns the lead status.
-// returns a *string when successful
-func (m *LeadStatusResponse) GetBusinessId()(*string) {
-    return m.businessId
-}
-// GetCategory gets the category property value. Disposition category represented by the lead status.
-// returns a *DispositionCategory when successful
-func (m *LeadStatusResponse) GetCategory()(*DispositionCategory) {
+// GetCategory gets the category property value. LeadStatusChange category represented by the lead status.
+// returns a *LeadStatusCategory when successful
+func (m *LeadStatusResponse) GetCategory()(*LeadStatusCategory) {
     return m.category
 }
 // GetColor gets the color property value. Display color assigned to the lead status.
@@ -65,23 +60,13 @@ func (m *LeadStatusResponse) GetColor()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *LeadStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["businessId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusinessId(val)
-        }
-        return nil
-    }
     res["category"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseDispositionCategory)
+        val, err := n.GetEnumValue(ParseLeadStatusCategory)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCategory(val.(*DispositionCategory))
+            m.SetCategory(val.(*LeadStatusCategory))
         }
         return nil
     }
@@ -135,6 +120,16 @@ func (m *LeadStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
+    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganizationId(val)
+        }
+        return nil
+    }
     res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -167,6 +162,11 @@ func (m *LeadStatusResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a
 func (m *LeadStatusResponse) GetName()(*string) {
     return m.name
 }
+// GetOrganizationId gets the organizationId property value. Identifier of the organization that owns the lead status.
+// returns a *string when successful
+func (m *LeadStatusResponse) GetOrganizationId()(*string) {
+    return m.organizationId
+}
 // GetSortOrder gets the sortOrder property value. Relative display order of the lead status.
 // returns a *int32 when successful
 func (m *LeadStatusResponse) GetSortOrder()(*int32) {
@@ -174,12 +174,6 @@ func (m *LeadStatusResponse) GetSortOrder()(*int32) {
 }
 // Serialize serializes information the current object
 func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("businessId", m.GetBusinessId())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetCategory() != nil {
         cast := (*m.GetCategory()).String()
         err := writer.WriteStringValue("category", &cast)
@@ -218,6 +212,12 @@ func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
+        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
         if err != nil {
             return err
@@ -235,12 +235,8 @@ func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *LeadStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBusinessId sets the businessId property value. Identifier of the business that owns the lead status.
-func (m *LeadStatusResponse) SetBusinessId(value *string)() {
-    m.businessId = value
-}
-// SetCategory sets the category property value. Disposition category represented by the lead status.
-func (m *LeadStatusResponse) SetCategory(value *DispositionCategory)() {
+// SetCategory sets the category property value. LeadStatusChange category represented by the lead status.
+func (m *LeadStatusResponse) SetCategory(value *LeadStatusCategory)() {
     m.category = value
 }
 // SetColor sets the color property value. Display color assigned to the lead status.
@@ -263,6 +259,10 @@ func (m *LeadStatusResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad9
 func (m *LeadStatusResponse) SetName(value *string)() {
     m.name = value
 }
+// SetOrganizationId sets the organizationId property value. Identifier of the organization that owns the lead status.
+func (m *LeadStatusResponse) SetOrganizationId(value *string)() {
+    m.organizationId = value
+}
 // SetSortOrder sets the sortOrder property value. Relative display order of the lead status.
 func (m *LeadStatusResponse) SetSortOrder(value *int32)() {
     m.sortOrder = value
@@ -270,20 +270,20 @@ func (m *LeadStatusResponse) SetSortOrder(value *int32)() {
 type LeadStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBusinessId()(*string)
-    GetCategory()(*DispositionCategory)
+    GetCategory()(*LeadStatusCategory)
     GetColor()(*string)
     GetId()(*string)
     GetIsArchived()(*bool)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
+    GetOrganizationId()(*string)
     GetSortOrder()(*int32)
-    SetBusinessId(value *string)()
-    SetCategory(value *DispositionCategory)()
+    SetCategory(value *LeadStatusCategory)()
     SetColor(value *string)()
     SetId(value *string)()
     SetIsArchived(value *bool)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
+    SetOrganizationId(value *string)()
     SetSortOrder(value *int32)()
 }

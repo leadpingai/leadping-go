@@ -15,8 +15,8 @@ type UserRequest struct {
     billingPlan *UserRequest_billingPlan
     // User compliance settings and attestations captured for Leadping account review.
     compliance UserRequest_complianceable
-    // Business currently selected for the user session or profile.
-    currentBusiness UserRequest_currentBusinessable
+    // Organization currently selected for the user session or profile.
+    currentOrganization UserRequest_currentOrganizationable
     // Email address for the person represented by this user profile request.
     email *string
     // First name of the lead, user, or contact represented by this user profile request.
@@ -31,7 +31,7 @@ type UserRequest struct {
     name *string
     // Notification preferences configured for the user.
     notificationPreferences UserRequest_notificationPreferencesable
-    // Phone details for the lead, user, or business represented by this user profile request.
+    // Phone details for the lead, user, or organization represented by this user profile request.
     phone *string
     // IANA time zone identifier used when displaying dates and times for this user.
     timeZoneId *string
@@ -63,10 +63,10 @@ func (m *UserRequest) GetBillingPlan()(*UserRequest_billingPlan) {
 func (m *UserRequest) GetCompliance()(UserRequest_complianceable) {
     return m.compliance
 }
-// GetCurrentBusiness gets the currentBusiness property value. Business currently selected for the user session or profile.
-// returns a UserRequest_currentBusinessable when successful
-func (m *UserRequest) GetCurrentBusiness()(UserRequest_currentBusinessable) {
-    return m.currentBusiness
+// GetCurrentOrganization gets the currentOrganization property value. Organization currently selected for the user session or profile.
+// returns a UserRequest_currentOrganizationable when successful
+func (m *UserRequest) GetCurrentOrganization()(UserRequest_currentOrganizationable) {
+    return m.currentOrganization
 }
 // GetEmail gets the email property value. Email address for the person represented by this user profile request.
 // returns a *string when successful
@@ -97,13 +97,13 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
-    res["currentBusiness"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserRequest_currentBusinessFromDiscriminatorValue)
+    res["currentOrganization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateUserRequest_currentOrganizationFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrentBusiness(val.(UserRequest_currentBusinessable))
+            m.SetCurrentOrganization(val.(UserRequest_currentOrganizationable))
         }
         return nil
     }
@@ -235,7 +235,7 @@ func (m *UserRequest) GetName()(*string) {
 func (m *UserRequest) GetNotificationPreferences()(UserRequest_notificationPreferencesable) {
     return m.notificationPreferences
 }
-// GetPhone gets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
+// GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetPhone()(*string) {
     return m.phone
@@ -261,7 +261,7 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
-        err := writer.WriteObjectValue("currentBusiness", m.GetCurrentBusiness())
+        err := writer.WriteObjectValue("currentOrganization", m.GetCurrentOrganization())
         if err != nil {
             return err
         }
@@ -346,9 +346,9 @@ func (m *UserRequest) SetBillingPlan(value *UserRequest_billingPlan)() {
 func (m *UserRequest) SetCompliance(value UserRequest_complianceable)() {
     m.compliance = value
 }
-// SetCurrentBusiness sets the currentBusiness property value. Business currently selected for the user session or profile.
-func (m *UserRequest) SetCurrentBusiness(value UserRequest_currentBusinessable)() {
-    m.currentBusiness = value
+// SetCurrentOrganization sets the currentOrganization property value. Organization currently selected for the user session or profile.
+func (m *UserRequest) SetCurrentOrganization(value UserRequest_currentOrganizationable)() {
+    m.currentOrganization = value
 }
 // SetEmail sets the email property value. Email address for the person represented by this user profile request.
 func (m *UserRequest) SetEmail(value *string)() {
@@ -378,7 +378,7 @@ func (m *UserRequest) SetName(value *string)() {
 func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationPreferencesable)() {
     m.notificationPreferences = value
 }
-// SetPhone sets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
+// SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
 func (m *UserRequest) SetPhone(value *string)() {
     m.phone = value
 }
@@ -391,7 +391,7 @@ type UserRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlan()(*UserRequest_billingPlan)
     GetCompliance()(UserRequest_complianceable)
-    GetCurrentBusiness()(UserRequest_currentBusinessable)
+    GetCurrentOrganization()(UserRequest_currentOrganizationable)
     GetEmail()(*string)
     GetFirstName()(*string)
     GetId()(*string)
@@ -403,7 +403,7 @@ type UserRequestable interface {
     GetTimeZoneId()(*string)
     SetBillingPlan(value *UserRequest_billingPlan)()
     SetCompliance(value UserRequest_complianceable)()
-    SetCurrentBusiness(value UserRequest_currentBusinessable)()
+    SetCurrentOrganization(value UserRequest_currentOrganizationable)()
     SetEmail(value *string)()
     SetFirstName(value *string)()
     SetId(value *string)()

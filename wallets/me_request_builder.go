@@ -26,7 +26,7 @@ func NewMeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
     urlParams["request-raw-url"] = rawUrl
     return NewMeRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get returns the current business wallet, including balance and funding status used for communication delivery and billing.
+// Get returns the current organization wallet, including balance and funding status used for communication delivery and billing.
 // returns a WalletResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -50,7 +50,7 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.WalletResponseable), nil
 }
-// ToGetRequestInformation returns the current business wallet, including balance and funding status used for communication delivery and billing.
+// ToGetRequestInformation returns the current organization wallet, including balance and funding status used for communication delivery and billing.
 // returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

@@ -20,8 +20,6 @@ type TransactionTableRow struct {
     billedAmount *float64
     // Defines the supported Usage Channel values.
     billingChannel *TransactionTableRow_billingChannel
-    // The ID and name for this business.
-    business TransactionTableRow_businessable
     // UTC timestamp when this billing transaction table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Human-readable description that explains this billing transaction table row to API users.
@@ -32,6 +30,8 @@ type TransactionTableRow struct {
     lead TransactionTableRow_leadable
     // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
+    // The ID and name for this organization.
+    organization TransactionTableRow_organizationable
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
     // The pricingVersion property
@@ -85,11 +85,6 @@ func (m *TransactionTableRow) GetBilledAmount()(*float64) {
 // returns a *TransactionTableRow_billingChannel when successful
 func (m *TransactionTableRow) GetBillingChannel()(*TransactionTableRow_billingChannel) {
     return m.billingChannel
-}
-// GetBusiness gets the business property value. The ID and name for this business.
-// returns a TransactionTableRow_businessable when successful
-func (m *TransactionTableRow) GetBusiness()(TransactionTableRow_businessable) {
-    return m.business
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 // returns a *Time when successful
@@ -145,16 +140,6 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
-    res["business"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTransactionTableRow_businessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBusiness(val.(TransactionTableRow_businessable))
-        }
-        return nil
-    }
     res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -202,6 +187,16 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         if val != nil {
             m.SetNetAmount(val)
+        }
+        return nil
+    }
+    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateTransactionTableRow_organizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOrganization(val.(TransactionTableRow_organizationable))
         }
         return nil
     }
@@ -302,6 +297,11 @@ func (m *TransactionTableRow) GetLead()(TransactionTableRow_leadable) {
 func (m *TransactionTableRow) GetNetAmount()(*float64) {
     return m.netAmount
 }
+// GetOrganization gets the organization property value. The ID and name for this organization.
+// returns a TransactionTableRow_organizationable when successful
+func (m *TransactionTableRow) GetOrganization()(TransactionTableRow_organizationable) {
+    return m.organization
+}
 // GetPaymentMethodDisplay gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 // returns a *string when successful
 func (m *TransactionTableRow) GetPaymentMethodDisplay()(*string) {
@@ -371,12 +371,6 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("business", m.GetBusiness())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
         if err != nil {
             return err
@@ -402,6 +396,12 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     {
         err := writer.WriteFloat64Value("netAmount", m.GetNetAmount())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteObjectValue("organization", m.GetOrganization())
         if err != nil {
             return err
         }
@@ -484,10 +484,6 @@ func (m *TransactionTableRow) SetBilledAmount(value *float64)() {
 func (m *TransactionTableRow) SetBillingChannel(value *TransactionTableRow_billingChannel)() {
     m.billingChannel = value
 }
-// SetBusiness sets the business property value. The ID and name for this business.
-func (m *TransactionTableRow) SetBusiness(value TransactionTableRow_businessable)() {
-    m.business = value
-}
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -507,6 +503,10 @@ func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable)() {
 // SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 func (m *TransactionTableRow) SetNetAmount(value *float64)() {
     m.netAmount = value
+}
+// SetOrganization sets the organization property value. The ID and name for this organization.
+func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organizationable)() {
+    m.organization = value
 }
 // SetPaymentMethodDisplay sets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string)() {
@@ -547,12 +547,12 @@ type TransactionTableRowable interface {
     GetBillableUnit()(*TransactionTableRow_billableUnit)
     GetBilledAmount()(*float64)
     GetBillingChannel()(*TransactionTableRow_billingChannel)
-    GetBusiness()(TransactionTableRow_businessable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
     GetId()(*string)
     GetLead()(TransactionTableRow_leadable)
     GetNetAmount()(*float64)
+    GetOrganization()(TransactionTableRow_organizationable)
     GetPaymentMethodDisplay()(*string)
     GetPricingVersion()(*string)
     GetQuantity()(*float64)
@@ -565,12 +565,12 @@ type TransactionTableRowable interface {
     SetBillableUnit(value *TransactionTableRow_billableUnit)()
     SetBilledAmount(value *float64)()
     SetBillingChannel(value *TransactionTableRow_billingChannel)()
-    SetBusiness(value TransactionTableRow_businessable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()
     SetId(value *string)()
     SetLead(value TransactionTableRow_leadable)()
     SetNetAmount(value *float64)()
+    SetOrganization(value TransactionTableRow_organizationable)()
     SetPaymentMethodDisplay(value *string)()
     SetPricingVersion(value *string)()
     SetQuantity(value *float64)()
