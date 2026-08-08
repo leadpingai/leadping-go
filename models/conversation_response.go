@@ -18,6 +18,8 @@ type ConversationResponse struct {
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
+    // Optional profile image URL explicitly associated with the lead.
+    avatarUrl *string
     // Current lead status change summary that describes the lead outcome.
     currentLeadStatus ConversationResponse_currentLeadStatusable
     // Email address used to resolve the lead's avatar when available.
@@ -85,6 +87,11 @@ func (m *ConversationResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *ConversationResponse) GetArchiveReason()(*int32) {
     return m.archiveReason
 }
+// GetAvatarUrl gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+// returns a *string when successful
+func (m *ConversationResponse) GetAvatarUrl()(*string) {
+    return m.avatarUrl
+}
 // GetCurrentLeadStatus gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
 // returns a ConversationResponse_currentLeadStatusable when successful
 func (m *ConversationResponse) GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable) {
@@ -126,6 +133,16 @@ func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         if val != nil {
             m.SetArchiveReason(val)
+        }
+        return nil
+    }
+    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAvatarUrl(val)
         }
         return nil
     }
@@ -397,6 +414,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
+        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
         if err != nil {
             return err
@@ -523,6 +546,10 @@ func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3a
 func (m *ConversationResponse) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
+// SetAvatarUrl sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+func (m *ConversationResponse) SetAvatarUrl(value *string)() {
+    m.avatarUrl = value
+}
 // SetCurrentLeadStatus sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
 func (m *ConversationResponse) SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)() {
     m.currentLeadStatus = value
@@ -597,6 +624,7 @@ type ConversationResponseable interface {
     GetActiveOutboundPhoneNumberId()(*string)
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchiveReason()(*int32)
+    GetAvatarUrl()(*string)
     GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable)
     GetEmail()(*string)
     GetFirstName()(*string)
@@ -617,6 +645,7 @@ type ConversationResponseable interface {
     SetActiveOutboundPhoneNumberId(value *string)()
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchiveReason(value *int32)()
+    SetAvatarUrl(value *string)()
     SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)()
     SetEmail(value *string)()
     SetFirstName(value *string)()

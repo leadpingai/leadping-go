@@ -11,6 +11,8 @@ import (
 type LeadContact struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+    avatarUrl *string
     // Latitude and longitude coordinate for this lead contact profile.
     coordinate LeadContact_coordinateable
     // Email address for the person represented by this lead contact profile.
@@ -43,6 +45,11 @@ func CreateLeadContactFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadContact) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetAvatarUrl gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+// returns a *string when successful
+func (m *LeadContact) GetAvatarUrl()(*string) {
+    return m.avatarUrl
+}
 // GetCoordinate gets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
 // returns a LeadContact_coordinateable when successful
 func (m *LeadContact) GetCoordinate()(LeadContact_coordinateable) {
@@ -57,6 +64,16 @@ func (m *LeadContact) GetEmail()(*string) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *LeadContact) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAvatarUrl(val)
+        }
+        return nil
+    }
     res["coordinate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateLeadContact_coordinateFromDiscriminatorValue)
         if err != nil {
@@ -157,6 +174,12 @@ func (m *LeadContact) GetTimeZoneId()(*string) {
 // Serialize serializes information the current object
 func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
+        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("coordinate", m.GetCoordinate())
         if err != nil {
             return err
@@ -210,6 +233,10 @@ func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadContact) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetAvatarUrl sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+func (m *LeadContact) SetAvatarUrl(value *string)() {
+    m.avatarUrl = value
+}
 // SetCoordinate sets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
 func (m *LeadContact) SetCoordinate(value LeadContact_coordinateable)() {
     m.coordinate = value
@@ -241,6 +268,7 @@ func (m *LeadContact) SetTimeZoneId(value *string)() {
 type LeadContactable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetAvatarUrl()(*string)
     GetCoordinate()(LeadContact_coordinateable)
     GetEmail()(*string)
     GetFirstName()(*string)
@@ -248,6 +276,7 @@ type LeadContactable interface {
     GetPhone()(LeadContact_phoneable)
     GetStreetAddress()(LeadContact_streetAddressable)
     GetTimeZoneId()(*string)
+    SetAvatarUrl(value *string)()
     SetCoordinate(value LeadContact_coordinateable)()
     SetEmail(value *string)()
     SetFirstName(value *string)()
