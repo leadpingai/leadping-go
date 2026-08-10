@@ -51,6 +51,11 @@ func (m *NotificationsRequestBuilder) MarkAllRead()(*MarkAllReadRequestBuilder) 
 func (m *NotificationsRequestBuilder) Me()(*MeRequestBuilder) {
     return NewMeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Push the push property
+// returns a *PushRequestBuilder when successful
+func (m *NotificationsRequestBuilder) Push()(*PushRequestBuilder) {
+    return NewPushRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // UnreadCount the unreadCount property
 // returns a *UnreadCountRequestBuilder when successful
 func (m *NotificationsRequestBuilder) UnreadCount()(*UnreadCountRequestBuilder) {

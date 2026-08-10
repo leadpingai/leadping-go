@@ -32,6 +32,8 @@ type NotificationResponse struct {
     name *string
     // The priority value for this notification.
     priority *NotificationPriority
+    // Whether this notification should also be delivered as a device push notification.
+    pushEnabled *bool
     // The date and time for the read at value on this notification.
     readAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The related entity ID associated with this notification.
@@ -184,6 +186,16 @@ func (m *NotificationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["pushEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPushEnabled(val)
+        }
+        return nil
+    }
     res["readAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -265,6 +277,11 @@ func (m *NotificationResponse) GetName()(*string) {
 // returns a *NotificationPriority when successful
 func (m *NotificationResponse) GetPriority()(*NotificationPriority) {
     return m.priority
+}
+// GetPushEnabled gets the pushEnabled property value. Whether this notification should also be delivered as a device push notification.
+// returns a *bool when successful
+func (m *NotificationResponse) GetPushEnabled()(*bool) {
+    return m.pushEnabled
 }
 // GetReadAt gets the readAt property value. The date and time for the read at value on this notification.
 // returns a *Time when successful
@@ -355,6 +372,12 @@ func (m *NotificationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
+        err := writer.WriteBoolValue("pushEnabled", m.GetPushEnabled())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteTimeValue("readAt", m.GetReadAt())
         if err != nil {
             return err
@@ -437,6 +460,10 @@ func (m *NotificationResponse) SetName(value *string)() {
 func (m *NotificationResponse) SetPriority(value *NotificationPriority)() {
     m.priority = value
 }
+// SetPushEnabled sets the pushEnabled property value. Whether this notification should also be delivered as a device push notification.
+func (m *NotificationResponse) SetPushEnabled(value *bool)() {
+    m.pushEnabled = value
+}
 // SetReadAt sets the readAt property value. The date and time for the read at value on this notification.
 func (m *NotificationResponse) SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.readAt = value
@@ -470,6 +497,7 @@ type NotificationResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetPriority()(*NotificationPriority)
+    GetPushEnabled()(*bool)
     GetReadAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRelatedEntityId()(*string)
     GetRelatedEntityType()(*string)
@@ -485,6 +513,7 @@ type NotificationResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetPriority(value *NotificationPriority)()
+    SetPushEnabled(value *bool)()
     SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRelatedEntityId(value *string)()
     SetRelatedEntityType(value *string)()
