@@ -8,9 +8,9 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// NotificationResponse aPI DTO containing notification data used by Leadping API contracts.
+// NotificationResponse describes notification data used in Leadping API requests and responses.
 type NotificationResponse struct {
-    // The action button text value for this notification.
+    // Action button text for this notification.
     actionButtonText *string
     // The URL associated with this notification.
     actionUrl *string
@@ -18,23 +18,23 @@ type NotificationResponse struct {
     additionalData map[string]any
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The details value for this notification.
+    // Optional supporting details displayed beneath the notification message.
     details *string
     // The unique identifier for the entity.
     id *string
     // Whether this notification is read.
     isRead *bool
-    // The message value for this notification.
+    // Message for this notification.
     message *string
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The priority value for this notification.
+    // Priority for this notification.
     priority *NotificationPriority
     // Whether this notification should also be delivered as a device push notification.
     pushEnabled *bool
-    // The date and time for the read at value on this notification.
+    // UTC timestamp for read at on this notification.
     readAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The related entity ID associated with this notification.
     relatedEntityId *string
@@ -57,7 +57,7 @@ func NewNotificationResponse()(*NotificationResponse) {
 func CreateNotificationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewNotificationResponse(), nil
 }
-// GetActionButtonText gets the actionButtonText property value. The action button text value for this notification.
+// GetActionButtonText gets the actionButtonText property value. Action button text for this notification.
 // returns a *string when successful
 func (m *NotificationResponse) GetActionButtonText()(*string) {
     return m.actionButtonText
@@ -77,7 +77,7 @@ func (m *NotificationResponse) GetAdditionalData()(map[string]any) {
 func (m *NotificationResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDetails gets the details property value. The details value for this notification.
+// GetDetails gets the details property value. Optional supporting details displayed beneath the notification message.
 // returns a *string when successful
 func (m *NotificationResponse) GetDetails()(*string) {
     return m.details
@@ -258,7 +258,7 @@ func (m *NotificationResponse) GetId()(*string) {
 func (m *NotificationResponse) GetIsRead()(*bool) {
     return m.isRead
 }
-// GetMessage gets the message property value. The message value for this notification.
+// GetMessage gets the message property value. Message for this notification.
 // returns a *string when successful
 func (m *NotificationResponse) GetMessage()(*string) {
     return m.message
@@ -273,7 +273,7 @@ func (m *NotificationResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *NotificationResponse) GetName()(*string) {
     return m.name
 }
-// GetPriority gets the priority property value. The priority value for this notification.
+// GetPriority gets the priority property value. Priority for this notification.
 // returns a *NotificationPriority when successful
 func (m *NotificationResponse) GetPriority()(*NotificationPriority) {
     return m.priority
@@ -283,7 +283,7 @@ func (m *NotificationResponse) GetPriority()(*NotificationPriority) {
 func (m *NotificationResponse) GetPushEnabled()(*bool) {
     return m.pushEnabled
 }
-// GetReadAt gets the readAt property value. The date and time for the read at value on this notification.
+// GetReadAt gets the readAt property value. UTC timestamp for read at on this notification.
 // returns a *Time when successful
 func (m *NotificationResponse) GetReadAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.readAt
@@ -416,7 +416,7 @@ func (m *NotificationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     return nil
 }
-// SetActionButtonText sets the actionButtonText property value. The action button text value for this notification.
+// SetActionButtonText sets the actionButtonText property value. Action button text for this notification.
 func (m *NotificationResponse) SetActionButtonText(value *string)() {
     m.actionButtonText = value
 }
@@ -432,7 +432,7 @@ func (m *NotificationResponse) SetAdditionalData(value map[string]any)() {
 func (m *NotificationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDetails sets the details property value. The details value for this notification.
+// SetDetails sets the details property value. Optional supporting details displayed beneath the notification message.
 func (m *NotificationResponse) SetDetails(value *string)() {
     m.details = value
 }
@@ -444,7 +444,7 @@ func (m *NotificationResponse) SetId(value *string)() {
 func (m *NotificationResponse) SetIsRead(value *bool)() {
     m.isRead = value
 }
-// SetMessage sets the message property value. The message value for this notification.
+// SetMessage sets the message property value. Message for this notification.
 func (m *NotificationResponse) SetMessage(value *string)() {
     m.message = value
 }
@@ -456,7 +456,7 @@ func (m *NotificationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3a
 func (m *NotificationResponse) SetName(value *string)() {
     m.name = value
 }
-// SetPriority sets the priority property value. The priority value for this notification.
+// SetPriority sets the priority property value. Priority for this notification.
 func (m *NotificationResponse) SetPriority(value *NotificationPriority)() {
     m.priority = value
 }
@@ -464,7 +464,7 @@ func (m *NotificationResponse) SetPriority(value *NotificationPriority)() {
 func (m *NotificationResponse) SetPushEnabled(value *bool)() {
     m.pushEnabled = value
 }
-// SetReadAt sets the readAt property value. The date and time for the read at value on this notification.
+// SetReadAt sets the readAt property value. UTC timestamp for read at on this notification.
 func (m *NotificationResponse) SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.readAt = value
 }

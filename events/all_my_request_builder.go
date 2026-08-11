@@ -16,8 +16,11 @@ type AllMyRequestBuilder struct {
 }
 // AllMyRequestBuilderPostQueryParameters lists event records visible to the current user with paging, sorting, and filters across lead, SMS, call, and automation events.
 type AllMyRequestBuilderPostQueryParameters struct {
+    // Optional event category used to narrow the results.
     Category *string "uriparametername:\"category\""
+    // Optional exclusive end timestamp for event occurrence.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
+    // Optional inclusive start timestamp for event occurrence.
     StartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"startAt\""
 }
 // NewAllMyRequestBuilderInternal instantiates a new AllMyRequestBuilder and sets the default values.

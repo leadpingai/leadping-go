@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EligibleOutgoingNumberResponse response schema for the Leadping API eligible outgoing phone number returned to authenticated clients.
+// EligibleOutgoingNumberResponse describes a Leadping phone number that is eligible to send an outbound message or place a call.
 type EligibleOutgoingNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

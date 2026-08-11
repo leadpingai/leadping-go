@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SmsReadinessUiState aPI DTO containing SMS readiness UI state data used by Leadping API contracts.
+// SmsReadinessUiState describes SMS readiness UI state data used in Leadping API requests and responses.
 type SmsReadinessUiState struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -15,7 +15,7 @@ type SmsReadinessUiState struct {
     description *string
     // The human-readable label shown for this SMS readiness UI state.
     label *SmsReadinessState
-    // The tone value for this SMS readiness UI state.
+    // Tone for this SMS readiness UI state.
     tone *string
 }
 // NewSmsReadinessUiState instantiates a new SmsReadinessUiState and sets the default values.
@@ -81,7 +81,7 @@ func (m *SmsReadinessUiState) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *SmsReadinessUiState) GetLabel()(*SmsReadinessState) {
     return m.label
 }
-// GetTone gets the tone property value. The tone value for this SMS readiness UI state.
+// GetTone gets the tone property value. Tone for this SMS readiness UI state.
 // returns a *string when successful
 func (m *SmsReadinessUiState) GetTone()(*string) {
     return m.tone
@@ -127,7 +127,7 @@ func (m *SmsReadinessUiState) SetDescription(value *string)() {
 func (m *SmsReadinessUiState) SetLabel(value *SmsReadinessState)() {
     m.label = value
 }
-// SetTone sets the tone property value. The tone value for this SMS readiness UI state.
+// SetTone sets the tone property value. Tone for this SMS readiness UI state.
 func (m *SmsReadinessUiState) SetTone(value *string)() {
     m.tone = value
 }

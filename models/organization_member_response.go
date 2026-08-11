@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationMemberResponse aPI response containing organization user data returned to callers.
+// OrganizationMemberResponse describes organization user data returned by Leadping.
 type OrganizationMemberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -18,7 +18,7 @@ type OrganizationMemberResponse struct {
     createdByUserId *string
     // The unique identifier for the entity.
     id *string
-    // The date and time for the last used at value on this organization user.
+    // UTC timestamp for last used at on this organization user.
     lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The billing status for this user's organization license.
     licenseBillingStatus *string
@@ -30,17 +30,17 @@ type OrganizationMemberResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The organization value for this organization user.
+    // Organization for this organization user.
     organization IdNamePairable
-    // The date and time for the removed at value on this organization user.
+    // UTC timestamp for removed at on this organization user.
     removedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The removed by user ID associated with this organization user.
     removedByUserId *string
-    // The role value for this organization user.
+    // Role for this organization user.
     role *OrganizationMemberRole
-    // The user value for this organization user.
+    // User for this organization user.
     user IdNamePairable
-    // The user email value for this organization user.
+    // User email for this organization user.
     userEmail *string
 }
 // NewOrganizationMemberResponse instantiates a new OrganizationMemberResponse and sets the default values.
@@ -231,7 +231,7 @@ func (m *OrganizationMemberResponse) GetFieldDeserializers()(map[string]func(i87
 func (m *OrganizationMemberResponse) GetId()(*string) {
     return m.id
 }
-// GetLastUsedAt gets the lastUsedAt property value. The date and time for the last used at value on this organization user.
+// GetLastUsedAt gets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
 // returns a *Time when successful
 func (m *OrganizationMemberResponse) GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastUsedAt
@@ -261,12 +261,12 @@ func (m *OrganizationMemberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe
 func (m *OrganizationMemberResponse) GetName()(*string) {
     return m.name
 }
-// GetOrganization gets the organization property value. The organization value for this organization user.
+// GetOrganization gets the organization property value. Organization for this organization user.
 // returns a IdNamePairable when successful
 func (m *OrganizationMemberResponse) GetOrganization()(IdNamePairable) {
     return m.organization
 }
-// GetRemovedAt gets the removedAt property value. The date and time for the removed at value on this organization user.
+// GetRemovedAt gets the removedAt property value. UTC timestamp for removed at on this organization user.
 // returns a *Time when successful
 func (m *OrganizationMemberResponse) GetRemovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.removedAt
@@ -276,17 +276,17 @@ func (m *OrganizationMemberResponse) GetRemovedAt()(*i336074805fc853987abe6f7fe3
 func (m *OrganizationMemberResponse) GetRemovedByUserId()(*string) {
     return m.removedByUserId
 }
-// GetRole gets the role property value. The role value for this organization user.
+// GetRole gets the role property value. Role for this organization user.
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationMemberResponse) GetRole()(*OrganizationMemberRole) {
     return m.role
 }
-// GetUser gets the user property value. The user value for this organization user.
+// GetUser gets the user property value. User for this organization user.
 // returns a IdNamePairable when successful
 func (m *OrganizationMemberResponse) GetUser()(IdNamePairable) {
     return m.user
 }
-// GetUserEmail gets the userEmail property value. The user email value for this organization user.
+// GetUserEmail gets the userEmail property value. User email for this organization user.
 // returns a *string when successful
 func (m *OrganizationMemberResponse) GetUserEmail()(*string) {
     return m.userEmail
@@ -408,7 +408,7 @@ func (m *OrganizationMemberResponse) SetCreatedByUserId(value *string)() {
 func (m *OrganizationMemberResponse) SetId(value *string)() {
     m.id = value
 }
-// SetLastUsedAt sets the lastUsedAt property value. The date and time for the last used at value on this organization user.
+// SetLastUsedAt sets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
 func (m *OrganizationMemberResponse) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastUsedAt = value
 }
@@ -432,11 +432,11 @@ func (m *OrganizationMemberResponse) SetModifiedAt(value *i336074805fc853987abe6
 func (m *OrganizationMemberResponse) SetName(value *string)() {
     m.name = value
 }
-// SetOrganization sets the organization property value. The organization value for this organization user.
+// SetOrganization sets the organization property value. Organization for this organization user.
 func (m *OrganizationMemberResponse) SetOrganization(value IdNamePairable)() {
     m.organization = value
 }
-// SetRemovedAt sets the removedAt property value. The date and time for the removed at value on this organization user.
+// SetRemovedAt sets the removedAt property value. UTC timestamp for removed at on this organization user.
 func (m *OrganizationMemberResponse) SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.removedAt = value
 }
@@ -444,15 +444,15 @@ func (m *OrganizationMemberResponse) SetRemovedAt(value *i336074805fc853987abe6f
 func (m *OrganizationMemberResponse) SetRemovedByUserId(value *string)() {
     m.removedByUserId = value
 }
-// SetRole sets the role property value. The role value for this organization user.
+// SetRole sets the role property value. Role for this organization user.
 func (m *OrganizationMemberResponse) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }
-// SetUser sets the user property value. The user value for this organization user.
+// SetUser sets the user property value. User for this organization user.
 func (m *OrganizationMemberResponse) SetUser(value IdNamePairable)() {
     m.user = value
 }
-// SetUserEmail sets the userEmail property value. The user email value for this organization user.
+// SetUserEmail sets the userEmail property value. User email for this organization user.
 func (m *OrganizationMemberResponse) SetUserEmail(value *string)() {
     m.userEmail = value
 }

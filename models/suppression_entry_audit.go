@@ -8,23 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SuppressionEntryAudit aPI DTO containing ion entry audit data used by Leadping API contracts.
+// SuppressionEntryAudit records one auditable change to a recipient suppression entry.
 type SuppressionEntryAudit struct {
-    // The actor ID associated with this ion entry audit.
+    // Identifier of the user or system actor responsible for the change.
     actorId *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The unique ID for this ion entry audit.
+    // Unique identifier for this suppression audit record.
     id *string
-    // The human-readable reason explaining this ion entry audit.
+    // Human-readable reason recorded for the suppression change.
     reason *string
-    // The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+    // Non-sensitive metadata that provides additional audit context.
     safeMetadata SuppressionEntryAudit_safeMetadataable
-    // The source value for this ion entry audit.
+    // System or workflow that initiated the change.
     source *string
-    // The current status for this ion entry audit.
+    // Suppression status established by this change, such as active or released.
     status *string
-    // The date and time for the timestamp value on this ion entry audit.
+    // UTC timestamp when the suppression change occurred.
     timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewSuppressionEntryAudit instantiates a new SuppressionEntryAudit and sets the default values.
@@ -39,7 +39,7 @@ func NewSuppressionEntryAudit()(*SuppressionEntryAudit) {
 func CreateSuppressionEntryAuditFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewSuppressionEntryAudit(), nil
 }
-// GetActorId gets the actorId property value. The actor ID associated with this ion entry audit.
+// GetActorId gets the actorId property value. Identifier of the user or system actor responsible for the change.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetActorId()(*string) {
     return m.actorId
@@ -125,32 +125,32 @@ func (m *SuppressionEntryAudit) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this ion entry audit.
+// GetId gets the id property value. Unique identifier for this suppression audit record.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetId()(*string) {
     return m.id
 }
-// GetReason gets the reason property value. The human-readable reason explaining this ion entry audit.
+// GetReason gets the reason property value. Human-readable reason recorded for the suppression change.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetReason()(*string) {
     return m.reason
 }
-// GetSafeMetadata gets the safeMetadata property value. The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+// GetSafeMetadata gets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
 // returns a SuppressionEntryAudit_safeMetadataable when successful
 func (m *SuppressionEntryAudit) GetSafeMetadata()(SuppressionEntryAudit_safeMetadataable) {
     return m.safeMetadata
 }
-// GetSource gets the source property value. The source value for this ion entry audit.
+// GetSource gets the source property value. System or workflow that initiated the change.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetSource()(*string) {
     return m.source
 }
-// GetStatus gets the status property value. The current status for this ion entry audit.
+// GetStatus gets the status property value. Suppression status established by this change, such as active or released.
 // returns a *string when successful
 func (m *SuppressionEntryAudit) GetStatus()(*string) {
     return m.status
 }
-// GetTimestamp gets the timestamp property value. The date and time for the timestamp value on this ion entry audit.
+// GetTimestamp gets the timestamp property value. UTC timestamp when the suppression change occurred.
 // returns a *Time when successful
 func (m *SuppressionEntryAudit) GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.timestamp
@@ -207,7 +207,7 @@ func (m *SuppressionEntryAudit) Serialize(writer i878a80d2330e89d26896388a3f487e
     }
     return nil
 }
-// SetActorId sets the actorId property value. The actor ID associated with this ion entry audit.
+// SetActorId sets the actorId property value. Identifier of the user or system actor responsible for the change.
 func (m *SuppressionEntryAudit) SetActorId(value *string)() {
     m.actorId = value
 }
@@ -215,27 +215,27 @@ func (m *SuppressionEntryAudit) SetActorId(value *string)() {
 func (m *SuppressionEntryAudit) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The unique ID for this ion entry audit.
+// SetId sets the id property value. Unique identifier for this suppression audit record.
 func (m *SuppressionEntryAudit) SetId(value *string)() {
     m.id = value
 }
-// SetReason sets the reason property value. The human-readable reason explaining this ion entry audit.
+// SetReason sets the reason property value. Human-readable reason recorded for the suppression change.
 func (m *SuppressionEntryAudit) SetReason(value *string)() {
     m.reason = value
 }
-// SetSafeMetadata sets the safeMetadata property value. The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+// SetSafeMetadata sets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
 func (m *SuppressionEntryAudit) SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable)() {
     m.safeMetadata = value
 }
-// SetSource sets the source property value. The source value for this ion entry audit.
+// SetSource sets the source property value. System or workflow that initiated the change.
 func (m *SuppressionEntryAudit) SetSource(value *string)() {
     m.source = value
 }
-// SetStatus sets the status property value. The current status for this ion entry audit.
+// SetStatus sets the status property value. Suppression status established by this change, such as active or released.
 func (m *SuppressionEntryAudit) SetStatus(value *string)() {
     m.status = value
 }
-// SetTimestamp sets the timestamp property value. The date and time for the timestamp value on this ion entry audit.
+// SetTimestamp sets the timestamp property value. UTC timestamp when the suppression change occurred.
 func (m *SuppressionEntryAudit) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.timestamp = value
 }

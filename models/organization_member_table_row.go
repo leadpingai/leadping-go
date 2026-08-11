@@ -8,23 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationMemberTableRow aPI DTO containing organization user data used by Leadping API contracts.
+// OrganizationMemberTableRow describes organization user data used in Leadping API requests and responses.
 type OrganizationMemberTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this organization user.
+    // UTC timestamp for created at on this organization user.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique ID for this organization user.
+    // Unique Leadping identifier for this organization user.
     id *string
     // The billing status for this user's organization license.
     licenseBillingStatus *string
     // The renewal date used for this user's license proration.
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The role value for this organization user.
+    // Role for this organization user.
     role *OrganizationMemberRole
-    // The ID and name for this user.
+    // Identifier and display name of the related user.
     user IdNamePairable
-    // The user email value for this organization user.
+    // User email for this organization user.
     userEmail *string
 }
 // NewOrganizationMemberTableRow instantiates a new OrganizationMemberTableRow and sets the default values.
@@ -44,7 +44,7 @@ func CreateOrganizationMemberTableRowFromDiscriminatorValue(parseNode i878a80d23
 func (m *OrganizationMemberTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this organization user.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this organization user.
 // returns a *Time when successful
 func (m *OrganizationMemberTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -125,7 +125,7 @@ func (m *OrganizationMemberTableRow) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this organization user.
+// GetId gets the id property value. Unique Leadping identifier for this organization user.
 // returns a *string when successful
 func (m *OrganizationMemberTableRow) GetId()(*string) {
     return m.id
@@ -140,17 +140,17 @@ func (m *OrganizationMemberTableRow) GetLicenseBillingStatus()(*string) {
 func (m *OrganizationMemberTableRow) GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.licenseRenewalDate
 }
-// GetRole gets the role property value. The role value for this organization user.
+// GetRole gets the role property value. Role for this organization user.
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationMemberTableRow) GetRole()(*OrganizationMemberRole) {
     return m.role
 }
-// GetUser gets the user property value. The ID and name for this user.
+// GetUser gets the user property value. Identifier and display name of the related user.
 // returns a IdNamePairable when successful
 func (m *OrganizationMemberTableRow) GetUser()(IdNamePairable) {
     return m.user
 }
-// GetUserEmail gets the userEmail property value. The user email value for this organization user.
+// GetUserEmail gets the userEmail property value. User email for this organization user.
 // returns a *string when successful
 func (m *OrganizationMemberTableRow) GetUserEmail()(*string) {
     return m.userEmail
@@ -212,11 +212,11 @@ func (m *OrganizationMemberTableRow) Serialize(writer i878a80d2330e89d26896388a3
 func (m *OrganizationMemberTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this organization user.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this organization user.
 func (m *OrganizationMemberTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetId sets the id property value. The unique ID for this organization user.
+// SetId sets the id property value. Unique Leadping identifier for this organization user.
 func (m *OrganizationMemberTableRow) SetId(value *string)() {
     m.id = value
 }
@@ -228,15 +228,15 @@ func (m *OrganizationMemberTableRow) SetLicenseBillingStatus(value *string)() {
 func (m *OrganizationMemberTableRow) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.licenseRenewalDate = value
 }
-// SetRole sets the role property value. The role value for this organization user.
+// SetRole sets the role property value. Role for this organization user.
 func (m *OrganizationMemberTableRow) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }
-// SetUser sets the user property value. The ID and name for this user.
+// SetUser sets the user property value. Identifier and display name of the related user.
 func (m *OrganizationMemberTableRow) SetUser(value IdNamePairable)() {
     m.user = value
 }
-// SetUserEmail sets the userEmail property value. The user email value for this organization user.
+// SetUserEmail sets the userEmail property value. User email for this organization user.
 func (m *OrganizationMemberTableRow) SetUserEmail(value *string)() {
     m.userEmail = value
 }

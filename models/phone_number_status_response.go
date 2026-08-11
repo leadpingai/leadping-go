@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberStatusResponse response schema for the Leadping API phone number warmup status returned to authenticated clients.
+// PhoneNumberStatusResponse describes a phone number's current warmup stage, limits, progress, and readiness for production traffic.
 type PhoneNumberStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

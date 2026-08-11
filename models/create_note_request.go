@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CreateNoteRequest request payload for create note.
+// CreateNoteRequest defines the input used for create note.
 type CreateNoteRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The text value for this note.
+    // Plain-text note content to add to the conversation timeline.
     text *string
 }
 // NewCreateNoteRequest instantiates a new CreateNoteRequest and sets the default values.
@@ -47,7 +47,7 @@ func (m *CreateNoteRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetText gets the text property value. The text value for this note.
+// GetText gets the text property value. Plain-text note content to add to the conversation timeline.
 // returns a *string when successful
 func (m *CreateNoteRequest) GetText()(*string) {
     return m.text
@@ -72,7 +72,7 @@ func (m *CreateNoteRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 func (m *CreateNoteRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetText sets the text property value. The text value for this note.
+// SetText sets the text property value. Plain-text note content to add to the conversation timeline.
 func (m *CreateNoteRequest) SetText(value *string)() {
     m.text = value
 }

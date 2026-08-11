@@ -36,7 +36,7 @@ type UserDataExportResponse struct {
     message *string
     // Date and time when the user data export was requested.
     requestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // File size in bytes.
+    // Size of the generated export archive in bytes, when the export is ready.
     sizeBytes *int64
     // Date and time when the user data export started.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -282,7 +282,7 @@ func (m *UserDataExportResponse) GetMessage()(*string) {
 func (m *UserDataExportResponse) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.requestedAt
 }
-// GetSizeBytes gets the sizeBytes property value. File size in bytes.
+// GetSizeBytes gets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
 // returns a *int64 when successful
 func (m *UserDataExportResponse) GetSizeBytes()(*int64) {
     return m.sizeBytes
@@ -456,7 +456,7 @@ func (m *UserDataExportResponse) SetMessage(value *string)() {
 func (m *UserDataExportResponse) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.requestedAt = value
 }
-// SetSizeBytes sets the sizeBytes property value. File size in bytes.
+// SetSizeBytes sets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
 func (m *UserDataExportResponse) SetSizeBytes(value *int64)() {
     m.sizeBytes = value
 }

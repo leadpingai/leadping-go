@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserNotificationPreferences aPI DTO containing user notification preferences data used by Leadping API contracts.
+// UserNotificationPreferences describes user notification preferences data used in Leadping API requests and responses.
 type UserNotificationPreferences struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

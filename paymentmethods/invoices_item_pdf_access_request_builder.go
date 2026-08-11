@@ -15,6 +15,7 @@ type InvoicesItemPdfAccessRequestBuilder struct {
 }
 // InvoicesItemPdfAccessRequestBuilderGetQueryParameters creates a short-lived, secure URL that lets the current organization view or download a private Stripe invoice PDF without exposing a permanent file link.
 type InvoicesItemPdfAccessRequestBuilderGetQueryParameters struct {
+    // Whether the secure URL should download the PDF instead of displaying it inline.
     Download *bool "uriparametername:\"download\""
 }
 // NewInvoicesItemPdfAccessRequestBuilderInternal instantiates a new InvoicesItemPdfAccessRequestBuilder and sets the default values.

@@ -14,25 +14,25 @@ type OrganizationBillingState struct {
     additionalData map[string]any
     // Date and time when the scheduled billing plan change takes effect.
     billingPlanChangeEffectiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Gets or sets when the active subscription is scheduled to cancel.
+    // UTC timestamp when the active subscription is scheduled to cancel.
     cancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Gets or sets the customer-safe payment recovery state for the organization.
+    // Customer-safe payment recovery state for the organization.
     dunning OrganizationBillingState_dunningable
     // Indicates whether the organization has a saved default payment method.
     hasPaymentMethod *bool
     // Indicates whether the organization has a Stripe customer account.
     hasStripeCustomer *bool
-    // Gets or sets when Leadping last processed a payment-method event for the organization.
+    // UTC timestamp when Leadping last processed a payment-method event for the organization.
     lastPaymentMethodEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Gets or sets when Leadping last processed a subscription event for the organization.
+    // UTC timestamp when Leadping last processed a subscription event for the organization.
     lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Gets or sets the number of user licenses currently assigned by the organization.
+    // Number of user licenses currently assigned to organization members.
     organizationMemberAssignedQuantity *int64
-    // Gets or sets the number of user licenses included in the organization subscription.
+    // Number of user licenses included in the organization's subscription plan.
     organizationMemberQuantity *int64
     // Defines the supported Billing Plan values.
     pendingBillingPlan *OrganizationBillingState_pendingBillingPlan
-    // Gets or sets the number of phone numbers included in the organization subscription.
+    // Number of phone numbers included in the organization's subscription plan.
     phoneNumberQuantity *int64
     // Start of the current plan billing period.
     planPeriodStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -61,12 +61,12 @@ func (m *OrganizationBillingState) GetAdditionalData()(map[string]any) {
 func (m *OrganizationBillingState) GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.billingPlanChangeEffectiveAt
 }
-// GetCancelAt gets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
+// GetCancelAt gets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
 // returns a *Time when successful
 func (m *OrganizationBillingState) GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.cancelAt
 }
-// GetDunning gets the dunning property value. Gets or sets the customer-safe payment recovery state for the organization.
+// GetDunning gets the dunning property value. Customer-safe payment recovery state for the organization.
 // returns a OrganizationBillingState_dunningable when successful
 func (m *OrganizationBillingState) GetDunning()(OrganizationBillingState_dunningable) {
     return m.dunning
@@ -217,22 +217,22 @@ func (m *OrganizationBillingState) GetHasPaymentMethod()(*bool) {
 func (m *OrganizationBillingState) GetHasStripeCustomer()(*bool) {
     return m.hasStripeCustomer
 }
-// GetLastPaymentMethodEventAt gets the lastPaymentMethodEventAt property value. Gets or sets when Leadping last processed a payment-method event for the organization.
+// GetLastPaymentMethodEventAt gets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
 // returns a *Time when successful
 func (m *OrganizationBillingState) GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastPaymentMethodEventAt
 }
-// GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. Gets or sets when Leadping last processed a subscription event for the organization.
+// GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
 // returns a *Time when successful
 func (m *OrganizationBillingState) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastSubscriptionEventAt
 }
-// GetOrganizationMemberAssignedQuantity gets the organizationMemberAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the organization.
+// GetOrganizationMemberAssignedQuantity gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
 // returns a *int64 when successful
 func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity()(*int64) {
     return m.organizationMemberAssignedQuantity
 }
-// GetOrganizationMemberQuantity gets the organizationMemberQuantity property value. Gets or sets the number of user licenses included in the organization subscription.
+// GetOrganizationMemberQuantity gets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
 // returns a *int64 when successful
 func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(*int64) {
     return m.organizationMemberQuantity
@@ -242,7 +242,7 @@ func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(*int64) {
 func (m *OrganizationBillingState) GetPendingBillingPlan()(*OrganizationBillingState_pendingBillingPlan) {
     return m.pendingBillingPlan
 }
-// GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the organization subscription.
+// GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
 // returns a *int64 when successful
 func (m *OrganizationBillingState) GetPhoneNumberQuantity()(*int64) {
     return m.phoneNumberQuantity
@@ -354,11 +354,11 @@ func (m *OrganizationBillingState) SetAdditionalData(value map[string]any)() {
 func (m *OrganizationBillingState) SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.billingPlanChangeEffectiveAt = value
 }
-// SetCancelAt sets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
+// SetCancelAt sets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
 func (m *OrganizationBillingState) SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.cancelAt = value
 }
-// SetDunning sets the dunning property value. Gets or sets the customer-safe payment recovery state for the organization.
+// SetDunning sets the dunning property value. Customer-safe payment recovery state for the organization.
 func (m *OrganizationBillingState) SetDunning(value OrganizationBillingState_dunningable)() {
     m.dunning = value
 }
@@ -370,19 +370,19 @@ func (m *OrganizationBillingState) SetHasPaymentMethod(value *bool)() {
 func (m *OrganizationBillingState) SetHasStripeCustomer(value *bool)() {
     m.hasStripeCustomer = value
 }
-// SetLastPaymentMethodEventAt sets the lastPaymentMethodEventAt property value. Gets or sets when Leadping last processed a payment-method event for the organization.
+// SetLastPaymentMethodEventAt sets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
 func (m *OrganizationBillingState) SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastPaymentMethodEventAt = value
 }
-// SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. Gets or sets when Leadping last processed a subscription event for the organization.
+// SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
 func (m *OrganizationBillingState) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastSubscriptionEventAt = value
 }
-// SetOrganizationMemberAssignedQuantity sets the organizationMemberAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the organization.
+// SetOrganizationMemberAssignedQuantity sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
 func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *int64)() {
     m.organizationMemberAssignedQuantity = value
 }
-// SetOrganizationMemberQuantity sets the organizationMemberQuantity property value. Gets or sets the number of user licenses included in the organization subscription.
+// SetOrganizationMemberQuantity sets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
 func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64)() {
     m.organizationMemberQuantity = value
 }
@@ -390,7 +390,7 @@ func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64)()
 func (m *OrganizationBillingState) SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)() {
     m.pendingBillingPlan = value
 }
-// SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the organization subscription.
+// SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
 func (m *OrganizationBillingState) SetPhoneNumberQuantity(value *int64)() {
     m.phoneNumberQuantity = value
 }

@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UsageSummaryLine aPI DTO containing usage summary line data used by Leadping API contracts.
+// UsageSummaryLine describes usage summary line data used in Leadping API requests and responses.
 type UsageSummaryLine struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The billable unit value for this usage summary line.
+    // Billable unit for this usage summary line.
     billableUnit *BillableUnit
-    // The channel value for this usage summary line.
+    // Channel for this usage summary line.
     channel *UsageChannel
     // The monetary customer charge amount for this usage summary line.
     customerChargeAmount *float64
-    // The quantity value for this usage summary line.
+    // Quantity for this usage summary line.
     quantity *float64
     // The record count for this usage summary line.
     recordCount *int32
@@ -41,12 +41,12 @@ func CreateUsageSummaryLineFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 func (m *UsageSummaryLine) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillableUnit gets the billableUnit property value. The billable unit value for this usage summary line.
+// GetBillableUnit gets the billableUnit property value. Billable unit for this usage summary line.
 // returns a *BillableUnit when successful
 func (m *UsageSummaryLine) GetBillableUnit()(*BillableUnit) {
     return m.billableUnit
 }
-// GetChannel gets the channel property value. The channel value for this usage summary line.
+// GetChannel gets the channel property value. Channel for this usage summary line.
 // returns a *UsageChannel when successful
 func (m *UsageSummaryLine) GetChannel()(*UsageChannel) {
     return m.channel
@@ -122,7 +122,7 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
-// GetQuantity gets the quantity property value. The quantity value for this usage summary line.
+// GetQuantity gets the quantity property value. Quantity for this usage summary line.
 // returns a *float64 when successful
 func (m *UsageSummaryLine) GetQuantity()(*float64) {
     return m.quantity
@@ -190,11 +190,11 @@ func (m *UsageSummaryLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *UsageSummaryLine) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillableUnit sets the billableUnit property value. The billable unit value for this usage summary line.
+// SetBillableUnit sets the billableUnit property value. Billable unit for this usage summary line.
 func (m *UsageSummaryLine) SetBillableUnit(value *BillableUnit)() {
     m.billableUnit = value
 }
-// SetChannel sets the channel property value. The channel value for this usage summary line.
+// SetChannel sets the channel property value. Channel for this usage summary line.
 func (m *UsageSummaryLine) SetChannel(value *UsageChannel)() {
     m.channel = value
 }
@@ -202,7 +202,7 @@ func (m *UsageSummaryLine) SetChannel(value *UsageChannel)() {
 func (m *UsageSummaryLine) SetCustomerChargeAmount(value *float64)() {
     m.customerChargeAmount = value
 }
-// SetQuantity sets the quantity property value. The quantity value for this usage summary line.
+// SetQuantity sets the quantity property value. Quantity for this usage summary line.
 func (m *UsageSummaryLine) SetQuantity(value *float64)() {
     m.quantity = value
 }

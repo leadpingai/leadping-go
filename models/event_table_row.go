@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EventTableRow list item schema for Leadping API event timeline table row results shown in searchable tables.
+// EventTableRow summarizes event timeline data in paginated and searchable results.
 type EventTableRow struct {
     // Display name for the person or system that created this event timeline table row.
     actorDisplayName *string

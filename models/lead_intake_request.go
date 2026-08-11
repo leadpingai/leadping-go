@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadIntakeRequest request schema for the Leadping API lead intake request, including the fields clients can send.
+// LeadIntakeRequest defines the fields clients can send when working with lead intake.
 type LeadIntakeRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

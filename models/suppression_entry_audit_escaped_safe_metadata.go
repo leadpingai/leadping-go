@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SuppressionEntryAudit_safeMetadata the safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+// SuppressionEntryAudit_safeMetadata non-sensitive metadata that provides additional audit context.
 type SuppressionEntryAudit_safeMetadata struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

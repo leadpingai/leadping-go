@@ -16,7 +16,9 @@ type OrganizationsWithOrganizationItemRequestBuilder struct {
 }
 // OrganizationsWithOrganizationItemRequestBuilderPostQueryParameters lists event records for an organization with paging and filters so admins can review lead communication and automation events.
 type OrganizationsWithOrganizationItemRequestBuilderPostQueryParameters struct {
+    // Optional exclusive end timestamp for event occurrence.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
+    // Optional inclusive start timestamp for event occurrence.
     StartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"startAt\""
 }
 // NewOrganizationsWithOrganizationItemRequestBuilderInternal instantiates a new OrganizationsWithOrganizationItemRequestBuilder and sets the default values.

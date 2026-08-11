@@ -8,45 +8,45 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UsageLedgerTableRow aPI DTO containing usage ledger data used by Leadping API contracts.
+// UsageLedgerTableRow describes usage ledger data used in Leadping API requests and responses.
 type UsageLedgerTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The billable seconds value for this usage ledger.
+    // Billable seconds for this usage ledger.
     billableSeconds *int32
-    // The billable unit value for this usage ledger.
+    // Billable unit for this usage ledger.
     billableUnit *BillableUnit
-    // The channel value for this usage ledger.
+    // Channel for this usage ledger.
     channel *UsageChannel
-    // The date and time for the created at value on this usage ledger.
+    // UTC timestamp for created at on this usage ledger.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The monetary customer charge amount for this usage ledger.
     customerChargeAmount *float64
     // The human-readable description of this usage ledger.
     description *string
-    // The duration seconds value for this usage ledger.
+    // Duration seconds for this usage ledger.
     durationSeconds *int32
-    // The unique ID for this usage ledger.
+    // Unique Leadping identifier for this usage ledger.
     id *string
     // Whether this usage ledger is billable.
     isBillable *bool
-    // The ID and name for this lead.
+    // Identifier and display name of the related lead.
     lead UsageLedgerTableRow_leadable
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization UsageLedgerTableRow_organizationable
     // The phone number associated with this usage ledger.
     phoneNumber *string
     // The phone number ID associated with this usage ledger.
     phoneNumberId *string
-    // The quantity value for this usage ledger.
+    // Quantity for this usage ledger.
     quantity *float64
-    // The SMS segments value for this usage ledger.
+    // SMS segments for this usage ledger.
     smsSegments *int32
     // The current status for this usage ledger.
     status *UsageStatus
-    // The unit price value for this usage ledger.
+    // Unit price for this usage ledger.
     unitPrice *float64
-    // The ID and name for this user.
+    // Identifier and display name of the related user.
     user UsageLedgerTableRow_userable
 }
 // NewUsageLedgerTableRow instantiates a new UsageLedgerTableRow and sets the default values.
@@ -66,22 +66,22 @@ func CreateUsageLedgerTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *UsageLedgerTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillableSeconds gets the billableSeconds property value. The billable seconds value for this usage ledger.
+// GetBillableSeconds gets the billableSeconds property value. Billable seconds for this usage ledger.
 // returns a *int32 when successful
 func (m *UsageLedgerTableRow) GetBillableSeconds()(*int32) {
     return m.billableSeconds
 }
-// GetBillableUnit gets the billableUnit property value. The billable unit value for this usage ledger.
+// GetBillableUnit gets the billableUnit property value. Billable unit for this usage ledger.
 // returns a *BillableUnit when successful
 func (m *UsageLedgerTableRow) GetBillableUnit()(*BillableUnit) {
     return m.billableUnit
 }
-// GetChannel gets the channel property value. The channel value for this usage ledger.
+// GetChannel gets the channel property value. Channel for this usage ledger.
 // returns a *UsageChannel when successful
 func (m *UsageLedgerTableRow) GetChannel()(*UsageChannel) {
     return m.channel
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this usage ledger.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this usage ledger.
 // returns a *Time when successful
 func (m *UsageLedgerTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -96,7 +96,7 @@ func (m *UsageLedgerTableRow) GetCustomerChargeAmount()(*float64) {
 func (m *UsageLedgerTableRow) GetDescription()(*string) {
     return m.description
 }
-// GetDurationSeconds gets the durationSeconds property value. The duration seconds value for this usage ledger.
+// GetDurationSeconds gets the durationSeconds property value. Duration seconds for this usage ledger.
 // returns a *int32 when successful
 func (m *UsageLedgerTableRow) GetDurationSeconds()(*int32) {
     return m.durationSeconds
@@ -287,7 +287,7 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this usage ledger.
+// GetId gets the id property value. Unique Leadping identifier for this usage ledger.
 // returns a *string when successful
 func (m *UsageLedgerTableRow) GetId()(*string) {
     return m.id
@@ -297,12 +297,12 @@ func (m *UsageLedgerTableRow) GetId()(*string) {
 func (m *UsageLedgerTableRow) GetIsBillable()(*bool) {
     return m.isBillable
 }
-// GetLead gets the lead property value. The ID and name for this lead.
+// GetLead gets the lead property value. Identifier and display name of the related lead.
 // returns a UsageLedgerTableRow_leadable when successful
 func (m *UsageLedgerTableRow) GetLead()(UsageLedgerTableRow_leadable) {
     return m.lead
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a UsageLedgerTableRow_organizationable when successful
 func (m *UsageLedgerTableRow) GetOrganization()(UsageLedgerTableRow_organizationable) {
     return m.organization
@@ -317,12 +317,12 @@ func (m *UsageLedgerTableRow) GetPhoneNumber()(*string) {
 func (m *UsageLedgerTableRow) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
-// GetQuantity gets the quantity property value. The quantity value for this usage ledger.
+// GetQuantity gets the quantity property value. Quantity for this usage ledger.
 // returns a *float64 when successful
 func (m *UsageLedgerTableRow) GetQuantity()(*float64) {
     return m.quantity
 }
-// GetSmsSegments gets the smsSegments property value. The SMS segments value for this usage ledger.
+// GetSmsSegments gets the smsSegments property value. SMS segments for this usage ledger.
 // returns a *int32 when successful
 func (m *UsageLedgerTableRow) GetSmsSegments()(*int32) {
     return m.smsSegments
@@ -332,12 +332,12 @@ func (m *UsageLedgerTableRow) GetSmsSegments()(*int32) {
 func (m *UsageLedgerTableRow) GetStatus()(*UsageStatus) {
     return m.status
 }
-// GetUnitPrice gets the unitPrice property value. The unit price value for this usage ledger.
+// GetUnitPrice gets the unitPrice property value. Unit price for this usage ledger.
 // returns a *float64 when successful
 func (m *UsageLedgerTableRow) GetUnitPrice()(*float64) {
     return m.unitPrice
 }
-// GetUser gets the user property value. The ID and name for this user.
+// GetUser gets the user property value. Identifier and display name of the related user.
 // returns a UsageLedgerTableRow_userable when successful
 func (m *UsageLedgerTableRow) GetUser()(UsageLedgerTableRow_userable) {
     return m.user
@@ -467,19 +467,19 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *UsageLedgerTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillableSeconds sets the billableSeconds property value. The billable seconds value for this usage ledger.
+// SetBillableSeconds sets the billableSeconds property value. Billable seconds for this usage ledger.
 func (m *UsageLedgerTableRow) SetBillableSeconds(value *int32)() {
     m.billableSeconds = value
 }
-// SetBillableUnit sets the billableUnit property value. The billable unit value for this usage ledger.
+// SetBillableUnit sets the billableUnit property value. Billable unit for this usage ledger.
 func (m *UsageLedgerTableRow) SetBillableUnit(value *BillableUnit)() {
     m.billableUnit = value
 }
-// SetChannel sets the channel property value. The channel value for this usage ledger.
+// SetChannel sets the channel property value. Channel for this usage ledger.
 func (m *UsageLedgerTableRow) SetChannel(value *UsageChannel)() {
     m.channel = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this usage ledger.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this usage ledger.
 func (m *UsageLedgerTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -491,11 +491,11 @@ func (m *UsageLedgerTableRow) SetCustomerChargeAmount(value *float64)() {
 func (m *UsageLedgerTableRow) SetDescription(value *string)() {
     m.description = value
 }
-// SetDurationSeconds sets the durationSeconds property value. The duration seconds value for this usage ledger.
+// SetDurationSeconds sets the durationSeconds property value. Duration seconds for this usage ledger.
 func (m *UsageLedgerTableRow) SetDurationSeconds(value *int32)() {
     m.durationSeconds = value
 }
-// SetId sets the id property value. The unique ID for this usage ledger.
+// SetId sets the id property value. Unique Leadping identifier for this usage ledger.
 func (m *UsageLedgerTableRow) SetId(value *string)() {
     m.id = value
 }
@@ -503,11 +503,11 @@ func (m *UsageLedgerTableRow) SetId(value *string)() {
 func (m *UsageLedgerTableRow) SetIsBillable(value *bool)() {
     m.isBillable = value
 }
-// SetLead sets the lead property value. The ID and name for this lead.
+// SetLead sets the lead property value. Identifier and display name of the related lead.
 func (m *UsageLedgerTableRow) SetLead(value UsageLedgerTableRow_leadable)() {
     m.lead = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *UsageLedgerTableRow) SetOrganization(value UsageLedgerTableRow_organizationable)() {
     m.organization = value
 }
@@ -519,11 +519,11 @@ func (m *UsageLedgerTableRow) SetPhoneNumber(value *string)() {
 func (m *UsageLedgerTableRow) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
-// SetQuantity sets the quantity property value. The quantity value for this usage ledger.
+// SetQuantity sets the quantity property value. Quantity for this usage ledger.
 func (m *UsageLedgerTableRow) SetQuantity(value *float64)() {
     m.quantity = value
 }
-// SetSmsSegments sets the smsSegments property value. The SMS segments value for this usage ledger.
+// SetSmsSegments sets the smsSegments property value. SMS segments for this usage ledger.
 func (m *UsageLedgerTableRow) SetSmsSegments(value *int32)() {
     m.smsSegments = value
 }
@@ -531,11 +531,11 @@ func (m *UsageLedgerTableRow) SetSmsSegments(value *int32)() {
 func (m *UsageLedgerTableRow) SetStatus(value *UsageStatus)() {
     m.status = value
 }
-// SetUnitPrice sets the unitPrice property value. The unit price value for this usage ledger.
+// SetUnitPrice sets the unitPrice property value. Unit price for this usage ledger.
 func (m *UsageLedgerTableRow) SetUnitPrice(value *float64)() {
     m.unitPrice = value
 }
-// SetUser sets the user property value. The ID and name for this user.
+// SetUser sets the user property value. Identifier and display name of the related user.
 func (m *UsageLedgerTableRow) SetUser(value UsageLedgerTableRow_userable)() {
     m.user = value
 }

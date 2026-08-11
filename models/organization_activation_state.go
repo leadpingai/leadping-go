@@ -8,9 +8,9 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationActivationState aPI DTO containing organization activation state data used by Leadping API contracts.
+// OrganizationActivationState describes organization activation state data used in Leadping API requests and responses.
 type OrganizationActivationState struct {
-    // The date and time for the activated at value on this organization activation state.
+    // UTC timestamp for activated at on this organization activation state.
     activatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -18,15 +18,15 @@ type OrganizationActivationState struct {
     availableDomainCount *int32
     // The current billing subscription status for this organization activation state.
     billingSubscriptionStatus *ActivationSubscriptionStatus
-    // The compliance notes value for this organization activation state.
+    // Compliance notes for this organization activation state.
     complianceNotes *string
     // Whether controlled launch applies to this organization activation state.
     controlledLaunch *bool
-    // The date and time for the created at value on this organization activation state.
+    // UTC timestamp for created at on this organization activation state.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current customer facing status for this organization activation state.
     customerFacingStatus *string
-    // The date and time for the domain approved at value on this organization activation state.
+    // UTC timestamp for domain approved at on this organization activation state.
     domainApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The domain options included with this organization activation state.
     domainOptions []ActivationDomainOptionable
@@ -42,57 +42,57 @@ type OrganizationActivationState struct {
     domainSearchUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The events included with this organization activation state.
     events []ActivationTimelineEventable
-    // The date and time for the failed at value on this organization activation state.
+    // UTC timestamp for failed at on this organization activation state.
     failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The industry value for this organization activation state.
+    // Industry for this organization activation state.
     industry *string
-    // The date and time for the launch approved at value on this organization activation state.
+    // UTC timestamp for launch approved at on this organization activation state.
     launchApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the launch review requested at value on this organization activation state.
+    // UTC timestamp for launch review requested at on this organization activation state.
     launchReviewRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current launch review status for this organization activation state.
     launchReviewStatus *ActivationLaunchReviewStatus
-    // The offer value for this organization activation state.
+    // Offer for this organization activation state.
     offer *string
     // The current onboarding status for this organization activation state.
     onboardingStatus *ActivationOnboardingStatus
-    // The organization description value for this organization activation state.
+    // Organization description for this organization activation state.
     organizationDescription *string
-    // The date and time for the payment method confirmed at value on this organization activation state.
+    // UTC timestamp for payment method confirmed at on this organization activation state.
     paymentMethodConfirmedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current payment status for this organization activation state.
     paymentStatus *ActivationPaymentStatus
-    // The selected domain value for this organization activation state.
+    // Selected domain for this organization activation state.
     selectedDomain *string
-    // The service area value for this organization activation state.
+    // Service area for this organization activation state.
     serviceArea *string
     // The current status for this organization activation state.
     status *CustomerActivationStatus
-    // The date and time for the subscription active at value on this organization activation state.
+    // UTC timestamp for subscription active at on this organization activation state.
     subscriptionActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the subscription pending at value on this organization activation state.
+    // UTC timestamp for subscription pending at on this organization activation state.
     subscriptionPendingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The target audience value for this organization activation state.
+    // Target audience for this organization activation state.
     targetAudience *string
-    // The date and time for the telephony partially provisioned at value on this organization activation state.
+    // UTC timestamp for telephony partially provisioned at on this organization activation state.
     telephonyPartiallyProvisionedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the telephony provisioning started at value on this organization activation state.
+    // UTC timestamp for telephony provisioning started at on this organization activation state.
     telephonyProvisioningStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the telephony ready at value on this organization activation state.
+    // UTC timestamp for telephony ready at on this organization activation state.
     telephonyReadyAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current telephony status for this organization activation state.
     telephonyStatus *ActivationTelephonyStatus
     // Identifier of the first-class 10DLC application entity for this organization.
     tenDlcApplicationId *string
-    // The 10DLC draft value for this organization activation state.
+    // 10DLC draft for this organization activation state.
     tenDlcDraft OrganizationActivationState_tenDlcDraftable
     // The current 10DLC status for this organization activation state.
     tenDlcStatus *TenDlcApplicationStatus
-    // The date and time for the updated at value on this organization activation state.
+    // UTC timestamp for updated at on this organization activation state.
     updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The latest persisted website generation progress message.
     websiteGenerationResult *string
-    // The website needs value for this organization activation state.
+    // Website needs for this organization activation state.
     websiteNeeds *string
     // The current website status for this organization activation state.
     websiteStatus *WebsiteLifecycleStatus
@@ -111,7 +111,7 @@ func NewOrganizationActivationState()(*OrganizationActivationState) {
 func CreateOrganizationActivationStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewOrganizationActivationState(), nil
 }
-// GetActivatedAt gets the activatedAt property value. The date and time for the activated at value on this organization activation state.
+// GetActivatedAt gets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.activatedAt
@@ -131,7 +131,7 @@ func (m *OrganizationActivationState) GetAvailableDomainCount()(*int32) {
 func (m *OrganizationActivationState) GetBillingSubscriptionStatus()(*ActivationSubscriptionStatus) {
     return m.billingSubscriptionStatus
 }
-// GetComplianceNotes gets the complianceNotes property value. The compliance notes value for this organization activation state.
+// GetComplianceNotes gets the complianceNotes property value. Compliance notes for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetComplianceNotes()(*string) {
     return m.complianceNotes
@@ -141,7 +141,7 @@ func (m *OrganizationActivationState) GetComplianceNotes()(*string) {
 func (m *OrganizationActivationState) GetControlledLaunch()(*bool) {
     return m.controlledLaunch
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this organization activation state.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -151,7 +151,7 @@ func (m *OrganizationActivationState) GetCreatedAt()(*i336074805fc853987abe6f7fe
 func (m *OrganizationActivationState) GetCustomerFacingStatus()(*string) {
     return m.customerFacingStatus
 }
-// GetDomainApprovedAt gets the domainApprovedAt property value. The date and time for the domain approved at value on this organization activation state.
+// GetDomainApprovedAt gets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetDomainApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.domainApprovedAt
@@ -191,7 +191,7 @@ func (m *OrganizationActivationState) GetDomainSearchUpdatedAt()(*i336074805fc85
 func (m *OrganizationActivationState) GetEvents()([]ActivationTimelineEventable) {
     return m.events
 }
-// GetFailedAt gets the failedAt property value. The date and time for the failed at value on this organization activation state.
+// GetFailedAt gets the failedAt property value. UTC timestamp for failed at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.failedAt
@@ -644,17 +644,17 @@ func (m *OrganizationActivationState) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetIndustry gets the industry property value. The industry value for this organization activation state.
+// GetIndustry gets the industry property value. Industry for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetIndustry()(*string) {
     return m.industry
 }
-// GetLaunchApprovedAt gets the launchApprovedAt property value. The date and time for the launch approved at value on this organization activation state.
+// GetLaunchApprovedAt gets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetLaunchApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.launchApprovedAt
 }
-// GetLaunchReviewRequestedAt gets the launchReviewRequestedAt property value. The date and time for the launch review requested at value on this organization activation state.
+// GetLaunchReviewRequestedAt gets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetLaunchReviewRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.launchReviewRequestedAt
@@ -664,7 +664,7 @@ func (m *OrganizationActivationState) GetLaunchReviewRequestedAt()(*i336074805fc
 func (m *OrganizationActivationState) GetLaunchReviewStatus()(*ActivationLaunchReviewStatus) {
     return m.launchReviewStatus
 }
-// GetOffer gets the offer property value. The offer value for this organization activation state.
+// GetOffer gets the offer property value. Offer for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetOffer()(*string) {
     return m.offer
@@ -674,12 +674,12 @@ func (m *OrganizationActivationState) GetOffer()(*string) {
 func (m *OrganizationActivationState) GetOnboardingStatus()(*ActivationOnboardingStatus) {
     return m.onboardingStatus
 }
-// GetOrganizationDescription gets the organizationDescription property value. The organization description value for this organization activation state.
+// GetOrganizationDescription gets the organizationDescription property value. Organization description for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetOrganizationDescription()(*string) {
     return m.organizationDescription
 }
-// GetPaymentMethodConfirmedAt gets the paymentMethodConfirmedAt property value. The date and time for the payment method confirmed at value on this organization activation state.
+// GetPaymentMethodConfirmedAt gets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetPaymentMethodConfirmedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.paymentMethodConfirmedAt
@@ -689,12 +689,12 @@ func (m *OrganizationActivationState) GetPaymentMethodConfirmedAt()(*i336074805f
 func (m *OrganizationActivationState) GetPaymentStatus()(*ActivationPaymentStatus) {
     return m.paymentStatus
 }
-// GetSelectedDomain gets the selectedDomain property value. The selected domain value for this organization activation state.
+// GetSelectedDomain gets the selectedDomain property value. Selected domain for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetSelectedDomain()(*string) {
     return m.selectedDomain
 }
-// GetServiceArea gets the serviceArea property value. The service area value for this organization activation state.
+// GetServiceArea gets the serviceArea property value. Service area for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetServiceArea()(*string) {
     return m.serviceArea
@@ -704,32 +704,32 @@ func (m *OrganizationActivationState) GetServiceArea()(*string) {
 func (m *OrganizationActivationState) GetStatus()(*CustomerActivationStatus) {
     return m.status
 }
-// GetSubscriptionActiveAt gets the subscriptionActiveAt property value. The date and time for the subscription active at value on this organization activation state.
+// GetSubscriptionActiveAt gets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetSubscriptionActiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.subscriptionActiveAt
 }
-// GetSubscriptionPendingAt gets the subscriptionPendingAt property value. The date and time for the subscription pending at value on this organization activation state.
+// GetSubscriptionPendingAt gets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetSubscriptionPendingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.subscriptionPendingAt
 }
-// GetTargetAudience gets the targetAudience property value. The target audience value for this organization activation state.
+// GetTargetAudience gets the targetAudience property value. Target audience for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetTargetAudience()(*string) {
     return m.targetAudience
 }
-// GetTelephonyPartiallyProvisionedAt gets the telephonyPartiallyProvisionedAt property value. The date and time for the telephony partially provisioned at value on this organization activation state.
+// GetTelephonyPartiallyProvisionedAt gets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetTelephonyPartiallyProvisionedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.telephonyPartiallyProvisionedAt
 }
-// GetTelephonyProvisioningStartedAt gets the telephonyProvisioningStartedAt property value. The date and time for the telephony provisioning started at value on this organization activation state.
+// GetTelephonyProvisioningStartedAt gets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetTelephonyProvisioningStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.telephonyProvisioningStartedAt
 }
-// GetTelephonyReadyAt gets the telephonyReadyAt property value. The date and time for the telephony ready at value on this organization activation state.
+// GetTelephonyReadyAt gets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetTelephonyReadyAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.telephonyReadyAt
@@ -744,7 +744,7 @@ func (m *OrganizationActivationState) GetTelephonyStatus()(*ActivationTelephonyS
 func (m *OrganizationActivationState) GetTenDlcApplicationId()(*string) {
     return m.tenDlcApplicationId
 }
-// GetTenDlcDraft gets the tenDlcDraft property value. The 10DLC draft value for this organization activation state.
+// GetTenDlcDraft gets the tenDlcDraft property value. 10DLC draft for this organization activation state.
 // returns a OrganizationActivationState_tenDlcDraftable when successful
 func (m *OrganizationActivationState) GetTenDlcDraft()(OrganizationActivationState_tenDlcDraftable) {
     return m.tenDlcDraft
@@ -754,7 +754,7 @@ func (m *OrganizationActivationState) GetTenDlcDraft()(OrganizationActivationSta
 func (m *OrganizationActivationState) GetTenDlcStatus()(*TenDlcApplicationStatus) {
     return m.tenDlcStatus
 }
-// GetUpdatedAt gets the updatedAt property value. The date and time for the updated at value on this organization activation state.
+// GetUpdatedAt gets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
 // returns a *Time when successful
 func (m *OrganizationActivationState) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.updatedAt
@@ -764,7 +764,7 @@ func (m *OrganizationActivationState) GetUpdatedAt()(*i336074805fc853987abe6f7fe
 func (m *OrganizationActivationState) GetWebsiteGenerationResult()(*string) {
     return m.websiteGenerationResult
 }
-// GetWebsiteNeeds gets the websiteNeeds property value. The website needs value for this organization activation state.
+// GetWebsiteNeeds gets the websiteNeeds property value. Website needs for this organization activation state.
 // returns a *string when successful
 func (m *OrganizationActivationState) GetWebsiteNeeds()(*string) {
     return m.websiteNeeds
@@ -1068,7 +1068,7 @@ func (m *OrganizationActivationState) Serialize(writer i878a80d2330e89d26896388a
     }
     return nil
 }
-// SetActivatedAt sets the activatedAt property value. The date and time for the activated at value on this organization activation state.
+// SetActivatedAt sets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
 func (m *OrganizationActivationState) SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.activatedAt = value
 }
@@ -1084,7 +1084,7 @@ func (m *OrganizationActivationState) SetAvailableDomainCount(value *int32)() {
 func (m *OrganizationActivationState) SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)() {
     m.billingSubscriptionStatus = value
 }
-// SetComplianceNotes sets the complianceNotes property value. The compliance notes value for this organization activation state.
+// SetComplianceNotes sets the complianceNotes property value. Compliance notes for this organization activation state.
 func (m *OrganizationActivationState) SetComplianceNotes(value *string)() {
     m.complianceNotes = value
 }
@@ -1092,7 +1092,7 @@ func (m *OrganizationActivationState) SetComplianceNotes(value *string)() {
 func (m *OrganizationActivationState) SetControlledLaunch(value *bool)() {
     m.controlledLaunch = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this organization activation state.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this organization activation state.
 func (m *OrganizationActivationState) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -1100,7 +1100,7 @@ func (m *OrganizationActivationState) SetCreatedAt(value *i336074805fc853987abe6
 func (m *OrganizationActivationState) SetCustomerFacingStatus(value *string)() {
     m.customerFacingStatus = value
 }
-// SetDomainApprovedAt sets the domainApprovedAt property value. The date and time for the domain approved at value on this organization activation state.
+// SetDomainApprovedAt sets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
 func (m *OrganizationActivationState) SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.domainApprovedAt = value
 }
@@ -1132,19 +1132,19 @@ func (m *OrganizationActivationState) SetDomainSearchUpdatedAt(value *i336074805
 func (m *OrganizationActivationState) SetEvents(value []ActivationTimelineEventable)() {
     m.events = value
 }
-// SetFailedAt sets the failedAt property value. The date and time for the failed at value on this organization activation state.
+// SetFailedAt sets the failedAt property value. UTC timestamp for failed at on this organization activation state.
 func (m *OrganizationActivationState) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.failedAt = value
 }
-// SetIndustry sets the industry property value. The industry value for this organization activation state.
+// SetIndustry sets the industry property value. Industry for this organization activation state.
 func (m *OrganizationActivationState) SetIndustry(value *string)() {
     m.industry = value
 }
-// SetLaunchApprovedAt sets the launchApprovedAt property value. The date and time for the launch approved at value on this organization activation state.
+// SetLaunchApprovedAt sets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
 func (m *OrganizationActivationState) SetLaunchApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.launchApprovedAt = value
 }
-// SetLaunchReviewRequestedAt sets the launchReviewRequestedAt property value. The date and time for the launch review requested at value on this organization activation state.
+// SetLaunchReviewRequestedAt sets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
 func (m *OrganizationActivationState) SetLaunchReviewRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.launchReviewRequestedAt = value
 }
@@ -1152,7 +1152,7 @@ func (m *OrganizationActivationState) SetLaunchReviewRequestedAt(value *i3360748
 func (m *OrganizationActivationState) SetLaunchReviewStatus(value *ActivationLaunchReviewStatus)() {
     m.launchReviewStatus = value
 }
-// SetOffer sets the offer property value. The offer value for this organization activation state.
+// SetOffer sets the offer property value. Offer for this organization activation state.
 func (m *OrganizationActivationState) SetOffer(value *string)() {
     m.offer = value
 }
@@ -1160,11 +1160,11 @@ func (m *OrganizationActivationState) SetOffer(value *string)() {
 func (m *OrganizationActivationState) SetOnboardingStatus(value *ActivationOnboardingStatus)() {
     m.onboardingStatus = value
 }
-// SetOrganizationDescription sets the organizationDescription property value. The organization description value for this organization activation state.
+// SetOrganizationDescription sets the organizationDescription property value. Organization description for this organization activation state.
 func (m *OrganizationActivationState) SetOrganizationDescription(value *string)() {
     m.organizationDescription = value
 }
-// SetPaymentMethodConfirmedAt sets the paymentMethodConfirmedAt property value. The date and time for the payment method confirmed at value on this organization activation state.
+// SetPaymentMethodConfirmedAt sets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
 func (m *OrganizationActivationState) SetPaymentMethodConfirmedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.paymentMethodConfirmedAt = value
 }
@@ -1172,11 +1172,11 @@ func (m *OrganizationActivationState) SetPaymentMethodConfirmedAt(value *i336074
 func (m *OrganizationActivationState) SetPaymentStatus(value *ActivationPaymentStatus)() {
     m.paymentStatus = value
 }
-// SetSelectedDomain sets the selectedDomain property value. The selected domain value for this organization activation state.
+// SetSelectedDomain sets the selectedDomain property value. Selected domain for this organization activation state.
 func (m *OrganizationActivationState) SetSelectedDomain(value *string)() {
     m.selectedDomain = value
 }
-// SetServiceArea sets the serviceArea property value. The service area value for this organization activation state.
+// SetServiceArea sets the serviceArea property value. Service area for this organization activation state.
 func (m *OrganizationActivationState) SetServiceArea(value *string)() {
     m.serviceArea = value
 }
@@ -1184,27 +1184,27 @@ func (m *OrganizationActivationState) SetServiceArea(value *string)() {
 func (m *OrganizationActivationState) SetStatus(value *CustomerActivationStatus)() {
     m.status = value
 }
-// SetSubscriptionActiveAt sets the subscriptionActiveAt property value. The date and time for the subscription active at value on this organization activation state.
+// SetSubscriptionActiveAt sets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
 func (m *OrganizationActivationState) SetSubscriptionActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.subscriptionActiveAt = value
 }
-// SetSubscriptionPendingAt sets the subscriptionPendingAt property value. The date and time for the subscription pending at value on this organization activation state.
+// SetSubscriptionPendingAt sets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
 func (m *OrganizationActivationState) SetSubscriptionPendingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.subscriptionPendingAt = value
 }
-// SetTargetAudience sets the targetAudience property value. The target audience value for this organization activation state.
+// SetTargetAudience sets the targetAudience property value. Target audience for this organization activation state.
 func (m *OrganizationActivationState) SetTargetAudience(value *string)() {
     m.targetAudience = value
 }
-// SetTelephonyPartiallyProvisionedAt sets the telephonyPartiallyProvisionedAt property value. The date and time for the telephony partially provisioned at value on this organization activation state.
+// SetTelephonyPartiallyProvisionedAt sets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
 func (m *OrganizationActivationState) SetTelephonyPartiallyProvisionedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.telephonyPartiallyProvisionedAt = value
 }
-// SetTelephonyProvisioningStartedAt sets the telephonyProvisioningStartedAt property value. The date and time for the telephony provisioning started at value on this organization activation state.
+// SetTelephonyProvisioningStartedAt sets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
 func (m *OrganizationActivationState) SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.telephonyProvisioningStartedAt = value
 }
-// SetTelephonyReadyAt sets the telephonyReadyAt property value. The date and time for the telephony ready at value on this organization activation state.
+// SetTelephonyReadyAt sets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
 func (m *OrganizationActivationState) SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.telephonyReadyAt = value
 }
@@ -1216,7 +1216,7 @@ func (m *OrganizationActivationState) SetTelephonyStatus(value *ActivationTeleph
 func (m *OrganizationActivationState) SetTenDlcApplicationId(value *string)() {
     m.tenDlcApplicationId = value
 }
-// SetTenDlcDraft sets the tenDlcDraft property value. The 10DLC draft value for this organization activation state.
+// SetTenDlcDraft sets the tenDlcDraft property value. 10DLC draft for this organization activation state.
 func (m *OrganizationActivationState) SetTenDlcDraft(value OrganizationActivationState_tenDlcDraftable)() {
     m.tenDlcDraft = value
 }
@@ -1224,7 +1224,7 @@ func (m *OrganizationActivationState) SetTenDlcDraft(value OrganizationActivatio
 func (m *OrganizationActivationState) SetTenDlcStatus(value *TenDlcApplicationStatus)() {
     m.tenDlcStatus = value
 }
-// SetUpdatedAt sets the updatedAt property value. The date and time for the updated at value on this organization activation state.
+// SetUpdatedAt sets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
 func (m *OrganizationActivationState) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.updatedAt = value
 }
@@ -1232,7 +1232,7 @@ func (m *OrganizationActivationState) SetUpdatedAt(value *i336074805fc853987abe6
 func (m *OrganizationActivationState) SetWebsiteGenerationResult(value *string)() {
     m.websiteGenerationResult = value
 }
-// SetWebsiteNeeds sets the websiteNeeds property value. The website needs value for this organization activation state.
+// SetWebsiteNeeds sets the websiteNeeds property value. Website needs for this organization activation state.
 func (m *OrganizationActivationState) SetWebsiteNeeds(value *string)() {
     m.websiteNeeds = value
 }

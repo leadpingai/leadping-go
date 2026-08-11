@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ComplianceUpdateRequest request payload for compliance update.
+// ComplianceUpdateRequest defines the input used for compliance update.
 type ComplianceUpdateRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The compliance value for this compliance update.
+    // Compliance for this compliance update.
     compliance ComplianceUpdateRequest_complianceable
-    // The source value for this compliance update.
+    // Source for this compliance update.
     source *string
 }
 // NewComplianceUpdateRequest instantiates a new ComplianceUpdateRequest and sets the default values.
@@ -33,7 +33,7 @@ func CreateComplianceUpdateRequestFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *ComplianceUpdateRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCompliance gets the compliance property value. The compliance value for this compliance update.
+// GetCompliance gets the compliance property value. Compliance for this compliance update.
 // returns a ComplianceUpdateRequest_complianceable when successful
 func (m *ComplianceUpdateRequest) GetCompliance()(ComplianceUpdateRequest_complianceable) {
     return m.compliance
@@ -64,7 +64,7 @@ func (m *ComplianceUpdateRequest) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetSource gets the source property value. The source value for this compliance update.
+// GetSource gets the source property value. Source for this compliance update.
 // returns a *string when successful
 func (m *ComplianceUpdateRequest) GetSource()(*string) {
     return m.source
@@ -95,11 +95,11 @@ func (m *ComplianceUpdateRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *ComplianceUpdateRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCompliance sets the compliance property value. The compliance value for this compliance update.
+// SetCompliance sets the compliance property value. Compliance for this compliance update.
 func (m *ComplianceUpdateRequest) SetCompliance(value ComplianceUpdateRequest_complianceable)() {
     m.compliance = value
 }
-// SetSource sets the source property value. The source value for this compliance update.
+// SetSource sets the source property value. Source for this compliance update.
 func (m *ComplianceUpdateRequest) SetSource(value *string)() {
     m.source = value
 }

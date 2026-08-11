@@ -12,13 +12,13 @@ import (
 type TelephonyLoginResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The callback token value for this telephony login.
+    // Callback token for this telephony login.
     callbackToken *string
-    // The date and time for the expires at value on this telephony login.
+    // UTC timestamp for expires at on this telephony login.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The password value for this telephony login.
+    // Password for this telephony login.
     password *string
-    // The username value for this telephony login.
+    // Username for this telephony login.
     username *string
 }
 // NewTelephonyLoginResponse instantiates a new TelephonyLoginResponse and sets the default values.
@@ -38,12 +38,12 @@ func CreateTelephonyLoginResponseFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *TelephonyLoginResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCallbackToken gets the callbackToken property value. The callback token value for this telephony login.
+// GetCallbackToken gets the callbackToken property value. Callback token for this telephony login.
 // returns a *string when successful
 func (m *TelephonyLoginResponse) GetCallbackToken()(*string) {
     return m.callbackToken
 }
-// GetExpiresAt gets the expiresAt property value. The date and time for the expires at value on this telephony login.
+// GetExpiresAt gets the expiresAt property value. UTC timestamp for expires at on this telephony login.
 // returns a *Time when successful
 func (m *TelephonyLoginResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.expiresAt
@@ -94,12 +94,12 @@ func (m *TelephonyLoginResponse) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetPassword gets the password property value. The password value for this telephony login.
+// GetPassword gets the password property value. Password for this telephony login.
 // returns a *string when successful
 func (m *TelephonyLoginResponse) GetPassword()(*string) {
     return m.password
 }
-// GetUsername gets the username property value. The username value for this telephony login.
+// GetUsername gets the username property value. Username for this telephony login.
 // returns a *string when successful
 func (m *TelephonyLoginResponse) GetUsername()(*string) {
     return m.username
@@ -142,19 +142,19 @@ func (m *TelephonyLoginResponse) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *TelephonyLoginResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCallbackToken sets the callbackToken property value. The callback token value for this telephony login.
+// SetCallbackToken sets the callbackToken property value. Callback token for this telephony login.
 func (m *TelephonyLoginResponse) SetCallbackToken(value *string)() {
     m.callbackToken = value
 }
-// SetExpiresAt sets the expiresAt property value. The date and time for the expires at value on this telephony login.
+// SetExpiresAt sets the expiresAt property value. UTC timestamp for expires at on this telephony login.
 func (m *TelephonyLoginResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.expiresAt = value
 }
-// SetPassword sets the password property value. The password value for this telephony login.
+// SetPassword sets the password property value. Password for this telephony login.
 func (m *TelephonyLoginResponse) SetPassword(value *string)() {
     m.password = value
 }
-// SetUsername sets the username property value. The username value for this telephony login.
+// SetUsername sets the username property value. Username for this telephony login.
 func (m *TelephonyLoginResponse) SetUsername(value *string)() {
     m.username = value
 }

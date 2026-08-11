@@ -15,9 +15,13 @@ type AllMyRequestBuilder struct {
 }
 // AllMyRequestBuilderPostQueryParameters lists leads visible to the current user with paging, sorting, filters, tags, and archive status for pipeline review.
 type AllMyRequestBuilderPostQueryParameters struct {
+    // Optional filter selecting active, archived, or all leads.
     ArchiveFilter *string "uriparametername:\"archiveFilter\""
+    // Optional tag identifiers used to filter the lead list.
     TagIds []string "uriparametername:\"tagIds\""
+    // Whether a lead must contain every supplied tag instead of any supplied tag.
     TagMatchAll *bool "uriparametername:\"tagMatchAll\""
+    // Whether to include only leads that have no tags.
     Untagged *bool "uriparametername:\"untagged\""
 }
 // NewAllMyRequestBuilderInternal instantiates a new AllMyRequestBuilder and sets the default values.

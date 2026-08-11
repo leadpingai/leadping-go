@@ -21,6 +21,8 @@ type OutboundCapacityOverview struct {
     limitedPhoneNumbers *int32
     // Collection of phone numbers included with this Leadping outbound capacity overview.
     phoneNumbers []OutboundPhoneNumberCapacityable
+    // Number of phone numbers whose SMS or calling capacity is still ramping up.
+    rampingPhoneNumbers *int32
     // Collection of recent decisions included with this Leadping outbound capacity overview.
     recentDecisions []OutboundQueueItemable
     // Total number of scheduled records represented by this Leadping outbound capacity overview.
@@ -117,6 +119,16 @@ func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a
         }
         return nil
     }
+    res["rampingPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetRampingPhoneNumbers(val)
+        }
+        return nil
+    }
     res["recentDecisions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateOutboundQueueItemFromDiscriminatorValue)
         if err != nil {
@@ -180,6 +192,11 @@ func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers()(*int32) {
 func (m *OutboundCapacityOverview) GetPhoneNumbers()([]OutboundPhoneNumberCapacityable) {
     return m.phoneNumbers
 }
+// GetRampingPhoneNumbers gets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetRampingPhoneNumbers()(*int32) {
+    return m.rampingPhoneNumbers
+}
 // GetRecentDecisions gets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
 // returns a []OutboundQueueItemable when successful
 func (m *OutboundCapacityOverview) GetRecentDecisions()([]OutboundQueueItemable) {
@@ -234,6 +251,12 @@ func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f4
             }
         }
         err := writer.WriteCollectionOfObjectValues("phoneNumbers", cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("rampingPhoneNumbers", m.GetRampingPhoneNumbers())
         if err != nil {
             return err
         }
@@ -300,6 +323,10 @@ func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value *int32)() {
 func (m *OutboundCapacityOverview) SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)() {
     m.phoneNumbers = value
 }
+// SetRampingPhoneNumbers sets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
+func (m *OutboundCapacityOverview) SetRampingPhoneNumbers(value *int32)() {
+    m.rampingPhoneNumbers = value
+}
 // SetRecentDecisions sets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
 func (m *OutboundCapacityOverview) SetRecentDecisions(value []OutboundQueueItemable)() {
     m.recentDecisions = value
@@ -324,6 +351,7 @@ type OutboundCapacityOverviewable interface {
     GetHealthyPhoneNumbers()(*int32)
     GetLimitedPhoneNumbers()(*int32)
     GetPhoneNumbers()([]OutboundPhoneNumberCapacityable)
+    GetRampingPhoneNumbers()(*int32)
     GetRecentDecisions()([]OutboundQueueItemable)
     GetScheduledCount()(*int32)
     GetSmsCapacityRemainingToday()(*int32)
@@ -333,6 +361,7 @@ type OutboundCapacityOverviewable interface {
     SetHealthyPhoneNumbers(value *int32)()
     SetLimitedPhoneNumbers(value *int32)()
     SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)()
+    SetRampingPhoneNumbers(value *int32)()
     SetRecentDecisions(value []OutboundQueueItemable)()
     SetScheduledCount(value *int32)()
     SetSmsCapacityRemainingToday(value *int32)()

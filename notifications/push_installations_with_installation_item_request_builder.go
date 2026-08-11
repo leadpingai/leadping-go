@@ -26,7 +26,7 @@ func NewPushInstallationsWithInstallationItemRequestBuilder(rawUrl string, reque
     urlParams["request-raw-url"] = rawUrl
     return NewPushInstallationsWithInstallationItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete unregister the current user's mobile push installation.
+// Delete removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 func (m *PushInstallationsWithInstallationItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*bool, error) {
@@ -46,7 +46,7 @@ func (m *PushInstallationsWithInstallationItemRequestBuilder) Delete(ctx context
     }
     return res.(*bool), nil
 }
-// ToDeleteRequestInformation unregister the current user's mobile push installation.
+// ToDeleteRequestInformation removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
 // returns a *RequestInformation when successful
 func (m *PushInstallationsWithInstallationItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationInvitationRequest request payload for organization invitation.
+// OrganizationInvitationRequest defines the input used for organization invitation.
 type OrganizationInvitationRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The email address associated with this organization invitation.
     email *string
-    // The role value for this organization invitation.
+    // Role for this organization invitation.
     role *OrganizationMemberRole
 }
 // NewOrganizationInvitationRequest instantiates a new OrganizationInvitationRequest and sets the default values.
@@ -64,7 +64,7 @@ func (m *OrganizationInvitationRequest) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetRole gets the role property value. The role value for this organization invitation.
+// GetRole gets the role property value. Role for this organization invitation.
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationInvitationRequest) GetRole()(*OrganizationMemberRole) {
     return m.role
@@ -100,7 +100,7 @@ func (m *OrganizationInvitationRequest) SetAdditionalData(value map[string]any)(
 func (m *OrganizationInvitationRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetRole sets the role property value. The role value for this organization invitation.
+// SetRole sets the role property value. Role for this organization invitation.
 func (m *OrganizationInvitationRequest) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }

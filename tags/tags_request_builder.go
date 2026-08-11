@@ -15,6 +15,7 @@ type TagsRequestBuilder struct {
 }
 // TagsRequestBuilderGetQueryParameters lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
 type TagsRequestBuilderGetQueryParameters struct {
+    // Whether to include tags that are no longer available for new assignments.
     IncludeArchived *bool "uriparametername:\"includeArchived\""
 }
 // ById gets an item from the github.com/leadpingai/leadping-go.tags.item collection

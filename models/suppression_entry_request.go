@@ -7,21 +7,21 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SuppressionEntryRequest request payload for suppression entry.
+// SuppressionEntryRequest defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
 type SuppressionEntryRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The channel value for this ion entry.
+    // Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
     channel *string
-    // The email address associated with this ion entry.
+    // Recipient email address to suppress or check.
     email *string
-    // The organization ID associated with this ion entry.
+    // Organization whose suppression list should be used.
     organizationId *string
-    // The phone number associated with this ion entry.
+    // Recipient phone number to suppress or check, preferably in E.164 format.
     phoneNumber *string
-    // The human-readable reason explaining this ion entry.
+    // Human-readable reason for creating or releasing the suppression.
     reason *string
-    // The recipient identifier value for this ion entry.
+    // Optional provider or customer identifier that uniquely identifies the recipient.
     recipientIdentifier *string
 }
 // NewSuppressionEntryRequest instantiates a new SuppressionEntryRequest and sets the default values.
@@ -41,12 +41,12 @@ func CreateSuppressionEntryRequestFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *SuppressionEntryRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetChannel gets the channel property value. The channel value for this ion entry.
+// GetChannel gets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetChannel()(*string) {
     return m.channel
 }
-// GetEmail gets the email property value. The email address associated with this ion entry.
+// GetEmail gets the email property value. Recipient email address to suppress or check.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetEmail()(*string) {
     return m.email
@@ -117,22 +117,22 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetOrganizationId gets the organizationId property value. The organization ID associated with this ion entry.
+// GetOrganizationId gets the organizationId property value. Organization whose suppression list should be used.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetOrganizationId()(*string) {
     return m.organizationId
 }
-// GetPhoneNumber gets the phoneNumber property value. The phone number associated with this ion entry.
+// GetPhoneNumber gets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetPhoneNumber()(*string) {
     return m.phoneNumber
 }
-// GetReason gets the reason property value. The human-readable reason explaining this ion entry.
+// GetReason gets the reason property value. Human-readable reason for creating or releasing the suppression.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetReason()(*string) {
     return m.reason
 }
-// GetRecipientIdentifier gets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+// GetRecipientIdentifier gets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetRecipientIdentifier()(*string) {
     return m.recipientIdentifier
@@ -187,27 +187,27 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *SuppressionEntryRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetChannel sets the channel property value. The channel value for this ion entry.
+// SetChannel sets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
 func (m *SuppressionEntryRequest) SetChannel(value *string)() {
     m.channel = value
 }
-// SetEmail sets the email property value. The email address associated with this ion entry.
+// SetEmail sets the email property value. Recipient email address to suppress or check.
 func (m *SuppressionEntryRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetOrganizationId sets the organizationId property value. The organization ID associated with this ion entry.
+// SetOrganizationId sets the organizationId property value. Organization whose suppression list should be used.
 func (m *SuppressionEntryRequest) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
-// SetPhoneNumber sets the phoneNumber property value. The phone number associated with this ion entry.
+// SetPhoneNumber sets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
 func (m *SuppressionEntryRequest) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
 }
-// SetReason sets the reason property value. The human-readable reason explaining this ion entry.
+// SetReason sets the reason property value. Human-readable reason for creating or releasing the suppression.
 func (m *SuppressionEntryRequest) SetReason(value *string)() {
     m.reason = value
 }
-// SetRecipientIdentifier sets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+// SetRecipientIdentifier sets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
 func (m *SuppressionEntryRequest) SetRecipientIdentifier(value *string)() {
     m.recipientIdentifier = value
 }

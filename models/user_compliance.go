@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserCompliance aPI DTO containing user compliance data used by Leadping API contracts.
+// UserCompliance describes user compliance data used in Leadping API requests and responses.
 type UserCompliance struct {
     // Whether the user accepted BAA for this user compliance.
     acceptedBaa *bool

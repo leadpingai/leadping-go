@@ -26,7 +26,7 @@ func NewMediaRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     urlParams["request-raw-url"] = rawUrl
     return NewMediaRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post uploads media for a subsequent MMS send.
+// Post uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
 // returns a MessageMediaAttachmentable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 func (m *MediaRequestBuilder) Post(ctx context.Context, body MediaPostRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageMediaAttachmentable, error) {
@@ -46,7 +46,7 @@ func (m *MediaRequestBuilder) Post(ctx context.Context, body MediaPostRequestBod
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageMediaAttachmentable), nil
 }
-// ToPostRequestInformation uploads media for a subsequent MMS send.
+// ToPostRequestInformation uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
 // returns a *RequestInformation when successful
 func (m *MediaRequestBuilder) ToPostRequestInformation(ctx context.Context, body MediaPostRequestBodyable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

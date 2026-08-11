@@ -15,6 +15,7 @@ type ExportsItemDownloadRequestBuilder struct {
 }
 // ExportsItemDownloadRequestBuilderGetQueryParameters validates an export download token and redirects to the generated file when the current-user report is ready.
 type ExportsItemDownloadRequestBuilderGetQueryParameters struct {
+    // The short-lived download token issued for this export.
     Token *string "uriparametername:\"token\""
 }
 // NewExportsItemDownloadRequestBuilderInternal instantiates a new ExportsItemDownloadRequestBuilder and sets the default values.

@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ItemArchivePostRequestBody request schema for the Leadping API lead archive request, including the fields clients can send.
+// ItemArchivePostRequestBody defines the fields clients can send when working with lead archive.
 type ItemArchivePostRequestBody struct {
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadArchiveRequest
 }

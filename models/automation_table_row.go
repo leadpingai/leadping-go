@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationTableRow list item schema for Leadping API automation table row results shown in searchable tables.
+// AutomationTableRow summarizes automation data in paginated and searchable results.
 type AutomationTableRow struct {
     // Human-readable summary of the automation action outcome.
     actionSummary *string

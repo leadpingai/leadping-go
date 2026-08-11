@@ -8,23 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// StripePaymentMethodResponse aPI DTO containing stripe payment method data used by Leadping API contracts.
+// StripePaymentMethodResponse describes stripe payment method data used in Leadping API requests and responses.
 type StripePaymentMethodResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The brand value for this Stripe payment method.
+    // Card network brand, such as Visa, Mastercard, or American Express.
     brand *string
-    // The date and time for the created at value on this Stripe payment method.
+    // UTC timestamp for created at on this Stripe payment method.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The exp month value for this Stripe payment method.
+    // Two-digit month when the card expires.
     expMonth *int32
-    // The exp year value for this Stripe payment method.
+    // Four-digit year when the card expires.
     expYear *int32
-    // The unique ID for this Stripe payment method.
+    // Unique Leadping identifier for this Stripe payment method.
     id *string
     // Whether this Stripe payment method is default.
     isDefault *bool
-    // The date and time for the last4 value on this Stripe payment method.
+    // UTC timestamp for last4 on this Stripe payment method.
     last4 *string
 }
 // NewStripePaymentMethodResponse instantiates a new StripePaymentMethodResponse and sets the default values.
@@ -44,22 +44,22 @@ func CreateStripePaymentMethodResponseFromDiscriminatorValue(parseNode i878a80d2
 func (m *StripePaymentMethodResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBrand gets the brand property value. The brand value for this Stripe payment method.
+// GetBrand gets the brand property value. Card network brand, such as Visa, Mastercard, or American Express.
 // returns a *string when successful
 func (m *StripePaymentMethodResponse) GetBrand()(*string) {
     return m.brand
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this Stripe payment method.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this Stripe payment method.
 // returns a *Time when successful
 func (m *StripePaymentMethodResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetExpMonth gets the expMonth property value. The exp month value for this Stripe payment method.
+// GetExpMonth gets the expMonth property value. Two-digit month when the card expires.
 // returns a *int32 when successful
 func (m *StripePaymentMethodResponse) GetExpMonth()(*int32) {
     return m.expMonth
 }
-// GetExpYear gets the expYear property value. The exp year value for this Stripe payment method.
+// GetExpYear gets the expYear property value. Four-digit year when the card expires.
 // returns a *int32 when successful
 func (m *StripePaymentMethodResponse) GetExpYear()(*int32) {
     return m.expYear
@@ -140,7 +140,7 @@ func (m *StripePaymentMethodResponse) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this Stripe payment method.
+// GetId gets the id property value. Unique Leadping identifier for this Stripe payment method.
 // returns a *string when successful
 func (m *StripePaymentMethodResponse) GetId()(*string) {
     return m.id
@@ -150,7 +150,7 @@ func (m *StripePaymentMethodResponse) GetId()(*string) {
 func (m *StripePaymentMethodResponse) GetIsDefault()(*bool) {
     return m.isDefault
 }
-// GetLast4 gets the last4 property value. The date and time for the last4 value on this Stripe payment method.
+// GetLast4 gets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
 // returns a *string when successful
 func (m *StripePaymentMethodResponse) GetLast4()(*string) {
     return m.last4
@@ -211,23 +211,23 @@ func (m *StripePaymentMethodResponse) Serialize(writer i878a80d2330e89d26896388a
 func (m *StripePaymentMethodResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBrand sets the brand property value. The brand value for this Stripe payment method.
+// SetBrand sets the brand property value. Card network brand, such as Visa, Mastercard, or American Express.
 func (m *StripePaymentMethodResponse) SetBrand(value *string)() {
     m.brand = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this Stripe payment method.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this Stripe payment method.
 func (m *StripePaymentMethodResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetExpMonth sets the expMonth property value. The exp month value for this Stripe payment method.
+// SetExpMonth sets the expMonth property value. Two-digit month when the card expires.
 func (m *StripePaymentMethodResponse) SetExpMonth(value *int32)() {
     m.expMonth = value
 }
-// SetExpYear sets the expYear property value. The exp year value for this Stripe payment method.
+// SetExpYear sets the expYear property value. Four-digit year when the card expires.
 func (m *StripePaymentMethodResponse) SetExpYear(value *int32)() {
     m.expYear = value
 }
-// SetId sets the id property value. The unique ID for this Stripe payment method.
+// SetId sets the id property value. Unique Leadping identifier for this Stripe payment method.
 func (m *StripePaymentMethodResponse) SetId(value *string)() {
     m.id = value
 }
@@ -235,7 +235,7 @@ func (m *StripePaymentMethodResponse) SetId(value *string)() {
 func (m *StripePaymentMethodResponse) SetIsDefault(value *bool)() {
     m.isDefault = value
 }
-// SetLast4 sets the last4 property value. The date and time for the last4 value on this Stripe payment method.
+// SetLast4 sets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
 func (m *StripePaymentMethodResponse) SetLast4(value *string)() {
     m.last4 = value
 }

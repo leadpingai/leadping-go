@@ -8,33 +8,33 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SuppressionEntryResponse aPI response containing suppression entry data returned to callers.
+// SuppressionEntryResponse describes a recipient suppression that prevents outreach through one or more communication channels.
 type SuppressionEntryResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The audit included with this ion entry.
+    // Chronological audit history of suppression and release changes.
     audit []SuppressionEntryAuditable
-    // The channel value for this ion entry.
+    // Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
     channel *string
-    // The unique ID for this ion entry.
+    // Unique Leadping identifier for the suppression entry.
     id *string
-    // The normalized email value for this ion entry.
+    // Suppressed email address normalized for matching.
     normalizedEmail *string
-    // The phone number associated with this ion entry.
+    // Suppressed phone number normalized to a consistent format.
     normalizedPhoneNumber *string
-    // The organization ID associated with this ion entry.
+    // Identifier of the organization that owns the suppression entry.
     organizationId *string
-    // The human-readable reason explaining this ion entry.
+    // Human-readable reason the recipient was suppressed or subsequently released.
     reason *string
-    // The recipient identifier value for this ion entry.
+    // Provider or customer identifier used to recognize the suppressed recipient.
     recipientIdentifier *string
-    // The date and time for the released at value on this ion entry.
+    // UTC timestamp when the suppression was released, or while it remains active.
     releasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The source value for this ion entry.
+    // System or workflow that created the suppression.
     source *string
-    // The current status for this ion entry.
+    // Current lifecycle state, such as active or released.
     status *string
-    // The date and time for the suppressed at value on this ion entry.
+    // UTC timestamp when the suppression became active.
     suppressedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewSuppressionEntryResponse instantiates a new SuppressionEntryResponse and sets the default values.
@@ -54,12 +54,12 @@ func CreateSuppressionEntryResponseFromDiscriminatorValue(parseNode i878a80d2330
 func (m *SuppressionEntryResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAudit gets the audit property value. The audit included with this ion entry.
+// GetAudit gets the audit property value. Chronological audit history of suppression and release changes.
 // returns a []SuppressionEntryAuditable when successful
 func (m *SuppressionEntryResponse) GetAudit()([]SuppressionEntryAuditable) {
     return m.audit
 }
-// GetChannel gets the channel property value. The channel value for this ion entry.
+// GetChannel gets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetChannel()(*string) {
     return m.channel
@@ -196,52 +196,52 @@ func (m *SuppressionEntryResponse) GetFieldDeserializers()(map[string]func(i878a
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this ion entry.
+// GetId gets the id property value. Unique Leadping identifier for the suppression entry.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetId()(*string) {
     return m.id
 }
-// GetNormalizedEmail gets the normalizedEmail property value. The normalized email value for this ion entry.
+// GetNormalizedEmail gets the normalizedEmail property value. Suppressed email address normalized for matching.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetNormalizedEmail()(*string) {
     return m.normalizedEmail
 }
-// GetNormalizedPhoneNumber gets the normalizedPhoneNumber property value. The phone number associated with this ion entry.
+// GetNormalizedPhoneNumber gets the normalizedPhoneNumber property value. Suppressed phone number normalized to a consistent format.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetNormalizedPhoneNumber()(*string) {
     return m.normalizedPhoneNumber
 }
-// GetOrganizationId gets the organizationId property value. The organization ID associated with this ion entry.
+// GetOrganizationId gets the organizationId property value. Identifier of the organization that owns the suppression entry.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetOrganizationId()(*string) {
     return m.organizationId
 }
-// GetReason gets the reason property value. The human-readable reason explaining this ion entry.
+// GetReason gets the reason property value. Human-readable reason the recipient was suppressed or subsequently released.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetReason()(*string) {
     return m.reason
 }
-// GetRecipientIdentifier gets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+// GetRecipientIdentifier gets the recipientIdentifier property value. Provider or customer identifier used to recognize the suppressed recipient.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetRecipientIdentifier()(*string) {
     return m.recipientIdentifier
 }
-// GetReleasedAt gets the releasedAt property value. The date and time for the released at value on this ion entry.
+// GetReleasedAt gets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
 // returns a *Time when successful
 func (m *SuppressionEntryResponse) GetReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.releasedAt
 }
-// GetSource gets the source property value. The source value for this ion entry.
+// GetSource gets the source property value. System or workflow that created the suppression.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetSource()(*string) {
     return m.source
 }
-// GetStatus gets the status property value. The current status for this ion entry.
+// GetStatus gets the status property value. Current lifecycle state, such as active or released.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetStatus()(*string) {
     return m.status
 }
-// GetSuppressedAt gets the suppressedAt property value. The date and time for the suppressed at value on this ion entry.
+// GetSuppressedAt gets the suppressedAt property value. UTC timestamp when the suppression became active.
 // returns a *Time when successful
 func (m *SuppressionEntryResponse) GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.suppressedAt
@@ -338,51 +338,51 @@ func (m *SuppressionEntryResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *SuppressionEntryResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAudit sets the audit property value. The audit included with this ion entry.
+// SetAudit sets the audit property value. Chronological audit history of suppression and release changes.
 func (m *SuppressionEntryResponse) SetAudit(value []SuppressionEntryAuditable)() {
     m.audit = value
 }
-// SetChannel sets the channel property value. The channel value for this ion entry.
+// SetChannel sets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
 func (m *SuppressionEntryResponse) SetChannel(value *string)() {
     m.channel = value
 }
-// SetId sets the id property value. The unique ID for this ion entry.
+// SetId sets the id property value. Unique Leadping identifier for the suppression entry.
 func (m *SuppressionEntryResponse) SetId(value *string)() {
     m.id = value
 }
-// SetNormalizedEmail sets the normalizedEmail property value. The normalized email value for this ion entry.
+// SetNormalizedEmail sets the normalizedEmail property value. Suppressed email address normalized for matching.
 func (m *SuppressionEntryResponse) SetNormalizedEmail(value *string)() {
     m.normalizedEmail = value
 }
-// SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. The phone number associated with this ion entry.
+// SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. Suppressed phone number normalized to a consistent format.
 func (m *SuppressionEntryResponse) SetNormalizedPhoneNumber(value *string)() {
     m.normalizedPhoneNumber = value
 }
-// SetOrganizationId sets the organizationId property value. The organization ID associated with this ion entry.
+// SetOrganizationId sets the organizationId property value. Identifier of the organization that owns the suppression entry.
 func (m *SuppressionEntryResponse) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
-// SetReason sets the reason property value. The human-readable reason explaining this ion entry.
+// SetReason sets the reason property value. Human-readable reason the recipient was suppressed or subsequently released.
 func (m *SuppressionEntryResponse) SetReason(value *string)() {
     m.reason = value
 }
-// SetRecipientIdentifier sets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+// SetRecipientIdentifier sets the recipientIdentifier property value. Provider or customer identifier used to recognize the suppressed recipient.
 func (m *SuppressionEntryResponse) SetRecipientIdentifier(value *string)() {
     m.recipientIdentifier = value
 }
-// SetReleasedAt sets the releasedAt property value. The date and time for the released at value on this ion entry.
+// SetReleasedAt sets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
 func (m *SuppressionEntryResponse) SetReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.releasedAt = value
 }
-// SetSource sets the source property value. The source value for this ion entry.
+// SetSource sets the source property value. System or workflow that created the suppression.
 func (m *SuppressionEntryResponse) SetSource(value *string)() {
     m.source = value
 }
-// SetStatus sets the status property value. The current status for this ion entry.
+// SetStatus sets the status property value. Current lifecycle state, such as active or released.
 func (m *SuppressionEntryResponse) SetStatus(value *string)() {
     m.status = value
 }
-// SetSuppressedAt sets the suppressedAt property value. The date and time for the suppressed at value on this ion entry.
+// SetSuppressedAt sets the suppressedAt property value. UTC timestamp when the suppression became active.
 func (m *SuppressionEntryResponse) SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.suppressedAt = value
 }

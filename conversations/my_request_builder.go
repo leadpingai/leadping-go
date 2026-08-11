@@ -15,6 +15,7 @@ type MyRequestBuilder struct {
 }
 // MyRequestBuilderPostQueryParameters lists the current user's lead conversations with paging and sorting for inbox views, recent follow-up, and communication history.
 type MyRequestBuilderPostQueryParameters struct {
+    // Optional filter selecting active, archived, or all lead conversations.
     ArchiveFilter *string "uriparametername:\"archiveFilter\""
 }
 // NewMyRequestBuilderInternal instantiates a new MyRequestBuilder and sets the default values.

@@ -12,15 +12,15 @@ import (
 type PhoneLookupProviderSnapshot struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The lookupType property
+    // The provider lookup product or operation that produced this snapshot.
     lookupType *string
-    // The provider property
+    // The provider that supplied the phone lookup record.
     provider *string
-    // The rawRecordJson property
+    // The complete provider response serialized as JSON for lossless audit and replay.
     rawRecordJson *string
-    // The retrievedAt property
+    // The UTC timestamp when Leadping retrieved the provider record.
     retrievedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The schemaVersion property
+    // The Leadping schema version used to interpret the stored provider record.
     schemaVersion *int32
 }
 // NewPhoneLookupProviderSnapshot instantiates a new PhoneLookupProviderSnapshot and sets the default values.
@@ -96,27 +96,27 @@ func (m *PhoneLookupProviderSnapshot) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetLookupType gets the lookupType property value. The lookupType property
+// GetLookupType gets the lookupType property value. The provider lookup product or operation that produced this snapshot.
 // returns a *string when successful
 func (m *PhoneLookupProviderSnapshot) GetLookupType()(*string) {
     return m.lookupType
 }
-// GetProvider gets the provider property value. The provider property
+// GetProvider gets the provider property value. The provider that supplied the phone lookup record.
 // returns a *string when successful
 func (m *PhoneLookupProviderSnapshot) GetProvider()(*string) {
     return m.provider
 }
-// GetRawRecordJson gets the rawRecordJson property value. The rawRecordJson property
+// GetRawRecordJson gets the rawRecordJson property value. The complete provider response serialized as JSON for lossless audit and replay.
 // returns a *string when successful
 func (m *PhoneLookupProviderSnapshot) GetRawRecordJson()(*string) {
     return m.rawRecordJson
 }
-// GetRetrievedAt gets the retrievedAt property value. The retrievedAt property
+// GetRetrievedAt gets the retrievedAt property value. The UTC timestamp when Leadping retrieved the provider record.
 // returns a *Time when successful
 func (m *PhoneLookupProviderSnapshot) GetRetrievedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.retrievedAt
 }
-// GetSchemaVersion gets the schemaVersion property value. The schemaVersion property
+// GetSchemaVersion gets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
 // returns a *int32 when successful
 func (m *PhoneLookupProviderSnapshot) GetSchemaVersion()(*int32) {
     return m.schemaVersion
@@ -165,23 +165,23 @@ func (m *PhoneLookupProviderSnapshot) Serialize(writer i878a80d2330e89d26896388a
 func (m *PhoneLookupProviderSnapshot) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetLookupType sets the lookupType property value. The lookupType property
+// SetLookupType sets the lookupType property value. The provider lookup product or operation that produced this snapshot.
 func (m *PhoneLookupProviderSnapshot) SetLookupType(value *string)() {
     m.lookupType = value
 }
-// SetProvider sets the provider property value. The provider property
+// SetProvider sets the provider property value. The provider that supplied the phone lookup record.
 func (m *PhoneLookupProviderSnapshot) SetProvider(value *string)() {
     m.provider = value
 }
-// SetRawRecordJson sets the rawRecordJson property value. The rawRecordJson property
+// SetRawRecordJson sets the rawRecordJson property value. The complete provider response serialized as JSON for lossless audit and replay.
 func (m *PhoneLookupProviderSnapshot) SetRawRecordJson(value *string)() {
     m.rawRecordJson = value
 }
-// SetRetrievedAt sets the retrievedAt property value. The retrievedAt property
+// SetRetrievedAt sets the retrievedAt property value. The UTC timestamp when Leadping retrieved the provider record.
 func (m *PhoneLookupProviderSnapshot) SetRetrievedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.retrievedAt = value
 }
-// SetSchemaVersion sets the schemaVersion property value. The schemaVersion property
+// SetSchemaVersion sets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
 func (m *PhoneLookupProviderSnapshot) SetSchemaVersion(value *int32)() {
     m.schemaVersion = value
 }

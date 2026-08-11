@@ -8,29 +8,29 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SuppressionCheckResult aPI response containing suppression check result data returned to callers.
+// SuppressionCheckResult reports whether Leadping may contact a recipient and identifies the active suppression when contact is blocked.
 type SuppressionCheckResult struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Whether this ion check result allows ed.
+    // Whether outreach to the recipient is allowed for the requested channel.
     allowed *bool
-    // The channel value for this ion check result.
+    // Communication channel evaluated by the suppression check.
     channel *string
-    // The human-readable customer reason explaining this ion check result.
+    // Customer-safe explanation of why contact is blocked or allowed.
     customerReason *string
-    // The normalized email value for this ion check result.
+    // Email address used for matching, normalized for comparison.
     normalizedEmail *string
-    // The phone number associated with this ion check result.
+    // Phone number used for matching, normalized to a consistent format.
     normalizedPhoneNumber *string
-    // The organization ID associated with this ion check result.
+    // Identifier of the organization whose suppression list was checked.
     organizationId *string
-    // The recipient identifier value for this ion check result.
+    // Provider or customer identifier used to match the recipient.
     recipientIdentifier *string
     // The source value on the active suppression entry that blocked this check.
     source *string
     // The date and time the blocking suppression became active.
     suppressedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The suppression entry ID associated with this ion check result.
+    // Identifier of the active suppression that blocked contact, when one matched.
     suppressionEntryId *string
 }
 // NewSuppressionCheckResult instantiates a new SuppressionCheckResult and sets the default values.
@@ -50,17 +50,17 @@ func CreateSuppressionCheckResultFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *SuppressionCheckResult) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAllowed gets the allowed property value. Whether this ion check result allows ed.
+// GetAllowed gets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
 // returns a *bool when successful
 func (m *SuppressionCheckResult) GetAllowed()(*bool) {
     return m.allowed
 }
-// GetChannel gets the channel property value. The channel value for this ion check result.
+// GetChannel gets the channel property value. Communication channel evaluated by the suppression check.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetChannel()(*string) {
     return m.channel
 }
-// GetCustomerReason gets the customerReason property value. The human-readable customer reason explaining this ion check result.
+// GetCustomerReason gets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetCustomerReason()(*string) {
     return m.customerReason
@@ -171,22 +171,22 @@ func (m *SuppressionCheckResult) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetNormalizedEmail gets the normalizedEmail property value. The normalized email value for this ion check result.
+// GetNormalizedEmail gets the normalizedEmail property value. Email address used for matching, normalized for comparison.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetNormalizedEmail()(*string) {
     return m.normalizedEmail
 }
-// GetNormalizedPhoneNumber gets the normalizedPhoneNumber property value. The phone number associated with this ion check result.
+// GetNormalizedPhoneNumber gets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetNormalizedPhoneNumber()(*string) {
     return m.normalizedPhoneNumber
 }
-// GetOrganizationId gets the organizationId property value. The organization ID associated with this ion check result.
+// GetOrganizationId gets the organizationId property value. Identifier of the organization whose suppression list was checked.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetOrganizationId()(*string) {
     return m.organizationId
 }
-// GetRecipientIdentifier gets the recipientIdentifier property value. The recipient identifier value for this ion check result.
+// GetRecipientIdentifier gets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetRecipientIdentifier()(*string) {
     return m.recipientIdentifier
@@ -201,7 +201,7 @@ func (m *SuppressionCheckResult) GetSource()(*string) {
 func (m *SuppressionCheckResult) GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.suppressedAt
 }
-// GetSuppressionEntryId gets the suppressionEntryId property value. The suppression entry ID associated with this ion check result.
+// GetSuppressionEntryId gets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
 // returns a *string when successful
 func (m *SuppressionCheckResult) GetSuppressionEntryId()(*string) {
     return m.suppressionEntryId
@@ -280,31 +280,31 @@ func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *SuppressionCheckResult) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAllowed sets the allowed property value. Whether this ion check result allows ed.
+// SetAllowed sets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
 func (m *SuppressionCheckResult) SetAllowed(value *bool)() {
     m.allowed = value
 }
-// SetChannel sets the channel property value. The channel value for this ion check result.
+// SetChannel sets the channel property value. Communication channel evaluated by the suppression check.
 func (m *SuppressionCheckResult) SetChannel(value *string)() {
     m.channel = value
 }
-// SetCustomerReason sets the customerReason property value. The human-readable customer reason explaining this ion check result.
+// SetCustomerReason sets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
 func (m *SuppressionCheckResult) SetCustomerReason(value *string)() {
     m.customerReason = value
 }
-// SetNormalizedEmail sets the normalizedEmail property value. The normalized email value for this ion check result.
+// SetNormalizedEmail sets the normalizedEmail property value. Email address used for matching, normalized for comparison.
 func (m *SuppressionCheckResult) SetNormalizedEmail(value *string)() {
     m.normalizedEmail = value
 }
-// SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. The phone number associated with this ion check result.
+// SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
 func (m *SuppressionCheckResult) SetNormalizedPhoneNumber(value *string)() {
     m.normalizedPhoneNumber = value
 }
-// SetOrganizationId sets the organizationId property value. The organization ID associated with this ion check result.
+// SetOrganizationId sets the organizationId property value. Identifier of the organization whose suppression list was checked.
 func (m *SuppressionCheckResult) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
-// SetRecipientIdentifier sets the recipientIdentifier property value. The recipient identifier value for this ion check result.
+// SetRecipientIdentifier sets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
 func (m *SuppressionCheckResult) SetRecipientIdentifier(value *string)() {
     m.recipientIdentifier = value
 }
@@ -316,7 +316,7 @@ func (m *SuppressionCheckResult) SetSource(value *string)() {
 func (m *SuppressionCheckResult) SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.suppressedAt = value
 }
-// SetSuppressionEntryId sets the suppressionEntryId property value. The suppression entry ID associated with this ion check result.
+// SetSuppressionEntryId sets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
 func (m *SuppressionCheckResult) SetSuppressionEntryId(value *string)() {
     m.suppressionEntryId = value
 }

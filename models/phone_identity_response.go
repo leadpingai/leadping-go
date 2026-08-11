@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneIdentityResponse response schema for a canonical phone identity returned by the Leadping API.
+// PhoneIdentityResponse describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
 type PhoneIdentityResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -20,6 +20,8 @@ type PhoneIdentityResponse struct {
     lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Provider lookup and enrichment data for the number.
     lookup PhoneIdentityResponse_lookupable
+    // Lookup, enrichment, and reputation actions performed for this identity.
+    lookupActions []PhoneIdentityLookupActionable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
@@ -95,6 +97,22 @@ func (m *PhoneIdentityResponse) GetFieldDeserializers()(map[string]func(i878a80d
         }
         return nil
     }
+    res["lookupActions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreatePhoneIdentityLookupActionFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]PhoneIdentityLookupActionable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(PhoneIdentityLookupActionable)
+                }
+            }
+            m.SetLookupActions(res)
+        }
+        return nil
+    }
     res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -152,6 +170,11 @@ func (m *PhoneIdentityResponse) GetLastEnrichedAt()(*i336074805fc853987abe6f7fe3
 func (m *PhoneIdentityResponse) GetLookup()(PhoneIdentityResponse_lookupable) {
     return m.lookup
 }
+// GetLookupActions gets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
+// returns a []PhoneIdentityLookupActionable when successful
+func (m *PhoneIdentityResponse) GetLookupActions()([]PhoneIdentityLookupActionable) {
+    return m.lookupActions
+}
 // GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 // returns a *Time when successful
 func (m *PhoneIdentityResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -194,6 +217,18 @@ func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
     }
     {
         err := writer.WriteObjectValue("lookup", m.GetLookup())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetLookupActions() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLookupActions()))
+        for i, v := range m.GetLookupActions() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("lookupActions", cast)
         if err != nil {
             return err
         }
@@ -250,6 +285,10 @@ func (m *PhoneIdentityResponse) SetLastEnrichedAt(value *i336074805fc853987abe6f
 func (m *PhoneIdentityResponse) SetLookup(value PhoneIdentityResponse_lookupable)() {
     m.lookup = value
 }
+// SetLookupActions sets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
+func (m *PhoneIdentityResponse) SetLookupActions(value []PhoneIdentityLookupActionable)() {
+    m.lookupActions = value
+}
 // SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
 func (m *PhoneIdentityResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
@@ -273,6 +312,7 @@ type PhoneIdentityResponseable interface {
     GetId()(*string)
     GetLastEnrichedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLookup()(PhoneIdentityResponse_lookupable)
+    GetLookupActions()([]PhoneIdentityLookupActionable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNumber()(*string)
@@ -281,6 +321,7 @@ type PhoneIdentityResponseable interface {
     SetId(value *string)()
     SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLookup(value PhoneIdentityResponse_lookupable)()
+    SetLookupActions(value []PhoneIdentityLookupActionable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNumber(value *string)()

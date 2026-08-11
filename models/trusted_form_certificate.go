@@ -8,15 +8,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TrustedFormCertificate aPI DTO containing trusted form certificate data used by Leadping API contracts.
+// TrustedFormCertificate describes trusted form certificate data used in Leadping API requests and responses.
 type TrustedFormCertificate struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this TrustedForm certificate.
+    // UTC timestamp for created at on this TrustedForm certificate.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique ID for this TrustedForm certificate.
+    // Unique Leadping identifier for this TrustedForm certificate.
     id *string
-    // The source value for this TrustedForm certificate.
+    // Source for this TrustedForm certificate.
     source *string
     // The URL associated with this TrustedForm certificate.
     url *string
@@ -38,7 +38,7 @@ func CreateTrustedFormCertificateFromDiscriminatorValue(parseNode i878a80d2330e8
 func (m *TrustedFormCertificate) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this TrustedForm certificate.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
 // returns a *Time when successful
 func (m *TrustedFormCertificate) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -89,12 +89,12 @@ func (m *TrustedFormCertificate) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this TrustedForm certificate.
+// GetId gets the id property value. Unique Leadping identifier for this TrustedForm certificate.
 // returns a *string when successful
 func (m *TrustedFormCertificate) GetId()(*string) {
     return m.id
 }
-// GetSource gets the source property value. The source value for this TrustedForm certificate.
+// GetSource gets the source property value. Source for this TrustedForm certificate.
 // returns a *string when successful
 func (m *TrustedFormCertificate) GetSource()(*string) {
     return m.source
@@ -142,15 +142,15 @@ func (m *TrustedFormCertificate) Serialize(writer i878a80d2330e89d26896388a3f487
 func (m *TrustedFormCertificate) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this TrustedForm certificate.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
 func (m *TrustedFormCertificate) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetId sets the id property value. The unique ID for this TrustedForm certificate.
+// SetId sets the id property value. Unique Leadping identifier for this TrustedForm certificate.
 func (m *TrustedFormCertificate) SetId(value *string)() {
     m.id = value
 }
-// SetSource sets the source property value. The source value for this TrustedForm certificate.
+// SetSource sets the source property value. Source for this TrustedForm certificate.
 func (m *TrustedFormCertificate) SetSource(value *string)() {
     m.source = value
 }

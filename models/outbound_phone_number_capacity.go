@@ -14,12 +14,16 @@ type OutboundPhoneNumberCapacity struct {
     additionalData map[string]any
     // Indicates whether Leadping successfully calculated capacity for this phone number.
     capacityAvailable *bool
+    // Human-readable reason for the current phone-number health state.
+    healthReason *string
     // Current health status for this Leadping outbound phone number capacity.
     healthStatus *PhoneNumberOutboundHealthStatus
     // Phone number associated with this Leadping outbound phone number capacity.
     phoneNumber *string
     // Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
     phoneNumberId *string
+    // Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+    smsApproved *bool
     // Next midnight Eastern time, when SMS daily capacity resets.
     smsDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Start of the next Eastern time hour, when SMS hourly capacity resets.
@@ -32,6 +36,8 @@ type OutboundPhoneNumberCapacity struct {
     smsLimitToday *int32
     // The next time SMS capacity becomes available in the rolling minute window.
     smsMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Indicates whether SMS limits for this phone number are still ramping up.
+    smsRamping *bool
     // SMS remaining this hour for the applicable messaging or voice capacity window.
     smsRemainingThisHour *int32
     // SMS remaining in the current rolling minute.
@@ -56,6 +62,8 @@ type OutboundPhoneNumberCapacity struct {
     voiceLimitToday *int32
     // The next time voice capacity becomes available in the rolling minute window.
     voiceMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Indicates whether call limits for this phone number are still ramping up.
+    voiceRamping *bool
     // Voice remaining this hour for the applicable messaging or voice capacity window.
     voiceRemainingThisHour *int32
     // Voice remaining in the current rolling minute.
@@ -105,6 +113,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         return nil
     }
+    res["healthReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetHealthReason(val)
+        }
+        return nil
+    }
     res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParsePhoneNumberOutboundHealthStatus)
         if err != nil {
@@ -132,6 +150,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         if val != nil {
             m.SetPhoneNumberId(val)
+        }
+        return nil
+    }
+    res["smsApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsApproved(val)
         }
         return nil
     }
@@ -192,6 +220,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         if val != nil {
             m.SetSmsMinutelyResetsAt(val)
+        }
+        return nil
+    }
+    res["smsRamping"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSmsRamping(val)
         }
         return nil
     }
@@ -315,6 +353,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
         }
         return nil
     }
+    res["voiceRamping"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoiceRamping(val)
+        }
+        return nil
+    }
     res["voiceRemainingThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -377,6 +425,11 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
+// GetHealthReason gets the healthReason property value. Human-readable reason for the current phone-number health state.
+// returns a *string when successful
+func (m *OutboundPhoneNumberCapacity) GetHealthReason()(*string) {
+    return m.healthReason
+}
 // GetHealthStatus gets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
 // returns a *PhoneNumberOutboundHealthStatus when successful
 func (m *OutboundPhoneNumberCapacity) GetHealthStatus()(*PhoneNumberOutboundHealthStatus) {
@@ -391,6 +444,11 @@ func (m *OutboundPhoneNumberCapacity) GetPhoneNumber()(*string) {
 // returns a *string when successful
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
+}
+// GetSmsApproved gets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+// returns a *bool when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsApproved()(*bool) {
+    return m.smsApproved
 }
 // GetSmsDailyResetsAt gets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
 // returns a *Time when successful
@@ -421,6 +479,11 @@ func (m *OutboundPhoneNumberCapacity) GetSmsLimitToday()(*int32) {
 // returns a *Time when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.smsMinutelyResetsAt
+}
+// GetSmsRamping gets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
+// returns a *bool when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRamping()(*bool) {
+    return m.smsRamping
 }
 // GetSmsRemainingThisHour gets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
@@ -482,6 +545,11 @@ func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday()(*int32) {
 func (m *OutboundPhoneNumberCapacity) GetVoiceMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.voiceMinutelyResetsAt
 }
+// GetVoiceRamping gets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
+// returns a *bool when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRamping()(*bool) {
+    return m.voiceRamping
+}
 // GetVoiceRemainingThisHour gets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisHour()(*int32) {
@@ -520,6 +588,12 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
             return err
         }
     }
+    {
+        err := writer.WriteStringValue("healthReason", m.GetHealthReason())
+        if err != nil {
+            return err
+        }
+    }
     if m.GetHealthStatus() != nil {
         cast := (*m.GetHealthStatus()).String()
         err := writer.WriteStringValue("healthStatus", &cast)
@@ -535,6 +609,12 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
     }
     {
         err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("smsApproved", m.GetSmsApproved())
         if err != nil {
             return err
         }
@@ -571,6 +651,12 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
     }
     {
         err := writer.WriteTimeValue("smsMinutelyResetsAt", m.GetSmsMinutelyResetsAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("smsRamping", m.GetSmsRamping())
         if err != nil {
             return err
         }
@@ -648,6 +734,12 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
+        err := writer.WriteBoolValue("voiceRamping", m.GetVoiceRamping())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteInt32Value("voiceRemainingThisHour", m.GetVoiceRemainingThisHour())
         if err != nil {
             return err
@@ -699,6 +791,10 @@ func (m *OutboundPhoneNumberCapacity) SetAdditionalData(value map[string]any)() 
 func (m *OutboundPhoneNumberCapacity) SetCapacityAvailable(value *bool)() {
     m.capacityAvailable = value
 }
+// SetHealthReason sets the healthReason property value. Human-readable reason for the current phone-number health state.
+func (m *OutboundPhoneNumberCapacity) SetHealthReason(value *string)() {
+    m.healthReason = value
+}
 // SetHealthStatus sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutboundHealthStatus)() {
     m.healthStatus = value
@@ -710,6 +806,10 @@ func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string)() {
 // SetPhoneNumberId sets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
+}
+// SetSmsApproved sets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+func (m *OutboundPhoneNumberCapacity) SetSmsApproved(value *bool)() {
+    m.smsApproved = value
 }
 // SetSmsDailyResetsAt sets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
 func (m *OutboundPhoneNumberCapacity) SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
@@ -734,6 +834,10 @@ func (m *OutboundPhoneNumberCapacity) SetSmsLimitToday(value *int32)() {
 // SetSmsMinutelyResetsAt sets the smsMinutelyResetsAt property value. The next time SMS capacity becomes available in the rolling minute window.
 func (m *OutboundPhoneNumberCapacity) SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.smsMinutelyResetsAt = value
+}
+// SetSmsRamping sets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
+func (m *OutboundPhoneNumberCapacity) SetSmsRamping(value *bool)() {
+    m.smsRamping = value
 }
 // SetSmsRemainingThisHour sets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisHour(value *int32)() {
@@ -783,6 +887,10 @@ func (m *OutboundPhoneNumberCapacity) SetVoiceLimitToday(value *int32)() {
 func (m *OutboundPhoneNumberCapacity) SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.voiceMinutelyResetsAt = value
 }
+// SetVoiceRamping sets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
+func (m *OutboundPhoneNumberCapacity) SetVoiceRamping(value *bool)() {
+    m.voiceRamping = value
+}
 // SetVoiceRemainingThisHour sets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
 func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisHour(value *int32)() {
     m.voiceRemainingThisHour = value
@@ -811,15 +919,18 @@ type OutboundPhoneNumberCapacityable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetCapacityAvailable()(*bool)
+    GetHealthReason()(*string)
     GetHealthStatus()(*PhoneNumberOutboundHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
+    GetSmsApproved()(*bool)
     GetSmsDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSmsHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSmsLimitThisHour()(*int32)
     GetSmsLimitThisMinute()(*int32)
     GetSmsLimitToday()(*int32)
     GetSmsMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetSmsRamping()(*bool)
     GetSmsRemainingThisHour()(*int32)
     GetSmsRemainingThisMinute()(*int32)
     GetSmsRemainingToday()(*int32)
@@ -832,6 +943,7 @@ type OutboundPhoneNumberCapacityable interface {
     GetVoiceLimitThisMinute()(*int32)
     GetVoiceLimitToday()(*int32)
     GetVoiceMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetVoiceRamping()(*bool)
     GetVoiceRemainingThisHour()(*int32)
     GetVoiceRemainingThisMinute()(*int32)
     GetVoiceRemainingToday()(*int32)
@@ -839,15 +951,18 @@ type OutboundPhoneNumberCapacityable interface {
     GetVoiceUsedThisMinute()(*int32)
     GetVoiceUsedToday()(*int32)
     SetCapacityAvailable(value *bool)()
+    SetHealthReason(value *string)()
     SetHealthStatus(value *PhoneNumberOutboundHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
+    SetSmsApproved(value *bool)()
     SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSmsLimitThisHour(value *int32)()
     SetSmsLimitThisMinute(value *int32)()
     SetSmsLimitToday(value *int32)()
     SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetSmsRamping(value *bool)()
     SetSmsRemainingThisHour(value *int32)()
     SetSmsRemainingThisMinute(value *int32)()
     SetSmsRemainingToday(value *int32)()
@@ -860,6 +975,7 @@ type OutboundPhoneNumberCapacityable interface {
     SetVoiceLimitThisMinute(value *int32)()
     SetVoiceLimitToday(value *int32)()
     SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetVoiceRamping(value *bool)()
     SetVoiceRemainingThisHour(value *int32)()
     SetVoiceRemainingThisMinute(value *int32)()
     SetVoiceRemainingToday(value *int32)()

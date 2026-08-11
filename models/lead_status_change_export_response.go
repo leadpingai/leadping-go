@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadStatusChangeExportResponse aPI response containing lead status change export data returned to callers.
+// LeadStatusChangeExportResponse describes lead status change export data returned by Leadping.
 type LeadStatusChangeExportResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The content type classification for this lead status change export.
+    // MIME content type of the exported document.
     contentType *string
-    // The csv value for this lead status change export.
+    // Complete comma-separated values content encoded as text.
     csv *string
-    // The file name value for this lead status change export.
+    // Suggested file name for the exported CSV document.
     fileName *string
     // The rows included with this lead status change export.
     rows []LeadStatusChangeExportRowable
@@ -37,12 +37,12 @@ func CreateLeadStatusChangeExportResponseFromDiscriminatorValue(parseNode i878a8
 func (m *LeadStatusChangeExportResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetContentType gets the contentType property value. The content type classification for this lead status change export.
+// GetContentType gets the contentType property value. MIME content type of the exported document.
 // returns a *string when successful
 func (m *LeadStatusChangeExportResponse) GetContentType()(*string) {
     return m.contentType
 }
-// GetCsv gets the csv property value. The csv value for this lead status change export.
+// GetCsv gets the csv property value. Complete comma-separated values content encoded as text.
 // returns a *string when successful
 func (m *LeadStatusChangeExportResponse) GetCsv()(*string) {
     return m.csv
@@ -99,7 +99,7 @@ func (m *LeadStatusChangeExportResponse) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetFileName gets the fileName property value. The file name value for this lead status change export.
+// GetFileName gets the fileName property value. Suggested file name for the exported CSV document.
 // returns a *string when successful
 func (m *LeadStatusChangeExportResponse) GetFileName()(*string) {
     return m.fileName
@@ -153,15 +153,15 @@ func (m *LeadStatusChangeExportResponse) Serialize(writer i878a80d2330e89d268963
 func (m *LeadStatusChangeExportResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetContentType sets the contentType property value. The content type classification for this lead status change export.
+// SetContentType sets the contentType property value. MIME content type of the exported document.
 func (m *LeadStatusChangeExportResponse) SetContentType(value *string)() {
     m.contentType = value
 }
-// SetCsv sets the csv property value. The csv value for this lead status change export.
+// SetCsv sets the csv property value. Complete comma-separated values content encoded as text.
 func (m *LeadStatusChangeExportResponse) SetCsv(value *string)() {
     m.csv = value
 }
-// SetFileName sets the fileName property value. The file name value for this lead status change export.
+// SetFileName sets the fileName property value. Suggested file name for the exported CSV document.
 func (m *LeadStatusChangeExportResponse) SetFileName(value *string)() {
     m.fileName = value
 }

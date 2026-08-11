@@ -12,15 +12,15 @@ import (
 type LeadStatusChangeResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the appointment end at value on this lead status change.
+    // UTC timestamp for appointment end at on this lead status change.
     appointmentEndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The appointment notes value for this lead status change.
+    // Additional scheduling or preparation notes for the related appointment.
     appointmentNotes *string
-    // The date and time for the appointment start at value on this lead status change.
+    // UTC timestamp for appointment start at on this lead status change.
     appointmentStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The assigned to user ID associated with this lead status change.
     assignedToUserId *string
-    // The date and time for the callback at value on this lead status change.
+    // UTC timestamp for callback at on this lead status change.
     callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Controlled lead status change categories used for reporting, automation, and analytics.
     category *LeadStatusChangeResponse_category
@@ -32,11 +32,11 @@ type LeadStatusChangeResponse struct {
     changedByUserId *string
     // Known sources that can change a lead's current lead status change.
     changeSource *LeadStatusChangeResponse_changeSource
-    // The date and time for the created at value on this lead status change.
+    // UTC timestamp for created at on this lead status change.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current follow up status for this lead status change.
     followUpStatus *string
-    // The unique ID for this lead status change.
+    // Unique Leadping identifier for this lead status change.
     id *string
     // Whether this lead status change is missed call follow up.
     isMissedCallFollowUp *bool
@@ -54,7 +54,7 @@ type LeadStatusChangeResponse struct {
     oldLeadStatusChangeOutcome *string
     // Old lead status change type classification for this Leadping lead status change.
     oldLeadStatusChangeType *string
-    // The outcome value for this lead status change.
+    // Result of the interaction or workflow step that caused the status change.
     outcome *string
     // The reason this lead status change was changed.
     reason *string
@@ -62,13 +62,13 @@ type LeadStatusChangeResponse struct {
     relatedCallEventId *string
     // The source ID associated with this lead status change.
     sourceId *string
-    // The date and time for the task due at value on this lead status change.
+    // UTC timestamp for task due at on this lead status change.
     taskDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the timestamp value on this lead status change.
+    // UTC timestamp for timestamp on this lead status change.
     timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The type classification for this lead status change.
+    // Category of status change recorded for the lead.
     typeEscaped *string
-    // The date and time for the updated at value on this lead status change.
+    // UTC timestamp for updated at on this lead status change.
     updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 // NewLeadStatusChangeResponse instantiates a new LeadStatusChangeResponse and sets the default values.
@@ -88,17 +88,17 @@ func CreateLeadStatusChangeResponseFromDiscriminatorValue(parseNode i878a80d2330
 func (m *LeadStatusChangeResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAppointmentEndAt gets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change.
+// GetAppointmentEndAt gets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetAppointmentEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.appointmentEndAt
 }
-// GetAppointmentNotes gets the appointmentNotes property value. The appointment notes value for this lead status change.
+// GetAppointmentNotes gets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetAppointmentNotes()(*string) {
     return m.appointmentNotes
 }
-// GetAppointmentStartAt gets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change.
+// GetAppointmentStartAt gets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetAppointmentStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.appointmentStartAt
@@ -108,7 +108,7 @@ func (m *LeadStatusChangeResponse) GetAppointmentStartAt()(*i336074805fc853987ab
 func (m *LeadStatusChangeResponse) GetAssignedToUserId()(*string) {
     return m.assignedToUserId
 }
-// GetCallbackAt gets the callbackAt property value. The date and time for the callback at value on this lead status change.
+// GetCallbackAt gets the callbackAt property value. UTC timestamp for callback at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.callbackAt
@@ -138,7 +138,7 @@ func (m *LeadStatusChangeResponse) GetChangedByUserId()(*string) {
 func (m *LeadStatusChangeResponse) GetChangeSource()(*LeadStatusChangeResponse_changeSource) {
     return m.changeSource
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this lead status change.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -444,7 +444,7 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers()(map[string]func(i878a
 func (m *LeadStatusChangeResponse) GetFollowUpStatus()(*string) {
     return m.followUpStatus
 }
-// GetId gets the id property value. The unique ID for this lead status change.
+// GetId gets the id property value. Unique Leadping identifier for this lead status change.
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetId()(*string) {
     return m.id
@@ -489,7 +489,7 @@ func (m *LeadStatusChangeResponse) GetOldLeadStatusChangeOutcome()(*string) {
 func (m *LeadStatusChangeResponse) GetOldLeadStatusChangeType()(*string) {
     return m.oldLeadStatusChangeType
 }
-// GetOutcome gets the outcome property value. The outcome value for this lead status change.
+// GetOutcome gets the outcome property value. Result of the interaction or workflow step that caused the status change.
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetOutcome()(*string) {
     return m.outcome
@@ -509,22 +509,22 @@ func (m *LeadStatusChangeResponse) GetRelatedCallEventId()(*string) {
 func (m *LeadStatusChangeResponse) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetTaskDueAt gets the taskDueAt property value. The date and time for the task due at value on this lead status change.
+// GetTaskDueAt gets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetTaskDueAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.taskDueAt
 }
-// GetTimestamp gets the timestamp property value. The date and time for the timestamp value on this lead status change.
+// GetTimestamp gets the timestamp property value. UTC timestamp for timestamp on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.timestamp
 }
-// GetTypeEscaped gets the type property value. The type classification for this lead status change.
+// GetTypeEscaped gets the type property value. Category of status change recorded for the lead.
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetTypeEscaped()(*string) {
     return m.typeEscaped
 }
-// GetUpdatedAt gets the updatedAt property value. The date and time for the updated at value on this lead status change.
+// GetUpdatedAt gets the updatedAt property value. UTC timestamp for updated at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeResponse) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.updatedAt
@@ -719,15 +719,15 @@ func (m *LeadStatusChangeResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *LeadStatusChangeResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAppointmentEndAt sets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change.
+// SetAppointmentEndAt sets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
 func (m *LeadStatusChangeResponse) SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.appointmentEndAt = value
 }
-// SetAppointmentNotes sets the appointmentNotes property value. The appointment notes value for this lead status change.
+// SetAppointmentNotes sets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
 func (m *LeadStatusChangeResponse) SetAppointmentNotes(value *string)() {
     m.appointmentNotes = value
 }
-// SetAppointmentStartAt sets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change.
+// SetAppointmentStartAt sets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
 func (m *LeadStatusChangeResponse) SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.appointmentStartAt = value
 }
@@ -735,7 +735,7 @@ func (m *LeadStatusChangeResponse) SetAppointmentStartAt(value *i336074805fc8539
 func (m *LeadStatusChangeResponse) SetAssignedToUserId(value *string)() {
     m.assignedToUserId = value
 }
-// SetCallbackAt sets the callbackAt property value. The date and time for the callback at value on this lead status change.
+// SetCallbackAt sets the callbackAt property value. UTC timestamp for callback at on this lead status change.
 func (m *LeadStatusChangeResponse) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.callbackAt = value
 }
@@ -759,7 +759,7 @@ func (m *LeadStatusChangeResponse) SetChangedByUserId(value *string)() {
 func (m *LeadStatusChangeResponse) SetChangeSource(value *LeadStatusChangeResponse_changeSource)() {
     m.changeSource = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this lead status change.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this lead status change.
 func (m *LeadStatusChangeResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -767,7 +767,7 @@ func (m *LeadStatusChangeResponse) SetCreatedAt(value *i336074805fc853987abe6f7f
 func (m *LeadStatusChangeResponse) SetFollowUpStatus(value *string)() {
     m.followUpStatus = value
 }
-// SetId sets the id property value. The unique ID for this lead status change.
+// SetId sets the id property value. Unique Leadping identifier for this lead status change.
 func (m *LeadStatusChangeResponse) SetId(value *string)() {
     m.id = value
 }
@@ -803,7 +803,7 @@ func (m *LeadStatusChangeResponse) SetOldLeadStatusChangeOutcome(value *string)(
 func (m *LeadStatusChangeResponse) SetOldLeadStatusChangeType(value *string)() {
     m.oldLeadStatusChangeType = value
 }
-// SetOutcome sets the outcome property value. The outcome value for this lead status change.
+// SetOutcome sets the outcome property value. Result of the interaction or workflow step that caused the status change.
 func (m *LeadStatusChangeResponse) SetOutcome(value *string)() {
     m.outcome = value
 }
@@ -819,19 +819,19 @@ func (m *LeadStatusChangeResponse) SetRelatedCallEventId(value *string)() {
 func (m *LeadStatusChangeResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetTaskDueAt sets the taskDueAt property value. The date and time for the task due at value on this lead status change.
+// SetTaskDueAt sets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
 func (m *LeadStatusChangeResponse) SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.taskDueAt = value
 }
-// SetTimestamp sets the timestamp property value. The date and time for the timestamp value on this lead status change.
+// SetTimestamp sets the timestamp property value. UTC timestamp for timestamp on this lead status change.
 func (m *LeadStatusChangeResponse) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.timestamp = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this lead status change.
+// SetTypeEscaped sets the type property value. Category of status change recorded for the lead.
 func (m *LeadStatusChangeResponse) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }
-// SetUpdatedAt sets the updatedAt property value. The date and time for the updated at value on this lead status change.
+// SetUpdatedAt sets the updatedAt property value. UTC timestamp for updated at on this lead status change.
 func (m *LeadStatusChangeResponse) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.updatedAt = value
 }

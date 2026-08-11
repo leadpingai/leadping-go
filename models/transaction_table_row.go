@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TransactionTableRow list item schema for Leadping API billing transaction table row results shown in searchable tables.
+// TransactionTableRow summarizes billing transaction data in paginated and searchable results.
 type TransactionTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -16,7 +16,7 @@ type TransactionTableRow struct {
     amount *float64
     // Defines the supported Billable Unit values.
     billableUnit *TransactionTableRow_billableUnit
-    // The billedAmount property
+    // Customer-facing amount billed for the metered usage or wallet transaction.
     billedAmount *float64
     // Defines the supported Usage Channel values.
     billingChannel *TransactionTableRow_billingChannel
@@ -26,27 +26,27 @@ type TransactionTableRow struct {
     description *string
     // Unique Leadping identifier for this billing transaction table row.
     id *string
-    // The ID and name for this lead.
+    // Identifier and display name of the related lead.
     lead TransactionTableRow_leadable
     // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization TransactionTableRow_organizationable
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
-    // The pricingVersion property
+    // Version of the pricing rules used to calculate the billed amount.
     pricingVersion *string
-    // The quantity property
+    // Number of billable units measured for this transaction, when usage-based pricing applies.
     quantity *float64
-    // The sourceEventId property
+    // Identifier of the event that created this billing transaction, when available.
     sourceEventId *string
-    // The sourceEventType property
+    // Event type that created this billing transaction, when available.
     sourceEventType *string
     // Processing status for this wallet transaction.
     transactionStatus *TransactionStatus
     // Debit or credit classification for this wallet transaction.
     transactionType *TransactionType
-    // The unitPrice property
+    // Price charged per billable unit when usage-based pricing applies.
     unitPrice *float64
 }
 // NewTransactionTableRow instantiates a new TransactionTableRow and sets the default values.
@@ -76,7 +76,7 @@ func (m *TransactionTableRow) GetAmount()(*float64) {
 func (m *TransactionTableRow) GetBillableUnit()(*TransactionTableRow_billableUnit) {
     return m.billableUnit
 }
-// GetBilledAmount gets the billedAmount property value. The billedAmount property
+// GetBilledAmount gets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetBilledAmount()(*float64) {
     return m.billedAmount
@@ -287,7 +287,7 @@ func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
 func (m *TransactionTableRow) GetId()(*string) {
     return m.id
 }
-// GetLead gets the lead property value. The ID and name for this lead.
+// GetLead gets the lead property value. Identifier and display name of the related lead.
 // returns a TransactionTableRow_leadable when successful
 func (m *TransactionTableRow) GetLead()(TransactionTableRow_leadable) {
     return m.lead
@@ -297,7 +297,7 @@ func (m *TransactionTableRow) GetLead()(TransactionTableRow_leadable) {
 func (m *TransactionTableRow) GetNetAmount()(*float64) {
     return m.netAmount
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a TransactionTableRow_organizationable when successful
 func (m *TransactionTableRow) GetOrganization()(TransactionTableRow_organizationable) {
     return m.organization
@@ -307,22 +307,22 @@ func (m *TransactionTableRow) GetOrganization()(TransactionTableRow_organization
 func (m *TransactionTableRow) GetPaymentMethodDisplay()(*string) {
     return m.paymentMethodDisplay
 }
-// GetPricingVersion gets the pricingVersion property value. The pricingVersion property
+// GetPricingVersion gets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
 // returns a *string when successful
 func (m *TransactionTableRow) GetPricingVersion()(*string) {
     return m.pricingVersion
 }
-// GetQuantity gets the quantity property value. The quantity property
+// GetQuantity gets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetQuantity()(*float64) {
     return m.quantity
 }
-// GetSourceEventId gets the sourceEventId property value. The sourceEventId property
+// GetSourceEventId gets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
 // returns a *string when successful
 func (m *TransactionTableRow) GetSourceEventId()(*string) {
     return m.sourceEventId
 }
-// GetSourceEventType gets the sourceEventType property value. The sourceEventType property
+// GetSourceEventType gets the sourceEventType property value. Event type that created this billing transaction, when available.
 // returns a *string when successful
 func (m *TransactionTableRow) GetSourceEventType()(*string) {
     return m.sourceEventType
@@ -337,7 +337,7 @@ func (m *TransactionTableRow) GetTransactionStatus()(*TransactionStatus) {
 func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
     return m.transactionType
 }
-// GetUnitPrice gets the unitPrice property value. The unitPrice property
+// GetUnitPrice gets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
 // returns a *float64 when successful
 func (m *TransactionTableRow) GetUnitPrice()(*float64) {
     return m.unitPrice
@@ -476,7 +476,7 @@ func (m *TransactionTableRow) SetAmount(value *float64)() {
 func (m *TransactionTableRow) SetBillableUnit(value *TransactionTableRow_billableUnit)() {
     m.billableUnit = value
 }
-// SetBilledAmount sets the billedAmount property value. The billedAmount property
+// SetBilledAmount sets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
 func (m *TransactionTableRow) SetBilledAmount(value *float64)() {
     m.billedAmount = value
 }
@@ -496,7 +496,7 @@ func (m *TransactionTableRow) SetDescription(value *string)() {
 func (m *TransactionTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetLead sets the lead property value. The ID and name for this lead.
+// SetLead sets the lead property value. Identifier and display name of the related lead.
 func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable)() {
     m.lead = value
 }
@@ -504,7 +504,7 @@ func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable)() {
 func (m *TransactionTableRow) SetNetAmount(value *float64)() {
     m.netAmount = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organizationable)() {
     m.organization = value
 }
@@ -512,19 +512,19 @@ func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organiza
 func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
 }
-// SetPricingVersion sets the pricingVersion property value. The pricingVersion property
+// SetPricingVersion sets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
 func (m *TransactionTableRow) SetPricingVersion(value *string)() {
     m.pricingVersion = value
 }
-// SetQuantity sets the quantity property value. The quantity property
+// SetQuantity sets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
 func (m *TransactionTableRow) SetQuantity(value *float64)() {
     m.quantity = value
 }
-// SetSourceEventId sets the sourceEventId property value. The sourceEventId property
+// SetSourceEventId sets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
 func (m *TransactionTableRow) SetSourceEventId(value *string)() {
     m.sourceEventId = value
 }
-// SetSourceEventType sets the sourceEventType property value. The sourceEventType property
+// SetSourceEventType sets the sourceEventType property value. Event type that created this billing transaction, when available.
 func (m *TransactionTableRow) SetSourceEventType(value *string)() {
     m.sourceEventType = value
 }
@@ -536,7 +536,7 @@ func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus)() {
 func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
     m.transactionType = value
 }
-// SetUnitPrice sets the unitPrice property value. The unitPrice property
+// SetUnitPrice sets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
 func (m *TransactionTableRow) SetUnitPrice(value *float64)() {
     m.unitPrice = value
 }

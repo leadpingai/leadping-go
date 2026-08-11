@@ -11,7 +11,7 @@ import (
 type LeadContact struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+    // Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
     avatarUrl *string
     // Latitude and longitude coordinate for this lead contact profile.
     coordinate LeadContact_coordinateable
@@ -45,7 +45,7 @@ func CreateLeadContactFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *LeadContact) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAvatarUrl gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+// GetAvatarUrl gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
 // returns a *string when successful
 func (m *LeadContact) GetAvatarUrl()(*string) {
     return m.avatarUrl
@@ -233,7 +233,7 @@ func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *LeadContact) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAvatarUrl sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+// SetAvatarUrl sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
 func (m *LeadContact) SetAvatarUrl(value *string)() {
     m.avatarUrl = value
 }

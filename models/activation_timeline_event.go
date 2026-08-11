@@ -8,23 +8,23 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ActivationTimelineEvent aPI DTO containing activation timeline event data used by Leadping API contracts.
+// ActivationTimelineEvent describes activation timeline event data used in Leadping API requests and responses.
 type ActivationTimelineEvent struct {
-    // The ID and name for this actor.
+    // Identifier and display name of the related actor.
     actor ActivationTimelineEvent_actorable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this activation timeline event.
+    // UTC timestamp for created at on this activation timeline event.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The details value for this activation timeline event.
+    // Details for this activation timeline event.
     details *string
     // The human-readable failure reason explaining this activation timeline event.
     failureReason *string
-    // The unique ID for this activation timeline event.
+    // Unique Leadping identifier for this activation timeline event.
     id *string
     // The current status for this activation timeline event.
     status *string
-    // The title value for this activation timeline event.
+    // Title for this activation timeline event.
     title *string
     // The type classification for this activation timeline event.
     typeEscaped *string
@@ -41,7 +41,7 @@ func NewActivationTimelineEvent()(*ActivationTimelineEvent) {
 func CreateActivationTimelineEventFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewActivationTimelineEvent(), nil
 }
-// GetActor gets the actor property value. The ID and name for this actor.
+// GetActor gets the actor property value. Identifier and display name of the related actor.
 // returns a ActivationTimelineEvent_actorable when successful
 func (m *ActivationTimelineEvent) GetActor()(ActivationTimelineEvent_actorable) {
     return m.actor
@@ -51,12 +51,12 @@ func (m *ActivationTimelineEvent) GetActor()(ActivationTimelineEvent_actorable) 
 func (m *ActivationTimelineEvent) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this activation timeline event.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this activation timeline event.
 // returns a *Time when successful
 func (m *ActivationTimelineEvent) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetDetails gets the details property value. The details value for this activation timeline event.
+// GetDetails gets the details property value. Details for this activation timeline event.
 // returns a *string when successful
 func (m *ActivationTimelineEvent) GetDetails()(*string) {
     return m.details
@@ -152,7 +152,7 @@ func (m *ActivationTimelineEvent) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this activation timeline event.
+// GetId gets the id property value. Unique Leadping identifier for this activation timeline event.
 // returns a *string when successful
 func (m *ActivationTimelineEvent) GetId()(*string) {
     return m.id
@@ -162,7 +162,7 @@ func (m *ActivationTimelineEvent) GetId()(*string) {
 func (m *ActivationTimelineEvent) GetStatus()(*string) {
     return m.status
 }
-// GetTitle gets the title property value. The title value for this activation timeline event.
+// GetTitle gets the title property value. Title for this activation timeline event.
 // returns a *string when successful
 func (m *ActivationTimelineEvent) GetTitle()(*string) {
     return m.title
@@ -230,7 +230,7 @@ func (m *ActivationTimelineEvent) Serialize(writer i878a80d2330e89d26896388a3f48
     }
     return nil
 }
-// SetActor sets the actor property value. The ID and name for this actor.
+// SetActor sets the actor property value. Identifier and display name of the related actor.
 func (m *ActivationTimelineEvent) SetActor(value ActivationTimelineEvent_actorable)() {
     m.actor = value
 }
@@ -238,11 +238,11 @@ func (m *ActivationTimelineEvent) SetActor(value ActivationTimelineEvent_actorab
 func (m *ActivationTimelineEvent) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this activation timeline event.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this activation timeline event.
 func (m *ActivationTimelineEvent) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetDetails sets the details property value. The details value for this activation timeline event.
+// SetDetails sets the details property value. Details for this activation timeline event.
 func (m *ActivationTimelineEvent) SetDetails(value *string)() {
     m.details = value
 }
@@ -250,7 +250,7 @@ func (m *ActivationTimelineEvent) SetDetails(value *string)() {
 func (m *ActivationTimelineEvent) SetFailureReason(value *string)() {
     m.failureReason = value
 }
-// SetId sets the id property value. The unique ID for this activation timeline event.
+// SetId sets the id property value. Unique Leadping identifier for this activation timeline event.
 func (m *ActivationTimelineEvent) SetId(value *string)() {
     m.id = value
 }
@@ -258,7 +258,7 @@ func (m *ActivationTimelineEvent) SetId(value *string)() {
 func (m *ActivationTimelineEvent) SetStatus(value *string)() {
     m.status = value
 }
-// SetTitle sets the title property value. The title value for this activation timeline event.
+// SetTitle sets the title property value. Title for this activation timeline event.
 func (m *ActivationTimelineEvent) SetTitle(value *string)() {
     m.title = value
 }

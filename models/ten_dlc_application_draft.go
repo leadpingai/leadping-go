@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TenDlcApplicationDraft aPI DTO containing ten dlc application draft data used by Leadping API contracts.
+// TenDlcApplicationDraft describes ten dlc application draft data used in Leadping API requests and responses.
 type TenDlcApplicationDraft struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -16,49 +16,47 @@ type TenDlcApplicationDraft struct {
     brandStatus *TenDlcRegistrationStatus
     // The current provider review status for the submitted campaign.
     campaignStatus *TenDlcRegistrationStatus
-    // The company name value for this 10DLC application draft.
+    // Company name for this 10DLC application draft.
     companyName *string
     // The compliance warnings included with this 10DLC application draft.
     complianceWarnings []string
-    // The contact email value for this 10DLC application draft.
+    // Contact email for this 10DLC application draft.
     contactEmail *string
-    // The contact name value for this 10DLC application draft.
+    // Contact name for this 10DLC application draft.
     contactName *string
-    // The contact phone value for this 10DLC application draft.
+    // Contact phone for this 10DLC application draft.
     contactPhone *string
-    // The EIN value for this 10DLC application draft.
+    // EIN for this 10DLC application draft.
     ein *string
-    // The expected monthly volume value for this 10DLC application draft.
+    // Expected monthly volume for this 10DLC application draft.
     expectedMonthlyVolume *int32
     // The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
     industry *string
-    // The date and time for the last submitted at value on this 10DLC application draft.
+    // UTC timestamp for last submitted at on this 10DLC application draft.
     lastSubmittedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The lead source value for this 10DLC application draft.
-    leadSource *string
     // The message examples included with this 10DLC application draft.
     messageExamples []string
     // The missing fields included with this 10DLC application draft.
     missingFields []string
-    // The opt in language value for this 10DLC application draft.
+    // Opt in language for this 10DLC application draft.
     optInLanguage *string
-    // The URL associated with this 10DLC application draft.
+    // Public privacy-policy URL that explains how messaging recipient data is handled.
     privacyPolicyUrl *string
     // The human-readable rejection reason explaining this 10DLC application draft.
     rejectionReason *string
-    // The URL associated with this 10DLC application draft.
+    // Public terms-of-service URL governing the messaging program.
     termsUrl *string
     // Whether TrustedForm required applies to this 10DLC application draft.
     trustedFormRequired *bool
-    // The date and time for the updated at value on this 10DLC application draft.
+    // UTC timestamp for updated at on this 10DLC application draft.
     updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The use case value for this 10DLC application draft.
+    // Use case for this 10DLC application draft.
     useCase *string
-    // The use case description value for this 10DLC application draft.
+    // Use case description for this 10DLC application draft.
     useCaseDescription *string
-    // The version value for this 10DLC application draft.
+    // Version for this 10DLC application draft.
     version *int32
-    // The URL associated with this 10DLC application draft.
+    // Public business website URL submitted to carriers during brand review.
     websiteUrl *string
 }
 // NewTenDlcApplicationDraft instantiates a new TenDlcApplicationDraft and sets the default values.
@@ -88,7 +86,7 @@ func (m *TenDlcApplicationDraft) GetBrandStatus()(*TenDlcRegistrationStatus) {
 func (m *TenDlcApplicationDraft) GetCampaignStatus()(*TenDlcRegistrationStatus) {
     return m.campaignStatus
 }
-// GetCompanyName gets the companyName property value. The company name value for this 10DLC application draft.
+// GetCompanyName gets the companyName property value. Company name for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetCompanyName()(*string) {
     return m.companyName
@@ -98,27 +96,27 @@ func (m *TenDlcApplicationDraft) GetCompanyName()(*string) {
 func (m *TenDlcApplicationDraft) GetComplianceWarnings()([]string) {
     return m.complianceWarnings
 }
-// GetContactEmail gets the contactEmail property value. The contact email value for this 10DLC application draft.
+// GetContactEmail gets the contactEmail property value. Contact email for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetContactEmail()(*string) {
     return m.contactEmail
 }
-// GetContactName gets the contactName property value. The contact name value for this 10DLC application draft.
+// GetContactName gets the contactName property value. Contact name for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetContactName()(*string) {
     return m.contactName
 }
-// GetContactPhone gets the contactPhone property value. The contact phone value for this 10DLC application draft.
+// GetContactPhone gets the contactPhone property value. Contact phone for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetContactPhone()(*string) {
     return m.contactPhone
 }
-// GetEin gets the ein property value. The EIN value for this 10DLC application draft.
+// GetEin gets the ein property value. EIN for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetEin()(*string) {
     return m.ein
 }
-// GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+// GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
 // returns a *int32 when successful
 func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(*int32) {
     return m.expectedMonthlyVolume
@@ -240,16 +238,6 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
         }
         if val != nil {
             m.SetLastSubmittedAt(val)
-        }
-        return nil
-    }
-    res["leadSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadSource(val)
         }
         return nil
     }
@@ -392,15 +380,10 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
 func (m *TenDlcApplicationDraft) GetIndustry()(*string) {
     return m.industry
 }
-// GetLastSubmittedAt gets the lastSubmittedAt property value. The date and time for the last submitted at value on this 10DLC application draft.
+// GetLastSubmittedAt gets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
 // returns a *Time when successful
 func (m *TenDlcApplicationDraft) GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastSubmittedAt
-}
-// GetLeadSource gets the leadSource property value. The lead source value for this 10DLC application draft.
-// returns a *string when successful
-func (m *TenDlcApplicationDraft) GetLeadSource()(*string) {
-    return m.leadSource
 }
 // GetMessageExamples gets the messageExamples property value. The message examples included with this 10DLC application draft.
 // returns a []string when successful
@@ -412,12 +395,12 @@ func (m *TenDlcApplicationDraft) GetMessageExamples()([]string) {
 func (m *TenDlcApplicationDraft) GetMissingFields()([]string) {
     return m.missingFields
 }
-// GetOptInLanguage gets the optInLanguage property value. The opt in language value for this 10DLC application draft.
+// GetOptInLanguage gets the optInLanguage property value. Opt in language for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetOptInLanguage()(*string) {
     return m.optInLanguage
 }
-// GetPrivacyPolicyUrl gets the privacyPolicyUrl property value. The URL associated with this 10DLC application draft.
+// GetPrivacyPolicyUrl gets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetPrivacyPolicyUrl()(*string) {
     return m.privacyPolicyUrl
@@ -427,7 +410,7 @@ func (m *TenDlcApplicationDraft) GetPrivacyPolicyUrl()(*string) {
 func (m *TenDlcApplicationDraft) GetRejectionReason()(*string) {
     return m.rejectionReason
 }
-// GetTermsUrl gets the termsUrl property value. The URL associated with this 10DLC application draft.
+// GetTermsUrl gets the termsUrl property value. Public terms-of-service URL governing the messaging program.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetTermsUrl()(*string) {
     return m.termsUrl
@@ -437,27 +420,27 @@ func (m *TenDlcApplicationDraft) GetTermsUrl()(*string) {
 func (m *TenDlcApplicationDraft) GetTrustedFormRequired()(*bool) {
     return m.trustedFormRequired
 }
-// GetUpdatedAt gets the updatedAt property value. The date and time for the updated at value on this 10DLC application draft.
+// GetUpdatedAt gets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
 // returns a *Time when successful
 func (m *TenDlcApplicationDraft) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.updatedAt
 }
-// GetUseCase gets the useCase property value. The use case value for this 10DLC application draft.
+// GetUseCase gets the useCase property value. Use case for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetUseCase()(*string) {
     return m.useCase
 }
-// GetUseCaseDescription gets the useCaseDescription property value. The use case description value for this 10DLC application draft.
+// GetUseCaseDescription gets the useCaseDescription property value. Use case description for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetUseCaseDescription()(*string) {
     return m.useCaseDescription
 }
-// GetVersion gets the version property value. The version value for this 10DLC application draft.
+// GetVersion gets the version property value. Version for this 10DLC application draft.
 // returns a *int32 when successful
 func (m *TenDlcApplicationDraft) GetVersion()(*int32) {
     return m.version
 }
-// GetWebsiteUrl gets the websiteUrl property value. The URL associated with this 10DLC application draft.
+// GetWebsiteUrl gets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetWebsiteUrl()(*string) {
     return m.websiteUrl
@@ -528,12 +511,6 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
     }
     {
         err := writer.WriteTimeValue("lastSubmittedAt", m.GetLastSubmittedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadSource", m.GetLeadSource())
         if err != nil {
             return err
         }
@@ -630,7 +607,7 @@ func (m *TenDlcApplicationDraft) SetBrandStatus(value *TenDlcRegistrationStatus)
 func (m *TenDlcApplicationDraft) SetCampaignStatus(value *TenDlcRegistrationStatus)() {
     m.campaignStatus = value
 }
-// SetCompanyName sets the companyName property value. The company name value for this 10DLC application draft.
+// SetCompanyName sets the companyName property value. Company name for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetCompanyName(value *string)() {
     m.companyName = value
 }
@@ -638,23 +615,23 @@ func (m *TenDlcApplicationDraft) SetCompanyName(value *string)() {
 func (m *TenDlcApplicationDraft) SetComplianceWarnings(value []string)() {
     m.complianceWarnings = value
 }
-// SetContactEmail sets the contactEmail property value. The contact email value for this 10DLC application draft.
+// SetContactEmail sets the contactEmail property value. Contact email for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetContactEmail(value *string)() {
     m.contactEmail = value
 }
-// SetContactName sets the contactName property value. The contact name value for this 10DLC application draft.
+// SetContactName sets the contactName property value. Contact name for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetContactName(value *string)() {
     m.contactName = value
 }
-// SetContactPhone sets the contactPhone property value. The contact phone value for this 10DLC application draft.
+// SetContactPhone sets the contactPhone property value. Contact phone for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetContactPhone(value *string)() {
     m.contactPhone = value
 }
-// SetEin sets the ein property value. The EIN value for this 10DLC application draft.
+// SetEin sets the ein property value. EIN for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetEin(value *string)() {
     m.ein = value
 }
-// SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+// SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32)() {
     m.expectedMonthlyVolume = value
 }
@@ -662,13 +639,9 @@ func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32)() {
 func (m *TenDlcApplicationDraft) SetIndustry(value *string)() {
     m.industry = value
 }
-// SetLastSubmittedAt sets the lastSubmittedAt property value. The date and time for the last submitted at value on this 10DLC application draft.
+// SetLastSubmittedAt sets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastSubmittedAt = value
-}
-// SetLeadSource sets the leadSource property value. The lead source value for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetLeadSource(value *string)() {
-    m.leadSource = value
 }
 // SetMessageExamples sets the messageExamples property value. The message examples included with this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetMessageExamples(value []string)() {
@@ -678,11 +651,11 @@ func (m *TenDlcApplicationDraft) SetMessageExamples(value []string)() {
 func (m *TenDlcApplicationDraft) SetMissingFields(value []string)() {
     m.missingFields = value
 }
-// SetOptInLanguage sets the optInLanguage property value. The opt in language value for this 10DLC application draft.
+// SetOptInLanguage sets the optInLanguage property value. Opt in language for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetOptInLanguage(value *string)() {
     m.optInLanguage = value
 }
-// SetPrivacyPolicyUrl sets the privacyPolicyUrl property value. The URL associated with this 10DLC application draft.
+// SetPrivacyPolicyUrl sets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
 func (m *TenDlcApplicationDraft) SetPrivacyPolicyUrl(value *string)() {
     m.privacyPolicyUrl = value
 }
@@ -690,7 +663,7 @@ func (m *TenDlcApplicationDraft) SetPrivacyPolicyUrl(value *string)() {
 func (m *TenDlcApplicationDraft) SetRejectionReason(value *string)() {
     m.rejectionReason = value
 }
-// SetTermsUrl sets the termsUrl property value. The URL associated with this 10DLC application draft.
+// SetTermsUrl sets the termsUrl property value. Public terms-of-service URL governing the messaging program.
 func (m *TenDlcApplicationDraft) SetTermsUrl(value *string)() {
     m.termsUrl = value
 }
@@ -698,23 +671,23 @@ func (m *TenDlcApplicationDraft) SetTermsUrl(value *string)() {
 func (m *TenDlcApplicationDraft) SetTrustedFormRequired(value *bool)() {
     m.trustedFormRequired = value
 }
-// SetUpdatedAt sets the updatedAt property value. The date and time for the updated at value on this 10DLC application draft.
+// SetUpdatedAt sets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.updatedAt = value
 }
-// SetUseCase sets the useCase property value. The use case value for this 10DLC application draft.
+// SetUseCase sets the useCase property value. Use case for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetUseCase(value *string)() {
     m.useCase = value
 }
-// SetUseCaseDescription sets the useCaseDescription property value. The use case description value for this 10DLC application draft.
+// SetUseCaseDescription sets the useCaseDescription property value. Use case description for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetUseCaseDescription(value *string)() {
     m.useCaseDescription = value
 }
-// SetVersion sets the version property value. The version value for this 10DLC application draft.
+// SetVersion sets the version property value. Version for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetVersion(value *int32)() {
     m.version = value
 }
-// SetWebsiteUrl sets the websiteUrl property value. The URL associated with this 10DLC application draft.
+// SetWebsiteUrl sets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
 func (m *TenDlcApplicationDraft) SetWebsiteUrl(value *string)() {
     m.websiteUrl = value
 }
@@ -732,7 +705,6 @@ type TenDlcApplicationDraftable interface {
     GetExpectedMonthlyVolume()(*int32)
     GetIndustry()(*string)
     GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLeadSource()(*string)
     GetMessageExamples()([]string)
     GetMissingFields()([]string)
     GetOptInLanguage()(*string)
@@ -756,7 +728,6 @@ type TenDlcApplicationDraftable interface {
     SetExpectedMonthlyVolume(value *int32)()
     SetIndustry(value *string)()
     SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLeadSource(value *string)()
     SetMessageExamples(value []string)()
     SetMissingFields(value []string)()
     SetOptInLanguage(value *string)()

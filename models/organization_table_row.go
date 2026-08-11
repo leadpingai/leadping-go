@@ -8,9 +8,9 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationTableRow aPI DTO containing organization data used by Leadping API contracts.
+// OrganizationTableRow describes organization data used in Leadping API requests and responses.
 type OrganizationTableRow struct {
-    // The account balance value for this organization.
+    // Account balance for this organization.
     accountBalance *float64
     // Defines the supported Customer Activation Status values.
     activationStatus *OrganizationTableRow_activationStatus
@@ -34,19 +34,19 @@ type OrganizationTableRow struct {
     billingPlan *OrganizationTableRow_billingPlan
     // Whether this organization is enabled.
     enabled *bool
-    // The unique ID for this organization.
+    // Unique Leadping identifier for this organization.
     id *string
-    // The industry value for this organization.
+    // Industry for this organization.
     industry *string
     // Date and time when this Leadping organization table row was last subscription event.
     lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the modified at value on this organization.
+    // UTC timestamp for modified at on this organization.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The human-readable name shown for this organization.
     name *string
     // Whether needs admin review applies to this organization.
     needsAdminReview *bool
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization OrganizationTableRow_organizationable
     // Date and time when this Leadping organization table row was payment failed.
     paymentFailedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -81,7 +81,7 @@ func NewOrganizationTableRow()(*OrganizationTableRow) {
 func CreateOrganizationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewOrganizationTableRow(), nil
 }
-// GetAccountBalance gets the accountBalance property value. The account balance value for this organization.
+// GetAccountBalance gets the accountBalance property value. Account balance for this organization.
 // returns a *float64 when successful
 func (m *OrganizationTableRow) GetAccountBalance()(*float64) {
     return m.accountBalance
@@ -433,12 +433,12 @@ func (m *OrganizationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this organization.
+// GetId gets the id property value. Unique Leadping identifier for this organization.
 // returns a *string when successful
 func (m *OrganizationTableRow) GetId()(*string) {
     return m.id
 }
-// GetIndustry gets the industry property value. The industry value for this organization.
+// GetIndustry gets the industry property value. Industry for this organization.
 // returns a *string when successful
 func (m *OrganizationTableRow) GetIndustry()(*string) {
     return m.industry
@@ -448,7 +448,7 @@ func (m *OrganizationTableRow) GetIndustry()(*string) {
 func (m *OrganizationTableRow) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastSubscriptionEventAt
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time for the modified at value on this organization.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp for modified at on this organization.
 // returns a *Time when successful
 func (m *OrganizationTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -463,7 +463,7 @@ func (m *OrganizationTableRow) GetName()(*string) {
 func (m *OrganizationTableRow) GetNeedsAdminReview()(*bool) {
     return m.needsAdminReview
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a OrganizationTableRow_organizationable when successful
 func (m *OrganizationTableRow) GetOrganization()(OrganizationTableRow_organizationable) {
     return m.organization
@@ -703,7 +703,7 @@ func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     return nil
 }
-// SetAccountBalance sets the accountBalance property value. The account balance value for this organization.
+// SetAccountBalance sets the accountBalance property value. Account balance for this organization.
 func (m *OrganizationTableRow) SetAccountBalance(value *float64)() {
     m.accountBalance = value
 }
@@ -751,11 +751,11 @@ func (m *OrganizationTableRow) SetBillingPlan(value *OrganizationTableRow_billin
 func (m *OrganizationTableRow) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique ID for this organization.
+// SetId sets the id property value. Unique Leadping identifier for this organization.
 func (m *OrganizationTableRow) SetId(value *string)() {
     m.id = value
 }
-// SetIndustry sets the industry property value. The industry value for this organization.
+// SetIndustry sets the industry property value. Industry for this organization.
 func (m *OrganizationTableRow) SetIndustry(value *string)() {
     m.industry = value
 }
@@ -763,7 +763,7 @@ func (m *OrganizationTableRow) SetIndustry(value *string)() {
 func (m *OrganizationTableRow) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastSubscriptionEventAt = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time for the modified at value on this organization.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp for modified at on this organization.
 func (m *OrganizationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
@@ -775,7 +775,7 @@ func (m *OrganizationTableRow) SetName(value *string)() {
 func (m *OrganizationTableRow) SetNeedsAdminReview(value *bool)() {
     m.needsAdminReview = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *OrganizationTableRow) SetOrganization(value OrganizationTableRow_organizationable)() {
     m.organization = value
 }

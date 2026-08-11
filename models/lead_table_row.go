@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadTableRow list item schema for Leadping API lead table row results shown in searchable tables.
+// LeadTableRow summarizes lead data in paginated and searchable results.
 type LeadTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -34,13 +34,13 @@ type LeadTableRow struct {
     isArchived *bool
     // Last name of the lead, user, or contact represented by this lead table row.
     lastName *string
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization LeadTableRow_organizationable
     // Phone details for the lead, user, or organization represented by this lead table row.
     phone *string
     // Lead price or transaction price supplied to the Leadping API.
     price *float64
-    // The ID and name for this source.
+    // Identifier and display name of the related source.
     source LeadTableRow_sourceable
     // Current lifecycle status for this lead table row in the Leadping API.
     status *string
@@ -325,7 +325,7 @@ func (m *LeadTableRow) GetIsArchived()(*bool) {
 func (m *LeadTableRow) GetLastName()(*string) {
     return m.lastName
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a LeadTableRow_organizationable when successful
 func (m *LeadTableRow) GetOrganization()(LeadTableRow_organizationable) {
     return m.organization
@@ -340,7 +340,7 @@ func (m *LeadTableRow) GetPhone()(*string) {
 func (m *LeadTableRow) GetPrice()(*float64) {
     return m.price
 }
-// GetSource gets the source property value. The ID and name for this source.
+// GetSource gets the source property value. Identifier and display name of the related source.
 // returns a LeadTableRow_sourceable when successful
 func (m *LeadTableRow) GetSource()(LeadTableRow_sourceable) {
     return m.source
@@ -543,7 +543,7 @@ func (m *LeadTableRow) SetIsArchived(value *bool)() {
 func (m *LeadTableRow) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *LeadTableRow) SetOrganization(value LeadTableRow_organizationable)() {
     m.organization = value
 }
@@ -555,7 +555,7 @@ func (m *LeadTableRow) SetPhone(value *string)() {
 func (m *LeadTableRow) SetPrice(value *float64)() {
     m.price = value
 }
-// SetSource sets the source property value. The ID and name for this source.
+// SetSource sets the source property value. Identifier and display name of the related source.
 func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable)() {
     m.source = value
 }

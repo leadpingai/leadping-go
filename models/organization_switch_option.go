@@ -8,21 +8,21 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationSwitchOption aPI DTO containing organization switch option data used by Leadping API contracts.
+// OrganizationSwitchOption describes organization switch option data used in Leadping API requests and responses.
 type OrganizationSwitchOption struct {
     // Defines the supported Customer Activation Status values.
     activationStatus *OrganizationSwitchOption_activationStatus
-    // The activation summary value for this organization switch option.
+    // Activation summary for this organization switch option.
     activationSummary *string
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Whether the organization has a default billing payment method.
     hasPaymentMethod *bool
-    // The unique ID for this organization switch option.
+    // Unique Leadping identifier for this organization switch option.
     id *string
     // Whether this organization switch option is current.
     isCurrent *bool
-    // The date and time for the last used at value on this organization switch option.
+    // UTC timestamp for last used at on this organization switch option.
     lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The human-readable name shown for this organization switch option.
     name *string
@@ -32,7 +32,7 @@ type OrganizationSwitchOption struct {
     organizationStatus *OrganizationSwitchOption_organizationStatus
     // Whether ready for customer traffic applies to this organization switch option.
     readyForCustomerTraffic *bool
-    // The role value for this organization switch option.
+    // Role for this organization switch option.
     role *OrganizationMemberRole
     // Defines the supported 10DLC Application Status values.
     tenDlcStatus *OrganizationSwitchOption_tenDlcStatus
@@ -54,7 +54,7 @@ func CreateOrganizationSwitchOptionFromDiscriminatorValue(parseNode i878a80d2330
 func (m *OrganizationSwitchOption) GetActivationStatus()(*OrganizationSwitchOption_activationStatus) {
     return m.activationStatus
 }
-// GetActivationSummary gets the activationSummary property value. The activation summary value for this organization switch option.
+// GetActivationSummary gets the activationSummary property value. Activation summary for this organization switch option.
 // returns a *string when successful
 func (m *OrganizationSwitchOption) GetActivationSummary()(*string) {
     return m.activationSummary
@@ -195,7 +195,7 @@ func (m *OrganizationSwitchOption) GetFieldDeserializers()(map[string]func(i878a
 func (m *OrganizationSwitchOption) GetHasPaymentMethod()(*bool) {
     return m.hasPaymentMethod
 }
-// GetId gets the id property value. The unique ID for this organization switch option.
+// GetId gets the id property value. Unique Leadping identifier for this organization switch option.
 // returns a *string when successful
 func (m *OrganizationSwitchOption) GetId()(*string) {
     return m.id
@@ -205,7 +205,7 @@ func (m *OrganizationSwitchOption) GetId()(*string) {
 func (m *OrganizationSwitchOption) GetIsCurrent()(*bool) {
     return m.isCurrent
 }
-// GetLastUsedAt gets the lastUsedAt property value. The date and time for the last used at value on this organization switch option.
+// GetLastUsedAt gets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
 // returns a *Time when successful
 func (m *OrganizationSwitchOption) GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastUsedAt
@@ -230,7 +230,7 @@ func (m *OrganizationSwitchOption) GetOrganizationStatus()(*OrganizationSwitchOp
 func (m *OrganizationSwitchOption) GetReadyForCustomerTraffic()(*bool) {
     return m.readyForCustomerTraffic
 }
-// GetRole gets the role property value. The role value for this organization switch option.
+// GetRole gets the role property value. Role for this organization switch option.
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationSwitchOption) GetRole()(*OrganizationMemberRole) {
     return m.role
@@ -330,7 +330,7 @@ func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *OrganizationSwitchOption) SetActivationStatus(value *OrganizationSwitchOption_activationStatus)() {
     m.activationStatus = value
 }
-// SetActivationSummary sets the activationSummary property value. The activation summary value for this organization switch option.
+// SetActivationSummary sets the activationSummary property value. Activation summary for this organization switch option.
 func (m *OrganizationSwitchOption) SetActivationSummary(value *string)() {
     m.activationSummary = value
 }
@@ -342,7 +342,7 @@ func (m *OrganizationSwitchOption) SetAdditionalData(value map[string]any)() {
 func (m *OrganizationSwitchOption) SetHasPaymentMethod(value *bool)() {
     m.hasPaymentMethod = value
 }
-// SetId sets the id property value. The unique ID for this organization switch option.
+// SetId sets the id property value. Unique Leadping identifier for this organization switch option.
 func (m *OrganizationSwitchOption) SetId(value *string)() {
     m.id = value
 }
@@ -350,7 +350,7 @@ func (m *OrganizationSwitchOption) SetId(value *string)() {
 func (m *OrganizationSwitchOption) SetIsCurrent(value *bool)() {
     m.isCurrent = value
 }
-// SetLastUsedAt sets the lastUsedAt property value. The date and time for the last used at value on this organization switch option.
+// SetLastUsedAt sets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
 func (m *OrganizationSwitchOption) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastUsedAt = value
 }
@@ -370,7 +370,7 @@ func (m *OrganizationSwitchOption) SetOrganizationStatus(value *OrganizationSwit
 func (m *OrganizationSwitchOption) SetReadyForCustomerTraffic(value *bool)() {
     m.readyForCustomerTraffic = value
 }
-// SetRole sets the role property value. The role value for this organization switch option.
+// SetRole sets the role property value. Role for this organization switch option.
 func (m *OrganizationSwitchOption) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }

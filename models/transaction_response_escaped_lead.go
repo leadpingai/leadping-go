@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TransactionResponse_lead the ID and name for this lead.
+// TransactionResponse_lead identifier and display name of the related lead.
 type TransactionResponse_lead struct {
     IdNamePair
 }

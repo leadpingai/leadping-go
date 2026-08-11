@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TransactionResponse response schema for the Leadping API billing transaction response returned to authenticated clients.
+// TransactionResponse describes billing transaction data returned by Leadping.
 type TransactionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -16,7 +16,7 @@ type TransactionResponse struct {
     amount *float64
     // Defines the supported Billable Unit values.
     billableUnit *TransactionResponse_billableUnit
-    // The billedAmount property
+    // Customer-facing amount billed for the transaction.
     billedAmount *float64
     // Defines the supported Usage Channel values.
     billingChannel *TransactionResponse_billingChannel
@@ -30,7 +30,7 @@ type TransactionResponse struct {
     gatewayStatus *string
     // The unique identifier for the entity.
     id *string
-    // The ID and name for this lead.
+    // Identifier and display name of the related lead.
     lead TransactionResponse_leadable
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -38,7 +38,7 @@ type TransactionResponse struct {
     netAmount *float64
     // Additional billing notes that explain the transaction for admins or customers.
     notes *string
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization TransactionResponse_organizationable
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
@@ -76,7 +76,7 @@ func (m *TransactionResponse) GetAmount()(*float64) {
 func (m *TransactionResponse) GetBillableUnit()(*TransactionResponse_billableUnit) {
     return m.billableUnit
 }
-// GetBilledAmount gets the billedAmount property value. The billedAmount property
+// GetBilledAmount gets the billedAmount property value. Customer-facing amount billed for the transaction.
 // returns a *float64 when successful
 func (m *TransactionResponse) GetBilledAmount()(*float64) {
     return m.billedAmount
@@ -297,7 +297,7 @@ func (m *TransactionResponse) GetGatewayStatus()(*string) {
 func (m *TransactionResponse) GetId()(*string) {
     return m.id
 }
-// GetLead gets the lead property value. The ID and name for this lead.
+// GetLead gets the lead property value. Identifier and display name of the related lead.
 // returns a TransactionResponse_leadable when successful
 func (m *TransactionResponse) GetLead()(TransactionResponse_leadable) {
     return m.lead
@@ -317,7 +317,7 @@ func (m *TransactionResponse) GetNetAmount()(*float64) {
 func (m *TransactionResponse) GetNotes()(*string) {
     return m.notes
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a TransactionResponse_organizationable when successful
 func (m *TransactionResponse) GetOrganization()(TransactionResponse_organizationable) {
     return m.organization
@@ -476,7 +476,7 @@ func (m *TransactionResponse) SetAmount(value *float64)() {
 func (m *TransactionResponse) SetBillableUnit(value *TransactionResponse_billableUnit)() {
     m.billableUnit = value
 }
-// SetBilledAmount sets the billedAmount property value. The billedAmount property
+// SetBilledAmount sets the billedAmount property value. Customer-facing amount billed for the transaction.
 func (m *TransactionResponse) SetBilledAmount(value *float64)() {
     m.billedAmount = value
 }
@@ -504,7 +504,7 @@ func (m *TransactionResponse) SetGatewayStatus(value *string)() {
 func (m *TransactionResponse) SetId(value *string)() {
     m.id = value
 }
-// SetLead sets the lead property value. The ID and name for this lead.
+// SetLead sets the lead property value. Identifier and display name of the related lead.
 func (m *TransactionResponse) SetLead(value TransactionResponse_leadable)() {
     m.lead = value
 }
@@ -520,7 +520,7 @@ func (m *TransactionResponse) SetNetAmount(value *float64)() {
 func (m *TransactionResponse) SetNotes(value *string)() {
     m.notes = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *TransactionResponse) SetOrganization(value TransactionResponse_organizationable)() {
     m.organization = value
 }

@@ -7,11 +7,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ChangeBillingPlanRequest request payload for change billing plan.
+// ChangeBillingPlanRequest defines the input used for change billing plan.
 type ChangeBillingPlanRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The billing plan value for this billing plan.
+    // Billing plan for this billing plan.
     billingPlan *BillingPlan
     // The user ID associated with this billing plan.
     userId *string
@@ -33,7 +33,7 @@ func CreateChangeBillingPlanRequestFromDiscriminatorValue(parseNode i878a80d2330
 func (m *ChangeBillingPlanRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillingPlan gets the billingPlan property value. The billing plan value for this billing plan.
+// GetBillingPlan gets the billingPlan property value. Billing plan for this billing plan.
 // returns a *BillingPlan when successful
 func (m *ChangeBillingPlanRequest) GetBillingPlan()(*BillingPlan) {
     return m.billingPlan
@@ -96,7 +96,7 @@ func (m *ChangeBillingPlanRequest) Serialize(writer i878a80d2330e89d26896388a3f4
 func (m *ChangeBillingPlanRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillingPlan sets the billingPlan property value. The billing plan value for this billing plan.
+// SetBillingPlan sets the billingPlan property value. Billing plan for this billing plan.
 func (m *ChangeBillingPlanRequest) SetBillingPlan(value *BillingPlan)() {
     m.billingPlan = value
 }

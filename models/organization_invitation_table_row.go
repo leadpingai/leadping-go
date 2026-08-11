@@ -8,19 +8,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationInvitationTableRow aPI DTO containing organization invitation data used by Leadping API contracts.
+// OrganizationInvitationTableRow describes organization invitation data used in Leadping API requests and responses.
 type OrganizationInvitationTableRow struct {
-    // The date and time for the accepted at value on this organization invitation.
+    // UTC timestamp for accepted at on this organization invitation.
     acceptedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time for the created at value on this organization invitation.
+    // UTC timestamp for created at on this organization invitation.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The email address associated with this organization invitation.
     email *string
-    // The date and time for the expires at value on this organization invitation.
+    // UTC timestamp for expires at on this organization invitation.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique ID for this organization invitation.
+    // Unique Leadping identifier for this organization invitation.
     id *string
     // The date and time this invitation's paid license was created.
     licenseActivatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -32,17 +32,17 @@ type OrganizationInvitationTableRow struct {
     licenseReleasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The renewal date used for proration of this license.
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The ID and name for this organization.
+    // Identifier and display name of the related organization.
     organization IdNamePairable
-    // The date and time for the resent at value on this organization invitation.
+    // UTC timestamp for resent at on this organization invitation.
     resentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the revoked at value on this organization invitation.
+    // UTC timestamp for revoked at on this organization invitation.
     revokedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The role value for this organization invitation.
+    // Role for this organization invitation.
     role *OrganizationMemberRole
     // The human-readable send failure reason explaining this organization invitation.
     sendFailureReason *string
-    // The date and time for the sent at value on this organization invitation.
+    // UTC timestamp for sent at on this organization invitation.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current status for this organization invitation.
     status *OrganizationInvitationStatus
@@ -59,7 +59,7 @@ func NewOrganizationInvitationTableRow()(*OrganizationInvitationTableRow) {
 func CreateOrganizationInvitationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewOrganizationInvitationTableRow(), nil
 }
-// GetAcceptedAt gets the acceptedAt property value. The date and time for the accepted at value on this organization invitation.
+// GetAcceptedAt gets the acceptedAt property value. UTC timestamp for accepted at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetAcceptedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.acceptedAt
@@ -69,7 +69,7 @@ func (m *OrganizationInvitationTableRow) GetAcceptedAt()(*i336074805fc853987abe6
 func (m *OrganizationInvitationTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time for the created at value on this organization invitation.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -79,7 +79,7 @@ func (m *OrganizationInvitationTableRow) GetCreatedAt()(*i336074805fc853987abe6f
 func (m *OrganizationInvitationTableRow) GetEmail()(*string) {
     return m.email
 }
-// GetExpiresAt gets the expiresAt property value. The date and time for the expires at value on this organization invitation.
+// GetExpiresAt gets the expiresAt property value. UTC timestamp for expires at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.expiresAt
@@ -260,7 +260,7 @@ func (m *OrganizationInvitationTableRow) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetId gets the id property value. The unique ID for this organization invitation.
+// GetId gets the id property value. Unique Leadping identifier for this organization invitation.
 // returns a *string when successful
 func (m *OrganizationInvitationTableRow) GetId()(*string) {
     return m.id
@@ -290,22 +290,22 @@ func (m *OrganizationInvitationTableRow) GetLicenseReleasedAt()(*i336074805fc853
 func (m *OrganizationInvitationTableRow) GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.licenseRenewalDate
 }
-// GetOrganization gets the organization property value. The ID and name for this organization.
+// GetOrganization gets the organization property value. Identifier and display name of the related organization.
 // returns a IdNamePairable when successful
 func (m *OrganizationInvitationTableRow) GetOrganization()(IdNamePairable) {
     return m.organization
 }
-// GetResentAt gets the resentAt property value. The date and time for the resent at value on this organization invitation.
+// GetResentAt gets the resentAt property value. UTC timestamp for resent at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetResentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.resentAt
 }
-// GetRevokedAt gets the revokedAt property value. The date and time for the revoked at value on this organization invitation.
+// GetRevokedAt gets the revokedAt property value. UTC timestamp for revoked at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetRevokedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.revokedAt
 }
-// GetRole gets the role property value. The role value for this organization invitation.
+// GetRole gets the role property value. Role for this organization invitation.
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationInvitationTableRow) GetRole()(*OrganizationMemberRole) {
     return m.role
@@ -315,7 +315,7 @@ func (m *OrganizationInvitationTableRow) GetRole()(*OrganizationMemberRole) {
 func (m *OrganizationInvitationTableRow) GetSendFailureReason()(*string) {
     return m.sendFailureReason
 }
-// GetSentAt gets the sentAt property value. The date and time for the sent at value on this organization invitation.
+// GetSentAt gets the sentAt property value. UTC timestamp for sent at on this organization invitation.
 // returns a *Time when successful
 func (m *OrganizationInvitationTableRow) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
@@ -439,7 +439,7 @@ func (m *OrganizationInvitationTableRow) Serialize(writer i878a80d2330e89d268963
     }
     return nil
 }
-// SetAcceptedAt sets the acceptedAt property value. The date and time for the accepted at value on this organization invitation.
+// SetAcceptedAt sets the acceptedAt property value. UTC timestamp for accepted at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetAcceptedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.acceptedAt = value
 }
@@ -447,7 +447,7 @@ func (m *OrganizationInvitationTableRow) SetAcceptedAt(value *i336074805fc853987
 func (m *OrganizationInvitationTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time for the created at value on this organization invitation.
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -455,11 +455,11 @@ func (m *OrganizationInvitationTableRow) SetCreatedAt(value *i336074805fc853987a
 func (m *OrganizationInvitationTableRow) SetEmail(value *string)() {
     m.email = value
 }
-// SetExpiresAt sets the expiresAt property value. The date and time for the expires at value on this organization invitation.
+// SetExpiresAt sets the expiresAt property value. UTC timestamp for expires at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.expiresAt = value
 }
-// SetId sets the id property value. The unique ID for this organization invitation.
+// SetId sets the id property value. Unique Leadping identifier for this organization invitation.
 func (m *OrganizationInvitationTableRow) SetId(value *string)() {
     m.id = value
 }
@@ -483,19 +483,19 @@ func (m *OrganizationInvitationTableRow) SetLicenseReleasedAt(value *i336074805f
 func (m *OrganizationInvitationTableRow) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.licenseRenewalDate = value
 }
-// SetOrganization sets the organization property value. The ID and name for this organization.
+// SetOrganization sets the organization property value. Identifier and display name of the related organization.
 func (m *OrganizationInvitationTableRow) SetOrganization(value IdNamePairable)() {
     m.organization = value
 }
-// SetResentAt sets the resentAt property value. The date and time for the resent at value on this organization invitation.
+// SetResentAt sets the resentAt property value. UTC timestamp for resent at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetResentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.resentAt = value
 }
-// SetRevokedAt sets the revokedAt property value. The date and time for the revoked at value on this organization invitation.
+// SetRevokedAt sets the revokedAt property value. UTC timestamp for revoked at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetRevokedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.revokedAt = value
 }
-// SetRole sets the role property value. The role value for this organization invitation.
+// SetRole sets the role property value. Role for this organization invitation.
 func (m *OrganizationInvitationTableRow) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }
@@ -503,7 +503,7 @@ func (m *OrganizationInvitationTableRow) SetRole(value *OrganizationMemberRole)(
 func (m *OrganizationInvitationTableRow) SetSendFailureReason(value *string)() {
     m.sendFailureReason = value
 }
-// SetSentAt sets the sentAt property value. The date and time for the sent at value on this organization invitation.
+// SetSentAt sets the sentAt property value. UTC timestamp for sent at on this organization invitation.
 func (m *OrganizationInvitationTableRow) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }

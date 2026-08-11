@@ -8,11 +8,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MobileDevicePreferences aPI DTO containing Leadping mobile preferences for a single user device.
+// MobileDevicePreferences describes notification and calling preferences saved for one of the user's mobile devices.
 type MobileDevicePreferences struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The ID and name for this device.
+    // Identifier and display name of the related device.
     device IdNamePairable
     // Whether inbound phone calls are enabled for this user device.
     inboundPhoneCallsEnabled *bool
@@ -36,7 +36,7 @@ func CreateMobileDevicePreferencesFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *MobileDevicePreferences) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDevice gets the device property value. The ID and name for this device.
+// GetDevice gets the device property value. Identifier and display name of the related device.
 // returns a IdNamePairable when successful
 func (m *MobileDevicePreferences) GetDevice()(IdNamePairable) {
     return m.device
@@ -119,7 +119,7 @@ func (m *MobileDevicePreferences) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *MobileDevicePreferences) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDevice sets the device property value. The ID and name for this device.
+// SetDevice sets the device property value. Identifier and display name of the related device.
 func (m *MobileDevicePreferences) SetDevice(value IdNamePairable)() {
     m.device = value
 }

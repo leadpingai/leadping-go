@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserResponse aPI response containing user data returned to callers.
+// UserResponse describes user data returned by Leadping.
 type UserResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -16,15 +16,15 @@ type UserResponse struct {
     billingPlan *UserResponse_billingPlan
     // Customer-safe billing state for the user's currently selected organization.
     billingState UserResponse_billingStateable
-    // The compliance value for this user.
+    // Compliance for this user.
     compliance UserResponse_complianceable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current organization value for this user.
+    // Current organization for this user.
     currentOrganization UserResponse_currentOrganizationable
     // The email address associated with this user.
     email *string
-    // The first name value for this user.
+    // First name for this user.
     firstName *string
     // The unique identifier for the entity.
     id *string
@@ -32,7 +32,7 @@ type UserResponse struct {
     identities []UserIdentityable
     // The date and time when this user last completed the Leadping sign-in flow.
     lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the last name value on this user.
+    // UTC timestamp for last name on this user.
     lastName *string
     // The Leadping mobile device preferences for this user.
     mobileDevicePreferences []MobileDevicePreferencesable
@@ -40,13 +40,13 @@ type UserResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The display name for the entity.
     name *string
-    // The notification preferences value for this user.
+    // Notification preferences for this user.
     notificationPreferences UserResponse_notificationPreferencesable
-    // The date and time for the personal data deleted at value on this user.
+    // UTC timestamp for personal data deleted at on this user.
     personalDataDeletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The human-readable personal data deletion reason explaining this user.
     personalDataDeletionReason *string
-    // The date and time for the personal data deletion requested at value on this user.
+    // UTC timestamp for personal data deletion requested at on this user.
     personalDataDeletionRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current personal data deletion status for this user.
     personalDataDeletionStatus *string
@@ -86,7 +86,7 @@ func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
 func (m *UserResponse) GetBillingState()(UserResponse_billingStateable) {
     return m.billingState
 }
-// GetCompliance gets the compliance property value. The compliance value for this user.
+// GetCompliance gets the compliance property value. Compliance for this user.
 // returns a UserResponse_complianceable when successful
 func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
     return m.compliance
@@ -96,7 +96,7 @@ func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
 func (m *UserResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetCurrentOrganization gets the currentOrganization property value. The current organization value for this user.
+// GetCurrentOrganization gets the currentOrganization property value. Current organization for this user.
 // returns a UserResponse_currentOrganizationable when successful
 func (m *UserResponse) GetCurrentOrganization()(UserResponse_currentOrganizationable) {
     return m.currentOrganization
@@ -354,7 +354,7 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this user.
+// GetFirstName gets the firstName property value. First name for this user.
 // returns a *string when successful
 func (m *UserResponse) GetFirstName()(*string) {
     return m.firstName
@@ -374,7 +374,7 @@ func (m *UserResponse) GetIdentities()([]UserIdentityable) {
 func (m *UserResponse) GetLastLoggedInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastLoggedInAt
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this user.
+// GetLastName gets the lastName property value. UTC timestamp for last name on this user.
 // returns a *string when successful
 func (m *UserResponse) GetLastName()(*string) {
     return m.lastName
@@ -394,12 +394,12 @@ func (m *UserResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077
 func (m *UserResponse) GetName()(*string) {
     return m.name
 }
-// GetNotificationPreferences gets the notificationPreferences property value. The notification preferences value for this user.
+// GetNotificationPreferences gets the notificationPreferences property value. Notification preferences for this user.
 // returns a UserResponse_notificationPreferencesable when successful
 func (m *UserResponse) GetNotificationPreferences()(UserResponse_notificationPreferencesable) {
     return m.notificationPreferences
 }
-// GetPersonalDataDeletedAt gets the personalDataDeletedAt property value. The date and time for the personal data deleted at value on this user.
+// GetPersonalDataDeletedAt gets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
 // returns a *Time when successful
 func (m *UserResponse) GetPersonalDataDeletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.personalDataDeletedAt
@@ -409,7 +409,7 @@ func (m *UserResponse) GetPersonalDataDeletedAt()(*i336074805fc853987abe6f7fe3ad
 func (m *UserResponse) GetPersonalDataDeletionReason()(*string) {
     return m.personalDataDeletionReason
 }
-// GetPersonalDataDeletionRequestedAt gets the personalDataDeletionRequestedAt property value. The date and time for the personal data deletion requested at value on this user.
+// GetPersonalDataDeletionRequestedAt gets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
 // returns a *Time when successful
 func (m *UserResponse) GetPersonalDataDeletionRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.personalDataDeletionRequestedAt
@@ -613,7 +613,7 @@ func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
 func (m *UserResponse) SetBillingState(value UserResponse_billingStateable)() {
     m.billingState = value
 }
-// SetCompliance sets the compliance property value. The compliance value for this user.
+// SetCompliance sets the compliance property value. Compliance for this user.
 func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
     m.compliance = value
 }
@@ -621,7 +621,7 @@ func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
 func (m *UserResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetCurrentOrganization sets the currentOrganization property value. The current organization value for this user.
+// SetCurrentOrganization sets the currentOrganization property value. Current organization for this user.
 func (m *UserResponse) SetCurrentOrganization(value UserResponse_currentOrganizationable)() {
     m.currentOrganization = value
 }
@@ -629,7 +629,7 @@ func (m *UserResponse) SetCurrentOrganization(value UserResponse_currentOrganiza
 func (m *UserResponse) SetEmail(value *string)() {
     m.email = value
 }
-// SetFirstName sets the firstName property value. The first name value for this user.
+// SetFirstName sets the firstName property value. First name for this user.
 func (m *UserResponse) SetFirstName(value *string)() {
     m.firstName = value
 }
@@ -645,7 +645,7 @@ func (m *UserResponse) SetIdentities(value []UserIdentityable)() {
 func (m *UserResponse) SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastLoggedInAt = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this user.
+// SetLastName sets the lastName property value. UTC timestamp for last name on this user.
 func (m *UserResponse) SetLastName(value *string)() {
     m.lastName = value
 }
@@ -661,11 +661,11 @@ func (m *UserResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f
 func (m *UserResponse) SetName(value *string)() {
     m.name = value
 }
-// SetNotificationPreferences sets the notificationPreferences property value. The notification preferences value for this user.
+// SetNotificationPreferences sets the notificationPreferences property value. Notification preferences for this user.
 func (m *UserResponse) SetNotificationPreferences(value UserResponse_notificationPreferencesable)() {
     m.notificationPreferences = value
 }
-// SetPersonalDataDeletedAt sets the personalDataDeletedAt property value. The date and time for the personal data deleted at value on this user.
+// SetPersonalDataDeletedAt sets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
 func (m *UserResponse) SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.personalDataDeletedAt = value
 }
@@ -673,7 +673,7 @@ func (m *UserResponse) SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7f
 func (m *UserResponse) SetPersonalDataDeletionReason(value *string)() {
     m.personalDataDeletionReason = value
 }
-// SetPersonalDataDeletionRequestedAt sets the personalDataDeletionRequestedAt property value. The date and time for the personal data deletion requested at value on this user.
+// SetPersonalDataDeletionRequestedAt sets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
 func (m *UserResponse) SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.personalDataDeletionRequestedAt = value
 }

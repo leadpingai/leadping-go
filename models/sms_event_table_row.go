@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SmsEventTableRow list item schema for Leadping API SMS event table row results shown in searchable tables.
+// SmsEventTableRow summarizes SMS event data in paginated and searchable results.
 type SmsEventTableRow struct {
     // Display name for the actor that performed the action.
     actorDisplayName *string
@@ -50,7 +50,7 @@ type SmsEventTableRow struct {
     id *string
     // Indicates whether automation created or triggered this SMS event table row.
     isAutomated *bool
-    // The ID and name for this lead.
+    // Identifier and display name of the related lead.
     lead IdNamePairable
     // Media attached to this SMS/MMS event.
     media []MessageMediaAttachmentable
@@ -617,7 +617,7 @@ func (m *SmsEventTableRow) GetId()(*string) {
 func (m *SmsEventTableRow) GetIsAutomated()(*bool) {
     return m.isAutomated
 }
-// GetLead gets the lead property value. The ID and name for this lead.
+// GetLead gets the lead property value. Identifier and display name of the related lead.
 // returns a IdNamePairable when successful
 func (m *SmsEventTableRow) GetLead()(IdNamePairable) {
     return m.lead
@@ -1061,7 +1061,7 @@ func (m *SmsEventTableRow) SetId(value *string)() {
 func (m *SmsEventTableRow) SetIsAutomated(value *bool)() {
     m.isAutomated = value
 }
-// SetLead sets the lead property value. The ID and name for this lead.
+// SetLead sets the lead property value. Identifier and display name of the related lead.
 func (m *SmsEventTableRow) SetLead(value IdNamePairable)() {
     m.lead = value
 }

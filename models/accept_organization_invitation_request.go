@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AcceptOrganizationInvitationRequest request payload for accept organization invitation.
+// AcceptOrganizationInvitationRequest defines the input used for accept organization invitation.
 type AcceptOrganizationInvitationRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The email address associated with this organization invitation.
     email *string
-    // The first name value for this organization invitation.
+    // First name for this organization invitation.
     firstName *string
-    // The date and time for the last name value on this organization invitation.
+    // UTC timestamp for last name on this organization invitation.
     lastName *string
     // The token supplied to authorize or complete this organization invitation.
     token *string
@@ -88,12 +88,12 @@ func (m *AcceptOrganizationInvitationRequest) GetFieldDeserializers()(map[string
     }
     return res
 }
-// GetFirstName gets the firstName property value. The first name value for this organization invitation.
+// GetFirstName gets the firstName property value. First name for this organization invitation.
 // returns a *string when successful
 func (m *AcceptOrganizationInvitationRequest) GetFirstName()(*string) {
     return m.firstName
 }
-// GetLastName gets the lastName property value. The date and time for the last name value on this organization invitation.
+// GetLastName gets the lastName property value. UTC timestamp for last name on this organization invitation.
 // returns a *string when successful
 func (m *AcceptOrganizationInvitationRequest) GetLastName()(*string) {
     return m.lastName
@@ -145,11 +145,11 @@ func (m *AcceptOrganizationInvitationRequest) SetAdditionalData(value map[string
 func (m *AcceptOrganizationInvitationRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetFirstName sets the firstName property value. The first name value for this organization invitation.
+// SetFirstName sets the firstName property value. First name for this organization invitation.
 func (m *AcceptOrganizationInvitationRequest) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetLastName sets the lastName property value. The date and time for the last name value on this organization invitation.
+// SetLastName sets the lastName property value. UTC timestamp for last name on this organization invitation.
 func (m *AcceptOrganizationInvitationRequest) SetLastName(value *string)() {
     m.lastName = value
 }

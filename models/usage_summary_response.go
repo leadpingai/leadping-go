@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UsageSummaryResponse aPI DTO containing usage summary response data.
+// UsageSummaryResponse describes usage summary response data used by Leadping.
 type UsageSummaryResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -24,9 +24,9 @@ type UsageSummaryResponse struct {
     lines []UsageSummaryLineable
     // The pending invoice count for this usage summary.
     pendingInvoiceCount *int32
-    // The date and time for the period end value on this usage summary.
+    // UTC timestamp for period end on this usage summary.
     periodEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time for the period start value on this usage summary.
+    // UTC timestamp for period start on this usage summary.
     periodStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The usage record count for this usage summary.
     transactionCount *int32
@@ -186,12 +186,12 @@ func (m *UsageSummaryResponse) GetLines()([]UsageSummaryLineable) {
 func (m *UsageSummaryResponse) GetPendingInvoiceCount()(*int32) {
     return m.pendingInvoiceCount
 }
-// GetPeriodEnd gets the periodEnd property value. The date and time for the period end value on this usage summary.
+// GetPeriodEnd gets the periodEnd property value. UTC timestamp for period end on this usage summary.
 // returns a *Time when successful
 func (m *UsageSummaryResponse) GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.periodEnd
 }
-// GetPeriodStart gets the periodStart property value. The date and time for the period start value on this usage summary.
+// GetPeriodStart gets the periodStart property value. UTC timestamp for period start on this usage summary.
 // returns a *Time when successful
 func (m *UsageSummaryResponse) GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.periodStart
@@ -305,11 +305,11 @@ func (m *UsageSummaryResponse) SetLines(value []UsageSummaryLineable)() {
 func (m *UsageSummaryResponse) SetPendingInvoiceCount(value *int32)() {
     m.pendingInvoiceCount = value
 }
-// SetPeriodEnd sets the periodEnd property value. The date and time for the period end value on this usage summary.
+// SetPeriodEnd sets the periodEnd property value. UTC timestamp for period end on this usage summary.
 func (m *UsageSummaryResponse) SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.periodEnd = value
 }
-// SetPeriodStart sets the periodStart property value. The date and time for the period start value on this usage summary.
+// SetPeriodStart sets the periodStart property value. UTC timestamp for period start on this usage summary.
 func (m *UsageSummaryResponse) SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.periodStart = value
 }

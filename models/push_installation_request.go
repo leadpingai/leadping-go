@@ -11,27 +11,27 @@ import (
 type PushInstallationRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The appBuild property
+    // The application build number reported by the client.
     appBuild *string
-    // The appIdentifier property
+    // The application bundle identifier or package name.
     appIdentifier *string
-    // The appName property
+    // The human-readable application name reported by the client.
     appName *string
-    // The appVersion property
+    // The semantic application version reported by the client.
     appVersion *string
-    // The deviceModel property
+    // The device model reported by the client.
     deviceModel *string
-    // The devicePlatform property
+    // The mobile operating-system platform reported by the device.
     devicePlatform *string
-    // The deviceVersion property
+    // The mobile operating-system version reported by the device.
     deviceVersion *string
-    // The installationId property
+    // The stable installation identifier assigned by the mobile client.
     installationId *string
-    // The metadata property
+    // Optional client metadata stored with the push installation.
     metadata PushInstallationRequest_metadataable
-    // The platform property
+    // The Azure Notification Hubs platform name, such as apns or fcmv1.
     platform *string
-    // The pushChannel property
+    // The provider-issued push token or channel used to deliver notifications.
     pushChannel *string
 }
 // NewPushInstallationRequest instantiates a new PushInstallationRequest and sets the default values.
@@ -51,37 +51,37 @@ func CreatePushInstallationRequestFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *PushInstallationRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAppBuild gets the appBuild property value. The appBuild property
+// GetAppBuild gets the appBuild property value. The application build number reported by the client.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetAppBuild()(*string) {
     return m.appBuild
 }
-// GetAppIdentifier gets the appIdentifier property value. The appIdentifier property
+// GetAppIdentifier gets the appIdentifier property value. The application bundle identifier or package name.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetAppIdentifier()(*string) {
     return m.appIdentifier
 }
-// GetAppName gets the appName property value. The appName property
+// GetAppName gets the appName property value. The human-readable application name reported by the client.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetAppName()(*string) {
     return m.appName
 }
-// GetAppVersion gets the appVersion property value. The appVersion property
+// GetAppVersion gets the appVersion property value. The semantic application version reported by the client.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetAppVersion()(*string) {
     return m.appVersion
 }
-// GetDeviceModel gets the deviceModel property value. The deviceModel property
+// GetDeviceModel gets the deviceModel property value. The device model reported by the client.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetDeviceModel()(*string) {
     return m.deviceModel
 }
-// GetDevicePlatform gets the devicePlatform property value. The devicePlatform property
+// GetDevicePlatform gets the devicePlatform property value. The mobile operating-system platform reported by the device.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetDevicePlatform()(*string) {
     return m.devicePlatform
 }
-// GetDeviceVersion gets the deviceVersion property value. The deviceVersion property
+// GetDeviceVersion gets the deviceVersion property value. The mobile operating-system version reported by the device.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetDeviceVersion()(*string) {
     return m.deviceVersion
@@ -202,22 +202,22 @@ func (m *PushInstallationRequest) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetInstallationId gets the installationId property value. The installationId property
+// GetInstallationId gets the installationId property value. The stable installation identifier assigned by the mobile client.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetInstallationId()(*string) {
     return m.installationId
 }
-// GetMetadata gets the metadata property value. The metadata property
+// GetMetadata gets the metadata property value. Optional client metadata stored with the push installation.
 // returns a PushInstallationRequest_metadataable when successful
 func (m *PushInstallationRequest) GetMetadata()(PushInstallationRequest_metadataable) {
     return m.metadata
 }
-// GetPlatform gets the platform property value. The platform property
+// GetPlatform gets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetPlatform()(*string) {
     return m.platform
 }
-// GetPushChannel gets the pushChannel property value. The pushChannel property
+// GetPushChannel gets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
 // returns a *string when successful
 func (m *PushInstallationRequest) GetPushChannel()(*string) {
     return m.pushChannel
@@ -302,47 +302,47 @@ func (m *PushInstallationRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *PushInstallationRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAppBuild sets the appBuild property value. The appBuild property
+// SetAppBuild sets the appBuild property value. The application build number reported by the client.
 func (m *PushInstallationRequest) SetAppBuild(value *string)() {
     m.appBuild = value
 }
-// SetAppIdentifier sets the appIdentifier property value. The appIdentifier property
+// SetAppIdentifier sets the appIdentifier property value. The application bundle identifier or package name.
 func (m *PushInstallationRequest) SetAppIdentifier(value *string)() {
     m.appIdentifier = value
 }
-// SetAppName sets the appName property value. The appName property
+// SetAppName sets the appName property value. The human-readable application name reported by the client.
 func (m *PushInstallationRequest) SetAppName(value *string)() {
     m.appName = value
 }
-// SetAppVersion sets the appVersion property value. The appVersion property
+// SetAppVersion sets the appVersion property value. The semantic application version reported by the client.
 func (m *PushInstallationRequest) SetAppVersion(value *string)() {
     m.appVersion = value
 }
-// SetDeviceModel sets the deviceModel property value. The deviceModel property
+// SetDeviceModel sets the deviceModel property value. The device model reported by the client.
 func (m *PushInstallationRequest) SetDeviceModel(value *string)() {
     m.deviceModel = value
 }
-// SetDevicePlatform sets the devicePlatform property value. The devicePlatform property
+// SetDevicePlatform sets the devicePlatform property value. The mobile operating-system platform reported by the device.
 func (m *PushInstallationRequest) SetDevicePlatform(value *string)() {
     m.devicePlatform = value
 }
-// SetDeviceVersion sets the deviceVersion property value. The deviceVersion property
+// SetDeviceVersion sets the deviceVersion property value. The mobile operating-system version reported by the device.
 func (m *PushInstallationRequest) SetDeviceVersion(value *string)() {
     m.deviceVersion = value
 }
-// SetInstallationId sets the installationId property value. The installationId property
+// SetInstallationId sets the installationId property value. The stable installation identifier assigned by the mobile client.
 func (m *PushInstallationRequest) SetInstallationId(value *string)() {
     m.installationId = value
 }
-// SetMetadata sets the metadata property value. The metadata property
+// SetMetadata sets the metadata property value. Optional client metadata stored with the push installation.
 func (m *PushInstallationRequest) SetMetadata(value PushInstallationRequest_metadataable)() {
     m.metadata = value
 }
-// SetPlatform sets the platform property value. The platform property
+// SetPlatform sets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
 func (m *PushInstallationRequest) SetPlatform(value *string)() {
     m.platform = value
 }
-// SetPushChannel sets the pushChannel property value. The pushChannel property
+// SetPushChannel sets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
 func (m *PushInstallationRequest) SetPushChannel(value *string)() {
     m.pushChannel = value
 }

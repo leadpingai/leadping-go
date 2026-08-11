@@ -14,13 +14,13 @@ type AutomationWorkflowRunResponse struct {
     actions []AutomationWorkflowActionResponseable
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The ID and name for this automation.
+    // Identifier and display name of the related automation.
     automation AutomationWorkflowRunResponse_automationable
     // Date and time when the automation workflow run was cancelled.
     cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Date and time when the automation workflow run completed.
     completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The ID and name for this currentStep.
+    // Identifier and display name of the workflow step currently awaiting or performing work.
     currentStep AutomationWorkflowRunResponse_currentStepable
     // Current step order associated with this Leadping automation workflow run.
     currentStepOrder *int32
@@ -32,7 +32,7 @@ type AutomationWorkflowRunResponse struct {
     id *string
     // Human-readable last action summary for this Leadping automation workflow run.
     lastActionSummary *string
-    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+    // Machine-readable code for the most recent workflow execution error.
     lastErrorCode *string
     // Human-readable last error message for this Leadping automation workflow run.
     lastErrorMessage *string
@@ -50,7 +50,7 @@ type AutomationWorkflowRunResponse struct {
     organizationId *string
     // Total number of retry records represented by this Leadping automation workflow run.
     retryCount *int32
-    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+    // Machine-readable code explaining why the workflow run or action was skipped.
     skipReasonCode *string
     // Human-readable skip reason display for this Leadping automation workflow run.
     skipReasonDisplay *string
@@ -89,7 +89,7 @@ func (m *AutomationWorkflowRunResponse) GetActions()([]AutomationWorkflowActionR
 func (m *AutomationWorkflowRunResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomation gets the automation property value. The ID and name for this automation.
+// GetAutomation gets the automation property value. Identifier and display name of the related automation.
 // returns a AutomationWorkflowRunResponse_automationable when successful
 func (m *AutomationWorkflowRunResponse) GetAutomation()(AutomationWorkflowRunResponse_automationable) {
     return m.automation
@@ -104,7 +104,7 @@ func (m *AutomationWorkflowRunResponse) GetCancelledAt()(*i336074805fc853987abe6
 func (m *AutomationWorkflowRunResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.completedAt
 }
-// GetCurrentStep gets the currentStep property value. The ID and name for this currentStep.
+// GetCurrentStep gets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
 // returns a AutomationWorkflowRunResponse_currentStepable when successful
 func (m *AutomationWorkflowRunResponse) GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable) {
     return m.currentStep
@@ -422,7 +422,7 @@ func (m *AutomationWorkflowRunResponse) GetId()(*string) {
 func (m *AutomationWorkflowRunResponse) GetLastActionSummary()(*string) {
     return m.lastActionSummary
 }
-// GetLastErrorCode gets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+// GetLastErrorCode gets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLastErrorCode()(*string) {
     return m.lastErrorCode
@@ -467,7 +467,7 @@ func (m *AutomationWorkflowRunResponse) GetOrganizationId()(*string) {
 func (m *AutomationWorkflowRunResponse) GetRetryCount()(*int32) {
     return m.retryCount
 }
-// GetSkipReasonCode gets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+// GetSkipReasonCode gets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetSkipReasonCode()(*string) {
     return m.skipReasonCode
@@ -699,7 +699,7 @@ func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowAct
 func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomation sets the automation property value. The ID and name for this automation.
+// SetAutomation sets the automation property value. Identifier and display name of the related automation.
 func (m *AutomationWorkflowRunResponse) SetAutomation(value AutomationWorkflowRunResponse_automationable)() {
     m.automation = value
 }
@@ -711,7 +711,7 @@ func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987
 func (m *AutomationWorkflowRunResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.completedAt = value
 }
-// SetCurrentStep sets the currentStep property value. The ID and name for this currentStep.
+// SetCurrentStep sets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
 func (m *AutomationWorkflowRunResponse) SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)() {
     m.currentStep = value
 }
@@ -735,7 +735,7 @@ func (m *AutomationWorkflowRunResponse) SetId(value *string)() {
 func (m *AutomationWorkflowRunResponse) SetLastActionSummary(value *string)() {
     m.lastActionSummary = value
 }
-// SetLastErrorCode sets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+// SetLastErrorCode sets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
 func (m *AutomationWorkflowRunResponse) SetLastErrorCode(value *string)() {
     m.lastErrorCode = value
 }
@@ -771,7 +771,7 @@ func (m *AutomationWorkflowRunResponse) SetOrganizationId(value *string)() {
 func (m *AutomationWorkflowRunResponse) SetRetryCount(value *int32)() {
     m.retryCount = value
 }
-// SetSkipReasonCode sets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+// SetSkipReasonCode sets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
 func (m *AutomationWorkflowRunResponse) SetSkipReasonCode(value *string)() {
     m.skipReasonCode = value
 }

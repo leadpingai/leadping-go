@@ -16,7 +16,9 @@ type AllMyRequestBuilder struct {
 }
 // AllMyRequestBuilderPostQueryParameters lists current-user transactions with paging, sorting, and filters for wallet events, billing history, and reconciliation.
 type AllMyRequestBuilderPostQueryParameters struct {
+    // Optional exclusive end timestamp for transaction creation.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
+    // Optional inclusive start timestamp for transaction creation.
     StartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"startAt\""
 }
 // NewAllMyRequestBuilderInternal instantiates a new AllMyRequestBuilder and sets the default values.

@@ -11,7 +11,7 @@ import (
 type TelephonyLoginRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The ID and name for this device.
+    // Identifier and display name of the related device.
     device TelephonyLoginRequest_deviceable
 }
 // NewTelephonyLoginRequest instantiates a new TelephonyLoginRequest and sets the default values.
@@ -31,7 +31,7 @@ func CreateTelephonyLoginRequestFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *TelephonyLoginRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDevice gets the device property value. The ID and name for this device.
+// GetDevice gets the device property value. Identifier and display name of the related device.
 // returns a TelephonyLoginRequest_deviceable when successful
 func (m *TelephonyLoginRequest) GetDevice()(TelephonyLoginRequest_deviceable) {
     return m.device
@@ -72,7 +72,7 @@ func (m *TelephonyLoginRequest) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *TelephonyLoginRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDevice sets the device property value. The ID and name for this device.
+// SetDevice sets the device property value. Identifier and display name of the related device.
 func (m *TelephonyLoginRequest) SetDevice(value TelephonyLoginRequest_deviceable)() {
     m.device = value
 }

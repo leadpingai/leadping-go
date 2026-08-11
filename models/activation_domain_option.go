@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ActivationDomainOption aPI DTO containing activation domain option data used by Leadping API contracts.
+// ActivationDomainOption describes activation domain option data used in Leadping API requests and responses.
 type ActivationDomainOption struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -15,15 +15,15 @@ type ActivationDomainOption struct {
     availabilityStatus *string
     // The domain name associated with this activation domain option.
     domainName *string
-    // The estimated annual cost value for this activation domain option.
+    // Estimated annual cost for this activation domain option.
     estimatedAnnualCost *float64
-    // The industry relevance value for this activation domain option.
+    // Industry relevance for this activation domain option.
     industryRelevance *string
     // Whether this activation domain option is recommended.
     recommended *bool
-    // The trust concerns value for this activation domain option.
+    // Trust concerns for this activation domain option.
     trustConcerns *string
-    // The why it fits value for this activation domain option.
+    // Why it fits for this activation domain option.
     whyItFits *string
 }
 // NewActivationDomainOption instantiates a new ActivationDomainOption and sets the default values.
@@ -53,7 +53,7 @@ func (m *ActivationDomainOption) GetAvailabilityStatus()(*string) {
 func (m *ActivationDomainOption) GetDomainName()(*string) {
     return m.domainName
 }
-// GetEstimatedAnnualCost gets the estimatedAnnualCost property value. The estimated annual cost value for this activation domain option.
+// GetEstimatedAnnualCost gets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
 // returns a *float64 when successful
 func (m *ActivationDomainOption) GetEstimatedAnnualCost()(*float64) {
     return m.estimatedAnnualCost
@@ -134,7 +134,7 @@ func (m *ActivationDomainOption) GetFieldDeserializers()(map[string]func(i878a80
     }
     return res
 }
-// GetIndustryRelevance gets the industryRelevance property value. The industry relevance value for this activation domain option.
+// GetIndustryRelevance gets the industryRelevance property value. Industry relevance for this activation domain option.
 // returns a *string when successful
 func (m *ActivationDomainOption) GetIndustryRelevance()(*string) {
     return m.industryRelevance
@@ -144,12 +144,12 @@ func (m *ActivationDomainOption) GetIndustryRelevance()(*string) {
 func (m *ActivationDomainOption) GetRecommended()(*bool) {
     return m.recommended
 }
-// GetTrustConcerns gets the trustConcerns property value. The trust concerns value for this activation domain option.
+// GetTrustConcerns gets the trustConcerns property value. Trust concerns for this activation domain option.
 // returns a *string when successful
 func (m *ActivationDomainOption) GetTrustConcerns()(*string) {
     return m.trustConcerns
 }
-// GetWhyItFits gets the whyItFits property value. The why it fits value for this activation domain option.
+// GetWhyItFits gets the whyItFits property value. Why it fits for this activation domain option.
 // returns a *string when successful
 func (m *ActivationDomainOption) GetWhyItFits()(*string) {
     return m.whyItFits
@@ -218,11 +218,11 @@ func (m *ActivationDomainOption) SetAvailabilityStatus(value *string)() {
 func (m *ActivationDomainOption) SetDomainName(value *string)() {
     m.domainName = value
 }
-// SetEstimatedAnnualCost sets the estimatedAnnualCost property value. The estimated annual cost value for this activation domain option.
+// SetEstimatedAnnualCost sets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
 func (m *ActivationDomainOption) SetEstimatedAnnualCost(value *float64)() {
     m.estimatedAnnualCost = value
 }
-// SetIndustryRelevance sets the industryRelevance property value. The industry relevance value for this activation domain option.
+// SetIndustryRelevance sets the industryRelevance property value. Industry relevance for this activation domain option.
 func (m *ActivationDomainOption) SetIndustryRelevance(value *string)() {
     m.industryRelevance = value
 }
@@ -230,11 +230,11 @@ func (m *ActivationDomainOption) SetIndustryRelevance(value *string)() {
 func (m *ActivationDomainOption) SetRecommended(value *bool)() {
     m.recommended = value
 }
-// SetTrustConcerns sets the trustConcerns property value. The trust concerns value for this activation domain option.
+// SetTrustConcerns sets the trustConcerns property value. Trust concerns for this activation domain option.
 func (m *ActivationDomainOption) SetTrustConcerns(value *string)() {
     m.trustConcerns = value
 }
-// SetWhyItFits sets the whyItFits property value. The why it fits value for this activation domain option.
+// SetWhyItFits sets the whyItFits property value. Why it fits for this activation domain option.
 func (m *ActivationDomainOption) SetWhyItFits(value *string)() {
     m.whyItFits = value
 }

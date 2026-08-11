@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationRequest request schema for the Leadping API automation configuration request, including the fields clients can send.
+// AutomationRequest defines the fields clients can send when working with automation configuration.
 type AutomationRequest struct {
     // Automation actions configured or returned for this workflow.
     actions []AutomationActionable

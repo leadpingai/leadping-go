@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UsageCounterLine aPI DTO containing a named usage counter shown in usage summaries.
+// UsageCounterLine describes one named usage total displayed in organization billing and activity summaries.
 type UsageCounterLine struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -19,7 +19,7 @@ type UsageCounterLine struct {
     sortOrder *int32
     // The unit label for this usage counter.
     unit *string
-    // The numeric value for this usage counter.
+    // Numeric for this usage counter.
     value *float64
 }
 // NewUsageCounterLine instantiates a new UsageCounterLine and sets the default values.
@@ -115,7 +115,7 @@ func (m *UsageCounterLine) GetSortOrder()(*int32) {
 func (m *UsageCounterLine) GetUnit()(*string) {
     return m.unit
 }
-// GetValue gets the value property value. The numeric value for this usage counter.
+// GetValue gets the value property value. Numeric for this usage counter.
 // returns a *float64 when successful
 func (m *UsageCounterLine) GetValue()(*float64) {
     return m.value
@@ -180,7 +180,7 @@ func (m *UsageCounterLine) SetSortOrder(value *int32)() {
 func (m *UsageCounterLine) SetUnit(value *string)() {
     m.unit = value
 }
-// SetValue sets the value property value. The numeric value for this usage counter.
+// SetValue sets the value property value. Numeric for this usage counter.
 func (m *UsageCounterLine) SetValue(value *float64)() {
     m.value = value
 }
