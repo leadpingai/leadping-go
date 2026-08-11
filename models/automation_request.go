@@ -30,7 +30,7 @@ type AutomationRequest struct {
     // Automation triggers that can start this workflow.
     triggers []AutomationTriggerable
     // Version number for this automation configuration request schema or saved configuration.
-    version *int32
+    version i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Visibility level that controls who can see this automation configuration request.
     visibility *string
 }
@@ -195,12 +195,12 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["version"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetVersion(val)
+            m.SetVersion(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -237,8 +237,8 @@ func (m *AutomationRequest) GetTriggers()([]AutomationTriggerable) {
     return m.triggers
 }
 // GetVersion gets the version property value. Version number for this automation configuration request schema or saved configuration.
-// returns a *int32 when successful
-func (m *AutomationRequest) GetVersion()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *AutomationRequest) GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.version
 }
 // GetVisibility gets the visibility property value. Visibility level that controls who can see this automation configuration request.
@@ -327,7 +327,7 @@ func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteInt32Value("version", m.GetVersion())
+        err := writer.WriteObjectValue("version", m.GetVersion())
         if err != nil {
             return err
         }
@@ -387,7 +387,7 @@ func (m *AutomationRequest) SetTriggers(value []AutomationTriggerable)() {
     m.triggers = value
 }
 // SetVersion sets the version property value. Version number for this automation configuration request schema or saved configuration.
-func (m *AutomationRequest) SetVersion(value *int32)() {
+func (m *AutomationRequest) SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.version = value
 }
 // SetVisibility sets the visibility property value. Visibility level that controls who can see this automation configuration request.
@@ -406,7 +406,7 @@ type AutomationRequestable interface {
     GetName()(*string)
     GetScope()(*string)
     GetTriggers()([]AutomationTriggerable)
-    GetVersion()(*int32)
+    GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetVisibility()(*string)
     SetActions(value []AutomationActionable)()
     SetConditionGroups(value []AutomationConditionGroupable)()
@@ -417,6 +417,6 @@ type AutomationRequestable interface {
     SetName(value *string)()
     SetScope(value *string)()
     SetTriggers(value []AutomationTriggerable)()
-    SetVersion(value *int32)()
+    SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetVisibility(value *string)()
 }

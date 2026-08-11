@@ -15,7 +15,7 @@ type OrganizationActivationState struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The number of registrar-verified domains found by the current search.
-    availableDomainCount *int32
+    availableDomainCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The current billing subscription status for this organization activation state.
     billingSubscriptionStatus *ActivationSubscriptionStatus
     // Compliance notes for this organization activation state.
@@ -33,7 +33,7 @@ type OrganizationActivationState struct {
     // The date and time the selected domain was purchased.
     domainPurchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The current domain generation attempt.
-    domainSearchAttempt *int32
+    domainSearchAttempt i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Identifies the active domain search run.
     domainSearchId *string
     // Defines the stages of a domain search.
@@ -122,8 +122,8 @@ func (m *OrganizationActivationState) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAvailableDomainCount gets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
-// returns a *int32 when successful
-func (m *OrganizationActivationState) GetAvailableDomainCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *OrganizationActivationState) GetAvailableDomainCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.availableDomainCount
 }
 // GetBillingSubscriptionStatus gets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
@@ -167,8 +167,8 @@ func (m *OrganizationActivationState) GetDomainPurchasedAt()(*i336074805fc853987
     return m.domainPurchasedAt
 }
 // GetDomainSearchAttempt gets the domainSearchAttempt property value. The current domain generation attempt.
-// returns a *int32 when successful
-func (m *OrganizationActivationState) GetDomainSearchAttempt()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *OrganizationActivationState) GetDomainSearchAttempt()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.domainSearchAttempt
 }
 // GetDomainSearchId gets the domainSearchId property value. Identifies the active domain search run.
@@ -211,12 +211,12 @@ func (m *OrganizationActivationState) GetFieldDeserializers()(map[string]func(i8
         return nil
     }
     res["availableDomainCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAvailableDomainCount(val)
+            m.SetAvailableDomainCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -307,12 +307,12 @@ func (m *OrganizationActivationState) GetFieldDeserializers()(map[string]func(i8
         return nil
     }
     res["domainSearchAttempt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDomainSearchAttempt(val)
+            m.SetDomainSearchAttempt(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -788,7 +788,7 @@ func (m *OrganizationActivationState) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
-        err := writer.WriteInt32Value("availableDomainCount", m.GetAvailableDomainCount())
+        err := writer.WriteObjectValue("availableDomainCount", m.GetAvailableDomainCount())
         if err != nil {
             return err
         }
@@ -849,7 +849,7 @@ func (m *OrganizationActivationState) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
-        err := writer.WriteInt32Value("domainSearchAttempt", m.GetDomainSearchAttempt())
+        err := writer.WriteObjectValue("domainSearchAttempt", m.GetDomainSearchAttempt())
         if err != nil {
             return err
         }
@@ -1077,7 +1077,7 @@ func (m *OrganizationActivationState) SetAdditionalData(value map[string]any)() 
     m.additionalData = value
 }
 // SetAvailableDomainCount sets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
-func (m *OrganizationActivationState) SetAvailableDomainCount(value *int32)() {
+func (m *OrganizationActivationState) SetAvailableDomainCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.availableDomainCount = value
 }
 // SetBillingSubscriptionStatus sets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
@@ -1113,7 +1113,7 @@ func (m *OrganizationActivationState) SetDomainPurchasedAt(value *i336074805fc85
     m.domainPurchasedAt = value
 }
 // SetDomainSearchAttempt sets the domainSearchAttempt property value. The current domain generation attempt.
-func (m *OrganizationActivationState) SetDomainSearchAttempt(value *int32)() {
+func (m *OrganizationActivationState) SetDomainSearchAttempt(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.domainSearchAttempt = value
 }
 // SetDomainSearchId sets the domainSearchId property value. Identifies the active domain search run.
@@ -1248,7 +1248,7 @@ type OrganizationActivationStateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetAvailableDomainCount()(*int32)
+    GetAvailableDomainCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingSubscriptionStatus()(*ActivationSubscriptionStatus)
     GetComplianceNotes()(*string)
     GetControlledLaunch()(*bool)
@@ -1257,7 +1257,7 @@ type OrganizationActivationStateable interface {
     GetDomainApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDomainOptions()([]ActivationDomainOptionable)
     GetDomainPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDomainSearchAttempt()(*int32)
+    GetDomainSearchAttempt()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetDomainSearchId()(*string)
     GetDomainSearchStage()(*OrganizationActivationState_domainSearchStage)
     GetDomainSearchUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1291,7 +1291,7 @@ type OrganizationActivationStateable interface {
     GetWebsiteStatus()(*WebsiteLifecycleStatus)
     GetWebsiteUrl()(*string)
     SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetAvailableDomainCount(value *int32)()
+    SetAvailableDomainCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)()
     SetComplianceNotes(value *string)()
     SetControlledLaunch(value *bool)()
@@ -1300,7 +1300,7 @@ type OrganizationActivationStateable interface {
     SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDomainOptions(value []ActivationDomainOptionable)()
     SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDomainSearchAttempt(value *int32)()
+    SetDomainSearchAttempt(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetDomainSearchId(value *string)()
     SetDomainSearchStage(value *OrganizationActivationState_domainSearchStage)()
     SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

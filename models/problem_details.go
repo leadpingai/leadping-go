@@ -18,7 +18,7 @@ type ProblemDetails struct {
     // URI reference that identifies this specific occurrence of the problem.
     instance *string
     // HTTP status code returned for the problem.
-    status *int32
+    status i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Short, human-readable summary of the problem.
     title *string
     // URI reference that identifies the problem type.
@@ -77,12 +77,12 @@ func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetStatus(val)
+            m.SetStatus(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -114,8 +114,8 @@ func (m *ProblemDetails) GetInstance()(*string) {
     return m.instance
 }
 // GetStatus gets the status property value. HTTP status code returned for the problem.
-// returns a *int32 when successful
-func (m *ProblemDetails) GetStatus()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *ProblemDetails) GetStatus()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.status
 }
 // GetTitle gets the title property value. Short, human-readable summary of the problem.
@@ -143,7 +143,7 @@ func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteInt32Value("status", m.GetStatus())
+        err := writer.WriteObjectValue("status", m.GetStatus())
         if err != nil {
             return err
         }
@@ -181,7 +181,7 @@ func (m *ProblemDetails) SetInstance(value *string)() {
     m.instance = value
 }
 // SetStatus sets the status property value. HTTP status code returned for the problem.
-func (m *ProblemDetails) SetStatus(value *int32)() {
+func (m *ProblemDetails) SetStatus(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.status = value
 }
 // SetTitle sets the title property value. Short, human-readable summary of the problem.
@@ -197,12 +197,12 @@ type ProblemDetailsable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetDetail()(*string)
     GetInstance()(*string)
-    GetStatus()(*int32)
+    GetStatus()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetTitle()(*string)
     GetTypeEscaped()(*string)
     SetDetail(value *string)()
     SetInstance(value *string)()
-    SetStatus(value *int32)()
+    SetStatus(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetTitle(value *string)()
     SetTypeEscaped(value *string)()
 }

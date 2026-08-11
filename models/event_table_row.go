@@ -19,7 +19,7 @@ type EventTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount *float64
+    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
@@ -75,7 +75,7 @@ type EventTableRow struct {
     // Related entity type connected to this event or notification.
     relatedEntityType *string
     // Number of retry attempts already made for this event timeline table row.
-    retryCount *int32
+    retryCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // UTC timestamp when the related delivery or workflow action is scheduled to run.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Reason Leadping scheduled this delivery for a later time.
@@ -140,8 +140,8 @@ func (m *EventTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a *float64 when successful
-func (m *EventTableRow) GetBillableAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *EventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -259,12 +259,12 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         return nil
     }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val)
+            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -545,12 +545,12 @@ func (m *EventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         return nil
     }
     res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRetryCount(val)
+            m.SetRetryCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -762,8 +762,8 @@ func (m *EventTableRow) GetRelatedEntityType()(*string) {
     return m.relatedEntityType
 }
 // GetRetryCount gets the retryCount property value. Number of retry attempts already made for this event timeline table row.
-// returns a *int32 when successful
-func (m *EventTableRow) GetRetryCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *EventTableRow) GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.retryCount
 }
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
@@ -862,7 +862,7 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
-        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
+        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -1036,7 +1036,7 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
-        err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
+        err := writer.WriteObjectValue("retryCount", m.GetRetryCount())
         if err != nil {
             return err
         }
@@ -1160,7 +1160,7 @@ func (m *EventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *EventTableRow) SetBillableAmount(value *float64)() {
+func (m *EventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -1272,7 +1272,7 @@ func (m *EventTableRow) SetRelatedEntityType(value *string)() {
     m.relatedEntityType = value
 }
 // SetRetryCount sets the retryCount property value. Number of retry attempts already made for this event timeline table row.
-func (m *EventTableRow) SetRetryCount(value *int32)() {
+func (m *EventTableRow) SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.retryCount = value
 }
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when the related delivery or workflow action is scheduled to run.
@@ -1341,7 +1341,7 @@ type EventTableRowable interface {
     GetActorDisplayName()(*string)
     GetActorEmail()(*string)
     GetActorUserId()(*string)
-    GetBillableAmount()(*float64)
+    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCampaignId()(*string)
@@ -1369,7 +1369,7 @@ type EventTableRowable interface {
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetRelatedEntityId()(*string)
     GetRelatedEntityType()(*string)
-    GetRetryCount()(*int32)
+    GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetScheduledReason()(*string)
     GetSelectionReason()(*EventTableRow_selectionReason)
@@ -1388,7 +1388,7 @@ type EventTableRowable interface {
     SetActorDisplayName(value *string)()
     SetActorEmail(value *string)()
     SetActorUserId(value *string)()
-    SetBillableAmount(value *float64)()
+    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCampaignId(value *string)()
@@ -1416,7 +1416,7 @@ type EventTableRowable interface {
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetRelatedEntityId(value *string)()
     SetRelatedEntityType(value *string)()
-    SetRetryCount(value *int32)()
+    SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetScheduledReason(value *string)()
     SetSelectionReason(value *EventTableRow_selectionReason)()

@@ -13,7 +13,7 @@ type StripeInvoiceResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Total invoice amount in the invoice currency.
-    amount *float64
+    amount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Date and time when the invoice was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Indicates whether a downloadable PDF is available for the invoice.
@@ -43,8 +43,8 @@ func (m *StripeInvoiceResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAmount gets the amount property value. Total invoice amount in the invoice currency.
-// returns a *float64 when successful
-func (m *StripeInvoiceResponse) GetAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *StripeInvoiceResponse) GetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amount
 }
 // GetCreatedAt gets the createdAt property value. Date and time when the invoice was created.
@@ -57,12 +57,12 @@ func (m *StripeInvoiceResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a
 func (m *StripeInvoiceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["amount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAmount(val)
+            m.SetAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -141,7 +141,7 @@ func (m *StripeInvoiceResponse) GetStatus()(*string) {
 // Serialize serializes information the current object
 func (m *StripeInvoiceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteFloat64Value("amount", m.GetAmount())
+        err := writer.WriteObjectValue("amount", m.GetAmount())
         if err != nil {
             return err
         }
@@ -189,7 +189,7 @@ func (m *StripeInvoiceResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAmount sets the amount property value. Total invoice amount in the invoice currency.
-func (m *StripeInvoiceResponse) SetAmount(value *float64)() {
+func (m *StripeInvoiceResponse) SetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amount = value
 }
 // SetCreatedAt sets the createdAt property value. Date and time when the invoice was created.
@@ -215,13 +215,13 @@ func (m *StripeInvoiceResponse) SetStatus(value *string)() {
 type StripeInvoiceResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAmount()(*float64)
+    GetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetHasPdf()(*bool)
     GetId()(*string)
     GetNumber()(*string)
     GetStatus()(*string)
-    SetAmount(value *float64)()
+    SetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetHasPdf(value *bool)()
     SetId(value *string)()

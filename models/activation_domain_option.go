@@ -16,7 +16,7 @@ type ActivationDomainOption struct {
     // The domain name associated with this activation domain option.
     domainName *string
     // Estimated annual cost for this activation domain option.
-    estimatedAnnualCost *float64
+    estimatedAnnualCost i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Industry relevance for this activation domain option.
     industryRelevance *string
     // Whether this activation domain option is recommended.
@@ -54,8 +54,8 @@ func (m *ActivationDomainOption) GetDomainName()(*string) {
     return m.domainName
 }
 // GetEstimatedAnnualCost gets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
-// returns a *float64 when successful
-func (m *ActivationDomainOption) GetEstimatedAnnualCost()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *ActivationDomainOption) GetEstimatedAnnualCost()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.estimatedAnnualCost
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -83,12 +83,12 @@ func (m *ActivationDomainOption) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["estimatedAnnualCost"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetEstimatedAnnualCost(val)
+            m.SetEstimatedAnnualCost(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -169,7 +169,7 @@ func (m *ActivationDomainOption) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteFloat64Value("estimatedAnnualCost", m.GetEstimatedAnnualCost())
+        err := writer.WriteObjectValue("estimatedAnnualCost", m.GetEstimatedAnnualCost())
         if err != nil {
             return err
         }
@@ -219,7 +219,7 @@ func (m *ActivationDomainOption) SetDomainName(value *string)() {
     m.domainName = value
 }
 // SetEstimatedAnnualCost sets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
-func (m *ActivationDomainOption) SetEstimatedAnnualCost(value *float64)() {
+func (m *ActivationDomainOption) SetEstimatedAnnualCost(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.estimatedAnnualCost = value
 }
 // SetIndustryRelevance sets the industryRelevance property value. Industry relevance for this activation domain option.
@@ -243,14 +243,14 @@ type ActivationDomainOptionable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAvailabilityStatus()(*string)
     GetDomainName()(*string)
-    GetEstimatedAnnualCost()(*float64)
+    GetEstimatedAnnualCost()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetIndustryRelevance()(*string)
     GetRecommended()(*bool)
     GetTrustConcerns()(*string)
     GetWhyItFits()(*string)
     SetAvailabilityStatus(value *string)()
     SetDomainName(value *string)()
-    SetEstimatedAnnualCost(value *float64)()
+    SetEstimatedAnnualCost(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetIndustryRelevance(value *string)()
     SetRecommended(value *bool)()
     SetTrustConcerns(value *string)()

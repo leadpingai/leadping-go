@@ -16,11 +16,11 @@ type UsageCounterLine struct {
     // The human-readable label for this usage counter.
     label *string
     // The display order for this usage counter.
-    sortOrder *int32
+    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The unit label for this usage counter.
     unit *string
     // Numeric for this usage counter.
-    value *float64
+    value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewUsageCounterLine instantiates a new UsageCounterLine and sets the default values.
 func NewUsageCounterLine()(*UsageCounterLine) {
@@ -64,12 +64,12 @@ func (m *UsageCounterLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSortOrder(val)
+            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -84,12 +84,12 @@ func (m *UsageCounterLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetValue(val)
+            m.SetValue(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -106,8 +106,8 @@ func (m *UsageCounterLine) GetLabel()(*string) {
     return m.label
 }
 // GetSortOrder gets the sortOrder property value. The display order for this usage counter.
-// returns a *int32 when successful
-func (m *UsageCounterLine) GetSortOrder()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *UsageCounterLine) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.sortOrder
 }
 // GetUnit gets the unit property value. The unit label for this usage counter.
@@ -116,8 +116,8 @@ func (m *UsageCounterLine) GetUnit()(*string) {
     return m.unit
 }
 // GetValue gets the value property value. Numeric for this usage counter.
-// returns a *float64 when successful
-func (m *UsageCounterLine) GetValue()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *UsageCounterLine) GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.value
 }
 // Serialize serializes information the current object
@@ -135,7 +135,7 @@ func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
+        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
         if err != nil {
             return err
         }
@@ -147,7 +147,7 @@ func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteFloat64Value("value", m.GetValue())
+        err := writer.WriteObjectValue("value", m.GetValue())
         if err != nil {
             return err
         }
@@ -173,7 +173,7 @@ func (m *UsageCounterLine) SetLabel(value *string)() {
     m.label = value
 }
 // SetSortOrder sets the sortOrder property value. The display order for this usage counter.
-func (m *UsageCounterLine) SetSortOrder(value *int32)() {
+func (m *UsageCounterLine) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.sortOrder = value
 }
 // SetUnit sets the unit property value. The unit label for this usage counter.
@@ -181,7 +181,7 @@ func (m *UsageCounterLine) SetUnit(value *string)() {
     m.unit = value
 }
 // SetValue sets the value property value. Numeric for this usage counter.
-func (m *UsageCounterLine) SetValue(value *float64)() {
+func (m *UsageCounterLine) SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.value = value
 }
 type UsageCounterLineable interface {
@@ -189,12 +189,12 @@ type UsageCounterLineable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetKey()(*string)
     GetLabel()(*string)
-    GetSortOrder()(*int32)
+    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetUnit()(*string)
-    GetValue()(*float64)
+    GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetKey(value *string)()
     SetLabel(value *string)()
-    SetSortOrder(value *int32)()
+    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetUnit(value *string)()
-    SetValue(value *float64)()
+    SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

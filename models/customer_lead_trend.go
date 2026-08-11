@@ -16,7 +16,7 @@ type CustomerLeadTrend struct {
     // Collection of points included with this Leadping customer lead trend.
     points []AnalyticsTrendPointOfintable
     // Total number of total records represented by this Leadping customer lead trend.
-    total *int32
+    total i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewCustomerLeadTrend instantiates a new CustomerLeadTrend and sets the default values.
 func NewCustomerLeadTrend()(*CustomerLeadTrend) {
@@ -71,12 +71,12 @@ func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["total"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotal(val)
+            m.SetTotal(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -88,8 +88,8 @@ func (m *CustomerLeadTrend) GetPoints()([]AnalyticsTrendPointOfintable) {
     return m.points
 }
 // GetTotal gets the total property value. Total number of total records represented by this Leadping customer lead trend.
-// returns a *int32 when successful
-func (m *CustomerLeadTrend) GetTotal()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *CustomerLeadTrend) GetTotal()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.total
 }
 // Serialize serializes information the current object
@@ -113,7 +113,7 @@ func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteInt32Value("total", m.GetTotal())
+        err := writer.WriteObjectValue("total", m.GetTotal())
         if err != nil {
             return err
         }
@@ -139,7 +139,7 @@ func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable)() {
     m.points = value
 }
 // SetTotal sets the total property value. Total number of total records represented by this Leadping customer lead trend.
-func (m *CustomerLeadTrend) SetTotal(value *int32)() {
+func (m *CustomerLeadTrend) SetTotal(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.total = value
 }
 type CustomerLeadTrendable interface {
@@ -147,8 +147,8 @@ type CustomerLeadTrendable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetComparison()(AnalyticsComparisonable)
     GetPoints()([]AnalyticsTrendPointOfintable)
-    GetTotal()(*int32)
+    GetTotal()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetComparison(value AnalyticsComparisonable)()
     SetPoints(value []AnalyticsTrendPointOfintable)()
-    SetTotal(value *int32)()
+    SetTotal(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

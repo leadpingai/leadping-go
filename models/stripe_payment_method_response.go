@@ -17,9 +17,9 @@ type StripePaymentMethodResponse struct {
     // UTC timestamp for created at on this Stripe payment method.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Two-digit month when the card expires.
-    expMonth *int32
+    expMonth i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Four-digit year when the card expires.
-    expYear *int32
+    expYear i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Unique Leadping identifier for this Stripe payment method.
     id *string
     // Whether this Stripe payment method is default.
@@ -55,13 +55,13 @@ func (m *StripePaymentMethodResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe
     return m.createdAt
 }
 // GetExpMonth gets the expMonth property value. Two-digit month when the card expires.
-// returns a *int32 when successful
-func (m *StripePaymentMethodResponse) GetExpMonth()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *StripePaymentMethodResponse) GetExpMonth()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.expMonth
 }
 // GetExpYear gets the expYear property value. Four-digit year when the card expires.
-// returns a *int32 when successful
-func (m *StripePaymentMethodResponse) GetExpYear()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *StripePaymentMethodResponse) GetExpYear()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.expYear
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -89,22 +89,22 @@ func (m *StripePaymentMethodResponse) GetFieldDeserializers()(map[string]func(i8
         return nil
     }
     res["expMonth"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetExpMonth(val)
+            m.SetExpMonth(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["expYear"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetExpYear(val)
+            m.SetExpYear(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -170,13 +170,13 @@ func (m *StripePaymentMethodResponse) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
-        err := writer.WriteInt32Value("expMonth", m.GetExpMonth())
+        err := writer.WriteObjectValue("expMonth", m.GetExpMonth())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteInt32Value("expYear", m.GetExpYear())
+        err := writer.WriteObjectValue("expYear", m.GetExpYear())
         if err != nil {
             return err
         }
@@ -220,11 +220,11 @@ func (m *StripePaymentMethodResponse) SetCreatedAt(value *i336074805fc853987abe6
     m.createdAt = value
 }
 // SetExpMonth sets the expMonth property value. Two-digit month when the card expires.
-func (m *StripePaymentMethodResponse) SetExpMonth(value *int32)() {
+func (m *StripePaymentMethodResponse) SetExpMonth(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.expMonth = value
 }
 // SetExpYear sets the expYear property value. Four-digit year when the card expires.
-func (m *StripePaymentMethodResponse) SetExpYear(value *int32)() {
+func (m *StripePaymentMethodResponse) SetExpYear(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.expYear = value
 }
 // SetId sets the id property value. Unique Leadping identifier for this Stripe payment method.
@@ -244,15 +244,15 @@ type StripePaymentMethodResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBrand()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetExpMonth()(*int32)
-    GetExpYear()(*int32)
+    GetExpMonth()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetExpYear()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetId()(*string)
     GetIsDefault()(*bool)
     GetLast4()(*string)
     SetBrand(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetExpMonth(value *int32)()
-    SetExpYear(value *int32)()
+    SetExpMonth(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetExpYear(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetId(value *string)()
     SetIsDefault(value *bool)()
     SetLast4(value *string)()

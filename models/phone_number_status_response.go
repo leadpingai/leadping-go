@@ -12,9 +12,9 @@ type PhoneNumberStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Indicates whether this phone number can currently place outbound calls.
-    callsPossible *int32
+    callsPossible i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Indicates whether this phone number can currently send SMS messages.
-    messagesPossible *int32
+    messagesPossible i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // E.164 phone number exposed by this phone number warmup status.
     number *string
     // Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
@@ -46,8 +46,8 @@ func (m *PhoneNumberStatusResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetCallsPossible gets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
-// returns a *int32 when successful
-func (m *PhoneNumberStatusResponse) GetCallsPossible()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *PhoneNumberStatusResponse) GetCallsPossible()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.callsPossible
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -55,22 +55,22 @@ func (m *PhoneNumberStatusResponse) GetCallsPossible()(*int32) {
 func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["callsPossible"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCallsPossible(val)
+            m.SetCallsPossible(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["messagesPossible"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetMessagesPossible(val)
+            m.SetMessagesPossible(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -143,8 +143,8 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers()(map[string]func(i878
     return res
 }
 // GetMessagesPossible gets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
-// returns a *int32 when successful
-func (m *PhoneNumberStatusResponse) GetMessagesPossible()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *PhoneNumberStatusResponse) GetMessagesPossible()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.messagesPossible
 }
 // GetNumber gets the number property value. E.164 phone number exposed by this phone number warmup status.
@@ -180,13 +180,13 @@ func (m *PhoneNumberStatusResponse) GetTrafficMetrics()(PhoneNumberTrafficMetric
 // Serialize serializes information the current object
 func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteInt32Value("callsPossible", m.GetCallsPossible())
+        err := writer.WriteObjectValue("callsPossible", m.GetCallsPossible())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteInt32Value("messagesPossible", m.GetMessagesPossible())
+        err := writer.WriteObjectValue("messagesPossible", m.GetMessagesPossible())
         if err != nil {
             return err
         }
@@ -246,11 +246,11 @@ func (m *PhoneNumberStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetCallsPossible sets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
-func (m *PhoneNumberStatusResponse) SetCallsPossible(value *int32)() {
+func (m *PhoneNumberStatusResponse) SetCallsPossible(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.callsPossible = value
 }
 // SetMessagesPossible sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
-func (m *PhoneNumberStatusResponse) SetMessagesPossible(value *int32)() {
+func (m *PhoneNumberStatusResponse) SetMessagesPossible(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.messagesPossible = value
 }
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number warmup status.
@@ -280,16 +280,16 @@ func (m *PhoneNumberStatusResponse) SetTrafficMetrics(value PhoneNumberTrafficMe
 type PhoneNumberStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallsPossible()(*int32)
-    GetMessagesPossible()(*int32)
+    GetCallsPossible()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetMessagesPossible()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetNumber()(*string)
     GetOptOutMetrics()(PhoneNumberOptOutMetricsResponseable)
     GetOutboundCapacity()(PhoneNumberStatusResponse_outboundCapacityable)
     GetRecentEvents()([]PhoneNumberMessagingEventResponseable)
     GetSmsWarmup()(PhoneNumberStatusResponse_smsWarmupable)
     GetTrafficMetrics()(PhoneNumberTrafficMetricsResponseable)
-    SetCallsPossible(value *int32)()
-    SetMessagesPossible(value *int32)()
+    SetCallsPossible(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetMessagesPossible(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetNumber(value *string)()
     SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)()
     SetOutboundCapacity(value PhoneNumberStatusResponse_outboundCapacityable)()

@@ -19,7 +19,7 @@ type AnalyticsTrendPointOfdecimal struct {
     // Date and time when this Leadping analytics trend point was start.
     startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Value associated with this Leadping analytics trend point.
-    value *float64
+    value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewAnalyticsTrendPointOfdecimal instantiates a new AnalyticsTrendPointOfdecimal and sets the default values.
 func NewAnalyticsTrendPointOfdecimal()(*AnalyticsTrendPointOfdecimal) {
@@ -78,12 +78,12 @@ func (m *AnalyticsTrendPointOfdecimal) GetFieldDeserializers()(map[string]func(i
         return nil
     }
     res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetValue(val)
+            m.SetValue(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -100,8 +100,8 @@ func (m *AnalyticsTrendPointOfdecimal) GetStartAt()(*i336074805fc853987abe6f7fe3
     return m.startAt
 }
 // GetValue gets the value property value. Value associated with this Leadping analytics trend point.
-// returns a *float64 when successful
-func (m *AnalyticsTrendPointOfdecimal) GetValue()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *AnalyticsTrendPointOfdecimal) GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.value
 }
 // Serialize serializes information the current object
@@ -125,7 +125,7 @@ func (m *AnalyticsTrendPointOfdecimal) Serialize(writer i878a80d2330e89d26896388
         }
     }
     {
-        err := writer.WriteFloat64Value("value", m.GetValue())
+        err := writer.WriteObjectValue("value", m.GetValue())
         if err != nil {
             return err
         }
@@ -155,7 +155,7 @@ func (m *AnalyticsTrendPointOfdecimal) SetStartAt(value *i336074805fc853987abe6f
     m.startAt = value
 }
 // SetValue sets the value property value. Value associated with this Leadping analytics trend point.
-func (m *AnalyticsTrendPointOfdecimal) SetValue(value *float64)() {
+func (m *AnalyticsTrendPointOfdecimal) SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.value = value
 }
 type AnalyticsTrendPointOfdecimalable interface {
@@ -164,9 +164,9 @@ type AnalyticsTrendPointOfdecimalable interface {
     GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLabel()(*string)
     GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetValue()(*float64)
+    GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLabel(value *string)()
     SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetValue(value *float64)()
+    SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

@@ -18,7 +18,7 @@ type LeadStatusRequest struct {
     // Display name for the lead status.
     name *string
     // Relative display order for the lead status.
-    sortOrder *int32
+    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewLeadStatusRequest instantiates a new LeadStatusRequest and sets the default values.
 func NewLeadStatusRequest()(*LeadStatusRequest) {
@@ -82,12 +82,12 @@ func (m *LeadStatusRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSortOrder(val)
+            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -99,8 +99,8 @@ func (m *LeadStatusRequest) GetName()(*string) {
     return m.name
 }
 // GetSortOrder gets the sortOrder property value. Relative display order for the lead status.
-// returns a *int32 when successful
-func (m *LeadStatusRequest) GetSortOrder()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *LeadStatusRequest) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.sortOrder
 }
 // Serialize serializes information the current object
@@ -125,7 +125,7 @@ func (m *LeadStatusRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
+        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
         if err != nil {
             return err
         }
@@ -155,7 +155,7 @@ func (m *LeadStatusRequest) SetName(value *string)() {
     m.name = value
 }
 // SetSortOrder sets the sortOrder property value. Relative display order for the lead status.
-func (m *LeadStatusRequest) SetSortOrder(value *int32)() {
+func (m *LeadStatusRequest) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.sortOrder = value
 }
 type LeadStatusRequestable interface {
@@ -164,9 +164,9 @@ type LeadStatusRequestable interface {
     GetCategory()(*LeadStatusRequest_category)
     GetColor()(*string)
     GetName()(*string)
-    GetSortOrder()(*int32)
+    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetCategory(value *LeadStatusRequest_category)()
     SetColor(value *string)()
     SetName(value *string)()
-    SetSortOrder(value *int32)()
+    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

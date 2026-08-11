@@ -13,7 +13,7 @@ type SmsResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount *float64
+    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
@@ -59,7 +59,7 @@ type SmsResponse struct {
     // UTC timestamp when Leadping received this inbound event or message.
     receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Number of retry attempts already made for this SMS message.
-    retryCount *int32
+    retryCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // UTC timestamp when Leadping is scheduled to send this SMS message.
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Reason Leadping scheduled this delivery for a later time.
@@ -103,8 +103,8 @@ func (m *SmsResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a *float64 when successful
-func (m *SmsResponse) GetBillableAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *SmsResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -172,12 +172,12 @@ func (m *SmsResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16
 func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val)
+            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -408,12 +408,12 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         return nil
     }
     res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRetryCount(val)
+            m.SetRetryCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -590,8 +590,8 @@ func (m *SmsResponse) GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a
     return m.receivedAt
 }
 // GetRetryCount gets the retryCount property value. Number of retry attempts already made for this SMS message.
-// returns a *int32 when successful
-func (m *SmsResponse) GetRetryCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *SmsResponse) GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.retryCount
 }
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
@@ -657,7 +657,7 @@ func (m *SmsResponse) GetWasManuallyOverridden()(*bool) {
 // Serialize serializes information the current object
 func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
+        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -801,7 +801,7 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
-        err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
+        err := writer.WriteObjectValue("retryCount", m.GetRetryCount())
         if err != nil {
             return err
         }
@@ -894,7 +894,7 @@ func (m *SmsResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *SmsResponse) SetBillableAmount(value *float64)() {
+func (m *SmsResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -986,7 +986,7 @@ func (m *SmsResponse) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
     m.receivedAt = value
 }
 // SetRetryCount sets the retryCount property value. Number of retry attempts already made for this SMS message.
-func (m *SmsResponse) SetRetryCount(value *int32)() {
+func (m *SmsResponse) SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.retryCount = value
 }
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
@@ -1040,7 +1040,7 @@ func (m *SmsResponse) SetWasManuallyOverridden(value *bool)() {
 type SmsResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableAmount()(*float64)
+    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCampaignId()(*string)
@@ -1063,7 +1063,7 @@ type SmsResponseable interface {
     GetOutboundPhoneNumberId()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRetryCount()(*int32)
+    GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetScheduledReason()(*string)
     GetSelectionReason()(*SmsResponse_selectionReason)
@@ -1076,7 +1076,7 @@ type SmsResponseable interface {
     GetTrafficType()(*SmsResponse_trafficType)
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetWasManuallyOverridden()(*bool)
-    SetBillableAmount(value *float64)()
+    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCampaignId(value *string)()
@@ -1099,7 +1099,7 @@ type SmsResponseable interface {
     SetOutboundPhoneNumberId(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRetryCount(value *int32)()
+    SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetScheduledReason(value *string)()
     SetSelectionReason(value *SmsResponse_selectionReason)()

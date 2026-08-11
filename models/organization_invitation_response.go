@@ -27,7 +27,7 @@ type OrganizationInvitationResponse struct {
     // The billing status for the paid license created by this invitation.
     licenseBillingStatus *string
     // The quantity on the shared organization user license subscription item after this change.
-    licenseQuantity *int64
+    licenseQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The date and time this invitation's paid license was released.
     licenseReleasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The renewal date used for proration of this license.
@@ -161,12 +161,12 @@ func (m *OrganizationInvitationResponse) GetFieldDeserializers()(map[string]func
         return nil
     }
     res["licenseQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLicenseQuantity(val)
+            m.SetLicenseQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -288,8 +288,8 @@ func (m *OrganizationInvitationResponse) GetLicenseBillingStatus()(*string) {
     return m.licenseBillingStatus
 }
 // GetLicenseQuantity gets the licenseQuantity property value. The quantity on the shared organization user license subscription item after this change.
-// returns a *int64 when successful
-func (m *OrganizationInvitationResponse) GetLicenseQuantity()(*int64) {
+// returns a UntypedNodeable when successful
+func (m *OrganizationInvitationResponse) GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.licenseQuantity
 }
 // GetLicenseReleasedAt gets the licenseReleasedAt property value. The date and time this invitation's paid license was released.
@@ -387,7 +387,7 @@ func (m *OrganizationInvitationResponse) Serialize(writer i878a80d2330e89d268963
         }
     }
     {
-        err := writer.WriteInt64Value("licenseQuantity", m.GetLicenseQuantity())
+        err := writer.WriteObjectValue("licenseQuantity", m.GetLicenseQuantity())
         if err != nil {
             return err
         }
@@ -495,7 +495,7 @@ func (m *OrganizationInvitationResponse) SetLicenseBillingStatus(value *string)(
     m.licenseBillingStatus = value
 }
 // SetLicenseQuantity sets the licenseQuantity property value. The quantity on the shared organization user license subscription item after this change.
-func (m *OrganizationInvitationResponse) SetLicenseQuantity(value *int64)() {
+func (m *OrganizationInvitationResponse) SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.licenseQuantity = value
 }
 // SetLicenseReleasedAt sets the licenseReleasedAt property value. The date and time this invitation's paid license was released.
@@ -548,7 +548,7 @@ type OrganizationInvitationResponseable interface {
     GetId()(*string)
     GetLicenseActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLicenseBillingStatus()(*string)
-    GetLicenseQuantity()(*int64)
+    GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetLicenseReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOrganization()(IdNamePairable)
@@ -566,7 +566,7 @@ type OrganizationInvitationResponseable interface {
     SetId(value *string)()
     SetLicenseActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLicenseBillingStatus(value *string)()
-    SetLicenseQuantity(value *int64)()
+    SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetLicenseReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOrganization(value IdNamePairable)()

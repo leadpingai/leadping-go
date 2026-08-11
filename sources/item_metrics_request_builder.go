@@ -17,7 +17,7 @@ type ItemMetricsRequestBuilder struct {
 // ItemMetricsRequestBuilderGetQueryParameters returns lead creation metrics for one organization intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
 type ItemMetricsRequestBuilderGetQueryParameters struct {
     // Optional rolling day count when explicit dates are not provided.
-    Days *int32 "uriparametername:\"days\""
+    Days *string "uriparametername:\"days\""
     // Optional end date/time for the metric range.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
     // Optional start date/time for the metric range.

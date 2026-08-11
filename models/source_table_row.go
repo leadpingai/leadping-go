@@ -23,11 +23,11 @@ type SourceTableRow struct {
     // Masked preview of the source API key for compact display.
     apiKeyPreview *string
     // Total number of authenticated requests made with this source API key.
-    apiKeyTotalUses *int64
+    apiKeyTotalUses i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Indicates whether the organization or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
-    costPerLead *float64
+    costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // UTC timestamp when this lead source table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User summary for the person who created this lead source table row.
@@ -104,8 +104,8 @@ func (m *SourceTableRow) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
 }
 // GetApiKeyTotalUses gets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
-// returns a *int64 when successful
-func (m *SourceTableRow) GetApiKeyTotalUses()(*int64) {
+// returns a UntypedNodeable when successful
+func (m *SourceTableRow) GetApiKeyTotalUses()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.apiKeyTotalUses
 }
 // GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -114,8 +114,8 @@ func (m *SourceTableRow) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-// returns a *float64 when successful
-func (m *SourceTableRow) GetCostPerLead()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *SourceTableRow) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead source table row was created.
@@ -215,12 +215,12 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["apiKeyTotalUses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetApiKeyTotalUses(val)
+            m.SetApiKeyTotalUses(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -235,12 +235,12 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCostPerLead(val)
+            m.SetCostPerLead(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -501,7 +501,7 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteInt64Value("apiKeyTotalUses", m.GetApiKeyTotalUses())
+        err := writer.WriteObjectValue("apiKeyTotalUses", m.GetApiKeyTotalUses())
         if err != nil {
             return err
         }
@@ -513,7 +513,7 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
+        err := writer.WriteObjectValue("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
         }
@@ -653,7 +653,7 @@ func (m *SourceTableRow) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }
 // SetApiKeyTotalUses sets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
-func (m *SourceTableRow) SetApiKeyTotalUses(value *int64)() {
+func (m *SourceTableRow) SetApiKeyTotalUses(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.apiKeyTotalUses = value
 }
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -661,7 +661,7 @@ func (m *SourceTableRow) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceTableRow) SetCostPerLead(value *float64)() {
+func (m *SourceTableRow) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead source table row was created.
@@ -736,9 +736,9 @@ type SourceTableRowable interface {
     GetApiKey()(*string)
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
-    GetApiKeyTotalUses()(*int64)
+    GetApiKeyTotalUses()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetComplianceApproved()(*bool)
-    GetCostPerLead()(*float64)
+    GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUser()(SourceTableRow_createdByUserable)
     GetDefaultTagIds()([]string)
@@ -760,9 +760,9 @@ type SourceTableRowable interface {
     SetApiKey(value *string)()
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
-    SetApiKeyTotalUses(value *int64)()
+    SetApiKeyTotalUses(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetComplianceApproved(value *bool)()
-    SetCostPerLead(value *float64)()
+    SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUser(value SourceTableRow_createdByUserable)()
     SetDefaultTagIds(value []string)()

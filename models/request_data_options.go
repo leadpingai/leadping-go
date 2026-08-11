@@ -20,7 +20,7 @@ type RequestDataOptions struct {
     // List of sort instructions, in priority order.
     orderBy []OrderByOptionable
     // Maximum items to return in one page
-    pageSize *int32
+    pageSize i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Advanced range-based filters (e.g., Price > 50 and Price <= 200).
     rangeFilters []RangeFilterable
     // The search term to filter results (applied to ).
@@ -107,12 +107,12 @@ func (m *RequestDataOptions) GetFieldDeserializers()(map[string]func(i878a80d233
         return nil
     }
     res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPageSize(val)
+            m.SetPageSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -176,8 +176,8 @@ func (m *RequestDataOptions) GetOrderBy()([]OrderByOptionable) {
     return m.orderBy
 }
 // GetPageSize gets the pageSize property value. Maximum items to return in one page
-// returns a *int32 when successful
-func (m *RequestDataOptions) GetPageSize()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *RequestDataOptions) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.pageSize
 }
 // GetRangeFilters gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
@@ -234,7 +234,7 @@ func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
-        err := writer.WriteInt32Value("pageSize", m.GetPageSize())
+        err := writer.WriteObjectValue("pageSize", m.GetPageSize())
         if err != nil {
             return err
         }
@@ -292,7 +292,7 @@ func (m *RequestDataOptions) SetOrderBy(value []OrderByOptionable)() {
     m.orderBy = value
 }
 // SetPageSize sets the pageSize property value. Maximum items to return in one page
-func (m *RequestDataOptions) SetPageSize(value *int32)() {
+func (m *RequestDataOptions) SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.pageSize = value
 }
 // SetRangeFilters sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
@@ -314,7 +314,7 @@ type RequestDataOptionsable interface {
     GetFilters()([]ExactMatchFilterable)
     GetIncludeCount()(*bool)
     GetOrderBy()([]OrderByOptionable)
-    GetPageSize()(*int32)
+    GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetRangeFilters()([]RangeFilterable)
     GetSearch()(*string)
     GetSearchFields()([]string)
@@ -322,7 +322,7 @@ type RequestDataOptionsable interface {
     SetFilters(value []ExactMatchFilterable)()
     SetIncludeCount(value *bool)()
     SetOrderBy(value []OrderByOptionable)()
-    SetPageSize(value *int32)()
+    SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetRangeFilters(value []RangeFilterable)()
     SetSearch(value *string)()
     SetSearchFields(value []string)()

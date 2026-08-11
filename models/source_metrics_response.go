@@ -19,7 +19,7 @@ type SourceMetricsResponse struct {
     // Range associated with this Leadping source metrics.
     rangeEscaped AnalyticsDateRangeable
     // Total number of leads records represented by this Leadping source metrics.
-    totalLeads *int32
+    totalLeads i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewSourceMetricsResponse instantiates a new SourceMetricsResponse and sets the default values.
 func NewSourceMetricsResponse()(*SourceMetricsResponse) {
@@ -79,12 +79,12 @@ func (m *SourceMetricsResponse) GetFieldDeserializers()(map[string]func(i878a80d
         return nil
     }
     res["totalLeads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotalLeads(val)
+            m.SetTotalLeads(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -106,8 +106,8 @@ func (m *SourceMetricsResponse) GetRangeEscaped()(AnalyticsDateRangeable) {
     return m.rangeEscaped
 }
 // GetTotalLeads gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
-// returns a *int32 when successful
-func (m *SourceMetricsResponse) GetTotalLeads()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *SourceMetricsResponse) GetTotalLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.totalLeads
 }
 // Serialize serializes information the current object
@@ -137,7 +137,7 @@ func (m *SourceMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     {
-        err := writer.WriteInt32Value("totalLeads", m.GetTotalLeads())
+        err := writer.WriteObjectValue("totalLeads", m.GetTotalLeads())
         if err != nil {
             return err
         }
@@ -167,7 +167,7 @@ func (m *SourceMetricsResponse) SetRangeEscaped(value AnalyticsDateRangeable)() 
     m.rangeEscaped = value
 }
 // SetTotalLeads sets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
-func (m *SourceMetricsResponse) SetTotalLeads(value *int32)() {
+func (m *SourceMetricsResponse) SetTotalLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.totalLeads = value
 }
 type SourceMetricsResponseable interface {
@@ -176,9 +176,9 @@ type SourceMetricsResponseable interface {
     GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPoints()([]AnalyticsTrendPointOfintable)
     GetRangeEscaped()(AnalyticsDateRangeable)
-    GetTotalLeads()(*int32)
+    GetTotalLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPoints(value []AnalyticsTrendPointOfintable)()
     SetRangeEscaped(value AnalyticsDateRangeable)()
-    SetTotalLeads(value *int32)()
+    SetTotalLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

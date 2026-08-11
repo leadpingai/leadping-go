@@ -13,7 +13,7 @@ type UsageLedgerTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Billable seconds for this usage ledger.
-    billableSeconds *int32
+    billableSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Billable unit for this usage ledger.
     billableUnit *BillableUnit
     // Channel for this usage ledger.
@@ -21,11 +21,11 @@ type UsageLedgerTableRow struct {
     // UTC timestamp for created at on this usage ledger.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The monetary customer charge amount for this usage ledger.
-    customerChargeAmount *float64
+    customerChargeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The human-readable description of this usage ledger.
     description *string
     // Duration seconds for this usage ledger.
-    durationSeconds *int32
+    durationSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Unique Leadping identifier for this usage ledger.
     id *string
     // Whether this usage ledger is billable.
@@ -39,13 +39,13 @@ type UsageLedgerTableRow struct {
     // The phone number ID associated with this usage ledger.
     phoneNumberId *string
     // Quantity for this usage ledger.
-    quantity *float64
+    quantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // SMS segments for this usage ledger.
-    smsSegments *int32
+    smsSegments i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The current status for this usage ledger.
     status *UsageStatus
     // Unit price for this usage ledger.
-    unitPrice *float64
+    unitPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Identifier and display name of the related user.
     user UsageLedgerTableRow_userable
 }
@@ -67,8 +67,8 @@ func (m *UsageLedgerTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableSeconds gets the billableSeconds property value. Billable seconds for this usage ledger.
-// returns a *int32 when successful
-func (m *UsageLedgerTableRow) GetBillableSeconds()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billableSeconds
 }
 // GetBillableUnit gets the billableUnit property value. Billable unit for this usage ledger.
@@ -87,8 +87,8 @@ func (m *UsageLedgerTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a
     return m.createdAt
 }
 // GetCustomerChargeAmount gets the customerChargeAmount property value. The monetary customer charge amount for this usage ledger.
-// returns a *float64 when successful
-func (m *UsageLedgerTableRow) GetCustomerChargeAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.customerChargeAmount
 }
 // GetDescription gets the description property value. The human-readable description of this usage ledger.
@@ -97,8 +97,8 @@ func (m *UsageLedgerTableRow) GetDescription()(*string) {
     return m.description
 }
 // GetDurationSeconds gets the durationSeconds property value. Duration seconds for this usage ledger.
-// returns a *int32 when successful
-func (m *UsageLedgerTableRow) GetDurationSeconds()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.durationSeconds
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -106,12 +106,12 @@ func (m *UsageLedgerTableRow) GetDurationSeconds()(*int32) {
 func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["billableSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableSeconds(val)
+            m.SetBillableSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -146,12 +146,12 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["customerChargeAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCustomerChargeAmount(val)
+            m.SetCustomerChargeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -166,12 +166,12 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["durationSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDurationSeconds(val)
+            m.SetDurationSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -236,22 +236,22 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetQuantity(val)
+            m.SetQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["smsSegments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSmsSegments(val)
+            m.SetSmsSegments(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -266,12 +266,12 @@ func (m *UsageLedgerTableRow) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["unitPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetUnitPrice(val)
+            m.SetUnitPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -318,13 +318,13 @@ func (m *UsageLedgerTableRow) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
 // GetQuantity gets the quantity property value. Quantity for this usage ledger.
-// returns a *float64 when successful
-func (m *UsageLedgerTableRow) GetQuantity()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.quantity
 }
 // GetSmsSegments gets the smsSegments property value. SMS segments for this usage ledger.
-// returns a *int32 when successful
-func (m *UsageLedgerTableRow) GetSmsSegments()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetSmsSegments()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.smsSegments
 }
 // GetStatus gets the status property value. The current status for this usage ledger.
@@ -333,8 +333,8 @@ func (m *UsageLedgerTableRow) GetStatus()(*UsageStatus) {
     return m.status
 }
 // GetUnitPrice gets the unitPrice property value. Unit price for this usage ledger.
-// returns a *float64 when successful
-func (m *UsageLedgerTableRow) GetUnitPrice()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *UsageLedgerTableRow) GetUnitPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.unitPrice
 }
 // GetUser gets the user property value. Identifier and display name of the related user.
@@ -345,7 +345,7 @@ func (m *UsageLedgerTableRow) GetUser()(UsageLedgerTableRow_userable) {
 // Serialize serializes information the current object
 func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteInt32Value("billableSeconds", m.GetBillableSeconds())
+        err := writer.WriteObjectValue("billableSeconds", m.GetBillableSeconds())
         if err != nil {
             return err
         }
@@ -371,7 +371,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("customerChargeAmount", m.GetCustomerChargeAmount())
+        err := writer.WriteObjectValue("customerChargeAmount", m.GetCustomerChargeAmount())
         if err != nil {
             return err
         }
@@ -383,7 +383,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteInt32Value("durationSeconds", m.GetDurationSeconds())
+        err := writer.WriteObjectValue("durationSeconds", m.GetDurationSeconds())
         if err != nil {
             return err
         }
@@ -425,13 +425,13 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("quantity", m.GetQuantity())
+        err := writer.WriteObjectValue("quantity", m.GetQuantity())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteInt32Value("smsSegments", m.GetSmsSegments())
+        err := writer.WriteObjectValue("smsSegments", m.GetSmsSegments())
         if err != nil {
             return err
         }
@@ -444,7 +444,7 @@ func (m *UsageLedgerTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("unitPrice", m.GetUnitPrice())
+        err := writer.WriteObjectValue("unitPrice", m.GetUnitPrice())
         if err != nil {
             return err
         }
@@ -468,7 +468,7 @@ func (m *UsageLedgerTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableSeconds sets the billableSeconds property value. Billable seconds for this usage ledger.
-func (m *UsageLedgerTableRow) SetBillableSeconds(value *int32)() {
+func (m *UsageLedgerTableRow) SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billableSeconds = value
 }
 // SetBillableUnit sets the billableUnit property value. Billable unit for this usage ledger.
@@ -484,7 +484,7 @@ func (m *UsageLedgerTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad9
     m.createdAt = value
 }
 // SetCustomerChargeAmount sets the customerChargeAmount property value. The monetary customer charge amount for this usage ledger.
-func (m *UsageLedgerTableRow) SetCustomerChargeAmount(value *float64)() {
+func (m *UsageLedgerTableRow) SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.customerChargeAmount = value
 }
 // SetDescription sets the description property value. The human-readable description of this usage ledger.
@@ -492,7 +492,7 @@ func (m *UsageLedgerTableRow) SetDescription(value *string)() {
     m.description = value
 }
 // SetDurationSeconds sets the durationSeconds property value. Duration seconds for this usage ledger.
-func (m *UsageLedgerTableRow) SetDurationSeconds(value *int32)() {
+func (m *UsageLedgerTableRow) SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.durationSeconds = value
 }
 // SetId sets the id property value. Unique Leadping identifier for this usage ledger.
@@ -520,11 +520,11 @@ func (m *UsageLedgerTableRow) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
 // SetQuantity sets the quantity property value. Quantity for this usage ledger.
-func (m *UsageLedgerTableRow) SetQuantity(value *float64)() {
+func (m *UsageLedgerTableRow) SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.quantity = value
 }
 // SetSmsSegments sets the smsSegments property value. SMS segments for this usage ledger.
-func (m *UsageLedgerTableRow) SetSmsSegments(value *int32)() {
+func (m *UsageLedgerTableRow) SetSmsSegments(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.smsSegments = value
 }
 // SetStatus sets the status property value. The current status for this usage ledger.
@@ -532,7 +532,7 @@ func (m *UsageLedgerTableRow) SetStatus(value *UsageStatus)() {
     m.status = value
 }
 // SetUnitPrice sets the unitPrice property value. Unit price for this usage ledger.
-func (m *UsageLedgerTableRow) SetUnitPrice(value *float64)() {
+func (m *UsageLedgerTableRow) SetUnitPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.unitPrice = value
 }
 // SetUser sets the user property value. Identifier and display name of the related user.
@@ -542,40 +542,40 @@ func (m *UsageLedgerTableRow) SetUser(value UsageLedgerTableRow_userable)() {
 type UsageLedgerTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableSeconds()(*int32)
+    GetBillableSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillableUnit()(*BillableUnit)
     GetChannel()(*UsageChannel)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCustomerChargeAmount()(*float64)
+    GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetDescription()(*string)
-    GetDurationSeconds()(*int32)
+    GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetId()(*string)
     GetIsBillable()(*bool)
     GetLead()(UsageLedgerTableRow_leadable)
     GetOrganization()(UsageLedgerTableRow_organizationable)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
-    GetQuantity()(*float64)
-    GetSmsSegments()(*int32)
+    GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetSmsSegments()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetStatus()(*UsageStatus)
-    GetUnitPrice()(*float64)
+    GetUnitPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetUser()(UsageLedgerTableRow_userable)
-    SetBillableSeconds(value *int32)()
+    SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillableUnit(value *BillableUnit)()
     SetChannel(value *UsageChannel)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCustomerChargeAmount(value *float64)()
+    SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetDescription(value *string)()
-    SetDurationSeconds(value *int32)()
+    SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetId(value *string)()
     SetIsBillable(value *bool)()
     SetLead(value UsageLedgerTableRow_leadable)()
     SetOrganization(value UsageLedgerTableRow_organizationable)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
-    SetQuantity(value *float64)()
-    SetSmsSegments(value *int32)()
+    SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetSmsSegments(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetStatus(value *UsageStatus)()
-    SetUnitPrice(value *float64)()
+    SetUnitPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetUser(value UsageLedgerTableRow_userable)()
 }

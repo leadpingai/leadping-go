@@ -13,11 +13,11 @@ type WalletResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Amount of wallet credit purchased in this deposit.
-    amountPurchased *float64
+    amountPurchased i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Amount of wallet credit still available for future usage.
-    amountRemaining *float64
+    amountRemaining i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Wallet or account balance after this transaction is applied.
-    balance *float64
+    balance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // UTC timestamp when Leadping last calculated the wallet balance.
     balanceCalculatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The date and time when the entity was created.
@@ -27,7 +27,7 @@ type WalletResponse struct {
     // ISO currency code used for the monetary amounts in this billing wallet response.
     currency *string
     // Amount of wallet credit that has expired.
-    expiredCreditAmount *float64
+    expiredCreditAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // UTC timestamp when the wallet credit expires.
     expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The unique identifier for the entity.
@@ -39,7 +39,7 @@ type WalletResponse struct {
     // UTC timestamp when the next wallet credit amount expires.
     nextCreditExpirationAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Amount of wallet credit scheduled to expire next.
-    nextExpiringCreditAmount *float64
+    nextExpiringCreditAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Organization ID that owns this wallet balance or credit.
     organizationId *string
     // Original wallet transaction ID referenced by a reversal, refund, or adjustment.
@@ -67,18 +67,18 @@ func (m *WalletResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAmountPurchased gets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
-// returns a *float64 when successful
-func (m *WalletResponse) GetAmountPurchased()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *WalletResponse) GetAmountPurchased()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amountPurchased
 }
 // GetAmountRemaining gets the amountRemaining property value. Amount of wallet credit still available for future usage.
-// returns a *float64 when successful
-func (m *WalletResponse) GetAmountRemaining()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *WalletResponse) GetAmountRemaining()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amountRemaining
 }
 // GetBalance gets the balance property value. Wallet or account balance after this transaction is applied.
-// returns a *float64 when successful
-func (m *WalletResponse) GetBalance()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *WalletResponse) GetBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.balance
 }
 // GetBalanceCalculatedAt gets the balanceCalculatedAt property value. UTC timestamp when Leadping last calculated the wallet balance.
@@ -102,8 +102,8 @@ func (m *WalletResponse) GetCurrency()(*string) {
     return m.currency
 }
 // GetExpiredCreditAmount gets the expiredCreditAmount property value. Amount of wallet credit that has expired.
-// returns a *float64 when successful
-func (m *WalletResponse) GetExpiredCreditAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *WalletResponse) GetExpiredCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.expiredCreditAmount
 }
 // GetExpiresAt gets the expiresAt property value. UTC timestamp when the wallet credit expires.
@@ -116,32 +116,32 @@ func (m *WalletResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f307
 func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["amountPurchased"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAmountPurchased(val)
+            m.SetAmountPurchased(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["amountRemaining"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAmountRemaining(val)
+            m.SetAmountRemaining(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["balance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBalance(val)
+            m.SetBalance(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -186,12 +186,12 @@ func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["expiredCreditAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetExpiredCreditAmount(val)
+            m.SetExpiredCreditAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -246,12 +246,12 @@ func (m *WalletResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["nextExpiringCreditAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetNextExpiringCreditAmount(val)
+            m.SetNextExpiringCreditAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -318,8 +318,8 @@ func (m *WalletResponse) GetNextCreditExpirationAt()(*i336074805fc853987abe6f7fe
     return m.nextCreditExpirationAt
 }
 // GetNextExpiringCreditAmount gets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
-// returns a *float64 when successful
-func (m *WalletResponse) GetNextExpiringCreditAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *WalletResponse) GetNextExpiringCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.nextExpiringCreditAmount
 }
 // GetOrganizationId gets the organizationId property value. Organization ID that owns this wallet balance or credit.
@@ -345,19 +345,19 @@ func (m *WalletResponse) GetSourceType()(*WalletResponse_sourceType) {
 // Serialize serializes information the current object
 func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteFloat64Value("amountPurchased", m.GetAmountPurchased())
+        err := writer.WriteObjectValue("amountPurchased", m.GetAmountPurchased())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteFloat64Value("amountRemaining", m.GetAmountRemaining())
+        err := writer.WriteObjectValue("amountRemaining", m.GetAmountRemaining())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteFloat64Value("balance", m.GetBalance())
+        err := writer.WriteObjectValue("balance", m.GetBalance())
         if err != nil {
             return err
         }
@@ -388,7 +388,7 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteFloat64Value("expiredCreditAmount", m.GetExpiredCreditAmount())
+        err := writer.WriteObjectValue("expiredCreditAmount", m.GetExpiredCreditAmount())
         if err != nil {
             return err
         }
@@ -424,7 +424,7 @@ func (m *WalletResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteFloat64Value("nextExpiringCreditAmount", m.GetNextExpiringCreditAmount())
+        err := writer.WriteObjectValue("nextExpiringCreditAmount", m.GetNextExpiringCreditAmount())
         if err != nil {
             return err
         }
@@ -467,15 +467,15 @@ func (m *WalletResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAmountPurchased sets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
-func (m *WalletResponse) SetAmountPurchased(value *float64)() {
+func (m *WalletResponse) SetAmountPurchased(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amountPurchased = value
 }
 // SetAmountRemaining sets the amountRemaining property value. Amount of wallet credit still available for future usage.
-func (m *WalletResponse) SetAmountRemaining(value *float64)() {
+func (m *WalletResponse) SetAmountRemaining(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amountRemaining = value
 }
 // SetBalance sets the balance property value. Wallet or account balance after this transaction is applied.
-func (m *WalletResponse) SetBalance(value *float64)() {
+func (m *WalletResponse) SetBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.balance = value
 }
 // SetBalanceCalculatedAt sets the balanceCalculatedAt property value. UTC timestamp when Leadping last calculated the wallet balance.
@@ -495,7 +495,7 @@ func (m *WalletResponse) SetCurrency(value *string)() {
     m.currency = value
 }
 // SetExpiredCreditAmount sets the expiredCreditAmount property value. Amount of wallet credit that has expired.
-func (m *WalletResponse) SetExpiredCreditAmount(value *float64)() {
+func (m *WalletResponse) SetExpiredCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.expiredCreditAmount = value
 }
 // SetExpiresAt sets the expiresAt property value. UTC timestamp when the wallet credit expires.
@@ -519,7 +519,7 @@ func (m *WalletResponse) SetNextCreditExpirationAt(value *i336074805fc853987abe6
     m.nextCreditExpirationAt = value
 }
 // SetNextExpiringCreditAmount sets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
-func (m *WalletResponse) SetNextExpiringCreditAmount(value *float64)() {
+func (m *WalletResponse) SetNextExpiringCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.nextExpiringCreditAmount = value
 }
 // SetOrganizationId sets the organizationId property value. Organization ID that owns this wallet balance or credit.
@@ -541,38 +541,38 @@ func (m *WalletResponse) SetSourceType(value *WalletResponse_sourceType)() {
 type WalletResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAmountPurchased()(*float64)
-    GetAmountRemaining()(*float64)
-    GetBalance()(*float64)
+    GetAmountPurchased()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAmountRemaining()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBalanceCalculatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreditStatus()(*WalletResponse_creditStatus)
     GetCurrency()(*string)
-    GetExpiredCreditAmount()(*float64)
+    GetExpiredCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetId()(*string)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetNextCreditExpirationAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNextExpiringCreditAmount()(*float64)
+    GetNextExpiringCreditAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetOrganizationId()(*string)
     GetOriginalTransactionId()(*string)
     GetPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSourceType()(*WalletResponse_sourceType)
-    SetAmountPurchased(value *float64)()
-    SetAmountRemaining(value *float64)()
-    SetBalance(value *float64)()
+    SetAmountPurchased(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAmountRemaining(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBalanceCalculatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreditStatus(value *WalletResponse_creditStatus)()
     SetCurrency(value *string)()
-    SetExpiredCreditAmount(value *float64)()
+    SetExpiredCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetId(value *string)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetNextCreditExpirationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNextExpiringCreditAmount(value *float64)()
+    SetNextExpiringCreditAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetOrganizationId(value *string)()
     SetOriginalTransactionId(value *string)()
     SetPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

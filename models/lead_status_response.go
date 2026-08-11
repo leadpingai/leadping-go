@@ -27,7 +27,7 @@ type LeadStatusResponse struct {
     // Identifier of the organization that owns the lead status.
     organizationId *string
     // Relative display order of the lead status.
-    sortOrder *int32
+    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewLeadStatusResponse instantiates a new LeadStatusResponse and sets the default values.
 func NewLeadStatusResponse()(*LeadStatusResponse) {
@@ -131,12 +131,12 @@ func (m *LeadStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d233
         return nil
     }
     res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSortOrder(val)
+            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -168,8 +168,8 @@ func (m *LeadStatusResponse) GetOrganizationId()(*string) {
     return m.organizationId
 }
 // GetSortOrder gets the sortOrder property value. Relative display order of the lead status.
-// returns a *int32 when successful
-func (m *LeadStatusResponse) GetSortOrder()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *LeadStatusResponse) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.sortOrder
 }
 // Serialize serializes information the current object
@@ -218,7 +218,7 @@ func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
-        err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
+        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
         if err != nil {
             return err
         }
@@ -264,7 +264,7 @@ func (m *LeadStatusResponse) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
 // SetSortOrder sets the sortOrder property value. Relative display order of the lead status.
-func (m *LeadStatusResponse) SetSortOrder(value *int32)() {
+func (m *LeadStatusResponse) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.sortOrder = value
 }
 type LeadStatusResponseable interface {
@@ -277,7 +277,7 @@ type LeadStatusResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetName()(*string)
     GetOrganizationId()(*string)
-    GetSortOrder()(*int32)
+    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetCategory(value *LeadStatusCategory)()
     SetColor(value *string)()
     SetId(value *string)()
@@ -285,5 +285,5 @@ type LeadStatusResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetName(value *string)()
     SetOrganizationId(value *string)()
-    SetSortOrder(value *int32)()
+    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

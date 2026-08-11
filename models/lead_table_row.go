@@ -39,7 +39,7 @@ type LeadTableRow struct {
     // Phone details for the lead, user, or organization represented by this lead table row.
     phone *string
     // Lead price or transaction price supplied to the Leadping API.
-    price *float64
+    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Identifier and display name of the related source.
     source LeadTableRow_sourceable
     // Current lifecycle status for this lead table row in the Leadping API.
@@ -238,12 +238,12 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         return nil
     }
     res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrice(val)
+            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -336,8 +336,8 @@ func (m *LeadTableRow) GetPhone()(*string) {
     return m.phone
 }
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a *float64 when successful
-func (m *LeadTableRow) GetPrice()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *LeadTableRow) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
 // GetSource gets the source property value. Identifier and display name of the related source.
@@ -446,7 +446,7 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteFloat64Value("price", m.GetPrice())
+        err := writer.WriteObjectValue("price", m.GetPrice())
         if err != nil {
             return err
         }
@@ -552,7 +552,7 @@ func (m *LeadTableRow) SetPhone(value *string)() {
     m.phone = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadTableRow) SetPrice(value *float64)() {
+func (m *LeadTableRow) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
 // SetSource sets the source property value. Identifier and display name of the related source.
@@ -591,7 +591,7 @@ type LeadTableRowable interface {
     GetLastName()(*string)
     GetOrganization()(LeadTableRow_organizationable)
     GetPhone()(*string)
-    GetPrice()(*float64)
+    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetSource()(LeadTableRow_sourceable)
     GetStatus()(*string)
     GetStatusTone()(*string)
@@ -610,7 +610,7 @@ type LeadTableRowable interface {
     SetLastName(value *string)()
     SetOrganization(value LeadTableRow_organizationable)()
     SetPhone(value *string)()
-    SetPrice(value *float64)()
+    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetSource(value LeadTableRow_sourceable)()
     SetStatus(value *string)()
     SetStatusTone(value *string)()

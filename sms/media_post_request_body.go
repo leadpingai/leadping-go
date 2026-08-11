@@ -19,7 +19,7 @@ type MediaPostRequestBody struct {
     // The Headers property
     headers MediaPostRequestBody_Headersable
     // The Length property
-    length *int64
+    length i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The Name property
     name *string
 }
@@ -95,12 +95,12 @@ func (m *MediaPostRequestBody) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["Length"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLength(val)
+            m.SetLength(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -127,8 +127,8 @@ func (m *MediaPostRequestBody) GetHeaders()(MediaPostRequestBody_Headersable) {
     return m.headers
 }
 // GetLength gets the Length property value. The Length property
-// returns a *int64 when successful
-func (m *MediaPostRequestBody) GetLength()(*int64) {
+// returns a UntypedNodeable when successful
+func (m *MediaPostRequestBody) GetLength()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.length
 }
 // GetName gets the Name property value. The Name property
@@ -163,7 +163,7 @@ func (m *MediaPostRequestBody) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteInt64Value("Length", m.GetLength())
+        err := writer.WriteObjectValue("Length", m.GetLength())
         if err != nil {
             return err
         }
@@ -203,7 +203,7 @@ func (m *MediaPostRequestBody) SetHeaders(value MediaPostRequestBody_Headersable
     m.headers = value
 }
 // SetLength sets the Length property value. The Length property
-func (m *MediaPostRequestBody) SetLength(value *int64)() {
+func (m *MediaPostRequestBody) SetLength(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.length = value
 }
 // SetName sets the Name property value. The Name property
@@ -217,12 +217,12 @@ type MediaPostRequestBodyable interface {
     GetContentType()(*string)
     GetFileName()(*string)
     GetHeaders()(MediaPostRequestBody_Headersable)
-    GetLength()(*int64)
+    GetLength()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetName()(*string)
     SetContentDisposition(value *string)()
     SetContentType(value *string)()
     SetFileName(value *string)()
     SetHeaders(value MediaPostRequestBody_Headersable)()
-    SetLength(value *int64)()
+    SetLength(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetName(value *string)()
 }

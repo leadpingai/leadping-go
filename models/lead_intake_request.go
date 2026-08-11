@@ -22,7 +22,7 @@ type LeadIntakeRequest struct {
     // Lead date of birth supplied by intake sources and normalized into the lead profile.
     dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
     // Direct-post price supplied by the lead source during intake.
-    directPostPrice *float64
+    directPostPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Email address for the person represented by this lead intake request.
     email *string
     // External system identifier used to reconcile this lead intake request across integrations.
@@ -42,7 +42,7 @@ type LeadIntakeRequest struct {
     // Postal code for the lead or organization address.
     postalCode *string
     // Lead price or transaction price supplied to the Leadping API.
-    price *float64
+    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Product or offer associated with the lead or source.
     product *string
     // Referring page or traffic source that sent the lead into Leadping.
@@ -121,8 +121,8 @@ func (m *LeadIntakeRequest) GetDateOfBirth()(*i878a80d2330e89d26896388a3f487eef2
     return m.dateOfBirth
 }
 // GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-// returns a *float64 when successful
-func (m *LeadIntakeRequest) GetDirectPostPrice()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *LeadIntakeRequest) GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.directPostPrice
 }
 // GetEmail gets the email property value. Email address for the person represented by this lead intake request.
@@ -190,12 +190,12 @@ func (m *LeadIntakeRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["directPostPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDirectPostPrice(val)
+            m.SetDirectPostPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -290,12 +290,12 @@ func (m *LeadIntakeRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrice(val)
+            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -519,8 +519,8 @@ func (m *LeadIntakeRequest) GetPostalCode()(*string) {
     return m.postalCode
 }
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a *float64 when successful
-func (m *LeadIntakeRequest) GetPrice()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *LeadIntakeRequest) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
 }
 // GetProduct gets the product property value. Product or offer associated with the lead or source.
@@ -641,7 +641,7 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteFloat64Value("directPostPrice", m.GetDirectPostPrice())
+        err := writer.WriteObjectValue("directPostPrice", m.GetDirectPostPrice())
         if err != nil {
             return err
         }
@@ -701,7 +701,7 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteFloat64Value("price", m.GetPrice())
+        err := writer.WriteObjectValue("price", m.GetPrice())
         if err != nil {
             return err
         }
@@ -841,7 +841,7 @@ func (m *LeadIntakeRequest) SetDateOfBirth(value *i878a80d2330e89d26896388a3f487
     m.dateOfBirth = value
 }
 // SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-func (m *LeadIntakeRequest) SetDirectPostPrice(value *float64)() {
+func (m *LeadIntakeRequest) SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.directPostPrice = value
 }
 // SetEmail sets the email property value. Email address for the person represented by this lead intake request.
@@ -881,7 +881,7 @@ func (m *LeadIntakeRequest) SetPostalCode(value *string)() {
     m.postalCode = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadIntakeRequest) SetPrice(value *float64)() {
+func (m *LeadIntakeRequest) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
 // SetProduct sets the product property value. Product or offer associated with the lead or source.
@@ -960,7 +960,7 @@ type LeadIntakeRequestable interface {
     GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
     GetCity()(*string)
     GetDateOfBirth()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
-    GetDirectPostPrice()(*float64)
+    GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetEmail()(*string)
     GetExternalId()(*string)
     GetFirstName()(*string)
@@ -970,7 +970,7 @@ type LeadIntakeRequestable interface {
     GetPhone()(*string)
     GetPhoneType()(*string)
     GetPostalCode()(*string)
-    GetPrice()(*float64)
+    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetProduct()(*string)
     GetReferrer()(*string)
     GetSellerLeadId()(*string)
@@ -993,7 +993,7 @@ type LeadIntakeRequestable interface {
     SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)()
     SetCity(value *string)()
     SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)()
-    SetDirectPostPrice(value *float64)()
+    SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetEmail(value *string)()
     SetExternalId(value *string)()
     SetFirstName(value *string)()
@@ -1003,7 +1003,7 @@ type LeadIntakeRequestable interface {
     SetPhone(value *string)()
     SetPhoneType(value *string)()
     SetPostalCode(value *string)()
-    SetPrice(value *float64)()
+    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetProduct(value *string)()
     SetReferrer(value *string)()
     SetSellerLeadId(value *string)()

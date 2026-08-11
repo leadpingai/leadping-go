@@ -21,7 +21,7 @@ type ItemWarmupRequestBuilderGetQueryParameters struct {
     // The start date.
     StartDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly "uriparametername:\"startDate\""
     // The window days.
-    WindowDays *int32 "uriparametername:\"windowDays\""
+    WindowDays *string "uriparametername:\"windowDays\""
 }
 // NewItemWarmupRequestBuilderInternal instantiates a new ItemWarmupRequestBuilder and sets the default values.
 func NewItemWarmupRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemWarmupRequestBuilder) {

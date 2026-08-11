@@ -18,7 +18,7 @@ type SourceRequest struct {
     // Source API key used to authenticate inbound lead delivery to Leadping.
     apiKey *string
     // Configured cost charged when this source creates a billable lead.
-    costPerLead *float64
+    costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Tag IDs automatically assigned to leads created by this source.
     defaultTagIds []string
     // Tag names automatically assigned to leads created by this source.
@@ -69,8 +69,8 @@ func (m *SourceRequest) GetApiKey()(*string) {
     return m.apiKey
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-// returns a *float64 when successful
-func (m *SourceRequest) GetCostPerLead()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *SourceRequest) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
 }
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
@@ -140,12 +140,12 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         return nil
     }
     res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCostPerLead(val)
+            m.SetCostPerLead(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -284,7 +284,7 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
-        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
+        err := writer.WriteObjectValue("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
         }
@@ -362,7 +362,7 @@ func (m *SourceRequest) SetApiKey(value *string)() {
     m.apiKey = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceRequest) SetCostPerLead(value *float64)() {
+func (m *SourceRequest) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
@@ -403,7 +403,7 @@ type SourceRequestable interface {
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
     GetApiKey()(*string)
-    GetCostPerLead()(*float64)
+    GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetDefaultTagIds()([]string)
     GetDefaultTagNames()([]string)
     GetDescription()(*string)
@@ -415,7 +415,7 @@ type SourceRequestable interface {
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
     SetApiKey(value *string)()
-    SetCostPerLead(value *float64)()
+    SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetDefaultTagIds(value []string)()
     SetDefaultTagNames(value []string)()
     SetDescription(value *string)()

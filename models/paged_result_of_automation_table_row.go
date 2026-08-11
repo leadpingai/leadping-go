@@ -16,9 +16,9 @@ type PagedResultOfAutomationTableRow struct {
     // The subset of items returned for the current page.
     items []AutomationTableRowable
     // The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-    pageSize *int32
+    pageSize i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-    totalCount *int32
+    totalCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewPagedResultOfAutomationTableRow instantiates a new PagedResultOfAutomationTableRow and sets the default values.
 func NewPagedResultOfAutomationTableRow()(*PagedResultOfAutomationTableRow) {
@@ -73,22 +73,22 @@ func (m *PagedResultOfAutomationTableRow) GetFieldDeserializers()(map[string]fun
         return nil
     }
     res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPageSize(val)
+            m.SetPageSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["totalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotalCount(val)
+            m.SetTotalCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -100,13 +100,13 @@ func (m *PagedResultOfAutomationTableRow) GetItems()([]AutomationTableRowable) {
     return m.items
 }
 // GetPageSize gets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-// returns a *int32 when successful
-func (m *PagedResultOfAutomationTableRow) GetPageSize()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *PagedResultOfAutomationTableRow) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.pageSize
 }
 // GetTotalCount gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-// returns a *int32 when successful
-func (m *PagedResultOfAutomationTableRow) GetTotalCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *PagedResultOfAutomationTableRow) GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.totalCount
 }
 // Serialize serializes information the current object
@@ -130,13 +130,13 @@ func (m *PagedResultOfAutomationTableRow) Serialize(writer i878a80d2330e89d26896
         }
     }
     {
-        err := writer.WriteInt32Value("pageSize", m.GetPageSize())
+        err := writer.WriteObjectValue("pageSize", m.GetPageSize())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
+        err := writer.WriteObjectValue("totalCount", m.GetTotalCount())
         if err != nil {
             return err
         }
@@ -162,11 +162,11 @@ func (m *PagedResultOfAutomationTableRow) SetItems(value []AutomationTableRowabl
     m.items = value
 }
 // SetPageSize sets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-func (m *PagedResultOfAutomationTableRow) SetPageSize(value *int32)() {
+func (m *PagedResultOfAutomationTableRow) SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.pageSize = value
 }
 // SetTotalCount sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-func (m *PagedResultOfAutomationTableRow) SetTotalCount(value *int32)() {
+func (m *PagedResultOfAutomationTableRow) SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.totalCount = value
 }
 type PagedResultOfAutomationTableRowable interface {
@@ -174,10 +174,10 @@ type PagedResultOfAutomationTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetContinuationToken()(*string)
     GetItems()([]AutomationTableRowable)
-    GetPageSize()(*int32)
-    GetTotalCount()(*int32)
+    GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetContinuationToken(value *string)()
     SetItems(value []AutomationTableRowable)()
-    SetPageSize(value *int32)()
-    SetTotalCount(value *int32)()
+    SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

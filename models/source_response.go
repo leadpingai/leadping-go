@@ -23,7 +23,7 @@ type SourceResponse struct {
     // Indicates whether the organization or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
-    costPerLead *float64
+    costPerLead i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User summary for the person who created this lead source response.
@@ -98,8 +98,8 @@ func (m *SourceResponse) GetComplianceApproved()(*bool) {
     return m.complianceApproved
 }
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-// returns a *float64 when successful
-func (m *SourceResponse) GetCostPerLead()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *SourceResponse) GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.costPerLead
 }
 // GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
@@ -199,12 +199,12 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCostPerLead(val)
+            m.SetCostPerLead(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -450,7 +450,7 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
+        err := writer.WriteObjectValue("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
         }
@@ -584,7 +584,7 @@ func (m *SourceResponse) SetComplianceApproved(value *bool)() {
     m.complianceApproved = value
 }
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceResponse) SetCostPerLead(value *float64)() {
+func (m *SourceResponse) SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.costPerLead = value
 }
 // SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
@@ -655,7 +655,7 @@ type SourceResponseable interface {
     GetApiKey()(*string)
     GetApiKeyPreview()(*string)
     GetComplianceApproved()(*bool)
-    GetCostPerLead()(*float64)
+    GetCostPerLead()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCreatedByUser()(SourceResponse_createdByUserable)
     GetDefaultTagIds()([]string)
@@ -676,7 +676,7 @@ type SourceResponseable interface {
     SetApiKey(value *string)()
     SetApiKeyPreview(value *string)()
     SetComplianceApproved(value *bool)()
-    SetCostPerLead(value *float64)()
+    SetCostPerLead(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCreatedByUser(value SourceResponse_createdByUserable)()
     SetDefaultTagIds(value []string)()

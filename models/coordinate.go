@@ -12,9 +12,9 @@ type Coordinate struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-    latitude *float64
+    latitude i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-    longitude *float64
+    longitude i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewCoordinate instantiates a new Coordinate and sets the default values.
 func NewCoordinate()(*Coordinate) {
@@ -38,47 +38,47 @@ func (m *Coordinate) GetAdditionalData()(map[string]any) {
 func (m *Coordinate) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["latitude"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLatitude(val)
+            m.SetLatitude(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     res["longitude"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLongitude(val)
+            m.SetLongitude(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
     return res
 }
 // GetLatitude gets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-// returns a *float64 when successful
-func (m *Coordinate) GetLatitude()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *Coordinate) GetLatitude()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.latitude
 }
 // GetLongitude gets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-// returns a *float64 when successful
-func (m *Coordinate) GetLongitude()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *Coordinate) GetLongitude()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.longitude
 }
 // Serialize serializes information the current object
 func (m *Coordinate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteFloat64Value("latitude", m.GetLatitude())
+        err := writer.WriteObjectValue("latitude", m.GetLatitude())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteFloat64Value("longitude", m.GetLongitude())
+        err := writer.WriteObjectValue("longitude", m.GetLongitude())
         if err != nil {
             return err
         }
@@ -96,18 +96,18 @@ func (m *Coordinate) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetLatitude sets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-func (m *Coordinate) SetLatitude(value *float64)() {
+func (m *Coordinate) SetLatitude(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.latitude = value
 }
 // SetLongitude sets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-func (m *Coordinate) SetLongitude(value *float64)() {
+func (m *Coordinate) SetLongitude(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.longitude = value
 }
 type Coordinateable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLatitude()(*float64)
-    GetLongitude()(*float64)
-    SetLatitude(value *float64)()
-    SetLongitude(value *float64)()
+    GetLatitude()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetLongitude()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    SetLatitude(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetLongitude(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }

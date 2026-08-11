@@ -17,7 +17,7 @@ type MyRequestBuilder struct {
 // MyRequestBuilderGetQueryParameters returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 type MyRequestBuilderGetQueryParameters struct {
     // Optional number of recent days to include when explicit timestamps are not supplied.
-    Days *int32 "uriparametername:\"days\""
+    Days *string "uriparametername:\"days\""
     // Optional exclusive end timestamp for the analytics period.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
     // Optional inclusive start timestamp for the analytics period.

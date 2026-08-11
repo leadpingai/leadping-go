@@ -16,7 +16,7 @@ type AutomationAction struct {
     // Indicates whether this automation action is active and allowed to run.
     isEnabled *bool
     // Sort order used to evaluate or display this automation action.
-    order *int32
+    order i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Key-value settings that configure how this automation action behaves.
     settings AutomationAction_settingsable
     // Type classification used to route and interpret this automation action in the Leadping API.
@@ -64,12 +64,12 @@ func (m *AutomationAction) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["order"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetOrder(val)
+            m.SetOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -106,8 +106,8 @@ func (m *AutomationAction) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
 // GetOrder gets the order property value. Sort order used to evaluate or display this automation action.
-// returns a *int32 when successful
-func (m *AutomationAction) GetOrder()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *AutomationAction) GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.order
 }
 // GetSettings gets the settings property value. Key-value settings that configure how this automation action behaves.
@@ -135,7 +135,7 @@ func (m *AutomationAction) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteInt32Value("order", m.GetOrder())
+        err := writer.WriteObjectValue("order", m.GetOrder())
         if err != nil {
             return err
         }
@@ -173,7 +173,7 @@ func (m *AutomationAction) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
 // SetOrder sets the order property value. Sort order used to evaluate or display this automation action.
-func (m *AutomationAction) SetOrder(value *int32)() {
+func (m *AutomationAction) SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.order = value
 }
 // SetSettings sets the settings property value. Key-value settings that configure how this automation action behaves.
@@ -189,12 +189,12 @@ type AutomationActionable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetId()(*string)
     GetIsEnabled()(*bool)
-    GetOrder()(*int32)
+    GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetSettings()(AutomationAction_settingsable)
     GetTypeEscaped()(*string)
     SetId(value *string)()
     SetIsEnabled(value *bool)()
-    SetOrder(value *int32)()
+    SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetSettings(value AutomationAction_settingsable)()
     SetTypeEscaped(value *string)()
 }

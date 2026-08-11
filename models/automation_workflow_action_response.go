@@ -27,7 +27,7 @@ type AutomationWorkflowActionResponse struct {
     // Date and time when the next retry is scheduled.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Total number of retry records represented by this Leadping automation workflow action.
-    retryCount *int32
+    retryCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Safe reason associated with this Leadping automation workflow action.
     safeReason *string
     // Date and time when the automation workflow action was scheduled.
@@ -45,7 +45,7 @@ type AutomationWorkflowActionResponse struct {
     // Unique identifier of the step associated with this Leadping automation workflow action.
     stepId *string
     // Step order associated with this Leadping automation workflow action.
-    stepOrder *int32
+    stepOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Human-readable user summary for this Leadping automation workflow action.
     userSummary *string
 }
@@ -166,12 +166,12 @@ func (m *AutomationWorkflowActionResponse) GetFieldDeserializers()(map[string]fu
         return nil
     }
     res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRetryCount(val)
+            m.SetRetryCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -256,12 +256,12 @@ func (m *AutomationWorkflowActionResponse) GetFieldDeserializers()(map[string]fu
         return nil
     }
     res["stepOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetStepOrder(val)
+            m.SetStepOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -288,8 +288,8 @@ func (m *AutomationWorkflowActionResponse) GetNextRetryAt()(*i336074805fc853987a
     return m.nextRetryAt
 }
 // GetRetryCount gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
-// returns a *int32 when successful
-func (m *AutomationWorkflowActionResponse) GetRetryCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *AutomationWorkflowActionResponse) GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.retryCount
 }
 // GetSafeReason gets the safeReason property value. Safe reason associated with this Leadping automation workflow action.
@@ -333,8 +333,8 @@ func (m *AutomationWorkflowActionResponse) GetStepId()(*string) {
     return m.stepId
 }
 // GetStepOrder gets the stepOrder property value. Step order associated with this Leadping automation workflow action.
-// returns a *int32 when successful
-func (m *AutomationWorkflowActionResponse) GetStepOrder()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *AutomationWorkflowActionResponse) GetStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.stepOrder
 }
 // GetUserSummary gets the userSummary property value. Human-readable user summary for this Leadping automation workflow action.
@@ -387,7 +387,7 @@ func (m *AutomationWorkflowActionResponse) Serialize(writer i878a80d2330e89d2689
         }
     }
     {
-        err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
+        err := writer.WriteObjectValue("retryCount", m.GetRetryCount())
         if err != nil {
             return err
         }
@@ -441,7 +441,7 @@ func (m *AutomationWorkflowActionResponse) Serialize(writer i878a80d2330e89d2689
         }
     }
     {
-        err := writer.WriteInt32Value("stepOrder", m.GetStepOrder())
+        err := writer.WriteObjectValue("stepOrder", m.GetStepOrder())
         if err != nil {
             return err
         }
@@ -493,7 +493,7 @@ func (m *AutomationWorkflowActionResponse) SetNextRetryAt(value *i336074805fc853
     m.nextRetryAt = value
 }
 // SetRetryCount sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
-func (m *AutomationWorkflowActionResponse) SetRetryCount(value *int32)() {
+func (m *AutomationWorkflowActionResponse) SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.retryCount = value
 }
 // SetSafeReason sets the safeReason property value. Safe reason associated with this Leadping automation workflow action.
@@ -529,7 +529,7 @@ func (m *AutomationWorkflowActionResponse) SetStepId(value *string)() {
     m.stepId = value
 }
 // SetStepOrder sets the stepOrder property value. Step order associated with this Leadping automation workflow action.
-func (m *AutomationWorkflowActionResponse) SetStepOrder(value *int32)() {
+func (m *AutomationWorkflowActionResponse) SetStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.stepOrder = value
 }
 // SetUserSummary sets the userSummary property value. Human-readable user summary for this Leadping automation workflow action.
@@ -546,7 +546,7 @@ type AutomationWorkflowActionResponseable interface {
     GetFailureCode()(*string)
     GetId()(*string)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRetryCount()(*int32)
+    GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetSafeReason()(*string)
     GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSkippedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -555,7 +555,7 @@ type AutomationWorkflowActionResponseable interface {
     GetStatusDisplay()(*string)
     GetStepDisplayName()(*string)
     GetStepId()(*string)
-    GetStepOrder()(*int32)
+    GetStepOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetUserSummary()(*string)
     SetActionType(value *string)()
     SetActionTypeDisplay(value *string)()
@@ -564,7 +564,7 @@ type AutomationWorkflowActionResponseable interface {
     SetFailureCode(value *string)()
     SetId(value *string)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRetryCount(value *int32)()
+    SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetSafeReason(value *string)()
     SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSkippedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -573,6 +573,6 @@ type AutomationWorkflowActionResponseable interface {
     SetStatusDisplay(value *string)()
     SetStepDisplayName(value *string)()
     SetStepId(value *string)()
-    SetStepOrder(value *int32)()
+    SetStepOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetUserSummary(value *string)()
 }

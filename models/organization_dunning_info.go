@@ -29,7 +29,7 @@ type OrganizationDunningInfo struct {
     // Date and time when this Leadping organization dunning info was payment failed.
     paymentFailedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Total number of retry attempt records represented by this Leadping organization dunning info.
-    retryAttemptCount *int32
+    retryAttemptCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Current stage for this Leadping organization dunning info.
     stage *string
 }
@@ -135,12 +135,12 @@ func (m *OrganizationDunningInfo) GetFieldDeserializers()(map[string]func(i878a8
         return nil
     }
     res["retryAttemptCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRetryAttemptCount(val)
+            m.SetRetryAttemptCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -197,8 +197,8 @@ func (m *OrganizationDunningInfo) GetPaymentFailedAt()(*i336074805fc853987abe6f7
     return m.paymentFailedAt
 }
 // GetRetryAttemptCount gets the retryAttemptCount property value. Total number of retry attempt records represented by this Leadping organization dunning info.
-// returns a *int32 when successful
-func (m *OrganizationDunningInfo) GetRetryAttemptCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *OrganizationDunningInfo) GetRetryAttemptCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.retryAttemptCount
 }
 // GetStage gets the stage property value. Current stage for this Leadping organization dunning info.
@@ -257,7 +257,7 @@ func (m *OrganizationDunningInfo) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteInt32Value("retryAttemptCount", m.GetRetryAttemptCount())
+        err := writer.WriteObjectValue("retryAttemptCount", m.GetRetryAttemptCount())
         if err != nil {
             return err
         }
@@ -313,7 +313,7 @@ func (m *OrganizationDunningInfo) SetPaymentFailedAt(value *i336074805fc853987ab
     m.paymentFailedAt = value
 }
 // SetRetryAttemptCount sets the retryAttemptCount property value. Total number of retry attempt records represented by this Leadping organization dunning info.
-func (m *OrganizationDunningInfo) SetRetryAttemptCount(value *int32)() {
+func (m *OrganizationDunningInfo) SetRetryAttemptCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.retryAttemptCount = value
 }
 // SetStage sets the stage property value. Current stage for this Leadping organization dunning info.
@@ -331,7 +331,7 @@ type OrganizationDunningInfoable interface {
     GetOutboundRestrictedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetOutboundSuspendedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRetryAttemptCount()(*int32)
+    GetRetryAttemptCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetStage()(*string)
     SetFinalCancellationAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetGracePeriodEndsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -341,6 +341,6 @@ type OrganizationDunningInfoable interface {
     SetOutboundRestrictedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetOutboundSuspendedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPaymentFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRetryAttemptCount(value *int32)()
+    SetRetryAttemptCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetStage(value *string)()
 }

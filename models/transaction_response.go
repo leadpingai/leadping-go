@@ -13,11 +13,11 @@ type TransactionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount for this billing transaction or wallet operation.
-    amount *float64
+    amount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Defines the supported Billable Unit values.
     billableUnit *TransactionResponse_billableUnit
     // Customer-facing amount billed for the transaction.
-    billedAmount *float64
+    billedAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Defines the supported Usage Channel values.
     billingChannel *TransactionResponse_billingChannel
     // The date and time when the entity was created.
@@ -25,7 +25,7 @@ type TransactionResponse struct {
     // Human-readable description that explains this billing transaction response to API users.
     description *string
     // Payment gateway fee amount charged for the wallet transaction.
-    gatewayFeeAmount *float64
+    gatewayFeeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Payment gateway status returned for this transaction.
     gatewayStatus *string
     // The unique identifier for the entity.
@@ -35,7 +35,7 @@ type TransactionResponse struct {
     // The date and time when the entity was last modified, if applicable.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Net monetary amount after fees, credits, or adjustments.
-    netAmount *float64
+    netAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Additional billing notes that explain the transaction for admins or customers.
     notes *string
     // Identifier and display name of the related organization.
@@ -43,7 +43,7 @@ type TransactionResponse struct {
     // Masked or human-readable payment method shown for this transaction.
     paymentMethodDisplay *string
     // Leadping platform fee amount included in the transaction.
-    platformFeeAmount *float64
+    platformFeeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
     // Processing status for this wallet transaction.
     transactionStatus *TransactionStatus
     // Debit or credit classification for this wallet transaction.
@@ -67,8 +67,8 @@ func (m *TransactionResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAmount gets the amount property value. Monetary amount for this billing transaction or wallet operation.
-// returns a *float64 when successful
-func (m *TransactionResponse) GetAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *TransactionResponse) GetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.amount
 }
 // GetBillableUnit gets the billableUnit property value. Defines the supported Billable Unit values.
@@ -77,8 +77,8 @@ func (m *TransactionResponse) GetBillableUnit()(*TransactionResponse_billableUni
     return m.billableUnit
 }
 // GetBilledAmount gets the billedAmount property value. Customer-facing amount billed for the transaction.
-// returns a *float64 when successful
-func (m *TransactionResponse) GetBilledAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *TransactionResponse) GetBilledAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.billedAmount
 }
 // GetBillingChannel gets the billingChannel property value. Defines the supported Usage Channel values.
@@ -101,12 +101,12 @@ func (m *TransactionResponse) GetDescription()(*string) {
 func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["amount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAmount(val)
+            m.SetAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -121,12 +121,12 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["billedAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBilledAmount(val)
+            m.SetBilledAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -161,12 +161,12 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["gatewayFeeAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetGatewayFeeAmount(val)
+            m.SetGatewayFeeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -211,12 +211,12 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["netAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetNetAmount(val)
+            m.SetNetAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -251,12 +251,12 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["platformFeeAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPlatformFeeAmount(val)
+            m.SetPlatformFeeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -283,8 +283,8 @@ func (m *TransactionResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     return res
 }
 // GetGatewayFeeAmount gets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
-// returns a *float64 when successful
-func (m *TransactionResponse) GetGatewayFeeAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *TransactionResponse) GetGatewayFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.gatewayFeeAmount
 }
 // GetGatewayStatus gets the gatewayStatus property value. Payment gateway status returned for this transaction.
@@ -308,8 +308,8 @@ func (m *TransactionResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6
     return m.modifiedAt
 }
 // GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-// returns a *float64 when successful
-func (m *TransactionResponse) GetNetAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *TransactionResponse) GetNetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.netAmount
 }
 // GetNotes gets the notes property value. Additional billing notes that explain the transaction for admins or customers.
@@ -328,8 +328,8 @@ func (m *TransactionResponse) GetPaymentMethodDisplay()(*string) {
     return m.paymentMethodDisplay
 }
 // GetPlatformFeeAmount gets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
-// returns a *float64 when successful
-func (m *TransactionResponse) GetPlatformFeeAmount()(*float64) {
+// returns a UntypedNodeable when successful
+func (m *TransactionResponse) GetPlatformFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.platformFeeAmount
 }
 // GetTransactionStatus gets the transactionStatus property value. Processing status for this wallet transaction.
@@ -345,7 +345,7 @@ func (m *TransactionResponse) GetTransactionType()(*TransactionType) {
 // Serialize serializes information the current object
 func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteFloat64Value("amount", m.GetAmount())
+        err := writer.WriteObjectValue("amount", m.GetAmount())
         if err != nil {
             return err
         }
@@ -358,7 +358,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("billedAmount", m.GetBilledAmount())
+        err := writer.WriteObjectValue("billedAmount", m.GetBilledAmount())
         if err != nil {
             return err
         }
@@ -383,7 +383,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("gatewayFeeAmount", m.GetGatewayFeeAmount())
+        err := writer.WriteObjectValue("gatewayFeeAmount", m.GetGatewayFeeAmount())
         if err != nil {
             return err
         }
@@ -413,7 +413,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("netAmount", m.GetNetAmount())
+        err := writer.WriteObjectValue("netAmount", m.GetNetAmount())
         if err != nil {
             return err
         }
@@ -437,7 +437,7 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteFloat64Value("platformFeeAmount", m.GetPlatformFeeAmount())
+        err := writer.WriteObjectValue("platformFeeAmount", m.GetPlatformFeeAmount())
         if err != nil {
             return err
         }
@@ -469,7 +469,7 @@ func (m *TransactionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAmount sets the amount property value. Monetary amount for this billing transaction or wallet operation.
-func (m *TransactionResponse) SetAmount(value *float64)() {
+func (m *TransactionResponse) SetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.amount = value
 }
 // SetBillableUnit sets the billableUnit property value. Defines the supported Billable Unit values.
@@ -477,7 +477,7 @@ func (m *TransactionResponse) SetBillableUnit(value *TransactionResponse_billabl
     m.billableUnit = value
 }
 // SetBilledAmount sets the billedAmount property value. Customer-facing amount billed for the transaction.
-func (m *TransactionResponse) SetBilledAmount(value *float64)() {
+func (m *TransactionResponse) SetBilledAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.billedAmount = value
 }
 // SetBillingChannel sets the billingChannel property value. Defines the supported Usage Channel values.
@@ -493,7 +493,7 @@ func (m *TransactionResponse) SetDescription(value *string)() {
     m.description = value
 }
 // SetGatewayFeeAmount sets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
-func (m *TransactionResponse) SetGatewayFeeAmount(value *float64)() {
+func (m *TransactionResponse) SetGatewayFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.gatewayFeeAmount = value
 }
 // SetGatewayStatus sets the gatewayStatus property value. Payment gateway status returned for this transaction.
@@ -513,7 +513,7 @@ func (m *TransactionResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad
     m.modifiedAt = value
 }
 // SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-func (m *TransactionResponse) SetNetAmount(value *float64)() {
+func (m *TransactionResponse) SetNetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.netAmount = value
 }
 // SetNotes sets the notes property value. Additional billing notes that explain the transaction for admins or customers.
@@ -529,7 +529,7 @@ func (m *TransactionResponse) SetPaymentMethodDisplay(value *string)() {
     m.paymentMethodDisplay = value
 }
 // SetPlatformFeeAmount sets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
-func (m *TransactionResponse) SetPlatformFeeAmount(value *float64)() {
+func (m *TransactionResponse) SetPlatformFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.platformFeeAmount = value
 }
 // SetTransactionStatus sets the transactionStatus property value. Processing status for this wallet transaction.
@@ -543,40 +543,40 @@ func (m *TransactionResponse) SetTransactionType(value *TransactionType)() {
 type TransactionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAmount()(*float64)
+    GetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillableUnit()(*TransactionResponse_billableUnit)
-    GetBilledAmount()(*float64)
+    GetBilledAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetBillingChannel()(*TransactionResponse_billingChannel)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDescription()(*string)
-    GetGatewayFeeAmount()(*float64)
+    GetGatewayFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetGatewayStatus()(*string)
     GetId()(*string)
     GetLead()(TransactionResponse_leadable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNetAmount()(*float64)
+    GetNetAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetNotes()(*string)
     GetOrganization()(TransactionResponse_organizationable)
     GetPaymentMethodDisplay()(*string)
-    GetPlatformFeeAmount()(*float64)
+    GetPlatformFeeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     GetTransactionStatus()(*TransactionStatus)
     GetTransactionType()(*TransactionType)
-    SetAmount(value *float64)()
+    SetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillableUnit(value *TransactionResponse_billableUnit)()
-    SetBilledAmount(value *float64)()
+    SetBilledAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillingChannel(value *TransactionResponse_billingChannel)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDescription(value *string)()
-    SetGatewayFeeAmount(value *float64)()
+    SetGatewayFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetGatewayStatus(value *string)()
     SetId(value *string)()
     SetLead(value TransactionResponse_leadable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNetAmount(value *float64)()
+    SetNetAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetNotes(value *string)()
     SetOrganization(value TransactionResponse_organizationable)()
     SetPaymentMethodDisplay(value *string)()
-    SetPlatformFeeAmount(value *float64)()
+    SetPlatformFeeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetTransactionStatus(value *TransactionStatus)()
     SetTransactionType(value *TransactionType)()
 }

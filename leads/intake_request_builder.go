@@ -27,7 +27,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     // Lead date of birth supplied by intake sources and normalized into the lead profile.
     DateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
     // Direct-post price supplied by the lead source during intake.
-    DirectPostPrice *float64
+    DirectPostPrice *string
     // Email address for the person represented by this lead intake request.
     Email *string
     // External system identifier used to reconcile this lead intake request across integrations.
@@ -47,7 +47,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     // Postal code for the lead or organization address.
     PostalCode *string
     // Lead price or transaction price supplied to the Leadping API.
-    Price *float64
+    Price *string
     // Product or offer associated with the lead or source.
     Product *string
     // Referring page or traffic source that sent the lead into Leadping.

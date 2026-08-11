@@ -18,7 +18,7 @@ type UserDataExportFile struct {
     // Human-readable file name associated with this Leadping user data export file.
     fileName *string
     // Total number of row records represented by this Leadping user data export file.
-    rowCount *int32
+    rowCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewUserDataExportFile instantiates a new UserDataExportFile and sets the default values.
 func NewUserDataExportFile()(*UserDataExportFile) {
@@ -82,12 +82,12 @@ func (m *UserDataExportFile) GetFieldDeserializers()(map[string]func(i878a80d233
         return nil
     }
     res["rowCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
+        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRowCount(val)
+            m.SetRowCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
         }
         return nil
     }
@@ -99,8 +99,8 @@ func (m *UserDataExportFile) GetFileName()(*string) {
     return m.fileName
 }
 // GetRowCount gets the rowCount property value. Total number of row records represented by this Leadping user data export file.
-// returns a *int32 when successful
-func (m *UserDataExportFile) GetRowCount()(*int32) {
+// returns a UntypedNodeable when successful
+func (m *UserDataExportFile) GetRowCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.rowCount
 }
 // Serialize serializes information the current object
@@ -124,7 +124,7 @@ func (m *UserDataExportFile) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
-        err := writer.WriteInt32Value("rowCount", m.GetRowCount())
+        err := writer.WriteObjectValue("rowCount", m.GetRowCount())
         if err != nil {
             return err
         }
@@ -154,7 +154,7 @@ func (m *UserDataExportFile) SetFileName(value *string)() {
     m.fileName = value
 }
 // SetRowCount sets the rowCount property value. Total number of row records represented by this Leadping user data export file.
-func (m *UserDataExportFile) SetRowCount(value *int32)() {
+func (m *UserDataExportFile) SetRowCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.rowCount = value
 }
 type UserDataExportFileable interface {
@@ -163,9 +163,9 @@ type UserDataExportFileable interface {
     GetCategory()(*string)
     GetContentType()(*string)
     GetFileName()(*string)
-    GetRowCount()(*int32)
+    GetRowCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
     SetCategory(value *string)()
     SetContentType(value *string)()
     SetFileName(value *string)()
-    SetRowCount(value *int32)()
+    SetRowCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
 }
