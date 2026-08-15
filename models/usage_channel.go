@@ -17,12 +17,13 @@ const (
     OPENAI_USAGECHANNEL
     DOMAIN_USAGECHANNEL
     ONEZERODLC_USAGECHANNEL
+    PAYMENT_USAGECHANNEL
     CONNECTION_USAGECHANNEL
     AUTOMATION_USAGECHANNEL
 )
 
 func (i UsageChannel) String() string {
-    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "connection", "automation"}[i]
+    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "payment", "connection", "automation"}[i]
 }
 func ParseUsageChannel(v string) (any, error) {
     result := LEAD_USAGECHANNEL
@@ -49,6 +50,8 @@ func ParseUsageChannel(v string) (any, error) {
             result = DOMAIN_USAGECHANNEL
         case "10dlc":
             result = ONEZERODLC_USAGECHANNEL
+        case "payment":
+            result = PAYMENT_USAGECHANNEL
         case "connection":
             result = CONNECTION_USAGECHANNEL
         case "automation":

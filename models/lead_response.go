@@ -28,6 +28,10 @@ type LeadResponse struct {
     currentLeadStatus LeadResponse_currentLeadStatusable
     // Demographic profile details for the lead represented by this lead response.
     customer LeadProfileable
+    // UTC timestamp when this lead was soft deleted.
+    deletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // User ID of the person who soft deleted this lead.
+    deletedByUserId *string
     // Indicates whether this lead response is active and available in the Leadping API.
     enabled *bool
     // The unique identifier for the entity.
@@ -40,6 +44,12 @@ type LeadResponse struct {
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Canonical phone identity and provider lookup details for this lead.
     phoneIdentity LeadResponse_phoneIdentityable
+    // Defines the asynchronous verification and enrichment lifecycle for a lead.
+    processingStatus *LeadResponse_processingStatus
+    // UTC timestamp when the processing stage last changed.
+    processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Explanation when asynchronous lead processing is blocked or fails.
+    processingStatusReason *string
     // Tags currently attached to this lead, source, or record.
     tags []TagSummaryable
 }
@@ -99,6 +109,16 @@ func (m *LeadResponse) GetCurrentLeadStatus()(LeadResponse_currentLeadStatusable
 // returns a LeadProfileable when successful
 func (m *LeadResponse) GetCustomer()(LeadProfileable) {
     return m.customer
+}
+// GetDeletedAt gets the deletedAt property value. UTC timestamp when this lead was soft deleted.
+// returns a *Time when successful
+func (m *LeadResponse) GetDeletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.deletedAt
+}
+// GetDeletedByUserId gets the deletedByUserId property value. User ID of the person who soft deleted this lead.
+// returns a *string when successful
+func (m *LeadResponse) GetDeletedByUserId()(*string) {
+    return m.deletedByUserId
 }
 // GetEnabled gets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
 // returns a *bool when successful
@@ -189,6 +209,26 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["deletedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDeletedAt(val)
+        }
+        return nil
+    }
+    res["deletedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDeletedByUserId(val)
+        }
+        return nil
+    }
     res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -249,6 +289,36 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["processingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseLeadResponse_processingStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatus(val.(*LeadResponse_processingStatus))
+        }
+        return nil
+    }
+    res["processingStatusChangedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatusChangedAt(val)
+        }
+        return nil
+    }
+    res["processingStatusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatusReason(val)
+        }
+        return nil
+    }
     res["tags"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
         if err != nil {
@@ -291,6 +361,21 @@ func (m *LeadResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077
 // returns a LeadResponse_phoneIdentityable when successful
 func (m *LeadResponse) GetPhoneIdentity()(LeadResponse_phoneIdentityable) {
     return m.phoneIdentity
+}
+// GetProcessingStatus gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+// returns a *LeadResponse_processingStatus when successful
+func (m *LeadResponse) GetProcessingStatus()(*LeadResponse_processingStatus) {
+    return m.processingStatus
+}
+// GetProcessingStatusChangedAt gets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+// returns a *Time when successful
+func (m *LeadResponse) GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.processingStatusChangedAt
+}
+// GetProcessingStatusReason gets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+// returns a *string when successful
+func (m *LeadResponse) GetProcessingStatusReason()(*string) {
+    return m.processingStatusReason
 }
 // GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
@@ -348,6 +433,18 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteTimeValue("deletedAt", m.GetDeletedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("deletedByUserId", m.GetDeletedByUserId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteBoolValue("enabled", m.GetEnabled())
         if err != nil {
             return err
@@ -379,6 +476,25 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
     }
     {
         err := writer.WriteObjectValue("phoneIdentity", m.GetPhoneIdentity())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetProcessingStatus() != nil {
+        cast := (*m.GetProcessingStatus()).String()
+        err := writer.WriteStringValue("processingStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("processingStatusChangedAt", m.GetProcessingStatusChangedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("processingStatusReason", m.GetProcessingStatusReason())
         if err != nil {
             return err
         }
@@ -439,6 +555,14 @@ func (m *LeadResponse) SetCurrentLeadStatus(value LeadResponse_currentLeadStatus
 func (m *LeadResponse) SetCustomer(value LeadProfileable)() {
     m.customer = value
 }
+// SetDeletedAt sets the deletedAt property value. UTC timestamp when this lead was soft deleted.
+func (m *LeadResponse) SetDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.deletedAt = value
+}
+// SetDeletedByUserId sets the deletedByUserId property value. User ID of the person who soft deleted this lead.
+func (m *LeadResponse) SetDeletedByUserId(value *string)() {
+    m.deletedByUserId = value
+}
 // SetEnabled sets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
 func (m *LeadResponse) SetEnabled(value *bool)() {
     m.enabled = value
@@ -463,6 +587,18 @@ func (m *LeadResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f
 func (m *LeadResponse) SetPhoneIdentity(value LeadResponse_phoneIdentityable)() {
     m.phoneIdentity = value
 }
+// SetProcessingStatus sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+func (m *LeadResponse) SetProcessingStatus(value *LeadResponse_processingStatus)() {
+    m.processingStatus = value
+}
+// SetProcessingStatusChangedAt sets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+func (m *LeadResponse) SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.processingStatusChangedAt = value
+}
+// SetProcessingStatusReason sets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+func (m *LeadResponse) SetProcessingStatusReason(value *string)() {
+    m.processingStatusReason = value
+}
 // SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
 func (m *LeadResponse) SetTags(value []TagSummaryable)() {
     m.tags = value
@@ -478,12 +614,17 @@ type LeadResponseable interface {
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentLeadStatus()(LeadResponse_currentLeadStatusable)
     GetCustomer()(LeadProfileable)
+    GetDeletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetDeletedByUserId()(*string)
     GetEnabled()(*bool)
     GetId()(*string)
     GetIsArchived()(*bool)
     GetMetadata()(LeadMetadataable)
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPhoneIdentity()(LeadResponse_phoneIdentityable)
+    GetProcessingStatus()(*LeadResponse_processingStatus)
+    GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetProcessingStatusReason()(*string)
     GetTags()([]TagSummaryable)
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
@@ -493,11 +634,16 @@ type LeadResponseable interface {
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentLeadStatus(value LeadResponse_currentLeadStatusable)()
     SetCustomer(value LeadProfileable)()
+    SetDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetDeletedByUserId(value *string)()
     SetEnabled(value *bool)()
     SetId(value *string)()
     SetIsArchived(value *bool)()
     SetMetadata(value LeadMetadataable)()
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPhoneIdentity(value LeadResponse_phoneIdentityable)()
+    SetProcessingStatus(value *LeadResponse_processingStatus)()
+    SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetProcessingStatusReason(value *string)()
     SetTags(value []TagSummaryable)()
 }

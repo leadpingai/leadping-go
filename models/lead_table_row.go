@@ -40,6 +40,12 @@ type LeadTableRow struct {
     phone *string
     // Lead price or transaction price supplied to the Leadping API.
     price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    // Defines the asynchronous verification and enrichment lifecycle for a lead.
+    processingStatus *LeadTableRow_processingStatus
+    // UTC timestamp when the processing stage last changed.
+    processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Explanation when asynchronous lead processing is blocked or fails.
+    processingStatusReason *string
     // Identifier and display name of the related source.
     source LeadTableRow_sourceable
     // Current lifecycle status for this lead table row in the Leadping API.
@@ -247,6 +253,36 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         return nil
     }
+    res["processingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseLeadTableRow_processingStatus)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatus(val.(*LeadTableRow_processingStatus))
+        }
+        return nil
+    }
+    res["processingStatusChangedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatusChangedAt(val)
+        }
+        return nil
+    }
+    res["processingStatusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProcessingStatusReason(val)
+        }
+        return nil
+    }
     res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateLeadTableRow_sourceFromDiscriminatorValue)
         if err != nil {
@@ -339,6 +375,21 @@ func (m *LeadTableRow) GetPhone()(*string) {
 // returns a UntypedNodeable when successful
 func (m *LeadTableRow) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.price
+}
+// GetProcessingStatus gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+// returns a *LeadTableRow_processingStatus when successful
+func (m *LeadTableRow) GetProcessingStatus()(*LeadTableRow_processingStatus) {
+    return m.processingStatus
+}
+// GetProcessingStatusChangedAt gets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+// returns a *Time when successful
+func (m *LeadTableRow) GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.processingStatusChangedAt
+}
+// GetProcessingStatusReason gets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+// returns a *string when successful
+func (m *LeadTableRow) GetProcessingStatusReason()(*string) {
+    return m.processingStatusReason
 }
 // GetSource gets the source property value. Identifier and display name of the related source.
 // returns a LeadTableRow_sourceable when successful
@@ -451,6 +502,25 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
             return err
         }
     }
+    if m.GetProcessingStatus() != nil {
+        cast := (*m.GetProcessingStatus()).String()
+        err := writer.WriteStringValue("processingStatus", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("processingStatusChangedAt", m.GetProcessingStatusChangedAt())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("processingStatusReason", m.GetProcessingStatusReason())
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteObjectValue("source", m.GetSource())
         if err != nil {
@@ -555,6 +625,18 @@ func (m *LeadTableRow) SetPhone(value *string)() {
 func (m *LeadTableRow) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.price = value
 }
+// SetProcessingStatus sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+func (m *LeadTableRow) SetProcessingStatus(value *LeadTableRow_processingStatus)() {
+    m.processingStatus = value
+}
+// SetProcessingStatusChangedAt sets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+func (m *LeadTableRow) SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.processingStatusChangedAt = value
+}
+// SetProcessingStatusReason sets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+func (m *LeadTableRow) SetProcessingStatusReason(value *string)() {
+    m.processingStatusReason = value
+}
 // SetSource sets the source property value. Identifier and display name of the related source.
 func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable)() {
     m.source = value
@@ -592,6 +674,9 @@ type LeadTableRowable interface {
     GetOrganization()(LeadTableRow_organizationable)
     GetPhone()(*string)
     GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetProcessingStatus()(*LeadTableRow_processingStatus)
+    GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetProcessingStatusReason()(*string)
     GetSource()(LeadTableRow_sourceable)
     GetStatus()(*string)
     GetStatusTone()(*string)
@@ -611,6 +696,9 @@ type LeadTableRowable interface {
     SetOrganization(value LeadTableRow_organizationable)()
     SetPhone(value *string)()
     SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetProcessingStatus(value *LeadTableRow_processingStatus)()
+    SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetProcessingStatusReason(value *string)()
     SetSource(value LeadTableRow_sourceable)()
     SetStatus(value *string)()
     SetStatusTone(value *string)()

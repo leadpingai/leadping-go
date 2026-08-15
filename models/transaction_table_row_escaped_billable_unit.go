@@ -19,12 +19,14 @@ const (
     OPENAI_OPERATION_TRANSACTIONTABLEROW_BILLABLEUNIT
     DOMAIN_REGISTRATION_TRANSACTIONTABLEROW_BILLABLEUNIT
     ONEZERODLC_APPLICATION_TRANSACTIONTABLEROW_BILLABLEUNIT
+    ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONTABLEROW_BILLABLEUNIT
+    PAYMENT_PROCESSING_FEE_TRANSACTIONTABLEROW_BILLABLEUNIT
     CONNECTION_ACTION_TRANSACTIONTABLEROW_BILLABLEUNIT
     AUTOMATION_RUN_TRANSACTIONTABLEROW_BILLABLEUNIT
 )
 
 func (i TransactionTableRow_billableUnit) String() string {
-    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "connection_action", "automation_run"}[i]
+    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
 }
 func ParseTransactionTableRow_billableUnit(v string) (any, error) {
     result := LEAD_RECEIVED_TRANSACTIONTABLEROW_BILLABLEUNIT
@@ -55,6 +57,10 @@ func ParseTransactionTableRow_billableUnit(v string) (any, error) {
             result = DOMAIN_REGISTRATION_TRANSACTIONTABLEROW_BILLABLEUNIT
         case "10dlc_application":
             result = ONEZERODLC_APPLICATION_TRANSACTIONTABLEROW_BILLABLEUNIT
+        case "10dlc_campaign_month":
+            result = ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONTABLEROW_BILLABLEUNIT
+        case "payment_processing_fee":
+            result = PAYMENT_PROCESSING_FEE_TRANSACTIONTABLEROW_BILLABLEUNIT
         case "connection_action":
             result = CONNECTION_ACTION_TRANSACTIONTABLEROW_BILLABLEUNIT
         case "automation_run":

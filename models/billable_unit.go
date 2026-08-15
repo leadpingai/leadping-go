@@ -19,12 +19,14 @@ const (
     OPENAI_OPERATION_BILLABLEUNIT
     DOMAIN_REGISTRATION_BILLABLEUNIT
     ONEZERODLC_APPLICATION_BILLABLEUNIT
+    ONEZERODLC_CAMPAIGN_MONTH_BILLABLEUNIT
+    PAYMENT_PROCESSING_FEE_BILLABLEUNIT
     CONNECTION_ACTION_BILLABLEUNIT
     AUTOMATION_RUN_BILLABLEUNIT
 )
 
 func (i BillableUnit) String() string {
-    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "connection_action", "automation_run"}[i]
+    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
 }
 func ParseBillableUnit(v string) (any, error) {
     result := LEAD_RECEIVED_BILLABLEUNIT
@@ -55,6 +57,10 @@ func ParseBillableUnit(v string) (any, error) {
             result = DOMAIN_REGISTRATION_BILLABLEUNIT
         case "10dlc_application":
             result = ONEZERODLC_APPLICATION_BILLABLEUNIT
+        case "10dlc_campaign_month":
+            result = ONEZERODLC_CAMPAIGN_MONTH_BILLABLEUNIT
+        case "payment_processing_fee":
+            result = PAYMENT_PROCESSING_FEE_BILLABLEUNIT
         case "connection_action":
             result = CONNECTION_ACTION_BILLABLEUNIT
         case "automation_run":

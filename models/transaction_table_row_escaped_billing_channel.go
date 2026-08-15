@@ -17,12 +17,13 @@ const (
     OPENAI_TRANSACTIONTABLEROW_BILLINGCHANNEL
     DOMAIN_TRANSACTIONTABLEROW_BILLINGCHANNEL
     ONEZERODLC_TRANSACTIONTABLEROW_BILLINGCHANNEL
+    PAYMENT_TRANSACTIONTABLEROW_BILLINGCHANNEL
     CONNECTION_TRANSACTIONTABLEROW_BILLINGCHANNEL
     AUTOMATION_TRANSACTIONTABLEROW_BILLINGCHANNEL
 )
 
 func (i TransactionTableRow_billingChannel) String() string {
-    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "connection", "automation"}[i]
+    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "payment", "connection", "automation"}[i]
 }
 func ParseTransactionTableRow_billingChannel(v string) (any, error) {
     result := LEAD_TRANSACTIONTABLEROW_BILLINGCHANNEL
@@ -49,6 +50,8 @@ func ParseTransactionTableRow_billingChannel(v string) (any, error) {
             result = DOMAIN_TRANSACTIONTABLEROW_BILLINGCHANNEL
         case "10dlc":
             result = ONEZERODLC_TRANSACTIONTABLEROW_BILLINGCHANNEL
+        case "payment":
+            result = PAYMENT_TRANSACTIONTABLEROW_BILLINGCHANNEL
         case "connection":
             result = CONNECTION_TRANSACTIONTABLEROW_BILLINGCHANNEL
         case "automation":

@@ -17,12 +17,13 @@ const (
     OPENAI_TRANSACTIONRESPONSE_BILLINGCHANNEL
     DOMAIN_TRANSACTIONRESPONSE_BILLINGCHANNEL
     ONEZERODLC_TRANSACTIONRESPONSE_BILLINGCHANNEL
+    PAYMENT_TRANSACTIONRESPONSE_BILLINGCHANNEL
     CONNECTION_TRANSACTIONRESPONSE_BILLINGCHANNEL
     AUTOMATION_TRANSACTIONRESPONSE_BILLINGCHANNEL
 )
 
 func (i TransactionResponse_billingChannel) String() string {
-    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "connection", "automation"}[i]
+    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "payment", "connection", "automation"}[i]
 }
 func ParseTransactionResponse_billingChannel(v string) (any, error) {
     result := LEAD_TRANSACTIONRESPONSE_BILLINGCHANNEL
@@ -49,6 +50,8 @@ func ParseTransactionResponse_billingChannel(v string) (any, error) {
             result = DOMAIN_TRANSACTIONRESPONSE_BILLINGCHANNEL
         case "10dlc":
             result = ONEZERODLC_TRANSACTIONRESPONSE_BILLINGCHANNEL
+        case "payment":
+            result = PAYMENT_TRANSACTIONRESPONSE_BILLINGCHANNEL
         case "connection":
             result = CONNECTION_TRANSACTIONRESPONSE_BILLINGCHANNEL
         case "automation":

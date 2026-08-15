@@ -72,6 +72,8 @@ type EventDetailResponse struct {
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User summary connected to this event detail response.
     user EventDetailResponse_userable
+    // Email address for the user connected to this event detail response.
+    userEmail *string
     // User ID associated with the activity that created this event.
     userId *string
 }
@@ -446,6 +448,16 @@ func (m *EventDetailResponse) GetFieldDeserializers()(map[string]func(i878a80d23
         }
         return nil
     }
+    res["userEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUserEmail(val)
+        }
+        return nil
+    }
     res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -557,6 +569,11 @@ func (m *EventDetailResponse) GetUndeliverableAt()(*i336074805fc853987abe6f7fe3a
 // returns a EventDetailResponse_userable when successful
 func (m *EventDetailResponse) GetUser()(EventDetailResponse_userable) {
     return m.user
+}
+// GetUserEmail gets the userEmail property value. Email address for the user connected to this event detail response.
+// returns a *string when successful
+func (m *EventDetailResponse) GetUserEmail()(*string) {
+    return m.userEmail
 }
 // GetUserId gets the userId property value. User ID associated with the activity that created this event.
 // returns a *string when successful
@@ -748,6 +765,12 @@ func (m *EventDetailResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
+        err := writer.WriteStringValue("userEmail", m.GetUserEmail())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("userId", m.GetUserId())
         if err != nil {
             return err
@@ -885,6 +908,10 @@ func (m *EventDetailResponse) SetUndeliverableAt(value *i336074805fc853987abe6f7
 func (m *EventDetailResponse) SetUser(value EventDetailResponse_userable)() {
     m.user = value
 }
+// SetUserEmail sets the userEmail property value. Email address for the user connected to this event detail response.
+func (m *EventDetailResponse) SetUserEmail(value *string)() {
+    m.userEmail = value
+}
 // SetUserId sets the userId property value. User ID associated with the activity that created this event.
 func (m *EventDetailResponse) SetUserId(value *string)() {
     m.userId = value
@@ -922,6 +949,7 @@ type EventDetailResponseable interface {
     GetToPhoneNumber()(*string)
     GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetUser()(EventDetailResponse_userable)
+    GetUserEmail()(*string)
     GetUserId()(*string)
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -953,5 +981,6 @@ type EventDetailResponseable interface {
     SetToPhoneNumber(value *string)()
     SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetUser(value EventDetailResponse_userable)()
+    SetUserEmail(value *string)()
     SetUserId(value *string)()
 }

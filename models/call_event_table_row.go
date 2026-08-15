@@ -58,8 +58,12 @@ type CallEventTableRow struct {
     toPhoneNumber *string
     // User summary connected to this call event table row.
     user *string
+    // Email address for the person or agent who initiated this call event.
+    userEmail *string
     // User ID associated with the person or agent who initiated this call event.
     userId *string
+    // Display name for the person or agent who initiated this call event.
+    userName *string
 }
 // NewCallEventTableRow instantiates a new CallEventTableRow and sets the default values.
 func NewCallEventTableRow()(*CallEventTableRow) {
@@ -362,6 +366,16 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["userEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUserEmail(val)
+        }
+        return nil
+    }
     res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -369,6 +383,16 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetUserId(val)
+        }
+        return nil
+    }
+    res["userName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetUserName(val)
         }
         return nil
     }
@@ -439,10 +463,20 @@ func (m *CallEventTableRow) GetToPhoneNumber()(*string) {
 func (m *CallEventTableRow) GetUser()(*string) {
     return m.user
 }
+// GetUserEmail gets the userEmail property value. Email address for the person or agent who initiated this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetUserEmail()(*string) {
+    return m.userEmail
+}
 // GetUserId gets the userId property value. User ID associated with the person or agent who initiated this call event.
 // returns a *string when successful
 func (m *CallEventTableRow) GetUserId()(*string) {
     return m.userId
+}
+// GetUserName gets the userName property value. Display name for the person or agent who initiated this call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetUserName()(*string) {
+    return m.userName
 }
 // Serialize serializes information the current object
 func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -586,7 +620,19 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
+        err := writer.WriteStringValue("userEmail", m.GetUserEmail())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("userId", m.GetUserId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("userName", m.GetUserName())
         if err != nil {
             return err
         }
@@ -695,9 +741,17 @@ func (m *CallEventTableRow) SetToPhoneNumber(value *string)() {
 func (m *CallEventTableRow) SetUser(value *string)() {
     m.user = value
 }
+// SetUserEmail sets the userEmail property value. Email address for the person or agent who initiated this call event.
+func (m *CallEventTableRow) SetUserEmail(value *string)() {
+    m.userEmail = value
+}
 // SetUserId sets the userId property value. User ID associated with the person or agent who initiated this call event.
 func (m *CallEventTableRow) SetUserId(value *string)() {
     m.userId = value
+}
+// SetUserName sets the userName property value. Display name for the person or agent who initiated this call event.
+func (m *CallEventTableRow) SetUserName(value *string)() {
+    m.userName = value
 }
 type CallEventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
@@ -725,7 +779,9 @@ type CallEventTableRowable interface {
     GetStatusReason()(*string)
     GetToPhoneNumber()(*string)
     GetUser()(*string)
+    GetUserEmail()(*string)
     GetUserId()(*string)
+    GetUserName()(*string)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
     SetBillableSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
@@ -749,5 +805,7 @@ type CallEventTableRowable interface {
     SetStatusReason(value *string)()
     SetToPhoneNumber(value *string)()
     SetUser(value *string)()
+    SetUserEmail(value *string)()
     SetUserId(value *string)()
+    SetUserName(value *string)()
 }

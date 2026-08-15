@@ -94,6 +94,16 @@ func (m *AutomationsItemRequestBuilder) Put(ctx context.Context, body i01c1fcf10
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationResponseable), nil
 }
+// Run the run property
+// returns a *ItemRunRequestBuilder when successful
+func (m *AutomationsItemRequestBuilder) Run()(*ItemRunRequestBuilder) {
+    return NewItemRunRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Runs the runs property
+// returns a *ItemRunsRequestBuilder when successful
+func (m *AutomationsItemRequestBuilder) Runs()(*ItemRunsRequestBuilder) {
+    return NewItemRunsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ToDeleteRequestInformation deletes an automation for the current organization so it no longer schedules follow-up or routing work for captured leads.
 // returns a *RequestInformation when successful
 func (m *AutomationsItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {

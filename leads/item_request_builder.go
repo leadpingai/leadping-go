@@ -31,7 +31,7 @@ func NewItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1
     urlParams["request-raw-url"] = rawUrl
     return NewItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete deletes a lead from the current organization when it should no longer appear in communication, routing, or event workflows.
+// Delete marks a lead as deleted so it no longer appears in user-facing lead, conversation, routing, or event workflows. The stored lead,conversation, and event records are retained.
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 404 status code
 func (m *ItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(error) {
@@ -110,7 +110,7 @@ func (m *ItemRequestBuilder) StatusHistory()(*ItemStatusHistoryRequestBuilder) {
 func (m *ItemRequestBuilder) Tags()(*ItemTagsRequestBuilder) {
     return NewItemTagsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ToDeleteRequestInformation deletes a lead from the current organization when it should no longer appear in communication, routing, or event workflows.
+// ToDeleteRequestInformation marks a lead as deleted so it no longer appears in user-facing lead, conversation, routing, or event workflows. The stored lead,conversation, and event records are retained.
 // returns a *RequestInformation when successful
 func (m *ItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
