@@ -26,6 +26,8 @@ type SmsResponse struct {
     cancelReason *string
     // Compliance action applied to this message, lead, or sender.
     complianceAction *string
+    // Ordered diagnostic entries recorded while Leadping processed this message.
+    consoleEntries []CommunicationConsoleEntryable
     // Conversation ID that links this SMS message to the Leadping inbox thread.
     conversationId *string
     // The date and time when the entity was created.
@@ -137,6 +139,11 @@ func (m *SmsResponse) GetCancelReason()(*string) {
 func (m *SmsResponse) GetComplianceAction()(*string) {
     return m.complianceAction
 }
+// GetConsoleEntries gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
+// returns a []CommunicationConsoleEntryable when successful
+func (m *SmsResponse) GetConsoleEntries()([]CommunicationConsoleEntryable) {
+    return m.consoleEntries
+}
 // GetConversationId gets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
 // returns a *string when successful
 func (m *SmsResponse) GetConversationId()(*string) {
@@ -238,6 +245,22 @@ func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetComplianceAction(val)
+        }
+        return nil
+    }
+    res["consoleEntries"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]CommunicationConsoleEntryable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(CommunicationConsoleEntryable)
+                }
+            }
+            m.SetConsoleEntries(res)
         }
         return nil
     }
@@ -698,6 +721,18 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
             return err
         }
     }
+    if m.GetConsoleEntries() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
+        for i, v := range m.GetConsoleEntries() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("conversationId", m.GetConversationId())
         if err != nil {
@@ -921,6 +956,10 @@ func (m *SmsResponse) SetCancelReason(value *string)() {
 func (m *SmsResponse) SetComplianceAction(value *string)() {
     m.complianceAction = value
 }
+// SetConsoleEntries sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
+func (m *SmsResponse) SetConsoleEntries(value []CommunicationConsoleEntryable)() {
+    m.consoleEntries = value
+}
 // SetConversationId sets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
 func (m *SmsResponse) SetConversationId(value *string)() {
     m.conversationId = value
@@ -1047,6 +1086,7 @@ type SmsResponseable interface {
     GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCancelReason()(*string)
     GetComplianceAction()(*string)
+    GetConsoleEntries()([]CommunicationConsoleEntryable)
     GetConversationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1083,6 +1123,7 @@ type SmsResponseable interface {
     SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCancelReason(value *string)()
     SetComplianceAction(value *string)()
+    SetConsoleEntries(value []CommunicationConsoleEntryable)()
     SetConversationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
