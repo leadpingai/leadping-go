@@ -18,7 +18,7 @@ type MessageMediaAttachment struct {
     // SHA-256 digest of the media content, when available.
     sha256 *string
     // Size of the media attachment in bytes.
-    size i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    size *int64
     // URL from which the media attachment can be retrieved.
     url *string
 }
@@ -79,12 +79,12 @@ func (m *MessageMediaAttachment) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["size"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetSize(val)
         }
         return nil
     }
@@ -111,8 +111,8 @@ func (m *MessageMediaAttachment) GetSha256()(*string) {
     return m.sha256
 }
 // GetSize gets the size property value. Size of the media attachment in bytes.
-// returns a UntypedNodeable when successful
-func (m *MessageMediaAttachment) GetSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *MessageMediaAttachment) GetSize()(*int64) {
     return m.size
 }
 // GetUrl gets the url property value. URL from which the media attachment can be retrieved.
@@ -141,7 +141,7 @@ func (m *MessageMediaAttachment) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteObjectValue("size", m.GetSize())
+        err := writer.WriteInt64Value("size", m.GetSize())
         if err != nil {
             return err
         }
@@ -177,7 +177,7 @@ func (m *MessageMediaAttachment) SetSha256(value *string)() {
     m.sha256 = value
 }
 // SetSize sets the size property value. Size of the media attachment in bytes.
-func (m *MessageMediaAttachment) SetSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *MessageMediaAttachment) SetSize(value *int64)() {
     m.size = value
 }
 // SetUrl sets the url property value. URL from which the media attachment can be retrieved.
@@ -190,11 +190,11 @@ type MessageMediaAttachmentable interface {
     GetContentType()(*string)
     GetFileName()(*string)
     GetSha256()(*string)
-    GetSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetSize()(*int64)
     GetUrl()(*string)
     SetContentType(value *string)()
     SetFileName(value *string)()
     SetSha256(value *string)()
-    SetSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetSize(value *int64)()
     SetUrl(value *string)()
 }

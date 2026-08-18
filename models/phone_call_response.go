@@ -15,7 +15,7 @@ type PhoneCallResponse struct {
     // UTC timestamp when the call was answered.
     answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableAmount *float64
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // Caller ID phone number presented during the outbound call.
@@ -31,7 +31,7 @@ type PhoneCallResponse struct {
     // Communication direction for this phone call, such as inbound or outbound.
     direction *string
     // Call duration in seconds.
-    durationSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    durationSeconds *int32
     // UTC timestamp when the call ended.
     endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Sender phone number used for this communication.
@@ -88,8 +88,8 @@ func (m *PhoneCallResponse) GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6
     return m.answeredAt
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *PhoneCallResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *PhoneCallResponse) GetBillableAmount()(*float64) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -128,8 +128,8 @@ func (m *PhoneCallResponse) GetDirection()(*string) {
     return m.direction
 }
 // GetDurationSeconds gets the durationSeconds property value. Call duration in seconds.
-// returns a UntypedNodeable when successful
-func (m *PhoneCallResponse) GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PhoneCallResponse) GetDurationSeconds()(*int32) {
     return m.durationSeconds
 }
 // GetEndedAt gets the endedAt property value. UTC timestamp when the call ended.
@@ -152,12 +152,12 @@ func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableAmount(val)
         }
         return nil
     }
@@ -238,12 +238,12 @@ func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330
         return nil
     }
     res["durationSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDurationSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetDurationSeconds(val)
         }
         return nil
     }
@@ -493,7 +493,7 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
+        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -547,7 +547,7 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteObjectValue("durationSeconds", m.GetDurationSeconds())
+        err := writer.WriteInt32Value("durationSeconds", m.GetDurationSeconds())
         if err != nil {
             return err
         }
@@ -667,7 +667,7 @@ func (m *PhoneCallResponse) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97
     m.answeredAt = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *PhoneCallResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PhoneCallResponse) SetBillableAmount(value *float64)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -699,7 +699,7 @@ func (m *PhoneCallResponse) SetDirection(value *string)() {
     m.direction = value
 }
 // SetDurationSeconds sets the durationSeconds property value. Call duration in seconds.
-func (m *PhoneCallResponse) SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PhoneCallResponse) SetDurationSeconds(value *int32)() {
     m.durationSeconds = value
 }
 // SetEndedAt sets the endedAt property value. UTC timestamp when the call ended.
@@ -770,7 +770,7 @@ type PhoneCallResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillableAmount()(*float64)
     GetBillingStatus()(*string)
     GetCallerId()(*string)
     GetCampaignId()(*string)
@@ -778,7 +778,7 @@ type PhoneCallResponseable interface {
     GetConversationId()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetDirection()(*string)
-    GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetDurationSeconds()(*int32)
     GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetFromPhoneNumber()(*string)
     GetFromPhoneNumberId()(*string)
@@ -796,7 +796,7 @@ type PhoneCallResponseable interface {
     GetToPhoneNumber()(*string)
     GetWasManuallyOverridden()(*bool)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillableAmount(value *float64)()
     SetBillingStatus(value *string)()
     SetCallerId(value *string)()
     SetCampaignId(value *string)()
@@ -804,7 +804,7 @@ type PhoneCallResponseable interface {
     SetConversationId(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetDirection(value *string)()
-    SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetDurationSeconds(value *int32)()
     SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetFromPhoneNumber(value *string)()
     SetFromPhoneNumberId(value *string)()

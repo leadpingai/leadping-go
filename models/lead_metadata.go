@@ -21,7 +21,7 @@ type LeadMetadata struct {
     // UTC timestamp when this lead attribution metadata was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Direct-post price supplied by the lead source during intake.
-    directPostPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    directPostPrice *float64
     // External system identifier used to reconcile this lead attribution metadata across integrations.
     externalId *string
     // Bulk import batch ID that created or updated this lead.
@@ -37,7 +37,7 @@ type LeadMetadata struct {
     // System or workflow that created this event.
     origin *string
     // Lead price or transaction price supplied to the Leadping API.
-    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    price *float64
     // Product or offer associated with the lead or source.
     product *string
     // Publisher ID supplied by the lead source for attribution.
@@ -121,8 +121,8 @@ func (m *LeadMetadata) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a
     return m.createdAt
 }
 // GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-// returns a UntypedNodeable when successful
-func (m *LeadMetadata) GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *LeadMetadata) GetDirectPostPrice()(*float64) {
     return m.directPostPrice
 }
 // GetExternalId gets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
@@ -175,12 +175,12 @@ func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         return nil
     }
     res["directPostPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDirectPostPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetDirectPostPrice(val)
         }
         return nil
     }
@@ -255,12 +255,12 @@ func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         return nil
     }
     res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPrice(val)
         }
         return nil
     }
@@ -517,8 +517,8 @@ func (m *LeadMetadata) GetOrigin()(*string) {
     return m.origin
 }
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a UntypedNodeable when successful
-func (m *LeadMetadata) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *LeadMetadata) GetPrice()(*float64) {
     return m.price
 }
 // GetProduct gets the product property value. Product or offer associated with the lead or source.
@@ -658,7 +658,7 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteObjectValue("directPostPrice", m.GetDirectPostPrice())
+        err := writer.WriteFloat64Value("directPostPrice", m.GetDirectPostPrice())
         if err != nil {
             return err
         }
@@ -706,7 +706,7 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteObjectValue("price", m.GetPrice())
+        err := writer.WriteFloat64Value("price", m.GetPrice())
         if err != nil {
             return err
         }
@@ -872,7 +872,7 @@ func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
     m.createdAt = value
 }
 // SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-func (m *LeadMetadata) SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *LeadMetadata) SetDirectPostPrice(value *float64)() {
     m.directPostPrice = value
 }
 // SetExternalId sets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
@@ -904,7 +904,7 @@ func (m *LeadMetadata) SetOrigin(value *string)() {
     m.origin = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadMetadata) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *LeadMetadata) SetPrice(value *float64)() {
     m.price = value
 }
 // SetProduct sets the product property value. Product or offer associated with the lead or source.
@@ -1002,7 +1002,7 @@ type LeadMetadataable interface {
     GetComplianceBlockedReason()(*string)
     GetComplianceStatus()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetDirectPostPrice()(*float64)
     GetExternalId()(*string)
     GetImportBatchId()(*string)
     GetIpAddress()(*string)
@@ -1010,7 +1010,7 @@ type LeadMetadataable interface {
     GetLandingPage()(*string)
     GetOrganizationId()(*string)
     GetOrigin()(*string)
-    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPrice()(*float64)
     GetProduct()(*string)
     GetPubId()(*string)
     GetReferrer()(*string)
@@ -1037,7 +1037,7 @@ type LeadMetadataable interface {
     SetComplianceBlockedReason(value *string)()
     SetComplianceStatus(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetDirectPostPrice(value *float64)()
     SetExternalId(value *string)()
     SetImportBatchId(value *string)()
     SetIpAddress(value *string)()
@@ -1045,7 +1045,7 @@ type LeadMetadataable interface {
     SetLandingPage(value *string)()
     SetOrganizationId(value *string)()
     SetOrigin(value *string)()
-    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPrice(value *float64)()
     SetProduct(value *string)()
     SetPubId(value *string)()
     SetReferrer(value *string)()

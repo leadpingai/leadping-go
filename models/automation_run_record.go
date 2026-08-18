@@ -31,7 +31,7 @@ type AutomationRunRecord struct {
     // Organization ID that owns this automation run.
     organizationId *string
     // Number of processing attempts made for this workflow or delivery request.
-    processingAttempts i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    processingAttempts *int32
     // Human-readable reason explaining why Leadping skipped this automation run.
     skippedReason *string
     // UTC timestamp when processing started for this automation run record.
@@ -184,12 +184,12 @@ func (m *AutomationRunRecord) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["processingAttempts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetProcessingAttempts(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetProcessingAttempts(val)
         }
         return nil
     }
@@ -256,8 +256,8 @@ func (m *AutomationRunRecord) GetOrganizationId()(*string) {
     return m.organizationId
 }
 // GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-// returns a UntypedNodeable when successful
-func (m *AutomationRunRecord) GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *AutomationRunRecord) GetProcessingAttempts()(*int32) {
     return m.processingAttempts
 }
 // GetSkippedReason gets the skippedReason property value. Human-readable reason explaining why Leadping skipped this automation run.
@@ -343,7 +343,7 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("processingAttempts", m.GetProcessingAttempts())
+        err := writer.WriteInt32Value("processingAttempts", m.GetProcessingAttempts())
         if err != nil {
             return err
         }
@@ -421,7 +421,7 @@ func (m *AutomationRunRecord) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
 // SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-func (m *AutomationRunRecord) SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AutomationRunRecord) SetProcessingAttempts(value *int32)() {
     m.processingAttempts = value
 }
 // SetSkippedReason sets the skippedReason property value. Human-readable reason explaining why Leadping skipped this automation run.
@@ -452,7 +452,7 @@ type AutomationRunRecordable interface {
     GetLastAttemptAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLeadId()(*string)
     GetOrganizationId()(*string)
-    GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetProcessingAttempts()(*int32)
     GetSkippedReason()(*string)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*string)
@@ -466,7 +466,7 @@ type AutomationRunRecordable interface {
     SetLastAttemptAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLeadId(value *string)()
     SetOrganizationId(value *string)()
-    SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetProcessingAttempts(value *int32)()
     SetSkippedReason(value *string)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *string)()

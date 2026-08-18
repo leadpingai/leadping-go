@@ -29,7 +29,7 @@ type TenDlcApplicationDraft struct {
     // EIN for this 10DLC application draft.
     ein *string
     // Expected monthly volume for this 10DLC application draft.
-    expectedMonthlyVolume i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    expectedMonthlyVolume *int32
     // The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
     industry *string
     // UTC timestamp for last submitted at on this 10DLC application draft.
@@ -55,7 +55,7 @@ type TenDlcApplicationDraft struct {
     // Use case description for this 10DLC application draft.
     useCaseDescription *string
     // Version for this 10DLC application draft.
-    version i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    version *int32
     // Public business website URL submitted to carriers during brand review.
     websiteUrl *string
 }
@@ -117,8 +117,8 @@ func (m *TenDlcApplicationDraft) GetEin()(*string) {
     return m.ein
 }
 // GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
-// returns a UntypedNodeable when successful
-func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(*int32) {
     return m.expectedMonthlyVolume
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -212,12 +212,12 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["expectedMonthlyVolume"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetExpectedMonthlyVolume(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetExpectedMonthlyVolume(val)
         }
         return nil
     }
@@ -354,12 +354,12 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80
         return nil
     }
     res["version"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetVersion(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetVersion(val)
         }
         return nil
     }
@@ -436,8 +436,8 @@ func (m *TenDlcApplicationDraft) GetUseCaseDescription()(*string) {
     return m.useCaseDescription
 }
 // GetVersion gets the version property value. Version for this 10DLC application draft.
-// returns a UntypedNodeable when successful
-func (m *TenDlcApplicationDraft) GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *TenDlcApplicationDraft) GetVersion()(*int32) {
     return m.version
 }
 // GetWebsiteUrl gets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
@@ -498,7 +498,7 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteObjectValue("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
+        err := writer.WriteInt32Value("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
         if err != nil {
             return err
         }
@@ -576,7 +576,7 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
         }
     }
     {
-        err := writer.WriteObjectValue("version", m.GetVersion())
+        err := writer.WriteInt32Value("version", m.GetVersion())
         if err != nil {
             return err
         }
@@ -632,7 +632,7 @@ func (m *TenDlcApplicationDraft) SetEin(value *string)() {
     m.ein = value
 }
 // SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32)() {
     m.expectedMonthlyVolume = value
 }
 // SetIndustry sets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
@@ -684,7 +684,7 @@ func (m *TenDlcApplicationDraft) SetUseCaseDescription(value *string)() {
     m.useCaseDescription = value
 }
 // SetVersion sets the version property value. Version for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *TenDlcApplicationDraft) SetVersion(value *int32)() {
     m.version = value
 }
 // SetWebsiteUrl sets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
@@ -702,7 +702,7 @@ type TenDlcApplicationDraftable interface {
     GetContactName()(*string)
     GetContactPhone()(*string)
     GetEin()(*string)
-    GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetExpectedMonthlyVolume()(*int32)
     GetIndustry()(*string)
     GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetMessageExamples()([]string)
@@ -715,7 +715,7 @@ type TenDlcApplicationDraftable interface {
     GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetUseCase()(*string)
     GetUseCaseDescription()(*string)
-    GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetVersion()(*int32)
     GetWebsiteUrl()(*string)
     SetBrandStatus(value *TenDlcRegistrationStatus)()
     SetCampaignStatus(value *TenDlcRegistrationStatus)()
@@ -725,7 +725,7 @@ type TenDlcApplicationDraftable interface {
     SetContactName(value *string)()
     SetContactPhone(value *string)()
     SetEin(value *string)()
-    SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetExpectedMonthlyVolume(value *int32)()
     SetIndustry(value *string)()
     SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetMessageExamples(value []string)()
@@ -738,6 +738,6 @@ type TenDlcApplicationDraftable interface {
     SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetUseCase(value *string)()
     SetUseCaseDescription(value *string)()
-    SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetVersion(value *int32)()
     SetWebsiteUrl(value *string)()
 }

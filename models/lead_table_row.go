@@ -39,7 +39,7 @@ type LeadTableRow struct {
     // Phone details for the lead, user, or organization represented by this lead table row.
     phone *string
     // Lead price or transaction price supplied to the Leadping API.
-    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    price *float64
     // Defines the asynchronous verification and enrichment lifecycle for a lead.
     processingStatus *LeadTableRow_processingStatus
     // UTC timestamp when the processing stage last changed.
@@ -244,12 +244,12 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         return nil
     }
     res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPrice(val)
         }
         return nil
     }
@@ -372,8 +372,8 @@ func (m *LeadTableRow) GetPhone()(*string) {
     return m.phone
 }
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a UntypedNodeable when successful
-func (m *LeadTableRow) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *LeadTableRow) GetPrice()(*float64) {
     return m.price
 }
 // GetProcessingStatus gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
@@ -497,7 +497,7 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
-        err := writer.WriteObjectValue("price", m.GetPrice())
+        err := writer.WriteFloat64Value("price", m.GetPrice())
         if err != nil {
             return err
         }
@@ -622,7 +622,7 @@ func (m *LeadTableRow) SetPhone(value *string)() {
     m.phone = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadTableRow) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *LeadTableRow) SetPrice(value *float64)() {
     m.price = value
 }
 // SetProcessingStatus sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
@@ -673,7 +673,7 @@ type LeadTableRowable interface {
     GetLastName()(*string)
     GetOrganization()(LeadTableRow_organizationable)
     GetPhone()(*string)
-    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPrice()(*float64)
     GetProcessingStatus()(*LeadTableRow_processingStatus)
     GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetProcessingStatusReason()(*string)
@@ -695,7 +695,7 @@ type LeadTableRowable interface {
     SetLastName(value *string)()
     SetOrganization(value LeadTableRow_organizationable)()
     SetPhone(value *string)()
-    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPrice(value *float64)()
     SetProcessingStatus(value *LeadTableRow_processingStatus)()
     SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetProcessingStatusReason(value *string)()

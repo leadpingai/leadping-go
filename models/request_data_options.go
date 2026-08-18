@@ -11,7 +11,7 @@ import (
 type RequestDataOptions struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+    // Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
     continuationToken *string
     // Key-value exact match filters (e.g., Status = Active).
     filters []ExactMatchFilterable
@@ -20,10 +20,10 @@ type RequestDataOptions struct {
     // List of sort instructions, in priority order.
     orderBy []OrderByOptionable
     // Maximum items to return in one page
-    pageSize i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    pageSize *int32
     // Advanced range-based filters (e.g., Price > 50 and Price <= 200).
     rangeFilters []RangeFilterable
-    // The search term to filter results (applied to ).
+    // The search term to filter results (applied to SearchFields).
     search *string
     // The list of fields to apply the Search term to (must be string properties).
     searchFields []string
@@ -45,7 +45,7 @@ func CreateRequestDataOptionsFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *RequestDataOptions) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetContinuationToken gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+// GetContinuationToken gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
 // returns a *string when successful
 func (m *RequestDataOptions) GetContinuationToken()(*string) {
     return m.continuationToken
@@ -107,12 +107,12 @@ func (m *RequestDataOptions) GetFieldDeserializers()(map[string]func(i878a80d233
         return nil
     }
     res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPageSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPageSize(val)
         }
         return nil
     }
@@ -176,8 +176,8 @@ func (m *RequestDataOptions) GetOrderBy()([]OrderByOptionable) {
     return m.orderBy
 }
 // GetPageSize gets the pageSize property value. Maximum items to return in one page
-// returns a UntypedNodeable when successful
-func (m *RequestDataOptions) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *RequestDataOptions) GetPageSize()(*int32) {
     return m.pageSize
 }
 // GetRangeFilters gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
@@ -185,7 +185,7 @@ func (m *RequestDataOptions) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0
 func (m *RequestDataOptions) GetRangeFilters()([]RangeFilterable) {
     return m.rangeFilters
 }
-// GetSearch gets the search property value. The search term to filter results (applied to ).
+// GetSearch gets the search property value. The search term to filter results (applied to SearchFields).
 // returns a *string when successful
 func (m *RequestDataOptions) GetSearch()(*string) {
     return m.search
@@ -234,7 +234,7 @@ func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     {
-        err := writer.WriteObjectValue("pageSize", m.GetPageSize())
+        err := writer.WriteInt32Value("pageSize", m.GetPageSize())
         if err != nil {
             return err
         }
@@ -275,7 +275,7 @@ func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *RequestDataOptions) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetContinuationToken sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+// SetContinuationToken sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
 func (m *RequestDataOptions) SetContinuationToken(value *string)() {
     m.continuationToken = value
 }
@@ -292,14 +292,14 @@ func (m *RequestDataOptions) SetOrderBy(value []OrderByOptionable)() {
     m.orderBy = value
 }
 // SetPageSize sets the pageSize property value. Maximum items to return in one page
-func (m *RequestDataOptions) SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *RequestDataOptions) SetPageSize(value *int32)() {
     m.pageSize = value
 }
 // SetRangeFilters sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
 func (m *RequestDataOptions) SetRangeFilters(value []RangeFilterable)() {
     m.rangeFilters = value
 }
-// SetSearch sets the search property value. The search term to filter results (applied to ).
+// SetSearch sets the search property value. The search term to filter results (applied to SearchFields).
 func (m *RequestDataOptions) SetSearch(value *string)() {
     m.search = value
 }
@@ -314,7 +314,7 @@ type RequestDataOptionsable interface {
     GetFilters()([]ExactMatchFilterable)
     GetIncludeCount()(*bool)
     GetOrderBy()([]OrderByOptionable)
-    GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPageSize()(*int32)
     GetRangeFilters()([]RangeFilterable)
     GetSearch()(*string)
     GetSearchFields()([]string)
@@ -322,7 +322,7 @@ type RequestDataOptionsable interface {
     SetFilters(value []ExactMatchFilterable)()
     SetIncludeCount(value *bool)()
     SetOrderBy(value []OrderByOptionable)()
-    SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPageSize(value *int32)()
     SetRangeFilters(value []RangeFilterable)()
     SetSearch(value *string)()
     SetSearchFields(value []string)()

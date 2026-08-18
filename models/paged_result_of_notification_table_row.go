@@ -16,9 +16,9 @@ type PagedResultOfNotificationTableRow struct {
     // The subset of items returned for the current page.
     items []NotificationTableRowable
     // The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-    pageSize i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    pageSize *int32
     // The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-    totalCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    totalCount *int32
 }
 // NewPagedResultOfNotificationTableRow instantiates a new PagedResultOfNotificationTableRow and sets the default values.
 func NewPagedResultOfNotificationTableRow()(*PagedResultOfNotificationTableRow) {
@@ -73,22 +73,22 @@ func (m *PagedResultOfNotificationTableRow) GetFieldDeserializers()(map[string]f
         return nil
     }
     res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPageSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPageSize(val)
         }
         return nil
     }
     res["totalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTotalCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetTotalCount(val)
         }
         return nil
     }
@@ -100,13 +100,13 @@ func (m *PagedResultOfNotificationTableRow) GetItems()([]NotificationTableRowabl
     return m.items
 }
 // GetPageSize gets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-// returns a UntypedNodeable when successful
-func (m *PagedResultOfNotificationTableRow) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PagedResultOfNotificationTableRow) GetPageSize()(*int32) {
     return m.pageSize
 }
 // GetTotalCount gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-// returns a UntypedNodeable when successful
-func (m *PagedResultOfNotificationTableRow) GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PagedResultOfNotificationTableRow) GetTotalCount()(*int32) {
     return m.totalCount
 }
 // Serialize serializes information the current object
@@ -130,13 +130,13 @@ func (m *PagedResultOfNotificationTableRow) Serialize(writer i878a80d2330e89d268
         }
     }
     {
-        err := writer.WriteObjectValue("pageSize", m.GetPageSize())
+        err := writer.WriteInt32Value("pageSize", m.GetPageSize())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("totalCount", m.GetTotalCount())
+        err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
         if err != nil {
             return err
         }
@@ -162,11 +162,11 @@ func (m *PagedResultOfNotificationTableRow) SetItems(value []NotificationTableRo
     m.items = value
 }
 // SetPageSize sets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
-func (m *PagedResultOfNotificationTableRow) SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PagedResultOfNotificationTableRow) SetPageSize(value *int32)() {
     m.pageSize = value
 }
 // SetTotalCount sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
-func (m *PagedResultOfNotificationTableRow) SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PagedResultOfNotificationTableRow) SetTotalCount(value *int32)() {
     m.totalCount = value
 }
 type PagedResultOfNotificationTableRowable interface {
@@ -174,10 +174,10 @@ type PagedResultOfNotificationTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetContinuationToken()(*string)
     GetItems()([]NotificationTableRowable)
-    GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetTotalCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPageSize()(*int32)
+    GetTotalCount()(*int32)
     SetContinuationToken(value *string)()
     SetItems(value []NotificationTableRowable)()
-    SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetTotalCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPageSize(value *int32)()
+    SetTotalCount(value *int32)()
 }

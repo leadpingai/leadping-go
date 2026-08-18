@@ -12,25 +12,25 @@ type OutboundCapacityOverview struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Total number of blocked records represented by this Leadping outbound capacity overview.
-    blockedCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    blockedCount *int32
     // Number of cooling phone numbers represented by this Leadping outbound capacity overview.
-    coolingPhoneNumbers i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    coolingPhoneNumbers *int32
     // Number of healthy phone numbers represented by this Leadping outbound capacity overview.
-    healthyPhoneNumbers i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    healthyPhoneNumbers *int32
     // Number of limited phone numbers represented by this Leadping outbound capacity overview.
-    limitedPhoneNumbers i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    limitedPhoneNumbers *int32
     // Collection of phone numbers included with this Leadping outbound capacity overview.
     phoneNumbers []OutboundPhoneNumberCapacityable
     // Number of phone numbers whose SMS or calling capacity is still ramping up.
-    rampingPhoneNumbers i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    rampingPhoneNumbers *int32
     // Collection of recent decisions included with this Leadping outbound capacity overview.
     recentDecisions []OutboundQueueItemable
     // Total number of scheduled records represented by this Leadping outbound capacity overview.
-    scheduledCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    scheduledCount *int32
     // SMS capacity remaining today for the applicable messaging or voice capacity window.
-    smsCapacityRemainingToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    smsCapacityRemainingToday *int32
     // Voice capacity remaining today for the applicable messaging or voice capacity window.
-    voiceCapacityRemainingToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    voiceCapacityRemainingToday *int32
 }
 // NewOutboundCapacityOverview instantiates a new OutboundCapacityOverview and sets the default values.
 func NewOutboundCapacityOverview()(*OutboundCapacityOverview) {
@@ -50,13 +50,13 @@ func (m *OutboundCapacityOverview) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBlockedCount gets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetBlockedCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetBlockedCount()(*int32) {
     return m.blockedCount
 }
 // GetCoolingPhoneNumbers gets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers()(*int32) {
     return m.coolingPhoneNumbers
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -64,42 +64,42 @@ func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers()(i878a80d2330e89d2689
 func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["blockedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBlockedCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBlockedCount(val)
         }
         return nil
     }
     res["coolingPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCoolingPhoneNumbers(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetCoolingPhoneNumbers(val)
         }
         return nil
     }
     res["healthyPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetHealthyPhoneNumbers(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetHealthyPhoneNumbers(val)
         }
         return nil
     }
     res["limitedPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetLimitedPhoneNumbers(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetLimitedPhoneNumbers(val)
         }
         return nil
     }
@@ -120,12 +120,12 @@ func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a
         return nil
     }
     res["rampingPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRampingPhoneNumbers(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetRampingPhoneNumbers(val)
         }
         return nil
     }
@@ -146,45 +146,45 @@ func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a
         return nil
     }
     res["scheduledCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetScheduledCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetScheduledCount(val)
         }
         return nil
     }
     res["smsCapacityRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSmsCapacityRemainingToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetSmsCapacityRemainingToday(val)
         }
         return nil
     }
     res["voiceCapacityRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetVoiceCapacityRemainingToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetVoiceCapacityRemainingToday(val)
         }
         return nil
     }
     return res
 }
 // GetHealthyPhoneNumbers gets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetHealthyPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetHealthyPhoneNumbers()(*int32) {
     return m.healthyPhoneNumbers
 }
 // GetLimitedPhoneNumbers gets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers()(*int32) {
     return m.limitedPhoneNumbers
 }
 // GetPhoneNumbers gets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
@@ -193,8 +193,8 @@ func (m *OutboundCapacityOverview) GetPhoneNumbers()([]OutboundPhoneNumberCapaci
     return m.phoneNumbers
 }
 // GetRampingPhoneNumbers gets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetRampingPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetRampingPhoneNumbers()(*int32) {
     return m.rampingPhoneNumbers
 }
 // GetRecentDecisions gets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
@@ -203,42 +203,42 @@ func (m *OutboundCapacityOverview) GetRecentDecisions()([]OutboundQueueItemable)
     return m.recentDecisions
 }
 // GetScheduledCount gets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetScheduledCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetScheduledCount()(*int32) {
     return m.scheduledCount
 }
 // GetSmsCapacityRemainingToday gets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetSmsCapacityRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetSmsCapacityRemainingToday()(*int32) {
     return m.smsCapacityRemainingToday
 }
 // GetVoiceCapacityRemainingToday gets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundCapacityOverview) GetVoiceCapacityRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OutboundCapacityOverview) GetVoiceCapacityRemainingToday()(*int32) {
     return m.voiceCapacityRemainingToday
 }
 // Serialize serializes information the current object
 func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("blockedCount", m.GetBlockedCount())
+        err := writer.WriteInt32Value("blockedCount", m.GetBlockedCount())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("coolingPhoneNumbers", m.GetCoolingPhoneNumbers())
+        err := writer.WriteInt32Value("coolingPhoneNumbers", m.GetCoolingPhoneNumbers())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("healthyPhoneNumbers", m.GetHealthyPhoneNumbers())
+        err := writer.WriteInt32Value("healthyPhoneNumbers", m.GetHealthyPhoneNumbers())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("limitedPhoneNumbers", m.GetLimitedPhoneNumbers())
+        err := writer.WriteInt32Value("limitedPhoneNumbers", m.GetLimitedPhoneNumbers())
         if err != nil {
             return err
         }
@@ -256,7 +256,7 @@ func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteObjectValue("rampingPhoneNumbers", m.GetRampingPhoneNumbers())
+        err := writer.WriteInt32Value("rampingPhoneNumbers", m.GetRampingPhoneNumbers())
         if err != nil {
             return err
         }
@@ -274,19 +274,19 @@ func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteObjectValue("scheduledCount", m.GetScheduledCount())
+        err := writer.WriteInt32Value("scheduledCount", m.GetScheduledCount())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("smsCapacityRemainingToday", m.GetSmsCapacityRemainingToday())
+        err := writer.WriteInt32Value("smsCapacityRemainingToday", m.GetSmsCapacityRemainingToday())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("voiceCapacityRemainingToday", m.GetVoiceCapacityRemainingToday())
+        err := writer.WriteInt32Value("voiceCapacityRemainingToday", m.GetVoiceCapacityRemainingToday())
         if err != nil {
             return err
         }
@@ -304,19 +304,19 @@ func (m *OutboundCapacityOverview) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBlockedCount sets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetBlockedCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetBlockedCount(value *int32)() {
     m.blockedCount = value
 }
 // SetCoolingPhoneNumbers sets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetCoolingPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetCoolingPhoneNumbers(value *int32)() {
     m.coolingPhoneNumbers = value
 }
 // SetHealthyPhoneNumbers sets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetHealthyPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetHealthyPhoneNumbers(value *int32)() {
     m.healthyPhoneNumbers = value
 }
 // SetLimitedPhoneNumbers sets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value *int32)() {
     m.limitedPhoneNumbers = value
 }
 // SetPhoneNumbers sets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
@@ -324,7 +324,7 @@ func (m *OutboundCapacityOverview) SetPhoneNumbers(value []OutboundPhoneNumberCa
     m.phoneNumbers = value
 }
 // SetRampingPhoneNumbers sets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
-func (m *OutboundCapacityOverview) SetRampingPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetRampingPhoneNumbers(value *int32)() {
     m.rampingPhoneNumbers = value
 }
 // SetRecentDecisions sets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
@@ -332,38 +332,38 @@ func (m *OutboundCapacityOverview) SetRecentDecisions(value []OutboundQueueItema
     m.recentDecisions = value
 }
 // SetScheduledCount sets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetScheduledCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetScheduledCount(value *int32)() {
     m.scheduledCount = value
 }
 // SetSmsCapacityRemainingToday sets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundCapacityOverview) SetSmsCapacityRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetSmsCapacityRemainingToday(value *int32)() {
     m.smsCapacityRemainingToday = value
 }
 // SetVoiceCapacityRemainingToday sets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundCapacityOverview) SetVoiceCapacityRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OutboundCapacityOverview) SetVoiceCapacityRemainingToday(value *int32)() {
     m.voiceCapacityRemainingToday = value
 }
 type OutboundCapacityOverviewable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBlockedCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetCoolingPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetHealthyPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetLimitedPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBlockedCount()(*int32)
+    GetCoolingPhoneNumbers()(*int32)
+    GetHealthyPhoneNumbers()(*int32)
+    GetLimitedPhoneNumbers()(*int32)
     GetPhoneNumbers()([]OutboundPhoneNumberCapacityable)
-    GetRampingPhoneNumbers()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetRampingPhoneNumbers()(*int32)
     GetRecentDecisions()([]OutboundQueueItemable)
-    GetScheduledCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsCapacityRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceCapacityRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetBlockedCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetCoolingPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetHealthyPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetLimitedPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    GetScheduledCount()(*int32)
+    GetSmsCapacityRemainingToday()(*int32)
+    GetVoiceCapacityRemainingToday()(*int32)
+    SetBlockedCount(value *int32)()
+    SetCoolingPhoneNumbers(value *int32)()
+    SetHealthyPhoneNumbers(value *int32)()
+    SetLimitedPhoneNumbers(value *int32)()
     SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)()
-    SetRampingPhoneNumbers(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetRampingPhoneNumbers(value *int32)()
     SetRecentDecisions(value []OutboundQueueItemable)()
-    SetScheduledCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsCapacityRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceCapacityRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetScheduledCount(value *int32)()
+    SetSmsCapacityRemainingToday(value *int32)()
+    SetVoiceCapacityRemainingToday(value *int32)()
 }

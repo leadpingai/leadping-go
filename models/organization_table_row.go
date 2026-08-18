@@ -11,7 +11,7 @@ import (
 // OrganizationTableRow describes organization data used in Leadping API requests and responses.
 type OrganizationTableRow struct {
     // Account balance for this organization.
-    accountBalance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    accountBalance *float64
     // Defines the supported Customer Activation Status values.
     activationStatus *OrganizationTableRow_activationStatus
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -29,7 +29,7 @@ type OrganizationTableRow struct {
     // The masked API key preview owned by this organization.
     apiKeyPreview *string
     // The total number of tracked uses for this organization API key.
-    apiKeyTotalUses i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    apiKeyTotalUses *int64
     // Defines the supported Billing Plan values.
     billingPlan *OrganizationTableRow_billingPlan
     // Whether this organization is enabled.
@@ -63,7 +63,7 @@ type OrganizationTableRow struct {
     // Defines the supported 10DLC Application Status values.
     tenDlcStatus *OrganizationTableRow_tenDlcStatus
     // The user count for this organization.
-    userCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    userCount *int32
     // The website URL associated with this organization.
     website *string
     // Defines the supported Website Lifecycle Status values.
@@ -82,8 +82,8 @@ func CreateOrganizationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d
     return NewOrganizationTableRow(), nil
 }
 // GetAccountBalance gets the accountBalance property value. Account balance for this organization.
-// returns a UntypedNodeable when successful
-func (m *OrganizationTableRow) GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *OrganizationTableRow) GetAccountBalance()(*float64) {
     return m.accountBalance
 }
 // GetActivationStatus gets the activationStatus property value. Defines the supported Customer Activation Status values.
@@ -127,8 +127,8 @@ func (m *OrganizationTableRow) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
 }
 // GetApiKeyTotalUses gets the apiKeyTotalUses property value. The total number of tracked uses for this organization API key.
-// returns a UntypedNodeable when successful
-func (m *OrganizationTableRow) GetApiKeyTotalUses()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *OrganizationTableRow) GetApiKeyTotalUses()(*int64) {
     return m.apiKeyTotalUses
 }
 // GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
@@ -146,12 +146,12 @@ func (m *OrganizationTableRow) GetEnabled()(*bool) {
 func (m *OrganizationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["accountBalance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAccountBalance(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetAccountBalance(val)
         }
         return nil
     }
@@ -232,12 +232,12 @@ func (m *OrganizationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["apiKeyTotalUses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetApiKeyTotalUses(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetApiKeyTotalUses(val)
         }
         return nil
     }
@@ -402,12 +402,12 @@ func (m *OrganizationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2
         return nil
     }
     res["userCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetUserCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetUserCount(val)
         }
         return nil
     }
@@ -504,8 +504,8 @@ func (m *OrganizationTableRow) GetTenDlcStatus()(*OrganizationTableRow_tenDlcSta
     return m.tenDlcStatus
 }
 // GetUserCount gets the userCount property value. The user count for this organization.
-// returns a UntypedNodeable when successful
-func (m *OrganizationTableRow) GetUserCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *OrganizationTableRow) GetUserCount()(*int32) {
     return m.userCount
 }
 // GetWebsite gets the website property value. The website URL associated with this organization.
@@ -521,7 +521,7 @@ func (m *OrganizationTableRow) GetWebsiteStatus()(*OrganizationTableRow_websiteS
 // Serialize serializes information the current object
 func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("accountBalance", m.GetAccountBalance())
+        err := writer.WriteFloat64Value("accountBalance", m.GetAccountBalance())
         if err != nil {
             return err
         }
@@ -570,7 +570,7 @@ func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("apiKeyTotalUses", m.GetApiKeyTotalUses())
+        err := writer.WriteInt64Value("apiKeyTotalUses", m.GetApiKeyTotalUses())
         if err != nil {
             return err
         }
@@ -677,7 +677,7 @@ func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
         }
     }
     {
-        err := writer.WriteObjectValue("userCount", m.GetUserCount())
+        err := writer.WriteInt32Value("userCount", m.GetUserCount())
         if err != nil {
             return err
         }
@@ -704,7 +704,7 @@ func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
     return nil
 }
 // SetAccountBalance sets the accountBalance property value. Account balance for this organization.
-func (m *OrganizationTableRow) SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationTableRow) SetAccountBalance(value *float64)() {
     m.accountBalance = value
 }
 // SetActivationStatus sets the activationStatus property value. Defines the supported Customer Activation Status values.
@@ -740,7 +740,7 @@ func (m *OrganizationTableRow) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
 }
 // SetApiKeyTotalUses sets the apiKeyTotalUses property value. The total number of tracked uses for this organization API key.
-func (m *OrganizationTableRow) SetApiKeyTotalUses(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationTableRow) SetApiKeyTotalUses(value *int64)() {
     m.apiKeyTotalUses = value
 }
 // SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
@@ -808,7 +808,7 @@ func (m *OrganizationTableRow) SetTenDlcStatus(value *OrganizationTableRow_tenDl
     m.tenDlcStatus = value
 }
 // SetUserCount sets the userCount property value. The user count for this organization.
-func (m *OrganizationTableRow) SetUserCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationTableRow) SetUserCount(value *int32)() {
     m.userCount = value
 }
 // SetWebsite sets the website property value. The website URL associated with this organization.
@@ -822,7 +822,7 @@ func (m *OrganizationTableRow) SetWebsiteStatus(value *OrganizationTableRow_webs
 type OrganizationTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetAccountBalance()(*float64)
     GetActivationStatus()(*OrganizationTableRow_activationStatus)
     GetApiKeyExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyFirstUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -830,7 +830,7 @@ type OrganizationTableRowable interface {
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPermissions()([]string)
     GetApiKeyPreview()(*string)
-    GetApiKeyTotalUses()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetApiKeyTotalUses()(*int64)
     GetBillingPlan()(*OrganizationTableRow_billingPlan)
     GetEnabled()(*bool)
     GetId()(*string)
@@ -847,10 +847,10 @@ type OrganizationTableRowable interface {
     GetSubscriptionCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSubscriptionStatus()(*OrganizationTableRow_subscriptionStatus)
     GetTenDlcStatus()(*OrganizationTableRow_tenDlcStatus)
-    GetUserCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetUserCount()(*int32)
     GetWebsite()(*string)
     GetWebsiteStatus()(*OrganizationTableRow_websiteStatus)
-    SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetAccountBalance(value *float64)()
     SetActivationStatus(value *OrganizationTableRow_activationStatus)()
     SetApiKeyExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyFirstUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -858,7 +858,7 @@ type OrganizationTableRowable interface {
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPermissions(value []string)()
     SetApiKeyPreview(value *string)()
-    SetApiKeyTotalUses(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetApiKeyTotalUses(value *int64)()
     SetBillingPlan(value *OrganizationTableRow_billingPlan)()
     SetEnabled(value *bool)()
     SetId(value *string)()
@@ -875,7 +875,7 @@ type OrganizationTableRowable interface {
     SetSubscriptionCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSubscriptionStatus(value *OrganizationTableRow_subscriptionStatus)()
     SetTenDlcStatus(value *OrganizationTableRow_tenDlcStatus)()
-    SetUserCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetUserCount(value *int32)()
     SetWebsite(value *string)()
     SetWebsiteStatus(value *OrganizationTableRow_websiteStatus)()
 }

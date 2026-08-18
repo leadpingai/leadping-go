@@ -11,9 +11,9 @@ import (
 type AutomationConsoleResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The automationId property
+    // Unique identifier of the automation whose execution history is returned.
     automationId *string
-    // The runs property
+    // Recent persisted workflow runs for the automation, ordered for console display.
     runs []AutomationWorkflowRunResponseable
 }
 // NewAutomationConsoleResponse instantiates a new AutomationConsoleResponse and sets the default values.
@@ -33,7 +33,7 @@ func CreateAutomationConsoleResponseFromDiscriminatorValue(parseNode i878a80d233
 func (m *AutomationConsoleResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAutomationId gets the automationId property value. The automationId property
+// GetAutomationId gets the automationId property value. Unique identifier of the automation whose execution history is returned.
 // returns a *string when successful
 func (m *AutomationConsoleResponse) GetAutomationId()(*string) {
     return m.automationId
@@ -70,7 +70,7 @@ func (m *AutomationConsoleResponse) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetRuns gets the runs property value. The runs property
+// GetRuns gets the runs property value. Recent persisted workflow runs for the automation, ordered for console display.
 // returns a []AutomationWorkflowRunResponseable when successful
 func (m *AutomationConsoleResponse) GetRuns()([]AutomationWorkflowRunResponseable) {
     return m.runs
@@ -107,11 +107,11 @@ func (m *AutomationConsoleResponse) Serialize(writer i878a80d2330e89d26896388a3f
 func (m *AutomationConsoleResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAutomationId sets the automationId property value. The automationId property
+// SetAutomationId sets the automationId property value. Unique identifier of the automation whose execution history is returned.
 func (m *AutomationConsoleResponse) SetAutomationId(value *string)() {
     m.automationId = value
 }
-// SetRuns sets the runs property value. The runs property
+// SetRuns sets the runs property value. Recent persisted workflow runs for the automation, ordered for console display.
 func (m *AutomationConsoleResponse) SetRuns(value []AutomationWorkflowRunResponseable)() {
     m.runs = value
 }

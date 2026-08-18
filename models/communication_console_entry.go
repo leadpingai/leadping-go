@@ -12,15 +12,15 @@ import (
 type CommunicationConsoleEntry struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The id property
+    // Unique identifier of this diagnostic console entry.
     id *string
-    // The message property
+    // User-safe diagnostic message describing what occurred at this stage.
     message *string
-    // The occurredAt property
+    // UTC timestamp when this communication-processing event occurred.
     occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The stage property
+    // Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
     stage *string
-    // The status property
+    // Outcome or state recorded for this processing stage.
     status *string
 }
 // NewCommunicationConsoleEntry instantiates a new CommunicationConsoleEntry and sets the default values.
@@ -96,27 +96,27 @@ func (m *CommunicationConsoleEntry) GetFieldDeserializers()(map[string]func(i878
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique identifier of this diagnostic console entry.
 // returns a *string when successful
 func (m *CommunicationConsoleEntry) GetId()(*string) {
     return m.id
 }
-// GetMessage gets the message property value. The message property
+// GetMessage gets the message property value. User-safe diagnostic message describing what occurred at this stage.
 // returns a *string when successful
 func (m *CommunicationConsoleEntry) GetMessage()(*string) {
     return m.message
 }
-// GetOccurredAt gets the occurredAt property value. The occurredAt property
+// GetOccurredAt gets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
 // returns a *Time when successful
 func (m *CommunicationConsoleEntry) GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.occurredAt
 }
-// GetStage gets the stage property value. The stage property
+// GetStage gets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
 // returns a *string when successful
 func (m *CommunicationConsoleEntry) GetStage()(*string) {
     return m.stage
 }
-// GetStatus gets the status property value. The status property
+// GetStatus gets the status property value. Outcome or state recorded for this processing stage.
 // returns a *string when successful
 func (m *CommunicationConsoleEntry) GetStatus()(*string) {
     return m.status
@@ -165,23 +165,23 @@ func (m *CommunicationConsoleEntry) Serialize(writer i878a80d2330e89d26896388a3f
 func (m *CommunicationConsoleEntry) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique identifier of this diagnostic console entry.
 func (m *CommunicationConsoleEntry) SetId(value *string)() {
     m.id = value
 }
-// SetMessage sets the message property value. The message property
+// SetMessage sets the message property value. User-safe diagnostic message describing what occurred at this stage.
 func (m *CommunicationConsoleEntry) SetMessage(value *string)() {
     m.message = value
 }
-// SetOccurredAt sets the occurredAt property value. The occurredAt property
+// SetOccurredAt sets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
 func (m *CommunicationConsoleEntry) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.occurredAt = value
 }
-// SetStage sets the stage property value. The stage property
+// SetStage sets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
 func (m *CommunicationConsoleEntry) SetStage(value *string)() {
     m.stage = value
 }
-// SetStatus sets the status property value. The status property
+// SetStatus sets the status property value. Outcome or state recorded for this processing stage.
 func (m *CommunicationConsoleEntry) SetStatus(value *string)() {
     m.status = value
 }

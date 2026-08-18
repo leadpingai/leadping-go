@@ -1,0 +1,86 @@
+name: Release Go SDK
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GIT__TOKEN || secrets.GH__TOKEN || github.token }}
+
+      - name: Prepare version
+        id: version
+        run: |
+          set -euo pipefail
+
+          git fetch --tags --force
+          latest_tag="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | awk '/^v[0-9]+\.[0-9]+\.[0-9]+$/ { print; exit }')"
+
+          if [ -z "${latest_tag}" ]; then
+            version="1.0.0"
+          else
+            base="${latest_tag#v}"
+            IFS='.' read -r major minor patch <<< "${base}"
+            version="${major}.${minor}.$((patch + 1))"
+          fi
+
+          if [[ ! "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version must look like 1.2.3."
+            exit 1
+          fi
+
+          tag="v${version}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "::error::Tag ${tag} already exists."
+            exit 1
+          fi
+
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - name: Test
+        run: go test ./...
+
+      - name: Create release archive
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          mkdir -p artifacts
+          git archive --format=tar.gz --output "artifacts/leadping-go-${TAG}.tar.gz" HEAD
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GH__TOKEN || secrets.GIT__TOKEN || github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          GIT_EMAIL: ${{ secrets.GIT__EMAIL || 'support@leadping.ai' }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "leadpingai-bot"
+          git config user.email "${GIT_EMAIL}"
+          git tag "${TAG}"
+          git push origin "${TAG}"
+
+          gh release create "${TAG}" artifacts/* \
+            --title "${TAG}" \
+            --notes "Generated Leadping Go SDK ${TAG}. Go module consumers can install this version with go get github.com/leadpingai/leadping-go@${TAG}."

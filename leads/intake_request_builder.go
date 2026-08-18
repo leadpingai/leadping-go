@@ -27,7 +27,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     // Lead date of birth supplied by intake sources and normalized into the lead profile.
     DateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
     // Direct-post price supplied by the lead source during intake.
-    DirectPostPrice *string
+    DirectPostPrice *float64
     // Email address for the person represented by this lead intake request.
     Email *string
     // External system identifier used to reconcile this lead intake request across integrations.
@@ -47,7 +47,7 @@ type IntakeRequestBuilderGetQueryParameters struct {
     // Postal code for the lead or organization address.
     PostalCode *string
     // Lead price or transaction price supplied to the Leadping API.
-    Price *string
+    Price *float64
     // Product or offer associated with the lead or source.
     Product *string
     // Referring page or traffic source that sent the lead into Leadping.
@@ -108,6 +108,7 @@ func NewIntakeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371c
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
+// returns a ProblemDetails error when the service returns a 429 status code
 func (m *IntakeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[IntakeRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -117,6 +118,7 @@ func (m *IntakeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateLeadResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -132,6 +134,7 @@ func (m *IntakeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
+// returns a ProblemDetails error when the service returns a 429 status code
 func (m *IntakeRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadIntakeRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[IntakeRequestBuilderPostQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -141,6 +144,7 @@ func (m *IntakeRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee6
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateLeadResponseFromDiscriminatorValue, errorMapping)
     if err != nil {

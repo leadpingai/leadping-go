@@ -21,7 +21,7 @@ type PhoneLookupProviderSnapshot struct {
     // The UTC timestamp when Leadping retrieved the provider record.
     retrievedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The Leadping schema version used to interpret the stored provider record.
-    schemaVersion i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    schemaVersion *int32
 }
 // NewPhoneLookupProviderSnapshot instantiates a new PhoneLookupProviderSnapshot and sets the default values.
 func NewPhoneLookupProviderSnapshot()(*PhoneLookupProviderSnapshot) {
@@ -85,12 +85,12 @@ func (m *PhoneLookupProviderSnapshot) GetFieldDeserializers()(map[string]func(i8
         return nil
     }
     res["schemaVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSchemaVersion(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetSchemaVersion(val)
         }
         return nil
     }
@@ -117,8 +117,8 @@ func (m *PhoneLookupProviderSnapshot) GetRetrievedAt()(*i336074805fc853987abe6f7
     return m.retrievedAt
 }
 // GetSchemaVersion gets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
-// returns a UntypedNodeable when successful
-func (m *PhoneLookupProviderSnapshot) GetSchemaVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *PhoneLookupProviderSnapshot) GetSchemaVersion()(*int32) {
     return m.schemaVersion
 }
 // Serialize serializes information the current object
@@ -148,7 +148,7 @@ func (m *PhoneLookupProviderSnapshot) Serialize(writer i878a80d2330e89d26896388a
         }
     }
     {
-        err := writer.WriteObjectValue("schemaVersion", m.GetSchemaVersion())
+        err := writer.WriteInt32Value("schemaVersion", m.GetSchemaVersion())
         if err != nil {
             return err
         }
@@ -182,7 +182,7 @@ func (m *PhoneLookupProviderSnapshot) SetRetrievedAt(value *i336074805fc853987ab
     m.retrievedAt = value
 }
 // SetSchemaVersion sets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
-func (m *PhoneLookupProviderSnapshot) SetSchemaVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PhoneLookupProviderSnapshot) SetSchemaVersion(value *int32)() {
     m.schemaVersion = value
 }
 type PhoneLookupProviderSnapshotable interface {
@@ -192,10 +192,10 @@ type PhoneLookupProviderSnapshotable interface {
     GetProvider()(*string)
     GetRawRecordJson()(*string)
     GetRetrievedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSchemaVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetSchemaVersion()(*int32)
     SetLookupType(value *string)()
     SetProvider(value *string)()
     SetRawRecordJson(value *string)()
     SetRetrievedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSchemaVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetSchemaVersion(value *int32)()
 }

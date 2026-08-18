@@ -29,9 +29,9 @@ type AutomationActionRunRecord struct {
     // UTC timestamp when Leadping will retry this automation action run record.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Sort order used to evaluate or display this automation action run record.
-    order i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    order *int32
     // Number of processing attempts made for this workflow or delivery request.
-    processingAttempts i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    processingAttempts *int32
     // UTC timestamp when this automation action run record was scheduled.
     scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when processing started for this automation action run record.
@@ -171,22 +171,22 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878
         return nil
     }
     res["order"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetOrder(val)
         }
         return nil
     }
     res["processingAttempts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetProcessingAttempts(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetProcessingAttempts(val)
         }
         return nil
     }
@@ -233,13 +233,13 @@ func (m *AutomationActionRunRecord) GetNextRetryAt()(*i336074805fc853987abe6f7fe
     return m.nextRetryAt
 }
 // GetOrder gets the order property value. Sort order used to evaluate or display this automation action run record.
-// returns a UntypedNodeable when successful
-func (m *AutomationActionRunRecord) GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *AutomationActionRunRecord) GetOrder()(*int32) {
     return m.order
 }
 // GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-// returns a UntypedNodeable when successful
-func (m *AutomationActionRunRecord) GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *AutomationActionRunRecord) GetProcessingAttempts()(*int32) {
     return m.processingAttempts
 }
 // GetScheduledAt gets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
@@ -308,13 +308,13 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
-        err := writer.WriteObjectValue("order", m.GetOrder())
+        err := writer.WriteInt32Value("order", m.GetOrder())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("processingAttempts", m.GetProcessingAttempts())
+        err := writer.WriteInt32Value("processingAttempts", m.GetProcessingAttempts())
         if err != nil {
             return err
         }
@@ -382,11 +382,11 @@ func (m *AutomationActionRunRecord) SetNextRetryAt(value *i336074805fc853987abe6
     m.nextRetryAt = value
 }
 // SetOrder sets the order property value. Sort order used to evaluate or display this automation action run record.
-func (m *AutomationActionRunRecord) SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AutomationActionRunRecord) SetOrder(value *int32)() {
     m.order = value
 }
 // SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-func (m *AutomationActionRunRecord) SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AutomationActionRunRecord) SetProcessingAttempts(value *int32)() {
     m.processingAttempts = value
 }
 // SetScheduledAt sets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
@@ -412,8 +412,8 @@ type AutomationActionRunRecordable interface {
     GetFailureCode()(*string)
     GetId()(*string)
     GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetOrder()(*int32)
+    GetProcessingAttempts()(*int32)
     GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*string)
@@ -425,8 +425,8 @@ type AutomationActionRunRecordable interface {
     SetFailureCode(value *string)()
     SetId(value *string)()
     SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetOrder(value *int32)()
+    SetProcessingAttempts(value *int32)()
     SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *string)()

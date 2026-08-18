@@ -28,7 +28,7 @@ type SuppressionEntryResponse struct {
     reason *string
     // Provider or customer identifier used to recognize the suppressed recipient.
     recipientIdentifier *string
-    // UTC timestamp when the suppression was released, or while it remains active.
+    // UTC timestamp when the suppression was released, or null while it remains active.
     releasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // System or workflow that created the suppression.
     source *string
@@ -226,7 +226,7 @@ func (m *SuppressionEntryResponse) GetReason()(*string) {
 func (m *SuppressionEntryResponse) GetRecipientIdentifier()(*string) {
     return m.recipientIdentifier
 }
-// GetReleasedAt gets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
+// GetReleasedAt gets the releasedAt property value. UTC timestamp when the suppression was released, or null while it remains active.
 // returns a *Time when successful
 func (m *SuppressionEntryResponse) GetReleasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.releasedAt
@@ -370,7 +370,7 @@ func (m *SuppressionEntryResponse) SetReason(value *string)() {
 func (m *SuppressionEntryResponse) SetRecipientIdentifier(value *string)() {
     m.recipientIdentifier = value
 }
-// SetReleasedAt sets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
+// SetReleasedAt sets the releasedAt property value. UTC timestamp when the suppression was released, or null while it remains active.
 func (m *SuppressionEntryResponse) SetReleasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.releasedAt = value
 }

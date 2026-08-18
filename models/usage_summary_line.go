@@ -16,11 +16,11 @@ type UsageSummaryLine struct {
     // Channel for this usage summary line.
     channel *UsageChannel
     // The monetary customer charge amount for this usage summary line.
-    customerChargeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    customerChargeAmount *float64
     // Quantity for this usage summary line.
-    quantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    quantity *float64
     // The record count for this usage summary line.
-    recordCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    recordCount *int32
     // The current status for this usage summary line.
     status *UsageStatus
 }
@@ -52,8 +52,8 @@ func (m *UsageSummaryLine) GetChannel()(*UsageChannel) {
     return m.channel
 }
 // GetCustomerChargeAmount gets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *UsageSummaryLine) GetCustomerChargeAmount()(*float64) {
     return m.customerChargeAmount
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -81,32 +81,32 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["customerChargeAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCustomerChargeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetCustomerChargeAmount(val)
         }
         return nil
     }
     res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetQuantity(val)
         }
         return nil
     }
     res["recordCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRecordCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetRecordCount(val)
         }
         return nil
     }
@@ -123,13 +123,13 @@ func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e
     return res
 }
 // GetQuantity gets the quantity property value. Quantity for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *UsageSummaryLine) GetQuantity()(*float64) {
     return m.quantity
 }
 // GetRecordCount gets the recordCount property value. The record count for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetRecordCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *UsageSummaryLine) GetRecordCount()(*int32) {
     return m.recordCount
 }
 // GetStatus gets the status property value. The current status for this usage summary line.
@@ -154,19 +154,19 @@ func (m *UsageSummaryLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteObjectValue("customerChargeAmount", m.GetCustomerChargeAmount())
+        err := writer.WriteFloat64Value("customerChargeAmount", m.GetCustomerChargeAmount())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("quantity", m.GetQuantity())
+        err := writer.WriteFloat64Value("quantity", m.GetQuantity())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("recordCount", m.GetRecordCount())
+        err := writer.WriteInt32Value("recordCount", m.GetRecordCount())
         if err != nil {
             return err
         }
@@ -199,15 +199,15 @@ func (m *UsageSummaryLine) SetChannel(value *UsageChannel)() {
     m.channel = value
 }
 // SetCustomerChargeAmount sets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-func (m *UsageSummaryLine) SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *UsageSummaryLine) SetCustomerChargeAmount(value *float64)() {
     m.customerChargeAmount = value
 }
 // SetQuantity sets the quantity property value. Quantity for this usage summary line.
-func (m *UsageSummaryLine) SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *UsageSummaryLine) SetQuantity(value *float64)() {
     m.quantity = value
 }
 // SetRecordCount sets the recordCount property value. The record count for this usage summary line.
-func (m *UsageSummaryLine) SetRecordCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *UsageSummaryLine) SetRecordCount(value *int32)() {
     m.recordCount = value
 }
 // SetStatus sets the status property value. The current status for this usage summary line.
@@ -219,14 +219,14 @@ type UsageSummaryLineable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillableUnit()(*BillableUnit)
     GetChannel()(*UsageChannel)
-    GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetRecordCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetCustomerChargeAmount()(*float64)
+    GetQuantity()(*float64)
+    GetRecordCount()(*int32)
     GetStatus()(*UsageStatus)
     SetBillableUnit(value *BillableUnit)()
     SetChannel(value *UsageChannel)()
-    SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetRecordCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetCustomerChargeAmount(value *float64)()
+    SetQuantity(value *float64)()
+    SetRecordCount(value *int32)()
     SetStatus(value *UsageStatus)()
 }

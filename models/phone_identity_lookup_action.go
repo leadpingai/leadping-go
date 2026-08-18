@@ -19,7 +19,7 @@ type PhoneIdentityLookupAction struct {
     // The provider that performed the phone identity lookup.
     provider *string
     // The provider cost incurred by this lookup action, in USD.
-    providerCostAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    providerCostAmount *float64
     // The provider pricing version used to calculate the lookup cost.
     providerPricingVersion *string
     // Identifies the outcome of a phone identity lookup action.
@@ -79,12 +79,12 @@ func (m *PhoneIdentityLookupAction) GetFieldDeserializers()(map[string]func(i878
         return nil
     }
     res["providerCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetProviderCostAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetProviderCostAmount(val)
         }
         return nil
     }
@@ -136,8 +136,8 @@ func (m *PhoneIdentityLookupAction) GetProvider()(*string) {
     return m.provider
 }
 // GetProviderCostAmount gets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-// returns a UntypedNodeable when successful
-func (m *PhoneIdentityLookupAction) GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *PhoneIdentityLookupAction) GetProviderCostAmount()(*float64) {
     return m.providerCostAmount
 }
 // GetProviderPricingVersion gets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
@@ -176,7 +176,7 @@ func (m *PhoneIdentityLookupAction) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
-        err := writer.WriteObjectValue("providerCostAmount", m.GetProviderCostAmount())
+        err := writer.WriteFloat64Value("providerCostAmount", m.GetProviderCostAmount())
         if err != nil {
             return err
         }
@@ -226,7 +226,7 @@ func (m *PhoneIdentityLookupAction) SetProvider(value *string)() {
     m.provider = value
 }
 // SetProviderCostAmount sets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-func (m *PhoneIdentityLookupAction) SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *PhoneIdentityLookupAction) SetProviderCostAmount(value *float64)() {
     m.providerCostAmount = value
 }
 // SetProviderPricingVersion sets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
@@ -247,14 +247,14 @@ type PhoneIdentityLookupActionable interface {
     GetId()(*string)
     GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetProvider()(*string)
-    GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetProviderCostAmount()(*float64)
     GetProviderPricingVersion()(*string)
     GetStatus()(*PhoneIdentityLookupActionStatus)
     GetTypeEscaped()(*PhoneIdentityLookupActionType)
     SetId(value *string)()
     SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetProvider(value *string)()
-    SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetProviderCostAmount(value *float64)()
     SetProviderPricingVersion(value *string)()
     SetStatus(value *PhoneIdentityLookupActionStatus)()
     SetTypeEscaped(value *PhoneIdentityLookupActionType)()

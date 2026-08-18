@@ -9,35 +9,39 @@ import (
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 )
 
-// ItemDetailRequestBuilder builds and executes requests for operations under \events\{eventId}\detail
-type ItemDetailRequestBuilder struct {
+// DetailWithEventItemRequestBuilder builds and executes requests for operations under \events\detail\{eventId}
+type DetailWithEventItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// NewItemDetailRequestBuilderInternal instantiates a new ItemDetailRequestBuilder and sets the default values.
-func NewItemDetailRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemDetailRequestBuilder) {
-    m := &ItemDetailRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/{eventId}/detail", pathParameters),
+// NewDetailWithEventItemRequestBuilderInternal instantiates a new DetailWithEventItemRequestBuilder and sets the default values.
+func NewDetailWithEventItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DetailWithEventItemRequestBuilder) {
+    m := &DetailWithEventItemRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/detail/{eventId}", pathParameters),
     }
     return m
 }
-// NewItemDetailRequestBuilder instantiates a new ItemDetailRequestBuilder and sets the default values.
-func NewItemDetailRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemDetailRequestBuilder) {
+// NewDetailWithEventItemRequestBuilder instantiates a new DetailWithEventItemRequestBuilder and sets the default values.
+func NewDetailWithEventItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DetailWithEventItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewItemDetailRequestBuilderInternal(urlParams, requestAdapter)
+    return NewDetailWithEventItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get returns detailed event data by ID, including the full JSON payload for debugging, audit review, and workflow inspection.
 // returns a EventDetailResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
+// returns a ProblemDetails error when the service returns a 403 status code
 // returns a ProblemDetails error when the service returns a 404 status code
-func (m *ItemDetailRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.EventDetailResponseable, error) {
+// returns a ProblemDetails error when the service returns a 429 status code
+func (m *DetailWithEventItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.EventDetailResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateEventDetailResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -50,14 +54,14 @@ func (m *ItemDetailRequestBuilder) Get(ctx context.Context, requestConfiguration
 }
 // ToGetRequestInformation returns detailed event data by ID, including the full JSON payload for debugging, audit review, and workflow inspection.
 // returns a *RequestInformation when successful
-func (m *ItemDetailRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *DetailWithEventItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *ItemDetailRequestBuilder when successful
-func (m *ItemDetailRequestBuilder) WithUrl(rawUrl string)(*ItemDetailRequestBuilder) {
-    return NewItemDetailRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *DetailWithEventItemRequestBuilder when successful
+func (m *DetailWithEventItemRequestBuilder) WithUrl(rawUrl string)(*DetailWithEventItemRequestBuilder) {
+    return NewDetailWithEventItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

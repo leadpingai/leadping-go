@@ -51,6 +51,11 @@ func NewEventsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371c
 func (m *EventsRequestBuilder) Conversations()(*ConversationsRequestBuilder) {
     return NewConversationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Detail the detail property
+// returns a *DetailRequestBuilder when successful
+func (m *EventsRequestBuilder) Detail()(*DetailRequestBuilder) {
+    return NewDetailRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Leads the leads property
 // returns a *LeadsRequestBuilder when successful
 func (m *EventsRequestBuilder) Leads()(*LeadsRequestBuilder) {

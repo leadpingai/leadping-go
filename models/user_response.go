@@ -53,7 +53,7 @@ type UserResponse struct {
     // The phone number associated with this user.
     phone *string
     // The roles included with this user.
-    roles i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    roles []string
     // Defines the supported Subscription Status values.
     subscriptionStatus *UserResponse_subscriptionStatus
     // IANA time zone identifier used when displaying dates and times for this user.
@@ -323,12 +323,18 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         return nil
     }
     res["roles"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetCollectionOfPrimitiveValues("string")
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetRoles(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            res := make([]string, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = *(v.(*string))
+                }
+            }
+            m.SetRoles(res)
         }
         return nil
     }
@@ -425,8 +431,8 @@ func (m *UserResponse) GetPhone()(*string) {
     return m.phone
 }
 // GetRoles gets the roles property value. The roles included with this user.
-// returns a UntypedNodeable when successful
-func (m *UserResponse) GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a []string when successful
+func (m *UserResponse) GetRoles()([]string) {
     return m.roles
 }
 // GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
@@ -574,8 +580,8 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
             return err
         }
     }
-    {
-        err := writer.WriteObjectValue("roles", m.GetRoles())
+    if m.GetRoles() != nil {
+        err := writer.WriteCollectionOfStringValues("roles", m.GetRoles())
         if err != nil {
             return err
         }
@@ -686,7 +692,7 @@ func (m *UserResponse) SetPhone(value *string)() {
     m.phone = value
 }
 // SetRoles sets the roles property value. The roles included with this user.
-func (m *UserResponse) SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *UserResponse) SetRoles(value []string)() {
     m.roles = value
 }
 // SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
@@ -720,7 +726,7 @@ type UserResponseable interface {
     GetPersonalDataDeletionRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPersonalDataDeletionStatus()(*string)
     GetPhone()(*string)
-    GetRoles()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetRoles()([]string)
     GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
     GetTimeZoneId()(*string)
     SetBillingPlan(value *UserResponse_billingPlan)()
@@ -743,7 +749,7 @@ type UserResponseable interface {
     SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPersonalDataDeletionStatus(value *string)()
     SetPhone(value *string)()
-    SetRoles(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetRoles(value []string)()
     SetSubscriptionStatus(value *UserResponse_subscriptionStatus)()
     SetTimeZoneId(value *string)()
 }

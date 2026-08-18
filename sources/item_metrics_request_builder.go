@@ -17,7 +17,7 @@ type ItemMetricsRequestBuilder struct {
 // ItemMetricsRequestBuilderGetQueryParameters view lead creation metrics for an organization intake source, including accepted, rejected, duplicate, validation, and recent activity counts.
 type ItemMetricsRequestBuilderGetQueryParameters struct {
     // Optional rolling day count when explicit dates are not provided.
-    Days *string "uriparametername:\"days\""
+    Days *int32 "uriparametername:\"days\""
     // Optional end date/time for the metric range.
     EndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time "uriparametername:\"endAt\""
     // Optional start date/time for the metric range.
@@ -39,7 +39,9 @@ func NewItemMetricsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 // Get view lead creation metrics for an organization intake source, including accepted, rejected, duplicate, validation, and recent activity counts.
 // returns a SourceMetricsResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
+// returns a ProblemDetails error when the service returns a 403 status code
 // returns a ProblemDetails error when the service returns a 404 status code
+// returns a ProblemDetails error when the service returns a 429 status code
 func (m *ItemMetricsRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemMetricsRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.SourceMetricsResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -47,7 +49,9 @@ func (m *ItemMetricsRequestBuilder) Get(ctx context.Context, requestConfiguratio
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateSourceMetricsResponseFromDiscriminatorValue, errorMapping)
     if err != nil {

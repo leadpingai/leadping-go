@@ -12,13 +12,13 @@ type AnalyticsComparison struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Percentage change between the current and previous reporting periods.
-    changePercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    changePercent *float64
     // Metric value for the current reporting period.
-    current i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    current *float64
     // Direction classification for this Leadping analytics comparison.
     direction *string
     // Metric value for the preceding comparison period.
-    previous i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    previous *float64
 }
 // NewAnalyticsComparison instantiates a new AnalyticsComparison and sets the default values.
 func NewAnalyticsComparison()(*AnalyticsComparison) {
@@ -38,13 +38,13 @@ func (m *AnalyticsComparison) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetChangePercent gets the changePercent property value. Percentage change between the current and previous reporting periods.
-// returns a UntypedNodeable when successful
-func (m *AnalyticsComparison) GetChangePercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *AnalyticsComparison) GetChangePercent()(*float64) {
     return m.changePercent
 }
 // GetCurrent gets the current property value. Metric value for the current reporting period.
-// returns a UntypedNodeable when successful
-func (m *AnalyticsComparison) GetCurrent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *AnalyticsComparison) GetCurrent()(*float64) {
     return m.current
 }
 // GetDirection gets the direction property value. Direction classification for this Leadping analytics comparison.
@@ -57,22 +57,22 @@ func (m *AnalyticsComparison) GetDirection()(*string) {
 func (m *AnalyticsComparison) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["changePercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetChangePercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetChangePercent(val)
         }
         return nil
     }
     res["current"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetCurrent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetCurrent(val)
         }
         return nil
     }
@@ -87,32 +87,32 @@ func (m *AnalyticsComparison) GetFieldDeserializers()(map[string]func(i878a80d23
         return nil
     }
     res["previous"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPrevious(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPrevious(val)
         }
         return nil
     }
     return res
 }
 // GetPrevious gets the previous property value. Metric value for the preceding comparison period.
-// returns a UntypedNodeable when successful
-func (m *AnalyticsComparison) GetPrevious()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *AnalyticsComparison) GetPrevious()(*float64) {
     return m.previous
 }
 // Serialize serializes information the current object
 func (m *AnalyticsComparison) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("changePercent", m.GetChangePercent())
+        err := writer.WriteFloat64Value("changePercent", m.GetChangePercent())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("current", m.GetCurrent())
+        err := writer.WriteFloat64Value("current", m.GetCurrent())
         if err != nil {
             return err
         }
@@ -124,7 +124,7 @@ func (m *AnalyticsComparison) Serialize(writer i878a80d2330e89d26896388a3f487eef
         }
     }
     {
-        err := writer.WriteObjectValue("previous", m.GetPrevious())
+        err := writer.WriteFloat64Value("previous", m.GetPrevious())
         if err != nil {
             return err
         }
@@ -142,11 +142,11 @@ func (m *AnalyticsComparison) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetChangePercent sets the changePercent property value. Percentage change between the current and previous reporting periods.
-func (m *AnalyticsComparison) SetChangePercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AnalyticsComparison) SetChangePercent(value *float64)() {
     m.changePercent = value
 }
 // SetCurrent sets the current property value. Metric value for the current reporting period.
-func (m *AnalyticsComparison) SetCurrent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AnalyticsComparison) SetCurrent(value *float64)() {
     m.current = value
 }
 // SetDirection sets the direction property value. Direction classification for this Leadping analytics comparison.
@@ -154,18 +154,18 @@ func (m *AnalyticsComparison) SetDirection(value *string)() {
     m.direction = value
 }
 // SetPrevious sets the previous property value. Metric value for the preceding comparison period.
-func (m *AnalyticsComparison) SetPrevious(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *AnalyticsComparison) SetPrevious(value *float64)() {
     m.previous = value
 }
 type AnalyticsComparisonable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetChangePercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetCurrent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetChangePercent()(*float64)
+    GetCurrent()(*float64)
     GetDirection()(*string)
-    GetPrevious()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetChangePercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetCurrent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    GetPrevious()(*float64)
+    SetChangePercent(value *float64)()
+    SetCurrent(value *float64)()
     SetDirection(value *string)()
-    SetPrevious(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPrevious(value *float64)()
 }

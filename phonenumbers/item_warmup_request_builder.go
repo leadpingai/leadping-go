@@ -21,7 +21,7 @@ type ItemWarmupRequestBuilderGetQueryParameters struct {
     // The start date.
     StartDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly "uriparametername:\"startDate\""
     // The window days.
-    WindowDays *string "uriparametername:\"windowDays\""
+    WindowDays *int32 "uriparametername:\"windowDays\""
 }
 // NewItemWarmupRequestBuilderInternal instantiates a new ItemWarmupRequestBuilder and sets the default values.
 func NewItemWarmupRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemWarmupRequestBuilder) {
@@ -40,6 +40,8 @@ func NewItemWarmupRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
 // returns a PhoneNumberStatusResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
+// returns a ProblemDetails error when the service returns a 403 status code
+// returns a ProblemDetails error when the service returns a 429 status code
 func (m *ItemWarmupRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemWarmupRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PhoneNumberStatusResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -48,6 +50,8 @@ func (m *ItemWarmupRequestBuilder) Get(ctx context.Context, requestConfiguration
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
         "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
         "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreatePhoneNumberStatusResponseFromDiscriminatorValue, errorMapping)
     if err != nil {

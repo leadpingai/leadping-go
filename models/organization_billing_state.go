@@ -27,13 +27,13 @@ type OrganizationBillingState struct {
     // UTC timestamp when Leadping last processed a subscription event for the organization.
     lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Number of user licenses currently assigned to organization members.
-    organizationMemberAssignedQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    organizationMemberAssignedQuantity *int64
     // Number of user licenses included in the organization's subscription plan.
-    organizationMemberQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    organizationMemberQuantity *int64
     // Defines the supported Billing Plan values.
     pendingBillingPlan *OrganizationBillingState_pendingBillingPlan
     // Number of phone numbers included in the organization's subscription plan.
-    phoneNumberQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    phoneNumberQuantity *int64
     // Start of the current plan billing period.
     planPeriodStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current plan renewal date.
@@ -146,22 +146,22 @@ func (m *OrganizationBillingState) GetFieldDeserializers()(map[string]func(i878a
         return nil
     }
     res["organizationMemberAssignedQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetOrganizationMemberAssignedQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetOrganizationMemberAssignedQuantity(val)
         }
         return nil
     }
     res["organizationMemberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetOrganizationMemberQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetOrganizationMemberQuantity(val)
         }
         return nil
     }
@@ -176,12 +176,12 @@ func (m *OrganizationBillingState) GetFieldDeserializers()(map[string]func(i878a
         return nil
     }
     res["phoneNumberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetPhoneNumberQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetPhoneNumberQuantity(val)
         }
         return nil
     }
@@ -228,13 +228,13 @@ func (m *OrganizationBillingState) GetLastSubscriptionEventAt()(*i336074805fc853
     return m.lastSubscriptionEventAt
 }
 // GetOrganizationMemberAssignedQuantity gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
-// returns a UntypedNodeable when successful
-func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity()(*int64) {
     return m.organizationMemberAssignedQuantity
 }
 // GetOrganizationMemberQuantity gets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
-// returns a UntypedNodeable when successful
-func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(*int64) {
     return m.organizationMemberQuantity
 }
 // GetPendingBillingPlan gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
@@ -243,8 +243,8 @@ func (m *OrganizationBillingState) GetPendingBillingPlan()(*OrganizationBillingS
     return m.pendingBillingPlan
 }
 // GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
-// returns a UntypedNodeable when successful
-func (m *OrganizationBillingState) GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int64 when successful
+func (m *OrganizationBillingState) GetPhoneNumberQuantity()(*int64) {
     return m.phoneNumberQuantity
 }
 // GetPlanPeriodStartAt gets the planPeriodStartAt property value. Start of the current plan billing period.
@@ -302,13 +302,13 @@ func (m *OrganizationBillingState) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteObjectValue("organizationMemberAssignedQuantity", m.GetOrganizationMemberAssignedQuantity())
+        err := writer.WriteInt64Value("organizationMemberAssignedQuantity", m.GetOrganizationMemberAssignedQuantity())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteObjectValue("organizationMemberQuantity", m.GetOrganizationMemberQuantity())
+        err := writer.WriteInt64Value("organizationMemberQuantity", m.GetOrganizationMemberQuantity())
         if err != nil {
             return err
         }
@@ -321,7 +321,7 @@ func (m *OrganizationBillingState) Serialize(writer i878a80d2330e89d26896388a3f4
         }
     }
     {
-        err := writer.WriteObjectValue("phoneNumberQuantity", m.GetPhoneNumberQuantity())
+        err := writer.WriteInt64Value("phoneNumberQuantity", m.GetPhoneNumberQuantity())
         if err != nil {
             return err
         }
@@ -379,11 +379,11 @@ func (m *OrganizationBillingState) SetLastSubscriptionEventAt(value *i336074805f
     m.lastSubscriptionEventAt = value
 }
 // SetOrganizationMemberAssignedQuantity sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
-func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *int64)() {
     m.organizationMemberAssignedQuantity = value
 }
 // SetOrganizationMemberQuantity sets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
-func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64)() {
     m.organizationMemberQuantity = value
 }
 // SetPendingBillingPlan sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
@@ -391,7 +391,7 @@ func (m *OrganizationBillingState) SetPendingBillingPlan(value *OrganizationBill
     m.pendingBillingPlan = value
 }
 // SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
-func (m *OrganizationBillingState) SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *OrganizationBillingState) SetPhoneNumberQuantity(value *int64)() {
     m.phoneNumberQuantity = value
 }
 // SetPlanPeriodStartAt sets the planPeriodStartAt property value. Start of the current plan billing period.
@@ -412,10 +412,10 @@ type OrganizationBillingStateable interface {
     GetHasStripeCustomer()(*bool)
     GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOrganizationMemberAssignedQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetOrganizationMemberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetOrganizationMemberAssignedQuantity()(*int64)
+    GetOrganizationMemberQuantity()(*int64)
     GetPendingBillingPlan()(*OrganizationBillingState_pendingBillingPlan)
-    GetPhoneNumberQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetPhoneNumberQuantity()(*int64)
     GetPlanPeriodStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
@@ -425,10 +425,10 @@ type OrganizationBillingStateable interface {
     SetHasStripeCustomer(value *bool)()
     SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOrganizationMemberAssignedQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetOrganizationMemberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetOrganizationMemberAssignedQuantity(value *int64)()
+    SetOrganizationMemberQuantity(value *int64)()
     SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)()
-    SetPhoneNumberQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetPhoneNumberQuantity(value *int64)()
     SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
 }

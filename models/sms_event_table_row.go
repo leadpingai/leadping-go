@@ -17,7 +17,7 @@ type SmsEventTableRow struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    billableAmount *float64
     // Billing state for this communication, charge, or transaction.
     billingStatus *string
     // UTC timestamp when Leadping blocked this communication.
@@ -123,8 +123,8 @@ func (m *SmsEventTableRow) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *SmsEventTableRow) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *float64 when successful
+func (m *SmsEventTableRow) GetBillableAmount()(*float64) {
     return m.billableAmount
 }
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -217,12 +217,12 @@ func (m *SmsEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetFloat64Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetBillableAmount(val)
         }
         return nil
     }
@@ -760,7 +760,7 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
         }
     }
     {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
+        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
         if err != nil {
             return err
         }
@@ -1029,7 +1029,7 @@ func (m *SmsEventTableRow) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *SmsEventTableRow) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SmsEventTableRow) SetBillableAmount(value *float64)() {
     m.billableAmount = value
 }
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
@@ -1189,7 +1189,7 @@ type SmsEventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetActorDisplayName()(*string)
     GetActorUserId()(*string)
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetBillableAmount()(*float64)
     GetBillingStatus()(*string)
     GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1230,7 +1230,7 @@ type SmsEventTableRowable interface {
     GetUserName()(*string)
     SetActorDisplayName(value *string)()
     SetActorUserId(value *string)()
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetBillableAmount(value *float64)()
     SetBillingStatus(value *string)()
     SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

@@ -12,7 +12,7 @@ type SmsReadinessStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The health score metric for this SMS warmup status.
-    healthScore i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    healthScore *int32
     // The current delivery-health assessment for this SMS warmup status.
     healthStatus *SmsReadinessHealthStatus
     // The phone number associated with this SMS warmup status.
@@ -20,7 +20,7 @@ type SmsReadinessStatusResponse struct {
     // The phone number ID associated with this SMS warmup status.
     phoneNumberId *string
     // The progress percent metric for this SMS warmup status.
-    progressPercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+    progressPercent *int32
     // The current state for this SMS warmup status.
     status *SmsReadinessState
     // The current UI state for this SMS warmup status.
@@ -50,12 +50,12 @@ func (m *SmsReadinessStatusResponse) GetAdditionalData()(map[string]any) {
 func (m *SmsReadinessStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["healthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetHealthScore(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetHealthScore(val)
         }
         return nil
     }
@@ -90,12 +90,12 @@ func (m *SmsReadinessStatusResponse) GetFieldDeserializers()(map[string]func(i87
         return nil
     }
     res["progressPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
+        val, err := n.GetInt32Value()
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetProgressPercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
+            m.SetProgressPercent(val)
         }
         return nil
     }
@@ -132,8 +132,8 @@ func (m *SmsReadinessStatusResponse) GetFieldDeserializers()(map[string]func(i87
     return res
 }
 // GetHealthScore gets the healthScore property value. The health score metric for this SMS warmup status.
-// returns a UntypedNodeable when successful
-func (m *SmsReadinessStatusResponse) GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *SmsReadinessStatusResponse) GetHealthScore()(*int32) {
     return m.healthScore
 }
 // GetHealthStatus gets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
@@ -152,8 +152,8 @@ func (m *SmsReadinessStatusResponse) GetPhoneNumberId()(*string) {
     return m.phoneNumberId
 }
 // GetProgressPercent gets the progressPercent property value. The progress percent metric for this SMS warmup status.
-// returns a UntypedNodeable when successful
-func (m *SmsReadinessStatusResponse) GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
+// returns a *int32 when successful
+func (m *SmsReadinessStatusResponse) GetProgressPercent()(*int32) {
     return m.progressPercent
 }
 // GetStatus gets the status property value. The current state for this SMS warmup status.
@@ -174,7 +174,7 @@ func (m *SmsReadinessStatusResponse) GetWarmupEnabled()(*bool) {
 // Serialize serializes information the current object
 func (m *SmsReadinessStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteObjectValue("healthScore", m.GetHealthScore())
+        err := writer.WriteInt32Value("healthScore", m.GetHealthScore())
         if err != nil {
             return err
         }
@@ -199,7 +199,7 @@ func (m *SmsReadinessStatusResponse) Serialize(writer i878a80d2330e89d26896388a3
         }
     }
     {
-        err := writer.WriteObjectValue("progressPercent", m.GetProgressPercent())
+        err := writer.WriteInt32Value("progressPercent", m.GetProgressPercent())
         if err != nil {
             return err
         }
@@ -236,7 +236,7 @@ func (m *SmsReadinessStatusResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetHealthScore sets the healthScore property value. The health score metric for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SmsReadinessStatusResponse) SetHealthScore(value *int32)() {
     m.healthScore = value
 }
 // SetHealthStatus sets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
@@ -252,7 +252,7 @@ func (m *SmsReadinessStatusResponse) SetPhoneNumberId(value *string)() {
     m.phoneNumberId = value
 }
 // SetProgressPercent sets the progressPercent property value. The progress percent metric for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
+func (m *SmsReadinessStatusResponse) SetProgressPercent(value *int32)() {
     m.progressPercent = value
 }
 // SetStatus sets the status property value. The current state for this SMS warmup status.
@@ -270,19 +270,19 @@ func (m *SmsReadinessStatusResponse) SetWarmupEnabled(value *bool)() {
 type SmsReadinessStatusResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetHealthScore()(*int32)
     GetHealthStatus()(*SmsReadinessHealthStatus)
     GetPhoneNumber()(*string)
     GetPhoneNumberId()(*string)
-    GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
+    GetProgressPercent()(*int32)
     GetStatus()(*SmsReadinessState)
     GetUiState()(SmsReadinessUiStateable)
     GetWarmupEnabled()(*bool)
-    SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetHealthScore(value *int32)()
     SetHealthStatus(value *SmsReadinessHealthStatus)()
     SetPhoneNumber(value *string)()
     SetPhoneNumberId(value *string)()
-    SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+    SetProgressPercent(value *int32)()
     SetStatus(value *SmsReadinessState)()
     SetUiState(value SmsReadinessUiStateable)()
     SetWarmupEnabled(value *bool)()
