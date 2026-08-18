@@ -17,7 +17,7 @@ type LeadRequest struct {
     customer LeadProfileable
     // Indicates whether this lead request is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity, when updating an existing entity.
+    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     id *string
     // Structured metadata used for attribution, integrations, and reporting on this lead request.
     metadata LeadMetadataable
@@ -146,7 +146,7 @@ func (m *LeadRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
+// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
 func (m *LeadRequest) GetId()(*string) {
     return m.id
@@ -234,7 +234,7 @@ func (m *LeadRequest) SetCustomer(value LeadProfileable)() {
 func (m *LeadRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
+// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 func (m *LeadRequest) SetId(value *string)() {
     m.id = value
 }

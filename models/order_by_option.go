@@ -11,7 +11,7 @@ import (
 type OrderByOption struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // An enumerator for sort direction during querying
+    // Identifies whether query results are ordered from lower to higher values or from higher to lower values.
     direction *OrderByOption_direction
     // Serializable field name used for sorting; supported names are determined by the queried resource.
     field *string
@@ -33,7 +33,7 @@ func CreateOrderByOptionFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *OrderByOption) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetDirection gets the direction property value. An enumerator for sort direction during querying
+// GetDirection gets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
 // returns a *OrderByOption_direction when successful
 func (m *OrderByOption) GetDirection()(*OrderByOption_direction) {
     return m.direction
@@ -96,7 +96,7 @@ func (m *OrderByOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *OrderByOption) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetDirection sets the direction property value. An enumerator for sort direction during querying
+// SetDirection sets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
 func (m *OrderByOption) SetDirection(value *OrderByOption_direction)() {
     m.direction = value
 }

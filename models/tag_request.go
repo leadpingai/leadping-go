@@ -15,7 +15,7 @@ type TagRequest struct {
     color *string
     // Human-readable description that explains this tag request to API users.
     description *string
-    // The unique identifier for the entity, when updating an existing entity.
+    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     id *string
     // Display name for this tag request in the Leadping API.
     name *string
@@ -93,7 +93,7 @@ func (m *TagRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
+// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
 func (m *TagRequest) GetId()(*string) {
     return m.id
@@ -149,7 +149,7 @@ func (m *TagRequest) SetColor(value *string)() {
 func (m *TagRequest) SetDescription(value *string)() {
     m.description = value
 }
-// SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
+// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 func (m *TagRequest) SetId(value *string)() {
     m.id = value
 }

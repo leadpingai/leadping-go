@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// An enumerator for sort direction during querying
+// Identifies whether query results are ordered from lower to higher values or from higher to lower values.
 type OrderByOption_direction int
 
 const (

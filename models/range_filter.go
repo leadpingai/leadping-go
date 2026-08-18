@@ -7,19 +7,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// RangeFilter a generic object for handling range filtering during querying
+// RangeFilter selects records by applying inclusive or exclusive lower and upper bounds to a named comparable field.
 type RangeFilter struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The field to filter by.
+    // Serializable field name to evaluate; supported names are determined by the queried resource.
     field *string
-    // The exclusive lower bound for the field value.
+    // Exclusive lower bound; matching field values must be greater than this value.
     greaterThan i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The inclusive lower bound for the field value.
+    // Inclusive lower bound; matching field values must be greater than or equal to this value.
     greaterThanOrEqual i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The exclusive upper bound for the field value.
+    // Exclusive upper bound; matching field values must be less than this value.
     lessThan i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The inclusive upper bound for the field value.
+    // Inclusive upper bound; matching field values must be less than or equal to this value.
     lessThanOrEqual i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewRangeFilter instantiates a new RangeFilter and sets the default values.
@@ -39,7 +39,7 @@ func CreateRangeFilterFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *RangeFilter) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetField gets the field property value. The field to filter by.
+// GetField gets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
 // returns a *string when successful
 func (m *RangeFilter) GetField()(*string) {
     return m.field
@@ -100,22 +100,22 @@ func (m *RangeFilter) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetGreaterThan gets the greaterThan property value. The exclusive lower bound for the field value.
+// GetGreaterThan gets the greaterThan property value. Exclusive lower bound; matching field values must be greater than this value.
 // returns a UntypedNodeable when successful
 func (m *RangeFilter) GetGreaterThan()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.greaterThan
 }
-// GetGreaterThanOrEqual gets the greaterThanOrEqual property value. The inclusive lower bound for the field value.
+// GetGreaterThanOrEqual gets the greaterThanOrEqual property value. Inclusive lower bound; matching field values must be greater than or equal to this value.
 // returns a UntypedNodeable when successful
 func (m *RangeFilter) GetGreaterThanOrEqual()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.greaterThanOrEqual
 }
-// GetLessThan gets the lessThan property value. The exclusive upper bound for the field value.
+// GetLessThan gets the lessThan property value. Exclusive upper bound; matching field values must be less than this value.
 // returns a UntypedNodeable when successful
 func (m *RangeFilter) GetLessThan()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.lessThan
 }
-// GetLessThanOrEqual gets the lessThanOrEqual property value. The inclusive upper bound for the field value.
+// GetLessThanOrEqual gets the lessThanOrEqual property value. Inclusive upper bound; matching field values must be less than or equal to this value.
 // returns a UntypedNodeable when successful
 func (m *RangeFilter) GetLessThanOrEqual()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.lessThanOrEqual
@@ -164,23 +164,23 @@ func (m *RangeFilter) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *RangeFilter) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetField sets the field property value. The field to filter by.
+// SetField sets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
 func (m *RangeFilter) SetField(value *string)() {
     m.field = value
 }
-// SetGreaterThan sets the greaterThan property value. The exclusive lower bound for the field value.
+// SetGreaterThan sets the greaterThan property value. Exclusive lower bound; matching field values must be greater than this value.
 func (m *RangeFilter) SetGreaterThan(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.greaterThan = value
 }
-// SetGreaterThanOrEqual sets the greaterThanOrEqual property value. The inclusive lower bound for the field value.
+// SetGreaterThanOrEqual sets the greaterThanOrEqual property value. Inclusive lower bound; matching field values must be greater than or equal to this value.
 func (m *RangeFilter) SetGreaterThanOrEqual(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.greaterThanOrEqual = value
 }
-// SetLessThan sets the lessThan property value. The exclusive upper bound for the field value.
+// SetLessThan sets the lessThan property value. Exclusive upper bound; matching field values must be less than this value.
 func (m *RangeFilter) SetLessThan(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.lessThan = value
 }
-// SetLessThanOrEqual sets the lessThanOrEqual property value. The inclusive upper bound for the field value.
+// SetLessThanOrEqual sets the lessThanOrEqual property value. Inclusive upper bound; matching field values must be less than or equal to this value.
 func (m *RangeFilter) SetLessThanOrEqual(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.lessThanOrEqual = value
 }

@@ -35,7 +35,7 @@ type OrganizationRequest struct {
     einDocument OrganizationRequest_einDocumentable
     // Indicates whether this organization profile request is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity, when updating an existing entity.
+    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     id *string
     // Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
     isYoungerThan90 *bool
@@ -353,7 +353,7 @@ func (m *OrganizationRequest) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
+// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
 func (m *OrganizationRequest) GetId()(*string) {
     return m.id
@@ -593,7 +593,7 @@ func (m *OrganizationRequest) SetEinDocument(value OrganizationRequest_einDocume
 func (m *OrganizationRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
+// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 func (m *OrganizationRequest) SetId(value *string)() {
     m.id = value
 }

@@ -11,7 +11,7 @@ import (
 type ExactMatchFilter struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The field to filter by.
+    // Serializable field name to evaluate; supported names are determined by the queried resource.
     field *string
     // Scalar value the target field must equal; its JSON type should match the field being queried.
     value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
@@ -33,7 +33,7 @@ func CreateExactMatchFilterFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 func (m *ExactMatchFilter) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetField gets the field property value. The field to filter by.
+// GetField gets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
 // returns a *string when successful
 func (m *ExactMatchFilter) GetField()(*string) {
     return m.field
@@ -95,7 +95,7 @@ func (m *ExactMatchFilter) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *ExactMatchFilter) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetField sets the field property value. The field to filter by.
+// SetField sets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
 func (m *ExactMatchFilter) SetField(value *string)() {
     m.field = value
 }

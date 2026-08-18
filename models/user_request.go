@@ -21,7 +21,7 @@ type UserRequest struct {
     email *string
     // First name of the lead, user, or contact represented by this user profile request.
     firstName *string
-    // The unique identifier for the entity, when updating an existing entity.
+    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     id *string
     // Last name of the lead, user, or contact represented by this user profile request.
     lastName *string
@@ -210,7 +210,7 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *UserRequest) GetFirstName()(*string) {
     return m.firstName
 }
-// GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
+// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
 func (m *UserRequest) GetId()(*string) {
     return m.id
@@ -358,7 +358,7 @@ func (m *UserRequest) SetEmail(value *string)() {
 func (m *UserRequest) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
+// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 func (m *UserRequest) SetId(value *string)() {
     m.id = value
 }

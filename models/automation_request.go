@@ -21,7 +21,7 @@ type AutomationRequest struct {
     description *string
     // Indicates whether this automation configuration request is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity, when updating an existing entity.
+    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     id *string
     // Human-readable display name for the resource, subject to the API's maximum name length.
     name *string
@@ -216,7 +216,7 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity, when updating an existing entity.
+// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
 func (m *AutomationRequest) GetId()(*string) {
     return m.id
@@ -370,7 +370,7 @@ func (m *AutomationRequest) SetDescription(value *string)() {
 func (m *AutomationRequest) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity, when updating an existing entity.
+// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 func (m *AutomationRequest) SetId(value *string)() {
     m.id = value
 }
