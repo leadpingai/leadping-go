@@ -66,7 +66,7 @@ type SmsResponse struct {
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Reason Leadping scheduled this delivery for a later time.
     scheduledReason *string
-    // Defines the supported Outgoing Number Selection Reason values.
+    // Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     selectionReason *SmsResponse_selectionReason
     // UTC timestamp when Leadping began sending this message.
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -74,13 +74,13 @@ type SmsResponse struct {
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Lead source ID used for attribution and sender selection on this SMS message.
     sourceId *string
-    // Defines the supported SMS Message Status values.
+    // Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
     status *SmsResponse_status
     // Human-readable reason explaining the current status of this SMS message.
     statusReason *string
     // Body text for the SMS message or communication represented by this SMS message.
     text *string
-    // Defines the supported SMS Traffic Type values.
+    // Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     trafficType *SmsResponse_trafficType
     // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -627,7 +627,7 @@ func (m *SmsResponse) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f307
 func (m *SmsResponse) GetScheduledReason()(*string) {
     return m.scheduledReason
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *SmsResponse_selectionReason when successful
 func (m *SmsResponse) GetSelectionReason()(*SmsResponse_selectionReason) {
     return m.selectionReason
@@ -647,7 +647,7 @@ func (m *SmsResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a1639
 func (m *SmsResponse) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetStatus gets the status property value. Defines the supported SMS Message Status values.
+// GetStatus gets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 // returns a *SmsResponse_status when successful
 func (m *SmsResponse) GetStatus()(*SmsResponse_status) {
     return m.status
@@ -662,7 +662,7 @@ func (m *SmsResponse) GetStatusReason()(*string) {
 func (m *SmsResponse) GetText()(*string) {
     return m.text
 }
-// GetTrafficType gets the trafficType property value. Defines the supported SMS Traffic Type values.
+// GetTrafficType gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 // returns a *SmsResponse_trafficType when successful
 func (m *SmsResponse) GetTrafficType()(*SmsResponse_trafficType) {
     return m.trafficType
@@ -1036,7 +1036,7 @@ func (m *SmsResponse) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6
 func (m *SmsResponse) SetScheduledReason(value *string)() {
     m.scheduledReason = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 func (m *SmsResponse) SetSelectionReason(value *SmsResponse_selectionReason)() {
     m.selectionReason = value
 }
@@ -1052,7 +1052,7 @@ func (m *SmsResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a
 func (m *SmsResponse) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetStatus sets the status property value. Defines the supported SMS Message Status values.
+// SetStatus sets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 func (m *SmsResponse) SetStatus(value *SmsResponse_status)() {
     m.status = value
 }
@@ -1064,7 +1064,7 @@ func (m *SmsResponse) SetStatusReason(value *string)() {
 func (m *SmsResponse) SetText(value *string)() {
     m.text = value
 }
-// SetTrafficType sets the trafficType property value. Defines the supported SMS Traffic Type values.
+// SetTrafficType sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 func (m *SmsResponse) SetTrafficType(value *SmsResponse_trafficType)() {
     m.trafficType = value
 }

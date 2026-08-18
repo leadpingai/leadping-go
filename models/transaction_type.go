@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Transaction Type values.
+// Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
 type TransactionType int
 
 const (

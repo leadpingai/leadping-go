@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Represents a gender classification used for demographic or identification purposes.
+// Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
 type LeadProfile_gender int
 
 const (

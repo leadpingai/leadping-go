@@ -14,11 +14,11 @@ type TransactionResponse struct {
     additionalData map[string]any
     // Monetary amount for this billing transaction or wallet operation.
     amount *float64
-    // Defines the supported Billable Unit values.
+    // Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
     billableUnit *TransactionResponse_billableUnit
     // Customer-facing amount billed for the transaction.
     billedAmount *float64
-    // Defines the supported Usage Channel values.
+    // Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
     billingChannel *TransactionResponse_billingChannel
     // The date and time when the entity was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -71,7 +71,7 @@ func (m *TransactionResponse) GetAdditionalData()(map[string]any) {
 func (m *TransactionResponse) GetAmount()(*float64) {
     return m.amount
 }
-// GetBillableUnit gets the billableUnit property value. Defines the supported Billable Unit values.
+// GetBillableUnit gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 // returns a *TransactionResponse_billableUnit when successful
 func (m *TransactionResponse) GetBillableUnit()(*TransactionResponse_billableUnit) {
     return m.billableUnit
@@ -81,7 +81,7 @@ func (m *TransactionResponse) GetBillableUnit()(*TransactionResponse_billableUni
 func (m *TransactionResponse) GetBilledAmount()(*float64) {
     return m.billedAmount
 }
-// GetBillingChannel gets the billingChannel property value. Defines the supported Usage Channel values.
+// GetBillingChannel gets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 // returns a *TransactionResponse_billingChannel when successful
 func (m *TransactionResponse) GetBillingChannel()(*TransactionResponse_billingChannel) {
     return m.billingChannel
@@ -472,7 +472,7 @@ func (m *TransactionResponse) SetAdditionalData(value map[string]any)() {
 func (m *TransactionResponse) SetAmount(value *float64)() {
     m.amount = value
 }
-// SetBillableUnit sets the billableUnit property value. Defines the supported Billable Unit values.
+// SetBillableUnit sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 func (m *TransactionResponse) SetBillableUnit(value *TransactionResponse_billableUnit)() {
     m.billableUnit = value
 }
@@ -480,7 +480,7 @@ func (m *TransactionResponse) SetBillableUnit(value *TransactionResponse_billabl
 func (m *TransactionResponse) SetBilledAmount(value *float64)() {
     m.billedAmount = value
 }
-// SetBillingChannel sets the billingChannel property value. Defines the supported Usage Channel values.
+// SetBillingChannel sets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 func (m *TransactionResponse) SetBillingChannel(value *TransactionResponse_billingChannel)() {
     m.billingChannel = value
 }

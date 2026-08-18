@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Subscription Status values.
+// Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 type UserResponse_subscriptionStatus int
 
 const (

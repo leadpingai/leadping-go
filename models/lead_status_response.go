@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadStatusResponse represents a configurable status that can be assigned to leads.
+// LeadStatusResponse describes an organization-defined lead status used to classify pipeline progress, drive automation, and report lifecycle outcomes.
 type LeadStatusResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

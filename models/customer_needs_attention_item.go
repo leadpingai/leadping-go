@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerNeedsAttentionItem represents customer needs attention item data exposed by Leadping analytics.
+// CustomerNeedsAttentionItem identifies an organization-level issue or opportunity and provides severity, supporting context, and a recommended action.
 type CustomerNeedsAttentionItem struct {
     // Relative URL for the recommended follow-up action.
     actionHref *string

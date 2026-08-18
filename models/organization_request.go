@@ -47,7 +47,7 @@ type OrganizationRequest struct {
     phones []IdNameValueable
     // Alternate organization name or DBA shown in Leadping.
     secondaryName *string
-    // Defines the supported Organization Status values.
+    // Describes an organization's account lifecycle and whether it can actively use Leadping services.
     status *OrganizationRequest_status
     // Industry vertical used for lead routing, compliance review, and reporting.
     vertical *string
@@ -383,7 +383,7 @@ func (m *OrganizationRequest) GetPhones()([]IdNameValueable) {
 func (m *OrganizationRequest) GetSecondaryName()(*string) {
     return m.secondaryName
 }
-// GetStatus gets the status property value. Defines the supported Organization Status values.
+// GetStatus gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationRequest_status when successful
 func (m *OrganizationRequest) GetStatus()(*OrganizationRequest_status) {
     return m.status
@@ -617,7 +617,7 @@ func (m *OrganizationRequest) SetPhones(value []IdNameValueable)() {
 func (m *OrganizationRequest) SetSecondaryName(value *string)() {
     m.secondaryName = value
 }
-// SetStatus sets the status property value. Defines the supported Organization Status values.
+// SetStatus sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 func (m *OrganizationRequest) SetStatus(value *OrganizationRequest_status)() {
     m.status = value
 }

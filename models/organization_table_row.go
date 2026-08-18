@@ -12,7 +12,7 @@ import (
 type OrganizationTableRow struct {
     // Account balance for this organization.
     accountBalance *float64
-    // Defines the supported Customer Activation Status values.
+    // Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
     activationStatus *OrganizationTableRow_activationStatus
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -30,7 +30,7 @@ type OrganizationTableRow struct {
     apiKeyPreview *string
     // The total number of tracked uses for this organization API key.
     apiKeyTotalUses *int64
-    // Defines the supported Billing Plan values.
+    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     billingPlan *OrganizationTableRow_billingPlan
     // Whether this organization is enabled.
     enabled *bool
@@ -52,21 +52,21 @@ type OrganizationTableRow struct {
     paymentFailedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The phone number associated with this organization.
     phone *string
-    // Defines the supported Organization Setup Step values.
+    // Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
     setupStep *OrganizationTableRow_setupStep
-    // Defines the supported Organization Status values.
+    // Describes an organization's account lifecycle and whether it can actively use Leadping services.
     status *OrganizationTableRow_status
     // Date and time when this Leadping organization table row was subscription cancel.
     subscriptionCancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported Subscription Status values.
+    // Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     subscriptionStatus *OrganizationTableRow_subscriptionStatus
-    // Defines the supported 10DLC Application Status values.
+    // Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
     tenDlcStatus *OrganizationTableRow_tenDlcStatus
     // The user count for this organization.
     userCount *int32
     // The website URL associated with this organization.
     website *string
-    // Defines the supported Website Lifecycle Status values.
+    // Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
     websiteStatus *OrganizationTableRow_websiteStatus
 }
 // NewOrganizationTableRow instantiates a new OrganizationTableRow and sets the default values.
@@ -86,7 +86,7 @@ func CreateOrganizationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d
 func (m *OrganizationTableRow) GetAccountBalance()(*float64) {
     return m.accountBalance
 }
-// GetActivationStatus gets the activationStatus property value. Defines the supported Customer Activation Status values.
+// GetActivationStatus gets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 // returns a *OrganizationTableRow_activationStatus when successful
 func (m *OrganizationTableRow) GetActivationStatus()(*OrganizationTableRow_activationStatus) {
     return m.activationStatus
@@ -131,7 +131,7 @@ func (m *OrganizationTableRow) GetApiKeyPreview()(*string) {
 func (m *OrganizationTableRow) GetApiKeyTotalUses()(*int64) {
     return m.apiKeyTotalUses
 }
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *OrganizationTableRow_billingPlan when successful
 func (m *OrganizationTableRow) GetBillingPlan()(*OrganizationTableRow_billingPlan) {
     return m.billingPlan
@@ -478,12 +478,12 @@ func (m *OrganizationTableRow) GetPaymentFailedAt()(*i336074805fc853987abe6f7fe3
 func (m *OrganizationTableRow) GetPhone()(*string) {
     return m.phone
 }
-// GetSetupStep gets the setupStep property value. Defines the supported Organization Setup Step values.
+// GetSetupStep gets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 // returns a *OrganizationTableRow_setupStep when successful
 func (m *OrganizationTableRow) GetSetupStep()(*OrganizationTableRow_setupStep) {
     return m.setupStep
 }
-// GetStatus gets the status property value. Defines the supported Organization Status values.
+// GetStatus gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationTableRow_status when successful
 func (m *OrganizationTableRow) GetStatus()(*OrganizationTableRow_status) {
     return m.status
@@ -493,12 +493,12 @@ func (m *OrganizationTableRow) GetStatus()(*OrganizationTableRow_status) {
 func (m *OrganizationTableRow) GetSubscriptionCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.subscriptionCancelAt
 }
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// GetSubscriptionStatus gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 // returns a *OrganizationTableRow_subscriptionStatus when successful
 func (m *OrganizationTableRow) GetSubscriptionStatus()(*OrganizationTableRow_subscriptionStatus) {
     return m.subscriptionStatus
 }
-// GetTenDlcStatus gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+// GetTenDlcStatus gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 // returns a *OrganizationTableRow_tenDlcStatus when successful
 func (m *OrganizationTableRow) GetTenDlcStatus()(*OrganizationTableRow_tenDlcStatus) {
     return m.tenDlcStatus
@@ -513,7 +513,7 @@ func (m *OrganizationTableRow) GetUserCount()(*int32) {
 func (m *OrganizationTableRow) GetWebsite()(*string) {
     return m.website
 }
-// GetWebsiteStatus gets the websiteStatus property value. Defines the supported Website Lifecycle Status values.
+// GetWebsiteStatus gets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
 // returns a *OrganizationTableRow_websiteStatus when successful
 func (m *OrganizationTableRow) GetWebsiteStatus()(*OrganizationTableRow_websiteStatus) {
     return m.websiteStatus
@@ -707,7 +707,7 @@ func (m *OrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
 func (m *OrganizationTableRow) SetAccountBalance(value *float64)() {
     m.accountBalance = value
 }
-// SetActivationStatus sets the activationStatus property value. Defines the supported Customer Activation Status values.
+// SetActivationStatus sets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 func (m *OrganizationTableRow) SetActivationStatus(value *OrganizationTableRow_activationStatus)() {
     m.activationStatus = value
 }
@@ -743,7 +743,7 @@ func (m *OrganizationTableRow) SetApiKeyPreview(value *string)() {
 func (m *OrganizationTableRow) SetApiKeyTotalUses(value *int64)() {
     m.apiKeyTotalUses = value
 }
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *OrganizationTableRow) SetBillingPlan(value *OrganizationTableRow_billingPlan)() {
     m.billingPlan = value
 }
@@ -787,11 +787,11 @@ func (m *OrganizationTableRow) SetPaymentFailedAt(value *i336074805fc853987abe6f
 func (m *OrganizationTableRow) SetPhone(value *string)() {
     m.phone = value
 }
-// SetSetupStep sets the setupStep property value. Defines the supported Organization Setup Step values.
+// SetSetupStep sets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 func (m *OrganizationTableRow) SetSetupStep(value *OrganizationTableRow_setupStep)() {
     m.setupStep = value
 }
-// SetStatus sets the status property value. Defines the supported Organization Status values.
+// SetStatus sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 func (m *OrganizationTableRow) SetStatus(value *OrganizationTableRow_status)() {
     m.status = value
 }
@@ -799,11 +799,11 @@ func (m *OrganizationTableRow) SetStatus(value *OrganizationTableRow_status)() {
 func (m *OrganizationTableRow) SetSubscriptionCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.subscriptionCancelAt = value
 }
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// SetSubscriptionStatus sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 func (m *OrganizationTableRow) SetSubscriptionStatus(value *OrganizationTableRow_subscriptionStatus)() {
     m.subscriptionStatus = value
 }
-// SetTenDlcStatus sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+// SetTenDlcStatus sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 func (m *OrganizationTableRow) SetTenDlcStatus(value *OrganizationTableRow_tenDlcStatus)() {
     m.tenDlcStatus = value
 }
@@ -815,7 +815,7 @@ func (m *OrganizationTableRow) SetUserCount(value *int32)() {
 func (m *OrganizationTableRow) SetWebsite(value *string)() {
     m.website = value
 }
-// SetWebsiteStatus sets the websiteStatus property value. Defines the supported Website Lifecycle Status values.
+// SetWebsiteStatus sets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
 func (m *OrganizationTableRow) SetWebsiteStatus(value *OrganizationTableRow_websiteStatus)() {
     m.websiteStatus = value
 }

@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadStatusChangeRequest request model for creating or updating a lead status change.
+// LeadStatusChangeRequest defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
 type LeadStatusChangeRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

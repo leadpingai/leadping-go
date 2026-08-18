@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Billable Unit values.
+// Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 type BillableUnit int
 
 const (

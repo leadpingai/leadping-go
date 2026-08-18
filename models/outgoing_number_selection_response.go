@@ -21,7 +21,7 @@ type OutgoingNumberSelectionResponse struct {
     eligibleNumbers []EligibleOutgoingNumberResponseable
     // Short label describing the health state for display in dashboards.
     healthLabel *string
-    // Defines the supported SMS readiness health assessments.
+    // Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
     healthStatus *OutgoingNumberSelectionResponse_healthStatus
     // Warning text that explains a potential health or readiness issue.
     healthWarning *string
@@ -31,7 +31,7 @@ type OutgoingNumberSelectionResponse struct {
     phoneNumberId *string
     // Human-readable label for the reason code on this outgoing number selection response.
     reasonLabel *string
-    // Defines the supported Outgoing Number Selection Reason values.
+    // Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     selectionReason *OutgoingNumberSelectionResponse_selectionReason
     // Human-readable setup guidance shown for this outgoing number selection response.
     setupMessage *string
@@ -234,7 +234,7 @@ func (m *OutgoingNumberSelectionResponse) GetFieldDeserializers()(map[string]fun
 func (m *OutgoingNumberSelectionResponse) GetHealthLabel()(*string) {
     return m.healthLabel
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+// GetHealthStatus gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 // returns a *OutgoingNumberSelectionResponse_healthStatus when successful
 func (m *OutgoingNumberSelectionResponse) GetHealthStatus()(*OutgoingNumberSelectionResponse_healthStatus) {
     return m.healthStatus
@@ -259,7 +259,7 @@ func (m *OutgoingNumberSelectionResponse) GetPhoneNumberId()(*string) {
 func (m *OutgoingNumberSelectionResponse) GetReasonLabel()(*string) {
     return m.reasonLabel
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *OutgoingNumberSelectionResponse_selectionReason when successful
 func (m *OutgoingNumberSelectionResponse) GetSelectionReason()(*OutgoingNumberSelectionResponse_selectionReason) {
     return m.selectionReason
@@ -405,7 +405,7 @@ func (m *OutgoingNumberSelectionResponse) SetEligibleNumbers(value []EligibleOut
 func (m *OutgoingNumberSelectionResponse) SetHealthLabel(value *string)() {
     m.healthLabel = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+// SetHealthStatus sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 func (m *OutgoingNumberSelectionResponse) SetHealthStatus(value *OutgoingNumberSelectionResponse_healthStatus)() {
     m.healthStatus = value
 }
@@ -425,7 +425,7 @@ func (m *OutgoingNumberSelectionResponse) SetPhoneNumberId(value *string)() {
 func (m *OutgoingNumberSelectionResponse) SetReasonLabel(value *string)() {
     m.reasonLabel = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 func (m *OutgoingNumberSelectionResponse) SetSelectionReason(value *OutgoingNumberSelectionResponse_selectionReason)() {
     m.selectionReason = value
 }

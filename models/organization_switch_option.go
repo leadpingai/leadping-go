@@ -10,7 +10,7 @@ import (
 
 // OrganizationSwitchOption describes organization switch option data used in Leadping API requests and responses.
 type OrganizationSwitchOption struct {
-    // Defines the supported Customer Activation Status values.
+    // Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
     activationStatus *OrganizationSwitchOption_activationStatus
     // Activation summary for this organization switch option.
     activationSummary *string
@@ -28,13 +28,13 @@ type OrganizationSwitchOption struct {
     name *string
     // Whether needs admin review applies to this organization switch option.
     needsAdminReview *bool
-    // Defines the supported Organization Status values.
+    // Describes an organization's account lifecycle and whether it can actively use Leadping services.
     organizationStatus *OrganizationSwitchOption_organizationStatus
     // Whether ready for customer traffic applies to this organization switch option.
     readyForCustomerTraffic *bool
     // Role for this organization switch option.
     role *OrganizationMemberRole
-    // Defines the supported 10DLC Application Status values.
+    // Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
     tenDlcStatus *OrganizationSwitchOption_tenDlcStatus
 }
 // NewOrganizationSwitchOption instantiates a new OrganizationSwitchOption and sets the default values.
@@ -49,7 +49,7 @@ func NewOrganizationSwitchOption()(*OrganizationSwitchOption) {
 func CreateOrganizationSwitchOptionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewOrganizationSwitchOption(), nil
 }
-// GetActivationStatus gets the activationStatus property value. Defines the supported Customer Activation Status values.
+// GetActivationStatus gets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 // returns a *OrganizationSwitchOption_activationStatus when successful
 func (m *OrganizationSwitchOption) GetActivationStatus()(*OrganizationSwitchOption_activationStatus) {
     return m.activationStatus
@@ -220,7 +220,7 @@ func (m *OrganizationSwitchOption) GetName()(*string) {
 func (m *OrganizationSwitchOption) GetNeedsAdminReview()(*bool) {
     return m.needsAdminReview
 }
-// GetOrganizationStatus gets the organizationStatus property value. Defines the supported Organization Status values.
+// GetOrganizationStatus gets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationSwitchOption_organizationStatus when successful
 func (m *OrganizationSwitchOption) GetOrganizationStatus()(*OrganizationSwitchOption_organizationStatus) {
     return m.organizationStatus
@@ -235,7 +235,7 @@ func (m *OrganizationSwitchOption) GetReadyForCustomerTraffic()(*bool) {
 func (m *OrganizationSwitchOption) GetRole()(*OrganizationMemberRole) {
     return m.role
 }
-// GetTenDlcStatus gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+// GetTenDlcStatus gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 // returns a *OrganizationSwitchOption_tenDlcStatus when successful
 func (m *OrganizationSwitchOption) GetTenDlcStatus()(*OrganizationSwitchOption_tenDlcStatus) {
     return m.tenDlcStatus
@@ -326,7 +326,7 @@ func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f4
     }
     return nil
 }
-// SetActivationStatus sets the activationStatus property value. Defines the supported Customer Activation Status values.
+// SetActivationStatus sets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 func (m *OrganizationSwitchOption) SetActivationStatus(value *OrganizationSwitchOption_activationStatus)() {
     m.activationStatus = value
 }
@@ -362,7 +362,7 @@ func (m *OrganizationSwitchOption) SetName(value *string)() {
 func (m *OrganizationSwitchOption) SetNeedsAdminReview(value *bool)() {
     m.needsAdminReview = value
 }
-// SetOrganizationStatus sets the organizationStatus property value. Defines the supported Organization Status values.
+// SetOrganizationStatus sets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 func (m *OrganizationSwitchOption) SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus)() {
     m.organizationStatus = value
 }
@@ -374,7 +374,7 @@ func (m *OrganizationSwitchOption) SetReadyForCustomerTraffic(value *bool)() {
 func (m *OrganizationSwitchOption) SetRole(value *OrganizationMemberRole)() {
     m.role = value
 }
-// SetTenDlcStatus sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+// SetTenDlcStatus sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 func (m *OrganizationSwitchOption) SetTenDlcStatus(value *OrganizationSwitchOption_tenDlcStatus)() {
     m.tenDlcStatus = value
 }

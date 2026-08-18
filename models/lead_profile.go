@@ -15,9 +15,9 @@ type LeadProfile struct {
     birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
     // Lead credit score range or score supplied by the intake source.
     creditScore *int32
-    // Defines the supported Employment Type values.
+    // Classifies a lead's reported employment arrangement for qualification and demographic workflows.
     employmentType *LeadProfile_employmentType
-    // Represents a gender classification used for demographic or identification purposes.
+    // Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
     gender *LeadProfile_gender
     // Indicates whether the lead reported bankruptcy history.
     hasBankruptcy *bool
@@ -29,7 +29,7 @@ type LeadProfile struct {
     income *int32
     // Indicates whether the lead owns their home.
     isHomeowner *bool
-    // Defines the supported Marital Status Type values.
+    // Classifies a lead's reported marital status when required by a qualification or integration workflow.
     maritalStatus *LeadProfile_maritalStatus
     // Number of months the lead has lived at the current residence.
     monthsAtResidence *int32
@@ -65,7 +65,7 @@ func (m *LeadProfile) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *LeadProfile) GetCreditScore()(*int32) {
     return m.creditScore
 }
-// GetEmploymentType gets the employmentType property value. Defines the supported Employment Type values.
+// GetEmploymentType gets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
 // returns a *LeadProfile_employmentType when successful
 func (m *LeadProfile) GetEmploymentType()(*LeadProfile_employmentType) {
     return m.employmentType
@@ -206,7 +206,7 @@ func (m *LeadProfile) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetGender gets the gender property value. Represents a gender classification used for demographic or identification purposes.
+// GetGender gets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
 // returns a *LeadProfile_gender when successful
 func (m *LeadProfile) GetGender()(*LeadProfile_gender) {
     return m.gender
@@ -236,7 +236,7 @@ func (m *LeadProfile) GetIncome()(*int32) {
 func (m *LeadProfile) GetIsHomeowner()(*bool) {
     return m.isHomeowner
 }
-// GetMaritalStatus gets the maritalStatus property value. Defines the supported Marital Status Type values.
+// GetMaritalStatus gets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
 // returns a *LeadProfile_maritalStatus when successful
 func (m *LeadProfile) GetMaritalStatus()(*LeadProfile_maritalStatus) {
     return m.maritalStatus
@@ -359,11 +359,11 @@ func (m *LeadProfile) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a
 func (m *LeadProfile) SetCreditScore(value *int32)() {
     m.creditScore = value
 }
-// SetEmploymentType sets the employmentType property value. Defines the supported Employment Type values.
+// SetEmploymentType sets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
 func (m *LeadProfile) SetEmploymentType(value *LeadProfile_employmentType)() {
     m.employmentType = value
 }
-// SetGender sets the gender property value. Represents a gender classification used for demographic or identification purposes.
+// SetGender sets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
 func (m *LeadProfile) SetGender(value *LeadProfile_gender)() {
     m.gender = value
 }
@@ -387,7 +387,7 @@ func (m *LeadProfile) SetIncome(value *int32)() {
 func (m *LeadProfile) SetIsHomeowner(value *bool)() {
     m.isHomeowner = value
 }
-// SetMaritalStatus sets the maritalStatus property value. Defines the supported Marital Status Type values.
+// SetMaritalStatus sets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
 func (m *LeadProfile) SetMaritalStatus(value *LeadProfile_maritalStatus)() {
     m.maritalStatus = value
 }

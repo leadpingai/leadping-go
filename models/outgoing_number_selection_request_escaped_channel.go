@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Outgoing Number Channel values.
+// Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
 type OutgoingNumberSelectionRequest_channel int
 
 const (

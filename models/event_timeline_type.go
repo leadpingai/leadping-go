@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Event timeline type values.
+// Classifies the kind of activity displayed in a lead or conversation event timeline.
 type EventTimelineType int
 
 const (

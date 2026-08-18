@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Organization Invitation Status values.
+// Describes the lifecycle of an organization membership invitation from issuance through acceptance, expiration, or revocation.
 type OrganizationInvitationStatus int
 
 const (

@@ -56,7 +56,7 @@ type EventDetailResponse struct {
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping sent this message to the provider.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported Event status values.
+    // Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
     status *EventDetailResponse_status
     // Human-readable reason explaining the current status of this event detail response.
     statusReason *string
@@ -64,7 +64,7 @@ type EventDetailResponse struct {
     summary *string
     // Timeline category used to group events for display and filtering.
     timelineCategory *string
-    // Defines the supported Event timeline type values.
+    // Classifies the kind of activity displayed in a lead or conversation event timeline.
     timelineType *EventDetailResponse_timelineType
     // Recipient phone number used for this communication.
     toPhoneNumber *string
@@ -530,7 +530,7 @@ func (m *EventDetailResponse) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3
 func (m *EventDetailResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
 }
-// GetStatus gets the status property value. Defines the supported Event status values.
+// GetStatus gets the status property value. Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
 // returns a *EventDetailResponse_status when successful
 func (m *EventDetailResponse) GetStatus()(*EventDetailResponse_status) {
     return m.status
@@ -550,7 +550,7 @@ func (m *EventDetailResponse) GetSummary()(*string) {
 func (m *EventDetailResponse) GetTimelineCategory()(*string) {
     return m.timelineCategory
 }
-// GetTimelineType gets the timelineType property value. Defines the supported Event timeline type values.
+// GetTimelineType gets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
 // returns a *EventDetailResponse_timelineType when successful
 func (m *EventDetailResponse) GetTimelineType()(*EventDetailResponse_timelineType) {
     return m.timelineType
@@ -876,7 +876,7 @@ func (m *EventDetailResponse) SetSendingStartedAt(value *i336074805fc853987abe6f
 func (m *EventDetailResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }
-// SetStatus sets the status property value. Defines the supported Event status values.
+// SetStatus sets the status property value. Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
 func (m *EventDetailResponse) SetStatus(value *EventDetailResponse_status)() {
     m.status = value
 }
@@ -892,7 +892,7 @@ func (m *EventDetailResponse) SetSummary(value *string)() {
 func (m *EventDetailResponse) SetTimelineCategory(value *string)() {
     m.timelineCategory = value
 }
-// SetTimelineType sets the timelineType property value. Defines the supported Event timeline type values.
+// SetTimelineType sets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
 func (m *EventDetailResponse) SetTimelineType(value *EventDetailResponse_timelineType)() {
     m.timelineType = value
 }

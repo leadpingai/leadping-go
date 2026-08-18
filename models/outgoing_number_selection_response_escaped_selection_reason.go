@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Outgoing Number Selection Reason values.
+// Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 type OutgoingNumberSelectionResponse_selectionReason int
 
 const (

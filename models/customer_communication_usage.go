@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerCommunicationUsage represents customer communication usage data exposed by Leadping analytics.
+// CustomerCommunicationUsage aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
 type CustomerCommunicationUsage struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Onboarding Status values.
+// Describes completion and blocking state for an organization's core Leadping onboarding requirements.
 type ActivationOnboardingStatus int
 
 const (

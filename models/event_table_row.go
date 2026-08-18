@@ -80,7 +80,7 @@ type EventTableRow struct {
     scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Reason Leadping scheduled this delivery for a later time.
     scheduledReason *string
-    // Defines the supported Outgoing Number Selection Reason values.
+    // Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     selectionReason *EventTableRow_selectionReason
     // UTC timestamp when Leadping began sending this message.
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -88,7 +88,7 @@ type EventTableRow struct {
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Lead source ID used for event attribution.
     sourceId *string
-    // Defines the supported Event timeline status values.
+    // Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
     status *EventTableRow_status
     // Human-readable reason explaining the current status of this event timeline table row.
     statusReason *string
@@ -100,7 +100,7 @@ type EventTableRow struct {
     timelineType *EventTimelineType
     // Recipient phone number used for this communication.
     toPhoneNumber *string
-    // Defines the supported SMS Traffic Type values.
+    // Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     trafficType *EventTableRow_trafficType
     // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -776,7 +776,7 @@ func (m *EventTableRow) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3
 func (m *EventTableRow) GetScheduledReason()(*string) {
     return m.scheduledReason
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *EventTableRow_selectionReason when successful
 func (m *EventTableRow) GetSelectionReason()(*EventTableRow_selectionReason) {
     return m.selectionReason
@@ -796,7 +796,7 @@ func (m *EventTableRow) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16
 func (m *EventTableRow) GetSourceId()(*string) {
     return m.sourceId
 }
-// GetStatus gets the status property value. Defines the supported Event timeline status values.
+// GetStatus gets the status property value. Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
 // returns a *EventTableRow_status when successful
 func (m *EventTableRow) GetStatus()(*EventTableRow_status) {
     return m.status
@@ -826,7 +826,7 @@ func (m *EventTableRow) GetTimelineType()(*EventTimelineType) {
 func (m *EventTableRow) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
 }
-// GetTrafficType gets the trafficType property value. Defines the supported SMS Traffic Type values.
+// GetTrafficType gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 // returns a *EventTableRow_trafficType when successful
 func (m *EventTableRow) GetTrafficType()(*EventTableRow_trafficType) {
     return m.trafficType
@@ -1283,7 +1283,7 @@ func (m *EventTableRow) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6
 func (m *EventTableRow) SetScheduledReason(value *string)() {
     m.scheduledReason = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 func (m *EventTableRow) SetSelectionReason(value *EventTableRow_selectionReason)() {
     m.selectionReason = value
 }
@@ -1299,7 +1299,7 @@ func (m *EventTableRow) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f307
 func (m *EventTableRow) SetSourceId(value *string)() {
     m.sourceId = value
 }
-// SetStatus sets the status property value. Defines the supported Event timeline status values.
+// SetStatus sets the status property value. Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
 func (m *EventTableRow) SetStatus(value *EventTableRow_status)() {
     m.status = value
 }
@@ -1323,7 +1323,7 @@ func (m *EventTableRow) SetTimelineType(value *EventTimelineType)() {
 func (m *EventTableRow) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }
-// SetTrafficType sets the trafficType property value. Defines the supported SMS Traffic Type values.
+// SetTrafficType sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 func (m *EventTableRow) SetTrafficType(value *EventTableRow_trafficType)() {
     m.trafficType = value
 }

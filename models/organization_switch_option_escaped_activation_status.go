@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Customer Activation Status values.
+// Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 type OrganizationSwitchOption_activationStatus int
 
 const (

@@ -28,7 +28,7 @@ type OrganizationResponse struct {
     billingAddress OrganizationResponse_billingAddressable
     // Name used for invoices, receipts, and payment processor billing records.
     billingName *string
-    // Defines the supported Billing Plan values.
+    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     billingPlan *OrganizationResponse_billingPlan
     // Customer-safe billing state for this organization.
     billingState OrganizationResponse_billingStateable
@@ -60,15 +60,15 @@ type OrganizationResponse struct {
     phones []IdNameValueable
     // Alternate organization name or DBA shown in Leadping.
     secondaryName *string
-    // Defines the supported User Setup Status values.
+    // Describes a user's progress through required Leadping profile and account setup tasks.
     setupStatus *OrganizationResponse_setupStatus
-    // Defines the supported Organization Setup Step values.
+    // Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
     setupStep *OrganizationResponse_setupStep
     // Leadping website record connected to this organization.
     site OrganizationResponse_siteable
-    // Defines the supported Organization Status values.
+    // Describes an organization's account lifecycle and whether it can actively use Leadping services.
     status *OrganizationResponse_status
-    // Defines the supported Subscription Status values.
+    // Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     subscriptionStatus *OrganizationResponse_subscriptionStatus
     // User summary connected to this organization profile response.
     user OrganizationResponse_userable
@@ -134,7 +134,7 @@ func (m *OrganizationResponse) GetBillingAddress()(OrganizationResponse_billingA
 func (m *OrganizationResponse) GetBillingName()(*string) {
     return m.billingName
 }
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *OrganizationResponse_billingPlan when successful
 func (m *OrganizationResponse) GetBillingPlan()(*OrganizationResponse_billingPlan) {
     return m.billingPlan
@@ -546,12 +546,12 @@ func (m *OrganizationResponse) GetPhones()([]IdNameValueable) {
 func (m *OrganizationResponse) GetSecondaryName()(*string) {
     return m.secondaryName
 }
-// GetSetupStatus gets the setupStatus property value. Defines the supported User Setup Status values.
+// GetSetupStatus gets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
 // returns a *OrganizationResponse_setupStatus when successful
 func (m *OrganizationResponse) GetSetupStatus()(*OrganizationResponse_setupStatus) {
     return m.setupStatus
 }
-// GetSetupStep gets the setupStep property value. Defines the supported Organization Setup Step values.
+// GetSetupStep gets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 // returns a *OrganizationResponse_setupStep when successful
 func (m *OrganizationResponse) GetSetupStep()(*OrganizationResponse_setupStep) {
     return m.setupStep
@@ -561,12 +561,12 @@ func (m *OrganizationResponse) GetSetupStep()(*OrganizationResponse_setupStep) {
 func (m *OrganizationResponse) GetSite()(OrganizationResponse_siteable) {
     return m.site
 }
-// GetStatus gets the status property value. Defines the supported Organization Status values.
+// GetStatus gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationResponse_status when successful
 func (m *OrganizationResponse) GetStatus()(*OrganizationResponse_status) {
     return m.status
 }
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// GetSubscriptionStatus gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 // returns a *OrganizationResponse_subscriptionStatus when successful
 func (m *OrganizationResponse) GetSubscriptionStatus()(*OrganizationResponse_subscriptionStatus) {
     return m.subscriptionStatus
@@ -835,7 +835,7 @@ func (m *OrganizationResponse) SetBillingAddress(value OrganizationResponse_bill
 func (m *OrganizationResponse) SetBillingName(value *string)() {
     m.billingName = value
 }
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *OrganizationResponse) SetBillingPlan(value *OrganizationResponse_billingPlan)() {
     m.billingPlan = value
 }
@@ -899,11 +899,11 @@ func (m *OrganizationResponse) SetPhones(value []IdNameValueable)() {
 func (m *OrganizationResponse) SetSecondaryName(value *string)() {
     m.secondaryName = value
 }
-// SetSetupStatus sets the setupStatus property value. Defines the supported User Setup Status values.
+// SetSetupStatus sets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
 func (m *OrganizationResponse) SetSetupStatus(value *OrganizationResponse_setupStatus)() {
     m.setupStatus = value
 }
-// SetSetupStep sets the setupStep property value. Defines the supported Organization Setup Step values.
+// SetSetupStep sets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 func (m *OrganizationResponse) SetSetupStep(value *OrganizationResponse_setupStep)() {
     m.setupStep = value
 }
@@ -911,11 +911,11 @@ func (m *OrganizationResponse) SetSetupStep(value *OrganizationResponse_setupSte
 func (m *OrganizationResponse) SetSite(value OrganizationResponse_siteable)() {
     m.site = value
 }
-// SetStatus sets the status property value. Defines the supported Organization Status values.
+// SetStatus sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 func (m *OrganizationResponse) SetStatus(value *OrganizationResponse_status)() {
     m.status = value
 }
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// SetSubscriptionStatus sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 func (m *OrganizationResponse) SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
 }

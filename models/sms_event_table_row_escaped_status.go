@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS Message Status values.
+// Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 type SmsEventTableRow_status int
 
 const (

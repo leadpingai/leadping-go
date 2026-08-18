@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Organization Setup Step values.
+// Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 type OrganizationResponse_setupStep int
 
 const (

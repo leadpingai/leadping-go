@@ -12,7 +12,7 @@ import (
 type UserResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Defines the supported Billing Plan values.
+    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     billingPlan *UserResponse_billingPlan
     // Customer-safe billing state for the user's currently selected organization.
     billingState UserResponse_billingStateable
@@ -54,7 +54,7 @@ type UserResponse struct {
     phone *string
     // The roles included with this user.
     roles []string
-    // Defines the supported Subscription Status values.
+    // Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     subscriptionStatus *UserResponse_subscriptionStatus
     // IANA time zone identifier used when displaying dates and times for this user.
     timeZoneId *string
@@ -76,7 +76,7 @@ func CreateUserResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *UserResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *UserResponse_billingPlan when successful
 func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
     return m.billingPlan
@@ -435,7 +435,7 @@ func (m *UserResponse) GetPhone()(*string) {
 func (m *UserResponse) GetRoles()([]string) {
     return m.roles
 }
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// GetSubscriptionStatus gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 // returns a *UserResponse_subscriptionStatus when successful
 func (m *UserResponse) GetSubscriptionStatus()(*UserResponse_subscriptionStatus) {
     return m.subscriptionStatus
@@ -611,7 +611,7 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *UserResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
     m.billingPlan = value
 }
@@ -695,7 +695,7 @@ func (m *UserResponse) SetPhone(value *string)() {
 func (m *UserResponse) SetRoles(value []string)() {
     m.roles = value
 }
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+// SetSubscriptionStatus sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 func (m *UserResponse) SetSubscriptionStatus(value *UserResponse_subscriptionStatus)() {
     m.subscriptionStatus = value
 }

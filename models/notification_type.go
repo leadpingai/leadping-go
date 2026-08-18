@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Notification Type values.
+// Identifies the Leadping workflow or account event communicated by a user notification.
 type NotificationType int
 
 const (

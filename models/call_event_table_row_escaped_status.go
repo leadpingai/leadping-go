@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Phone Call Status values.
+// Describes the durable business outcome of a Leadping phone call after provider status normalization.
 type CallEventTableRow_status int
 
 const (

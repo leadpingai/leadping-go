@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported voice call warmup stages for a Leadping-managed phone number.
+// Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
 type PhoneNumberReadiness_callStage int
 
 const (

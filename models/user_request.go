@@ -11,7 +11,7 @@ import (
 type UserRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Defines the supported Billing Plan values.
+    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     billingPlan *UserRequest_billingPlan
     // User compliance settings and attestations captured for Leadping account review.
     compliance UserRequest_complianceable
@@ -53,7 +53,7 @@ func CreateUserRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *UserRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *UserRequest_billingPlan when successful
 func (m *UserRequest) GetBillingPlan()(*UserRequest_billingPlan) {
     return m.billingPlan
@@ -338,7 +338,7 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *UserRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *UserRequest) SetBillingPlan(value *UserRequest_billingPlan)() {
     m.billingPlan = value
 }

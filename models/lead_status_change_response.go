@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadStatusChangeResponse response model for lead status change data.
+// LeadStatusChangeResponse describes an auditable lead status transition, including the previous and new status, source, actor, and effective time.
 type LeadStatusChangeResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

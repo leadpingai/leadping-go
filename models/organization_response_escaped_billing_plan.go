@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Billing Plan values.
+// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 type OrganizationResponse_billingPlan int
 
 const (

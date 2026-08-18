@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Marital Status Type values.
+// Classifies a lead's reported marital status when required by a qualification or integration workflow.
 type LeadProfile_maritalStatus int
 
 const (

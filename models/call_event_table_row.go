@@ -52,7 +52,7 @@ type CallEventTableRow struct {
     organizationName *string
     // URL for the call recording, when the provider makes one available.
     recordingUrl *string
-    // Defines the supported Phone Call Status values.
+    // Describes the durable business outcome of a Leadping phone call after provider status normalization.
     status *CallEventTableRow_status
     // Human-readable reason explaining the current status of this call event table row.
     statusReason *string
@@ -466,7 +466,7 @@ func (m *CallEventTableRow) GetOrganizationName()(*string) {
 func (m *CallEventTableRow) GetRecordingUrl()(*string) {
     return m.recordingUrl
 }
-// GetStatus gets the status property value. Defines the supported Phone Call Status values.
+// GetStatus gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 // returns a *CallEventTableRow_status when successful
 func (m *CallEventTableRow) GetStatus()(*CallEventTableRow_status) {
     return m.status
@@ -764,7 +764,7 @@ func (m *CallEventTableRow) SetOrganizationName(value *string)() {
 func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
     m.recordingUrl = value
 }
-// SetStatus sets the status property value. Defines the supported Phone Call Status values.
+// SetStatus sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status)() {
     m.status = value
 }

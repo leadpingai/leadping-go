@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerAnalyticsSummary represents customer analytics summary data exposed by Leadping analytics.
+// CustomerAnalyticsSummary summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
 type CustomerAnalyticsSummary struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

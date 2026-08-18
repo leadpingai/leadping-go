@@ -13,7 +13,7 @@ type OutgoingNumberSelectionRequest struct {
     additionalData map[string]any
     // Messaging campaign identifier associated with this outgoing number selection request.
     campaignId *string
-    // Defines the supported Outgoing Number Channel values.
+    // Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
     channel *OutgoingNumberSelectionRequest_channel
     // Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
     conversationId *string
@@ -48,7 +48,7 @@ func (m *OutgoingNumberSelectionRequest) GetAdditionalData()(map[string]any) {
 func (m *OutgoingNumberSelectionRequest) GetCampaignId()(*string) {
     return m.campaignId
 }
-// GetChannel gets the channel property value. Defines the supported Outgoing Number Channel values.
+// GetChannel gets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
 // returns a *OutgoingNumberSelectionRequest_channel when successful
 func (m *OutgoingNumberSelectionRequest) GetChannel()(*OutgoingNumberSelectionRequest_channel) {
     return m.channel
@@ -215,7 +215,7 @@ func (m *OutgoingNumberSelectionRequest) SetAdditionalData(value map[string]any)
 func (m *OutgoingNumberSelectionRequest) SetCampaignId(value *string)() {
     m.campaignId = value
 }
-// SetChannel sets the channel property value. Defines the supported Outgoing Number Channel values.
+// SetChannel sets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
 func (m *OutgoingNumberSelectionRequest) SetChannel(value *OutgoingNumberSelectionRequest_channel)() {
     m.channel = value
 }

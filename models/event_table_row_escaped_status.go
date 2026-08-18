@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Event timeline status values.
+// Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
 type EventTableRow_status int
 
 const (

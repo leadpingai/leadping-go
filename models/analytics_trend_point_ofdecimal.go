@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AnalyticsTrendPointOfdecimal represents analytics trend point data exposed by Leadping analytics.
+// AnalyticsTrendPointOfdecimal associates a typed analytics value with one normalized time bucket in a trend series.
 type AnalyticsTrendPointOfdecimal struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

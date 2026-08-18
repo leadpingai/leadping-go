@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported 10DLC Application Status values.
+// Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 type OrganizationTableRow_tenDlcStatus int
 
 const (

@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Usage Channel values.
+// Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 type TransactionTableRow_billingChannel int
 
 const (

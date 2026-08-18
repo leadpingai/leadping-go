@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Launch Review Status values.
+// Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
 type ActivationLaunchReviewStatus int
 
 const (

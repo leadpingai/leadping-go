@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Employment Type values.
+// Classifies a lead's reported employment arrangement for qualification and demographic workflows.
 type LeadProfile_employmentType int
 
 const (

@@ -11,17 +11,17 @@ import (
 type PhoneNumberReadiness struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
+    // Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
     callStage *PhoneNumberReadiness_callStage
     // Indicates whether phone number warmup is enabled in Leadping.
     enabled *bool
     // Current warmup health score used to assess phone number warmup.
     healthScore *int32
-    // Defines the supported SMS readiness health assessments.
+    // Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
     healthStatus *PhoneNumberReadiness_healthStatus
     // Warmup completion percentage, from 0 through 100.
     progressPercent *int32
-    // Defines the supported SMS readiness states.
+    // Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
     state *PhoneNumberReadiness_state
 }
 // NewPhoneNumberReadiness instantiates a new PhoneNumberReadiness and sets the default values.
@@ -41,7 +41,7 @@ func CreatePhoneNumberReadinessFromDiscriminatorValue(parseNode i878a80d2330e89d
 func (m *PhoneNumberReadiness) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCallStage gets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+// GetCallStage gets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
 // returns a *PhoneNumberReadiness_callStage when successful
 func (m *PhoneNumberReadiness) GetCallStage()(*PhoneNumberReadiness_callStage) {
     return m.callStage
@@ -122,7 +122,7 @@ func (m *PhoneNumberReadiness) GetFieldDeserializers()(map[string]func(i878a80d2
 func (m *PhoneNumberReadiness) GetHealthScore()(*int32) {
     return m.healthScore
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+// GetHealthStatus gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 // returns a *PhoneNumberReadiness_healthStatus when successful
 func (m *PhoneNumberReadiness) GetHealthStatus()(*PhoneNumberReadiness_healthStatus) {
     return m.healthStatus
@@ -132,7 +132,7 @@ func (m *PhoneNumberReadiness) GetHealthStatus()(*PhoneNumberReadiness_healthSta
 func (m *PhoneNumberReadiness) GetProgressPercent()(*int32) {
     return m.progressPercent
 }
-// GetState gets the state property value. Defines the supported SMS readiness states.
+// GetState gets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 // returns a *PhoneNumberReadiness_state when successful
 func (m *PhoneNumberReadiness) GetState()(*PhoneNumberReadiness_state) {
     return m.state
@@ -190,7 +190,7 @@ func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487ee
 func (m *PhoneNumberReadiness) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCallStage sets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+// SetCallStage sets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
 func (m *PhoneNumberReadiness) SetCallStage(value *PhoneNumberReadiness_callStage)() {
     m.callStage = value
 }
@@ -202,7 +202,7 @@ func (m *PhoneNumberReadiness) SetEnabled(value *bool)() {
 func (m *PhoneNumberReadiness) SetHealthScore(value *int32)() {
     m.healthScore = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+// SetHealthStatus sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 func (m *PhoneNumberReadiness) SetHealthStatus(value *PhoneNumberReadiness_healthStatus)() {
     m.healthStatus = value
 }
@@ -210,7 +210,7 @@ func (m *PhoneNumberReadiness) SetHealthStatus(value *PhoneNumberReadiness_healt
 func (m *PhoneNumberReadiness) SetProgressPercent(value *int32)() {
     m.progressPercent = value
 }
-// SetState sets the state property value. Defines the supported SMS readiness states.
+// SetState sets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state)() {
     m.state = value
 }

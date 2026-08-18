@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Usage Record Status values.
+// Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
 type UsageStatus int
 
 const (

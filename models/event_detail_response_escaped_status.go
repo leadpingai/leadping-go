@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Event status values.
+// Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
 type EventDetailResponse_status int
 
 const (

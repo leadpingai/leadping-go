@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Organization Status values.
+// Describes an organization's account lifecycle and whether it can actively use Leadping services.
 type OrganizationSwitchOption_organizationStatus int
 
 const (

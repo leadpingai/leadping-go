@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Organization User Role values.
+// Identifies an organization member's access level and permission scope within Leadping.
 type OrganizationMemberRole int
 
 const (

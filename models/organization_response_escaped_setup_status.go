@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported User Setup Status values.
+// Describes a user's progress through required Leadping profile and account setup tasks.
 type OrganizationResponse_setupStatus int
 
 const (

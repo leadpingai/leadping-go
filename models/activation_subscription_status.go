@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Subscription Status values.
+// Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
 type ActivationSubscriptionStatus int
 
 const (

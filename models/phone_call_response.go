@@ -52,7 +52,7 @@ type PhoneCallResponse struct {
     recordingUrl *string
     // UTC timestamp when the call started ringing.
     ringingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported Outgoing Number Selection Reason values.
+    // Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     selectionReason *PhoneCallResponse_selectionReason
     // Lead source ID used for attribution and routing on this call.
     sourceId *string
@@ -454,7 +454,7 @@ func (m *PhoneCallResponse) GetRecordingUrl()(*string) {
 func (m *PhoneCallResponse) GetRingingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.ringingAt
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *PhoneCallResponse_selectionReason when successful
 func (m *PhoneCallResponse) GetSelectionReason()(*PhoneCallResponse_selectionReason) {
     return m.selectionReason
@@ -742,7 +742,7 @@ func (m *PhoneCallResponse) SetRecordingUrl(value *string)() {
 func (m *PhoneCallResponse) SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.ringingAt = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 func (m *PhoneCallResponse) SetSelectionReason(value *PhoneCallResponse_selectionReason)() {
     m.selectionReason = value
 }

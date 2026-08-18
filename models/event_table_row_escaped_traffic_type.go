@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS Traffic Type values.
+// Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 type EventTableRow_trafficType int
 
 const (

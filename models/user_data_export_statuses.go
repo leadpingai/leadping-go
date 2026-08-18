@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported user data export statuses values.
+// Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
 type UserDataExportStatuses int
 
 const (

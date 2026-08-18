@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Website Lifecycle Status values.
+// Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
 type WebsiteLifecycleStatus int
 
 const (

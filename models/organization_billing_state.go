@@ -30,7 +30,7 @@ type OrganizationBillingState struct {
     organizationMemberAssignedQuantity *int64
     // Number of user licenses included in the organization's subscription plan.
     organizationMemberQuantity *int64
-    // Defines the supported Billing Plan values.
+    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     pendingBillingPlan *OrganizationBillingState_pendingBillingPlan
     // Number of phone numbers included in the organization's subscription plan.
     phoneNumberQuantity *int64
@@ -237,7 +237,7 @@ func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity()(*int6
 func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(*int64) {
     return m.organizationMemberQuantity
 }
-// GetPendingBillingPlan gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+// GetPendingBillingPlan gets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *OrganizationBillingState_pendingBillingPlan when successful
 func (m *OrganizationBillingState) GetPendingBillingPlan()(*OrganizationBillingState_pendingBillingPlan) {
     return m.pendingBillingPlan
@@ -386,7 +386,7 @@ func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *
 func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64)() {
     m.organizationMemberQuantity = value
 }
-// SetPendingBillingPlan sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+// SetPendingBillingPlan sets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *OrganizationBillingState) SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)() {
     m.pendingBillingPlan = value
 }

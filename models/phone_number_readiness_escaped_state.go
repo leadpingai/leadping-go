@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS readiness states.
+// Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 type PhoneNumberReadiness_state int
 
 const (

@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Notification Priority values.
+// Ranks the urgency and presentation importance of a Leadping user notification.
 type NotificationPriority int
 
 const (

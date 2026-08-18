@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Telephony Status values.
+// Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
 type ActivationTelephonyStatus int
 
 const (

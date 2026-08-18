@@ -7,7 +7,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TelephonyLoginRequest request model for telephony login token generation.
+// TelephonyLoginRequest identifies the Leadping user and calling context for which a short-lived telephony client token should be issued.
 type TelephonyLoginRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any

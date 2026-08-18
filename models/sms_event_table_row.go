@@ -78,7 +78,7 @@ type SmsEventTableRow struct {
     sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping sent this message to the provider.
     sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported SMS Message Status values.
+    // Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
     status *SmsEventTableRow_status
     // Human-readable reason explaining the current status of this SMS event table row.
     statusReason *string
@@ -86,7 +86,7 @@ type SmsEventTableRow struct {
     text *string
     // Recipient phone number used for this communication.
     toPhoneNumber *string
-    // Defines the supported SMS Traffic Type values.
+    // Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     trafficType *SmsEventTableRow_trafficType
     // UTC timestamp when the provider marked the message undeliverable.
     undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -705,7 +705,7 @@ func (m *SmsEventTableRow) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad9
 func (m *SmsEventTableRow) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentAt
 }
-// GetStatus gets the status property value. Defines the supported SMS Message Status values.
+// GetStatus gets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 // returns a *SmsEventTableRow_status when successful
 func (m *SmsEventTableRow) GetStatus()(*SmsEventTableRow_status) {
     return m.status
@@ -725,7 +725,7 @@ func (m *SmsEventTableRow) GetText()(*string) {
 func (m *SmsEventTableRow) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
 }
-// GetTrafficType gets the trafficType property value. Defines the supported SMS Traffic Type values.
+// GetTrafficType gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 // returns a *SmsEventTableRow_trafficType when successful
 func (m *SmsEventTableRow) GetTrafficType()(*SmsEventTableRow_trafficType) {
     return m.trafficType
@@ -1152,7 +1152,7 @@ func (m *SmsEventTableRow) SetSendingStartedAt(value *i336074805fc853987abe6f7fe
 func (m *SmsEventTableRow) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentAt = value
 }
-// SetStatus sets the status property value. Defines the supported SMS Message Status values.
+// SetStatus sets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 func (m *SmsEventTableRow) SetStatus(value *SmsEventTableRow_status)() {
     m.status = value
 }
@@ -1168,7 +1168,7 @@ func (m *SmsEventTableRow) SetText(value *string)() {
 func (m *SmsEventTableRow) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
 }
-// SetTrafficType sets the trafficType property value. Defines the supported SMS Traffic Type values.
+// SetTrafficType sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 func (m *SmsEventTableRow) SetTrafficType(value *SmsEventTableRow_trafficType)() {
     m.trafficType = value
 }

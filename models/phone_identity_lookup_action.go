@@ -22,9 +22,9 @@ type PhoneIdentityLookupAction struct {
     providerCostAmount *float64
     // The provider pricing version used to calculate the lookup cost.
     providerPricingVersion *string
-    // Identifies the outcome of a phone identity lookup action.
+    // The processing outcome reported for the phone identity lookup.
     status *PhoneIdentityLookupActionStatus
-    // Identifies the kind of lookup action performed for a phone identity.
+    // The category of enrichment, validation, or reputation lookup that was performed.
     typeEscaped *PhoneIdentityLookupActionType
 }
 // NewPhoneIdentityLookupAction instantiates a new PhoneIdentityLookupAction and sets the default values.
@@ -145,12 +145,12 @@ func (m *PhoneIdentityLookupAction) GetProviderCostAmount()(*float64) {
 func (m *PhoneIdentityLookupAction) GetProviderPricingVersion()(*string) {
     return m.providerPricingVersion
 }
-// GetStatus gets the status property value. Identifies the outcome of a phone identity lookup action.
+// GetStatus gets the status property value. The processing outcome reported for the phone identity lookup.
 // returns a *PhoneIdentityLookupActionStatus when successful
 func (m *PhoneIdentityLookupAction) GetStatus()(*PhoneIdentityLookupActionStatus) {
     return m.status
 }
-// GetTypeEscaped gets the type property value. Identifies the kind of lookup action performed for a phone identity.
+// GetTypeEscaped gets the type property value. The category of enrichment, validation, or reputation lookup that was performed.
 // returns a *PhoneIdentityLookupActionType when successful
 func (m *PhoneIdentityLookupAction) GetTypeEscaped()(*PhoneIdentityLookupActionType) {
     return m.typeEscaped
@@ -233,11 +233,11 @@ func (m *PhoneIdentityLookupAction) SetProviderCostAmount(value *float64)() {
 func (m *PhoneIdentityLookupAction) SetProviderPricingVersion(value *string)() {
     m.providerPricingVersion = value
 }
-// SetStatus sets the status property value. Identifies the outcome of a phone identity lookup action.
+// SetStatus sets the status property value. The processing outcome reported for the phone identity lookup.
 func (m *PhoneIdentityLookupAction) SetStatus(value *PhoneIdentityLookupActionStatus)() {
     m.status = value
 }
-// SetTypeEscaped sets the type property value. Identifies the kind of lookup action performed for a phone identity.
+// SetTypeEscaped sets the type property value. The category of enrichment, validation, or reputation lookup that was performed.
 func (m *PhoneIdentityLookupAction) SetTypeEscaped(value *PhoneIdentityLookupActionType)() {
     m.typeEscaped = value
 }

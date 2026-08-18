@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS readiness health assessments.
+// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 type SmsReadinessHealthStatus int
 
 const (

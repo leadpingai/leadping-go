@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Transaction Status values.
+// Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
 type TransactionStatus int
 
 const (
