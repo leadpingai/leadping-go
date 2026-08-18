@@ -18,7 +18,7 @@ type UserResponse struct {
     billingState UserResponse_billingStateable
     // Compliance for this user.
     compliance UserResponse_complianceable
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current organization for this user.
     currentOrganization UserResponse_currentOrganizationable
@@ -26,7 +26,7 @@ type UserResponse struct {
     email *string
     // First name for this user.
     firstName *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // The identities included with this user.
     identities []UserIdentityable
@@ -36,9 +36,9 @@ type UserResponse struct {
     lastName *string
     // The Leadping mobile device preferences for this user.
     mobileDevicePreferences []MobileDevicePreferencesable
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // Notification preferences for this user.
     notificationPreferences UserResponse_notificationPreferencesable
@@ -91,7 +91,7 @@ func (m *UserResponse) GetBillingState()(UserResponse_billingStateable) {
 func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
     return m.compliance
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *UserResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -365,7 +365,7 @@ func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
 func (m *UserResponse) GetFirstName()(*string) {
     return m.firstName
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *UserResponse) GetId()(*string) {
     return m.id
@@ -390,12 +390,12 @@ func (m *UserResponse) GetLastName()(*string) {
 func (m *UserResponse) GetMobileDevicePreferences()([]MobileDevicePreferencesable) {
     return m.mobileDevicePreferences
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *UserResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *UserResponse) GetName()(*string) {
     return m.name
@@ -623,7 +623,7 @@ func (m *UserResponse) SetBillingState(value UserResponse_billingStateable)() {
 func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
     m.compliance = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *UserResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -639,7 +639,7 @@ func (m *UserResponse) SetEmail(value *string)() {
 func (m *UserResponse) SetFirstName(value *string)() {
     m.firstName = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *UserResponse) SetId(value *string)() {
     m.id = value
 }
@@ -659,11 +659,11 @@ func (m *UserResponse) SetLastName(value *string)() {
 func (m *UserResponse) SetMobileDevicePreferences(value []MobileDevicePreferencesable)() {
     m.mobileDevicePreferences = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *UserResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *UserResponse) SetName(value *string)() {
     m.name = value
 }

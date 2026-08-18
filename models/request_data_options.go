@@ -7,25 +7,25 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// RequestDataOptions options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+// RequestDataOptions defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
 type RequestDataOptions struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+    // Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
     continuationToken *string
-    // Key-value exact match filters (e.g., Status = Active).
+    // Exact-match conditions that require each named field to equal its supplied value.
     filters []ExactMatchFilterable
-    // Whether to include the total count in the response (for pagination).
+    // Whether the response should include the total number of matching records; counting may increase query cost or latency.
     includeCount *bool
-    // List of sort instructions, in priority order.
+    // Sort instructions applied in priority order, with the first entry acting as the primary sort.
     orderBy []OrderByOptionable
-    // Maximum items to return in one page
+    // Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
     pageSize *int32
-    // Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+    // Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
     rangeFilters []RangeFilterable
-    // The search term to filter results (applied to SearchFields).
+    // Free-text search term applied to the configured SearchFields.
     search *string
-    // The list of fields to apply the Search term to (must be string properties).
+    // Serializable string field names searched for Search; supported names are determined by the queried resource.
     searchFields []string
 }
 // NewRequestDataOptions instantiates a new RequestDataOptions and sets the default values.
@@ -45,7 +45,7 @@ func CreateRequestDataOptionsFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *RequestDataOptions) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetContinuationToken gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+// GetContinuationToken gets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
 // returns a *string when successful
 func (m *RequestDataOptions) GetContinuationToken()(*string) {
     return m.continuationToken
@@ -160,37 +160,37 @@ func (m *RequestDataOptions) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetFilters gets the filters property value. Key-value exact match filters (e.g., Status = Active).
+// GetFilters gets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
 // returns a []ExactMatchFilterable when successful
 func (m *RequestDataOptions) GetFilters()([]ExactMatchFilterable) {
     return m.filters
 }
-// GetIncludeCount gets the includeCount property value. Whether to include the total count in the response (for pagination).
+// GetIncludeCount gets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
 // returns a *bool when successful
 func (m *RequestDataOptions) GetIncludeCount()(*bool) {
     return m.includeCount
 }
-// GetOrderBy gets the orderBy property value. List of sort instructions, in priority order.
+// GetOrderBy gets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
 // returns a []OrderByOptionable when successful
 func (m *RequestDataOptions) GetOrderBy()([]OrderByOptionable) {
     return m.orderBy
 }
-// GetPageSize gets the pageSize property value. Maximum items to return in one page
+// GetPageSize gets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
 // returns a *int32 when successful
 func (m *RequestDataOptions) GetPageSize()(*int32) {
     return m.pageSize
 }
-// GetRangeFilters gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+// GetRangeFilters gets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
 // returns a []RangeFilterable when successful
 func (m *RequestDataOptions) GetRangeFilters()([]RangeFilterable) {
     return m.rangeFilters
 }
-// GetSearch gets the search property value. The search term to filter results (applied to SearchFields).
+// GetSearch gets the search property value. Free-text search term applied to the configured SearchFields.
 // returns a *string when successful
 func (m *RequestDataOptions) GetSearch()(*string) {
     return m.search
 }
-// GetSearchFields gets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
+// GetSearchFields gets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
 // returns a []string when successful
 func (m *RequestDataOptions) GetSearchFields()([]string) {
     return m.searchFields
@@ -275,35 +275,35 @@ func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *RequestDataOptions) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetContinuationToken sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+// SetContinuationToken sets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
 func (m *RequestDataOptions) SetContinuationToken(value *string)() {
     m.continuationToken = value
 }
-// SetFilters sets the filters property value. Key-value exact match filters (e.g., Status = Active).
+// SetFilters sets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
 func (m *RequestDataOptions) SetFilters(value []ExactMatchFilterable)() {
     m.filters = value
 }
-// SetIncludeCount sets the includeCount property value. Whether to include the total count in the response (for pagination).
+// SetIncludeCount sets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
 func (m *RequestDataOptions) SetIncludeCount(value *bool)() {
     m.includeCount = value
 }
-// SetOrderBy sets the orderBy property value. List of sort instructions, in priority order.
+// SetOrderBy sets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
 func (m *RequestDataOptions) SetOrderBy(value []OrderByOptionable)() {
     m.orderBy = value
 }
-// SetPageSize sets the pageSize property value. Maximum items to return in one page
+// SetPageSize sets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
 func (m *RequestDataOptions) SetPageSize(value *int32)() {
     m.pageSize = value
 }
-// SetRangeFilters sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+// SetRangeFilters sets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
 func (m *RequestDataOptions) SetRangeFilters(value []RangeFilterable)() {
     m.rangeFilters = value
 }
-// SetSearch sets the search property value. The search term to filter results (applied to SearchFields).
+// SetSearch sets the search property value. Free-text search term applied to the configured SearchFields.
 func (m *RequestDataOptions) SetSearch(value *string)() {
     m.search = value
 }
-// SetSearchFields sets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
+// SetSearchFields sets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
 func (m *RequestDataOptions) SetSearchFields(value []string)() {
     m.searchFields = value
 }

@@ -15,7 +15,7 @@ type PhoneNumberRequest struct {
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // The display name for the entity.
+    // Human-readable display name for the resource, subject to the API's maximum name length.
     name *string
     // E.164 phone number exposed by this phone number update request.
     number *string
@@ -105,7 +105,7 @@ func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d233
 func (m *PhoneNumberRequest) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 // returns a *string when successful
 func (m *PhoneNumberRequest) GetName()(*string) {
     return m.name
@@ -172,7 +172,7 @@ func (m *PhoneNumberRequest) SetEnabled(value *bool)() {
 func (m *PhoneNumberRequest) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 func (m *PhoneNumberRequest) SetName(value *string)() {
     m.name = value
 }

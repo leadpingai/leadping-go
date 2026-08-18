@@ -12,11 +12,11 @@ import (
 type OrganizationMemberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The created by user ID associated with this organization user.
     createdByUserId *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // UTC timestamp for last used at on this organization user.
     lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -26,9 +26,9 @@ type OrganizationMemberResponse struct {
     licenseQuantity *int64
     // The renewal date used for this user's license proration.
     licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // Organization for this organization user.
     organization IdNamePairable
@@ -60,7 +60,7 @@ func CreateOrganizationMemberResponseFromDiscriminatorValue(parseNode i878a80d23
 func (m *OrganizationMemberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *OrganizationMemberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -226,7 +226,7 @@ func (m *OrganizationMemberResponse) GetFieldDeserializers()(map[string]func(i87
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *OrganizationMemberResponse) GetId()(*string) {
     return m.id
@@ -251,12 +251,12 @@ func (m *OrganizationMemberResponse) GetLicenseQuantity()(*int64) {
 func (m *OrganizationMemberResponse) GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.licenseRenewalDate
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *OrganizationMemberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *OrganizationMemberResponse) GetName()(*string) {
     return m.name
@@ -396,7 +396,7 @@ func (m *OrganizationMemberResponse) Serialize(writer i878a80d2330e89d26896388a3
 func (m *OrganizationMemberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *OrganizationMemberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -404,7 +404,7 @@ func (m *OrganizationMemberResponse) SetCreatedAt(value *i336074805fc853987abe6f
 func (m *OrganizationMemberResponse) SetCreatedByUserId(value *string)() {
     m.createdByUserId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *OrganizationMemberResponse) SetId(value *string)() {
     m.id = value
 }
@@ -424,11 +424,11 @@ func (m *OrganizationMemberResponse) SetLicenseQuantity(value *int64)() {
 func (m *OrganizationMemberResponse) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.licenseRenewalDate = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *OrganizationMemberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *OrganizationMemberResponse) SetName(value *string)() {
     m.name = value
 }

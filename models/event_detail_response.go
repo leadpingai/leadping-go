@@ -18,7 +18,7 @@ type EventDetailResponse struct {
     canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Conversation ID that links this event detail response to the Leadping inbox thread.
     conversationId *string
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when the provider confirmed delivery.
     deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -36,11 +36,11 @@ type EventDetailResponse struct {
     fromPhoneNumber *string
     // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Lead ID associated with this event detail record.
     leadId *string
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number ID selected for outbound delivery.
     outboundPhoneNumberId *string
@@ -109,7 +109,7 @@ func (m *EventDetailResponse) GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6
 func (m *EventDetailResponse) GetConversationId()(*string) {
     return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -480,7 +480,7 @@ func (m *EventDetailResponse) GetFromPhoneNumber()(*string) {
 func (m *EventDetailResponse) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *EventDetailResponse) GetId()(*string) {
     return m.id
@@ -490,7 +490,7 @@ func (m *EventDetailResponse) GetId()(*string) {
 func (m *EventDetailResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *EventDetailResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -800,7 +800,7 @@ func (m *EventDetailResponse) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad
 func (m *EventDetailResponse) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *EventDetailResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -836,7 +836,7 @@ func (m *EventDetailResponse) SetFromPhoneNumber(value *string)() {
 func (m *EventDetailResponse) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *EventDetailResponse) SetId(value *string)() {
     m.id = value
 }
@@ -844,7 +844,7 @@ func (m *EventDetailResponse) SetId(value *string)() {
 func (m *EventDetailResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *EventDetailResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

@@ -12,17 +12,17 @@ import (
 type PhoneNumberResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Indicates whether this phone number is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Indicates whether Leadping provisions and manages this phone number.
     leadpingOwned *bool
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // E.164 phone number exposed by this phone number.
     number *string
@@ -52,7 +52,7 @@ func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *PhoneNumberResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -178,7 +178,7 @@ func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetId()(*string) {
     return m.id
@@ -188,12 +188,12 @@ func (m *PhoneNumberResponse) GetId()(*string) {
 func (m *PhoneNumberResponse) GetLeadpingOwned()(*bool) {
     return m.leadpingOwned
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *PhoneNumberResponse) GetName()(*string) {
     return m.name
@@ -303,7 +303,7 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -311,7 +311,7 @@ func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad9
 func (m *PhoneNumberResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *PhoneNumberResponse) SetId(value *string)() {
     m.id = value
 }
@@ -319,11 +319,11 @@ func (m *PhoneNumberResponse) SetId(value *string)() {
 func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool)() {
     m.leadpingOwned = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *PhoneNumberResponse) SetName(value *string)() {
     m.name = value
 }

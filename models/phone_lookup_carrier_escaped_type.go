@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// An enumerator describing carrier types
+// Classifies a telephone number by the network service or carrier category that provides it.
 type PhoneLookupCarrier_type int
 
 const (

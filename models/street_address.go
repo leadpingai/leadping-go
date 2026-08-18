@@ -7,27 +7,27 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// StreetAddress a minimal, serializable record type for physical mailing addresses, with support for international formats and compatibility with common APIs.
+// StreetAddress describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 type StreetAddress struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Optional additional notes or delivery instructions.
+    // Additional address context or delivery instructions that do not fit the structured fields.
     additionalInfo *string
-    // The city, town, or locality.
+    // City, town, village, or other postal locality.
     city *string
-    // The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+    // Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
     country *string
-    // The primary address line (e.g., street address, P.O. box, company name).
+    // Primary delivery line, such as a street address, post-office box, or company name.
     line1 *string
-    // The secondary address line (e.g., apartment, suite, unit, or building).
+    // Secondary delivery line, such as an apartment, suite, unit, floor, or building.
     line2 *string
-    // The postal or ZIP code.
+    // Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
     postalCode *string
-    // The province or territory, if distinct from state in your use case (optional, use with care).
+    // Province or territory when represented separately from State by the source or destination system.
     province *string
-    // The broader region, district, or administrative area (e.g., prefecture or county).
+    // Region, district, county, prefecture, or other administrative area not represented by state or province.
     region *string
-    // The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+    // State or equivalent first-level administrative subdivision when that label is used by the country.
     state *string
 }
 // NewStreetAddress instantiates a new StreetAddress and sets the default values.
@@ -47,17 +47,17 @@ func CreateStreetAddressFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 func (m *StreetAddress) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAdditionalInfo gets the additionalInfo property value. Optional additional notes or delivery instructions.
+// GetAdditionalInfo gets the additionalInfo property value. Additional address context or delivery instructions that do not fit the structured fields.
 // returns a *string when successful
 func (m *StreetAddress) GetAdditionalInfo()(*string) {
     return m.additionalInfo
 }
-// GetCity gets the city property value. The city, town, or locality.
+// GetCity gets the city property value. City, town, village, or other postal locality.
 // returns a *string when successful
 func (m *StreetAddress) GetCity()(*string) {
     return m.city
 }
-// GetCountry gets the country property value. The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+// GetCountry gets the country property value. Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
 // returns a *string when successful
 func (m *StreetAddress) GetCountry()(*string) {
     return m.country
@@ -158,32 +158,32 @@ func (m *StreetAddress) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
     }
     return res
 }
-// GetLine1 gets the line1 property value. The primary address line (e.g., street address, P.O. box, company name).
+// GetLine1 gets the line1 property value. Primary delivery line, such as a street address, post-office box, or company name.
 // returns a *string when successful
 func (m *StreetAddress) GetLine1()(*string) {
     return m.line1
 }
-// GetLine2 gets the line2 property value. The secondary address line (e.g., apartment, suite, unit, or building).
+// GetLine2 gets the line2 property value. Secondary delivery line, such as an apartment, suite, unit, floor, or building.
 // returns a *string when successful
 func (m *StreetAddress) GetLine2()(*string) {
     return m.line2
 }
-// GetPostalCode gets the postalCode property value. The postal or ZIP code.
+// GetPostalCode gets the postalCode property value. Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
 // returns a *string when successful
 func (m *StreetAddress) GetPostalCode()(*string) {
     return m.postalCode
 }
-// GetProvince gets the province property value. The province or territory, if distinct from state in your use case (optional, use with care).
+// GetProvince gets the province property value. Province or territory when represented separately from State by the source or destination system.
 // returns a *string when successful
 func (m *StreetAddress) GetProvince()(*string) {
     return m.province
 }
-// GetRegion gets the region property value. The broader region, district, or administrative area (e.g., prefecture or county).
+// GetRegion gets the region property value. Region, district, county, prefecture, or other administrative area not represented by state or province.
 // returns a *string when successful
 func (m *StreetAddress) GetRegion()(*string) {
     return m.region
 }
-// GetState gets the state property value. The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+// GetState gets the state property value. State or equivalent first-level administrative subdivision when that label is used by the country.
 // returns a *string when successful
 func (m *StreetAddress) GetState()(*string) {
     return m.state
@@ -256,39 +256,39 @@ func (m *StreetAddress) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 func (m *StreetAddress) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAdditionalInfo sets the additionalInfo property value. Optional additional notes or delivery instructions.
+// SetAdditionalInfo sets the additionalInfo property value. Additional address context or delivery instructions that do not fit the structured fields.
 func (m *StreetAddress) SetAdditionalInfo(value *string)() {
     m.additionalInfo = value
 }
-// SetCity sets the city property value. The city, town, or locality.
+// SetCity sets the city property value. City, town, village, or other postal locality.
 func (m *StreetAddress) SetCity(value *string)() {
     m.city = value
 }
-// SetCountry sets the country property value. The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+// SetCountry sets the country property value. Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
 func (m *StreetAddress) SetCountry(value *string)() {
     m.country = value
 }
-// SetLine1 sets the line1 property value. The primary address line (e.g., street address, P.O. box, company name).
+// SetLine1 sets the line1 property value. Primary delivery line, such as a street address, post-office box, or company name.
 func (m *StreetAddress) SetLine1(value *string)() {
     m.line1 = value
 }
-// SetLine2 sets the line2 property value. The secondary address line (e.g., apartment, suite, unit, or building).
+// SetLine2 sets the line2 property value. Secondary delivery line, such as an apartment, suite, unit, floor, or building.
 func (m *StreetAddress) SetLine2(value *string)() {
     m.line2 = value
 }
-// SetPostalCode sets the postalCode property value. The postal or ZIP code.
+// SetPostalCode sets the postalCode property value. Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
 func (m *StreetAddress) SetPostalCode(value *string)() {
     m.postalCode = value
 }
-// SetProvince sets the province property value. The province or territory, if distinct from state in your use case (optional, use with care).
+// SetProvince sets the province property value. Province or territory when represented separately from State by the source or destination system.
 func (m *StreetAddress) SetProvince(value *string)() {
     m.province = value
 }
-// SetRegion sets the region property value. The broader region, district, or administrative area (e.g., prefecture or county).
+// SetRegion sets the region property value. Region, district, county, prefecture, or other administrative area not represented by state or province.
 func (m *StreetAddress) SetRegion(value *string)() {
     m.region = value
 }
-// SetState sets the state property value. The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+// SetState sets the state property value. State or equivalent first-level administrative subdivision when that label is used by the country.
 func (m *StreetAddress) SetState(value *string)() {
     m.state = value
 }

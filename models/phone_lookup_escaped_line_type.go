@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// An enumerator describing phone line types
+// Classifies the access technology or service type associated with a telephone number.
 type PhoneLookup_lineType int
 
 const (

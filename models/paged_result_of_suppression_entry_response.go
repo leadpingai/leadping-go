@@ -7,17 +7,17 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PagedResultOfSuppressionEntryResponse a generic container for paginated results returned to the client.
+// PagedResultOfSuppressionEntryResponse returns one page of query results together with page-size, optional total-count, and opaque continuation-cursor metadata.
 type PagedResultOfSuppressionEntryResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Opaque storage continuation token. ‑ `null` → the current page was the last page.
+    // Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
     continuationToken *string
-    // The subset of items returned for the current page.
+    // Items included in the current page, in the order determined by the query.
     items []SuppressionEntryResponseable
-    // The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+    // Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
     pageSize *int32
-    // The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+    // Total number of records matching the query across all pages, or null when counting was not requested or computed.
     totalCount *int32
 }
 // NewPagedResultOfSuppressionEntryResponse instantiates a new PagedResultOfSuppressionEntryResponse and sets the default values.
@@ -37,7 +37,7 @@ func CreatePagedResultOfSuppressionEntryResponseFromDiscriminatorValue(parseNode
 func (m *PagedResultOfSuppressionEntryResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetContinuationToken gets the continuationToken property value. Opaque storage continuation token. ‑ `null` → the current page was the last page.
+// GetContinuationToken gets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
 // returns a *string when successful
 func (m *PagedResultOfSuppressionEntryResponse) GetContinuationToken()(*string) {
     return m.continuationToken
@@ -94,17 +94,17 @@ func (m *PagedResultOfSuppressionEntryResponse) GetFieldDeserializers()(map[stri
     }
     return res
 }
-// GetItems gets the items property value. The subset of items returned for the current page.
+// GetItems gets the items property value. Items included in the current page, in the order determined by the query.
 // returns a []SuppressionEntryResponseable when successful
 func (m *PagedResultOfSuppressionEntryResponse) GetItems()([]SuppressionEntryResponseable) {
     return m.items
 }
-// GetPageSize gets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+// GetPageSize gets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
 // returns a *int32 when successful
 func (m *PagedResultOfSuppressionEntryResponse) GetPageSize()(*int32) {
     return m.pageSize
 }
-// GetTotalCount gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+// GetTotalCount gets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
 // returns a *int32 when successful
 func (m *PagedResultOfSuppressionEntryResponse) GetTotalCount()(*int32) {
     return m.totalCount
@@ -153,19 +153,19 @@ func (m *PagedResultOfSuppressionEntryResponse) Serialize(writer i878a80d2330e89
 func (m *PagedResultOfSuppressionEntryResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetContinuationToken sets the continuationToken property value. Opaque storage continuation token. ‑ `null` → the current page was the last page.
+// SetContinuationToken sets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
 func (m *PagedResultOfSuppressionEntryResponse) SetContinuationToken(value *string)() {
     m.continuationToken = value
 }
-// SetItems sets the items property value. The subset of items returned for the current page.
+// SetItems sets the items property value. Items included in the current page, in the order determined by the query.
 func (m *PagedResultOfSuppressionEntryResponse) SetItems(value []SuppressionEntryResponseable)() {
     m.items = value
 }
-// SetPageSize sets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+// SetPageSize sets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
 func (m *PagedResultOfSuppressionEntryResponse) SetPageSize(value *int32)() {
     m.pageSize = value
 }
-// SetTotalCount sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+// SetTotalCount sets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
 func (m *PagedResultOfSuppressionEntryResponse) SetTotalCount(value *int32)() {
     m.totalCount = value
 }

@@ -39,7 +39,7 @@ type OrganizationRequest struct {
     id *string
     // Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
     isYoungerThan90 *bool
-    // The display name for the entity.
+    // Human-readable display name for the resource, subject to the API's maximum name length.
     name *string
     // Phone details for the lead, user, or organization represented by this organization profile request.
     phone *string
@@ -363,7 +363,7 @@ func (m *OrganizationRequest) GetId()(*string) {
 func (m *OrganizationRequest) GetIsYoungerThan90()(*bool) {
     return m.isYoungerThan90
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 // returns a *string when successful
 func (m *OrganizationRequest) GetName()(*string) {
     return m.name
@@ -601,7 +601,7 @@ func (m *OrganizationRequest) SetId(value *string)() {
 func (m *OrganizationRequest) SetIsYoungerThan90(value *bool)() {
     m.isYoungerThan90 = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 func (m *OrganizationRequest) SetName(value *string)() {
     m.name = value
 }

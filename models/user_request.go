@@ -27,7 +27,7 @@ type UserRequest struct {
     lastName *string
     // Mobile notification preferences configured for the user.
     mobileDevicePreferences []MobileDevicePreferencesable
-    // The display name for the entity.
+    // Human-readable display name for the resource, subject to the API's maximum name length.
     name *string
     // Notification preferences configured for the user.
     notificationPreferences UserRequest_notificationPreferencesable
@@ -225,7 +225,7 @@ func (m *UserRequest) GetLastName()(*string) {
 func (m *UserRequest) GetMobileDevicePreferences()([]MobileDevicePreferencesable) {
     return m.mobileDevicePreferences
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 // returns a *string when successful
 func (m *UserRequest) GetName()(*string) {
     return m.name
@@ -370,7 +370,7 @@ func (m *UserRequest) SetLastName(value *string)() {
 func (m *UserRequest) SetMobileDevicePreferences(value []MobileDevicePreferencesable)() {
     m.mobileDevicePreferences = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 func (m *UserRequest) SetName(value *string)() {
     m.name = value
 }

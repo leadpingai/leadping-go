@@ -30,7 +30,7 @@ type SmsResponse struct {
     consoleEntries []CommunicationConsoleEntryable
     // Conversation ID that links this SMS message to the Leadping inbox thread.
     conversationId *string
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when the provider confirmed delivery.
     deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -44,13 +44,13 @@ type SmsResponse struct {
     fromPhoneNumber *string
     // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Lead ID associated with the SMS conversation or outreach attempt.
     leadId *string
     // Media attached to this message. A non-empty collection identifies an MMS message.
     media []MessageMediaAttachmentable
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // UTC timestamp when Leadping will retry this SMS message.
     nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -149,7 +149,7 @@ func (m *SmsResponse) GetConsoleEntries()([]CommunicationConsoleEntryable) {
 func (m *SmsResponse) GetConversationId()(*string) {
     return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *SmsResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -572,7 +572,7 @@ func (m *SmsResponse) GetFromPhoneNumber()(*string) {
 func (m *SmsResponse) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *SmsResponse) GetId()(*string) {
     return m.id
@@ -587,7 +587,7 @@ func (m *SmsResponse) GetLeadId()(*string) {
 func (m *SmsResponse) GetMedia()([]MessageMediaAttachmentable) {
     return m.media
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *SmsResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -964,7 +964,7 @@ func (m *SmsResponse) SetConsoleEntries(value []CommunicationConsoleEntryable)()
 func (m *SmsResponse) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *SmsResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -992,7 +992,7 @@ func (m *SmsResponse) SetFromPhoneNumber(value *string)() {
 func (m *SmsResponse) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *SmsResponse) SetId(value *string)() {
     m.id = value
 }
@@ -1004,7 +1004,7 @@ func (m *SmsResponse) SetLeadId(value *string)() {
 func (m *SmsResponse) SetMedia(value []MessageMediaAttachmentable)() {
     m.media = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *SmsResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

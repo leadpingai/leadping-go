@@ -7,15 +7,15 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// IdNameValue a minimal Record type with an Id (string), Name (string), nullable Value (string?) and maximum JSON compatibility
+// IdNameValue extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 type IdNameValue struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The unique identifier.
+    // Stable unique identifier of the referenced resource.
     id *string
-    // The display name.
+    // Human-readable display name of the referenced resource.
     name *string
-    // The optional value associated with the identifier and name.
+    // Optional machine-readable or display value associated with the referenced resource.
     value *string
 }
 // NewIdNameValue instantiates a new IdNameValue and sets the default values.
@@ -71,17 +71,17 @@ func (m *IdNameValue) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetId gets the id property value. The unique identifier.
+// GetId gets the id property value. Stable unique identifier of the referenced resource.
 // returns a *string when successful
 func (m *IdNameValue) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The display name.
+// GetName gets the name property value. Human-readable display name of the referenced resource.
 // returns a *string when successful
 func (m *IdNameValue) GetName()(*string) {
     return m.name
 }
-// GetValue gets the value property value. The optional value associated with the identifier and name.
+// GetValue gets the value property value. Optional machine-readable or display value associated with the referenced resource.
 // returns a *string when successful
 func (m *IdNameValue) GetValue()(*string) {
     return m.value
@@ -118,15 +118,15 @@ func (m *IdNameValue) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *IdNameValue) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The unique identifier.
+// SetId sets the id property value. Stable unique identifier of the referenced resource.
 func (m *IdNameValue) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The display name.
+// SetName sets the name property value. Human-readable display name of the referenced resource.
 func (m *IdNameValue) SetName(value *string)() {
     m.name = value
 }
-// SetValue sets the value property value. The optional value associated with the identifier and name.
+// SetValue sets the value property value. Optional machine-readable or display value associated with the referenced resource.
 func (m *IdNameValue) SetValue(value *string)() {
     m.value = value
 }

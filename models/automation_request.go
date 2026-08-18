@@ -23,7 +23,7 @@ type AutomationRequest struct {
     enabled *bool
     // The unique identifier for the entity, when updating an existing entity.
     id *string
-    // The display name for the entity.
+    // Human-readable display name for the resource, subject to the API's maximum name length.
     name *string
     // Scope that limits where this automation configuration request applies in Leadping.
     scope *string
@@ -221,7 +221,7 @@ func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330
 func (m *AutomationRequest) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 // returns a *string when successful
 func (m *AutomationRequest) GetName()(*string) {
     return m.name
@@ -374,7 +374,7 @@ func (m *AutomationRequest) SetEnabled(value *bool)() {
 func (m *AutomationRequest) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 func (m *AutomationRequest) SetName(value *string)() {
     m.name = value
 }

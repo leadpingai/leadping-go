@@ -12,9 +12,9 @@ import (
 type PhoneIdentityResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // The most recent time lookup data was enriched.
     lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -22,9 +22,9 @@ type PhoneIdentityResponse struct {
     lookup PhoneIdentityResponse_lookupable
     // Lookup, enrichment, and reputation actions performed for this identity.
     lookupActions []PhoneIdentityLookupActionable
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // The canonical E.164 phone number.
     number *string
@@ -48,7 +48,7 @@ func CreatePhoneIdentityResponseFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *PhoneIdentityResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *PhoneIdentityResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -155,7 +155,7 @@ func (m *PhoneIdentityResponse) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *PhoneIdentityResponse) GetId()(*string) {
     return m.id
@@ -175,12 +175,12 @@ func (m *PhoneIdentityResponse) GetLookup()(PhoneIdentityResponse_lookupable) {
 func (m *PhoneIdentityResponse) GetLookupActions()([]PhoneIdentityLookupActionable) {
     return m.lookupActions
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneIdentityResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *PhoneIdentityResponse) GetName()(*string) {
     return m.name
@@ -269,11 +269,11 @@ func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *PhoneIdentityResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *PhoneIdentityResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *PhoneIdentityResponse) SetId(value *string)() {
     m.id = value
 }
@@ -289,11 +289,11 @@ func (m *PhoneIdentityResponse) SetLookup(value PhoneIdentityResponse_lookupable
 func (m *PhoneIdentityResponse) SetLookupActions(value []PhoneIdentityLookupActionable)() {
     m.lookupActions = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneIdentityResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *PhoneIdentityResponse) SetName(value *string)() {
     m.name = value
 }

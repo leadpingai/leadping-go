@@ -20,7 +20,7 @@ type TransactionResponse struct {
     billedAmount *float64
     // Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
     billingChannel *TransactionResponse_billingChannel
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Human-readable description that explains this billing transaction response to API users.
     description *string
@@ -28,11 +28,11 @@ type TransactionResponse struct {
     gatewayFeeAmount *float64
     // Payment gateway status returned for this transaction.
     gatewayStatus *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Identifier and display name of the related lead.
     lead TransactionResponse_leadable
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Net monetary amount after fees, credits, or adjustments.
     netAmount *float64
@@ -86,7 +86,7 @@ func (m *TransactionResponse) GetBilledAmount()(*float64) {
 func (m *TransactionResponse) GetBillingChannel()(*TransactionResponse_billingChannel) {
     return m.billingChannel
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *TransactionResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -292,7 +292,7 @@ func (m *TransactionResponse) GetGatewayFeeAmount()(*float64) {
 func (m *TransactionResponse) GetGatewayStatus()(*string) {
     return m.gatewayStatus
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *TransactionResponse) GetId()(*string) {
     return m.id
@@ -302,7 +302,7 @@ func (m *TransactionResponse) GetId()(*string) {
 func (m *TransactionResponse) GetLead()(TransactionResponse_leadable) {
     return m.lead
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *TransactionResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -484,7 +484,7 @@ func (m *TransactionResponse) SetBilledAmount(value *float64)() {
 func (m *TransactionResponse) SetBillingChannel(value *TransactionResponse_billingChannel)() {
     m.billingChannel = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *TransactionResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -500,7 +500,7 @@ func (m *TransactionResponse) SetGatewayFeeAmount(value *float64)() {
 func (m *TransactionResponse) SetGatewayStatus(value *string)() {
     m.gatewayStatus = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *TransactionResponse) SetId(value *string)() {
     m.id = value
 }
@@ -508,7 +508,7 @@ func (m *TransactionResponse) SetId(value *string)() {
 func (m *TransactionResponse) SetLead(value TransactionResponse_leadable)() {
     m.lead = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *TransactionResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

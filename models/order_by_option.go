@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrderByOption an object for ordering during querying
+// OrderByOption defines one field and direction used to order an API query result set.
 type OrderByOption struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // An enumerator for sort direction during querying
     direction *OrderByOption_direction
-    // The field to sort by.
+    // Serializable field name used for sorting; supported names are determined by the queried resource.
     field *string
 }
 // NewOrderByOption instantiates a new OrderByOption and sets the default values.
@@ -38,7 +38,7 @@ func (m *OrderByOption) GetAdditionalData()(map[string]any) {
 func (m *OrderByOption) GetDirection()(*OrderByOption_direction) {
     return m.direction
 }
-// GetField gets the field property value. The field to sort by.
+// GetField gets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
 // returns a *string when successful
 func (m *OrderByOption) GetField()(*string) {
     return m.field
@@ -100,7 +100,7 @@ func (m *OrderByOption) SetAdditionalData(value map[string]any)() {
 func (m *OrderByOption) SetDirection(value *OrderByOption_direction)() {
     m.direction = value
 }
-// SetField sets the field property value. The field to sort by.
+// SetField sets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
 func (m *OrderByOption) SetField(value *string)() {
     m.field = value
 }

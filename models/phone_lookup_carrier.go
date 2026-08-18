@@ -21,7 +21,7 @@ type PhoneLookupCarrier struct {
     name *string
     // Normalized carrier name used for consistent matching and reporting.
     normalizedCarrier *string
-    // An enumerator describing carrier types
+    // Classifies a telephone number by the network service or carrier category that provides it.
     typeEscaped *PhoneLookupCarrier_type
 }
 // NewPhoneLookupCarrier instantiates a new PhoneLookupCarrier and sets the default values.
@@ -132,7 +132,7 @@ func (m *PhoneLookupCarrier) GetName()(*string) {
 func (m *PhoneLookupCarrier) GetNormalizedCarrier()(*string) {
     return m.normalizedCarrier
 }
-// GetTypeEscaped gets the type property value. An enumerator describing carrier types
+// GetTypeEscaped gets the type property value. Classifies a telephone number by the network service or carrier category that provides it.
 // returns a *PhoneLookupCarrier_type when successful
 func (m *PhoneLookupCarrier) GetTypeEscaped()(*PhoneLookupCarrier_type) {
     return m.typeEscaped
@@ -208,7 +208,7 @@ func (m *PhoneLookupCarrier) SetName(value *string)() {
 func (m *PhoneLookupCarrier) SetNormalizedCarrier(value *string)() {
     m.normalizedCarrier = value
 }
-// SetTypeEscaped sets the type property value. An enumerator describing carrier types
+// SetTypeEscaped sets the type property value. Classifies a telephone number by the network service or carrier category that provides it.
 func (m *PhoneLookupCarrier) SetTypeEscaped(value *PhoneLookupCarrier_type)() {
     m.typeEscaped = value
 }

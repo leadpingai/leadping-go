@@ -22,7 +22,7 @@ type LeadResponse struct {
     archiveReason *int32
     // Contact details for the lead or customer represented by this lead response.
     contact LeadContactable
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current lead status change summary that describes the lead outcome.
     currentLeadStatus LeadResponse_currentLeadStatusable
@@ -34,13 +34,13 @@ type LeadResponse struct {
     deletedByUserId *string
     // Indicates whether this lead response is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Indicates whether the lead has been archived in Leadping.
     isArchived *bool
     // Structured metadata used for attribution, integrations, and reporting on this lead response.
     metadata LeadMetadataable
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Canonical phone identity and provider lookup details for this lead.
     phoneIdentity LeadResponse_phoneIdentityable
@@ -95,7 +95,7 @@ func (m *LeadResponse) GetArchiveReason()(*int32) {
 func (m *LeadResponse) GetContact()(LeadContactable) {
     return m.contact
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *LeadResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -337,7 +337,7 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *LeadResponse) GetId()(*string) {
     return m.id
@@ -352,7 +352,7 @@ func (m *LeadResponse) GetIsArchived()(*bool) {
 func (m *LeadResponse) GetMetadata()(LeadMetadataable) {
     return m.metadata
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *LeadResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -543,7 +543,7 @@ func (m *LeadResponse) SetArchiveReason(value *int32)() {
 func (m *LeadResponse) SetContact(value LeadContactable)() {
     m.contact = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *LeadResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -567,7 +567,7 @@ func (m *LeadResponse) SetDeletedByUserId(value *string)() {
 func (m *LeadResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *LeadResponse) SetId(value *string)() {
     m.id = value
 }
@@ -579,7 +579,7 @@ func (m *LeadResponse) SetIsArchived(value *bool)() {
 func (m *LeadResponse) SetMetadata(value LeadMetadataable)() {
     m.metadata = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *LeadResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

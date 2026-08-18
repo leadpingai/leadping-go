@@ -16,19 +16,19 @@ type PhoneLookup struct {
     callerName PhoneLookup_callerNameable
     // Complete carrier metadata reported for this phone number.
     carrier PhoneLookup_carrierable
-    // UTC timestamp when the phone lookup record was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Fraud value returned by the provider, when available.
     fraud *string
-    // Unique Leadping identifier for the saved phone lookup record.
+    // Stable unique identifier of the resource.
     id *string
     // Indicates whether this phone lookup result passed validation.
     isValid *bool
-    // An enumerator describing phone line types
+    // Classifies the access technology or service type associated with a telephone number.
     lineType *PhoneLookup_lineType
     // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneLookup_locationable
-    // UTC timestamp when the phone lookup record was last updated.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Provider-formatted national phone number.
     nationalFormat *string
@@ -66,7 +66,7 @@ func (m *PhoneLookup) GetCallerName()(PhoneLookup_callerNameable) {
 func (m *PhoneLookup) GetCarrier()(PhoneLookup_carrierable) {
     return m.carrier
 }
-// GetCreatedAt gets the createdAt property value. UTC timestamp when the phone lookup record was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *PhoneLookup) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -212,7 +212,7 @@ func (m *PhoneLookup) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *PhoneLookup) GetFraud()(*string) {
     return m.fraud
 }
-// GetId gets the id property value. Unique Leadping identifier for the saved phone lookup record.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *PhoneLookup) GetId()(*string) {
     return m.id
@@ -222,7 +222,7 @@ func (m *PhoneLookup) GetId()(*string) {
 func (m *PhoneLookup) GetIsValid()(*bool) {
     return m.isValid
 }
-// GetLineType gets the lineType property value. An enumerator describing phone line types
+// GetLineType gets the lineType property value. Classifies the access technology or service type associated with a telephone number.
 // returns a *PhoneLookup_lineType when successful
 func (m *PhoneLookup) GetLineType()(*PhoneLookup_lineType) {
     return m.lineType
@@ -232,7 +232,7 @@ func (m *PhoneLookup) GetLineType()(*PhoneLookup_lineType) {
 func (m *PhoneLookup) GetLocation()(PhoneLookup_locationable) {
     return m.location
 }
-// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneLookup) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -358,7 +358,7 @@ func (m *PhoneLookup) SetCallerName(value PhoneLookup_callerNameable)() {
 func (m *PhoneLookup) SetCarrier(value PhoneLookup_carrierable)() {
     m.carrier = value
 }
-// SetCreatedAt sets the createdAt property value. UTC timestamp when the phone lookup record was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -366,7 +366,7 @@ func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f30
 func (m *PhoneLookup) SetFraud(value *string)() {
     m.fraud = value
 }
-// SetId sets the id property value. Unique Leadping identifier for the saved phone lookup record.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *PhoneLookup) SetId(value *string)() {
     m.id = value
 }
@@ -374,7 +374,7 @@ func (m *PhoneLookup) SetId(value *string)() {
 func (m *PhoneLookup) SetIsValid(value *bool)() {
     m.isValid = value
 }
-// SetLineType sets the lineType property value. An enumerator describing phone line types
+// SetLineType sets the lineType property value. Classifies the access technology or service type associated with a telephone number.
 func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType)() {
     m.lineType = value
 }
@@ -382,7 +382,7 @@ func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType)() {
 func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable)() {
     m.location = value
 }
-// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneLookup) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

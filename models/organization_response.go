@@ -36,7 +36,7 @@ type OrganizationResponse struct {
     billingTaxId *string
     // Compliance policy configuration for the organization.
     compliancePolicy OrganizationResponse_compliancePolicyable
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Human-readable description that explains this organization profile response to API users.
     description *string
@@ -48,11 +48,11 @@ type OrganizationResponse struct {
     einDocument OrganizationResponse_einDocumentable
     // Indicates whether this organization profile response is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // Phone details for the lead, user, or organization represented by this organization profile response.
     phone *string
@@ -154,7 +154,7 @@ func (m *OrganizationResponse) GetBillingTaxId()(*string) {
 func (m *OrganizationResponse) GetCompliancePolicy()(OrganizationResponse_compliancePolicyable) {
     return m.compliancePolicy
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *OrganizationResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -516,17 +516,17 @@ func (m *OrganizationResponse) GetFieldDeserializers()(map[string]func(i878a80d2
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *OrganizationResponse) GetId()(*string) {
     return m.id
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *OrganizationResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *OrganizationResponse) GetName()(*string) {
     return m.name
@@ -851,7 +851,7 @@ func (m *OrganizationResponse) SetBillingTaxId(value *string)() {
 func (m *OrganizationResponse) SetCompliancePolicy(value OrganizationResponse_compliancePolicyable)() {
     m.compliancePolicy = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *OrganizationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -875,15 +875,15 @@ func (m *OrganizationResponse) SetEinDocument(value OrganizationResponse_einDocu
 func (m *OrganizationResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *OrganizationResponse) SetId(value *string)() {
     m.id = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *OrganizationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *OrganizationResponse) SetName(value *string)() {
     m.name = value
 }

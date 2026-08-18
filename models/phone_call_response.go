@@ -26,7 +26,7 @@ type PhoneCallResponse struct {
     consoleEntries []CommunicationConsoleEntryable
     // Conversation ID that links this phone call to the Leadping inbox thread.
     conversationId *string
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Communication direction for this phone call, such as inbound or outbound.
     direction *string
@@ -38,11 +38,11 @@ type PhoneCallResponse struct {
     fromPhoneNumber *string
     // Sender phone number ID used for this outbound SMS or call.
     fromPhoneNumberId *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Lead ID associated with the call conversation or outreach attempt.
     leadId *string
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Phone number used by this phone call for calls, SMS, lookup, or routing.
     phoneNumber *string
@@ -117,7 +117,7 @@ func (m *PhoneCallResponse) GetConsoleEntries()([]CommunicationConsoleEntryable)
 func (m *PhoneCallResponse) GetConversationId()(*string) {
     return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *PhoneCallResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -419,7 +419,7 @@ func (m *PhoneCallResponse) GetFromPhoneNumber()(*string) {
 func (m *PhoneCallResponse) GetFromPhoneNumberId()(*string) {
     return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *PhoneCallResponse) GetId()(*string) {
     return m.id
@@ -429,7 +429,7 @@ func (m *PhoneCallResponse) GetId()(*string) {
 func (m *PhoneCallResponse) GetLeadId()(*string) {
     return m.leadId
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneCallResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -690,7 +690,7 @@ func (m *PhoneCallResponse) SetConsoleEntries(value []CommunicationConsoleEntrya
 func (m *PhoneCallResponse) SetConversationId(value *string)() {
     m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *PhoneCallResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -714,7 +714,7 @@ func (m *PhoneCallResponse) SetFromPhoneNumber(value *string)() {
 func (m *PhoneCallResponse) SetFromPhoneNumberId(value *string)() {
     m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *PhoneCallResponse) SetId(value *string)() {
     m.id = value
 }
@@ -722,7 +722,7 @@ func (m *PhoneCallResponse) SetId(value *string)() {
 func (m *PhoneCallResponse) SetLeadId(value *string)() {
     m.leadId = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneCallResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

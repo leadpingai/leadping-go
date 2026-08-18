@@ -18,7 +18,7 @@ type AutomationResponse struct {
     conditionGroups []AutomationConditionGroupable
     // Directed connections between nodes in this automation graph.
     connections []AutomationConnectionable
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User ID of the person who created this automation configuration response.
     createdByUserId *string
@@ -26,7 +26,7 @@ type AutomationResponse struct {
     description *string
     // Indicates whether this automation configuration response is active and available in the Leadping API.
     enabled *bool
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Indicates whether Leadping manages this automation configuration response automatically instead of a user.
     isSystemManaged *bool
@@ -36,9 +36,9 @@ type AutomationResponse struct {
     lastRunStatus *string
     // Management level that controls whether Leadping or the organization owns this automation setting.
     managementLevel *string
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
+    // Human-readable display name of the resource.
     name *string
     // Organization summary connected to this automation configuration response.
     organization AutomationResponse_organizationable
@@ -89,7 +89,7 @@ func (m *AutomationResponse) GetConditionGroups()([]AutomationConditionGroupable
 func (m *AutomationResponse) GetConnections()([]AutomationConnectionable) {
     return m.connections
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *AutomationResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -365,7 +365,7 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *AutomationResponse) GetId()(*string) {
     return m.id
@@ -390,12 +390,12 @@ func (m *AutomationResponse) GetLastRunStatus()(*string) {
 func (m *AutomationResponse) GetManagementLevel()(*string) {
     return m.managementLevel
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *AutomationResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
 func (m *AutomationResponse) GetName()(*string) {
     return m.name
@@ -628,7 +628,7 @@ func (m *AutomationResponse) SetConditionGroups(value []AutomationConditionGroup
 func (m *AutomationResponse) SetConnections(value []AutomationConnectionable)() {
     m.connections = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *AutomationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -644,7 +644,7 @@ func (m *AutomationResponse) SetDescription(value *string)() {
 func (m *AutomationResponse) SetEnabled(value *bool)() {
     m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *AutomationResponse) SetId(value *string)() {
     m.id = value
 }
@@ -664,11 +664,11 @@ func (m *AutomationResponse) SetLastRunStatus(value *string)() {
 func (m *AutomationResponse) SetManagementLevel(value *string)() {
     m.managementLevel = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *AutomationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
+// SetName sets the name property value. Human-readable display name of the resource.
 func (m *AutomationResponse) SetName(value *string)() {
     m.name = value
 }

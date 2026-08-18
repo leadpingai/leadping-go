@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ExactMatchFilter a generic object for handling exact match filtering during querying
+// ExactMatchFilter selects records whose named field equals a supplied scalar value.
 type ExactMatchFilter struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The field to filter by.
     field *string
-    // The value that the field must match.
+    // Scalar value the target field must equal; its JSON type should match the field being queried.
     value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
 }
 // NewExactMatchFilter instantiates a new ExactMatchFilter and sets the default values.
@@ -64,7 +64,7 @@ func (m *ExactMatchFilter) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
-// GetValue gets the value property value. The value that the field must match.
+// GetValue gets the value property value. Scalar value the target field must equal; its JSON type should match the field being queried.
 // returns a UntypedNodeable when successful
 func (m *ExactMatchFilter) GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
     return m.value
@@ -99,7 +99,7 @@ func (m *ExactMatchFilter) SetAdditionalData(value map[string]any)() {
 func (m *ExactMatchFilter) SetField(value *string)() {
     m.field = value
 }
-// SetValue sets the value property value. The value that the field must match.
+// SetValue sets the value property value. Scalar value the target field must equal; its JSON type should match the field being queried.
 func (m *ExactMatchFilter) SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
     m.value = value
 }

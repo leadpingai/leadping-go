@@ -16,17 +16,17 @@ type TagResponse struct {
     archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Hex color used to display this tag or status in Leadping clients.
     color *string
-    // The date and time when the entity was created.
+    // UTC timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // User ID of the person who created this tag response.
     createdByUserId *string
     // Human-readable description that explains this tag response to API users.
     description *string
-    // The unique identifier for the entity.
+    // Stable unique identifier of the resource.
     id *string
     // Indicates whether this lead or record is archived.
     isArchived *bool
-    // The date and time when the entity was last modified, if applicable.
+    // UTC timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Display name for this tag response in the Leadping API.
     name *string
@@ -62,7 +62,7 @@ func (m *TagResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a
 func (m *TagResponse) GetColor()(*string) {
     return m.color
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *TagResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -193,7 +193,7 @@ func (m *TagResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     }
     return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
 func (m *TagResponse) GetId()(*string) {
     return m.id
@@ -203,7 +203,7 @@ func (m *TagResponse) GetId()(*string) {
 func (m *TagResponse) GetIsArchived()(*bool) {
     return m.isArchived
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *TagResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -311,7 +311,7 @@ func (m *TagResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
 func (m *TagResponse) SetColor(value *string)() {
     m.color = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *TagResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -323,7 +323,7 @@ func (m *TagResponse) SetCreatedByUserId(value *string)() {
 func (m *TagResponse) SetDescription(value *string)() {
     m.description = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
+// SetId sets the id property value. Stable unique identifier of the resource.
 func (m *TagResponse) SetId(value *string)() {
     m.id = value
 }
@@ -331,7 +331,7 @@ func (m *TagResponse) SetId(value *string)() {
 func (m *TagResponse) SetIsArchived(value *bool)() {
     m.isArchived = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *TagResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }

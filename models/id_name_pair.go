@@ -7,13 +7,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// IdNamePair a minimal Record type with an Id (string), Name (string), and maximum JSON compatibility. The reason for this type (over something like KeyValuePair, dictionary) is because of JSON serialization support.
+// IdNamePair provides a compact API reference to another resource using its stable identifier and human-readable display name.
 type IdNamePair struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The unique identifier.
+    // Stable unique identifier of the referenced resource.
     id *string
-    // The display name.
+    // Human-readable display name of the referenced resource.
     name *string
 }
 // NewIdNamePair instantiates a new IdNamePair and sets the default values.
@@ -59,12 +59,12 @@ func (m *IdNamePair) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     }
     return res
 }
-// GetId gets the id property value. The unique identifier.
+// GetId gets the id property value. Stable unique identifier of the referenced resource.
 // returns a *string when successful
 func (m *IdNamePair) GetId()(*string) {
     return m.id
 }
-// GetName gets the name property value. The display name.
+// GetName gets the name property value. Human-readable display name of the referenced resource.
 // returns a *string when successful
 func (m *IdNamePair) GetName()(*string) {
     return m.name
@@ -95,11 +95,11 @@ func (m *IdNamePair) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
 func (m *IdNamePair) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetId sets the id property value. The unique identifier.
+// SetId sets the id property value. Stable unique identifier of the referenced resource.
 func (m *IdNamePair) SetId(value *string)() {
     m.id = value
 }
-// SetName sets the name property value. The display name.
+// SetName sets the name property value. Human-readable display name of the referenced resource.
 func (m *IdNamePair) SetName(value *string)() {
     m.name = value
 }

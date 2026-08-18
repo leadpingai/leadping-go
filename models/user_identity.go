@@ -11,11 +11,11 @@ import (
 type UserIdentity struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Identity provider or tenant that issued the user's sign-in identity.
+    // Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
     issuer *string
-    // Unique user identifier assigned by the identity provider.
+    // Stable unique user identifier assigned by the identity provider within the issuer's namespace.
     issuerAssignedId *string
-    // Sign-in method represented by the identity, such as email address, username, or federated login.
+    // Sign-in method represented by the identity, such as emailAddress, userName, or federated.
     signInType *string
 }
 // NewUserIdentity instantiates a new UserIdentity and sets the default values.
@@ -71,17 +71,17 @@ func (m *UserIdentity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetIssuer gets the issuer property value. Identity provider or tenant that issued the user's sign-in identity.
+// GetIssuer gets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
 // returns a *string when successful
 func (m *UserIdentity) GetIssuer()(*string) {
     return m.issuer
 }
-// GetIssuerAssignedId gets the issuerAssignedId property value. Unique user identifier assigned by the identity provider.
+// GetIssuerAssignedId gets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
 // returns a *string when successful
 func (m *UserIdentity) GetIssuerAssignedId()(*string) {
     return m.issuerAssignedId
 }
-// GetSignInType gets the signInType property value. Sign-in method represented by the identity, such as email address, username, or federated login.
+// GetSignInType gets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
 // returns a *string when successful
 func (m *UserIdentity) GetSignInType()(*string) {
     return m.signInType
@@ -118,15 +118,15 @@ func (m *UserIdentity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *UserIdentity) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetIssuer sets the issuer property value. Identity provider or tenant that issued the user's sign-in identity.
+// SetIssuer sets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
 func (m *UserIdentity) SetIssuer(value *string)() {
     m.issuer = value
 }
-// SetIssuerAssignedId sets the issuerAssignedId property value. Unique user identifier assigned by the identity provider.
+// SetIssuerAssignedId sets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
 func (m *UserIdentity) SetIssuerAssignedId(value *string)() {
     m.issuerAssignedId = value
 }
-// SetSignInType sets the signInType property value. Sign-in method represented by the identity, such as email address, username, or federated login.
+// SetSignInType sets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
 func (m *UserIdentity) SetSignInType(value *string)() {
     m.signInType = value
 }
