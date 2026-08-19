@@ -7,86 +7,16 @@ import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // IntakeRequestBuilder builds and executes requests for operations under \leads\intake
 type IntakeRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// IntakeRequestBuilderGetQueryParameters creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
-type IntakeRequestBuilderGetQueryParameters struct {
-    // First street address line submitted by the lead intake source.
-    Address1 *string
-    // Second street address line submitted by the lead intake source.
-    Address2 *string
-    // Lead birth date used for demographic matching and insurance intake workflows.
-    BirthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // City for the lead or organization postal address.
-    City *string
-    // Lead date of birth supplied by intake sources and normalized into the lead profile.
-    DateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // Direct-post price supplied by the lead source during intake.
-    DirectPostPrice *float64
-    // Email address for the person represented by this lead intake request.
-    Email *string
-    // External system identifier used to reconcile this lead intake request across integrations.
-    ExternalId *string
-    // First name of the lead, user, or contact represented by this lead intake request.
-    FirstName *string
-    // Lead gender supplied by intake sources and normalized when possible.
-    Gender *string
-    // Landing page URL where the lead submitted their information.
-    LandingPage *string
-    // Last name of the lead, user, or contact represented by this lead intake request.
-    LastName *string
-    // Phone details for the lead, user, or organization represented by this lead intake request.
-    Phone *string
-    // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
-    PhoneType *string
-    // Postal code for the lead or organization address.
-    PostalCode *string
-    // Lead price or transaction price supplied to the Leadping API.
-    Price *float64
-    // Product or offer associated with the lead or source.
-    Product *string
-    // Referring page or traffic source that sent the lead into Leadping.
-    Referrer *string
-    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
-    SellerLeadId *string
-    // Alternate seller-provided lead identifier used during intake normalization.
-    SellerLeadIdentifier *string
-    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-    SourceMetadata *string
-    // State, province, or region for the lead or organization postal address.
-    State *string
-    // Affiliate or publisher sub ID captured for lead attribution.
-    SubId *string
-    // Tag IDs assigned to or filtered against this lead.
-    TagIds []string
-    // Tag names assigned to this lead when matching existing tags by name.
-    TagNames []string
-    // TrustedForm certificate URL used as proof of consumer consent.
-    TrustedFormUrl *string
-    // UTM campaign parameter captured for lead attribution reporting.
-    UtmCampaign *string
-    // UTM content parameter captured for lead attribution reporting.
-    UtmContent *string
-    // UTM medium parameter captured for lead attribution reporting.
-    UtmMedium *string
-    // UTM source parameter captured for lead attribution reporting.
-    UtmSource *string
-    // UTM term parameter captured for lead attribution reporting.
-    UtmTerm *string
-    // Industry vertical used for lead routing, compliance review, and reporting.
-    Vertical *string
-    // ZIP code submitted by the lead intake source.
-    Zip *string
-}
 // NewIntakeRequestBuilderInternal instantiates a new IntakeRequestBuilder and sets the default values.
 func NewIntakeRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*IntakeRequestBuilder) {
     m := &IntakeRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/intake{?Address1*,Address2*,BirthDate*,City*,DateOfBirth*,DirectPostPrice*,Email*,ExternalId*,FirstName*,Gender*,LandingPage*,LastName*,Phone*,PhoneType*,PostalCode*,Price*,Product*,Referrer*,SellerLeadId*,SellerLeadIdentifier*,SourceMetadata*,State*,SubId*,TagIds*,TagNames*,TrustedFormUrl*,UtmCampaign*,UtmContent*,UtmMedium*,UtmSource*,UtmTerm*,Vertical*,Zip*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/leads/intake", pathParameters),
     }
     return m
 }
@@ -95,32 +25,6 @@ func NewIntakeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371c
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewIntakeRequestBuilderInternal(urlParams, requestAdapter)
-}
-// Get creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
-// returns a LeadResponseable when successful
-// returns a ProblemDetails error when the service returns a 400 status code
-// returns a ProblemDetails error when the service returns a 401 status code
-// returns a ProblemDetails error when the service returns a 403 status code
-// returns a ProblemDetails error when the service returns a 429 status code
-func (m *IntakeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[IntakeRequestBuilderGetQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable, error) {
-    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
-    if err != nil {
-        return nil, err
-    }
-    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "400": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-    }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateLeadResponseFromDiscriminatorValue, errorMapping)
-    if err != nil {
-        return nil, err
-    }
-    if res == nil {
-        return nil, nil
-    }
-    return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
 }
 // Post creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.
 // returns a LeadResponseable when successful
@@ -147,14 +51,6 @@ func (m *IntakeRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee6
         return nil, nil
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
-}
-// ToGetRequestInformation creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
-// returns a *RequestInformation when successful
-func (m *IntakeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[IntakeRequestBuilderGetQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
-    requestInfo.Headers.TryAdd("Accept", "application/json")
-    return requestInfo, nil
 }
 // ToPostRequestInformation creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.
 // returns a *RequestInformation when successful
