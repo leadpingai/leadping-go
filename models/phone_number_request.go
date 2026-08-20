@@ -11,16 +11,10 @@ import (
 type PhoneNumberRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Indicates whether this phone number update request is active and available in the Leadping API.
-    enabled *bool
-    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    id *string
-    // Human-readable display name for the resource, subject to the API's maximum name length.
+    // Human-readable label for the phone number.
     name *string
     // E.164 phone number exposed by this phone number update request.
     number *string
-    // Organization ID that owns the phone number being created or updated.
-    organizationId *string
 }
 // NewPhoneNumberRequest instantiates a new PhoneNumberRequest and sets the default values.
 func NewPhoneNumberRequest()(*PhoneNumberRequest) {
@@ -39,35 +33,10 @@ func CreatePhoneNumberRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26
 func (m *PhoneNumberRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEnabled gets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
-// returns a *bool when successful
-func (m *PhoneNumberRequest) GetEnabled()(*bool) {
-    return m.enabled
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
     res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -88,24 +57,9 @@ func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
     return res
 }
-// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-// returns a *string when successful
-func (m *PhoneNumberRequest) GetId()(*string) {
-    return m.id
-}
-// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// GetName gets the name property value. Human-readable label for the phone number.
 // returns a *string when successful
 func (m *PhoneNumberRequest) GetName()(*string) {
     return m.name
@@ -115,25 +69,8 @@ func (m *PhoneNumberRequest) GetName()(*string) {
 func (m *PhoneNumberRequest) GetNumber()(*string) {
     return m.number
 }
-// GetOrganizationId gets the organizationId property value. Organization ID that owns the phone number being created or updated.
-// returns a *string when successful
-func (m *PhoneNumberRequest) GetOrganizationId()(*string) {
-    return m.organizationId
-}
 // Serialize serializes information the current object
 func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("name", m.GetName())
         if err != nil {
@@ -142,12 +79,6 @@ func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     }
     {
         err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -164,15 +95,7 @@ func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 func (m *PhoneNumberRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEnabled sets the enabled property value. Indicates whether this phone number update request is active and available in the Leadping API.
-func (m *PhoneNumberRequest) SetEnabled(value *bool)() {
-    m.enabled = value
-}
-// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-func (m *PhoneNumberRequest) SetId(value *string)() {
-    m.id = value
-}
-// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// SetName sets the name property value. Human-readable label for the phone number.
 func (m *PhoneNumberRequest) SetName(value *string)() {
     m.name = value
 }
@@ -180,21 +103,11 @@ func (m *PhoneNumberRequest) SetName(value *string)() {
 func (m *PhoneNumberRequest) SetNumber(value *string)() {
     m.number = value
 }
-// SetOrganizationId sets the organizationId property value. Organization ID that owns the phone number being created or updated.
-func (m *PhoneNumberRequest) SetOrganizationId(value *string)() {
-    m.organizationId = value
-}
 type PhoneNumberRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetEnabled()(*bool)
-    GetId()(*string)
     GetName()(*string)
     GetNumber()(*string)
-    GetOrganizationId()(*string)
-    SetEnabled(value *bool)()
-    SetId(value *string)()
     SetName(value *string)()
     SetNumber(value *string)()
-    SetOrganizationId(value *string)()
 }

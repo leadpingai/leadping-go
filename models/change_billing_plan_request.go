@@ -13,8 +13,6 @@ type ChangeBillingPlanRequest struct {
     additionalData map[string]any
     // Billing plan for this billing plan.
     billingPlan *BillingPlan
-    // The user ID associated with this billing plan.
-    userId *string
 }
 // NewChangeBillingPlanRequest instantiates a new ChangeBillingPlanRequest and sets the default values.
 func NewChangeBillingPlanRequest()(*ChangeBillingPlanRequest) {
@@ -52,34 +50,13 @@ func (m *ChangeBillingPlanRequest) GetFieldDeserializers()(map[string]func(i878a
         }
         return nil
     }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
     return res
-}
-// GetUserId gets the userId property value. The user ID associated with this billing plan.
-// returns a *string when successful
-func (m *ChangeBillingPlanRequest) GetUserId()(*string) {
-    return m.userId
 }
 // Serialize serializes information the current object
 func (m *ChangeBillingPlanRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     if m.GetBillingPlan() != nil {
         cast := (*m.GetBillingPlan()).String()
         err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userId", m.GetUserId())
         if err != nil {
             return err
         }
@@ -100,15 +77,9 @@ func (m *ChangeBillingPlanRequest) SetAdditionalData(value map[string]any)() {
 func (m *ChangeBillingPlanRequest) SetBillingPlan(value *BillingPlan)() {
     m.billingPlan = value
 }
-// SetUserId sets the userId property value. The user ID associated with this billing plan.
-func (m *ChangeBillingPlanRequest) SetUserId(value *string)() {
-    m.userId = value
-}
 type ChangeBillingPlanRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBillingPlan()(*BillingPlan)
-    GetUserId()(*string)
     SetBillingPlan(value *BillingPlan)()
-    SetUserId(value *string)()
 }

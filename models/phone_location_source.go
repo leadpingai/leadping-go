@@ -11,7 +11,7 @@ import (
 type PhoneLocationSource struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+    // The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
     method *string
     // The city, state, coordinates, phone number, or representative ZIP used by the method.
     query *string
@@ -59,7 +59,7 @@ func (m *PhoneLocationSource) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetMethod gets the method property value. The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+// GetMethod gets the method property value. The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
 // returns a *string when successful
 func (m *PhoneLocationSource) GetMethod()(*string) {
     return m.method
@@ -95,7 +95,7 @@ func (m *PhoneLocationSource) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *PhoneLocationSource) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetMethod sets the method property value. The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+// SetMethod sets the method property value. The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
 func (m *PhoneLocationSource) SetMethod(value *string)() {
     m.method = value
 }

@@ -7,44 +7,44 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PagedResultOfOrganizationTableRow returns one page of query results together with page-size, optional total-count, and opaque continuation-cursor metadata.
-type PagedResultOfOrganizationTableRow struct {
+// OrganizationApiKeyListResponse a page of safe organization API-key previews.
+type OrganizationApiKeyListResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+    // Opaque token for retrieving the next page, or null when this is the last page.
     continuationToken *string
-    // Items included in the current page, in the order determined by the query.
-    items []OrganizationTableRowable
-    // Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+    // Safe API-key previews in the current page.
+    items []OrganizationApiKeyPreviewResponseable
+    // Number of API keys in the current page.
     pageSize *int32
-    // Total number of records matching the query across all pages, or null when counting was not requested or computed.
+    // Total number of API keys matching the request.
     totalCount *int32
 }
-// NewPagedResultOfOrganizationTableRow instantiates a new PagedResultOfOrganizationTableRow and sets the default values.
-func NewPagedResultOfOrganizationTableRow()(*PagedResultOfOrganizationTableRow) {
-    m := &PagedResultOfOrganizationTableRow{
+// NewOrganizationApiKeyListResponse instantiates a new OrganizationApiKeyListResponse and sets the default values.
+func NewOrganizationApiKeyListResponse()(*OrganizationApiKeyListResponse) {
+    m := &OrganizationApiKeyListResponse{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreatePagedResultOfOrganizationTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateOrganizationApiKeyListResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePagedResultOfOrganizationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPagedResultOfOrganizationTableRow(), nil
+func CreateOrganizationApiKeyListResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewOrganizationApiKeyListResponse(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PagedResultOfOrganizationTableRow) GetAdditionalData()(map[string]any) {
+func (m *OrganizationApiKeyListResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetContinuationToken gets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+// GetContinuationToken gets the continuationToken property value. Opaque token for retrieving the next page, or null when this is the last page.
 // returns a *string when successful
-func (m *PagedResultOfOrganizationTableRow) GetContinuationToken()(*string) {
+func (m *OrganizationApiKeyListResponse) GetContinuationToken()(*string) {
     return m.continuationToken
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PagedResultOfOrganizationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *OrganizationApiKeyListResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["continuationToken"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
@@ -57,15 +57,15 @@ func (m *PagedResultOfOrganizationTableRow) GetFieldDeserializers()(map[string]f
         return nil
     }
     res["items"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateOrganizationTableRowFromDiscriminatorValue)
+        val, err := n.GetCollectionOfObjectValues(CreateOrganizationApiKeyPreviewResponseFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            res := make([]OrganizationTableRowable, len(val))
+            res := make([]OrganizationApiKeyPreviewResponseable, len(val))
             for i, v := range val {
                 if v != nil {
-                    res[i] = v.(OrganizationTableRowable)
+                    res[i] = v.(OrganizationApiKeyPreviewResponseable)
                 }
             }
             m.SetItems(res)
@@ -94,23 +94,23 @@ func (m *PagedResultOfOrganizationTableRow) GetFieldDeserializers()(map[string]f
     }
     return res
 }
-// GetItems gets the items property value. Items included in the current page, in the order determined by the query.
-// returns a []OrganizationTableRowable when successful
-func (m *PagedResultOfOrganizationTableRow) GetItems()([]OrganizationTableRowable) {
+// GetItems gets the items property value. Safe API-key previews in the current page.
+// returns a []OrganizationApiKeyPreviewResponseable when successful
+func (m *OrganizationApiKeyListResponse) GetItems()([]OrganizationApiKeyPreviewResponseable) {
     return m.items
 }
-// GetPageSize gets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+// GetPageSize gets the pageSize property value. Number of API keys in the current page.
 // returns a *int32 when successful
-func (m *PagedResultOfOrganizationTableRow) GetPageSize()(*int32) {
+func (m *OrganizationApiKeyListResponse) GetPageSize()(*int32) {
     return m.pageSize
 }
-// GetTotalCount gets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
+// GetTotalCount gets the totalCount property value. Total number of API keys matching the request.
 // returns a *int32 when successful
-func (m *PagedResultOfOrganizationTableRow) GetTotalCount()(*int32) {
+func (m *OrganizationApiKeyListResponse) GetTotalCount()(*int32) {
     return m.totalCount
 }
 // Serialize serializes information the current object
-func (m *PagedResultOfOrganizationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *OrganizationApiKeyListResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("continuationToken", m.GetContinuationToken())
         if err != nil {
@@ -150,34 +150,34 @@ func (m *PagedResultOfOrganizationTableRow) Serialize(writer i878a80d2330e89d268
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PagedResultOfOrganizationTableRow) SetAdditionalData(value map[string]any)() {
+func (m *OrganizationApiKeyListResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetContinuationToken sets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
-func (m *PagedResultOfOrganizationTableRow) SetContinuationToken(value *string)() {
+// SetContinuationToken sets the continuationToken property value. Opaque token for retrieving the next page, or null when this is the last page.
+func (m *OrganizationApiKeyListResponse) SetContinuationToken(value *string)() {
     m.continuationToken = value
 }
-// SetItems sets the items property value. Items included in the current page, in the order determined by the query.
-func (m *PagedResultOfOrganizationTableRow) SetItems(value []OrganizationTableRowable)() {
+// SetItems sets the items property value. Safe API-key previews in the current page.
+func (m *OrganizationApiKeyListResponse) SetItems(value []OrganizationApiKeyPreviewResponseable)() {
     m.items = value
 }
-// SetPageSize sets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
-func (m *PagedResultOfOrganizationTableRow) SetPageSize(value *int32)() {
+// SetPageSize sets the pageSize property value. Number of API keys in the current page.
+func (m *OrganizationApiKeyListResponse) SetPageSize(value *int32)() {
     m.pageSize = value
 }
-// SetTotalCount sets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
-func (m *PagedResultOfOrganizationTableRow) SetTotalCount(value *int32)() {
+// SetTotalCount sets the totalCount property value. Total number of API keys matching the request.
+func (m *OrganizationApiKeyListResponse) SetTotalCount(value *int32)() {
     m.totalCount = value
 }
-type PagedResultOfOrganizationTableRowable interface {
+type OrganizationApiKeyListResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetContinuationToken()(*string)
-    GetItems()([]OrganizationTableRowable)
+    GetItems()([]OrganizationApiKeyPreviewResponseable)
     GetPageSize()(*int32)
     GetTotalCount()(*int32)
     SetContinuationToken(value *string)()
-    SetItems(value []OrganizationTableRowable)()
+    SetItems(value []OrganizationApiKeyPreviewResponseable)()
     SetPageSize(value *int32)()
     SetTotalCount(value *int32)()
 }

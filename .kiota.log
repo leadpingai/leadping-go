@@ -1,7 +1,5 @@
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/AcceptOrganizationInvitationRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/recordingUrl - The format uri is not supported by Kiota and the string type will be used.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ContactRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/avatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/EventDetailResponse/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
@@ -32,5 +30,4 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDra
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/termsUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TrustedFormCertificate/properties/url - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserDataExportResponse/properties/downloadUrl - The format uri is not supported by Kiota and the string type will be used.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserResponse/properties/email - The format email is not supported by Kiota and the string type will be used.

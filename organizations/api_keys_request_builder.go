@@ -11,6 +11,18 @@ import (
 type ApiKeysRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// ById gets an item from the github.com/leadpingai/leadping-go.organizations.apiKeys.item collection
+// returns a *ApiKeysApiKeysItemRequestBuilder when successful
+func (m *ApiKeysRequestBuilder) ById(id string)(*ApiKeysApiKeysItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if id != "" {
+        urlTplParams["id"] = id
+    }
+    return NewApiKeysApiKeysItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewApiKeysRequestBuilderInternal instantiates a new ApiKeysRequestBuilder and sets the default values.
 func NewApiKeysRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ApiKeysRequestBuilder) {
     m := &ApiKeysRequestBuilder{

@@ -29,11 +29,6 @@ func NewOrganizationsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee
     urlParams["request-raw-url"] = rawUrl
     return NewOrganizationsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Invitations the invitations property
-// returns a *InvitationsRequestBuilder when successful
-func (m *OrganizationsRequestBuilder) Invitations()(*InvitationsRequestBuilder) {
-    return NewInvitationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // Me the me property
 // returns a *MeRequestBuilder when successful
 func (m *OrganizationsRequestBuilder) Me()(*MeRequestBuilder) {

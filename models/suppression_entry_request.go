@@ -15,8 +15,6 @@ type SuppressionEntryRequest struct {
     channel *string
     // Recipient email address to suppress or check.
     email *string
-    // Organization whose suppression list should be used.
-    organizationId *string
     // Recipient phone number to suppress or check, preferably in E.164 format.
     phoneNumber *string
     // Human-readable reason for creating or releasing the suppression.
@@ -75,16 +73,6 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
     res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -117,11 +105,6 @@ func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a8
     }
     return res
 }
-// GetOrganizationId gets the organizationId property value. Organization whose suppression list should be used.
-// returns a *string when successful
-func (m *SuppressionEntryRequest) GetOrganizationId()(*string) {
-    return m.organizationId
-}
 // GetPhoneNumber gets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
 // returns a *string when successful
 func (m *SuppressionEntryRequest) GetPhoneNumber()(*string) {
@@ -147,12 +130,6 @@ func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f48
     }
     {
         err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
         if err != nil {
             return err
         }
@@ -195,10 +172,6 @@ func (m *SuppressionEntryRequest) SetChannel(value *string)() {
 func (m *SuppressionEntryRequest) SetEmail(value *string)() {
     m.email = value
 }
-// SetOrganizationId sets the organizationId property value. Organization whose suppression list should be used.
-func (m *SuppressionEntryRequest) SetOrganizationId(value *string)() {
-    m.organizationId = value
-}
 // SetPhoneNumber sets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
 func (m *SuppressionEntryRequest) SetPhoneNumber(value *string)() {
     m.phoneNumber = value
@@ -216,13 +189,11 @@ type SuppressionEntryRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetChannel()(*string)
     GetEmail()(*string)
-    GetOrganizationId()(*string)
     GetPhoneNumber()(*string)
     GetReason()(*string)
     GetRecipientIdentifier()(*string)
     SetChannel(value *string)()
     SetEmail(value *string)()
-    SetOrganizationId(value *string)()
     SetPhoneNumber(value *string)()
     SetReason(value *string)()
     SetRecipientIdentifier(value *string)()

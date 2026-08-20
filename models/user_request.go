@@ -11,23 +11,11 @@ import (
 type UserRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-    billingPlan *UserRequest_billingPlan
-    // User compliance settings and attestations captured for Leadping account review.
-    compliance UserRequest_complianceable
-    // Organization currently selected for the user session or profile.
-    currentOrganization UserRequest_currentOrganizationable
-    // Email address for the person represented by this user profile request.
-    email *string
     // First name of the lead, user, or contact represented by this user profile request.
     firstName *string
-    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    id *string
     // Last name of the lead, user, or contact represented by this user profile request.
     lastName *string
-    // Mobile notification preferences configured for the user.
-    mobileDevicePreferences []MobileDevicePreferencesable
-    // Human-readable display name for the resource, subject to the API's maximum name length.
+    // Display name for the user.
     name *string
     // Notification preferences configured for the user.
     notificationPreferences UserRequest_notificationPreferencesable
@@ -53,70 +41,10 @@ func CreateUserRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *UserRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-// returns a *UserRequest_billingPlan when successful
-func (m *UserRequest) GetBillingPlan()(*UserRequest_billingPlan) {
-    return m.billingPlan
-}
-// GetCompliance gets the compliance property value. User compliance settings and attestations captured for Leadping account review.
-// returns a UserRequest_complianceable when successful
-func (m *UserRequest) GetCompliance()(UserRequest_complianceable) {
-    return m.compliance
-}
-// GetCurrentOrganization gets the currentOrganization property value. Organization currently selected for the user session or profile.
-// returns a UserRequest_currentOrganizationable when successful
-func (m *UserRequest) GetCurrentOrganization()(UserRequest_currentOrganizationable) {
-    return m.currentOrganization
-}
-// GetEmail gets the email property value. Email address for the person represented by this user profile request.
-// returns a *string when successful
-func (m *UserRequest) GetEmail()(*string) {
-    return m.email
-}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUserRequest_billingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlan(val.(*UserRequest_billingPlan))
-        }
-        return nil
-    }
-    res["compliance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserRequest_complianceFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompliance(val.(UserRequest_complianceable))
-        }
-        return nil
-    }
-    res["currentOrganization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserRequest_currentOrganizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentOrganization(val.(UserRequest_currentOrganizationable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
     res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -127,16 +55,6 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
     res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -144,22 +62,6 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         if val != nil {
             m.SetLastName(val)
-        }
-        return nil
-    }
-    res["mobileDevicePreferences"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMobileDevicePreferencesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MobileDevicePreferencesable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(MobileDevicePreferencesable)
-                }
-            }
-            m.SetMobileDevicePreferences(res)
         }
         return nil
     }
@@ -210,22 +112,12 @@ func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *UserRequest) GetFirstName()(*string) {
     return m.firstName
 }
-// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-// returns a *string when successful
-func (m *UserRequest) GetId()(*string) {
-    return m.id
-}
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
 // returns a *string when successful
 func (m *UserRequest) GetLastName()(*string) {
     return m.lastName
 }
-// GetMobileDevicePreferences gets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
-// returns a []MobileDevicePreferencesable when successful
-func (m *UserRequest) GetMobileDevicePreferences()([]MobileDevicePreferencesable) {
-    return m.mobileDevicePreferences
-}
-// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// GetName gets the name property value. Display name for the user.
 // returns a *string when successful
 func (m *UserRequest) GetName()(*string) {
     return m.name
@@ -247,31 +139,6 @@ func (m *UserRequest) GetTimeZoneId()(*string) {
 }
 // Serialize serializes information the current object
 func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetBillingPlan() != nil {
-        cast := (*m.GetBillingPlan()).String()
-        err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("compliance", m.GetCompliance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("currentOrganization", m.GetCurrentOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("firstName", m.GetFirstName())
         if err != nil {
@@ -279,25 +146,7 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMobileDevicePreferences() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMobileDevicePreferences()))
-        for i, v := range m.GetMobileDevicePreferences() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("mobileDevicePreferences", cast)
         if err != nil {
             return err
         }
@@ -338,39 +187,15 @@ func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *UserRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-func (m *UserRequest) SetBillingPlan(value *UserRequest_billingPlan)() {
-    m.billingPlan = value
-}
-// SetCompliance sets the compliance property value. User compliance settings and attestations captured for Leadping account review.
-func (m *UserRequest) SetCompliance(value UserRequest_complianceable)() {
-    m.compliance = value
-}
-// SetCurrentOrganization sets the currentOrganization property value. Organization currently selected for the user session or profile.
-func (m *UserRequest) SetCurrentOrganization(value UserRequest_currentOrganizationable)() {
-    m.currentOrganization = value
-}
-// SetEmail sets the email property value. Email address for the person represented by this user profile request.
-func (m *UserRequest) SetEmail(value *string)() {
-    m.email = value
-}
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
 func (m *UserRequest) SetFirstName(value *string)() {
     m.firstName = value
-}
-// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-func (m *UserRequest) SetId(value *string)() {
-    m.id = value
 }
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
 func (m *UserRequest) SetLastName(value *string)() {
     m.lastName = value
 }
-// SetMobileDevicePreferences sets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
-func (m *UserRequest) SetMobileDevicePreferences(value []MobileDevicePreferencesable)() {
-    m.mobileDevicePreferences = value
-}
-// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// SetName sets the name property value. Display name for the user.
 func (m *UserRequest) SetName(value *string)() {
     m.name = value
 }
@@ -389,26 +214,14 @@ func (m *UserRequest) SetTimeZoneId(value *string)() {
 type UserRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillingPlan()(*UserRequest_billingPlan)
-    GetCompliance()(UserRequest_complianceable)
-    GetCurrentOrganization()(UserRequest_currentOrganizationable)
-    GetEmail()(*string)
     GetFirstName()(*string)
-    GetId()(*string)
     GetLastName()(*string)
-    GetMobileDevicePreferences()([]MobileDevicePreferencesable)
     GetName()(*string)
     GetNotificationPreferences()(UserRequest_notificationPreferencesable)
     GetPhone()(*string)
     GetTimeZoneId()(*string)
-    SetBillingPlan(value *UserRequest_billingPlan)()
-    SetCompliance(value UserRequest_complianceable)()
-    SetCurrentOrganization(value UserRequest_currentOrganizationable)()
-    SetEmail(value *string)()
     SetFirstName(value *string)()
-    SetId(value *string)()
     SetLastName(value *string)()
-    SetMobileDevicePreferences(value []MobileDevicePreferencesable)()
     SetName(value *string)()
     SetNotificationPreferences(value UserRequest_notificationPreferencesable)()
     SetPhone(value *string)()

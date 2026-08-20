@@ -9,7 +9,6 @@ import (
     i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347 "github.com/microsoft/kiota-serialization-form-go"
     i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426 "github.com/microsoft/kiota-serialization-multipart-go"
     i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83 "github.com/microsoft/kiota-serialization-text-go"
-    i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa "github.com/leadpingai/leadping-go/contact"
     i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf "github.com/leadpingai/leadping-go/reports"
     i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7 "github.com/leadpingai/leadping-go/leads"
     i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad "github.com/leadpingai/leadping-go/users"
@@ -68,11 +67,6 @@ func NewLeadpingOpenApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813
     }
     m.BaseRequestBuilder.PathParameters["baseurl"] = m.BaseRequestBuilder.RequestAdapter.GetBaseUrl()
     return m
-}
-// Contact the contact property
-// returns a *ContactRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Contact()(*i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa.ContactRequestBuilder) {
-    return i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa.NewContactRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Conversations the conversations property
 // returns a *ConversationsRequestBuilder when successful

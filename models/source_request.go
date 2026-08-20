@@ -15,24 +15,14 @@ type SourceRequest struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Source API key used to authenticate inbound lead delivery to Leadping.
-    apiKey *string
-    // Configured cost charged when this source creates a billable lead.
-    costPerLead *float64
     // Tag IDs automatically assigned to leads created by this source.
     defaultTagIds []string
     // Tag names automatically assigned to leads created by this source.
     defaultTagNames []string
     // Human-readable description that explains this lead source request to API users.
     description *string
-    // Indicates whether this lead source request is active and available in the Leadping API.
-    enabled *bool
-    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    id *string
-    // Human-readable display name for the resource, subject to the API's maximum name length.
+    // Human-readable source name.
     name *string
-    // Indicates whether Leadping should issue a new API key for this source.
-    regenerateApiKey *bool
     // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     requiresTrustedForm *bool
 }
@@ -63,16 +53,6 @@ func (m *SourceRequest) GetAllowedProducts()([]string) {
 func (m *SourceRequest) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
-// returns a *string when successful
-func (m *SourceRequest) GetApiKey()(*string) {
-    return m.apiKey
-}
-// GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-// returns a *float64 when successful
-func (m *SourceRequest) GetCostPerLead()(*float64) {
-    return m.costPerLead
-}
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceRequest) GetDefaultTagIds()([]string) {
@@ -87,11 +67,6 @@ func (m *SourceRequest) GetDefaultTagNames()([]string) {
 // returns a *string when successful
 func (m *SourceRequest) GetDescription()(*string) {
     return m.description
-}
-// GetEnabled gets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
-// returns a *bool when successful
-func (m *SourceRequest) GetEnabled()(*bool) {
-    return m.enabled
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
@@ -126,26 +101,6 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
                 }
             }
             m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKey(val)
-        }
-        return nil
-    }
-    res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCostPerLead(val)
         }
         return nil
     }
@@ -191,26 +146,6 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         return nil
     }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
     res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -218,16 +153,6 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         if val != nil {
             m.SetName(val)
-        }
-        return nil
-    }
-    res["regenerateApiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRegenerateApiKey(val)
         }
         return nil
     }
@@ -243,20 +168,10 @@ func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
     }
     return res
 }
-// GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-// returns a *string when successful
-func (m *SourceRequest) GetId()(*string) {
-    return m.id
-}
-// GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// GetName gets the name property value. Human-readable source name.
 // returns a *string when successful
 func (m *SourceRequest) GetName()(*string) {
     return m.name
-}
-// GetRegenerateApiKey gets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
-// returns a *bool when successful
-func (m *SourceRequest) GetRegenerateApiKey()(*bool) {
-    return m.regenerateApiKey
 }
 // GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
@@ -273,18 +188,6 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     if m.GetAllowedStates() != nil {
         err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("apiKey", m.GetApiKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
         if err != nil {
             return err
         }
@@ -308,25 +211,7 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("regenerateApiKey", m.GetRegenerateApiKey())
         if err != nil {
             return err
         }
@@ -357,14 +242,6 @@ func (m *SourceRequest) SetAllowedProducts(value []string)() {
 func (m *SourceRequest) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
-func (m *SourceRequest) SetApiKey(value *string)() {
-    m.apiKey = value
-}
-// SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceRequest) SetCostPerLead(value *float64)() {
-    m.costPerLead = value
-}
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceRequest) SetDefaultTagIds(value []string)() {
     m.defaultTagIds = value
@@ -377,21 +254,9 @@ func (m *SourceRequest) SetDefaultTagNames(value []string)() {
 func (m *SourceRequest) SetDescription(value *string)() {
     m.description = value
 }
-// SetEnabled sets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
-func (m *SourceRequest) SetEnabled(value *bool)() {
-    m.enabled = value
-}
-// SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-func (m *SourceRequest) SetId(value *string)() {
-    m.id = value
-}
-// SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+// SetName sets the name property value. Human-readable source name.
 func (m *SourceRequest) SetName(value *string)() {
     m.name = value
-}
-// SetRegenerateApiKey sets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
-func (m *SourceRequest) SetRegenerateApiKey(value *bool)() {
-    m.regenerateApiKey = value
 }
 // SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 func (m *SourceRequest) SetRequiresTrustedForm(value *bool)() {
@@ -402,26 +267,16 @@ type SourceRequestable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetApiKey()(*string)
-    GetCostPerLead()(*float64)
     GetDefaultTagIds()([]string)
     GetDefaultTagNames()([]string)
     GetDescription()(*string)
-    GetEnabled()(*bool)
-    GetId()(*string)
     GetName()(*string)
-    GetRegenerateApiKey()(*bool)
     GetRequiresTrustedForm()(*bool)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetApiKey(value *string)()
-    SetCostPerLead(value *float64)()
     SetDefaultTagIds(value []string)()
     SetDefaultTagNames(value []string)()
     SetDescription(value *string)()
-    SetEnabled(value *bool)()
-    SetId(value *string)()
     SetName(value *string)()
-    SetRegenerateApiKey(value *bool)()
     SetRequiresTrustedForm(value *bool)()
 }

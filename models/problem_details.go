@@ -15,12 +15,16 @@ type ProblemDetails struct {
     additionalData map[string]any
     // Human-readable explanation specific to this occurrence of the problem.
     detail *string
+    // Validation errors keyed by the JSON request field name. Present for request validation failures.
+    errors ProblemDetails_errorsable
     // URI reference that identifies this specific occurrence of the problem.
     instance *string
     // HTTP status code returned for the problem.
     status *int32
     // Short, human-readable summary of the problem.
     title *string
+    // Request trace identifier used to correlate this problem with Leadping diagnostics.
+    traceId *string
     // URI reference that identifies the problem type.
     typeEscaped *string
 }
@@ -52,6 +56,11 @@ func (m *ProblemDetails) GetAdditionalData()(map[string]any) {
 func (m *ProblemDetails) GetDetail()(*string) {
     return m.detail
 }
+// GetErrors gets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
+// returns a ProblemDetails_errorsable when successful
+func (m *ProblemDetails) GetErrors()(ProblemDetails_errorsable) {
+    return m.errors
+}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -63,6 +72,16 @@ func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetDetail(val)
+        }
+        return nil
+    }
+    res["errors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateProblemDetails_errorsFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetErrors(val.(ProblemDetails_errorsable))
         }
         return nil
     }
@@ -96,6 +115,16 @@ func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["traceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTraceId(val)
+        }
+        return nil
+    }
     res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -123,6 +152,11 @@ func (m *ProblemDetails) GetStatus()(*int32) {
 func (m *ProblemDetails) GetTitle()(*string) {
     return m.title
 }
+// GetTraceId gets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
+// returns a *string when successful
+func (m *ProblemDetails) GetTraceId()(*string) {
+    return m.traceId
+}
 // GetTypeEscaped gets the type property value. URI reference that identifies the problem type.
 // returns a *string when successful
 func (m *ProblemDetails) GetTypeEscaped()(*string) {
@@ -132,6 +166,12 @@ func (m *ProblemDetails) GetTypeEscaped()(*string) {
 func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("detail", m.GetDetail())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteObjectValue("errors", m.GetErrors())
         if err != nil {
             return err
         }
@@ -150,6 +190,12 @@ func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteStringValue("title", m.GetTitle())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("traceId", m.GetTraceId())
         if err != nil {
             return err
         }
@@ -176,6 +222,10 @@ func (m *ProblemDetails) SetAdditionalData(value map[string]any)() {
 func (m *ProblemDetails) SetDetail(value *string)() {
     m.detail = value
 }
+// SetErrors sets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
+func (m *ProblemDetails) SetErrors(value ProblemDetails_errorsable)() {
+    m.errors = value
+}
 // SetInstance sets the instance property value. URI reference that identifies this specific occurrence of the problem.
 func (m *ProblemDetails) SetInstance(value *string)() {
     m.instance = value
@@ -188,6 +238,10 @@ func (m *ProblemDetails) SetStatus(value *int32)() {
 func (m *ProblemDetails) SetTitle(value *string)() {
     m.title = value
 }
+// SetTraceId sets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
+func (m *ProblemDetails) SetTraceId(value *string)() {
+    m.traceId = value
+}
 // SetTypeEscaped sets the type property value. URI reference that identifies the problem type.
 func (m *ProblemDetails) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
@@ -196,13 +250,17 @@ type ProblemDetailsable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetDetail()(*string)
+    GetErrors()(ProblemDetails_errorsable)
     GetInstance()(*string)
     GetStatus()(*int32)
     GetTitle()(*string)
+    GetTraceId()(*string)
     GetTypeEscaped()(*string)
     SetDetail(value *string)()
+    SetErrors(value ProblemDetails_errorsable)()
     SetInstance(value *string)()
     SetStatus(value *int32)()
     SetTitle(value *string)()
+    SetTraceId(value *string)()
     SetTypeEscaped(value *string)()
 }

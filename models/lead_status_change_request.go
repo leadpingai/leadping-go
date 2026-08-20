@@ -18,34 +18,20 @@ type LeadStatusChangeRequest struct {
     appointmentNotes *string
     // UTC timestamp for appointment start at on this lead status change.
     appointmentStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The assigned to user ID associated with this lead status change.
-    assignedToUserId *string
     // UTC timestamp for callback at on this lead status change.
     callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Controlled lead status change categories used for reporting, automation, and analytics.
     category *LeadStatusChangeRequest_category
-    // The automation that changed this lead status change, when applicable.
-    changedByAutomationId *string
-    // Known sources that can change a lead's current lead status change.
-    changeSource *LeadStatusChangeRequest_changeSource
     // The current follow up status for this lead status change.
     followUpStatus *string
-    // Whether this lead status change is missed call follow up.
-    isMissedCallFollowUp *bool
     // The operator or customer notes recorded for this lead status change.
     notes *string
     // Result of the interaction or workflow step that caused the status change.
     outcome *string
     // The reason this lead status change was changed.
     reason *string
-    // The related call event ID associated with this lead status change.
-    relatedCallEventId *string
-    // The source ID associated with this lead status change.
-    sourceId *string
     // UTC timestamp for task due at on this lead status change.
     taskDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for timestamp on this lead status change.
-    timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Category of status change being recorded for the lead.
     typeEscaped *string
 }
@@ -81,11 +67,6 @@ func (m *LeadStatusChangeRequest) GetAppointmentNotes()(*string) {
 func (m *LeadStatusChangeRequest) GetAppointmentStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.appointmentStartAt
 }
-// GetAssignedToUserId gets the assignedToUserId property value. The assigned to user ID associated with this lead status change.
-// returns a *string when successful
-func (m *LeadStatusChangeRequest) GetAssignedToUserId()(*string) {
-    return m.assignedToUserId
-}
 // GetCallbackAt gets the callbackAt property value. UTC timestamp for callback at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeRequest) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -95,16 +76,6 @@ func (m *LeadStatusChangeRequest) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad
 // returns a *LeadStatusChangeRequest_category when successful
 func (m *LeadStatusChangeRequest) GetCategory()(*LeadStatusChangeRequest_category) {
     return m.category
-}
-// GetChangedByAutomationId gets the changedByAutomationId property value. The automation that changed this lead status change, when applicable.
-// returns a *string when successful
-func (m *LeadStatusChangeRequest) GetChangedByAutomationId()(*string) {
-    return m.changedByAutomationId
-}
-// GetChangeSource gets the changeSource property value. Known sources that can change a lead's current lead status change.
-// returns a *LeadStatusChangeRequest_changeSource when successful
-func (m *LeadStatusChangeRequest) GetChangeSource()(*LeadStatusChangeRequest_changeSource) {
-    return m.changeSource
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
@@ -140,16 +111,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["assignedToUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAssignedToUserId(val)
-        }
-        return nil
-    }
     res["callbackAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -170,26 +131,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["changedByAutomationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChangedByAutomationId(val)
-        }
-        return nil
-    }
-    res["changeSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadStatusChangeRequest_changeSource)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChangeSource(val.(*LeadStatusChangeRequest_changeSource))
-        }
-        return nil
-    }
     res["followUpStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -197,16 +138,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetFollowUpStatus(val)
-        }
-        return nil
-    }
-    res["isMissedCallFollowUp"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMissedCallFollowUp(val)
         }
         return nil
     }
@@ -240,26 +171,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         return nil
     }
-    res["relatedCallEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRelatedCallEventId(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
     res["taskDueAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -267,16 +178,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
         }
         if val != nil {
             m.SetTaskDueAt(val)
-        }
-        return nil
-    }
-    res["timestamp"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimestamp(val)
         }
         return nil
     }
@@ -297,11 +198,6 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a8
 func (m *LeadStatusChangeRequest) GetFollowUpStatus()(*string) {
     return m.followUpStatus
 }
-// GetIsMissedCallFollowUp gets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
-// returns a *bool when successful
-func (m *LeadStatusChangeRequest) GetIsMissedCallFollowUp()(*bool) {
-    return m.isMissedCallFollowUp
-}
 // GetNotes gets the notes property value. The operator or customer notes recorded for this lead status change.
 // returns a *string when successful
 func (m *LeadStatusChangeRequest) GetNotes()(*string) {
@@ -317,25 +213,10 @@ func (m *LeadStatusChangeRequest) GetOutcome()(*string) {
 func (m *LeadStatusChangeRequest) GetReason()(*string) {
     return m.reason
 }
-// GetRelatedCallEventId gets the relatedCallEventId property value. The related call event ID associated with this lead status change.
-// returns a *string when successful
-func (m *LeadStatusChangeRequest) GetRelatedCallEventId()(*string) {
-    return m.relatedCallEventId
-}
-// GetSourceId gets the sourceId property value. The source ID associated with this lead status change.
-// returns a *string when successful
-func (m *LeadStatusChangeRequest) GetSourceId()(*string) {
-    return m.sourceId
-}
 // GetTaskDueAt gets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
 // returns a *Time when successful
 func (m *LeadStatusChangeRequest) GetTaskDueAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.taskDueAt
-}
-// GetTimestamp gets the timestamp property value. UTC timestamp for timestamp on this lead status change.
-// returns a *Time when successful
-func (m *LeadStatusChangeRequest) GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.timestamp
 }
 // GetTypeEscaped gets the type property value. Category of status change being recorded for the lead.
 // returns a *string when successful
@@ -363,12 +244,6 @@ func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("callbackAt", m.GetCallbackAt())
         if err != nil {
             return err
@@ -382,26 +257,7 @@ func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteStringValue("changedByAutomationId", m.GetChangedByAutomationId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetChangeSource() != nil {
-        cast := (*m.GetChangeSource()).String()
-        err := writer.WriteStringValue("changeSource", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isMissedCallFollowUp", m.GetIsMissedCallFollowUp())
         if err != nil {
             return err
         }
@@ -425,25 +281,7 @@ func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f48
         }
     }
     {
-        err := writer.WriteStringValue("relatedCallEventId", m.GetRelatedCallEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("taskDueAt", m.GetTaskDueAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("timestamp", m.GetTimestamp())
         if err != nil {
             return err
         }
@@ -478,10 +316,6 @@ func (m *LeadStatusChangeRequest) SetAppointmentNotes(value *string)() {
 func (m *LeadStatusChangeRequest) SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.appointmentStartAt = value
 }
-// SetAssignedToUserId sets the assignedToUserId property value. The assigned to user ID associated with this lead status change.
-func (m *LeadStatusChangeRequest) SetAssignedToUserId(value *string)() {
-    m.assignedToUserId = value
-}
 // SetCallbackAt sets the callbackAt property value. UTC timestamp for callback at on this lead status change.
 func (m *LeadStatusChangeRequest) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.callbackAt = value
@@ -490,21 +324,9 @@ func (m *LeadStatusChangeRequest) SetCallbackAt(value *i336074805fc853987abe6f7f
 func (m *LeadStatusChangeRequest) SetCategory(value *LeadStatusChangeRequest_category)() {
     m.category = value
 }
-// SetChangedByAutomationId sets the changedByAutomationId property value. The automation that changed this lead status change, when applicable.
-func (m *LeadStatusChangeRequest) SetChangedByAutomationId(value *string)() {
-    m.changedByAutomationId = value
-}
-// SetChangeSource sets the changeSource property value. Known sources that can change a lead's current lead status change.
-func (m *LeadStatusChangeRequest) SetChangeSource(value *LeadStatusChangeRequest_changeSource)() {
-    m.changeSource = value
-}
 // SetFollowUpStatus sets the followUpStatus property value. The current follow up status for this lead status change.
 func (m *LeadStatusChangeRequest) SetFollowUpStatus(value *string)() {
     m.followUpStatus = value
-}
-// SetIsMissedCallFollowUp sets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
-func (m *LeadStatusChangeRequest) SetIsMissedCallFollowUp(value *bool)() {
-    m.isMissedCallFollowUp = value
 }
 // SetNotes sets the notes property value. The operator or customer notes recorded for this lead status change.
 func (m *LeadStatusChangeRequest) SetNotes(value *string)() {
@@ -518,21 +340,9 @@ func (m *LeadStatusChangeRequest) SetOutcome(value *string)() {
 func (m *LeadStatusChangeRequest) SetReason(value *string)() {
     m.reason = value
 }
-// SetRelatedCallEventId sets the relatedCallEventId property value. The related call event ID associated with this lead status change.
-func (m *LeadStatusChangeRequest) SetRelatedCallEventId(value *string)() {
-    m.relatedCallEventId = value
-}
-// SetSourceId sets the sourceId property value. The source ID associated with this lead status change.
-func (m *LeadStatusChangeRequest) SetSourceId(value *string)() {
-    m.sourceId = value
-}
 // SetTaskDueAt sets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
 func (m *LeadStatusChangeRequest) SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.taskDueAt = value
-}
-// SetTimestamp sets the timestamp property value. UTC timestamp for timestamp on this lead status change.
-func (m *LeadStatusChangeRequest) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.timestamp = value
 }
 // SetTypeEscaped sets the type property value. Category of status change being recorded for the lead.
 func (m *LeadStatusChangeRequest) SetTypeEscaped(value *string)() {
@@ -544,37 +354,23 @@ type LeadStatusChangeRequestable interface {
     GetAppointmentEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetAppointmentNotes()(*string)
     GetAppointmentStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetAssignedToUserId()(*string)
     GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCategory()(*LeadStatusChangeRequest_category)
-    GetChangedByAutomationId()(*string)
-    GetChangeSource()(*LeadStatusChangeRequest_changeSource)
     GetFollowUpStatus()(*string)
-    GetIsMissedCallFollowUp()(*bool)
     GetNotes()(*string)
     GetOutcome()(*string)
     GetReason()(*string)
-    GetRelatedCallEventId()(*string)
-    GetSourceId()(*string)
     GetTaskDueAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetTypeEscaped()(*string)
     SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetAppointmentNotes(value *string)()
     SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetAssignedToUserId(value *string)()
     SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCategory(value *LeadStatusChangeRequest_category)()
-    SetChangedByAutomationId(value *string)()
-    SetChangeSource(value *LeadStatusChangeRequest_changeSource)()
     SetFollowUpStatus(value *string)()
-    SetIsMissedCallFollowUp(value *bool)()
     SetNotes(value *string)()
     SetOutcome(value *string)()
     SetReason(value *string)()
-    SetRelatedCallEventId(value *string)()
-    SetSourceId(value *string)()
     SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetTypeEscaped(value *string)()
 }
