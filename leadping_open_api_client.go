@@ -21,6 +21,7 @@ import (
     i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b "github.com/leadpingai/leadping-go/events"
     i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b "github.com/leadpingai/leadping-go/tags"
     i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3 "github.com/leadpingai/leadping-go/sources"
+    i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe "github.com/leadpingai/leadping-go/a2a"
     i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67 "github.com/leadpingai/leadping-go/feedback"
     i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef "github.com/leadpingai/leadping-go/organizations"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
@@ -30,6 +31,7 @@ import (
     iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a "github.com/leadpingai/leadping-go/usage"
     ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf "github.com/leadpingai/leadping-go/paymentmethods"
     ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c "github.com/leadpingai/leadping-go/suppressions"
+    ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7 "github.com/leadpingai/leadping-go/wellknown"
     idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7 "github.com/leadpingai/leadping-go/automations"
     ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df "github.com/leadpingai/leadping-go/sms"
     ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa "github.com/leadpingai/leadping-go/phonenumbers"
@@ -39,6 +41,11 @@ import (
 // LeadpingOpenApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
 type LeadpingOpenApiClient struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+}
+// A2a the a2a property
+// returns a *A2aRequestBuilder when successful
+func (m *LeadpingOpenApiClient) A2a()(*i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe.A2aRequestBuilder) {
+    return i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe.NewA2aRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Analytics the analytics property
 // returns a *AnalyticsRequestBuilder when successful
@@ -177,4 +184,9 @@ func (m *LeadpingOpenApiClient) Users()(*i1ce310f37fa769e9eaae2b424f6823e8872c15
 // returns a *WalletsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Wallets()(*ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.WalletsRequestBuilder) {
     return ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.NewWalletsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WellKnown the wellKnown property
+// returns a *WellKnownRequestBuilder when successful
+func (m *LeadpingOpenApiClient) WellKnown()(*ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7.WellKnownRequestBuilder) {
+    return ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7.NewWellKnownRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

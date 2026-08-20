@@ -32,7 +32,7 @@ type UserResponse struct {
     identities []UserIdentityable
     // The date and time when this user last completed the Leadping sign-in flow.
     lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for last name on this user.
+    // Last name of the Leadping user.
     lastName *string
     // The Leadping mobile device preferences for this user.
     mobileDevicePreferences []MobileDevicePreferencesable
@@ -380,7 +380,7 @@ func (m *UserResponse) GetIdentities()([]UserIdentityable) {
 func (m *UserResponse) GetLastLoggedInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastLoggedInAt
 }
-// GetLastName gets the lastName property value. UTC timestamp for last name on this user.
+// GetLastName gets the lastName property value. Last name of the Leadping user.
 // returns a *string when successful
 func (m *UserResponse) GetLastName()(*string) {
     return m.lastName
@@ -651,7 +651,7 @@ func (m *UserResponse) SetIdentities(value []UserIdentityable)() {
 func (m *UserResponse) SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastLoggedInAt = value
 }
-// SetLastName sets the lastName property value. UTC timestamp for last name on this user.
+// SetLastName sets the lastName property value. Last name of the Leadping user.
 func (m *UserResponse) SetLastName(value *string)() {
     m.lastName = value
 }

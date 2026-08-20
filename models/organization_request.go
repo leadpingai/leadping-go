@@ -17,7 +17,7 @@ type OrganizationRequest struct {
     description *string
     // Employer Identification Number used for organization and 10DLC verification.
     ein *string
-    // Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+    // Whether the organization was formed less than 90 days ago.
     isYoungerThan90 *bool
     // Primary organization name.
     name *string
@@ -158,7 +158,7 @@ func (m *OrganizationRequest) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetIsYoungerThan90 gets the isYoungerThan90 property value. Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+// GetIsYoungerThan90 gets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
 // returns a *bool when successful
 func (m *OrganizationRequest) GetIsYoungerThan90()(*bool) {
     return m.isYoungerThan90
@@ -268,7 +268,7 @@ func (m *OrganizationRequest) SetDescription(value *string)() {
 func (m *OrganizationRequest) SetEin(value *string)() {
     m.ein = value
 }
-// SetIsYoungerThan90 sets the isYoungerThan90 property value. Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+// SetIsYoungerThan90 sets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
 func (m *OrganizationRequest) SetIsYoungerThan90(value *bool)() {
     m.isYoungerThan90 = value
 }

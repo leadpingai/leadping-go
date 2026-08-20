@@ -24,7 +24,7 @@ type StripePaymentMethodResponse struct {
     id *string
     // Whether this Stripe payment method is default.
     isDefault *bool
-    // UTC timestamp for last4 on this Stripe payment method.
+    // Last four digits of the payment card number.
     last4 *string
 }
 // NewStripePaymentMethodResponse instantiates a new StripePaymentMethodResponse and sets the default values.
@@ -150,7 +150,7 @@ func (m *StripePaymentMethodResponse) GetId()(*string) {
 func (m *StripePaymentMethodResponse) GetIsDefault()(*bool) {
     return m.isDefault
 }
-// GetLast4 gets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
+// GetLast4 gets the last4 property value. Last four digits of the payment card number.
 // returns a *string when successful
 func (m *StripePaymentMethodResponse) GetLast4()(*string) {
     return m.last4
@@ -235,7 +235,7 @@ func (m *StripePaymentMethodResponse) SetId(value *string)() {
 func (m *StripePaymentMethodResponse) SetIsDefault(value *bool)() {
     m.isDefault = value
 }
-// SetLast4 sets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
+// SetLast4 sets the last4 property value. Last four digits of the payment card number.
 func (m *StripePaymentMethodResponse) SetLast4(value *string)() {
     m.last4 = value
 }
