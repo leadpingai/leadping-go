@@ -1,0 +1,27 @@
+name: Documentation issue
+description: Report missing, confusing, or incorrect documentation.
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation location
+      description: Link or file path for the documentation that should change.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing?
+      description: Describe the documentation problem.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: Describe the wording, example, or structure you expected.
+    validations:
+      required: false
