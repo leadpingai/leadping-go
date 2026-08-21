@@ -29,5 +29,6 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDra
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/privacyPolicyUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/termsUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TrustedFormCertificate/properties/url - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserDataExportDownloadResponse/properties/url - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserDataExportResponse/properties/downloadUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/UserResponse/properties/email - The format email is not supported by Kiota and the string type will be used.
