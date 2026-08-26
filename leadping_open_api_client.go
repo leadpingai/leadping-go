@@ -17,6 +17,7 @@ import (
     i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443 "github.com/leadpingai/leadping-go/leadstatuses"
     i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
     i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
+    i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3 "github.com/leadpingai/leadping-go/blog"
     i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
     i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b "github.com/leadpingai/leadping-go/events"
     i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b "github.com/leadpingai/leadping-go/tags"
@@ -56,6 +57,11 @@ func (m *LeadpingOpenApiClient) Analytics()(*i34516b56a10fcbbab4a4a54729850b2a71
 // returns a *AutomationsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Automations()(*idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.AutomationsRequestBuilder) {
     return idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.NewAutomationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Blog the blog property
+// returns a *BlogRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Blog()(*i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3.BlogRequestBuilder) {
+    return i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3.NewBlogRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewLeadpingOpenApiClient instantiates a new LeadpingOpenApiClient and sets the default values.
 func NewLeadpingOpenApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadpingOpenApiClient) {

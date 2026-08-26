@@ -18,6 +18,12 @@ type LeadTableRow struct {
     archivedByUserId *string
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
+    // Identifier and display name of the assigned organization member.
+    assignedTo LeadTableRow_assignedToable
+    // Leadping user currently responsible for this lead, or null when unassigned.
+    assignedToUserId *string
+    // Optional profile image URL explicitly associated with the lead.
+    avatarUrl *string
     // UTC timestamp when this lead table row was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current lead status change summary that describes the lead outcome.
@@ -38,6 +44,8 @@ type LeadTableRow struct {
     organization LeadTableRow_organizationable
     // Phone details for the lead, user, or organization represented by this lead table row.
     phone *string
+    // Identifier of the canonical phone identity associated with this lead's phone number.
+    phoneIdentityId *string
     // Lead price or transaction price supplied to the Leadping API.
     price *float64
     // Defines the asynchronous verification and enrichment lifecycle for a lead.
@@ -88,6 +96,21 @@ func (m *LeadTableRow) GetArchivedByUserId()(*string) {
 // returns a *int32 when successful
 func (m *LeadTableRow) GetArchiveReason()(*int32) {
     return m.archiveReason
+}
+// GetAssignedTo gets the assignedTo property value. Identifier and display name of the assigned organization member.
+// returns a LeadTableRow_assignedToable when successful
+func (m *LeadTableRow) GetAssignedTo()(LeadTableRow_assignedToable) {
+    return m.assignedTo
+}
+// GetAssignedToUserId gets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
+// returns a *string when successful
+func (m *LeadTableRow) GetAssignedToUserId()(*string) {
+    return m.assignedToUserId
+}
+// GetAvatarUrl gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+// returns a *string when successful
+func (m *LeadTableRow) GetAvatarUrl()(*string) {
+    return m.avatarUrl
 }
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead table row was created.
 // returns a *Time when successful
@@ -140,6 +163,36 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetArchiveReason(val)
+        }
+        return nil
+    }
+    res["assignedTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadTableRow_assignedToFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAssignedTo(val.(LeadTableRow_assignedToable))
+        }
+        return nil
+    }
+    res["assignedToUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAssignedToUserId(val)
+        }
+        return nil
+    }
+    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAvatarUrl(val)
         }
         return nil
     }
@@ -240,6 +293,16 @@ func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetPhone(val)
+        }
+        return nil
+    }
+    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPhoneIdentityId(val)
         }
         return nil
     }
@@ -371,6 +434,11 @@ func (m *LeadTableRow) GetOrganization()(LeadTableRow_organizationable) {
 func (m *LeadTableRow) GetPhone()(*string) {
     return m.phone
 }
+// GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
+// returns a *string when successful
+func (m *LeadTableRow) GetPhoneIdentityId()(*string) {
+    return m.phoneIdentityId
+}
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a *float64 when successful
 func (m *LeadTableRow) GetPrice()(*float64) {
@@ -437,6 +505,24 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteObjectValue("assignedTo", m.GetAssignedTo())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
         if err != nil {
             return err
@@ -492,6 +578,12 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
     }
     {
         err := writer.WriteStringValue("phone", m.GetPhone())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
         if err != nil {
             return err
         }
@@ -581,6 +673,18 @@ func (m *LeadTableRow) SetArchivedByUserId(value *string)() {
 func (m *LeadTableRow) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
+// SetAssignedTo sets the assignedTo property value. Identifier and display name of the assigned organization member.
+func (m *LeadTableRow) SetAssignedTo(value LeadTableRow_assignedToable)() {
+    m.assignedTo = value
+}
+// SetAssignedToUserId sets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
+func (m *LeadTableRow) SetAssignedToUserId(value *string)() {
+    m.assignedToUserId = value
+}
+// SetAvatarUrl sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+func (m *LeadTableRow) SetAvatarUrl(value *string)() {
+    m.avatarUrl = value
+}
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead table row was created.
 func (m *LeadTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
@@ -620,6 +724,10 @@ func (m *LeadTableRow) SetOrganization(value LeadTableRow_organizationable)() {
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead table row.
 func (m *LeadTableRow) SetPhone(value *string)() {
     m.phone = value
+}
+// SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
+func (m *LeadTableRow) SetPhoneIdentityId(value *string)() {
+    m.phoneIdentityId = value
 }
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
 func (m *LeadTableRow) SetPrice(value *float64)() {
@@ -663,6 +771,9 @@ type LeadTableRowable interface {
     GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetArchivedByUserId()(*string)
     GetArchiveReason()(*int32)
+    GetAssignedTo()(LeadTableRow_assignedToable)
+    GetAssignedToUserId()(*string)
+    GetAvatarUrl()(*string)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentLeadStatus()(LeadTableRow_currentLeadStatusable)
     GetEmail()(*string)
@@ -673,6 +784,7 @@ type LeadTableRowable interface {
     GetLastName()(*string)
     GetOrganization()(LeadTableRow_organizationable)
     GetPhone()(*string)
+    GetPhoneIdentityId()(*string)
     GetPrice()(*float64)
     GetProcessingStatus()(*LeadTableRow_processingStatus)
     GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -685,6 +797,9 @@ type LeadTableRowable interface {
     SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetArchivedByUserId(value *string)()
     SetArchiveReason(value *int32)()
+    SetAssignedTo(value LeadTableRow_assignedToable)()
+    SetAssignedToUserId(value *string)()
+    SetAvatarUrl(value *string)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentLeadStatus(value LeadTableRow_currentLeadStatusable)()
     SetEmail(value *string)()
@@ -695,6 +810,7 @@ type LeadTableRowable interface {
     SetLastName(value *string)()
     SetOrganization(value LeadTableRow_organizationable)()
     SetPhone(value *string)()
+    SetPhoneIdentityId(value *string)()
     SetPrice(value *float64)()
     SetProcessingStatus(value *LeadTableRow_processingStatus)()
     SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

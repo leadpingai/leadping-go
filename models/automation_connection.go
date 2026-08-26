@@ -17,6 +17,8 @@ type AutomationConnection struct {
     sourceNodeId *string
     // Graph node identifier where the connection ends.
     targetNodeId *string
+    // Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+    weight *int32
 }
 // NewAutomationConnection instantiates a new AutomationConnection and sets the default values.
 func NewAutomationConnection()(*AutomationConnection) {
@@ -69,6 +71,16 @@ func (m *AutomationConnection) GetFieldDeserializers()(map[string]func(i878a80d2
         }
         return nil
     }
+    res["weight"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetWeight(val)
+        }
+        return nil
+    }
     return res
 }
 // GetId gets the id property value. Unique identifier for this connection.
@@ -86,6 +98,11 @@ func (m *AutomationConnection) GetSourceNodeId()(*string) {
 func (m *AutomationConnection) GetTargetNodeId()(*string) {
     return m.targetNodeId
 }
+// GetWeight gets the weight property value. Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+// returns a *int32 when successful
+func (m *AutomationConnection) GetWeight()(*int32) {
+    return m.weight
+}
 // Serialize serializes information the current object
 func (m *AutomationConnection) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
@@ -102,6 +119,12 @@ func (m *AutomationConnection) Serialize(writer i878a80d2330e89d26896388a3f487ee
     }
     {
         err := writer.WriteStringValue("targetNodeId", m.GetTargetNodeId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("weight", m.GetWeight())
         if err != nil {
             return err
         }
@@ -130,13 +153,19 @@ func (m *AutomationConnection) SetSourceNodeId(value *string)() {
 func (m *AutomationConnection) SetTargetNodeId(value *string)() {
     m.targetNodeId = value
 }
+// SetWeight sets the weight property value. Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+func (m *AutomationConnection) SetWeight(value *int32)() {
+    m.weight = value
+}
 type AutomationConnectionable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetId()(*string)
     GetSourceNodeId()(*string)
     GetTargetNodeId()(*string)
+    GetWeight()(*int32)
     SetId(value *string)()
     SetSourceNodeId(value *string)()
     SetTargetNodeId(value *string)()
+    SetWeight(value *int32)()
 }

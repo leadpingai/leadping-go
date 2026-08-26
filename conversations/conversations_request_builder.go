@@ -11,6 +11,18 @@ import (
 type ConversationsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+// ById gets an item from the github.com/leadpingai/leadping-go.conversations.item collection
+// returns a *ConversationsItemRequestBuilder when successful
+func (m *ConversationsRequestBuilder) ById(id string)(*ConversationsItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if id != "" {
+        urlTplParams["id"] = id
+    }
+    return NewConversationsItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewConversationsRequestBuilderInternal instantiates a new ConversationsRequestBuilder and sets the default values.
 func NewConversationsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConversationsRequestBuilder) {
     m := &ConversationsRequestBuilder{

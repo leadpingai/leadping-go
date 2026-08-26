@@ -60,6 +60,11 @@ func (m *MeRequestBuilder) Invitations()(*MeInvitationsRequestBuilder) {
 func (m *MeRequestBuilder) Members()(*MeMembersRequestBuilder) {
     return NewMeMembersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Membership the membership property
+// returns a *MeMembershipRequestBuilder when successful
+func (m *MeRequestBuilder) Membership()(*MeMembershipRequestBuilder) {
+    return NewMeMembershipRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // OneZerodlc the OneZerodlc property
 // returns a *MeOneZerodlcRequestBuilder when successful
 func (m *MeRequestBuilder) OneZerodlc()(*MeOneZerodlcRequestBuilder) {

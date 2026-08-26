@@ -18,6 +18,11 @@ type ItemRequestBuilder struct {
 func (m *ItemRequestBuilder) Archive()(*ItemArchiveRequestBuilder) {
     return NewItemArchiveRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// Assignment the assignment property
+// returns a *ItemAssignmentRequestBuilder when successful
+func (m *ItemRequestBuilder) Assignment()(*ItemAssignmentRequestBuilder) {
+    return NewItemAssignmentRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewItemRequestBuilderInternal instantiates a new ItemRequestBuilder and sets the default values.
 func NewItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemRequestBuilder) {
     m := &ItemRequestBuilder{

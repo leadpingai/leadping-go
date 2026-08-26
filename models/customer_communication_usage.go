@@ -13,6 +13,8 @@ type CustomerCommunicationUsage struct {
     additionalData map[string]any
     // Number of calls answered during the reporting period.
     answeredCalls *int32
+    // Number of calls that failed or were blocked during the reporting period.
+    callErrors *int32
     // Total connected call duration, in minutes, during the reporting period.
     callMinutes *float64
     // Number of outbound calls placed during the reporting period.
@@ -54,6 +56,11 @@ func (m *CustomerCommunicationUsage) GetAdditionalData()(map[string]any) {
 func (m *CustomerCommunicationUsage) GetAnsweredCalls()(*int32) {
     return m.answeredCalls
 }
+// GetCallErrors gets the callErrors property value. Number of calls that failed or were blocked during the reporting period.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsage) GetCallErrors()(*int32) {
+    return m.callErrors
+}
 // GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 // returns a *float64 when successful
 func (m *CustomerCommunicationUsage) GetCallMinutes()(*float64) {
@@ -85,6 +92,16 @@ func (m *CustomerCommunicationUsage) GetFieldDeserializers()(map[string]func(i87
         }
         if val != nil {
             m.SetAnsweredCalls(val)
+        }
+        return nil
+    }
+    res["callErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCallErrors(val)
         }
         return nil
     }
@@ -220,6 +237,12 @@ func (m *CustomerCommunicationUsage) Serialize(writer i878a80d2330e89d26896388a3
         }
     }
     {
+        err := writer.WriteInt32Value("callErrors", m.GetCallErrors())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteFloat64Value("callMinutes", m.GetCallMinutes())
         if err != nil {
             return err
@@ -295,6 +318,10 @@ func (m *CustomerCommunicationUsage) SetAdditionalData(value map[string]any)() {
 func (m *CustomerCommunicationUsage) SetAnsweredCalls(value *int32)() {
     m.answeredCalls = value
 }
+// SetCallErrors sets the callErrors property value. Number of calls that failed or were blocked during the reporting period.
+func (m *CustomerCommunicationUsage) SetCallErrors(value *int32)() {
+    m.callErrors = value
+}
 // SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 func (m *CustomerCommunicationUsage) SetCallMinutes(value *float64)() {
     m.callMinutes = value
@@ -335,6 +362,7 @@ type CustomerCommunicationUsageable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAnsweredCalls()(*int32)
+    GetCallErrors()(*int32)
     GetCallMinutes()(*float64)
     GetCallsPlaced()(*int32)
     GetCallsReceived()(*int32)
@@ -345,6 +373,7 @@ type CustomerCommunicationUsageable interface {
     GetTrend()([]CustomerCommunicationUsagePointable)
     GetUsageSpend()(*float64)
     SetAnsweredCalls(value *int32)()
+    SetCallErrors(value *int32)()
     SetCallMinutes(value *float64)()
     SetCallsPlaced(value *int32)()
     SetCallsReceived(value *int32)()

@@ -16,10 +16,10 @@ type SourceResponse struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-    apiKey *string
     // Masked preview of the source API key for compact display.
     apiKeyPreview *string
+    // UTC timestamp when the source credential was most recently rotated.
+    apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Indicates whether the organization or sender passed compliance review.
     complianceApproved *bool
     // Configured cost charged when this source creates a billable lead.
@@ -84,15 +84,15 @@ func (m *SourceResponse) GetAllowedProducts()([]string) {
 func (m *SourceResponse) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-// returns a *string when successful
-func (m *SourceResponse) GetApiKey()(*string) {
-    return m.apiKey
-}
 // GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 // returns a *string when successful
 func (m *SourceResponse) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
+}
+// GetApiKeyRotatedAt gets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+// returns a *Time when successful
+func (m *SourceResponse) GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.apiKeyRotatedAt
 }
 // GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 // returns a *bool when successful
@@ -175,16 +175,6 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKey(val)
-        }
-        return nil
-    }
     res["apiKeyPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -192,6 +182,16 @@ func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetApiKeyPreview(val)
+        }
+        return nil
+    }
+    res["apiKeyRotatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetApiKeyRotatedAt(val)
         }
         return nil
     }
@@ -449,13 +449,13 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteStringValue("apiKey", m.GetApiKey())
+        err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
+        err := writer.WriteTimeValue("apiKeyRotatedAt", m.GetApiKeyRotatedAt())
         if err != nil {
             return err
         }
@@ -594,13 +594,13 @@ func (m *SourceResponse) SetAllowedProducts(value []string)() {
 func (m *SourceResponse) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-func (m *SourceResponse) SetApiKey(value *string)() {
-    m.apiKey = value
-}
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceResponse) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
+}
+// SetApiKeyRotatedAt sets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+func (m *SourceResponse) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.apiKeyRotatedAt = value
 }
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 func (m *SourceResponse) SetComplianceApproved(value *bool)() {
@@ -679,8 +679,8 @@ type SourceResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetApiKey()(*string)
     GetApiKeyPreview()(*string)
+    GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetComplianceApproved()(*bool)
     GetCostPerLead()(*float64)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -701,8 +701,8 @@ type SourceResponseable interface {
     GetUser()(SourceResponse_userable)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetApiKey(value *string)()
     SetApiKeyPreview(value *string)()
+    SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetComplianceApproved(value *bool)()
     SetCostPerLead(value *float64)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

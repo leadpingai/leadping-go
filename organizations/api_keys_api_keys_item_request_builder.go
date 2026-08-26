@@ -26,7 +26,7 @@ func NewApiKeysApiKeysItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f
     urlParams["request-raw-url"] = rawUrl
     return NewApiKeysApiKeysItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete confirmation that identifies the revoked key.
+// Delete the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a OrganizationApiKeyRevokeResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -52,7 +52,7 @@ func (m *ApiKeysApiKeysItemRequestBuilder) Delete(ctx context.Context, requestCo
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationApiKeyRevokeResponseable), nil
 }
-// Get returns the API key row with a safe token preview.
+// Get the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a OrganizationApiKeyPreviewResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -78,7 +78,7 @@ func (m *ApiKeysApiKeysItemRequestBuilder) Get(ctx context.Context, requestConfi
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationApiKeyPreviewResponseable), nil
 }
-// Post the one-time API token and safe key detail row.
+// Post the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a OrganizationApiKeyIssueResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -104,7 +104,7 @@ func (m *ApiKeysApiKeysItemRequestBuilder) Post(ctx context.Context, body i01c1f
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationApiKeyIssueResponseable), nil
 }
-// ToDeleteRequestInformation confirmation that identifies the revoked key.
+// ToDeleteRequestInformation the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a *RequestInformation when successful
 func (m *ApiKeysApiKeysItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -112,7 +112,7 @@ func (m *ApiKeysApiKeysItemRequestBuilder) ToDeleteRequestInformation(ctx contex
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToGetRequestInformation returns the API key row with a safe token preview.
+// ToGetRequestInformation the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a *RequestInformation when successful
 func (m *ApiKeysApiKeysItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -120,7 +120,7 @@ func (m *ApiKeysApiKeysItemRequestBuilder) ToGetRequestInformation(ctx context.C
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation the one-time API token and safe key detail row.
+// ToPostRequestInformation the operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
 // returns a *RequestInformation when successful
 func (m *ApiKeysApiKeysItemRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationApiKeyRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

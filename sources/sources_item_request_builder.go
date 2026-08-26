@@ -26,6 +26,11 @@ func NewSourcesItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
     urlParams["request-raw-url"] = rawUrl
     return NewSourcesItemRequestBuilderInternal(urlParams, requestAdapter)
 }
+// Credentials the credentials property
+// returns a *ItemCredentialsRequestBuilder when successful
+func (m *SourcesItemRequestBuilder) Credentials()(*ItemCredentialsRequestBuilder) {
+    return NewItemCredentialsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Delete deletes a lead source from the current organization so it can no longer accept or route newly captured leads.
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code

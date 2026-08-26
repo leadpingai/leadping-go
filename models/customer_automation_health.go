@@ -25,6 +25,8 @@ type CustomerAutomationHealth struct {
     lastFailure CustomerAutomationHealth_lastFailureable
     // Total number of success records represented by this Leadping customer automation health.
     successCount *int32
+    // Automation execution activity over the reporting period.
+    trend []CustomerAutomationHealthPointable
 }
 // NewCustomerAutomationHealth instantiates a new CustomerAutomationHealth and sets the default values.
 func NewCustomerAutomationHealth()(*CustomerAutomationHealth) {
@@ -148,6 +150,22 @@ func (m *CustomerAutomationHealth) GetFieldDeserializers()(map[string]func(i878a
         }
         return nil
     }
+    res["trend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateCustomerAutomationHealthPointFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]CustomerAutomationHealthPointable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(CustomerAutomationHealthPointable)
+                }
+            }
+            m.SetTrend(res)
+        }
+        return nil
+    }
     return res
 }
 // GetLastFailure gets the lastFailure property value. Last failure associated with this Leadping customer automation health.
@@ -159,6 +177,11 @@ func (m *CustomerAutomationHealth) GetLastFailure()(CustomerAutomationHealth_las
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetSuccessCount()(*int32) {
     return m.successCount
+}
+// GetTrend gets the trend property value. Automation execution activity over the reporting period.
+// returns a []CustomerAutomationHealthPointable when successful
+func (m *CustomerAutomationHealth) GetTrend()([]CustomerAutomationHealthPointable) {
+    return m.trend
 }
 // Serialize serializes information the current object
 func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -210,6 +233,18 @@ func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f4
             return err
         }
     }
+    if m.GetTrend() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrend()))
+        for i, v := range m.GetTrend() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("trend", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
@@ -250,6 +285,10 @@ func (m *CustomerAutomationHealth) SetLastFailure(value CustomerAutomationHealth
 func (m *CustomerAutomationHealth) SetSuccessCount(value *int32)() {
     m.successCount = value
 }
+// SetTrend sets the trend property value. Automation execution activity over the reporting period.
+func (m *CustomerAutomationHealth) SetTrend(value []CustomerAutomationHealthPointable)() {
+    m.trend = value
+}
 type CustomerAutomationHealthable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -260,6 +299,7 @@ type CustomerAutomationHealthable interface {
     GetFailureCount()(*int32)
     GetLastFailure()(CustomerAutomationHealth_lastFailureable)
     GetSuccessCount()(*int32)
+    GetTrend()([]CustomerAutomationHealthPointable)
     SetAutomationCount(value *int32)()
     SetEnabledCount(value *int32)()
     SetExecutions(value *int32)()
@@ -267,4 +307,5 @@ type CustomerAutomationHealthable interface {
     SetFailureCount(value *int32)()
     SetLastFailure(value CustomerAutomationHealth_lastFailureable)()
     SetSuccessCount(value *int32)()
+    SetTrend(value []CustomerAutomationHealthPointable)()
 }

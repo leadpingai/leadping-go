@@ -34,6 +34,8 @@ type AutomationActionRunRecord struct {
     processingAttempts *int32
     // UTC timestamp when this automation action run record was scheduled.
     scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // Connection selected by a control-flow action such as a weighted random split.
+    selectedConnectionId *string
     // UTC timestamp when processing started for this automation action run record.
     startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Current lifecycle status for this automation action run record in the Leadping API.
@@ -200,6 +202,16 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878
         }
         return nil
     }
+    res["selectedConnectionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetSelectedConnectionId(val)
+        }
+        return nil
+    }
     res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -246,6 +258,11 @@ func (m *AutomationActionRunRecord) GetProcessingAttempts()(*int32) {
 // returns a *Time when successful
 func (m *AutomationActionRunRecord) GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.scheduledAt
+}
+// GetSelectedConnectionId gets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+// returns a *string when successful
+func (m *AutomationActionRunRecord) GetSelectedConnectionId()(*string) {
+    return m.selectedConnectionId
 }
 // GetStartedAt gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 // returns a *Time when successful
@@ -326,6 +343,12 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
         }
     }
     {
+        err := writer.WriteStringValue("selectedConnectionId", m.GetSelectedConnectionId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
         if err != nil {
             return err
@@ -393,6 +416,10 @@ func (m *AutomationActionRunRecord) SetProcessingAttempts(value *int32)() {
 func (m *AutomationActionRunRecord) SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.scheduledAt = value
 }
+// SetSelectedConnectionId sets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+func (m *AutomationActionRunRecord) SetSelectedConnectionId(value *string)() {
+    m.selectedConnectionId = value
+}
 // SetStartedAt sets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 func (m *AutomationActionRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startedAt = value
@@ -415,6 +442,7 @@ type AutomationActionRunRecordable interface {
     GetOrder()(*int32)
     GetProcessingAttempts()(*int32)
     GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+    GetSelectedConnectionId()(*string)
     GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetStatus()(*string)
     SetActionId(value *string)()
@@ -428,6 +456,7 @@ type AutomationActionRunRecordable interface {
     SetOrder(value *int32)()
     SetProcessingAttempts(value *int32)()
     SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+    SetSelectedConnectionId(value *string)()
     SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetStatus(value *string)()
 }

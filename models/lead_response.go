@@ -20,6 +20,10 @@ type LeadResponse struct {
     archiveNote *string
     // Defines why a lead was removed from the active working pipeline.
     archiveReason *int32
+    // Identifier and display name of the active organization member assigned to this lead.
+    assignedTo LeadResponse_assignedToable
+    // Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+    assignedToUserId *string
     // Contact details for the lead or customer represented by this lead response.
     contact LeadContactable
     // UTC timestamp when the resource was created.
@@ -89,6 +93,16 @@ func (m *LeadResponse) GetArchiveNote()(*string) {
 // returns a *int32 when successful
 func (m *LeadResponse) GetArchiveReason()(*int32) {
     return m.archiveReason
+}
+// GetAssignedTo gets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+// returns a LeadResponse_assignedToable when successful
+func (m *LeadResponse) GetAssignedTo()(LeadResponse_assignedToable) {
+    return m.assignedTo
+}
+// GetAssignedToUserId gets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+// returns a *string when successful
+func (m *LeadResponse) GetAssignedToUserId()(*string) {
+    return m.assignedToUserId
 }
 // GetContact gets the contact property value. Contact details for the lead or customer represented by this lead response.
 // returns a LeadContactable when successful
@@ -166,6 +180,26 @@ func (m *LeadResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
         }
         if val != nil {
             m.SetArchiveReason(val)
+        }
+        return nil
+    }
+    res["assignedTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateLeadResponse_assignedToFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAssignedTo(val.(LeadResponse_assignedToable))
+        }
+        return nil
+    }
+    res["assignedToUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAssignedToUserId(val)
         }
         return nil
     }
@@ -409,6 +443,18 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
         }
     }
     {
+        err := writer.WriteObjectValue("assignedTo", m.GetAssignedTo())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("contact", m.GetContact())
         if err != nil {
             return err
@@ -539,6 +585,14 @@ func (m *LeadResponse) SetArchiveNote(value *string)() {
 func (m *LeadResponse) SetArchiveReason(value *int32)() {
     m.archiveReason = value
 }
+// SetAssignedTo sets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+func (m *LeadResponse) SetAssignedTo(value LeadResponse_assignedToable)() {
+    m.assignedTo = value
+}
+// SetAssignedToUserId sets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+func (m *LeadResponse) SetAssignedToUserId(value *string)() {
+    m.assignedToUserId = value
+}
 // SetContact sets the contact property value. Contact details for the lead or customer represented by this lead response.
 func (m *LeadResponse) SetContact(value LeadContactable)() {
     m.contact = value
@@ -610,6 +664,8 @@ type LeadResponseable interface {
     GetArchivedByUserId()(*string)
     GetArchiveNote()(*string)
     GetArchiveReason()(*int32)
+    GetAssignedTo()(LeadResponse_assignedToable)
+    GetAssignedToUserId()(*string)
     GetContact()(LeadContactable)
     GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetCurrentLeadStatus()(LeadResponse_currentLeadStatusable)
@@ -630,6 +686,8 @@ type LeadResponseable interface {
     SetArchivedByUserId(value *string)()
     SetArchiveNote(value *string)()
     SetArchiveReason(value *int32)()
+    SetAssignedTo(value LeadResponse_assignedToable)()
+    SetAssignedToUserId(value *string)()
     SetContact(value LeadContactable)()
     SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetCurrentLeadStatus(value LeadResponse_currentLeadStatusable)()

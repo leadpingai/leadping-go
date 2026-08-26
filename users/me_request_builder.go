@@ -50,6 +50,11 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
     }
     return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.UserResponseable), nil
 }
+// NotificationPreferences the notificationPreferences property
+// returns a *MeNotificationPreferencesRequestBuilder when successful
+func (m *MeRequestBuilder) NotificationPreferences()(*MeNotificationPreferencesRequestBuilder) {
+    return NewMeNotificationPreferencesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Paymentmethod the paymentmethod property
 // returns a *MePaymentmethodRequestBuilder when successful
 func (m *MeRequestBuilder) Paymentmethod()(*MePaymentmethodRequestBuilder) {

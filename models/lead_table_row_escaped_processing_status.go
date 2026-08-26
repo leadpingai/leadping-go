@@ -6,7 +6,8 @@ package models
 type LeadTableRow_processingStatus int
 
 const (
-    VERIFYING_LEADTABLEROW_PROCESSINGSTATUS LeadTableRow_processingStatus = iota
+    QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS LeadTableRow_processingStatus = iota
+    VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
     VALIDATING_LEADTABLEROW_PROCESSINGSTATUS
     ENRICHING_LEADTABLEROW_PROCESSINGSTATUS
     READY_LEADTABLEROW_PROCESSINGSTATUS
@@ -15,11 +16,13 @@ const (
 )
 
 func (i LeadTableRow_processingStatus) String() string {
-    return []string{"Verifying", "Validating", "Enriching", "Ready", "Invalid", "Failed"}[i]
+    return []string{"Quarantined", "Verifying", "Validating", "Enriching", "Ready", "Invalid", "Failed"}[i]
 }
 func ParseLeadTableRow_processingStatus(v string) (any, error) {
-    result := VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
+    result := QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
     switch v {
+        case "Quarantined":
+            result = QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
         case "Verifying":
             result = VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
         case "Validating":

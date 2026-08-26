@@ -16,12 +16,12 @@ type SourceTableRow struct {
     allowedProducts []string
     // State or region allowlist used to accept leads from this source.
     allowedStates []string
-    // Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-    apiKey *string
     // UTC timestamp when the source API key was last used.
     apiKeyLastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Masked preview of the source API key for compact display.
     apiKeyPreview *string
+    // UTC timestamp when the source credential was most recently rotated.
+    apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Total number of authenticated requests made with this source API key.
     apiKeyTotalUses *int64
     // Indicates whether the organization or sender passed compliance review.
@@ -88,11 +88,6 @@ func (m *SourceTableRow) GetAllowedProducts()([]string) {
 func (m *SourceTableRow) GetAllowedStates()([]string) {
     return m.allowedStates
 }
-// GetApiKey gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-// returns a *string when successful
-func (m *SourceTableRow) GetApiKey()(*string) {
-    return m.apiKey
-}
 // GetApiKeyLastUsedAt gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 // returns a *Time when successful
 func (m *SourceTableRow) GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -102,6 +97,11 @@ func (m *SourceTableRow) GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a
 // returns a *string when successful
 func (m *SourceTableRow) GetApiKeyPreview()(*string) {
     return m.apiKeyPreview
+}
+// GetApiKeyRotatedAt gets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+// returns a *Time when successful
+func (m *SourceTableRow) GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    return m.apiKeyRotatedAt
 }
 // GetApiKeyTotalUses gets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
 // returns a *int64 when successful
@@ -184,16 +184,6 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
-    res["apiKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKey(val)
-        }
-        return nil
-    }
     res["apiKeyLastUsedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -211,6 +201,16 @@ func (m *SourceTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         if val != nil {
             m.SetApiKeyPreview(val)
+        }
+        return nil
+    }
+    res["apiKeyRotatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetApiKeyRotatedAt(val)
         }
         return nil
     }
@@ -483,12 +483,6 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
         }
     }
     {
-        err := writer.WriteStringValue("apiKey", m.GetApiKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("apiKeyLastUsedAt", m.GetApiKeyLastUsedAt())
         if err != nil {
             return err
@@ -496,6 +490,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     {
         err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteTimeValue("apiKeyRotatedAt", m.GetApiKeyRotatedAt())
         if err != nil {
             return err
         }
@@ -640,10 +640,6 @@ func (m *SourceTableRow) SetAllowedProducts(value []string)() {
 func (m *SourceTableRow) SetAllowedStates(value []string)() {
     m.allowedStates = value
 }
-// SetApiKey sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-func (m *SourceTableRow) SetApiKey(value *string)() {
-    m.apiKey = value
-}
 // SetApiKeyLastUsedAt sets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
 func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.apiKeyLastUsedAt = value
@@ -651,6 +647,10 @@ func (m *SourceTableRow) SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3a
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceTableRow) SetApiKeyPreview(value *string)() {
     m.apiKeyPreview = value
+}
+// SetApiKeyRotatedAt sets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+func (m *SourceTableRow) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+    m.apiKeyRotatedAt = value
 }
 // SetApiKeyTotalUses sets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
 func (m *SourceTableRow) SetApiKeyTotalUses(value *int64)() {
@@ -733,9 +733,9 @@ type SourceTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAllowedProducts()([]string)
     GetAllowedStates()([]string)
-    GetApiKey()(*string)
     GetApiKeyLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyPreview()(*string)
+    GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetApiKeyTotalUses()(*int64)
     GetComplianceApproved()(*bool)
     GetCostPerLead()(*float64)
@@ -757,9 +757,9 @@ type SourceTableRowable interface {
     GetUser()(SourceTableRow_userable)
     SetAllowedProducts(value []string)()
     SetAllowedStates(value []string)()
-    SetApiKey(value *string)()
     SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyPreview(value *string)()
+    SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetApiKeyTotalUses(value *int64)()
     SetComplianceApproved(value *bool)()
     SetCostPerLead(value *float64)()
