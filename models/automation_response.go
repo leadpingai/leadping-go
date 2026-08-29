@@ -44,8 +44,6 @@ type AutomationResponse struct {
     organization AutomationResponse_organizationable
     // Organization ID that owns this automation.
     organizationId *string
-    // Recent automation runs returned for history and troubleshooting.
-    recentRuns []AutomationRunRecordable
     // Scope that limits where this automation configuration response applies in Leadping.
     scope *string
     // Automation triggers that can start this workflow.
@@ -291,22 +289,6 @@ func (m *AutomationResponse) GetFieldDeserializers()(map[string]func(i878a80d233
         }
         return nil
     }
-    res["recentRuns"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationRunRecordFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationRunRecordable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationRunRecordable)
-                }
-            }
-            m.SetRecentRuns(res)
-        }
-        return nil
-    }
     res["scope"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -409,11 +391,6 @@ func (m *AutomationResponse) GetOrganization()(AutomationResponse_organizationab
 // returns a *string when successful
 func (m *AutomationResponse) GetOrganizationId()(*string) {
     return m.organizationId
-}
-// GetRecentRuns gets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
-// returns a []AutomationRunRecordable when successful
-func (m *AutomationResponse) GetRecentRuns()([]AutomationRunRecordable) {
-    return m.recentRuns
 }
 // GetScope gets the scope property value. Scope that limits where this automation configuration response applies in Leadping.
 // returns a *string when successful
@@ -556,18 +533,6 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             return err
         }
     }
-    if m.GetRecentRuns() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRecentRuns()))
-        for i, v := range m.GetRecentRuns() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("recentRuns", cast)
-        if err != nil {
-            return err
-        }
-    }
     {
         err := writer.WriteStringValue("scope", m.GetScope())
         if err != nil {
@@ -680,10 +645,6 @@ func (m *AutomationResponse) SetOrganization(value AutomationResponse_organizati
 func (m *AutomationResponse) SetOrganizationId(value *string)() {
     m.organizationId = value
 }
-// SetRecentRuns sets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
-func (m *AutomationResponse) SetRecentRuns(value []AutomationRunRecordable)() {
-    m.recentRuns = value
-}
 // SetScope sets the scope property value. Scope that limits where this automation configuration response applies in Leadping.
 func (m *AutomationResponse) SetScope(value *string)() {
     m.scope = value
@@ -723,7 +684,6 @@ type AutomationResponseable interface {
     GetName()(*string)
     GetOrganization()(AutomationResponse_organizationable)
     GetOrganizationId()(*string)
-    GetRecentRuns()([]AutomationRunRecordable)
     GetScope()(*string)
     GetTriggers()([]AutomationTriggerable)
     GetUser()(AutomationResponse_userable)
@@ -745,7 +705,6 @@ type AutomationResponseable interface {
     SetName(value *string)()
     SetOrganization(value AutomationResponse_organizationable)()
     SetOrganizationId(value *string)()
-    SetRecentRuns(value []AutomationRunRecordable)()
     SetScope(value *string)()
     SetTriggers(value []AutomationTriggerable)()
     SetUser(value AutomationResponse_userable)()

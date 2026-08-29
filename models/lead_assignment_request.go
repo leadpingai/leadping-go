@@ -11,7 +11,7 @@ import (
 type LeadAssignmentRequest struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The assignedToUserId property
+    // Gets or sets the assigned to user ID.
     assignedToUserId *string
 }
 // NewLeadAssignmentRequest instantiates a new LeadAssignmentRequest and sets the default values.
@@ -31,7 +31,7 @@ func CreateLeadAssignmentRequestFromDiscriminatorValue(parseNode i878a80d2330e89
 func (m *LeadAssignmentRequest) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAssignedToUserId gets the assignedToUserId property value. The assignedToUserId property
+// GetAssignedToUserId gets the assignedToUserId property value. Gets or sets the assigned to user ID.
 // returns a *string when successful
 func (m *LeadAssignmentRequest) GetAssignedToUserId()(*string) {
     return m.assignedToUserId
@@ -72,7 +72,7 @@ func (m *LeadAssignmentRequest) Serialize(writer i878a80d2330e89d26896388a3f487e
 func (m *LeadAssignmentRequest) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAssignedToUserId sets the assignedToUserId property value. The assignedToUserId property
+// SetAssignedToUserId sets the assignedToUserId property value. Gets or sets the assigned to user ID.
 func (m *LeadAssignmentRequest) SetAssignedToUserId(value *string)() {
     m.assignedToUserId = value
 }

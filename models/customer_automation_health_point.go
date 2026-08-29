@@ -12,17 +12,17 @@ import (
 type CustomerAutomationHealthPoint struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The endAt property
+    // Gets or sets the end at.
     endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The executions property
+    // Gets or sets the executions.
     executions *int32
-    // The failureCount property
+    // Gets or sets the failure count.
     failureCount *int32
-    // The label property
+    // Gets or sets the label.
     label *string
-    // The startAt property
+    // Gets or sets the start at.
     startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The successCount property
+    // Gets or sets the success count.
     successCount *int32
 }
 // NewCustomerAutomationHealthPoint instantiates a new CustomerAutomationHealthPoint and sets the default values.
@@ -42,17 +42,17 @@ func CreateCustomerAutomationHealthPointFromDiscriminatorValue(parseNode i878a80
 func (m *CustomerAutomationHealthPoint) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEndAt gets the endAt property value. The endAt property
+// GetEndAt gets the endAt property value. Gets or sets the end at.
 // returns a *Time when successful
 func (m *CustomerAutomationHealthPoint) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.endAt
 }
-// GetExecutions gets the executions property value. The executions property
+// GetExecutions gets the executions property value. Gets or sets the executions.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealthPoint) GetExecutions()(*int32) {
     return m.executions
 }
-// GetFailureCount gets the failureCount property value. The failureCount property
+// GetFailureCount gets the failureCount property value. Gets or sets the failure count.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealthPoint) GetFailureCount()(*int32) {
     return m.failureCount
@@ -123,17 +123,17 @@ func (m *CustomerAutomationHealthPoint) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetLabel gets the label property value. The label property
+// GetLabel gets the label property value. Gets or sets the label.
 // returns a *string when successful
 func (m *CustomerAutomationHealthPoint) GetLabel()(*string) {
     return m.label
 }
-// GetStartAt gets the startAt property value. The startAt property
+// GetStartAt gets the startAt property value. Gets or sets the start at.
 // returns a *Time when successful
 func (m *CustomerAutomationHealthPoint) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.startAt
 }
-// GetSuccessCount gets the successCount property value. The successCount property
+// GetSuccessCount gets the successCount property value. Gets or sets the success count.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealthPoint) GetSuccessCount()(*int32) {
     return m.successCount
@@ -188,27 +188,27 @@ func (m *CustomerAutomationHealthPoint) Serialize(writer i878a80d2330e89d2689638
 func (m *CustomerAutomationHealthPoint) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEndAt sets the endAt property value. The endAt property
+// SetEndAt sets the endAt property value. Gets or sets the end at.
 func (m *CustomerAutomationHealthPoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.endAt = value
 }
-// SetExecutions sets the executions property value. The executions property
+// SetExecutions sets the executions property value. Gets or sets the executions.
 func (m *CustomerAutomationHealthPoint) SetExecutions(value *int32)() {
     m.executions = value
 }
-// SetFailureCount sets the failureCount property value. The failureCount property
+// SetFailureCount sets the failureCount property value. Gets or sets the failure count.
 func (m *CustomerAutomationHealthPoint) SetFailureCount(value *int32)() {
     m.failureCount = value
 }
-// SetLabel sets the label property value. The label property
+// SetLabel sets the label property value. Gets or sets the label.
 func (m *CustomerAutomationHealthPoint) SetLabel(value *string)() {
     m.label = value
 }
-// SetStartAt sets the startAt property value. The startAt property
+// SetStartAt sets the startAt property value. Gets or sets the start at.
 func (m *CustomerAutomationHealthPoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.startAt = value
 }
-// SetSuccessCount sets the successCount property value. The successCount property
+// SetSuccessCount sets the successCount property value. Gets or sets the success count.
 func (m *CustomerAutomationHealthPoint) SetSuccessCount(value *int32)() {
     m.successCount = value
 }

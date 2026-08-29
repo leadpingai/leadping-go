@@ -8,34 +8,35 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
+// BlogArticleResponse represents a blog article response.
 type BlogArticleResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // The authorName property
+    // Gets or sets the author name.
     authorName *string
-    // The category property
+    // Gets or sets the category.
     category *string
-    // The content property
+    // Gets or sets the content.
     content *string
-    // The coverImageUrl property
+    // Gets or sets the cover image URL.
     coverImageUrl *string
-    // The createdAt property
+    // Gets or sets the created at.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The excerpt property
+    // Gets or sets the excerpt.
     excerpt *string
-    // The id property
+    // Gets or sets the ID.
     id *string
-    // The isFeatured property
+    // Gets or sets the is featured.
     isFeatured *bool
-    // The isPublished property
+    // Gets or sets the is published.
     isPublished *bool
-    // The modifiedAt property
+    // Gets or sets the modified at.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The publishedAt property
+    // Gets or sets the published at.
     publishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The slug property
+    // Gets or sets the slug.
     slug *string
-    // The title property
+    // Gets or sets the title.
     title *string
 }
 // NewBlogArticleResponse instantiates a new BlogArticleResponse and sets the default values.
@@ -55,32 +56,32 @@ func CreateBlogArticleResponseFromDiscriminatorValue(parseNode i878a80d2330e89d2
 func (m *BlogArticleResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetAuthorName gets the authorName property value. The authorName property
+// GetAuthorName gets the authorName property value. Gets or sets the author name.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetAuthorName()(*string) {
     return m.authorName
 }
-// GetCategory gets the category property value. The category property
+// GetCategory gets the category property value. Gets or sets the category.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCategory()(*string) {
     return m.category
 }
-// GetContent gets the content property value. The content property
+// GetContent gets the content property value. Gets or sets the content.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetContent()(*string) {
     return m.content
 }
-// GetCoverImageUrl gets the coverImageUrl property value. The coverImageUrl property
+// GetCoverImageUrl gets the coverImageUrl property value. Gets or sets the cover image URL.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCoverImageUrl()(*string) {
     return m.coverImageUrl
 }
-// GetCreatedAt gets the createdAt property value. The createdAt property
+// GetCreatedAt gets the createdAt property value. Gets or sets the created at.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
 }
-// GetExcerpt gets the excerpt property value. The excerpt property
+// GetExcerpt gets the excerpt property value. Gets or sets the excerpt.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetExcerpt()(*string) {
     return m.excerpt
@@ -221,37 +222,37 @@ func (m *BlogArticleResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Gets or sets the ID.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetId()(*string) {
     return m.id
 }
-// GetIsFeatured gets the isFeatured property value. The isFeatured property
+// GetIsFeatured gets the isFeatured property value. Gets or sets the is featured.
 // returns a *bool when successful
 func (m *BlogArticleResponse) GetIsFeatured()(*bool) {
     return m.isFeatured
 }
-// GetIsPublished gets the isPublished property value. The isPublished property
+// GetIsPublished gets the isPublished property value. Gets or sets the is published.
 // returns a *bool when successful
 func (m *BlogArticleResponse) GetIsPublished()(*bool) {
     return m.isPublished
 }
-// GetModifiedAt gets the modifiedAt property value. The modifiedAt property
+// GetModifiedAt gets the modifiedAt property value. Gets or sets the modified at.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
 }
-// GetPublishedAt gets the publishedAt property value. The publishedAt property
+// GetPublishedAt gets the publishedAt property value. Gets or sets the published at.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetPublishedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.publishedAt
 }
-// GetSlug gets the slug property value. The slug property
+// GetSlug gets the slug property value. Gets or sets the slug.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetSlug()(*string) {
     return m.slug
 }
-// GetTitle gets the title property value. The title property
+// GetTitle gets the title property value. Gets or sets the title.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetTitle()(*string) {
     return m.title
@@ -348,55 +349,55 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 func (m *BlogArticleResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetAuthorName sets the authorName property value. The authorName property
+// SetAuthorName sets the authorName property value. Gets or sets the author name.
 func (m *BlogArticleResponse) SetAuthorName(value *string)() {
     m.authorName = value
 }
-// SetCategory sets the category property value. The category property
+// SetCategory sets the category property value. Gets or sets the category.
 func (m *BlogArticleResponse) SetCategory(value *string)() {
     m.category = value
 }
-// SetContent sets the content property value. The content property
+// SetContent sets the content property value. Gets or sets the content.
 func (m *BlogArticleResponse) SetContent(value *string)() {
     m.content = value
 }
-// SetCoverImageUrl sets the coverImageUrl property value. The coverImageUrl property
+// SetCoverImageUrl sets the coverImageUrl property value. Gets or sets the cover image URL.
 func (m *BlogArticleResponse) SetCoverImageUrl(value *string)() {
     m.coverImageUrl = value
 }
-// SetCreatedAt sets the createdAt property value. The createdAt property
+// SetCreatedAt sets the createdAt property value. Gets or sets the created at.
 func (m *BlogArticleResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
-// SetExcerpt sets the excerpt property value. The excerpt property
+// SetExcerpt sets the excerpt property value. Gets or sets the excerpt.
 func (m *BlogArticleResponse) SetExcerpt(value *string)() {
     m.excerpt = value
 }
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Gets or sets the ID.
 func (m *BlogArticleResponse) SetId(value *string)() {
     m.id = value
 }
-// SetIsFeatured sets the isFeatured property value. The isFeatured property
+// SetIsFeatured sets the isFeatured property value. Gets or sets the is featured.
 func (m *BlogArticleResponse) SetIsFeatured(value *bool)() {
     m.isFeatured = value
 }
-// SetIsPublished sets the isPublished property value. The isPublished property
+// SetIsPublished sets the isPublished property value. Gets or sets the is published.
 func (m *BlogArticleResponse) SetIsPublished(value *bool)() {
     m.isPublished = value
 }
-// SetModifiedAt sets the modifiedAt property value. The modifiedAt property
+// SetModifiedAt sets the modifiedAt property value. Gets or sets the modified at.
 func (m *BlogArticleResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
-// SetPublishedAt sets the publishedAt property value. The publishedAt property
+// SetPublishedAt sets the publishedAt property value. Gets or sets the published at.
 func (m *BlogArticleResponse) SetPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.publishedAt = value
 }
-// SetSlug sets the slug property value. The slug property
+// SetSlug sets the slug property value. Gets or sets the slug.
 func (m *BlogArticleResponse) SetSlug(value *string)() {
     m.slug = value
 }
-// SetTitle sets the title property value. The title property
+// SetTitle sets the title property value. Gets or sets the title.
 func (m *BlogArticleResponse) SetTitle(value *string)() {
     m.title = value
 }

@@ -13,10 +13,14 @@ type CustomerLeadTrend struct {
     additionalData map[string]any
     // Date and time when this Leadping customer lead trend was comparison.
     comparison AnalyticsComparisonable
+    // Lead intake errors grouped into the same reporting buckets as Points.
+    errorPoints []AnalyticsTrendPointOfintable
     // Collection of points included with this Leadping customer lead trend.
     points []AnalyticsTrendPointOfintable
     // Total number of total records represented by this Leadping customer lead trend.
     total *int32
+    // Total number of lead submissions rejected during intake.
+    totalErrors *int32
 }
 // NewCustomerLeadTrend instantiates a new CustomerLeadTrend and sets the default values.
 func NewCustomerLeadTrend()(*CustomerLeadTrend) {
@@ -40,6 +44,11 @@ func (m *CustomerLeadTrend) GetAdditionalData()(map[string]any) {
 func (m *CustomerLeadTrend) GetComparison()(AnalyticsComparisonable) {
     return m.comparison
 }
+// GetErrorPoints gets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+// returns a []AnalyticsTrendPointOfintable when successful
+func (m *CustomerLeadTrend) GetErrorPoints()([]AnalyticsTrendPointOfintable) {
+    return m.errorPoints
+}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -51,6 +60,22 @@ func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetComparison(val.(AnalyticsComparisonable))
+        }
+        return nil
+    }
+    res["errorPoints"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]AnalyticsTrendPointOfintable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(AnalyticsTrendPointOfintable)
+                }
+            }
+            m.SetErrorPoints(res)
         }
         return nil
     }
@@ -80,6 +105,16 @@ func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["totalErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetTotalErrors(val)
+        }
+        return nil
+    }
     return res
 }
 // GetPoints gets the points property value. Collection of points included with this Leadping customer lead trend.
@@ -92,10 +127,27 @@ func (m *CustomerLeadTrend) GetPoints()([]AnalyticsTrendPointOfintable) {
 func (m *CustomerLeadTrend) GetTotal()(*int32) {
     return m.total
 }
+// GetTotalErrors gets the totalErrors property value. Total number of lead submissions rejected during intake.
+// returns a *int32 when successful
+func (m *CustomerLeadTrend) GetTotalErrors()(*int32) {
+    return m.totalErrors
+}
 // Serialize serializes information the current object
 func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteObjectValue("comparison", m.GetComparison())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetErrorPoints() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetErrorPoints()))
+        for i, v := range m.GetErrorPoints() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err := writer.WriteCollectionOfObjectValues("errorPoints", cast)
         if err != nil {
             return err
         }
@@ -119,6 +171,12 @@ func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
+        err := writer.WriteInt32Value("totalErrors", m.GetTotalErrors())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -134,6 +192,10 @@ func (m *CustomerLeadTrend) SetAdditionalData(value map[string]any)() {
 func (m *CustomerLeadTrend) SetComparison(value AnalyticsComparisonable)() {
     m.comparison = value
 }
+// SetErrorPoints sets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+func (m *CustomerLeadTrend) SetErrorPoints(value []AnalyticsTrendPointOfintable)() {
+    m.errorPoints = value
+}
 // SetPoints sets the points property value. Collection of points included with this Leadping customer lead trend.
 func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable)() {
     m.points = value
@@ -142,13 +204,21 @@ func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable)() {
 func (m *CustomerLeadTrend) SetTotal(value *int32)() {
     m.total = value
 }
+// SetTotalErrors sets the totalErrors property value. Total number of lead submissions rejected during intake.
+func (m *CustomerLeadTrend) SetTotalErrors(value *int32)() {
+    m.totalErrors = value
+}
 type CustomerLeadTrendable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetComparison()(AnalyticsComparisonable)
+    GetErrorPoints()([]AnalyticsTrendPointOfintable)
     GetPoints()([]AnalyticsTrendPointOfintable)
     GetTotal()(*int32)
+    GetTotalErrors()(*int32)
     SetComparison(value AnalyticsComparisonable)()
+    SetErrorPoints(value []AnalyticsTrendPointOfintable)()
     SetPoints(value []AnalyticsTrendPointOfintable)()
     SetTotal(value *int32)()
+    SetTotalErrors(value *int32)()
 }
