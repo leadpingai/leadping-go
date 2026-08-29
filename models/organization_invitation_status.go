@@ -6,7 +6,8 @@ package models
 type OrganizationInvitationStatus int
 
 const (
-    PENDING_ORGANIZATIONINVITATIONSTATUS OrganizationInvitationStatus = iota
+    AWAITINGWORKOSCONFIRMATION_ORGANIZATIONINVITATIONSTATUS OrganizationInvitationStatus = iota
+    PENDING_ORGANIZATIONINVITATIONSTATUS
     ACCEPTED_ORGANIZATIONINVITATIONSTATUS
     EXPIRED_ORGANIZATIONINVITATIONSTATUS
     REVOKED_ORGANIZATIONINVITATIONSTATUS
@@ -15,11 +16,13 @@ const (
 )
 
 func (i OrganizationInvitationStatus) String() string {
-    return []string{"Pending", "Accepted", "Expired", "Revoked", "Resent", "Failed to send"}[i]
+    return []string{"Awaiting WorkOS confirmation", "Pending", "Accepted", "Expired", "Revoked", "Resent", "Failed to send"}[i]
 }
 func ParseOrganizationInvitationStatus(v string) (any, error) {
-    result := PENDING_ORGANIZATIONINVITATIONSTATUS
+    result := AWAITINGWORKOSCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
     switch v {
+        case "Awaiting WorkOS confirmation":
+            result = AWAITINGWORKOSCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
         case "Pending":
             result = PENDING_ORGANIZATIONINVITATIONSTATUS
         case "Accepted":
