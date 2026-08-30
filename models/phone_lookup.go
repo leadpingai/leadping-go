@@ -16,7 +16,7 @@ type PhoneLookup struct {
     callerName PhoneLookup_callerNameable
     // Complete carrier metadata reported for this phone number.
     carrier PhoneLookup_carrierable
-    // UTC timestamp when the resource was created.
+    // Timestamp when the resource was created.
     createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Fraud value returned by the provider, when available.
     fraud *string
@@ -28,7 +28,7 @@ type PhoneLookup struct {
     lineType *PhoneLookup_lineType
     // Geographic location metadata for the phone number, lead, or lookup result.
     location PhoneLookup_locationable
-    // UTC timestamp when the resource was last modified, or null when it has not been updated.
+    // Timestamp when the resource was last modified, or null when it has not been updated.
     modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Provider-formatted national phone number.
     nationalFormat *string
@@ -66,7 +66,7 @@ func (m *PhoneLookup) GetCallerName()(PhoneLookup_callerNameable) {
 func (m *PhoneLookup) GetCarrier()(PhoneLookup_carrierable) {
     return m.carrier
 }
-// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
+// GetCreatedAt gets the createdAt property value. Timestamp when the resource was created.
 // returns a *Time when successful
 func (m *PhoneLookup) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.createdAt
@@ -232,7 +232,7 @@ func (m *PhoneLookup) GetLineType()(*PhoneLookup_lineType) {
 func (m *PhoneLookup) GetLocation()(PhoneLookup_locationable) {
     return m.location
 }
-// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+// GetModifiedAt gets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneLookup) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.modifiedAt
@@ -358,7 +358,7 @@ func (m *PhoneLookup) SetCallerName(value PhoneLookup_callerNameable)() {
 func (m *PhoneLookup) SetCarrier(value PhoneLookup_carrierable)() {
     m.carrier = value
 }
-// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+// SetCreatedAt sets the createdAt property value. Timestamp when the resource was created.
 func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.createdAt = value
 }
@@ -382,7 +382,7 @@ func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType)() {
 func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable)() {
     m.location = value
 }
-// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+// SetModifiedAt sets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneLookup) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.modifiedAt = value
 }
