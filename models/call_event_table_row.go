@@ -50,8 +50,6 @@ type CallEventTableRow struct {
     organizationId *string
     // Display name for the organization associated with this call event.
     organizationName *string
-    // URL for the call recording, when the provider makes one available.
-    recordingUrl *string
     // Describes the durable business outcome of a Leadping phone call after provider status normalization.
     status *CallEventTableRow_status
     // Human-readable reason explaining the current status of this call event table row.
@@ -66,6 +64,8 @@ type CallEventTableRow struct {
     userId *string
     // Display name for the person or agent who initiated this call event.
     userName *string
+    // URL for voicemail audio, when the call resulted in a voicemail.
+    voicemailUrl *string
 }
 // NewCallEventTableRow instantiates a new CallEventTableRow and sets the default values.
 func NewCallEventTableRow()(*CallEventTableRow) {
@@ -339,16 +339,6 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
-    res["recordingUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecordingUrl(val)
-        }
-        return nil
-    }
     res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseCallEventTableRow_status)
         if err != nil {
@@ -419,6 +409,16 @@ func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["voicemailUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoicemailUrl(val)
+        }
+        return nil
+    }
     return res
 }
 // GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
@@ -461,11 +461,6 @@ func (m *CallEventTableRow) GetOrganizationId()(*string) {
 func (m *CallEventTableRow) GetOrganizationName()(*string) {
     return m.organizationName
 }
-// GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-// returns a *string when successful
-func (m *CallEventTableRow) GetRecordingUrl()(*string) {
-    return m.recordingUrl
-}
 // GetStatus gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 // returns a *CallEventTableRow_status when successful
 func (m *CallEventTableRow) GetStatus()(*CallEventTableRow_status) {
@@ -500,6 +495,11 @@ func (m *CallEventTableRow) GetUserId()(*string) {
 // returns a *string when successful
 func (m *CallEventTableRow) GetUserName()(*string) {
     return m.userName
+}
+// GetVoicemailUrl gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+// returns a *string when successful
+func (m *CallEventTableRow) GetVoicemailUrl()(*string) {
+    return m.voicemailUrl
 }
 // Serialize serializes information the current object
 func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -623,12 +623,6 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
             return err
         }
     }
-    {
-        err := writer.WriteStringValue("recordingUrl", m.GetRecordingUrl())
-        if err != nil {
-            return err
-        }
-    }
     if m.GetStatus() != nil {
         cast := (*m.GetStatus()).String()
         err := writer.WriteStringValue("status", &cast)
@@ -668,6 +662,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("userName", m.GetUserName())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
         if err != nil {
             return err
         }
@@ -760,10 +760,6 @@ func (m *CallEventTableRow) SetOrganizationId(value *string)() {
 func (m *CallEventTableRow) SetOrganizationName(value *string)() {
     m.organizationName = value
 }
-// SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-func (m *CallEventTableRow) SetRecordingUrl(value *string)() {
-    m.recordingUrl = value
-}
 // SetStatus sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status)() {
     m.status = value
@@ -792,6 +788,10 @@ func (m *CallEventTableRow) SetUserId(value *string)() {
 func (m *CallEventTableRow) SetUserName(value *string)() {
     m.userName = value
 }
+// SetVoicemailUrl sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+func (m *CallEventTableRow) SetVoicemailUrl(value *string)() {
+    m.voicemailUrl = value
+}
 type CallEventTableRowable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -814,7 +814,6 @@ type CallEventTableRowable interface {
     GetOrganization()(*string)
     GetOrganizationId()(*string)
     GetOrganizationName()(*string)
-    GetRecordingUrl()(*string)
     GetStatus()(*CallEventTableRow_status)
     GetStatusReason()(*string)
     GetToPhoneNumber()(*string)
@@ -822,6 +821,7 @@ type CallEventTableRowable interface {
     GetUserEmail()(*string)
     GetUserId()(*string)
     GetUserName()(*string)
+    GetVoicemailUrl()(*string)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBillableAmount(value *float64)()
     SetBillableSeconds(value *int32)()
@@ -841,7 +841,6 @@ type CallEventTableRowable interface {
     SetOrganization(value *string)()
     SetOrganizationId(value *string)()
     SetOrganizationName(value *string)()
-    SetRecordingUrl(value *string)()
     SetStatus(value *CallEventTableRow_status)()
     SetStatusReason(value *string)()
     SetToPhoneNumber(value *string)()
@@ -849,4 +848,5 @@ type CallEventTableRowable interface {
     SetUserEmail(value *string)()
     SetUserId(value *string)()
     SetUserName(value *string)()
+    SetVoicemailUrl(value *string)()
 }

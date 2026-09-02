@@ -8,7 +8,7 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneCallResponse describes a Leadping phone call, including participants, direction, provider state, timing, recording, and billing details.
+// PhoneCallResponse describes a Leadping phone call, including participants, direction, provider state, timing, voicemail, and billing details.
 type PhoneCallResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -48,8 +48,6 @@ type PhoneCallResponse struct {
     phoneNumber *string
     // UTC timestamp when Leadping queued this phone call for processing.
     queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // URL for the call recording, when the provider makes one available.
-    recordingUrl *string
     // UTC timestamp when the call started ringing.
     ringingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
@@ -62,6 +60,8 @@ type PhoneCallResponse struct {
     statusReason *string
     // Recipient phone number used for this communication.
     toPhoneNumber *string
+    // URL for voicemail audio, when the call resulted in a voicemail.
+    voicemailUrl *string
     // Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
     wasManuallyOverridden *bool
 }
@@ -327,16 +327,6 @@ func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
-    res["recordingUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecordingUrl(val)
-        }
-        return nil
-    }
     res["ringingAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetTimeValue()
         if err != nil {
@@ -397,6 +387,16 @@ func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["voicemailUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVoicemailUrl(val)
+        }
+        return nil
+    }
     res["wasManuallyOverridden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -444,11 +444,6 @@ func (m *PhoneCallResponse) GetPhoneNumber()(*string) {
 func (m *PhoneCallResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.queuedAt
 }
-// GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-// returns a *string when successful
-func (m *PhoneCallResponse) GetRecordingUrl()(*string) {
-    return m.recordingUrl
-}
 // GetRingingAt gets the ringingAt property value. UTC timestamp when the call started ringing.
 // returns a *Time when successful
 func (m *PhoneCallResponse) GetRingingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
@@ -478,6 +473,11 @@ func (m *PhoneCallResponse) GetStatusReason()(*string) {
 // returns a *string when successful
 func (m *PhoneCallResponse) GetToPhoneNumber()(*string) {
     return m.toPhoneNumber
+}
+// GetVoicemailUrl gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+// returns a *string when successful
+func (m *PhoneCallResponse) GetVoicemailUrl()(*string) {
+    return m.voicemailUrl
 }
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
 // returns a *bool when successful
@@ -601,12 +601,6 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
-        err := writer.WriteStringValue("recordingUrl", m.GetRecordingUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteTimeValue("ringingAt", m.GetRingingAt())
         if err != nil {
             return err
@@ -640,6 +634,12 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
         if err != nil {
             return err
         }
@@ -734,10 +734,6 @@ func (m *PhoneCallResponse) SetPhoneNumber(value *string)() {
 func (m *PhoneCallResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.queuedAt = value
 }
-// SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-func (m *PhoneCallResponse) SetRecordingUrl(value *string)() {
-    m.recordingUrl = value
-}
 // SetRingingAt sets the ringingAt property value. UTC timestamp when the call started ringing.
 func (m *PhoneCallResponse) SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.ringingAt = value
@@ -761,6 +757,10 @@ func (m *PhoneCallResponse) SetStatusReason(value *string)() {
 // SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
 func (m *PhoneCallResponse) SetToPhoneNumber(value *string)() {
     m.toPhoneNumber = value
+}
+// SetVoicemailUrl sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+func (m *PhoneCallResponse) SetVoicemailUrl(value *string)() {
+    m.voicemailUrl = value
 }
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
 func (m *PhoneCallResponse) SetWasManuallyOverridden(value *bool)() {
@@ -787,13 +787,13 @@ type PhoneCallResponseable interface {
     GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetPhoneNumber()(*string)
     GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRecordingUrl()(*string)
     GetRingingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetSelectionReason()(*PhoneCallResponse_selectionReason)
     GetSourceId()(*string)
     GetStatus()(*PhoneCallStatus)
     GetStatusReason()(*string)
     GetToPhoneNumber()(*string)
+    GetVoicemailUrl()(*string)
     GetWasManuallyOverridden()(*bool)
     SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetBillableAmount(value *float64)()
@@ -813,12 +813,12 @@ type PhoneCallResponseable interface {
     SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetPhoneNumber(value *string)()
     SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRecordingUrl(value *string)()
     SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetSelectionReason(value *PhoneCallResponse_selectionReason)()
     SetSourceId(value *string)()
     SetStatus(value *PhoneCallStatus)()
     SetStatusReason(value *string)()
     SetToPhoneNumber(value *string)()
+    SetVoicemailUrl(value *string)()
     SetWasManuallyOverridden(value *bool)()
 }

@@ -1,6 +1,6 @@
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/BlogArticleResponse/properties/coverImageUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/recordingUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/avatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/EventDetailResponse/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
@@ -21,7 +21,7 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationInvitati
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationMemberRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationMemberResponse/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationMemberTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/PhoneCallResponse/properties/recordingUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/PhoneCallResponse/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SourceResponse/properties/createdByUserEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionCheckResult/properties/normalizedEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
