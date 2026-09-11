@@ -18,6 +18,8 @@ type AutomationRunRecord struct {
 	automationId *string
 	// UTC timestamp when processing completed for this automation run record.
 	completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Results of condition nodes already visited by this run, preserved across waits and retries.
+	conditionResults AutomationRunRecord_conditionResultsable
 	// Execution mode used for automation preview or live workflow processing.
 	executionMode *string
 	// Machine-readable failure code for troubleshooting this automation run record.
@@ -38,6 +40,8 @@ type AutomationRunRecord struct {
 	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Current lifecycle status for this automation run record in the Leadping API.
 	status *string
+	// Identifier of the trigger node selected when this run was queued.
+	triggerId *string
 	// Automation trigger type that starts the workflow.
 	triggerType *string
 }
@@ -77,6 +81,12 @@ func (m *AutomationRunRecord) GetAutomationId() *string {
 // returns a *Time when successful
 func (m *AutomationRunRecord) GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.completedAt
+}
+
+// GetConditionResults gets the conditionResults property value. Results of condition nodes already visited by this run, preserved across waits and retries.
+// returns a AutomationRunRecord_conditionResultsable when successful
+func (m *AutomationRunRecord) GetConditionResults() AutomationRunRecord_conditionResultsable {
+	return m.conditionResults
 }
 
 // GetExecutionMode gets the executionMode property value. Execution mode used for automation preview or live workflow processing.
@@ -128,6 +138,16 @@ func (m *AutomationRunRecord) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetCompletedAt(val)
+		}
+		return nil
+	}
+	res["conditionResults"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationRunRecord_conditionResultsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConditionResults(val.(AutomationRunRecord_conditionResultsable))
 		}
 		return nil
 	}
@@ -231,6 +251,16 @@ func (m *AutomationRunRecord) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["triggerId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerId(val)
+		}
+		return nil
+	}
 	res["triggerType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -292,6 +322,12 @@ func (m *AutomationRunRecord) GetStatus() *string {
 	return m.status
 }
 
+// GetTriggerId gets the triggerId property value. Identifier of the trigger node selected when this run was queued.
+// returns a *string when successful
+func (m *AutomationRunRecord) GetTriggerId() *string {
+	return m.triggerId
+}
+
 // GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
 func (m *AutomationRunRecord) GetTriggerType() *string {
@@ -320,6 +356,12 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("conditionResults", m.GetConditionResults())
 		if err != nil {
 			return err
 		}
@@ -385,6 +427,12 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteStringValue("triggerId", m.GetTriggerId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("triggerType", m.GetTriggerType())
 		if err != nil {
 			return err
@@ -417,6 +465,11 @@ func (m *AutomationRunRecord) SetAutomationId(value *string) {
 // SetCompletedAt sets the completedAt property value. UTC timestamp when processing completed for this automation run record.
 func (m *AutomationRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.completedAt = value
+}
+
+// SetConditionResults sets the conditionResults property value. Results of condition nodes already visited by this run, preserved across waits and retries.
+func (m *AutomationRunRecord) SetConditionResults(value AutomationRunRecord_conditionResultsable) {
+	m.conditionResults = value
 }
 
 // SetExecutionMode sets the executionMode property value. Execution mode used for automation preview or live workflow processing.
@@ -469,6 +522,11 @@ func (m *AutomationRunRecord) SetStatus(value *string) {
 	m.status = value
 }
 
+// SetTriggerId sets the triggerId property value. Identifier of the trigger node selected when this run was queued.
+func (m *AutomationRunRecord) SetTriggerId(value *string) {
+	m.triggerId = value
+}
+
 // SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
 func (m *AutomationRunRecord) SetTriggerType(value *string) {
 	m.triggerType = value
@@ -480,6 +538,7 @@ type AutomationRunRecordable interface {
 	GetActions() []AutomationActionRunRecordable
 	GetAutomationId() *string
 	GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetConditionResults() AutomationRunRecord_conditionResultsable
 	GetExecutionMode() *string
 	GetFailureCode() *string
 	GetId() *string
@@ -490,10 +549,12 @@ type AutomationRunRecordable interface {
 	GetSkippedReason() *string
 	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetStatus() *string
+	GetTriggerId() *string
 	GetTriggerType() *string
 	SetActions(value []AutomationActionRunRecordable)
 	SetAutomationId(value *string)
 	SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetConditionResults(value AutomationRunRecord_conditionResultsable)
 	SetExecutionMode(value *string)
 	SetFailureCode(value *string)
 	SetId(value *string)
@@ -504,5 +565,6 @@ type AutomationRunRecordable interface {
 	SetSkippedReason(value *string)
 	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetStatus(value *string)
+	SetTriggerId(value *string)
 	SetTriggerType(value *string)
 }
