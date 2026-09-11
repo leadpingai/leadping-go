@@ -4,77 +4,83 @@
 package paymentmethods
 
 import (
-    "context"
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
+	"context"
+	i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // InvoicesRequestBuilder builds and executes requests for operations under \payment-methods\invoices
 type InvoicesRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByInvoiceId gets an item from the github.com/leadpingai/leadping-go.paymentMethods.invoices.item collection
 // returns a *InvoicesWithInvoiceItemRequestBuilder when successful
-func (m *InvoicesRequestBuilder) ByInvoiceId(invoiceId string)(*InvoicesWithInvoiceItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if invoiceId != "" {
-        urlTplParams["invoiceId"] = invoiceId
-    }
-    return NewInvoicesWithInvoiceItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *InvoicesRequestBuilder) ByInvoiceId(invoiceId string) *InvoicesWithInvoiceItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if invoiceId != "" {
+		urlTplParams["invoiceId"] = invoiceId
+	}
+	return NewInvoicesWithInvoiceItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewInvoicesRequestBuilderInternal instantiates a new InvoicesRequestBuilder and sets the default values.
-func NewInvoicesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InvoicesRequestBuilder) {
-    m := &InvoicesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/payment-methods/invoices", pathParameters),
-    }
-    return m
+func NewInvoicesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *InvoicesRequestBuilder {
+	m := &InvoicesRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/payment-methods/invoices", pathParameters),
+	}
+	return m
 }
+
 // NewInvoicesRequestBuilder instantiates a new InvoicesRequestBuilder and sets the default values.
-func NewInvoicesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InvoicesRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewInvoicesRequestBuilderInternal(urlParams, requestAdapter)
+func NewInvoicesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *InvoicesRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewInvoicesRequestBuilderInternal(urlParams, requestAdapter)
 }
+
 // Get returns the current organization's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
 // returns a []StripeInvoiceResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
 // returns a ProblemDetails error when the service returns a 429 status code
-func (m *InvoicesRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable, error) {
-    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
-    if err != nil {
-        return nil, err
-    }
-    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-    }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateStripeInvoiceResponseFromDiscriminatorValue, errorMapping)
-    if err != nil {
-        return nil, err
-    }
-    val := make([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable, len(res))
-    for i, v := range res {
-        if v != nil {
-            val[i] = v.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable)
-        }
-    }
-    return val, nil
+func (m *InvoicesRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) ([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable, error) {
+	requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration)
+	if err != nil {
+		return nil, err
+	}
+	errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings{
+		"401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+	}
+	res, err := m.BaseRequestBuilder.RequestAdapter.SendCollection(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateStripeInvoiceResponseFromDiscriminatorValue, errorMapping)
+	if err != nil {
+		return nil, err
+	}
+	val := make([]i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable, len(res))
+	for i, v := range res {
+		if v != nil {
+			val[i] = v.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.StripeInvoiceResponseable)
+		}
+	}
+	return val, nil
 }
+
 // ToGetRequestInformation returns the current organization's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
 // returns a *RequestInformation when successful
-func (m *InvoicesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
-    requestInfo.Headers.TryAdd("Accept", "application/json")
-    return requestInfo, nil
+func (m *InvoicesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
+	requestInfo.Headers.TryAdd("Accept", "application/json")
+	return requestInfo, nil
 }
+
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *InvoicesRequestBuilder when successful
-func (m *InvoicesRequestBuilder) WithUrl(rawUrl string)(*InvoicesRequestBuilder) {
-    return NewInvoicesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+func (m *InvoicesRequestBuilder) WithUrl(rawUrl string) *InvoicesRequestBuilder {
+	return NewInvoicesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
 }

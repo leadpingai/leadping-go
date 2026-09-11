@@ -4,721 +4,771 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SourceResponse describes lead source data returned by Leadping.
 type SourceResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Product allowlist used to accept or route leads from this source.
-    allowedProducts []string
-    // State or region allowlist used to accept leads from this source.
-    allowedStates []string
-    // Masked preview of the source API key for compact display.
-    apiKeyPreview *string
-    // UTC timestamp when the source credential was most recently rotated.
-    apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether the organization or sender passed compliance review.
-    complianceApproved *bool
-    // Configured cost charged when this source creates a billable lead.
-    costPerLead *float64
-    // UTC timestamp when the resource was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // User summary for the person who created this lead source response.
-    createdByUser SourceResponse_createdByUserable
-    // Email used to resolve the creator's avatar.
-    createdByUserEmail *string
-    // Tag IDs automatically assigned to leads created by this source.
-    defaultTagIds []string
-    // Default tag summaries automatically applied to leads from this source.
-    defaultTags []TagSummaryable
-    // Human-readable description that explains this lead source response to API users.
-    description *string
-    // Indicates whether this lead source response is active and available in the Leadping API.
-    enabled *bool
-    // UTC timestamp when this source first delivered a lead to Leadping.
-    firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Stable unique identifier of the resource.
-    id *string
-    // UTC timestamp when this source most recently delivered a lead to Leadping.
-    lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when the resource was last modified, or null when it has not been updated.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // User summary for the person who last modified this lead source response.
-    modifiedByUser SourceResponse_modifiedByUserable
-    // Human-readable display name of the resource.
-    name *string
-    // Organization summary connected to this lead source response.
-    organization SourceResponse_organizationable
-    // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
-    requiresTrustedForm *bool
-    // User summary connected to this lead source response.
-    user SourceResponse_userable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Product allowlist used to accept or route leads from this source.
+	allowedProducts []string
+	// State or region allowlist used to accept leads from this source.
+	allowedStates []string
+	// Masked preview of the source API key for compact display.
+	apiKeyPreview *string
+	// UTC timestamp when the source credential was most recently rotated.
+	apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether the organization or sender passed compliance review.
+	complianceApproved *bool
+	// Configured cost charged when this source creates a billable lead.
+	costPerLead *float64
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	createdByUser SourceResponse_createdByUserable
+	// Email used to resolve the creator's avatar.
+	createdByUserEmail *string
+	// Tag IDs automatically assigned to leads created by this source.
+	defaultTagIds []string
+	// Default tag summaries automatically applied to leads from this source.
+	defaultTags []TagSummaryable
+	// Human-readable description that explains this lead source response to API users.
+	description *string
+	// Indicates whether this lead source response is active and available in the Leadping API.
+	enabled *bool
+	// UTC timestamp when this source first delivered a lead to Leadping.
+	firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stable unique identifier of the resource.
+	id *string
+	// UTC timestamp when this source most recently delivered a lead to Leadping.
+	lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	modifiedByUser SourceResponse_modifiedByUserable
+	// Human-readable display name of the resource.
+	name *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization SourceResponse_organizationable
+	// Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+	requiresTrustedForm *bool
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	user SourceResponse_userable
 }
+
 // NewSourceResponse instantiates a new SourceResponse and sets the default values.
-func NewSourceResponse()(*SourceResponse) {
-    m := &SourceResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSourceResponse() *SourceResponse {
+	m := &SourceResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSourceResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceResponse(), nil
+func CreateSourceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SourceResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SourceResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
-func (m *SourceResponse) GetAllowedProducts()([]string) {
-    return m.allowedProducts
+func (m *SourceResponse) GetAllowedProducts() []string {
+	return m.allowedProducts
 }
+
 // GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
-func (m *SourceResponse) GetAllowedStates()([]string) {
-    return m.allowedStates
+func (m *SourceResponse) GetAllowedStates() []string {
+	return m.allowedStates
 }
+
 // GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 // returns a *string when successful
-func (m *SourceResponse) GetApiKeyPreview()(*string) {
-    return m.apiKeyPreview
+func (m *SourceResponse) GetApiKeyPreview() *string {
+	return m.apiKeyPreview
 }
+
 // GetApiKeyRotatedAt gets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
 // returns a *Time when successful
-func (m *SourceResponse) GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.apiKeyRotatedAt
+func (m *SourceResponse) GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.apiKeyRotatedAt
 }
+
 // GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
 // returns a *bool when successful
-func (m *SourceResponse) GetComplianceApproved()(*bool) {
-    return m.complianceApproved
+func (m *SourceResponse) GetComplianceApproved() *bool {
+	return m.complianceApproved
 }
+
 // GetCostPerLead gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
 // returns a *float64 when successful
-func (m *SourceResponse) GetCostPerLead()(*float64) {
-    return m.costPerLead
+func (m *SourceResponse) GetCostPerLead() *float64 {
+	return m.costPerLead
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *SourceResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *SourceResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
-// GetCreatedByUser gets the createdByUser property value. User summary for the person who created this lead source response.
+
+// GetCreatedByUser gets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a SourceResponse_createdByUserable when successful
-func (m *SourceResponse) GetCreatedByUser()(SourceResponse_createdByUserable) {
-    return m.createdByUser
+func (m *SourceResponse) GetCreatedByUser() SourceResponse_createdByUserable {
+	return m.createdByUser
 }
+
 // GetCreatedByUserEmail gets the createdByUserEmail property value. Email used to resolve the creator's avatar.
 // returns a *string when successful
-func (m *SourceResponse) GetCreatedByUserEmail()(*string) {
-    return m.createdByUserEmail
+func (m *SourceResponse) GetCreatedByUserEmail() *string {
+	return m.createdByUserEmail
 }
+
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
-func (m *SourceResponse) GetDefaultTagIds()([]string) {
-    return m.defaultTagIds
+func (m *SourceResponse) GetDefaultTagIds() []string {
+	return m.defaultTagIds
 }
+
 // GetDefaultTags gets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
 // returns a []TagSummaryable when successful
-func (m *SourceResponse) GetDefaultTags()([]TagSummaryable) {
-    return m.defaultTags
+func (m *SourceResponse) GetDefaultTags() []TagSummaryable {
+	return m.defaultTags
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this lead source response to API users.
 // returns a *string when successful
-func (m *SourceResponse) GetDescription()(*string) {
-    return m.description
+func (m *SourceResponse) GetDescription() *string {
+	return m.description
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this lead source response is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *SourceResponse) GetEnabled()(*bool) {
-    return m.enabled
+func (m *SourceResponse) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["allowedProducts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetAllowedProducts(res)
-        }
-        return nil
-    }
-    res["allowedStates"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["apiKeyPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKeyPreview(val)
-        }
-        return nil
-    }
-    res["apiKeyRotatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetApiKeyRotatedAt(val)
-        }
-        return nil
-    }
-    res["complianceApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceApproved(val)
-        }
-        return nil
-    }
-    res["costPerLead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCostPerLead(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["createdByUser"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_createdByUserFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedByUser(val.(SourceResponse_createdByUserable))
-        }
-        return nil
-    }
-    res["createdByUserEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedByUserEmail(val)
-        }
-        return nil
-    }
-    res["defaultTagIds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetDefaultTagIds(res)
-        }
-        return nil
-    }
-    res["defaultTags"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]TagSummaryable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(TagSummaryable)
-                }
-            }
-            m.SetDefaultTags(res)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["firstLeadReceivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstLeadReceivedAt(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["lastLeadReceivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastLeadReceivedAt(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["modifiedByUser"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_modifiedByUserFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedByUser(val.(SourceResponse_modifiedByUserable))
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_organizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(SourceResponse_organizationable))
-        }
-        return nil
-    }
-    res["requiresTrustedForm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRequiresTrustedForm(val)
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponse_userFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val.(SourceResponse_userable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["allowedProducts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetAllowedProducts(res)
+		}
+		return nil
+	}
+	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetAllowedStates(res)
+		}
+		return nil
+	}
+	res["apiKeyPreview"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetApiKeyPreview(val)
+		}
+		return nil
+	}
+	res["apiKeyRotatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetApiKeyRotatedAt(val)
+		}
+		return nil
+	}
+	res["complianceApproved"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceApproved(val)
+		}
+		return nil
+	}
+	res["costPerLead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCostPerLead(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["createdByUser"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSourceResponse_createdByUserFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedByUser(val.(SourceResponse_createdByUserable))
+		}
+		return nil
+	}
+	res["createdByUserEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedByUserEmail(val)
+		}
+		return nil
+	}
+	res["defaultTagIds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetDefaultTagIds(res)
+		}
+		return nil
+	}
+	res["defaultTags"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]TagSummaryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(TagSummaryable)
+				}
+			}
+			m.SetDefaultTags(res)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["firstLeadReceivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstLeadReceivedAt(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["lastLeadReceivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastLeadReceivedAt(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["modifiedByUser"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSourceResponse_modifiedByUserFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedByUser(val.(SourceResponse_modifiedByUserable))
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSourceResponse_organizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(SourceResponse_organizationable))
+		}
+		return nil
+	}
+	res["requiresTrustedForm"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRequiresTrustedForm(val)
+		}
+		return nil
+	}
+	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSourceResponse_userFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUser(val.(SourceResponse_userable))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstLeadReceivedAt gets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
 // returns a *Time when successful
-func (m *SourceResponse) GetFirstLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.firstLeadReceivedAt
+func (m *SourceResponse) GetFirstLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.firstLeadReceivedAt
 }
+
 // GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *SourceResponse) GetId()(*string) {
-    return m.id
+func (m *SourceResponse) GetId() *string {
+	return m.id
 }
+
 // GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 // returns a *Time when successful
-func (m *SourceResponse) GetLastLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastLeadReceivedAt
+func (m *SourceResponse) GetLastLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastLeadReceivedAt
 }
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *SourceResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *SourceResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
-// GetModifiedByUser gets the modifiedByUser property value. User summary for the person who last modified this lead source response.
+
+// GetModifiedByUser gets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a SourceResponse_modifiedByUserable when successful
-func (m *SourceResponse) GetModifiedByUser()(SourceResponse_modifiedByUserable) {
-    return m.modifiedByUser
+func (m *SourceResponse) GetModifiedByUser() SourceResponse_modifiedByUserable {
+	return m.modifiedByUser
 }
+
 // GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *SourceResponse) GetName()(*string) {
-    return m.name
+func (m *SourceResponse) GetName() *string {
+	return m.name
 }
-// GetOrganization gets the organization property value. Organization summary connected to this lead source response.
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a SourceResponse_organizationable when successful
-func (m *SourceResponse) GetOrganization()(SourceResponse_organizationable) {
-    return m.organization
+func (m *SourceResponse) GetOrganization() SourceResponse_organizationable {
+	return m.organization
 }
+
 // GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
-func (m *SourceResponse) GetRequiresTrustedForm()(*bool) {
-    return m.requiresTrustedForm
+func (m *SourceResponse) GetRequiresTrustedForm() *bool {
+	return m.requiresTrustedForm
 }
-// GetUser gets the user property value. User summary connected to this lead source response.
+
+// GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a SourceResponse_userable when successful
-func (m *SourceResponse) GetUser()(SourceResponse_userable) {
-    return m.user
+func (m *SourceResponse) GetUser() SourceResponse_userable {
+	return m.user
 }
+
 // Serialize serializes information the current object
-func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetAllowedProducts() != nil {
-        err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetAllowedStates() != nil {
-        err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("apiKeyRotatedAt", m.GetApiKeyRotatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("complianceApproved", m.GetComplianceApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("createdByUser", m.GetCreatedByUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdByUserEmail", m.GetCreatedByUserEmail())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDefaultTagIds() != nil {
-        err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDefaultTags() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetDefaultTags()))
-        for i, v := range m.GetDefaultTags() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("defaultTags", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("firstLeadReceivedAt", m.GetFirstLeadReceivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastLeadReceivedAt", m.GetLastLeadReceivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("modifiedByUser", m.GetModifiedByUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetAllowedProducts() != nil {
+		err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetAllowedStates() != nil {
+		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("apiKeyRotatedAt", m.GetApiKeyRotatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("complianceApproved", m.GetComplianceApproved())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("costPerLead", m.GetCostPerLead())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("createdByUser", m.GetCreatedByUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("createdByUserEmail", m.GetCreatedByUserEmail())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDefaultTagIds() != nil {
+		err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDefaultTags() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetDefaultTags()))
+		for i, v := range m.GetDefaultTags() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("defaultTags", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("firstLeadReceivedAt", m.GetFirstLeadReceivedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastLeadReceivedAt", m.GetLastLeadReceivedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("modifiedByUser", m.GetModifiedByUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("user", m.GetUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SourceResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SourceResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-func (m *SourceResponse) SetAllowedProducts(value []string)() {
-    m.allowedProducts = value
+func (m *SourceResponse) SetAllowedProducts(value []string) {
+	m.allowedProducts = value
 }
+
 // SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
-func (m *SourceResponse) SetAllowedStates(value []string)() {
-    m.allowedStates = value
+func (m *SourceResponse) SetAllowedStates(value []string) {
+	m.allowedStates = value
 }
+
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
-func (m *SourceResponse) SetApiKeyPreview(value *string)() {
-    m.apiKeyPreview = value
+func (m *SourceResponse) SetApiKeyPreview(value *string) {
+	m.apiKeyPreview = value
 }
+
 // SetApiKeyRotatedAt sets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
-func (m *SourceResponse) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.apiKeyRotatedAt = value
+func (m *SourceResponse) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.apiKeyRotatedAt = value
 }
+
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
-func (m *SourceResponse) SetComplianceApproved(value *bool)() {
-    m.complianceApproved = value
+func (m *SourceResponse) SetComplianceApproved(value *bool) {
+	m.complianceApproved = value
 }
+
 // SetCostPerLead sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-func (m *SourceResponse) SetCostPerLead(value *float64)() {
-    m.costPerLead = value
+func (m *SourceResponse) SetCostPerLead(value *float64) {
+	m.costPerLead = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
-func (m *SourceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *SourceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
-// SetCreatedByUser sets the createdByUser property value. User summary for the person who created this lead source response.
-func (m *SourceResponse) SetCreatedByUser(value SourceResponse_createdByUserable)() {
-    m.createdByUser = value
+
+// SetCreatedByUser sets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *SourceResponse) SetCreatedByUser(value SourceResponse_createdByUserable) {
+	m.createdByUser = value
 }
+
 // SetCreatedByUserEmail sets the createdByUserEmail property value. Email used to resolve the creator's avatar.
-func (m *SourceResponse) SetCreatedByUserEmail(value *string)() {
-    m.createdByUserEmail = value
+func (m *SourceResponse) SetCreatedByUserEmail(value *string) {
+	m.createdByUserEmail = value
 }
+
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
-func (m *SourceResponse) SetDefaultTagIds(value []string)() {
-    m.defaultTagIds = value
+func (m *SourceResponse) SetDefaultTagIds(value []string) {
+	m.defaultTagIds = value
 }
+
 // SetDefaultTags sets the defaultTags property value. Default tag summaries automatically applied to leads from this source.
-func (m *SourceResponse) SetDefaultTags(value []TagSummaryable)() {
-    m.defaultTags = value
+func (m *SourceResponse) SetDefaultTags(value []TagSummaryable) {
+	m.defaultTags = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this lead source response to API users.
-func (m *SourceResponse) SetDescription(value *string)() {
-    m.description = value
+func (m *SourceResponse) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this lead source response is active and available in the Leadping API.
-func (m *SourceResponse) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *SourceResponse) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetFirstLeadReceivedAt sets the firstLeadReceivedAt property value. UTC timestamp when this source first delivered a lead to Leadping.
-func (m *SourceResponse) SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.firstLeadReceivedAt = value
+func (m *SourceResponse) SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.firstLeadReceivedAt = value
 }
+
 // SetId sets the id property value. Stable unique identifier of the resource.
-func (m *SourceResponse) SetId(value *string)() {
-    m.id = value
+func (m *SourceResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
-func (m *SourceResponse) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastLeadReceivedAt = value
+func (m *SourceResponse) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastLeadReceivedAt = value
 }
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
-func (m *SourceResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+func (m *SourceResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
-// SetModifiedByUser sets the modifiedByUser property value. User summary for the person who last modified this lead source response.
-func (m *SourceResponse) SetModifiedByUser(value SourceResponse_modifiedByUserable)() {
-    m.modifiedByUser = value
+
+// SetModifiedByUser sets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *SourceResponse) SetModifiedByUser(value SourceResponse_modifiedByUserable) {
+	m.modifiedByUser = value
 }
+
 // SetName sets the name property value. Human-readable display name of the resource.
-func (m *SourceResponse) SetName(value *string)() {
-    m.name = value
+func (m *SourceResponse) SetName(value *string) {
+	m.name = value
 }
-// SetOrganization sets the organization property value. Organization summary connected to this lead source response.
-func (m *SourceResponse) SetOrganization(value SourceResponse_organizationable)() {
-    m.organization = value
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *SourceResponse) SetOrganization(value SourceResponse_organizationable) {
+	m.organization = value
 }
+
 // SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
-func (m *SourceResponse) SetRequiresTrustedForm(value *bool)() {
-    m.requiresTrustedForm = value
+func (m *SourceResponse) SetRequiresTrustedForm(value *bool) {
+	m.requiresTrustedForm = value
 }
-// SetUser sets the user property value. User summary connected to this lead source response.
-func (m *SourceResponse) SetUser(value SourceResponse_userable)() {
-    m.user = value
+
+// SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *SourceResponse) SetUser(value SourceResponse_userable) {
+	m.user = value
 }
+
 type SourceResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAllowedProducts()([]string)
-    GetAllowedStates()([]string)
-    GetApiKeyPreview()(*string)
-    GetApiKeyRotatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetComplianceApproved()(*bool)
-    GetCostPerLead()(*float64)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCreatedByUser()(SourceResponse_createdByUserable)
-    GetCreatedByUserEmail()(*string)
-    GetDefaultTagIds()([]string)
-    GetDefaultTags()([]TagSummaryable)
-    GetDescription()(*string)
-    GetEnabled()(*bool)
-    GetFirstLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetId()(*string)
-    GetLastLeadReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetModifiedByUser()(SourceResponse_modifiedByUserable)
-    GetName()(*string)
-    GetOrganization()(SourceResponse_organizationable)
-    GetRequiresTrustedForm()(*bool)
-    GetUser()(SourceResponse_userable)
-    SetAllowedProducts(value []string)()
-    SetAllowedStates(value []string)()
-    SetApiKeyPreview(value *string)()
-    SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetComplianceApproved(value *bool)()
-    SetCostPerLead(value *float64)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCreatedByUser(value SourceResponse_createdByUserable)()
-    SetCreatedByUserEmail(value *string)()
-    SetDefaultTagIds(value []string)()
-    SetDefaultTags(value []TagSummaryable)()
-    SetDescription(value *string)()
-    SetEnabled(value *bool)()
-    SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetId(value *string)()
-    SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetModifiedByUser(value SourceResponse_modifiedByUserable)()
-    SetName(value *string)()
-    SetOrganization(value SourceResponse_organizationable)()
-    SetRequiresTrustedForm(value *bool)()
-    SetUser(value SourceResponse_userable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAllowedProducts() []string
+	GetAllowedStates() []string
+	GetApiKeyPreview() *string
+	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetComplianceApproved() *bool
+	GetCostPerLead() *float64
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCreatedByUser() SourceResponse_createdByUserable
+	GetCreatedByUserEmail() *string
+	GetDefaultTagIds() []string
+	GetDefaultTags() []TagSummaryable
+	GetDescription() *string
+	GetEnabled() *bool
+	GetFirstLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetId() *string
+	GetLastLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetModifiedByUser() SourceResponse_modifiedByUserable
+	GetName() *string
+	GetOrganization() SourceResponse_organizationable
+	GetRequiresTrustedForm() *bool
+	GetUser() SourceResponse_userable
+	SetAllowedProducts(value []string)
+	SetAllowedStates(value []string)
+	SetApiKeyPreview(value *string)
+	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetComplianceApproved(value *bool)
+	SetCostPerLead(value *float64)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCreatedByUser(value SourceResponse_createdByUserable)
+	SetCreatedByUserEmail(value *string)
+	SetDefaultTagIds(value []string)
+	SetDefaultTags(value []TagSummaryable)
+	SetDescription(value *string)
+	SetEnabled(value *bool)
+	SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetId(value *string)
+	SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetModifiedByUser(value SourceResponse_modifiedByUserable)
+	SetName(value *string)
+	SetOrganization(value SourceResponse_organizationable)
+	SetRequiresTrustedForm(value *bool)
+	SetUser(value SourceResponse_userable)
 }

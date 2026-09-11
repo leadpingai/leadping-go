@@ -4,60 +4,65 @@
 package blog
 
 import (
-    "context"
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
+	"context"
+	i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // WithSlugItemRequestBuilder builds and executes requests for operations under \blog\{slug}
 type WithSlugItemRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // NewWithSlugItemRequestBuilderInternal instantiates a new WithSlugItemRequestBuilder and sets the default values.
-func NewWithSlugItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*WithSlugItemRequestBuilder) {
-    m := &WithSlugItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/blog/{slug}", pathParameters),
-    }
-    return m
+func NewWithSlugItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *WithSlugItemRequestBuilder {
+	m := &WithSlugItemRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/blog/{slug}", pathParameters),
+	}
+	return m
 }
+
 // NewWithSlugItemRequestBuilder instantiates a new WithSlugItemRequestBuilder and sets the default values.
-func NewWithSlugItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*WithSlugItemRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewWithSlugItemRequestBuilderInternal(urlParams, requestAdapter)
+func NewWithSlugItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *WithSlugItemRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewWithSlugItemRequestBuilderInternal(urlParams, requestAdapter)
 }
+
 // Get returns the public article identified by its URL slug, or a not-found response when no published article matches.
 // returns a BlogArticleResponseable when successful
 // returns a ProblemDetails error when the service returns a 404 status code
 // returns a ProblemDetails error when the service returns a 429 status code
-func (m *WithSlugItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BlogArticleResponseable, error) {
-    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
-    if err != nil {
-        return nil, err
-    }
-    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-        "429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-    }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateBlogArticleResponseFromDiscriminatorValue, errorMapping)
-    if err != nil {
-        return nil, err
-    }
-    if res == nil {
-        return nil, nil
-    }
-    return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BlogArticleResponseable), nil
+func (m *WithSlugItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BlogArticleResponseable, error) {
+	requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration)
+	if err != nil {
+		return nil, err
+	}
+	errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings{
+		"404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+	}
+	res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateBlogArticleResponseFromDiscriminatorValue, errorMapping)
+	if err != nil {
+		return nil, err
+	}
+	if res == nil {
+		return nil, nil
+	}
+	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.BlogArticleResponseable), nil
 }
+
 // ToGetRequestInformation returns the public article identified by its URL slug, or a not-found response when no published article matches.
 // returns a *RequestInformation when successful
-func (m *WithSlugItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters])(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
-    requestInfo.Headers.TryAdd("Accept", "application/json")
-    return requestInfo, nil
+func (m *WithSlugItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
+	requestInfo.Headers.TryAdd("Accept", "application/json")
+	return requestInfo, nil
 }
+
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *WithSlugItemRequestBuilder when successful
-func (m *WithSlugItemRequestBuilder) WithUrl(rawUrl string)(*WithSlugItemRequestBuilder) {
-    return NewWithSlugItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+func (m *WithSlugItemRequestBuilder) WithUrl(rawUrl string) *WithSlugItemRequestBuilder {
+	return NewWithSlugItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
 }

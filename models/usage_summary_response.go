@@ -4,338 +4,362 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // UsageSummaryResponse describes usage summary response data used by Leadping.
 type UsageSummaryResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The billable quantity total for this usage summary.
-    billableQuantityTotal *float64
-    // The named usage counters included with this usage summary.
-    counters []UsageCounterLineable
-    // The customer charge total for this usage summary.
-    customerChargeTotal *float64
-    // The failed count for this usage summary.
-    failedCount *int32
-    // The lines included with this usage summary.
-    lines []UsageSummaryLineable
-    // The pending invoice count for this usage summary.
-    pendingInvoiceCount *int32
-    // UTC timestamp for period end on this usage summary.
-    periodEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for period start on this usage summary.
-    periodStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The usage record count for this usage summary.
-    transactionCount *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The billable quantity total for this usage summary.
+	billableQuantityTotal *float64
+	// The named usage counters included with this usage summary.
+	counters []UsageCounterLineable
+	// The customer charge total for this usage summary.
+	customerChargeTotal *float64
+	// The failed count for this usage summary.
+	failedCount *int32
+	// The lines included with this usage summary.
+	lines []UsageSummaryLineable
+	// The pending invoice count for this usage summary.
+	pendingInvoiceCount *int32
+	// UTC timestamp for period end on this usage summary.
+	periodEnd *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for period start on this usage summary.
+	periodStart *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The usage record count for this usage summary.
+	transactionCount *int32
 }
+
 // NewUsageSummaryResponse instantiates a new UsageSummaryResponse and sets the default values.
-func NewUsageSummaryResponse()(*UsageSummaryResponse) {
-    m := &UsageSummaryResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUsageSummaryResponse() *UsageSummaryResponse {
+	m := &UsageSummaryResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUsageSummaryResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUsageSummaryResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUsageSummaryResponse(), nil
+func CreateUsageSummaryResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUsageSummaryResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UsageSummaryResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UsageSummaryResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBillableQuantityTotal gets the billableQuantityTotal property value. The billable quantity total for this usage summary.
 // returns a *float64 when successful
-func (m *UsageSummaryResponse) GetBillableQuantityTotal()(*float64) {
-    return m.billableQuantityTotal
+func (m *UsageSummaryResponse) GetBillableQuantityTotal() *float64 {
+	return m.billableQuantityTotal
 }
+
 // GetCounters gets the counters property value. The named usage counters included with this usage summary.
 // returns a []UsageCounterLineable when successful
-func (m *UsageSummaryResponse) GetCounters()([]UsageCounterLineable) {
-    return m.counters
+func (m *UsageSummaryResponse) GetCounters() []UsageCounterLineable {
+	return m.counters
 }
+
 // GetCustomerChargeTotal gets the customerChargeTotal property value. The customer charge total for this usage summary.
 // returns a *float64 when successful
-func (m *UsageSummaryResponse) GetCustomerChargeTotal()(*float64) {
-    return m.customerChargeTotal
+func (m *UsageSummaryResponse) GetCustomerChargeTotal() *float64 {
+	return m.customerChargeTotal
 }
+
 // GetFailedCount gets the failedCount property value. The failed count for this usage summary.
 // returns a *int32 when successful
-func (m *UsageSummaryResponse) GetFailedCount()(*int32) {
-    return m.failedCount
+func (m *UsageSummaryResponse) GetFailedCount() *int32 {
+	return m.failedCount
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UsageSummaryResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billableQuantityTotal"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableQuantityTotal(val)
-        }
-        return nil
-    }
-    res["counters"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateUsageCounterLineFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]UsageCounterLineable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(UsageCounterLineable)
-                }
-            }
-            m.SetCounters(res)
-        }
-        return nil
-    }
-    res["customerChargeTotal"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCustomerChargeTotal(val)
-        }
-        return nil
-    }
-    res["failedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedCount(val)
-        }
-        return nil
-    }
-    res["lines"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateUsageSummaryLineFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]UsageSummaryLineable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(UsageSummaryLineable)
-                }
-            }
-            m.SetLines(res)
-        }
-        return nil
-    }
-    res["pendingInvoiceCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPendingInvoiceCount(val)
-        }
-        return nil
-    }
-    res["periodEnd"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPeriodEnd(val)
-        }
-        return nil
-    }
-    res["periodStart"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPeriodStart(val)
-        }
-        return nil
-    }
-    res["transactionCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTransactionCount(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UsageSummaryResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billableQuantityTotal"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableQuantityTotal(val)
+		}
+		return nil
+	}
+	res["counters"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateUsageCounterLineFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]UsageCounterLineable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(UsageCounterLineable)
+				}
+			}
+			m.SetCounters(res)
+		}
+		return nil
+	}
+	res["customerChargeTotal"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomerChargeTotal(val)
+		}
+		return nil
+	}
+	res["failedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedCount(val)
+		}
+		return nil
+	}
+	res["lines"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateUsageSummaryLineFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]UsageSummaryLineable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(UsageSummaryLineable)
+				}
+			}
+			m.SetLines(res)
+		}
+		return nil
+	}
+	res["pendingInvoiceCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPendingInvoiceCount(val)
+		}
+		return nil
+	}
+	res["periodEnd"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPeriodEnd(val)
+		}
+		return nil
+	}
+	res["periodStart"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPeriodStart(val)
+		}
+		return nil
+	}
+	res["transactionCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTransactionCount(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLines gets the lines property value. The lines included with this usage summary.
 // returns a []UsageSummaryLineable when successful
-func (m *UsageSummaryResponse) GetLines()([]UsageSummaryLineable) {
-    return m.lines
+func (m *UsageSummaryResponse) GetLines() []UsageSummaryLineable {
+	return m.lines
 }
+
 // GetPendingInvoiceCount gets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
 // returns a *int32 when successful
-func (m *UsageSummaryResponse) GetPendingInvoiceCount()(*int32) {
-    return m.pendingInvoiceCount
+func (m *UsageSummaryResponse) GetPendingInvoiceCount() *int32 {
+	return m.pendingInvoiceCount
 }
+
 // GetPeriodEnd gets the periodEnd property value. UTC timestamp for period end on this usage summary.
 // returns a *Time when successful
-func (m *UsageSummaryResponse) GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.periodEnd
+func (m *UsageSummaryResponse) GetPeriodEnd() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.periodEnd
 }
+
 // GetPeriodStart gets the periodStart property value. UTC timestamp for period start on this usage summary.
 // returns a *Time when successful
-func (m *UsageSummaryResponse) GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.periodStart
+func (m *UsageSummaryResponse) GetPeriodStart() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.periodStart
 }
+
 // GetTransactionCount gets the transactionCount property value. The usage record count for this usage summary.
 // returns a *int32 when successful
-func (m *UsageSummaryResponse) GetTransactionCount()(*int32) {
-    return m.transactionCount
+func (m *UsageSummaryResponse) GetTransactionCount() *int32 {
+	return m.transactionCount
 }
+
 // Serialize serializes information the current object
-func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("billableQuantityTotal", m.GetBillableQuantityTotal())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCounters() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetCounters()))
-        for i, v := range m.GetCounters() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("counters", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("customerChargeTotal", m.GetCustomerChargeTotal())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("failedCount", m.GetFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLines() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLines()))
-        for i, v := range m.GetLines() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("lines", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("pendingInvoiceCount", m.GetPendingInvoiceCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("periodEnd", m.GetPeriodEnd())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("periodStart", m.GetPeriodStart())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("transactionCount", m.GetTransactionCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UsageSummaryResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("billableQuantityTotal", m.GetBillableQuantityTotal())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetCounters() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetCounters()))
+		for i, v := range m.GetCounters() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("counters", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("customerChargeTotal", m.GetCustomerChargeTotal())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("failedCount", m.GetFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLines() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLines()))
+		for i, v := range m.GetLines() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("lines", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("pendingInvoiceCount", m.GetPendingInvoiceCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("periodEnd", m.GetPeriodEnd())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("periodStart", m.GetPeriodStart())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("transactionCount", m.GetTransactionCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UsageSummaryResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UsageSummaryResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBillableQuantityTotal sets the billableQuantityTotal property value. The billable quantity total for this usage summary.
-func (m *UsageSummaryResponse) SetBillableQuantityTotal(value *float64)() {
-    m.billableQuantityTotal = value
+func (m *UsageSummaryResponse) SetBillableQuantityTotal(value *float64) {
+	m.billableQuantityTotal = value
 }
+
 // SetCounters sets the counters property value. The named usage counters included with this usage summary.
-func (m *UsageSummaryResponse) SetCounters(value []UsageCounterLineable)() {
-    m.counters = value
+func (m *UsageSummaryResponse) SetCounters(value []UsageCounterLineable) {
+	m.counters = value
 }
+
 // SetCustomerChargeTotal sets the customerChargeTotal property value. The customer charge total for this usage summary.
-func (m *UsageSummaryResponse) SetCustomerChargeTotal(value *float64)() {
-    m.customerChargeTotal = value
+func (m *UsageSummaryResponse) SetCustomerChargeTotal(value *float64) {
+	m.customerChargeTotal = value
 }
+
 // SetFailedCount sets the failedCount property value. The failed count for this usage summary.
-func (m *UsageSummaryResponse) SetFailedCount(value *int32)() {
-    m.failedCount = value
+func (m *UsageSummaryResponse) SetFailedCount(value *int32) {
+	m.failedCount = value
 }
+
 // SetLines sets the lines property value. The lines included with this usage summary.
-func (m *UsageSummaryResponse) SetLines(value []UsageSummaryLineable)() {
-    m.lines = value
+func (m *UsageSummaryResponse) SetLines(value []UsageSummaryLineable) {
+	m.lines = value
 }
+
 // SetPendingInvoiceCount sets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
-func (m *UsageSummaryResponse) SetPendingInvoiceCount(value *int32)() {
-    m.pendingInvoiceCount = value
+func (m *UsageSummaryResponse) SetPendingInvoiceCount(value *int32) {
+	m.pendingInvoiceCount = value
 }
+
 // SetPeriodEnd sets the periodEnd property value. UTC timestamp for period end on this usage summary.
-func (m *UsageSummaryResponse) SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.periodEnd = value
+func (m *UsageSummaryResponse) SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.periodEnd = value
 }
+
 // SetPeriodStart sets the periodStart property value. UTC timestamp for period start on this usage summary.
-func (m *UsageSummaryResponse) SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.periodStart = value
+func (m *UsageSummaryResponse) SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.periodStart = value
 }
+
 // SetTransactionCount sets the transactionCount property value. The usage record count for this usage summary.
-func (m *UsageSummaryResponse) SetTransactionCount(value *int32)() {
-    m.transactionCount = value
+func (m *UsageSummaryResponse) SetTransactionCount(value *int32) {
+	m.transactionCount = value
 }
+
 type UsageSummaryResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableQuantityTotal()(*float64)
-    GetCounters()([]UsageCounterLineable)
-    GetCustomerChargeTotal()(*float64)
-    GetFailedCount()(*int32)
-    GetLines()([]UsageSummaryLineable)
-    GetPendingInvoiceCount()(*int32)
-    GetPeriodEnd()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPeriodStart()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTransactionCount()(*int32)
-    SetBillableQuantityTotal(value *float64)()
-    SetCounters(value []UsageCounterLineable)()
-    SetCustomerChargeTotal(value *float64)()
-    SetFailedCount(value *int32)()
-    SetLines(value []UsageSummaryLineable)()
-    SetPendingInvoiceCount(value *int32)()
-    SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTransactionCount(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillableQuantityTotal() *float64
+	GetCounters() []UsageCounterLineable
+	GetCustomerChargeTotal() *float64
+	GetFailedCount() *int32
+	GetLines() []UsageSummaryLineable
+	GetPendingInvoiceCount() *int32
+	GetPeriodEnd() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPeriodStart() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTransactionCount() *int32
+	SetBillableQuantityTotal(value *float64)
+	SetCounters(value []UsageCounterLineable)
+	SetCustomerChargeTotal(value *float64)
+	SetFailedCount(value *int32)
+	SetLines(value []UsageSummaryLineable)
+	SetPendingInvoiceCount(value *int32)
+	SetPeriodEnd(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPeriodStart(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTransactionCount(value *int32)
 }

@@ -4,139 +4,151 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // Phone public Leadping API schema for lead phone number data.
 type Phone struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // E.164 phone number exposed by this lead phone number.
-    number *string
-    // Identifier of the canonical phone identity stored by Leadping.
-    phoneIdentityId *string
-    // Type classification used to route and interpret this lead phone number in the Leadping API.
-    typeEscaped *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// E.164 phone number exposed by this lead phone number.
+	number *string
+	// Identifier of the canonical phone identity stored by Leadping.
+	phoneIdentityId *string
+	// Type classification used to route and interpret this lead phone number in the Leadping API.
+	typeEscaped *string
 }
+
 // NewPhone instantiates a new Phone and sets the default values.
-func NewPhone()(*Phone) {
-    m := &Phone{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhone() *Phone {
+	m := &Phone{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhone(), nil
+func CreatePhoneFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhone(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *Phone) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *Phone) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *Phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneIdentityId(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *Phone) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["phoneIdentityId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneIdentityId(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this lead phone number.
 // returns a *string when successful
-func (m *Phone) GetNumber()(*string) {
-    return m.number
+func (m *Phone) GetNumber() *string {
+	return m.number
 }
+
 // GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
 // returns a *string when successful
-func (m *Phone) GetPhoneIdentityId()(*string) {
-    return m.phoneIdentityId
+func (m *Phone) GetPhoneIdentityId() *string {
+	return m.phoneIdentityId
 }
+
 // GetTypeEscaped gets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
 // returns a *string when successful
-func (m *Phone) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *Phone) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *Phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *Phone) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *Phone) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this lead phone number.
-func (m *Phone) SetNumber(value *string)() {
-    m.number = value
+func (m *Phone) SetNumber(value *string) {
+	m.number = value
 }
+
 // SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
-func (m *Phone) SetPhoneIdentityId(value *string)() {
-    m.phoneIdentityId = value
+func (m *Phone) SetPhoneIdentityId(value *string) {
+	m.phoneIdentityId = value
 }
+
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
-func (m *Phone) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *Phone) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 type Phoneable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetNumber()(*string)
-    GetPhoneIdentityId()(*string)
-    GetTypeEscaped()(*string)
-    SetNumber(value *string)()
-    SetPhoneIdentityId(value *string)()
-    SetTypeEscaped(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetNumber() *string
+	GetPhoneIdentityId() *string
+	GetTypeEscaped() *string
+	SetNumber(value *string)
+	SetPhoneIdentityId(value *string)
+	SetTypeEscaped(value *string)
 }

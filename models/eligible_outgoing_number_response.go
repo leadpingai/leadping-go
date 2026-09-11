@@ -4,460 +4,494 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // EligibleOutgoingNumberResponse describes a Leadping phone number that is eligible to send an outbound message or place a call.
 type EligibleOutgoingNumberResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Messaging campaign identifier associated with this eligible outgoing phone number.
-    campaignId *string
-    // Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
-    canSend *bool
-    // Human-readable phone number shown in Leadping UI and API responses.
-    displayNumber *string
-    // Short label describing the health state for display in dashboards.
-    healthLabel *string
-    // Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
-    healthStatus *EligibleOutgoingNumberResponse_healthStatus
-    // Warning text that explains a potential health or readiness issue.
-    healthWarning *string
-    // Indicates whether this eligible outgoing phone number was selected for the requested operation.
-    isSelected *bool
-    // Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
-    label *string
-    // E.164 phone number exposed by this eligible outgoing phone number.
-    number *string
-    // Leadping phone number ID connected to this eligible outgoing phone number.
-    phoneNumberId *string
-    // Human-readable label for the reason code on this eligible outgoing phone number.
-    reasonLabel *string
-    // Reason Leadping selected this outbound sender number.
-    selectionReason *OutgoingNumberSelectionReason
-    // Lead source ID used to determine this phone number's outbound eligibility.
-    sourceId *string
-    // Organization ID used to determine this phone number's outbound eligibility.
-    teamId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Messaging campaign identifier associated with this eligible outgoing phone number.
+	campaignId *string
+	// Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
+	canSend *bool
+	// Human-readable phone number shown in Leadping UI and API responses.
+	displayNumber *string
+	// Short label describing the health state for display in dashboards.
+	healthLabel *string
+	// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
+	healthStatus *EligibleOutgoingNumberResponse_healthStatus
+	// Warning text that explains a potential health or readiness issue.
+	healthWarning *string
+	// Indicates whether this eligible outgoing phone number was selected for the requested operation.
+	isSelected *bool
+	// Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
+	label *string
+	// E.164 phone number exposed by this eligible outgoing phone number.
+	number *string
+	// Leadping phone number ID connected to this eligible outgoing phone number.
+	phoneNumberId *string
+	// Human-readable label for the reason code on this eligible outgoing phone number.
+	reasonLabel *string
+	// Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+	selectionReason *OutgoingNumberSelectionReason
+	// Lead source ID used to determine this phone number's outbound eligibility.
+	sourceId *string
+	// Organization ID used to determine this phone number's outbound eligibility.
+	teamId *string
 }
+
 // NewEligibleOutgoingNumberResponse instantiates a new EligibleOutgoingNumberResponse and sets the default values.
-func NewEligibleOutgoingNumberResponse()(*EligibleOutgoingNumberResponse) {
-    m := &EligibleOutgoingNumberResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewEligibleOutgoingNumberResponse() *EligibleOutgoingNumberResponse {
+	m := &EligibleOutgoingNumberResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateEligibleOutgoingNumberResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateEligibleOutgoingNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewEligibleOutgoingNumberResponse(), nil
+func CreateEligibleOutgoingNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewEligibleOutgoingNumberResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *EligibleOutgoingNumberResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *EligibleOutgoingNumberResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *EligibleOutgoingNumberResponse) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetCanSend gets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 // returns a *bool when successful
-func (m *EligibleOutgoingNumberResponse) GetCanSend()(*bool) {
-    return m.canSend
+func (m *EligibleOutgoingNumberResponse) GetCanSend() *bool {
+	return m.canSend
 }
+
 // GetDisplayNumber gets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetDisplayNumber()(*string) {
-    return m.displayNumber
+func (m *EligibleOutgoingNumberResponse) GetDisplayNumber() *string {
+	return m.displayNumber
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["canSend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCanSend(val)
-        }
-        return nil
-    }
-    res["displayNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDisplayNumber(val)
-        }
-        return nil
-    }
-    res["healthLabel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthLabel(val)
-        }
-        return nil
-    }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseEligibleOutgoingNumberResponse_healthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*EligibleOutgoingNumberResponse_healthStatus))
-        }
-        return nil
-    }
-    res["healthWarning"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthWarning(val)
-        }
-        return nil
-    }
-    res["isSelected"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsSelected(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["phoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["reasonLabel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReasonLabel(val)
-        }
-        return nil
-    }
-    res["selectionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOutgoingNumberSelectionReason)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelectionReason(val.(*OutgoingNumberSelectionReason))
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["teamId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTeamId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["canSend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanSend(val)
+		}
+		return nil
+	}
+	res["displayNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDisplayNumber(val)
+		}
+		return nil
+	}
+	res["healthLabel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthLabel(val)
+		}
+		return nil
+	}
+	res["healthStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseEligibleOutgoingNumberResponse_healthStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthStatus(val.(*EligibleOutgoingNumberResponse_healthStatus))
+		}
+		return nil
+	}
+	res["healthWarning"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthWarning(val)
+		}
+		return nil
+	}
+	res["isSelected"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsSelected(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["phoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["reasonLabel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReasonLabel(val)
+		}
+		return nil
+	}
+	res["selectionReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutgoingNumberSelectionReason)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectionReason(val.(*OutgoingNumberSelectionReason))
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["teamId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTeamId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthLabel gets the healthLabel property value. Short label describing the health state for display in dashboards.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetHealthLabel()(*string) {
-    return m.healthLabel
+func (m *EligibleOutgoingNumberResponse) GetHealthLabel() *string {
+	return m.healthLabel
 }
+
 // GetHealthStatus gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 // returns a *EligibleOutgoingNumberResponse_healthStatus when successful
-func (m *EligibleOutgoingNumberResponse) GetHealthStatus()(*EligibleOutgoingNumberResponse_healthStatus) {
-    return m.healthStatus
+func (m *EligibleOutgoingNumberResponse) GetHealthStatus() *EligibleOutgoingNumberResponse_healthStatus {
+	return m.healthStatus
 }
+
 // GetHealthWarning gets the healthWarning property value. Warning text that explains a potential health or readiness issue.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetHealthWarning()(*string) {
-    return m.healthWarning
+func (m *EligibleOutgoingNumberResponse) GetHealthWarning() *string {
+	return m.healthWarning
 }
+
 // GetIsSelected gets the isSelected property value. Indicates whether this eligible outgoing phone number was selected for the requested operation.
 // returns a *bool when successful
-func (m *EligibleOutgoingNumberResponse) GetIsSelected()(*bool) {
-    return m.isSelected
+func (m *EligibleOutgoingNumberResponse) GetIsSelected() *bool {
+	return m.isSelected
 }
+
 // GetLabel gets the label property value. Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetLabel()(*string) {
-    return m.label
+func (m *EligibleOutgoingNumberResponse) GetLabel() *string {
+	return m.label
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this eligible outgoing phone number.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetNumber()(*string) {
-    return m.number
+func (m *EligibleOutgoingNumberResponse) GetNumber() *string {
+	return m.number
 }
+
 // GetPhoneNumberId gets the phoneNumberId property value. Leadping phone number ID connected to this eligible outgoing phone number.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetPhoneNumberId()(*string) {
-    return m.phoneNumberId
+func (m *EligibleOutgoingNumberResponse) GetPhoneNumberId() *string {
+	return m.phoneNumberId
 }
+
 // GetReasonLabel gets the reasonLabel property value. Human-readable label for the reason code on this eligible outgoing phone number.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetReasonLabel()(*string) {
-    return m.reasonLabel
+func (m *EligibleOutgoingNumberResponse) GetReasonLabel() *string {
+	return m.reasonLabel
 }
-// GetSelectionReason gets the selectionReason property value. Reason Leadping selected this outbound sender number.
+
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *OutgoingNumberSelectionReason when successful
-func (m *EligibleOutgoingNumberResponse) GetSelectionReason()(*OutgoingNumberSelectionReason) {
-    return m.selectionReason
+func (m *EligibleOutgoingNumberResponse) GetSelectionReason() *OutgoingNumberSelectionReason {
+	return m.selectionReason
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used to determine this phone number's outbound eligibility.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetSourceId()(*string) {
-    return m.sourceId
+func (m *EligibleOutgoingNumberResponse) GetSourceId() *string {
+	return m.sourceId
 }
+
 // GetTeamId gets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
 // returns a *string when successful
-func (m *EligibleOutgoingNumberResponse) GetTeamId()(*string) {
-    return m.teamId
+func (m *EligibleOutgoingNumberResponse) GetTeamId() *string {
+	return m.teamId
 }
+
 // Serialize serializes information the current object
-func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("canSend", m.GetCanSend())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("displayNumber", m.GetDisplayNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("healthLabel", m.GetHealthLabel())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("healthWarning", m.GetHealthWarning())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isSelected", m.GetIsSelected())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reasonLabel", m.GetReasonLabel())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSelectionReason() != nil {
-        cast := (*m.GetSelectionReason()).String()
-        err := writer.WriteStringValue("selectionReason", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("teamId", m.GetTeamId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("canSend", m.GetCanSend())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("displayNumber", m.GetDisplayNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("healthLabel", m.GetHealthLabel())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetHealthStatus() != nil {
+		cast := (*m.GetHealthStatus()).String()
+		err := writer.WriteStringValue("healthStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("healthWarning", m.GetHealthWarning())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isSelected", m.GetIsSelected())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("reasonLabel", m.GetReasonLabel())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSelectionReason() != nil {
+		cast := (*m.GetSelectionReason()).String()
+		err := writer.WriteStringValue("selectionReason", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("teamId", m.GetTeamId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *EligibleOutgoingNumberResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *EligibleOutgoingNumberResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
-func (m *EligibleOutgoingNumberResponse) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *EligibleOutgoingNumberResponse) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetCanSend sets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
-func (m *EligibleOutgoingNumberResponse) SetCanSend(value *bool)() {
-    m.canSend = value
+func (m *EligibleOutgoingNumberResponse) SetCanSend(value *bool) {
+	m.canSend = value
 }
+
 // SetDisplayNumber sets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
-func (m *EligibleOutgoingNumberResponse) SetDisplayNumber(value *string)() {
-    m.displayNumber = value
+func (m *EligibleOutgoingNumberResponse) SetDisplayNumber(value *string) {
+	m.displayNumber = value
 }
+
 // SetHealthLabel sets the healthLabel property value. Short label describing the health state for display in dashboards.
-func (m *EligibleOutgoingNumberResponse) SetHealthLabel(value *string)() {
-    m.healthLabel = value
+func (m *EligibleOutgoingNumberResponse) SetHealthLabel(value *string) {
+	m.healthLabel = value
 }
+
 // SetHealthStatus sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
-func (m *EligibleOutgoingNumberResponse) SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)() {
-    m.healthStatus = value
+func (m *EligibleOutgoingNumberResponse) SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus) {
+	m.healthStatus = value
 }
+
 // SetHealthWarning sets the healthWarning property value. Warning text that explains a potential health or readiness issue.
-func (m *EligibleOutgoingNumberResponse) SetHealthWarning(value *string)() {
-    m.healthWarning = value
+func (m *EligibleOutgoingNumberResponse) SetHealthWarning(value *string) {
+	m.healthWarning = value
 }
+
 // SetIsSelected sets the isSelected property value. Indicates whether this eligible outgoing phone number was selected for the requested operation.
-func (m *EligibleOutgoingNumberResponse) SetIsSelected(value *bool)() {
-    m.isSelected = value
+func (m *EligibleOutgoingNumberResponse) SetIsSelected(value *bool) {
+	m.isSelected = value
 }
+
 // SetLabel sets the label property value. Short display label for this eligible outgoing phone number, formatted for charts, filters, or list views.
-func (m *EligibleOutgoingNumberResponse) SetLabel(value *string)() {
-    m.label = value
+func (m *EligibleOutgoingNumberResponse) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this eligible outgoing phone number.
-func (m *EligibleOutgoingNumberResponse) SetNumber(value *string)() {
-    m.number = value
+func (m *EligibleOutgoingNumberResponse) SetNumber(value *string) {
+	m.number = value
 }
+
 // SetPhoneNumberId sets the phoneNumberId property value. Leadping phone number ID connected to this eligible outgoing phone number.
-func (m *EligibleOutgoingNumberResponse) SetPhoneNumberId(value *string)() {
-    m.phoneNumberId = value
+func (m *EligibleOutgoingNumberResponse) SetPhoneNumberId(value *string) {
+	m.phoneNumberId = value
 }
+
 // SetReasonLabel sets the reasonLabel property value. Human-readable label for the reason code on this eligible outgoing phone number.
-func (m *EligibleOutgoingNumberResponse) SetReasonLabel(value *string)() {
-    m.reasonLabel = value
+func (m *EligibleOutgoingNumberResponse) SetReasonLabel(value *string) {
+	m.reasonLabel = value
 }
-// SetSelectionReason sets the selectionReason property value. Reason Leadping selected this outbound sender number.
-func (m *EligibleOutgoingNumberResponse) SetSelectionReason(value *OutgoingNumberSelectionReason)() {
-    m.selectionReason = value
+
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+func (m *EligibleOutgoingNumberResponse) SetSelectionReason(value *OutgoingNumberSelectionReason) {
+	m.selectionReason = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used to determine this phone number's outbound eligibility.
-func (m *EligibleOutgoingNumberResponse) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *EligibleOutgoingNumberResponse) SetSourceId(value *string) {
+	m.sourceId = value
 }
+
 // SetTeamId sets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
-func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string)() {
-    m.teamId = value
+func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string) {
+	m.teamId = value
 }
+
 type EligibleOutgoingNumberResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCampaignId()(*string)
-    GetCanSend()(*bool)
-    GetDisplayNumber()(*string)
-    GetHealthLabel()(*string)
-    GetHealthStatus()(*EligibleOutgoingNumberResponse_healthStatus)
-    GetHealthWarning()(*string)
-    GetIsSelected()(*bool)
-    GetLabel()(*string)
-    GetNumber()(*string)
-    GetPhoneNumberId()(*string)
-    GetReasonLabel()(*string)
-    GetSelectionReason()(*OutgoingNumberSelectionReason)
-    GetSourceId()(*string)
-    GetTeamId()(*string)
-    SetCampaignId(value *string)()
-    SetCanSend(value *bool)()
-    SetDisplayNumber(value *string)()
-    SetHealthLabel(value *string)()
-    SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)()
-    SetHealthWarning(value *string)()
-    SetIsSelected(value *bool)()
-    SetLabel(value *string)()
-    SetNumber(value *string)()
-    SetPhoneNumberId(value *string)()
-    SetReasonLabel(value *string)()
-    SetSelectionReason(value *OutgoingNumberSelectionReason)()
-    SetSourceId(value *string)()
-    SetTeamId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCampaignId() *string
+	GetCanSend() *bool
+	GetDisplayNumber() *string
+	GetHealthLabel() *string
+	GetHealthStatus() *EligibleOutgoingNumberResponse_healthStatus
+	GetHealthWarning() *string
+	GetIsSelected() *bool
+	GetLabel() *string
+	GetNumber() *string
+	GetPhoneNumberId() *string
+	GetReasonLabel() *string
+	GetSelectionReason() *OutgoingNumberSelectionReason
+	GetSourceId() *string
+	GetTeamId() *string
+	SetCampaignId(value *string)
+	SetCanSend(value *bool)
+	SetDisplayNumber(value *string)
+	SetHealthLabel(value *string)
+	SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)
+	SetHealthWarning(value *string)
+	SetIsSelected(value *bool)
+	SetLabel(value *string)
+	SetNumber(value *string)
+	SetPhoneNumberId(value *string)
+	SetReasonLabel(value *string)
+	SetSelectionReason(value *OutgoingNumberSelectionReason)
+	SetSourceId(value *string)
+	SetTeamId(value *string)
 }

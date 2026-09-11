@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberSearchRequest_location geographic location metadata for the phone number, lead, or lookup result.
+// PhoneNumberSearchRequest_location public Leadping API schema for phone number location data.
 type PhoneNumberSearchRequest_location struct {
-    PhoneNumberLocation
+	PhoneNumberLocation
 }
+
 // NewPhoneNumberSearchRequest_location instantiates a new PhoneNumberSearchRequest_location and sets the default values.
-func NewPhoneNumberSearchRequest_location()(*PhoneNumberSearchRequest_location) {
-    m := &PhoneNumberSearchRequest_location{
-        PhoneNumberLocation: *NewPhoneNumberLocation(),
-    }
-    return m
+func NewPhoneNumberSearchRequest_location() *PhoneNumberSearchRequest_location {
+	m := &PhoneNumberSearchRequest_location{
+		PhoneNumberLocation: *NewPhoneNumberLocation(),
+	}
+	return m
 }
+
 // CreatePhoneNumberSearchRequest_locationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberSearchRequest_locationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberSearchRequest_location(), nil
+func CreatePhoneNumberSearchRequest_locationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberSearchRequest_location(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberSearchRequest_location) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.PhoneNumberLocation.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberSearchRequest_location) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.PhoneNumberLocation.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberSearchRequest_location) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.PhoneNumberLocation.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *PhoneNumberSearchRequest_location) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.PhoneNumberLocation.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type PhoneNumberSearchRequest_locationable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    PhoneNumberLocationable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	PhoneNumberLocationable
 }

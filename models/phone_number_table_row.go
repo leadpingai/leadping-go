@@ -4,429 +4,461 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberTableRow summarizes phone number data in paginated and searchable results.
 type PhoneNumberTableRow struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Indicates whether this phone number table row is active and available in the Leadping API.
-    enabled *bool
-    // Unique Leadping identifier for this phone number table row.
-    id *string
-    // Optional display label for this phone number table row in the Leadping API.
-    name *string
-    // E.164 phone number exposed by this phone number table row.
-    number *string
-    // Organization summary connected to this phone number table row.
-    organization *string
-    // Unique Leadping organization identifier connected to this phone number table row.
-    organizationId *string
-    // Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-    ownership *string
-    // Human-readable routing summary for this phone number.
-    routingSummary *string
-    // Indicates whether SMS messaging is ready for this organization or phone number.
-    smsReady *bool
-    // 10DLC campaign status associated with this sender or SMS event.
-    tenDlcCampaignStatus *string
-    // Type classification used to route and interpret this phone number table row in the Leadping API.
-    typeEscaped *string
-    // Indicates whether voice calling is ready for this organization or phone number.
-    voiceReady *bool
-    // Warmup state for this phone number.
-    warmup PhoneNumberReadinessable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Indicates whether this phone number table row is active and available in the Leadping API.
+	enabled *bool
+	// Unique Leadping identifier for this phone number table row.
+	id *string
+	// Optional display label for this phone number table row in the Leadping API.
+	name *string
+	// E.164 phone number exposed by this phone number table row.
+	number *string
+	// Organization summary connected to this phone number table row.
+	organization *string
+	// Unique Leadping organization identifier connected to this phone number table row.
+	organizationId *string
+	// Ownership classification for this phone number, such as Leadping-owned or customer-owned.
+	ownership *string
+	// Human-readable routing summary for this phone number.
+	routingSummary *string
+	// Indicates whether SMS messaging is ready for this organization or phone number.
+	smsReady *bool
+	// 10DLC campaign status associated with this sender or SMS event.
+	tenDlcCampaignStatus *string
+	// Type classification used to route and interpret this phone number table row in the Leadping API.
+	typeEscaped *string
+	// Indicates whether voice calling is ready for this organization or phone number.
+	voiceReady *bool
+	// Messaging and calling warmup for a Leadping phone number.
+	warmup PhoneNumberReadinessable
 }
+
 // NewPhoneNumberTableRow instantiates a new PhoneNumberTableRow and sets the default values.
-func NewPhoneNumberTableRow()(*PhoneNumberTableRow) {
-    m := &PhoneNumberTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberTableRow() *PhoneNumberTableRow {
+	m := &PhoneNumberTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberTableRow(), nil
+func CreatePhoneNumberTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberTableRow(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *PhoneNumberTableRow) GetEnabled()(*bool) {
-    return m.enabled
+func (m *PhoneNumberTableRow) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["ownership"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOwnership(val)
-        }
-        return nil
-    }
-    res["routingSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRoutingSummary(val)
-        }
-        return nil
-    }
-    res["smsReady"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsReady(val)
-        }
-        return nil
-    }
-    res["tenDlcCampaignStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcCampaignStatus(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    res["voiceReady"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceReady(val)
-        }
-        return nil
-    }
-    res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmup(val.(PhoneNumberReadinessable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["ownership"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOwnership(val)
+		}
+		return nil
+	}
+	res["routingSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRoutingSummary(val)
+		}
+		return nil
+	}
+	res["smsReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsReady(val)
+		}
+		return nil
+	}
+	res["tenDlcCampaignStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcCampaignStatus(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	res["voiceReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceReady(val)
+		}
+		return nil
+	}
+	res["warmup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWarmup(val.(PhoneNumberReadinessable))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this phone number table row.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetId()(*string) {
-    return m.id
+func (m *PhoneNumberTableRow) GetId() *string {
+	return m.id
 }
+
 // GetName gets the name property value. Optional display label for this phone number table row in the Leadping API.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetName()(*string) {
-    return m.name
+func (m *PhoneNumberTableRow) GetName() *string {
+	return m.name
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this phone number table row.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetNumber()(*string) {
-    return m.number
+func (m *PhoneNumberTableRow) GetNumber() *string {
+	return m.number
 }
+
 // GetOrganization gets the organization property value. Organization summary connected to this phone number table row.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetOrganization()(*string) {
-    return m.organization
+func (m *PhoneNumberTableRow) GetOrganization() *string {
+	return m.organization
 }
+
 // GetOrganizationId gets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *PhoneNumberTableRow) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetOwnership gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetOwnership()(*string) {
-    return m.ownership
+func (m *PhoneNumberTableRow) GetOwnership() *string {
+	return m.ownership
 }
+
 // GetRoutingSummary gets the routingSummary property value. Human-readable routing summary for this phone number.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetRoutingSummary()(*string) {
-    return m.routingSummary
+func (m *PhoneNumberTableRow) GetRoutingSummary() *string {
+	return m.routingSummary
 }
+
 // GetSmsReady gets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
 // returns a *bool when successful
-func (m *PhoneNumberTableRow) GetSmsReady()(*bool) {
-    return m.smsReady
+func (m *PhoneNumberTableRow) GetSmsReady() *bool {
+	return m.smsReady
 }
+
 // GetTenDlcCampaignStatus gets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus()(*string) {
-    return m.tenDlcCampaignStatus
+func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus() *string {
+	return m.tenDlcCampaignStatus
 }
+
 // GetTypeEscaped gets the type property value. Type classification used to route and interpret this phone number table row in the Leadping API.
 // returns a *string when successful
-func (m *PhoneNumberTableRow) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *PhoneNumberTableRow) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
 // returns a *bool when successful
-func (m *PhoneNumberTableRow) GetVoiceReady()(*bool) {
-    return m.voiceReady
+func (m *PhoneNumberTableRow) GetVoiceReady() *bool {
+	return m.voiceReady
 }
-// GetWarmup gets the warmup property value. Warmup state for this phone number.
+
+// GetWarmup gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
 // returns a PhoneNumberReadinessable when successful
-func (m *PhoneNumberTableRow) GetWarmup()(PhoneNumberReadinessable) {
-    return m.warmup
+func (m *PhoneNumberTableRow) GetWarmup() PhoneNumberReadinessable {
+	return m.warmup
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ownership", m.GetOwnership())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("routingSummary", m.GetRoutingSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcCampaignStatus", m.GetTenDlcCampaignStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("voiceReady", m.GetVoiceReady())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("warmup", m.GetWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ownership", m.GetOwnership())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("routingSummary", m.GetRoutingSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("tenDlcCampaignStatus", m.GetTenDlcCampaignStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("voiceReady", m.GetVoiceReady())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("warmup", m.GetWarmup())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
-func (m *PhoneNumberTableRow) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *PhoneNumberTableRow) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this phone number table row.
-func (m *PhoneNumberTableRow) SetId(value *string)() {
-    m.id = value
+func (m *PhoneNumberTableRow) SetId(value *string) {
+	m.id = value
 }
+
 // SetName sets the name property value. Optional display label for this phone number table row in the Leadping API.
-func (m *PhoneNumberTableRow) SetName(value *string)() {
-    m.name = value
+func (m *PhoneNumberTableRow) SetName(value *string) {
+	m.name = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number table row.
-func (m *PhoneNumberTableRow) SetNumber(value *string)() {
-    m.number = value
+func (m *PhoneNumberTableRow) SetNumber(value *string) {
+	m.number = value
 }
+
 // SetOrganization sets the organization property value. Organization summary connected to this phone number table row.
-func (m *PhoneNumberTableRow) SetOrganization(value *string)() {
-    m.organization = value
+func (m *PhoneNumberTableRow) SetOrganization(value *string) {
+	m.organization = value
 }
+
 // SetOrganizationId sets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
-func (m *PhoneNumberTableRow) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *PhoneNumberTableRow) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetOwnership sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-func (m *PhoneNumberTableRow) SetOwnership(value *string)() {
-    m.ownership = value
+func (m *PhoneNumberTableRow) SetOwnership(value *string) {
+	m.ownership = value
 }
+
 // SetRoutingSummary sets the routingSummary property value. Human-readable routing summary for this phone number.
-func (m *PhoneNumberTableRow) SetRoutingSummary(value *string)() {
-    m.routingSummary = value
+func (m *PhoneNumberTableRow) SetRoutingSummary(value *string) {
+	m.routingSummary = value
 }
+
 // SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
-func (m *PhoneNumberTableRow) SetSmsReady(value *bool)() {
-    m.smsReady = value
+func (m *PhoneNumberTableRow) SetSmsReady(value *bool) {
+	m.smsReady = value
 }
+
 // SetTenDlcCampaignStatus sets the tenDlcCampaignStatus property value. 10DLC campaign status associated with this sender or SMS event.
-func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string)() {
-    m.tenDlcCampaignStatus = value
+func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string) {
+	m.tenDlcCampaignStatus = value
 }
+
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this phone number table row in the Leadping API.
-func (m *PhoneNumberTableRow) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *PhoneNumberTableRow) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 // SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
-func (m *PhoneNumberTableRow) SetVoiceReady(value *bool)() {
-    m.voiceReady = value
+func (m *PhoneNumberTableRow) SetVoiceReady(value *bool) {
+	m.voiceReady = value
 }
-// SetWarmup sets the warmup property value. Warmup state for this phone number.
-func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberReadinessable)() {
-    m.warmup = value
+
+// SetWarmup sets the warmup property value. Messaging and calling warmup for a Leadping phone number.
+func (m *PhoneNumberTableRow) SetWarmup(value PhoneNumberReadinessable) {
+	m.warmup = value
 }
+
 type PhoneNumberTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetEnabled()(*bool)
-    GetId()(*string)
-    GetName()(*string)
-    GetNumber()(*string)
-    GetOrganization()(*string)
-    GetOrganizationId()(*string)
-    GetOwnership()(*string)
-    GetRoutingSummary()(*string)
-    GetSmsReady()(*bool)
-    GetTenDlcCampaignStatus()(*string)
-    GetTypeEscaped()(*string)
-    GetVoiceReady()(*bool)
-    GetWarmup()(PhoneNumberReadinessable)
-    SetEnabled(value *bool)()
-    SetId(value *string)()
-    SetName(value *string)()
-    SetNumber(value *string)()
-    SetOrganization(value *string)()
-    SetOrganizationId(value *string)()
-    SetOwnership(value *string)()
-    SetRoutingSummary(value *string)()
-    SetSmsReady(value *bool)()
-    SetTenDlcCampaignStatus(value *string)()
-    SetTypeEscaped(value *string)()
-    SetVoiceReady(value *bool)()
-    SetWarmup(value PhoneNumberReadinessable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetEnabled() *bool
+	GetId() *string
+	GetName() *string
+	GetNumber() *string
+	GetOrganization() *string
+	GetOrganizationId() *string
+	GetOwnership() *string
+	GetRoutingSummary() *string
+	GetSmsReady() *bool
+	GetTenDlcCampaignStatus() *string
+	GetTypeEscaped() *string
+	GetVoiceReady() *bool
+	GetWarmup() PhoneNumberReadinessable
+	SetEnabled(value *bool)
+	SetId(value *string)
+	SetName(value *string)
+	SetNumber(value *string)
+	SetOrganization(value *string)
+	SetOrganizationId(value *string)
+	SetOwnership(value *string)
+	SetRoutingSummary(value *string)
+	SetSmsReady(value *bool)
+	SetTenDlcCampaignStatus(value *string)
+	SetTypeEscaped(value *string)
+	SetVoiceReady(value *bool)
+	SetWarmup(value PhoneNumberReadinessable)
 }

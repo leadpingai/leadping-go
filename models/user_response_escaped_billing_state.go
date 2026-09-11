@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserResponse_billingState customer-safe billing state for the user's currently selected organization.
+// UserResponse_billingState customer-safe billing state for a Leadping organization.
 type UserResponse_billingState struct {
-    OrganizationBillingState
+	OrganizationBillingState
 }
+
 // NewUserResponse_billingState instantiates a new UserResponse_billingState and sets the default values.
-func NewUserResponse_billingState()(*UserResponse_billingState) {
-    m := &UserResponse_billingState{
-        OrganizationBillingState: *NewOrganizationBillingState(),
-    }
-    return m
+func NewUserResponse_billingState() *UserResponse_billingState {
+	m := &UserResponse_billingState{
+		OrganizationBillingState: *NewOrganizationBillingState(),
+	}
+	return m
 }
+
 // CreateUserResponse_billingStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserResponse_billingStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserResponse_billingState(), nil
+func CreateUserResponse_billingStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserResponse_billingState(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserResponse_billingState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.OrganizationBillingState.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserResponse_billingState) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.OrganizationBillingState.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *UserResponse_billingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.OrganizationBillingState.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *UserResponse_billingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.OrganizationBillingState.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type UserResponse_billingStateable interface {
-    OrganizationBillingStateable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	OrganizationBillingStateable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

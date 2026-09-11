@@ -4,752 +4,804 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // UserResponse describes user data returned by Leadping.
 type UserResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-    billingPlan *UserResponse_billingPlan
-    // Customer-safe billing state for the user's currently selected organization.
-    billingState UserResponse_billingStateable
-    // Compliance for this user.
-    compliance UserResponse_complianceable
-    // UTC timestamp when the resource was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current organization for this user.
-    currentOrganization UserResponse_currentOrganizationable
-    // The email address associated with this user.
-    email *string
-    // First name for this user.
-    firstName *string
-    // Stable unique identifier of the resource.
-    id *string
-    // The identities included with this user.
-    identities []UserIdentityable
-    // The date and time when this user last completed the Leadping sign-in flow.
-    lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Last name of the Leadping user.
-    lastName *string
-    // The Leadping mobile device preferences for this user.
-    mobileDevicePreferences []MobileDevicePreferencesable
-    // UTC timestamp when the resource was last modified, or null when it has not been updated.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable display name of the resource.
-    name *string
-    // Notification preferences for this user.
-    notificationPreferences UserResponse_notificationPreferencesable
-    // UTC timestamp for personal data deleted at on this user.
-    personalDataDeletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable personal data deletion reason explaining this user.
-    personalDataDeletionReason *string
-    // UTC timestamp for personal data deletion requested at on this user.
-    personalDataDeletionRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current personal data deletion status for this user.
-    personalDataDeletionStatus *string
-    // The phone number associated with this user.
-    phone *string
-    // The roles included with this user.
-    roles []string
-    // Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
-    subscriptionStatus *UserResponse_subscriptionStatus
-    // IANA time zone identifier used when displaying dates and times for this user.
-    timeZoneId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+	billingPlan *UserResponse_billingPlan
+	// Customer-safe billing state for a Leadping organization.
+	billingState UserResponse_billingStateable
+	// Describes user compliance data used in Leadping API requests and responses.
+	compliance UserResponse_complianceable
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	currentOrganization UserResponse_currentOrganizationable
+	// The email address associated with this user.
+	email *string
+	// First name for this user.
+	firstName *string
+	// Stable unique identifier of the resource.
+	id *string
+	// The identities included with this user.
+	identities []UserIdentityable
+	// The date and time when this user last completed the Leadping sign-in flow.
+	lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Last name of the Leadping user.
+	lastName *string
+	// The Leadping mobile device preferences for this user.
+	mobileDevicePreferences []MobileDevicePreferencesable
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// Describes user notification preferences data used in Leadping API requests and responses.
+	notificationPreferences UserResponse_notificationPreferencesable
+	// UTC timestamp for personal data deleted at on this user.
+	personalDataDeletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The human-readable personal data deletion reason explaining this user.
+	personalDataDeletionReason *string
+	// UTC timestamp for personal data deletion requested at on this user.
+	personalDataDeletionRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The current personal data deletion status for this user.
+	personalDataDeletionStatus *string
+	// The phone number associated with this user.
+	phone *string
+	// The roles included with this user.
+	roles []string
+	// Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
+	subscriptionStatus *UserResponse_subscriptionStatus
+	// IANA time zone identifier used when displaying dates and times for this user.
+	timeZoneId *string
 }
+
 // NewUserResponse instantiates a new UserResponse and sets the default values.
-func NewUserResponse()(*UserResponse) {
-    m := &UserResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserResponse() *UserResponse {
+	m := &UserResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserResponse(), nil
+func CreateUserResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *UserResponse_billingPlan when successful
-func (m *UserResponse) GetBillingPlan()(*UserResponse_billingPlan) {
-    return m.billingPlan
+func (m *UserResponse) GetBillingPlan() *UserResponse_billingPlan {
+	return m.billingPlan
 }
-// GetBillingState gets the billingState property value. Customer-safe billing state for the user's currently selected organization.
+
+// GetBillingState gets the billingState property value. Customer-safe billing state for a Leadping organization.
 // returns a UserResponse_billingStateable when successful
-func (m *UserResponse) GetBillingState()(UserResponse_billingStateable) {
-    return m.billingState
+func (m *UserResponse) GetBillingState() UserResponse_billingStateable {
+	return m.billingState
 }
-// GetCompliance gets the compliance property value. Compliance for this user.
+
+// GetCompliance gets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
 // returns a UserResponse_complianceable when successful
-func (m *UserResponse) GetCompliance()(UserResponse_complianceable) {
-    return m.compliance
+func (m *UserResponse) GetCompliance() UserResponse_complianceable {
+	return m.compliance
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *UserResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *UserResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
-// GetCurrentOrganization gets the currentOrganization property value. Current organization for this user.
+
+// GetCurrentOrganization gets the currentOrganization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a UserResponse_currentOrganizationable when successful
-func (m *UserResponse) GetCurrentOrganization()(UserResponse_currentOrganizationable) {
-    return m.currentOrganization
+func (m *UserResponse) GetCurrentOrganization() UserResponse_currentOrganizationable {
+	return m.currentOrganization
 }
+
 // GetEmail gets the email property value. The email address associated with this user.
 // returns a *string when successful
-func (m *UserResponse) GetEmail()(*string) {
-    return m.email
+func (m *UserResponse) GetEmail() *string {
+	return m.email
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUserResponse_billingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlan(val.(*UserResponse_billingPlan))
-        }
-        return nil
-    }
-    res["billingState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_billingStateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingState(val.(UserResponse_billingStateable))
-        }
-        return nil
-    }
-    res["compliance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_complianceFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompliance(val.(UserResponse_complianceable))
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["currentOrganization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_currentOrganizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentOrganization(val.(UserResponse_currentOrganizationable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["identities"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateUserIdentityFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]UserIdentityable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(UserIdentityable)
-                }
-            }
-            m.SetIdentities(res)
-        }
-        return nil
-    }
-    res["lastLoggedInAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastLoggedInAt(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["mobileDevicePreferences"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMobileDevicePreferencesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MobileDevicePreferencesable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(MobileDevicePreferencesable)
-                }
-            }
-            m.SetMobileDevicePreferences(res)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["notificationPreferences"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserResponse_notificationPreferencesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNotificationPreferences(val.(UserResponse_notificationPreferencesable))
-        }
-        return nil
-    }
-    res["personalDataDeletedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPersonalDataDeletedAt(val)
-        }
-        return nil
-    }
-    res["personalDataDeletionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPersonalDataDeletionReason(val)
-        }
-        return nil
-    }
-    res["personalDataDeletionRequestedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPersonalDataDeletionRequestedAt(val)
-        }
-        return nil
-    }
-    res["personalDataDeletionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPersonalDataDeletionStatus(val)
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["roles"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetRoles(res)
-        }
-        return nil
-    }
-    res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUserResponse_subscriptionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionStatus(val.(*UserResponse_subscriptionStatus))
-        }
-        return nil
-    }
-    res["timeZoneId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimeZoneId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billingPlan"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseUserResponse_billingPlan)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingPlan(val.(*UserResponse_billingPlan))
+		}
+		return nil
+	}
+	res["billingState"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserResponse_billingStateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingState(val.(UserResponse_billingStateable))
+		}
+		return nil
+	}
+	res["compliance"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserResponse_complianceFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompliance(val.(UserResponse_complianceable))
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["currentOrganization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserResponse_currentOrganizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrentOrganization(val.(UserResponse_currentOrganizationable))
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["identities"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateUserIdentityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]UserIdentityable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(UserIdentityable)
+				}
+			}
+			m.SetIdentities(res)
+		}
+		return nil
+	}
+	res["lastLoggedInAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastLoggedInAt(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["mobileDevicePreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateMobileDevicePreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]MobileDevicePreferencesable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(MobileDevicePreferencesable)
+				}
+			}
+			m.SetMobileDevicePreferences(res)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["notificationPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserResponse_notificationPreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNotificationPreferences(val.(UserResponse_notificationPreferencesable))
+		}
+		return nil
+	}
+	res["personalDataDeletedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPersonalDataDeletedAt(val)
+		}
+		return nil
+	}
+	res["personalDataDeletionReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPersonalDataDeletionReason(val)
+		}
+		return nil
+	}
+	res["personalDataDeletionRequestedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPersonalDataDeletionRequestedAt(val)
+		}
+		return nil
+	}
+	res["personalDataDeletionStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPersonalDataDeletionStatus(val)
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["roles"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetRoles(res)
+		}
+		return nil
+	}
+	res["subscriptionStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseUserResponse_subscriptionStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionStatus(val.(*UserResponse_subscriptionStatus))
+		}
+		return nil
+	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name for this user.
 // returns a *string when successful
-func (m *UserResponse) GetFirstName()(*string) {
-    return m.firstName
+func (m *UserResponse) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *UserResponse) GetId()(*string) {
-    return m.id
+func (m *UserResponse) GetId() *string {
+	return m.id
 }
+
 // GetIdentities gets the identities property value. The identities included with this user.
 // returns a []UserIdentityable when successful
-func (m *UserResponse) GetIdentities()([]UserIdentityable) {
-    return m.identities
+func (m *UserResponse) GetIdentities() []UserIdentityable {
+	return m.identities
 }
+
 // GetLastLoggedInAt gets the lastLoggedInAt property value. The date and time when this user last completed the Leadping sign-in flow.
 // returns a *Time when successful
-func (m *UserResponse) GetLastLoggedInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastLoggedInAt
+func (m *UserResponse) GetLastLoggedInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastLoggedInAt
 }
+
 // GetLastName gets the lastName property value. Last name of the Leadping user.
 // returns a *string when successful
-func (m *UserResponse) GetLastName()(*string) {
-    return m.lastName
+func (m *UserResponse) GetLastName() *string {
+	return m.lastName
 }
+
 // GetMobileDevicePreferences gets the mobileDevicePreferences property value. The Leadping mobile device preferences for this user.
 // returns a []MobileDevicePreferencesable when successful
-func (m *UserResponse) GetMobileDevicePreferences()([]MobileDevicePreferencesable) {
-    return m.mobileDevicePreferences
+func (m *UserResponse) GetMobileDevicePreferences() []MobileDevicePreferencesable {
+	return m.mobileDevicePreferences
 }
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *UserResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *UserResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *UserResponse) GetName()(*string) {
-    return m.name
+func (m *UserResponse) GetName() *string {
+	return m.name
 }
-// GetNotificationPreferences gets the notificationPreferences property value. Notification preferences for this user.
+
+// GetNotificationPreferences gets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
 // returns a UserResponse_notificationPreferencesable when successful
-func (m *UserResponse) GetNotificationPreferences()(UserResponse_notificationPreferencesable) {
-    return m.notificationPreferences
+func (m *UserResponse) GetNotificationPreferences() UserResponse_notificationPreferencesable {
+	return m.notificationPreferences
 }
+
 // GetPersonalDataDeletedAt gets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
 // returns a *Time when successful
-func (m *UserResponse) GetPersonalDataDeletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.personalDataDeletedAt
+func (m *UserResponse) GetPersonalDataDeletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.personalDataDeletedAt
 }
+
 // GetPersonalDataDeletionReason gets the personalDataDeletionReason property value. The human-readable personal data deletion reason explaining this user.
 // returns a *string when successful
-func (m *UserResponse) GetPersonalDataDeletionReason()(*string) {
-    return m.personalDataDeletionReason
+func (m *UserResponse) GetPersonalDataDeletionReason() *string {
+	return m.personalDataDeletionReason
 }
+
 // GetPersonalDataDeletionRequestedAt gets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
 // returns a *Time when successful
-func (m *UserResponse) GetPersonalDataDeletionRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.personalDataDeletionRequestedAt
+func (m *UserResponse) GetPersonalDataDeletionRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.personalDataDeletionRequestedAt
 }
+
 // GetPersonalDataDeletionStatus gets the personalDataDeletionStatus property value. The current personal data deletion status for this user.
 // returns a *string when successful
-func (m *UserResponse) GetPersonalDataDeletionStatus()(*string) {
-    return m.personalDataDeletionStatus
+func (m *UserResponse) GetPersonalDataDeletionStatus() *string {
+	return m.personalDataDeletionStatus
 }
+
 // GetPhone gets the phone property value. The phone number associated with this user.
 // returns a *string when successful
-func (m *UserResponse) GetPhone()(*string) {
-    return m.phone
+func (m *UserResponse) GetPhone() *string {
+	return m.phone
 }
+
 // GetRoles gets the roles property value. The roles included with this user.
 // returns a []string when successful
-func (m *UserResponse) GetRoles()([]string) {
-    return m.roles
+func (m *UserResponse) GetRoles() []string {
+	return m.roles
 }
+
 // GetSubscriptionStatus gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 // returns a *UserResponse_subscriptionStatus when successful
-func (m *UserResponse) GetSubscriptionStatus()(*UserResponse_subscriptionStatus) {
-    return m.subscriptionStatus
+func (m *UserResponse) GetSubscriptionStatus() *UserResponse_subscriptionStatus {
+	return m.subscriptionStatus
 }
+
 // GetTimeZoneId gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
 // returns a *string when successful
-func (m *UserResponse) GetTimeZoneId()(*string) {
-    return m.timeZoneId
+func (m *UserResponse) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
+
 // Serialize serializes information the current object
-func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetBillingPlan() != nil {
-        cast := (*m.GetBillingPlan()).String()
-        err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("billingState", m.GetBillingState())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("compliance", m.GetCompliance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("currentOrganization", m.GetCurrentOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetIdentities() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetIdentities()))
-        for i, v := range m.GetIdentities() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("identities", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastLoggedInAt", m.GetLastLoggedInAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMobileDevicePreferences() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMobileDevicePreferences()))
-        for i, v := range m.GetMobileDevicePreferences() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("mobileDevicePreferences", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("notificationPreferences", m.GetNotificationPreferences())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("personalDataDeletedAt", m.GetPersonalDataDeletedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("personalDataDeletionReason", m.GetPersonalDataDeletionReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("personalDataDeletionRequestedAt", m.GetPersonalDataDeletionRequestedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("personalDataDeletionStatus", m.GetPersonalDataDeletionStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRoles() != nil {
-        err := writer.WriteCollectionOfStringValues("roles", m.GetRoles())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSubscriptionStatus() != nil {
-        cast := (*m.GetSubscriptionStatus()).String()
-        err := writer.WriteStringValue("subscriptionStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetBillingPlan() != nil {
+		cast := (*m.GetBillingPlan()).String()
+		err := writer.WriteStringValue("billingPlan", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("billingState", m.GetBillingState())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("compliance", m.GetCompliance())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("currentOrganization", m.GetCurrentOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetIdentities() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetIdentities()))
+		for i, v := range m.GetIdentities() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("identities", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastLoggedInAt", m.GetLastLoggedInAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMobileDevicePreferences() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMobileDevicePreferences()))
+		for i, v := range m.GetMobileDevicePreferences() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("mobileDevicePreferences", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("notificationPreferences", m.GetNotificationPreferences())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("personalDataDeletedAt", m.GetPersonalDataDeletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("personalDataDeletionReason", m.GetPersonalDataDeletionReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("personalDataDeletionRequestedAt", m.GetPersonalDataDeletionRequestedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("personalDataDeletionStatus", m.GetPersonalDataDeletionStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRoles() != nil {
+		err := writer.WriteCollectionOfStringValues("roles", m.GetRoles())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSubscriptionStatus() != nil {
+		cast := (*m.GetSubscriptionStatus()).String()
+		err := writer.WriteStringValue("subscriptionStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan)() {
-    m.billingPlan = value
+func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan) {
+	m.billingPlan = value
 }
-// SetBillingState sets the billingState property value. Customer-safe billing state for the user's currently selected organization.
-func (m *UserResponse) SetBillingState(value UserResponse_billingStateable)() {
-    m.billingState = value
+
+// SetBillingState sets the billingState property value. Customer-safe billing state for a Leadping organization.
+func (m *UserResponse) SetBillingState(value UserResponse_billingStateable) {
+	m.billingState = value
 }
-// SetCompliance sets the compliance property value. Compliance for this user.
-func (m *UserResponse) SetCompliance(value UserResponse_complianceable)() {
-    m.compliance = value
+
+// SetCompliance sets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
+func (m *UserResponse) SetCompliance(value UserResponse_complianceable) {
+	m.compliance = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
-func (m *UserResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *UserResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
-// SetCurrentOrganization sets the currentOrganization property value. Current organization for this user.
-func (m *UserResponse) SetCurrentOrganization(value UserResponse_currentOrganizationable)() {
-    m.currentOrganization = value
+
+// SetCurrentOrganization sets the currentOrganization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *UserResponse) SetCurrentOrganization(value UserResponse_currentOrganizationable) {
+	m.currentOrganization = value
 }
+
 // SetEmail sets the email property value. The email address associated with this user.
-func (m *UserResponse) SetEmail(value *string)() {
-    m.email = value
+func (m *UserResponse) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetFirstName sets the firstName property value. First name for this user.
-func (m *UserResponse) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *UserResponse) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetId sets the id property value. Stable unique identifier of the resource.
-func (m *UserResponse) SetId(value *string)() {
-    m.id = value
+func (m *UserResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetIdentities sets the identities property value. The identities included with this user.
-func (m *UserResponse) SetIdentities(value []UserIdentityable)() {
-    m.identities = value
+func (m *UserResponse) SetIdentities(value []UserIdentityable) {
+	m.identities = value
 }
+
 // SetLastLoggedInAt sets the lastLoggedInAt property value. The date and time when this user last completed the Leadping sign-in flow.
-func (m *UserResponse) SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastLoggedInAt = value
+func (m *UserResponse) SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastLoggedInAt = value
 }
+
 // SetLastName sets the lastName property value. Last name of the Leadping user.
-func (m *UserResponse) SetLastName(value *string)() {
-    m.lastName = value
+func (m *UserResponse) SetLastName(value *string) {
+	m.lastName = value
 }
+
 // SetMobileDevicePreferences sets the mobileDevicePreferences property value. The Leadping mobile device preferences for this user.
-func (m *UserResponse) SetMobileDevicePreferences(value []MobileDevicePreferencesable)() {
-    m.mobileDevicePreferences = value
+func (m *UserResponse) SetMobileDevicePreferences(value []MobileDevicePreferencesable) {
+	m.mobileDevicePreferences = value
 }
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
-func (m *UserResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+func (m *UserResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetName sets the name property value. Human-readable display name of the resource.
-func (m *UserResponse) SetName(value *string)() {
-    m.name = value
+func (m *UserResponse) SetName(value *string) {
+	m.name = value
 }
-// SetNotificationPreferences sets the notificationPreferences property value. Notification preferences for this user.
-func (m *UserResponse) SetNotificationPreferences(value UserResponse_notificationPreferencesable)() {
-    m.notificationPreferences = value
+
+// SetNotificationPreferences sets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
+func (m *UserResponse) SetNotificationPreferences(value UserResponse_notificationPreferencesable) {
+	m.notificationPreferences = value
 }
+
 // SetPersonalDataDeletedAt sets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
-func (m *UserResponse) SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.personalDataDeletedAt = value
+func (m *UserResponse) SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.personalDataDeletedAt = value
 }
+
 // SetPersonalDataDeletionReason sets the personalDataDeletionReason property value. The human-readable personal data deletion reason explaining this user.
-func (m *UserResponse) SetPersonalDataDeletionReason(value *string)() {
-    m.personalDataDeletionReason = value
+func (m *UserResponse) SetPersonalDataDeletionReason(value *string) {
+	m.personalDataDeletionReason = value
 }
+
 // SetPersonalDataDeletionRequestedAt sets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
-func (m *UserResponse) SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.personalDataDeletionRequestedAt = value
+func (m *UserResponse) SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.personalDataDeletionRequestedAt = value
 }
+
 // SetPersonalDataDeletionStatus sets the personalDataDeletionStatus property value. The current personal data deletion status for this user.
-func (m *UserResponse) SetPersonalDataDeletionStatus(value *string)() {
-    m.personalDataDeletionStatus = value
+func (m *UserResponse) SetPersonalDataDeletionStatus(value *string) {
+	m.personalDataDeletionStatus = value
 }
+
 // SetPhone sets the phone property value. The phone number associated with this user.
-func (m *UserResponse) SetPhone(value *string)() {
-    m.phone = value
+func (m *UserResponse) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetRoles sets the roles property value. The roles included with this user.
-func (m *UserResponse) SetRoles(value []string)() {
-    m.roles = value
+func (m *UserResponse) SetRoles(value []string) {
+	m.roles = value
 }
+
 // SetSubscriptionStatus sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
-func (m *UserResponse) SetSubscriptionStatus(value *UserResponse_subscriptionStatus)() {
-    m.subscriptionStatus = value
+func (m *UserResponse) SetSubscriptionStatus(value *UserResponse_subscriptionStatus) {
+	m.subscriptionStatus = value
 }
+
 // SetTimeZoneId sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
-func (m *UserResponse) SetTimeZoneId(value *string)() {
-    m.timeZoneId = value
+func (m *UserResponse) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
 }
+
 type UserResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillingPlan()(*UserResponse_billingPlan)
-    GetBillingState()(UserResponse_billingStateable)
-    GetCompliance()(UserResponse_complianceable)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentOrganization()(UserResponse_currentOrganizationable)
-    GetEmail()(*string)
-    GetFirstName()(*string)
-    GetId()(*string)
-    GetIdentities()([]UserIdentityable)
-    GetLastLoggedInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastName()(*string)
-    GetMobileDevicePreferences()([]MobileDevicePreferencesable)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetNotificationPreferences()(UserResponse_notificationPreferencesable)
-    GetPersonalDataDeletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPersonalDataDeletionReason()(*string)
-    GetPersonalDataDeletionRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPersonalDataDeletionStatus()(*string)
-    GetPhone()(*string)
-    GetRoles()([]string)
-    GetSubscriptionStatus()(*UserResponse_subscriptionStatus)
-    GetTimeZoneId()(*string)
-    SetBillingPlan(value *UserResponse_billingPlan)()
-    SetBillingState(value UserResponse_billingStateable)()
-    SetCompliance(value UserResponse_complianceable)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentOrganization(value UserResponse_currentOrganizationable)()
-    SetEmail(value *string)()
-    SetFirstName(value *string)()
-    SetId(value *string)()
-    SetIdentities(value []UserIdentityable)()
-    SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastName(value *string)()
-    SetMobileDevicePreferences(value []MobileDevicePreferencesable)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetNotificationPreferences(value UserResponse_notificationPreferencesable)()
-    SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPersonalDataDeletionReason(value *string)()
-    SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPersonalDataDeletionStatus(value *string)()
-    SetPhone(value *string)()
-    SetRoles(value []string)()
-    SetSubscriptionStatus(value *UserResponse_subscriptionStatus)()
-    SetTimeZoneId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillingPlan() *UserResponse_billingPlan
+	GetBillingState() UserResponse_billingStateable
+	GetCompliance() UserResponse_complianceable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCurrentOrganization() UserResponse_currentOrganizationable
+	GetEmail() *string
+	GetFirstName() *string
+	GetId() *string
+	GetIdentities() []UserIdentityable
+	GetLastLoggedInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLastName() *string
+	GetMobileDevicePreferences() []MobileDevicePreferencesable
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetNotificationPreferences() UserResponse_notificationPreferencesable
+	GetPersonalDataDeletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPersonalDataDeletionReason() *string
+	GetPersonalDataDeletionRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPersonalDataDeletionStatus() *string
+	GetPhone() *string
+	GetRoles() []string
+	GetSubscriptionStatus() *UserResponse_subscriptionStatus
+	GetTimeZoneId() *string
+	SetBillingPlan(value *UserResponse_billingPlan)
+	SetBillingState(value UserResponse_billingStateable)
+	SetCompliance(value UserResponse_complianceable)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCurrentOrganization(value UserResponse_currentOrganizationable)
+	SetEmail(value *string)
+	SetFirstName(value *string)
+	SetId(value *string)
+	SetIdentities(value []UserIdentityable)
+	SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLastName(value *string)
+	SetMobileDevicePreferences(value []MobileDevicePreferencesable)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetNotificationPreferences(value UserResponse_notificationPreferencesable)
+	SetPersonalDataDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPersonalDataDeletionReason(value *string)
+	SetPersonalDataDeletionRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPersonalDataDeletionStatus(value *string)
+	SetPhone(value *string)
+	SetRoles(value []string)
+	SetSubscriptionStatus(value *UserResponse_subscriptionStatus)
+	SetTimeZoneId(value *string)
 }

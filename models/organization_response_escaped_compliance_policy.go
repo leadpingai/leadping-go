@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationResponse_compliancePolicy compliance policy configuration for the organization.
+// OrganizationResponse_compliancePolicy describes organization compliance policy data used in Leadping API requests and responses.
 type OrganizationResponse_compliancePolicy struct {
-    OrganizationCompliancePolicy
+	OrganizationCompliancePolicy
 }
+
 // NewOrganizationResponse_compliancePolicy instantiates a new OrganizationResponse_compliancePolicy and sets the default values.
-func NewOrganizationResponse_compliancePolicy()(*OrganizationResponse_compliancePolicy) {
-    m := &OrganizationResponse_compliancePolicy{
-        OrganizationCompliancePolicy: *NewOrganizationCompliancePolicy(),
-    }
-    return m
+func NewOrganizationResponse_compliancePolicy() *OrganizationResponse_compliancePolicy {
+	m := &OrganizationResponse_compliancePolicy{
+		OrganizationCompliancePolicy: *NewOrganizationCompliancePolicy(),
+	}
+	return m
 }
+
 // CreateOrganizationResponse_compliancePolicyFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationResponse_compliancePolicyFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationResponse_compliancePolicy(), nil
+func CreateOrganizationResponse_compliancePolicyFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationResponse_compliancePolicy(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationResponse_compliancePolicy) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.OrganizationCompliancePolicy.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationResponse_compliancePolicy) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.OrganizationCompliancePolicy.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationResponse_compliancePolicy) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.OrganizationCompliancePolicy.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *OrganizationResponse_compliancePolicy) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.OrganizationCompliancePolicy.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type OrganizationResponse_compliancePolicyable interface {
-    OrganizationCompliancePolicyable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	OrganizationCompliancePolicyable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

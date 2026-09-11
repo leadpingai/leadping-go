@@ -4,405 +4,435 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // OrganizationSwitchOption describes organization switch option data used in Leadping API requests and responses.
 type OrganizationSwitchOption struct {
-    // Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
-    activationStatus *OrganizationSwitchOption_activationStatus
-    // Activation summary for this organization switch option.
-    activationSummary *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Whether the organization has a default billing payment method.
-    hasPaymentMethod *bool
-    // Unique Leadping identifier for this organization switch option.
-    id *string
-    // Whether this organization switch option is current.
-    isCurrent *bool
-    // UTC timestamp for last used at on this organization switch option.
-    lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The human-readable name shown for this organization switch option.
-    name *string
-    // Whether needs admin review applies to this organization switch option.
-    needsAdminReview *bool
-    // Describes an organization's account lifecycle and whether it can actively use Leadping services.
-    organizationStatus *OrganizationSwitchOption_organizationStatus
-    // Whether ready for customer traffic applies to this organization switch option.
-    readyForCustomerTraffic *bool
-    // Role for this organization switch option.
-    role *OrganizationMemberRole
-    // Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
-    tenDlcStatus *OrganizationSwitchOption_tenDlcStatus
+	// Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
+	activationStatus *OrganizationSwitchOption_activationStatus
+	// Activation summary for this organization switch option.
+	activationSummary *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Whether the organization has a default billing payment method.
+	hasPaymentMethod *bool
+	// Unique Leadping identifier for this organization switch option.
+	id *string
+	// Whether this organization switch option is current.
+	isCurrent *bool
+	// UTC timestamp for last used at on this organization switch option.
+	lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The human-readable name shown for this organization switch option.
+	name *string
+	// Whether needs admin review applies to this organization switch option.
+	needsAdminReview *bool
+	// Describes an organization's account lifecycle and whether it can actively use Leadping services.
+	organizationStatus *OrganizationSwitchOption_organizationStatus
+	// Whether ready for customer traffic applies to this organization switch option.
+	readyForCustomerTraffic *bool
+	// Identifies an organization member's access level and permission scope within Leadping.
+	role *OrganizationMemberRole
+	// Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
+	tenDlcStatus *OrganizationSwitchOption_tenDlcStatus
 }
+
 // NewOrganizationSwitchOption instantiates a new OrganizationSwitchOption and sets the default values.
-func NewOrganizationSwitchOption()(*OrganizationSwitchOption) {
-    m := &OrganizationSwitchOption{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationSwitchOption() *OrganizationSwitchOption {
+	m := &OrganizationSwitchOption{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationSwitchOptionFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationSwitchOptionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationSwitchOption(), nil
+func CreateOrganizationSwitchOptionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationSwitchOption(), nil
 }
+
 // GetActivationStatus gets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 // returns a *OrganizationSwitchOption_activationStatus when successful
-func (m *OrganizationSwitchOption) GetActivationStatus()(*OrganizationSwitchOption_activationStatus) {
-    return m.activationStatus
+func (m *OrganizationSwitchOption) GetActivationStatus() *OrganizationSwitchOption_activationStatus {
+	return m.activationStatus
 }
+
 // GetActivationSummary gets the activationSummary property value. Activation summary for this organization switch option.
 // returns a *string when successful
-func (m *OrganizationSwitchOption) GetActivationSummary()(*string) {
-    return m.activationSummary
+func (m *OrganizationSwitchOption) GetActivationSummary() *string {
+	return m.activationSummary
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationSwitchOption) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationSwitchOption) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationSwitchOption) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["activationStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationSwitchOption_activationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivationStatus(val.(*OrganizationSwitchOption_activationStatus))
-        }
-        return nil
-    }
-    res["activationSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivationSummary(val)
-        }
-        return nil
-    }
-    res["hasPaymentMethod"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasPaymentMethod(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isCurrent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsCurrent(val)
-        }
-        return nil
-    }
-    res["lastUsedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastUsedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["needsAdminReview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNeedsAdminReview(val)
-        }
-        return nil
-    }
-    res["organizationStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationSwitchOption_organizationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationStatus(val.(*OrganizationSwitchOption_organizationStatus))
-        }
-        return nil
-    }
-    res["readyForCustomerTraffic"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReadyForCustomerTraffic(val)
-        }
-        return nil
-    }
-    res["role"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationMemberRole)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRole(val.(*OrganizationMemberRole))
-        }
-        return nil
-    }
-    res["tenDlcStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationSwitchOption_tenDlcStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcStatus(val.(*OrganizationSwitchOption_tenDlcStatus))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationSwitchOption) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["activationStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationSwitchOption_activationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActivationStatus(val.(*OrganizationSwitchOption_activationStatus))
+		}
+		return nil
+	}
+	res["activationSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActivationSummary(val)
+		}
+		return nil
+	}
+	res["hasPaymentMethod"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasPaymentMethod(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isCurrent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsCurrent(val)
+		}
+		return nil
+	}
+	res["lastUsedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastUsedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["needsAdminReview"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNeedsAdminReview(val)
+		}
+		return nil
+	}
+	res["organizationStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationSwitchOption_organizationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationStatus(val.(*OrganizationSwitchOption_organizationStatus))
+		}
+		return nil
+	}
+	res["readyForCustomerTraffic"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReadyForCustomerTraffic(val)
+		}
+		return nil
+	}
+	res["role"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationMemberRole)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRole(val.(*OrganizationMemberRole))
+		}
+		return nil
+	}
+	res["tenDlcStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationSwitchOption_tenDlcStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcStatus(val.(*OrganizationSwitchOption_tenDlcStatus))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHasPaymentMethod gets the hasPaymentMethod property value. Whether the organization has a default billing payment method.
 // returns a *bool when successful
-func (m *OrganizationSwitchOption) GetHasPaymentMethod()(*bool) {
-    return m.hasPaymentMethod
+func (m *OrganizationSwitchOption) GetHasPaymentMethod() *bool {
+	return m.hasPaymentMethod
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this organization switch option.
 // returns a *string when successful
-func (m *OrganizationSwitchOption) GetId()(*string) {
-    return m.id
+func (m *OrganizationSwitchOption) GetId() *string {
+	return m.id
 }
+
 // GetIsCurrent gets the isCurrent property value. Whether this organization switch option is current.
 // returns a *bool when successful
-func (m *OrganizationSwitchOption) GetIsCurrent()(*bool) {
-    return m.isCurrent
+func (m *OrganizationSwitchOption) GetIsCurrent() *bool {
+	return m.isCurrent
 }
+
 // GetLastUsedAt gets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
 // returns a *Time when successful
-func (m *OrganizationSwitchOption) GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastUsedAt
+func (m *OrganizationSwitchOption) GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastUsedAt
 }
+
 // GetName gets the name property value. The human-readable name shown for this organization switch option.
 // returns a *string when successful
-func (m *OrganizationSwitchOption) GetName()(*string) {
-    return m.name
+func (m *OrganizationSwitchOption) GetName() *string {
+	return m.name
 }
+
 // GetNeedsAdminReview gets the needsAdminReview property value. Whether needs admin review applies to this organization switch option.
 // returns a *bool when successful
-func (m *OrganizationSwitchOption) GetNeedsAdminReview()(*bool) {
-    return m.needsAdminReview
+func (m *OrganizationSwitchOption) GetNeedsAdminReview() *bool {
+	return m.needsAdminReview
 }
+
 // GetOrganizationStatus gets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationSwitchOption_organizationStatus when successful
-func (m *OrganizationSwitchOption) GetOrganizationStatus()(*OrganizationSwitchOption_organizationStatus) {
-    return m.organizationStatus
+func (m *OrganizationSwitchOption) GetOrganizationStatus() *OrganizationSwitchOption_organizationStatus {
+	return m.organizationStatus
 }
+
 // GetReadyForCustomerTraffic gets the readyForCustomerTraffic property value. Whether ready for customer traffic applies to this organization switch option.
 // returns a *bool when successful
-func (m *OrganizationSwitchOption) GetReadyForCustomerTraffic()(*bool) {
-    return m.readyForCustomerTraffic
+func (m *OrganizationSwitchOption) GetReadyForCustomerTraffic() *bool {
+	return m.readyForCustomerTraffic
 }
-// GetRole gets the role property value. Role for this organization switch option.
+
+// GetRole gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
 // returns a *OrganizationMemberRole when successful
-func (m *OrganizationSwitchOption) GetRole()(*OrganizationMemberRole) {
-    return m.role
+func (m *OrganizationSwitchOption) GetRole() *OrganizationMemberRole {
+	return m.role
 }
+
 // GetTenDlcStatus gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 // returns a *OrganizationSwitchOption_tenDlcStatus when successful
-func (m *OrganizationSwitchOption) GetTenDlcStatus()(*OrganizationSwitchOption_tenDlcStatus) {
-    return m.tenDlcStatus
+func (m *OrganizationSwitchOption) GetTenDlcStatus() *OrganizationSwitchOption_tenDlcStatus {
+	return m.tenDlcStatus
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetActivationStatus() != nil {
-        cast := (*m.GetActivationStatus()).String()
-        err := writer.WriteStringValue("activationStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("activationSummary", m.GetActivationSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasPaymentMethod", m.GetHasPaymentMethod())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isCurrent", m.GetIsCurrent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastUsedAt", m.GetLastUsedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("needsAdminReview", m.GetNeedsAdminReview())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetOrganizationStatus() != nil {
-        cast := (*m.GetOrganizationStatus()).String()
-        err := writer.WriteStringValue("organizationStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("readyForCustomerTraffic", m.GetReadyForCustomerTraffic())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRole() != nil {
-        cast := (*m.GetRole()).String()
-        err := writer.WriteStringValue("role", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTenDlcStatus() != nil {
-        cast := (*m.GetTenDlcStatus()).String()
-        err := writer.WriteStringValue("tenDlcStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetActivationStatus() != nil {
+		cast := (*m.GetActivationStatus()).String()
+		err := writer.WriteStringValue("activationStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("activationSummary", m.GetActivationSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasPaymentMethod", m.GetHasPaymentMethod())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isCurrent", m.GetIsCurrent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastUsedAt", m.GetLastUsedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("needsAdminReview", m.GetNeedsAdminReview())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetOrganizationStatus() != nil {
+		cast := (*m.GetOrganizationStatus()).String()
+		err := writer.WriteStringValue("organizationStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("readyForCustomerTraffic", m.GetReadyForCustomerTraffic())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRole() != nil {
+		cast := (*m.GetRole()).String()
+		err := writer.WriteStringValue("role", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTenDlcStatus() != nil {
+		cast := (*m.GetTenDlcStatus()).String()
+		err := writer.WriteStringValue("tenDlcStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActivationStatus sets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
-func (m *OrganizationSwitchOption) SetActivationStatus(value *OrganizationSwitchOption_activationStatus)() {
-    m.activationStatus = value
+func (m *OrganizationSwitchOption) SetActivationStatus(value *OrganizationSwitchOption_activationStatus) {
+	m.activationStatus = value
 }
+
 // SetActivationSummary sets the activationSummary property value. Activation summary for this organization switch option.
-func (m *OrganizationSwitchOption) SetActivationSummary(value *string)() {
-    m.activationSummary = value
+func (m *OrganizationSwitchOption) SetActivationSummary(value *string) {
+	m.activationSummary = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationSwitchOption) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationSwitchOption) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetHasPaymentMethod sets the hasPaymentMethod property value. Whether the organization has a default billing payment method.
-func (m *OrganizationSwitchOption) SetHasPaymentMethod(value *bool)() {
-    m.hasPaymentMethod = value
+func (m *OrganizationSwitchOption) SetHasPaymentMethod(value *bool) {
+	m.hasPaymentMethod = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this organization switch option.
-func (m *OrganizationSwitchOption) SetId(value *string)() {
-    m.id = value
+func (m *OrganizationSwitchOption) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsCurrent sets the isCurrent property value. Whether this organization switch option is current.
-func (m *OrganizationSwitchOption) SetIsCurrent(value *bool)() {
-    m.isCurrent = value
+func (m *OrganizationSwitchOption) SetIsCurrent(value *bool) {
+	m.isCurrent = value
 }
+
 // SetLastUsedAt sets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
-func (m *OrganizationSwitchOption) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastUsedAt = value
+func (m *OrganizationSwitchOption) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastUsedAt = value
 }
+
 // SetName sets the name property value. The human-readable name shown for this organization switch option.
-func (m *OrganizationSwitchOption) SetName(value *string)() {
-    m.name = value
+func (m *OrganizationSwitchOption) SetName(value *string) {
+	m.name = value
 }
+
 // SetNeedsAdminReview sets the needsAdminReview property value. Whether needs admin review applies to this organization switch option.
-func (m *OrganizationSwitchOption) SetNeedsAdminReview(value *bool)() {
-    m.needsAdminReview = value
+func (m *OrganizationSwitchOption) SetNeedsAdminReview(value *bool) {
+	m.needsAdminReview = value
 }
+
 // SetOrganizationStatus sets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
-func (m *OrganizationSwitchOption) SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus)() {
-    m.organizationStatus = value
+func (m *OrganizationSwitchOption) SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus) {
+	m.organizationStatus = value
 }
+
 // SetReadyForCustomerTraffic sets the readyForCustomerTraffic property value. Whether ready for customer traffic applies to this organization switch option.
-func (m *OrganizationSwitchOption) SetReadyForCustomerTraffic(value *bool)() {
-    m.readyForCustomerTraffic = value
+func (m *OrganizationSwitchOption) SetReadyForCustomerTraffic(value *bool) {
+	m.readyForCustomerTraffic = value
 }
-// SetRole sets the role property value. Role for this organization switch option.
-func (m *OrganizationSwitchOption) SetRole(value *OrganizationMemberRole)() {
-    m.role = value
+
+// SetRole sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
+func (m *OrganizationSwitchOption) SetRole(value *OrganizationMemberRole) {
+	m.role = value
 }
+
 // SetTenDlcStatus sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
-func (m *OrganizationSwitchOption) SetTenDlcStatus(value *OrganizationSwitchOption_tenDlcStatus)() {
-    m.tenDlcStatus = value
+func (m *OrganizationSwitchOption) SetTenDlcStatus(value *OrganizationSwitchOption_tenDlcStatus) {
+	m.tenDlcStatus = value
 }
+
 type OrganizationSwitchOptionable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActivationStatus()(*OrganizationSwitchOption_activationStatus)
-    GetActivationSummary()(*string)
-    GetHasPaymentMethod()(*bool)
-    GetId()(*string)
-    GetIsCurrent()(*bool)
-    GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetNeedsAdminReview()(*bool)
-    GetOrganizationStatus()(*OrganizationSwitchOption_organizationStatus)
-    GetReadyForCustomerTraffic()(*bool)
-    GetRole()(*OrganizationMemberRole)
-    GetTenDlcStatus()(*OrganizationSwitchOption_tenDlcStatus)
-    SetActivationStatus(value *OrganizationSwitchOption_activationStatus)()
-    SetActivationSummary(value *string)()
-    SetHasPaymentMethod(value *bool)()
-    SetId(value *string)()
-    SetIsCurrent(value *bool)()
-    SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetNeedsAdminReview(value *bool)()
-    SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus)()
-    SetReadyForCustomerTraffic(value *bool)()
-    SetRole(value *OrganizationMemberRole)()
-    SetTenDlcStatus(value *OrganizationSwitchOption_tenDlcStatus)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActivationStatus() *OrganizationSwitchOption_activationStatus
+	GetActivationSummary() *string
+	GetHasPaymentMethod() *bool
+	GetId() *string
+	GetIsCurrent() *bool
+	GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetNeedsAdminReview() *bool
+	GetOrganizationStatus() *OrganizationSwitchOption_organizationStatus
+	GetReadyForCustomerTraffic() *bool
+	GetRole() *OrganizationMemberRole
+	GetTenDlcStatus() *OrganizationSwitchOption_tenDlcStatus
+	SetActivationStatus(value *OrganizationSwitchOption_activationStatus)
+	SetActivationSummary(value *string)
+	SetHasPaymentMethod(value *bool)
+	SetId(value *string)
+	SetIsCurrent(value *bool)
+	SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetNeedsAdminReview(value *bool)
+	SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus)
+	SetReadyForCustomerTraffic(value *bool)
+	SetRole(value *OrganizationMemberRole)
+	SetTenDlcStatus(value *OrganizationSwitchOption_tenDlcStatus)
 }

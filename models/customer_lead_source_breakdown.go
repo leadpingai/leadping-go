@@ -4,139 +4,151 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // CustomerLeadSourceBreakdown attributes an organization's lead volume, qualification, and conversion outcomes to a specific acquisition source.
 type CustomerLeadSourceBreakdown struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Number of leads represented by this Leadping customer lead source breakdown.
-    leads *int32
-    // Percent expressed as a percentage.
-    percent *float64
-    // Source classification for this Leadping customer lead source breakdown.
-    source *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Number of leads represented by this Leadping customer lead source breakdown.
+	leads *int32
+	// Percent expressed as a percentage.
+	percent *float64
+	// Source classification for this Leadping customer lead source breakdown.
+	source *string
 }
+
 // NewCustomerLeadSourceBreakdown instantiates a new CustomerLeadSourceBreakdown and sets the default values.
-func NewCustomerLeadSourceBreakdown()(*CustomerLeadSourceBreakdown) {
-    m := &CustomerLeadSourceBreakdown{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerLeadSourceBreakdown() *CustomerLeadSourceBreakdown {
+	m := &CustomerLeadSourceBreakdown{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerLeadSourceBreakdownFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerLeadSourceBreakdownFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerLeadSourceBreakdown(), nil
+func CreateCustomerLeadSourceBreakdownFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerLeadSourceBreakdown(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerLeadSourceBreakdown) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerLeadSourceBreakdown) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerLeadSourceBreakdown) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["leads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeads(val)
-        }
-        return nil
-    }
-    res["percent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPercent(val)
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerLeadSourceBreakdown) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["leads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeads(val)
+		}
+		return nil
+	}
+	res["percent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPercent(val)
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLeads gets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
 // returns a *int32 when successful
-func (m *CustomerLeadSourceBreakdown) GetLeads()(*int32) {
-    return m.leads
+func (m *CustomerLeadSourceBreakdown) GetLeads() *int32 {
+	return m.leads
 }
+
 // GetPercent gets the percent property value. Percent expressed as a percentage.
 // returns a *float64 when successful
-func (m *CustomerLeadSourceBreakdown) GetPercent()(*float64) {
-    return m.percent
+func (m *CustomerLeadSourceBreakdown) GetPercent() *float64 {
+	return m.percent
 }
+
 // GetSource gets the source property value. Source classification for this Leadping customer lead source breakdown.
 // returns a *string when successful
-func (m *CustomerLeadSourceBreakdown) GetSource()(*string) {
-    return m.source
+func (m *CustomerLeadSourceBreakdown) GetSource() *string {
+	return m.source
 }
+
 // Serialize serializes information the current object
-func (m *CustomerLeadSourceBreakdown) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteInt32Value("leads", m.GetLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("percent", m.GetPercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerLeadSourceBreakdown) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("leads", m.GetLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("percent", m.GetPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerLeadSourceBreakdown) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerLeadSourceBreakdown) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetLeads sets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
-func (m *CustomerLeadSourceBreakdown) SetLeads(value *int32)() {
-    m.leads = value
+func (m *CustomerLeadSourceBreakdown) SetLeads(value *int32) {
+	m.leads = value
 }
+
 // SetPercent sets the percent property value. Percent expressed as a percentage.
-func (m *CustomerLeadSourceBreakdown) SetPercent(value *float64)() {
-    m.percent = value
+func (m *CustomerLeadSourceBreakdown) SetPercent(value *float64) {
+	m.percent = value
 }
+
 // SetSource sets the source property value. Source classification for this Leadping customer lead source breakdown.
-func (m *CustomerLeadSourceBreakdown) SetSource(value *string)() {
-    m.source = value
+func (m *CustomerLeadSourceBreakdown) SetSource(value *string) {
+	m.source = value
 }
+
 type CustomerLeadSourceBreakdownable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLeads()(*int32)
-    GetPercent()(*float64)
-    GetSource()(*string)
-    SetLeads(value *int32)()
-    SetPercent(value *float64)()
-    SetSource(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetLeads() *int32
+	GetPercent() *float64
+	GetSource() *string
+	SetLeads(value *int32)
+	SetPercent(value *float64)
+	SetSource(value *string)
 }

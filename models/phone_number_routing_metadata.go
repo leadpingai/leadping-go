@@ -4,226 +4,244 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberRoutingMetadata public Leadping API schema for phone number routing metadata data.
 type PhoneNumberRoutingMetadata struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Messaging campaign identifier associated with this phone number routing metadata.
-    campaignId *string
-    // Indicates whether the phone number can be used for SMS messaging.
-    smsEnabled *bool
-    // Lead source ID assigned to this phone number for attribution and routing.
-    sourceId *string
-    // Organization ID used to route calls and messages for this phone number.
-    teamId *string
-    // Leadping 10DLC application entity associated with this phone number.
-    tenDlcApplicationId *string
-    // Indicates whether the phone number can be used for voice calls.
-    voiceEnabled *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Messaging campaign identifier associated with this phone number routing metadata.
+	campaignId *string
+	// Indicates whether the phone number can be used for SMS messaging.
+	smsEnabled *bool
+	// Lead source ID assigned to this phone number for attribution and routing.
+	sourceId *string
+	// Organization ID used to route calls and messages for this phone number.
+	teamId *string
+	// Leadping 10DLC application entity associated with this phone number.
+	tenDlcApplicationId *string
+	// Indicates whether the phone number can be used for voice calls.
+	voiceEnabled *bool
 }
+
 // NewPhoneNumberRoutingMetadata instantiates a new PhoneNumberRoutingMetadata and sets the default values.
-func NewPhoneNumberRoutingMetadata()(*PhoneNumberRoutingMetadata) {
-    m := &PhoneNumberRoutingMetadata{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberRoutingMetadata() *PhoneNumberRoutingMetadata {
+	m := &PhoneNumberRoutingMetadata{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberRoutingMetadataFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberRoutingMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberRoutingMetadata(), nil
+func CreatePhoneNumberRoutingMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberRoutingMetadata(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberRoutingMetadata) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberRoutingMetadata) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone number routing metadata.
 // returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *PhoneNumberRoutingMetadata) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["smsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsEnabled(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["teamId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTeamId(val)
-        }
-        return nil
-    }
-    res["tenDlcApplicationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcApplicationId(val)
-        }
-        return nil
-    }
-    res["voiceEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceEnabled(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberRoutingMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["smsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsEnabled(val)
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["teamId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTeamId(val)
+		}
+		return nil
+	}
+	res["tenDlcApplicationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcApplicationId(val)
+		}
+		return nil
+	}
+	res["voiceEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceEnabled(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetSmsEnabled gets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
 // returns a *bool when successful
-func (m *PhoneNumberRoutingMetadata) GetSmsEnabled()(*bool) {
-    return m.smsEnabled
+func (m *PhoneNumberRoutingMetadata) GetSmsEnabled() *bool {
+	return m.smsEnabled
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
 // returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetSourceId()(*string) {
-    return m.sourceId
+func (m *PhoneNumberRoutingMetadata) GetSourceId() *string {
+	return m.sourceId
 }
+
 // GetTeamId gets the teamId property value. Organization ID used to route calls and messages for this phone number.
 // returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetTeamId()(*string) {
-    return m.teamId
+func (m *PhoneNumberRoutingMetadata) GetTeamId() *string {
+	return m.teamId
 }
+
 // GetTenDlcApplicationId gets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
 // returns a *string when successful
-func (m *PhoneNumberRoutingMetadata) GetTenDlcApplicationId()(*string) {
-    return m.tenDlcApplicationId
+func (m *PhoneNumberRoutingMetadata) GetTenDlcApplicationId() *string {
+	return m.tenDlcApplicationId
 }
+
 // GetVoiceEnabled gets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
 // returns a *bool when successful
-func (m *PhoneNumberRoutingMetadata) GetVoiceEnabled()(*bool) {
-    return m.voiceEnabled
+func (m *PhoneNumberRoutingMetadata) GetVoiceEnabled() *bool {
+	return m.voiceEnabled
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsEnabled", m.GetSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("teamId", m.GetTeamId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("voiceEnabled", m.GetVoiceEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberRoutingMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsEnabled", m.GetSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("teamId", m.GetTeamId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("voiceEnabled", m.GetVoiceEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberRoutingMetadata) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberRoutingMetadata) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone number routing metadata.
-func (m *PhoneNumberRoutingMetadata) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *PhoneNumberRoutingMetadata) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetSmsEnabled sets the smsEnabled property value. Indicates whether the phone number can be used for SMS messaging.
-func (m *PhoneNumberRoutingMetadata) SetSmsEnabled(value *bool)() {
-    m.smsEnabled = value
+func (m *PhoneNumberRoutingMetadata) SetSmsEnabled(value *bool) {
+	m.smsEnabled = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID assigned to this phone number for attribution and routing.
-func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *PhoneNumberRoutingMetadata) SetSourceId(value *string) {
+	m.sourceId = value
 }
+
 // SetTeamId sets the teamId property value. Organization ID used to route calls and messages for this phone number.
-func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string)() {
-    m.teamId = value
+func (m *PhoneNumberRoutingMetadata) SetTeamId(value *string) {
+	m.teamId = value
 }
+
 // SetTenDlcApplicationId sets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
-func (m *PhoneNumberRoutingMetadata) SetTenDlcApplicationId(value *string)() {
-    m.tenDlcApplicationId = value
+func (m *PhoneNumberRoutingMetadata) SetTenDlcApplicationId(value *string) {
+	m.tenDlcApplicationId = value
 }
+
 // SetVoiceEnabled sets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
-func (m *PhoneNumberRoutingMetadata) SetVoiceEnabled(value *bool)() {
-    m.voiceEnabled = value
+func (m *PhoneNumberRoutingMetadata) SetVoiceEnabled(value *bool) {
+	m.voiceEnabled = value
 }
+
 type PhoneNumberRoutingMetadataable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCampaignId()(*string)
-    GetSmsEnabled()(*bool)
-    GetSourceId()(*string)
-    GetTeamId()(*string)
-    GetTenDlcApplicationId()(*string)
-    GetVoiceEnabled()(*bool)
-    SetCampaignId(value *string)()
-    SetSmsEnabled(value *bool)()
-    SetSourceId(value *string)()
-    SetTeamId(value *string)()
-    SetTenDlcApplicationId(value *string)()
-    SetVoiceEnabled(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCampaignId() *string
+	GetSmsEnabled() *bool
+	GetSourceId() *string
+	GetTeamId() *string
+	GetTenDlcApplicationId() *string
+	GetVoiceEnabled() *bool
+	SetCampaignId(value *string)
+	SetSmsEnabled(value *bool)
+	SetSourceId(value *string)
+	SetTeamId(value *string)
+	SetTenDlcApplicationId(value *string)
+	SetVoiceEnabled(value *bool)
 }

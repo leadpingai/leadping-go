@@ -4,28 +4,31 @@
 package conversations
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // ConversationsItemRequestBuilder builds and executes requests for operations under \conversations\{id}
 type ConversationsItemRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // NewConversationsItemRequestBuilderInternal instantiates a new ConversationsItemRequestBuilder and sets the default values.
-func NewConversationsItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConversationsItemRequestBuilder) {
-    m := &ConversationsItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}", pathParameters),
-    }
-    return m
+func NewConversationsItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsItemRequestBuilder {
+	m := &ConversationsItemRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}", pathParameters),
+	}
+	return m
 }
+
 // NewConversationsItemRequestBuilder instantiates a new ConversationsItemRequestBuilder and sets the default values.
-func NewConversationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConversationsItemRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewConversationsItemRequestBuilderInternal(urlParams, requestAdapter)
+func NewConversationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsItemRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewConversationsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
+
 // MarkRead the markRead property
 // returns a *ItemMarkReadRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) MarkRead()(*ItemMarkReadRequestBuilder) {
-    return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *ConversationsItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder {
+	return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

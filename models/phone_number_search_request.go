@@ -4,110 +4,120 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberSearchRequest defines the fields clients can send when working with phone number search.
 type PhoneNumberSearchRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Geographic location metadata for the phone number, lead, or lookup result.
-    location PhoneNumberSearchRequest_locationable
-    // Phone number used by this phone number search request for calls, SMS, lookup, or routing.
-    phoneNumber *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Public Leadping API schema for phone number location data.
+	location PhoneNumberSearchRequest_locationable
+	// Phone number used by this phone number search request for calls, SMS, lookup, or routing.
+	phoneNumber *string
 }
+
 // NewPhoneNumberSearchRequest instantiates a new PhoneNumberSearchRequest and sets the default values.
-func NewPhoneNumberSearchRequest()(*PhoneNumberSearchRequest) {
-    m := &PhoneNumberSearchRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberSearchRequest() *PhoneNumberSearchRequest {
+	m := &PhoneNumberSearchRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberSearchRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberSearchRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberSearchRequest(), nil
+func CreatePhoneNumberSearchRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberSearchRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberSearchRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberSearchRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberSearchRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["location"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberSearchRequest_locationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLocation(val.(PhoneNumberSearchRequest_locationable))
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberSearchRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["location"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberSearchRequest_locationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLocation(val.(PhoneNumberSearchRequest_locationable))
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+
+// GetLocation gets the location property value. Public Leadping API schema for phone number location data.
 // returns a PhoneNumberSearchRequest_locationable when successful
-func (m *PhoneNumberSearchRequest) GetLocation()(PhoneNumberSearchRequest_locationable) {
-    return m.location
+func (m *PhoneNumberSearchRequest) GetLocation() PhoneNumberSearchRequest_locationable {
+	return m.location
 }
+
 // GetPhoneNumber gets the phoneNumber property value. Phone number used by this phone number search request for calls, SMS, lookup, or routing.
 // returns a *string when successful
-func (m *PhoneNumberSearchRequest) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *PhoneNumberSearchRequest) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberSearchRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("location", m.GetLocation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberSearchRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("location", m.GetLocation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberSearchRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberSearchRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-func (m *PhoneNumberSearchRequest) SetLocation(value PhoneNumberSearchRequest_locationable)() {
-    m.location = value
+
+// SetLocation sets the location property value. Public Leadping API schema for phone number location data.
+func (m *PhoneNumberSearchRequest) SetLocation(value PhoneNumberSearchRequest_locationable) {
+	m.location = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number used by this phone number search request for calls, SMS, lookup, or routing.
-func (m *PhoneNumberSearchRequest) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *PhoneNumberSearchRequest) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 type PhoneNumberSearchRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLocation()(PhoneNumberSearchRequest_locationable)
-    GetPhoneNumber()(*string)
-    SetLocation(value PhoneNumberSearchRequest_locationable)()
-    SetPhoneNumber(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetLocation() PhoneNumberSearchRequest_locationable
+	GetPhoneNumber() *string
+	SetLocation(value PhoneNumberSearchRequest_locationable)
+	SetPhoneNumber(value *string)
 }

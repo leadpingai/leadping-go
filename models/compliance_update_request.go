@@ -4,110 +4,120 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // ComplianceUpdateRequest defines the input used for compliance update.
 type ComplianceUpdateRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Compliance for this compliance update.
-    compliance ComplianceUpdateRequest_complianceable
-    // Source for this compliance update.
-    source *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Describes user compliance data used in Leadping API requests and responses.
+	compliance ComplianceUpdateRequest_complianceable
+	// Source for this compliance update.
+	source *string
 }
+
 // NewComplianceUpdateRequest instantiates a new ComplianceUpdateRequest and sets the default values.
-func NewComplianceUpdateRequest()(*ComplianceUpdateRequest) {
-    m := &ComplianceUpdateRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewComplianceUpdateRequest() *ComplianceUpdateRequest {
+	m := &ComplianceUpdateRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateComplianceUpdateRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateComplianceUpdateRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewComplianceUpdateRequest(), nil
+func CreateComplianceUpdateRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewComplianceUpdateRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ComplianceUpdateRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *ComplianceUpdateRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCompliance gets the compliance property value. Compliance for this compliance update.
+
+// GetCompliance gets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
 // returns a ComplianceUpdateRequest_complianceable when successful
-func (m *ComplianceUpdateRequest) GetCompliance()(ComplianceUpdateRequest_complianceable) {
-    return m.compliance
+func (m *ComplianceUpdateRequest) GetCompliance() ComplianceUpdateRequest_complianceable {
+	return m.compliance
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ComplianceUpdateRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["compliance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateComplianceUpdateRequest_complianceFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompliance(val.(ComplianceUpdateRequest_complianceable))
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ComplianceUpdateRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["compliance"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateComplianceUpdateRequest_complianceFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompliance(val.(ComplianceUpdateRequest_complianceable))
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetSource gets the source property value. Source for this compliance update.
 // returns a *string when successful
-func (m *ComplianceUpdateRequest) GetSource()(*string) {
-    return m.source
+func (m *ComplianceUpdateRequest) GetSource() *string {
+	return m.source
 }
+
 // Serialize serializes information the current object
-func (m *ComplianceUpdateRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("compliance", m.GetCompliance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *ComplianceUpdateRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("compliance", m.GetCompliance())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ComplianceUpdateRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *ComplianceUpdateRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCompliance sets the compliance property value. Compliance for this compliance update.
-func (m *ComplianceUpdateRequest) SetCompliance(value ComplianceUpdateRequest_complianceable)() {
-    m.compliance = value
+
+// SetCompliance sets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
+func (m *ComplianceUpdateRequest) SetCompliance(value ComplianceUpdateRequest_complianceable) {
+	m.compliance = value
 }
+
 // SetSource sets the source property value. Source for this compliance update.
-func (m *ComplianceUpdateRequest) SetSource(value *string)() {
-    m.source = value
+func (m *ComplianceUpdateRequest) SetSource(value *string) {
+	m.source = value
 }
+
 type ComplianceUpdateRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCompliance()(ComplianceUpdateRequest_complianceable)
-    GetSource()(*string)
-    SetCompliance(value ComplianceUpdateRequest_complianceable)()
-    SetSource(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCompliance() ComplianceUpdateRequest_complianceable
+	GetSource() *string
+	SetCompliance(value ComplianceUpdateRequest_complianceable)
+	SetSource(value *string)
 }

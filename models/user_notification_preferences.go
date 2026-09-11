@@ -4,836 +4,896 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // UserNotificationPreferences describes user notification preferences data used in Leadping API requests and responses.
 type UserNotificationPreferences struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
-    automationFailedEmailEnabled *bool
-    // Whether automation failed notifications are enabled for this user notification preferences.
-    automationFailedEnabled *bool
-    // Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
-    automationFailedSmsEnabled *bool
-    // Whether billing email is enabled for this user notification preferences.
-    billingEmailEnabled *bool
-    // Whether billing SMS is enabled for this user notification preferences.
-    billingSmsEnabled *bool
-    // Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
-    lowWalletBalanceEmailEnabled *bool
-    // Whether low wallet balance notifications are enabled for this user notification preferences.
-    lowWalletBalanceEnabled *bool
-    // Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
-    lowWalletBalanceSmsEnabled *bool
-    // Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
-    missedCallEmailEnabled *bool
-    // Whether missed call notifications are enabled for this user notification preferences.
-    missedCallEnabled *bool
-    // Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
-    missedCallSmsEnabled *bool
-    // Whether new lead email is enabled for this user notification preferences.
-    newLeadEmailEnabled *bool
-    // Whether new lead notifications are enabled for this user notification preferences.
-    newLeadEnabled *bool
-    // Whether new lead SMS is enabled for this user notification preferences.
-    newLeadSmsEnabled *bool
-    // Whether payment failed notifications are enabled for this user notification preferences.
-    paymentFailedEnabled *bool
-    // Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
-    paymentFailedSmsEnabled *bool
-    // Whether the user has consented to receive Leadping account notification SMS messages.
-    smsConsentOptedIn *bool
-    // The TrustedForm certificate captured for the user's most recent SMS opt-in.
-    smsConsentTrustedFormCertificate UserNotificationPreferences_smsConsentTrustedFormCertificateable
-    // When the user's Leadping notification SMS consent was last changed.
-    smsConsentUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
-    subscriptionRenewingEmailEnabled *bool
-    // Whether subscription renewing notifications are enabled for this user notification preferences.
-    subscriptionRenewingEnabled *bool
-    // Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
-    subscriptionRenewingSmsEnabled *bool
-    // Whether 10DLC status notifications are enabled for this user notification preferences.
-    tenDlcStatusEnabled *bool
-    // Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
-    unreadSmsEmailEnabled *bool
-    // Whether unread SMS notifications are enabled for this user notification preferences.
-    unreadSmsEnabled *bool
-    // Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
-    unreadSmsSmsEnabled *bool
-    // Whether usage limit hit notifications are enabled for this user notification preferences.
-    usageLimitHitEnabled *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
+	automationFailedEmailEnabled *bool
+	// Whether automation failed notifications are enabled for this user notification preferences.
+	automationFailedEnabled *bool
+	// Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
+	automationFailedSmsEnabled *bool
+	// Whether billing email is enabled for this user notification preferences.
+	billingEmailEnabled *bool
+	// Whether billing SMS is enabled for this user notification preferences.
+	billingSmsEnabled *bool
+	// Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
+	lowWalletBalanceEmailEnabled *bool
+	// Whether low wallet balance notifications are enabled for this user notification preferences.
+	lowWalletBalanceEnabled *bool
+	// Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
+	lowWalletBalanceSmsEnabled *bool
+	// Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
+	missedCallEmailEnabled *bool
+	// Whether missed call notifications are enabled for this user notification preferences.
+	missedCallEnabled *bool
+	// Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
+	missedCallSmsEnabled *bool
+	// Whether new lead email is enabled for this user notification preferences.
+	newLeadEmailEnabled *bool
+	// Whether new lead notifications are enabled for this user notification preferences.
+	newLeadEnabled *bool
+	// Whether new lead SMS is enabled for this user notification preferences.
+	newLeadSmsEnabled *bool
+	// Whether payment failed notifications are enabled for this user notification preferences.
+	paymentFailedEnabled *bool
+	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
+	paymentFailedSmsEnabled *bool
+	// Whether the user has consented to receive Leadping account notification SMS messages.
+	smsConsentOptedIn *bool
+	// Describes trusted form certificate data used in Leadping API requests and responses.
+	smsConsentTrustedFormCertificate UserNotificationPreferences_smsConsentTrustedFormCertificateable
+	// When the user's Leadping notification SMS consent was last changed.
+	smsConsentUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
+	subscriptionRenewingEmailEnabled *bool
+	// Whether subscription renewing notifications are enabled for this user notification preferences.
+	subscriptionRenewingEnabled *bool
+	// Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
+	subscriptionRenewingSmsEnabled *bool
+	// Whether 10DLC status notifications are enabled for this user notification preferences.
+	tenDlcStatusEnabled *bool
+	// Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
+	unreadSmsEmailEnabled *bool
+	// Whether unread SMS notifications are enabled for this user notification preferences.
+	unreadSmsEnabled *bool
+	// Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
+	unreadSmsSmsEnabled *bool
+	// Whether usage limit hit notifications are enabled for this user notification preferences.
+	usageLimitHitEnabled *bool
 }
+
 // NewUserNotificationPreferences instantiates a new UserNotificationPreferences and sets the default values.
-func NewUserNotificationPreferences()(*UserNotificationPreferences) {
-    m := &UserNotificationPreferences{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserNotificationPreferences() *UserNotificationPreferences {
+	m := &UserNotificationPreferences{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserNotificationPreferencesFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserNotificationPreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserNotificationPreferences(), nil
+func CreateUserNotificationPreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserNotificationPreferences(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserNotificationPreferences) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserNotificationPreferences) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAutomationFailedEmailEnabled gets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetAutomationFailedEmailEnabled()(*bool) {
-    return m.automationFailedEmailEnabled
+func (m *UserNotificationPreferences) GetAutomationFailedEmailEnabled() *bool {
+	return m.automationFailedEmailEnabled
 }
+
 // GetAutomationFailedEnabled gets the automationFailedEnabled property value. Whether automation failed notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetAutomationFailedEnabled()(*bool) {
-    return m.automationFailedEnabled
+func (m *UserNotificationPreferences) GetAutomationFailedEnabled() *bool {
+	return m.automationFailedEnabled
 }
+
 // GetAutomationFailedSmsEnabled gets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetAutomationFailedSmsEnabled()(*bool) {
-    return m.automationFailedSmsEnabled
+func (m *UserNotificationPreferences) GetAutomationFailedSmsEnabled() *bool {
+	return m.automationFailedSmsEnabled
 }
+
 // GetBillingEmailEnabled gets the billingEmailEnabled property value. Whether billing email is enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetBillingEmailEnabled()(*bool) {
-    return m.billingEmailEnabled
+func (m *UserNotificationPreferences) GetBillingEmailEnabled() *bool {
+	return m.billingEmailEnabled
 }
+
 // GetBillingSmsEnabled gets the billingSmsEnabled property value. Whether billing SMS is enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetBillingSmsEnabled()(*bool) {
-    return m.billingSmsEnabled
+func (m *UserNotificationPreferences) GetBillingSmsEnabled() *bool {
+	return m.billingSmsEnabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserNotificationPreferences) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["automationFailedEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationFailedEmailEnabled(val)
-        }
-        return nil
-    }
-    res["automationFailedEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationFailedEnabled(val)
-        }
-        return nil
-    }
-    res["automationFailedSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationFailedSmsEnabled(val)
-        }
-        return nil
-    }
-    res["billingEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingEmailEnabled(val)
-        }
-        return nil
-    }
-    res["billingSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingSmsEnabled(val)
-        }
-        return nil
-    }
-    res["lowWalletBalanceEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLowWalletBalanceEmailEnabled(val)
-        }
-        return nil
-    }
-    res["lowWalletBalanceEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLowWalletBalanceEnabled(val)
-        }
-        return nil
-    }
-    res["lowWalletBalanceSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLowWalletBalanceSmsEnabled(val)
-        }
-        return nil
-    }
-    res["missedCallEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedCallEmailEnabled(val)
-        }
-        return nil
-    }
-    res["missedCallEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedCallEnabled(val)
-        }
-        return nil
-    }
-    res["missedCallSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedCallSmsEnabled(val)
-        }
-        return nil
-    }
-    res["newLeadEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNewLeadEmailEnabled(val)
-        }
-        return nil
-    }
-    res["newLeadEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNewLeadEnabled(val)
-        }
-        return nil
-    }
-    res["newLeadSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNewLeadSmsEnabled(val)
-        }
-        return nil
-    }
-    res["paymentFailedEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPaymentFailedEnabled(val)
-        }
-        return nil
-    }
-    res["paymentFailedSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPaymentFailedSmsEnabled(val)
-        }
-        return nil
-    }
-    res["smsConsentOptedIn"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsConsentOptedIn(val)
-        }
-        return nil
-    }
-    res["smsConsentTrustedFormCertificate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserNotificationPreferences_smsConsentTrustedFormCertificateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsConsentTrustedFormCertificate(val.(UserNotificationPreferences_smsConsentTrustedFormCertificateable))
-        }
-        return nil
-    }
-    res["smsConsentUpdatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsConsentUpdatedAt(val)
-        }
-        return nil
-    }
-    res["subscriptionRenewingEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionRenewingEmailEnabled(val)
-        }
-        return nil
-    }
-    res["subscriptionRenewingEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionRenewingEnabled(val)
-        }
-        return nil
-    }
-    res["subscriptionRenewingSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionRenewingSmsEnabled(val)
-        }
-        return nil
-    }
-    res["tenDlcStatusEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcStatusEnabled(val)
-        }
-        return nil
-    }
-    res["unreadSmsEmailEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadSmsEmailEnabled(val)
-        }
-        return nil
-    }
-    res["unreadSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadSmsEnabled(val)
-        }
-        return nil
-    }
-    res["unreadSmsSmsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadSmsSmsEnabled(val)
-        }
-        return nil
-    }
-    res["usageLimitHitEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUsageLimitHitEnabled(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["automationFailedEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationFailedEmailEnabled(val)
+		}
+		return nil
+	}
+	res["automationFailedEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationFailedEnabled(val)
+		}
+		return nil
+	}
+	res["automationFailedSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationFailedSmsEnabled(val)
+		}
+		return nil
+	}
+	res["billingEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingEmailEnabled(val)
+		}
+		return nil
+	}
+	res["billingSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingSmsEnabled(val)
+		}
+		return nil
+	}
+	res["lowWalletBalanceEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLowWalletBalanceEmailEnabled(val)
+		}
+		return nil
+	}
+	res["lowWalletBalanceEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLowWalletBalanceEnabled(val)
+		}
+		return nil
+	}
+	res["lowWalletBalanceSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLowWalletBalanceSmsEnabled(val)
+		}
+		return nil
+	}
+	res["missedCallEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedCallEmailEnabled(val)
+		}
+		return nil
+	}
+	res["missedCallEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedCallEnabled(val)
+		}
+		return nil
+	}
+	res["missedCallSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedCallSmsEnabled(val)
+		}
+		return nil
+	}
+	res["newLeadEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNewLeadEmailEnabled(val)
+		}
+		return nil
+	}
+	res["newLeadEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNewLeadEnabled(val)
+		}
+		return nil
+	}
+	res["newLeadSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNewLeadSmsEnabled(val)
+		}
+		return nil
+	}
+	res["paymentFailedEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPaymentFailedEnabled(val)
+		}
+		return nil
+	}
+	res["paymentFailedSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPaymentFailedSmsEnabled(val)
+		}
+		return nil
+	}
+	res["smsConsentOptedIn"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentOptedIn(val)
+		}
+		return nil
+	}
+	res["smsConsentTrustedFormCertificate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserNotificationPreferences_smsConsentTrustedFormCertificateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentTrustedFormCertificate(val.(UserNotificationPreferences_smsConsentTrustedFormCertificateable))
+		}
+		return nil
+	}
+	res["smsConsentUpdatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentUpdatedAt(val)
+		}
+		return nil
+	}
+	res["subscriptionRenewingEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionRenewingEmailEnabled(val)
+		}
+		return nil
+	}
+	res["subscriptionRenewingEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionRenewingEnabled(val)
+		}
+		return nil
+	}
+	res["subscriptionRenewingSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionRenewingSmsEnabled(val)
+		}
+		return nil
+	}
+	res["tenDlcStatusEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcStatusEnabled(val)
+		}
+		return nil
+	}
+	res["unreadSmsEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnreadSmsEmailEnabled(val)
+		}
+		return nil
+	}
+	res["unreadSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnreadSmsEnabled(val)
+		}
+		return nil
+	}
+	res["unreadSmsSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnreadSmsSmsEnabled(val)
+		}
+		return nil
+	}
+	res["usageLimitHitEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUsageLimitHitEnabled(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLowWalletBalanceEmailEnabled gets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetLowWalletBalanceEmailEnabled()(*bool) {
-    return m.lowWalletBalanceEmailEnabled
+func (m *UserNotificationPreferences) GetLowWalletBalanceEmailEnabled() *bool {
+	return m.lowWalletBalanceEmailEnabled
 }
+
 // GetLowWalletBalanceEnabled gets the lowWalletBalanceEnabled property value. Whether low wallet balance notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetLowWalletBalanceEnabled()(*bool) {
-    return m.lowWalletBalanceEnabled
+func (m *UserNotificationPreferences) GetLowWalletBalanceEnabled() *bool {
+	return m.lowWalletBalanceEnabled
 }
+
 // GetLowWalletBalanceSmsEnabled gets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetLowWalletBalanceSmsEnabled()(*bool) {
-    return m.lowWalletBalanceSmsEnabled
+func (m *UserNotificationPreferences) GetLowWalletBalanceSmsEnabled() *bool {
+	return m.lowWalletBalanceSmsEnabled
 }
+
 // GetMissedCallEmailEnabled gets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetMissedCallEmailEnabled()(*bool) {
-    return m.missedCallEmailEnabled
+func (m *UserNotificationPreferences) GetMissedCallEmailEnabled() *bool {
+	return m.missedCallEmailEnabled
 }
+
 // GetMissedCallEnabled gets the missedCallEnabled property value. Whether missed call notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetMissedCallEnabled()(*bool) {
-    return m.missedCallEnabled
+func (m *UserNotificationPreferences) GetMissedCallEnabled() *bool {
+	return m.missedCallEnabled
 }
+
 // GetMissedCallSmsEnabled gets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetMissedCallSmsEnabled()(*bool) {
-    return m.missedCallSmsEnabled
+func (m *UserNotificationPreferences) GetMissedCallSmsEnabled() *bool {
+	return m.missedCallSmsEnabled
 }
+
 // GetNewLeadEmailEnabled gets the newLeadEmailEnabled property value. Whether new lead email is enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetNewLeadEmailEnabled()(*bool) {
-    return m.newLeadEmailEnabled
+func (m *UserNotificationPreferences) GetNewLeadEmailEnabled() *bool {
+	return m.newLeadEmailEnabled
 }
+
 // GetNewLeadEnabled gets the newLeadEnabled property value. Whether new lead notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetNewLeadEnabled()(*bool) {
-    return m.newLeadEnabled
+func (m *UserNotificationPreferences) GetNewLeadEnabled() *bool {
+	return m.newLeadEnabled
 }
+
 // GetNewLeadSmsEnabled gets the newLeadSmsEnabled property value. Whether new lead SMS is enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetNewLeadSmsEnabled()(*bool) {
-    return m.newLeadSmsEnabled
+func (m *UserNotificationPreferences) GetNewLeadSmsEnabled() *bool {
+	return m.newLeadSmsEnabled
 }
+
 // GetPaymentFailedEnabled gets the paymentFailedEnabled property value. Whether payment failed notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetPaymentFailedEnabled()(*bool) {
-    return m.paymentFailedEnabled
+func (m *UserNotificationPreferences) GetPaymentFailedEnabled() *bool {
+	return m.paymentFailedEnabled
 }
+
 // GetPaymentFailedSmsEnabled gets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled()(*bool) {
-    return m.paymentFailedSmsEnabled
+func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
+	return m.paymentFailedSmsEnabled
 }
+
 // GetSmsConsentOptedIn gets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetSmsConsentOptedIn()(*bool) {
-    return m.smsConsentOptedIn
+func (m *UserNotificationPreferences) GetSmsConsentOptedIn() *bool {
+	return m.smsConsentOptedIn
 }
-// GetSmsConsentTrustedFormCertificate gets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
+
+// GetSmsConsentTrustedFormCertificate gets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
 // returns a UserNotificationPreferences_smsConsentTrustedFormCertificateable when successful
-func (m *UserNotificationPreferences) GetSmsConsentTrustedFormCertificate()(UserNotificationPreferences_smsConsentTrustedFormCertificateable) {
-    return m.smsConsentTrustedFormCertificate
+func (m *UserNotificationPreferences) GetSmsConsentTrustedFormCertificate() UserNotificationPreferences_smsConsentTrustedFormCertificateable {
+	return m.smsConsentTrustedFormCertificate
 }
+
 // GetSmsConsentUpdatedAt gets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
 // returns a *Time when successful
-func (m *UserNotificationPreferences) GetSmsConsentUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsConsentUpdatedAt
+func (m *UserNotificationPreferences) GetSmsConsentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsConsentUpdatedAt
 }
+
 // GetSubscriptionRenewingEmailEnabled gets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetSubscriptionRenewingEmailEnabled()(*bool) {
-    return m.subscriptionRenewingEmailEnabled
+func (m *UserNotificationPreferences) GetSubscriptionRenewingEmailEnabled() *bool {
+	return m.subscriptionRenewingEmailEnabled
 }
+
 // GetSubscriptionRenewingEnabled gets the subscriptionRenewingEnabled property value. Whether subscription renewing notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetSubscriptionRenewingEnabled()(*bool) {
-    return m.subscriptionRenewingEnabled
+func (m *UserNotificationPreferences) GetSubscriptionRenewingEnabled() *bool {
+	return m.subscriptionRenewingEnabled
 }
+
 // GetSubscriptionRenewingSmsEnabled gets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetSubscriptionRenewingSmsEnabled()(*bool) {
-    return m.subscriptionRenewingSmsEnabled
+func (m *UserNotificationPreferences) GetSubscriptionRenewingSmsEnabled() *bool {
+	return m.subscriptionRenewingSmsEnabled
 }
+
 // GetTenDlcStatusEnabled gets the tenDlcStatusEnabled property value. Whether 10DLC status notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetTenDlcStatusEnabled()(*bool) {
-    return m.tenDlcStatusEnabled
+func (m *UserNotificationPreferences) GetTenDlcStatusEnabled() *bool {
+	return m.tenDlcStatusEnabled
 }
+
 // GetUnreadSmsEmailEnabled gets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetUnreadSmsEmailEnabled()(*bool) {
-    return m.unreadSmsEmailEnabled
+func (m *UserNotificationPreferences) GetUnreadSmsEmailEnabled() *bool {
+	return m.unreadSmsEmailEnabled
 }
+
 // GetUnreadSmsEnabled gets the unreadSmsEnabled property value. Whether unread SMS notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetUnreadSmsEnabled()(*bool) {
-    return m.unreadSmsEnabled
+func (m *UserNotificationPreferences) GetUnreadSmsEnabled() *bool {
+	return m.unreadSmsEnabled
 }
+
 // GetUnreadSmsSmsEnabled gets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetUnreadSmsSmsEnabled()(*bool) {
-    return m.unreadSmsSmsEnabled
+func (m *UserNotificationPreferences) GetUnreadSmsSmsEnabled() *bool {
+	return m.unreadSmsSmsEnabled
 }
+
 // GetUsageLimitHitEnabled gets the usageLimitHitEnabled property value. Whether usage limit hit notifications are enabled for this user notification preferences.
 // returns a *bool when successful
-func (m *UserNotificationPreferences) GetUsageLimitHitEnabled()(*bool) {
-    return m.usageLimitHitEnabled
+func (m *UserNotificationPreferences) GetUsageLimitHitEnabled() *bool {
+	return m.usageLimitHitEnabled
 }
+
 // Serialize serializes information the current object
-func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("automationFailedEmailEnabled", m.GetAutomationFailedEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("automationFailedEnabled", m.GetAutomationFailedEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("automationFailedSmsEnabled", m.GetAutomationFailedSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("billingEmailEnabled", m.GetBillingEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("billingSmsEnabled", m.GetBillingSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("lowWalletBalanceEmailEnabled", m.GetLowWalletBalanceEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("lowWalletBalanceEnabled", m.GetLowWalletBalanceEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("lowWalletBalanceSmsEnabled", m.GetLowWalletBalanceSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("missedCallEmailEnabled", m.GetMissedCallEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("missedCallEnabled", m.GetMissedCallEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("missedCallSmsEnabled", m.GetMissedCallSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("newLeadEmailEnabled", m.GetNewLeadEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("newLeadEnabled", m.GetNewLeadEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("newLeadSmsEnabled", m.GetNewLeadSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("paymentFailedEnabled", m.GetPaymentFailedEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("paymentFailedSmsEnabled", m.GetPaymentFailedSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsConsentOptedIn", m.GetSmsConsentOptedIn())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsConsentTrustedFormCertificate", m.GetSmsConsentTrustedFormCertificate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsConsentUpdatedAt", m.GetSmsConsentUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("subscriptionRenewingEmailEnabled", m.GetSubscriptionRenewingEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("subscriptionRenewingEnabled", m.GetSubscriptionRenewingEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("subscriptionRenewingSmsEnabled", m.GetSubscriptionRenewingSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("tenDlcStatusEnabled", m.GetTenDlcStatusEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("unreadSmsEmailEnabled", m.GetUnreadSmsEmailEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("unreadSmsEnabled", m.GetUnreadSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("unreadSmsSmsEnabled", m.GetUnreadSmsSmsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("usageLimitHitEnabled", m.GetUsageLimitHitEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("automationFailedEmailEnabled", m.GetAutomationFailedEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automationFailedEnabled", m.GetAutomationFailedEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automationFailedSmsEnabled", m.GetAutomationFailedSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("billingEmailEnabled", m.GetBillingEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("billingSmsEnabled", m.GetBillingSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("lowWalletBalanceEmailEnabled", m.GetLowWalletBalanceEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("lowWalletBalanceEnabled", m.GetLowWalletBalanceEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("lowWalletBalanceSmsEnabled", m.GetLowWalletBalanceSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("missedCallEmailEnabled", m.GetMissedCallEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("missedCallEnabled", m.GetMissedCallEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("missedCallSmsEnabled", m.GetMissedCallSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("newLeadEmailEnabled", m.GetNewLeadEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("newLeadEnabled", m.GetNewLeadEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("newLeadSmsEnabled", m.GetNewLeadSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("paymentFailedEnabled", m.GetPaymentFailedEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("paymentFailedSmsEnabled", m.GetPaymentFailedSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsConsentOptedIn", m.GetSmsConsentOptedIn())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("smsConsentTrustedFormCertificate", m.GetSmsConsentTrustedFormCertificate())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsConsentUpdatedAt", m.GetSmsConsentUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriptionRenewingEmailEnabled", m.GetSubscriptionRenewingEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriptionRenewingEnabled", m.GetSubscriptionRenewingEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriptionRenewingSmsEnabled", m.GetSubscriptionRenewingSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("tenDlcStatusEnabled", m.GetTenDlcStatusEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("unreadSmsEmailEnabled", m.GetUnreadSmsEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("unreadSmsEnabled", m.GetUnreadSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("unreadSmsSmsEnabled", m.GetUnreadSmsSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("usageLimitHitEnabled", m.GetUsageLimitHitEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserNotificationPreferences) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserNotificationPreferences) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAutomationFailedEmailEnabled sets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetAutomationFailedEmailEnabled(value *bool)() {
-    m.automationFailedEmailEnabled = value
+func (m *UserNotificationPreferences) SetAutomationFailedEmailEnabled(value *bool) {
+	m.automationFailedEmailEnabled = value
 }
+
 // SetAutomationFailedEnabled sets the automationFailedEnabled property value. Whether automation failed notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetAutomationFailedEnabled(value *bool)() {
-    m.automationFailedEnabled = value
+func (m *UserNotificationPreferences) SetAutomationFailedEnabled(value *bool) {
+	m.automationFailedEnabled = value
 }
+
 // SetAutomationFailedSmsEnabled sets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetAutomationFailedSmsEnabled(value *bool)() {
-    m.automationFailedSmsEnabled = value
+func (m *UserNotificationPreferences) SetAutomationFailedSmsEnabled(value *bool) {
+	m.automationFailedSmsEnabled = value
 }
+
 // SetBillingEmailEnabled sets the billingEmailEnabled property value. Whether billing email is enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetBillingEmailEnabled(value *bool)() {
-    m.billingEmailEnabled = value
+func (m *UserNotificationPreferences) SetBillingEmailEnabled(value *bool) {
+	m.billingEmailEnabled = value
 }
+
 // SetBillingSmsEnabled sets the billingSmsEnabled property value. Whether billing SMS is enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetBillingSmsEnabled(value *bool)() {
-    m.billingSmsEnabled = value
+func (m *UserNotificationPreferences) SetBillingSmsEnabled(value *bool) {
+	m.billingSmsEnabled = value
 }
+
 // SetLowWalletBalanceEmailEnabled sets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetLowWalletBalanceEmailEnabled(value *bool)() {
-    m.lowWalletBalanceEmailEnabled = value
+func (m *UserNotificationPreferences) SetLowWalletBalanceEmailEnabled(value *bool) {
+	m.lowWalletBalanceEmailEnabled = value
 }
+
 // SetLowWalletBalanceEnabled sets the lowWalletBalanceEnabled property value. Whether low wallet balance notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetLowWalletBalanceEnabled(value *bool)() {
-    m.lowWalletBalanceEnabled = value
+func (m *UserNotificationPreferences) SetLowWalletBalanceEnabled(value *bool) {
+	m.lowWalletBalanceEnabled = value
 }
+
 // SetLowWalletBalanceSmsEnabled sets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetLowWalletBalanceSmsEnabled(value *bool)() {
-    m.lowWalletBalanceSmsEnabled = value
+func (m *UserNotificationPreferences) SetLowWalletBalanceSmsEnabled(value *bool) {
+	m.lowWalletBalanceSmsEnabled = value
 }
+
 // SetMissedCallEmailEnabled sets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetMissedCallEmailEnabled(value *bool)() {
-    m.missedCallEmailEnabled = value
+func (m *UserNotificationPreferences) SetMissedCallEmailEnabled(value *bool) {
+	m.missedCallEmailEnabled = value
 }
+
 // SetMissedCallEnabled sets the missedCallEnabled property value. Whether missed call notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetMissedCallEnabled(value *bool)() {
-    m.missedCallEnabled = value
+func (m *UserNotificationPreferences) SetMissedCallEnabled(value *bool) {
+	m.missedCallEnabled = value
 }
+
 // SetMissedCallSmsEnabled sets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetMissedCallSmsEnabled(value *bool)() {
-    m.missedCallSmsEnabled = value
+func (m *UserNotificationPreferences) SetMissedCallSmsEnabled(value *bool) {
+	m.missedCallSmsEnabled = value
 }
+
 // SetNewLeadEmailEnabled sets the newLeadEmailEnabled property value. Whether new lead email is enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetNewLeadEmailEnabled(value *bool)() {
-    m.newLeadEmailEnabled = value
+func (m *UserNotificationPreferences) SetNewLeadEmailEnabled(value *bool) {
+	m.newLeadEmailEnabled = value
 }
+
 // SetNewLeadEnabled sets the newLeadEnabled property value. Whether new lead notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetNewLeadEnabled(value *bool)() {
-    m.newLeadEnabled = value
+func (m *UserNotificationPreferences) SetNewLeadEnabled(value *bool) {
+	m.newLeadEnabled = value
 }
+
 // SetNewLeadSmsEnabled sets the newLeadSmsEnabled property value. Whether new lead SMS is enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetNewLeadSmsEnabled(value *bool)() {
-    m.newLeadSmsEnabled = value
+func (m *UserNotificationPreferences) SetNewLeadSmsEnabled(value *bool) {
+	m.newLeadSmsEnabled = value
 }
+
 // SetPaymentFailedEnabled sets the paymentFailedEnabled property value. Whether payment failed notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetPaymentFailedEnabled(value *bool)() {
-    m.paymentFailedEnabled = value
+func (m *UserNotificationPreferences) SetPaymentFailedEnabled(value *bool) {
+	m.paymentFailedEnabled = value
 }
+
 // SetPaymentFailedSmsEnabled sets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool)() {
-    m.paymentFailedSmsEnabled = value
+func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
+	m.paymentFailedSmsEnabled = value
 }
+
 // SetSmsConsentOptedIn sets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
-func (m *UserNotificationPreferences) SetSmsConsentOptedIn(value *bool)() {
-    m.smsConsentOptedIn = value
+func (m *UserNotificationPreferences) SetSmsConsentOptedIn(value *bool) {
+	m.smsConsentOptedIn = value
 }
-// SetSmsConsentTrustedFormCertificate sets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
-func (m *UserNotificationPreferences) SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable)() {
-    m.smsConsentTrustedFormCertificate = value
+
+// SetSmsConsentTrustedFormCertificate sets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
+func (m *UserNotificationPreferences) SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable) {
+	m.smsConsentTrustedFormCertificate = value
 }
+
 // SetSmsConsentUpdatedAt sets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
-func (m *UserNotificationPreferences) SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsConsentUpdatedAt = value
+func (m *UserNotificationPreferences) SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsConsentUpdatedAt = value
 }
+
 // SetSubscriptionRenewingEmailEnabled sets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetSubscriptionRenewingEmailEnabled(value *bool)() {
-    m.subscriptionRenewingEmailEnabled = value
+func (m *UserNotificationPreferences) SetSubscriptionRenewingEmailEnabled(value *bool) {
+	m.subscriptionRenewingEmailEnabled = value
 }
+
 // SetSubscriptionRenewingEnabled sets the subscriptionRenewingEnabled property value. Whether subscription renewing notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetSubscriptionRenewingEnabled(value *bool)() {
-    m.subscriptionRenewingEnabled = value
+func (m *UserNotificationPreferences) SetSubscriptionRenewingEnabled(value *bool) {
+	m.subscriptionRenewingEnabled = value
 }
+
 // SetSubscriptionRenewingSmsEnabled sets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetSubscriptionRenewingSmsEnabled(value *bool)() {
-    m.subscriptionRenewingSmsEnabled = value
+func (m *UserNotificationPreferences) SetSubscriptionRenewingSmsEnabled(value *bool) {
+	m.subscriptionRenewingSmsEnabled = value
 }
+
 // SetTenDlcStatusEnabled sets the tenDlcStatusEnabled property value. Whether 10DLC status notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetTenDlcStatusEnabled(value *bool)() {
-    m.tenDlcStatusEnabled = value
+func (m *UserNotificationPreferences) SetTenDlcStatusEnabled(value *bool) {
+	m.tenDlcStatusEnabled = value
 }
+
 // SetUnreadSmsEmailEnabled sets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetUnreadSmsEmailEnabled(value *bool)() {
-    m.unreadSmsEmailEnabled = value
+func (m *UserNotificationPreferences) SetUnreadSmsEmailEnabled(value *bool) {
+	m.unreadSmsEmailEnabled = value
 }
+
 // SetUnreadSmsEnabled sets the unreadSmsEnabled property value. Whether unread SMS notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetUnreadSmsEnabled(value *bool)() {
-    m.unreadSmsEnabled = value
+func (m *UserNotificationPreferences) SetUnreadSmsEnabled(value *bool) {
+	m.unreadSmsEnabled = value
 }
+
 // SetUnreadSmsSmsEnabled sets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
-func (m *UserNotificationPreferences) SetUnreadSmsSmsEnabled(value *bool)() {
-    m.unreadSmsSmsEnabled = value
+func (m *UserNotificationPreferences) SetUnreadSmsSmsEnabled(value *bool) {
+	m.unreadSmsSmsEnabled = value
 }
+
 // SetUsageLimitHitEnabled sets the usageLimitHitEnabled property value. Whether usage limit hit notifications are enabled for this user notification preferences.
-func (m *UserNotificationPreferences) SetUsageLimitHitEnabled(value *bool)() {
-    m.usageLimitHitEnabled = value
+func (m *UserNotificationPreferences) SetUsageLimitHitEnabled(value *bool) {
+	m.usageLimitHitEnabled = value
 }
+
 type UserNotificationPreferencesable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAutomationFailedEmailEnabled()(*bool)
-    GetAutomationFailedEnabled()(*bool)
-    GetAutomationFailedSmsEnabled()(*bool)
-    GetBillingEmailEnabled()(*bool)
-    GetBillingSmsEnabled()(*bool)
-    GetLowWalletBalanceEmailEnabled()(*bool)
-    GetLowWalletBalanceEnabled()(*bool)
-    GetLowWalletBalanceSmsEnabled()(*bool)
-    GetMissedCallEmailEnabled()(*bool)
-    GetMissedCallEnabled()(*bool)
-    GetMissedCallSmsEnabled()(*bool)
-    GetNewLeadEmailEnabled()(*bool)
-    GetNewLeadEnabled()(*bool)
-    GetNewLeadSmsEnabled()(*bool)
-    GetPaymentFailedEnabled()(*bool)
-    GetPaymentFailedSmsEnabled()(*bool)
-    GetSmsConsentOptedIn()(*bool)
-    GetSmsConsentTrustedFormCertificate()(UserNotificationPreferences_smsConsentTrustedFormCertificateable)
-    GetSmsConsentUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSubscriptionRenewingEmailEnabled()(*bool)
-    GetSubscriptionRenewingEnabled()(*bool)
-    GetSubscriptionRenewingSmsEnabled()(*bool)
-    GetTenDlcStatusEnabled()(*bool)
-    GetUnreadSmsEmailEnabled()(*bool)
-    GetUnreadSmsEnabled()(*bool)
-    GetUnreadSmsSmsEnabled()(*bool)
-    GetUsageLimitHitEnabled()(*bool)
-    SetAutomationFailedEmailEnabled(value *bool)()
-    SetAutomationFailedEnabled(value *bool)()
-    SetAutomationFailedSmsEnabled(value *bool)()
-    SetBillingEmailEnabled(value *bool)()
-    SetBillingSmsEnabled(value *bool)()
-    SetLowWalletBalanceEmailEnabled(value *bool)()
-    SetLowWalletBalanceEnabled(value *bool)()
-    SetLowWalletBalanceSmsEnabled(value *bool)()
-    SetMissedCallEmailEnabled(value *bool)()
-    SetMissedCallEnabled(value *bool)()
-    SetMissedCallSmsEnabled(value *bool)()
-    SetNewLeadEmailEnabled(value *bool)()
-    SetNewLeadEnabled(value *bool)()
-    SetNewLeadSmsEnabled(value *bool)()
-    SetPaymentFailedEnabled(value *bool)()
-    SetPaymentFailedSmsEnabled(value *bool)()
-    SetSmsConsentOptedIn(value *bool)()
-    SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable)()
-    SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSubscriptionRenewingEmailEnabled(value *bool)()
-    SetSubscriptionRenewingEnabled(value *bool)()
-    SetSubscriptionRenewingSmsEnabled(value *bool)()
-    SetTenDlcStatusEnabled(value *bool)()
-    SetUnreadSmsEmailEnabled(value *bool)()
-    SetUnreadSmsEnabled(value *bool)()
-    SetUnreadSmsSmsEnabled(value *bool)()
-    SetUsageLimitHitEnabled(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAutomationFailedEmailEnabled() *bool
+	GetAutomationFailedEnabled() *bool
+	GetAutomationFailedSmsEnabled() *bool
+	GetBillingEmailEnabled() *bool
+	GetBillingSmsEnabled() *bool
+	GetLowWalletBalanceEmailEnabled() *bool
+	GetLowWalletBalanceEnabled() *bool
+	GetLowWalletBalanceSmsEnabled() *bool
+	GetMissedCallEmailEnabled() *bool
+	GetMissedCallEnabled() *bool
+	GetMissedCallSmsEnabled() *bool
+	GetNewLeadEmailEnabled() *bool
+	GetNewLeadEnabled() *bool
+	GetNewLeadSmsEnabled() *bool
+	GetPaymentFailedEnabled() *bool
+	GetPaymentFailedSmsEnabled() *bool
+	GetSmsConsentOptedIn() *bool
+	GetSmsConsentTrustedFormCertificate() UserNotificationPreferences_smsConsentTrustedFormCertificateable
+	GetSmsConsentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSubscriptionRenewingEmailEnabled() *bool
+	GetSubscriptionRenewingEnabled() *bool
+	GetSubscriptionRenewingSmsEnabled() *bool
+	GetTenDlcStatusEnabled() *bool
+	GetUnreadSmsEmailEnabled() *bool
+	GetUnreadSmsEnabled() *bool
+	GetUnreadSmsSmsEnabled() *bool
+	GetUsageLimitHitEnabled() *bool
+	SetAutomationFailedEmailEnabled(value *bool)
+	SetAutomationFailedEnabled(value *bool)
+	SetAutomationFailedSmsEnabled(value *bool)
+	SetBillingEmailEnabled(value *bool)
+	SetBillingSmsEnabled(value *bool)
+	SetLowWalletBalanceEmailEnabled(value *bool)
+	SetLowWalletBalanceEnabled(value *bool)
+	SetLowWalletBalanceSmsEnabled(value *bool)
+	SetMissedCallEmailEnabled(value *bool)
+	SetMissedCallEnabled(value *bool)
+	SetMissedCallSmsEnabled(value *bool)
+	SetNewLeadEmailEnabled(value *bool)
+	SetNewLeadEnabled(value *bool)
+	SetNewLeadSmsEnabled(value *bool)
+	SetPaymentFailedEnabled(value *bool)
+	SetPaymentFailedSmsEnabled(value *bool)
+	SetSmsConsentOptedIn(value *bool)
+	SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable)
+	SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSubscriptionRenewingEmailEnabled(value *bool)
+	SetSubscriptionRenewingEnabled(value *bool)
+	SetSubscriptionRenewingSmsEnabled(value *bool)
+	SetTenDlcStatusEnabled(value *bool)
+	SetUnreadSmsEmailEnabled(value *bool)
+	SetUnreadSmsEnabled(value *bool)
+	SetUnreadSmsSmsEnabled(value *bool)
+	SetUsageLimitHitEnabled(value *bool)
 }

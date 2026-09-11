@@ -4,461 +4,495 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // NotificationTableRow describes notification data returned by Leadping.
 type NotificationTableRow struct {
-    // Action button text for this notification.
-    actionButtonText *string
-    // The URL associated with this notification.
-    actionUrl *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when the resource was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Optional supporting details displayed beneath the notification message.
-    details *string
-    // Stable unique identifier of the resource.
-    id *string
-    // Whether this notification is read.
-    isRead *bool
-    // Message for this notification.
-    message *string
-    // UTC timestamp when the resource was last modified, or null when it has not been updated.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable display name of the resource.
-    name *string
-    // Priority for this notification.
-    priority *NotificationPriority
-    // UTC timestamp for read at on this notification.
-    readAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The related entity ID associated with this notification.
-    relatedEntityId *string
-    // The related entity type classification for this notification.
-    relatedEntityType *string
-    // The type classification for this notification.
-    typeEscaped *NotificationType
+	// Action button text for this notification.
+	actionButtonText *string
+	// The URL associated with this notification.
+	actionUrl *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Optional supporting details displayed beneath the notification message.
+	details *string
+	// Stable unique identifier of the resource.
+	id *string
+	// Whether this notification is read.
+	isRead *bool
+	// Message for this notification.
+	message *string
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// Ranks the urgency and presentation importance of a Leadping user notification.
+	priority *NotificationPriority
+	// UTC timestamp for read at on this notification.
+	readAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The related entity ID associated with this notification.
+	relatedEntityId *string
+	// The related entity type classification for this notification.
+	relatedEntityType *string
+	// Identifies the Leadping workflow or account event communicated by a user notification.
+	typeEscaped *NotificationType
 }
+
 // NewNotificationTableRow instantiates a new NotificationTableRow and sets the default values.
-func NewNotificationTableRow()(*NotificationTableRow) {
-    m := &NotificationTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewNotificationTableRow() *NotificationTableRow {
+	m := &NotificationTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateNotificationTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateNotificationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewNotificationTableRow(), nil
+func CreateNotificationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewNotificationTableRow(), nil
 }
+
 // GetActionButtonText gets the actionButtonText property value. Action button text for this notification.
 // returns a *string when successful
-func (m *NotificationTableRow) GetActionButtonText()(*string) {
-    return m.actionButtonText
+func (m *NotificationTableRow) GetActionButtonText() *string {
+	return m.actionButtonText
 }
+
 // GetActionUrl gets the actionUrl property value. The URL associated with this notification.
 // returns a *string when successful
-func (m *NotificationTableRow) GetActionUrl()(*string) {
-    return m.actionUrl
+func (m *NotificationTableRow) GetActionUrl() *string {
+	return m.actionUrl
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *NotificationTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *NotificationTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *NotificationTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *NotificationTableRow) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDetails gets the details property value. Optional supporting details displayed beneath the notification message.
 // returns a *string when successful
-func (m *NotificationTableRow) GetDetails()(*string) {
-    return m.details
+func (m *NotificationTableRow) GetDetails() *string {
+	return m.details
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *NotificationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionButtonText"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionButtonText(val)
-        }
-        return nil
-    }
-    res["actionUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionUrl(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["details"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDetails(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isRead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsRead(val)
-        }
-        return nil
-    }
-    res["message"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessage(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["priority"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseNotificationPriority)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPriority(val.(*NotificationPriority))
-        }
-        return nil
-    }
-    res["readAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReadAt(val)
-        }
-        return nil
-    }
-    res["relatedEntityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRelatedEntityId(val)
-        }
-        return nil
-    }
-    res["relatedEntityType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRelatedEntityType(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseNotificationType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val.(*NotificationType))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *NotificationTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionButtonText"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionButtonText(val)
+		}
+		return nil
+	}
+	res["actionUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionUrl(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["details"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDetails(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isRead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsRead(val)
+		}
+		return nil
+	}
+	res["message"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessage(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["priority"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseNotificationPriority)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPriority(val.(*NotificationPriority))
+		}
+		return nil
+	}
+	res["readAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReadAt(val)
+		}
+		return nil
+	}
+	res["relatedEntityId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRelatedEntityId(val)
+		}
+		return nil
+	}
+	res["relatedEntityType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRelatedEntityType(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseNotificationType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val.(*NotificationType))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *NotificationTableRow) GetId()(*string) {
-    return m.id
+func (m *NotificationTableRow) GetId() *string {
+	return m.id
 }
+
 // GetIsRead gets the isRead property value. Whether this notification is read.
 // returns a *bool when successful
-func (m *NotificationTableRow) GetIsRead()(*bool) {
-    return m.isRead
+func (m *NotificationTableRow) GetIsRead() *bool {
+	return m.isRead
 }
+
 // GetMessage gets the message property value. Message for this notification.
 // returns a *string when successful
-func (m *NotificationTableRow) GetMessage()(*string) {
-    return m.message
+func (m *NotificationTableRow) GetMessage() *string {
+	return m.message
 }
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *NotificationTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *NotificationTableRow) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *NotificationTableRow) GetName()(*string) {
-    return m.name
+func (m *NotificationTableRow) GetName() *string {
+	return m.name
 }
-// GetPriority gets the priority property value. Priority for this notification.
+
+// GetPriority gets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
 // returns a *NotificationPriority when successful
-func (m *NotificationTableRow) GetPriority()(*NotificationPriority) {
-    return m.priority
+func (m *NotificationTableRow) GetPriority() *NotificationPriority {
+	return m.priority
 }
+
 // GetReadAt gets the readAt property value. UTC timestamp for read at on this notification.
 // returns a *Time when successful
-func (m *NotificationTableRow) GetReadAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.readAt
+func (m *NotificationTableRow) GetReadAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.readAt
 }
+
 // GetRelatedEntityId gets the relatedEntityId property value. The related entity ID associated with this notification.
 // returns a *string when successful
-func (m *NotificationTableRow) GetRelatedEntityId()(*string) {
-    return m.relatedEntityId
+func (m *NotificationTableRow) GetRelatedEntityId() *string {
+	return m.relatedEntityId
 }
+
 // GetRelatedEntityType gets the relatedEntityType property value. The related entity type classification for this notification.
 // returns a *string when successful
-func (m *NotificationTableRow) GetRelatedEntityType()(*string) {
-    return m.relatedEntityType
+func (m *NotificationTableRow) GetRelatedEntityType() *string {
+	return m.relatedEntityType
 }
-// GetTypeEscaped gets the type property value. The type classification for this notification.
+
+// GetTypeEscaped gets the type property value. Identifies the Leadping workflow or account event communicated by a user notification.
 // returns a *NotificationType when successful
-func (m *NotificationTableRow) GetTypeEscaped()(*NotificationType) {
-    return m.typeEscaped
+func (m *NotificationTableRow) GetTypeEscaped() *NotificationType {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *NotificationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionButtonText", m.GetActionButtonText())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("actionUrl", m.GetActionUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("details", m.GetDetails())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isRead", m.GetIsRead())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("message", m.GetMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPriority() != nil {
-        cast := (*m.GetPriority()).String()
-        err := writer.WriteStringValue("priority", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("readAt", m.GetReadAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("relatedEntityId", m.GetRelatedEntityId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("relatedEntityType", m.GetRelatedEntityType())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTypeEscaped() != nil {
-        cast := (*m.GetTypeEscaped()).String()
-        err := writer.WriteStringValue("type", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *NotificationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionButtonText", m.GetActionButtonText())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("actionUrl", m.GetActionUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("details", m.GetDetails())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isRead", m.GetIsRead())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("message", m.GetMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPriority() != nil {
+		cast := (*m.GetPriority()).String()
+		err := writer.WriteStringValue("priority", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("readAt", m.GetReadAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("relatedEntityId", m.GetRelatedEntityId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("relatedEntityType", m.GetRelatedEntityType())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTypeEscaped() != nil {
+		cast := (*m.GetTypeEscaped()).String()
+		err := writer.WriteStringValue("type", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionButtonText sets the actionButtonText property value. Action button text for this notification.
-func (m *NotificationTableRow) SetActionButtonText(value *string)() {
-    m.actionButtonText = value
+func (m *NotificationTableRow) SetActionButtonText(value *string) {
+	m.actionButtonText = value
 }
+
 // SetActionUrl sets the actionUrl property value. The URL associated with this notification.
-func (m *NotificationTableRow) SetActionUrl(value *string)() {
-    m.actionUrl = value
+func (m *NotificationTableRow) SetActionUrl(value *string) {
+	m.actionUrl = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *NotificationTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *NotificationTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
-func (m *NotificationTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *NotificationTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDetails sets the details property value. Optional supporting details displayed beneath the notification message.
-func (m *NotificationTableRow) SetDetails(value *string)() {
-    m.details = value
+func (m *NotificationTableRow) SetDetails(value *string) {
+	m.details = value
 }
+
 // SetId sets the id property value. Stable unique identifier of the resource.
-func (m *NotificationTableRow) SetId(value *string)() {
-    m.id = value
+func (m *NotificationTableRow) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsRead sets the isRead property value. Whether this notification is read.
-func (m *NotificationTableRow) SetIsRead(value *bool)() {
-    m.isRead = value
+func (m *NotificationTableRow) SetIsRead(value *bool) {
+	m.isRead = value
 }
+
 // SetMessage sets the message property value. Message for this notification.
-func (m *NotificationTableRow) SetMessage(value *string)() {
-    m.message = value
+func (m *NotificationTableRow) SetMessage(value *string) {
+	m.message = value
 }
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
-func (m *NotificationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+func (m *NotificationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetName sets the name property value. Human-readable display name of the resource.
-func (m *NotificationTableRow) SetName(value *string)() {
-    m.name = value
+func (m *NotificationTableRow) SetName(value *string) {
+	m.name = value
 }
-// SetPriority sets the priority property value. Priority for this notification.
-func (m *NotificationTableRow) SetPriority(value *NotificationPriority)() {
-    m.priority = value
+
+// SetPriority sets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
+func (m *NotificationTableRow) SetPriority(value *NotificationPriority) {
+	m.priority = value
 }
+
 // SetReadAt sets the readAt property value. UTC timestamp for read at on this notification.
-func (m *NotificationTableRow) SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.readAt = value
+func (m *NotificationTableRow) SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.readAt = value
 }
+
 // SetRelatedEntityId sets the relatedEntityId property value. The related entity ID associated with this notification.
-func (m *NotificationTableRow) SetRelatedEntityId(value *string)() {
-    m.relatedEntityId = value
+func (m *NotificationTableRow) SetRelatedEntityId(value *string) {
+	m.relatedEntityId = value
 }
+
 // SetRelatedEntityType sets the relatedEntityType property value. The related entity type classification for this notification.
-func (m *NotificationTableRow) SetRelatedEntityType(value *string)() {
-    m.relatedEntityType = value
+func (m *NotificationTableRow) SetRelatedEntityType(value *string) {
+	m.relatedEntityType = value
 }
-// SetTypeEscaped sets the type property value. The type classification for this notification.
-func (m *NotificationTableRow) SetTypeEscaped(value *NotificationType)() {
-    m.typeEscaped = value
+
+// SetTypeEscaped sets the type property value. Identifies the Leadping workflow or account event communicated by a user notification.
+func (m *NotificationTableRow) SetTypeEscaped(value *NotificationType) {
+	m.typeEscaped = value
 }
+
 type NotificationTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionButtonText()(*string)
-    GetActionUrl()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDetails()(*string)
-    GetId()(*string)
-    GetIsRead()(*bool)
-    GetMessage()(*string)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetPriority()(*NotificationPriority)
-    GetReadAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRelatedEntityId()(*string)
-    GetRelatedEntityType()(*string)
-    GetTypeEscaped()(*NotificationType)
-    SetActionButtonText(value *string)()
-    SetActionUrl(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDetails(value *string)()
-    SetId(value *string)()
-    SetIsRead(value *bool)()
-    SetMessage(value *string)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetPriority(value *NotificationPriority)()
-    SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRelatedEntityId(value *string)()
-    SetRelatedEntityType(value *string)()
-    SetTypeEscaped(value *NotificationType)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionButtonText() *string
+	GetActionUrl() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDetails() *string
+	GetId() *string
+	GetIsRead() *bool
+	GetMessage() *string
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetPriority() *NotificationPriority
+	GetReadAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetRelatedEntityId() *string
+	GetRelatedEntityType() *string
+	GetTypeEscaped() *NotificationType
+	SetActionButtonText(value *string)
+	SetActionUrl(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDetails(value *string)
+	SetId(value *string)
+	SetIsRead(value *bool)
+	SetMessage(value *string)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetPriority(value *NotificationPriority)
+	SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetRelatedEntityId(value *string)
+	SetRelatedEntityType(value *string)
+	SetTypeEscaped(value *NotificationType)
 }

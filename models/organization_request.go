@@ -4,313 +4,337 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OrganizationRequest defines the fields clients can send when working with organization profile.
 type OrganizationRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Postal address for the organization, lead, or contact represented by this organization profile request.
-    address OrganizationRequest_addressable
-    // Human-readable description that explains this organization profile request to API users.
-    description *string
-    // Employer Identification Number used for organization and 10DLC verification.
-    ein *string
-    // Whether the organization was formed less than 90 days ago.
-    isYoungerThan90 *bool
-    // Primary organization name.
-    name *string
-    // Phone details for the lead, user, or organization represented by this organization profile request.
-    phone *string
-    // Alternate organization name or DBA shown in Leadping.
-    secondaryName *string
-    // Industry vertical used for lead routing, compliance review, and reporting.
-    vertical *string
-    // Organization website URL used for compliance, brand review, and lead attribution.
-    website *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	address OrganizationRequest_addressable
+	// Human-readable description that explains this organization profile request to API users.
+	description *string
+	// Employer Identification Number used for organization and 10DLC verification.
+	ein *string
+	// Whether the organization was formed less than 90 days ago.
+	isYoungerThan90 *bool
+	// Primary organization name.
+	name *string
+	// Phone details for the lead, user, or organization represented by this organization profile request.
+	phone *string
+	// Alternate organization name or DBA shown in Leadping.
+	secondaryName *string
+	// Industry vertical used for lead routing, compliance review, and reporting.
+	vertical *string
+	// Organization website URL used for compliance, brand review, and lead attribution.
+	website *string
 }
+
 // NewOrganizationRequest instantiates a new OrganizationRequest and sets the default values.
-func NewOrganizationRequest()(*OrganizationRequest) {
-    m := &OrganizationRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationRequest() *OrganizationRequest {
+	m := &OrganizationRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationRequest(), nil
+func CreateOrganizationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetAddress gets the address property value. Postal address for the organization, lead, or contact represented by this organization profile request.
+
+// GetAddress gets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 // returns a OrganizationRequest_addressable when successful
-func (m *OrganizationRequest) GetAddress()(OrganizationRequest_addressable) {
-    return m.address
+func (m *OrganizationRequest) GetAddress() OrganizationRequest_addressable {
+	return m.address
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this organization profile request to API users.
 // returns a *string when successful
-func (m *OrganizationRequest) GetDescription()(*string) {
-    return m.description
+func (m *OrganizationRequest) GetDescription() *string {
+	return m.description
 }
+
 // GetEin gets the ein property value. Employer Identification Number used for organization and 10DLC verification.
 // returns a *string when successful
-func (m *OrganizationRequest) GetEin()(*string) {
-    return m.ein
+func (m *OrganizationRequest) GetEin() *string {
+	return m.ein
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["address"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationRequest_addressFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAddress(val.(OrganizationRequest_addressable))
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["ein"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEin(val)
-        }
-        return nil
-    }
-    res["isYoungerThan90"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsYoungerThan90(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["secondaryName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSecondaryName(val)
-        }
-        return nil
-    }
-    res["vertical"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVertical(val)
-        }
-        return nil
-    }
-    res["website"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsite(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["address"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationRequest_addressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAddress(val.(OrganizationRequest_addressable))
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["ein"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEin(val)
+		}
+		return nil
+	}
+	res["isYoungerThan90"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsYoungerThan90(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["secondaryName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSecondaryName(val)
+		}
+		return nil
+	}
+	res["vertical"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVertical(val)
+		}
+		return nil
+	}
+	res["website"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsite(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetIsYoungerThan90 gets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
 // returns a *bool when successful
-func (m *OrganizationRequest) GetIsYoungerThan90()(*bool) {
-    return m.isYoungerThan90
+func (m *OrganizationRequest) GetIsYoungerThan90() *bool {
+	return m.isYoungerThan90
 }
+
 // GetName gets the name property value. Primary organization name.
 // returns a *string when successful
-func (m *OrganizationRequest) GetName()(*string) {
-    return m.name
+func (m *OrganizationRequest) GetName() *string {
+	return m.name
 }
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
 // returns a *string when successful
-func (m *OrganizationRequest) GetPhone()(*string) {
-    return m.phone
+func (m *OrganizationRequest) GetPhone() *string {
+	return m.phone
 }
+
 // GetSecondaryName gets the secondaryName property value. Alternate organization name or DBA shown in Leadping.
 // returns a *string when successful
-func (m *OrganizationRequest) GetSecondaryName()(*string) {
-    return m.secondaryName
+func (m *OrganizationRequest) GetSecondaryName() *string {
+	return m.secondaryName
 }
+
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
-func (m *OrganizationRequest) GetVertical()(*string) {
-    return m.vertical
+func (m *OrganizationRequest) GetVertical() *string {
+	return m.vertical
 }
+
 // GetWebsite gets the website property value. Organization website URL used for compliance, brand review, and lead attribution.
 // returns a *string when successful
-func (m *OrganizationRequest) GetWebsite()(*string) {
-    return m.website
+func (m *OrganizationRequest) GetWebsite() *string {
+	return m.website
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("address", m.GetAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ein", m.GetEin())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isYoungerThan90", m.GetIsYoungerThan90())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("secondaryName", m.GetSecondaryName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("vertical", m.GetVertical())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("website", m.GetWebsite())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("address", m.GetAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ein", m.GetEin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isYoungerThan90", m.GetIsYoungerThan90())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("secondaryName", m.GetSecondaryName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("vertical", m.GetVertical())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("website", m.GetWebsite())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetAddress sets the address property value. Postal address for the organization, lead, or contact represented by this organization profile request.
-func (m *OrganizationRequest) SetAddress(value OrganizationRequest_addressable)() {
-    m.address = value
+
+// SetAddress sets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *OrganizationRequest) SetAddress(value OrganizationRequest_addressable) {
+	m.address = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this organization profile request to API users.
-func (m *OrganizationRequest) SetDescription(value *string)() {
-    m.description = value
+func (m *OrganizationRequest) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetEin sets the ein property value. Employer Identification Number used for organization and 10DLC verification.
-func (m *OrganizationRequest) SetEin(value *string)() {
-    m.ein = value
+func (m *OrganizationRequest) SetEin(value *string) {
+	m.ein = value
 }
+
 // SetIsYoungerThan90 sets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
-func (m *OrganizationRequest) SetIsYoungerThan90(value *bool)() {
-    m.isYoungerThan90 = value
+func (m *OrganizationRequest) SetIsYoungerThan90(value *bool) {
+	m.isYoungerThan90 = value
 }
+
 // SetName sets the name property value. Primary organization name.
-func (m *OrganizationRequest) SetName(value *string)() {
-    m.name = value
+func (m *OrganizationRequest) SetName(value *string) {
+	m.name = value
 }
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
-func (m *OrganizationRequest) SetPhone(value *string)() {
-    m.phone = value
+func (m *OrganizationRequest) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetSecondaryName sets the secondaryName property value. Alternate organization name or DBA shown in Leadping.
-func (m *OrganizationRequest) SetSecondaryName(value *string)() {
-    m.secondaryName = value
+func (m *OrganizationRequest) SetSecondaryName(value *string) {
+	m.secondaryName = value
 }
+
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
-func (m *OrganizationRequest) SetVertical(value *string)() {
-    m.vertical = value
+func (m *OrganizationRequest) SetVertical(value *string) {
+	m.vertical = value
 }
+
 // SetWebsite sets the website property value. Organization website URL used for compliance, brand review, and lead attribution.
-func (m *OrganizationRequest) SetWebsite(value *string)() {
-    m.website = value
+func (m *OrganizationRequest) SetWebsite(value *string) {
+	m.website = value
 }
+
 type OrganizationRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAddress()(OrganizationRequest_addressable)
-    GetDescription()(*string)
-    GetEin()(*string)
-    GetIsYoungerThan90()(*bool)
-    GetName()(*string)
-    GetPhone()(*string)
-    GetSecondaryName()(*string)
-    GetVertical()(*string)
-    GetWebsite()(*string)
-    SetAddress(value OrganizationRequest_addressable)()
-    SetDescription(value *string)()
-    SetEin(value *string)()
-    SetIsYoungerThan90(value *bool)()
-    SetName(value *string)()
-    SetPhone(value *string)()
-    SetSecondaryName(value *string)()
-    SetVertical(value *string)()
-    SetWebsite(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAddress() OrganizationRequest_addressable
+	GetDescription() *string
+	GetEin() *string
+	GetIsYoungerThan90() *bool
+	GetName() *string
+	GetPhone() *string
+	GetSecondaryName() *string
+	GetVertical() *string
+	GetWebsite() *string
+	SetAddress(value OrganizationRequest_addressable)
+	SetDescription(value *string)
+	SetEin(value *string)
+	SetIsYoungerThan90(value *bool)
+	SetName(value *string)
+	SetPhone(value *string)
+	SetSecondaryName(value *string)
+	SetVertical(value *string)
+	SetWebsite(value *string)
 }

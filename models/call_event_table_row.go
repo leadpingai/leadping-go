@@ -4,849 +4,909 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // CallEventTableRow summarizes call event data in paginated and searchable results.
 type CallEventTableRow struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when the call was answered.
-    answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount *float64
-    // Billable call duration in seconds.
-    billableSeconds *int32
-    // Billing state for this communication, charge, or transaction.
-    billingStatus *string
-    // Caller ID phone number presented during the outbound call.
-    callerId *string
-    // Ordered diagnostic entries recorded while Leadping processed this call.
-    consoleEntries []CommunicationConsoleEntryable
-    // Conversation ID that links this call event table row to the Leadping inbox thread.
-    conversationId *string
-    // UTC timestamp when this call event table row was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Communication direction for this call event table row, such as inbound or outbound.
-    direction *string
-    // Call duration or processing duration represented by this call event table row.
-    duration *int32
-    // UTC timestamp when the call ended.
-    endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Sender phone number used for this communication.
-    fromPhoneNumber *string
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // Unique Leadping identifier for this call event table row.
-    id *string
-    // Lead ID associated with this call event.
-    leadId *string
-    // Display name for the lead associated with this call event.
-    leadName *string
-    // Organization summary connected to this call event table row.
-    organization *string
-    // Organization ID associated with this call event.
-    organizationId *string
-    // Display name for the organization associated with this call event.
-    organizationName *string
-    // Describes the durable business outcome of a Leadping phone call after provider status normalization.
-    status *CallEventTableRow_status
-    // Human-readable reason explaining the current status of this call event table row.
-    statusReason *string
-    // Recipient phone number used for this communication.
-    toPhoneNumber *string
-    // User summary connected to this call event table row.
-    user *string
-    // Email address for the person or agent who initiated this call event.
-    userEmail *string
-    // User ID associated with the person or agent who initiated this call event.
-    userId *string
-    // Display name for the person or agent who initiated this call event.
-    userName *string
-    // URL for voicemail audio, when the call resulted in a voicemail.
-    voicemailUrl *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the call was answered.
+	answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Monetary amount billed for this Leadping communication or transaction.
+	billableAmount *float64
+	// Billable call duration in seconds.
+	billableSeconds *int32
+	// Billing state for this communication, charge, or transaction.
+	billingStatus *string
+	// Caller ID phone number presented during the outbound call.
+	callerId *string
+	// Ordered diagnostic entries recorded while Leadping processed this call.
+	consoleEntries []CommunicationConsoleEntryable
+	// Conversation ID that links this call event table row to the Leadping inbox thread.
+	conversationId *string
+	// UTC timestamp when this call event table row was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Communication direction for this call event table row, such as inbound or outbound.
+	direction *string
+	// Call duration or processing duration represented by this call event table row.
+	duration *int32
+	// UTC timestamp when the call ended.
+	endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Sender phone number used for this communication.
+	fromPhoneNumber *string
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Unique Leadping identifier for this call event table row.
+	id *string
+	// Lead ID associated with this call event.
+	leadId *string
+	// Display name for the lead associated with this call event.
+	leadName *string
+	// Organization summary connected to this call event table row.
+	organization *string
+	// Organization ID associated with this call event.
+	organizationId *string
+	// Display name for the organization associated with this call event.
+	organizationName *string
+	// Describes the durable business outcome of a Leadping phone call after provider status normalization.
+	status *CallEventTableRow_status
+	// Human-readable reason explaining the current status of this call event table row.
+	statusReason *string
+	// Recipient phone number used for this communication.
+	toPhoneNumber *string
+	// User summary connected to this call event table row.
+	user *string
+	// Email address for the person or agent who initiated this call event.
+	userEmail *string
+	// User ID associated with the person or agent who initiated this call event.
+	userId *string
+	// Display name for the person or agent who initiated this call event.
+	userName *string
+	// URL for voicemail audio, when the call resulted in a voicemail.
+	voicemailUrl *string
 }
+
 // NewCallEventTableRow instantiates a new CallEventTableRow and sets the default values.
-func NewCallEventTableRow()(*CallEventTableRow) {
-    m := &CallEventTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCallEventTableRow() *CallEventTableRow {
+	m := &CallEventTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCallEventTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCallEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCallEventTableRow(), nil
+func CreateCallEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCallEventTableRow(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CallEventTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CallEventTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAnsweredAt gets the answeredAt property value. UTC timestamp when the call was answered.
 // returns a *Time when successful
-func (m *CallEventTableRow) GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.answeredAt
+func (m *CallEventTableRow) GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.answeredAt
 }
+
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 // returns a *float64 when successful
-func (m *CallEventTableRow) GetBillableAmount()(*float64) {
-    return m.billableAmount
+func (m *CallEventTableRow) GetBillableAmount() *float64 {
+	return m.billableAmount
 }
+
 // GetBillableSeconds gets the billableSeconds property value. Billable call duration in seconds.
 // returns a *int32 when successful
-func (m *CallEventTableRow) GetBillableSeconds()(*int32) {
-    return m.billableSeconds
+func (m *CallEventTableRow) GetBillableSeconds() *int32 {
+	return m.billableSeconds
 }
+
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
-func (m *CallEventTableRow) GetBillingStatus()(*string) {
-    return m.billingStatus
+func (m *CallEventTableRow) GetBillingStatus() *string {
+	return m.billingStatus
 }
+
 // GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
-func (m *CallEventTableRow) GetCallerId()(*string) {
-    return m.callerId
+func (m *CallEventTableRow) GetCallerId() *string {
+	return m.callerId
 }
+
 // GetConsoleEntries gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
 // returns a []CommunicationConsoleEntryable when successful
-func (m *CallEventTableRow) GetConsoleEntries()([]CommunicationConsoleEntryable) {
-    return m.consoleEntries
+func (m *CallEventTableRow) GetConsoleEntries() []CommunicationConsoleEntryable {
+	return m.consoleEntries
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this call event table row to the Leadping inbox thread.
 // returns a *string when successful
-func (m *CallEventTableRow) GetConversationId()(*string) {
-    return m.conversationId
+func (m *CallEventTableRow) GetConversationId() *string {
+	return m.conversationId
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this call event table row was created.
 // returns a *Time when successful
-func (m *CallEventTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *CallEventTableRow) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDirection gets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
 // returns a *string when successful
-func (m *CallEventTableRow) GetDirection()(*string) {
-    return m.direction
+func (m *CallEventTableRow) GetDirection() *string {
+	return m.direction
 }
+
 // GetDuration gets the duration property value. Call duration or processing duration represented by this call event table row.
 // returns a *int32 when successful
-func (m *CallEventTableRow) GetDuration()(*int32) {
-    return m.duration
+func (m *CallEventTableRow) GetDuration() *int32 {
+	return m.duration
 }
+
 // GetEndedAt gets the endedAt property value. UTC timestamp when the call ended.
 // returns a *Time when successful
-func (m *CallEventTableRow) GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.endedAt
+func (m *CallEventTableRow) GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CallEventTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["answeredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAnsweredAt(val)
-        }
-        return nil
-    }
-    res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableAmount(val)
-        }
-        return nil
-    }
-    res["billableSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableSeconds(val)
-        }
-        return nil
-    }
-    res["billingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingStatus(val)
-        }
-        return nil
-    }
-    res["callerId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallerId(val)
-        }
-        return nil
-    }
-    res["consoleEntries"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CommunicationConsoleEntryable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CommunicationConsoleEntryable)
-                }
-            }
-            m.SetConsoleEntries(res)
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["direction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirection(val)
-        }
-        return nil
-    }
-    res["duration"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDuration(val)
-        }
-        return nil
-    }
-    res["endedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEndedAt(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumber(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["leadName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadName(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["organizationName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationName(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseCallEventTableRow_status)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*CallEventTableRow_status))
-        }
-        return nil
-    }
-    res["statusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusReason(val)
-        }
-        return nil
-    }
-    res["toPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetToPhoneNumber(val)
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val)
-        }
-        return nil
-    }
-    res["userEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserEmail(val)
-        }
-        return nil
-    }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    res["userName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserName(val)
-        }
-        return nil
-    }
-    res["voicemailUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoicemailUrl(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["answeredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAnsweredAt(val)
+		}
+		return nil
+	}
+	res["billableAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableAmount(val)
+		}
+		return nil
+	}
+	res["billableSeconds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableSeconds(val)
+		}
+		return nil
+	}
+	res["billingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingStatus(val)
+		}
+		return nil
+	}
+	res["callerId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallerId(val)
+		}
+		return nil
+	}
+	res["consoleEntries"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CommunicationConsoleEntryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CommunicationConsoleEntryable)
+				}
+			}
+			m.SetConsoleEntries(res)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["direction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirection(val)
+		}
+		return nil
+	}
+	res["duration"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDuration(val)
+		}
+		return nil
+	}
+	res["endedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndedAt(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumber(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["leadName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadName(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["organizationName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationName(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseCallEventTableRow_status)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*CallEventTableRow_status))
+		}
+		return nil
+	}
+	res["statusReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusReason(val)
+		}
+		return nil
+	}
+	res["toPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetToPhoneNumber(val)
+		}
+		return nil
+	}
+	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUser(val)
+		}
+		return nil
+	}
+	res["userEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserEmail(val)
+		}
+		return nil
+	}
+	res["userId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserId(val)
+		}
+		return nil
+	}
+	res["userName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserName(val)
+		}
+		return nil
+	}
+	res["voicemailUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoicemailUrl(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
-func (m *CallEventTableRow) GetFromPhoneNumber()(*string) {
-    return m.fromPhoneNumber
+func (m *CallEventTableRow) GetFromPhoneNumber() *string {
+	return m.fromPhoneNumber
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *CallEventTableRow) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *CallEventTableRow) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this call event table row.
 // returns a *string when successful
-func (m *CallEventTableRow) GetId()(*string) {
-    return m.id
+func (m *CallEventTableRow) GetId() *string {
+	return m.id
 }
+
 // GetLeadId gets the leadId property value. Lead ID associated with this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetLeadId()(*string) {
-    return m.leadId
+func (m *CallEventTableRow) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetLeadName gets the leadName property value. Display name for the lead associated with this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetLeadName()(*string) {
-    return m.leadName
+func (m *CallEventTableRow) GetLeadName() *string {
+	return m.leadName
 }
+
 // GetOrganization gets the organization property value. Organization summary connected to this call event table row.
 // returns a *string when successful
-func (m *CallEventTableRow) GetOrganization()(*string) {
-    return m.organization
+func (m *CallEventTableRow) GetOrganization() *string {
+	return m.organization
 }
+
 // GetOrganizationId gets the organizationId property value. Organization ID associated with this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *CallEventTableRow) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetOrganizationName gets the organizationName property value. Display name for the organization associated with this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetOrganizationName()(*string) {
-    return m.organizationName
+func (m *CallEventTableRow) GetOrganizationName() *string {
+	return m.organizationName
 }
+
 // GetStatus gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 // returns a *CallEventTableRow_status when successful
-func (m *CallEventTableRow) GetStatus()(*CallEventTableRow_status) {
-    return m.status
+func (m *CallEventTableRow) GetStatus() *CallEventTableRow_status {
+	return m.status
 }
+
 // GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this call event table row.
 // returns a *string when successful
-func (m *CallEventTableRow) GetStatusReason()(*string) {
-    return m.statusReason
+func (m *CallEventTableRow) GetStatusReason() *string {
+	return m.statusReason
 }
+
 // GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
-func (m *CallEventTableRow) GetToPhoneNumber()(*string) {
-    return m.toPhoneNumber
+func (m *CallEventTableRow) GetToPhoneNumber() *string {
+	return m.toPhoneNumber
 }
+
 // GetUser gets the user property value. User summary connected to this call event table row.
 // returns a *string when successful
-func (m *CallEventTableRow) GetUser()(*string) {
-    return m.user
+func (m *CallEventTableRow) GetUser() *string {
+	return m.user
 }
+
 // GetUserEmail gets the userEmail property value. Email address for the person or agent who initiated this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetUserEmail()(*string) {
-    return m.userEmail
+func (m *CallEventTableRow) GetUserEmail() *string {
+	return m.userEmail
 }
+
 // GetUserId gets the userId property value. User ID associated with the person or agent who initiated this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetUserId()(*string) {
-    return m.userId
+func (m *CallEventTableRow) GetUserId() *string {
+	return m.userId
 }
+
 // GetUserName gets the userName property value. Display name for the person or agent who initiated this call event.
 // returns a *string when successful
-func (m *CallEventTableRow) GetUserName()(*string) {
-    return m.userName
+func (m *CallEventTableRow) GetUserName() *string {
+	return m.userName
 }
+
 // GetVoicemailUrl gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
 // returns a *string when successful
-func (m *CallEventTableRow) GetVoicemailUrl()(*string) {
-    return m.voicemailUrl
+func (m *CallEventTableRow) GetVoicemailUrl() *string {
+	return m.voicemailUrl
 }
+
 // Serialize serializes information the current object
-func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("answeredAt", m.GetAnsweredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("billableSeconds", m.GetBillableSeconds())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("callerId", m.GetCallerId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConsoleEntries() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
-        for i, v := range m.GetConsoleEntries() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("direction", m.GetDirection())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("duration", m.GetDuration())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("endedAt", m.GetEndedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadName", m.GetLeadName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationName", m.GetOrganizationName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userEmail", m.GetUserEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userName", m.GetUserName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("answeredAt", m.GetAnsweredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("billableSeconds", m.GetBillableSeconds())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("callerId", m.GetCallerId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConsoleEntries() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
+		for i, v := range m.GetConsoleEntries() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("direction", m.GetDirection())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("duration", m.GetDuration())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("endedAt", m.GetEndedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadName", m.GetLeadName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationName", m.GetOrganizationName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusReason", m.GetStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("user", m.GetUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userEmail", m.GetUserEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userId", m.GetUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userName", m.GetUserName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CallEventTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CallEventTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAnsweredAt sets the answeredAt property value. UTC timestamp when the call was answered.
-func (m *CallEventTableRow) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.answeredAt = value
+func (m *CallEventTableRow) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.answeredAt = value
 }
+
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *CallEventTableRow) SetBillableAmount(value *float64)() {
-    m.billableAmount = value
+func (m *CallEventTableRow) SetBillableAmount(value *float64) {
+	m.billableAmount = value
 }
+
 // SetBillableSeconds sets the billableSeconds property value. Billable call duration in seconds.
-func (m *CallEventTableRow) SetBillableSeconds(value *int32)() {
-    m.billableSeconds = value
+func (m *CallEventTableRow) SetBillableSeconds(value *int32) {
+	m.billableSeconds = value
 }
+
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
-func (m *CallEventTableRow) SetBillingStatus(value *string)() {
-    m.billingStatus = value
+func (m *CallEventTableRow) SetBillingStatus(value *string) {
+	m.billingStatus = value
 }
+
 // SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
-func (m *CallEventTableRow) SetCallerId(value *string)() {
-    m.callerId = value
+func (m *CallEventTableRow) SetCallerId(value *string) {
+	m.callerId = value
 }
+
 // SetConsoleEntries sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
-func (m *CallEventTableRow) SetConsoleEntries(value []CommunicationConsoleEntryable)() {
-    m.consoleEntries = value
+func (m *CallEventTableRow) SetConsoleEntries(value []CommunicationConsoleEntryable) {
+	m.consoleEntries = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this call event table row to the Leadping inbox thread.
-func (m *CallEventTableRow) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *CallEventTableRow) SetConversationId(value *string) {
+	m.conversationId = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this call event table row was created.
-func (m *CallEventTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *CallEventTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDirection sets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
-func (m *CallEventTableRow) SetDirection(value *string)() {
-    m.direction = value
+func (m *CallEventTableRow) SetDirection(value *string) {
+	m.direction = value
 }
+
 // SetDuration sets the duration property value. Call duration or processing duration represented by this call event table row.
-func (m *CallEventTableRow) SetDuration(value *int32)() {
-    m.duration = value
+func (m *CallEventTableRow) SetDuration(value *int32) {
+	m.duration = value
 }
+
 // SetEndedAt sets the endedAt property value. UTC timestamp when the call ended.
-func (m *CallEventTableRow) SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.endedAt = value
+func (m *CallEventTableRow) SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endedAt = value
 }
+
 // SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
-func (m *CallEventTableRow) SetFromPhoneNumber(value *string)() {
-    m.fromPhoneNumber = value
+func (m *CallEventTableRow) SetFromPhoneNumber(value *string) {
+	m.fromPhoneNumber = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *CallEventTableRow) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *CallEventTableRow) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this call event table row.
-func (m *CallEventTableRow) SetId(value *string)() {
-    m.id = value
+func (m *CallEventTableRow) SetId(value *string) {
+	m.id = value
 }
+
 // SetLeadId sets the leadId property value. Lead ID associated with this call event.
-func (m *CallEventTableRow) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *CallEventTableRow) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetLeadName sets the leadName property value. Display name for the lead associated with this call event.
-func (m *CallEventTableRow) SetLeadName(value *string)() {
-    m.leadName = value
+func (m *CallEventTableRow) SetLeadName(value *string) {
+	m.leadName = value
 }
+
 // SetOrganization sets the organization property value. Organization summary connected to this call event table row.
-func (m *CallEventTableRow) SetOrganization(value *string)() {
-    m.organization = value
+func (m *CallEventTableRow) SetOrganization(value *string) {
+	m.organization = value
 }
+
 // SetOrganizationId sets the organizationId property value. Organization ID associated with this call event.
-func (m *CallEventTableRow) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *CallEventTableRow) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetOrganizationName sets the organizationName property value. Display name for the organization associated with this call event.
-func (m *CallEventTableRow) SetOrganizationName(value *string)() {
-    m.organizationName = value
+func (m *CallEventTableRow) SetOrganizationName(value *string) {
+	m.organizationName = value
 }
+
 // SetStatus sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
-func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status)() {
-    m.status = value
+func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status) {
+	m.status = value
 }
+
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this call event table row.
-func (m *CallEventTableRow) SetStatusReason(value *string)() {
-    m.statusReason = value
+func (m *CallEventTableRow) SetStatusReason(value *string) {
+	m.statusReason = value
 }
+
 // SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
-func (m *CallEventTableRow) SetToPhoneNumber(value *string)() {
-    m.toPhoneNumber = value
+func (m *CallEventTableRow) SetToPhoneNumber(value *string) {
+	m.toPhoneNumber = value
 }
+
 // SetUser sets the user property value. User summary connected to this call event table row.
-func (m *CallEventTableRow) SetUser(value *string)() {
-    m.user = value
+func (m *CallEventTableRow) SetUser(value *string) {
+	m.user = value
 }
+
 // SetUserEmail sets the userEmail property value. Email address for the person or agent who initiated this call event.
-func (m *CallEventTableRow) SetUserEmail(value *string)() {
-    m.userEmail = value
+func (m *CallEventTableRow) SetUserEmail(value *string) {
+	m.userEmail = value
 }
+
 // SetUserId sets the userId property value. User ID associated with the person or agent who initiated this call event.
-func (m *CallEventTableRow) SetUserId(value *string)() {
-    m.userId = value
+func (m *CallEventTableRow) SetUserId(value *string) {
+	m.userId = value
 }
+
 // SetUserName sets the userName property value. Display name for the person or agent who initiated this call event.
-func (m *CallEventTableRow) SetUserName(value *string)() {
-    m.userName = value
+func (m *CallEventTableRow) SetUserName(value *string) {
+	m.userName = value
 }
+
 // SetVoicemailUrl sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
-func (m *CallEventTableRow) SetVoicemailUrl(value *string)() {
-    m.voicemailUrl = value
+func (m *CallEventTableRow) SetVoicemailUrl(value *string) {
+	m.voicemailUrl = value
 }
+
 type CallEventTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBillableAmount()(*float64)
-    GetBillableSeconds()(*int32)
-    GetBillingStatus()(*string)
-    GetCallerId()(*string)
-    GetConsoleEntries()([]CommunicationConsoleEntryable)
-    GetConversationId()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDirection()(*string)
-    GetDuration()(*int32)
-    GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFromPhoneNumber()(*string)
-    GetFromPhoneNumberId()(*string)
-    GetId()(*string)
-    GetLeadId()(*string)
-    GetLeadName()(*string)
-    GetOrganization()(*string)
-    GetOrganizationId()(*string)
-    GetOrganizationName()(*string)
-    GetStatus()(*CallEventTableRow_status)
-    GetStatusReason()(*string)
-    GetToPhoneNumber()(*string)
-    GetUser()(*string)
-    GetUserEmail()(*string)
-    GetUserId()(*string)
-    GetUserName()(*string)
-    GetVoicemailUrl()(*string)
-    SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBillableAmount(value *float64)()
-    SetBillableSeconds(value *int32)()
-    SetBillingStatus(value *string)()
-    SetCallerId(value *string)()
-    SetConsoleEntries(value []CommunicationConsoleEntryable)()
-    SetConversationId(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDirection(value *string)()
-    SetDuration(value *int32)()
-    SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFromPhoneNumber(value *string)()
-    SetFromPhoneNumberId(value *string)()
-    SetId(value *string)()
-    SetLeadId(value *string)()
-    SetLeadName(value *string)()
-    SetOrganization(value *string)()
-    SetOrganizationId(value *string)()
-    SetOrganizationName(value *string)()
-    SetStatus(value *CallEventTableRow_status)()
-    SetStatusReason(value *string)()
-    SetToPhoneNumber(value *string)()
-    SetUser(value *string)()
-    SetUserEmail(value *string)()
-    SetUserId(value *string)()
-    SetUserName(value *string)()
-    SetVoicemailUrl(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetBillableAmount() *float64
+	GetBillableSeconds() *int32
+	GetBillingStatus() *string
+	GetCallerId() *string
+	GetConsoleEntries() []CommunicationConsoleEntryable
+	GetConversationId() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDirection() *string
+	GetDuration() *int32
+	GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFromPhoneNumber() *string
+	GetFromPhoneNumberId() *string
+	GetId() *string
+	GetLeadId() *string
+	GetLeadName() *string
+	GetOrganization() *string
+	GetOrganizationId() *string
+	GetOrganizationName() *string
+	GetStatus() *CallEventTableRow_status
+	GetStatusReason() *string
+	GetToPhoneNumber() *string
+	GetUser() *string
+	GetUserEmail() *string
+	GetUserId() *string
+	GetUserName() *string
+	GetVoicemailUrl() *string
+	SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetBillableAmount(value *float64)
+	SetBillableSeconds(value *int32)
+	SetBillingStatus(value *string)
+	SetCallerId(value *string)
+	SetConsoleEntries(value []CommunicationConsoleEntryable)
+	SetConversationId(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDirection(value *string)
+	SetDuration(value *int32)
+	SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFromPhoneNumber(value *string)
+	SetFromPhoneNumberId(value *string)
+	SetId(value *string)
+	SetLeadId(value *string)
+	SetLeadName(value *string)
+	SetOrganization(value *string)
+	SetOrganizationId(value *string)
+	SetOrganizationName(value *string)
+	SetStatus(value *CallEventTableRow_status)
+	SetStatusReason(value *string)
+	SetToPhoneNumber(value *string)
+	SetUser(value *string)
+	SetUserEmail(value *string)
+	SetUserId(value *string)
+	SetUserName(value *string)
+	SetVoicemailUrl(value *string)
 }

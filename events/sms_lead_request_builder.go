@@ -4,35 +4,38 @@
 package events
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // SmsLeadRequestBuilder builds and executes requests for operations under \events\sms\lead
 type SmsLeadRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByLeadId gets an item from the github.com/leadpingai/leadping-go.events.sms.lead.item collection
 // returns a *SmsLeadWithLeadItemRequestBuilder when successful
-func (m *SmsLeadRequestBuilder) ByLeadId(leadId string)(*SmsLeadWithLeadItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if leadId != "" {
-        urlTplParams["leadId"] = leadId
-    }
-    return NewSmsLeadWithLeadItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *SmsLeadRequestBuilder) ByLeadId(leadId string) *SmsLeadWithLeadItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if leadId != "" {
+		urlTplParams["leadId"] = leadId
+	}
+	return NewSmsLeadWithLeadItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewSmsLeadRequestBuilderInternal instantiates a new SmsLeadRequestBuilder and sets the default values.
-func NewSmsLeadRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsLeadRequestBuilder) {
-    m := &SmsLeadRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/sms/lead", pathParameters),
-    }
-    return m
+func NewSmsLeadRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsLeadRequestBuilder {
+	m := &SmsLeadRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/sms/lead", pathParameters),
+	}
+	return m
 }
+
 // NewSmsLeadRequestBuilder instantiates a new SmsLeadRequestBuilder and sets the default values.
-func NewSmsLeadRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsLeadRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewSmsLeadRequestBuilderInternal(urlParams, requestAdapter)
+func NewSmsLeadRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsLeadRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewSmsLeadRequestBuilderInternal(urlParams, requestAdapter)
 }

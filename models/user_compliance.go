@@ -4,238 +4,256 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UserCompliance describes user compliance data used in Leadping API requests and responses.
 type UserCompliance struct {
-    // Whether the user accepted BAA for this user compliance.
-    acceptedBaa *bool
-    // Whether the user accepted email for this user compliance.
-    acceptedEmail *bool
-    // Whether the user accepted SMS for this user compliance.
-    acceptedSms *bool
-    // Whether the user accepted terms for this user compliance.
-    acceptedTerms *bool
-    // Whether the user accepted subscription for this user compliance.
-    acceptedToSubscription *bool
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The TrustedForm certificates included with this user compliance.
-    trustedFormCertificates []TrustedFormCertificateable
+	// Whether the user accepted BAA for this user compliance.
+	acceptedBaa *bool
+	// Whether the user accepted email for this user compliance.
+	acceptedEmail *bool
+	// Whether the user accepted SMS for this user compliance.
+	acceptedSms *bool
+	// Whether the user accepted terms for this user compliance.
+	acceptedTerms *bool
+	// Whether the user accepted subscription for this user compliance.
+	acceptedToSubscription *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The TrustedForm certificates included with this user compliance.
+	trustedFormCertificates []TrustedFormCertificateable
 }
+
 // NewUserCompliance instantiates a new UserCompliance and sets the default values.
-func NewUserCompliance()(*UserCompliance) {
-    m := &UserCompliance{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserCompliance() *UserCompliance {
+	m := &UserCompliance{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserComplianceFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserComplianceFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserCompliance(), nil
+func CreateUserComplianceFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserCompliance(), nil
 }
+
 // GetAcceptedBaa gets the acceptedBaa property value. Whether the user accepted BAA for this user compliance.
 // returns a *bool when successful
-func (m *UserCompliance) GetAcceptedBaa()(*bool) {
-    return m.acceptedBaa
+func (m *UserCompliance) GetAcceptedBaa() *bool {
+	return m.acceptedBaa
 }
+
 // GetAcceptedEmail gets the acceptedEmail property value. Whether the user accepted email for this user compliance.
 // returns a *bool when successful
-func (m *UserCompliance) GetAcceptedEmail()(*bool) {
-    return m.acceptedEmail
+func (m *UserCompliance) GetAcceptedEmail() *bool {
+	return m.acceptedEmail
 }
+
 // GetAcceptedSms gets the acceptedSms property value. Whether the user accepted SMS for this user compliance.
 // returns a *bool when successful
-func (m *UserCompliance) GetAcceptedSms()(*bool) {
-    return m.acceptedSms
+func (m *UserCompliance) GetAcceptedSms() *bool {
+	return m.acceptedSms
 }
+
 // GetAcceptedTerms gets the acceptedTerms property value. Whether the user accepted terms for this user compliance.
 // returns a *bool when successful
-func (m *UserCompliance) GetAcceptedTerms()(*bool) {
-    return m.acceptedTerms
+func (m *UserCompliance) GetAcceptedTerms() *bool {
+	return m.acceptedTerms
 }
+
 // GetAcceptedToSubscription gets the acceptedToSubscription property value. Whether the user accepted subscription for this user compliance.
 // returns a *bool when successful
-func (m *UserCompliance) GetAcceptedToSubscription()(*bool) {
-    return m.acceptedToSubscription
+func (m *UserCompliance) GetAcceptedToSubscription() *bool {
+	return m.acceptedToSubscription
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserCompliance) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserCompliance) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserCompliance) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["acceptedBaa"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAcceptedBaa(val)
-        }
-        return nil
-    }
-    res["acceptedEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAcceptedEmail(val)
-        }
-        return nil
-    }
-    res["acceptedSms"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAcceptedSms(val)
-        }
-        return nil
-    }
-    res["acceptedTerms"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAcceptedTerms(val)
-        }
-        return nil
-    }
-    res["acceptedToSubscription"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAcceptedToSubscription(val)
-        }
-        return nil
-    }
-    res["trustedFormCertificates"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateTrustedFormCertificateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]TrustedFormCertificateable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(TrustedFormCertificateable)
-                }
-            }
-            m.SetTrustedFormCertificates(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserCompliance) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["acceptedBaa"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAcceptedBaa(val)
+		}
+		return nil
+	}
+	res["acceptedEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAcceptedEmail(val)
+		}
+		return nil
+	}
+	res["acceptedSms"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAcceptedSms(val)
+		}
+		return nil
+	}
+	res["acceptedTerms"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAcceptedTerms(val)
+		}
+		return nil
+	}
+	res["acceptedToSubscription"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAcceptedToSubscription(val)
+		}
+		return nil
+	}
+	res["trustedFormCertificates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateTrustedFormCertificateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]TrustedFormCertificateable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(TrustedFormCertificateable)
+				}
+			}
+			m.SetTrustedFormCertificates(res)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetTrustedFormCertificates gets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
 // returns a []TrustedFormCertificateable when successful
-func (m *UserCompliance) GetTrustedFormCertificates()([]TrustedFormCertificateable) {
-    return m.trustedFormCertificates
+func (m *UserCompliance) GetTrustedFormCertificates() []TrustedFormCertificateable {
+	return m.trustedFormCertificates
 }
+
 // Serialize serializes information the current object
-func (m *UserCompliance) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("acceptedBaa", m.GetAcceptedBaa())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("acceptedEmail", m.GetAcceptedEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("acceptedSms", m.GetAcceptedSms())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("acceptedTerms", m.GetAcceptedTerms())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("acceptedToSubscription", m.GetAcceptedToSubscription())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTrustedFormCertificates() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrustedFormCertificates()))
-        for i, v := range m.GetTrustedFormCertificates() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("trustedFormCertificates", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserCompliance) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("acceptedBaa", m.GetAcceptedBaa())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("acceptedEmail", m.GetAcceptedEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("acceptedSms", m.GetAcceptedSms())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("acceptedTerms", m.GetAcceptedTerms())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("acceptedToSubscription", m.GetAcceptedToSubscription())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTrustedFormCertificates() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrustedFormCertificates()))
+		for i, v := range m.GetTrustedFormCertificates() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("trustedFormCertificates", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAcceptedBaa sets the acceptedBaa property value. Whether the user accepted BAA for this user compliance.
-func (m *UserCompliance) SetAcceptedBaa(value *bool)() {
-    m.acceptedBaa = value
+func (m *UserCompliance) SetAcceptedBaa(value *bool) {
+	m.acceptedBaa = value
 }
+
 // SetAcceptedEmail sets the acceptedEmail property value. Whether the user accepted email for this user compliance.
-func (m *UserCompliance) SetAcceptedEmail(value *bool)() {
-    m.acceptedEmail = value
+func (m *UserCompliance) SetAcceptedEmail(value *bool) {
+	m.acceptedEmail = value
 }
+
 // SetAcceptedSms sets the acceptedSms property value. Whether the user accepted SMS for this user compliance.
-func (m *UserCompliance) SetAcceptedSms(value *bool)() {
-    m.acceptedSms = value
+func (m *UserCompliance) SetAcceptedSms(value *bool) {
+	m.acceptedSms = value
 }
+
 // SetAcceptedTerms sets the acceptedTerms property value. Whether the user accepted terms for this user compliance.
-func (m *UserCompliance) SetAcceptedTerms(value *bool)() {
-    m.acceptedTerms = value
+func (m *UserCompliance) SetAcceptedTerms(value *bool) {
+	m.acceptedTerms = value
 }
+
 // SetAcceptedToSubscription sets the acceptedToSubscription property value. Whether the user accepted subscription for this user compliance.
-func (m *UserCompliance) SetAcceptedToSubscription(value *bool)() {
-    m.acceptedToSubscription = value
+func (m *UserCompliance) SetAcceptedToSubscription(value *bool) {
+	m.acceptedToSubscription = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserCompliance) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserCompliance) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetTrustedFormCertificates sets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
-func (m *UserCompliance) SetTrustedFormCertificates(value []TrustedFormCertificateable)() {
-    m.trustedFormCertificates = value
+func (m *UserCompliance) SetTrustedFormCertificates(value []TrustedFormCertificateable) {
+	m.trustedFormCertificates = value
 }
+
 type UserComplianceable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAcceptedBaa()(*bool)
-    GetAcceptedEmail()(*bool)
-    GetAcceptedSms()(*bool)
-    GetAcceptedTerms()(*bool)
-    GetAcceptedToSubscription()(*bool)
-    GetTrustedFormCertificates()([]TrustedFormCertificateable)
-    SetAcceptedBaa(value *bool)()
-    SetAcceptedEmail(value *bool)()
-    SetAcceptedSms(value *bool)()
-    SetAcceptedTerms(value *bool)()
-    SetAcceptedToSubscription(value *bool)()
-    SetTrustedFormCertificates(value []TrustedFormCertificateable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAcceptedBaa() *bool
+	GetAcceptedEmail() *bool
+	GetAcceptedSms() *bool
+	GetAcceptedTerms() *bool
+	GetAcceptedToSubscription() *bool
+	GetTrustedFormCertificates() []TrustedFormCertificateable
+	SetAcceptedBaa(value *bool)
+	SetAcceptedEmail(value *bool)
+	SetAcceptedSms(value *bool)
+	SetAcceptedTerms(value *bool)
+	SetAcceptedToSubscription(value *bool)
+	SetTrustedFormCertificates(value []TrustedFormCertificateable)
 }

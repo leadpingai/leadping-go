@@ -4,374 +4,402 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // FeedbackResponse describes feedback item data returned by Leadping.
 type FeedbackResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Indicates whether the submitter permits Leadping support to contact them about the feedback.
-    allowContact *bool
-    // Product area or app section connected to this feedback item response.
-    area *string
-    // Client application version that submitted this feedback item response.
-    clientVersion *string
-    // UTC timestamp when this feedback item response was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Unique Leadping identifier for this feedback item response.
-    id *string
-    // Message text supplied by the user or returned by the Leadping API for this feedback item response.
-    message *string
-    // Organization ID connected to the feedback item, when the feedback came from an organization workspace.
-    organizationId *string
-    // Application route where this feedback item response originated or should direct the user.
-    route *string
-    // Current lifecycle status for this feedback item response in the Leadping API.
-    status *FeedbackStatus
-    // Type classification used to route and interpret this feedback item response in the Leadping API.
-    typeEscaped *FeedbackType
-    // User ID for the person who submitted the feedback.
-    userId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Indicates whether the submitter permits Leadping support to contact them about the feedback.
+	allowContact *bool
+	// Product area or app section connected to this feedback item response.
+	area *string
+	// Client application version that submitted this feedback item response.
+	clientVersion *string
+	// UTC timestamp when this feedback item response was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Unique Leadping identifier for this feedback item response.
+	id *string
+	// Message text supplied by the user or returned by the Leadping API for this feedback item response.
+	message *string
+	// Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+	organizationId *string
+	// Application route where this feedback item response originated or should direct the user.
+	route *string
+	// Defines admin triage statuses for durable product feedback.
+	status *FeedbackStatus
+	// Defines the type of product feedback submitted from inside Leadping.
+	typeEscaped *FeedbackType
+	// User ID for the person who submitted the feedback.
+	userId *string
 }
+
 // NewFeedbackResponse instantiates a new FeedbackResponse and sets the default values.
-func NewFeedbackResponse()(*FeedbackResponse) {
-    m := &FeedbackResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewFeedbackResponse() *FeedbackResponse {
+	m := &FeedbackResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateFeedbackResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateFeedbackResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewFeedbackResponse(), nil
+func CreateFeedbackResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewFeedbackResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *FeedbackResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *FeedbackResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAllowContact gets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
 // returns a *bool when successful
-func (m *FeedbackResponse) GetAllowContact()(*bool) {
-    return m.allowContact
+func (m *FeedbackResponse) GetAllowContact() *bool {
+	return m.allowContact
 }
+
 // GetArea gets the area property value. Product area or app section connected to this feedback item response.
 // returns a *string when successful
-func (m *FeedbackResponse) GetArea()(*string) {
-    return m.area
+func (m *FeedbackResponse) GetArea() *string {
+	return m.area
 }
+
 // GetClientVersion gets the clientVersion property value. Client application version that submitted this feedback item response.
 // returns a *string when successful
-func (m *FeedbackResponse) GetClientVersion()(*string) {
-    return m.clientVersion
+func (m *FeedbackResponse) GetClientVersion() *string {
+	return m.clientVersion
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this feedback item response was created.
 // returns a *Time when successful
-func (m *FeedbackResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *FeedbackResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *FeedbackResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["allowContact"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAllowContact(val)
-        }
-        return nil
-    }
-    res["area"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArea(val)
-        }
-        return nil
-    }
-    res["clientVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetClientVersion(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["message"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessage(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["route"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRoute(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseFeedbackStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*FeedbackStatus))
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseFeedbackType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val.(*FeedbackType))
-        }
-        return nil
-    }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *FeedbackResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["allowContact"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAllowContact(val)
+		}
+		return nil
+	}
+	res["area"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArea(val)
+		}
+		return nil
+	}
+	res["clientVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetClientVersion(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["message"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessage(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["route"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRoute(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseFeedbackStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*FeedbackStatus))
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseFeedbackType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val.(*FeedbackType))
+		}
+		return nil
+	}
+	res["userId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this feedback item response.
 // returns a *string when successful
-func (m *FeedbackResponse) GetId()(*string) {
-    return m.id
+func (m *FeedbackResponse) GetId() *string {
+	return m.id
 }
+
 // GetMessage gets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback item response.
 // returns a *string when successful
-func (m *FeedbackResponse) GetMessage()(*string) {
-    return m.message
+func (m *FeedbackResponse) GetMessage() *string {
+	return m.message
 }
+
 // GetOrganizationId gets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
 // returns a *string when successful
-func (m *FeedbackResponse) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *FeedbackResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetRoute gets the route property value. Application route where this feedback item response originated or should direct the user.
 // returns a *string when successful
-func (m *FeedbackResponse) GetRoute()(*string) {
-    return m.route
+func (m *FeedbackResponse) GetRoute() *string {
+	return m.route
 }
-// GetStatus gets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
+
+// GetStatus gets the status property value. Defines admin triage statuses for durable product feedback.
 // returns a *FeedbackStatus when successful
-func (m *FeedbackResponse) GetStatus()(*FeedbackStatus) {
-    return m.status
+func (m *FeedbackResponse) GetStatus() *FeedbackStatus {
+	return m.status
 }
-// GetTypeEscaped gets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
+
+// GetTypeEscaped gets the type property value. Defines the type of product feedback submitted from inside Leadping.
 // returns a *FeedbackType when successful
-func (m *FeedbackResponse) GetTypeEscaped()(*FeedbackType) {
-    return m.typeEscaped
+func (m *FeedbackResponse) GetTypeEscaped() *FeedbackType {
+	return m.typeEscaped
 }
+
 // GetUserId gets the userId property value. User ID for the person who submitted the feedback.
 // returns a *string when successful
-func (m *FeedbackResponse) GetUserId()(*string) {
-    return m.userId
+func (m *FeedbackResponse) GetUserId() *string {
+	return m.userId
 }
+
 // Serialize serializes information the current object
-func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("allowContact", m.GetAllowContact())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("area", m.GetArea())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("clientVersion", m.GetClientVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("message", m.GetMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("route", m.GetRoute())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTypeEscaped() != nil {
-        cast := (*m.GetTypeEscaped()).String()
-        err := writer.WriteStringValue("type", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *FeedbackResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("allowContact", m.GetAllowContact())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("area", m.GetArea())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("clientVersion", m.GetClientVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("message", m.GetMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("route", m.GetRoute())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTypeEscaped() != nil {
+		cast := (*m.GetTypeEscaped()).String()
+		err := writer.WriteStringValue("type", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userId", m.GetUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *FeedbackResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *FeedbackResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAllowContact sets the allowContact property value. Indicates whether the submitter permits Leadping support to contact them about the feedback.
-func (m *FeedbackResponse) SetAllowContact(value *bool)() {
-    m.allowContact = value
+func (m *FeedbackResponse) SetAllowContact(value *bool) {
+	m.allowContact = value
 }
+
 // SetArea sets the area property value. Product area or app section connected to this feedback item response.
-func (m *FeedbackResponse) SetArea(value *string)() {
-    m.area = value
+func (m *FeedbackResponse) SetArea(value *string) {
+	m.area = value
 }
+
 // SetClientVersion sets the clientVersion property value. Client application version that submitted this feedback item response.
-func (m *FeedbackResponse) SetClientVersion(value *string)() {
-    m.clientVersion = value
+func (m *FeedbackResponse) SetClientVersion(value *string) {
+	m.clientVersion = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this feedback item response was created.
-func (m *FeedbackResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *FeedbackResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this feedback item response.
-func (m *FeedbackResponse) SetId(value *string)() {
-    m.id = value
+func (m *FeedbackResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetMessage sets the message property value. Message text supplied by the user or returned by the Leadping API for this feedback item response.
-func (m *FeedbackResponse) SetMessage(value *string)() {
-    m.message = value
+func (m *FeedbackResponse) SetMessage(value *string) {
+	m.message = value
 }
+
 // SetOrganizationId sets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
-func (m *FeedbackResponse) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *FeedbackResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetRoute sets the route property value. Application route where this feedback item response originated or should direct the user.
-func (m *FeedbackResponse) SetRoute(value *string)() {
-    m.route = value
+func (m *FeedbackResponse) SetRoute(value *string) {
+	m.route = value
 }
-// SetStatus sets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
-func (m *FeedbackResponse) SetStatus(value *FeedbackStatus)() {
-    m.status = value
+
+// SetStatus sets the status property value. Defines admin triage statuses for durable product feedback.
+func (m *FeedbackResponse) SetStatus(value *FeedbackStatus) {
+	m.status = value
 }
-// SetTypeEscaped sets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
-func (m *FeedbackResponse) SetTypeEscaped(value *FeedbackType)() {
-    m.typeEscaped = value
+
+// SetTypeEscaped sets the type property value. Defines the type of product feedback submitted from inside Leadping.
+func (m *FeedbackResponse) SetTypeEscaped(value *FeedbackType) {
+	m.typeEscaped = value
 }
+
 // SetUserId sets the userId property value. User ID for the person who submitted the feedback.
-func (m *FeedbackResponse) SetUserId(value *string)() {
-    m.userId = value
+func (m *FeedbackResponse) SetUserId(value *string) {
+	m.userId = value
 }
+
 type FeedbackResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAllowContact()(*bool)
-    GetArea()(*string)
-    GetClientVersion()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetId()(*string)
-    GetMessage()(*string)
-    GetOrganizationId()(*string)
-    GetRoute()(*string)
-    GetStatus()(*FeedbackStatus)
-    GetTypeEscaped()(*FeedbackType)
-    GetUserId()(*string)
-    SetAllowContact(value *bool)()
-    SetArea(value *string)()
-    SetClientVersion(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetId(value *string)()
-    SetMessage(value *string)()
-    SetOrganizationId(value *string)()
-    SetRoute(value *string)()
-    SetStatus(value *FeedbackStatus)()
-    SetTypeEscaped(value *FeedbackType)()
-    SetUserId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAllowContact() *bool
+	GetArea() *string
+	GetClientVersion() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetId() *string
+	GetMessage() *string
+	GetOrganizationId() *string
+	GetRoute() *string
+	GetStatus() *FeedbackStatus
+	GetTypeEscaped() *FeedbackType
+	GetUserId() *string
+	SetAllowContact(value *bool)
+	SetArea(value *string)
+	SetClientVersion(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetId(value *string)
+	SetMessage(value *string)
+	SetOrganizationId(value *string)
+	SetRoute(value *string)
+	SetStatus(value *FeedbackStatus)
+	SetTypeEscaped(value *FeedbackType)
+	SetUserId(value *string)
 }

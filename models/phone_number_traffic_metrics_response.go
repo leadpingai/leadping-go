@@ -4,413 +4,443 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberTrafficMetricsResponse describes phone number traffic metrics data returned by Leadping.
 type PhoneNumberTrafficMetricsResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Number of outbound calls that connected during this metrics window.
-    callConnectedCount *int32
-    // Number of outbound calls that failed during this metrics window.
-    callFailedCount *int32
-    // Number of outbound calls that failed because the destination number was invalid during this metrics window.
-    callInvalidNumberCount *int32
-    // Number of outbound calls placed during this metrics window.
-    callPlacedCount *int32
-    // Number of connected outbound calls shorter than 30 seconds during this metrics window.
-    callShortCount *int32
-    // Number of MMS messages that failed during this metrics window.
-    mmsFailedCount *int32
-    // Number of MMS messages sent during this metrics window.
-    mmsSentCount *int32
-    // Number of SMS messages that failed during this metrics window.
-    smsFailedCount *int32
-    // Number of SMS messages sent during this metrics window.
-    smsSentCount *int32
-    // Time-series buckets that show how the metric changes across the reporting window.
-    trend []PhoneNumberTrafficTrendPointable
-    // Number of days included in the metrics reporting window.
-    windowDays *int32
-    // UTC timestamp when the metrics reporting window starts.
-    windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Number of outbound calls that connected during this metrics window.
+	callConnectedCount *int32
+	// Number of outbound calls that failed during this metrics window.
+	callFailedCount *int32
+	// Number of outbound calls that failed because the destination number was invalid during this metrics window.
+	callInvalidNumberCount *int32
+	// Number of outbound calls placed during this metrics window.
+	callPlacedCount *int32
+	// Number of connected outbound calls shorter than 30 seconds during this metrics window.
+	callShortCount *int32
+	// Number of MMS messages that failed during this metrics window.
+	mmsFailedCount *int32
+	// Number of MMS messages sent during this metrics window.
+	mmsSentCount *int32
+	// Number of SMS messages that failed during this metrics window.
+	smsFailedCount *int32
+	// Number of SMS messages sent during this metrics window.
+	smsSentCount *int32
+	// Time-series buckets that show how the metric changes across the reporting window.
+	trend []PhoneNumberTrafficTrendPointable
+	// Number of days included in the metrics reporting window.
+	windowDays *int32
+	// UTC timestamp when the metrics reporting window starts.
+	windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewPhoneNumberTrafficMetricsResponse instantiates a new PhoneNumberTrafficMetricsResponse and sets the default values.
-func NewPhoneNumberTrafficMetricsResponse()(*PhoneNumberTrafficMetricsResponse) {
-    m := &PhoneNumberTrafficMetricsResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberTrafficMetricsResponse() *PhoneNumberTrafficMetricsResponse {
+	m := &PhoneNumberTrafficMetricsResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberTrafficMetricsResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberTrafficMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberTrafficMetricsResponse(), nil
+func CreatePhoneNumberTrafficMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberTrafficMetricsResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberTrafficMetricsResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCallConnectedCount gets the callConnectedCount property value. Number of outbound calls that connected during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetCallConnectedCount()(*int32) {
-    return m.callConnectedCount
+func (m *PhoneNumberTrafficMetricsResponse) GetCallConnectedCount() *int32 {
+	return m.callConnectedCount
 }
+
 // GetCallFailedCount gets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetCallFailedCount()(*int32) {
-    return m.callFailedCount
+func (m *PhoneNumberTrafficMetricsResponse) GetCallFailedCount() *int32 {
+	return m.callFailedCount
 }
+
 // GetCallInvalidNumberCount gets the callInvalidNumberCount property value. Number of outbound calls that failed because the destination number was invalid during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetCallInvalidNumberCount()(*int32) {
-    return m.callInvalidNumberCount
+func (m *PhoneNumberTrafficMetricsResponse) GetCallInvalidNumberCount() *int32 {
+	return m.callInvalidNumberCount
 }
+
 // GetCallPlacedCount gets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetCallPlacedCount()(*int32) {
-    return m.callPlacedCount
+func (m *PhoneNumberTrafficMetricsResponse) GetCallPlacedCount() *int32 {
+	return m.callPlacedCount
 }
+
 // GetCallShortCount gets the callShortCount property value. Number of connected outbound calls shorter than 30 seconds during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetCallShortCount()(*int32) {
-    return m.callShortCount
+func (m *PhoneNumberTrafficMetricsResponse) GetCallShortCount() *int32 {
+	return m.callShortCount
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callConnectedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallConnectedCount(val)
-        }
-        return nil
-    }
-    res["callFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallFailedCount(val)
-        }
-        return nil
-    }
-    res["callInvalidNumberCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallInvalidNumberCount(val)
-        }
-        return nil
-    }
-    res["callPlacedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallPlacedCount(val)
-        }
-        return nil
-    }
-    res["callShortCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallShortCount(val)
-        }
-        return nil
-    }
-    res["mmsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMmsFailedCount(val)
-        }
-        return nil
-    }
-    res["mmsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMmsSentCount(val)
-        }
-        return nil
-    }
-    res["smsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsFailedCount(val)
-        }
-        return nil
-    }
-    res["smsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsSentCount(val)
-        }
-        return nil
-    }
-    res["trend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]PhoneNumberTrafficTrendPointable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(PhoneNumberTrafficTrendPointable)
-                }
-            }
-            m.SetTrend(res)
-        }
-        return nil
-    }
-    res["windowDays"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWindowDays(val)
-        }
-        return nil
-    }
-    res["windowStartedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWindowStartedAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberTrafficMetricsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callConnectedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallConnectedCount(val)
+		}
+		return nil
+	}
+	res["callFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallFailedCount(val)
+		}
+		return nil
+	}
+	res["callInvalidNumberCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallInvalidNumberCount(val)
+		}
+		return nil
+	}
+	res["callPlacedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallPlacedCount(val)
+		}
+		return nil
+	}
+	res["callShortCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallShortCount(val)
+		}
+		return nil
+	}
+	res["mmsFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMmsFailedCount(val)
+		}
+		return nil
+	}
+	res["mmsSentCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMmsSentCount(val)
+		}
+		return nil
+	}
+	res["smsFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsFailedCount(val)
+		}
+		return nil
+	}
+	res["smsSentCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsSentCount(val)
+		}
+		return nil
+	}
+	res["trend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]PhoneNumberTrafficTrendPointable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(PhoneNumberTrafficTrendPointable)
+				}
+			}
+			m.SetTrend(res)
+		}
+		return nil
+	}
+	res["windowDays"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWindowDays(val)
+		}
+		return nil
+	}
+	res["windowStartedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWindowStartedAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetMmsFailedCount gets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetMmsFailedCount()(*int32) {
-    return m.mmsFailedCount
+func (m *PhoneNumberTrafficMetricsResponse) GetMmsFailedCount() *int32 {
+	return m.mmsFailedCount
 }
+
 // GetMmsSentCount gets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetMmsSentCount()(*int32) {
-    return m.mmsSentCount
+func (m *PhoneNumberTrafficMetricsResponse) GetMmsSentCount() *int32 {
+	return m.mmsSentCount
 }
+
 // GetSmsFailedCount gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetSmsFailedCount()(*int32) {
-    return m.smsFailedCount
+func (m *PhoneNumberTrafficMetricsResponse) GetSmsFailedCount() *int32 {
+	return m.smsFailedCount
 }
+
 // GetSmsSentCount gets the smsSentCount property value. Number of SMS messages sent during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetSmsSentCount()(*int32) {
-    return m.smsSentCount
+func (m *PhoneNumberTrafficMetricsResponse) GetSmsSentCount() *int32 {
+	return m.smsSentCount
 }
+
 // GetTrend gets the trend property value. Time-series buckets that show how the metric changes across the reporting window.
 // returns a []PhoneNumberTrafficTrendPointable when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetTrend()([]PhoneNumberTrafficTrendPointable) {
-    return m.trend
+func (m *PhoneNumberTrafficMetricsResponse) GetTrend() []PhoneNumberTrafficTrendPointable {
+	return m.trend
 }
+
 // GetWindowDays gets the windowDays property value. Number of days included in the metrics reporting window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetWindowDays()(*int32) {
-    return m.windowDays
+func (m *PhoneNumberTrafficMetricsResponse) GetWindowDays() *int32 {
+	return m.windowDays
 }
+
 // GetWindowStartedAt gets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 // returns a *Time when successful
-func (m *PhoneNumberTrafficMetricsResponse) GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.windowStartedAt
+func (m *PhoneNumberTrafficMetricsResponse) GetWindowStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.windowStartedAt
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberTrafficMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteInt32Value("callConnectedCount", m.GetCallConnectedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callFailedCount", m.GetCallFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callInvalidNumberCount", m.GetCallInvalidNumberCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callPlacedCount", m.GetCallPlacedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callShortCount", m.GetCallShortCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsFailedCount", m.GetSmsFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsSentCount", m.GetSmsSentCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTrend() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrend()))
-        for i, v := range m.GetTrend() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("trend", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("windowDays", m.GetWindowDays())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("windowStartedAt", m.GetWindowStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberTrafficMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("callConnectedCount", m.GetCallConnectedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callFailedCount", m.GetCallFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callInvalidNumberCount", m.GetCallInvalidNumberCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callPlacedCount", m.GetCallPlacedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callShortCount", m.GetCallShortCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsFailedCount", m.GetSmsFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsSentCount", m.GetSmsSentCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTrend() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrend()))
+		for i, v := range m.GetTrend() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("trend", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("windowDays", m.GetWindowDays())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("windowStartedAt", m.GetWindowStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberTrafficMetricsResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberTrafficMetricsResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCallConnectedCount sets the callConnectedCount property value. Number of outbound calls that connected during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetCallConnectedCount(value *int32)() {
-    m.callConnectedCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetCallConnectedCount(value *int32) {
+	m.callConnectedCount = value
 }
+
 // SetCallFailedCount sets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetCallFailedCount(value *int32)() {
-    m.callFailedCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetCallFailedCount(value *int32) {
+	m.callFailedCount = value
 }
+
 // SetCallInvalidNumberCount sets the callInvalidNumberCount property value. Number of outbound calls that failed because the destination number was invalid during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetCallInvalidNumberCount(value *int32)() {
-    m.callInvalidNumberCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetCallInvalidNumberCount(value *int32) {
+	m.callInvalidNumberCount = value
 }
+
 // SetCallPlacedCount sets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetCallPlacedCount(value *int32)() {
-    m.callPlacedCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetCallPlacedCount(value *int32) {
+	m.callPlacedCount = value
 }
+
 // SetCallShortCount sets the callShortCount property value. Number of connected outbound calls shorter than 30 seconds during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetCallShortCount(value *int32)() {
-    m.callShortCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetCallShortCount(value *int32) {
+	m.callShortCount = value
 }
+
 // SetMmsFailedCount sets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetMmsFailedCount(value *int32)() {
-    m.mmsFailedCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetMmsFailedCount(value *int32) {
+	m.mmsFailedCount = value
 }
+
 // SetMmsSentCount sets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetMmsSentCount(value *int32)() {
-    m.mmsSentCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetMmsSentCount(value *int32) {
+	m.mmsSentCount = value
 }
+
 // SetSmsFailedCount sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetSmsFailedCount(value *int32)() {
-    m.smsFailedCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetSmsFailedCount(value *int32) {
+	m.smsFailedCount = value
 }
+
 // SetSmsSentCount sets the smsSentCount property value. Number of SMS messages sent during this metrics window.
-func (m *PhoneNumberTrafficMetricsResponse) SetSmsSentCount(value *int32)() {
-    m.smsSentCount = value
+func (m *PhoneNumberTrafficMetricsResponse) SetSmsSentCount(value *int32) {
+	m.smsSentCount = value
 }
+
 // SetTrend sets the trend property value. Time-series buckets that show how the metric changes across the reporting window.
-func (m *PhoneNumberTrafficMetricsResponse) SetTrend(value []PhoneNumberTrafficTrendPointable)() {
-    m.trend = value
+func (m *PhoneNumberTrafficMetricsResponse) SetTrend(value []PhoneNumberTrafficTrendPointable) {
+	m.trend = value
 }
+
 // SetWindowDays sets the windowDays property value. Number of days included in the metrics reporting window.
-func (m *PhoneNumberTrafficMetricsResponse) SetWindowDays(value *int32)() {
-    m.windowDays = value
+func (m *PhoneNumberTrafficMetricsResponse) SetWindowDays(value *int32) {
+	m.windowDays = value
 }
+
 // SetWindowStartedAt sets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
-func (m *PhoneNumberTrafficMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.windowStartedAt = value
+func (m *PhoneNumberTrafficMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.windowStartedAt = value
 }
+
 type PhoneNumberTrafficMetricsResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallConnectedCount()(*int32)
-    GetCallFailedCount()(*int32)
-    GetCallInvalidNumberCount()(*int32)
-    GetCallPlacedCount()(*int32)
-    GetCallShortCount()(*int32)
-    GetMmsFailedCount()(*int32)
-    GetMmsSentCount()(*int32)
-    GetSmsFailedCount()(*int32)
-    GetSmsSentCount()(*int32)
-    GetTrend()([]PhoneNumberTrafficTrendPointable)
-    GetWindowDays()(*int32)
-    GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetCallConnectedCount(value *int32)()
-    SetCallFailedCount(value *int32)()
-    SetCallInvalidNumberCount(value *int32)()
-    SetCallPlacedCount(value *int32)()
-    SetCallShortCount(value *int32)()
-    SetMmsFailedCount(value *int32)()
-    SetMmsSentCount(value *int32)()
-    SetSmsFailedCount(value *int32)()
-    SetSmsSentCount(value *int32)()
-    SetTrend(value []PhoneNumberTrafficTrendPointable)()
-    SetWindowDays(value *int32)()
-    SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallConnectedCount() *int32
+	GetCallFailedCount() *int32
+	GetCallInvalidNumberCount() *int32
+	GetCallPlacedCount() *int32
+	GetCallShortCount() *int32
+	GetMmsFailedCount() *int32
+	GetMmsSentCount() *int32
+	GetSmsFailedCount() *int32
+	GetSmsSentCount() *int32
+	GetTrend() []PhoneNumberTrafficTrendPointable
+	GetWindowDays() *int32
+	GetWindowStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetCallConnectedCount(value *int32)
+	SetCallFailedCount(value *int32)
+	SetCallInvalidNumberCount(value *int32)
+	SetCallPlacedCount(value *int32)
+	SetCallShortCount(value *int32)
+	SetMmsFailedCount(value *int32)
+	SetMmsSentCount(value *int32)
+	SetSmsFailedCount(value *int32)
+	SetSmsSentCount(value *int32)
+	SetTrend(value []PhoneNumberTrafficTrendPointable)
+	SetWindowDays(value *int32)
+	SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

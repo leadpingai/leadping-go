@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies an organization member's access level and permission scope within Leadping.
 type OrganizationMemberRole int
 
 const (
-    OWNER_ORGANIZATIONMEMBERROLE OrganizationMemberRole = iota
-    ADMIN_ORGANIZATIONMEMBERROLE
-    AGENT_ORGANIZATIONMEMBERROLE
+	OWNER_ORGANIZATIONMEMBERROLE OrganizationMemberRole = iota
+	ADMIN_ORGANIZATIONMEMBERROLE
+	AGENT_ORGANIZATIONMEMBERROLE
 )
 
 func (i OrganizationMemberRole) String() string {
-    return []string{"Owner", "Admin", "Agent"}[i]
+	return []string{"Owner", "Admin", "Agent"}[i]
 }
+
 func ParseOrganizationMemberRole(v string) (any, error) {
-    result := OWNER_ORGANIZATIONMEMBERROLE
-    switch v {
-        case "Owner":
-            result = OWNER_ORGANIZATIONMEMBERROLE
-        case "Admin":
-            result = ADMIN_ORGANIZATIONMEMBERROLE
-        case "Agent":
-            result = AGENT_ORGANIZATIONMEMBERROLE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := OWNER_ORGANIZATIONMEMBERROLE
+	switch v {
+	case "Owner":
+		result = OWNER_ORGANIZATIONMEMBERROLE
+	case "Admin":
+		result = ADMIN_ORGANIZATIONMEMBERROLE
+	case "Agent":
+		result = AGENT_ORGANIZATIONMEMBERROLE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationMemberRole(values []OrganizationMemberRole) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationMemberRole) isMultiValue() bool {
-    return false
+	return false
 }

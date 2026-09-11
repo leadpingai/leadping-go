@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Describes whether valid funding and payment prerequisites are satisfied during organization activation.
 type ActivationPaymentStatus int
 
 const (
-    PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS ActivationPaymentStatus = iota
-    PAYMENTMETHODCONFIRMED_ACTIVATIONPAYMENTSTATUS
-    FAILED_ACTIVATIONPAYMENTSTATUS
+	PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS ActivationPaymentStatus = iota
+	PAYMENTMETHODCONFIRMED_ACTIVATIONPAYMENTSTATUS
+	FAILED_ACTIVATIONPAYMENTSTATUS
 )
 
 func (i ActivationPaymentStatus) String() string {
-    return []string{"PaymentMethodPending", "PaymentMethodConfirmed", "Failed"}[i]
+	return []string{"PaymentMethodPending", "PaymentMethodConfirmed", "Failed"}[i]
 }
+
 func ParseActivationPaymentStatus(v string) (any, error) {
-    result := PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS
-    switch v {
-        case "PaymentMethodPending":
-            result = PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS
-        case "PaymentMethodConfirmed":
-            result = PAYMENTMETHODCONFIRMED_ACTIVATIONPAYMENTSTATUS
-        case "Failed":
-            result = FAILED_ACTIVATIONPAYMENTSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS
+	switch v {
+	case "PaymentMethodPending":
+		result = PAYMENTMETHODPENDING_ACTIVATIONPAYMENTSTATUS
+	case "PaymentMethodConfirmed":
+		result = PAYMENTMETHODCONFIRMED_ACTIVATIONPAYMENTSTATUS
+	case "Failed":
+		result = FAILED_ACTIVATIONPAYMENTSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeActivationPaymentStatus(values []ActivationPaymentStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i ActivationPaymentStatus) isMultiValue() bool {
-    return false
+	return false
 }

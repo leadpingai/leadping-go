@@ -4,82 +4,90 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // ChangeBillingPlanRequest defines the input used for change billing plan.
 type ChangeBillingPlanRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Billing plan for this billing plan.
-    billingPlan *BillingPlan
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+	billingPlan *BillingPlan
 }
+
 // NewChangeBillingPlanRequest instantiates a new ChangeBillingPlanRequest and sets the default values.
-func NewChangeBillingPlanRequest()(*ChangeBillingPlanRequest) {
-    m := &ChangeBillingPlanRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewChangeBillingPlanRequest() *ChangeBillingPlanRequest {
+	m := &ChangeBillingPlanRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateChangeBillingPlanRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateChangeBillingPlanRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewChangeBillingPlanRequest(), nil
+func CreateChangeBillingPlanRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewChangeBillingPlanRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ChangeBillingPlanRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *ChangeBillingPlanRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetBillingPlan gets the billingPlan property value. Billing plan for this billing plan.
+
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *BillingPlan when successful
-func (m *ChangeBillingPlanRequest) GetBillingPlan()(*BillingPlan) {
-    return m.billingPlan
+func (m *ChangeBillingPlanRequest) GetBillingPlan() *BillingPlan {
+	return m.billingPlan
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ChangeBillingPlanRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseBillingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlan(val.(*BillingPlan))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ChangeBillingPlanRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billingPlan"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseBillingPlan)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingPlan(val.(*BillingPlan))
+		}
+		return nil
+	}
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *ChangeBillingPlanRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetBillingPlan() != nil {
-        cast := (*m.GetBillingPlan()).String()
-        err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *ChangeBillingPlanRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetBillingPlan() != nil {
+		cast := (*m.GetBillingPlan()).String()
+		err := writer.WriteStringValue("billingPlan", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ChangeBillingPlanRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *ChangeBillingPlanRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetBillingPlan sets the billingPlan property value. Billing plan for this billing plan.
-func (m *ChangeBillingPlanRequest) SetBillingPlan(value *BillingPlan)() {
-    m.billingPlan = value
+
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+func (m *ChangeBillingPlanRequest) SetBillingPlan(value *BillingPlan) {
+	m.billingPlan = value
 }
+
 type ChangeBillingPlanRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillingPlan()(*BillingPlan)
-    SetBillingPlan(value *BillingPlan)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillingPlan() *BillingPlan
+	SetBillingPlan(value *BillingPlan)
 }

@@ -4,122 +4,132 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationWorkflowStatusResponse automation workflow status collection for a lead.
 type AutomationWorkflowStatusResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Unique identifier of the lead associated with this Leadping automation workflow status.
-    leadId *string
-    // Collection of runs included with this Leadping automation workflow status.
-    runs []AutomationWorkflowRunResponseable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Unique identifier of the lead associated with this Leadping automation workflow status.
+	leadId *string
+	// Collection of runs included with this Leadping automation workflow status.
+	runs []AutomationWorkflowRunResponseable
 }
+
 // NewAutomationWorkflowStatusResponse instantiates a new AutomationWorkflowStatusResponse and sets the default values.
-func NewAutomationWorkflowStatusResponse()(*AutomationWorkflowStatusResponse) {
-    m := &AutomationWorkflowStatusResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationWorkflowStatusResponse() *AutomationWorkflowStatusResponse {
+	m := &AutomationWorkflowStatusResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationWorkflowStatusResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationWorkflowStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationWorkflowStatusResponse(), nil
+func CreateAutomationWorkflowStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationWorkflowStatusResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationWorkflowStatusResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationWorkflowStatusResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationWorkflowStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["runs"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowRunResponseFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationWorkflowRunResponseable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationWorkflowRunResponseable)
-                }
-            }
-            m.SetRuns(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationWorkflowStatusResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["runs"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowRunResponseFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationWorkflowRunResponseable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationWorkflowRunResponseable)
+				}
+			}
+			m.SetRuns(res)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLeadId gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
 // returns a *string when successful
-func (m *AutomationWorkflowStatusResponse) GetLeadId()(*string) {
-    return m.leadId
+func (m *AutomationWorkflowStatusResponse) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetRuns gets the runs property value. Collection of runs included with this Leadping automation workflow status.
 // returns a []AutomationWorkflowRunResponseable when successful
-func (m *AutomationWorkflowStatusResponse) GetRuns()([]AutomationWorkflowRunResponseable) {
-    return m.runs
+func (m *AutomationWorkflowStatusResponse) GetRuns() []AutomationWorkflowRunResponseable {
+	return m.runs
 }
+
 // Serialize serializes information the current object
-func (m *AutomationWorkflowStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRuns() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRuns()))
-        for i, v := range m.GetRuns() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("runs", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationWorkflowStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRuns() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRuns()))
+		for i, v := range m.GetRuns() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("runs", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationWorkflowStatusResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationWorkflowStatusResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetLeadId sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
-func (m *AutomationWorkflowStatusResponse) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *AutomationWorkflowStatusResponse) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetRuns sets the runs property value. Collection of runs included with this Leadping automation workflow status.
-func (m *AutomationWorkflowStatusResponse) SetRuns(value []AutomationWorkflowRunResponseable)() {
-    m.runs = value
+func (m *AutomationWorkflowStatusResponse) SetRuns(value []AutomationWorkflowRunResponseable) {
+	m.runs = value
 }
+
 type AutomationWorkflowStatusResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLeadId()(*string)
-    GetRuns()([]AutomationWorkflowRunResponseable)
-    SetLeadId(value *string)()
-    SetRuns(value []AutomationWorkflowRunResponseable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetLeadId() *string
+	GetRuns() []AutomationWorkflowRunResponseable
+	SetLeadId(value *string)
+	SetRuns(value []AutomationWorkflowRunResponseable)
 }

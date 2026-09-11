@@ -2,81 +2,85 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 type TransactionResponse_billableUnit int
 
 const (
-    LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT TransactionResponse_billableUnit = iota
-    PHONE_IDENTITY_LOOKUP_TRANSACTIONRESPONSE_BILLABLEUNIT
-    SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
-    MMS_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
-    EMAIL_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
-    VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
-    PHONE_NUMBER_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
-    WARMUP_SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
-    WARMUP_VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
-    WEBSITE_SETUP_TRANSACTIONRESPONSE_BILLABLEUNIT
-    OPENAI_OPERATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-    DOMAIN_REGISTRATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-    ONEZERODLC_APPLICATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-    ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
-    PAYMENT_PROCESSING_FEE_TRANSACTIONRESPONSE_BILLABLEUNIT
-    CONNECTION_ACTION_TRANSACTIONRESPONSE_BILLABLEUNIT
-    AUTOMATION_RUN_TRANSACTIONRESPONSE_BILLABLEUNIT
+	LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT TransactionResponse_billableUnit = iota
+	PHONE_IDENTITY_LOOKUP_TRANSACTIONRESPONSE_BILLABLEUNIT
+	SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
+	MMS_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	EMAIL_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	PHONE_NUMBER_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
+	WARMUP_SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
+	WARMUP_VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	WEBSITE_SETUP_TRANSACTIONRESPONSE_BILLABLEUNIT
+	OPENAI_OPERATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	DOMAIN_REGISTRATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	ONEZERODLC_APPLICATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
+	PAYMENT_PROCESSING_FEE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	CONNECTION_ACTION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	AUTOMATION_RUN_TRANSACTIONRESPONSE_BILLABLEUNIT
 )
 
 func (i TransactionResponse_billableUnit) String() string {
-    return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
+	return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
 }
+
 func ParseTransactionResponse_billableUnit(v string) (any, error) {
-    result := LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT
-    switch v {
-        case "lead_received":
-            result = LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "phone_identity_lookup":
-            result = PHONE_IDENTITY_LOOKUP_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "sms_segment":
-            result = SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "mms_message":
-            result = MMS_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "email_message":
-            result = EMAIL_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "voice_minute":
-            result = VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "phone_number_month":
-            result = PHONE_NUMBER_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "warmup_sms_segment":
-            result = WARMUP_SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "warmup_voice_minute":
-            result = WARMUP_VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "website_setup":
-            result = WEBSITE_SETUP_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "openai_operation":
-            result = OPENAI_OPERATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "domain_registration":
-            result = DOMAIN_REGISTRATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "10dlc_application":
-            result = ONEZERODLC_APPLICATION_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "10dlc_campaign_month":
-            result = ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "payment_processing_fee":
-            result = PAYMENT_PROCESSING_FEE_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "connection_action":
-            result = CONNECTION_ACTION_TRANSACTIONRESPONSE_BILLABLEUNIT
-        case "automation_run":
-            result = AUTOMATION_RUN_TRANSACTIONRESPONSE_BILLABLEUNIT
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT
+	switch v {
+	case "lead_received":
+		result = LEAD_RECEIVED_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "phone_identity_lookup":
+		result = PHONE_IDENTITY_LOOKUP_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "sms_segment":
+		result = SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "mms_message":
+		result = MMS_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "email_message":
+		result = EMAIL_MESSAGE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "voice_minute":
+		result = VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "phone_number_month":
+		result = PHONE_NUMBER_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "warmup_sms_segment":
+		result = WARMUP_SMS_SEGMENT_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "warmup_voice_minute":
+		result = WARMUP_VOICE_MINUTE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "website_setup":
+		result = WEBSITE_SETUP_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "openai_operation":
+		result = OPENAI_OPERATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "domain_registration":
+		result = DOMAIN_REGISTRATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "10dlc_application":
+		result = ONEZERODLC_APPLICATION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "10dlc_campaign_month":
+		result = ONEZERODLC_CAMPAIGN_MONTH_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "payment_processing_fee":
+		result = PAYMENT_PROCESSING_FEE_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "connection_action":
+		result = CONNECTION_ACTION_TRANSACTIONRESPONSE_BILLABLEUNIT
+	case "automation_run":
+		result = AUTOMATION_RUN_TRANSACTIONRESPONSE_BILLABLEUNIT
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeTransactionResponse_billableUnit(values []TransactionResponse_billableUnit) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i TransactionResponse_billableUnit) isMultiValue() bool {
-    return false
+	return false
 }

@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// AutomationWorkflowRunResponse_currentStep identifier and display name of the workflow step currently awaiting or performing work.
+// AutomationWorkflowRunResponse_currentStep provides a compact API reference to another resource using its stable identifier and human-readable display name.
 type AutomationWorkflowRunResponse_currentStep struct {
-    IdNamePair
+	IdNamePair
 }
+
 // NewAutomationWorkflowRunResponse_currentStep instantiates a new AutomationWorkflowRunResponse_currentStep and sets the default values.
-func NewAutomationWorkflowRunResponse_currentStep()(*AutomationWorkflowRunResponse_currentStep) {
-    m := &AutomationWorkflowRunResponse_currentStep{
-        IdNamePair: *NewIdNamePair(),
-    }
-    return m
+func NewAutomationWorkflowRunResponse_currentStep() *AutomationWorkflowRunResponse_currentStep {
+	m := &AutomationWorkflowRunResponse_currentStep{
+		IdNamePair: *NewIdNamePair(),
+	}
+	return m
 }
+
 // CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationWorkflowRunResponse_currentStep(), nil
+func CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationWorkflowRunResponse_currentStep(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationWorkflowRunResponse_currentStep) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.IdNamePair.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationWorkflowRunResponse_currentStep) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.IdNamePair.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *AutomationWorkflowRunResponse_currentStep) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.IdNamePair.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *AutomationWorkflowRunResponse_currentStep) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.IdNamePair.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type AutomationWorkflowRunResponse_currentStepable interface {
-    IdNamePairable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	IdNamePairable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

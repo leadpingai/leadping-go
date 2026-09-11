@@ -4,35 +4,38 @@
 package events
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // SmsPhoneRequestBuilder builds and executes requests for operations under \events\sms\phone
 type SmsPhoneRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByPhoneNumber gets an item from the github.com/leadpingai/leadping-go.events.sms.phone.item collection
 // returns a *SmsPhoneWithPhoneNumberItemRequestBuilder when successful
-func (m *SmsPhoneRequestBuilder) ByPhoneNumber(phoneNumber string)(*SmsPhoneWithPhoneNumberItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if phoneNumber != "" {
-        urlTplParams["phoneNumber"] = phoneNumber
-    }
-    return NewSmsPhoneWithPhoneNumberItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *SmsPhoneRequestBuilder) ByPhoneNumber(phoneNumber string) *SmsPhoneWithPhoneNumberItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if phoneNumber != "" {
+		urlTplParams["phoneNumber"] = phoneNumber
+	}
+	return NewSmsPhoneWithPhoneNumberItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewSmsPhoneRequestBuilderInternal instantiates a new SmsPhoneRequestBuilder and sets the default values.
-func NewSmsPhoneRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsPhoneRequestBuilder) {
-    m := &SmsPhoneRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/sms/phone", pathParameters),
-    }
-    return m
+func NewSmsPhoneRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsPhoneRequestBuilder {
+	m := &SmsPhoneRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/sms/phone", pathParameters),
+	}
+	return m
 }
+
 // NewSmsPhoneRequestBuilder instantiates a new SmsPhoneRequestBuilder and sets the default values.
-func NewSmsPhoneRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsPhoneRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewSmsPhoneRequestBuilderInternal(urlParams, requestAdapter)
+func NewSmsPhoneRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsPhoneRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewSmsPhoneRequestBuilderInternal(urlParams, requestAdapter)
 }

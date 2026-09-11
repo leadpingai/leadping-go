@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // CustomerNeedsAttentionItem identifies an organization-level issue or opportunity and provides severity, supporting context, and a recommended action.
 type CustomerNeedsAttentionItem struct {
-    // Relative URL for the recommended follow-up action.
-    actionHref *string
-    // Action text associated with this Leadping customer needs attention item.
-    actionText *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Human-readable detail for this Leadping customer needs attention item.
-    detail *string
-    // Severity associated with this Leadping customer needs attention item.
-    severity *string
-    // Human-readable title for this Leadping customer needs attention item.
-    title *string
+	// Relative URL for the recommended follow-up action.
+	actionHref *string
+	// Action text associated with this Leadping customer needs attention item.
+	actionText *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Human-readable detail for this Leadping customer needs attention item.
+	detail *string
+	// Severity associated with this Leadping customer needs attention item.
+	severity *string
+	// Human-readable title for this Leadping customer needs attention item.
+	title *string
 }
+
 // NewCustomerNeedsAttentionItem instantiates a new CustomerNeedsAttentionItem and sets the default values.
-func NewCustomerNeedsAttentionItem()(*CustomerNeedsAttentionItem) {
-    m := &CustomerNeedsAttentionItem{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerNeedsAttentionItem() *CustomerNeedsAttentionItem {
+	m := &CustomerNeedsAttentionItem{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerNeedsAttentionItemFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerNeedsAttentionItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerNeedsAttentionItem(), nil
+func CreateCustomerNeedsAttentionItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerNeedsAttentionItem(), nil
 }
+
 // GetActionHref gets the actionHref property value. Relative URL for the recommended follow-up action.
 // returns a *string when successful
-func (m *CustomerNeedsAttentionItem) GetActionHref()(*string) {
-    return m.actionHref
+func (m *CustomerNeedsAttentionItem) GetActionHref() *string {
+	return m.actionHref
 }
+
 // GetActionText gets the actionText property value. Action text associated with this Leadping customer needs attention item.
 // returns a *string when successful
-func (m *CustomerNeedsAttentionItem) GetActionText()(*string) {
-    return m.actionText
+func (m *CustomerNeedsAttentionItem) GetActionText() *string {
+	return m.actionText
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerNeedsAttentionItem) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerNeedsAttentionItem) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDetail gets the detail property value. Human-readable detail for this Leadping customer needs attention item.
 // returns a *string when successful
-func (m *CustomerNeedsAttentionItem) GetDetail()(*string) {
-    return m.detail
+func (m *CustomerNeedsAttentionItem) GetDetail() *string {
+	return m.detail
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerNeedsAttentionItem) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionHref"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionHref(val)
-        }
-        return nil
-    }
-    res["actionText"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionText(val)
-        }
-        return nil
-    }
-    res["detail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDetail(val)
-        }
-        return nil
-    }
-    res["severity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSeverity(val)
-        }
-        return nil
-    }
-    res["title"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTitle(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerNeedsAttentionItem) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionHref"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionHref(val)
+		}
+		return nil
+	}
+	res["actionText"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionText(val)
+		}
+		return nil
+	}
+	res["detail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDetail(val)
+		}
+		return nil
+	}
+	res["severity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSeverity(val)
+		}
+		return nil
+	}
+	res["title"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTitle(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetSeverity gets the severity property value. Severity associated with this Leadping customer needs attention item.
 // returns a *string when successful
-func (m *CustomerNeedsAttentionItem) GetSeverity()(*string) {
-    return m.severity
+func (m *CustomerNeedsAttentionItem) GetSeverity() *string {
+	return m.severity
 }
+
 // GetTitle gets the title property value. Human-readable title for this Leadping customer needs attention item.
 // returns a *string when successful
-func (m *CustomerNeedsAttentionItem) GetTitle()(*string) {
-    return m.title
+func (m *CustomerNeedsAttentionItem) GetTitle() *string {
+	return m.title
 }
+
 // Serialize serializes information the current object
-func (m *CustomerNeedsAttentionItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionHref", m.GetActionHref())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("actionText", m.GetActionText())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("detail", m.GetDetail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("severity", m.GetSeverity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("title", m.GetTitle())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerNeedsAttentionItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionHref", m.GetActionHref())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("actionText", m.GetActionText())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("detail", m.GetDetail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("severity", m.GetSeverity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("title", m.GetTitle())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionHref sets the actionHref property value. Relative URL for the recommended follow-up action.
-func (m *CustomerNeedsAttentionItem) SetActionHref(value *string)() {
-    m.actionHref = value
+func (m *CustomerNeedsAttentionItem) SetActionHref(value *string) {
+	m.actionHref = value
 }
+
 // SetActionText sets the actionText property value. Action text associated with this Leadping customer needs attention item.
-func (m *CustomerNeedsAttentionItem) SetActionText(value *string)() {
-    m.actionText = value
+func (m *CustomerNeedsAttentionItem) SetActionText(value *string) {
+	m.actionText = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerNeedsAttentionItem) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerNeedsAttentionItem) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDetail sets the detail property value. Human-readable detail for this Leadping customer needs attention item.
-func (m *CustomerNeedsAttentionItem) SetDetail(value *string)() {
-    m.detail = value
+func (m *CustomerNeedsAttentionItem) SetDetail(value *string) {
+	m.detail = value
 }
+
 // SetSeverity sets the severity property value. Severity associated with this Leadping customer needs attention item.
-func (m *CustomerNeedsAttentionItem) SetSeverity(value *string)() {
-    m.severity = value
+func (m *CustomerNeedsAttentionItem) SetSeverity(value *string) {
+	m.severity = value
 }
+
 // SetTitle sets the title property value. Human-readable title for this Leadping customer needs attention item.
-func (m *CustomerNeedsAttentionItem) SetTitle(value *string)() {
-    m.title = value
+func (m *CustomerNeedsAttentionItem) SetTitle(value *string) {
+	m.title = value
 }
+
 type CustomerNeedsAttentionItemable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionHref()(*string)
-    GetActionText()(*string)
-    GetDetail()(*string)
-    GetSeverity()(*string)
-    GetTitle()(*string)
-    SetActionHref(value *string)()
-    SetActionText(value *string)()
-    SetDetail(value *string)()
-    SetSeverity(value *string)()
-    SetTitle(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionHref() *string
+	GetActionText() *string
+	GetDetail() *string
+	GetSeverity() *string
+	GetTitle() *string
+	SetActionHref(value *string)
+	SetActionText(value *string)
+	SetDetail(value *string)
+	SetSeverity(value *string)
+	SetTitle(value *string)
 }

@@ -4,1333 +4,1425 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // OrganizationActivationState describes organization activation state data used in Leadping API requests and responses.
 type OrganizationActivationState struct {
-    // UTC timestamp for activated at on this organization activation state.
-    activatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The number of registrar-verified domains found by the current search.
-    availableDomainCount *int32
-    // The current billing subscription status for this organization activation state.
-    billingSubscriptionStatus *ActivationSubscriptionStatus
-    // Compliance notes for this organization activation state.
-    complianceNotes *string
-    // Whether controlled launch applies to this organization activation state.
-    controlledLaunch *bool
-    // UTC timestamp for created at on this organization activation state.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current customer facing status for this organization activation state.
-    customerFacingStatus *string
-    // UTC timestamp for domain approved at on this organization activation state.
-    domainApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The domain options included with this organization activation state.
-    domainOptions []ActivationDomainOptionable
-    // The date and time the selected domain was purchased.
-    domainPurchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current domain generation attempt.
-    domainSearchAttempt *int32
-    // Identifies the active domain search run.
-    domainSearchId *string
-    // Defines the stages of a domain search.
-    domainSearchStage *OrganizationActivationState_domainSearchStage
-    // The last time domain search progress changed.
-    domainSearchUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The events included with this organization activation state.
-    events []ActivationTimelineEventable
-    // UTC timestamp for failed at on this organization activation state.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Industry for this organization activation state.
-    industry *string
-    // UTC timestamp for launch approved at on this organization activation state.
-    launchApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for launch review requested at on this organization activation state.
-    launchReviewRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current launch review status for this organization activation state.
-    launchReviewStatus *ActivationLaunchReviewStatus
-    // Offer for this organization activation state.
-    offer *string
-    // The current onboarding status for this organization activation state.
-    onboardingStatus *ActivationOnboardingStatus
-    // Organization description for this organization activation state.
-    organizationDescription *string
-    // UTC timestamp for payment method confirmed at on this organization activation state.
-    paymentMethodConfirmedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current payment status for this organization activation state.
-    paymentStatus *ActivationPaymentStatus
-    // Selected domain for this organization activation state.
-    selectedDomain *string
-    // Service area for this organization activation state.
-    serviceArea *string
-    // The current status for this organization activation state.
-    status *CustomerActivationStatus
-    // UTC timestamp for subscription active at on this organization activation state.
-    subscriptionActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for subscription pending at on this organization activation state.
-    subscriptionPendingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Target audience for this organization activation state.
-    targetAudience *string
-    // UTC timestamp for telephony partially provisioned at on this organization activation state.
-    telephonyPartiallyProvisionedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for telephony provisioning started at on this organization activation state.
-    telephonyProvisioningStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for telephony ready at on this organization activation state.
-    telephonyReadyAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The current telephony status for this organization activation state.
-    telephonyStatus *ActivationTelephonyStatus
-    // Identifier of the first-class 10DLC application entity for this organization.
-    tenDlcApplicationId *string
-    // 10DLC draft for this organization activation state.
-    tenDlcDraft OrganizationActivationState_tenDlcDraftable
-    // The current 10DLC status for this organization activation state.
-    tenDlcStatus *TenDlcApplicationStatus
-    // UTC timestamp for updated at on this organization activation state.
-    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The latest persisted website generation progress message.
-    websiteGenerationResult *string
-    // Website needs for this organization activation state.
-    websiteNeeds *string
-    // The current website status for this organization activation state.
-    websiteStatus *WebsiteLifecycleStatus
-    // The URL associated with this organization activation state.
-    websiteUrl *string
+	// UTC timestamp for activated at on this organization activation state.
+	activatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The number of registrar-verified domains found by the current search.
+	availableDomainCount *int32
+	// Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
+	billingSubscriptionStatus *ActivationSubscriptionStatus
+	// Compliance notes for this organization activation state.
+	complianceNotes *string
+	// Whether controlled launch applies to this organization activation state.
+	controlledLaunch *bool
+	// UTC timestamp for created at on this organization activation state.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The current customer facing status for this organization activation state.
+	customerFacingStatus *string
+	// UTC timestamp for domain approved at on this organization activation state.
+	domainApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The domain options included with this organization activation state.
+	domainOptions []ActivationDomainOptionable
+	// The date and time the selected domain was purchased.
+	domainPurchasedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The current domain generation attempt.
+	domainSearchAttempt *int32
+	// Identifies the active domain search run.
+	domainSearchId *string
+	// Defines the stages of a domain search.
+	domainSearchStage *OrganizationActivationState_domainSearchStage
+	// The last time domain search progress changed.
+	domainSearchUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The events included with this organization activation state.
+	events []ActivationTimelineEventable
+	// UTC timestamp for failed at on this organization activation state.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Industry for this organization activation state.
+	industry *string
+	// UTC timestamp for launch approved at on this organization activation state.
+	launchApprovedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for launch review requested at on this organization activation state.
+	launchReviewRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
+	launchReviewStatus *ActivationLaunchReviewStatus
+	// Offer for this organization activation state.
+	offer *string
+	// Describes completion and blocking state for an organization's core Leadping onboarding requirements.
+	onboardingStatus *ActivationOnboardingStatus
+	// Organization description for this organization activation state.
+	organizationDescription *string
+	// UTC timestamp for payment method confirmed at on this organization activation state.
+	paymentMethodConfirmedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Describes whether valid funding and payment prerequisites are satisfied during organization activation.
+	paymentStatus *ActivationPaymentStatus
+	// Selected domain for this organization activation state.
+	selectedDomain *string
+	// Service area for this organization activation state.
+	serviceArea *string
+	// Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
+	status *CustomerActivationStatus
+	// UTC timestamp for subscription active at on this organization activation state.
+	subscriptionActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for subscription pending at on this organization activation state.
+	subscriptionPendingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Target audience for this organization activation state.
+	targetAudience *string
+	// UTC timestamp for telephony partially provisioned at on this organization activation state.
+	telephonyPartiallyProvisionedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for telephony provisioning started at on this organization activation state.
+	telephonyProvisioningStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for telephony ready at on this organization activation state.
+	telephonyReadyAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
+	telephonyStatus *ActivationTelephonyStatus
+	// Identifier of the first-class 10DLC application entity for this organization.
+	tenDlcApplicationId *string
+	// Describes 10DLC application draft data used in Leadping API requests and responses.
+	tenDlcDraft OrganizationActivationState_tenDlcDraftable
+	// Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
+	tenDlcStatus *TenDlcApplicationStatus
+	// UTC timestamp for updated at on this organization activation state.
+	updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The latest persisted website generation progress message.
+	websiteGenerationResult *string
+	// Website needs for this organization activation state.
+	websiteNeeds *string
+	// Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
+	websiteStatus *WebsiteLifecycleStatus
+	// The URL associated with this organization activation state.
+	websiteUrl *string
 }
+
 // NewOrganizationActivationState instantiates a new OrganizationActivationState and sets the default values.
-func NewOrganizationActivationState()(*OrganizationActivationState) {
-    m := &OrganizationActivationState{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationActivationState() *OrganizationActivationState {
+	m := &OrganizationActivationState{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationActivationStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationActivationStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationActivationState(), nil
+func CreateOrganizationActivationStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationActivationState(), nil
 }
+
 // GetActivatedAt gets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.activatedAt
+func (m *OrganizationActivationState) GetActivatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.activatedAt
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationActivationState) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationActivationState) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAvailableDomainCount gets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
 // returns a *int32 when successful
-func (m *OrganizationActivationState) GetAvailableDomainCount()(*int32) {
-    return m.availableDomainCount
+func (m *OrganizationActivationState) GetAvailableDomainCount() *int32 {
+	return m.availableDomainCount
 }
-// GetBillingSubscriptionStatus gets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
+
+// GetBillingSubscriptionStatus gets the billingSubscriptionStatus property value. Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
 // returns a *ActivationSubscriptionStatus when successful
-func (m *OrganizationActivationState) GetBillingSubscriptionStatus()(*ActivationSubscriptionStatus) {
-    return m.billingSubscriptionStatus
+func (m *OrganizationActivationState) GetBillingSubscriptionStatus() *ActivationSubscriptionStatus {
+	return m.billingSubscriptionStatus
 }
+
 // GetComplianceNotes gets the complianceNotes property value. Compliance notes for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetComplianceNotes()(*string) {
-    return m.complianceNotes
+func (m *OrganizationActivationState) GetComplianceNotes() *string {
+	return m.complianceNotes
 }
+
 // GetControlledLaunch gets the controlledLaunch property value. Whether controlled launch applies to this organization activation state.
 // returns a *bool when successful
-func (m *OrganizationActivationState) GetControlledLaunch()(*bool) {
-    return m.controlledLaunch
+func (m *OrganizationActivationState) GetControlledLaunch() *bool {
+	return m.controlledLaunch
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *OrganizationActivationState) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetCustomerFacingStatus gets the customerFacingStatus property value. The current customer facing status for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetCustomerFacingStatus()(*string) {
-    return m.customerFacingStatus
+func (m *OrganizationActivationState) GetCustomerFacingStatus() *string {
+	return m.customerFacingStatus
 }
+
 // GetDomainApprovedAt gets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetDomainApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.domainApprovedAt
+func (m *OrganizationActivationState) GetDomainApprovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.domainApprovedAt
 }
+
 // GetDomainOptions gets the domainOptions property value. The domain options included with this organization activation state.
 // returns a []ActivationDomainOptionable when successful
-func (m *OrganizationActivationState) GetDomainOptions()([]ActivationDomainOptionable) {
-    return m.domainOptions
+func (m *OrganizationActivationState) GetDomainOptions() []ActivationDomainOptionable {
+	return m.domainOptions
 }
+
 // GetDomainPurchasedAt gets the domainPurchasedAt property value. The date and time the selected domain was purchased.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetDomainPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.domainPurchasedAt
+func (m *OrganizationActivationState) GetDomainPurchasedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.domainPurchasedAt
 }
+
 // GetDomainSearchAttempt gets the domainSearchAttempt property value. The current domain generation attempt.
 // returns a *int32 when successful
-func (m *OrganizationActivationState) GetDomainSearchAttempt()(*int32) {
-    return m.domainSearchAttempt
+func (m *OrganizationActivationState) GetDomainSearchAttempt() *int32 {
+	return m.domainSearchAttempt
 }
+
 // GetDomainSearchId gets the domainSearchId property value. Identifies the active domain search run.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetDomainSearchId()(*string) {
-    return m.domainSearchId
+func (m *OrganizationActivationState) GetDomainSearchId() *string {
+	return m.domainSearchId
 }
+
 // GetDomainSearchStage gets the domainSearchStage property value. Defines the stages of a domain search.
 // returns a *OrganizationActivationState_domainSearchStage when successful
-func (m *OrganizationActivationState) GetDomainSearchStage()(*OrganizationActivationState_domainSearchStage) {
-    return m.domainSearchStage
+func (m *OrganizationActivationState) GetDomainSearchStage() *OrganizationActivationState_domainSearchStage {
+	return m.domainSearchStage
 }
+
 // GetDomainSearchUpdatedAt gets the domainSearchUpdatedAt property value. The last time domain search progress changed.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetDomainSearchUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.domainSearchUpdatedAt
+func (m *OrganizationActivationState) GetDomainSearchUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.domainSearchUpdatedAt
 }
+
 // GetEvents gets the events property value. The events included with this organization activation state.
 // returns a []ActivationTimelineEventable when successful
-func (m *OrganizationActivationState) GetEvents()([]ActivationTimelineEventable) {
-    return m.events
+func (m *OrganizationActivationState) GetEvents() []ActivationTimelineEventable {
+	return m.events
 }
+
 // GetFailedAt gets the failedAt property value. UTC timestamp for failed at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *OrganizationActivationState) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationActivationState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["activatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivatedAt(val)
-        }
-        return nil
-    }
-    res["availableDomainCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAvailableDomainCount(val)
-        }
-        return nil
-    }
-    res["billingSubscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseActivationSubscriptionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingSubscriptionStatus(val.(*ActivationSubscriptionStatus))
-        }
-        return nil
-    }
-    res["complianceNotes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceNotes(val)
-        }
-        return nil
-    }
-    res["controlledLaunch"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetControlledLaunch(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["customerFacingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCustomerFacingStatus(val)
-        }
-        return nil
-    }
-    res["domainApprovedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainApprovedAt(val)
-        }
-        return nil
-    }
-    res["domainOptions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateActivationDomainOptionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]ActivationDomainOptionable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(ActivationDomainOptionable)
-                }
-            }
-            m.SetDomainOptions(res)
-        }
-        return nil
-    }
-    res["domainPurchasedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainPurchasedAt(val)
-        }
-        return nil
-    }
-    res["domainSearchAttempt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainSearchAttempt(val)
-        }
-        return nil
-    }
-    res["domainSearchId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainSearchId(val)
-        }
-        return nil
-    }
-    res["domainSearchStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationActivationState_domainSearchStage)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainSearchStage(val.(*OrganizationActivationState_domainSearchStage))
-        }
-        return nil
-    }
-    res["domainSearchUpdatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomainSearchUpdatedAt(val)
-        }
-        return nil
-    }
-    res["events"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateActivationTimelineEventFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]ActivationTimelineEventable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(ActivationTimelineEventable)
-                }
-            }
-            m.SetEvents(res)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["industry"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIndustry(val)
-        }
-        return nil
-    }
-    res["launchApprovedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLaunchApprovedAt(val)
-        }
-        return nil
-    }
-    res["launchReviewRequestedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLaunchReviewRequestedAt(val)
-        }
-        return nil
-    }
-    res["launchReviewStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseActivationLaunchReviewStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLaunchReviewStatus(val.(*ActivationLaunchReviewStatus))
-        }
-        return nil
-    }
-    res["offer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOffer(val)
-        }
-        return nil
-    }
-    res["onboardingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseActivationOnboardingStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOnboardingStatus(val.(*ActivationOnboardingStatus))
-        }
-        return nil
-    }
-    res["organizationDescription"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationDescription(val)
-        }
-        return nil
-    }
-    res["paymentMethodConfirmedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPaymentMethodConfirmedAt(val)
-        }
-        return nil
-    }
-    res["paymentStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseActivationPaymentStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPaymentStatus(val.(*ActivationPaymentStatus))
-        }
-        return nil
-    }
-    res["selectedDomain"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelectedDomain(val)
-        }
-        return nil
-    }
-    res["serviceArea"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetServiceArea(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseCustomerActivationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*CustomerActivationStatus))
-        }
-        return nil
-    }
-    res["subscriptionActiveAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionActiveAt(val)
-        }
-        return nil
-    }
-    res["subscriptionPendingAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionPendingAt(val)
-        }
-        return nil
-    }
-    res["targetAudience"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTargetAudience(val)
-        }
-        return nil
-    }
-    res["telephonyPartiallyProvisionedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelephonyPartiallyProvisionedAt(val)
-        }
-        return nil
-    }
-    res["telephonyProvisioningStartedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelephonyProvisioningStartedAt(val)
-        }
-        return nil
-    }
-    res["telephonyReadyAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelephonyReadyAt(val)
-        }
-        return nil
-    }
-    res["telephonyStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseActivationTelephonyStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTelephonyStatus(val.(*ActivationTelephonyStatus))
-        }
-        return nil
-    }
-    res["tenDlcApplicationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcApplicationId(val)
-        }
-        return nil
-    }
-    res["tenDlcDraft"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationActivationState_tenDlcDraftFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcDraft(val.(OrganizationActivationState_tenDlcDraftable))
-        }
-        return nil
-    }
-    res["tenDlcStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTenDlcApplicationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTenDlcStatus(val.(*TenDlcApplicationStatus))
-        }
-        return nil
-    }
-    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUpdatedAt(val)
-        }
-        return nil
-    }
-    res["websiteGenerationResult"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsiteGenerationResult(val)
-        }
-        return nil
-    }
-    res["websiteNeeds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsiteNeeds(val)
-        }
-        return nil
-    }
-    res["websiteStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseWebsiteLifecycleStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsiteStatus(val.(*WebsiteLifecycleStatus))
-        }
-        return nil
-    }
-    res["websiteUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsiteUrl(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationActivationState) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["activatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActivatedAt(val)
+		}
+		return nil
+	}
+	res["availableDomainCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAvailableDomainCount(val)
+		}
+		return nil
+	}
+	res["billingSubscriptionStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseActivationSubscriptionStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingSubscriptionStatus(val.(*ActivationSubscriptionStatus))
+		}
+		return nil
+	}
+	res["complianceNotes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceNotes(val)
+		}
+		return nil
+	}
+	res["controlledLaunch"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetControlledLaunch(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["customerFacingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomerFacingStatus(val)
+		}
+		return nil
+	}
+	res["domainApprovedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainApprovedAt(val)
+		}
+		return nil
+	}
+	res["domainOptions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateActivationDomainOptionFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]ActivationDomainOptionable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(ActivationDomainOptionable)
+				}
+			}
+			m.SetDomainOptions(res)
+		}
+		return nil
+	}
+	res["domainPurchasedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainPurchasedAt(val)
+		}
+		return nil
+	}
+	res["domainSearchAttempt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainSearchAttempt(val)
+		}
+		return nil
+	}
+	res["domainSearchId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainSearchId(val)
+		}
+		return nil
+	}
+	res["domainSearchStage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationActivationState_domainSearchStage)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainSearchStage(val.(*OrganizationActivationState_domainSearchStage))
+		}
+		return nil
+	}
+	res["domainSearchUpdatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomainSearchUpdatedAt(val)
+		}
+		return nil
+	}
+	res["events"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateActivationTimelineEventFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]ActivationTimelineEventable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(ActivationTimelineEventable)
+				}
+			}
+			m.SetEvents(res)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["industry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIndustry(val)
+		}
+		return nil
+	}
+	res["launchApprovedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLaunchApprovedAt(val)
+		}
+		return nil
+	}
+	res["launchReviewRequestedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLaunchReviewRequestedAt(val)
+		}
+		return nil
+	}
+	res["launchReviewStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseActivationLaunchReviewStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLaunchReviewStatus(val.(*ActivationLaunchReviewStatus))
+		}
+		return nil
+	}
+	res["offer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOffer(val)
+		}
+		return nil
+	}
+	res["onboardingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseActivationOnboardingStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOnboardingStatus(val.(*ActivationOnboardingStatus))
+		}
+		return nil
+	}
+	res["organizationDescription"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationDescription(val)
+		}
+		return nil
+	}
+	res["paymentMethodConfirmedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPaymentMethodConfirmedAt(val)
+		}
+		return nil
+	}
+	res["paymentStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseActivationPaymentStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPaymentStatus(val.(*ActivationPaymentStatus))
+		}
+		return nil
+	}
+	res["selectedDomain"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectedDomain(val)
+		}
+		return nil
+	}
+	res["serviceArea"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetServiceArea(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseCustomerActivationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*CustomerActivationStatus))
+		}
+		return nil
+	}
+	res["subscriptionActiveAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionActiveAt(val)
+		}
+		return nil
+	}
+	res["subscriptionPendingAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionPendingAt(val)
+		}
+		return nil
+	}
+	res["targetAudience"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTargetAudience(val)
+		}
+		return nil
+	}
+	res["telephonyPartiallyProvisionedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTelephonyPartiallyProvisionedAt(val)
+		}
+		return nil
+	}
+	res["telephonyProvisioningStartedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTelephonyProvisioningStartedAt(val)
+		}
+		return nil
+	}
+	res["telephonyReadyAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTelephonyReadyAt(val)
+		}
+		return nil
+	}
+	res["telephonyStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseActivationTelephonyStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTelephonyStatus(val.(*ActivationTelephonyStatus))
+		}
+		return nil
+	}
+	res["tenDlcApplicationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcApplicationId(val)
+		}
+		return nil
+	}
+	res["tenDlcDraft"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationActivationState_tenDlcDraftFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcDraft(val.(OrganizationActivationState_tenDlcDraftable))
+		}
+		return nil
+	}
+	res["tenDlcStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTenDlcApplicationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTenDlcStatus(val.(*TenDlcApplicationStatus))
+		}
+		return nil
+	}
+	res["updatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUpdatedAt(val)
+		}
+		return nil
+	}
+	res["websiteGenerationResult"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsiteGenerationResult(val)
+		}
+		return nil
+	}
+	res["websiteNeeds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsiteNeeds(val)
+		}
+		return nil
+	}
+	res["websiteStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseWebsiteLifecycleStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsiteStatus(val.(*WebsiteLifecycleStatus))
+		}
+		return nil
+	}
+	res["websiteUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsiteUrl(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetIndustry gets the industry property value. Industry for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetIndustry()(*string) {
-    return m.industry
+func (m *OrganizationActivationState) GetIndustry() *string {
+	return m.industry
 }
+
 // GetLaunchApprovedAt gets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetLaunchApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.launchApprovedAt
+func (m *OrganizationActivationState) GetLaunchApprovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.launchApprovedAt
 }
+
 // GetLaunchReviewRequestedAt gets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetLaunchReviewRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.launchReviewRequestedAt
+func (m *OrganizationActivationState) GetLaunchReviewRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.launchReviewRequestedAt
 }
-// GetLaunchReviewStatus gets the launchReviewStatus property value. The current launch review status for this organization activation state.
+
+// GetLaunchReviewStatus gets the launchReviewStatus property value. Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
 // returns a *ActivationLaunchReviewStatus when successful
-func (m *OrganizationActivationState) GetLaunchReviewStatus()(*ActivationLaunchReviewStatus) {
-    return m.launchReviewStatus
+func (m *OrganizationActivationState) GetLaunchReviewStatus() *ActivationLaunchReviewStatus {
+	return m.launchReviewStatus
 }
+
 // GetOffer gets the offer property value. Offer for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetOffer()(*string) {
-    return m.offer
+func (m *OrganizationActivationState) GetOffer() *string {
+	return m.offer
 }
-// GetOnboardingStatus gets the onboardingStatus property value. The current onboarding status for this organization activation state.
+
+// GetOnboardingStatus gets the onboardingStatus property value. Describes completion and blocking state for an organization's core Leadping onboarding requirements.
 // returns a *ActivationOnboardingStatus when successful
-func (m *OrganizationActivationState) GetOnboardingStatus()(*ActivationOnboardingStatus) {
-    return m.onboardingStatus
+func (m *OrganizationActivationState) GetOnboardingStatus() *ActivationOnboardingStatus {
+	return m.onboardingStatus
 }
+
 // GetOrganizationDescription gets the organizationDescription property value. Organization description for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetOrganizationDescription()(*string) {
-    return m.organizationDescription
+func (m *OrganizationActivationState) GetOrganizationDescription() *string {
+	return m.organizationDescription
 }
+
 // GetPaymentMethodConfirmedAt gets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetPaymentMethodConfirmedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.paymentMethodConfirmedAt
+func (m *OrganizationActivationState) GetPaymentMethodConfirmedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.paymentMethodConfirmedAt
 }
-// GetPaymentStatus gets the paymentStatus property value. The current payment status for this organization activation state.
+
+// GetPaymentStatus gets the paymentStatus property value. Describes whether valid funding and payment prerequisites are satisfied during organization activation.
 // returns a *ActivationPaymentStatus when successful
-func (m *OrganizationActivationState) GetPaymentStatus()(*ActivationPaymentStatus) {
-    return m.paymentStatus
+func (m *OrganizationActivationState) GetPaymentStatus() *ActivationPaymentStatus {
+	return m.paymentStatus
 }
+
 // GetSelectedDomain gets the selectedDomain property value. Selected domain for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetSelectedDomain()(*string) {
-    return m.selectedDomain
+func (m *OrganizationActivationState) GetSelectedDomain() *string {
+	return m.selectedDomain
 }
+
 // GetServiceArea gets the serviceArea property value. Service area for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetServiceArea()(*string) {
-    return m.serviceArea
+func (m *OrganizationActivationState) GetServiceArea() *string {
+	return m.serviceArea
 }
-// GetStatus gets the status property value. The current status for this organization activation state.
+
+// GetStatus gets the status property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
 // returns a *CustomerActivationStatus when successful
-func (m *OrganizationActivationState) GetStatus()(*CustomerActivationStatus) {
-    return m.status
+func (m *OrganizationActivationState) GetStatus() *CustomerActivationStatus {
+	return m.status
 }
+
 // GetSubscriptionActiveAt gets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetSubscriptionActiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.subscriptionActiveAt
+func (m *OrganizationActivationState) GetSubscriptionActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.subscriptionActiveAt
 }
+
 // GetSubscriptionPendingAt gets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetSubscriptionPendingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.subscriptionPendingAt
+func (m *OrganizationActivationState) GetSubscriptionPendingAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.subscriptionPendingAt
 }
+
 // GetTargetAudience gets the targetAudience property value. Target audience for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetTargetAudience()(*string) {
-    return m.targetAudience
+func (m *OrganizationActivationState) GetTargetAudience() *string {
+	return m.targetAudience
 }
+
 // GetTelephonyPartiallyProvisionedAt gets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetTelephonyPartiallyProvisionedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.telephonyPartiallyProvisionedAt
+func (m *OrganizationActivationState) GetTelephonyPartiallyProvisionedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.telephonyPartiallyProvisionedAt
 }
+
 // GetTelephonyProvisioningStartedAt gets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetTelephonyProvisioningStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.telephonyProvisioningStartedAt
+func (m *OrganizationActivationState) GetTelephonyProvisioningStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.telephonyProvisioningStartedAt
 }
+
 // GetTelephonyReadyAt gets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetTelephonyReadyAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.telephonyReadyAt
+func (m *OrganizationActivationState) GetTelephonyReadyAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.telephonyReadyAt
 }
-// GetTelephonyStatus gets the telephonyStatus property value. The current telephony status for this organization activation state.
+
+// GetTelephonyStatus gets the telephonyStatus property value. Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
 // returns a *ActivationTelephonyStatus when successful
-func (m *OrganizationActivationState) GetTelephonyStatus()(*ActivationTelephonyStatus) {
-    return m.telephonyStatus
+func (m *OrganizationActivationState) GetTelephonyStatus() *ActivationTelephonyStatus {
+	return m.telephonyStatus
 }
+
 // GetTenDlcApplicationId gets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this organization.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetTenDlcApplicationId()(*string) {
-    return m.tenDlcApplicationId
+func (m *OrganizationActivationState) GetTenDlcApplicationId() *string {
+	return m.tenDlcApplicationId
 }
-// GetTenDlcDraft gets the tenDlcDraft property value. 10DLC draft for this organization activation state.
+
+// GetTenDlcDraft gets the tenDlcDraft property value. Describes 10DLC application draft data used in Leadping API requests and responses.
 // returns a OrganizationActivationState_tenDlcDraftable when successful
-func (m *OrganizationActivationState) GetTenDlcDraft()(OrganizationActivationState_tenDlcDraftable) {
-    return m.tenDlcDraft
+func (m *OrganizationActivationState) GetTenDlcDraft() OrganizationActivationState_tenDlcDraftable {
+	return m.tenDlcDraft
 }
-// GetTenDlcStatus gets the tenDlcStatus property value. The current 10DLC status for this organization activation state.
+
+// GetTenDlcStatus gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 // returns a *TenDlcApplicationStatus when successful
-func (m *OrganizationActivationState) GetTenDlcStatus()(*TenDlcApplicationStatus) {
-    return m.tenDlcStatus
+func (m *OrganizationActivationState) GetTenDlcStatus() *TenDlcApplicationStatus {
+	return m.tenDlcStatus
 }
+
 // GetUpdatedAt gets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
 // returns a *Time when successful
-func (m *OrganizationActivationState) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.updatedAt
+func (m *OrganizationActivationState) GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.updatedAt
 }
+
 // GetWebsiteGenerationResult gets the websiteGenerationResult property value. The latest persisted website generation progress message.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetWebsiteGenerationResult()(*string) {
-    return m.websiteGenerationResult
+func (m *OrganizationActivationState) GetWebsiteGenerationResult() *string {
+	return m.websiteGenerationResult
 }
+
 // GetWebsiteNeeds gets the websiteNeeds property value. Website needs for this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetWebsiteNeeds()(*string) {
-    return m.websiteNeeds
+func (m *OrganizationActivationState) GetWebsiteNeeds() *string {
+	return m.websiteNeeds
 }
-// GetWebsiteStatus gets the websiteStatus property value. The current website status for this organization activation state.
+
+// GetWebsiteStatus gets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
 // returns a *WebsiteLifecycleStatus when successful
-func (m *OrganizationActivationState) GetWebsiteStatus()(*WebsiteLifecycleStatus) {
-    return m.websiteStatus
+func (m *OrganizationActivationState) GetWebsiteStatus() *WebsiteLifecycleStatus {
+	return m.websiteStatus
 }
+
 // GetWebsiteUrl gets the websiteUrl property value. The URL associated with this organization activation state.
 // returns a *string when successful
-func (m *OrganizationActivationState) GetWebsiteUrl()(*string) {
-    return m.websiteUrl
+func (m *OrganizationActivationState) GetWebsiteUrl() *string {
+	return m.websiteUrl
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationActivationState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("activatedAt", m.GetActivatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("availableDomainCount", m.GetAvailableDomainCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetBillingSubscriptionStatus() != nil {
-        cast := (*m.GetBillingSubscriptionStatus()).String()
-        err := writer.WriteStringValue("billingSubscriptionStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceNotes", m.GetComplianceNotes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("controlledLaunch", m.GetControlledLaunch())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("customerFacingStatus", m.GetCustomerFacingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("domainApprovedAt", m.GetDomainApprovedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDomainOptions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetDomainOptions()))
-        for i, v := range m.GetDomainOptions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("domainOptions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("domainPurchasedAt", m.GetDomainPurchasedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("domainSearchAttempt", m.GetDomainSearchAttempt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("domainSearchId", m.GetDomainSearchId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDomainSearchStage() != nil {
-        cast := (*m.GetDomainSearchStage()).String()
-        err := writer.WriteStringValue("domainSearchStage", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("domainSearchUpdatedAt", m.GetDomainSearchUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetEvents() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetEvents()))
-        for i, v := range m.GetEvents() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("events", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("industry", m.GetIndustry())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("launchApprovedAt", m.GetLaunchApprovedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("launchReviewRequestedAt", m.GetLaunchReviewRequestedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLaunchReviewStatus() != nil {
-        cast := (*m.GetLaunchReviewStatus()).String()
-        err := writer.WriteStringValue("launchReviewStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("offer", m.GetOffer())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetOnboardingStatus() != nil {
-        cast := (*m.GetOnboardingStatus()).String()
-        err := writer.WriteStringValue("onboardingStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationDescription", m.GetOrganizationDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("paymentMethodConfirmedAt", m.GetPaymentMethodConfirmedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPaymentStatus() != nil {
-        cast := (*m.GetPaymentStatus()).String()
-        err := writer.WriteStringValue("paymentStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("selectedDomain", m.GetSelectedDomain())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("serviceArea", m.GetServiceArea())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("subscriptionActiveAt", m.GetSubscriptionActiveAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("subscriptionPendingAt", m.GetSubscriptionPendingAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("targetAudience", m.GetTargetAudience())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("telephonyPartiallyProvisionedAt", m.GetTelephonyPartiallyProvisionedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("telephonyProvisioningStartedAt", m.GetTelephonyProvisioningStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("telephonyReadyAt", m.GetTelephonyReadyAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTelephonyStatus() != nil {
-        cast := (*m.GetTelephonyStatus()).String()
-        err := writer.WriteStringValue("telephonyStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("tenDlcDraft", m.GetTenDlcDraft())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTenDlcStatus() != nil {
-        cast := (*m.GetTenDlcStatus()).String()
-        err := writer.WriteStringValue("tenDlcStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("websiteGenerationResult", m.GetWebsiteGenerationResult())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("websiteNeeds", m.GetWebsiteNeeds())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWebsiteStatus() != nil {
-        cast := (*m.GetWebsiteStatus()).String()
-        err := writer.WriteStringValue("websiteStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("websiteUrl", m.GetWebsiteUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationActivationState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("activatedAt", m.GetActivatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("availableDomainCount", m.GetAvailableDomainCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetBillingSubscriptionStatus() != nil {
+		cast := (*m.GetBillingSubscriptionStatus()).String()
+		err := writer.WriteStringValue("billingSubscriptionStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("complianceNotes", m.GetComplianceNotes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("controlledLaunch", m.GetControlledLaunch())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("customerFacingStatus", m.GetCustomerFacingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("domainApprovedAt", m.GetDomainApprovedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDomainOptions() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetDomainOptions()))
+		for i, v := range m.GetDomainOptions() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("domainOptions", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("domainPurchasedAt", m.GetDomainPurchasedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("domainSearchAttempt", m.GetDomainSearchAttempt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("domainSearchId", m.GetDomainSearchId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDomainSearchStage() != nil {
+		cast := (*m.GetDomainSearchStage()).String()
+		err := writer.WriteStringValue("domainSearchStage", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("domainSearchUpdatedAt", m.GetDomainSearchUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetEvents() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetEvents()))
+		for i, v := range m.GetEvents() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("events", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("industry", m.GetIndustry())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("launchApprovedAt", m.GetLaunchApprovedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("launchReviewRequestedAt", m.GetLaunchReviewRequestedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLaunchReviewStatus() != nil {
+		cast := (*m.GetLaunchReviewStatus()).String()
+		err := writer.WriteStringValue("launchReviewStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("offer", m.GetOffer())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetOnboardingStatus() != nil {
+		cast := (*m.GetOnboardingStatus()).String()
+		err := writer.WriteStringValue("onboardingStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationDescription", m.GetOrganizationDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("paymentMethodConfirmedAt", m.GetPaymentMethodConfirmedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPaymentStatus() != nil {
+		cast := (*m.GetPaymentStatus()).String()
+		err := writer.WriteStringValue("paymentStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("selectedDomain", m.GetSelectedDomain())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("serviceArea", m.GetServiceArea())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("subscriptionActiveAt", m.GetSubscriptionActiveAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("subscriptionPendingAt", m.GetSubscriptionPendingAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("targetAudience", m.GetTargetAudience())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("telephonyPartiallyProvisionedAt", m.GetTelephonyPartiallyProvisionedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("telephonyProvisioningStartedAt", m.GetTelephonyProvisioningStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("telephonyReadyAt", m.GetTelephonyReadyAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTelephonyStatus() != nil {
+		cast := (*m.GetTelephonyStatus()).String()
+		err := writer.WriteStringValue("telephonyStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("tenDlcApplicationId", m.GetTenDlcApplicationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("tenDlcDraft", m.GetTenDlcDraft())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTenDlcStatus() != nil {
+		cast := (*m.GetTenDlcStatus()).String()
+		err := writer.WriteStringValue("tenDlcStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("websiteGenerationResult", m.GetWebsiteGenerationResult())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("websiteNeeds", m.GetWebsiteNeeds())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetWebsiteStatus() != nil {
+		cast := (*m.GetWebsiteStatus()).String()
+		err := writer.WriteStringValue("websiteStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("websiteUrl", m.GetWebsiteUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActivatedAt sets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
-func (m *OrganizationActivationState) SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.activatedAt = value
+func (m *OrganizationActivationState) SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.activatedAt = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationActivationState) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationActivationState) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAvailableDomainCount sets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
-func (m *OrganizationActivationState) SetAvailableDomainCount(value *int32)() {
-    m.availableDomainCount = value
+func (m *OrganizationActivationState) SetAvailableDomainCount(value *int32) {
+	m.availableDomainCount = value
 }
-// SetBillingSubscriptionStatus sets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
-func (m *OrganizationActivationState) SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)() {
-    m.billingSubscriptionStatus = value
+
+// SetBillingSubscriptionStatus sets the billingSubscriptionStatus property value. Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
+func (m *OrganizationActivationState) SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus) {
+	m.billingSubscriptionStatus = value
 }
+
 // SetComplianceNotes sets the complianceNotes property value. Compliance notes for this organization activation state.
-func (m *OrganizationActivationState) SetComplianceNotes(value *string)() {
-    m.complianceNotes = value
+func (m *OrganizationActivationState) SetComplianceNotes(value *string) {
+	m.complianceNotes = value
 }
+
 // SetControlledLaunch sets the controlledLaunch property value. Whether controlled launch applies to this organization activation state.
-func (m *OrganizationActivationState) SetControlledLaunch(value *bool)() {
-    m.controlledLaunch = value
+func (m *OrganizationActivationState) SetControlledLaunch(value *bool) {
+	m.controlledLaunch = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this organization activation state.
-func (m *OrganizationActivationState) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *OrganizationActivationState) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetCustomerFacingStatus sets the customerFacingStatus property value. The current customer facing status for this organization activation state.
-func (m *OrganizationActivationState) SetCustomerFacingStatus(value *string)() {
-    m.customerFacingStatus = value
+func (m *OrganizationActivationState) SetCustomerFacingStatus(value *string) {
+	m.customerFacingStatus = value
 }
+
 // SetDomainApprovedAt sets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
-func (m *OrganizationActivationState) SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.domainApprovedAt = value
+func (m *OrganizationActivationState) SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.domainApprovedAt = value
 }
+
 // SetDomainOptions sets the domainOptions property value. The domain options included with this organization activation state.
-func (m *OrganizationActivationState) SetDomainOptions(value []ActivationDomainOptionable)() {
-    m.domainOptions = value
+func (m *OrganizationActivationState) SetDomainOptions(value []ActivationDomainOptionable) {
+	m.domainOptions = value
 }
+
 // SetDomainPurchasedAt sets the domainPurchasedAt property value. The date and time the selected domain was purchased.
-func (m *OrganizationActivationState) SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.domainPurchasedAt = value
+func (m *OrganizationActivationState) SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.domainPurchasedAt = value
 }
+
 // SetDomainSearchAttempt sets the domainSearchAttempt property value. The current domain generation attempt.
-func (m *OrganizationActivationState) SetDomainSearchAttempt(value *int32)() {
-    m.domainSearchAttempt = value
+func (m *OrganizationActivationState) SetDomainSearchAttempt(value *int32) {
+	m.domainSearchAttempt = value
 }
+
 // SetDomainSearchId sets the domainSearchId property value. Identifies the active domain search run.
-func (m *OrganizationActivationState) SetDomainSearchId(value *string)() {
-    m.domainSearchId = value
+func (m *OrganizationActivationState) SetDomainSearchId(value *string) {
+	m.domainSearchId = value
 }
+
 // SetDomainSearchStage sets the domainSearchStage property value. Defines the stages of a domain search.
-func (m *OrganizationActivationState) SetDomainSearchStage(value *OrganizationActivationState_domainSearchStage)() {
-    m.domainSearchStage = value
+func (m *OrganizationActivationState) SetDomainSearchStage(value *OrganizationActivationState_domainSearchStage) {
+	m.domainSearchStage = value
 }
+
 // SetDomainSearchUpdatedAt sets the domainSearchUpdatedAt property value. The last time domain search progress changed.
-func (m *OrganizationActivationState) SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.domainSearchUpdatedAt = value
+func (m *OrganizationActivationState) SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.domainSearchUpdatedAt = value
 }
+
 // SetEvents sets the events property value. The events included with this organization activation state.
-func (m *OrganizationActivationState) SetEvents(value []ActivationTimelineEventable)() {
-    m.events = value
+func (m *OrganizationActivationState) SetEvents(value []ActivationTimelineEventable) {
+	m.events = value
 }
+
 // SetFailedAt sets the failedAt property value. UTC timestamp for failed at on this organization activation state.
-func (m *OrganizationActivationState) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *OrganizationActivationState) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetIndustry sets the industry property value. Industry for this organization activation state.
-func (m *OrganizationActivationState) SetIndustry(value *string)() {
-    m.industry = value
+func (m *OrganizationActivationState) SetIndustry(value *string) {
+	m.industry = value
 }
+
 // SetLaunchApprovedAt sets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
-func (m *OrganizationActivationState) SetLaunchApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.launchApprovedAt = value
+func (m *OrganizationActivationState) SetLaunchApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.launchApprovedAt = value
 }
+
 // SetLaunchReviewRequestedAt sets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
-func (m *OrganizationActivationState) SetLaunchReviewRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.launchReviewRequestedAt = value
+func (m *OrganizationActivationState) SetLaunchReviewRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.launchReviewRequestedAt = value
 }
-// SetLaunchReviewStatus sets the launchReviewStatus property value. The current launch review status for this organization activation state.
-func (m *OrganizationActivationState) SetLaunchReviewStatus(value *ActivationLaunchReviewStatus)() {
-    m.launchReviewStatus = value
+
+// SetLaunchReviewStatus sets the launchReviewStatus property value. Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
+func (m *OrganizationActivationState) SetLaunchReviewStatus(value *ActivationLaunchReviewStatus) {
+	m.launchReviewStatus = value
 }
+
 // SetOffer sets the offer property value. Offer for this organization activation state.
-func (m *OrganizationActivationState) SetOffer(value *string)() {
-    m.offer = value
+func (m *OrganizationActivationState) SetOffer(value *string) {
+	m.offer = value
 }
-// SetOnboardingStatus sets the onboardingStatus property value. The current onboarding status for this organization activation state.
-func (m *OrganizationActivationState) SetOnboardingStatus(value *ActivationOnboardingStatus)() {
-    m.onboardingStatus = value
+
+// SetOnboardingStatus sets the onboardingStatus property value. Describes completion and blocking state for an organization's core Leadping onboarding requirements.
+func (m *OrganizationActivationState) SetOnboardingStatus(value *ActivationOnboardingStatus) {
+	m.onboardingStatus = value
 }
+
 // SetOrganizationDescription sets the organizationDescription property value. Organization description for this organization activation state.
-func (m *OrganizationActivationState) SetOrganizationDescription(value *string)() {
-    m.organizationDescription = value
+func (m *OrganizationActivationState) SetOrganizationDescription(value *string) {
+	m.organizationDescription = value
 }
+
 // SetPaymentMethodConfirmedAt sets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
-func (m *OrganizationActivationState) SetPaymentMethodConfirmedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.paymentMethodConfirmedAt = value
+func (m *OrganizationActivationState) SetPaymentMethodConfirmedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.paymentMethodConfirmedAt = value
 }
-// SetPaymentStatus sets the paymentStatus property value. The current payment status for this organization activation state.
-func (m *OrganizationActivationState) SetPaymentStatus(value *ActivationPaymentStatus)() {
-    m.paymentStatus = value
+
+// SetPaymentStatus sets the paymentStatus property value. Describes whether valid funding and payment prerequisites are satisfied during organization activation.
+func (m *OrganizationActivationState) SetPaymentStatus(value *ActivationPaymentStatus) {
+	m.paymentStatus = value
 }
+
 // SetSelectedDomain sets the selectedDomain property value. Selected domain for this organization activation state.
-func (m *OrganizationActivationState) SetSelectedDomain(value *string)() {
-    m.selectedDomain = value
+func (m *OrganizationActivationState) SetSelectedDomain(value *string) {
+	m.selectedDomain = value
 }
+
 // SetServiceArea sets the serviceArea property value. Service area for this organization activation state.
-func (m *OrganizationActivationState) SetServiceArea(value *string)() {
-    m.serviceArea = value
+func (m *OrganizationActivationState) SetServiceArea(value *string) {
+	m.serviceArea = value
 }
-// SetStatus sets the status property value. The current status for this organization activation state.
-func (m *OrganizationActivationState) SetStatus(value *CustomerActivationStatus)() {
-    m.status = value
+
+// SetStatus sets the status property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
+func (m *OrganizationActivationState) SetStatus(value *CustomerActivationStatus) {
+	m.status = value
 }
+
 // SetSubscriptionActiveAt sets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
-func (m *OrganizationActivationState) SetSubscriptionActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.subscriptionActiveAt = value
+func (m *OrganizationActivationState) SetSubscriptionActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.subscriptionActiveAt = value
 }
+
 // SetSubscriptionPendingAt sets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
-func (m *OrganizationActivationState) SetSubscriptionPendingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.subscriptionPendingAt = value
+func (m *OrganizationActivationState) SetSubscriptionPendingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.subscriptionPendingAt = value
 }
+
 // SetTargetAudience sets the targetAudience property value. Target audience for this organization activation state.
-func (m *OrganizationActivationState) SetTargetAudience(value *string)() {
-    m.targetAudience = value
+func (m *OrganizationActivationState) SetTargetAudience(value *string) {
+	m.targetAudience = value
 }
+
 // SetTelephonyPartiallyProvisionedAt sets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
-func (m *OrganizationActivationState) SetTelephonyPartiallyProvisionedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.telephonyPartiallyProvisionedAt = value
+func (m *OrganizationActivationState) SetTelephonyPartiallyProvisionedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.telephonyPartiallyProvisionedAt = value
 }
+
 // SetTelephonyProvisioningStartedAt sets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
-func (m *OrganizationActivationState) SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.telephonyProvisioningStartedAt = value
+func (m *OrganizationActivationState) SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.telephonyProvisioningStartedAt = value
 }
+
 // SetTelephonyReadyAt sets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
-func (m *OrganizationActivationState) SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.telephonyReadyAt = value
+func (m *OrganizationActivationState) SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.telephonyReadyAt = value
 }
-// SetTelephonyStatus sets the telephonyStatus property value. The current telephony status for this organization activation state.
-func (m *OrganizationActivationState) SetTelephonyStatus(value *ActivationTelephonyStatus)() {
-    m.telephonyStatus = value
+
+// SetTelephonyStatus sets the telephonyStatus property value. Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
+func (m *OrganizationActivationState) SetTelephonyStatus(value *ActivationTelephonyStatus) {
+	m.telephonyStatus = value
 }
+
 // SetTenDlcApplicationId sets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this organization.
-func (m *OrganizationActivationState) SetTenDlcApplicationId(value *string)() {
-    m.tenDlcApplicationId = value
+func (m *OrganizationActivationState) SetTenDlcApplicationId(value *string) {
+	m.tenDlcApplicationId = value
 }
-// SetTenDlcDraft sets the tenDlcDraft property value. 10DLC draft for this organization activation state.
-func (m *OrganizationActivationState) SetTenDlcDraft(value OrganizationActivationState_tenDlcDraftable)() {
-    m.tenDlcDraft = value
+
+// SetTenDlcDraft sets the tenDlcDraft property value. Describes 10DLC application draft data used in Leadping API requests and responses.
+func (m *OrganizationActivationState) SetTenDlcDraft(value OrganizationActivationState_tenDlcDraftable) {
+	m.tenDlcDraft = value
 }
-// SetTenDlcStatus sets the tenDlcStatus property value. The current 10DLC status for this organization activation state.
-func (m *OrganizationActivationState) SetTenDlcStatus(value *TenDlcApplicationStatus)() {
-    m.tenDlcStatus = value
+
+// SetTenDlcStatus sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
+func (m *OrganizationActivationState) SetTenDlcStatus(value *TenDlcApplicationStatus) {
+	m.tenDlcStatus = value
 }
+
 // SetUpdatedAt sets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
-func (m *OrganizationActivationState) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.updatedAt = value
+func (m *OrganizationActivationState) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.updatedAt = value
 }
+
 // SetWebsiteGenerationResult sets the websiteGenerationResult property value. The latest persisted website generation progress message.
-func (m *OrganizationActivationState) SetWebsiteGenerationResult(value *string)() {
-    m.websiteGenerationResult = value
+func (m *OrganizationActivationState) SetWebsiteGenerationResult(value *string) {
+	m.websiteGenerationResult = value
 }
+
 // SetWebsiteNeeds sets the websiteNeeds property value. Website needs for this organization activation state.
-func (m *OrganizationActivationState) SetWebsiteNeeds(value *string)() {
-    m.websiteNeeds = value
+func (m *OrganizationActivationState) SetWebsiteNeeds(value *string) {
+	m.websiteNeeds = value
 }
-// SetWebsiteStatus sets the websiteStatus property value. The current website status for this organization activation state.
-func (m *OrganizationActivationState) SetWebsiteStatus(value *WebsiteLifecycleStatus)() {
-    m.websiteStatus = value
+
+// SetWebsiteStatus sets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
+func (m *OrganizationActivationState) SetWebsiteStatus(value *WebsiteLifecycleStatus) {
+	m.websiteStatus = value
 }
+
 // SetWebsiteUrl sets the websiteUrl property value. The URL associated with this organization activation state.
-func (m *OrganizationActivationState) SetWebsiteUrl(value *string)() {
-    m.websiteUrl = value
+func (m *OrganizationActivationState) SetWebsiteUrl(value *string) {
+	m.websiteUrl = value
 }
+
 type OrganizationActivationStateable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActivatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetAvailableDomainCount()(*int32)
-    GetBillingSubscriptionStatus()(*ActivationSubscriptionStatus)
-    GetComplianceNotes()(*string)
-    GetControlledLaunch()(*bool)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCustomerFacingStatus()(*string)
-    GetDomainApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDomainOptions()([]ActivationDomainOptionable)
-    GetDomainPurchasedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDomainSearchAttempt()(*int32)
-    GetDomainSearchId()(*string)
-    GetDomainSearchStage()(*OrganizationActivationState_domainSearchStage)
-    GetDomainSearchUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetEvents()([]ActivationTimelineEventable)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetIndustry()(*string)
-    GetLaunchApprovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLaunchReviewRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLaunchReviewStatus()(*ActivationLaunchReviewStatus)
-    GetOffer()(*string)
-    GetOnboardingStatus()(*ActivationOnboardingStatus)
-    GetOrganizationDescription()(*string)
-    GetPaymentMethodConfirmedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPaymentStatus()(*ActivationPaymentStatus)
-    GetSelectedDomain()(*string)
-    GetServiceArea()(*string)
-    GetStatus()(*CustomerActivationStatus)
-    GetSubscriptionActiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSubscriptionPendingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTargetAudience()(*string)
-    GetTelephonyPartiallyProvisionedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTelephonyProvisioningStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTelephonyReadyAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTelephonyStatus()(*ActivationTelephonyStatus)
-    GetTenDlcApplicationId()(*string)
-    GetTenDlcDraft()(OrganizationActivationState_tenDlcDraftable)
-    GetTenDlcStatus()(*TenDlcApplicationStatus)
-    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetWebsiteGenerationResult()(*string)
-    GetWebsiteNeeds()(*string)
-    GetWebsiteStatus()(*WebsiteLifecycleStatus)
-    GetWebsiteUrl()(*string)
-    SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetAvailableDomainCount(value *int32)()
-    SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)()
-    SetComplianceNotes(value *string)()
-    SetControlledLaunch(value *bool)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCustomerFacingStatus(value *string)()
-    SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDomainOptions(value []ActivationDomainOptionable)()
-    SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDomainSearchAttempt(value *int32)()
-    SetDomainSearchId(value *string)()
-    SetDomainSearchStage(value *OrganizationActivationState_domainSearchStage)()
-    SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetEvents(value []ActivationTimelineEventable)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetIndustry(value *string)()
-    SetLaunchApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLaunchReviewRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLaunchReviewStatus(value *ActivationLaunchReviewStatus)()
-    SetOffer(value *string)()
-    SetOnboardingStatus(value *ActivationOnboardingStatus)()
-    SetOrganizationDescription(value *string)()
-    SetPaymentMethodConfirmedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPaymentStatus(value *ActivationPaymentStatus)()
-    SetSelectedDomain(value *string)()
-    SetServiceArea(value *string)()
-    SetStatus(value *CustomerActivationStatus)()
-    SetSubscriptionActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSubscriptionPendingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTargetAudience(value *string)()
-    SetTelephonyPartiallyProvisionedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTelephonyStatus(value *ActivationTelephonyStatus)()
-    SetTenDlcApplicationId(value *string)()
-    SetTenDlcDraft(value OrganizationActivationState_tenDlcDraftable)()
-    SetTenDlcStatus(value *TenDlcApplicationStatus)()
-    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetWebsiteGenerationResult(value *string)()
-    SetWebsiteNeeds(value *string)()
-    SetWebsiteStatus(value *WebsiteLifecycleStatus)()
-    SetWebsiteUrl(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActivatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetAvailableDomainCount() *int32
+	GetBillingSubscriptionStatus() *ActivationSubscriptionStatus
+	GetComplianceNotes() *string
+	GetControlledLaunch() *bool
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCustomerFacingStatus() *string
+	GetDomainApprovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDomainOptions() []ActivationDomainOptionable
+	GetDomainPurchasedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDomainSearchAttempt() *int32
+	GetDomainSearchId() *string
+	GetDomainSearchStage() *OrganizationActivationState_domainSearchStage
+	GetDomainSearchUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetEvents() []ActivationTimelineEventable
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetIndustry() *string
+	GetLaunchApprovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLaunchReviewRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLaunchReviewStatus() *ActivationLaunchReviewStatus
+	GetOffer() *string
+	GetOnboardingStatus() *ActivationOnboardingStatus
+	GetOrganizationDescription() *string
+	GetPaymentMethodConfirmedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPaymentStatus() *ActivationPaymentStatus
+	GetSelectedDomain() *string
+	GetServiceArea() *string
+	GetStatus() *CustomerActivationStatus
+	GetSubscriptionActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSubscriptionPendingAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTargetAudience() *string
+	GetTelephonyPartiallyProvisionedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTelephonyProvisioningStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTelephonyReadyAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTelephonyStatus() *ActivationTelephonyStatus
+	GetTenDlcApplicationId() *string
+	GetTenDlcDraft() OrganizationActivationState_tenDlcDraftable
+	GetTenDlcStatus() *TenDlcApplicationStatus
+	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetWebsiteGenerationResult() *string
+	GetWebsiteNeeds() *string
+	GetWebsiteStatus() *WebsiteLifecycleStatus
+	GetWebsiteUrl() *string
+	SetActivatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetAvailableDomainCount(value *int32)
+	SetBillingSubscriptionStatus(value *ActivationSubscriptionStatus)
+	SetComplianceNotes(value *string)
+	SetControlledLaunch(value *bool)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCustomerFacingStatus(value *string)
+	SetDomainApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDomainOptions(value []ActivationDomainOptionable)
+	SetDomainPurchasedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDomainSearchAttempt(value *int32)
+	SetDomainSearchId(value *string)
+	SetDomainSearchStage(value *OrganizationActivationState_domainSearchStage)
+	SetDomainSearchUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetEvents(value []ActivationTimelineEventable)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetIndustry(value *string)
+	SetLaunchApprovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLaunchReviewRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLaunchReviewStatus(value *ActivationLaunchReviewStatus)
+	SetOffer(value *string)
+	SetOnboardingStatus(value *ActivationOnboardingStatus)
+	SetOrganizationDescription(value *string)
+	SetPaymentMethodConfirmedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPaymentStatus(value *ActivationPaymentStatus)
+	SetSelectedDomain(value *string)
+	SetServiceArea(value *string)
+	SetStatus(value *CustomerActivationStatus)
+	SetSubscriptionActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSubscriptionPendingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTargetAudience(value *string)
+	SetTelephonyPartiallyProvisionedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTelephonyProvisioningStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTelephonyReadyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTelephonyStatus(value *ActivationTelephonyStatus)
+	SetTenDlcApplicationId(value *string)
+	SetTenDlcDraft(value OrganizationActivationState_tenDlcDraftable)
+	SetTenDlcStatus(value *TenDlcApplicationStatus)
+	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetWebsiteGenerationResult(value *string)
+	SetWebsiteNeeds(value *string)
+	SetWebsiteStatus(value *WebsiteLifecycleStatus)
+	SetWebsiteUrl(value *string)
 }

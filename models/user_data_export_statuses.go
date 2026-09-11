@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
 type UserDataExportStatuses int
 
 const (
-    PENDING_USERDATAEXPORTSTATUSES UserDataExportStatuses = iota
-    PROCESSING_USERDATAEXPORTSTATUSES
-    COMPLETED_USERDATAEXPORTSTATUSES
-    FAILED_USERDATAEXPORTSTATUSES
-    EXPIRED_USERDATAEXPORTSTATUSES
+	PENDING_USERDATAEXPORTSTATUSES UserDataExportStatuses = iota
+	PROCESSING_USERDATAEXPORTSTATUSES
+	COMPLETED_USERDATAEXPORTSTATUSES
+	FAILED_USERDATAEXPORTSTATUSES
+	EXPIRED_USERDATAEXPORTSTATUSES
 )
 
 func (i UserDataExportStatuses) String() string {
-    return []string{"Pending", "Processing", "Completed", "Failed", "Expired"}[i]
+	return []string{"Pending", "Processing", "Completed", "Failed", "Expired"}[i]
 }
+
 func ParseUserDataExportStatuses(v string) (any, error) {
-    result := PENDING_USERDATAEXPORTSTATUSES
-    switch v {
-        case "Pending":
-            result = PENDING_USERDATAEXPORTSTATUSES
-        case "Processing":
-            result = PROCESSING_USERDATAEXPORTSTATUSES
-        case "Completed":
-            result = COMPLETED_USERDATAEXPORTSTATUSES
-        case "Failed":
-            result = FAILED_USERDATAEXPORTSTATUSES
-        case "Expired":
-            result = EXPIRED_USERDATAEXPORTSTATUSES
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := PENDING_USERDATAEXPORTSTATUSES
+	switch v {
+	case "Pending":
+		result = PENDING_USERDATAEXPORTSTATUSES
+	case "Processing":
+		result = PROCESSING_USERDATAEXPORTSTATUSES
+	case "Completed":
+		result = COMPLETED_USERDATAEXPORTSTATUSES
+	case "Failed":
+		result = FAILED_USERDATAEXPORTSTATUSES
+	case "Expired":
+		result = EXPIRED_USERDATAEXPORTSTATUSES
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeUserDataExportStatuses(values []UserDataExportStatuses) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i UserDataExportStatuses) isMultiValue() bool {
-    return false
+	return false
 }

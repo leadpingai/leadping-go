@@ -2,48 +2,52 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Controlled lead status change categories used for reporting, automation, and analytics.
 type LeadStatusChangeExportRow_category int
 
 const (
-    OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY LeadStatusChangeExportRow_category = iota
-    QUALIFIED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-    CONVERTED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-    LOST_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-    INVALID_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-    DUPLICATE_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY LeadStatusChangeExportRow_category = iota
+	QUALIFIED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	CONVERTED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	LOST_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	INVALID_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	DUPLICATE_LEADSTATUSCHANGEEXPORTROW_CATEGORY
 )
 
 func (i LeadStatusChangeExportRow_category) String() string {
-    return []string{"Open", "Qualified", "Converted", "Lost", "Invalid", "Duplicate"}[i]
+	return []string{"Open", "Qualified", "Converted", "Lost", "Invalid", "Duplicate"}[i]
 }
+
 func ParseLeadStatusChangeExportRow_category(v string) (any, error) {
-    result := OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-    switch v {
-        case "Open":
-            result = OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        case "Qualified":
-            result = QUALIFIED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        case "Converted":
-            result = CONVERTED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        case "Lost":
-            result = LOST_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        case "Invalid":
-            result = INVALID_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        case "Duplicate":
-            result = DUPLICATE_LEADSTATUSCHANGEEXPORTROW_CATEGORY
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	switch v {
+	case "Open":
+		result = OPEN_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	case "Qualified":
+		result = QUALIFIED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	case "Converted":
+		result = CONVERTED_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	case "Lost":
+		result = LOST_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	case "Invalid":
+		result = INVALID_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	case "Duplicate":
+		result = DUPLICATE_LEADSTATUSCHANGEEXPORTROW_CATEGORY
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeLeadStatusChangeExportRow_category(values []LeadStatusChangeExportRow_category) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i LeadStatusChangeExportRow_category) isMultiValue() bool {
-    return false
+	return false
 }

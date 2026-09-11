@@ -4,401 +4,431 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // CustomerCommunicationUsagePoint measures organization messaging and calling activity within one analytics time bucket.
 type CustomerCommunicationUsagePoint struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Number of calls that failed or were blocked in this time bucket.
-    callErrors *int32
-    // Total connected call duration, in minutes, during the reporting period.
-    callMinutes *float64
-    // Number of calls represented by this Leadping customer communication usage point.
-    calls *int32
-    // Number of outbound calls placed in this time bucket.
-    callsPlaced *int32
-    // Number of inbound calls received in this time bucket.
-    callsReceived *int32
-    // Date and time when this Leadping customer communication usage point was end.
-    endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable label for this Leadping customer communication usage point.
-    label *string
-    // Number of SMS messages that failed or were blocked in this time bucket.
-    smsErrors *int32
-    // Number of SMS messages received during the reporting period.
-    smsReceived *int32
-    // Number of SMS messages sent during the reporting period.
-    smsSent *int32
-    // Spend represented by this Leadping customer communication usage point.
-    spend *float64
-    // Date and time when this Leadping customer communication usage point was start.
-    startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Number of calls that failed or were blocked in this time bucket.
+	callErrors *int32
+	// Total connected call duration, in minutes, during the reporting period.
+	callMinutes *float64
+	// Number of calls represented by this Leadping customer communication usage point.
+	calls *int32
+	// Number of outbound calls placed in this time bucket.
+	callsPlaced *int32
+	// Number of inbound calls received in this time bucket.
+	callsReceived *int32
+	// Date and time when this Leadping customer communication usage point was end.
+	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable label for this Leadping customer communication usage point.
+	label *string
+	// Number of SMS messages that failed or were blocked in this time bucket.
+	smsErrors *int32
+	// Number of SMS messages received during the reporting period.
+	smsReceived *int32
+	// Number of SMS messages sent during the reporting period.
+	smsSent *int32
+	// Spend represented by this Leadping customer communication usage point.
+	spend *float64
+	// Date and time when this Leadping customer communication usage point was start.
+	startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewCustomerCommunicationUsagePoint instantiates a new CustomerCommunicationUsagePoint and sets the default values.
-func NewCustomerCommunicationUsagePoint()(*CustomerCommunicationUsagePoint) {
-    m := &CustomerCommunicationUsagePoint{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerCommunicationUsagePoint() *CustomerCommunicationUsagePoint {
+	m := &CustomerCommunicationUsagePoint{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerCommunicationUsagePointFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerCommunicationUsagePointFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerCommunicationUsagePoint(), nil
+func CreateCustomerCommunicationUsagePointFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerCommunicationUsagePoint(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerCommunicationUsagePoint) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerCommunicationUsagePoint) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCallErrors gets the callErrors property value. Number of calls that failed or were blocked in this time bucket.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetCallErrors()(*int32) {
-    return m.callErrors
+func (m *CustomerCommunicationUsagePoint) GetCallErrors() *int32 {
+	return m.callErrors
 }
+
 // GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
 // returns a *float64 when successful
-func (m *CustomerCommunicationUsagePoint) GetCallMinutes()(*float64) {
-    return m.callMinutes
+func (m *CustomerCommunicationUsagePoint) GetCallMinutes() *float64 {
+	return m.callMinutes
 }
+
 // GetCalls gets the calls property value. Number of calls represented by this Leadping customer communication usage point.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetCalls()(*int32) {
-    return m.calls
+func (m *CustomerCommunicationUsagePoint) GetCalls() *int32 {
+	return m.calls
 }
+
 // GetCallsPlaced gets the callsPlaced property value. Number of outbound calls placed in this time bucket.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetCallsPlaced()(*int32) {
-    return m.callsPlaced
+func (m *CustomerCommunicationUsagePoint) GetCallsPlaced() *int32 {
+	return m.callsPlaced
 }
+
 // GetCallsReceived gets the callsReceived property value. Number of inbound calls received in this time bucket.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetCallsReceived()(*int32) {
-    return m.callsReceived
+func (m *CustomerCommunicationUsagePoint) GetCallsReceived() *int32 {
+	return m.callsReceived
 }
+
 // GetEndAt gets the endAt property value. Date and time when this Leadping customer communication usage point was end.
 // returns a *Time when successful
-func (m *CustomerCommunicationUsagePoint) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.endAt
+func (m *CustomerCommunicationUsagePoint) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallErrors(val)
-        }
-        return nil
-    }
-    res["callMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallMinutes(val)
-        }
-        return nil
-    }
-    res["calls"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCalls(val)
-        }
-        return nil
-    }
-    res["callsPlaced"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallsPlaced(val)
-        }
-        return nil
-    }
-    res["callsReceived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallsReceived(val)
-        }
-        return nil
-    }
-    res["endAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEndAt(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["smsErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsErrors(val)
-        }
-        return nil
-    }
-    res["smsReceived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsReceived(val)
-        }
-        return nil
-    }
-    res["smsSent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsSent(val)
-        }
-        return nil
-    }
-    res["spend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSpend(val)
-        }
-        return nil
-    }
-    res["startAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callErrors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallErrors(val)
+		}
+		return nil
+	}
+	res["callMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallMinutes(val)
+		}
+		return nil
+	}
+	res["calls"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCalls(val)
+		}
+		return nil
+	}
+	res["callsPlaced"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallsPlaced(val)
+		}
+		return nil
+	}
+	res["callsReceived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallsReceived(val)
+		}
+		return nil
+	}
+	res["endAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndAt(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["smsErrors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsErrors(val)
+		}
+		return nil
+	}
+	res["smsReceived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsReceived(val)
+		}
+		return nil
+	}
+	res["smsSent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsSent(val)
+		}
+		return nil
+	}
+	res["spend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSpend(val)
+		}
+		return nil
+	}
+	res["startAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLabel gets the label property value. Human-readable label for this Leadping customer communication usage point.
 // returns a *string when successful
-func (m *CustomerCommunicationUsagePoint) GetLabel()(*string) {
-    return m.label
+func (m *CustomerCommunicationUsagePoint) GetLabel() *string {
+	return m.label
 }
+
 // GetSmsErrors gets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetSmsErrors()(*int32) {
-    return m.smsErrors
+func (m *CustomerCommunicationUsagePoint) GetSmsErrors() *int32 {
+	return m.smsErrors
 }
+
 // GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetSmsReceived()(*int32) {
-    return m.smsReceived
+func (m *CustomerCommunicationUsagePoint) GetSmsReceived() *int32 {
+	return m.smsReceived
 }
+
 // GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
 // returns a *int32 when successful
-func (m *CustomerCommunicationUsagePoint) GetSmsSent()(*int32) {
-    return m.smsSent
+func (m *CustomerCommunicationUsagePoint) GetSmsSent() *int32 {
+	return m.smsSent
 }
+
 // GetSpend gets the spend property value. Spend represented by this Leadping customer communication usage point.
 // returns a *float64 when successful
-func (m *CustomerCommunicationUsagePoint) GetSpend()(*float64) {
-    return m.spend
+func (m *CustomerCommunicationUsagePoint) GetSpend() *float64 {
+	return m.spend
 }
+
 // GetStartAt gets the startAt property value. Date and time when this Leadping customer communication usage point was start.
 // returns a *Time when successful
-func (m *CustomerCommunicationUsagePoint) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startAt
+func (m *CustomerCommunicationUsagePoint) GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startAt
 }
+
 // Serialize serializes information the current object
-func (m *CustomerCommunicationUsagePoint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteInt32Value("callErrors", m.GetCallErrors())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("callMinutes", m.GetCallMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("calls", m.GetCalls())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callsPlaced", m.GetCallsPlaced())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callsReceived", m.GetCallsReceived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("endAt", m.GetEndAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsErrors", m.GetSmsErrors())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsReceived", m.GetSmsReceived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsSent", m.GetSmsSent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("spend", m.GetSpend())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startAt", m.GetStartAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerCommunicationUsagePoint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("callErrors", m.GetCallErrors())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("callMinutes", m.GetCallMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("calls", m.GetCalls())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callsPlaced", m.GetCallsPlaced())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callsReceived", m.GetCallsReceived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("endAt", m.GetEndAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsErrors", m.GetSmsErrors())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsReceived", m.GetSmsReceived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsSent", m.GetSmsSent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("spend", m.GetSpend())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startAt", m.GetStartAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerCommunicationUsagePoint) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerCommunicationUsagePoint) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCallErrors sets the callErrors property value. Number of calls that failed or were blocked in this time bucket.
-func (m *CustomerCommunicationUsagePoint) SetCallErrors(value *int32)() {
-    m.callErrors = value
+func (m *CustomerCommunicationUsagePoint) SetCallErrors(value *int32) {
+	m.callErrors = value
 }
+
 // SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
-func (m *CustomerCommunicationUsagePoint) SetCallMinutes(value *float64)() {
-    m.callMinutes = value
+func (m *CustomerCommunicationUsagePoint) SetCallMinutes(value *float64) {
+	m.callMinutes = value
 }
+
 // SetCalls sets the calls property value. Number of calls represented by this Leadping customer communication usage point.
-func (m *CustomerCommunicationUsagePoint) SetCalls(value *int32)() {
-    m.calls = value
+func (m *CustomerCommunicationUsagePoint) SetCalls(value *int32) {
+	m.calls = value
 }
+
 // SetCallsPlaced sets the callsPlaced property value. Number of outbound calls placed in this time bucket.
-func (m *CustomerCommunicationUsagePoint) SetCallsPlaced(value *int32)() {
-    m.callsPlaced = value
+func (m *CustomerCommunicationUsagePoint) SetCallsPlaced(value *int32) {
+	m.callsPlaced = value
 }
+
 // SetCallsReceived sets the callsReceived property value. Number of inbound calls received in this time bucket.
-func (m *CustomerCommunicationUsagePoint) SetCallsReceived(value *int32)() {
-    m.callsReceived = value
+func (m *CustomerCommunicationUsagePoint) SetCallsReceived(value *int32) {
+	m.callsReceived = value
 }
+
 // SetEndAt sets the endAt property value. Date and time when this Leadping customer communication usage point was end.
-func (m *CustomerCommunicationUsagePoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.endAt = value
+func (m *CustomerCommunicationUsagePoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endAt = value
 }
+
 // SetLabel sets the label property value. Human-readable label for this Leadping customer communication usage point.
-func (m *CustomerCommunicationUsagePoint) SetLabel(value *string)() {
-    m.label = value
+func (m *CustomerCommunicationUsagePoint) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetSmsErrors sets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
-func (m *CustomerCommunicationUsagePoint) SetSmsErrors(value *int32)() {
-    m.smsErrors = value
+func (m *CustomerCommunicationUsagePoint) SetSmsErrors(value *int32) {
+	m.smsErrors = value
 }
+
 // SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
-func (m *CustomerCommunicationUsagePoint) SetSmsReceived(value *int32)() {
-    m.smsReceived = value
+func (m *CustomerCommunicationUsagePoint) SetSmsReceived(value *int32) {
+	m.smsReceived = value
 }
+
 // SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
-func (m *CustomerCommunicationUsagePoint) SetSmsSent(value *int32)() {
-    m.smsSent = value
+func (m *CustomerCommunicationUsagePoint) SetSmsSent(value *int32) {
+	m.smsSent = value
 }
+
 // SetSpend sets the spend property value. Spend represented by this Leadping customer communication usage point.
-func (m *CustomerCommunicationUsagePoint) SetSpend(value *float64)() {
-    m.spend = value
+func (m *CustomerCommunicationUsagePoint) SetSpend(value *float64) {
+	m.spend = value
 }
+
 // SetStartAt sets the startAt property value. Date and time when this Leadping customer communication usage point was start.
-func (m *CustomerCommunicationUsagePoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startAt = value
+func (m *CustomerCommunicationUsagePoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startAt = value
 }
+
 type CustomerCommunicationUsagePointable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallErrors()(*int32)
-    GetCallMinutes()(*float64)
-    GetCalls()(*int32)
-    GetCallsPlaced()(*int32)
-    GetCallsReceived()(*int32)
-    GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLabel()(*string)
-    GetSmsErrors()(*int32)
-    GetSmsReceived()(*int32)
-    GetSmsSent()(*int32)
-    GetSpend()(*float64)
-    GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetCallErrors(value *int32)()
-    SetCallMinutes(value *float64)()
-    SetCalls(value *int32)()
-    SetCallsPlaced(value *int32)()
-    SetCallsReceived(value *int32)()
-    SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLabel(value *string)()
-    SetSmsErrors(value *int32)()
-    SetSmsReceived(value *int32)()
-    SetSmsSent(value *int32)()
-    SetSpend(value *float64)()
-    SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallErrors() *int32
+	GetCallMinutes() *float64
+	GetCalls() *int32
+	GetCallsPlaced() *int32
+	GetCallsReceived() *int32
+	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLabel() *string
+	GetSmsErrors() *int32
+	GetSmsReceived() *int32
+	GetSmsSent() *int32
+	GetSpend() *float64
+	GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetCallErrors(value *int32)
+	SetCallMinutes(value *float64)
+	SetCalls(value *int32)
+	SetCallsPlaced(value *int32)
+	SetCallsReceived(value *int32)
+	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLabel(value *string)
+	SetSmsErrors(value *int32)
+	SetSmsReceived(value *int32)
+	SetSmsSent(value *int32)
+	SetSpend(value *float64)
+	SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

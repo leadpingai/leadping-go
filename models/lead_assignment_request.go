@@ -4,81 +4,89 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // LeadAssignmentRequest assigns an organization lead to an active organization member. A null user ID returns the lead to the unassigned queue.
 type LeadAssignmentRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Gets or sets the assigned to user ID.
-    assignedToUserId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The assignedToUserId property
+	assignedToUserId *string
 }
+
 // NewLeadAssignmentRequest instantiates a new LeadAssignmentRequest and sets the default values.
-func NewLeadAssignmentRequest()(*LeadAssignmentRequest) {
-    m := &LeadAssignmentRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadAssignmentRequest() *LeadAssignmentRequest {
+	m := &LeadAssignmentRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadAssignmentRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadAssignmentRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadAssignmentRequest(), nil
+func CreateLeadAssignmentRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadAssignmentRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadAssignmentRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadAssignmentRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetAssignedToUserId gets the assignedToUserId property value. Gets or sets the assigned to user ID.
+
+// GetAssignedToUserId gets the assignedToUserId property value. The assignedToUserId property
 // returns a *string when successful
-func (m *LeadAssignmentRequest) GetAssignedToUserId()(*string) {
-    return m.assignedToUserId
+func (m *LeadAssignmentRequest) GetAssignedToUserId() *string {
+	return m.assignedToUserId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadAssignmentRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["assignedToUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAssignedToUserId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadAssignmentRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["assignedToUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAssignedToUserId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *LeadAssignmentRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadAssignmentRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadAssignmentRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadAssignmentRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetAssignedToUserId sets the assignedToUserId property value. Gets or sets the assigned to user ID.
-func (m *LeadAssignmentRequest) SetAssignedToUserId(value *string)() {
-    m.assignedToUserId = value
+
+// SetAssignedToUserId sets the assignedToUserId property value. The assignedToUserId property
+func (m *LeadAssignmentRequest) SetAssignedToUserId(value *string) {
+	m.assignedToUserId = value
 }
+
 type LeadAssignmentRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAssignedToUserId()(*string)
-    SetAssignedToUserId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAssignedToUserId() *string
+	SetAssignedToUserId(value *string)
 }

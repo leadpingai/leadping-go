@@ -4,501 +4,537 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // UserDataExportResponse describes the lifecycle, scope, progress, retention, and downloadable artifacts of a Leadping user-data export request.
 type UserDataExportResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Date and time when the user data export completed.
-    completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Media type of the generated file or response content.
-    contentType *string
-    // Total number of download records represented by this Leadping user data export.
-    downloadCount *int32
-    // Temporary URL for downloading the completed Leadping data export.
-    downloadUrl *string
-    // Date and time when the user data export expires.
-    expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Date and time when the user data export failed.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable file name associated with this Leadping user data export.
-    fileName *string
-    // Collection of files included with this Leadping user data export.
-    files []UserDataExportFileable
-    // Unique Leadping identifier for the user data export.
-    id *string
-    // Total number of max download records represented by this Leadping user data export.
-    maxDownloadCount *int32
-    // Human-readable message for this Leadping user data export.
-    message *string
-    // Date and time when the user data export was requested.
-    requestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Size of the generated export archive in bytes, when the export is ready.
-    sizeBytes *int64
-    // Date and time when the user data export started.
-    startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current status for this Leadping user data export.
-    status *UserDataExportStatuses
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Date and time when the user data export completed.
+	completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Media type of the generated file or response content.
+	contentType *string
+	// Total number of download records represented by this Leadping user data export.
+	downloadCount *int32
+	// Temporary URL for downloading the completed Leadping data export.
+	downloadUrl *string
+	// Date and time when the user data export expires.
+	expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Date and time when the user data export failed.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable file name associated with this Leadping user data export.
+	fileName *string
+	// Collection of files included with this Leadping user data export.
+	files []UserDataExportFileable
+	// Unique Leadping identifier for the user data export.
+	id *string
+	// Total number of max download records represented by this Leadping user data export.
+	maxDownloadCount *int32
+	// Human-readable message for this Leadping user data export.
+	message *string
+	// Date and time when the user data export was requested.
+	requestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Size of the generated export archive in bytes, when the export is ready.
+	sizeBytes *int64
+	// Date and time when the user data export started.
+	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
+	status *UserDataExportStatuses
 }
+
 // NewUserDataExportResponse instantiates a new UserDataExportResponse and sets the default values.
-func NewUserDataExportResponse()(*UserDataExportResponse) {
-    m := &UserDataExportResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserDataExportResponse() *UserDataExportResponse {
+	m := &UserDataExportResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserDataExportResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserDataExportResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserDataExportResponse(), nil
+func CreateUserDataExportResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserDataExportResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserDataExportResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserDataExportResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCompletedAt gets the completedAt property value. Date and time when the user data export completed.
 // returns a *Time when successful
-func (m *UserDataExportResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.completedAt
+func (m *UserDataExportResponse) GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.completedAt
 }
+
 // GetContentType gets the contentType property value. Media type of the generated file or response content.
 // returns a *string when successful
-func (m *UserDataExportResponse) GetContentType()(*string) {
-    return m.contentType
+func (m *UserDataExportResponse) GetContentType() *string {
+	return m.contentType
 }
+
 // GetDownloadCount gets the downloadCount property value. Total number of download records represented by this Leadping user data export.
 // returns a *int32 when successful
-func (m *UserDataExportResponse) GetDownloadCount()(*int32) {
-    return m.downloadCount
+func (m *UserDataExportResponse) GetDownloadCount() *int32 {
+	return m.downloadCount
 }
+
 // GetDownloadUrl gets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
 // returns a *string when successful
-func (m *UserDataExportResponse) GetDownloadUrl()(*string) {
-    return m.downloadUrl
+func (m *UserDataExportResponse) GetDownloadUrl() *string {
+	return m.downloadUrl
 }
+
 // GetExpiresAt gets the expiresAt property value. Date and time when the user data export expires.
 // returns a *Time when successful
-func (m *UserDataExportResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.expiresAt
+func (m *UserDataExportResponse) GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.expiresAt
 }
+
 // GetFailedAt gets the failedAt property value. Date and time when the user data export failed.
 // returns a *Time when successful
-func (m *UserDataExportResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *UserDataExportResponse) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserDataExportResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["completedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompletedAt(val)
-        }
-        return nil
-    }
-    res["contentType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContentType(val)
-        }
-        return nil
-    }
-    res["downloadCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDownloadCount(val)
-        }
-        return nil
-    }
-    res["downloadUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDownloadUrl(val)
-        }
-        return nil
-    }
-    res["expiresAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExpiresAt(val)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["fileName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFileName(val)
-        }
-        return nil
-    }
-    res["files"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateUserDataExportFileFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]UserDataExportFileable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(UserDataExportFileable)
-                }
-            }
-            m.SetFiles(res)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["maxDownloadCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMaxDownloadCount(val)
-        }
-        return nil
-    }
-    res["message"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessage(val)
-        }
-        return nil
-    }
-    res["requestedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRequestedAt(val)
-        }
-        return nil
-    }
-    res["sizeBytes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSizeBytes(val)
-        }
-        return nil
-    }
-    res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartedAt(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUserDataExportStatuses)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*UserDataExportStatuses))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserDataExportResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["completedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompletedAt(val)
+		}
+		return nil
+	}
+	res["contentType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContentType(val)
+		}
+		return nil
+	}
+	res["downloadCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDownloadCount(val)
+		}
+		return nil
+	}
+	res["downloadUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDownloadUrl(val)
+		}
+		return nil
+	}
+	res["expiresAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExpiresAt(val)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["fileName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFileName(val)
+		}
+		return nil
+	}
+	res["files"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateUserDataExportFileFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]UserDataExportFileable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(UserDataExportFileable)
+				}
+			}
+			m.SetFiles(res)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["maxDownloadCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMaxDownloadCount(val)
+		}
+		return nil
+	}
+	res["message"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessage(val)
+		}
+		return nil
+	}
+	res["requestedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRequestedAt(val)
+		}
+		return nil
+	}
+	res["sizeBytes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSizeBytes(val)
+		}
+		return nil
+	}
+	res["startedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartedAt(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseUserDataExportStatuses)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*UserDataExportStatuses))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFileName gets the fileName property value. Human-readable file name associated with this Leadping user data export.
 // returns a *string when successful
-func (m *UserDataExportResponse) GetFileName()(*string) {
-    return m.fileName
+func (m *UserDataExportResponse) GetFileName() *string {
+	return m.fileName
 }
+
 // GetFiles gets the files property value. Collection of files included with this Leadping user data export.
 // returns a []UserDataExportFileable when successful
-func (m *UserDataExportResponse) GetFiles()([]UserDataExportFileable) {
-    return m.files
+func (m *UserDataExportResponse) GetFiles() []UserDataExportFileable {
+	return m.files
 }
+
 // GetId gets the id property value. Unique Leadping identifier for the user data export.
 // returns a *string when successful
-func (m *UserDataExportResponse) GetId()(*string) {
-    return m.id
+func (m *UserDataExportResponse) GetId() *string {
+	return m.id
 }
+
 // GetMaxDownloadCount gets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
 // returns a *int32 when successful
-func (m *UserDataExportResponse) GetMaxDownloadCount()(*int32) {
-    return m.maxDownloadCount
+func (m *UserDataExportResponse) GetMaxDownloadCount() *int32 {
+	return m.maxDownloadCount
 }
+
 // GetMessage gets the message property value. Human-readable message for this Leadping user data export.
 // returns a *string when successful
-func (m *UserDataExportResponse) GetMessage()(*string) {
-    return m.message
+func (m *UserDataExportResponse) GetMessage() *string {
+	return m.message
 }
+
 // GetRequestedAt gets the requestedAt property value. Date and time when the user data export was requested.
 // returns a *Time when successful
-func (m *UserDataExportResponse) GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.requestedAt
+func (m *UserDataExportResponse) GetRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.requestedAt
 }
+
 // GetSizeBytes gets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
 // returns a *int64 when successful
-func (m *UserDataExportResponse) GetSizeBytes()(*int64) {
-    return m.sizeBytes
+func (m *UserDataExportResponse) GetSizeBytes() *int64 {
+	return m.sizeBytes
 }
+
 // GetStartedAt gets the startedAt property value. Date and time when the user data export started.
 // returns a *Time when successful
-func (m *UserDataExportResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startedAt
+func (m *UserDataExportResponse) GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startedAt
 }
-// GetStatus gets the status property value. Current status for this Leadping user data export.
+
+// GetStatus gets the status property value. Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
 // returns a *UserDataExportStatuses when successful
-func (m *UserDataExportResponse) GetStatus()(*UserDataExportStatuses) {
-    return m.status
+func (m *UserDataExportResponse) GetStatus() *UserDataExportStatuses {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *UserDataExportResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("contentType", m.GetContentType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("downloadCount", m.GetDownloadCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("downloadUrl", m.GetDownloadUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("expiresAt", m.GetExpiresAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fileName", m.GetFileName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetFiles() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFiles()))
-        for i, v := range m.GetFiles() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("files", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("maxDownloadCount", m.GetMaxDownloadCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("message", m.GetMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("requestedAt", m.GetRequestedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt64Value("sizeBytes", m.GetSizeBytes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserDataExportResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("contentType", m.GetContentType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("downloadCount", m.GetDownloadCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("downloadUrl", m.GetDownloadUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("expiresAt", m.GetExpiresAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fileName", m.GetFileName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetFiles() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFiles()))
+		for i, v := range m.GetFiles() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("files", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("maxDownloadCount", m.GetMaxDownloadCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("message", m.GetMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("requestedAt", m.GetRequestedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("sizeBytes", m.GetSizeBytes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserDataExportResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserDataExportResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCompletedAt sets the completedAt property value. Date and time when the user data export completed.
-func (m *UserDataExportResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.completedAt = value
+func (m *UserDataExportResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.completedAt = value
 }
+
 // SetContentType sets the contentType property value. Media type of the generated file or response content.
-func (m *UserDataExportResponse) SetContentType(value *string)() {
-    m.contentType = value
+func (m *UserDataExportResponse) SetContentType(value *string) {
+	m.contentType = value
 }
+
 // SetDownloadCount sets the downloadCount property value. Total number of download records represented by this Leadping user data export.
-func (m *UserDataExportResponse) SetDownloadCount(value *int32)() {
-    m.downloadCount = value
+func (m *UserDataExportResponse) SetDownloadCount(value *int32) {
+	m.downloadCount = value
 }
+
 // SetDownloadUrl sets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
-func (m *UserDataExportResponse) SetDownloadUrl(value *string)() {
-    m.downloadUrl = value
+func (m *UserDataExportResponse) SetDownloadUrl(value *string) {
+	m.downloadUrl = value
 }
+
 // SetExpiresAt sets the expiresAt property value. Date and time when the user data export expires.
-func (m *UserDataExportResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.expiresAt = value
+func (m *UserDataExportResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.expiresAt = value
 }
+
 // SetFailedAt sets the failedAt property value. Date and time when the user data export failed.
-func (m *UserDataExportResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *UserDataExportResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetFileName sets the fileName property value. Human-readable file name associated with this Leadping user data export.
-func (m *UserDataExportResponse) SetFileName(value *string)() {
-    m.fileName = value
+func (m *UserDataExportResponse) SetFileName(value *string) {
+	m.fileName = value
 }
+
 // SetFiles sets the files property value. Collection of files included with this Leadping user data export.
-func (m *UserDataExportResponse) SetFiles(value []UserDataExportFileable)() {
-    m.files = value
+func (m *UserDataExportResponse) SetFiles(value []UserDataExportFileable) {
+	m.files = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for the user data export.
-func (m *UserDataExportResponse) SetId(value *string)() {
-    m.id = value
+func (m *UserDataExportResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetMaxDownloadCount sets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
-func (m *UserDataExportResponse) SetMaxDownloadCount(value *int32)() {
-    m.maxDownloadCount = value
+func (m *UserDataExportResponse) SetMaxDownloadCount(value *int32) {
+	m.maxDownloadCount = value
 }
+
 // SetMessage sets the message property value. Human-readable message for this Leadping user data export.
-func (m *UserDataExportResponse) SetMessage(value *string)() {
-    m.message = value
+func (m *UserDataExportResponse) SetMessage(value *string) {
+	m.message = value
 }
+
 // SetRequestedAt sets the requestedAt property value. Date and time when the user data export was requested.
-func (m *UserDataExportResponse) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.requestedAt = value
+func (m *UserDataExportResponse) SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.requestedAt = value
 }
+
 // SetSizeBytes sets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
-func (m *UserDataExportResponse) SetSizeBytes(value *int64)() {
-    m.sizeBytes = value
+func (m *UserDataExportResponse) SetSizeBytes(value *int64) {
+	m.sizeBytes = value
 }
+
 // SetStartedAt sets the startedAt property value. Date and time when the user data export started.
-func (m *UserDataExportResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startedAt = value
+func (m *UserDataExportResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startedAt = value
 }
-// SetStatus sets the status property value. Current status for this Leadping user data export.
-func (m *UserDataExportResponse) SetStatus(value *UserDataExportStatuses)() {
-    m.status = value
+
+// SetStatus sets the status property value. Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
+func (m *UserDataExportResponse) SetStatus(value *UserDataExportStatuses) {
+	m.status = value
 }
+
 type UserDataExportResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetContentType()(*string)
-    GetDownloadCount()(*int32)
-    GetDownloadUrl()(*string)
-    GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFileName()(*string)
-    GetFiles()([]UserDataExportFileable)
-    GetId()(*string)
-    GetMaxDownloadCount()(*int32)
-    GetMessage()(*string)
-    GetRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSizeBytes()(*int64)
-    GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetStatus()(*UserDataExportStatuses)
-    SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetContentType(value *string)()
-    SetDownloadCount(value *int32)()
-    SetDownloadUrl(value *string)()
-    SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFileName(value *string)()
-    SetFiles(value []UserDataExportFileable)()
-    SetId(value *string)()
-    SetMaxDownloadCount(value *int32)()
-    SetMessage(value *string)()
-    SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSizeBytes(value *int64)()
-    SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetStatus(value *UserDataExportStatuses)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetContentType() *string
+	GetDownloadCount() *int32
+	GetDownloadUrl() *string
+	GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFileName() *string
+	GetFiles() []UserDataExportFileable
+	GetId() *string
+	GetMaxDownloadCount() *int32
+	GetMessage() *string
+	GetRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSizeBytes() *int64
+	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetStatus() *UserDataExportStatuses
+	SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetContentType(value *string)
+	SetDownloadCount(value *int32)
+	SetDownloadUrl(value *string)
+	SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFileName(value *string)
+	SetFiles(value []UserDataExportFileable)
+	SetId(value *string)
+	SetMaxDownloadCount(value *int32)
+	SetMessage(value *string)
+	SetRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSizeBytes(value *int64)
+	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetStatus(value *UserDataExportStatuses)
 }

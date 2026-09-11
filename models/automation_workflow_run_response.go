@@ -4,860 +4,920 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // AutomationWorkflowRunResponse user-safe automation workflow run status returned for a lead.
 type AutomationWorkflowRunResponse struct {
-    // Collection of actions included with this Leadping automation workflow run.
-    actions []AutomationWorkflowActionResponseable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identifier and display name of the related automation.
-    automation AutomationWorkflowRunResponse_automationable
-    // Date and time when the automation workflow run was cancelled.
-    cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Date and time when the automation workflow run completed.
-    completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Identifier and display name of the workflow step currently awaiting or performing work.
-    currentStep AutomationWorkflowRunResponse_currentStepable
-    // Current step order associated with this Leadping automation workflow run.
-    currentStepOrder *int32
-    // Collection of events included with this Leadping automation workflow run.
-    events []AutomationWorkflowEventResponseable
-    // Date and time when the automation workflow run failed.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Unique Leadping identifier for the automation workflow run.
-    id *string
-    // Human-readable last action summary for this Leadping automation workflow run.
-    lastActionSummary *string
-    // Machine-readable code for the most recent workflow execution error.
-    lastErrorCode *string
-    // Human-readable last error message for this Leadping automation workflow run.
-    lastErrorMessage *string
-    // Date and time of the most recent execution for this Leadping automation workflow run.
-    lastExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Unique identifier of the lead associated with this Leadping automation workflow run.
-    leadId *string
-    // Total number of max retry records represented by this Leadping automation workflow run.
-    maxRetryCount *int32
-    // Date and time when the next execution is scheduled.
-    nextExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Date and time when the next retry is scheduled.
-    nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Unique identifier of the organization associated with this Leadping automation workflow run.
-    organizationId *string
-    // Total number of retry records represented by this Leadping automation workflow run.
-    retryCount *int32
-    // Machine-readable code explaining why the workflow run or action was skipped.
-    skipReasonCode *string
-    // Human-readable skip reason display for this Leadping automation workflow run.
-    skipReasonDisplay *string
-    // Date and time when the automation workflow run started.
-    startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current status for this Leadping automation workflow run.
-    status *string
-    // Human-readable status display for this Leadping automation workflow run.
-    statusDisplay *string
-    // Human-readable trigger display for this Leadping automation workflow run.
-    triggerDisplay *string
-    // Trigger type classification for this Leadping automation workflow run.
-    triggerType *string
-    // Date and time when the automation workflow run was last updated.
-    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Collection of actions included with this Leadping automation workflow run.
+	actions []AutomationWorkflowActionResponseable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	automation AutomationWorkflowRunResponse_automationable
+	// Date and time when the automation workflow run was cancelled.
+	cancelledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Date and time when the automation workflow run completed.
+	completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	currentStep AutomationWorkflowRunResponse_currentStepable
+	// Current step order associated with this Leadping automation workflow run.
+	currentStepOrder *int32
+	// Collection of events included with this Leadping automation workflow run.
+	events []AutomationWorkflowEventResponseable
+	// Date and time when the automation workflow run failed.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Unique Leadping identifier for the automation workflow run.
+	id *string
+	// Human-readable last action summary for this Leadping automation workflow run.
+	lastActionSummary *string
+	// Machine-readable code for the most recent workflow execution error.
+	lastErrorCode *string
+	// Human-readable last error message for this Leadping automation workflow run.
+	lastErrorMessage *string
+	// Date and time of the most recent execution for this Leadping automation workflow run.
+	lastExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Unique identifier of the lead associated with this Leadping automation workflow run.
+	leadId *string
+	// Total number of max retry records represented by this Leadping automation workflow run.
+	maxRetryCount *int32
+	// Date and time when the next execution is scheduled.
+	nextExecutionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Date and time when the next retry is scheduled.
+	nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Unique identifier of the organization associated with this Leadping automation workflow run.
+	organizationId *string
+	// Total number of retry records represented by this Leadping automation workflow run.
+	retryCount *int32
+	// Machine-readable code explaining why the workflow run or action was skipped.
+	skipReasonCode *string
+	// Human-readable skip reason display for this Leadping automation workflow run.
+	skipReasonDisplay *string
+	// Date and time when the automation workflow run started.
+	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Current status for this Leadping automation workflow run.
+	status *string
+	// Human-readable status display for this Leadping automation workflow run.
+	statusDisplay *string
+	// Human-readable trigger display for this Leadping automation workflow run.
+	triggerDisplay *string
+	// Trigger type classification for this Leadping automation workflow run.
+	triggerType *string
+	// Date and time when the automation workflow run was last updated.
+	updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewAutomationWorkflowRunResponse instantiates a new AutomationWorkflowRunResponse and sets the default values.
-func NewAutomationWorkflowRunResponse()(*AutomationWorkflowRunResponse) {
-    m := &AutomationWorkflowRunResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationWorkflowRunResponse() *AutomationWorkflowRunResponse {
+	m := &AutomationWorkflowRunResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationWorkflowRunResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationWorkflowRunResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationWorkflowRunResponse(), nil
+func CreateAutomationWorkflowRunResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationWorkflowRunResponse(), nil
 }
+
 // GetActions gets the actions property value. Collection of actions included with this Leadping automation workflow run.
 // returns a []AutomationWorkflowActionResponseable when successful
-func (m *AutomationWorkflowRunResponse) GetActions()([]AutomationWorkflowActionResponseable) {
-    return m.actions
+func (m *AutomationWorkflowRunResponse) GetActions() []AutomationWorkflowActionResponseable {
+	return m.actions
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationWorkflowRunResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationWorkflowRunResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetAutomation gets the automation property value. Identifier and display name of the related automation.
+
+// GetAutomation gets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a AutomationWorkflowRunResponse_automationable when successful
-func (m *AutomationWorkflowRunResponse) GetAutomation()(AutomationWorkflowRunResponse_automationable) {
-    return m.automation
+func (m *AutomationWorkflowRunResponse) GetAutomation() AutomationWorkflowRunResponse_automationable {
+	return m.automation
 }
+
 // GetCancelledAt gets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.cancelledAt
+func (m *AutomationWorkflowRunResponse) GetCancelledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.cancelledAt
 }
+
 // GetCompletedAt gets the completedAt property value. Date and time when the automation workflow run completed.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.completedAt
+func (m *AutomationWorkflowRunResponse) GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.completedAt
 }
-// GetCurrentStep gets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
+
+// GetCurrentStep gets the currentStep property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a AutomationWorkflowRunResponse_currentStepable when successful
-func (m *AutomationWorkflowRunResponse) GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable) {
-    return m.currentStep
+func (m *AutomationWorkflowRunResponse) GetCurrentStep() AutomationWorkflowRunResponse_currentStepable {
+	return m.currentStep
 }
+
 // GetCurrentStepOrder gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
 // returns a *int32 when successful
-func (m *AutomationWorkflowRunResponse) GetCurrentStepOrder()(*int32) {
-    return m.currentStepOrder
+func (m *AutomationWorkflowRunResponse) GetCurrentStepOrder() *int32 {
+	return m.currentStepOrder
 }
+
 // GetEvents gets the events property value. Collection of events included with this Leadping automation workflow run.
 // returns a []AutomationWorkflowEventResponseable when successful
-func (m *AutomationWorkflowRunResponse) GetEvents()([]AutomationWorkflowEventResponseable) {
-    return m.events
+func (m *AutomationWorkflowRunResponse) GetEvents() []AutomationWorkflowEventResponseable {
+	return m.events
 }
+
 // GetFailedAt gets the failedAt property value. Date and time when the automation workflow run failed.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *AutomationWorkflowRunResponse) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationWorkflowRunResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowActionResponseFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationWorkflowActionResponseable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationWorkflowActionResponseable)
-                }
-            }
-            m.SetActions(res)
-        }
-        return nil
-    }
-    res["automation"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_automationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomation(val.(AutomationWorkflowRunResponse_automationable))
-        }
-        return nil
-    }
-    res["cancelledAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCancelledAt(val)
-        }
-        return nil
-    }
-    res["completedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompletedAt(val)
-        }
-        return nil
-    }
-    res["currentStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentStep(val.(AutomationWorkflowRunResponse_currentStepable))
-        }
-        return nil
-    }
-    res["currentStepOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentStepOrder(val)
-        }
-        return nil
-    }
-    res["events"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowEventResponseFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationWorkflowEventResponseable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationWorkflowEventResponseable)
-                }
-            }
-            m.SetEvents(res)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["lastActionSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastActionSummary(val)
-        }
-        return nil
-    }
-    res["lastErrorCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastErrorCode(val)
-        }
-        return nil
-    }
-    res["lastErrorMessage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastErrorMessage(val)
-        }
-        return nil
-    }
-    res["lastExecutionAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastExecutionAt(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["maxRetryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMaxRetryCount(val)
-        }
-        return nil
-    }
-    res["nextExecutionAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextExecutionAt(val)
-        }
-        return nil
-    }
-    res["nextRetryAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextRetryAt(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRetryCount(val)
-        }
-        return nil
-    }
-    res["skipReasonCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSkipReasonCode(val)
-        }
-        return nil
-    }
-    res["skipReasonDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSkipReasonDisplay(val)
-        }
-        return nil
-    }
-    res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartedAt(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["statusDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusDisplay(val)
-        }
-        return nil
-    }
-    res["triggerDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTriggerDisplay(val)
-        }
-        return nil
-    }
-    res["triggerType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTriggerType(val)
-        }
-        return nil
-    }
-    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUpdatedAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationWorkflowRunResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowActionResponseFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationWorkflowActionResponseable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationWorkflowActionResponseable)
+				}
+			}
+			m.SetActions(res)
+		}
+		return nil
+	}
+	res["automation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_automationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomation(val.(AutomationWorkflowRunResponse_automationable))
+		}
+		return nil
+	}
+	res["cancelledAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCancelledAt(val)
+		}
+		return nil
+	}
+	res["completedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompletedAt(val)
+		}
+		return nil
+	}
+	res["currentStep"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationWorkflowRunResponse_currentStepFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrentStep(val.(AutomationWorkflowRunResponse_currentStepable))
+		}
+		return nil
+	}
+	res["currentStepOrder"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrentStepOrder(val)
+		}
+		return nil
+	}
+	res["events"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationWorkflowEventResponseFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationWorkflowEventResponseable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationWorkflowEventResponseable)
+				}
+			}
+			m.SetEvents(res)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["lastActionSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastActionSummary(val)
+		}
+		return nil
+	}
+	res["lastErrorCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastErrorCode(val)
+		}
+		return nil
+	}
+	res["lastErrorMessage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastErrorMessage(val)
+		}
+		return nil
+	}
+	res["lastExecutionAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastExecutionAt(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["maxRetryCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMaxRetryCount(val)
+		}
+		return nil
+	}
+	res["nextExecutionAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextExecutionAt(val)
+		}
+		return nil
+	}
+	res["nextRetryAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextRetryAt(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["retryCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRetryCount(val)
+		}
+		return nil
+	}
+	res["skipReasonCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSkipReasonCode(val)
+		}
+		return nil
+	}
+	res["skipReasonDisplay"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSkipReasonDisplay(val)
+		}
+		return nil
+	}
+	res["startedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartedAt(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["statusDisplay"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusDisplay(val)
+		}
+		return nil
+	}
+	res["triggerDisplay"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerDisplay(val)
+		}
+		return nil
+	}
+	res["triggerType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerType(val)
+		}
+		return nil
+	}
+	res["updatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUpdatedAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for the automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetId()(*string) {
-    return m.id
+func (m *AutomationWorkflowRunResponse) GetId() *string {
+	return m.id
 }
+
 // GetLastActionSummary gets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetLastActionSummary()(*string) {
-    return m.lastActionSummary
+func (m *AutomationWorkflowRunResponse) GetLastActionSummary() *string {
+	return m.lastActionSummary
 }
+
 // GetLastErrorCode gets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetLastErrorCode()(*string) {
-    return m.lastErrorCode
+func (m *AutomationWorkflowRunResponse) GetLastErrorCode() *string {
+	return m.lastErrorCode
 }
+
 // GetLastErrorMessage gets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetLastErrorMessage()(*string) {
-    return m.lastErrorMessage
+func (m *AutomationWorkflowRunResponse) GetLastErrorMessage() *string {
+	return m.lastErrorMessage
 }
+
 // GetLastExecutionAt gets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetLastExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastExecutionAt
+func (m *AutomationWorkflowRunResponse) GetLastExecutionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastExecutionAt
 }
+
 // GetLeadId gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetLeadId()(*string) {
-    return m.leadId
+func (m *AutomationWorkflowRunResponse) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetMaxRetryCount gets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
 // returns a *int32 when successful
-func (m *AutomationWorkflowRunResponse) GetMaxRetryCount()(*int32) {
-    return m.maxRetryCount
+func (m *AutomationWorkflowRunResponse) GetMaxRetryCount() *int32 {
+	return m.maxRetryCount
 }
+
 // GetNextExecutionAt gets the nextExecutionAt property value. Date and time when the next execution is scheduled.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetNextExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.nextExecutionAt
+func (m *AutomationWorkflowRunResponse) GetNextExecutionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextExecutionAt
 }
+
 // GetNextRetryAt gets the nextRetryAt property value. Date and time when the next retry is scheduled.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.nextRetryAt
+func (m *AutomationWorkflowRunResponse) GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextRetryAt
 }
+
 // GetOrganizationId gets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *AutomationWorkflowRunResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetRetryCount gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
 // returns a *int32 when successful
-func (m *AutomationWorkflowRunResponse) GetRetryCount()(*int32) {
-    return m.retryCount
+func (m *AutomationWorkflowRunResponse) GetRetryCount() *int32 {
+	return m.retryCount
 }
+
 // GetSkipReasonCode gets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetSkipReasonCode()(*string) {
-    return m.skipReasonCode
+func (m *AutomationWorkflowRunResponse) GetSkipReasonCode() *string {
+	return m.skipReasonCode
 }
+
 // GetSkipReasonDisplay gets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetSkipReasonDisplay()(*string) {
-    return m.skipReasonDisplay
+func (m *AutomationWorkflowRunResponse) GetSkipReasonDisplay() *string {
+	return m.skipReasonDisplay
 }
+
 // GetStartedAt gets the startedAt property value. Date and time when the automation workflow run started.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startedAt
+func (m *AutomationWorkflowRunResponse) GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startedAt
 }
+
 // GetStatus gets the status property value. Current status for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetStatus()(*string) {
-    return m.status
+func (m *AutomationWorkflowRunResponse) GetStatus() *string {
+	return m.status
 }
+
 // GetStatusDisplay gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetStatusDisplay()(*string) {
-    return m.statusDisplay
+func (m *AutomationWorkflowRunResponse) GetStatusDisplay() *string {
+	return m.statusDisplay
 }
+
 // GetTriggerDisplay gets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetTriggerDisplay()(*string) {
-    return m.triggerDisplay
+func (m *AutomationWorkflowRunResponse) GetTriggerDisplay() *string {
+	return m.triggerDisplay
 }
+
 // GetTriggerType gets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
 // returns a *string when successful
-func (m *AutomationWorkflowRunResponse) GetTriggerType()(*string) {
-    return m.triggerType
+func (m *AutomationWorkflowRunResponse) GetTriggerType() *string {
+	return m.triggerType
 }
+
 // GetUpdatedAt gets the updatedAt property value. Date and time when the automation workflow run was last updated.
 // returns a *Time when successful
-func (m *AutomationWorkflowRunResponse) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.updatedAt
+func (m *AutomationWorkflowRunResponse) GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.updatedAt
 }
+
 // Serialize serializes information the current object
-func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetActions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActions()))
-        for i, v := range m.GetActions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("actions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("automation", m.GetAutomation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("cancelledAt", m.GetCancelledAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("currentStep", m.GetCurrentStep())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("currentStepOrder", m.GetCurrentStepOrder())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetEvents() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetEvents()))
-        for i, v := range m.GetEvents() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("events", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastActionSummary", m.GetLastActionSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastErrorCode", m.GetLastErrorCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastErrorMessage", m.GetLastErrorMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastExecutionAt", m.GetLastExecutionAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("maxRetryCount", m.GetMaxRetryCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("nextExecutionAt", m.GetNextExecutionAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("skipReasonCode", m.GetSkipReasonCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("skipReasonDisplay", m.GetSkipReasonDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusDisplay", m.GetStatusDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("triggerDisplay", m.GetTriggerDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("triggerType", m.GetTriggerType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetActions() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActions()))
+		for i, v := range m.GetActions() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("actions", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("automation", m.GetAutomation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("cancelledAt", m.GetCancelledAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("currentStep", m.GetCurrentStep())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("currentStepOrder", m.GetCurrentStepOrder())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetEvents() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetEvents()))
+		for i, v := range m.GetEvents() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("events", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastActionSummary", m.GetLastActionSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastErrorCode", m.GetLastErrorCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastErrorMessage", m.GetLastErrorMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastExecutionAt", m.GetLastExecutionAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("maxRetryCount", m.GetMaxRetryCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextExecutionAt", m.GetNextExecutionAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("skipReasonCode", m.GetSkipReasonCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("skipReasonDisplay", m.GetSkipReasonDisplay())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusDisplay", m.GetStatusDisplay())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("triggerDisplay", m.GetTriggerDisplay())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("triggerType", m.GetTriggerType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActions sets the actions property value. Collection of actions included with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowActionResponseable)() {
-    m.actions = value
+func (m *AutomationWorkflowRunResponse) SetActions(value []AutomationWorkflowActionResponseable) {
+	m.actions = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationWorkflowRunResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetAutomation sets the automation property value. Identifier and display name of the related automation.
-func (m *AutomationWorkflowRunResponse) SetAutomation(value AutomationWorkflowRunResponse_automationable)() {
-    m.automation = value
+
+// SetAutomation sets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *AutomationWorkflowRunResponse) SetAutomation(value AutomationWorkflowRunResponse_automationable) {
+	m.automation = value
 }
+
 // SetCancelledAt sets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
-func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.cancelledAt = value
+func (m *AutomationWorkflowRunResponse) SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.cancelledAt = value
 }
+
 // SetCompletedAt sets the completedAt property value. Date and time when the automation workflow run completed.
-func (m *AutomationWorkflowRunResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.completedAt = value
+func (m *AutomationWorkflowRunResponse) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.completedAt = value
 }
-// SetCurrentStep sets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
-func (m *AutomationWorkflowRunResponse) SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)() {
-    m.currentStep = value
+
+// SetCurrentStep sets the currentStep property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *AutomationWorkflowRunResponse) SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable) {
+	m.currentStep = value
 }
+
 // SetCurrentStepOrder sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value *int32)() {
-    m.currentStepOrder = value
+func (m *AutomationWorkflowRunResponse) SetCurrentStepOrder(value *int32) {
+	m.currentStepOrder = value
 }
+
 // SetEvents sets the events property value. Collection of events included with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetEvents(value []AutomationWorkflowEventResponseable)() {
-    m.events = value
+func (m *AutomationWorkflowRunResponse) SetEvents(value []AutomationWorkflowEventResponseable) {
+	m.events = value
 }
+
 // SetFailedAt sets the failedAt property value. Date and time when the automation workflow run failed.
-func (m *AutomationWorkflowRunResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *AutomationWorkflowRunResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for the automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetId(value *string)() {
-    m.id = value
+func (m *AutomationWorkflowRunResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetLastActionSummary sets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetLastActionSummary(value *string)() {
-    m.lastActionSummary = value
+func (m *AutomationWorkflowRunResponse) SetLastActionSummary(value *string) {
+	m.lastActionSummary = value
 }
+
 // SetLastErrorCode sets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
-func (m *AutomationWorkflowRunResponse) SetLastErrorCode(value *string)() {
-    m.lastErrorCode = value
+func (m *AutomationWorkflowRunResponse) SetLastErrorCode(value *string) {
+	m.lastErrorCode = value
 }
+
 // SetLastErrorMessage sets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetLastErrorMessage(value *string)() {
-    m.lastErrorMessage = value
+func (m *AutomationWorkflowRunResponse) SetLastErrorMessage(value *string) {
+	m.lastErrorMessage = value
 }
+
 // SetLastExecutionAt sets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetLastExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastExecutionAt = value
+func (m *AutomationWorkflowRunResponse) SetLastExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastExecutionAt = value
 }
+
 // SetLeadId sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *AutomationWorkflowRunResponse) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetMaxRetryCount sets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetMaxRetryCount(value *int32)() {
-    m.maxRetryCount = value
+func (m *AutomationWorkflowRunResponse) SetMaxRetryCount(value *int32) {
+	m.maxRetryCount = value
 }
+
 // SetNextExecutionAt sets the nextExecutionAt property value. Date and time when the next execution is scheduled.
-func (m *AutomationWorkflowRunResponse) SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.nextExecutionAt = value
+func (m *AutomationWorkflowRunResponse) SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextExecutionAt = value
 }
+
 // SetNextRetryAt sets the nextRetryAt property value. Date and time when the next retry is scheduled.
-func (m *AutomationWorkflowRunResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.nextRetryAt = value
+func (m *AutomationWorkflowRunResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextRetryAt = value
 }
+
 // SetOrganizationId sets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *AutomationWorkflowRunResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetRetryCount sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetRetryCount(value *int32)() {
-    m.retryCount = value
+func (m *AutomationWorkflowRunResponse) SetRetryCount(value *int32) {
+	m.retryCount = value
 }
+
 // SetSkipReasonCode sets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
-func (m *AutomationWorkflowRunResponse) SetSkipReasonCode(value *string)() {
-    m.skipReasonCode = value
+func (m *AutomationWorkflowRunResponse) SetSkipReasonCode(value *string) {
+	m.skipReasonCode = value
 }
+
 // SetSkipReasonDisplay sets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetSkipReasonDisplay(value *string)() {
-    m.skipReasonDisplay = value
+func (m *AutomationWorkflowRunResponse) SetSkipReasonDisplay(value *string) {
+	m.skipReasonDisplay = value
 }
+
 // SetStartedAt sets the startedAt property value. Date and time when the automation workflow run started.
-func (m *AutomationWorkflowRunResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startedAt = value
+func (m *AutomationWorkflowRunResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startedAt = value
 }
+
 // SetStatus sets the status property value. Current status for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetStatus(value *string)() {
-    m.status = value
+func (m *AutomationWorkflowRunResponse) SetStatus(value *string) {
+	m.status = value
 }
+
 // SetStatusDisplay sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetStatusDisplay(value *string)() {
-    m.statusDisplay = value
+func (m *AutomationWorkflowRunResponse) SetStatusDisplay(value *string) {
+	m.statusDisplay = value
 }
+
 // SetTriggerDisplay sets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetTriggerDisplay(value *string)() {
-    m.triggerDisplay = value
+func (m *AutomationWorkflowRunResponse) SetTriggerDisplay(value *string) {
+	m.triggerDisplay = value
 }
+
 // SetTriggerType sets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
-func (m *AutomationWorkflowRunResponse) SetTriggerType(value *string)() {
-    m.triggerType = value
+func (m *AutomationWorkflowRunResponse) SetTriggerType(value *string) {
+	m.triggerType = value
 }
+
 // SetUpdatedAt sets the updatedAt property value. Date and time when the automation workflow run was last updated.
-func (m *AutomationWorkflowRunResponse) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.updatedAt = value
+func (m *AutomationWorkflowRunResponse) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.updatedAt = value
 }
+
 type AutomationWorkflowRunResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActions()([]AutomationWorkflowActionResponseable)
-    GetAutomation()(AutomationWorkflowRunResponse_automationable)
-    GetCancelledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentStep()(AutomationWorkflowRunResponse_currentStepable)
-    GetCurrentStepOrder()(*int32)
-    GetEvents()([]AutomationWorkflowEventResponseable)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetId()(*string)
-    GetLastActionSummary()(*string)
-    GetLastErrorCode()(*string)
-    GetLastErrorMessage()(*string)
-    GetLastExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLeadId()(*string)
-    GetMaxRetryCount()(*int32)
-    GetNextExecutionAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOrganizationId()(*string)
-    GetRetryCount()(*int32)
-    GetSkipReasonCode()(*string)
-    GetSkipReasonDisplay()(*string)
-    GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetStatus()(*string)
-    GetStatusDisplay()(*string)
-    GetTriggerDisplay()(*string)
-    GetTriggerType()(*string)
-    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetActions(value []AutomationWorkflowActionResponseable)()
-    SetAutomation(value AutomationWorkflowRunResponse_automationable)()
-    SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)()
-    SetCurrentStepOrder(value *int32)()
-    SetEvents(value []AutomationWorkflowEventResponseable)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetId(value *string)()
-    SetLastActionSummary(value *string)()
-    SetLastErrorCode(value *string)()
-    SetLastErrorMessage(value *string)()
-    SetLastExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLeadId(value *string)()
-    SetMaxRetryCount(value *int32)()
-    SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOrganizationId(value *string)()
-    SetRetryCount(value *int32)()
-    SetSkipReasonCode(value *string)()
-    SetSkipReasonDisplay(value *string)()
-    SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetStatus(value *string)()
-    SetStatusDisplay(value *string)()
-    SetTriggerDisplay(value *string)()
-    SetTriggerType(value *string)()
-    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActions() []AutomationWorkflowActionResponseable
+	GetAutomation() AutomationWorkflowRunResponse_automationable
+	GetCancelledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCurrentStep() AutomationWorkflowRunResponse_currentStepable
+	GetCurrentStepOrder() *int32
+	GetEvents() []AutomationWorkflowEventResponseable
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetId() *string
+	GetLastActionSummary() *string
+	GetLastErrorCode() *string
+	GetLastErrorMessage() *string
+	GetLastExecutionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLeadId() *string
+	GetMaxRetryCount() *int32
+	GetNextExecutionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOrganizationId() *string
+	GetRetryCount() *int32
+	GetSkipReasonCode() *string
+	GetSkipReasonDisplay() *string
+	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetStatus() *string
+	GetStatusDisplay() *string
+	GetTriggerDisplay() *string
+	GetTriggerType() *string
+	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetActions(value []AutomationWorkflowActionResponseable)
+	SetAutomation(value AutomationWorkflowRunResponse_automationable)
+	SetCancelledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCurrentStep(value AutomationWorkflowRunResponse_currentStepable)
+	SetCurrentStepOrder(value *int32)
+	SetEvents(value []AutomationWorkflowEventResponseable)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetId(value *string)
+	SetLastActionSummary(value *string)
+	SetLastErrorCode(value *string)
+	SetLastErrorMessage(value *string)
+	SetLastExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLeadId(value *string)
+	SetMaxRetryCount(value *int32)
+	SetNextExecutionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOrganizationId(value *string)
+	SetRetryCount(value *int32)
+	SetSkipReasonCode(value *string)
+	SetSkipReasonDisplay(value *string)
+	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetStatus(value *string)
+	SetStatusDisplay(value *string)
+	SetTriggerDisplay(value *string)
+	SetTriggerType(value *string)
+	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

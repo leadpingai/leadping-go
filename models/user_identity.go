@@ -4,139 +4,151 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UserIdentity identifies an external sign-in identity linked to a Leadping user, including its provider, provider-assigned user identifier, and authentication method.
 type UserIdentity struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
-    issuer *string
-    // Stable unique user identifier assigned by the identity provider within the issuer's namespace.
-    issuerAssignedId *string
-    // Sign-in method represented by the identity, such as emailAddress, userName, or federated.
-    signInType *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
+	issuer *string
+	// Stable unique user identifier assigned by the identity provider within the issuer's namespace.
+	issuerAssignedId *string
+	// Sign-in method represented by the identity, such as emailAddress, userName, or federated.
+	signInType *string
 }
+
 // NewUserIdentity instantiates a new UserIdentity and sets the default values.
-func NewUserIdentity()(*UserIdentity) {
-    m := &UserIdentity{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserIdentity() *UserIdentity {
+	m := &UserIdentity{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserIdentityFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserIdentityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserIdentity(), nil
+func CreateUserIdentityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserIdentity(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserIdentity) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserIdentity) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserIdentity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["issuer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIssuer(val)
-        }
-        return nil
-    }
-    res["issuerAssignedId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIssuerAssignedId(val)
-        }
-        return nil
-    }
-    res["signInType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSignInType(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserIdentity) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["issuer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIssuer(val)
+		}
+		return nil
+	}
+	res["issuerAssignedId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIssuerAssignedId(val)
+		}
+		return nil
+	}
+	res["signInType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSignInType(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetIssuer gets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
 // returns a *string when successful
-func (m *UserIdentity) GetIssuer()(*string) {
-    return m.issuer
+func (m *UserIdentity) GetIssuer() *string {
+	return m.issuer
 }
+
 // GetIssuerAssignedId gets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
 // returns a *string when successful
-func (m *UserIdentity) GetIssuerAssignedId()(*string) {
-    return m.issuerAssignedId
+func (m *UserIdentity) GetIssuerAssignedId() *string {
+	return m.issuerAssignedId
 }
+
 // GetSignInType gets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
 // returns a *string when successful
-func (m *UserIdentity) GetSignInType()(*string) {
-    return m.signInType
+func (m *UserIdentity) GetSignInType() *string {
+	return m.signInType
 }
+
 // Serialize serializes information the current object
-func (m *UserIdentity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("issuer", m.GetIssuer())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("issuerAssignedId", m.GetIssuerAssignedId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("signInType", m.GetSignInType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserIdentity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("issuer", m.GetIssuer())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("issuerAssignedId", m.GetIssuerAssignedId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("signInType", m.GetSignInType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserIdentity) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserIdentity) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetIssuer sets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
-func (m *UserIdentity) SetIssuer(value *string)() {
-    m.issuer = value
+func (m *UserIdentity) SetIssuer(value *string) {
+	m.issuer = value
 }
+
 // SetIssuerAssignedId sets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
-func (m *UserIdentity) SetIssuerAssignedId(value *string)() {
-    m.issuerAssignedId = value
+func (m *UserIdentity) SetIssuerAssignedId(value *string) {
+	m.issuerAssignedId = value
 }
+
 // SetSignInType sets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
-func (m *UserIdentity) SetSignInType(value *string)() {
-    m.signInType = value
+func (m *UserIdentity) SetSignInType(value *string) {
+	m.signInType = value
 }
+
 type UserIdentityable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetIssuer()(*string)
-    GetIssuerAssignedId()(*string)
-    GetSignInType()(*string)
-    SetIssuer(value *string)()
-    SetIssuerAssignedId(value *string)()
-    SetSignInType(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetIssuer() *string
+	GetIssuerAssignedId() *string
+	GetSignInType() *string
+	SetIssuer(value *string)
+	SetIssuerAssignedId(value *string)
+	SetSignInType(value *string)
 }

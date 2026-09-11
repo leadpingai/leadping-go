@@ -2,63 +2,67 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
 type TenDlcApplicationStatus int
 
 const (
-    NOTSTARTED_TENDLCAPPLICATIONSTATUS TenDlcApplicationStatus = iota
-    DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
-    DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
-    READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
-    SUBMITTED_TENDLCAPPLICATIONSTATUS
-    PENDINGTELNYXREVIEW_TENDLCAPPLICATIONSTATUS
-    APPROVED_TENDLCAPPLICATIONSTATUS
-    REJECTED_TENDLCAPPLICATIONSTATUS
-    NEEDSCHANGES_TENDLCAPPLICATIONSTATUS
-    RESUBMISSIONREADY_TENDLCAPPLICATIONSTATUS
-    FAILED_TENDLCAPPLICATIONSTATUS
+	NOTSTARTED_TENDLCAPPLICATIONSTATUS TenDlcApplicationStatus = iota
+	DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
+	DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
+	READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
+	SUBMITTED_TENDLCAPPLICATIONSTATUS
+	PENDINGTELNYXREVIEW_TENDLCAPPLICATIONSTATUS
+	APPROVED_TENDLCAPPLICATIONSTATUS
+	REJECTED_TENDLCAPPLICATIONSTATUS
+	NEEDSCHANGES_TENDLCAPPLICATIONSTATUS
+	RESUBMISSIONREADY_TENDLCAPPLICATIONSTATUS
+	FAILED_TENDLCAPPLICATIONSTATUS
 )
 
 func (i TenDlcApplicationStatus) String() string {
-    return []string{"NotStarted", "DraftGenerated", "DraftIncomplete", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
+	return []string{"NotStarted", "DraftGenerated", "DraftIncomplete", "ReadyToSubmit", "Submitted", "PendingTelnyxReview", "Approved", "Rejected", "NeedsChanges", "ResubmissionReady", "Failed"}[i]
 }
+
 func ParseTenDlcApplicationStatus(v string) (any, error) {
-    result := NOTSTARTED_TENDLCAPPLICATIONSTATUS
-    switch v {
-        case "NotStarted":
-            result = NOTSTARTED_TENDLCAPPLICATIONSTATUS
-        case "DraftGenerated":
-            result = DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
-        case "DraftIncomplete":
-            result = DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
-        case "ReadyToSubmit":
-            result = READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
-        case "Submitted":
-            result = SUBMITTED_TENDLCAPPLICATIONSTATUS
-        case "PendingTelnyxReview":
-            result = PENDINGTELNYXREVIEW_TENDLCAPPLICATIONSTATUS
-        case "Approved":
-            result = APPROVED_TENDLCAPPLICATIONSTATUS
-        case "Rejected":
-            result = REJECTED_TENDLCAPPLICATIONSTATUS
-        case "NeedsChanges":
-            result = NEEDSCHANGES_TENDLCAPPLICATIONSTATUS
-        case "ResubmissionReady":
-            result = RESUBMISSIONREADY_TENDLCAPPLICATIONSTATUS
-        case "Failed":
-            result = FAILED_TENDLCAPPLICATIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := NOTSTARTED_TENDLCAPPLICATIONSTATUS
+	switch v {
+	case "NotStarted":
+		result = NOTSTARTED_TENDLCAPPLICATIONSTATUS
+	case "DraftGenerated":
+		result = DRAFTGENERATED_TENDLCAPPLICATIONSTATUS
+	case "DraftIncomplete":
+		result = DRAFTINCOMPLETE_TENDLCAPPLICATIONSTATUS
+	case "ReadyToSubmit":
+		result = READYTOSUBMIT_TENDLCAPPLICATIONSTATUS
+	case "Submitted":
+		result = SUBMITTED_TENDLCAPPLICATIONSTATUS
+	case "PendingTelnyxReview":
+		result = PENDINGTELNYXREVIEW_TENDLCAPPLICATIONSTATUS
+	case "Approved":
+		result = APPROVED_TENDLCAPPLICATIONSTATUS
+	case "Rejected":
+		result = REJECTED_TENDLCAPPLICATIONSTATUS
+	case "NeedsChanges":
+		result = NEEDSCHANGES_TENDLCAPPLICATIONSTATUS
+	case "ResubmissionReady":
+		result = RESUBMISSIONREADY_TENDLCAPPLICATIONSTATUS
+	case "Failed":
+		result = FAILED_TENDLCAPPLICATIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeTenDlcApplicationStatus(values []TenDlcApplicationStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i TenDlcApplicationStatus) isMultiValue() bool {
-    return false
+	return false
 }

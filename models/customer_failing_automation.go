@@ -4,169 +4,183 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // CustomerFailingAutomation identifies an automation with recent execution failures and summarizes its affected leads and failure context.
 type CustomerFailingAutomation struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Unique identifier of the automation associated with this Leadping customer failing automation.
-    automationId *string
-    // Error associated with this Leadping customer failing automation.
-    error *string
-    // Date and time when the customer failing automation failed.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable name of the customer failing automation.
-    name *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Unique identifier of the automation associated with this Leadping customer failing automation.
+	automationId *string
+	// Error associated with this Leadping customer failing automation.
+	error *string
+	// Date and time when the customer failing automation failed.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable name of the customer failing automation.
+	name *string
 }
+
 // NewCustomerFailingAutomation instantiates a new CustomerFailingAutomation and sets the default values.
-func NewCustomerFailingAutomation()(*CustomerFailingAutomation) {
-    m := &CustomerFailingAutomation{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerFailingAutomation() *CustomerFailingAutomation {
+	m := &CustomerFailingAutomation{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerFailingAutomationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerFailingAutomationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerFailingAutomation(), nil
+func CreateCustomerFailingAutomationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerFailingAutomation(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerFailingAutomation) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerFailingAutomation) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAutomationId gets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
 // returns a *string when successful
-func (m *CustomerFailingAutomation) GetAutomationId()(*string) {
-    return m.automationId
+func (m *CustomerFailingAutomation) GetAutomationId() *string {
+	return m.automationId
 }
+
 // GetError gets the error property value. Error associated with this Leadping customer failing automation.
 // returns a *string when successful
-func (m *CustomerFailingAutomation) GetError()(*string) {
-    return m.error
+func (m *CustomerFailingAutomation) GetError() *string {
+	return m.error
 }
+
 // GetFailedAt gets the failedAt property value. Date and time when the customer failing automation failed.
 // returns a *Time when successful
-func (m *CustomerFailingAutomation) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *CustomerFailingAutomation) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerFailingAutomation) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["automationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationId(val)
-        }
-        return nil
-    }
-    res["error"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetError(val)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerFailingAutomation) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["automationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationId(val)
+		}
+		return nil
+	}
+	res["error"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetError(val)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetName gets the name property value. Human-readable name of the customer failing automation.
 // returns a *string when successful
-func (m *CustomerFailingAutomation) GetName()(*string) {
-    return m.name
+func (m *CustomerFailingAutomation) GetName() *string {
+	return m.name
 }
+
 // Serialize serializes information the current object
-func (m *CustomerFailingAutomation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("automationId", m.GetAutomationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("error", m.GetError())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerFailingAutomation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("automationId", m.GetAutomationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("error", m.GetError())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerFailingAutomation) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerFailingAutomation) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAutomationId sets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
-func (m *CustomerFailingAutomation) SetAutomationId(value *string)() {
-    m.automationId = value
+func (m *CustomerFailingAutomation) SetAutomationId(value *string) {
+	m.automationId = value
 }
+
 // SetError sets the error property value. Error associated with this Leadping customer failing automation.
-func (m *CustomerFailingAutomation) SetError(value *string)() {
-    m.error = value
+func (m *CustomerFailingAutomation) SetError(value *string) {
+	m.error = value
 }
+
 // SetFailedAt sets the failedAt property value. Date and time when the customer failing automation failed.
-func (m *CustomerFailingAutomation) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *CustomerFailingAutomation) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetName sets the name property value. Human-readable name of the customer failing automation.
-func (m *CustomerFailingAutomation) SetName(value *string)() {
-    m.name = value
+func (m *CustomerFailingAutomation) SetName(value *string) {
+	m.name = value
 }
+
 type CustomerFailingAutomationable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAutomationId()(*string)
-    GetError()(*string)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    SetAutomationId(value *string)()
-    SetError(value *string)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAutomationId() *string
+	GetError() *string
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	SetAutomationId(value *string)
+	SetError(value *string)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
 }

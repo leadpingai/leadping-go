@@ -2,36 +2,40 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 type OrganizationBillingState_pendingBillingPlan int
 
 const (
-    ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN OrganizationBillingState_pendingBillingPlan = iota
-    MONTHLY_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
+	ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN OrganizationBillingState_pendingBillingPlan = iota
+	MONTHLY_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
 )
 
 func (i OrganizationBillingState_pendingBillingPlan) String() string {
-    return []string{"Annual", "Monthly"}[i]
+	return []string{"Annual", "Monthly"}[i]
 }
+
 func ParseOrganizationBillingState_pendingBillingPlan(v string) (any, error) {
-    result := ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
-    switch v {
-        case "Annual":
-            result = ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
-        case "Monthly":
-            result = MONTHLY_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
+	switch v {
+	case "Annual":
+		result = ANNUAL_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
+	case "Monthly":
+		result = MONTHLY_ORGANIZATIONBILLINGSTATE_PENDINGBILLINGPLAN
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationBillingState_pendingBillingPlan(values []OrganizationBillingState_pendingBillingPlan) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationBillingState_pendingBillingPlan) isMultiValue() bool {
-    return false
+	return false
 }

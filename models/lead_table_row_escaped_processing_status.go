@@ -2,51 +2,55 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Defines the asynchronous verification and enrichment lifecycle for a lead.
 type LeadTableRow_processingStatus int
 
 const (
-    QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS LeadTableRow_processingStatus = iota
-    VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
-    VALIDATING_LEADTABLEROW_PROCESSINGSTATUS
-    ENRICHING_LEADTABLEROW_PROCESSINGSTATUS
-    READY_LEADTABLEROW_PROCESSINGSTATUS
-    INVALID_LEADTABLEROW_PROCESSINGSTATUS
-    FAILED_LEADTABLEROW_PROCESSINGSTATUS
+	QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS LeadTableRow_processingStatus = iota
+	VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
+	VALIDATING_LEADTABLEROW_PROCESSINGSTATUS
+	ENRICHING_LEADTABLEROW_PROCESSINGSTATUS
+	READY_LEADTABLEROW_PROCESSINGSTATUS
+	INVALID_LEADTABLEROW_PROCESSINGSTATUS
+	FAILED_LEADTABLEROW_PROCESSINGSTATUS
 )
 
 func (i LeadTableRow_processingStatus) String() string {
-    return []string{"Quarantined", "Verifying", "Validating", "Enriching", "Ready", "Invalid", "Failed"}[i]
+	return []string{"Quarantined", "Verifying", "Validating", "Enriching", "Ready", "Invalid", "Failed"}[i]
 }
+
 func ParseLeadTableRow_processingStatus(v string) (any, error) {
-    result := QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
-    switch v {
-        case "Quarantined":
-            result = QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
-        case "Verifying":
-            result = VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
-        case "Validating":
-            result = VALIDATING_LEADTABLEROW_PROCESSINGSTATUS
-        case "Enriching":
-            result = ENRICHING_LEADTABLEROW_PROCESSINGSTATUS
-        case "Ready":
-            result = READY_LEADTABLEROW_PROCESSINGSTATUS
-        case "Invalid":
-            result = INVALID_LEADTABLEROW_PROCESSINGSTATUS
-        case "Failed":
-            result = FAILED_LEADTABLEROW_PROCESSINGSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
+	switch v {
+	case "Quarantined":
+		result = QUARANTINED_LEADTABLEROW_PROCESSINGSTATUS
+	case "Verifying":
+		result = VERIFYING_LEADTABLEROW_PROCESSINGSTATUS
+	case "Validating":
+		result = VALIDATING_LEADTABLEROW_PROCESSINGSTATUS
+	case "Enriching":
+		result = ENRICHING_LEADTABLEROW_PROCESSINGSTATUS
+	case "Ready":
+		result = READY_LEADTABLEROW_PROCESSINGSTATUS
+	case "Invalid":
+		result = INVALID_LEADTABLEROW_PROCESSINGSTATUS
+	case "Failed":
+		result = FAILED_LEADTABLEROW_PROCESSINGSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeLeadTableRow_processingStatus(values []LeadTableRow_processingStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i LeadTableRow_processingStatus) isMultiValue() bool {
-    return false
+	return false
 }

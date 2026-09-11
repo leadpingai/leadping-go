@@ -4,110 +4,151 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberRequest defines the fields clients can send when working with phone number update.
 type PhoneNumberRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Human-readable label for the phone number.
-    name *string
-    // E.164 phone number exposed by this phone number update request.
-    number *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Human-readable label for the phone number.
+	name *string
+	// E.164 phone number exposed by this phone number update request.
+	number *string
+	// Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+	numberHealthEnabled *bool
 }
+
 // NewPhoneNumberRequest instantiates a new PhoneNumberRequest and sets the default values.
-func NewPhoneNumberRequest()(*PhoneNumberRequest) {
-    m := &PhoneNumberRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberRequest() *PhoneNumberRequest {
+	m := &PhoneNumberRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberRequest(), nil
+func CreatePhoneNumberRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["numberHealthEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumberHealthEnabled(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetName gets the name property value. Human-readable label for the phone number.
 // returns a *string when successful
-func (m *PhoneNumberRequest) GetName()(*string) {
-    return m.name
+func (m *PhoneNumberRequest) GetName() *string {
+	return m.name
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this phone number update request.
 // returns a *string when successful
-func (m *PhoneNumberRequest) GetNumber()(*string) {
-    return m.number
+func (m *PhoneNumberRequest) GetNumber() *string {
+	return m.number
 }
+
+// GetNumberHealthEnabled gets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+// returns a *bool when successful
+func (m *PhoneNumberRequest) GetNumberHealthEnabled() *bool {
+	return m.numberHealthEnabled
+}
+
 // Serialize serializes information the current object
-func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("numberHealthEnabled", m.GetNumberHealthEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetName sets the name property value. Human-readable label for the phone number.
-func (m *PhoneNumberRequest) SetName(value *string)() {
-    m.name = value
+func (m *PhoneNumberRequest) SetName(value *string) {
+	m.name = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number update request.
-func (m *PhoneNumberRequest) SetNumber(value *string)() {
-    m.number = value
+func (m *PhoneNumberRequest) SetNumber(value *string) {
+	m.number = value
 }
+
+// SetNumberHealthEnabled sets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+func (m *PhoneNumberRequest) SetNumberHealthEnabled(value *bool) {
+	m.numberHealthEnabled = value
+}
+
 type PhoneNumberRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetName()(*string)
-    GetNumber()(*string)
-    SetName(value *string)()
-    SetNumber(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetName() *string
+	GetNumber() *string
+	GetNumberHealthEnabled() *bool
+	SetName(value *string)
+	SetNumber(value *string)
+	SetNumberHealthEnabled(value *bool)
 }

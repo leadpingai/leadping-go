@@ -4,279 +4,299 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SourceRequest defines the fields clients can send when working with lead source.
 type SourceRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Product allowlist used to accept or route leads from this source.
-    allowedProducts []string
-    // State or region allowlist used to accept leads from this source.
-    allowedStates []string
-    // Tag IDs automatically assigned to leads created by this source.
-    defaultTagIds []string
-    // Tag names automatically assigned to leads created by this source.
-    defaultTagNames []string
-    // Human-readable description that explains this lead source request to API users.
-    description *string
-    // Human-readable source name.
-    name *string
-    // Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
-    requiresTrustedForm *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Product allowlist used to accept or route leads from this source.
+	allowedProducts []string
+	// State or region allowlist used to accept leads from this source.
+	allowedStates []string
+	// Tag IDs automatically assigned to leads created by this source.
+	defaultTagIds []string
+	// Tag names automatically assigned to leads created by this source.
+	defaultTagNames []string
+	// Human-readable description that explains this lead source request to API users.
+	description *string
+	// Human-readable source name.
+	name *string
+	// Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+	requiresTrustedForm *bool
 }
+
 // NewSourceRequest instantiates a new SourceRequest and sets the default values.
-func NewSourceRequest()(*SourceRequest) {
-    m := &SourceRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSourceRequest() *SourceRequest {
+	m := &SourceRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSourceRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceRequest(), nil
+func CreateSourceRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SourceRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SourceRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
 // returns a []string when successful
-func (m *SourceRequest) GetAllowedProducts()([]string) {
-    return m.allowedProducts
+func (m *SourceRequest) GetAllowedProducts() []string {
+	return m.allowedProducts
 }
+
 // GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
-func (m *SourceRequest) GetAllowedStates()([]string) {
-    return m.allowedStates
+func (m *SourceRequest) GetAllowedStates() []string {
+	return m.allowedStates
 }
+
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
-func (m *SourceRequest) GetDefaultTagIds()([]string) {
-    return m.defaultTagIds
+func (m *SourceRequest) GetDefaultTagIds() []string {
+	return m.defaultTagIds
 }
+
 // GetDefaultTagNames gets the defaultTagNames property value. Tag names automatically assigned to leads created by this source.
 // returns a []string when successful
-func (m *SourceRequest) GetDefaultTagNames()([]string) {
-    return m.defaultTagNames
+func (m *SourceRequest) GetDefaultTagNames() []string {
+	return m.defaultTagNames
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this lead source request to API users.
 // returns a *string when successful
-func (m *SourceRequest) GetDescription()(*string) {
-    return m.description
+func (m *SourceRequest) GetDescription() *string {
+	return m.description
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["allowedProducts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetAllowedProducts(res)
-        }
-        return nil
-    }
-    res["allowedStates"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetAllowedStates(res)
-        }
-        return nil
-    }
-    res["defaultTagIds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetDefaultTagIds(res)
-        }
-        return nil
-    }
-    res["defaultTagNames"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetDefaultTagNames(res)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["requiresTrustedForm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRequiresTrustedForm(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["allowedProducts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetAllowedProducts(res)
+		}
+		return nil
+	}
+	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetAllowedStates(res)
+		}
+		return nil
+	}
+	res["defaultTagIds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetDefaultTagIds(res)
+		}
+		return nil
+	}
+	res["defaultTagNames"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetDefaultTagNames(res)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["requiresTrustedForm"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRequiresTrustedForm(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetName gets the name property value. Human-readable source name.
 // returns a *string when successful
-func (m *SourceRequest) GetName()(*string) {
-    return m.name
+func (m *SourceRequest) GetName() *string {
+	return m.name
 }
+
 // GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
 // returns a *bool when successful
-func (m *SourceRequest) GetRequiresTrustedForm()(*bool) {
-    return m.requiresTrustedForm
+func (m *SourceRequest) GetRequiresTrustedForm() *bool {
+	return m.requiresTrustedForm
 }
+
 // Serialize serializes information the current object
-func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetAllowedProducts() != nil {
-        err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetAllowedStates() != nil {
-        err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDefaultTagIds() != nil {
-        err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDefaultTagNames() != nil {
-        err := writer.WriteCollectionOfStringValues("defaultTagNames", m.GetDefaultTagNames())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetAllowedProducts() != nil {
+		err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetAllowedStates() != nil {
+		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDefaultTagIds() != nil {
+		err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetDefaultTagNames() != nil {
+		err := writer.WriteCollectionOfStringValues("defaultTagNames", m.GetDefaultTagNames())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("requiresTrustedForm", m.GetRequiresTrustedForm())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SourceRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SourceRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-func (m *SourceRequest) SetAllowedProducts(value []string)() {
-    m.allowedProducts = value
+func (m *SourceRequest) SetAllowedProducts(value []string) {
+	m.allowedProducts = value
 }
+
 // SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
-func (m *SourceRequest) SetAllowedStates(value []string)() {
-    m.allowedStates = value
+func (m *SourceRequest) SetAllowedStates(value []string) {
+	m.allowedStates = value
 }
+
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
-func (m *SourceRequest) SetDefaultTagIds(value []string)() {
-    m.defaultTagIds = value
+func (m *SourceRequest) SetDefaultTagIds(value []string) {
+	m.defaultTagIds = value
 }
+
 // SetDefaultTagNames sets the defaultTagNames property value. Tag names automatically assigned to leads created by this source.
-func (m *SourceRequest) SetDefaultTagNames(value []string)() {
-    m.defaultTagNames = value
+func (m *SourceRequest) SetDefaultTagNames(value []string) {
+	m.defaultTagNames = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this lead source request to API users.
-func (m *SourceRequest) SetDescription(value *string)() {
-    m.description = value
+func (m *SourceRequest) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetName sets the name property value. Human-readable source name.
-func (m *SourceRequest) SetName(value *string)() {
-    m.name = value
+func (m *SourceRequest) SetName(value *string) {
+	m.name = value
 }
+
 // SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
-func (m *SourceRequest) SetRequiresTrustedForm(value *bool)() {
-    m.requiresTrustedForm = value
+func (m *SourceRequest) SetRequiresTrustedForm(value *bool) {
+	m.requiresTrustedForm = value
 }
+
 type SourceRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAllowedProducts()([]string)
-    GetAllowedStates()([]string)
-    GetDefaultTagIds()([]string)
-    GetDefaultTagNames()([]string)
-    GetDescription()(*string)
-    GetName()(*string)
-    GetRequiresTrustedForm()(*bool)
-    SetAllowedProducts(value []string)()
-    SetAllowedStates(value []string)()
-    SetDefaultTagIds(value []string)()
-    SetDefaultTagNames(value []string)()
-    SetDescription(value *string)()
-    SetName(value *string)()
-    SetRequiresTrustedForm(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAllowedProducts() []string
+	GetAllowedStates() []string
+	GetDefaultTagIds() []string
+	GetDefaultTagNames() []string
+	GetDescription() *string
+	GetName() *string
+	GetRequiresTrustedForm() *bool
+	SetAllowedProducts(value []string)
+	SetAllowedStates(value []string)
+	SetDefaultTagIds(value []string)
+	SetDefaultTagNames(value []string)
+	SetDescription(value *string)
+	SetName(value *string)
+	SetRequiresTrustedForm(value *bool)
 }

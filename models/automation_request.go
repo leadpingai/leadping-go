@@ -4,419 +4,447 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationRequest defines the fields clients can send when working with automation configuration.
 type AutomationRequest struct {
-    // Automation actions configured or returned for this workflow.
-    actions []AutomationActionable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Grouped automation conditions used to decide whether this workflow should run.
-    conditionGroups []AutomationConditionGroupable
-    // Directed connections between nodes in this automation graph.
-    connections []AutomationConnectionable
-    // Human-readable description that explains this automation configuration request to API users.
-    description *string
-    // Indicates whether this automation configuration request is active and available in the Leadping API.
-    enabled *bool
-    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    id *string
-    // Human-readable display name for the resource, subject to the API's maximum name length.
-    name *string
-    // Scope that limits where this automation configuration request applies in Leadping.
-    scope *string
-    // Automation triggers that can start this workflow.
-    triggers []AutomationTriggerable
-    // Version number for this automation configuration request schema or saved configuration.
-    version *int32
-    // Visibility level that controls who can see this automation configuration request.
-    visibility *string
+	// Automation actions configured or returned for this workflow.
+	actions []AutomationActionable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Grouped automation conditions used to decide whether this workflow should run.
+	conditionGroups []AutomationConditionGroupable
+	// Directed connections between nodes in this automation graph.
+	connections []AutomationConnectionable
+	// Human-readable description that explains this automation configuration request to API users.
+	description *string
+	// Indicates whether this automation configuration request is active and available in the Leadping API.
+	enabled *bool
+	// Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
+	id *string
+	// Human-readable display name for the resource, subject to the API's maximum name length.
+	name *string
+	// Scope that limits where this automation configuration request applies in Leadping.
+	scope *string
+	// Automation triggers that can start this workflow.
+	triggers []AutomationTriggerable
+	// Version number for this automation configuration request schema or saved configuration.
+	version *int32
+	// Visibility level that controls who can see this automation configuration request.
+	visibility *string
 }
+
 // NewAutomationRequest instantiates a new AutomationRequest and sets the default values.
-func NewAutomationRequest()(*AutomationRequest) {
-    m := &AutomationRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationRequest() *AutomationRequest {
+	m := &AutomationRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationRequest(), nil
+func CreateAutomationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationRequest(), nil
 }
+
 // GetActions gets the actions property value. Automation actions configured or returned for this workflow.
 // returns a []AutomationActionable when successful
-func (m *AutomationRequest) GetActions()([]AutomationActionable) {
-    return m.actions
+func (m *AutomationRequest) GetActions() []AutomationActionable {
+	return m.actions
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetConditionGroups gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
 // returns a []AutomationConditionGroupable when successful
-func (m *AutomationRequest) GetConditionGroups()([]AutomationConditionGroupable) {
-    return m.conditionGroups
+func (m *AutomationRequest) GetConditionGroups() []AutomationConditionGroupable {
+	return m.conditionGroups
 }
+
 // GetConnections gets the connections property value. Directed connections between nodes in this automation graph.
 // returns a []AutomationConnectionable when successful
-func (m *AutomationRequest) GetConnections()([]AutomationConnectionable) {
-    return m.connections
+func (m *AutomationRequest) GetConnections() []AutomationConnectionable {
+	return m.connections
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this automation configuration request to API users.
 // returns a *string when successful
-func (m *AutomationRequest) GetDescription()(*string) {
-    return m.description
+func (m *AutomationRequest) GetDescription() *string {
+	return m.description
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this automation configuration request is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *AutomationRequest) GetEnabled()(*bool) {
-    return m.enabled
+func (m *AutomationRequest) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationActionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationActionable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationActionable)
-                }
-            }
-            m.SetActions(res)
-        }
-        return nil
-    }
-    res["conditionGroups"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationConditionGroupFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationConditionGroupable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationConditionGroupable)
-                }
-            }
-            m.SetConditionGroups(res)
-        }
-        return nil
-    }
-    res["connections"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationConnectionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationConnectionable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationConnectionable)
-                }
-            }
-            m.SetConnections(res)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["scope"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScope(val)
-        }
-        return nil
-    }
-    res["triggers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationTriggerFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationTriggerable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationTriggerable)
-                }
-            }
-            m.SetTriggers(res)
-        }
-        return nil
-    }
-    res["version"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVersion(val)
-        }
-        return nil
-    }
-    res["visibility"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVisibility(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationActionFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationActionable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationActionable)
+				}
+			}
+			m.SetActions(res)
+		}
+		return nil
+	}
+	res["conditionGroups"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationConditionGroupFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationConditionGroupable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationConditionGroupable)
+				}
+			}
+			m.SetConditionGroups(res)
+		}
+		return nil
+	}
+	res["connections"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationConnectionFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationConnectionable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationConnectionable)
+				}
+			}
+			m.SetConnections(res)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["scope"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScope(val)
+		}
+		return nil
+	}
+	res["triggers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationTriggerFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationTriggerable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationTriggerable)
+				}
+			}
+			m.SetTriggers(res)
+		}
+		return nil
+	}
+	res["version"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVersion(val)
+		}
+		return nil
+	}
+	res["visibility"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVisibility(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
-func (m *AutomationRequest) GetId()(*string) {
-    return m.id
+func (m *AutomationRequest) GetId() *string {
+	return m.id
 }
+
 // GetName gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
 // returns a *string when successful
-func (m *AutomationRequest) GetName()(*string) {
-    return m.name
+func (m *AutomationRequest) GetName() *string {
+	return m.name
 }
+
 // GetScope gets the scope property value. Scope that limits where this automation configuration request applies in Leadping.
 // returns a *string when successful
-func (m *AutomationRequest) GetScope()(*string) {
-    return m.scope
+func (m *AutomationRequest) GetScope() *string {
+	return m.scope
 }
+
 // GetTriggers gets the triggers property value. Automation triggers that can start this workflow.
 // returns a []AutomationTriggerable when successful
-func (m *AutomationRequest) GetTriggers()([]AutomationTriggerable) {
-    return m.triggers
+func (m *AutomationRequest) GetTriggers() []AutomationTriggerable {
+	return m.triggers
 }
+
 // GetVersion gets the version property value. Version number for this automation configuration request schema or saved configuration.
 // returns a *int32 when successful
-func (m *AutomationRequest) GetVersion()(*int32) {
-    return m.version
+func (m *AutomationRequest) GetVersion() *int32 {
+	return m.version
 }
+
 // GetVisibility gets the visibility property value. Visibility level that controls who can see this automation configuration request.
 // returns a *string when successful
-func (m *AutomationRequest) GetVisibility()(*string) {
-    return m.visibility
+func (m *AutomationRequest) GetVisibility() *string {
+	return m.visibility
 }
+
 // Serialize serializes information the current object
-func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetActions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActions()))
-        for i, v := range m.GetActions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("actions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConditionGroups() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConditionGroups()))
-        for i, v := range m.GetConditionGroups() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("conditionGroups", cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConnections() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConnections()))
-        for i, v := range m.GetConnections() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("connections", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("scope", m.GetScope())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTriggers() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTriggers()))
-        for i, v := range m.GetTriggers() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("triggers", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("version", m.GetVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("visibility", m.GetVisibility())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetActions() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActions()))
+		for i, v := range m.GetActions() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("actions", cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConditionGroups() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConditionGroups()))
+		for i, v := range m.GetConditionGroups() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("conditionGroups", cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConnections() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConnections()))
+		for i, v := range m.GetConnections() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("connections", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("scope", m.GetScope())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTriggers() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTriggers()))
+		for i, v := range m.GetTriggers() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("triggers", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("version", m.GetVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("visibility", m.GetVisibility())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActions sets the actions property value. Automation actions configured or returned for this workflow.
-func (m *AutomationRequest) SetActions(value []AutomationActionable)() {
-    m.actions = value
+func (m *AutomationRequest) SetActions(value []AutomationActionable) {
+	m.actions = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetConditionGroups sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
-func (m *AutomationRequest) SetConditionGroups(value []AutomationConditionGroupable)() {
-    m.conditionGroups = value
+func (m *AutomationRequest) SetConditionGroups(value []AutomationConditionGroupable) {
+	m.conditionGroups = value
 }
+
 // SetConnections sets the connections property value. Directed connections between nodes in this automation graph.
-func (m *AutomationRequest) SetConnections(value []AutomationConnectionable)() {
-    m.connections = value
+func (m *AutomationRequest) SetConnections(value []AutomationConnectionable) {
+	m.connections = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this automation configuration request to API users.
-func (m *AutomationRequest) SetDescription(value *string)() {
-    m.description = value
+func (m *AutomationRequest) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this automation configuration request is active and available in the Leadping API.
-func (m *AutomationRequest) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *AutomationRequest) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-func (m *AutomationRequest) SetId(value *string)() {
-    m.id = value
+func (m *AutomationRequest) SetId(value *string) {
+	m.id = value
 }
+
 // SetName sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
-func (m *AutomationRequest) SetName(value *string)() {
-    m.name = value
+func (m *AutomationRequest) SetName(value *string) {
+	m.name = value
 }
+
 // SetScope sets the scope property value. Scope that limits where this automation configuration request applies in Leadping.
-func (m *AutomationRequest) SetScope(value *string)() {
-    m.scope = value
+func (m *AutomationRequest) SetScope(value *string) {
+	m.scope = value
 }
+
 // SetTriggers sets the triggers property value. Automation triggers that can start this workflow.
-func (m *AutomationRequest) SetTriggers(value []AutomationTriggerable)() {
-    m.triggers = value
+func (m *AutomationRequest) SetTriggers(value []AutomationTriggerable) {
+	m.triggers = value
 }
+
 // SetVersion sets the version property value. Version number for this automation configuration request schema or saved configuration.
-func (m *AutomationRequest) SetVersion(value *int32)() {
-    m.version = value
+func (m *AutomationRequest) SetVersion(value *int32) {
+	m.version = value
 }
+
 // SetVisibility sets the visibility property value. Visibility level that controls who can see this automation configuration request.
-func (m *AutomationRequest) SetVisibility(value *string)() {
-    m.visibility = value
+func (m *AutomationRequest) SetVisibility(value *string) {
+	m.visibility = value
 }
+
 type AutomationRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActions()([]AutomationActionable)
-    GetConditionGroups()([]AutomationConditionGroupable)
-    GetConnections()([]AutomationConnectionable)
-    GetDescription()(*string)
-    GetEnabled()(*bool)
-    GetId()(*string)
-    GetName()(*string)
-    GetScope()(*string)
-    GetTriggers()([]AutomationTriggerable)
-    GetVersion()(*int32)
-    GetVisibility()(*string)
-    SetActions(value []AutomationActionable)()
-    SetConditionGroups(value []AutomationConditionGroupable)()
-    SetConnections(value []AutomationConnectionable)()
-    SetDescription(value *string)()
-    SetEnabled(value *bool)()
-    SetId(value *string)()
-    SetName(value *string)()
-    SetScope(value *string)()
-    SetTriggers(value []AutomationTriggerable)()
-    SetVersion(value *int32)()
-    SetVisibility(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActions() []AutomationActionable
+	GetConditionGroups() []AutomationConditionGroupable
+	GetConnections() []AutomationConnectionable
+	GetDescription() *string
+	GetEnabled() *bool
+	GetId() *string
+	GetName() *string
+	GetScope() *string
+	GetTriggers() []AutomationTriggerable
+	GetVersion() *int32
+	GetVisibility() *string
+	SetActions(value []AutomationActionable)
+	SetConditionGroups(value []AutomationConditionGroupable)
+	SetConnections(value []AutomationConnectionable)
+	SetDescription(value *string)
+	SetEnabled(value *bool)
+	SetId(value *string)
+	SetName(value *string)
+	SetScope(value *string)
+	SetTriggers(value []AutomationTriggerable)
+	SetVersion(value *int32)
+	SetVisibility(value *string)
 }

@@ -4,169 +4,183 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // TelephonyLoginResponse provides the short-lived access token and client configuration required to initialize an authenticated Leadping calling session.
 type TelephonyLoginResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Callback token for this telephony login.
-    callbackToken *string
-    // UTC timestamp for expires at on this telephony login.
-    expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Password for this telephony login.
-    password *string
-    // Username for this telephony login.
-    username *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Callback token for this telephony login.
+	callbackToken *string
+	// UTC timestamp for expires at on this telephony login.
+	expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Password for this telephony login.
+	password *string
+	// Username for this telephony login.
+	username *string
 }
+
 // NewTelephonyLoginResponse instantiates a new TelephonyLoginResponse and sets the default values.
-func NewTelephonyLoginResponse()(*TelephonyLoginResponse) {
-    m := &TelephonyLoginResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewTelephonyLoginResponse() *TelephonyLoginResponse {
+	m := &TelephonyLoginResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateTelephonyLoginResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTelephonyLoginResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewTelephonyLoginResponse(), nil
+func CreateTelephonyLoginResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewTelephonyLoginResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TelephonyLoginResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *TelephonyLoginResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCallbackToken gets the callbackToken property value. Callback token for this telephony login.
 // returns a *string when successful
-func (m *TelephonyLoginResponse) GetCallbackToken()(*string) {
-    return m.callbackToken
+func (m *TelephonyLoginResponse) GetCallbackToken() *string {
+	return m.callbackToken
 }
+
 // GetExpiresAt gets the expiresAt property value. UTC timestamp for expires at on this telephony login.
 // returns a *Time when successful
-func (m *TelephonyLoginResponse) GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.expiresAt
+func (m *TelephonyLoginResponse) GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.expiresAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *TelephonyLoginResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callbackToken"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallbackToken(val)
-        }
-        return nil
-    }
-    res["expiresAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExpiresAt(val)
-        }
-        return nil
-    }
-    res["password"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPassword(val)
-        }
-        return nil
-    }
-    res["username"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUsername(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *TelephonyLoginResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callbackToken"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallbackToken(val)
+		}
+		return nil
+	}
+	res["expiresAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExpiresAt(val)
+		}
+		return nil
+	}
+	res["password"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPassword(val)
+		}
+		return nil
+	}
+	res["username"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUsername(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetPassword gets the password property value. Password for this telephony login.
 // returns a *string when successful
-func (m *TelephonyLoginResponse) GetPassword()(*string) {
-    return m.password
+func (m *TelephonyLoginResponse) GetPassword() *string {
+	return m.password
 }
+
 // GetUsername gets the username property value. Username for this telephony login.
 // returns a *string when successful
-func (m *TelephonyLoginResponse) GetUsername()(*string) {
-    return m.username
+func (m *TelephonyLoginResponse) GetUsername() *string {
+	return m.username
 }
+
 // Serialize serializes information the current object
-func (m *TelephonyLoginResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("callbackToken", m.GetCallbackToken())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("expiresAt", m.GetExpiresAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("password", m.GetPassword())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("username", m.GetUsername())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *TelephonyLoginResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("callbackToken", m.GetCallbackToken())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("expiresAt", m.GetExpiresAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("password", m.GetPassword())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("username", m.GetUsername())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TelephonyLoginResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *TelephonyLoginResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCallbackToken sets the callbackToken property value. Callback token for this telephony login.
-func (m *TelephonyLoginResponse) SetCallbackToken(value *string)() {
-    m.callbackToken = value
+func (m *TelephonyLoginResponse) SetCallbackToken(value *string) {
+	m.callbackToken = value
 }
+
 // SetExpiresAt sets the expiresAt property value. UTC timestamp for expires at on this telephony login.
-func (m *TelephonyLoginResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.expiresAt = value
+func (m *TelephonyLoginResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.expiresAt = value
 }
+
 // SetPassword sets the password property value. Password for this telephony login.
-func (m *TelephonyLoginResponse) SetPassword(value *string)() {
-    m.password = value
+func (m *TelephonyLoginResponse) SetPassword(value *string) {
+	m.password = value
 }
+
 // SetUsername sets the username property value. Username for this telephony login.
-func (m *TelephonyLoginResponse) SetUsername(value *string)() {
-    m.username = value
+func (m *TelephonyLoginResponse) SetUsername(value *string) {
+	m.username = value
 }
+
 type TelephonyLoginResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallbackToken()(*string)
-    GetExpiresAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPassword()(*string)
-    GetUsername()(*string)
-    SetCallbackToken(value *string)()
-    SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPassword(value *string)()
-    SetUsername(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallbackToken() *string
+	GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPassword() *string
+	GetUsername() *string
+	SetCallbackToken(value *string)
+	SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPassword(value *string)
+	SetUsername(value *string)
 }

@@ -4,140 +4,152 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // MobileDevicePreferences describes notification and calling preferences saved for one of the user's mobile devices.
 type MobileDevicePreferences struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identifier and display name of the related device.
-    device IdNamePairable
-    // Whether inbound phone calls are enabled for this user device.
-    inboundPhoneCallsEnabled *bool
-    // The date and time this device preference was last updated.
-    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	device IdNamePairable
+	// Whether inbound phone calls are enabled for this user device.
+	inboundPhoneCallsEnabled *bool
+	// The date and time this device preference was last updated.
+	updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewMobileDevicePreferences instantiates a new MobileDevicePreferences and sets the default values.
-func NewMobileDevicePreferences()(*MobileDevicePreferences) {
-    m := &MobileDevicePreferences{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewMobileDevicePreferences() *MobileDevicePreferences {
+	m := &MobileDevicePreferences{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateMobileDevicePreferencesFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateMobileDevicePreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewMobileDevicePreferences(), nil
+func CreateMobileDevicePreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewMobileDevicePreferences(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *MobileDevicePreferences) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *MobileDevicePreferences) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetDevice gets the device property value. Identifier and display name of the related device.
+
+// GetDevice gets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a IdNamePairable when successful
-func (m *MobileDevicePreferences) GetDevice()(IdNamePairable) {
-    return m.device
+func (m *MobileDevicePreferences) GetDevice() IdNamePairable {
+	return m.device
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *MobileDevicePreferences) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["device"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDevice(val.(IdNamePairable))
-        }
-        return nil
-    }
-    res["inboundPhoneCallsEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInboundPhoneCallsEnabled(val)
-        }
-        return nil
-    }
-    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUpdatedAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *MobileDevicePreferences) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["device"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDevice(val.(IdNamePairable))
+		}
+		return nil
+	}
+	res["inboundPhoneCallsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInboundPhoneCallsEnabled(val)
+		}
+		return nil
+	}
+	res["updatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUpdatedAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetInboundPhoneCallsEnabled gets the inboundPhoneCallsEnabled property value. Whether inbound phone calls are enabled for this user device.
 // returns a *bool when successful
-func (m *MobileDevicePreferences) GetInboundPhoneCallsEnabled()(*bool) {
-    return m.inboundPhoneCallsEnabled
+func (m *MobileDevicePreferences) GetInboundPhoneCallsEnabled() *bool {
+	return m.inboundPhoneCallsEnabled
 }
+
 // GetUpdatedAt gets the updatedAt property value. The date and time this device preference was last updated.
 // returns a *Time when successful
-func (m *MobileDevicePreferences) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.updatedAt
+func (m *MobileDevicePreferences) GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.updatedAt
 }
+
 // Serialize serializes information the current object
-func (m *MobileDevicePreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("device", m.GetDevice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("inboundPhoneCallsEnabled", m.GetInboundPhoneCallsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *MobileDevicePreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("device", m.GetDevice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("inboundPhoneCallsEnabled", m.GetInboundPhoneCallsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MobileDevicePreferences) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *MobileDevicePreferences) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetDevice sets the device property value. Identifier and display name of the related device.
-func (m *MobileDevicePreferences) SetDevice(value IdNamePairable)() {
-    m.device = value
+
+// SetDevice sets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *MobileDevicePreferences) SetDevice(value IdNamePairable) {
+	m.device = value
 }
+
 // SetInboundPhoneCallsEnabled sets the inboundPhoneCallsEnabled property value. Whether inbound phone calls are enabled for this user device.
-func (m *MobileDevicePreferences) SetInboundPhoneCallsEnabled(value *bool)() {
-    m.inboundPhoneCallsEnabled = value
+func (m *MobileDevicePreferences) SetInboundPhoneCallsEnabled(value *bool) {
+	m.inboundPhoneCallsEnabled = value
 }
+
 // SetUpdatedAt sets the updatedAt property value. The date and time this device preference was last updated.
-func (m *MobileDevicePreferences) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.updatedAt = value
+func (m *MobileDevicePreferences) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.updatedAt = value
 }
+
 type MobileDevicePreferencesable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDevice()(IdNamePairable)
-    GetInboundPhoneCallsEnabled()(*bool)
-    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetDevice(value IdNamePairable)()
-    SetInboundPhoneCallsEnabled(value *bool)()
-    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDevice() IdNamePairable
+	GetInboundPhoneCallsEnabled() *bool
+	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetDevice(value IdNamePairable)
+	SetInboundPhoneCallsEnabled(value *bool)
+	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

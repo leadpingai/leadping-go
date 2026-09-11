@@ -4,227 +4,245 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // StripeInvoiceResponse customer-safe Leadping invoice summary for billing.
 type StripeInvoiceResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Total invoice amount in the invoice currency.
-    amount *float64
-    // Date and time when the invoice was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether a downloadable PDF is available for the invoice.
-    hasPdf *bool
-    // Provider identifier for the invoice.
-    id *string
-    // Human-readable invoice number, when assigned.
-    number *string
-    // Current provider-reported invoice status.
-    status *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Total invoice amount in the invoice currency.
+	amount *float64
+	// Date and time when the invoice was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a downloadable PDF is available for the invoice.
+	hasPdf *bool
+	// Provider identifier for the invoice.
+	id *string
+	// Human-readable invoice number, when assigned.
+	number *string
+	// Current provider-reported invoice status.
+	status *string
 }
+
 // NewStripeInvoiceResponse instantiates a new StripeInvoiceResponse and sets the default values.
-func NewStripeInvoiceResponse()(*StripeInvoiceResponse) {
-    m := &StripeInvoiceResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewStripeInvoiceResponse() *StripeInvoiceResponse {
+	m := &StripeInvoiceResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateStripeInvoiceResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateStripeInvoiceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewStripeInvoiceResponse(), nil
+func CreateStripeInvoiceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewStripeInvoiceResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *StripeInvoiceResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *StripeInvoiceResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAmount gets the amount property value. Total invoice amount in the invoice currency.
 // returns a *float64 when successful
-func (m *StripeInvoiceResponse) GetAmount()(*float64) {
-    return m.amount
+func (m *StripeInvoiceResponse) GetAmount() *float64 {
+	return m.amount
 }
+
 // GetCreatedAt gets the createdAt property value. Date and time when the invoice was created.
 // returns a *Time when successful
-func (m *StripeInvoiceResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *StripeInvoiceResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *StripeInvoiceResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["amount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAmount(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["hasPdf"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasPdf(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *StripeInvoiceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["amount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAmount(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["hasPdf"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasPdf(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHasPdf gets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
 // returns a *bool when successful
-func (m *StripeInvoiceResponse) GetHasPdf()(*bool) {
-    return m.hasPdf
+func (m *StripeInvoiceResponse) GetHasPdf() *bool {
+	return m.hasPdf
 }
+
 // GetId gets the id property value. Provider identifier for the invoice.
 // returns a *string when successful
-func (m *StripeInvoiceResponse) GetId()(*string) {
-    return m.id
+func (m *StripeInvoiceResponse) GetId() *string {
+	return m.id
 }
+
 // GetNumber gets the number property value. Human-readable invoice number, when assigned.
 // returns a *string when successful
-func (m *StripeInvoiceResponse) GetNumber()(*string) {
-    return m.number
+func (m *StripeInvoiceResponse) GetNumber() *string {
+	return m.number
 }
+
 // GetStatus gets the status property value. Current provider-reported invoice status.
 // returns a *string when successful
-func (m *StripeInvoiceResponse) GetStatus()(*string) {
-    return m.status
+func (m *StripeInvoiceResponse) GetStatus() *string {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *StripeInvoiceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("amount", m.GetAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasPdf", m.GetHasPdf())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *StripeInvoiceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("amount", m.GetAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasPdf", m.GetHasPdf())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *StripeInvoiceResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *StripeInvoiceResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAmount sets the amount property value. Total invoice amount in the invoice currency.
-func (m *StripeInvoiceResponse) SetAmount(value *float64)() {
-    m.amount = value
+func (m *StripeInvoiceResponse) SetAmount(value *float64) {
+	m.amount = value
 }
+
 // SetCreatedAt sets the createdAt property value. Date and time when the invoice was created.
-func (m *StripeInvoiceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *StripeInvoiceResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetHasPdf sets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
-func (m *StripeInvoiceResponse) SetHasPdf(value *bool)() {
-    m.hasPdf = value
+func (m *StripeInvoiceResponse) SetHasPdf(value *bool) {
+	m.hasPdf = value
 }
+
 // SetId sets the id property value. Provider identifier for the invoice.
-func (m *StripeInvoiceResponse) SetId(value *string)() {
-    m.id = value
+func (m *StripeInvoiceResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetNumber sets the number property value. Human-readable invoice number, when assigned.
-func (m *StripeInvoiceResponse) SetNumber(value *string)() {
-    m.number = value
+func (m *StripeInvoiceResponse) SetNumber(value *string) {
+	m.number = value
 }
+
 // SetStatus sets the status property value. Current provider-reported invoice status.
-func (m *StripeInvoiceResponse) SetStatus(value *string)() {
-    m.status = value
+func (m *StripeInvoiceResponse) SetStatus(value *string) {
+	m.status = value
 }
+
 type StripeInvoiceResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAmount()(*float64)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetHasPdf()(*bool)
-    GetId()(*string)
-    GetNumber()(*string)
-    GetStatus()(*string)
-    SetAmount(value *float64)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetHasPdf(value *bool)()
-    SetId(value *string)()
-    SetNumber(value *string)()
-    SetStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAmount() *float64
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetHasPdf() *bool
+	GetId() *string
+	GetNumber() *string
+	GetStatus() *string
+	SetAmount(value *float64)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetHasPdf(value *bool)
+	SetId(value *string)
+	SetNumber(value *string)
+	SetStatus(value *string)
 }

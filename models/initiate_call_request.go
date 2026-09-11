@@ -4,255 +4,275 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // InitiateCallRequest defines the fields clients can send when working with phone call initiation.
 type InitiateCallRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Messaging campaign identifier associated with this phone call initiation request.
-    campaignId *string
-    // Conversation ID that links this phone call initiation request to the Leadping inbox thread.
-    conversationId *string
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // Lead ID associated with the outbound call request.
-    leadId *string
-    // Idempotency key used to prevent duplicate outbound delivery.
-    outboundIdempotencyKey *string
-    // Lead source ID used for call attribution and sender selection.
-    sourceId *string
-    // Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
-    wasManuallyOverridden *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Messaging campaign identifier associated with this phone call initiation request.
+	campaignId *string
+	// Conversation ID that links this phone call initiation request to the Leadping inbox thread.
+	conversationId *string
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Lead ID associated with the outbound call request.
+	leadId *string
+	// Idempotency key used to prevent duplicate outbound delivery.
+	outboundIdempotencyKey *string
+	// Lead source ID used for call attribution and sender selection.
+	sourceId *string
+	// Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
+	wasManuallyOverridden *bool
 }
+
 // NewInitiateCallRequest instantiates a new InitiateCallRequest and sets the default values.
-func NewInitiateCallRequest()(*InitiateCallRequest) {
-    m := &InitiateCallRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewInitiateCallRequest() *InitiateCallRequest {
+	m := &InitiateCallRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateInitiateCallRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateInitiateCallRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewInitiateCallRequest(), nil
+func CreateInitiateCallRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewInitiateCallRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *InitiateCallRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *InitiateCallRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone call initiation request.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *InitiateCallRequest) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this phone call initiation request to the Leadping inbox thread.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetConversationId()(*string) {
-    return m.conversationId
+func (m *InitiateCallRequest) GetConversationId() *string {
+	return m.conversationId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *InitiateCallRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["outboundIdempotencyKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundIdempotencyKey(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["wasManuallyOverridden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWasManuallyOverridden(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *InitiateCallRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["outboundIdempotencyKey"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutboundIdempotencyKey(val)
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWasManuallyOverridden(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *InitiateCallRequest) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
+
 // GetLeadId gets the leadId property value. Lead ID associated with the outbound call request.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetLeadId()(*string) {
-    return m.leadId
+func (m *InitiateCallRequest) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetOutboundIdempotencyKey()(*string) {
-    return m.outboundIdempotencyKey
+func (m *InitiateCallRequest) GetOutboundIdempotencyKey() *string {
+	return m.outboundIdempotencyKey
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used for call attribution and sender selection.
 // returns a *string when successful
-func (m *InitiateCallRequest) GetSourceId()(*string) {
-    return m.sourceId
+func (m *InitiateCallRequest) GetSourceId() *string {
+	return m.sourceId
 }
+
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
 // returns a *bool when successful
-func (m *InitiateCallRequest) GetWasManuallyOverridden()(*bool) {
-    return m.wasManuallyOverridden
+func (m *InitiateCallRequest) GetWasManuallyOverridden() *bool {
+	return m.wasManuallyOverridden
 }
+
 // Serialize serializes information the current object
-func (m *InitiateCallRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *InitiateCallRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *InitiateCallRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *InitiateCallRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone call initiation request.
-func (m *InitiateCallRequest) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *InitiateCallRequest) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this phone call initiation request to the Leadping inbox thread.
-func (m *InitiateCallRequest) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *InitiateCallRequest) SetConversationId(value *string) {
+	m.conversationId = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *InitiateCallRequest) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *InitiateCallRequest) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
+
 // SetLeadId sets the leadId property value. Lead ID associated with the outbound call request.
-func (m *InitiateCallRequest) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *InitiateCallRequest) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
-func (m *InitiateCallRequest) SetOutboundIdempotencyKey(value *string)() {
-    m.outboundIdempotencyKey = value
+func (m *InitiateCallRequest) SetOutboundIdempotencyKey(value *string) {
+	m.outboundIdempotencyKey = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used for call attribution and sender selection.
-func (m *InitiateCallRequest) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *InitiateCallRequest) SetSourceId(value *string) {
+	m.sourceId = value
 }
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
-func (m *InitiateCallRequest) SetWasManuallyOverridden(value *bool)() {
-    m.wasManuallyOverridden = value
+func (m *InitiateCallRequest) SetWasManuallyOverridden(value *bool) {
+	m.wasManuallyOverridden = value
 }
+
 type InitiateCallRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCampaignId()(*string)
-    GetConversationId()(*string)
-    GetFromPhoneNumberId()(*string)
-    GetLeadId()(*string)
-    GetOutboundIdempotencyKey()(*string)
-    GetSourceId()(*string)
-    GetWasManuallyOverridden()(*bool)
-    SetCampaignId(value *string)()
-    SetConversationId(value *string)()
-    SetFromPhoneNumberId(value *string)()
-    SetLeadId(value *string)()
-    SetOutboundIdempotencyKey(value *string)()
-    SetSourceId(value *string)()
-    SetWasManuallyOverridden(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCampaignId() *string
+	GetConversationId() *string
+	GetFromPhoneNumberId() *string
+	GetLeadId() *string
+	GetOutboundIdempotencyKey() *string
+	GetSourceId() *string
+	GetWasManuallyOverridden() *bool
+	SetCampaignId(value *string)
+	SetConversationId(value *string)
+	SetFromPhoneNumberId(value *string)
+	SetLeadId(value *string)
+	SetOutboundIdempotencyKey(value *string)
+	SetSourceId(value *string)
+	SetWasManuallyOverridden(value *bool)
 }

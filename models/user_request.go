@@ -4,226 +4,244 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UserRequest defines the fields clients can send when working with user profile.
 type UserRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // First name of the lead, user, or contact represented by this user profile request.
-    firstName *string
-    // Last name of the lead, user, or contact represented by this user profile request.
-    lastName *string
-    // Display name for the user.
-    name *string
-    // Notification preferences configured for the user.
-    notificationPreferences UserRequest_notificationPreferencesable
-    // Phone details for the lead, user, or organization represented by this user profile request.
-    phone *string
-    // IANA time zone identifier used when displaying dates and times for this user.
-    timeZoneId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// First name of the lead, user, or contact represented by this user profile request.
+	firstName *string
+	// Last name of the lead, user, or contact represented by this user profile request.
+	lastName *string
+	// Display name for the user.
+	name *string
+	// Describes user notification preferences data used in Leadping API requests and responses.
+	notificationPreferences UserRequest_notificationPreferencesable
+	// Phone details for the lead, user, or organization represented by this user profile request.
+	phone *string
+	// IANA time zone identifier used when displaying dates and times for this user.
+	timeZoneId *string
 }
+
 // NewUserRequest instantiates a new UserRequest and sets the default values.
-func NewUserRequest()(*UserRequest) {
-    m := &UserRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserRequest() *UserRequest {
+	m := &UserRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserRequest(), nil
+func CreateUserRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["notificationPreferences"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateUserRequest_notificationPreferencesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNotificationPreferences(val.(UserRequest_notificationPreferencesable))
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["timeZoneId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimeZoneId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["notificationPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserRequest_notificationPreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNotificationPreferences(val.(UserRequest_notificationPreferencesable))
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
 // returns a *string when successful
-func (m *UserRequest) GetFirstName()(*string) {
-    return m.firstName
+func (m *UserRequest) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
 // returns a *string when successful
-func (m *UserRequest) GetLastName()(*string) {
-    return m.lastName
+func (m *UserRequest) GetLastName() *string {
+	return m.lastName
 }
+
 // GetName gets the name property value. Display name for the user.
 // returns a *string when successful
-func (m *UserRequest) GetName()(*string) {
-    return m.name
+func (m *UserRequest) GetName() *string {
+	return m.name
 }
-// GetNotificationPreferences gets the notificationPreferences property value. Notification preferences configured for the user.
+
+// GetNotificationPreferences gets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
 // returns a UserRequest_notificationPreferencesable when successful
-func (m *UserRequest) GetNotificationPreferences()(UserRequest_notificationPreferencesable) {
-    return m.notificationPreferences
+func (m *UserRequest) GetNotificationPreferences() UserRequest_notificationPreferencesable {
+	return m.notificationPreferences
 }
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
 // returns a *string when successful
-func (m *UserRequest) GetPhone()(*string) {
-    return m.phone
+func (m *UserRequest) GetPhone() *string {
+	return m.phone
 }
+
 // GetTimeZoneId gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
 // returns a *string when successful
-func (m *UserRequest) GetTimeZoneId()(*string) {
-    return m.timeZoneId
+func (m *UserRequest) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
+
 // Serialize serializes information the current object
-func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("notificationPreferences", m.GetNotificationPreferences())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("notificationPreferences", m.GetNotificationPreferences())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
-func (m *UserRequest) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *UserRequest) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
-func (m *UserRequest) SetLastName(value *string)() {
-    m.lastName = value
+func (m *UserRequest) SetLastName(value *string) {
+	m.lastName = value
 }
+
 // SetName sets the name property value. Display name for the user.
-func (m *UserRequest) SetName(value *string)() {
-    m.name = value
+func (m *UserRequest) SetName(value *string) {
+	m.name = value
 }
-// SetNotificationPreferences sets the notificationPreferences property value. Notification preferences configured for the user.
-func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationPreferencesable)() {
-    m.notificationPreferences = value
+
+// SetNotificationPreferences sets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
+func (m *UserRequest) SetNotificationPreferences(value UserRequest_notificationPreferencesable) {
+	m.notificationPreferences = value
 }
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
-func (m *UserRequest) SetPhone(value *string)() {
-    m.phone = value
+func (m *UserRequest) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetTimeZoneId sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
-func (m *UserRequest) SetTimeZoneId(value *string)() {
-    m.timeZoneId = value
+func (m *UserRequest) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
 }
+
 type UserRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetFirstName()(*string)
-    GetLastName()(*string)
-    GetName()(*string)
-    GetNotificationPreferences()(UserRequest_notificationPreferencesable)
-    GetPhone()(*string)
-    GetTimeZoneId()(*string)
-    SetFirstName(value *string)()
-    SetLastName(value *string)()
-    SetName(value *string)()
-    SetNotificationPreferences(value UserRequest_notificationPreferencesable)()
-    SetPhone(value *string)()
-    SetTimeZoneId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetFirstName() *string
+	GetLastName() *string
+	GetName() *string
+	GetNotificationPreferences() UserRequest_notificationPreferencesable
+	GetPhone() *string
+	GetTimeZoneId() *string
+	SetFirstName(value *string)
+	SetLastName(value *string)
+	SetName(value *string)
+	SetNotificationPreferences(value UserRequest_notificationPreferencesable)
+	SetPhone(value *string)
+	SetTimeZoneId(value *string)
 }

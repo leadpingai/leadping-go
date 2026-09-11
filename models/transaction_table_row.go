@@ -4,579 +4,621 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // TransactionTableRow summarizes billing transaction data in paginated and searchable results.
 type TransactionTableRow struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Monetary amount for this billing transaction or wallet operation.
-    amount *float64
-    // Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
-    billableUnit *TransactionTableRow_billableUnit
-    // Customer-facing amount billed for the metered usage or wallet transaction.
-    billedAmount *float64
-    // Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
-    billingChannel *TransactionTableRow_billingChannel
-    // UTC timestamp when this billing transaction table row was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable description that explains this billing transaction table row to API users.
-    description *string
-    // Unique Leadping identifier for this billing transaction table row.
-    id *string
-    // Identifier and display name of the related lead.
-    lead TransactionTableRow_leadable
-    // Net monetary amount after fees, credits, or adjustments.
-    netAmount *float64
-    // Identifier and display name of the related organization.
-    organization TransactionTableRow_organizationable
-    // Masked or human-readable payment method shown for this transaction.
-    paymentMethodDisplay *string
-    // Version of the pricing rules used to calculate the billed amount.
-    pricingVersion *string
-    // Number of billable units measured for this transaction, when usage-based pricing applies.
-    quantity *float64
-    // Identifier of the event that created this billing transaction, when available.
-    sourceEventId *string
-    // Event type that created this billing transaction, when available.
-    sourceEventType *string
-    // Processing status for this wallet transaction.
-    transactionStatus *TransactionStatus
-    // Debit or credit classification for this wallet transaction.
-    transactionType *TransactionType
-    // Price charged per billable unit when usage-based pricing applies.
-    unitPrice *float64
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Monetary amount for this billing transaction or wallet operation.
+	amount *float64
+	// Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
+	billableUnit *TransactionTableRow_billableUnit
+	// Customer-facing amount billed for the metered usage or wallet transaction.
+	billedAmount *float64
+	// Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
+	billingChannel *TransactionTableRow_billingChannel
+	// UTC timestamp when this billing transaction table row was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable description that explains this billing transaction table row to API users.
+	description *string
+	// Unique Leadping identifier for this billing transaction table row.
+	id *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	lead TransactionTableRow_leadable
+	// Net monetary amount after fees, credits, or adjustments.
+	netAmount *float64
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization TransactionTableRow_organizationable
+	// Masked or human-readable payment method shown for this transaction.
+	paymentMethodDisplay *string
+	// Version of the pricing rules used to calculate the billed amount.
+	pricingVersion *string
+	// Number of billable units measured for this transaction, when usage-based pricing applies.
+	quantity *float64
+	// Identifier of the event that created this billing transaction, when available.
+	sourceEventId *string
+	// Event type that created this billing transaction, when available.
+	sourceEventType *string
+	// Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
+	transactionStatus *TransactionStatus
+	// Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
+	transactionType *TransactionType
+	// Price charged per billable unit when usage-based pricing applies.
+	unitPrice *float64
 }
+
 // NewTransactionTableRow instantiates a new TransactionTableRow and sets the default values.
-func NewTransactionTableRow()(*TransactionTableRow) {
-    m := &TransactionTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewTransactionTableRow() *TransactionTableRow {
+	m := &TransactionTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateTransactionTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTransactionTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewTransactionTableRow(), nil
+func CreateTransactionTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewTransactionTableRow(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TransactionTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *TransactionTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAmount gets the amount property value. Monetary amount for this billing transaction or wallet operation.
 // returns a *float64 when successful
-func (m *TransactionTableRow) GetAmount()(*float64) {
-    return m.amount
+func (m *TransactionTableRow) GetAmount() *float64 {
+	return m.amount
 }
+
 // GetBillableUnit gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 // returns a *TransactionTableRow_billableUnit when successful
-func (m *TransactionTableRow) GetBillableUnit()(*TransactionTableRow_billableUnit) {
-    return m.billableUnit
+func (m *TransactionTableRow) GetBillableUnit() *TransactionTableRow_billableUnit {
+	return m.billableUnit
 }
+
 // GetBilledAmount gets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
 // returns a *float64 when successful
-func (m *TransactionTableRow) GetBilledAmount()(*float64) {
-    return m.billedAmount
+func (m *TransactionTableRow) GetBilledAmount() *float64 {
+	return m.billedAmount
 }
+
 // GetBillingChannel gets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 // returns a *TransactionTableRow_billingChannel when successful
-func (m *TransactionTableRow) GetBillingChannel()(*TransactionTableRow_billingChannel) {
-    return m.billingChannel
+func (m *TransactionTableRow) GetBillingChannel() *TransactionTableRow_billingChannel {
+	return m.billingChannel
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this billing transaction table row was created.
 // returns a *Time when successful
-func (m *TransactionTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *TransactionTableRow) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this billing transaction table row to API users.
 // returns a *string when successful
-func (m *TransactionTableRow) GetDescription()(*string) {
-    return m.description
+func (m *TransactionTableRow) GetDescription() *string {
+	return m.description
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *TransactionTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["amount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAmount(val)
-        }
-        return nil
-    }
-    res["billableUnit"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTransactionTableRow_billableUnit)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableUnit(val.(*TransactionTableRow_billableUnit))
-        }
-        return nil
-    }
-    res["billedAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBilledAmount(val)
-        }
-        return nil
-    }
-    res["billingChannel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTransactionTableRow_billingChannel)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingChannel(val.(*TransactionTableRow_billingChannel))
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["lead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTransactionTableRow_leadFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLead(val.(TransactionTableRow_leadable))
-        }
-        return nil
-    }
-    res["netAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNetAmount(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTransactionTableRow_organizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(TransactionTableRow_organizationable))
-        }
-        return nil
-    }
-    res["paymentMethodDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPaymentMethodDisplay(val)
-        }
-        return nil
-    }
-    res["pricingVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPricingVersion(val)
-        }
-        return nil
-    }
-    res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetQuantity(val)
-        }
-        return nil
-    }
-    res["sourceEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventId(val)
-        }
-        return nil
-    }
-    res["sourceEventType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceEventType(val)
-        }
-        return nil
-    }
-    res["transactionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTransactionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTransactionStatus(val.(*TransactionStatus))
-        }
-        return nil
-    }
-    res["transactionType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTransactionType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTransactionType(val.(*TransactionType))
-        }
-        return nil
-    }
-    res["unitPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnitPrice(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *TransactionTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["amount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAmount(val)
+		}
+		return nil
+	}
+	res["billableUnit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTransactionTableRow_billableUnit)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableUnit(val.(*TransactionTableRow_billableUnit))
+		}
+		return nil
+	}
+	res["billedAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBilledAmount(val)
+		}
+		return nil
+	}
+	res["billingChannel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTransactionTableRow_billingChannel)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingChannel(val.(*TransactionTableRow_billingChannel))
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["lead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateTransactionTableRow_leadFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLead(val.(TransactionTableRow_leadable))
+		}
+		return nil
+	}
+	res["netAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNetAmount(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateTransactionTableRow_organizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(TransactionTableRow_organizationable))
+		}
+		return nil
+	}
+	res["paymentMethodDisplay"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPaymentMethodDisplay(val)
+		}
+		return nil
+	}
+	res["pricingVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPricingVersion(val)
+		}
+		return nil
+	}
+	res["quantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuantity(val)
+		}
+		return nil
+	}
+	res["sourceEventId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceEventId(val)
+		}
+		return nil
+	}
+	res["sourceEventType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceEventType(val)
+		}
+		return nil
+	}
+	res["transactionStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTransactionStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTransactionStatus(val.(*TransactionStatus))
+		}
+		return nil
+	}
+	res["transactionType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTransactionType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTransactionType(val.(*TransactionType))
+		}
+		return nil
+	}
+	res["unitPrice"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnitPrice(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this billing transaction table row.
 // returns a *string when successful
-func (m *TransactionTableRow) GetId()(*string) {
-    return m.id
+func (m *TransactionTableRow) GetId() *string {
+	return m.id
 }
-// GetLead gets the lead property value. Identifier and display name of the related lead.
+
+// GetLead gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionTableRow_leadable when successful
-func (m *TransactionTableRow) GetLead()(TransactionTableRow_leadable) {
-    return m.lead
+func (m *TransactionTableRow) GetLead() TransactionTableRow_leadable {
+	return m.lead
 }
+
 // GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
 // returns a *float64 when successful
-func (m *TransactionTableRow) GetNetAmount()(*float64) {
-    return m.netAmount
+func (m *TransactionTableRow) GetNetAmount() *float64 {
+	return m.netAmount
 }
-// GetOrganization gets the organization property value. Identifier and display name of the related organization.
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionTableRow_organizationable when successful
-func (m *TransactionTableRow) GetOrganization()(TransactionTableRow_organizationable) {
-    return m.organization
+func (m *TransactionTableRow) GetOrganization() TransactionTableRow_organizationable {
+	return m.organization
 }
+
 // GetPaymentMethodDisplay gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
 // returns a *string when successful
-func (m *TransactionTableRow) GetPaymentMethodDisplay()(*string) {
-    return m.paymentMethodDisplay
+func (m *TransactionTableRow) GetPaymentMethodDisplay() *string {
+	return m.paymentMethodDisplay
 }
+
 // GetPricingVersion gets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
 // returns a *string when successful
-func (m *TransactionTableRow) GetPricingVersion()(*string) {
-    return m.pricingVersion
+func (m *TransactionTableRow) GetPricingVersion() *string {
+	return m.pricingVersion
 }
+
 // GetQuantity gets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
 // returns a *float64 when successful
-func (m *TransactionTableRow) GetQuantity()(*float64) {
-    return m.quantity
+func (m *TransactionTableRow) GetQuantity() *float64 {
+	return m.quantity
 }
+
 // GetSourceEventId gets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
 // returns a *string when successful
-func (m *TransactionTableRow) GetSourceEventId()(*string) {
-    return m.sourceEventId
+func (m *TransactionTableRow) GetSourceEventId() *string {
+	return m.sourceEventId
 }
+
 // GetSourceEventType gets the sourceEventType property value. Event type that created this billing transaction, when available.
 // returns a *string when successful
-func (m *TransactionTableRow) GetSourceEventType()(*string) {
-    return m.sourceEventType
+func (m *TransactionTableRow) GetSourceEventType() *string {
+	return m.sourceEventType
 }
-// GetTransactionStatus gets the transactionStatus property value. Processing status for this wallet transaction.
+
+// GetTransactionStatus gets the transactionStatus property value. Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
 // returns a *TransactionStatus when successful
-func (m *TransactionTableRow) GetTransactionStatus()(*TransactionStatus) {
-    return m.transactionStatus
+func (m *TransactionTableRow) GetTransactionStatus() *TransactionStatus {
+	return m.transactionStatus
 }
-// GetTransactionType gets the transactionType property value. Debit or credit classification for this wallet transaction.
+
+// GetTransactionType gets the transactionType property value. Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
 // returns a *TransactionType when successful
-func (m *TransactionTableRow) GetTransactionType()(*TransactionType) {
-    return m.transactionType
+func (m *TransactionTableRow) GetTransactionType() *TransactionType {
+	return m.transactionType
 }
+
 // GetUnitPrice gets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
 // returns a *float64 when successful
-func (m *TransactionTableRow) GetUnitPrice()(*float64) {
-    return m.unitPrice
+func (m *TransactionTableRow) GetUnitPrice() *float64 {
+	return m.unitPrice
 }
+
 // Serialize serializes information the current object
-func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("amount", m.GetAmount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetBillableUnit() != nil {
-        cast := (*m.GetBillableUnit()).String()
-        err := writer.WriteStringValue("billableUnit", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("billedAmount", m.GetBilledAmount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetBillingChannel() != nil {
-        cast := (*m.GetBillingChannel()).String()
-        err := writer.WriteStringValue("billingChannel", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("lead", m.GetLead())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("netAmount", m.GetNetAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("paymentMethodDisplay", m.GetPaymentMethodDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("pricingVersion", m.GetPricingVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("quantity", m.GetQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceEventType", m.GetSourceEventType())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTransactionStatus() != nil {
-        cast := (*m.GetTransactionStatus()).String()
-        err := writer.WriteStringValue("transactionStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTransactionType() != nil {
-        cast := (*m.GetTransactionType()).String()
-        err := writer.WriteStringValue("transactionType", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("unitPrice", m.GetUnitPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("amount", m.GetAmount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetBillableUnit() != nil {
+		cast := (*m.GetBillableUnit()).String()
+		err := writer.WriteStringValue("billableUnit", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("billedAmount", m.GetBilledAmount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetBillingChannel() != nil {
+		cast := (*m.GetBillingChannel()).String()
+		err := writer.WriteStringValue("billingChannel", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("lead", m.GetLead())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("netAmount", m.GetNetAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("paymentMethodDisplay", m.GetPaymentMethodDisplay())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("pricingVersion", m.GetPricingVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("quantity", m.GetQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceEventId", m.GetSourceEventId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceEventType", m.GetSourceEventType())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTransactionStatus() != nil {
+		cast := (*m.GetTransactionStatus()).String()
+		err := writer.WriteStringValue("transactionStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTransactionType() != nil {
+		cast := (*m.GetTransactionType()).String()
+		err := writer.WriteStringValue("transactionType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("unitPrice", m.GetUnitPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TransactionTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *TransactionTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAmount sets the amount property value. Monetary amount for this billing transaction or wallet operation.
-func (m *TransactionTableRow) SetAmount(value *float64)() {
-    m.amount = value
+func (m *TransactionTableRow) SetAmount(value *float64) {
+	m.amount = value
 }
+
 // SetBillableUnit sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
-func (m *TransactionTableRow) SetBillableUnit(value *TransactionTableRow_billableUnit)() {
-    m.billableUnit = value
+func (m *TransactionTableRow) SetBillableUnit(value *TransactionTableRow_billableUnit) {
+	m.billableUnit = value
 }
+
 // SetBilledAmount sets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
-func (m *TransactionTableRow) SetBilledAmount(value *float64)() {
-    m.billedAmount = value
+func (m *TransactionTableRow) SetBilledAmount(value *float64) {
+	m.billedAmount = value
 }
+
 // SetBillingChannel sets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
-func (m *TransactionTableRow) SetBillingChannel(value *TransactionTableRow_billingChannel)() {
-    m.billingChannel = value
+func (m *TransactionTableRow) SetBillingChannel(value *TransactionTableRow_billingChannel) {
+	m.billingChannel = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
-func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *TransactionTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this billing transaction table row to API users.
-func (m *TransactionTableRow) SetDescription(value *string)() {
-    m.description = value
+func (m *TransactionTableRow) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this billing transaction table row.
-func (m *TransactionTableRow) SetId(value *string)() {
-    m.id = value
+func (m *TransactionTableRow) SetId(value *string) {
+	m.id = value
 }
-// SetLead sets the lead property value. Identifier and display name of the related lead.
-func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable)() {
-    m.lead = value
+
+// SetLead sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable) {
+	m.lead = value
 }
+
 // SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-func (m *TransactionTableRow) SetNetAmount(value *float64)() {
-    m.netAmount = value
+func (m *TransactionTableRow) SetNetAmount(value *float64) {
+	m.netAmount = value
 }
-// SetOrganization sets the organization property value. Identifier and display name of the related organization.
-func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organizationable)() {
-    m.organization = value
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organizationable) {
+	m.organization = value
 }
+
 // SetPaymentMethodDisplay sets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
-func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string)() {
-    m.paymentMethodDisplay = value
+func (m *TransactionTableRow) SetPaymentMethodDisplay(value *string) {
+	m.paymentMethodDisplay = value
 }
+
 // SetPricingVersion sets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
-func (m *TransactionTableRow) SetPricingVersion(value *string)() {
-    m.pricingVersion = value
+func (m *TransactionTableRow) SetPricingVersion(value *string) {
+	m.pricingVersion = value
 }
+
 // SetQuantity sets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
-func (m *TransactionTableRow) SetQuantity(value *float64)() {
-    m.quantity = value
+func (m *TransactionTableRow) SetQuantity(value *float64) {
+	m.quantity = value
 }
+
 // SetSourceEventId sets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
-func (m *TransactionTableRow) SetSourceEventId(value *string)() {
-    m.sourceEventId = value
+func (m *TransactionTableRow) SetSourceEventId(value *string) {
+	m.sourceEventId = value
 }
+
 // SetSourceEventType sets the sourceEventType property value. Event type that created this billing transaction, when available.
-func (m *TransactionTableRow) SetSourceEventType(value *string)() {
-    m.sourceEventType = value
+func (m *TransactionTableRow) SetSourceEventType(value *string) {
+	m.sourceEventType = value
 }
-// SetTransactionStatus sets the transactionStatus property value. Processing status for this wallet transaction.
-func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus)() {
-    m.transactionStatus = value
+
+// SetTransactionStatus sets the transactionStatus property value. Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
+func (m *TransactionTableRow) SetTransactionStatus(value *TransactionStatus) {
+	m.transactionStatus = value
 }
-// SetTransactionType sets the transactionType property value. Debit or credit classification for this wallet transaction.
-func (m *TransactionTableRow) SetTransactionType(value *TransactionType)() {
-    m.transactionType = value
+
+// SetTransactionType sets the transactionType property value. Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
+func (m *TransactionTableRow) SetTransactionType(value *TransactionType) {
+	m.transactionType = value
 }
+
 // SetUnitPrice sets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
-func (m *TransactionTableRow) SetUnitPrice(value *float64)() {
-    m.unitPrice = value
+func (m *TransactionTableRow) SetUnitPrice(value *float64) {
+	m.unitPrice = value
 }
+
 type TransactionTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAmount()(*float64)
-    GetBillableUnit()(*TransactionTableRow_billableUnit)
-    GetBilledAmount()(*float64)
-    GetBillingChannel()(*TransactionTableRow_billingChannel)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDescription()(*string)
-    GetId()(*string)
-    GetLead()(TransactionTableRow_leadable)
-    GetNetAmount()(*float64)
-    GetOrganization()(TransactionTableRow_organizationable)
-    GetPaymentMethodDisplay()(*string)
-    GetPricingVersion()(*string)
-    GetQuantity()(*float64)
-    GetSourceEventId()(*string)
-    GetSourceEventType()(*string)
-    GetTransactionStatus()(*TransactionStatus)
-    GetTransactionType()(*TransactionType)
-    GetUnitPrice()(*float64)
-    SetAmount(value *float64)()
-    SetBillableUnit(value *TransactionTableRow_billableUnit)()
-    SetBilledAmount(value *float64)()
-    SetBillingChannel(value *TransactionTableRow_billingChannel)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDescription(value *string)()
-    SetId(value *string)()
-    SetLead(value TransactionTableRow_leadable)()
-    SetNetAmount(value *float64)()
-    SetOrganization(value TransactionTableRow_organizationable)()
-    SetPaymentMethodDisplay(value *string)()
-    SetPricingVersion(value *string)()
-    SetQuantity(value *float64)()
-    SetSourceEventId(value *string)()
-    SetSourceEventType(value *string)()
-    SetTransactionStatus(value *TransactionStatus)()
-    SetTransactionType(value *TransactionType)()
-    SetUnitPrice(value *float64)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAmount() *float64
+	GetBillableUnit() *TransactionTableRow_billableUnit
+	GetBilledAmount() *float64
+	GetBillingChannel() *TransactionTableRow_billingChannel
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDescription() *string
+	GetId() *string
+	GetLead() TransactionTableRow_leadable
+	GetNetAmount() *float64
+	GetOrganization() TransactionTableRow_organizationable
+	GetPaymentMethodDisplay() *string
+	GetPricingVersion() *string
+	GetQuantity() *float64
+	GetSourceEventId() *string
+	GetSourceEventType() *string
+	GetTransactionStatus() *TransactionStatus
+	GetTransactionType() *TransactionType
+	GetUnitPrice() *float64
+	SetAmount(value *float64)
+	SetBillableUnit(value *TransactionTableRow_billableUnit)
+	SetBilledAmount(value *float64)
+	SetBillingChannel(value *TransactionTableRow_billingChannel)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDescription(value *string)
+	SetId(value *string)
+	SetLead(value TransactionTableRow_leadable)
+	SetNetAmount(value *float64)
+	SetOrganization(value TransactionTableRow_organizationable)
+	SetPaymentMethodDisplay(value *string)
+	SetPricingVersion(value *string)
+	SetQuantity(value *float64)
+	SetSourceEventId(value *string)
+	SetSourceEventType(value *string)
+	SetTransactionStatus(value *TransactionStatus)
+	SetTransactionType(value *TransactionType)
+	SetUnitPrice(value *float64)
 }

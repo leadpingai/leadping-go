@@ -4,139 +4,151 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationPreviewConditionResult result schema for the Leadping API automation preview condition result returned by lookup and validation endpoints.
 type AutomationPreviewConditionResult struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Automation condition ID evaluated by this preview result.
-    conditionId *string
-    // Indicates whether this automation preview condition result passed the preview or validation check.
-    passed *bool
-    // Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
-    summary *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Automation condition ID evaluated by this preview result.
+	conditionId *string
+	// Indicates whether this automation preview condition result passed the preview or validation check.
+	passed *bool
+	// Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
+	summary *string
 }
+
 // NewAutomationPreviewConditionResult instantiates a new AutomationPreviewConditionResult and sets the default values.
-func NewAutomationPreviewConditionResult()(*AutomationPreviewConditionResult) {
-    m := &AutomationPreviewConditionResult{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationPreviewConditionResult() *AutomationPreviewConditionResult {
+	m := &AutomationPreviewConditionResult{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationPreviewConditionResultFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationPreviewConditionResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationPreviewConditionResult(), nil
+func CreateAutomationPreviewConditionResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationPreviewConditionResult(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationPreviewConditionResult) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationPreviewConditionResult) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetConditionId gets the conditionId property value. Automation condition ID evaluated by this preview result.
 // returns a *string when successful
-func (m *AutomationPreviewConditionResult) GetConditionId()(*string) {
-    return m.conditionId
+func (m *AutomationPreviewConditionResult) GetConditionId() *string {
+	return m.conditionId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationPreviewConditionResult) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["conditionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConditionId(val)
-        }
-        return nil
-    }
-    res["passed"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPassed(val)
-        }
-        return nil
-    }
-    res["summary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSummary(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationPreviewConditionResult) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["conditionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConditionId(val)
+		}
+		return nil
+	}
+	res["passed"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPassed(val)
+		}
+		return nil
+	}
+	res["summary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSummary(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetPassed gets the passed property value. Indicates whether this automation preview condition result passed the preview or validation check.
 // returns a *bool when successful
-func (m *AutomationPreviewConditionResult) GetPassed()(*bool) {
-    return m.passed
+func (m *AutomationPreviewConditionResult) GetPassed() *bool {
+	return m.passed
 }
+
 // GetSummary gets the summary property value. Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
 // returns a *string when successful
-func (m *AutomationPreviewConditionResult) GetSummary()(*string) {
-    return m.summary
+func (m *AutomationPreviewConditionResult) GetSummary() *string {
+	return m.summary
 }
+
 // Serialize serializes information the current object
-func (m *AutomationPreviewConditionResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("conditionId", m.GetConditionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("passed", m.GetPassed())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("summary", m.GetSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationPreviewConditionResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("conditionId", m.GetConditionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("passed", m.GetPassed())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("summary", m.GetSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationPreviewConditionResult) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationPreviewConditionResult) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetConditionId sets the conditionId property value. Automation condition ID evaluated by this preview result.
-func (m *AutomationPreviewConditionResult) SetConditionId(value *string)() {
-    m.conditionId = value
+func (m *AutomationPreviewConditionResult) SetConditionId(value *string) {
+	m.conditionId = value
 }
+
 // SetPassed sets the passed property value. Indicates whether this automation preview condition result passed the preview or validation check.
-func (m *AutomationPreviewConditionResult) SetPassed(value *bool)() {
-    m.passed = value
+func (m *AutomationPreviewConditionResult) SetPassed(value *bool) {
+	m.passed = value
 }
+
 // SetSummary sets the summary property value. Short human-readable summary of this automation preview condition result for lists, timelines, and notifications.
-func (m *AutomationPreviewConditionResult) SetSummary(value *string)() {
-    m.summary = value
+func (m *AutomationPreviewConditionResult) SetSummary(value *string) {
+	m.summary = value
 }
+
 type AutomationPreviewConditionResultable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetConditionId()(*string)
-    GetPassed()(*bool)
-    GetSummary()(*string)
-    SetConditionId(value *string)()
-    SetPassed(value *bool)()
-    SetSummary(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetConditionId() *string
+	GetPassed() *bool
+	GetSummary() *string
+	SetConditionId(value *string)
+	SetPassed(value *bool)
+	SetSummary(value *string)
 }

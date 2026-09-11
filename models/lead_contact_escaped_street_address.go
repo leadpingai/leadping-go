@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadContact_streetAddress postal street address for the lead contact profile.
+// LeadContact_streetAddress describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 type LeadContact_streetAddress struct {
-    StreetAddress
+	StreetAddress
 }
+
 // NewLeadContact_streetAddress instantiates a new LeadContact_streetAddress and sets the default values.
-func NewLeadContact_streetAddress()(*LeadContact_streetAddress) {
-    m := &LeadContact_streetAddress{
-        StreetAddress: *NewStreetAddress(),
-    }
-    return m
+func NewLeadContact_streetAddress() *LeadContact_streetAddress {
+	m := &LeadContact_streetAddress{
+		StreetAddress: *NewStreetAddress(),
+	}
+	return m
 }
+
 // CreateLeadContact_streetAddressFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadContact_streetAddressFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadContact_streetAddress(), nil
+func CreateLeadContact_streetAddressFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadContact_streetAddress(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadContact_streetAddress) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.StreetAddress.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadContact_streetAddress) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.StreetAddress.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *LeadContact_streetAddress) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.StreetAddress.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *LeadContact_streetAddress) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.StreetAddress.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type LeadContact_streetAddressable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    StreetAddressable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	StreetAddressable
 }

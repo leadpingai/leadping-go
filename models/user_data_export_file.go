@@ -4,168 +4,182 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UserDataExportFile describes a file included in a user-data export, including its logical category, media type, size, and integrity metadata.
 type UserDataExportFile struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Category classification for this Leadping user data export file.
-    category *string
-    // Media type of the generated file or response content.
-    contentType *string
-    // Human-readable file name associated with this Leadping user data export file.
-    fileName *string
-    // Total number of row records represented by this Leadping user data export file.
-    rowCount *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Category classification for this Leadping user data export file.
+	category *string
+	// Media type of the generated file or response content.
+	contentType *string
+	// Human-readable file name associated with this Leadping user data export file.
+	fileName *string
+	// Total number of row records represented by this Leadping user data export file.
+	rowCount *int32
 }
+
 // NewUserDataExportFile instantiates a new UserDataExportFile and sets the default values.
-func NewUserDataExportFile()(*UserDataExportFile) {
-    m := &UserDataExportFile{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUserDataExportFile() *UserDataExportFile {
+	m := &UserDataExportFile{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUserDataExportFileFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserDataExportFileFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserDataExportFile(), nil
+func CreateUserDataExportFileFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserDataExportFile(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UserDataExportFile) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UserDataExportFile) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCategory gets the category property value. Category classification for this Leadping user data export file.
 // returns a *string when successful
-func (m *UserDataExportFile) GetCategory()(*string) {
-    return m.category
+func (m *UserDataExportFile) GetCategory() *string {
+	return m.category
 }
+
 // GetContentType gets the contentType property value. Media type of the generated file or response content.
 // returns a *string when successful
-func (m *UserDataExportFile) GetContentType()(*string) {
-    return m.contentType
+func (m *UserDataExportFile) GetContentType() *string {
+	return m.contentType
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserDataExportFile) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["category"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCategory(val)
-        }
-        return nil
-    }
-    res["contentType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContentType(val)
-        }
-        return nil
-    }
-    res["fileName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFileName(val)
-        }
-        return nil
-    }
-    res["rowCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRowCount(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserDataExportFile) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["category"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCategory(val)
+		}
+		return nil
+	}
+	res["contentType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContentType(val)
+		}
+		return nil
+	}
+	res["fileName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFileName(val)
+		}
+		return nil
+	}
+	res["rowCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRowCount(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFileName gets the fileName property value. Human-readable file name associated with this Leadping user data export file.
 // returns a *string when successful
-func (m *UserDataExportFile) GetFileName()(*string) {
-    return m.fileName
+func (m *UserDataExportFile) GetFileName() *string {
+	return m.fileName
 }
+
 // GetRowCount gets the rowCount property value. Total number of row records represented by this Leadping user data export file.
 // returns a *int32 when successful
-func (m *UserDataExportFile) GetRowCount()(*int32) {
-    return m.rowCount
+func (m *UserDataExportFile) GetRowCount() *int32 {
+	return m.rowCount
 }
+
 // Serialize serializes information the current object
-func (m *UserDataExportFile) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("category", m.GetCategory())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("contentType", m.GetContentType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fileName", m.GetFileName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("rowCount", m.GetRowCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UserDataExportFile) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("category", m.GetCategory())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("contentType", m.GetContentType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fileName", m.GetFileName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("rowCount", m.GetRowCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UserDataExportFile) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UserDataExportFile) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCategory sets the category property value. Category classification for this Leadping user data export file.
-func (m *UserDataExportFile) SetCategory(value *string)() {
-    m.category = value
+func (m *UserDataExportFile) SetCategory(value *string) {
+	m.category = value
 }
+
 // SetContentType sets the contentType property value. Media type of the generated file or response content.
-func (m *UserDataExportFile) SetContentType(value *string)() {
-    m.contentType = value
+func (m *UserDataExportFile) SetContentType(value *string) {
+	m.contentType = value
 }
+
 // SetFileName sets the fileName property value. Human-readable file name associated with this Leadping user data export file.
-func (m *UserDataExportFile) SetFileName(value *string)() {
-    m.fileName = value
+func (m *UserDataExportFile) SetFileName(value *string) {
+	m.fileName = value
 }
+
 // SetRowCount sets the rowCount property value. Total number of row records represented by this Leadping user data export file.
-func (m *UserDataExportFile) SetRowCount(value *int32)() {
-    m.rowCount = value
+func (m *UserDataExportFile) SetRowCount(value *int32) {
+	m.rowCount = value
 }
+
 type UserDataExportFileable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCategory()(*string)
-    GetContentType()(*string)
-    GetFileName()(*string)
-    GetRowCount()(*int32)
-    SetCategory(value *string)()
-    SetContentType(value *string)()
-    SetFileName(value *string)()
-    SetRowCount(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCategory() *string
+	GetContentType() *string
+	GetFileName() *string
+	GetRowCount() *int32
+	SetCategory(value *string)
+	SetContentType(value *string)
+	SetFileName(value *string)
+	SetRowCount(value *int32)
 }

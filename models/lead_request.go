@@ -4,267 +4,287 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // LeadRequest defines the fields clients can send when working with lead.
 type LeadRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Contact details for the lead or customer represented by this lead request.
-    contact LeadContactable
-    // Demographic profile details for the lead represented by this lead request.
-    customer LeadProfileable
-    // Indicates whether this lead request is active and available in the Leadping API.
-    enabled *bool
-    // Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    id *string
-    // Structured metadata used for attribution, integrations, and reporting on this lead request.
-    metadata LeadMetadataable
-    // Tag IDs assigned to or filtered against this lead.
-    tagIds []string
-    // Tag names assigned to this lead when matching existing tags by name.
-    tagNames []string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Public Leadping API schema for lead contact profile data.
+	contact LeadContactable
+	// Public Leadping API schema for lead demographic profile data.
+	customer LeadProfileable
+	// Indicates whether this lead request is active and available in the Leadping API.
+	enabled *bool
+	// Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
+	id *string
+	// Public Leadping API schema for lead attribution metadata data.
+	metadata LeadMetadataable
+	// Tag IDs assigned to or filtered against this lead.
+	tagIds []string
+	// Tag names assigned to this lead when matching existing tags by name.
+	tagNames []string
 }
+
 // NewLeadRequest instantiates a new LeadRequest and sets the default values.
-func NewLeadRequest()(*LeadRequest) {
-    m := &LeadRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadRequest() *LeadRequest {
+	m := &LeadRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadRequest(), nil
+func CreateLeadRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetContact gets the contact property value. Contact details for the lead or customer represented by this lead request.
+
+// GetContact gets the contact property value. Public Leadping API schema for lead contact profile data.
 // returns a LeadContactable when successful
-func (m *LeadRequest) GetContact()(LeadContactable) {
-    return m.contact
+func (m *LeadRequest) GetContact() LeadContactable {
+	return m.contact
 }
-// GetCustomer gets the customer property value. Demographic profile details for the lead represented by this lead request.
+
+// GetCustomer gets the customer property value. Public Leadping API schema for lead demographic profile data.
 // returns a LeadProfileable when successful
-func (m *LeadRequest) GetCustomer()(LeadProfileable) {
-    return m.customer
+func (m *LeadRequest) GetCustomer() LeadProfileable {
+	return m.customer
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *LeadRequest) GetEnabled()(*bool) {
-    return m.enabled
+func (m *LeadRequest) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["contact"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadContactFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContact(val.(LeadContactable))
-        }
-        return nil
-    }
-    res["customer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadProfileFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCustomer(val.(LeadProfileable))
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["metadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMetadata(val.(LeadMetadataable))
-        }
-        return nil
-    }
-    res["tagIds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetTagIds(res)
-        }
-        return nil
-    }
-    res["tagNames"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetTagNames(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["contact"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadContactFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContact(val.(LeadContactable))
+		}
+		return nil
+	}
+	res["customer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadProfileFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomer(val.(LeadProfileable))
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["metadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadMetadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMetadata(val.(LeadMetadataable))
+		}
+		return nil
+	}
+	res["tagIds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetTagIds(res)
+		}
+		return nil
+	}
+	res["tagNames"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetTagNames(res)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 // returns a *string when successful
-func (m *LeadRequest) GetId()(*string) {
-    return m.id
+func (m *LeadRequest) GetId() *string {
+	return m.id
 }
-// GetMetadata gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
+
+// GetMetadata gets the metadata property value. Public Leadping API schema for lead attribution metadata data.
 // returns a LeadMetadataable when successful
-func (m *LeadRequest) GetMetadata()(LeadMetadataable) {
-    return m.metadata
+func (m *LeadRequest) GetMetadata() LeadMetadataable {
+	return m.metadata
 }
+
 // GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 // returns a []string when successful
-func (m *LeadRequest) GetTagIds()([]string) {
-    return m.tagIds
+func (m *LeadRequest) GetTagIds() []string {
+	return m.tagIds
 }
+
 // GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 // returns a []string when successful
-func (m *LeadRequest) GetTagNames()([]string) {
-    return m.tagNames
+func (m *LeadRequest) GetTagNames() []string {
+	return m.tagNames
 }
+
 // Serialize serializes information the current object
-func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("contact", m.GetContact())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("customer", m.GetCustomer())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("metadata", m.GetMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTagIds() != nil {
-        err := writer.WriteCollectionOfStringValues("tagIds", m.GetTagIds())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTagNames() != nil {
-        err := writer.WriteCollectionOfStringValues("tagNames", m.GetTagNames())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("contact", m.GetContact())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("customer", m.GetCustomer())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("metadata", m.GetMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTagIds() != nil {
+		err := writer.WriteCollectionOfStringValues("tagIds", m.GetTagIds())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTagNames() != nil {
+		err := writer.WriteCollectionOfStringValues("tagNames", m.GetTagNames())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetContact sets the contact property value. Contact details for the lead or customer represented by this lead request.
-func (m *LeadRequest) SetContact(value LeadContactable)() {
-    m.contact = value
+
+// SetContact sets the contact property value. Public Leadping API schema for lead contact profile data.
+func (m *LeadRequest) SetContact(value LeadContactable) {
+	m.contact = value
 }
-// SetCustomer sets the customer property value. Demographic profile details for the lead represented by this lead request.
-func (m *LeadRequest) SetCustomer(value LeadProfileable)() {
-    m.customer = value
+
+// SetCustomer sets the customer property value. Public Leadping API schema for lead demographic profile data.
+func (m *LeadRequest) SetCustomer(value LeadProfileable) {
+	m.customer = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
-func (m *LeadRequest) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *LeadRequest) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetId sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-func (m *LeadRequest) SetId(value *string)() {
-    m.id = value
+func (m *LeadRequest) SetId(value *string) {
+	m.id = value
 }
-// SetMetadata sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
-func (m *LeadRequest) SetMetadata(value LeadMetadataable)() {
-    m.metadata = value
+
+// SetMetadata sets the metadata property value. Public Leadping API schema for lead attribution metadata data.
+func (m *LeadRequest) SetMetadata(value LeadMetadataable) {
+	m.metadata = value
 }
+
 // SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
-func (m *LeadRequest) SetTagIds(value []string)() {
-    m.tagIds = value
+func (m *LeadRequest) SetTagIds(value []string) {
+	m.tagIds = value
 }
+
 // SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
-func (m *LeadRequest) SetTagNames(value []string)() {
-    m.tagNames = value
+func (m *LeadRequest) SetTagNames(value []string) {
+	m.tagNames = value
 }
+
 type LeadRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetContact()(LeadContactable)
-    GetCustomer()(LeadProfileable)
-    GetEnabled()(*bool)
-    GetId()(*string)
-    GetMetadata()(LeadMetadataable)
-    GetTagIds()([]string)
-    GetTagNames()([]string)
-    SetContact(value LeadContactable)()
-    SetCustomer(value LeadProfileable)()
-    SetEnabled(value *bool)()
-    SetId(value *string)()
-    SetMetadata(value LeadMetadataable)()
-    SetTagIds(value []string)()
-    SetTagNames(value []string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetContact() LeadContactable
+	GetCustomer() LeadProfileable
+	GetEnabled() *bool
+	GetId() *string
+	GetMetadata() LeadMetadataable
+	GetTagIds() []string
+	GetTagNames() []string
+	SetContact(value LeadContactable)
+	SetCustomer(value LeadProfileable)
+	SetEnabled(value *bool)
+	SetId(value *string)
+	SetMetadata(value LeadMetadataable)
+	SetTagIds(value []string)
+	SetTagNames(value []string)
 }

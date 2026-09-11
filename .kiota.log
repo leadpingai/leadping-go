@@ -11,6 +11,8 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadContact/properti
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadIntakeRequest/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadIntakeRequest/properties/trustedFormUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadMetadata/properties/trustedFormUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadStatusChangeResponse/properties/leadEmail - The format email is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadStatusChangeResponse/properties/leadAvatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadTableRow/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadTableRow/properties/avatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/MessageMediaAttachment/properties/url - The format uri is not supported by Kiota and the string type will be used.

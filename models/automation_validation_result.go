@@ -4,122 +4,132 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationValidationResult result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
 type AutomationValidationResult struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Validation or processing errors returned for this automation validation result.
-    errors []string
-    // Warnings returned for this automation validation result that do not necessarily block processing.
-    warnings []string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Validation or processing errors returned for this automation validation result.
+	errors []string
+	// Warnings returned for this automation validation result that do not necessarily block processing.
+	warnings []string
 }
+
 // NewAutomationValidationResult instantiates a new AutomationValidationResult and sets the default values.
-func NewAutomationValidationResult()(*AutomationValidationResult) {
-    m := &AutomationValidationResult{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationValidationResult() *AutomationValidationResult {
+	m := &AutomationValidationResult{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationValidationResultFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationValidationResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationValidationResult(), nil
+func CreateAutomationValidationResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationValidationResult(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationValidationResult) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationValidationResult) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetErrors gets the errors property value. Validation or processing errors returned for this automation validation result.
 // returns a []string when successful
-func (m *AutomationValidationResult) GetErrors()([]string) {
-    return m.errors
+func (m *AutomationValidationResult) GetErrors() []string {
+	return m.errors
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationValidationResult) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["errors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetErrors(res)
-        }
-        return nil
-    }
-    res["warnings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetWarnings(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationValidationResult) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["errors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetErrors(res)
+		}
+		return nil
+	}
+	res["warnings"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetWarnings(res)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetWarnings gets the warnings property value. Warnings returned for this automation validation result that do not necessarily block processing.
 // returns a []string when successful
-func (m *AutomationValidationResult) GetWarnings()([]string) {
-    return m.warnings
+func (m *AutomationValidationResult) GetWarnings() []string {
+	return m.warnings
 }
+
 // Serialize serializes information the current object
-func (m *AutomationValidationResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetErrors() != nil {
-        err := writer.WriteCollectionOfStringValues("errors", m.GetErrors())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWarnings() != nil {
-        err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationValidationResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetErrors() != nil {
+		err := writer.WriteCollectionOfStringValues("errors", m.GetErrors())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetWarnings() != nil {
+		err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationValidationResult) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationValidationResult) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetErrors sets the errors property value. Validation or processing errors returned for this automation validation result.
-func (m *AutomationValidationResult) SetErrors(value []string)() {
-    m.errors = value
+func (m *AutomationValidationResult) SetErrors(value []string) {
+	m.errors = value
 }
+
 // SetWarnings sets the warnings property value. Warnings returned for this automation validation result that do not necessarily block processing.
-func (m *AutomationValidationResult) SetWarnings(value []string)() {
-    m.warnings = value
+func (m *AutomationValidationResult) SetWarnings(value []string) {
+	m.warnings = value
 }
+
 type AutomationValidationResultable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetErrors()([]string)
-    GetWarnings()([]string)
-    SetErrors(value []string)()
-    SetWarnings(value []string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetErrors() []string
+	GetWarnings() []string
+	SetErrors(value []string)
+	SetWarnings(value []string)
 }

@@ -4,168 +4,182 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AnalyticsComparison compares a metric with the preceding period and reports its absolute and percentage change.
 type AnalyticsComparison struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Percentage change between the current and previous reporting periods.
-    changePercent *float64
-    // Metric value for the current reporting period.
-    current *float64
-    // Direction classification for this Leadping analytics comparison.
-    direction *string
-    // Metric value for the preceding comparison period.
-    previous *float64
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Percentage change between the current and previous reporting periods.
+	changePercent *float64
+	// Metric value for the current reporting period.
+	current *float64
+	// Direction classification for this Leadping analytics comparison.
+	direction *string
+	// Metric value for the preceding comparison period.
+	previous *float64
 }
+
 // NewAnalyticsComparison instantiates a new AnalyticsComparison and sets the default values.
-func NewAnalyticsComparison()(*AnalyticsComparison) {
-    m := &AnalyticsComparison{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAnalyticsComparison() *AnalyticsComparison {
+	m := &AnalyticsComparison{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAnalyticsComparisonFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAnalyticsComparisonFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAnalyticsComparison(), nil
+func CreateAnalyticsComparisonFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAnalyticsComparison(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AnalyticsComparison) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AnalyticsComparison) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetChangePercent gets the changePercent property value. Percentage change between the current and previous reporting periods.
 // returns a *float64 when successful
-func (m *AnalyticsComparison) GetChangePercent()(*float64) {
-    return m.changePercent
+func (m *AnalyticsComparison) GetChangePercent() *float64 {
+	return m.changePercent
 }
+
 // GetCurrent gets the current property value. Metric value for the current reporting period.
 // returns a *float64 when successful
-func (m *AnalyticsComparison) GetCurrent()(*float64) {
-    return m.current
+func (m *AnalyticsComparison) GetCurrent() *float64 {
+	return m.current
 }
+
 // GetDirection gets the direction property value. Direction classification for this Leadping analytics comparison.
 // returns a *string when successful
-func (m *AnalyticsComparison) GetDirection()(*string) {
-    return m.direction
+func (m *AnalyticsComparison) GetDirection() *string {
+	return m.direction
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AnalyticsComparison) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["changePercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChangePercent(val)
-        }
-        return nil
-    }
-    res["current"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrent(val)
-        }
-        return nil
-    }
-    res["direction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirection(val)
-        }
-        return nil
-    }
-    res["previous"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrevious(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AnalyticsComparison) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["changePercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetChangePercent(val)
+		}
+		return nil
+	}
+	res["current"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrent(val)
+		}
+		return nil
+	}
+	res["direction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirection(val)
+		}
+		return nil
+	}
+	res["previous"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrevious(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetPrevious gets the previous property value. Metric value for the preceding comparison period.
 // returns a *float64 when successful
-func (m *AnalyticsComparison) GetPrevious()(*float64) {
-    return m.previous
+func (m *AnalyticsComparison) GetPrevious() *float64 {
+	return m.previous
 }
+
 // Serialize serializes information the current object
-func (m *AnalyticsComparison) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("changePercent", m.GetChangePercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("current", m.GetCurrent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("direction", m.GetDirection())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("previous", m.GetPrevious())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AnalyticsComparison) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("changePercent", m.GetChangePercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("current", m.GetCurrent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("direction", m.GetDirection())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("previous", m.GetPrevious())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AnalyticsComparison) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AnalyticsComparison) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetChangePercent sets the changePercent property value. Percentage change between the current and previous reporting periods.
-func (m *AnalyticsComparison) SetChangePercent(value *float64)() {
-    m.changePercent = value
+func (m *AnalyticsComparison) SetChangePercent(value *float64) {
+	m.changePercent = value
 }
+
 // SetCurrent sets the current property value. Metric value for the current reporting period.
-func (m *AnalyticsComparison) SetCurrent(value *float64)() {
-    m.current = value
+func (m *AnalyticsComparison) SetCurrent(value *float64) {
+	m.current = value
 }
+
 // SetDirection sets the direction property value. Direction classification for this Leadping analytics comparison.
-func (m *AnalyticsComparison) SetDirection(value *string)() {
-    m.direction = value
+func (m *AnalyticsComparison) SetDirection(value *string) {
+	m.direction = value
 }
+
 // SetPrevious sets the previous property value. Metric value for the preceding comparison period.
-func (m *AnalyticsComparison) SetPrevious(value *float64)() {
-    m.previous = value
+func (m *AnalyticsComparison) SetPrevious(value *float64) {
+	m.previous = value
 }
+
 type AnalyticsComparisonable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetChangePercent()(*float64)
-    GetCurrent()(*float64)
-    GetDirection()(*string)
-    GetPrevious()(*float64)
-    SetChangePercent(value *float64)()
-    SetCurrent(value *float64)()
-    SetDirection(value *string)()
-    SetPrevious(value *float64)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetChangePercent() *float64
+	GetCurrent() *float64
+	GetDirection() *string
+	GetPrevious() *float64
+	SetChangePercent(value *float64)
+	SetCurrent(value *float64)
+	SetDirection(value *string)
+	SetPrevious(value *float64)
 }

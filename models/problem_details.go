@@ -4,263 +4,285 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // ProblemDetails standard problem-details response containing machine-readable and human-readable information about an HTTP API error.
 type ProblemDetails struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ApiError
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Human-readable explanation specific to this occurrence of the problem.
-    detail *string
-    // Validation errors keyed by the JSON request field name. Present for request validation failures.
-    errors ProblemDetails_errorsable
-    // URI reference that identifies this specific occurrence of the problem.
-    instance *string
-    // HTTP status code returned for the problem.
-    status *int32
-    // Short, human-readable summary of the problem.
-    title *string
-    // Request trace identifier used to correlate this problem with Leadping diagnostics.
-    traceId *string
-    // URI reference that identifies the problem type.
-    typeEscaped *string
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ApiError
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Human-readable explanation specific to this occurrence of the problem.
+	detail *string
+	// Validation errors keyed by the JSON request field name. Present for request validation failures.
+	errors ProblemDetails_errorsable
+	// URI reference that identifies this specific occurrence of the problem.
+	instance *string
+	// HTTP status code returned for the problem.
+	status *int32
+	// Short, human-readable summary of the problem.
+	title *string
+	// Request trace identifier used to correlate this problem with Leadping diagnostics.
+	traceId *string
+	// URI reference that identifies the problem type.
+	typeEscaped *string
 }
+
 // NewProblemDetails instantiates a new ProblemDetails and sets the default values.
-func NewProblemDetails()(*ProblemDetails) {
-    m := &ProblemDetails{
-        ApiError: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewApiError(),
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewProblemDetails() *ProblemDetails {
+	m := &ProblemDetails{
+		ApiError: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewApiError(),
+	}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateProblemDetailsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateProblemDetailsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewProblemDetails(), nil
+func CreateProblemDetailsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewProblemDetails(), nil
 }
+
 // Error the primary error message.
 // returns a string when successful
-func (m *ProblemDetails) Error()(string) {
-    return m.ApiError.Error()
+func (m *ProblemDetails) Error() string {
+	return m.ApiError.Error()
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ProblemDetails) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *ProblemDetails) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDetail gets the detail property value. Human-readable explanation specific to this occurrence of the problem.
 // returns a *string when successful
-func (m *ProblemDetails) GetDetail()(*string) {
-    return m.detail
+func (m *ProblemDetails) GetDetail() *string {
+	return m.detail
 }
+
 // GetErrors gets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
 // returns a ProblemDetails_errorsable when successful
-func (m *ProblemDetails) GetErrors()(ProblemDetails_errorsable) {
-    return m.errors
+func (m *ProblemDetails) GetErrors() ProblemDetails_errorsable {
+	return m.errors
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ProblemDetails) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["detail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDetail(val)
-        }
-        return nil
-    }
-    res["errors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateProblemDetails_errorsFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetErrors(val.(ProblemDetails_errorsable))
-        }
-        return nil
-    }
-    res["instance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInstance(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["title"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTitle(val)
-        }
-        return nil
-    }
-    res["traceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTraceId(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ProblemDetails) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["detail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDetail(val)
+		}
+		return nil
+	}
+	res["errors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateProblemDetails_errorsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetErrors(val.(ProblemDetails_errorsable))
+		}
+		return nil
+	}
+	res["instance"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInstance(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["title"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTitle(val)
+		}
+		return nil
+	}
+	res["traceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTraceId(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetInstance gets the instance property value. URI reference that identifies this specific occurrence of the problem.
 // returns a *string when successful
-func (m *ProblemDetails) GetInstance()(*string) {
-    return m.instance
+func (m *ProblemDetails) GetInstance() *string {
+	return m.instance
 }
+
 // GetStatus gets the status property value. HTTP status code returned for the problem.
 // returns a *int32 when successful
-func (m *ProblemDetails) GetStatus()(*int32) {
-    return m.status
+func (m *ProblemDetails) GetStatus() *int32 {
+	return m.status
 }
+
 // GetTitle gets the title property value. Short, human-readable summary of the problem.
 // returns a *string when successful
-func (m *ProblemDetails) GetTitle()(*string) {
-    return m.title
+func (m *ProblemDetails) GetTitle() *string {
+	return m.title
 }
+
 // GetTraceId gets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
 // returns a *string when successful
-func (m *ProblemDetails) GetTraceId()(*string) {
-    return m.traceId
+func (m *ProblemDetails) GetTraceId() *string {
+	return m.traceId
 }
+
 // GetTypeEscaped gets the type property value. URI reference that identifies the problem type.
 // returns a *string when successful
-func (m *ProblemDetails) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *ProblemDetails) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("detail", m.GetDetail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("errors", m.GetErrors())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("instance", m.GetInstance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("title", m.GetTitle())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("traceId", m.GetTraceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *ProblemDetails) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("detail", m.GetDetail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("errors", m.GetErrors())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("instance", m.GetInstance())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("title", m.GetTitle())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("traceId", m.GetTraceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ProblemDetails) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *ProblemDetails) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDetail sets the detail property value. Human-readable explanation specific to this occurrence of the problem.
-func (m *ProblemDetails) SetDetail(value *string)() {
-    m.detail = value
+func (m *ProblemDetails) SetDetail(value *string) {
+	m.detail = value
 }
+
 // SetErrors sets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
-func (m *ProblemDetails) SetErrors(value ProblemDetails_errorsable)() {
-    m.errors = value
+func (m *ProblemDetails) SetErrors(value ProblemDetails_errorsable) {
+	m.errors = value
 }
+
 // SetInstance sets the instance property value. URI reference that identifies this specific occurrence of the problem.
-func (m *ProblemDetails) SetInstance(value *string)() {
-    m.instance = value
+func (m *ProblemDetails) SetInstance(value *string) {
+	m.instance = value
 }
+
 // SetStatus sets the status property value. HTTP status code returned for the problem.
-func (m *ProblemDetails) SetStatus(value *int32)() {
-    m.status = value
+func (m *ProblemDetails) SetStatus(value *int32) {
+	m.status = value
 }
+
 // SetTitle sets the title property value. Short, human-readable summary of the problem.
-func (m *ProblemDetails) SetTitle(value *string)() {
-    m.title = value
+func (m *ProblemDetails) SetTitle(value *string) {
+	m.title = value
 }
+
 // SetTraceId sets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
-func (m *ProblemDetails) SetTraceId(value *string)() {
-    m.traceId = value
+func (m *ProblemDetails) SetTraceId(value *string) {
+	m.traceId = value
 }
+
 // SetTypeEscaped sets the type property value. URI reference that identifies the problem type.
-func (m *ProblemDetails) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *ProblemDetails) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 type ProblemDetailsable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDetail()(*string)
-    GetErrors()(ProblemDetails_errorsable)
-    GetInstance()(*string)
-    GetStatus()(*int32)
-    GetTitle()(*string)
-    GetTraceId()(*string)
-    GetTypeEscaped()(*string)
-    SetDetail(value *string)()
-    SetErrors(value ProblemDetails_errorsable)()
-    SetInstance(value *string)()
-    SetStatus(value *int32)()
-    SetTitle(value *string)()
-    SetTraceId(value *string)()
-    SetTypeEscaped(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDetail() *string
+	GetErrors() ProblemDetails_errorsable
+	GetInstance() *string
+	GetStatus() *int32
+	GetTitle() *string
+	GetTraceId() *string
+	GetTypeEscaped() *string
+	SetDetail(value *string)
+	SetErrors(value ProblemDetails_errorsable)
+	SetInstance(value *string)
+	SetStatus(value *int32)
+	SetTitle(value *string)
+	SetTraceId(value *string)
+	SetTypeEscaped(value *string)
 }

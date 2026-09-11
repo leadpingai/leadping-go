@@ -4,820 +4,878 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // LeadTableRow summarizes lead data in paginated and searchable results.
 type LeadTableRow struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when this record was archived.
-    archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // User ID of the person who archived this record.
-    archivedByUserId *string
-    // Defines why a lead was removed from the active working pipeline.
-    archiveReason *int32
-    // Identifier and display name of the assigned organization member.
-    assignedTo LeadTableRow_assignedToable
-    // Leadping user currently responsible for this lead, or null when unassigned.
-    assignedToUserId *string
-    // Optional profile image URL explicitly associated with the lead.
-    avatarUrl *string
-    // UTC timestamp when this lead table row was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current lead status change summary that describes the lead outcome.
-    currentLeadStatus LeadTableRow_currentLeadStatusable
-    // Email address for the person represented by this lead table row.
-    email *string
-    // Indicates whether this lead table row is active and available in the Leadping API.
-    enabled *bool
-    // First name of the lead, user, or contact represented by this lead table row.
-    firstName *string
-    // Unique Leadping identifier for this lead table row.
-    id *string
-    // Whether this lead is archived.
-    isArchived *bool
-    // Last name of the lead, user, or contact represented by this lead table row.
-    lastName *string
-    // Identifier and display name of the related organization.
-    organization LeadTableRow_organizationable
-    // Phone details for the lead, user, or organization represented by this lead table row.
-    phone *string
-    // Identifier of the canonical phone identity associated with this lead's phone number.
-    phoneIdentityId *string
-    // Lead price or transaction price supplied to the Leadping API.
-    price *float64
-    // Defines the asynchronous verification and enrichment lifecycle for a lead.
-    processingStatus *LeadTableRow_processingStatus
-    // UTC timestamp when the processing stage last changed.
-    processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Explanation when asynchronous lead processing is blocked or fails.
-    processingStatusReason *string
-    // Identifier and display name of the related source.
-    source LeadTableRow_sourceable
-    // Current lifecycle status for this lead table row in the Leadping API.
-    status *string
-    // Presentation tone that helps clients style the current status of this lead table row.
-    statusTone *string
-    // Tags currently attached to this lead, source, or record.
-    tags []TagSummaryable
-    // UTC timestamp when this lead table row was last updated.
-    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when this record was archived.
+	archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// User ID of the person who archived this record.
+	archivedByUserId *string
+	// Defines why a lead was removed from the active working pipeline.
+	archiveReason *int32
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	assignedTo LeadTableRow_assignedToable
+	// Leadping user currently responsible for this lead, or null when unassigned.
+	assignedToUserId *string
+	// Optional profile image URL explicitly associated with the lead.
+	avatarUrl *string
+	// UTC timestamp when this lead table row was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
+	currentLeadStatus LeadTableRow_currentLeadStatusable
+	// Email address for the person represented by this lead table row.
+	email *string
+	// Indicates whether this lead table row is active and available in the Leadping API.
+	enabled *bool
+	// First name of the lead, user, or contact represented by this lead table row.
+	firstName *string
+	// Unique Leadping identifier for this lead table row.
+	id *string
+	// Whether this lead is archived.
+	isArchived *bool
+	// Last name of the lead, user, or contact represented by this lead table row.
+	lastName *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization LeadTableRow_organizationable
+	// Phone details for the lead, user, or organization represented by this lead table row.
+	phone *string
+	// Identifier of the canonical phone identity associated with this lead's phone number.
+	phoneIdentityId *string
+	// Lead price or transaction price supplied to the Leadping API.
+	price *float64
+	// Defines the asynchronous verification and enrichment lifecycle for a lead.
+	processingStatus *LeadTableRow_processingStatus
+	// UTC timestamp when the processing stage last changed.
+	processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Explanation when asynchronous lead processing is blocked or fails.
+	processingStatusReason *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	source LeadTableRow_sourceable
+	// Current lifecycle status for this lead table row in the Leadping API.
+	status *string
+	// Presentation tone that helps clients style the current status of this lead table row.
+	statusTone *string
+	// Tags currently attached to this lead, source, or record.
+	tags []TagSummaryable
+	// UTC timestamp when this lead table row was last updated.
+	updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewLeadTableRow instantiates a new LeadTableRow and sets the default values.
-func NewLeadTableRow()(*LeadTableRow) {
-    m := &LeadTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadTableRow() *LeadTableRow {
+	m := &LeadTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadTableRow(), nil
+func CreateLeadTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadTableRow(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
-func (m *LeadTableRow) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.archivedAt
+func (m *LeadTableRow) GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.archivedAt
 }
+
 // GetArchivedByUserId gets the archivedByUserId property value. User ID of the person who archived this record.
 // returns a *string when successful
-func (m *LeadTableRow) GetArchivedByUserId()(*string) {
-    return m.archivedByUserId
+func (m *LeadTableRow) GetArchivedByUserId() *string {
+	return m.archivedByUserId
 }
+
 // GetArchiveReason gets the archiveReason property value. Defines why a lead was removed from the active working pipeline.
 // returns a *int32 when successful
-func (m *LeadTableRow) GetArchiveReason()(*int32) {
-    return m.archiveReason
+func (m *LeadTableRow) GetArchiveReason() *int32 {
+	return m.archiveReason
 }
-// GetAssignedTo gets the assignedTo property value. Identifier and display name of the assigned organization member.
+
+// GetAssignedTo gets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a LeadTableRow_assignedToable when successful
-func (m *LeadTableRow) GetAssignedTo()(LeadTableRow_assignedToable) {
-    return m.assignedTo
+func (m *LeadTableRow) GetAssignedTo() LeadTableRow_assignedToable {
+	return m.assignedTo
 }
+
 // GetAssignedToUserId gets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
 // returns a *string when successful
-func (m *LeadTableRow) GetAssignedToUserId()(*string) {
-    return m.assignedToUserId
+func (m *LeadTableRow) GetAssignedToUserId() *string {
+	return m.assignedToUserId
 }
+
 // GetAvatarUrl gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
 // returns a *string when successful
-func (m *LeadTableRow) GetAvatarUrl()(*string) {
-    return m.avatarUrl
+func (m *LeadTableRow) GetAvatarUrl() *string {
+	return m.avatarUrl
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead table row was created.
 // returns a *Time when successful
-func (m *LeadTableRow) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *LeadTableRow) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
-// GetCurrentLeadStatus gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+
+// GetCurrentLeadStatus gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 // returns a LeadTableRow_currentLeadStatusable when successful
-func (m *LeadTableRow) GetCurrentLeadStatus()(LeadTableRow_currentLeadStatusable) {
-    return m.currentLeadStatus
+func (m *LeadTableRow) GetCurrentLeadStatus() LeadTableRow_currentLeadStatusable {
+	return m.currentLeadStatus
 }
+
 // GetEmail gets the email property value. Email address for the person represented by this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetEmail()(*string) {
-    return m.email
+func (m *LeadTableRow) GetEmail() *string {
+	return m.email
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this lead table row is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *LeadTableRow) GetEnabled()(*bool) {
-    return m.enabled
+func (m *LeadTableRow) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["archivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArchivedAt(val)
-        }
-        return nil
-    }
-    res["archivedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArchivedByUserId(val)
-        }
-        return nil
-    }
-    res["archiveReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArchiveReason(val)
-        }
-        return nil
-    }
-    res["assignedTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadTableRow_assignedToFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAssignedTo(val.(LeadTableRow_assignedToable))
-        }
-        return nil
-    }
-    res["assignedToUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAssignedToUserId(val)
-        }
-        return nil
-    }
-    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAvatarUrl(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["currentLeadStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadTableRow_currentLeadStatusFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentLeadStatus(val.(LeadTableRow_currentLeadStatusable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isArchived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsArchived(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadTableRow_organizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(LeadTableRow_organizationable))
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneIdentityId(val)
-        }
-        return nil
-    }
-    res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrice(val)
-        }
-        return nil
-    }
-    res["processingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadTableRow_processingStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProcessingStatus(val.(*LeadTableRow_processingStatus))
-        }
-        return nil
-    }
-    res["processingStatusChangedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProcessingStatusChangedAt(val)
-        }
-        return nil
-    }
-    res["processingStatusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProcessingStatusReason(val)
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadTableRow_sourceFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val.(LeadTableRow_sourceable))
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["statusTone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusTone(val)
-        }
-        return nil
-    }
-    res["tags"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]TagSummaryable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(TagSummaryable)
-                }
-            }
-            m.SetTags(res)
-        }
-        return nil
-    }
-    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUpdatedAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["archivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArchivedAt(val)
+		}
+		return nil
+	}
+	res["archivedByUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArchivedByUserId(val)
+		}
+		return nil
+	}
+	res["archiveReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArchiveReason(val)
+		}
+		return nil
+	}
+	res["assignedTo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadTableRow_assignedToFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAssignedTo(val.(LeadTableRow_assignedToable))
+		}
+		return nil
+	}
+	res["assignedToUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAssignedToUserId(val)
+		}
+		return nil
+	}
+	res["avatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAvatarUrl(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["currentLeadStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadTableRow_currentLeadStatusFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrentLeadStatus(val.(LeadTableRow_currentLeadStatusable))
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isArchived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsArchived(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadTableRow_organizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(LeadTableRow_organizationable))
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["phoneIdentityId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneIdentityId(val)
+		}
+		return nil
+	}
+	res["price"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrice(val)
+		}
+		return nil
+	}
+	res["processingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadTableRow_processingStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProcessingStatus(val.(*LeadTableRow_processingStatus))
+		}
+		return nil
+	}
+	res["processingStatusChangedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProcessingStatusChangedAt(val)
+		}
+		return nil
+	}
+	res["processingStatusReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProcessingStatusReason(val)
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadTableRow_sourceFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val.(LeadTableRow_sourceable))
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["statusTone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusTone(val)
+		}
+		return nil
+	}
+	res["tags"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]TagSummaryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(TagSummaryable)
+				}
+			}
+			m.SetTags(res)
+		}
+		return nil
+	}
+	res["updatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUpdatedAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetFirstName()(*string) {
-    return m.firstName
+func (m *LeadTableRow) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetId()(*string) {
-    return m.id
+func (m *LeadTableRow) GetId() *string {
+	return m.id
 }
+
 // GetIsArchived gets the isArchived property value. Whether this lead is archived.
 // returns a *bool when successful
-func (m *LeadTableRow) GetIsArchived()(*bool) {
-    return m.isArchived
+func (m *LeadTableRow) GetIsArchived() *bool {
+	return m.isArchived
 }
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetLastName()(*string) {
-    return m.lastName
+func (m *LeadTableRow) GetLastName() *string {
+	return m.lastName
 }
-// GetOrganization gets the organization property value. Identifier and display name of the related organization.
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a LeadTableRow_organizationable when successful
-func (m *LeadTableRow) GetOrganization()(LeadTableRow_organizationable) {
-    return m.organization
+func (m *LeadTableRow) GetOrganization() LeadTableRow_organizationable {
+	return m.organization
 }
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetPhone()(*string) {
-    return m.phone
+func (m *LeadTableRow) GetPhone() *string {
+	return m.phone
 }
+
 // GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
 // returns a *string when successful
-func (m *LeadTableRow) GetPhoneIdentityId()(*string) {
-    return m.phoneIdentityId
+func (m *LeadTableRow) GetPhoneIdentityId() *string {
+	return m.phoneIdentityId
 }
+
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a *float64 when successful
-func (m *LeadTableRow) GetPrice()(*float64) {
-    return m.price
+func (m *LeadTableRow) GetPrice() *float64 {
+	return m.price
 }
+
 // GetProcessingStatus gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
 // returns a *LeadTableRow_processingStatus when successful
-func (m *LeadTableRow) GetProcessingStatus()(*LeadTableRow_processingStatus) {
-    return m.processingStatus
+func (m *LeadTableRow) GetProcessingStatus() *LeadTableRow_processingStatus {
+	return m.processingStatus
 }
+
 // GetProcessingStatusChangedAt gets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
 // returns a *Time when successful
-func (m *LeadTableRow) GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.processingStatusChangedAt
+func (m *LeadTableRow) GetProcessingStatusChangedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.processingStatusChangedAt
 }
+
 // GetProcessingStatusReason gets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
 // returns a *string when successful
-func (m *LeadTableRow) GetProcessingStatusReason()(*string) {
-    return m.processingStatusReason
+func (m *LeadTableRow) GetProcessingStatusReason() *string {
+	return m.processingStatusReason
 }
-// GetSource gets the source property value. Identifier and display name of the related source.
+
+// GetSource gets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a LeadTableRow_sourceable when successful
-func (m *LeadTableRow) GetSource()(LeadTableRow_sourceable) {
-    return m.source
+func (m *LeadTableRow) GetSource() LeadTableRow_sourceable {
+	return m.source
 }
+
 // GetStatus gets the status property value. Current lifecycle status for this lead table row in the Leadping API.
 // returns a *string when successful
-func (m *LeadTableRow) GetStatus()(*string) {
-    return m.status
+func (m *LeadTableRow) GetStatus() *string {
+	return m.status
 }
+
 // GetStatusTone gets the statusTone property value. Presentation tone that helps clients style the current status of this lead table row.
 // returns a *string when successful
-func (m *LeadTableRow) GetStatusTone()(*string) {
-    return m.statusTone
+func (m *LeadTableRow) GetStatusTone() *string {
+	return m.statusTone
 }
+
 // GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
-func (m *LeadTableRow) GetTags()([]TagSummaryable) {
-    return m.tags
+func (m *LeadTableRow) GetTags() []TagSummaryable {
+	return m.tags
 }
+
 // GetUpdatedAt gets the updatedAt property value. UTC timestamp when this lead table row was last updated.
 // returns a *Time when successful
-func (m *LeadTableRow) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.updatedAt
+func (m *LeadTableRow) GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.updatedAt
 }
+
 // Serialize serializes information the current object
-func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("archivedByUserId", m.GetArchivedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("archiveReason", m.GetArchiveReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("assignedTo", m.GetAssignedTo())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("price", m.GetPrice())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetProcessingStatus() != nil {
-        cast := (*m.GetProcessingStatus()).String()
-        err := writer.WriteStringValue("processingStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("processingStatusChangedAt", m.GetProcessingStatusChangedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("processingStatusReason", m.GetProcessingStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusTone", m.GetStatusTone())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTags() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTags()))
-        for i, v := range m.GetTags() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("tags", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("archivedByUserId", m.GetArchivedByUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("archiveReason", m.GetArchiveReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("assignedTo", m.GetAssignedTo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("price", m.GetPrice())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetProcessingStatus() != nil {
+		cast := (*m.GetProcessingStatus()).String()
+		err := writer.WriteStringValue("processingStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("processingStatusChangedAt", m.GetProcessingStatusChangedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("processingStatusReason", m.GetProcessingStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusTone", m.GetStatusTone())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTags() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTags()))
+		for i, v := range m.GetTags() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("tags", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
-func (m *LeadTableRow) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.archivedAt = value
+func (m *LeadTableRow) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.archivedAt = value
 }
+
 // SetArchivedByUserId sets the archivedByUserId property value. User ID of the person who archived this record.
-func (m *LeadTableRow) SetArchivedByUserId(value *string)() {
-    m.archivedByUserId = value
+func (m *LeadTableRow) SetArchivedByUserId(value *string) {
+	m.archivedByUserId = value
 }
+
 // SetArchiveReason sets the archiveReason property value. Defines why a lead was removed from the active working pipeline.
-func (m *LeadTableRow) SetArchiveReason(value *int32)() {
-    m.archiveReason = value
+func (m *LeadTableRow) SetArchiveReason(value *int32) {
+	m.archiveReason = value
 }
-// SetAssignedTo sets the assignedTo property value. Identifier and display name of the assigned organization member.
-func (m *LeadTableRow) SetAssignedTo(value LeadTableRow_assignedToable)() {
-    m.assignedTo = value
+
+// SetAssignedTo sets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *LeadTableRow) SetAssignedTo(value LeadTableRow_assignedToable) {
+	m.assignedTo = value
 }
+
 // SetAssignedToUserId sets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
-func (m *LeadTableRow) SetAssignedToUserId(value *string)() {
-    m.assignedToUserId = value
+func (m *LeadTableRow) SetAssignedToUserId(value *string) {
+	m.assignedToUserId = value
 }
+
 // SetAvatarUrl sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
-func (m *LeadTableRow) SetAvatarUrl(value *string)() {
-    m.avatarUrl = value
+func (m *LeadTableRow) SetAvatarUrl(value *string) {
+	m.avatarUrl = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead table row was created.
-func (m *LeadTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *LeadTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
-// SetCurrentLeadStatus sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
-func (m *LeadTableRow) SetCurrentLeadStatus(value LeadTableRow_currentLeadStatusable)() {
-    m.currentLeadStatus = value
+
+// SetCurrentLeadStatus sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
+func (m *LeadTableRow) SetCurrentLeadStatus(value LeadTableRow_currentLeadStatusable) {
+	m.currentLeadStatus = value
 }
+
 // SetEmail sets the email property value. Email address for the person represented by this lead table row.
-func (m *LeadTableRow) SetEmail(value *string)() {
-    m.email = value
+func (m *LeadTableRow) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this lead table row is active and available in the Leadping API.
-func (m *LeadTableRow) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *LeadTableRow) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead table row.
-func (m *LeadTableRow) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *LeadTableRow) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this lead table row.
-func (m *LeadTableRow) SetId(value *string)() {
-    m.id = value
+func (m *LeadTableRow) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsArchived sets the isArchived property value. Whether this lead is archived.
-func (m *LeadTableRow) SetIsArchived(value *bool)() {
-    m.isArchived = value
+func (m *LeadTableRow) SetIsArchived(value *bool) {
+	m.isArchived = value
 }
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
-func (m *LeadTableRow) SetLastName(value *string)() {
-    m.lastName = value
+func (m *LeadTableRow) SetLastName(value *string) {
+	m.lastName = value
 }
-// SetOrganization sets the organization property value. Identifier and display name of the related organization.
-func (m *LeadTableRow) SetOrganization(value LeadTableRow_organizationable)() {
-    m.organization = value
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *LeadTableRow) SetOrganization(value LeadTableRow_organizationable) {
+	m.organization = value
 }
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead table row.
-func (m *LeadTableRow) SetPhone(value *string)() {
-    m.phone = value
+func (m *LeadTableRow) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
-func (m *LeadTableRow) SetPhoneIdentityId(value *string)() {
-    m.phoneIdentityId = value
+func (m *LeadTableRow) SetPhoneIdentityId(value *string) {
+	m.phoneIdentityId = value
 }
+
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadTableRow) SetPrice(value *float64)() {
-    m.price = value
+func (m *LeadTableRow) SetPrice(value *float64) {
+	m.price = value
 }
+
 // SetProcessingStatus sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
-func (m *LeadTableRow) SetProcessingStatus(value *LeadTableRow_processingStatus)() {
-    m.processingStatus = value
+func (m *LeadTableRow) SetProcessingStatus(value *LeadTableRow_processingStatus) {
+	m.processingStatus = value
 }
+
 // SetProcessingStatusChangedAt sets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
-func (m *LeadTableRow) SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.processingStatusChangedAt = value
+func (m *LeadTableRow) SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.processingStatusChangedAt = value
 }
+
 // SetProcessingStatusReason sets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
-func (m *LeadTableRow) SetProcessingStatusReason(value *string)() {
-    m.processingStatusReason = value
+func (m *LeadTableRow) SetProcessingStatusReason(value *string) {
+	m.processingStatusReason = value
 }
-// SetSource sets the source property value. Identifier and display name of the related source.
-func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable)() {
-    m.source = value
+
+// SetSource sets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable) {
+	m.source = value
 }
+
 // SetStatus sets the status property value. Current lifecycle status for this lead table row in the Leadping API.
-func (m *LeadTableRow) SetStatus(value *string)() {
-    m.status = value
+func (m *LeadTableRow) SetStatus(value *string) {
+	m.status = value
 }
+
 // SetStatusTone sets the statusTone property value. Presentation tone that helps clients style the current status of this lead table row.
-func (m *LeadTableRow) SetStatusTone(value *string)() {
-    m.statusTone = value
+func (m *LeadTableRow) SetStatusTone(value *string) {
+	m.statusTone = value
 }
+
 // SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
-func (m *LeadTableRow) SetTags(value []TagSummaryable)() {
-    m.tags = value
+func (m *LeadTableRow) SetTags(value []TagSummaryable) {
+	m.tags = value
 }
+
 // SetUpdatedAt sets the updatedAt property value. UTC timestamp when this lead table row was last updated.
-func (m *LeadTableRow) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.updatedAt = value
+func (m *LeadTableRow) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.updatedAt = value
 }
+
 type LeadTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetArchivedByUserId()(*string)
-    GetArchiveReason()(*int32)
-    GetAssignedTo()(LeadTableRow_assignedToable)
-    GetAssignedToUserId()(*string)
-    GetAvatarUrl()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCurrentLeadStatus()(LeadTableRow_currentLeadStatusable)
-    GetEmail()(*string)
-    GetEnabled()(*bool)
-    GetFirstName()(*string)
-    GetId()(*string)
-    GetIsArchived()(*bool)
-    GetLastName()(*string)
-    GetOrganization()(LeadTableRow_organizationable)
-    GetPhone()(*string)
-    GetPhoneIdentityId()(*string)
-    GetPrice()(*float64)
-    GetProcessingStatus()(*LeadTableRow_processingStatus)
-    GetProcessingStatusChangedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProcessingStatusReason()(*string)
-    GetSource()(LeadTableRow_sourceable)
-    GetStatus()(*string)
-    GetStatusTone()(*string)
-    GetTags()([]TagSummaryable)
-    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetArchivedByUserId(value *string)()
-    SetArchiveReason(value *int32)()
-    SetAssignedTo(value LeadTableRow_assignedToable)()
-    SetAssignedToUserId(value *string)()
-    SetAvatarUrl(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCurrentLeadStatus(value LeadTableRow_currentLeadStatusable)()
-    SetEmail(value *string)()
-    SetEnabled(value *bool)()
-    SetFirstName(value *string)()
-    SetId(value *string)()
-    SetIsArchived(value *bool)()
-    SetLastName(value *string)()
-    SetOrganization(value LeadTableRow_organizationable)()
-    SetPhone(value *string)()
-    SetPhoneIdentityId(value *string)()
-    SetPrice(value *float64)()
-    SetProcessingStatus(value *LeadTableRow_processingStatus)()
-    SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProcessingStatusReason(value *string)()
-    SetSource(value LeadTableRow_sourceable)()
-    SetStatus(value *string)()
-    SetStatusTone(value *string)()
-    SetTags(value []TagSummaryable)()
-    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetArchivedByUserId() *string
+	GetArchiveReason() *int32
+	GetAssignedTo() LeadTableRow_assignedToable
+	GetAssignedToUserId() *string
+	GetAvatarUrl() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCurrentLeadStatus() LeadTableRow_currentLeadStatusable
+	GetEmail() *string
+	GetEnabled() *bool
+	GetFirstName() *string
+	GetId() *string
+	GetIsArchived() *bool
+	GetLastName() *string
+	GetOrganization() LeadTableRow_organizationable
+	GetPhone() *string
+	GetPhoneIdentityId() *string
+	GetPrice() *float64
+	GetProcessingStatus() *LeadTableRow_processingStatus
+	GetProcessingStatusChangedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetProcessingStatusReason() *string
+	GetSource() LeadTableRow_sourceable
+	GetStatus() *string
+	GetStatusTone() *string
+	GetTags() []TagSummaryable
+	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetArchivedByUserId(value *string)
+	SetArchiveReason(value *int32)
+	SetAssignedTo(value LeadTableRow_assignedToable)
+	SetAssignedToUserId(value *string)
+	SetAvatarUrl(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCurrentLeadStatus(value LeadTableRow_currentLeadStatusable)
+	SetEmail(value *string)
+	SetEnabled(value *bool)
+	SetFirstName(value *string)
+	SetId(value *string)
+	SetIsArchived(value *bool)
+	SetLastName(value *string)
+	SetOrganization(value LeadTableRow_organizationable)
+	SetPhone(value *string)
+	SetPhoneIdentityId(value *string)
+	SetPrice(value *float64)
+	SetProcessingStatus(value *LeadTableRow_processingStatus)
+	SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetProcessingStatusReason(value *string)
+	SetSource(value LeadTableRow_sourceable)
+	SetStatus(value *string)
+	SetStatusTone(value *string)
+	SetTags(value []TagSummaryable)
+	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

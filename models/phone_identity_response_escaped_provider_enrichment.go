@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneIdentityResponse_providerEnrichment lossless provider response retained for administrative diagnostics.
+// PhoneIdentityResponse_providerEnrichment lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
 type PhoneIdentityResponse_providerEnrichment struct {
-    PhoneLookupProviderSnapshot
+	PhoneLookupProviderSnapshot
 }
+
 // NewPhoneIdentityResponse_providerEnrichment instantiates a new PhoneIdentityResponse_providerEnrichment and sets the default values.
-func NewPhoneIdentityResponse_providerEnrichment()(*PhoneIdentityResponse_providerEnrichment) {
-    m := &PhoneIdentityResponse_providerEnrichment{
-        PhoneLookupProviderSnapshot: *NewPhoneLookupProviderSnapshot(),
-    }
-    return m
+func NewPhoneIdentityResponse_providerEnrichment() *PhoneIdentityResponse_providerEnrichment {
+	m := &PhoneIdentityResponse_providerEnrichment{
+		PhoneLookupProviderSnapshot: *NewPhoneLookupProviderSnapshot(),
+	}
+	return m
 }
+
 // CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneIdentityResponse_providerEnrichment(), nil
+func CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneIdentityResponse_providerEnrichment(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneIdentityResponse_providerEnrichment) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.PhoneLookupProviderSnapshot.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneIdentityResponse_providerEnrichment) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.PhoneLookupProviderSnapshot.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *PhoneIdentityResponse_providerEnrichment) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.PhoneLookupProviderSnapshot.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *PhoneIdentityResponse_providerEnrichment) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.PhoneLookupProviderSnapshot.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type PhoneIdentityResponse_providerEnrichmentable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    PhoneLookupProviderSnapshotable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	PhoneLookupProviderSnapshotable
 }

@@ -4,111 +4,121 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OrderByOption defines one field and direction used to order an API query result set.
 type OrderByOption struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identifies whether query results are ordered from lower to higher values or from higher to lower values.
-    direction *OrderByOption_direction
-    // Serializable field name used for sorting; supported names are determined by the queried resource.
-    field *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identifies whether query results are ordered from lower to higher values or from higher to lower values.
+	direction *OrderByOption_direction
+	// Serializable field name used for sorting; supported names are determined by the queried resource.
+	field *string
 }
+
 // NewOrderByOption instantiates a new OrderByOption and sets the default values.
-func NewOrderByOption()(*OrderByOption) {
-    m := &OrderByOption{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrderByOption() *OrderByOption {
+	m := &OrderByOption{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrderByOptionFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrderByOptionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrderByOption(), nil
+func CreateOrderByOptionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrderByOption(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrderByOption) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrderByOption) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDirection gets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
 // returns a *OrderByOption_direction when successful
-func (m *OrderByOption) GetDirection()(*OrderByOption_direction) {
-    return m.direction
+func (m *OrderByOption) GetDirection() *OrderByOption_direction {
+	return m.direction
 }
+
 // GetField gets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
 // returns a *string when successful
-func (m *OrderByOption) GetField()(*string) {
-    return m.field
+func (m *OrderByOption) GetField() *string {
+	return m.field
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrderByOption) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["direction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrderByOption_direction)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirection(val.(*OrderByOption_direction))
-        }
-        return nil
-    }
-    res["field"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetField(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrderByOption) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["direction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrderByOption_direction)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirection(val.(*OrderByOption_direction))
+		}
+		return nil
+	}
+	res["field"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetField(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *OrderByOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetDirection() != nil {
-        cast := (*m.GetDirection()).String()
-        err := writer.WriteStringValue("direction", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("field", m.GetField())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrderByOption) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetDirection() != nil {
+		cast := (*m.GetDirection()).String()
+		err := writer.WriteStringValue("direction", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("field", m.GetField())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrderByOption) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrderByOption) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDirection sets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
-func (m *OrderByOption) SetDirection(value *OrderByOption_direction)() {
-    m.direction = value
+func (m *OrderByOption) SetDirection(value *OrderByOption_direction) {
+	m.direction = value
 }
+
 // SetField sets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
-func (m *OrderByOption) SetField(value *string)() {
-    m.field = value
+func (m *OrderByOption) SetField(value *string) {
+	m.field = value
 }
+
 type OrderByOptionable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDirection()(*OrderByOption_direction)
-    GetField()(*string)
-    SetDirection(value *OrderByOption_direction)()
-    SetField(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDirection() *OrderByOption_direction
+	GetField() *string
+	SetDirection(value *OrderByOption_direction)
+	SetField(value *string)
 }

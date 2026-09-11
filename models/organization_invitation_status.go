@@ -2,51 +2,55 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Describes the lifecycle of an organization membership invitation from issuance through acceptance, expiration, or revocation.
 type OrganizationInvitationStatus int
 
 const (
-    AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS OrganizationInvitationStatus = iota
-    PENDING_ORGANIZATIONINVITATIONSTATUS
-    ACCEPTED_ORGANIZATIONINVITATIONSTATUS
-    EXPIRED_ORGANIZATIONINVITATIONSTATUS
-    REVOKED_ORGANIZATIONINVITATIONSTATUS
-    RESENT_ORGANIZATIONINVITATIONSTATUS
-    FAILEDTOSEND_ORGANIZATIONINVITATIONSTATUS
+	AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS OrganizationInvitationStatus = iota
+	PENDING_ORGANIZATIONINVITATIONSTATUS
+	ACCEPTED_ORGANIZATIONINVITATIONSTATUS
+	EXPIRED_ORGANIZATIONINVITATIONSTATUS
+	REVOKED_ORGANIZATIONINVITATIONSTATUS
+	RESENT_ORGANIZATIONINVITATIONSTATUS
+	FAILEDTOSEND_ORGANIZATIONINVITATIONSTATUS
 )
 
 func (i OrganizationInvitationStatus) String() string {
-    return []string{"Awaiting confirmation", "Pending", "Accepted", "Expired", "Revoked", "Resent", "Failed to send"}[i]
+	return []string{"Awaiting confirmation", "Pending", "Accepted", "Expired", "Revoked", "Resent", "Failed to send"}[i]
 }
+
 func ParseOrganizationInvitationStatus(v string) (any, error) {
-    result := AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
-    switch v {
-        case "Awaiting confirmation":
-            result = AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
-        case "Pending":
-            result = PENDING_ORGANIZATIONINVITATIONSTATUS
-        case "Accepted":
-            result = ACCEPTED_ORGANIZATIONINVITATIONSTATUS
-        case "Expired":
-            result = EXPIRED_ORGANIZATIONINVITATIONSTATUS
-        case "Revoked":
-            result = REVOKED_ORGANIZATIONINVITATIONSTATUS
-        case "Resent":
-            result = RESENT_ORGANIZATIONINVITATIONSTATUS
-        case "Failed to send":
-            result = FAILEDTOSEND_ORGANIZATIONINVITATIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
+	switch v {
+	case "Awaiting confirmation":
+		result = AWAITINGCONFIRMATION_ORGANIZATIONINVITATIONSTATUS
+	case "Pending":
+		result = PENDING_ORGANIZATIONINVITATIONSTATUS
+	case "Accepted":
+		result = ACCEPTED_ORGANIZATIONINVITATIONSTATUS
+	case "Expired":
+		result = EXPIRED_ORGANIZATIONINVITATIONSTATUS
+	case "Revoked":
+		result = REVOKED_ORGANIZATIONINVITATIONSTATUS
+	case "Resent":
+		result = RESENT_ORGANIZATIONINVITATIONSTATUS
+	case "Failed to send":
+		result = FAILEDTOSEND_ORGANIZATIONINVITATIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationInvitationStatus(values []OrganizationInvitationStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationInvitationStatus) isMultiValue() bool {
-    return false
+	return false
 }

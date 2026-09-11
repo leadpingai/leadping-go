@@ -4,314 +4,338 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberTrafficTrendPoint time-series data point schema for Leadping API phone number traffic trend bucket charts and metrics.
 type PhoneNumberTrafficTrendPoint struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Number of outbound calls that failed during this metrics window.
-    callFailedCount *int32
-    // Number of outbound calls placed during this metrics window.
-    callPlacedCount *int32
-    // UTC timestamp when this reporting bucket ends.
-    endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
-    label *string
-    // Number of MMS messages that failed during this metrics window.
-    mmsFailedCount *int32
-    // Number of MMS messages sent during this metrics window.
-    mmsSentCount *int32
-    // Number of SMS messages that failed during this metrics window.
-    smsFailedCount *int32
-    // Number of SMS messages sent during this metrics window.
-    smsSentCount *int32
-    // UTC timestamp when this reporting bucket starts.
-    startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Number of outbound calls that failed during this metrics window.
+	callFailedCount *int32
+	// Number of outbound calls placed during this metrics window.
+	callPlacedCount *int32
+	// UTC timestamp when this reporting bucket ends.
+	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
+	label *string
+	// Number of MMS messages that failed during this metrics window.
+	mmsFailedCount *int32
+	// Number of MMS messages sent during this metrics window.
+	mmsSentCount *int32
+	// Number of SMS messages that failed during this metrics window.
+	smsFailedCount *int32
+	// Number of SMS messages sent during this metrics window.
+	smsSentCount *int32
+	// UTC timestamp when this reporting bucket starts.
+	startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewPhoneNumberTrafficTrendPoint instantiates a new PhoneNumberTrafficTrendPoint and sets the default values.
-func NewPhoneNumberTrafficTrendPoint()(*PhoneNumberTrafficTrendPoint) {
-    m := &PhoneNumberTrafficTrendPoint{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberTrafficTrendPoint() *PhoneNumberTrafficTrendPoint {
+	m := &PhoneNumberTrafficTrendPoint{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberTrafficTrendPoint(), nil
+func CreatePhoneNumberTrafficTrendPointFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberTrafficTrendPoint(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberTrafficTrendPoint) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberTrafficTrendPoint) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCallFailedCount gets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetCallFailedCount()(*int32) {
-    return m.callFailedCount
+func (m *PhoneNumberTrafficTrendPoint) GetCallFailedCount() *int32 {
+	return m.callFailedCount
 }
+
 // GetCallPlacedCount gets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetCallPlacedCount()(*int32) {
-    return m.callPlacedCount
+func (m *PhoneNumberTrafficTrendPoint) GetCallPlacedCount() *int32 {
+	return m.callPlacedCount
 }
+
 // GetEndAt gets the endAt property value. UTC timestamp when this reporting bucket ends.
 // returns a *Time when successful
-func (m *PhoneNumberTrafficTrendPoint) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.endAt
+func (m *PhoneNumberTrafficTrendPoint) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberTrafficTrendPoint) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallFailedCount(val)
-        }
-        return nil
-    }
-    res["callPlacedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallPlacedCount(val)
-        }
-        return nil
-    }
-    res["endAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEndAt(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["mmsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMmsFailedCount(val)
-        }
-        return nil
-    }
-    res["mmsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMmsSentCount(val)
-        }
-        return nil
-    }
-    res["smsFailedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsFailedCount(val)
-        }
-        return nil
-    }
-    res["smsSentCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsSentCount(val)
-        }
-        return nil
-    }
-    res["startAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberTrafficTrendPoint) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallFailedCount(val)
+		}
+		return nil
+	}
+	res["callPlacedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallPlacedCount(val)
+		}
+		return nil
+	}
+	res["endAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndAt(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["mmsFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMmsFailedCount(val)
+		}
+		return nil
+	}
+	res["mmsSentCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMmsSentCount(val)
+		}
+		return nil
+	}
+	res["smsFailedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsFailedCount(val)
+		}
+		return nil
+	}
+	res["smsSentCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsSentCount(val)
+		}
+		return nil
+	}
+	res["startAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLabel gets the label property value. Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
 // returns a *string when successful
-func (m *PhoneNumberTrafficTrendPoint) GetLabel()(*string) {
-    return m.label
+func (m *PhoneNumberTrafficTrendPoint) GetLabel() *string {
+	return m.label
 }
+
 // GetMmsFailedCount gets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetMmsFailedCount()(*int32) {
-    return m.mmsFailedCount
+func (m *PhoneNumberTrafficTrendPoint) GetMmsFailedCount() *int32 {
+	return m.mmsFailedCount
 }
+
 // GetMmsSentCount gets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetMmsSentCount()(*int32) {
-    return m.mmsSentCount
+func (m *PhoneNumberTrafficTrendPoint) GetMmsSentCount() *int32 {
+	return m.mmsSentCount
 }
+
 // GetSmsFailedCount gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetSmsFailedCount()(*int32) {
-    return m.smsFailedCount
+func (m *PhoneNumberTrafficTrendPoint) GetSmsFailedCount() *int32 {
+	return m.smsFailedCount
 }
+
 // GetSmsSentCount gets the smsSentCount property value. Number of SMS messages sent during this metrics window.
 // returns a *int32 when successful
-func (m *PhoneNumberTrafficTrendPoint) GetSmsSentCount()(*int32) {
-    return m.smsSentCount
+func (m *PhoneNumberTrafficTrendPoint) GetSmsSentCount() *int32 {
+	return m.smsSentCount
 }
+
 // GetStartAt gets the startAt property value. UTC timestamp when this reporting bucket starts.
 // returns a *Time when successful
-func (m *PhoneNumberTrafficTrendPoint) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startAt
+func (m *PhoneNumberTrafficTrendPoint) GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startAt
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberTrafficTrendPoint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteInt32Value("callFailedCount", m.GetCallFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("callPlacedCount", m.GetCallPlacedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("endAt", m.GetEndAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsFailedCount", m.GetSmsFailedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsSentCount", m.GetSmsSentCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startAt", m.GetStartAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberTrafficTrendPoint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("callFailedCount", m.GetCallFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callPlacedCount", m.GetCallPlacedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("endAt", m.GetEndAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("mmsFailedCount", m.GetMmsFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("mmsSentCount", m.GetMmsSentCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsFailedCount", m.GetSmsFailedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsSentCount", m.GetSmsSentCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startAt", m.GetStartAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberTrafficTrendPoint) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberTrafficTrendPoint) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCallFailedCount sets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetCallFailedCount(value *int32)() {
-    m.callFailedCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetCallFailedCount(value *int32) {
+	m.callFailedCount = value
 }
+
 // SetCallPlacedCount sets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetCallPlacedCount(value *int32)() {
-    m.callPlacedCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetCallPlacedCount(value *int32) {
+	m.callPlacedCount = value
 }
+
 // SetEndAt sets the endAt property value. UTC timestamp when this reporting bucket ends.
-func (m *PhoneNumberTrafficTrendPoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.endAt = value
+func (m *PhoneNumberTrafficTrendPoint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endAt = value
 }
+
 // SetLabel sets the label property value. Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
-func (m *PhoneNumberTrafficTrendPoint) SetLabel(value *string)() {
-    m.label = value
+func (m *PhoneNumberTrafficTrendPoint) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetMmsFailedCount sets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetMmsFailedCount(value *int32)() {
-    m.mmsFailedCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetMmsFailedCount(value *int32) {
+	m.mmsFailedCount = value
 }
+
 // SetMmsSentCount sets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetMmsSentCount(value *int32)() {
-    m.mmsSentCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetMmsSentCount(value *int32) {
+	m.mmsSentCount = value
 }
+
 // SetSmsFailedCount sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetSmsFailedCount(value *int32)() {
-    m.smsFailedCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetSmsFailedCount(value *int32) {
+	m.smsFailedCount = value
 }
+
 // SetSmsSentCount sets the smsSentCount property value. Number of SMS messages sent during this metrics window.
-func (m *PhoneNumberTrafficTrendPoint) SetSmsSentCount(value *int32)() {
-    m.smsSentCount = value
+func (m *PhoneNumberTrafficTrendPoint) SetSmsSentCount(value *int32) {
+	m.smsSentCount = value
 }
+
 // SetStartAt sets the startAt property value. UTC timestamp when this reporting bucket starts.
-func (m *PhoneNumberTrafficTrendPoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startAt = value
+func (m *PhoneNumberTrafficTrendPoint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startAt = value
 }
+
 type PhoneNumberTrafficTrendPointable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallFailedCount()(*int32)
-    GetCallPlacedCount()(*int32)
-    GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLabel()(*string)
-    GetMmsFailedCount()(*int32)
-    GetMmsSentCount()(*int32)
-    GetSmsFailedCount()(*int32)
-    GetSmsSentCount()(*int32)
-    GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetCallFailedCount(value *int32)()
-    SetCallPlacedCount(value *int32)()
-    SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLabel(value *string)()
-    SetMmsFailedCount(value *int32)()
-    SetMmsSentCount(value *int32)()
-    SetSmsFailedCount(value *int32)()
-    SetSmsSentCount(value *int32)()
-    SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallFailedCount() *int32
+	GetCallPlacedCount() *int32
+	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLabel() *string
+	GetMmsFailedCount() *int32
+	GetMmsSentCount() *int32
+	GetSmsFailedCount() *int32
+	GetSmsSentCount() *int32
+	GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetCallFailedCount(value *int32)
+	SetCallPlacedCount(value *int32)
+	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLabel(value *string)
+	SetMmsFailedCount(value *int32)
+	SetMmsSentCount(value *int32)
+	SetSmsFailedCount(value *int32)
+	SetSmsSentCount(value *int32)
+	SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

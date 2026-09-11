@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceTableRow_modifiedByUser user summary for the person who last modified this lead source table row.
+// SourceTableRow_modifiedByUser provides a compact API reference to another resource using its stable identifier and human-readable display name.
 type SourceTableRow_modifiedByUser struct {
-    IdNamePair
+	IdNamePair
 }
+
 // NewSourceTableRow_modifiedByUser instantiates a new SourceTableRow_modifiedByUser and sets the default values.
-func NewSourceTableRow_modifiedByUser()(*SourceTableRow_modifiedByUser) {
-    m := &SourceTableRow_modifiedByUser{
-        IdNamePair: *NewIdNamePair(),
-    }
-    return m
+func NewSourceTableRow_modifiedByUser() *SourceTableRow_modifiedByUser {
+	m := &SourceTableRow_modifiedByUser{
+		IdNamePair: *NewIdNamePair(),
+	}
+	return m
 }
+
 // CreateSourceTableRow_modifiedByUserFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceTableRow_modifiedByUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceTableRow_modifiedByUser(), nil
+func CreateSourceTableRow_modifiedByUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceTableRow_modifiedByUser(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceTableRow_modifiedByUser) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.IdNamePair.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceTableRow_modifiedByUser) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.IdNamePair.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *SourceTableRow_modifiedByUser) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.IdNamePair.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *SourceTableRow_modifiedByUser) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.IdNamePair.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type SourceTableRow_modifiedByUserable interface {
-    IdNamePairable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	IdNamePairable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

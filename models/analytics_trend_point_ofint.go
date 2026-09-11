@@ -4,169 +4,183 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // AnalyticsTrendPointOfint associates a typed analytics value with one normalized time bucket in a trend series.
 type AnalyticsTrendPointOfint struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Date and time when this Leadping analytics trend point was end.
-    endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable label for this Leadping analytics trend point.
-    label *string
-    // Date and time when this Leadping analytics trend point was start.
-    startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Value associated with this Leadping analytics trend point.
-    value *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Date and time when this Leadping analytics trend point was end.
+	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable label for this Leadping analytics trend point.
+	label *string
+	// Date and time when this Leadping analytics trend point was start.
+	startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Value associated with this Leadping analytics trend point.
+	value *int32
 }
+
 // NewAnalyticsTrendPointOfint instantiates a new AnalyticsTrendPointOfint and sets the default values.
-func NewAnalyticsTrendPointOfint()(*AnalyticsTrendPointOfint) {
-    m := &AnalyticsTrendPointOfint{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAnalyticsTrendPointOfint() *AnalyticsTrendPointOfint {
+	m := &AnalyticsTrendPointOfint{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAnalyticsTrendPointOfintFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAnalyticsTrendPointOfintFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAnalyticsTrendPointOfint(), nil
+func CreateAnalyticsTrendPointOfintFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAnalyticsTrendPointOfint(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AnalyticsTrendPointOfint) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AnalyticsTrendPointOfint) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetEndAt gets the endAt property value. Date and time when this Leadping analytics trend point was end.
 // returns a *Time when successful
-func (m *AnalyticsTrendPointOfint) GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.endAt
+func (m *AnalyticsTrendPointOfint) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AnalyticsTrendPointOfint) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["endAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEndAt(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["startAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartAt(val)
-        }
-        return nil
-    }
-    res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetValue(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AnalyticsTrendPointOfint) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["endAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndAt(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["startAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartAt(val)
+		}
+		return nil
+	}
+	res["value"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetValue(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLabel gets the label property value. Human-readable label for this Leadping analytics trend point.
 // returns a *string when successful
-func (m *AnalyticsTrendPointOfint) GetLabel()(*string) {
-    return m.label
+func (m *AnalyticsTrendPointOfint) GetLabel() *string {
+	return m.label
 }
+
 // GetStartAt gets the startAt property value. Date and time when this Leadping analytics trend point was start.
 // returns a *Time when successful
-func (m *AnalyticsTrendPointOfint) GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startAt
+func (m *AnalyticsTrendPointOfint) GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startAt
 }
+
 // GetValue gets the value property value. Value associated with this Leadping analytics trend point.
 // returns a *int32 when successful
-func (m *AnalyticsTrendPointOfint) GetValue()(*int32) {
-    return m.value
+func (m *AnalyticsTrendPointOfint) GetValue() *int32 {
+	return m.value
 }
+
 // Serialize serializes information the current object
-func (m *AnalyticsTrendPointOfint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("endAt", m.GetEndAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startAt", m.GetStartAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("value", m.GetValue())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AnalyticsTrendPointOfint) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("endAt", m.GetEndAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startAt", m.GetStartAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("value", m.GetValue())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AnalyticsTrendPointOfint) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AnalyticsTrendPointOfint) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetEndAt sets the endAt property value. Date and time when this Leadping analytics trend point was end.
-func (m *AnalyticsTrendPointOfint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.endAt = value
+func (m *AnalyticsTrendPointOfint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endAt = value
 }
+
 // SetLabel sets the label property value. Human-readable label for this Leadping analytics trend point.
-func (m *AnalyticsTrendPointOfint) SetLabel(value *string)() {
-    m.label = value
+func (m *AnalyticsTrendPointOfint) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetStartAt sets the startAt property value. Date and time when this Leadping analytics trend point was start.
-func (m *AnalyticsTrendPointOfint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startAt = value
+func (m *AnalyticsTrendPointOfint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startAt = value
 }
+
 // SetValue sets the value property value. Value associated with this Leadping analytics trend point.
-func (m *AnalyticsTrendPointOfint) SetValue(value *int32)() {
-    m.value = value
+func (m *AnalyticsTrendPointOfint) SetValue(value *int32) {
+	m.value = value
 }
+
 type AnalyticsTrendPointOfintable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLabel()(*string)
-    GetStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetValue()(*int32)
-    SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLabel(value *string)()
-    SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetValue(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLabel() *string
+	GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetValue() *int32
+	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLabel(value *string)
+	SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetValue(value *int32)
 }

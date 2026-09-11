@@ -4,140 +4,152 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SmsReadinessUiState describes SMS readiness UI state data used in Leadping API requests and responses.
 type SmsReadinessUiState struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The human-readable description of this SMS readiness UI state.
-    description *string
-    // The human-readable label shown for this SMS readiness UI state.
-    label *SmsReadinessState
-    // Tone for this SMS readiness UI state.
-    tone *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The human-readable description of this SMS readiness UI state.
+	description *string
+	// Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+	label *SmsReadinessState
+	// Tone for this SMS readiness UI state.
+	tone *string
 }
+
 // NewSmsReadinessUiState instantiates a new SmsReadinessUiState and sets the default values.
-func NewSmsReadinessUiState()(*SmsReadinessUiState) {
-    m := &SmsReadinessUiState{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSmsReadinessUiState() *SmsReadinessUiState {
+	m := &SmsReadinessUiState{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSmsReadinessUiStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSmsReadinessUiStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSmsReadinessUiState(), nil
+func CreateSmsReadinessUiStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSmsReadinessUiState(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SmsReadinessUiState) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SmsReadinessUiState) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDescription gets the description property value. The human-readable description of this SMS readiness UI state.
 // returns a *string when successful
-func (m *SmsReadinessUiState) GetDescription()(*string) {
-    return m.description
+func (m *SmsReadinessUiState) GetDescription() *string {
+	return m.description
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SmsReadinessUiState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsReadinessState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val.(*SmsReadinessState))
-        }
-        return nil
-    }
-    res["tone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTone(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SmsReadinessUiState) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsReadinessState)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val.(*SmsReadinessState))
+		}
+		return nil
+	}
+	res["tone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTone(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetLabel gets the label property value. The human-readable label shown for this SMS readiness UI state.
+
+// GetLabel gets the label property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 // returns a *SmsReadinessState when successful
-func (m *SmsReadinessUiState) GetLabel()(*SmsReadinessState) {
-    return m.label
+func (m *SmsReadinessUiState) GetLabel() *SmsReadinessState {
+	return m.label
 }
+
 // GetTone gets the tone property value. Tone for this SMS readiness UI state.
 // returns a *string when successful
-func (m *SmsReadinessUiState) GetTone()(*string) {
-    return m.tone
+func (m *SmsReadinessUiState) GetTone() *string {
+	return m.tone
 }
+
 // Serialize serializes information the current object
-func (m *SmsReadinessUiState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLabel() != nil {
-        cast := (*m.GetLabel()).String()
-        err := writer.WriteStringValue("label", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("tone", m.GetTone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SmsReadinessUiState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLabel() != nil {
+		cast := (*m.GetLabel()).String()
+		err := writer.WriteStringValue("label", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("tone", m.GetTone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SmsReadinessUiState) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SmsReadinessUiState) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDescription sets the description property value. The human-readable description of this SMS readiness UI state.
-func (m *SmsReadinessUiState) SetDescription(value *string)() {
-    m.description = value
+func (m *SmsReadinessUiState) SetDescription(value *string) {
+	m.description = value
 }
-// SetLabel sets the label property value. The human-readable label shown for this SMS readiness UI state.
-func (m *SmsReadinessUiState) SetLabel(value *SmsReadinessState)() {
-    m.label = value
+
+// SetLabel sets the label property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+func (m *SmsReadinessUiState) SetLabel(value *SmsReadinessState) {
+	m.label = value
 }
+
 // SetTone sets the tone property value. Tone for this SMS readiness UI state.
-func (m *SmsReadinessUiState) SetTone(value *string)() {
-    m.tone = value
+func (m *SmsReadinessUiState) SetTone(value *string) {
+	m.tone = value
 }
+
 type SmsReadinessUiStateable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDescription()(*string)
-    GetLabel()(*SmsReadinessState)
-    GetTone()(*string)
-    SetDescription(value *string)()
-    SetLabel(value *SmsReadinessState)()
-    SetTone(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDescription() *string
+	GetLabel() *SmsReadinessState
+	GetTone() *string
+	SetDescription(value *string)
+	SetLabel(value *SmsReadinessState)
+	SetTone(value *string)
 }

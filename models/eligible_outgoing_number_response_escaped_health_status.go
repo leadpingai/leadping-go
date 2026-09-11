@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 type EligibleOutgoingNumberResponse_healthStatus int
 
 const (
-    NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS EligibleOutgoingNumberResponse_healthStatus = iota
-    EVALUATING_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-    HEALTHY_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-    NEEDSATTENTION_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-    BLOCKED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS EligibleOutgoingNumberResponse_healthStatus = iota
+	EVALUATING_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	HEALTHY_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	NEEDSATTENTION_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	BLOCKED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
 )
 
 func (i EligibleOutgoingNumberResponse_healthStatus) String() string {
-    return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
+	return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
 }
+
 func ParseEligibleOutgoingNumberResponse_healthStatus(v string) (any, error) {
-    result := NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-    switch v {
-        case "Not Evaluated":
-            result = NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-        case "Evaluating":
-            result = EVALUATING_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-        case "Healthy":
-            result = HEALTHY_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-        case "Needs Attention":
-            result = NEEDSATTENTION_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-        case "Blocked":
-            result = BLOCKED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	switch v {
+	case "Not Evaluated":
+		result = NOTEVALUATED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	case "Evaluating":
+		result = EVALUATING_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	case "Healthy":
+		result = HEALTHY_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	case "Needs Attention":
+		result = NEEDSATTENTION_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	case "Blocked":
+		result = BLOCKED_ELIGIBLEOUTGOINGNUMBERRESPONSE_HEALTHSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeEligibleOutgoingNumberResponse_healthStatus(values []EligibleOutgoingNumberResponse_healthStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i EligibleOutgoingNumberResponse_healthStatus) isMultiValue() bool {
-    return false
+	return false
 }

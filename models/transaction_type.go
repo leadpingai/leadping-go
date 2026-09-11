@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
 type TransactionType int
 
 const (
-    DEBIT_TRANSACTIONTYPE TransactionType = iota
-    ADJUSTMENT_TRANSACTIONTYPE
-    DEPOSIT_TRANSACTIONTYPE
+	DEBIT_TRANSACTIONTYPE TransactionType = iota
+	ADJUSTMENT_TRANSACTIONTYPE
+	DEPOSIT_TRANSACTIONTYPE
 )
 
 func (i TransactionType) String() string {
-    return []string{"Debit", "Adjustment", "Deposit"}[i]
+	return []string{"Debit", "Adjustment", "Deposit"}[i]
 }
+
 func ParseTransactionType(v string) (any, error) {
-    result := DEBIT_TRANSACTIONTYPE
-    switch v {
-        case "Debit":
-            result = DEBIT_TRANSACTIONTYPE
-        case "Adjustment":
-            result = ADJUSTMENT_TRANSACTIONTYPE
-        case "Deposit":
-            result = DEPOSIT_TRANSACTIONTYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := DEBIT_TRANSACTIONTYPE
+	switch v {
+	case "Debit":
+		result = DEBIT_TRANSACTIONTYPE
+	case "Adjustment":
+		result = ADJUSTMENT_TRANSACTIONTYPE
+	case "Deposit":
+		result = DEPOSIT_TRANSACTIONTYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeTransactionType(values []TransactionType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i TransactionType) isMultiValue() bool {
-    return false
+	return false
 }

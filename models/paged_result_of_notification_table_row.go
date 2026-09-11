@@ -4,180 +4,194 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PagedResultOfNotificationTableRow returns one page of query results together with page-size, optional total-count, and opaque continuation-cursor metadata.
 type PagedResultOfNotificationTableRow struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
-    continuationToken *string
-    // Items included in the current page, in the order determined by the query.
-    items []NotificationTableRowable
-    // Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
-    pageSize *int32
-    // Total number of records matching the query across all pages, or null when counting was not requested or computed.
-    totalCount *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+	continuationToken *string
+	// Items included in the current page, in the order determined by the query.
+	items []NotificationTableRowable
+	// Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+	pageSize *int32
+	// Total number of records matching the query across all pages, or null when counting was not requested or computed.
+	totalCount *int32
 }
+
 // NewPagedResultOfNotificationTableRow instantiates a new PagedResultOfNotificationTableRow and sets the default values.
-func NewPagedResultOfNotificationTableRow()(*PagedResultOfNotificationTableRow) {
-    m := &PagedResultOfNotificationTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPagedResultOfNotificationTableRow() *PagedResultOfNotificationTableRow {
+	m := &PagedResultOfNotificationTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePagedResultOfNotificationTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePagedResultOfNotificationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPagedResultOfNotificationTableRow(), nil
+func CreatePagedResultOfNotificationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPagedResultOfNotificationTableRow(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PagedResultOfNotificationTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PagedResultOfNotificationTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetContinuationToken gets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
 // returns a *string when successful
-func (m *PagedResultOfNotificationTableRow) GetContinuationToken()(*string) {
-    return m.continuationToken
+func (m *PagedResultOfNotificationTableRow) GetContinuationToken() *string {
+	return m.continuationToken
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PagedResultOfNotificationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["continuationToken"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContinuationToken(val)
-        }
-        return nil
-    }
-    res["items"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateNotificationTableRowFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]NotificationTableRowable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(NotificationTableRowable)
-                }
-            }
-            m.SetItems(res)
-        }
-        return nil
-    }
-    res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPageSize(val)
-        }
-        return nil
-    }
-    res["totalCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTotalCount(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PagedResultOfNotificationTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["continuationToken"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContinuationToken(val)
+		}
+		return nil
+	}
+	res["items"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateNotificationTableRowFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]NotificationTableRowable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(NotificationTableRowable)
+				}
+			}
+			m.SetItems(res)
+		}
+		return nil
+	}
+	res["pageSize"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPageSize(val)
+		}
+		return nil
+	}
+	res["totalCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTotalCount(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetItems gets the items property value. Items included in the current page, in the order determined by the query.
 // returns a []NotificationTableRowable when successful
-func (m *PagedResultOfNotificationTableRow) GetItems()([]NotificationTableRowable) {
-    return m.items
+func (m *PagedResultOfNotificationTableRow) GetItems() []NotificationTableRowable {
+	return m.items
 }
+
 // GetPageSize gets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
 // returns a *int32 when successful
-func (m *PagedResultOfNotificationTableRow) GetPageSize()(*int32) {
-    return m.pageSize
+func (m *PagedResultOfNotificationTableRow) GetPageSize() *int32 {
+	return m.pageSize
 }
+
 // GetTotalCount gets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
 // returns a *int32 when successful
-func (m *PagedResultOfNotificationTableRow) GetTotalCount()(*int32) {
-    return m.totalCount
+func (m *PagedResultOfNotificationTableRow) GetTotalCount() *int32 {
+	return m.totalCount
 }
+
 // Serialize serializes information the current object
-func (m *PagedResultOfNotificationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("continuationToken", m.GetContinuationToken())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetItems() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetItems()))
-        for i, v := range m.GetItems() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("items", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("pageSize", m.GetPageSize())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PagedResultOfNotificationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("continuationToken", m.GetContinuationToken())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetItems() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetItems()))
+		for i, v := range m.GetItems() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("items", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("pageSize", m.GetPageSize())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("totalCount", m.GetTotalCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PagedResultOfNotificationTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PagedResultOfNotificationTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetContinuationToken sets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
-func (m *PagedResultOfNotificationTableRow) SetContinuationToken(value *string)() {
-    m.continuationToken = value
+func (m *PagedResultOfNotificationTableRow) SetContinuationToken(value *string) {
+	m.continuationToken = value
 }
+
 // SetItems sets the items property value. Items included in the current page, in the order determined by the query.
-func (m *PagedResultOfNotificationTableRow) SetItems(value []NotificationTableRowable)() {
-    m.items = value
+func (m *PagedResultOfNotificationTableRow) SetItems(value []NotificationTableRowable) {
+	m.items = value
 }
+
 // SetPageSize sets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
-func (m *PagedResultOfNotificationTableRow) SetPageSize(value *int32)() {
-    m.pageSize = value
+func (m *PagedResultOfNotificationTableRow) SetPageSize(value *int32) {
+	m.pageSize = value
 }
+
 // SetTotalCount sets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
-func (m *PagedResultOfNotificationTableRow) SetTotalCount(value *int32)() {
-    m.totalCount = value
+func (m *PagedResultOfNotificationTableRow) SetTotalCount(value *int32) {
+	m.totalCount = value
 }
+
 type PagedResultOfNotificationTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetContinuationToken()(*string)
-    GetItems()([]NotificationTableRowable)
-    GetPageSize()(*int32)
-    GetTotalCount()(*int32)
-    SetContinuationToken(value *string)()
-    SetItems(value []NotificationTableRowable)()
-    SetPageSize(value *int32)()
-    SetTotalCount(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetContinuationToken() *string
+	GetItems() []NotificationTableRowable
+	GetPageSize() *int32
+	GetTotalCount() *int32
+	SetContinuationToken(value *string)
+	SetItems(value []NotificationTableRowable)
+	SetPageSize(value *int32)
+	SetTotalCount(value *int32)
 }

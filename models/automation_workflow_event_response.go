@@ -4,314 +4,338 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // AutomationWorkflowEventResponse user-safe workflow history event returned for lead automation status.
 type AutomationWorkflowEventResponse struct {
-    // Unique identifier of the action associated with this Leadping automation workflow event.
-    actionId *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Event type classification for this Leadping automation workflow event.
-    eventType *string
-    // Unique Leadping identifier for the automation workflow event.
-    id *string
-    // Date and time when the automation workflow event event occurred.
-    occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
-    reasonCode *string
-    // Current status for this Leadping automation workflow event.
-    status *string
-    // Human-readable status display for this Leadping automation workflow event.
-    statusDisplay *string
-    // Unique identifier of the step associated with this Leadping automation workflow event.
-    stepId *string
-    // Human-readable summary for this Leadping automation workflow event.
-    summary *string
+	// Unique identifier of the action associated with this Leadping automation workflow event.
+	actionId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Event type classification for this Leadping automation workflow event.
+	eventType *string
+	// Unique Leadping identifier for the automation workflow event.
+	id *string
+	// Date and time when the automation workflow event event occurred.
+	occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
+	reasonCode *string
+	// Current status for this Leadping automation workflow event.
+	status *string
+	// Human-readable status display for this Leadping automation workflow event.
+	statusDisplay *string
+	// Unique identifier of the step associated with this Leadping automation workflow event.
+	stepId *string
+	// Human-readable summary for this Leadping automation workflow event.
+	summary *string
 }
+
 // NewAutomationWorkflowEventResponse instantiates a new AutomationWorkflowEventResponse and sets the default values.
-func NewAutomationWorkflowEventResponse()(*AutomationWorkflowEventResponse) {
-    m := &AutomationWorkflowEventResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationWorkflowEventResponse() *AutomationWorkflowEventResponse {
+	m := &AutomationWorkflowEventResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationWorkflowEventResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationWorkflowEventResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationWorkflowEventResponse(), nil
+func CreateAutomationWorkflowEventResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationWorkflowEventResponse(), nil
 }
+
 // GetActionId gets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetActionId()(*string) {
-    return m.actionId
+func (m *AutomationWorkflowEventResponse) GetActionId() *string {
+	return m.actionId
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationWorkflowEventResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationWorkflowEventResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetEventType gets the eventType property value. Event type classification for this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetEventType()(*string) {
-    return m.eventType
+func (m *AutomationWorkflowEventResponse) GetEventType() *string {
+	return m.eventType
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationWorkflowEventResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionId(val)
-        }
-        return nil
-    }
-    res["eventType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEventType(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["occurredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOccurredAt(val)
-        }
-        return nil
-    }
-    res["reasonCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReasonCode(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["statusDisplay"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusDisplay(val)
-        }
-        return nil
-    }
-    res["stepId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStepId(val)
-        }
-        return nil
-    }
-    res["summary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSummary(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationWorkflowEventResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionId(val)
+		}
+		return nil
+	}
+	res["eventType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEventType(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["occurredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOccurredAt(val)
+		}
+		return nil
+	}
+	res["reasonCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReasonCode(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["statusDisplay"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusDisplay(val)
+		}
+		return nil
+	}
+	res["stepId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStepId(val)
+		}
+		return nil
+	}
+	res["summary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSummary(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for the automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetId()(*string) {
-    return m.id
+func (m *AutomationWorkflowEventResponse) GetId() *string {
+	return m.id
 }
+
 // GetOccurredAt gets the occurredAt property value. Date and time when the automation workflow event event occurred.
 // returns a *Time when successful
-func (m *AutomationWorkflowEventResponse) GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.occurredAt
+func (m *AutomationWorkflowEventResponse) GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.occurredAt
 }
+
 // GetReasonCode gets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetReasonCode()(*string) {
-    return m.reasonCode
+func (m *AutomationWorkflowEventResponse) GetReasonCode() *string {
+	return m.reasonCode
 }
+
 // GetStatus gets the status property value. Current status for this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetStatus()(*string) {
-    return m.status
+func (m *AutomationWorkflowEventResponse) GetStatus() *string {
+	return m.status
 }
+
 // GetStatusDisplay gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetStatusDisplay()(*string) {
-    return m.statusDisplay
+func (m *AutomationWorkflowEventResponse) GetStatusDisplay() *string {
+	return m.statusDisplay
 }
+
 // GetStepId gets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetStepId()(*string) {
-    return m.stepId
+func (m *AutomationWorkflowEventResponse) GetStepId() *string {
+	return m.stepId
 }
+
 // GetSummary gets the summary property value. Human-readable summary for this Leadping automation workflow event.
 // returns a *string when successful
-func (m *AutomationWorkflowEventResponse) GetSummary()(*string) {
-    return m.summary
+func (m *AutomationWorkflowEventResponse) GetSummary() *string {
+	return m.summary
 }
+
 // Serialize serializes information the current object
-func (m *AutomationWorkflowEventResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionId", m.GetActionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("eventType", m.GetEventType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reasonCode", m.GetReasonCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusDisplay", m.GetStatusDisplay())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("stepId", m.GetStepId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("summary", m.GetSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationWorkflowEventResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionId", m.GetActionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("eventType", m.GetEventType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("reasonCode", m.GetReasonCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusDisplay", m.GetStatusDisplay())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("stepId", m.GetStepId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("summary", m.GetSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionId sets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetActionId(value *string)() {
-    m.actionId = value
+func (m *AutomationWorkflowEventResponse) SetActionId(value *string) {
+	m.actionId = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationWorkflowEventResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationWorkflowEventResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetEventType sets the eventType property value. Event type classification for this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetEventType(value *string)() {
-    m.eventType = value
+func (m *AutomationWorkflowEventResponse) SetEventType(value *string) {
+	m.eventType = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for the automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetId(value *string)() {
-    m.id = value
+func (m *AutomationWorkflowEventResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetOccurredAt sets the occurredAt property value. Date and time when the automation workflow event event occurred.
-func (m *AutomationWorkflowEventResponse) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.occurredAt = value
+func (m *AutomationWorkflowEventResponse) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.occurredAt = value
 }
+
 // SetReasonCode sets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetReasonCode(value *string)() {
-    m.reasonCode = value
+func (m *AutomationWorkflowEventResponse) SetReasonCode(value *string) {
+	m.reasonCode = value
 }
+
 // SetStatus sets the status property value. Current status for this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetStatus(value *string)() {
-    m.status = value
+func (m *AutomationWorkflowEventResponse) SetStatus(value *string) {
+	m.status = value
 }
+
 // SetStatusDisplay sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetStatusDisplay(value *string)() {
-    m.statusDisplay = value
+func (m *AutomationWorkflowEventResponse) SetStatusDisplay(value *string) {
+	m.statusDisplay = value
 }
+
 // SetStepId sets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetStepId(value *string)() {
-    m.stepId = value
+func (m *AutomationWorkflowEventResponse) SetStepId(value *string) {
+	m.stepId = value
 }
+
 // SetSummary sets the summary property value. Human-readable summary for this Leadping automation workflow event.
-func (m *AutomationWorkflowEventResponse) SetSummary(value *string)() {
-    m.summary = value
+func (m *AutomationWorkflowEventResponse) SetSummary(value *string) {
+	m.summary = value
 }
+
 type AutomationWorkflowEventResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionId()(*string)
-    GetEventType()(*string)
-    GetId()(*string)
-    GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetReasonCode()(*string)
-    GetStatus()(*string)
-    GetStatusDisplay()(*string)
-    GetStepId()(*string)
-    GetSummary()(*string)
-    SetActionId(value *string)()
-    SetEventType(value *string)()
-    SetId(value *string)()
-    SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetReasonCode(value *string)()
-    SetStatus(value *string)()
-    SetStatusDisplay(value *string)()
-    SetStepId(value *string)()
-    SetSummary(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionId() *string
+	GetEventType() *string
+	GetId() *string
+	GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetReasonCode() *string
+	GetStatus() *string
+	GetStatusDisplay() *string
+	GetStepId() *string
+	GetSummary() *string
+	SetActionId(value *string)
+	SetEventType(value *string)
+	SetId(value *string)
+	SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetReasonCode(value *string)
+	SetStatus(value *string)
+	SetStatusDisplay(value *string)
+	SetStepId(value *string)
+	SetSummary(value *string)
 }

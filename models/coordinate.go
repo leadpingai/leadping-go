@@ -4,110 +4,120 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // Coordinate latitude and longitude coordinate for this lead contact profile.
 type Coordinate struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-    latitude *float64
-    // Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-    longitude *float64
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
+	latitude *float64
+	// Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
+	longitude *float64
 }
+
 // NewCoordinate instantiates a new Coordinate and sets the default values.
-func NewCoordinate()(*Coordinate) {
-    m := &Coordinate{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCoordinate() *Coordinate {
+	m := &Coordinate{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCoordinateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCoordinateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCoordinate(), nil
+func CreateCoordinateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCoordinate(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *Coordinate) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *Coordinate) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *Coordinate) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["latitude"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLatitude(val)
-        }
-        return nil
-    }
-    res["longitude"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLongitude(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *Coordinate) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["latitude"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLatitude(val)
+		}
+		return nil
+	}
+	res["longitude"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLongitude(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLatitude gets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
 // returns a *float64 when successful
-func (m *Coordinate) GetLatitude()(*float64) {
-    return m.latitude
+func (m *Coordinate) GetLatitude() *float64 {
+	return m.latitude
 }
+
 // GetLongitude gets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
 // returns a *float64 when successful
-func (m *Coordinate) GetLongitude()(*float64) {
-    return m.longitude
+func (m *Coordinate) GetLongitude() *float64 {
+	return m.longitude
 }
+
 // Serialize serializes information the current object
-func (m *Coordinate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("latitude", m.GetLatitude())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("longitude", m.GetLongitude())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *Coordinate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("latitude", m.GetLatitude())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("longitude", m.GetLongitude())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *Coordinate) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *Coordinate) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetLatitude sets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-func (m *Coordinate) SetLatitude(value *float64)() {
-    m.latitude = value
+func (m *Coordinate) SetLatitude(value *float64) {
+	m.latitude = value
 }
+
 // SetLongitude sets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-func (m *Coordinate) SetLongitude(value *float64)() {
-    m.longitude = value
+func (m *Coordinate) SetLongitude(value *float64) {
+	m.longitude = value
 }
+
 type Coordinateable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetLatitude()(*float64)
-    GetLongitude()(*float64)
-    SetLatitude(value *float64)()
-    SetLongitude(value *float64)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetLatitude() *float64
+	GetLongitude() *float64
+	SetLatitude(value *float64)
+	SetLongitude(value *float64)
 }

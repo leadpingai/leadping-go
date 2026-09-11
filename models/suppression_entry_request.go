@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SuppressionEntryRequest defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
 type SuppressionEntryRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
-    channel *string
-    // Recipient email address to suppress or check.
-    email *string
-    // Recipient phone number to suppress or check, preferably in E.164 format.
-    phoneNumber *string
-    // Human-readable reason for creating or releasing the suppression.
-    reason *string
-    // Optional provider or customer identifier that uniquely identifies the recipient.
-    recipientIdentifier *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
+	channel *string
+	// Recipient email address to suppress or check.
+	email *string
+	// Recipient phone number to suppress or check, preferably in E.164 format.
+	phoneNumber *string
+	// Human-readable reason for creating or releasing the suppression.
+	reason *string
+	// Optional provider or customer identifier that uniquely identifies the recipient.
+	recipientIdentifier *string
 }
+
 // NewSuppressionEntryRequest instantiates a new SuppressionEntryRequest and sets the default values.
-func NewSuppressionEntryRequest()(*SuppressionEntryRequest) {
-    m := &SuppressionEntryRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSuppressionEntryRequest() *SuppressionEntryRequest {
+	m := &SuppressionEntryRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSuppressionEntryRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSuppressionEntryRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSuppressionEntryRequest(), nil
+func CreateSuppressionEntryRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSuppressionEntryRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SuppressionEntryRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SuppressionEntryRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetChannel gets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
 // returns a *string when successful
-func (m *SuppressionEntryRequest) GetChannel()(*string) {
-    return m.channel
+func (m *SuppressionEntryRequest) GetChannel() *string {
+	return m.channel
 }
+
 // GetEmail gets the email property value. Recipient email address to suppress or check.
 // returns a *string when successful
-func (m *SuppressionEntryRequest) GetEmail()(*string) {
-    return m.email
+func (m *SuppressionEntryRequest) GetEmail() *string {
+	return m.email
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SuppressionEntryRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["channel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChannel(val)
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReason(val)
-        }
-        return nil
-    }
-    res["recipientIdentifier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecipientIdentifier(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SuppressionEntryRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["channel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetChannel(val)
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	res["reason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReason(val)
+		}
+		return nil
+	}
+	res["recipientIdentifier"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRecipientIdentifier(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetPhoneNumber gets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
 // returns a *string when successful
-func (m *SuppressionEntryRequest) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *SuppressionEntryRequest) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // GetReason gets the reason property value. Human-readable reason for creating or releasing the suppression.
 // returns a *string when successful
-func (m *SuppressionEntryRequest) GetReason()(*string) {
-    return m.reason
+func (m *SuppressionEntryRequest) GetReason() *string {
+	return m.reason
 }
+
 // GetRecipientIdentifier gets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
 // returns a *string when successful
-func (m *SuppressionEntryRequest) GetRecipientIdentifier()(*string) {
-    return m.recipientIdentifier
+func (m *SuppressionEntryRequest) GetRecipientIdentifier() *string {
+	return m.recipientIdentifier
 }
+
 // Serialize serializes information the current object
-func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("channel", m.GetChannel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reason", m.GetReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("recipientIdentifier", m.GetRecipientIdentifier())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SuppressionEntryRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("channel", m.GetChannel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("reason", m.GetReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("recipientIdentifier", m.GetRecipientIdentifier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SuppressionEntryRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SuppressionEntryRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetChannel sets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
-func (m *SuppressionEntryRequest) SetChannel(value *string)() {
-    m.channel = value
+func (m *SuppressionEntryRequest) SetChannel(value *string) {
+	m.channel = value
 }
+
 // SetEmail sets the email property value. Recipient email address to suppress or check.
-func (m *SuppressionEntryRequest) SetEmail(value *string)() {
-    m.email = value
+func (m *SuppressionEntryRequest) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
-func (m *SuppressionEntryRequest) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *SuppressionEntryRequest) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 // SetReason sets the reason property value. Human-readable reason for creating or releasing the suppression.
-func (m *SuppressionEntryRequest) SetReason(value *string)() {
-    m.reason = value
+func (m *SuppressionEntryRequest) SetReason(value *string) {
+	m.reason = value
 }
+
 // SetRecipientIdentifier sets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
-func (m *SuppressionEntryRequest) SetRecipientIdentifier(value *string)() {
-    m.recipientIdentifier = value
+func (m *SuppressionEntryRequest) SetRecipientIdentifier(value *string) {
+	m.recipientIdentifier = value
 }
+
 type SuppressionEntryRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetChannel()(*string)
-    GetEmail()(*string)
-    GetPhoneNumber()(*string)
-    GetReason()(*string)
-    GetRecipientIdentifier()(*string)
-    SetChannel(value *string)()
-    SetEmail(value *string)()
-    SetPhoneNumber(value *string)()
-    SetReason(value *string)()
-    SetRecipientIdentifier(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetChannel() *string
+	GetEmail() *string
+	GetPhoneNumber() *string
+	GetReason() *string
+	GetRecipientIdentifier() *string
+	SetChannel(value *string)
+	SetEmail(value *string)
+	SetPhoneNumber(value *string)
+	SetReason(value *string)
+	SetRecipientIdentifier(value *string)
 }

@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Describes an organization's account lifecycle and whether it can actively use Leadping services.
 type OrganizationSwitchOption_organizationStatus int
 
 const (
-    SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS OrganizationSwitchOption_organizationStatus = iota
-    SETUPCOMPLETED_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
-    ACTIVE_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS OrganizationSwitchOption_organizationStatus = iota
+	SETUPCOMPLETED_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	ACTIVE_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
 )
 
 func (i OrganizationSwitchOption_organizationStatus) String() string {
-    return []string{"SettingUp", "SetupCompleted", "Active"}[i]
+	return []string{"SettingUp", "SetupCompleted", "Active"}[i]
 }
+
 func ParseOrganizationSwitchOption_organizationStatus(v string) (any, error) {
-    result := SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
-    switch v {
-        case "SettingUp":
-            result = SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
-        case "SetupCompleted":
-            result = SETUPCOMPLETED_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
-        case "Active":
-            result = ACTIVE_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	switch v {
+	case "SettingUp":
+		result = SETTINGUP_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	case "SetupCompleted":
+		result = SETUPCOMPLETED_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	case "Active":
+		result = ACTIVE_ORGANIZATIONSWITCHOPTION_ORGANIZATIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationSwitchOption_organizationStatus(values []OrganizationSwitchOption_organizationStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationSwitchOption_organizationStatus) isMultiValue() bool {
-    return false
+	return false
 }

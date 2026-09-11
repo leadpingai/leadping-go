@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneNumberStatusResponse_outboundCapacity current outbound SMS and voice capacity for this phone number.
+// PhoneNumberStatusResponse_outboundCapacity reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
 type PhoneNumberStatusResponse_outboundCapacity struct {
-    OutboundPhoneNumberCapacity
+	OutboundPhoneNumberCapacity
 }
+
 // NewPhoneNumberStatusResponse_outboundCapacity instantiates a new PhoneNumberStatusResponse_outboundCapacity and sets the default values.
-func NewPhoneNumberStatusResponse_outboundCapacity()(*PhoneNumberStatusResponse_outboundCapacity) {
-    m := &PhoneNumberStatusResponse_outboundCapacity{
-        OutboundPhoneNumberCapacity: *NewOutboundPhoneNumberCapacity(),
-    }
-    return m
+func NewPhoneNumberStatusResponse_outboundCapacity() *PhoneNumberStatusResponse_outboundCapacity {
+	m := &PhoneNumberStatusResponse_outboundCapacity{
+		OutboundPhoneNumberCapacity: *NewOutboundPhoneNumberCapacity(),
+	}
+	return m
 }
+
 // CreatePhoneNumberStatusResponse_outboundCapacityFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberStatusResponse_outboundCapacityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberStatusResponse_outboundCapacity(), nil
+func CreatePhoneNumberStatusResponse_outboundCapacityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberStatusResponse_outboundCapacity(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberStatusResponse_outboundCapacity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.OutboundPhoneNumberCapacity.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberStatusResponse_outboundCapacity) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.OutboundPhoneNumberCapacity.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberStatusResponse_outboundCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.OutboundPhoneNumberCapacity.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *PhoneNumberStatusResponse_outboundCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.OutboundPhoneNumberCapacity.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type PhoneNumberStatusResponse_outboundCapacityable interface {
-    OutboundPhoneNumberCapacityable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	OutboundPhoneNumberCapacityable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

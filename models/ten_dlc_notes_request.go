@@ -4,81 +4,89 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // TenDlcNotesRequest updates the internal notes associated with a 10DLC application.
 type TenDlcNotesRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Notes to store with the 10DLC application, or null to clear them.
-    notes *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Notes to store with the 10DLC application, or null to clear them.
+	notes *string
 }
+
 // NewTenDlcNotesRequest instantiates a new TenDlcNotesRequest and sets the default values.
-func NewTenDlcNotesRequest()(*TenDlcNotesRequest) {
-    m := &TenDlcNotesRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewTenDlcNotesRequest() *TenDlcNotesRequest {
+	m := &TenDlcNotesRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateTenDlcNotesRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTenDlcNotesRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewTenDlcNotesRequest(), nil
+func CreateTenDlcNotesRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewTenDlcNotesRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TenDlcNotesRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *TenDlcNotesRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *TenDlcNotesRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["notes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNotes(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *TenDlcNotesRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["notes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNotes(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetNotes gets the notes property value. Notes to store with the 10DLC application, or null to clear them.
 // returns a *string when successful
-func (m *TenDlcNotesRequest) GetNotes()(*string) {
-    return m.notes
+func (m *TenDlcNotesRequest) GetNotes() *string {
+	return m.notes
 }
+
 // Serialize serializes information the current object
-func (m *TenDlcNotesRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("notes", m.GetNotes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *TenDlcNotesRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("notes", m.GetNotes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TenDlcNotesRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *TenDlcNotesRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetNotes sets the notes property value. Notes to store with the 10DLC application, or null to clear them.
-func (m *TenDlcNotesRequest) SetNotes(value *string)() {
-    m.notes = value
+func (m *TenDlcNotesRequest) SetNotes(value *string) {
+	m.notes = value
 }
+
 type TenDlcNotesRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetNotes()(*string)
-    SetNotes(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetNotes() *string
+	SetNotes(value *string)
 }

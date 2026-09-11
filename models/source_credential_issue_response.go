@@ -4,110 +4,120 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SourceCredentialIssueResponse returns a newly issued source credential exactly once.
 type SourceCredentialIssueResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Newly issued source credential. Leadping does not retain this plaintext value.
-    secret *string
-    // Source metadata safe for later retrieval.
-    source SourceResponseable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Newly issued source credential. Leadping does not retain this plaintext value.
+	secret *string
+	// Describes lead source data returned by Leadping.
+	source SourceResponseable
 }
+
 // NewSourceCredentialIssueResponse instantiates a new SourceCredentialIssueResponse and sets the default values.
-func NewSourceCredentialIssueResponse()(*SourceCredentialIssueResponse) {
-    m := &SourceCredentialIssueResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSourceCredentialIssueResponse() *SourceCredentialIssueResponse {
+	m := &SourceCredentialIssueResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSourceCredentialIssueResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceCredentialIssueResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceCredentialIssueResponse(), nil
+func CreateSourceCredentialIssueResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceCredentialIssueResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SourceCredentialIssueResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SourceCredentialIssueResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceCredentialIssueResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["secret"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSecret(val)
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSourceResponseFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val.(SourceResponseable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceCredentialIssueResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["secret"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSecret(val)
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSourceResponseFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val.(SourceResponseable))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetSecret gets the secret property value. Newly issued source credential. Leadping does not retain this plaintext value.
 // returns a *string when successful
-func (m *SourceCredentialIssueResponse) GetSecret()(*string) {
-    return m.secret
+func (m *SourceCredentialIssueResponse) GetSecret() *string {
+	return m.secret
 }
-// GetSource gets the source property value. Source metadata safe for later retrieval.
+
+// GetSource gets the source property value. Describes lead source data returned by Leadping.
 // returns a SourceResponseable when successful
-func (m *SourceCredentialIssueResponse) GetSource()(SourceResponseable) {
-    return m.source
+func (m *SourceCredentialIssueResponse) GetSource() SourceResponseable {
+	return m.source
 }
+
 // Serialize serializes information the current object
-func (m *SourceCredentialIssueResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("secret", m.GetSecret())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SourceCredentialIssueResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("secret", m.GetSecret())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SourceCredentialIssueResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SourceCredentialIssueResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetSecret sets the secret property value. Newly issued source credential. Leadping does not retain this plaintext value.
-func (m *SourceCredentialIssueResponse) SetSecret(value *string)() {
-    m.secret = value
+func (m *SourceCredentialIssueResponse) SetSecret(value *string) {
+	m.secret = value
 }
-// SetSource sets the source property value. Source metadata safe for later retrieval.
-func (m *SourceCredentialIssueResponse) SetSource(value SourceResponseable)() {
-    m.source = value
+
+// SetSource sets the source property value. Describes lead source data returned by Leadping.
+func (m *SourceCredentialIssueResponse) SetSource(value SourceResponseable) {
+	m.source = value
 }
+
 type SourceCredentialIssueResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetSecret()(*string)
-    GetSource()(SourceResponseable)
-    SetSecret(value *string)()
-    SetSource(value SourceResponseable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetSecret() *string
+	GetSource() SourceResponseable
+	SetSecret(value *string)
+	SetSource(value SourceResponseable)
 }

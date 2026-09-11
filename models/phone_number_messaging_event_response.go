@@ -4,314 +4,338 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberMessagingEventResponse describes a messaging event used to calculate delivery, failure, and opt-out metrics for a phone number.
 type PhoneNumberMessagingEventResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when this phone number messaging event was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Communication direction for this phone number messaging event, such as inbound or outbound.
-    direction *string
-    // Event type used to classify this timeline, SMS, call, or automation event.
-    eventType *string
-    // Sender phone number used for this communication.
-    fromPhoneNumber *string
-    // Unique Leadping identifier for this phone number messaging event.
-    id *string
-    // Indicates whether the recipient has opted out of further SMS communication.
-    isOptOut *bool
-    // Short display label for this phone number messaging event, formatted for charts, filters, or list views.
-    label *string
-    // Short preview of the SMS or conversation text for this phone number messaging event.
-    textPreview *string
-    // Recipient phone number used for this communication.
-    toPhoneNumber *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when this phone number messaging event was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Communication direction for this phone number messaging event, such as inbound or outbound.
+	direction *string
+	// Event type used to classify this timeline, SMS, call, or automation event.
+	eventType *string
+	// Sender phone number used for this communication.
+	fromPhoneNumber *string
+	// Unique Leadping identifier for this phone number messaging event.
+	id *string
+	// Indicates whether the recipient has opted out of further SMS communication.
+	isOptOut *bool
+	// Short display label for this phone number messaging event, formatted for charts, filters, or list views.
+	label *string
+	// Short preview of the SMS or conversation text for this phone number messaging event.
+	textPreview *string
+	// Recipient phone number used for this communication.
+	toPhoneNumber *string
 }
+
 // NewPhoneNumberMessagingEventResponse instantiates a new PhoneNumberMessagingEventResponse and sets the default values.
-func NewPhoneNumberMessagingEventResponse()(*PhoneNumberMessagingEventResponse) {
-    m := &PhoneNumberMessagingEventResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberMessagingEventResponse() *PhoneNumberMessagingEventResponse {
+	m := &PhoneNumberMessagingEventResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberMessagingEventResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberMessagingEventResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberMessagingEventResponse(), nil
+func CreatePhoneNumberMessagingEventResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberMessagingEventResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberMessagingEventResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberMessagingEventResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this phone number messaging event was created.
 // returns a *Time when successful
-func (m *PhoneNumberMessagingEventResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *PhoneNumberMessagingEventResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDirection gets the direction property value. Communication direction for this phone number messaging event, such as inbound or outbound.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetDirection()(*string) {
-    return m.direction
+func (m *PhoneNumberMessagingEventResponse) GetDirection() *string {
+	return m.direction
 }
+
 // GetEventType gets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetEventType()(*string) {
-    return m.eventType
+func (m *PhoneNumberMessagingEventResponse) GetEventType() *string {
+	return m.eventType
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberMessagingEventResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["direction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirection(val)
-        }
-        return nil
-    }
-    res["eventType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEventType(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumber(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isOptOut"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsOptOut(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["textPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTextPreview(val)
-        }
-        return nil
-    }
-    res["toPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetToPhoneNumber(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberMessagingEventResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["direction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirection(val)
+		}
+		return nil
+	}
+	res["eventType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEventType(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumber(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isOptOut"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsOptOut(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["textPreview"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTextPreview(val)
+		}
+		return nil
+	}
+	res["toPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetToPhoneNumber(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetFromPhoneNumber()(*string) {
-    return m.fromPhoneNumber
+func (m *PhoneNumberMessagingEventResponse) GetFromPhoneNumber() *string {
+	return m.fromPhoneNumber
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this phone number messaging event.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetId()(*string) {
-    return m.id
+func (m *PhoneNumberMessagingEventResponse) GetId() *string {
+	return m.id
 }
+
 // GetIsOptOut gets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
 // returns a *bool when successful
-func (m *PhoneNumberMessagingEventResponse) GetIsOptOut()(*bool) {
-    return m.isOptOut
+func (m *PhoneNumberMessagingEventResponse) GetIsOptOut() *bool {
+	return m.isOptOut
 }
+
 // GetLabel gets the label property value. Short display label for this phone number messaging event, formatted for charts, filters, or list views.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetLabel()(*string) {
-    return m.label
+func (m *PhoneNumberMessagingEventResponse) GetLabel() *string {
+	return m.label
 }
+
 // GetTextPreview gets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetTextPreview()(*string) {
-    return m.textPreview
+func (m *PhoneNumberMessagingEventResponse) GetTextPreview() *string {
+	return m.textPreview
 }
+
 // GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
-func (m *PhoneNumberMessagingEventResponse) GetToPhoneNumber()(*string) {
-    return m.toPhoneNumber
+func (m *PhoneNumberMessagingEventResponse) GetToPhoneNumber() *string {
+	return m.toPhoneNumber
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberMessagingEventResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("direction", m.GetDirection())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("eventType", m.GetEventType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isOptOut", m.GetIsOptOut())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("textPreview", m.GetTextPreview())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberMessagingEventResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("direction", m.GetDirection())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("eventType", m.GetEventType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isOptOut", m.GetIsOptOut())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("textPreview", m.GetTextPreview())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberMessagingEventResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberMessagingEventResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this phone number messaging event was created.
-func (m *PhoneNumberMessagingEventResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *PhoneNumberMessagingEventResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDirection sets the direction property value. Communication direction for this phone number messaging event, such as inbound or outbound.
-func (m *PhoneNumberMessagingEventResponse) SetDirection(value *string)() {
-    m.direction = value
+func (m *PhoneNumberMessagingEventResponse) SetDirection(value *string) {
+	m.direction = value
 }
+
 // SetEventType sets the eventType property value. Event type used to classify this timeline, SMS, call, or automation event.
-func (m *PhoneNumberMessagingEventResponse) SetEventType(value *string)() {
-    m.eventType = value
+func (m *PhoneNumberMessagingEventResponse) SetEventType(value *string) {
+	m.eventType = value
 }
+
 // SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
-func (m *PhoneNumberMessagingEventResponse) SetFromPhoneNumber(value *string)() {
-    m.fromPhoneNumber = value
+func (m *PhoneNumberMessagingEventResponse) SetFromPhoneNumber(value *string) {
+	m.fromPhoneNumber = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this phone number messaging event.
-func (m *PhoneNumberMessagingEventResponse) SetId(value *string)() {
-    m.id = value
+func (m *PhoneNumberMessagingEventResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsOptOut sets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
-func (m *PhoneNumberMessagingEventResponse) SetIsOptOut(value *bool)() {
-    m.isOptOut = value
+func (m *PhoneNumberMessagingEventResponse) SetIsOptOut(value *bool) {
+	m.isOptOut = value
 }
+
 // SetLabel sets the label property value. Short display label for this phone number messaging event, formatted for charts, filters, or list views.
-func (m *PhoneNumberMessagingEventResponse) SetLabel(value *string)() {
-    m.label = value
+func (m *PhoneNumberMessagingEventResponse) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetTextPreview sets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
-func (m *PhoneNumberMessagingEventResponse) SetTextPreview(value *string)() {
-    m.textPreview = value
+func (m *PhoneNumberMessagingEventResponse) SetTextPreview(value *string) {
+	m.textPreview = value
 }
+
 // SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
-func (m *PhoneNumberMessagingEventResponse) SetToPhoneNumber(value *string)() {
-    m.toPhoneNumber = value
+func (m *PhoneNumberMessagingEventResponse) SetToPhoneNumber(value *string) {
+	m.toPhoneNumber = value
 }
+
 type PhoneNumberMessagingEventResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDirection()(*string)
-    GetEventType()(*string)
-    GetFromPhoneNumber()(*string)
-    GetId()(*string)
-    GetIsOptOut()(*bool)
-    GetLabel()(*string)
-    GetTextPreview()(*string)
-    GetToPhoneNumber()(*string)
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDirection(value *string)()
-    SetEventType(value *string)()
-    SetFromPhoneNumber(value *string)()
-    SetId(value *string)()
-    SetIsOptOut(value *bool)()
-    SetLabel(value *string)()
-    SetTextPreview(value *string)()
-    SetToPhoneNumber(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDirection() *string
+	GetEventType() *string
+	GetFromPhoneNumber() *string
+	GetId() *string
+	GetIsOptOut() *bool
+	GetLabel() *string
+	GetTextPreview() *string
+	GetToPhoneNumber() *string
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDirection(value *string)
+	SetEventType(value *string)
+	SetFromPhoneNumber(value *string)
+	SetId(value *string)
+	SetIsOptOut(value *bool)
+	SetLabel(value *string)
+	SetTextPreview(value *string)
+	SetToPhoneNumber(value *string)
 }

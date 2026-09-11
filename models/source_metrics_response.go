@@ -4,251 +4,269 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SourceMetricsResponse aggregates lead volume, conversion, delivery, and activity metrics attributed to a Leadping source over the requested reporting period.
 type SourceMetricsResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Collection of lead intake error points included with this Leadping source metrics.
-    errorPoints []AnalyticsTrendPointOfintable
-    // Date and time when the source metrics was generated.
-    generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Collection of points included with this Leadping source metrics.
-    points []AnalyticsTrendPointOfintable
-    // Range associated with this Leadping source metrics.
-    rangeEscaped AnalyticsDateRangeable
-    // Total number of lead intake errors represented by this Leadping source metrics.
-    totalErrors *int32
-    // Total number of leads records represented by this Leadping source metrics.
-    totalLeads *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Collection of lead intake error points included with this Leadping source metrics.
+	errorPoints []AnalyticsTrendPointOfintable
+	// Date and time when the source metrics was generated.
+	generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Collection of points included with this Leadping source metrics.
+	points []AnalyticsTrendPointOfintable
+	// Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
+	rangeEscaped AnalyticsDateRangeable
+	// Total number of lead intake errors represented by this Leadping source metrics.
+	totalErrors *int32
+	// Total number of leads records represented by this Leadping source metrics.
+	totalLeads *int32
 }
+
 // NewSourceMetricsResponse instantiates a new SourceMetricsResponse and sets the default values.
-func NewSourceMetricsResponse()(*SourceMetricsResponse) {
-    m := &SourceMetricsResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSourceMetricsResponse() *SourceMetricsResponse {
+	m := &SourceMetricsResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSourceMetricsResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceMetricsResponse(), nil
+func CreateSourceMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceMetricsResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SourceMetricsResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SourceMetricsResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetErrorPoints gets the errorPoints property value. Collection of lead intake error points included with this Leadping source metrics.
 // returns a []AnalyticsTrendPointOfintable when successful
-func (m *SourceMetricsResponse) GetErrorPoints()([]AnalyticsTrendPointOfintable) {
-    return m.errorPoints
+func (m *SourceMetricsResponse) GetErrorPoints() []AnalyticsTrendPointOfintable {
+	return m.errorPoints
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceMetricsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["errorPoints"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AnalyticsTrendPointOfintable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AnalyticsTrendPointOfintable)
-                }
-            }
-            m.SetErrorPoints(res)
-        }
-        return nil
-    }
-    res["generatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGeneratedAt(val)
-        }
-        return nil
-    }
-    res["points"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AnalyticsTrendPointOfintable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AnalyticsTrendPointOfintable)
-                }
-            }
-            m.SetPoints(res)
-        }
-        return nil
-    }
-    res["range"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAnalyticsDateRangeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRangeEscaped(val.(AnalyticsDateRangeable))
-        }
-        return nil
-    }
-    res["totalErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTotalErrors(val)
-        }
-        return nil
-    }
-    res["totalLeads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTotalLeads(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceMetricsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["errorPoints"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AnalyticsTrendPointOfintable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AnalyticsTrendPointOfintable)
+				}
+			}
+			m.SetErrorPoints(res)
+		}
+		return nil
+	}
+	res["generatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetGeneratedAt(val)
+		}
+		return nil
+	}
+	res["points"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AnalyticsTrendPointOfintable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AnalyticsTrendPointOfintable)
+				}
+			}
+			m.SetPoints(res)
+		}
+		return nil
+	}
+	res["range"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAnalyticsDateRangeFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRangeEscaped(val.(AnalyticsDateRangeable))
+		}
+		return nil
+	}
+	res["totalErrors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTotalErrors(val)
+		}
+		return nil
+	}
+	res["totalLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTotalLeads(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetGeneratedAt gets the generatedAt property value. Date and time when the source metrics was generated.
 // returns a *Time when successful
-func (m *SourceMetricsResponse) GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.generatedAt
+func (m *SourceMetricsResponse) GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.generatedAt
 }
+
 // GetPoints gets the points property value. Collection of points included with this Leadping source metrics.
 // returns a []AnalyticsTrendPointOfintable when successful
-func (m *SourceMetricsResponse) GetPoints()([]AnalyticsTrendPointOfintable) {
-    return m.points
+func (m *SourceMetricsResponse) GetPoints() []AnalyticsTrendPointOfintable {
+	return m.points
 }
-// GetRangeEscaped gets the range property value. Range associated with this Leadping source metrics.
+
+// GetRangeEscaped gets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
 // returns a AnalyticsDateRangeable when successful
-func (m *SourceMetricsResponse) GetRangeEscaped()(AnalyticsDateRangeable) {
-    return m.rangeEscaped
+func (m *SourceMetricsResponse) GetRangeEscaped() AnalyticsDateRangeable {
+	return m.rangeEscaped
 }
+
 // GetTotalErrors gets the totalErrors property value. Total number of lead intake errors represented by this Leadping source metrics.
 // returns a *int32 when successful
-func (m *SourceMetricsResponse) GetTotalErrors()(*int32) {
-    return m.totalErrors
+func (m *SourceMetricsResponse) GetTotalErrors() *int32 {
+	return m.totalErrors
 }
+
 // GetTotalLeads gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
 // returns a *int32 when successful
-func (m *SourceMetricsResponse) GetTotalLeads()(*int32) {
-    return m.totalLeads
+func (m *SourceMetricsResponse) GetTotalLeads() *int32 {
+	return m.totalLeads
 }
+
 // Serialize serializes information the current object
-func (m *SourceMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetErrorPoints() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetErrorPoints()))
-        for i, v := range m.GetErrorPoints() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("errorPoints", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPoints() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPoints()))
-        for i, v := range m.GetPoints() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("points", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("range", m.GetRangeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("totalErrors", m.GetTotalErrors())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("totalLeads", m.GetTotalLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SourceMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetErrorPoints() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetErrorPoints()))
+		for i, v := range m.GetErrorPoints() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("errorPoints", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPoints() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPoints()))
+		for i, v := range m.GetPoints() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("points", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("range", m.GetRangeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("totalErrors", m.GetTotalErrors())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("totalLeads", m.GetTotalLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SourceMetricsResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SourceMetricsResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetErrorPoints sets the errorPoints property value. Collection of lead intake error points included with this Leadping source metrics.
-func (m *SourceMetricsResponse) SetErrorPoints(value []AnalyticsTrendPointOfintable)() {
-    m.errorPoints = value
+func (m *SourceMetricsResponse) SetErrorPoints(value []AnalyticsTrendPointOfintable) {
+	m.errorPoints = value
 }
+
 // SetGeneratedAt sets the generatedAt property value. Date and time when the source metrics was generated.
-func (m *SourceMetricsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.generatedAt = value
+func (m *SourceMetricsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.generatedAt = value
 }
+
 // SetPoints sets the points property value. Collection of points included with this Leadping source metrics.
-func (m *SourceMetricsResponse) SetPoints(value []AnalyticsTrendPointOfintable)() {
-    m.points = value
+func (m *SourceMetricsResponse) SetPoints(value []AnalyticsTrendPointOfintable) {
+	m.points = value
 }
-// SetRangeEscaped sets the range property value. Range associated with this Leadping source metrics.
-func (m *SourceMetricsResponse) SetRangeEscaped(value AnalyticsDateRangeable)() {
-    m.rangeEscaped = value
+
+// SetRangeEscaped sets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
+func (m *SourceMetricsResponse) SetRangeEscaped(value AnalyticsDateRangeable) {
+	m.rangeEscaped = value
 }
+
 // SetTotalErrors sets the totalErrors property value. Total number of lead intake errors represented by this Leadping source metrics.
-func (m *SourceMetricsResponse) SetTotalErrors(value *int32)() {
-    m.totalErrors = value
+func (m *SourceMetricsResponse) SetTotalErrors(value *int32) {
+	m.totalErrors = value
 }
+
 // SetTotalLeads sets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
-func (m *SourceMetricsResponse) SetTotalLeads(value *int32)() {
-    m.totalLeads = value
+func (m *SourceMetricsResponse) SetTotalLeads(value *int32) {
+	m.totalLeads = value
 }
+
 type SourceMetricsResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetErrorPoints()([]AnalyticsTrendPointOfintable)
-    GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPoints()([]AnalyticsTrendPointOfintable)
-    GetRangeEscaped()(AnalyticsDateRangeable)
-    GetTotalErrors()(*int32)
-    GetTotalLeads()(*int32)
-    SetErrorPoints(value []AnalyticsTrendPointOfintable)()
-    SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPoints(value []AnalyticsTrendPointOfintable)()
-    SetRangeEscaped(value AnalyticsDateRangeable)()
-    SetTotalErrors(value *int32)()
-    SetTotalLeads(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetErrorPoints() []AnalyticsTrendPointOfintable
+	GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPoints() []AnalyticsTrendPointOfintable
+	GetRangeEscaped() AnalyticsDateRangeable
+	GetTotalErrors() *int32
+	GetTotalLeads() *int32
+	SetErrorPoints(value []AnalyticsTrendPointOfintable)
+	SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPoints(value []AnalyticsTrendPointOfintable)
+	SetRangeEscaped(value AnalyticsDateRangeable)
+	SetTotalErrors(value *int32)
+	SetTotalLeads(value *int32)
 }

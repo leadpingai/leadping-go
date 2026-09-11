@@ -4,366 +4,392 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OutboundCapacityOverview summarizes organization-wide SMS and voice sending capacity, phone-number health, and recent outbound pacing decisions.
 type OutboundCapacityOverview struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Total number of blocked records represented by this Leadping outbound capacity overview.
-    blockedCount *int32
-    // Number of cooling phone numbers represented by this Leadping outbound capacity overview.
-    coolingPhoneNumbers *int32
-    // Number of healthy phone numbers represented by this Leadping outbound capacity overview.
-    healthyPhoneNumbers *int32
-    // Number of limited phone numbers represented by this Leadping outbound capacity overview.
-    limitedPhoneNumbers *int32
-    // Collection of phone numbers included with this Leadping outbound capacity overview.
-    phoneNumbers []OutboundPhoneNumberCapacityable
-    // Number of phone numbers whose SMS or calling capacity is still ramping up.
-    rampingPhoneNumbers *int32
-    // Collection of recent decisions included with this Leadping outbound capacity overview.
-    recentDecisions []OutboundQueueItemable
-    // Total number of scheduled records represented by this Leadping outbound capacity overview.
-    scheduledCount *int32
-    // SMS capacity remaining today for the applicable messaging or voice capacity window.
-    smsCapacityRemainingToday *int32
-    // Voice capacity remaining today for the applicable messaging or voice capacity window.
-    voiceCapacityRemainingToday *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Total number of blocked records represented by this Leadping outbound capacity overview.
+	blockedCount *int32
+	// Number of cooling phone numbers represented by this Leadping outbound capacity overview.
+	coolingPhoneNumbers *int32
+	// Number of healthy phone numbers represented by this Leadping outbound capacity overview.
+	healthyPhoneNumbers *int32
+	// Number of limited phone numbers represented by this Leadping outbound capacity overview.
+	limitedPhoneNumbers *int32
+	// Collection of phone numbers included with this Leadping outbound capacity overview.
+	phoneNumbers []OutboundPhoneNumberCapacityable
+	// Number of phone numbers whose SMS or calling capacity is still ramping up.
+	rampingPhoneNumbers *int32
+	// Collection of recent decisions included with this Leadping outbound capacity overview.
+	recentDecisions []OutboundQueueItemable
+	// Total number of scheduled records represented by this Leadping outbound capacity overview.
+	scheduledCount *int32
+	// SMS capacity remaining today for the applicable messaging or voice capacity window.
+	smsCapacityRemainingToday *int32
+	// Voice capacity remaining today for the applicable messaging or voice capacity window.
+	voiceCapacityRemainingToday *int32
 }
+
 // NewOutboundCapacityOverview instantiates a new OutboundCapacityOverview and sets the default values.
-func NewOutboundCapacityOverview()(*OutboundCapacityOverview) {
-    m := &OutboundCapacityOverview{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOutboundCapacityOverview() *OutboundCapacityOverview {
+	m := &OutboundCapacityOverview{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOutboundCapacityOverviewFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOutboundCapacityOverviewFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOutboundCapacityOverview(), nil
+func CreateOutboundCapacityOverviewFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOutboundCapacityOverview(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OutboundCapacityOverview) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OutboundCapacityOverview) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBlockedCount gets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetBlockedCount()(*int32) {
-    return m.blockedCount
+func (m *OutboundCapacityOverview) GetBlockedCount() *int32 {
+	return m.blockedCount
 }
+
 // GetCoolingPhoneNumbers gets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers()(*int32) {
-    return m.coolingPhoneNumbers
+func (m *OutboundCapacityOverview) GetCoolingPhoneNumbers() *int32 {
+	return m.coolingPhoneNumbers
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OutboundCapacityOverview) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["blockedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBlockedCount(val)
-        }
-        return nil
-    }
-    res["coolingPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCoolingPhoneNumbers(val)
-        }
-        return nil
-    }
-    res["healthyPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthyPhoneNumbers(val)
-        }
-        return nil
-    }
-    res["limitedPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLimitedPhoneNumbers(val)
-        }
-        return nil
-    }
-    res["phoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateOutboundPhoneNumberCapacityFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]OutboundPhoneNumberCapacityable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(OutboundPhoneNumberCapacityable)
-                }
-            }
-            m.SetPhoneNumbers(res)
-        }
-        return nil
-    }
-    res["rampingPhoneNumbers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRampingPhoneNumbers(val)
-        }
-        return nil
-    }
-    res["recentDecisions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateOutboundQueueItemFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]OutboundQueueItemable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(OutboundQueueItemable)
-                }
-            }
-            m.SetRecentDecisions(res)
-        }
-        return nil
-    }
-    res["scheduledCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScheduledCount(val)
-        }
-        return nil
-    }
-    res["smsCapacityRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsCapacityRemainingToday(val)
-        }
-        return nil
-    }
-    res["voiceCapacityRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceCapacityRemainingToday(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OutboundCapacityOverview) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["blockedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBlockedCount(val)
+		}
+		return nil
+	}
+	res["coolingPhoneNumbers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCoolingPhoneNumbers(val)
+		}
+		return nil
+	}
+	res["healthyPhoneNumbers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthyPhoneNumbers(val)
+		}
+		return nil
+	}
+	res["limitedPhoneNumbers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLimitedPhoneNumbers(val)
+		}
+		return nil
+	}
+	res["phoneNumbers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateOutboundPhoneNumberCapacityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]OutboundPhoneNumberCapacityable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(OutboundPhoneNumberCapacityable)
+				}
+			}
+			m.SetPhoneNumbers(res)
+		}
+		return nil
+	}
+	res["rampingPhoneNumbers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRampingPhoneNumbers(val)
+		}
+		return nil
+	}
+	res["recentDecisions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateOutboundQueueItemFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]OutboundQueueItemable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(OutboundQueueItemable)
+				}
+			}
+			m.SetRecentDecisions(res)
+		}
+		return nil
+	}
+	res["scheduledCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScheduledCount(val)
+		}
+		return nil
+	}
+	res["smsCapacityRemainingToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsCapacityRemainingToday(val)
+		}
+		return nil
+	}
+	res["voiceCapacityRemainingToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceCapacityRemainingToday(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthyPhoneNumbers gets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetHealthyPhoneNumbers()(*int32) {
-    return m.healthyPhoneNumbers
+func (m *OutboundCapacityOverview) GetHealthyPhoneNumbers() *int32 {
+	return m.healthyPhoneNumbers
 }
+
 // GetLimitedPhoneNumbers gets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers()(*int32) {
-    return m.limitedPhoneNumbers
+func (m *OutboundCapacityOverview) GetLimitedPhoneNumbers() *int32 {
+	return m.limitedPhoneNumbers
 }
+
 // GetPhoneNumbers gets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
 // returns a []OutboundPhoneNumberCapacityable when successful
-func (m *OutboundCapacityOverview) GetPhoneNumbers()([]OutboundPhoneNumberCapacityable) {
-    return m.phoneNumbers
+func (m *OutboundCapacityOverview) GetPhoneNumbers() []OutboundPhoneNumberCapacityable {
+	return m.phoneNumbers
 }
+
 // GetRampingPhoneNumbers gets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetRampingPhoneNumbers()(*int32) {
-    return m.rampingPhoneNumbers
+func (m *OutboundCapacityOverview) GetRampingPhoneNumbers() *int32 {
+	return m.rampingPhoneNumbers
 }
+
 // GetRecentDecisions gets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
 // returns a []OutboundQueueItemable when successful
-func (m *OutboundCapacityOverview) GetRecentDecisions()([]OutboundQueueItemable) {
-    return m.recentDecisions
+func (m *OutboundCapacityOverview) GetRecentDecisions() []OutboundQueueItemable {
+	return m.recentDecisions
 }
+
 // GetScheduledCount gets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetScheduledCount()(*int32) {
-    return m.scheduledCount
+func (m *OutboundCapacityOverview) GetScheduledCount() *int32 {
+	return m.scheduledCount
 }
+
 // GetSmsCapacityRemainingToday gets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetSmsCapacityRemainingToday()(*int32) {
-    return m.smsCapacityRemainingToday
+func (m *OutboundCapacityOverview) GetSmsCapacityRemainingToday() *int32 {
+	return m.smsCapacityRemainingToday
 }
+
 // GetVoiceCapacityRemainingToday gets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
 // returns a *int32 when successful
-func (m *OutboundCapacityOverview) GetVoiceCapacityRemainingToday()(*int32) {
-    return m.voiceCapacityRemainingToday
+func (m *OutboundCapacityOverview) GetVoiceCapacityRemainingToday() *int32 {
+	return m.voiceCapacityRemainingToday
 }
+
 // Serialize serializes information the current object
-func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteInt32Value("blockedCount", m.GetBlockedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("coolingPhoneNumbers", m.GetCoolingPhoneNumbers())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("healthyPhoneNumbers", m.GetHealthyPhoneNumbers())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("limitedPhoneNumbers", m.GetLimitedPhoneNumbers())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPhoneNumbers() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPhoneNumbers()))
-        for i, v := range m.GetPhoneNumbers() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("phoneNumbers", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("rampingPhoneNumbers", m.GetRampingPhoneNumbers())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRecentDecisions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRecentDecisions()))
-        for i, v := range m.GetRecentDecisions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("recentDecisions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("scheduledCount", m.GetScheduledCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("smsCapacityRemainingToday", m.GetSmsCapacityRemainingToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("voiceCapacityRemainingToday", m.GetVoiceCapacityRemainingToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OutboundCapacityOverview) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("blockedCount", m.GetBlockedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("coolingPhoneNumbers", m.GetCoolingPhoneNumbers())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("healthyPhoneNumbers", m.GetHealthyPhoneNumbers())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("limitedPhoneNumbers", m.GetLimitedPhoneNumbers())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPhoneNumbers() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPhoneNumbers()))
+		for i, v := range m.GetPhoneNumbers() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("phoneNumbers", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("rampingPhoneNumbers", m.GetRampingPhoneNumbers())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRecentDecisions() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRecentDecisions()))
+		for i, v := range m.GetRecentDecisions() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("recentDecisions", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("scheduledCount", m.GetScheduledCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsCapacityRemainingToday", m.GetSmsCapacityRemainingToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceCapacityRemainingToday", m.GetVoiceCapacityRemainingToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OutboundCapacityOverview) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OutboundCapacityOverview) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBlockedCount sets the blockedCount property value. Total number of blocked records represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetBlockedCount(value *int32)() {
-    m.blockedCount = value
+func (m *OutboundCapacityOverview) SetBlockedCount(value *int32) {
+	m.blockedCount = value
 }
+
 // SetCoolingPhoneNumbers sets the coolingPhoneNumbers property value. Number of cooling phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetCoolingPhoneNumbers(value *int32)() {
-    m.coolingPhoneNumbers = value
+func (m *OutboundCapacityOverview) SetCoolingPhoneNumbers(value *int32) {
+	m.coolingPhoneNumbers = value
 }
+
 // SetHealthyPhoneNumbers sets the healthyPhoneNumbers property value. Number of healthy phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetHealthyPhoneNumbers(value *int32)() {
-    m.healthyPhoneNumbers = value
+func (m *OutboundCapacityOverview) SetHealthyPhoneNumbers(value *int32) {
+	m.healthyPhoneNumbers = value
 }
+
 // SetLimitedPhoneNumbers sets the limitedPhoneNumbers property value. Number of limited phone numbers represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value *int32)() {
-    m.limitedPhoneNumbers = value
+func (m *OutboundCapacityOverview) SetLimitedPhoneNumbers(value *int32) {
+	m.limitedPhoneNumbers = value
 }
+
 // SetPhoneNumbers sets the phoneNumbers property value. Collection of phone numbers included with this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)() {
-    m.phoneNumbers = value
+func (m *OutboundCapacityOverview) SetPhoneNumbers(value []OutboundPhoneNumberCapacityable) {
+	m.phoneNumbers = value
 }
+
 // SetRampingPhoneNumbers sets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
-func (m *OutboundCapacityOverview) SetRampingPhoneNumbers(value *int32)() {
-    m.rampingPhoneNumbers = value
+func (m *OutboundCapacityOverview) SetRampingPhoneNumbers(value *int32) {
+	m.rampingPhoneNumbers = value
 }
+
 // SetRecentDecisions sets the recentDecisions property value. Collection of recent decisions included with this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetRecentDecisions(value []OutboundQueueItemable)() {
-    m.recentDecisions = value
+func (m *OutboundCapacityOverview) SetRecentDecisions(value []OutboundQueueItemable) {
+	m.recentDecisions = value
 }
+
 // SetScheduledCount sets the scheduledCount property value. Total number of scheduled records represented by this Leadping outbound capacity overview.
-func (m *OutboundCapacityOverview) SetScheduledCount(value *int32)() {
-    m.scheduledCount = value
+func (m *OutboundCapacityOverview) SetScheduledCount(value *int32) {
+	m.scheduledCount = value
 }
+
 // SetSmsCapacityRemainingToday sets the smsCapacityRemainingToday property value. SMS capacity remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundCapacityOverview) SetSmsCapacityRemainingToday(value *int32)() {
-    m.smsCapacityRemainingToday = value
+func (m *OutboundCapacityOverview) SetSmsCapacityRemainingToday(value *int32) {
+	m.smsCapacityRemainingToday = value
 }
+
 // SetVoiceCapacityRemainingToday sets the voiceCapacityRemainingToday property value. Voice capacity remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundCapacityOverview) SetVoiceCapacityRemainingToday(value *int32)() {
-    m.voiceCapacityRemainingToday = value
+func (m *OutboundCapacityOverview) SetVoiceCapacityRemainingToday(value *int32) {
+	m.voiceCapacityRemainingToday = value
 }
+
 type OutboundCapacityOverviewable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBlockedCount()(*int32)
-    GetCoolingPhoneNumbers()(*int32)
-    GetHealthyPhoneNumbers()(*int32)
-    GetLimitedPhoneNumbers()(*int32)
-    GetPhoneNumbers()([]OutboundPhoneNumberCapacityable)
-    GetRampingPhoneNumbers()(*int32)
-    GetRecentDecisions()([]OutboundQueueItemable)
-    GetScheduledCount()(*int32)
-    GetSmsCapacityRemainingToday()(*int32)
-    GetVoiceCapacityRemainingToday()(*int32)
-    SetBlockedCount(value *int32)()
-    SetCoolingPhoneNumbers(value *int32)()
-    SetHealthyPhoneNumbers(value *int32)()
-    SetLimitedPhoneNumbers(value *int32)()
-    SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)()
-    SetRampingPhoneNumbers(value *int32)()
-    SetRecentDecisions(value []OutboundQueueItemable)()
-    SetScheduledCount(value *int32)()
-    SetSmsCapacityRemainingToday(value *int32)()
-    SetVoiceCapacityRemainingToday(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBlockedCount() *int32
+	GetCoolingPhoneNumbers() *int32
+	GetHealthyPhoneNumbers() *int32
+	GetLimitedPhoneNumbers() *int32
+	GetPhoneNumbers() []OutboundPhoneNumberCapacityable
+	GetRampingPhoneNumbers() *int32
+	GetRecentDecisions() []OutboundQueueItemable
+	GetScheduledCount() *int32
+	GetSmsCapacityRemainingToday() *int32
+	GetVoiceCapacityRemainingToday() *int32
+	SetBlockedCount(value *int32)
+	SetCoolingPhoneNumbers(value *int32)
+	SetHealthyPhoneNumbers(value *int32)
+	SetLimitedPhoneNumbers(value *int32)
+	SetPhoneNumbers(value []OutboundPhoneNumberCapacityable)
+	SetRampingPhoneNumbers(value *int32)
+	SetRecentDecisions(value []OutboundQueueItemable)
+	SetScheduledCount(value *int32)
+	SetSmsCapacityRemainingToday(value *int32)
+	SetVoiceCapacityRemainingToday(value *int32)
 }

@@ -4,662 +4,710 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // AutomationTableRow summarizes automation data in paginated and searchable results.
 type AutomationTableRow struct {
-    // Human-readable summary of the automation action outcome.
-    actionSummary *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Human-readable summary of the automation condition evaluation.
-    conditionSummary *string
-    // User ID of the person who created this automation table row.
-    createdByUserId *string
-    // Human-readable description that explains this automation table row to API users.
-    description *string
-    // Indicates whether this automation table row is active and available in the Leadping API.
-    enabled *bool
-    // Human-readable health summary for this automation table row.
-    healthSummary *string
-    // Unique Leadping identifier for this automation table row.
-    id *string
-    // Indicates whether Leadping manages this automation table row automatically instead of a user.
-    isSystemManaged *bool
-    // UTC timestamp when this automation last ran.
-    lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Status from the most recent automation run.
-    lastRunStatus *string
-    // Management level that controls whether Leadping or the organization owns this automation setting.
-    managementLevel *string
-    // UTC timestamp when this automation table row was last modified.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name for this automation table row in the Leadping API.
-    name *string
-    // Organization summary connected to this automation table row.
-    organization AutomationTableRow_organizationable
-    // Organization ID that owns this automation.
-    organizationId *string
-    // Human-readable explanation of the automation rule being evaluated.
-    ruleSentence *string
-    // Scope that limits where this automation table row applies in Leadping.
-    scope *string
-    // Human-readable summary of the automation trigger that started the workflow.
-    triggerSummary *string
-    // Automation trigger type that starts the workflow.
-    triggerType *string
-    // User summary connected to this automation table row.
-    user AutomationTableRow_userable
-    // Visibility level that controls who can see this automation table row.
-    visibility *string
+	// Human-readable summary of the automation action outcome.
+	actionSummary *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Human-readable summary of the automation condition evaluation.
+	conditionSummary *string
+	// User ID of the person who created this automation table row.
+	createdByUserId *string
+	// Human-readable description that explains this automation table row to API users.
+	description *string
+	// Indicates whether this automation table row is active and available in the Leadping API.
+	enabled *bool
+	// Human-readable health summary for this automation table row.
+	healthSummary *string
+	// Unique Leadping identifier for this automation table row.
+	id *string
+	// Indicates whether Leadping manages this automation table row automatically instead of a user.
+	isSystemManaged *bool
+	// UTC timestamp when this automation last ran.
+	lastRunAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Status from the most recent automation run.
+	lastRunStatus *string
+	// Management level that controls whether Leadping or the organization owns this automation setting.
+	managementLevel *string
+	// UTC timestamp when this automation table row was last modified.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Display name for this automation table row in the Leadping API.
+	name *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization AutomationTableRow_organizationable
+	// Organization ID that owns this automation.
+	organizationId *string
+	// Human-readable explanation of the automation rule being evaluated.
+	ruleSentence *string
+	// Scope that limits where this automation table row applies in Leadping.
+	scope *string
+	// Human-readable summary of the automation trigger that started the workflow.
+	triggerSummary *string
+	// Automation trigger type that starts the workflow.
+	triggerType *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	user AutomationTableRow_userable
+	// Visibility level that controls who can see this automation table row.
+	visibility *string
 }
+
 // NewAutomationTableRow instantiates a new AutomationTableRow and sets the default values.
-func NewAutomationTableRow()(*AutomationTableRow) {
-    m := &AutomationTableRow{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationTableRow() *AutomationTableRow {
+	m := &AutomationTableRow{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationTableRowFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationTableRow(), nil
+func CreateAutomationTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationTableRow(), nil
 }
+
 // GetActionSummary gets the actionSummary property value. Human-readable summary of the automation action outcome.
 // returns a *string when successful
-func (m *AutomationTableRow) GetActionSummary()(*string) {
-    return m.actionSummary
+func (m *AutomationTableRow) GetActionSummary() *string {
+	return m.actionSummary
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationTableRow) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationTableRow) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetConditionSummary gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 // returns a *string when successful
-func (m *AutomationTableRow) GetConditionSummary()(*string) {
-    return m.conditionSummary
+func (m *AutomationTableRow) GetConditionSummary() *string {
+	return m.conditionSummary
 }
+
 // GetCreatedByUserId gets the createdByUserId property value. User ID of the person who created this automation table row.
 // returns a *string when successful
-func (m *AutomationTableRow) GetCreatedByUserId()(*string) {
-    return m.createdByUserId
+func (m *AutomationTableRow) GetCreatedByUserId() *string {
+	return m.createdByUserId
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this automation table row to API users.
 // returns a *string when successful
-func (m *AutomationTableRow) GetDescription()(*string) {
-    return m.description
+func (m *AutomationTableRow) GetDescription() *string {
+	return m.description
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this automation table row is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *AutomationTableRow) GetEnabled()(*bool) {
-    return m.enabled
+func (m *AutomationTableRow) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationTableRow) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionSummary(val)
-        }
-        return nil
-    }
-    res["conditionSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConditionSummary(val)
-        }
-        return nil
-    }
-    res["createdByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedByUserId(val)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["healthSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthSummary(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isSystemManaged"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsSystemManaged(val)
-        }
-        return nil
-    }
-    res["lastRunAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastRunAt(val)
-        }
-        return nil
-    }
-    res["lastRunStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastRunStatus(val)
-        }
-        return nil
-    }
-    res["managementLevel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetManagementLevel(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationTableRow_organizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(AutomationTableRow_organizationable))
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["ruleSentence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRuleSentence(val)
-        }
-        return nil
-    }
-    res["scope"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScope(val)
-        }
-        return nil
-    }
-    res["triggerSummary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTriggerSummary(val)
-        }
-        return nil
-    }
-    res["triggerType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTriggerType(val)
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationTableRow_userFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val.(AutomationTableRow_userable))
-        }
-        return nil
-    }
-    res["visibility"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVisibility(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionSummary(val)
+		}
+		return nil
+	}
+	res["conditionSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConditionSummary(val)
+		}
+		return nil
+	}
+	res["createdByUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedByUserId(val)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["healthSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthSummary(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isSystemManaged"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsSystemManaged(val)
+		}
+		return nil
+	}
+	res["lastRunAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastRunAt(val)
+		}
+		return nil
+	}
+	res["lastRunStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastRunStatus(val)
+		}
+		return nil
+	}
+	res["managementLevel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetManagementLevel(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationTableRow_organizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(AutomationTableRow_organizationable))
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["ruleSentence"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRuleSentence(val)
+		}
+		return nil
+	}
+	res["scope"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScope(val)
+		}
+		return nil
+	}
+	res["triggerSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerSummary(val)
+		}
+		return nil
+	}
+	res["triggerType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerType(val)
+		}
+		return nil
+	}
+	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationTableRow_userFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUser(val.(AutomationTableRow_userable))
+		}
+		return nil
+	}
+	res["visibility"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVisibility(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthSummary gets the healthSummary property value. Human-readable health summary for this automation table row.
 // returns a *string when successful
-func (m *AutomationTableRow) GetHealthSummary()(*string) {
-    return m.healthSummary
+func (m *AutomationTableRow) GetHealthSummary() *string {
+	return m.healthSummary
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this automation table row.
 // returns a *string when successful
-func (m *AutomationTableRow) GetId()(*string) {
-    return m.id
+func (m *AutomationTableRow) GetId() *string {
+	return m.id
 }
+
 // GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
 // returns a *bool when successful
-func (m *AutomationTableRow) GetIsSystemManaged()(*bool) {
-    return m.isSystemManaged
+func (m *AutomationTableRow) GetIsSystemManaged() *bool {
+	return m.isSystemManaged
 }
+
 // GetLastRunAt gets the lastRunAt property value. UTC timestamp when this automation last ran.
 // returns a *Time when successful
-func (m *AutomationTableRow) GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastRunAt
+func (m *AutomationTableRow) GetLastRunAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastRunAt
 }
+
 // GetLastRunStatus gets the lastRunStatus property value. Status from the most recent automation run.
 // returns a *string when successful
-func (m *AutomationTableRow) GetLastRunStatus()(*string) {
-    return m.lastRunStatus
+func (m *AutomationTableRow) GetLastRunStatus() *string {
+	return m.lastRunStatus
 }
+
 // GetManagementLevel gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
 // returns a *string when successful
-func (m *AutomationTableRow) GetManagementLevel()(*string) {
-    return m.managementLevel
+func (m *AutomationTableRow) GetManagementLevel() *string {
+	return m.managementLevel
 }
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when this automation table row was last modified.
 // returns a *Time when successful
-func (m *AutomationTableRow) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *AutomationTableRow) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetName gets the name property value. Display name for this automation table row in the Leadping API.
 // returns a *string when successful
-func (m *AutomationTableRow) GetName()(*string) {
-    return m.name
+func (m *AutomationTableRow) GetName() *string {
+	return m.name
 }
-// GetOrganization gets the organization property value. Organization summary connected to this automation table row.
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a AutomationTableRow_organizationable when successful
-func (m *AutomationTableRow) GetOrganization()(AutomationTableRow_organizationable) {
-    return m.organization
+func (m *AutomationTableRow) GetOrganization() AutomationTableRow_organizationable {
+	return m.organization
 }
+
 // GetOrganizationId gets the organizationId property value. Organization ID that owns this automation.
 // returns a *string when successful
-func (m *AutomationTableRow) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *AutomationTableRow) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetRuleSentence gets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
 // returns a *string when successful
-func (m *AutomationTableRow) GetRuleSentence()(*string) {
-    return m.ruleSentence
+func (m *AutomationTableRow) GetRuleSentence() *string {
+	return m.ruleSentence
 }
+
 // GetScope gets the scope property value. Scope that limits where this automation table row applies in Leadping.
 // returns a *string when successful
-func (m *AutomationTableRow) GetScope()(*string) {
-    return m.scope
+func (m *AutomationTableRow) GetScope() *string {
+	return m.scope
 }
+
 // GetTriggerSummary gets the triggerSummary property value. Human-readable summary of the automation trigger that started the workflow.
 // returns a *string when successful
-func (m *AutomationTableRow) GetTriggerSummary()(*string) {
-    return m.triggerSummary
+func (m *AutomationTableRow) GetTriggerSummary() *string {
+	return m.triggerSummary
 }
+
 // GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
-func (m *AutomationTableRow) GetTriggerType()(*string) {
-    return m.triggerType
+func (m *AutomationTableRow) GetTriggerType() *string {
+	return m.triggerType
 }
-// GetUser gets the user property value. User summary connected to this automation table row.
+
+// GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a AutomationTableRow_userable when successful
-func (m *AutomationTableRow) GetUser()(AutomationTableRow_userable) {
-    return m.user
+func (m *AutomationTableRow) GetUser() AutomationTableRow_userable {
+	return m.user
 }
+
 // GetVisibility gets the visibility property value. Visibility level that controls who can see this automation table row.
 // returns a *string when successful
-func (m *AutomationTableRow) GetVisibility()(*string) {
-    return m.visibility
+func (m *AutomationTableRow) GetVisibility() *string {
+	return m.visibility
 }
+
 // Serialize serializes information the current object
-func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionSummary", m.GetActionSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conditionSummary", m.GetConditionSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("healthSummary", m.GetHealthSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isSystemManaged", m.GetIsSystemManaged())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastRunAt", m.GetLastRunAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastRunStatus", m.GetLastRunStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("managementLevel", m.GetManagementLevel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ruleSentence", m.GetRuleSentence())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("scope", m.GetScope())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("triggerSummary", m.GetTriggerSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("triggerType", m.GetTriggerType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("visibility", m.GetVisibility())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionSummary", m.GetActionSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conditionSummary", m.GetConditionSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("healthSummary", m.GetHealthSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isSystemManaged", m.GetIsSystemManaged())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastRunAt", m.GetLastRunAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastRunStatus", m.GetLastRunStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("managementLevel", m.GetManagementLevel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ruleSentence", m.GetRuleSentence())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("scope", m.GetScope())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("triggerSummary", m.GetTriggerSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("triggerType", m.GetTriggerType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("user", m.GetUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("visibility", m.GetVisibility())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionSummary sets the actionSummary property value. Human-readable summary of the automation action outcome.
-func (m *AutomationTableRow) SetActionSummary(value *string)() {
-    m.actionSummary = value
+func (m *AutomationTableRow) SetActionSummary(value *string) {
+	m.actionSummary = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationTableRow) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationTableRow) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetConditionSummary sets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
-func (m *AutomationTableRow) SetConditionSummary(value *string)() {
-    m.conditionSummary = value
+func (m *AutomationTableRow) SetConditionSummary(value *string) {
+	m.conditionSummary = value
 }
+
 // SetCreatedByUserId sets the createdByUserId property value. User ID of the person who created this automation table row.
-func (m *AutomationTableRow) SetCreatedByUserId(value *string)() {
-    m.createdByUserId = value
+func (m *AutomationTableRow) SetCreatedByUserId(value *string) {
+	m.createdByUserId = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this automation table row to API users.
-func (m *AutomationTableRow) SetDescription(value *string)() {
-    m.description = value
+func (m *AutomationTableRow) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this automation table row is active and available in the Leadping API.
-func (m *AutomationTableRow) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *AutomationTableRow) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetHealthSummary sets the healthSummary property value. Human-readable health summary for this automation table row.
-func (m *AutomationTableRow) SetHealthSummary(value *string)() {
-    m.healthSummary = value
+func (m *AutomationTableRow) SetHealthSummary(value *string) {
+	m.healthSummary = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this automation table row.
-func (m *AutomationTableRow) SetId(value *string)() {
-    m.id = value
+func (m *AutomationTableRow) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
-func (m *AutomationTableRow) SetIsSystemManaged(value *bool)() {
-    m.isSystemManaged = value
+func (m *AutomationTableRow) SetIsSystemManaged(value *bool) {
+	m.isSystemManaged = value
 }
+
 // SetLastRunAt sets the lastRunAt property value. UTC timestamp when this automation last ran.
-func (m *AutomationTableRow) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastRunAt = value
+func (m *AutomationTableRow) SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastRunAt = value
 }
+
 // SetLastRunStatus sets the lastRunStatus property value. Status from the most recent automation run.
-func (m *AutomationTableRow) SetLastRunStatus(value *string)() {
-    m.lastRunStatus = value
+func (m *AutomationTableRow) SetLastRunStatus(value *string) {
+	m.lastRunStatus = value
 }
+
 // SetManagementLevel sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
-func (m *AutomationTableRow) SetManagementLevel(value *string)() {
-    m.managementLevel = value
+func (m *AutomationTableRow) SetManagementLevel(value *string) {
+	m.managementLevel = value
 }
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when this automation table row was last modified.
-func (m *AutomationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+func (m *AutomationTableRow) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetName sets the name property value. Display name for this automation table row in the Leadping API.
-func (m *AutomationTableRow) SetName(value *string)() {
-    m.name = value
+func (m *AutomationTableRow) SetName(value *string) {
+	m.name = value
 }
-// SetOrganization sets the organization property value. Organization summary connected to this automation table row.
-func (m *AutomationTableRow) SetOrganization(value AutomationTableRow_organizationable)() {
-    m.organization = value
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *AutomationTableRow) SetOrganization(value AutomationTableRow_organizationable) {
+	m.organization = value
 }
+
 // SetOrganizationId sets the organizationId property value. Organization ID that owns this automation.
-func (m *AutomationTableRow) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *AutomationTableRow) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetRuleSentence sets the ruleSentence property value. Human-readable explanation of the automation rule being evaluated.
-func (m *AutomationTableRow) SetRuleSentence(value *string)() {
-    m.ruleSentence = value
+func (m *AutomationTableRow) SetRuleSentence(value *string) {
+	m.ruleSentence = value
 }
+
 // SetScope sets the scope property value. Scope that limits where this automation table row applies in Leadping.
-func (m *AutomationTableRow) SetScope(value *string)() {
-    m.scope = value
+func (m *AutomationTableRow) SetScope(value *string) {
+	m.scope = value
 }
+
 // SetTriggerSummary sets the triggerSummary property value. Human-readable summary of the automation trigger that started the workflow.
-func (m *AutomationTableRow) SetTriggerSummary(value *string)() {
-    m.triggerSummary = value
+func (m *AutomationTableRow) SetTriggerSummary(value *string) {
+	m.triggerSummary = value
 }
+
 // SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
-func (m *AutomationTableRow) SetTriggerType(value *string)() {
-    m.triggerType = value
+func (m *AutomationTableRow) SetTriggerType(value *string) {
+	m.triggerType = value
 }
-// SetUser sets the user property value. User summary connected to this automation table row.
-func (m *AutomationTableRow) SetUser(value AutomationTableRow_userable)() {
-    m.user = value
+
+// SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *AutomationTableRow) SetUser(value AutomationTableRow_userable) {
+	m.user = value
 }
+
 // SetVisibility sets the visibility property value. Visibility level that controls who can see this automation table row.
-func (m *AutomationTableRow) SetVisibility(value *string)() {
-    m.visibility = value
+func (m *AutomationTableRow) SetVisibility(value *string) {
+	m.visibility = value
 }
+
 type AutomationTableRowable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionSummary()(*string)
-    GetConditionSummary()(*string)
-    GetCreatedByUserId()(*string)
-    GetDescription()(*string)
-    GetEnabled()(*bool)
-    GetHealthSummary()(*string)
-    GetId()(*string)
-    GetIsSystemManaged()(*bool)
-    GetLastRunAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastRunStatus()(*string)
-    GetManagementLevel()(*string)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetOrganization()(AutomationTableRow_organizationable)
-    GetOrganizationId()(*string)
-    GetRuleSentence()(*string)
-    GetScope()(*string)
-    GetTriggerSummary()(*string)
-    GetTriggerType()(*string)
-    GetUser()(AutomationTableRow_userable)
-    GetVisibility()(*string)
-    SetActionSummary(value *string)()
-    SetConditionSummary(value *string)()
-    SetCreatedByUserId(value *string)()
-    SetDescription(value *string)()
-    SetEnabled(value *bool)()
-    SetHealthSummary(value *string)()
-    SetId(value *string)()
-    SetIsSystemManaged(value *bool)()
-    SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastRunStatus(value *string)()
-    SetManagementLevel(value *string)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetOrganization(value AutomationTableRow_organizationable)()
-    SetOrganizationId(value *string)()
-    SetRuleSentence(value *string)()
-    SetScope(value *string)()
-    SetTriggerSummary(value *string)()
-    SetTriggerType(value *string)()
-    SetUser(value AutomationTableRow_userable)()
-    SetVisibility(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionSummary() *string
+	GetConditionSummary() *string
+	GetCreatedByUserId() *string
+	GetDescription() *string
+	GetEnabled() *bool
+	GetHealthSummary() *string
+	GetId() *string
+	GetIsSystemManaged() *bool
+	GetLastRunAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLastRunStatus() *string
+	GetManagementLevel() *string
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetOrganization() AutomationTableRow_organizationable
+	GetOrganizationId() *string
+	GetRuleSentence() *string
+	GetScope() *string
+	GetTriggerSummary() *string
+	GetTriggerType() *string
+	GetUser() AutomationTableRow_userable
+	GetVisibility() *string
+	SetActionSummary(value *string)
+	SetConditionSummary(value *string)
+	SetCreatedByUserId(value *string)
+	SetDescription(value *string)
+	SetEnabled(value *bool)
+	SetHealthSummary(value *string)
+	SetId(value *string)
+	SetIsSystemManaged(value *bool)
+	SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLastRunStatus(value *string)
+	SetManagementLevel(value *string)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetOrganization(value AutomationTableRow_organizationable)
+	SetOrganizationId(value *string)
+	SetRuleSentence(value *string)
+	SetScope(value *string)
+	SetTriggerSummary(value *string)
+	SetTriggerType(value *string)
+	SetUser(value AutomationTableRow_userable)
+	SetVisibility(value *string)
 }

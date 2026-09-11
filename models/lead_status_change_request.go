@@ -4,373 +4,401 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // LeadStatusChangeRequest defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
 type LeadStatusChangeRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp for appointment end at on this lead status change.
-    appointmentEndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Additional scheduling or preparation notes for the related appointment.
-    appointmentNotes *string
-    // UTC timestamp for appointment start at on this lead status change.
-    appointmentStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp for callback at on this lead status change.
-    callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Controlled lead status change categories used for reporting, automation, and analytics.
-    category *LeadStatusChangeRequest_category
-    // The current follow up status for this lead status change.
-    followUpStatus *string
-    // The operator or customer notes recorded for this lead status change.
-    notes *string
-    // Result of the interaction or workflow step that caused the status change.
-    outcome *string
-    // The reason this lead status change was changed.
-    reason *string
-    // UTC timestamp for task due at on this lead status change.
-    taskDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Category of status change being recorded for the lead.
-    typeEscaped *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp for appointment end at on this lead status change.
+	appointmentEndAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Additional scheduling or preparation notes for the related appointment.
+	appointmentNotes *string
+	// UTC timestamp for appointment start at on this lead status change.
+	appointmentStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp for callback at on this lead status change.
+	callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Controlled lead status change categories used for reporting, automation, and analytics.
+	category *LeadStatusChangeRequest_category
+	// The current follow up status for this lead status change.
+	followUpStatus *string
+	// The operator or customer notes recorded for this lead status change.
+	notes *string
+	// Result of the interaction or workflow step that caused the status change.
+	outcome *string
+	// The reason this lead status change was changed.
+	reason *string
+	// UTC timestamp for task due at on this lead status change.
+	taskDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Category of status change being recorded for the lead.
+	typeEscaped *string
 }
+
 // NewLeadStatusChangeRequest instantiates a new LeadStatusChangeRequest and sets the default values.
-func NewLeadStatusChangeRequest()(*LeadStatusChangeRequest) {
-    m := &LeadStatusChangeRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadStatusChangeRequest() *LeadStatusChangeRequest {
+	m := &LeadStatusChangeRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadStatusChangeRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadStatusChangeRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadStatusChangeRequest(), nil
+func CreateLeadStatusChangeRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadStatusChangeRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadStatusChangeRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadStatusChangeRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAppointmentEndAt gets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
 // returns a *Time when successful
-func (m *LeadStatusChangeRequest) GetAppointmentEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.appointmentEndAt
+func (m *LeadStatusChangeRequest) GetAppointmentEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.appointmentEndAt
 }
+
 // GetAppointmentNotes gets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetAppointmentNotes()(*string) {
-    return m.appointmentNotes
+func (m *LeadStatusChangeRequest) GetAppointmentNotes() *string {
+	return m.appointmentNotes
 }
+
 // GetAppointmentStartAt gets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
 // returns a *Time when successful
-func (m *LeadStatusChangeRequest) GetAppointmentStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.appointmentStartAt
+func (m *LeadStatusChangeRequest) GetAppointmentStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.appointmentStartAt
 }
+
 // GetCallbackAt gets the callbackAt property value. UTC timestamp for callback at on this lead status change.
 // returns a *Time when successful
-func (m *LeadStatusChangeRequest) GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.callbackAt
+func (m *LeadStatusChangeRequest) GetCallbackAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.callbackAt
 }
+
 // GetCategory gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 // returns a *LeadStatusChangeRequest_category when successful
-func (m *LeadStatusChangeRequest) GetCategory()(*LeadStatusChangeRequest_category) {
-    return m.category
+func (m *LeadStatusChangeRequest) GetCategory() *LeadStatusChangeRequest_category {
+	return m.category
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadStatusChangeRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["appointmentEndAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppointmentEndAt(val)
-        }
-        return nil
-    }
-    res["appointmentNotes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppointmentNotes(val)
-        }
-        return nil
-    }
-    res["appointmentStartAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppointmentStartAt(val)
-        }
-        return nil
-    }
-    res["callbackAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallbackAt(val)
-        }
-        return nil
-    }
-    res["category"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadStatusChangeRequest_category)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCategory(val.(*LeadStatusChangeRequest_category))
-        }
-        return nil
-    }
-    res["followUpStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFollowUpStatus(val)
-        }
-        return nil
-    }
-    res["notes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNotes(val)
-        }
-        return nil
-    }
-    res["outcome"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutcome(val)
-        }
-        return nil
-    }
-    res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReason(val)
-        }
-        return nil
-    }
-    res["taskDueAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTaskDueAt(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadStatusChangeRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["appointmentEndAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentEndAt(val)
+		}
+		return nil
+	}
+	res["appointmentNotes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentNotes(val)
+		}
+		return nil
+	}
+	res["appointmentStartAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentStartAt(val)
+		}
+		return nil
+	}
+	res["callbackAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallbackAt(val)
+		}
+		return nil
+	}
+	res["category"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadStatusChangeRequest_category)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCategory(val.(*LeadStatusChangeRequest_category))
+		}
+		return nil
+	}
+	res["followUpStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFollowUpStatus(val)
+		}
+		return nil
+	}
+	res["notes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNotes(val)
+		}
+		return nil
+	}
+	res["outcome"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutcome(val)
+		}
+		return nil
+	}
+	res["reason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReason(val)
+		}
+		return nil
+	}
+	res["taskDueAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTaskDueAt(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFollowUpStatus gets the followUpStatus property value. The current follow up status for this lead status change.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetFollowUpStatus()(*string) {
-    return m.followUpStatus
+func (m *LeadStatusChangeRequest) GetFollowUpStatus() *string {
+	return m.followUpStatus
 }
+
 // GetNotes gets the notes property value. The operator or customer notes recorded for this lead status change.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetNotes()(*string) {
-    return m.notes
+func (m *LeadStatusChangeRequest) GetNotes() *string {
+	return m.notes
 }
+
 // GetOutcome gets the outcome property value. Result of the interaction or workflow step that caused the status change.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetOutcome()(*string) {
-    return m.outcome
+func (m *LeadStatusChangeRequest) GetOutcome() *string {
+	return m.outcome
 }
+
 // GetReason gets the reason property value. The reason this lead status change was changed.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetReason()(*string) {
-    return m.reason
+func (m *LeadStatusChangeRequest) GetReason() *string {
+	return m.reason
 }
+
 // GetTaskDueAt gets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
 // returns a *Time when successful
-func (m *LeadStatusChangeRequest) GetTaskDueAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.taskDueAt
+func (m *LeadStatusChangeRequest) GetTaskDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.taskDueAt
 }
+
 // GetTypeEscaped gets the type property value. Category of status change being recorded for the lead.
 // returns a *string when successful
-func (m *LeadStatusChangeRequest) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *LeadStatusChangeRequest) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("appointmentEndAt", m.GetAppointmentEndAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("appointmentNotes", m.GetAppointmentNotes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("appointmentStartAt", m.GetAppointmentStartAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("callbackAt", m.GetCallbackAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCategory() != nil {
-        cast := (*m.GetCategory()).String()
-        err := writer.WriteStringValue("category", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("notes", m.GetNotes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outcome", m.GetOutcome())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reason", m.GetReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("taskDueAt", m.GetTaskDueAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("appointmentEndAt", m.GetAppointmentEndAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("appointmentNotes", m.GetAppointmentNotes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("appointmentStartAt", m.GetAppointmentStartAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("callbackAt", m.GetCallbackAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetCategory() != nil {
+		cast := (*m.GetCategory()).String()
+		err := writer.WriteStringValue("category", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("notes", m.GetNotes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("outcome", m.GetOutcome())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("reason", m.GetReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("taskDueAt", m.GetTaskDueAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadStatusChangeRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadStatusChangeRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAppointmentEndAt sets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
-func (m *LeadStatusChangeRequest) SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.appointmentEndAt = value
+func (m *LeadStatusChangeRequest) SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.appointmentEndAt = value
 }
+
 // SetAppointmentNotes sets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
-func (m *LeadStatusChangeRequest) SetAppointmentNotes(value *string)() {
-    m.appointmentNotes = value
+func (m *LeadStatusChangeRequest) SetAppointmentNotes(value *string) {
+	m.appointmentNotes = value
 }
+
 // SetAppointmentStartAt sets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
-func (m *LeadStatusChangeRequest) SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.appointmentStartAt = value
+func (m *LeadStatusChangeRequest) SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.appointmentStartAt = value
 }
+
 // SetCallbackAt sets the callbackAt property value. UTC timestamp for callback at on this lead status change.
-func (m *LeadStatusChangeRequest) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.callbackAt = value
+func (m *LeadStatusChangeRequest) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.callbackAt = value
 }
+
 // SetCategory sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
-func (m *LeadStatusChangeRequest) SetCategory(value *LeadStatusChangeRequest_category)() {
-    m.category = value
+func (m *LeadStatusChangeRequest) SetCategory(value *LeadStatusChangeRequest_category) {
+	m.category = value
 }
+
 // SetFollowUpStatus sets the followUpStatus property value. The current follow up status for this lead status change.
-func (m *LeadStatusChangeRequest) SetFollowUpStatus(value *string)() {
-    m.followUpStatus = value
+func (m *LeadStatusChangeRequest) SetFollowUpStatus(value *string) {
+	m.followUpStatus = value
 }
+
 // SetNotes sets the notes property value. The operator or customer notes recorded for this lead status change.
-func (m *LeadStatusChangeRequest) SetNotes(value *string)() {
-    m.notes = value
+func (m *LeadStatusChangeRequest) SetNotes(value *string) {
+	m.notes = value
 }
+
 // SetOutcome sets the outcome property value. Result of the interaction or workflow step that caused the status change.
-func (m *LeadStatusChangeRequest) SetOutcome(value *string)() {
-    m.outcome = value
+func (m *LeadStatusChangeRequest) SetOutcome(value *string) {
+	m.outcome = value
 }
+
 // SetReason sets the reason property value. The reason this lead status change was changed.
-func (m *LeadStatusChangeRequest) SetReason(value *string)() {
-    m.reason = value
+func (m *LeadStatusChangeRequest) SetReason(value *string) {
+	m.reason = value
 }
+
 // SetTaskDueAt sets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
-func (m *LeadStatusChangeRequest) SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.taskDueAt = value
+func (m *LeadStatusChangeRequest) SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.taskDueAt = value
 }
+
 // SetTypeEscaped sets the type property value. Category of status change being recorded for the lead.
-func (m *LeadStatusChangeRequest) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *LeadStatusChangeRequest) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 type LeadStatusChangeRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAppointmentEndAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetAppointmentNotes()(*string)
-    GetAppointmentStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCallbackAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCategory()(*LeadStatusChangeRequest_category)
-    GetFollowUpStatus()(*string)
-    GetNotes()(*string)
-    GetOutcome()(*string)
-    GetReason()(*string)
-    GetTaskDueAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTypeEscaped()(*string)
-    SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetAppointmentNotes(value *string)()
-    SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCategory(value *LeadStatusChangeRequest_category)()
-    SetFollowUpStatus(value *string)()
-    SetNotes(value *string)()
-    SetOutcome(value *string)()
-    SetReason(value *string)()
-    SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTypeEscaped(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAppointmentEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetAppointmentNotes() *string
+	GetAppointmentStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCallbackAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCategory() *LeadStatusChangeRequest_category
+	GetFollowUpStatus() *string
+	GetNotes() *string
+	GetOutcome() *string
+	GetReason() *string
+	GetTaskDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTypeEscaped() *string
+	SetAppointmentEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetAppointmentNotes(value *string)
+	SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCategory(value *LeadStatusChangeRequest_category)
+	SetFollowUpStatus(value *string)
+	SetNotes(value *string)
+	SetOutcome(value *string)
+	SetReason(value *string)
+	SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTypeEscaped(value *string)
 }

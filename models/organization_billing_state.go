@@ -4,431 +4,463 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // OrganizationBillingState customer-safe billing state for a Leadping organization.
 type OrganizationBillingState struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Date and time when the scheduled billing plan change takes effect.
-    billingPlanChangeEffectiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when the active subscription is scheduled to cancel.
-    cancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Customer-safe payment recovery state for the organization.
-    dunning OrganizationBillingState_dunningable
-    // Indicates whether the organization has a saved default payment method.
-    hasPaymentMethod *bool
-    // Indicates whether the organization has a Stripe customer account.
-    hasStripeCustomer *bool
-    // UTC timestamp when Leadping last processed a payment-method event for the organization.
-    lastPaymentMethodEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when Leadping last processed a subscription event for the organization.
-    lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Number of user licenses currently assigned to organization members.
-    organizationMemberAssignedQuantity *int64
-    // Number of user licenses included in the organization's subscription plan.
-    organizationMemberQuantity *int64
-    // Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-    pendingBillingPlan *OrganizationBillingState_pendingBillingPlan
-    // Number of phone numbers included in the organization's subscription plan.
-    phoneNumberQuantity *int64
-    // Start of the current plan billing period.
-    planPeriodStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current plan renewal date.
-    planRenewalAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Date and time when the scheduled billing plan change takes effect.
+	billingPlanChangeEffectiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the active subscription is scheduled to cancel.
+	cancelAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Dunning state recorded after a failed recurring payment.
+	dunning OrganizationBillingState_dunningable
+	// Indicates whether the organization has a saved default payment method.
+	hasPaymentMethod *bool
+	// Indicates whether the organization has a Stripe customer account.
+	hasStripeCustomer *bool
+	// UTC timestamp when Leadping last processed a payment-method event for the organization.
+	lastPaymentMethodEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when Leadping last processed a subscription event for the organization.
+	lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Number of user licenses currently assigned to organization members.
+	organizationMemberAssignedQuantity *int64
+	// Number of user licenses included in the organization's subscription plan.
+	organizationMemberQuantity *int64
+	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+	pendingBillingPlan *OrganizationBillingState_pendingBillingPlan
+	// Number of phone numbers included in the organization's subscription plan.
+	phoneNumberQuantity *int64
+	// Start of the current plan billing period.
+	planPeriodStartAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Current plan renewal date.
+	planRenewalAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewOrganizationBillingState instantiates a new OrganizationBillingState and sets the default values.
-func NewOrganizationBillingState()(*OrganizationBillingState) {
-    m := &OrganizationBillingState{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationBillingState() *OrganizationBillingState {
+	m := &OrganizationBillingState{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationBillingStateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationBillingStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationBillingState(), nil
+func CreateOrganizationBillingStateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationBillingState(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationBillingState) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationBillingState) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBillingPlanChangeEffectiveAt gets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.billingPlanChangeEffectiveAt
+func (m *OrganizationBillingState) GetBillingPlanChangeEffectiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.billingPlanChangeEffectiveAt
 }
+
 // GetCancelAt gets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.cancelAt
+func (m *OrganizationBillingState) GetCancelAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.cancelAt
 }
-// GetDunning gets the dunning property value. Customer-safe payment recovery state for the organization.
+
+// GetDunning gets the dunning property value. Dunning state recorded after a failed recurring payment.
 // returns a OrganizationBillingState_dunningable when successful
-func (m *OrganizationBillingState) GetDunning()(OrganizationBillingState_dunningable) {
-    return m.dunning
+func (m *OrganizationBillingState) GetDunning() OrganizationBillingState_dunningable {
+	return m.dunning
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationBillingState) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billingPlanChangeEffectiveAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlanChangeEffectiveAt(val)
-        }
-        return nil
-    }
-    res["cancelAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCancelAt(val)
-        }
-        return nil
-    }
-    res["dunning"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationBillingState_dunningFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDunning(val.(OrganizationBillingState_dunningable))
-        }
-        return nil
-    }
-    res["hasPaymentMethod"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasPaymentMethod(val)
-        }
-        return nil
-    }
-    res["hasStripeCustomer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasStripeCustomer(val)
-        }
-        return nil
-    }
-    res["lastPaymentMethodEventAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastPaymentMethodEventAt(val)
-        }
-        return nil
-    }
-    res["lastSubscriptionEventAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastSubscriptionEventAt(val)
-        }
-        return nil
-    }
-    res["organizationMemberAssignedQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationMemberAssignedQuantity(val)
-        }
-        return nil
-    }
-    res["organizationMemberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationMemberQuantity(val)
-        }
-        return nil
-    }
-    res["pendingBillingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationBillingState_pendingBillingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPendingBillingPlan(val.(*OrganizationBillingState_pendingBillingPlan))
-        }
-        return nil
-    }
-    res["phoneNumberQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumberQuantity(val)
-        }
-        return nil
-    }
-    res["planPeriodStartAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPlanPeriodStartAt(val)
-        }
-        return nil
-    }
-    res["planRenewalAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPlanRenewalAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationBillingState) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billingPlanChangeEffectiveAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingPlanChangeEffectiveAt(val)
+		}
+		return nil
+	}
+	res["cancelAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCancelAt(val)
+		}
+		return nil
+	}
+	res["dunning"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationBillingState_dunningFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDunning(val.(OrganizationBillingState_dunningable))
+		}
+		return nil
+	}
+	res["hasPaymentMethod"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasPaymentMethod(val)
+		}
+		return nil
+	}
+	res["hasStripeCustomer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasStripeCustomer(val)
+		}
+		return nil
+	}
+	res["lastPaymentMethodEventAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastPaymentMethodEventAt(val)
+		}
+		return nil
+	}
+	res["lastSubscriptionEventAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastSubscriptionEventAt(val)
+		}
+		return nil
+	}
+	res["organizationMemberAssignedQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationMemberAssignedQuantity(val)
+		}
+		return nil
+	}
+	res["organizationMemberQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationMemberQuantity(val)
+		}
+		return nil
+	}
+	res["pendingBillingPlan"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationBillingState_pendingBillingPlan)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPendingBillingPlan(val.(*OrganizationBillingState_pendingBillingPlan))
+		}
+		return nil
+	}
+	res["phoneNumberQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumberQuantity(val)
+		}
+		return nil
+	}
+	res["planPeriodStartAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPlanPeriodStartAt(val)
+		}
+		return nil
+	}
+	res["planRenewalAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPlanRenewalAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHasPaymentMethod gets the hasPaymentMethod property value. Indicates whether the organization has a saved default payment method.
 // returns a *bool when successful
-func (m *OrganizationBillingState) GetHasPaymentMethod()(*bool) {
-    return m.hasPaymentMethod
+func (m *OrganizationBillingState) GetHasPaymentMethod() *bool {
+	return m.hasPaymentMethod
 }
+
 // GetHasStripeCustomer gets the hasStripeCustomer property value. Indicates whether the organization has a Stripe customer account.
 // returns a *bool when successful
-func (m *OrganizationBillingState) GetHasStripeCustomer()(*bool) {
-    return m.hasStripeCustomer
+func (m *OrganizationBillingState) GetHasStripeCustomer() *bool {
+	return m.hasStripeCustomer
 }
+
 // GetLastPaymentMethodEventAt gets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastPaymentMethodEventAt
+func (m *OrganizationBillingState) GetLastPaymentMethodEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastPaymentMethodEventAt
 }
+
 // GetLastSubscriptionEventAt gets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastSubscriptionEventAt
+func (m *OrganizationBillingState) GetLastSubscriptionEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastSubscriptionEventAt
 }
+
 // GetOrganizationMemberAssignedQuantity gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
 // returns a *int64 when successful
-func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity()(*int64) {
-    return m.organizationMemberAssignedQuantity
+func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity() *int64 {
+	return m.organizationMemberAssignedQuantity
 }
+
 // GetOrganizationMemberQuantity gets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
 // returns a *int64 when successful
-func (m *OrganizationBillingState) GetOrganizationMemberQuantity()(*int64) {
-    return m.organizationMemberQuantity
+func (m *OrganizationBillingState) GetOrganizationMemberQuantity() *int64 {
+	return m.organizationMemberQuantity
 }
+
 // GetPendingBillingPlan gets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *OrganizationBillingState_pendingBillingPlan when successful
-func (m *OrganizationBillingState) GetPendingBillingPlan()(*OrganizationBillingState_pendingBillingPlan) {
-    return m.pendingBillingPlan
+func (m *OrganizationBillingState) GetPendingBillingPlan() *OrganizationBillingState_pendingBillingPlan {
+	return m.pendingBillingPlan
 }
+
 // GetPhoneNumberQuantity gets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
 // returns a *int64 when successful
-func (m *OrganizationBillingState) GetPhoneNumberQuantity()(*int64) {
-    return m.phoneNumberQuantity
+func (m *OrganizationBillingState) GetPhoneNumberQuantity() *int64 {
+	return m.phoneNumberQuantity
 }
+
 // GetPlanPeriodStartAt gets the planPeriodStartAt property value. Start of the current plan billing period.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetPlanPeriodStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.planPeriodStartAt
+func (m *OrganizationBillingState) GetPlanPeriodStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.planPeriodStartAt
 }
+
 // GetPlanRenewalAt gets the planRenewalAt property value. Current plan renewal date.
 // returns a *Time when successful
-func (m *OrganizationBillingState) GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.planRenewalAt
+func (m *OrganizationBillingState) GetPlanRenewalAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.planRenewalAt
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationBillingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("billingPlanChangeEffectiveAt", m.GetBillingPlanChangeEffectiveAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("cancelAt", m.GetCancelAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("dunning", m.GetDunning())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasPaymentMethod", m.GetHasPaymentMethod())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasStripeCustomer", m.GetHasStripeCustomer())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastPaymentMethodEventAt", m.GetLastPaymentMethodEventAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastSubscriptionEventAt", m.GetLastSubscriptionEventAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt64Value("organizationMemberAssignedQuantity", m.GetOrganizationMemberAssignedQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt64Value("organizationMemberQuantity", m.GetOrganizationMemberQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPendingBillingPlan() != nil {
-        cast := (*m.GetPendingBillingPlan()).String()
-        err := writer.WriteStringValue("pendingBillingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt64Value("phoneNumberQuantity", m.GetPhoneNumberQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("planPeriodStartAt", m.GetPlanPeriodStartAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("planRenewalAt", m.GetPlanRenewalAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationBillingState) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("billingPlanChangeEffectiveAt", m.GetBillingPlanChangeEffectiveAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("cancelAt", m.GetCancelAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("dunning", m.GetDunning())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasPaymentMethod", m.GetHasPaymentMethod())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasStripeCustomer", m.GetHasStripeCustomer())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastPaymentMethodEventAt", m.GetLastPaymentMethodEventAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastSubscriptionEventAt", m.GetLastSubscriptionEventAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("organizationMemberAssignedQuantity", m.GetOrganizationMemberAssignedQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("organizationMemberQuantity", m.GetOrganizationMemberQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPendingBillingPlan() != nil {
+		cast := (*m.GetPendingBillingPlan()).String()
+		err := writer.WriteStringValue("pendingBillingPlan", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("phoneNumberQuantity", m.GetPhoneNumberQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("planPeriodStartAt", m.GetPlanPeriodStartAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("planRenewalAt", m.GetPlanRenewalAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationBillingState) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationBillingState) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBillingPlanChangeEffectiveAt sets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
-func (m *OrganizationBillingState) SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.billingPlanChangeEffectiveAt = value
+func (m *OrganizationBillingState) SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.billingPlanChangeEffectiveAt = value
 }
+
 // SetCancelAt sets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
-func (m *OrganizationBillingState) SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.cancelAt = value
+func (m *OrganizationBillingState) SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.cancelAt = value
 }
-// SetDunning sets the dunning property value. Customer-safe payment recovery state for the organization.
-func (m *OrganizationBillingState) SetDunning(value OrganizationBillingState_dunningable)() {
-    m.dunning = value
+
+// SetDunning sets the dunning property value. Dunning state recorded after a failed recurring payment.
+func (m *OrganizationBillingState) SetDunning(value OrganizationBillingState_dunningable) {
+	m.dunning = value
 }
+
 // SetHasPaymentMethod sets the hasPaymentMethod property value. Indicates whether the organization has a saved default payment method.
-func (m *OrganizationBillingState) SetHasPaymentMethod(value *bool)() {
-    m.hasPaymentMethod = value
+func (m *OrganizationBillingState) SetHasPaymentMethod(value *bool) {
+	m.hasPaymentMethod = value
 }
+
 // SetHasStripeCustomer sets the hasStripeCustomer property value. Indicates whether the organization has a Stripe customer account.
-func (m *OrganizationBillingState) SetHasStripeCustomer(value *bool)() {
-    m.hasStripeCustomer = value
+func (m *OrganizationBillingState) SetHasStripeCustomer(value *bool) {
+	m.hasStripeCustomer = value
 }
+
 // SetLastPaymentMethodEventAt sets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
-func (m *OrganizationBillingState) SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastPaymentMethodEventAt = value
+func (m *OrganizationBillingState) SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastPaymentMethodEventAt = value
 }
+
 // SetLastSubscriptionEventAt sets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
-func (m *OrganizationBillingState) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastSubscriptionEventAt = value
+func (m *OrganizationBillingState) SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastSubscriptionEventAt = value
 }
+
 // SetOrganizationMemberAssignedQuantity sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
-func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *int64)() {
-    m.organizationMemberAssignedQuantity = value
+func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *int64) {
+	m.organizationMemberAssignedQuantity = value
 }
+
 // SetOrganizationMemberQuantity sets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
-func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64)() {
-    m.organizationMemberQuantity = value
+func (m *OrganizationBillingState) SetOrganizationMemberQuantity(value *int64) {
+	m.organizationMemberQuantity = value
 }
+
 // SetPendingBillingPlan sets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-func (m *OrganizationBillingState) SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)() {
-    m.pendingBillingPlan = value
+func (m *OrganizationBillingState) SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan) {
+	m.pendingBillingPlan = value
 }
+
 // SetPhoneNumberQuantity sets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
-func (m *OrganizationBillingState) SetPhoneNumberQuantity(value *int64)() {
-    m.phoneNumberQuantity = value
+func (m *OrganizationBillingState) SetPhoneNumberQuantity(value *int64) {
+	m.phoneNumberQuantity = value
 }
+
 // SetPlanPeriodStartAt sets the planPeriodStartAt property value. Start of the current plan billing period.
-func (m *OrganizationBillingState) SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.planPeriodStartAt = value
+func (m *OrganizationBillingState) SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.planPeriodStartAt = value
 }
+
 // SetPlanRenewalAt sets the planRenewalAt property value. Current plan renewal date.
-func (m *OrganizationBillingState) SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.planRenewalAt = value
+func (m *OrganizationBillingState) SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.planRenewalAt = value
 }
+
 type OrganizationBillingStateable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillingPlanChangeEffectiveAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCancelAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDunning()(OrganizationBillingState_dunningable)
-    GetHasPaymentMethod()(*bool)
-    GetHasStripeCustomer()(*bool)
-    GetLastPaymentMethodEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastSubscriptionEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOrganizationMemberAssignedQuantity()(*int64)
-    GetOrganizationMemberQuantity()(*int64)
-    GetPendingBillingPlan()(*OrganizationBillingState_pendingBillingPlan)
-    GetPhoneNumberQuantity()(*int64)
-    GetPlanPeriodStartAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPlanRenewalAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDunning(value OrganizationBillingState_dunningable)()
-    SetHasPaymentMethod(value *bool)()
-    SetHasStripeCustomer(value *bool)()
-    SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOrganizationMemberAssignedQuantity(value *int64)()
-    SetOrganizationMemberQuantity(value *int64)()
-    SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)()
-    SetPhoneNumberQuantity(value *int64)()
-    SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillingPlanChangeEffectiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCancelAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDunning() OrganizationBillingState_dunningable
+	GetHasPaymentMethod() *bool
+	GetHasStripeCustomer() *bool
+	GetLastPaymentMethodEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLastSubscriptionEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOrganizationMemberAssignedQuantity() *int64
+	GetOrganizationMemberQuantity() *int64
+	GetPendingBillingPlan() *OrganizationBillingState_pendingBillingPlan
+	GetPhoneNumberQuantity() *int64
+	GetPlanPeriodStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPlanRenewalAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetBillingPlanChangeEffectiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCancelAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDunning(value OrganizationBillingState_dunningable)
+	SetHasPaymentMethod(value *bool)
+	SetHasStripeCustomer(value *bool)
+	SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOrganizationMemberAssignedQuantity(value *int64)
+	SetOrganizationMemberQuantity(value *int64)
+	SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)
+	SetPhoneNumberQuantity(value *int64)
+	SetPlanPeriodStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPlanRenewalAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

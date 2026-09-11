@@ -4,371 +4,399 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PushInstallationRequest describes a mobile push installation. Identity and Azure tags are derived by the API.
 type PushInstallationRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The application build number reported by the client.
-    appBuild *string
-    // The application bundle identifier or package name.
-    appIdentifier *string
-    // The human-readable application name reported by the client.
-    appName *string
-    // The semantic application version reported by the client.
-    appVersion *string
-    // The device model reported by the client.
-    deviceModel *string
-    // The mobile operating-system platform reported by the device.
-    devicePlatform *string
-    // The mobile operating-system version reported by the device.
-    deviceVersion *string
-    // The stable installation identifier assigned by the mobile client.
-    installationId *string
-    // Optional client metadata stored with the push installation.
-    metadata PushInstallationRequest_metadataable
-    // The Azure Notification Hubs platform name, such as apns or fcmv1.
-    platform *string
-    // The provider-issued push token or channel used to deliver notifications.
-    pushChannel *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The application build number reported by the client.
+	appBuild *string
+	// The application bundle identifier or package name.
+	appIdentifier *string
+	// The human-readable application name reported by the client.
+	appName *string
+	// The semantic application version reported by the client.
+	appVersion *string
+	// The device model reported by the client.
+	deviceModel *string
+	// The mobile operating-system platform reported by the device.
+	devicePlatform *string
+	// The mobile operating-system version reported by the device.
+	deviceVersion *string
+	// The stable installation identifier assigned by the mobile client.
+	installationId *string
+	// Optional client metadata stored with the push installation.
+	metadata PushInstallationRequest_metadataable
+	// The Azure Notification Hubs platform name, such as apns or fcmv1.
+	platform *string
+	// The provider-issued push token or channel used to deliver notifications.
+	pushChannel *string
 }
+
 // NewPushInstallationRequest instantiates a new PushInstallationRequest and sets the default values.
-func NewPushInstallationRequest()(*PushInstallationRequest) {
-    m := &PushInstallationRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPushInstallationRequest() *PushInstallationRequest {
+	m := &PushInstallationRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePushInstallationRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePushInstallationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPushInstallationRequest(), nil
+func CreatePushInstallationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPushInstallationRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PushInstallationRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PushInstallationRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAppBuild gets the appBuild property value. The application build number reported by the client.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetAppBuild()(*string) {
-    return m.appBuild
+func (m *PushInstallationRequest) GetAppBuild() *string {
+	return m.appBuild
 }
+
 // GetAppIdentifier gets the appIdentifier property value. The application bundle identifier or package name.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetAppIdentifier()(*string) {
-    return m.appIdentifier
+func (m *PushInstallationRequest) GetAppIdentifier() *string {
+	return m.appIdentifier
 }
+
 // GetAppName gets the appName property value. The human-readable application name reported by the client.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetAppName()(*string) {
-    return m.appName
+func (m *PushInstallationRequest) GetAppName() *string {
+	return m.appName
 }
+
 // GetAppVersion gets the appVersion property value. The semantic application version reported by the client.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetAppVersion()(*string) {
-    return m.appVersion
+func (m *PushInstallationRequest) GetAppVersion() *string {
+	return m.appVersion
 }
+
 // GetDeviceModel gets the deviceModel property value. The device model reported by the client.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetDeviceModel()(*string) {
-    return m.deviceModel
+func (m *PushInstallationRequest) GetDeviceModel() *string {
+	return m.deviceModel
 }
+
 // GetDevicePlatform gets the devicePlatform property value. The mobile operating-system platform reported by the device.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetDevicePlatform()(*string) {
-    return m.devicePlatform
+func (m *PushInstallationRequest) GetDevicePlatform() *string {
+	return m.devicePlatform
 }
+
 // GetDeviceVersion gets the deviceVersion property value. The mobile operating-system version reported by the device.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetDeviceVersion()(*string) {
-    return m.deviceVersion
+func (m *PushInstallationRequest) GetDeviceVersion() *string {
+	return m.deviceVersion
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PushInstallationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["appBuild"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppBuild(val)
-        }
-        return nil
-    }
-    res["appIdentifier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppIdentifier(val)
-        }
-        return nil
-    }
-    res["appName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppName(val)
-        }
-        return nil
-    }
-    res["appVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAppVersion(val)
-        }
-        return nil
-    }
-    res["deviceModel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDeviceModel(val)
-        }
-        return nil
-    }
-    res["devicePlatform"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDevicePlatform(val)
-        }
-        return nil
-    }
-    res["deviceVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDeviceVersion(val)
-        }
-        return nil
-    }
-    res["installationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInstallationId(val)
-        }
-        return nil
-    }
-    res["metadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePushInstallationRequest_metadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMetadata(val.(PushInstallationRequest_metadataable))
-        }
-        return nil
-    }
-    res["platform"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPlatform(val)
-        }
-        return nil
-    }
-    res["pushChannel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPushChannel(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PushInstallationRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["appBuild"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppBuild(val)
+		}
+		return nil
+	}
+	res["appIdentifier"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppIdentifier(val)
+		}
+		return nil
+	}
+	res["appName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppName(val)
+		}
+		return nil
+	}
+	res["appVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppVersion(val)
+		}
+		return nil
+	}
+	res["deviceModel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDeviceModel(val)
+		}
+		return nil
+	}
+	res["devicePlatform"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDevicePlatform(val)
+		}
+		return nil
+	}
+	res["deviceVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDeviceVersion(val)
+		}
+		return nil
+	}
+	res["installationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInstallationId(val)
+		}
+		return nil
+	}
+	res["metadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePushInstallationRequest_metadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMetadata(val.(PushInstallationRequest_metadataable))
+		}
+		return nil
+	}
+	res["platform"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPlatform(val)
+		}
+		return nil
+	}
+	res["pushChannel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPushChannel(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetInstallationId gets the installationId property value. The stable installation identifier assigned by the mobile client.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetInstallationId()(*string) {
-    return m.installationId
+func (m *PushInstallationRequest) GetInstallationId() *string {
+	return m.installationId
 }
+
 // GetMetadata gets the metadata property value. Optional client metadata stored with the push installation.
 // returns a PushInstallationRequest_metadataable when successful
-func (m *PushInstallationRequest) GetMetadata()(PushInstallationRequest_metadataable) {
-    return m.metadata
+func (m *PushInstallationRequest) GetMetadata() PushInstallationRequest_metadataable {
+	return m.metadata
 }
+
 // GetPlatform gets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetPlatform()(*string) {
-    return m.platform
+func (m *PushInstallationRequest) GetPlatform() *string {
+	return m.platform
 }
+
 // GetPushChannel gets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
 // returns a *string when successful
-func (m *PushInstallationRequest) GetPushChannel()(*string) {
-    return m.pushChannel
+func (m *PushInstallationRequest) GetPushChannel() *string {
+	return m.pushChannel
 }
+
 // Serialize serializes information the current object
-func (m *PushInstallationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("appBuild", m.GetAppBuild())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("appIdentifier", m.GetAppIdentifier())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("appName", m.GetAppName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("appVersion", m.GetAppVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("deviceModel", m.GetDeviceModel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("devicePlatform", m.GetDevicePlatform())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("deviceVersion", m.GetDeviceVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("installationId", m.GetInstallationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("metadata", m.GetMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("platform", m.GetPlatform())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("pushChannel", m.GetPushChannel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PushInstallationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("appBuild", m.GetAppBuild())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("appIdentifier", m.GetAppIdentifier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("appName", m.GetAppName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("appVersion", m.GetAppVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("deviceModel", m.GetDeviceModel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("devicePlatform", m.GetDevicePlatform())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("deviceVersion", m.GetDeviceVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("installationId", m.GetInstallationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("metadata", m.GetMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("platform", m.GetPlatform())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("pushChannel", m.GetPushChannel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PushInstallationRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PushInstallationRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAppBuild sets the appBuild property value. The application build number reported by the client.
-func (m *PushInstallationRequest) SetAppBuild(value *string)() {
-    m.appBuild = value
+func (m *PushInstallationRequest) SetAppBuild(value *string) {
+	m.appBuild = value
 }
+
 // SetAppIdentifier sets the appIdentifier property value. The application bundle identifier or package name.
-func (m *PushInstallationRequest) SetAppIdentifier(value *string)() {
-    m.appIdentifier = value
+func (m *PushInstallationRequest) SetAppIdentifier(value *string) {
+	m.appIdentifier = value
 }
+
 // SetAppName sets the appName property value. The human-readable application name reported by the client.
-func (m *PushInstallationRequest) SetAppName(value *string)() {
-    m.appName = value
+func (m *PushInstallationRequest) SetAppName(value *string) {
+	m.appName = value
 }
+
 // SetAppVersion sets the appVersion property value. The semantic application version reported by the client.
-func (m *PushInstallationRequest) SetAppVersion(value *string)() {
-    m.appVersion = value
+func (m *PushInstallationRequest) SetAppVersion(value *string) {
+	m.appVersion = value
 }
+
 // SetDeviceModel sets the deviceModel property value. The device model reported by the client.
-func (m *PushInstallationRequest) SetDeviceModel(value *string)() {
-    m.deviceModel = value
+func (m *PushInstallationRequest) SetDeviceModel(value *string) {
+	m.deviceModel = value
 }
+
 // SetDevicePlatform sets the devicePlatform property value. The mobile operating-system platform reported by the device.
-func (m *PushInstallationRequest) SetDevicePlatform(value *string)() {
-    m.devicePlatform = value
+func (m *PushInstallationRequest) SetDevicePlatform(value *string) {
+	m.devicePlatform = value
 }
+
 // SetDeviceVersion sets the deviceVersion property value. The mobile operating-system version reported by the device.
-func (m *PushInstallationRequest) SetDeviceVersion(value *string)() {
-    m.deviceVersion = value
+func (m *PushInstallationRequest) SetDeviceVersion(value *string) {
+	m.deviceVersion = value
 }
+
 // SetInstallationId sets the installationId property value. The stable installation identifier assigned by the mobile client.
-func (m *PushInstallationRequest) SetInstallationId(value *string)() {
-    m.installationId = value
+func (m *PushInstallationRequest) SetInstallationId(value *string) {
+	m.installationId = value
 }
+
 // SetMetadata sets the metadata property value. Optional client metadata stored with the push installation.
-func (m *PushInstallationRequest) SetMetadata(value PushInstallationRequest_metadataable)() {
-    m.metadata = value
+func (m *PushInstallationRequest) SetMetadata(value PushInstallationRequest_metadataable) {
+	m.metadata = value
 }
+
 // SetPlatform sets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
-func (m *PushInstallationRequest) SetPlatform(value *string)() {
-    m.platform = value
+func (m *PushInstallationRequest) SetPlatform(value *string) {
+	m.platform = value
 }
+
 // SetPushChannel sets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
-func (m *PushInstallationRequest) SetPushChannel(value *string)() {
-    m.pushChannel = value
+func (m *PushInstallationRequest) SetPushChannel(value *string) {
+	m.pushChannel = value
 }
+
 type PushInstallationRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAppBuild()(*string)
-    GetAppIdentifier()(*string)
-    GetAppName()(*string)
-    GetAppVersion()(*string)
-    GetDeviceModel()(*string)
-    GetDevicePlatform()(*string)
-    GetDeviceVersion()(*string)
-    GetInstallationId()(*string)
-    GetMetadata()(PushInstallationRequest_metadataable)
-    GetPlatform()(*string)
-    GetPushChannel()(*string)
-    SetAppBuild(value *string)()
-    SetAppIdentifier(value *string)()
-    SetAppName(value *string)()
-    SetAppVersion(value *string)()
-    SetDeviceModel(value *string)()
-    SetDevicePlatform(value *string)()
-    SetDeviceVersion(value *string)()
-    SetInstallationId(value *string)()
-    SetMetadata(value PushInstallationRequest_metadataable)()
-    SetPlatform(value *string)()
-    SetPushChannel(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAppBuild() *string
+	GetAppIdentifier() *string
+	GetAppName() *string
+	GetAppVersion() *string
+	GetDeviceModel() *string
+	GetDevicePlatform() *string
+	GetDeviceVersion() *string
+	GetInstallationId() *string
+	GetMetadata() PushInstallationRequest_metadataable
+	GetPlatform() *string
+	GetPushChannel() *string
+	SetAppBuild(value *string)
+	SetAppIdentifier(value *string)
+	SetAppName(value *string)
+	SetAppVersion(value *string)
+	SetDeviceModel(value *string)
+	SetDevicePlatform(value *string)
+	SetDeviceVersion(value *string)
+	SetInstallationId(value *string)
+	SetMetadata(value PushInstallationRequest_metadataable)
+	SetPlatform(value *string)
+	SetPushChannel(value *string)
 }

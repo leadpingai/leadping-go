@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies the kind of lookup action performed for a phone identity.
 type PhoneIdentityLookupActionType int
 
 const (
-    VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE PhoneIdentityLookupActionType = iota
-    ENRICHMENT_PHONEIDENTITYLOOKUPACTIONTYPE
-    UNWANTEDNUMBERCHECK_PHONEIDENTITYLOOKUPACTIONTYPE
+	VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE PhoneIdentityLookupActionType = iota
+	ENRICHMENT_PHONEIDENTITYLOOKUPACTIONTYPE
+	UNWANTEDNUMBERCHECK_PHONEIDENTITYLOOKUPACTIONTYPE
 )
 
 func (i PhoneIdentityLookupActionType) String() string {
-    return []string{"validation", "enrichment", "unwanted-number-check"}[i]
+	return []string{"validation", "enrichment", "unwanted-number-check"}[i]
 }
+
 func ParsePhoneIdentityLookupActionType(v string) (any, error) {
-    result := VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE
-    switch v {
-        case "validation":
-            result = VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE
-        case "enrichment":
-            result = ENRICHMENT_PHONEIDENTITYLOOKUPACTIONTYPE
-        case "unwanted-number-check":
-            result = UNWANTEDNUMBERCHECK_PHONEIDENTITYLOOKUPACTIONTYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE
+	switch v {
+	case "validation":
+		result = VALIDATION_PHONEIDENTITYLOOKUPACTIONTYPE
+	case "enrichment":
+		result = ENRICHMENT_PHONEIDENTITYLOOKUPACTIONTYPE
+	case "unwanted-number-check":
+		result = UNWANTEDNUMBERCHECK_PHONEIDENTITYLOOKUPACTIONTYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializePhoneIdentityLookupActionType(values []PhoneIdentityLookupActionType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i PhoneIdentityLookupActionType) isMultiValue() bool {
-    return false
+	return false
 }

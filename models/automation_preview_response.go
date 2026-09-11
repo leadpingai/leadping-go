@@ -4,256 +4,274 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationPreviewResponse describes automation preview data returned by Leadping.
 type AutomationPreviewResponse struct {
-    // Action preview results showing what the automation would do.
-    actionResults []AutomationPreviewActionResultable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Condition evaluation results returned by the automation preview.
-    conditionResults []AutomationPreviewConditionResultable
-    // Example payload clients can use to understand this automation preview response format.
-    samplePayload AutomationPreviewResponse_samplePayloadable
-    // Automation trigger type that starts the workflow.
-    triggerType *string
-    // Validation result returned for the automation configuration.
-    validation AutomationValidationResultable
-    // Warnings returned for this automation preview response that do not necessarily block processing.
-    warnings []string
+	// Action preview results showing what the automation would do.
+	actionResults []AutomationPreviewActionResultable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Condition evaluation results returned by the automation preview.
+	conditionResults []AutomationPreviewConditionResultable
+	// Example payload clients can use to understand this automation preview response format.
+	samplePayload AutomationPreviewResponse_samplePayloadable
+	// Automation trigger type that starts the workflow.
+	triggerType *string
+	// Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
+	validation AutomationValidationResultable
+	// Warnings returned for this automation preview response that do not necessarily block processing.
+	warnings []string
 }
+
 // NewAutomationPreviewResponse instantiates a new AutomationPreviewResponse and sets the default values.
-func NewAutomationPreviewResponse()(*AutomationPreviewResponse) {
-    m := &AutomationPreviewResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationPreviewResponse() *AutomationPreviewResponse {
+	m := &AutomationPreviewResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationPreviewResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationPreviewResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationPreviewResponse(), nil
+func CreateAutomationPreviewResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationPreviewResponse(), nil
 }
+
 // GetActionResults gets the actionResults property value. Action preview results showing what the automation would do.
 // returns a []AutomationPreviewActionResultable when successful
-func (m *AutomationPreviewResponse) GetActionResults()([]AutomationPreviewActionResultable) {
-    return m.actionResults
+func (m *AutomationPreviewResponse) GetActionResults() []AutomationPreviewActionResultable {
+	return m.actionResults
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationPreviewResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationPreviewResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetConditionResults gets the conditionResults property value. Condition evaluation results returned by the automation preview.
 // returns a []AutomationPreviewConditionResultable when successful
-func (m *AutomationPreviewResponse) GetConditionResults()([]AutomationPreviewConditionResultable) {
-    return m.conditionResults
+func (m *AutomationPreviewResponse) GetConditionResults() []AutomationPreviewConditionResultable {
+	return m.conditionResults
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationPreviewResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionResults"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationPreviewActionResultFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationPreviewActionResultable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationPreviewActionResultable)
-                }
-            }
-            m.SetActionResults(res)
-        }
-        return nil
-    }
-    res["conditionResults"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAutomationPreviewConditionResultFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AutomationPreviewConditionResultable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AutomationPreviewConditionResultable)
-                }
-            }
-            m.SetConditionResults(res)
-        }
-        return nil
-    }
-    res["samplePayload"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationPreviewResponse_samplePayloadFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSamplePayload(val.(AutomationPreviewResponse_samplePayloadable))
-        }
-        return nil
-    }
-    res["triggerType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTriggerType(val)
-        }
-        return nil
-    }
-    res["validation"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationValidationResultFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetValidation(val.(AutomationValidationResultable))
-        }
-        return nil
-    }
-    res["warnings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetWarnings(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationPreviewResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionResults"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationPreviewActionResultFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationPreviewActionResultable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationPreviewActionResultable)
+				}
+			}
+			m.SetActionResults(res)
+		}
+		return nil
+	}
+	res["conditionResults"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAutomationPreviewConditionResultFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AutomationPreviewConditionResultable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AutomationPreviewConditionResultable)
+				}
+			}
+			m.SetConditionResults(res)
+		}
+		return nil
+	}
+	res["samplePayload"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationPreviewResponse_samplePayloadFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSamplePayload(val.(AutomationPreviewResponse_samplePayloadable))
+		}
+		return nil
+	}
+	res["triggerType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTriggerType(val)
+		}
+		return nil
+	}
+	res["validation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationValidationResultFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetValidation(val.(AutomationValidationResultable))
+		}
+		return nil
+	}
+	res["warnings"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetWarnings(res)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetSamplePayload gets the samplePayload property value. Example payload clients can use to understand this automation preview response format.
 // returns a AutomationPreviewResponse_samplePayloadable when successful
-func (m *AutomationPreviewResponse) GetSamplePayload()(AutomationPreviewResponse_samplePayloadable) {
-    return m.samplePayload
+func (m *AutomationPreviewResponse) GetSamplePayload() AutomationPreviewResponse_samplePayloadable {
+	return m.samplePayload
 }
+
 // GetTriggerType gets the triggerType property value. Automation trigger type that starts the workflow.
 // returns a *string when successful
-func (m *AutomationPreviewResponse) GetTriggerType()(*string) {
-    return m.triggerType
+func (m *AutomationPreviewResponse) GetTriggerType() *string {
+	return m.triggerType
 }
-// GetValidation gets the validation property value. Validation result returned for the automation configuration.
+
+// GetValidation gets the validation property value. Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
 // returns a AutomationValidationResultable when successful
-func (m *AutomationPreviewResponse) GetValidation()(AutomationValidationResultable) {
-    return m.validation
+func (m *AutomationPreviewResponse) GetValidation() AutomationValidationResultable {
+	return m.validation
 }
+
 // GetWarnings gets the warnings property value. Warnings returned for this automation preview response that do not necessarily block processing.
 // returns a []string when successful
-func (m *AutomationPreviewResponse) GetWarnings()([]string) {
-    return m.warnings
+func (m *AutomationPreviewResponse) GetWarnings() []string {
+	return m.warnings
 }
+
 // Serialize serializes information the current object
-func (m *AutomationPreviewResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetActionResults() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActionResults()))
-        for i, v := range m.GetActionResults() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("actionResults", cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConditionResults() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConditionResults()))
-        for i, v := range m.GetConditionResults() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("conditionResults", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("samplePayload", m.GetSamplePayload())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("triggerType", m.GetTriggerType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("validation", m.GetValidation())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWarnings() != nil {
-        err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationPreviewResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetActionResults() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetActionResults()))
+		for i, v := range m.GetActionResults() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("actionResults", cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConditionResults() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConditionResults()))
+		for i, v := range m.GetConditionResults() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("conditionResults", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("samplePayload", m.GetSamplePayload())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("triggerType", m.GetTriggerType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("validation", m.GetValidation())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetWarnings() != nil {
+		err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionResults sets the actionResults property value. Action preview results showing what the automation would do.
-func (m *AutomationPreviewResponse) SetActionResults(value []AutomationPreviewActionResultable)() {
-    m.actionResults = value
+func (m *AutomationPreviewResponse) SetActionResults(value []AutomationPreviewActionResultable) {
+	m.actionResults = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationPreviewResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationPreviewResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetConditionResults sets the conditionResults property value. Condition evaluation results returned by the automation preview.
-func (m *AutomationPreviewResponse) SetConditionResults(value []AutomationPreviewConditionResultable)() {
-    m.conditionResults = value
+func (m *AutomationPreviewResponse) SetConditionResults(value []AutomationPreviewConditionResultable) {
+	m.conditionResults = value
 }
+
 // SetSamplePayload sets the samplePayload property value. Example payload clients can use to understand this automation preview response format.
-func (m *AutomationPreviewResponse) SetSamplePayload(value AutomationPreviewResponse_samplePayloadable)() {
-    m.samplePayload = value
+func (m *AutomationPreviewResponse) SetSamplePayload(value AutomationPreviewResponse_samplePayloadable) {
+	m.samplePayload = value
 }
+
 // SetTriggerType sets the triggerType property value. Automation trigger type that starts the workflow.
-func (m *AutomationPreviewResponse) SetTriggerType(value *string)() {
-    m.triggerType = value
+func (m *AutomationPreviewResponse) SetTriggerType(value *string) {
+	m.triggerType = value
 }
-// SetValidation sets the validation property value. Validation result returned for the automation configuration.
-func (m *AutomationPreviewResponse) SetValidation(value AutomationValidationResultable)() {
-    m.validation = value
+
+// SetValidation sets the validation property value. Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
+func (m *AutomationPreviewResponse) SetValidation(value AutomationValidationResultable) {
+	m.validation = value
 }
+
 // SetWarnings sets the warnings property value. Warnings returned for this automation preview response that do not necessarily block processing.
-func (m *AutomationPreviewResponse) SetWarnings(value []string)() {
-    m.warnings = value
+func (m *AutomationPreviewResponse) SetWarnings(value []string) {
+	m.warnings = value
 }
+
 type AutomationPreviewResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionResults()([]AutomationPreviewActionResultable)
-    GetConditionResults()([]AutomationPreviewConditionResultable)
-    GetSamplePayload()(AutomationPreviewResponse_samplePayloadable)
-    GetTriggerType()(*string)
-    GetValidation()(AutomationValidationResultable)
-    GetWarnings()([]string)
-    SetActionResults(value []AutomationPreviewActionResultable)()
-    SetConditionResults(value []AutomationPreviewConditionResultable)()
-    SetSamplePayload(value AutomationPreviewResponse_samplePayloadable)()
-    SetTriggerType(value *string)()
-    SetValidation(value AutomationValidationResultable)()
-    SetWarnings(value []string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionResults() []AutomationPreviewActionResultable
+	GetConditionResults() []AutomationPreviewConditionResultable
+	GetSamplePayload() AutomationPreviewResponse_samplePayloadable
+	GetTriggerType() *string
+	GetValidation() AutomationValidationResultable
+	GetWarnings() []string
+	SetActionResults(value []AutomationPreviewActionResultable)
+	SetConditionResults(value []AutomationPreviewConditionResultable)
+	SetSamplePayload(value AutomationPreviewResponse_samplePayloadable)
+	SetTriggerType(value *string)
+	SetValidation(value AutomationValidationResultable)
+	SetWarnings(value []string)
 }

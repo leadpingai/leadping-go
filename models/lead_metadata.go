@@ -4,1068 +4,1144 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // LeadMetadata public Leadping API schema for lead attribution metadata data.
 type LeadMetadata struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Phone number ID assigned to the lead, organization, or source.
-    assignedPhoneNumberId *string
-    // Reason Leadping blocked this operation for compliance.
-    complianceBlockedReason *string
-    // Compliance status used to decide whether Leadping can send messages.
-    complianceStatus *string
-    // UTC timestamp when this lead attribution metadata was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Direct-post price supplied by the lead source during intake.
-    directPostPrice *float64
-    // External system identifier used to reconcile this lead attribution metadata across integrations.
-    externalId *string
-    // Bulk import batch ID that created or updated this lead.
-    importBatchId *string
-    // IP address captured with the request for audit and compliance review.
-    ipAddress *string
-    // Indicates whether this lead was imported rather than captured through a live source.
-    isImported *bool
-    // Landing page URL where the lead submitted their information.
-    landingPage *string
-    // Organization ID that owns this lead's attribution metadata.
-    organizationId *string
-    // System or workflow that created this event.
-    origin *string
-    // Lead price or transaction price supplied to the Leadping API.
-    price *float64
-    // Product or offer associated with the lead or source.
-    product *string
-    // Publisher ID supplied by the lead source for attribution.
-    pubId *string
-    // Referring page or traffic source that sent the lead into Leadping.
-    referrer *string
-    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
-    sellerLeadId *string
-    // Phone number where SMS consent was captured or evaluated.
-    smsConsentPhoneNumber *string
-    // Current SMS consent status recorded for this lead.
-    smsConsentStatus *string
-    // UTC timestamp when the lead requested SMS help instructions.
-    smsHelpRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether the lead has opted out of SMS communication.
-    smsOptedOut *bool
-    // UTC timestamp when the lead opted in to SMS communication.
-    smsOptInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when the lead opted out of SMS communication.
-    smsOptOutAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-    sourceMetadata LeadMetadata_sourceMetadataable
-    // Affiliate or publisher sub ID captured for lead attribution.
-    subId *string
-    // UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
-    trustedFormCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // TrustedForm certificate URL used as proof of consumer consent.
-    trustedFormUrl *string
-    // Browser or client user agent captured when this lead attribution metadata was submitted.
-    userAgent *string
-    // User ID associated with this lead's attribution metadata.
-    userId *string
-    // UTM campaign parameter captured for lead attribution reporting.
-    utmCampaign *string
-    // UTM content parameter captured for lead attribution reporting.
-    utmContent *string
-    // UTM medium parameter captured for lead attribution reporting.
-    utmMedium *string
-    // UTM source parameter captured for lead attribution reporting.
-    utmSource *string
-    // UTM term parameter captured for lead attribution reporting.
-    utmTerm *string
-    // Industry vertical used for lead routing, compliance review, and reporting.
-    vertical *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Phone number ID assigned to the lead, organization, or source.
+	assignedPhoneNumberId *string
+	// Reason Leadping blocked this operation for compliance.
+	complianceBlockedReason *string
+	// Compliance status used to decide whether Leadping can send messages.
+	complianceStatus *string
+	// UTC timestamp when this lead attribution metadata was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Direct-post price supplied by the lead source during intake.
+	directPostPrice *float64
+	// External system identifier used to reconcile this lead attribution metadata across integrations.
+	externalId *string
+	// Bulk import batch ID that created or updated this lead.
+	importBatchId *string
+	// IP address captured with the request for audit and compliance review.
+	ipAddress *string
+	// Indicates whether this lead was imported rather than captured through a live source.
+	isImported *bool
+	// Landing page URL where the lead submitted their information.
+	landingPage *string
+	// Organization ID that owns this lead's attribution metadata.
+	organizationId *string
+	// System or workflow that created this event.
+	origin *string
+	// Lead price or transaction price supplied to the Leadping API.
+	price *float64
+	// Product or offer associated with the lead or source.
+	product *string
+	// Publisher ID supplied by the lead source for attribution.
+	pubId *string
+	// Referring page or traffic source that sent the lead into Leadping.
+	referrer *string
+	// Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
+	sellerLeadId *string
+	// Phone number where SMS consent was captured or evaluated.
+	smsConsentPhoneNumber *string
+	// Current SMS consent status recorded for this lead.
+	smsConsentStatus *string
+	// UTC timestamp when the lead requested SMS help instructions.
+	smsHelpRequestedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether the lead has opted out of SMS communication.
+	smsOptedOut *bool
+	// UTC timestamp when the lead opted in to SMS communication.
+	smsOptInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the lead opted out of SMS communication.
+	smsOptOutAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
+	sourceMetadata LeadMetadata_sourceMetadataable
+	// Affiliate or publisher sub ID captured for lead attribution.
+	subId *string
+	// UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+	trustedFormCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// TrustedForm certificate URL used as proof of consumer consent.
+	trustedFormUrl *string
+	// Browser or client user agent captured when this lead attribution metadata was submitted.
+	userAgent *string
+	// User ID associated with this lead's attribution metadata.
+	userId *string
+	// UTM campaign parameter captured for lead attribution reporting.
+	utmCampaign *string
+	// UTM content parameter captured for lead attribution reporting.
+	utmContent *string
+	// UTM medium parameter captured for lead attribution reporting.
+	utmMedium *string
+	// UTM source parameter captured for lead attribution reporting.
+	utmSource *string
+	// UTM term parameter captured for lead attribution reporting.
+	utmTerm *string
+	// Industry vertical used for lead routing, compliance review, and reporting.
+	vertical *string
 }
+
 // NewLeadMetadata instantiates a new LeadMetadata and sets the default values.
-func NewLeadMetadata()(*LeadMetadata) {
-    m := &LeadMetadata{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadMetadata() *LeadMetadata {
+	m := &LeadMetadata{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadMetadataFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadMetadata(), nil
+func CreateLeadMetadataFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadMetadata(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadMetadata) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadMetadata) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAssignedPhoneNumberId gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
 // returns a *string when successful
-func (m *LeadMetadata) GetAssignedPhoneNumberId()(*string) {
-    return m.assignedPhoneNumberId
+func (m *LeadMetadata) GetAssignedPhoneNumberId() *string {
+	return m.assignedPhoneNumberId
 }
+
 // GetComplianceBlockedReason gets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 // returns a *string when successful
-func (m *LeadMetadata) GetComplianceBlockedReason()(*string) {
-    return m.complianceBlockedReason
+func (m *LeadMetadata) GetComplianceBlockedReason() *string {
+	return m.complianceBlockedReason
 }
+
 // GetComplianceStatus gets the complianceStatus property value. Compliance status used to decide whether Leadping can send messages.
 // returns a *string when successful
-func (m *LeadMetadata) GetComplianceStatus()(*string) {
-    return m.complianceStatus
+func (m *LeadMetadata) GetComplianceStatus() *string {
+	return m.complianceStatus
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
 // returns a *Time when successful
-func (m *LeadMetadata) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *LeadMetadata) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
 // returns a *float64 when successful
-func (m *LeadMetadata) GetDirectPostPrice()(*float64) {
-    return m.directPostPrice
+func (m *LeadMetadata) GetDirectPostPrice() *float64 {
+	return m.directPostPrice
 }
+
 // GetExternalId gets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
 // returns a *string when successful
-func (m *LeadMetadata) GetExternalId()(*string) {
-    return m.externalId
+func (m *LeadMetadata) GetExternalId() *string {
+	return m.externalId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadMetadata) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["assignedPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAssignedPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["complianceBlockedReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceBlockedReason(val)
-        }
-        return nil
-    }
-    res["complianceStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceStatus(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["directPostPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirectPostPrice(val)
-        }
-        return nil
-    }
-    res["externalId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExternalId(val)
-        }
-        return nil
-    }
-    res["importBatchId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetImportBatchId(val)
-        }
-        return nil
-    }
-    res["ipAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIpAddress(val)
-        }
-        return nil
-    }
-    res["isImported"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsImported(val)
-        }
-        return nil
-    }
-    res["landingPage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLandingPage(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["origin"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrigin(val)
-        }
-        return nil
-    }
-    res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrice(val)
-        }
-        return nil
-    }
-    res["product"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProduct(val)
-        }
-        return nil
-    }
-    res["pubId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPubId(val)
-        }
-        return nil
-    }
-    res["referrer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReferrer(val)
-        }
-        return nil
-    }
-    res["sellerLeadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSellerLeadId(val)
-        }
-        return nil
-    }
-    res["smsConsentPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsConsentPhoneNumber(val)
-        }
-        return nil
-    }
-    res["smsConsentStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsConsentStatus(val)
-        }
-        return nil
-    }
-    res["smsHelpRequestedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsHelpRequestedAt(val)
-        }
-        return nil
-    }
-    res["smsOptedOut"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsOptedOut(val)
-        }
-        return nil
-    }
-    res["smsOptInAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsOptInAt(val)
-        }
-        return nil
-    }
-    res["smsOptOutAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsOptOutAt(val)
-        }
-        return nil
-    }
-    res["sourceMetadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadMetadata_sourceMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceMetadata(val.(LeadMetadata_sourceMetadataable))
-        }
-        return nil
-    }
-    res["subId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubId(val)
-        }
-        return nil
-    }
-    res["trustedFormCheckedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTrustedFormCheckedAt(val)
-        }
-        return nil
-    }
-    res["trustedFormUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTrustedFormUrl(val)
-        }
-        return nil
-    }
-    res["userAgent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserAgent(val)
-        }
-        return nil
-    }
-    res["userId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserId(val)
-        }
-        return nil
-    }
-    res["utmCampaign"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmCampaign(val)
-        }
-        return nil
-    }
-    res["utmContent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmContent(val)
-        }
-        return nil
-    }
-    res["utmMedium"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmMedium(val)
-        }
-        return nil
-    }
-    res["utmSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmSource(val)
-        }
-        return nil
-    }
-    res["utmTerm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmTerm(val)
-        }
-        return nil
-    }
-    res["vertical"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVertical(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["assignedPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAssignedPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["complianceBlockedReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceBlockedReason(val)
+		}
+		return nil
+	}
+	res["complianceStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceStatus(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["directPostPrice"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirectPostPrice(val)
+		}
+		return nil
+	}
+	res["externalId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExternalId(val)
+		}
+		return nil
+	}
+	res["importBatchId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetImportBatchId(val)
+		}
+		return nil
+	}
+	res["ipAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIpAddress(val)
+		}
+		return nil
+	}
+	res["isImported"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsImported(val)
+		}
+		return nil
+	}
+	res["landingPage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLandingPage(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["origin"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrigin(val)
+		}
+		return nil
+	}
+	res["price"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrice(val)
+		}
+		return nil
+	}
+	res["product"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProduct(val)
+		}
+		return nil
+	}
+	res["pubId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPubId(val)
+		}
+		return nil
+	}
+	res["referrer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReferrer(val)
+		}
+		return nil
+	}
+	res["sellerLeadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSellerLeadId(val)
+		}
+		return nil
+	}
+	res["smsConsentPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentPhoneNumber(val)
+		}
+		return nil
+	}
+	res["smsConsentStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentStatus(val)
+		}
+		return nil
+	}
+	res["smsHelpRequestedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsHelpRequestedAt(val)
+		}
+		return nil
+	}
+	res["smsOptedOut"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsOptedOut(val)
+		}
+		return nil
+	}
+	res["smsOptInAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsOptInAt(val)
+		}
+		return nil
+	}
+	res["smsOptOutAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsOptOutAt(val)
+		}
+		return nil
+	}
+	res["sourceMetadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadMetadata_sourceMetadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceMetadata(val.(LeadMetadata_sourceMetadataable))
+		}
+		return nil
+	}
+	res["subId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubId(val)
+		}
+		return nil
+	}
+	res["trustedFormCheckedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrustedFormCheckedAt(val)
+		}
+		return nil
+	}
+	res["trustedFormUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrustedFormUrl(val)
+		}
+		return nil
+	}
+	res["userAgent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserAgent(val)
+		}
+		return nil
+	}
+	res["userId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserId(val)
+		}
+		return nil
+	}
+	res["utmCampaign"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmCampaign(val)
+		}
+		return nil
+	}
+	res["utmContent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmContent(val)
+		}
+		return nil
+	}
+	res["utmMedium"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmMedium(val)
+		}
+		return nil
+	}
+	res["utmSource"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmSource(val)
+		}
+		return nil
+	}
+	res["utmTerm"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmTerm(val)
+		}
+		return nil
+	}
+	res["vertical"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVertical(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetImportBatchId gets the importBatchId property value. Bulk import batch ID that created or updated this lead.
 // returns a *string when successful
-func (m *LeadMetadata) GetImportBatchId()(*string) {
-    return m.importBatchId
+func (m *LeadMetadata) GetImportBatchId() *string {
+	return m.importBatchId
 }
+
 // GetIpAddress gets the ipAddress property value. IP address captured with the request for audit and compliance review.
 // returns a *string when successful
-func (m *LeadMetadata) GetIpAddress()(*string) {
-    return m.ipAddress
+func (m *LeadMetadata) GetIpAddress() *string {
+	return m.ipAddress
 }
+
 // GetIsImported gets the isImported property value. Indicates whether this lead was imported rather than captured through a live source.
 // returns a *bool when successful
-func (m *LeadMetadata) GetIsImported()(*bool) {
-    return m.isImported
+func (m *LeadMetadata) GetIsImported() *bool {
+	return m.isImported
 }
+
 // GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
-func (m *LeadMetadata) GetLandingPage()(*string) {
-    return m.landingPage
+func (m *LeadMetadata) GetLandingPage() *string {
+	return m.landingPage
 }
+
 // GetOrganizationId gets the organizationId property value. Organization ID that owns this lead's attribution metadata.
 // returns a *string when successful
-func (m *LeadMetadata) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *LeadMetadata) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetOrigin gets the origin property value. System or workflow that created this event.
 // returns a *string when successful
-func (m *LeadMetadata) GetOrigin()(*string) {
-    return m.origin
+func (m *LeadMetadata) GetOrigin() *string {
+	return m.origin
 }
+
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
 // returns a *float64 when successful
-func (m *LeadMetadata) GetPrice()(*float64) {
-    return m.price
+func (m *LeadMetadata) GetPrice() *float64 {
+	return m.price
 }
+
 // GetProduct gets the product property value. Product or offer associated with the lead or source.
 // returns a *string when successful
-func (m *LeadMetadata) GetProduct()(*string) {
-    return m.product
+func (m *LeadMetadata) GetProduct() *string {
+	return m.product
 }
+
 // GetPubId gets the pubId property value. Publisher ID supplied by the lead source for attribution.
 // returns a *string when successful
-func (m *LeadMetadata) GetPubId()(*string) {
-    return m.pubId
+func (m *LeadMetadata) GetPubId() *string {
+	return m.pubId
 }
+
 // GetReferrer gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 // returns a *string when successful
-func (m *LeadMetadata) GetReferrer()(*string) {
-    return m.referrer
+func (m *LeadMetadata) GetReferrer() *string {
+	return m.referrer
 }
+
 // GetSellerLeadId gets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 // returns a *string when successful
-func (m *LeadMetadata) GetSellerLeadId()(*string) {
-    return m.sellerLeadId
+func (m *LeadMetadata) GetSellerLeadId() *string {
+	return m.sellerLeadId
 }
+
 // GetSmsConsentPhoneNumber gets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
 // returns a *string when successful
-func (m *LeadMetadata) GetSmsConsentPhoneNumber()(*string) {
-    return m.smsConsentPhoneNumber
+func (m *LeadMetadata) GetSmsConsentPhoneNumber() *string {
+	return m.smsConsentPhoneNumber
 }
+
 // GetSmsConsentStatus gets the smsConsentStatus property value. Current SMS consent status recorded for this lead.
 // returns a *string when successful
-func (m *LeadMetadata) GetSmsConsentStatus()(*string) {
-    return m.smsConsentStatus
+func (m *LeadMetadata) GetSmsConsentStatus() *string {
+	return m.smsConsentStatus
 }
+
 // GetSmsHelpRequestedAt gets the smsHelpRequestedAt property value. UTC timestamp when the lead requested SMS help instructions.
 // returns a *Time when successful
-func (m *LeadMetadata) GetSmsHelpRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsHelpRequestedAt
+func (m *LeadMetadata) GetSmsHelpRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsHelpRequestedAt
 }
+
 // GetSmsOptedOut gets the smsOptedOut property value. Indicates whether the lead has opted out of SMS communication.
 // returns a *bool when successful
-func (m *LeadMetadata) GetSmsOptedOut()(*bool) {
-    return m.smsOptedOut
+func (m *LeadMetadata) GetSmsOptedOut() *bool {
+	return m.smsOptedOut
 }
+
 // GetSmsOptInAt gets the smsOptInAt property value. UTC timestamp when the lead opted in to SMS communication.
 // returns a *Time when successful
-func (m *LeadMetadata) GetSmsOptInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsOptInAt
+func (m *LeadMetadata) GetSmsOptInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsOptInAt
 }
+
 // GetSmsOptOutAt gets the smsOptOutAt property value. UTC timestamp when the lead opted out of SMS communication.
 // returns a *Time when successful
-func (m *LeadMetadata) GetSmsOptOutAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsOptOutAt
+func (m *LeadMetadata) GetSmsOptOutAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsOptOutAt
 }
+
 // GetSourceMetadata gets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 // returns a LeadMetadata_sourceMetadataable when successful
-func (m *LeadMetadata) GetSourceMetadata()(LeadMetadata_sourceMetadataable) {
-    return m.sourceMetadata
+func (m *LeadMetadata) GetSourceMetadata() LeadMetadata_sourceMetadataable {
+	return m.sourceMetadata
 }
+
 // GetSubId gets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 // returns a *string when successful
-func (m *LeadMetadata) GetSubId()(*string) {
-    return m.subId
+func (m *LeadMetadata) GetSubId() *string {
+	return m.subId
 }
+
 // GetTrustedFormCheckedAt gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
 // returns a *Time when successful
-func (m *LeadMetadata) GetTrustedFormCheckedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.trustedFormCheckedAt
+func (m *LeadMetadata) GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.trustedFormCheckedAt
 }
+
 // GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 // returns a *string when successful
-func (m *LeadMetadata) GetTrustedFormUrl()(*string) {
-    return m.trustedFormUrl
+func (m *LeadMetadata) GetTrustedFormUrl() *string {
+	return m.trustedFormUrl
 }
+
 // GetUserAgent gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 // returns a *string when successful
-func (m *LeadMetadata) GetUserAgent()(*string) {
-    return m.userAgent
+func (m *LeadMetadata) GetUserAgent() *string {
+	return m.userAgent
 }
+
 // GetUserId gets the userId property value. User ID associated with this lead's attribution metadata.
 // returns a *string when successful
-func (m *LeadMetadata) GetUserId()(*string) {
-    return m.userId
+func (m *LeadMetadata) GetUserId() *string {
+	return m.userId
 }
+
 // GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetUtmCampaign()(*string) {
-    return m.utmCampaign
+func (m *LeadMetadata) GetUtmCampaign() *string {
+	return m.utmCampaign
 }
+
 // GetUtmContent gets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetUtmContent()(*string) {
-    return m.utmContent
+func (m *LeadMetadata) GetUtmContent() *string {
+	return m.utmContent
 }
+
 // GetUtmMedium gets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetUtmMedium()(*string) {
-    return m.utmMedium
+func (m *LeadMetadata) GetUtmMedium() *string {
+	return m.utmMedium
 }
+
 // GetUtmSource gets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetUtmSource()(*string) {
-    return m.utmSource
+func (m *LeadMetadata) GetUtmSource() *string {
+	return m.utmSource
 }
+
 // GetUtmTerm gets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetUtmTerm()(*string) {
-    return m.utmTerm
+func (m *LeadMetadata) GetUtmTerm() *string {
+	return m.utmTerm
 }
+
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
-func (m *LeadMetadata) GetVertical()(*string) {
-    return m.vertical
+func (m *LeadMetadata) GetVertical() *string {
+	return m.vertical
 }
+
 // Serialize serializes information the current object
-func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("assignedPhoneNumberId", m.GetAssignedPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceBlockedReason", m.GetComplianceBlockedReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceStatus", m.GetComplianceStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("directPostPrice", m.GetDirectPostPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("externalId", m.GetExternalId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("importBatchId", m.GetImportBatchId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ipAddress", m.GetIpAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isImported", m.GetIsImported())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("landingPage", m.GetLandingPage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("origin", m.GetOrigin())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("price", m.GetPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("product", m.GetProduct())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("pubId", m.GetPubId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("referrer", m.GetReferrer())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sellerLeadId", m.GetSellerLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("smsConsentPhoneNumber", m.GetSmsConsentPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("smsConsentStatus", m.GetSmsConsentStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsHelpRequestedAt", m.GetSmsHelpRequestedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsOptedOut", m.GetSmsOptedOut())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsOptInAt", m.GetSmsOptInAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsOptOutAt", m.GetSmsOptOutAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("sourceMetadata", m.GetSourceMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("subId", m.GetSubId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("trustedFormCheckedAt", m.GetTrustedFormCheckedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userAgent", m.GetUserAgent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userId", m.GetUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmContent", m.GetUtmContent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmMedium", m.GetUtmMedium())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmSource", m.GetUtmSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmTerm", m.GetUtmTerm())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("vertical", m.GetVertical())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("assignedPhoneNumberId", m.GetAssignedPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("complianceBlockedReason", m.GetComplianceBlockedReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("complianceStatus", m.GetComplianceStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("directPostPrice", m.GetDirectPostPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("externalId", m.GetExternalId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("importBatchId", m.GetImportBatchId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ipAddress", m.GetIpAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isImported", m.GetIsImported())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("landingPage", m.GetLandingPage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("origin", m.GetOrigin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("price", m.GetPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("product", m.GetProduct())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("pubId", m.GetPubId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("referrer", m.GetReferrer())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sellerLeadId", m.GetSellerLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("smsConsentPhoneNumber", m.GetSmsConsentPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("smsConsentStatus", m.GetSmsConsentStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsHelpRequestedAt", m.GetSmsHelpRequestedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsOptedOut", m.GetSmsOptedOut())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsOptInAt", m.GetSmsOptInAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsOptOutAt", m.GetSmsOptOutAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("sourceMetadata", m.GetSourceMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("subId", m.GetSubId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("trustedFormCheckedAt", m.GetTrustedFormCheckedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userAgent", m.GetUserAgent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userId", m.GetUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmContent", m.GetUtmContent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmMedium", m.GetUtmMedium())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmSource", m.GetUtmSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmTerm", m.GetUtmTerm())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("vertical", m.GetVertical())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadMetadata) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadMetadata) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAssignedPhoneNumberId sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
-func (m *LeadMetadata) SetAssignedPhoneNumberId(value *string)() {
-    m.assignedPhoneNumberId = value
+func (m *LeadMetadata) SetAssignedPhoneNumberId(value *string) {
+	m.assignedPhoneNumberId = value
 }
+
 // SetComplianceBlockedReason sets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
-func (m *LeadMetadata) SetComplianceBlockedReason(value *string)() {
-    m.complianceBlockedReason = value
+func (m *LeadMetadata) SetComplianceBlockedReason(value *string) {
+	m.complianceBlockedReason = value
 }
+
 // SetComplianceStatus sets the complianceStatus property value. Compliance status used to decide whether Leadping can send messages.
-func (m *LeadMetadata) SetComplianceStatus(value *string)() {
-    m.complianceStatus = value
+func (m *LeadMetadata) SetComplianceStatus(value *string) {
+	m.complianceStatus = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
-func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-func (m *LeadMetadata) SetDirectPostPrice(value *float64)() {
-    m.directPostPrice = value
+func (m *LeadMetadata) SetDirectPostPrice(value *float64) {
+	m.directPostPrice = value
 }
+
 // SetExternalId sets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
-func (m *LeadMetadata) SetExternalId(value *string)() {
-    m.externalId = value
+func (m *LeadMetadata) SetExternalId(value *string) {
+	m.externalId = value
 }
+
 // SetImportBatchId sets the importBatchId property value. Bulk import batch ID that created or updated this lead.
-func (m *LeadMetadata) SetImportBatchId(value *string)() {
-    m.importBatchId = value
+func (m *LeadMetadata) SetImportBatchId(value *string) {
+	m.importBatchId = value
 }
+
 // SetIpAddress sets the ipAddress property value. IP address captured with the request for audit and compliance review.
-func (m *LeadMetadata) SetIpAddress(value *string)() {
-    m.ipAddress = value
+func (m *LeadMetadata) SetIpAddress(value *string) {
+	m.ipAddress = value
 }
+
 // SetIsImported sets the isImported property value. Indicates whether this lead was imported rather than captured through a live source.
-func (m *LeadMetadata) SetIsImported(value *bool)() {
-    m.isImported = value
+func (m *LeadMetadata) SetIsImported(value *bool) {
+	m.isImported = value
 }
+
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
-func (m *LeadMetadata) SetLandingPage(value *string)() {
-    m.landingPage = value
+func (m *LeadMetadata) SetLandingPage(value *string) {
+	m.landingPage = value
 }
+
 // SetOrganizationId sets the organizationId property value. Organization ID that owns this lead's attribution metadata.
-func (m *LeadMetadata) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *LeadMetadata) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetOrigin sets the origin property value. System or workflow that created this event.
-func (m *LeadMetadata) SetOrigin(value *string)() {
-    m.origin = value
+func (m *LeadMetadata) SetOrigin(value *string) {
+	m.origin = value
 }
+
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadMetadata) SetPrice(value *float64)() {
-    m.price = value
+func (m *LeadMetadata) SetPrice(value *float64) {
+	m.price = value
 }
+
 // SetProduct sets the product property value. Product or offer associated with the lead or source.
-func (m *LeadMetadata) SetProduct(value *string)() {
-    m.product = value
+func (m *LeadMetadata) SetProduct(value *string) {
+	m.product = value
 }
+
 // SetPubId sets the pubId property value. Publisher ID supplied by the lead source for attribution.
-func (m *LeadMetadata) SetPubId(value *string)() {
-    m.pubId = value
+func (m *LeadMetadata) SetPubId(value *string) {
+	m.pubId = value
 }
+
 // SetReferrer sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
-func (m *LeadMetadata) SetReferrer(value *string)() {
-    m.referrer = value
+func (m *LeadMetadata) SetReferrer(value *string) {
+	m.referrer = value
 }
+
 // SetSellerLeadId sets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
-func (m *LeadMetadata) SetSellerLeadId(value *string)() {
-    m.sellerLeadId = value
+func (m *LeadMetadata) SetSellerLeadId(value *string) {
+	m.sellerLeadId = value
 }
+
 // SetSmsConsentPhoneNumber sets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
-func (m *LeadMetadata) SetSmsConsentPhoneNumber(value *string)() {
-    m.smsConsentPhoneNumber = value
+func (m *LeadMetadata) SetSmsConsentPhoneNumber(value *string) {
+	m.smsConsentPhoneNumber = value
 }
+
 // SetSmsConsentStatus sets the smsConsentStatus property value. Current SMS consent status recorded for this lead.
-func (m *LeadMetadata) SetSmsConsentStatus(value *string)() {
-    m.smsConsentStatus = value
+func (m *LeadMetadata) SetSmsConsentStatus(value *string) {
+	m.smsConsentStatus = value
 }
+
 // SetSmsHelpRequestedAt sets the smsHelpRequestedAt property value. UTC timestamp when the lead requested SMS help instructions.
-func (m *LeadMetadata) SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsHelpRequestedAt = value
+func (m *LeadMetadata) SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsHelpRequestedAt = value
 }
+
 // SetSmsOptedOut sets the smsOptedOut property value. Indicates whether the lead has opted out of SMS communication.
-func (m *LeadMetadata) SetSmsOptedOut(value *bool)() {
-    m.smsOptedOut = value
+func (m *LeadMetadata) SetSmsOptedOut(value *bool) {
+	m.smsOptedOut = value
 }
+
 // SetSmsOptInAt sets the smsOptInAt property value. UTC timestamp when the lead opted in to SMS communication.
-func (m *LeadMetadata) SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsOptInAt = value
+func (m *LeadMetadata) SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsOptInAt = value
 }
+
 // SetSmsOptOutAt sets the smsOptOutAt property value. UTC timestamp when the lead opted out of SMS communication.
-func (m *LeadMetadata) SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsOptOutAt = value
+func (m *LeadMetadata) SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsOptOutAt = value
 }
+
 // SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-func (m *LeadMetadata) SetSourceMetadata(value LeadMetadata_sourceMetadataable)() {
-    m.sourceMetadata = value
+func (m *LeadMetadata) SetSourceMetadata(value LeadMetadata_sourceMetadataable) {
+	m.sourceMetadata = value
 }
+
 // SetSubId sets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
-func (m *LeadMetadata) SetSubId(value *string)() {
-    m.subId = value
+func (m *LeadMetadata) SetSubId(value *string) {
+	m.subId = value
 }
+
 // SetTrustedFormCheckedAt sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
-func (m *LeadMetadata) SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.trustedFormCheckedAt = value
+func (m *LeadMetadata) SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.trustedFormCheckedAt = value
 }
+
 // SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-func (m *LeadMetadata) SetTrustedFormUrl(value *string)() {
-    m.trustedFormUrl = value
+func (m *LeadMetadata) SetTrustedFormUrl(value *string) {
+	m.trustedFormUrl = value
 }
+
 // SetUserAgent sets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
-func (m *LeadMetadata) SetUserAgent(value *string)() {
-    m.userAgent = value
+func (m *LeadMetadata) SetUserAgent(value *string) {
+	m.userAgent = value
 }
+
 // SetUserId sets the userId property value. User ID associated with this lead's attribution metadata.
-func (m *LeadMetadata) SetUserId(value *string)() {
-    m.userId = value
+func (m *LeadMetadata) SetUserId(value *string) {
+	m.userId = value
 }
+
 // SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
-func (m *LeadMetadata) SetUtmCampaign(value *string)() {
-    m.utmCampaign = value
+func (m *LeadMetadata) SetUtmCampaign(value *string) {
+	m.utmCampaign = value
 }
+
 // SetUtmContent sets the utmContent property value. UTM content parameter captured for lead attribution reporting.
-func (m *LeadMetadata) SetUtmContent(value *string)() {
-    m.utmContent = value
+func (m *LeadMetadata) SetUtmContent(value *string) {
+	m.utmContent = value
 }
+
 // SetUtmMedium sets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
-func (m *LeadMetadata) SetUtmMedium(value *string)() {
-    m.utmMedium = value
+func (m *LeadMetadata) SetUtmMedium(value *string) {
+	m.utmMedium = value
 }
+
 // SetUtmSource sets the utmSource property value. UTM source parameter captured for lead attribution reporting.
-func (m *LeadMetadata) SetUtmSource(value *string)() {
-    m.utmSource = value
+func (m *LeadMetadata) SetUtmSource(value *string) {
+	m.utmSource = value
 }
+
 // SetUtmTerm sets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
-func (m *LeadMetadata) SetUtmTerm(value *string)() {
-    m.utmTerm = value
+func (m *LeadMetadata) SetUtmTerm(value *string) {
+	m.utmTerm = value
 }
+
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
-func (m *LeadMetadata) SetVertical(value *string)() {
-    m.vertical = value
+func (m *LeadMetadata) SetVertical(value *string) {
+	m.vertical = value
 }
+
 type LeadMetadataable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAssignedPhoneNumberId()(*string)
-    GetComplianceBlockedReason()(*string)
-    GetComplianceStatus()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDirectPostPrice()(*float64)
-    GetExternalId()(*string)
-    GetImportBatchId()(*string)
-    GetIpAddress()(*string)
-    GetIsImported()(*bool)
-    GetLandingPage()(*string)
-    GetOrganizationId()(*string)
-    GetOrigin()(*string)
-    GetPrice()(*float64)
-    GetProduct()(*string)
-    GetPubId()(*string)
-    GetReferrer()(*string)
-    GetSellerLeadId()(*string)
-    GetSmsConsentPhoneNumber()(*string)
-    GetSmsConsentStatus()(*string)
-    GetSmsHelpRequestedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsOptedOut()(*bool)
-    GetSmsOptInAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsOptOutAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSourceMetadata()(LeadMetadata_sourceMetadataable)
-    GetSubId()(*string)
-    GetTrustedFormCheckedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetTrustedFormUrl()(*string)
-    GetUserAgent()(*string)
-    GetUserId()(*string)
-    GetUtmCampaign()(*string)
-    GetUtmContent()(*string)
-    GetUtmMedium()(*string)
-    GetUtmSource()(*string)
-    GetUtmTerm()(*string)
-    GetVertical()(*string)
-    SetAssignedPhoneNumberId(value *string)()
-    SetComplianceBlockedReason(value *string)()
-    SetComplianceStatus(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDirectPostPrice(value *float64)()
-    SetExternalId(value *string)()
-    SetImportBatchId(value *string)()
-    SetIpAddress(value *string)()
-    SetIsImported(value *bool)()
-    SetLandingPage(value *string)()
-    SetOrganizationId(value *string)()
-    SetOrigin(value *string)()
-    SetPrice(value *float64)()
-    SetProduct(value *string)()
-    SetPubId(value *string)()
-    SetReferrer(value *string)()
-    SetSellerLeadId(value *string)()
-    SetSmsConsentPhoneNumber(value *string)()
-    SetSmsConsentStatus(value *string)()
-    SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsOptedOut(value *bool)()
-    SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSourceMetadata(value LeadMetadata_sourceMetadataable)()
-    SetSubId(value *string)()
-    SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetTrustedFormUrl(value *string)()
-    SetUserAgent(value *string)()
-    SetUserId(value *string)()
-    SetUtmCampaign(value *string)()
-    SetUtmContent(value *string)()
-    SetUtmMedium(value *string)()
-    SetUtmSource(value *string)()
-    SetUtmTerm(value *string)()
-    SetVertical(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAssignedPhoneNumberId() *string
+	GetComplianceBlockedReason() *string
+	GetComplianceStatus() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDirectPostPrice() *float64
+	GetExternalId() *string
+	GetImportBatchId() *string
+	GetIpAddress() *string
+	GetIsImported() *bool
+	GetLandingPage() *string
+	GetOrganizationId() *string
+	GetOrigin() *string
+	GetPrice() *float64
+	GetProduct() *string
+	GetPubId() *string
+	GetReferrer() *string
+	GetSellerLeadId() *string
+	GetSmsConsentPhoneNumber() *string
+	GetSmsConsentStatus() *string
+	GetSmsHelpRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsOptedOut() *bool
+	GetSmsOptInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsOptOutAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSourceMetadata() LeadMetadata_sourceMetadataable
+	GetSubId() *string
+	GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTrustedFormUrl() *string
+	GetUserAgent() *string
+	GetUserId() *string
+	GetUtmCampaign() *string
+	GetUtmContent() *string
+	GetUtmMedium() *string
+	GetUtmSource() *string
+	GetUtmTerm() *string
+	GetVertical() *string
+	SetAssignedPhoneNumberId(value *string)
+	SetComplianceBlockedReason(value *string)
+	SetComplianceStatus(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDirectPostPrice(value *float64)
+	SetExternalId(value *string)
+	SetImportBatchId(value *string)
+	SetIpAddress(value *string)
+	SetIsImported(value *bool)
+	SetLandingPage(value *string)
+	SetOrganizationId(value *string)
+	SetOrigin(value *string)
+	SetPrice(value *float64)
+	SetProduct(value *string)
+	SetPubId(value *string)
+	SetReferrer(value *string)
+	SetSellerLeadId(value *string)
+	SetSmsConsentPhoneNumber(value *string)
+	SetSmsConsentStatus(value *string)
+	SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsOptedOut(value *bool)
+	SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSourceMetadata(value LeadMetadata_sourceMetadataable)
+	SetSubId(value *string)
+	SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTrustedFormUrl(value *string)
+	SetUserAgent(value *string)
+	SetUserId(value *string)
+	SetUtmCampaign(value *string)
+	SetUtmContent(value *string)
+	SetUtmMedium(value *string)
+	SetUtmSource(value *string)
+	SetUtmTerm(value *string)
+	SetVertical(value *string)
 }

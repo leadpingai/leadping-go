@@ -4,296 +4,318 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // CustomerResponseMetrics measures how quickly and consistently an organization responds to leads across supported communication channels.
 type CustomerResponseMetrics struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Average minutes measured in minutes.
-    averageMinutes *float64
-    // Collection of average minutes trend included with this Leadping customer response metrics.
-    averageMinutesTrend []AnalyticsTrendPointOfdecimalable
-    // Median minutes measured in minutes.
-    medianMinutes *float64
-    // Number of calls missed during the reporting period.
-    missedCalls *int32
-    // Number of responded leads represented by this Leadping customer response metrics.
-    respondedLeads *int32
-    // Responded within five minutes percent expressed as a percentage.
-    respondedWithinFiveMinutesPercent *float64
-    // Number of unread messages represented by this Leadping customer response metrics.
-    unreadMessages *int32
-    // Number of unresponded leads represented by this Leadping customer response metrics.
-    unrespondedLeads *int32
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Average minutes measured in minutes.
+	averageMinutes *float64
+	// Collection of average minutes trend included with this Leadping customer response metrics.
+	averageMinutesTrend []AnalyticsTrendPointOfdecimalable
+	// Median minutes measured in minutes.
+	medianMinutes *float64
+	// Number of calls missed during the reporting period.
+	missedCalls *int32
+	// Number of responded leads represented by this Leadping customer response metrics.
+	respondedLeads *int32
+	// Responded within five minutes percent expressed as a percentage.
+	respondedWithinFiveMinutesPercent *float64
+	// Number of unread messages represented by this Leadping customer response metrics.
+	unreadMessages *int32
+	// Number of unresponded leads represented by this Leadping customer response metrics.
+	unrespondedLeads *int32
 }
+
 // NewCustomerResponseMetrics instantiates a new CustomerResponseMetrics and sets the default values.
-func NewCustomerResponseMetrics()(*CustomerResponseMetrics) {
-    m := &CustomerResponseMetrics{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerResponseMetrics() *CustomerResponseMetrics {
+	m := &CustomerResponseMetrics{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerResponseMetricsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerResponseMetricsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerResponseMetrics(), nil
+func CreateCustomerResponseMetricsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerResponseMetrics(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerResponseMetrics) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerResponseMetrics) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAverageMinutes gets the averageMinutes property value. Average minutes measured in minutes.
 // returns a *float64 when successful
-func (m *CustomerResponseMetrics) GetAverageMinutes()(*float64) {
-    return m.averageMinutes
+func (m *CustomerResponseMetrics) GetAverageMinutes() *float64 {
+	return m.averageMinutes
 }
+
 // GetAverageMinutesTrend gets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
 // returns a []AnalyticsTrendPointOfdecimalable when successful
-func (m *CustomerResponseMetrics) GetAverageMinutesTrend()([]AnalyticsTrendPointOfdecimalable) {
-    return m.averageMinutesTrend
+func (m *CustomerResponseMetrics) GetAverageMinutesTrend() []AnalyticsTrendPointOfdecimalable {
+	return m.averageMinutesTrend
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerResponseMetrics) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["averageMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAverageMinutes(val)
-        }
-        return nil
-    }
-    res["averageMinutesTrend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfdecimalFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AnalyticsTrendPointOfdecimalable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AnalyticsTrendPointOfdecimalable)
-                }
-            }
-            m.SetAverageMinutesTrend(res)
-        }
-        return nil
-    }
-    res["medianMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMedianMinutes(val)
-        }
-        return nil
-    }
-    res["missedCalls"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedCalls(val)
-        }
-        return nil
-    }
-    res["respondedLeads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRespondedLeads(val)
-        }
-        return nil
-    }
-    res["respondedWithinFiveMinutesPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetFloat64Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRespondedWithinFiveMinutesPercent(val)
-        }
-        return nil
-    }
-    res["unreadMessages"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadMessages(val)
-        }
-        return nil
-    }
-    res["unrespondedLeads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnrespondedLeads(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerResponseMetrics) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["averageMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAverageMinutes(val)
+		}
+		return nil
+	}
+	res["averageMinutesTrend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfdecimalFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AnalyticsTrendPointOfdecimalable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AnalyticsTrendPointOfdecimalable)
+				}
+			}
+			m.SetAverageMinutesTrend(res)
+		}
+		return nil
+	}
+	res["medianMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMedianMinutes(val)
+		}
+		return nil
+	}
+	res["missedCalls"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedCalls(val)
+		}
+		return nil
+	}
+	res["respondedLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRespondedLeads(val)
+		}
+		return nil
+	}
+	res["respondedWithinFiveMinutesPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRespondedWithinFiveMinutesPercent(val)
+		}
+		return nil
+	}
+	res["unreadMessages"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnreadMessages(val)
+		}
+		return nil
+	}
+	res["unrespondedLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnrespondedLeads(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetMedianMinutes gets the medianMinutes property value. Median minutes measured in minutes.
 // returns a *float64 when successful
-func (m *CustomerResponseMetrics) GetMedianMinutes()(*float64) {
-    return m.medianMinutes
+func (m *CustomerResponseMetrics) GetMedianMinutes() *float64 {
+	return m.medianMinutes
 }
+
 // GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
 // returns a *int32 when successful
-func (m *CustomerResponseMetrics) GetMissedCalls()(*int32) {
-    return m.missedCalls
+func (m *CustomerResponseMetrics) GetMissedCalls() *int32 {
+	return m.missedCalls
 }
+
 // GetRespondedLeads gets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
 // returns a *int32 when successful
-func (m *CustomerResponseMetrics) GetRespondedLeads()(*int32) {
-    return m.respondedLeads
+func (m *CustomerResponseMetrics) GetRespondedLeads() *int32 {
+	return m.respondedLeads
 }
+
 // GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
 // returns a *float64 when successful
-func (m *CustomerResponseMetrics) GetRespondedWithinFiveMinutesPercent()(*float64) {
-    return m.respondedWithinFiveMinutesPercent
+func (m *CustomerResponseMetrics) GetRespondedWithinFiveMinutesPercent() *float64 {
+	return m.respondedWithinFiveMinutesPercent
 }
+
 // GetUnreadMessages gets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
 // returns a *int32 when successful
-func (m *CustomerResponseMetrics) GetUnreadMessages()(*int32) {
-    return m.unreadMessages
+func (m *CustomerResponseMetrics) GetUnreadMessages() *int32 {
+	return m.unreadMessages
 }
+
 // GetUnrespondedLeads gets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
 // returns a *int32 when successful
-func (m *CustomerResponseMetrics) GetUnrespondedLeads()(*int32) {
-    return m.unrespondedLeads
+func (m *CustomerResponseMetrics) GetUnrespondedLeads() *int32 {
+	return m.unrespondedLeads
 }
+
 // Serialize serializes information the current object
-func (m *CustomerResponseMetrics) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteFloat64Value("averageMinutes", m.GetAverageMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetAverageMinutesTrend() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetAverageMinutesTrend()))
-        for i, v := range m.GetAverageMinutesTrend() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("averageMinutesTrend", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("medianMinutes", m.GetMedianMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("missedCalls", m.GetMissedCalls())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("respondedLeads", m.GetRespondedLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteFloat64Value("respondedWithinFiveMinutesPercent", m.GetRespondedWithinFiveMinutesPercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("unreadMessages", m.GetUnreadMessages())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("unrespondedLeads", m.GetUnrespondedLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerResponseMetrics) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("averageMinutes", m.GetAverageMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetAverageMinutesTrend() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetAverageMinutesTrend()))
+		for i, v := range m.GetAverageMinutesTrend() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("averageMinutesTrend", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("medianMinutes", m.GetMedianMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("missedCalls", m.GetMissedCalls())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("respondedLeads", m.GetRespondedLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("respondedWithinFiveMinutesPercent", m.GetRespondedWithinFiveMinutesPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("unreadMessages", m.GetUnreadMessages())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("unrespondedLeads", m.GetUnrespondedLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerResponseMetrics) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerResponseMetrics) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAverageMinutes sets the averageMinutes property value. Average minutes measured in minutes.
-func (m *CustomerResponseMetrics) SetAverageMinutes(value *float64)() {
-    m.averageMinutes = value
+func (m *CustomerResponseMetrics) SetAverageMinutes(value *float64) {
+	m.averageMinutes = value
 }
+
 // SetAverageMinutesTrend sets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
-func (m *CustomerResponseMetrics) SetAverageMinutesTrend(value []AnalyticsTrendPointOfdecimalable)() {
-    m.averageMinutesTrend = value
+func (m *CustomerResponseMetrics) SetAverageMinutesTrend(value []AnalyticsTrendPointOfdecimalable) {
+	m.averageMinutesTrend = value
 }
+
 // SetMedianMinutes sets the medianMinutes property value. Median minutes measured in minutes.
-func (m *CustomerResponseMetrics) SetMedianMinutes(value *float64)() {
-    m.medianMinutes = value
+func (m *CustomerResponseMetrics) SetMedianMinutes(value *float64) {
+	m.medianMinutes = value
 }
+
 // SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
-func (m *CustomerResponseMetrics) SetMissedCalls(value *int32)() {
-    m.missedCalls = value
+func (m *CustomerResponseMetrics) SetMissedCalls(value *int32) {
+	m.missedCalls = value
 }
+
 // SetRespondedLeads sets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
-func (m *CustomerResponseMetrics) SetRespondedLeads(value *int32)() {
-    m.respondedLeads = value
+func (m *CustomerResponseMetrics) SetRespondedLeads(value *int32) {
+	m.respondedLeads = value
 }
+
 // SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
-func (m *CustomerResponseMetrics) SetRespondedWithinFiveMinutesPercent(value *float64)() {
-    m.respondedWithinFiveMinutesPercent = value
+func (m *CustomerResponseMetrics) SetRespondedWithinFiveMinutesPercent(value *float64) {
+	m.respondedWithinFiveMinutesPercent = value
 }
+
 // SetUnreadMessages sets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
-func (m *CustomerResponseMetrics) SetUnreadMessages(value *int32)() {
-    m.unreadMessages = value
+func (m *CustomerResponseMetrics) SetUnreadMessages(value *int32) {
+	m.unreadMessages = value
 }
+
 // SetUnrespondedLeads sets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
-func (m *CustomerResponseMetrics) SetUnrespondedLeads(value *int32)() {
-    m.unrespondedLeads = value
+func (m *CustomerResponseMetrics) SetUnrespondedLeads(value *int32) {
+	m.unrespondedLeads = value
 }
+
 type CustomerResponseMetricsable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAverageMinutes()(*float64)
-    GetAverageMinutesTrend()([]AnalyticsTrendPointOfdecimalable)
-    GetMedianMinutes()(*float64)
-    GetMissedCalls()(*int32)
-    GetRespondedLeads()(*int32)
-    GetRespondedWithinFiveMinutesPercent()(*float64)
-    GetUnreadMessages()(*int32)
-    GetUnrespondedLeads()(*int32)
-    SetAverageMinutes(value *float64)()
-    SetAverageMinutesTrend(value []AnalyticsTrendPointOfdecimalable)()
-    SetMedianMinutes(value *float64)()
-    SetMissedCalls(value *int32)()
-    SetRespondedLeads(value *int32)()
-    SetRespondedWithinFiveMinutesPercent(value *float64)()
-    SetUnreadMessages(value *int32)()
-    SetUnrespondedLeads(value *int32)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAverageMinutes() *float64
+	GetAverageMinutesTrend() []AnalyticsTrendPointOfdecimalable
+	GetMedianMinutes() *float64
+	GetMissedCalls() *int32
+	GetRespondedLeads() *int32
+	GetRespondedWithinFiveMinutesPercent() *float64
+	GetUnreadMessages() *int32
+	GetUnrespondedLeads() *int32
+	SetAverageMinutes(value *float64)
+	SetAverageMinutesTrend(value []AnalyticsTrendPointOfdecimalable)
+	SetMedianMinutes(value *float64)
+	SetMissedCalls(value *int32)
+	SetRespondedLeads(value *int32)
+	SetRespondedWithinFiveMinutesPercent(value *float64)
+	SetUnreadMessages(value *int32)
+	SetUnrespondedLeads(value *int32)
 }
