@@ -29,7 +29,7 @@ func NewA2aRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c
 	return NewA2aRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post accepts authenticated A2A JSON-RPC requests for Leadping's supported agent operations.
+// Post send authenticated A2A JSON-RPC requests to Leadping through the API to access supported agent operations and integrate them into your agent workflows.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -54,7 +54,7 @@ func (m *A2aRequestBuilder) Post(ctx context.Context, requestConfiguration *i2ae
 	return res.([]byte), nil
 }
 
-// ToPostRequestInformation accepts authenticated A2A JSON-RPC requests for Leadping's supported agent operations.
+// ToPostRequestInformation send authenticated A2A JSON-RPC requests to Leadping through the API to access supported agent operations and integrate them into your agent workflows.
 // returns a *RequestInformation when successful
 func (m *A2aRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
