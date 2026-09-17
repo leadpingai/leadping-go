@@ -36,6 +36,8 @@ type OutboundPhoneNumberCapacity struct {
 	smsLimitToday *int32
 	// The next time SMS capacity becomes available in the rolling minute window.
 	smsMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	smsRampDirection *OutboundPhoneNumberCapacity_smsRampDirection
 	// Indicates whether SMS limits for this phone number are still ramping up.
 	smsRamping *bool
 	// SMS remaining this hour for the applicable messaging or voice capacity window.
@@ -62,6 +64,8 @@ type OutboundPhoneNumberCapacity struct {
 	voiceLimitToday *int32
 	// The next time voice capacity becomes available in the rolling minute window.
 	voiceMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	voiceRampDirection *OutboundPhoneNumberCapacity_voiceRampDirection
 	// Indicates whether call limits for this phone number are still ramping up.
 	voiceRamping *bool
 	// Voice remaining this hour for the applicable messaging or voice capacity window.
@@ -227,6 +231,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["smsRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutboundPhoneNumberCapacity_smsRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRampDirection(val.(*OutboundPhoneNumberCapacity_smsRampDirection))
+		}
+		return nil
+	}
 	res["smsRamping"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -354,6 +368,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers() map[string]func(i8
 		}
 		if val != nil {
 			m.SetVoiceMinutelyResetsAt(val)
+		}
+		return nil
+	}
+	res["voiceRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutboundPhoneNumberCapacity_voiceRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRampDirection(val.(*OutboundPhoneNumberCapacity_voiceRampDirection))
 		}
 		return nil
 	}
@@ -496,6 +520,12 @@ func (m *OutboundPhoneNumberCapacity) GetSmsMinutelyResetsAt() *i336074805fc8539
 	return m.smsMinutelyResetsAt
 }
 
+// GetSmsRampDirection gets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *OutboundPhoneNumberCapacity_smsRampDirection when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRampDirection() *OutboundPhoneNumberCapacity_smsRampDirection {
+	return m.smsRampDirection
+}
+
 // GetSmsRamping gets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
 // returns a *bool when successful
 func (m *OutboundPhoneNumberCapacity) GetSmsRamping() *bool {
@@ -572,6 +602,12 @@ func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday() *int32 {
 // returns a *Time when successful
 func (m *OutboundPhoneNumberCapacity) GetVoiceMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.voiceMinutelyResetsAt
+}
+
+// GetVoiceRampDirection gets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *OutboundPhoneNumberCapacity_voiceRampDirection when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRampDirection() *OutboundPhoneNumberCapacity_voiceRampDirection {
+	return m.voiceRampDirection
 }
 
 // GetVoiceRamping gets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
@@ -691,6 +727,13 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
 			return err
 		}
 	}
+	if m.GetSmsRampDirection() != nil {
+		cast := (*m.GetSmsRampDirection()).String()
+		err := writer.WriteStringValue("smsRampDirection", &cast)
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteBoolValue("smsRamping", m.GetSmsRamping())
 		if err != nil {
@@ -765,6 +808,13 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
 	}
 	{
 		err := writer.WriteTimeValue("voiceMinutelyResetsAt", m.GetVoiceMinutelyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetVoiceRampDirection() != nil {
+		cast := (*m.GetVoiceRampDirection()).String()
+		err := writer.WriteStringValue("voiceRampDirection", &cast)
 		if err != nil {
 			return err
 		}
@@ -885,6 +935,11 @@ func (m *OutboundPhoneNumberCapacity) SetSmsMinutelyResetsAt(value *i336074805fc
 	m.smsMinutelyResetsAt = value
 }
 
+// SetSmsRampDirection sets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *OutboundPhoneNumberCapacity) SetSmsRampDirection(value *OutboundPhoneNumberCapacity_smsRampDirection) {
+	m.smsRampDirection = value
+}
+
 // SetSmsRamping sets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
 func (m *OutboundPhoneNumberCapacity) SetSmsRamping(value *bool) {
 	m.smsRamping = value
@@ -950,6 +1005,11 @@ func (m *OutboundPhoneNumberCapacity) SetVoiceMinutelyResetsAt(value *i336074805
 	m.voiceMinutelyResetsAt = value
 }
 
+// SetVoiceRampDirection sets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *OutboundPhoneNumberCapacity) SetVoiceRampDirection(value *OutboundPhoneNumberCapacity_voiceRampDirection) {
+	m.voiceRampDirection = value
+}
+
 // SetVoiceRamping sets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
 func (m *OutboundPhoneNumberCapacity) SetVoiceRamping(value *bool) {
 	m.voiceRamping = value
@@ -1000,6 +1060,7 @@ type OutboundPhoneNumberCapacityable interface {
 	GetSmsLimitThisMinute() *int32
 	GetSmsLimitToday() *int32
 	GetSmsMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsRampDirection() *OutboundPhoneNumberCapacity_smsRampDirection
 	GetSmsRamping() *bool
 	GetSmsRemainingThisHour() *int32
 	GetSmsRemainingThisMinute() *int32
@@ -1013,6 +1074,7 @@ type OutboundPhoneNumberCapacityable interface {
 	GetVoiceLimitThisMinute() *int32
 	GetVoiceLimitToday() *int32
 	GetVoiceMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetVoiceRampDirection() *OutboundPhoneNumberCapacity_voiceRampDirection
 	GetVoiceRamping() *bool
 	GetVoiceRemainingThisHour() *int32
 	GetVoiceRemainingThisMinute() *int32
@@ -1032,6 +1094,7 @@ type OutboundPhoneNumberCapacityable interface {
 	SetSmsLimitThisMinute(value *int32)
 	SetSmsLimitToday(value *int32)
 	SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsRampDirection(value *OutboundPhoneNumberCapacity_smsRampDirection)
 	SetSmsRamping(value *bool)
 	SetSmsRemainingThisHour(value *int32)
 	SetSmsRemainingThisMinute(value *int32)
@@ -1045,6 +1108,7 @@ type OutboundPhoneNumberCapacityable interface {
 	SetVoiceLimitThisMinute(value *int32)
 	SetVoiceLimitToday(value *int32)
 	SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetVoiceRampDirection(value *OutboundPhoneNumberCapacity_voiceRampDirection)
 	SetVoiceRamping(value *bool)
 	SetVoiceRemainingThisHour(value *int32)
 	SetVoiceRemainingThisMinute(value *int32)

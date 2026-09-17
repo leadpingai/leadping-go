@@ -34,6 +34,10 @@ type PhoneNumberResponse struct {
 	phoneIdentityId *string
 	// Public Leadping API schema for phone number routing metadata data.
 	routing PhoneNumberRoutingMetadataable
+	// Whether provider, routing, and health checks allow SMS.
+	smsReady *bool
+	// Whether provider, routing, and health checks allow calls.
+	voiceReady *bool
 	// Messaging and calling warmup for a Leadping phone number.
 	warmup PhoneNumberReadinessable
 }
@@ -183,6 +187,26 @@ func (m *PhoneNumberResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["smsReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsReady(val)
+		}
+		return nil
+	}
+	res["voiceReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceReady(val)
+		}
+		return nil
+	}
 	res["warmup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
 		if err != nil {
@@ -248,6 +272,18 @@ func (m *PhoneNumberResponse) GetPhoneIdentityId() *string {
 // returns a PhoneNumberRoutingMetadataable when successful
 func (m *PhoneNumberResponse) GetRouting() PhoneNumberRoutingMetadataable {
 	return m.routing
+}
+
+// GetSmsReady gets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetSmsReady() *bool {
+	return m.smsReady
+}
+
+// GetVoiceReady gets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetVoiceReady() *bool {
+	return m.voiceReady
 }
 
 // GetWarmup gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
@@ -320,6 +356,18 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteObjectValue("routing", m.GetRouting())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("voiceReady", m.GetVoiceReady())
 		if err != nil {
 			return err
 		}
@@ -399,6 +447,16 @@ func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable) {
 	m.routing = value
 }
 
+// SetSmsReady sets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+func (m *PhoneNumberResponse) SetSmsReady(value *bool) {
+	m.smsReady = value
+}
+
+// SetVoiceReady sets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+func (m *PhoneNumberResponse) SetVoiceReady(value *bool) {
+	m.voiceReady = value
+}
+
 // SetWarmup sets the warmup property value. Messaging and calling warmup for a Leadping phone number.
 func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberReadinessable) {
 	m.warmup = value
@@ -418,6 +476,8 @@ type PhoneNumberResponseable interface {
 	GetOrganization() PhoneNumberResponse_organizationable
 	GetPhoneIdentityId() *string
 	GetRouting() PhoneNumberRoutingMetadataable
+	GetSmsReady() *bool
+	GetVoiceReady() *bool
 	GetWarmup() PhoneNumberReadinessable
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetEnabled(value *bool)
@@ -430,5 +490,7 @@ type PhoneNumberResponseable interface {
 	SetOrganization(value PhoneNumberResponse_organizationable)
 	SetPhoneIdentityId(value *string)
 	SetRouting(value PhoneNumberRoutingMetadataable)
+	SetSmsReady(value *bool)
+	SetVoiceReady(value *bool)
 	SetWarmup(value PhoneNumberReadinessable)
 }

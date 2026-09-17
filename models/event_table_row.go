@@ -18,6 +18,8 @@ type EventTableRow struct {
 	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Automation run ID opened from this automation event.
+	automationRunId *string
 	// Monetary amount billed for this Leadping communication or transaction.
 	billableAmount *float64
 	// Billing state for this communication, charge, or transaction.
@@ -143,6 +145,12 @@ func (m *EventTableRow) GetActorUserId() *string {
 // returns a map[string]any when successful
 func (m *EventTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
+}
+
+// GetAutomationRunId gets the automationRunId property value. Automation run ID opened from this automation event.
+// returns a *string when successful
+func (m *EventTableRow) GetAutomationRunId() *string {
+	return m.automationRunId
 }
 
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
@@ -278,6 +286,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetActorUserId(val)
+		}
+		return nil
+	}
+	res["automationRunId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationRunId(val)
 		}
 		return nil
 	}
@@ -913,6 +931,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteStringValue("automationRunId", m.GetAutomationRunId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
 		if err != nil {
 			return err
@@ -1215,6 +1239,11 @@ func (m *EventTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAutomationRunId sets the automationRunId property value. Automation run ID opened from this automation event.
+func (m *EventTableRow) SetAutomationRunId(value *string) {
+	m.automationRunId = value
+}
+
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 func (m *EventTableRow) SetBillableAmount(value *float64) {
 	m.billableAmount = value
@@ -1441,6 +1470,7 @@ type EventTableRowable interface {
 	GetActorDisplayName() *string
 	GetActorEmail() *string
 	GetActorUserId() *string
+	GetAutomationRunId() *string
 	GetBillableAmount() *float64
 	GetBillingStatus() *string
 	GetBlockedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1488,6 +1518,7 @@ type EventTableRowable interface {
 	SetActorDisplayName(value *string)
 	SetActorEmail(value *string)
 	SetActorUserId(value *string)
+	SetAutomationRunId(value *string)
 	SetBillableAmount(value *float64)
 	SetBillingStatus(value *string)
 	SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
