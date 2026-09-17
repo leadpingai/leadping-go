@@ -24,13 +24,21 @@ type CustomerCommunicationUsagePoint struct {
 	callsReceived *int32
 	// Date and time when this Leadping customer communication usage point was end.
 	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Manual provider-accepted SMS messages; automated messages are excluded.
+	humanResponses *int32
 	// Human-readable label for this Leadping customer communication usage point.
 	label *string
+	// Received prospect messages excluding consent and help commands.
+	prospectReplies *int32
+	// Messages whose send execution started; queued and scheduled messages are excluded.
+	smsAttempted *int32
+	// Messages confirmed delivered, counted at delivery time.
+	smsDelivered *int32
 	// Number of SMS messages that failed or were blocked in this time bucket.
 	smsErrors *int32
 	// Number of SMS messages received during the reporting period.
 	smsReceived *int32
-	// Number of SMS messages sent during the reporting period.
+	// Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 	smsSent *int32
 	// Spend represented by this Leadping customer communication usage point.
 	spend *float64
@@ -157,6 +165,16 @@ func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers() map[string]fun
 		}
 		return nil
 	}
+	res["humanResponses"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHumanResponses(val)
+		}
+		return nil
+	}
 	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -164,6 +182,36 @@ func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers() map[string]fun
 		}
 		if val != nil {
 			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["prospectReplies"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProspectReplies(val)
+		}
+		return nil
+	}
+	res["smsAttempted"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsAttempted(val)
+		}
+		return nil
+	}
+	res["smsDelivered"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivered(val)
 		}
 		return nil
 	}
@@ -220,10 +268,34 @@ func (m *CustomerCommunicationUsagePoint) GetFieldDeserializers() map[string]fun
 	return res
 }
 
+// GetHumanResponses gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsagePoint) GetHumanResponses() *int32 {
+	return m.humanResponses
+}
+
 // GetLabel gets the label property value. Human-readable label for this Leadping customer communication usage point.
 // returns a *string when successful
 func (m *CustomerCommunicationUsagePoint) GetLabel() *string {
 	return m.label
+}
+
+// GetProspectReplies gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsagePoint) GetProspectReplies() *int32 {
+	return m.prospectReplies
+}
+
+// GetSmsAttempted gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsagePoint) GetSmsAttempted() *int32 {
+	return m.smsAttempted
+}
+
+// GetSmsDelivered gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsagePoint) GetSmsDelivered() *int32 {
+	return m.smsDelivered
 }
 
 // GetSmsErrors gets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
@@ -238,7 +310,7 @@ func (m *CustomerCommunicationUsagePoint) GetSmsReceived() *int32 {
 	return m.smsReceived
 }
 
-// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
+// GetSmsSent gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsagePoint) GetSmsSent() *int32 {
 	return m.smsSent
@@ -295,7 +367,31 @@ func (m *CustomerCommunicationUsagePoint) Serialize(writer i878a80d2330e89d26896
 		}
 	}
 	{
+		err := writer.WriteInt32Value("humanResponses", m.GetHumanResponses())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("prospectReplies", m.GetProspectReplies())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsAttempted", m.GetSmsAttempted())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsDelivered", m.GetSmsDelivered())
 		if err != nil {
 			return err
 		}
@@ -374,9 +470,29 @@ func (m *CustomerCommunicationUsagePoint) SetEndAt(value *i336074805fc853987abe6
 	m.endAt = value
 }
 
+// SetHumanResponses sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+func (m *CustomerCommunicationUsagePoint) SetHumanResponses(value *int32) {
+	m.humanResponses = value
+}
+
 // SetLabel sets the label property value. Human-readable label for this Leadping customer communication usage point.
 func (m *CustomerCommunicationUsagePoint) SetLabel(value *string) {
 	m.label = value
+}
+
+// SetProspectReplies sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+func (m *CustomerCommunicationUsagePoint) SetProspectReplies(value *int32) {
+	m.prospectReplies = value
+}
+
+// SetSmsAttempted sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+func (m *CustomerCommunicationUsagePoint) SetSmsAttempted(value *int32) {
+	m.smsAttempted = value
+}
+
+// SetSmsDelivered sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+func (m *CustomerCommunicationUsagePoint) SetSmsDelivered(value *int32) {
+	m.smsDelivered = value
 }
 
 // SetSmsErrors sets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
@@ -389,7 +505,7 @@ func (m *CustomerCommunicationUsagePoint) SetSmsReceived(value *int32) {
 	m.smsReceived = value
 }
 
-// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
+// SetSmsSent sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 func (m *CustomerCommunicationUsagePoint) SetSmsSent(value *int32) {
 	m.smsSent = value
 }
@@ -413,7 +529,11 @@ type CustomerCommunicationUsagePointable interface {
 	GetCallsPlaced() *int32
 	GetCallsReceived() *int32
 	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetHumanResponses() *int32
 	GetLabel() *string
+	GetProspectReplies() *int32
+	GetSmsAttempted() *int32
+	GetSmsDelivered() *int32
 	GetSmsErrors() *int32
 	GetSmsReceived() *int32
 	GetSmsSent() *int32
@@ -425,7 +545,11 @@ type CustomerCommunicationUsagePointable interface {
 	SetCallsPlaced(value *int32)
 	SetCallsReceived(value *int32)
 	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetHumanResponses(value *int32)
 	SetLabel(value *string)
+	SetProspectReplies(value *int32)
+	SetSmsAttempted(value *int32)
+	SetSmsDelivered(value *int32)
 	SetSmsErrors(value *int32)
 	SetSmsReceived(value *int32)
 	SetSmsSent(value *int32)

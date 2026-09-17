@@ -18,6 +18,12 @@ type SuppressionEntryResponse struct {
 	channel *string
 	// Unique Leadping identifier for the suppression entry.
 	id *string
+	// The associated lead's profile image URL, when available.
+	leadAvatarUrl *string
+	// The associated lead's email address, used for Gravatar fallback.
+	leadEmail *string
+	// Display name of the associated lead, when available.
+	leadName *string
 	// Suppressed email address normalized for matching.
 	normalizedEmail *string
 	// Suppressed phone number normalized to a consistent format.
@@ -106,6 +112,36 @@ func (m *SuppressionEntryResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["leadAvatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadAvatarUrl(val)
+		}
+		return nil
+	}
+	res["leadEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadEmail(val)
+		}
+		return nil
+	}
+	res["leadName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadName(val)
 		}
 		return nil
 	}
@@ -208,6 +244,24 @@ func (m *SuppressionEntryResponse) GetId() *string {
 	return m.id
 }
 
+// GetLeadAvatarUrl gets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
+// returns a *string when successful
+func (m *SuppressionEntryResponse) GetLeadAvatarUrl() *string {
+	return m.leadAvatarUrl
+}
+
+// GetLeadEmail gets the leadEmail property value. The associated lead's email address, used for Gravatar fallback.
+// returns a *string when successful
+func (m *SuppressionEntryResponse) GetLeadEmail() *string {
+	return m.leadEmail
+}
+
+// GetLeadName gets the leadName property value. Display name of the associated lead, when available.
+// returns a *string when successful
+func (m *SuppressionEntryResponse) GetLeadName() *string {
+	return m.leadName
+}
+
 // GetNormalizedEmail gets the normalizedEmail property value. Suppressed email address normalized for matching.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetNormalizedEmail() *string {
@@ -284,6 +338,24 @@ func (m *SuppressionEntryResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadAvatarUrl", m.GetLeadAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadEmail", m.GetLeadEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadName", m.GetLeadName())
 		if err != nil {
 			return err
 		}
@@ -371,6 +443,21 @@ func (m *SuppressionEntryResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetLeadAvatarUrl sets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
+func (m *SuppressionEntryResponse) SetLeadAvatarUrl(value *string) {
+	m.leadAvatarUrl = value
+}
+
+// SetLeadEmail sets the leadEmail property value. The associated lead's email address, used for Gravatar fallback.
+func (m *SuppressionEntryResponse) SetLeadEmail(value *string) {
+	m.leadEmail = value
+}
+
+// SetLeadName sets the leadName property value. Display name of the associated lead, when available.
+func (m *SuppressionEntryResponse) SetLeadName(value *string) {
+	m.leadName = value
+}
+
 // SetNormalizedEmail sets the normalizedEmail property value. Suppressed email address normalized for matching.
 func (m *SuppressionEntryResponse) SetNormalizedEmail(value *string) {
 	m.normalizedEmail = value
@@ -422,6 +509,9 @@ type SuppressionEntryResponseable interface {
 	GetAudit() []SuppressionEntryAuditable
 	GetChannel() *string
 	GetId() *string
+	GetLeadAvatarUrl() *string
+	GetLeadEmail() *string
+	GetLeadName() *string
 	GetNormalizedEmail() *string
 	GetNormalizedPhoneNumber() *string
 	GetOrganizationId() *string
@@ -434,6 +524,9 @@ type SuppressionEntryResponseable interface {
 	SetAudit(value []SuppressionEntryAuditable)
 	SetChannel(value *string)
 	SetId(value *string)
+	SetLeadAvatarUrl(value *string)
+	SetLeadEmail(value *string)
+	SetLeadName(value *string)
 	SetNormalizedEmail(value *string)
 	SetNormalizedPhoneNumber(value *string)
 	SetOrganizationId(value *string)

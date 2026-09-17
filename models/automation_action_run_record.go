@@ -36,6 +36,8 @@ type AutomationActionRunRecord struct {
 	scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Connection selected by a control-flow action such as a weighted random split.
 	selectedConnectionId *string
+	// Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+	smsDelivery AutomationActionRunRecord_smsDeliveryable
 	// UTC timestamp when processing started for this automation action run record.
 	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Current lifecycle status for this automation action run record in the Leadping API.
@@ -221,6 +223,16 @@ func (m *AutomationActionRunRecord) GetFieldDeserializers() map[string]func(i878
 		}
 		return nil
 	}
+	res["smsDelivery"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationActionRunRecord_smsDeliveryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivery(val.(AutomationActionRunRecord_smsDeliveryable))
+		}
+		return nil
+	}
 	res["startedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -278,6 +290,12 @@ func (m *AutomationActionRunRecord) GetScheduledAt() *i336074805fc853987abe6f7fe
 // returns a *string when successful
 func (m *AutomationActionRunRecord) GetSelectedConnectionId() *string {
 	return m.selectedConnectionId
+}
+
+// GetSmsDelivery gets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+// returns a AutomationActionRunRecord_smsDeliveryable when successful
+func (m *AutomationActionRunRecord) GetSmsDelivery() AutomationActionRunRecord_smsDeliveryable {
+	return m.smsDelivery
 }
 
 // GetStartedAt gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
@@ -362,6 +380,12 @@ func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f
 	}
 	{
 		err := writer.WriteStringValue("selectedConnectionId", m.GetSelectedConnectionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("smsDelivery", m.GetSmsDelivery())
 		if err != nil {
 			return err
 		}
@@ -452,6 +476,11 @@ func (m *AutomationActionRunRecord) SetSelectedConnectionId(value *string) {
 	m.selectedConnectionId = value
 }
 
+// SetSmsDelivery sets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+func (m *AutomationActionRunRecord) SetSmsDelivery(value AutomationActionRunRecord_smsDeliveryable) {
+	m.smsDelivery = value
+}
+
 // SetStartedAt sets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 func (m *AutomationActionRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.startedAt = value
@@ -477,6 +506,7 @@ type AutomationActionRunRecordable interface {
 	GetProcessingAttempts() *int32
 	GetScheduledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSelectedConnectionId() *string
+	GetSmsDelivery() AutomationActionRunRecord_smsDeliveryable
 	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetStatus() *string
 	SetActionId(value *string)
@@ -491,6 +521,7 @@ type AutomationActionRunRecordable interface {
 	SetProcessingAttempts(value *int32)
 	SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSelectedConnectionId(value *string)
+	SetSmsDelivery(value AutomationActionRunRecord_smsDeliveryable)
 	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetStatus(value *string)
 }

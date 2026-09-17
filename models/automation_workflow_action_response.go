@@ -34,6 +34,8 @@ type AutomationWorkflowActionResponse struct {
 	scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Date and time when the workflow action was skipped.
 	skippedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+	smsDelivery AutomationWorkflowActionResponse_smsDeliveryable
 	// Date and time when the automation workflow action started.
 	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Current status for this Leadping automation workflow action.
@@ -213,6 +215,16 @@ func (m *AutomationWorkflowActionResponse) GetFieldDeserializers() map[string]fu
 		}
 		return nil
 	}
+	res["smsDelivery"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationWorkflowActionResponse_smsDeliveryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivery(val.(AutomationWorkflowActionResponse_smsDeliveryable))
+		}
+		return nil
+	}
 	res["startedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -322,6 +334,12 @@ func (m *AutomationWorkflowActionResponse) GetSkippedAt() *i336074805fc853987abe
 	return m.skippedAt
 }
 
+// GetSmsDelivery gets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+// returns a AutomationWorkflowActionResponse_smsDeliveryable when successful
+func (m *AutomationWorkflowActionResponse) GetSmsDelivery() AutomationWorkflowActionResponse_smsDeliveryable {
+	return m.smsDelivery
+}
+
 // GetStartedAt gets the startedAt property value. Date and time when the automation workflow action started.
 // returns a *Time when successful
 func (m *AutomationWorkflowActionResponse) GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -428,6 +446,12 @@ func (m *AutomationWorkflowActionResponse) Serialize(writer i878a80d2330e89d2689
 	}
 	{
 		err := writer.WriteTimeValue("skippedAt", m.GetSkippedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("smsDelivery", m.GetSmsDelivery())
 		if err != nil {
 			return err
 		}
@@ -543,6 +567,11 @@ func (m *AutomationWorkflowActionResponse) SetSkippedAt(value *i336074805fc85398
 	m.skippedAt = value
 }
 
+// SetSmsDelivery sets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+func (m *AutomationWorkflowActionResponse) SetSmsDelivery(value AutomationWorkflowActionResponse_smsDeliveryable) {
+	m.smsDelivery = value
+}
+
 // SetStartedAt sets the startedAt property value. Date and time when the automation workflow action started.
 func (m *AutomationWorkflowActionResponse) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.startedAt = value
@@ -592,6 +621,7 @@ type AutomationWorkflowActionResponseable interface {
 	GetSafeReason() *string
 	GetScheduledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSkippedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsDelivery() AutomationWorkflowActionResponse_smsDeliveryable
 	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetStatus() *string
 	GetStatusDisplay() *string
@@ -610,6 +640,7 @@ type AutomationWorkflowActionResponseable interface {
 	SetSafeReason(value *string)
 	SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSkippedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsDelivery(value AutomationWorkflowActionResponse_smsDeliveryable)
 	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetStatus(value *string)
 	SetStatusDisplay(value *string)

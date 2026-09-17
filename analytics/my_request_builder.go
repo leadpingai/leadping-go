@@ -40,6 +40,12 @@ func NewMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
 	return NewMyRequestBuilderInternal(urlParams, requestAdapter)
 }
 
+// Export the export property
+// returns a *MyExportRequestBuilder when successful
+func (m *MyRequestBuilder) Export() *MyExportRequestBuilder {
+	return NewMyExportRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Get returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 // returns a CustomerAnalyticsResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code

@@ -50,6 +50,8 @@ type CallEventTableRow struct {
 	organizationId *string
 	// Display name for the organization associated with this call event.
 	organizationName *string
+	// Defines the source that requested outbound delivery.
+	outboundSource *CallEventTableRow_outboundSource
 	// Describes the durable business outcome of a Leadping phone call after provider status normalization.
 	status *CallEventTableRow_status
 	// Human-readable reason explaining the current status of this call event table row.
@@ -353,6 +355,16 @@ func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["outboundSource"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseCallEventTableRow_outboundSource)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutboundSource(val.(*CallEventTableRow_outboundSource))
+		}
+		return nil
+	}
 	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseCallEventTableRow_status)
 		if err != nil {
@@ -482,6 +494,12 @@ func (m *CallEventTableRow) GetOrganizationId() *string {
 // returns a *string when successful
 func (m *CallEventTableRow) GetOrganizationName() *string {
 	return m.organizationName
+}
+
+// GetOutboundSource gets the outboundSource property value. Defines the source that requested outbound delivery.
+// returns a *CallEventTableRow_outboundSource when successful
+func (m *CallEventTableRow) GetOutboundSource() *CallEventTableRow_outboundSource {
+	return m.outboundSource
 }
 
 // GetStatus gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
@@ -654,6 +672,13 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 			return err
 		}
 	}
+	if m.GetOutboundSource() != nil {
+		cast := (*m.GetOutboundSource()).String()
+		err := writer.WriteStringValue("outboundSource", &cast)
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetStatus() != nil {
 		cast := (*m.GetStatus()).String()
 		err := writer.WriteStringValue("status", &cast)
@@ -812,6 +837,11 @@ func (m *CallEventTableRow) SetOrganizationName(value *string) {
 	m.organizationName = value
 }
 
+// SetOutboundSource sets the outboundSource property value. Defines the source that requested outbound delivery.
+func (m *CallEventTableRow) SetOutboundSource(value *CallEventTableRow_outboundSource) {
+	m.outboundSource = value
+}
+
 // SetStatus sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 func (m *CallEventTableRow) SetStatus(value *CallEventTableRow_status) {
 	m.status = value
@@ -874,6 +904,7 @@ type CallEventTableRowable interface {
 	GetOrganization() *string
 	GetOrganizationId() *string
 	GetOrganizationName() *string
+	GetOutboundSource() *CallEventTableRow_outboundSource
 	GetStatus() *CallEventTableRow_status
 	GetStatusReason() *string
 	GetToPhoneNumber() *string
@@ -901,6 +932,7 @@ type CallEventTableRowable interface {
 	SetOrganization(value *string)
 	SetOrganizationId(value *string)
 	SetOrganizationName(value *string)
+	SetOutboundSource(value *CallEventTableRow_outboundSource)
 	SetStatus(value *CallEventTableRow_status)
 	SetStatusReason(value *string)
 	SetToPhoneNumber(value *string)

@@ -40,14 +40,14 @@ func NewSmsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c
 	return NewSmsRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Media the media property
-// returns a *MediaRequestBuilder when successful
-func (m *SmsRequestBuilder) Media() *MediaRequestBuilder {
-	return NewMediaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
-
 // Send the send property
 // returns a *SendRequestBuilder when successful
 func (m *SmsRequestBuilder) Send() *SendRequestBuilder {
 	return NewSendRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// Uploads the uploads property
+// returns a *UploadsRequestBuilder when successful
+func (m *SmsRequestBuilder) Uploads() *UploadsRequestBuilder {
+	return NewUploadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

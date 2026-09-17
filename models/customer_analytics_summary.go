@@ -5,6 +5,7 @@ package models
 
 import (
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // CustomerAnalyticsSummary summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
@@ -21,6 +22,8 @@ type CustomerAnalyticsSummary struct {
 	callsPlaced *int32
 	// Number of inbound calls received during the reporting period.
 	callsReceived *int32
+	// Manual provider-accepted SMS messages; automated messages are excluded.
+	humanResponses *int32
 	// Number of leads represented by this Leadping customer analytics summary.
 	leads *int32
 	// Compares a metric with the preceding period and reports its absolute and percentage change.
@@ -31,11 +34,29 @@ type CustomerAnalyticsSummary struct {
 	missedCalls *int32
 	// Number of missed leads represented by this Leadping customer analytics summary.
 	missedLeads *int32
-	// Responded within five minutes percent expressed as a percentage.
+	// Responses observed through this instant; min(report end plus five minutes, generation time).
+	observedThrough *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Timely human responses divided by all mature eligible leads, including unanswered leads.
+	overallFiveMinuteSlaPercent *float64
+	// Received prospect messages excluding consent and help commands.
+	prospectReplies *int32
+	// Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
 	respondedWithinFiveMinutesPercent *float64
+	// Non-deleted leads created in the cohort with a full five-minute observation window.
+	slaEligibleLeads *int32
+	// Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+	slaPendingLeads *int32
+	// Mature eligible leads with a human response within exactly five minutes.
+	slaTimelyLeads *int32
+	// Mature eligible leads without a human response by ObservedThrough.
+	slaUnrespondedLeads *int32
+	// Messages whose send execution started; queued and scheduled messages are excluded.
+	smsAttempted *int32
+	// Messages confirmed delivered, counted at delivery time.
+	smsDelivered *int32
 	// Number of SMS messages received during the reporting period.
 	smsReceived *int32
-	// Number of SMS messages sent during the reporting period.
+	// Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 	smsSent *int32
 	// Number of unread messages represented by this Leadping customer analytics summary.
 	unreadMessages *int32
@@ -150,6 +171,16 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["humanResponses"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHumanResponses(val)
+		}
+		return nil
+	}
 	res["leads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetInt32Value()
 		if err != nil {
@@ -200,6 +231,36 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["observedThrough"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetObservedThrough(val)
+		}
+		return nil
+	}
+	res["overallFiveMinuteSlaPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOverallFiveMinuteSlaPercent(val)
+		}
+		return nil
+	}
+	res["prospectReplies"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProspectReplies(val)
+		}
+		return nil
+	}
 	res["respondedWithinFiveMinutesPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetFloat64Value()
 		if err != nil {
@@ -207,6 +268,66 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		if val != nil {
 			m.SetRespondedWithinFiveMinutesPercent(val)
+		}
+		return nil
+	}
+	res["slaEligibleLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaEligibleLeads(val)
+		}
+		return nil
+	}
+	res["slaPendingLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaPendingLeads(val)
+		}
+		return nil
+	}
+	res["slaTimelyLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaTimelyLeads(val)
+		}
+		return nil
+	}
+	res["slaUnrespondedLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaUnrespondedLeads(val)
+		}
+		return nil
+	}
+	res["smsAttempted"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsAttempted(val)
+		}
+		return nil
+	}
+	res["smsDelivered"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivered(val)
 		}
 		return nil
 	}
@@ -273,6 +394,12 @@ func (m *CustomerAnalyticsSummary) GetFieldDeserializers() map[string]func(i878a
 	return res
 }
 
+// GetHumanResponses gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetHumanResponses() *int32 {
+	return m.humanResponses
+}
+
 // GetLeads gets the leads property value. Number of leads represented by this Leadping customer analytics summary.
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetLeads() *int32 {
@@ -303,10 +430,64 @@ func (m *CustomerAnalyticsSummary) GetMissedLeads() *int32 {
 	return m.missedLeads
 }
 
-// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
+// GetObservedThrough gets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+// returns a *Time when successful
+func (m *CustomerAnalyticsSummary) GetObservedThrough() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.observedThrough
+}
+
+// GetOverallFiveMinuteSlaPercent gets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetOverallFiveMinuteSlaPercent() *float64 {
+	return m.overallFiveMinuteSlaPercent
+}
+
+// GetProspectReplies gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetProspectReplies() *int32 {
+	return m.prospectReplies
+}
+
+// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
 // returns a *float64 when successful
 func (m *CustomerAnalyticsSummary) GetRespondedWithinFiveMinutesPercent() *float64 {
 	return m.respondedWithinFiveMinutesPercent
+}
+
+// GetSlaEligibleLeads gets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaEligibleLeads() *int32 {
+	return m.slaEligibleLeads
+}
+
+// GetSlaPendingLeads gets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaPendingLeads() *int32 {
+	return m.slaPendingLeads
+}
+
+// GetSlaTimelyLeads gets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaTimelyLeads() *int32 {
+	return m.slaTimelyLeads
+}
+
+// GetSlaUnrespondedLeads gets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaUnrespondedLeads() *int32 {
+	return m.slaUnrespondedLeads
+}
+
+// GetSmsAttempted gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsAttempted() *int32 {
+	return m.smsAttempted
+}
+
+// GetSmsDelivered gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsDelivered() *int32 {
+	return m.smsDelivered
 }
 
 // GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
@@ -315,7 +496,7 @@ func (m *CustomerAnalyticsSummary) GetSmsReceived() *int32 {
 	return m.smsReceived
 }
 
-// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
+// GetSmsSent gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 // returns a *int32 when successful
 func (m *CustomerAnalyticsSummary) GetSmsSent() *int32 {
 	return m.smsSent
@@ -378,6 +559,12 @@ func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteInt32Value("humanResponses", m.GetHumanResponses())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteInt32Value("leads", m.GetLeads())
 		if err != nil {
 			return err
@@ -408,7 +595,61 @@ func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteTimeValue("observedThrough", m.GetObservedThrough())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("overallFiveMinuteSlaPercent", m.GetOverallFiveMinuteSlaPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("prospectReplies", m.GetProspectReplies())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteFloat64Value("respondedWithinFiveMinutesPercent", m.GetRespondedWithinFiveMinutesPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaEligibleLeads", m.GetSlaEligibleLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaPendingLeads", m.GetSlaPendingLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaTimelyLeads", m.GetSlaTimelyLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaUnrespondedLeads", m.GetSlaUnrespondedLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsAttempted", m.GetSmsAttempted())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsDelivered", m.GetSmsDelivered())
 		if err != nil {
 			return err
 		}
@@ -488,6 +729,11 @@ func (m *CustomerAnalyticsSummary) SetCallsReceived(value *int32) {
 	m.callsReceived = value
 }
 
+// SetHumanResponses sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+func (m *CustomerAnalyticsSummary) SetHumanResponses(value *int32) {
+	m.humanResponses = value
+}
+
 // SetLeads sets the leads property value. Number of leads represented by this Leadping customer analytics summary.
 func (m *CustomerAnalyticsSummary) SetLeads(value *int32) {
 	m.leads = value
@@ -513,9 +759,54 @@ func (m *CustomerAnalyticsSummary) SetMissedLeads(value *int32) {
 	m.missedLeads = value
 }
 
-// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
+// SetObservedThrough sets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+func (m *CustomerAnalyticsSummary) SetObservedThrough(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.observedThrough = value
+}
+
+// SetOverallFiveMinuteSlaPercent sets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+func (m *CustomerAnalyticsSummary) SetOverallFiveMinuteSlaPercent(value *float64) {
+	m.overallFiveMinuteSlaPercent = value
+}
+
+// SetProspectReplies sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+func (m *CustomerAnalyticsSummary) SetProspectReplies(value *int32) {
+	m.prospectReplies = value
+}
+
+// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
 func (m *CustomerAnalyticsSummary) SetRespondedWithinFiveMinutesPercent(value *float64) {
 	m.respondedWithinFiveMinutesPercent = value
+}
+
+// SetSlaEligibleLeads sets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+func (m *CustomerAnalyticsSummary) SetSlaEligibleLeads(value *int32) {
+	m.slaEligibleLeads = value
+}
+
+// SetSlaPendingLeads sets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+func (m *CustomerAnalyticsSummary) SetSlaPendingLeads(value *int32) {
+	m.slaPendingLeads = value
+}
+
+// SetSlaTimelyLeads sets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+func (m *CustomerAnalyticsSummary) SetSlaTimelyLeads(value *int32) {
+	m.slaTimelyLeads = value
+}
+
+// SetSlaUnrespondedLeads sets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+func (m *CustomerAnalyticsSummary) SetSlaUnrespondedLeads(value *int32) {
+	m.slaUnrespondedLeads = value
+}
+
+// SetSmsAttempted sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+func (m *CustomerAnalyticsSummary) SetSmsAttempted(value *int32) {
+	m.smsAttempted = value
+}
+
+// SetSmsDelivered sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+func (m *CustomerAnalyticsSummary) SetSmsDelivered(value *int32) {
+	m.smsDelivered = value
 }
 
 // SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
@@ -523,7 +814,7 @@ func (m *CustomerAnalyticsSummary) SetSmsReceived(value *int32) {
 	m.smsReceived = value
 }
 
-// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
+// SetSmsSent sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 func (m *CustomerAnalyticsSummary) SetSmsSent(value *int32) {
 	m.smsSent = value
 }
@@ -556,12 +847,22 @@ type CustomerAnalyticsSummaryable interface {
 	GetCallMinutes() *float64
 	GetCallsPlaced() *int32
 	GetCallsReceived() *int32
+	GetHumanResponses() *int32
 	GetLeads() *int32
 	GetLeadsComparison() AnalyticsComparisonable
 	GetMedianResponseMinutes() *float64
 	GetMissedCalls() *int32
 	GetMissedLeads() *int32
+	GetObservedThrough() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOverallFiveMinuteSlaPercent() *float64
+	GetProspectReplies() *int32
 	GetRespondedWithinFiveMinutesPercent() *float64
+	GetSlaEligibleLeads() *int32
+	GetSlaPendingLeads() *int32
+	GetSlaTimelyLeads() *int32
+	GetSlaUnrespondedLeads() *int32
+	GetSmsAttempted() *int32
+	GetSmsDelivered() *int32
 	GetSmsReceived() *int32
 	GetSmsSent() *int32
 	GetUnreadMessages() *int32
@@ -573,12 +874,22 @@ type CustomerAnalyticsSummaryable interface {
 	SetCallMinutes(value *float64)
 	SetCallsPlaced(value *int32)
 	SetCallsReceived(value *int32)
+	SetHumanResponses(value *int32)
 	SetLeads(value *int32)
 	SetLeadsComparison(value AnalyticsComparisonable)
 	SetMedianResponseMinutes(value *float64)
 	SetMissedCalls(value *int32)
 	SetMissedLeads(value *int32)
+	SetObservedThrough(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOverallFiveMinuteSlaPercent(value *float64)
+	SetProspectReplies(value *int32)
 	SetRespondedWithinFiveMinutesPercent(value *float64)
+	SetSlaEligibleLeads(value *int32)
+	SetSlaPendingLeads(value *int32)
+	SetSlaTimelyLeads(value *int32)
+	SetSlaUnrespondedLeads(value *int32)
+	SetSmsAttempted(value *int32)
+	SetSmsDelivered(value *int32)
 	SetSmsReceived(value *int32)
 	SetSmsSent(value *int32)
 	SetUnreadMessages(value *int32)

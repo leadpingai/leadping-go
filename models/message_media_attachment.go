@@ -15,12 +15,12 @@ type MessageMediaAttachment struct {
 	contentType *string
 	// Original file name of the media attachment, when available.
 	fileName *string
-	// The durable Media record containing this attachment's scanned bytes.
-	mediaId *string
 	// SHA-256 digest of the media content, when available.
 	sha256 *string
 	// Size of the media attachment in bytes.
 	size *int64
+	// The durable Media record containing this attachment's scanned bytes.
+	uploadId *string
 	// URL from which the media attachment can be retrieved.
 	url *string
 }
@@ -74,16 +74,6 @@ func (m *MessageMediaAttachment) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
-	res["mediaId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetMediaId(val)
-		}
-		return nil
-	}
 	res["sha256"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -101,6 +91,16 @@ func (m *MessageMediaAttachment) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetSize(val)
+		}
+		return nil
+	}
+	res["uploadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUploadId(val)
 		}
 		return nil
 	}
@@ -123,12 +123,6 @@ func (m *MessageMediaAttachment) GetFileName() *string {
 	return m.fileName
 }
 
-// GetMediaId gets the mediaId property value. The durable Media record containing this attachment's scanned bytes.
-// returns a *string when successful
-func (m *MessageMediaAttachment) GetMediaId() *string {
-	return m.mediaId
-}
-
 // GetSha256 gets the sha256 property value. SHA-256 digest of the media content, when available.
 // returns a *string when successful
 func (m *MessageMediaAttachment) GetSha256() *string {
@@ -139,6 +133,12 @@ func (m *MessageMediaAttachment) GetSha256() *string {
 // returns a *int64 when successful
 func (m *MessageMediaAttachment) GetSize() *int64 {
 	return m.size
+}
+
+// GetUploadId gets the uploadId property value. The durable Media record containing this attachment's scanned bytes.
+// returns a *string when successful
+func (m *MessageMediaAttachment) GetUploadId() *string {
+	return m.uploadId
 }
 
 // GetUrl gets the url property value. URL from which the media attachment can be retrieved.
@@ -162,12 +162,6 @@ func (m *MessageMediaAttachment) Serialize(writer i878a80d2330e89d26896388a3f487
 		}
 	}
 	{
-		err := writer.WriteStringValue("mediaId", m.GetMediaId())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteStringValue("sha256", m.GetSha256())
 		if err != nil {
 			return err
@@ -175,6 +169,12 @@ func (m *MessageMediaAttachment) Serialize(writer i878a80d2330e89d26896388a3f487
 	}
 	{
 		err := writer.WriteInt64Value("size", m.GetSize())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("uploadId", m.GetUploadId())
 		if err != nil {
 			return err
 		}
@@ -209,11 +209,6 @@ func (m *MessageMediaAttachment) SetFileName(value *string) {
 	m.fileName = value
 }
 
-// SetMediaId sets the mediaId property value. The durable Media record containing this attachment's scanned bytes.
-func (m *MessageMediaAttachment) SetMediaId(value *string) {
-	m.mediaId = value
-}
-
 // SetSha256 sets the sha256 property value. SHA-256 digest of the media content, when available.
 func (m *MessageMediaAttachment) SetSha256(value *string) {
 	m.sha256 = value
@@ -222,6 +217,11 @@ func (m *MessageMediaAttachment) SetSha256(value *string) {
 // SetSize sets the size property value. Size of the media attachment in bytes.
 func (m *MessageMediaAttachment) SetSize(value *int64) {
 	m.size = value
+}
+
+// SetUploadId sets the uploadId property value. The durable Media record containing this attachment's scanned bytes.
+func (m *MessageMediaAttachment) SetUploadId(value *string) {
+	m.uploadId = value
 }
 
 // SetUrl sets the url property value. URL from which the media attachment can be retrieved.
@@ -234,14 +234,14 @@ type MessageMediaAttachmentable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetContentType() *string
 	GetFileName() *string
-	GetMediaId() *string
 	GetSha256() *string
 	GetSize() *int64
+	GetUploadId() *string
 	GetUrl() *string
 	SetContentType(value *string)
 	SetFileName(value *string)
-	SetMediaId(value *string)
 	SetSha256(value *string)
 	SetSize(value *int64)
+	SetUploadId(value *string)
 	SetUrl(value *string)
 }

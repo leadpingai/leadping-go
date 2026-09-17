@@ -23,11 +23,19 @@ type CustomerCommunicationUsage struct {
 	callsReceived *int32
 	// Number of SMS messages that failed or were blocked during the reporting period.
 	failedOrBlockedSms *int32
+	// Manual provider-accepted SMS messages; automated messages are excluded.
+	humanResponses *int32
 	// Number of calls missed during the reporting period.
 	missedCalls *int32
+	// Received prospect messages excluding consent and help commands.
+	prospectReplies *int32
+	// Messages whose send execution started; queued and scheduled messages are excluded.
+	smsAttempted *int32
+	// Messages confirmed delivered, counted at delivery time.
+	smsDelivered *int32
 	// Number of SMS messages received during the reporting period.
 	smsReceived *int32
-	// Number of SMS messages sent during the reporting period.
+	// Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 	smsSent *int32
 	// Collection of trend included with this Leadping customer communication usage.
 	trend []CustomerCommunicationUsagePointable
@@ -154,6 +162,16 @@ func (m *CustomerCommunicationUsage) GetFieldDeserializers() map[string]func(i87
 		}
 		return nil
 	}
+	res["humanResponses"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHumanResponses(val)
+		}
+		return nil
+	}
 	res["missedCalls"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetInt32Value()
 		if err != nil {
@@ -161,6 +179,36 @@ func (m *CustomerCommunicationUsage) GetFieldDeserializers() map[string]func(i87
 		}
 		if val != nil {
 			m.SetMissedCalls(val)
+		}
+		return nil
+	}
+	res["prospectReplies"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProspectReplies(val)
+		}
+		return nil
+	}
+	res["smsAttempted"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsAttempted(val)
+		}
+		return nil
+	}
+	res["smsDelivered"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivered(val)
 		}
 		return nil
 	}
@@ -213,10 +261,34 @@ func (m *CustomerCommunicationUsage) GetFieldDeserializers() map[string]func(i87
 	return res
 }
 
+// GetHumanResponses gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsage) GetHumanResponses() *int32 {
+	return m.humanResponses
+}
+
 // GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetMissedCalls() *int32 {
 	return m.missedCalls
+}
+
+// GetProspectReplies gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsage) GetProspectReplies() *int32 {
+	return m.prospectReplies
+}
+
+// GetSmsAttempted gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsage) GetSmsAttempted() *int32 {
+	return m.smsAttempted
+}
+
+// GetSmsDelivered gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+// returns a *int32 when successful
+func (m *CustomerCommunicationUsage) GetSmsDelivered() *int32 {
+	return m.smsDelivered
 }
 
 // GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
@@ -225,7 +297,7 @@ func (m *CustomerCommunicationUsage) GetSmsReceived() *int32 {
 	return m.smsReceived
 }
 
-// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
+// GetSmsSent gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 // returns a *int32 when successful
 func (m *CustomerCommunicationUsage) GetSmsSent() *int32 {
 	return m.smsSent
@@ -282,7 +354,31 @@ func (m *CustomerCommunicationUsage) Serialize(writer i878a80d2330e89d26896388a3
 		}
 	}
 	{
+		err := writer.WriteInt32Value("humanResponses", m.GetHumanResponses())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteInt32Value("missedCalls", m.GetMissedCalls())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("prospectReplies", m.GetProspectReplies())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsAttempted", m.GetSmsAttempted())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsDelivered", m.GetSmsDelivered())
 		if err != nil {
 			return err
 		}
@@ -361,9 +457,29 @@ func (m *CustomerCommunicationUsage) SetFailedOrBlockedSms(value *int32) {
 	m.failedOrBlockedSms = value
 }
 
+// SetHumanResponses sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+func (m *CustomerCommunicationUsage) SetHumanResponses(value *int32) {
+	m.humanResponses = value
+}
+
 // SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
 func (m *CustomerCommunicationUsage) SetMissedCalls(value *int32) {
 	m.missedCalls = value
+}
+
+// SetProspectReplies sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+func (m *CustomerCommunicationUsage) SetProspectReplies(value *int32) {
+	m.prospectReplies = value
+}
+
+// SetSmsAttempted sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+func (m *CustomerCommunicationUsage) SetSmsAttempted(value *int32) {
+	m.smsAttempted = value
+}
+
+// SetSmsDelivered sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+func (m *CustomerCommunicationUsage) SetSmsDelivered(value *int32) {
+	m.smsDelivered = value
 }
 
 // SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
@@ -371,7 +487,7 @@ func (m *CustomerCommunicationUsage) SetSmsReceived(value *int32) {
 	m.smsReceived = value
 }
 
-// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
+// SetSmsSent sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
 func (m *CustomerCommunicationUsage) SetSmsSent(value *int32) {
 	m.smsSent = value
 }
@@ -395,7 +511,11 @@ type CustomerCommunicationUsageable interface {
 	GetCallsPlaced() *int32
 	GetCallsReceived() *int32
 	GetFailedOrBlockedSms() *int32
+	GetHumanResponses() *int32
 	GetMissedCalls() *int32
+	GetProspectReplies() *int32
+	GetSmsAttempted() *int32
+	GetSmsDelivered() *int32
 	GetSmsReceived() *int32
 	GetSmsSent() *int32
 	GetTrend() []CustomerCommunicationUsagePointable
@@ -406,7 +526,11 @@ type CustomerCommunicationUsageable interface {
 	SetCallsPlaced(value *int32)
 	SetCallsReceived(value *int32)
 	SetFailedOrBlockedSms(value *int32)
+	SetHumanResponses(value *int32)
 	SetMissedCalls(value *int32)
+	SetProspectReplies(value *int32)
+	SetSmsAttempted(value *int32)
+	SetSmsDelivered(value *int32)
 	SetSmsReceived(value *int32)
 	SetSmsSent(value *int32)
 	SetTrend(value []CustomerCommunicationUsagePointable)
