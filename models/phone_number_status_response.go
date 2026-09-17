@@ -13,6 +13,8 @@ type PhoneNumberStatusResponse struct {
 	additionalData map[string]any
 	// Indicates whether this phone number can currently place outbound calls.
 	callsPossible *int32
+	// Public Leadping API schema for phone number location data.
+	location PhoneNumberStatusResponse_locationable
 	// Indicates whether this phone number can currently send SMS messages.
 	messagesPossible *int32
 	// E.164 phone number exposed by this phone number warmup status.
@@ -65,6 +67,16 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers() map[string]func(i878
 		}
 		if val != nil {
 			m.SetCallsPossible(val)
+		}
+		return nil
+	}
+	res["location"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberStatusResponse_locationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLocation(val.(PhoneNumberStatusResponse_locationable))
 		}
 		return nil
 	}
@@ -147,6 +159,12 @@ func (m *PhoneNumberStatusResponse) GetFieldDeserializers() map[string]func(i878
 	return res
 }
 
+// GetLocation gets the location property value. Public Leadping API schema for phone number location data.
+// returns a PhoneNumberStatusResponse_locationable when successful
+func (m *PhoneNumberStatusResponse) GetLocation() PhoneNumberStatusResponse_locationable {
+	return m.location
+}
+
 // GetMessagesPossible gets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 // returns a *int32 when successful
 func (m *PhoneNumberStatusResponse) GetMessagesPossible() *int32 {
@@ -193,6 +211,12 @@ func (m *PhoneNumberStatusResponse) GetTrafficMetrics() PhoneNumberTrafficMetric
 func (m *PhoneNumberStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
 		err := writer.WriteInt32Value("callsPossible", m.GetCallsPossible())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("location", m.GetLocation())
 		if err != nil {
 			return err
 		}
@@ -264,6 +288,11 @@ func (m *PhoneNumberStatusResponse) SetCallsPossible(value *int32) {
 	m.callsPossible = value
 }
 
+// SetLocation sets the location property value. Public Leadping API schema for phone number location data.
+func (m *PhoneNumberStatusResponse) SetLocation(value PhoneNumberStatusResponse_locationable) {
+	m.location = value
+}
+
 // SetMessagesPossible sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
 func (m *PhoneNumberStatusResponse) SetMessagesPossible(value *int32) {
 	m.messagesPossible = value
@@ -303,6 +332,7 @@ type PhoneNumberStatusResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetCallsPossible() *int32
+	GetLocation() PhoneNumberStatusResponse_locationable
 	GetMessagesPossible() *int32
 	GetNumber() *string
 	GetOptOutMetrics() PhoneNumberOptOutMetricsResponseable
@@ -311,6 +341,7 @@ type PhoneNumberStatusResponseable interface {
 	GetSmsWarmup() PhoneNumberStatusResponse_smsWarmupable
 	GetTrafficMetrics() PhoneNumberTrafficMetricsResponseable
 	SetCallsPossible(value *int32)
+	SetLocation(value PhoneNumberStatusResponse_locationable)
 	SetMessagesPossible(value *int32)
 	SetNumber(value *string)
 	SetOptOutMetrics(value PhoneNumberOptOutMetricsResponseable)

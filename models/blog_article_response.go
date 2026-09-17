@@ -50,6 +50,8 @@ type BlogArticleResponse struct {
 	slug *string
 	// The title property
 	title *string
+	// The unpublishedAt property
+	unpublishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 
 // NewBlogArticleResponse instantiates a new BlogArticleResponse and sets the default values.
@@ -313,6 +315,16 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["unpublishedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnpublishedAt(val)
+		}
+		return nil
+	}
 	return res
 }
 
@@ -380,6 +392,12 @@ func (m *BlogArticleResponse) GetSlug() *string {
 // returns a *string when successful
 func (m *BlogArticleResponse) GetTitle() *string {
 	return m.title
+}
+
+// GetUnpublishedAt gets the unpublishedAt property value. The unpublishedAt property
+// returns a *Time when successful
+func (m *BlogArticleResponse) GetUnpublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.unpublishedAt
 }
 
 // Serialize serializes information the current object
@@ -499,6 +517,12 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteTimeValue("unpublishedAt", m.GetUnpublishedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteAdditionalData(m.GetAdditionalData())
 		if err != nil {
 			return err
@@ -607,6 +631,11 @@ func (m *BlogArticleResponse) SetTitle(value *string) {
 	m.title = value
 }
 
+// SetUnpublishedAt sets the unpublishedAt property value. The unpublishedAt property
+func (m *BlogArticleResponse) SetUnpublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.unpublishedAt = value
+}
+
 type BlogArticleResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -629,6 +658,7 @@ type BlogArticleResponseable interface {
 	GetSeoTitle() *string
 	GetSlug() *string
 	GetTitle() *string
+	GetUnpublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	SetAuthorName(value *string)
 	SetCategory(value *string)
 	SetContent(value *string)
@@ -648,4 +678,5 @@ type BlogArticleResponseable interface {
 	SetSeoTitle(value *string)
 	SetSlug(value *string)
 	SetTitle(value *string)
+	SetUnpublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }
