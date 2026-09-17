@@ -9,24 +9,24 @@ import (
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// UploadsRequestBuilder builds and executes requests for operations under \sms\uploads
-type UploadsRequestBuilder struct {
+// FilesRequestBuilder builds and executes requests for operations under \sms\files
+type FilesRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// NewUploadsRequestBuilderInternal instantiates a new UploadsRequestBuilder and sets the default values.
-func NewUploadsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *UploadsRequestBuilder {
-	m := &UploadsRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sms/uploads", pathParameters),
+// NewFilesRequestBuilderInternal instantiates a new FilesRequestBuilder and sets the default values.
+func NewFilesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *FilesRequestBuilder {
+	m := &FilesRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sms/files", pathParameters),
 	}
 	return m
 }
 
-// NewUploadsRequestBuilder instantiates a new UploadsRequestBuilder and sets the default values.
-func NewUploadsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *UploadsRequestBuilder {
+// NewFilesRequestBuilder instantiates a new FilesRequestBuilder and sets the default values.
+func NewFilesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *FilesRequestBuilder {
 	urlParams := make(map[string]string)
 	urlParams["request-raw-url"] = rawUrl
-	return NewUploadsRequestBuilderInternal(urlParams, requestAdapter)
+	return NewFilesRequestBuilderInternal(urlParams, requestAdapter)
 }
 
 // Post uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
@@ -35,7 +35,7 @@ func NewUploadsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
 // returns a ProblemDetails error when the service returns a 429 status code
-func (m *UploadsRequestBuilder) Post(ctx context.Context, body i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.MultipartBody, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageMediaAttachmentable, error) {
+func (m *FilesRequestBuilder) Post(ctx context.Context, body i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.MultipartBody, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageMediaAttachmentable, error) {
 	requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration)
 	if err != nil {
 		return nil, err
@@ -58,7 +58,7 @@ func (m *UploadsRequestBuilder) Post(ctx context.Context, body i2ae4187f7daee263
 
 // ToPostRequestInformation uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
 // returns a *RequestInformation when successful
-func (m *UploadsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.MultipartBody, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *FilesRequestBuilder) ToPostRequestInformation(ctx context.Context, body i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.MultipartBody, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
 	requestInfo.Headers.TryAdd("Accept", "application/json")
@@ -70,7 +70,7 @@ func (m *UploadsRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
 }
 
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *UploadsRequestBuilder when successful
-func (m *UploadsRequestBuilder) WithUrl(rawUrl string) *UploadsRequestBuilder {
-	return NewUploadsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
+// returns a *FilesRequestBuilder when successful
+func (m *FilesRequestBuilder) WithUrl(rawUrl string) *FilesRequestBuilder {
+	return NewFilesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
 }
