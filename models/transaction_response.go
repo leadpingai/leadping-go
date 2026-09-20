@@ -30,6 +30,8 @@ type TransactionResponse struct {
 	gatewayStatus *string
 	// Stable unique identifier of the resource.
 	id *string
+	// Indicates sample activity for app review that must not count toward real financial totals.
+	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead TransactionResponse_leadable
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -199,6 +201,16 @@ func (m *TransactionResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateTransactionResponse_leadFromDiscriminatorValue)
 		if err != nil {
@@ -310,6 +322,12 @@ func (m *TransactionResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+// returns a *bool when successful
+func (m *TransactionResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLead gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionResponse_leadable when successful
 func (m *TransactionResponse) GetLead() TransactionResponse_leadable {
@@ -418,6 +436,12 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -537,6 +561,11 @@ func (m *TransactionResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+func (m *TransactionResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLead sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *TransactionResponse) SetLead(value TransactionResponse_leadable) {
 	m.lead = value
@@ -594,6 +623,7 @@ type TransactionResponseable interface {
 	GetGatewayFeeAmount() *float64
 	GetGatewayStatus() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLead() TransactionResponse_leadable
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetNetAmount() *float64
@@ -612,6 +642,7 @@ type TransactionResponseable interface {
 	SetGatewayFeeAmount(value *float64)
 	SetGatewayStatus(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLead(value TransactionResponse_leadable)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetNetAmount(value *float64)

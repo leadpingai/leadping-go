@@ -26,6 +26,8 @@ type TransactionTableRow struct {
 	description *string
 	// Unique Leadping identifier for this billing transaction table row.
 	id *string
+	// Indicates sample activity for app review that must not count toward real financial totals.
+	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead TransactionTableRow_leadable
 	// Net monetary amount after fees, credits, or adjustments.
@@ -179,6 +181,16 @@ func (m *TransactionTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateTransactionTableRow_leadFromDiscriminatorValue)
 		if err != nil {
@@ -298,6 +310,12 @@ func (m *TransactionTableRow) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+// returns a *bool when successful
+func (m *TransactionTableRow) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLead gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionTableRow_leadable when successful
 func (m *TransactionTableRow) GetLead() TransactionTableRow_leadable {
@@ -406,6 +424,12 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -527,6 +551,11 @@ func (m *TransactionTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+func (m *TransactionTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLead sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable) {
 	m.lead = value
@@ -592,6 +621,7 @@ type TransactionTableRowable interface {
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDescription() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLead() TransactionTableRow_leadable
 	GetNetAmount() *float64
 	GetOrganization() TransactionTableRow_organizationable
@@ -610,6 +640,7 @@ type TransactionTableRowable interface {
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDescription(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLead(value TransactionTableRow_leadable)
 	SetNetAmount(value *float64)
 	SetOrganization(value TransactionTableRow_organizationable)
