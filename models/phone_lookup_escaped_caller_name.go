@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// PhoneLookup_callerName caller-name data returned by the provider.
+// PhoneLookup_callerName caller-name data returned by the phone lookup provider.
 type PhoneLookup_callerName struct {
-    PhoneLookupCallerName
+	PhoneLookupCallerName
 }
+
 // NewPhoneLookup_callerName instantiates a new PhoneLookup_callerName and sets the default values.
-func NewPhoneLookup_callerName()(*PhoneLookup_callerName) {
-    m := &PhoneLookup_callerName{
-        PhoneLookupCallerName: *NewPhoneLookupCallerName(),
-    }
-    return m
+func NewPhoneLookup_callerName() *PhoneLookup_callerName {
+	m := &PhoneLookup_callerName{
+		PhoneLookupCallerName: *NewPhoneLookupCallerName(),
+	}
+	return m
 }
+
 // CreatePhoneLookup_callerNameFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneLookup_callerNameFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneLookup_callerName(), nil
+func CreatePhoneLookup_callerNameFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneLookup_callerName(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneLookup_callerName) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.PhoneLookupCallerName.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneLookup_callerName) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.PhoneLookupCallerName.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *PhoneLookup_callerName) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.PhoneLookupCallerName.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *PhoneLookup_callerName) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.PhoneLookupCallerName.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type PhoneLookup_callerNameable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    PhoneLookupCallerNameable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	PhoneLookupCallerNameable
 }

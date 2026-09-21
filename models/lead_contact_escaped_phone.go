@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadContact_phone phone details for the lead, user, or organization represented by this lead contact profile.
+// LeadContact_phone public Leadping API schema for lead phone number data.
 type LeadContact_phone struct {
-    Phone
+	Phone
 }
+
 // NewLeadContact_phone instantiates a new LeadContact_phone and sets the default values.
-func NewLeadContact_phone()(*LeadContact_phone) {
-    m := &LeadContact_phone{
-        Phone: *NewPhone(),
-    }
-    return m
+func NewLeadContact_phone() *LeadContact_phone {
+	m := &LeadContact_phone{
+		Phone: *NewPhone(),
+	}
+	return m
 }
+
 // CreateLeadContact_phoneFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadContact_phoneFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadContact_phone(), nil
+func CreateLeadContact_phoneFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadContact_phone(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadContact_phone) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.Phone.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadContact_phone) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.Phone.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *LeadContact_phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.Phone.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *LeadContact_phone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.Phone.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type LeadContact_phoneable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    Phoneable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	Phoneable
 }

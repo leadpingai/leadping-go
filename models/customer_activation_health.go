@@ -4,122 +4,132 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerActivationHealth represents customer activation health data exposed by Leadping analytics.
+// CustomerActivationHealth summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
 type CustomerActivationHealth struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Collection of items included with this Leadping customer activation health.
-    items []CustomerActivationHealthItemable
-    // Current overall status for this Leadping customer activation health.
-    overallStatus *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Collection of items included with this Leadping customer activation health.
+	items []CustomerActivationHealthItemable
+	// Current overall status for this Leadping customer activation health.
+	overallStatus *string
 }
+
 // NewCustomerActivationHealth instantiates a new CustomerActivationHealth and sets the default values.
-func NewCustomerActivationHealth()(*CustomerActivationHealth) {
-    m := &CustomerActivationHealth{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerActivationHealth() *CustomerActivationHealth {
+	m := &CustomerActivationHealth{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerActivationHealthFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerActivationHealthFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerActivationHealth(), nil
+func CreateCustomerActivationHealthFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerActivationHealth(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerActivationHealth) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerActivationHealth) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerActivationHealth) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["items"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCustomerActivationHealthItemFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CustomerActivationHealthItemable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CustomerActivationHealthItemable)
-                }
-            }
-            m.SetItems(res)
-        }
-        return nil
-    }
-    res["overallStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOverallStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerActivationHealth) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["items"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCustomerActivationHealthItemFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CustomerActivationHealthItemable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CustomerActivationHealthItemable)
+				}
+			}
+			m.SetItems(res)
+		}
+		return nil
+	}
+	res["overallStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOverallStatus(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetItems gets the items property value. Collection of items included with this Leadping customer activation health.
 // returns a []CustomerActivationHealthItemable when successful
-func (m *CustomerActivationHealth) GetItems()([]CustomerActivationHealthItemable) {
-    return m.items
+func (m *CustomerActivationHealth) GetItems() []CustomerActivationHealthItemable {
+	return m.items
 }
+
 // GetOverallStatus gets the overallStatus property value. Current overall status for this Leadping customer activation health.
 // returns a *string when successful
-func (m *CustomerActivationHealth) GetOverallStatus()(*string) {
-    return m.overallStatus
+func (m *CustomerActivationHealth) GetOverallStatus() *string {
+	return m.overallStatus
 }
+
 // Serialize serializes information the current object
-func (m *CustomerActivationHealth) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetItems() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetItems()))
-        for i, v := range m.GetItems() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("items", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("overallStatus", m.GetOverallStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerActivationHealth) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetItems() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetItems()))
+		for i, v := range m.GetItems() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("items", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("overallStatus", m.GetOverallStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerActivationHealth) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerActivationHealth) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetItems sets the items property value. Collection of items included with this Leadping customer activation health.
-func (m *CustomerActivationHealth) SetItems(value []CustomerActivationHealthItemable)() {
-    m.items = value
+func (m *CustomerActivationHealth) SetItems(value []CustomerActivationHealthItemable) {
+	m.items = value
 }
+
 // SetOverallStatus sets the overallStatus property value. Current overall status for this Leadping customer activation health.
-func (m *CustomerActivationHealth) SetOverallStatus(value *string)() {
-    m.overallStatus = value
+func (m *CustomerActivationHealth) SetOverallStatus(value *string) {
+	m.overallStatus = value
 }
+
 type CustomerActivationHealthable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetItems()([]CustomerActivationHealthItemable)
-    GetOverallStatus()(*string)
-    SetItems(value []CustomerActivationHealthItemable)()
-    SetOverallStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetItems() []CustomerActivationHealthItemable
+	GetOverallStatus() *string
+	SetItems(value []CustomerActivationHealthItemable)
+	SetOverallStatus(value *string)
 }

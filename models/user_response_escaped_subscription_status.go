@@ -2,42 +2,46 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Subscription Status values.
+
+// Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 type UserResponse_subscriptionStatus int
 
 const (
-    PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS UserResponse_subscriptionStatus = iota
-    ACTIVE_USERRESPONSE_SUBSCRIPTIONSTATUS
-    OVERDUE_USERRESPONSE_SUBSCRIPTIONSTATUS
-    CANCELED_USERRESPONSE_SUBSCRIPTIONSTATUS
+	PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS UserResponse_subscriptionStatus = iota
+	ACTIVE_USERRESPONSE_SUBSCRIPTIONSTATUS
+	OVERDUE_USERRESPONSE_SUBSCRIPTIONSTATUS
+	CANCELED_USERRESPONSE_SUBSCRIPTIONSTATUS
 )
 
 func (i UserResponse_subscriptionStatus) String() string {
-    return []string{"Pending", "Active", "Overdue", "Canceled"}[i]
+	return []string{"Pending", "Active", "Overdue", "Canceled"}[i]
 }
+
 func ParseUserResponse_subscriptionStatus(v string) (any, error) {
-    result := PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS
-    switch v {
-        case "Pending":
-            result = PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS
-        case "Active":
-            result = ACTIVE_USERRESPONSE_SUBSCRIPTIONSTATUS
-        case "Overdue":
-            result = OVERDUE_USERRESPONSE_SUBSCRIPTIONSTATUS
-        case "Canceled":
-            result = CANCELED_USERRESPONSE_SUBSCRIPTIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS
+	switch v {
+	case "Pending":
+		result = PENDING_USERRESPONSE_SUBSCRIPTIONSTATUS
+	case "Active":
+		result = ACTIVE_USERRESPONSE_SUBSCRIPTIONSTATUS
+	case "Overdue":
+		result = OVERDUE_USERRESPONSE_SUBSCRIPTIONSTATUS
+	case "Canceled":
+		result = CANCELED_USERRESPONSE_SUBSCRIPTIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeUserResponse_subscriptionStatus(values []UserResponse_subscriptionStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i UserResponse_subscriptionStatus) isMultiValue() bool {
-    return false
+	return false
 }

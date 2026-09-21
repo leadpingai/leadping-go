@@ -4,285 +4,307 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // ActivationTimelineEvent describes activation timeline event data used in Leadping API requests and responses.
 type ActivationTimelineEvent struct {
-    // Identifier and display name of the related actor.
-    actor ActivationTimelineEvent_actorable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp for created at on this activation timeline event.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Details for this activation timeline event.
-    details *string
-    // The human-readable failure reason explaining this activation timeline event.
-    failureReason *string
-    // Unique Leadping identifier for this activation timeline event.
-    id *string
-    // The current status for this activation timeline event.
-    status *string
-    // Title for this activation timeline event.
-    title *string
-    // The type classification for this activation timeline event.
-    typeEscaped *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	actor ActivationTimelineEvent_actorable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp for created at on this activation timeline event.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Details for this activation timeline event.
+	details *string
+	// The human-readable failure reason explaining this activation timeline event.
+	failureReason *string
+	// Unique Leadping identifier for this activation timeline event.
+	id *string
+	// The current status for this activation timeline event.
+	status *string
+	// Title for this activation timeline event.
+	title *string
+	// The type classification for this activation timeline event.
+	typeEscaped *string
 }
+
 // NewActivationTimelineEvent instantiates a new ActivationTimelineEvent and sets the default values.
-func NewActivationTimelineEvent()(*ActivationTimelineEvent) {
-    m := &ActivationTimelineEvent{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewActivationTimelineEvent() *ActivationTimelineEvent {
+	m := &ActivationTimelineEvent{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateActivationTimelineEventFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateActivationTimelineEventFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewActivationTimelineEvent(), nil
+func CreateActivationTimelineEventFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewActivationTimelineEvent(), nil
 }
-// GetActor gets the actor property value. Identifier and display name of the related actor.
+
+// GetActor gets the actor property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a ActivationTimelineEvent_actorable when successful
-func (m *ActivationTimelineEvent) GetActor()(ActivationTimelineEvent_actorable) {
-    return m.actor
+func (m *ActivationTimelineEvent) GetActor() ActivationTimelineEvent_actorable {
+	return m.actor
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ActivationTimelineEvent) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *ActivationTimelineEvent) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this activation timeline event.
 // returns a *Time when successful
-func (m *ActivationTimelineEvent) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *ActivationTimelineEvent) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDetails gets the details property value. Details for this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetDetails()(*string) {
-    return m.details
+func (m *ActivationTimelineEvent) GetDetails() *string {
+	return m.details
 }
+
 // GetFailureReason gets the failureReason property value. The human-readable failure reason explaining this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetFailureReason()(*string) {
-    return m.failureReason
+func (m *ActivationTimelineEvent) GetFailureReason() *string {
+	return m.failureReason
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ActivationTimelineEvent) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actor"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateActivationTimelineEvent_actorFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActor(val.(ActivationTimelineEvent_actorable))
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["details"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDetails(val)
-        }
-        return nil
-    }
-    res["failureReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailureReason(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["title"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTitle(val)
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ActivationTimelineEvent) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actor"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateActivationTimelineEvent_actorFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActor(val.(ActivationTimelineEvent_actorable))
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["details"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDetails(val)
+		}
+		return nil
+	}
+	res["failureReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailureReason(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["title"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTitle(val)
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetId()(*string) {
-    return m.id
+func (m *ActivationTimelineEvent) GetId() *string {
+	return m.id
 }
+
 // GetStatus gets the status property value. The current status for this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetStatus()(*string) {
-    return m.status
+func (m *ActivationTimelineEvent) GetStatus() *string {
+	return m.status
 }
+
 // GetTitle gets the title property value. Title for this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetTitle()(*string) {
-    return m.title
+func (m *ActivationTimelineEvent) GetTitle() *string {
+	return m.title
 }
+
 // GetTypeEscaped gets the type property value. The type classification for this activation timeline event.
 // returns a *string when successful
-func (m *ActivationTimelineEvent) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *ActivationTimelineEvent) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *ActivationTimelineEvent) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("actor", m.GetActor())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("details", m.GetDetails())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("failureReason", m.GetFailureReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("title", m.GetTitle())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *ActivationTimelineEvent) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("actor", m.GetActor())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("details", m.GetDetails())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("failureReason", m.GetFailureReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("title", m.GetTitle())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
-// SetActor sets the actor property value. Identifier and display name of the related actor.
-func (m *ActivationTimelineEvent) SetActor(value ActivationTimelineEvent_actorable)() {
-    m.actor = value
+
+// SetActor sets the actor property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *ActivationTimelineEvent) SetActor(value ActivationTimelineEvent_actorable) {
+	m.actor = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ActivationTimelineEvent) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *ActivationTimelineEvent) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this activation timeline event.
-func (m *ActivationTimelineEvent) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+func (m *ActivationTimelineEvent) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDetails sets the details property value. Details for this activation timeline event.
-func (m *ActivationTimelineEvent) SetDetails(value *string)() {
-    m.details = value
+func (m *ActivationTimelineEvent) SetDetails(value *string) {
+	m.details = value
 }
+
 // SetFailureReason sets the failureReason property value. The human-readable failure reason explaining this activation timeline event.
-func (m *ActivationTimelineEvent) SetFailureReason(value *string)() {
-    m.failureReason = value
+func (m *ActivationTimelineEvent) SetFailureReason(value *string) {
+	m.failureReason = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this activation timeline event.
-func (m *ActivationTimelineEvent) SetId(value *string)() {
-    m.id = value
+func (m *ActivationTimelineEvent) SetId(value *string) {
+	m.id = value
 }
+
 // SetStatus sets the status property value. The current status for this activation timeline event.
-func (m *ActivationTimelineEvent) SetStatus(value *string)() {
-    m.status = value
+func (m *ActivationTimelineEvent) SetStatus(value *string) {
+	m.status = value
 }
+
 // SetTitle sets the title property value. Title for this activation timeline event.
-func (m *ActivationTimelineEvent) SetTitle(value *string)() {
-    m.title = value
+func (m *ActivationTimelineEvent) SetTitle(value *string) {
+	m.title = value
 }
+
 // SetTypeEscaped sets the type property value. The type classification for this activation timeline event.
-func (m *ActivationTimelineEvent) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *ActivationTimelineEvent) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 type ActivationTimelineEventable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActor()(ActivationTimelineEvent_actorable)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDetails()(*string)
-    GetFailureReason()(*string)
-    GetId()(*string)
-    GetStatus()(*string)
-    GetTitle()(*string)
-    GetTypeEscaped()(*string)
-    SetActor(value ActivationTimelineEvent_actorable)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDetails(value *string)()
-    SetFailureReason(value *string)()
-    SetId(value *string)()
-    SetStatus(value *string)()
-    SetTitle(value *string)()
-    SetTypeEscaped(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActor() ActivationTimelineEvent_actorable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDetails() *string
+	GetFailureReason() *string
+	GetId() *string
+	GetStatus() *string
+	GetTitle() *string
+	GetTypeEscaped() *string
+	SetActor(value ActivationTimelineEvent_actorable)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDetails(value *string)
+	SetFailureReason(value *string)
+	SetId(value *string)
+	SetStatus(value *string)
+	SetTitle(value *string)
+	SetTypeEscaped(value *string)
 }

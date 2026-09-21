@@ -4,198 +4,214 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberOptOutMetricsResponse describes phone number opt-out metrics data returned by Leadping.
 type PhoneNumberOptOutMetricsResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Number of distinct recipients contacted during this metrics window.
-    distinctContactedCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of recipients who opted out during this metrics window.
-    optOutCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Percentage of contacted recipients who opted out during this metrics window.
-    optOutRatePercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of days included in the metrics reporting window.
-    windowDays i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // UTC timestamp when the metrics reporting window starts.
-    windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Number of distinct recipients contacted during this metrics window.
+	distinctContactedCount *int32
+	// Number of recipients who opted out during this metrics window.
+	optOutCount *int32
+	// Percentage of contacted recipients who opted out during this metrics window.
+	optOutRatePercent *float64
+	// Number of days included in the metrics reporting window.
+	windowDays *int32
+	// UTC timestamp when the metrics reporting window starts.
+	windowStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewPhoneNumberOptOutMetricsResponse instantiates a new PhoneNumberOptOutMetricsResponse and sets the default values.
-func NewPhoneNumberOptOutMetricsResponse()(*PhoneNumberOptOutMetricsResponse) {
-    m := &PhoneNumberOptOutMetricsResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberOptOutMetricsResponse() *PhoneNumberOptOutMetricsResponse {
+	m := &PhoneNumberOptOutMetricsResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberOptOutMetricsResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberOptOutMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberOptOutMetricsResponse(), nil
+func CreatePhoneNumberOptOutMetricsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberOptOutMetricsResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberOptOutMetricsResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDistinctContactedCount gets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetDistinctContactedCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.distinctContactedCount
+// returns a *int32 when successful
+func (m *PhoneNumberOptOutMetricsResponse) GetDistinctContactedCount() *int32 {
+	return m.distinctContactedCount
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["distinctContactedCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDistinctContactedCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["optOutCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOptOutCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["optOutRatePercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOptOutRatePercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["windowDays"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWindowDays(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["windowStartedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWindowStartedAt(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberOptOutMetricsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["distinctContactedCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDistinctContactedCount(val)
+		}
+		return nil
+	}
+	res["optOutCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptOutCount(val)
+		}
+		return nil
+	}
+	res["optOutRatePercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptOutRatePercent(val)
+		}
+		return nil
+	}
+	res["windowDays"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWindowDays(val)
+		}
+		return nil
+	}
+	res["windowStartedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWindowStartedAt(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetOptOutCount gets the optOutCount property value. Number of recipients who opted out during this metrics window.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetOptOutCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.optOutCount
+// returns a *int32 when successful
+func (m *PhoneNumberOptOutMetricsResponse) GetOptOutCount() *int32 {
+	return m.optOutCount
 }
+
 // GetOptOutRatePercent gets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetOptOutRatePercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.optOutRatePercent
+// returns a *float64 when successful
+func (m *PhoneNumberOptOutMetricsResponse) GetOptOutRatePercent() *float64 {
+	return m.optOutRatePercent
 }
+
 // GetWindowDays gets the windowDays property value. Number of days included in the metrics reporting window.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetWindowDays()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.windowDays
+// returns a *int32 when successful
+func (m *PhoneNumberOptOutMetricsResponse) GetWindowDays() *int32 {
+	return m.windowDays
 }
+
 // GetWindowStartedAt gets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
 // returns a *Time when successful
-func (m *PhoneNumberOptOutMetricsResponse) GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.windowStartedAt
+func (m *PhoneNumberOptOutMetricsResponse) GetWindowStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.windowStartedAt
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberOptOutMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("distinctContactedCount", m.GetDistinctContactedCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("optOutCount", m.GetOptOutCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("optOutRatePercent", m.GetOptOutRatePercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("windowDays", m.GetWindowDays())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("windowStartedAt", m.GetWindowStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberOptOutMetricsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("distinctContactedCount", m.GetDistinctContactedCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("optOutCount", m.GetOptOutCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("optOutRatePercent", m.GetOptOutRatePercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("windowDays", m.GetWindowDays())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("windowStartedAt", m.GetWindowStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberOptOutMetricsResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberOptOutMetricsResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDistinctContactedCount sets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
-func (m *PhoneNumberOptOutMetricsResponse) SetDistinctContactedCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.distinctContactedCount = value
+func (m *PhoneNumberOptOutMetricsResponse) SetDistinctContactedCount(value *int32) {
+	m.distinctContactedCount = value
 }
+
 // SetOptOutCount sets the optOutCount property value. Number of recipients who opted out during this metrics window.
-func (m *PhoneNumberOptOutMetricsResponse) SetOptOutCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.optOutCount = value
+func (m *PhoneNumberOptOutMetricsResponse) SetOptOutCount(value *int32) {
+	m.optOutCount = value
 }
+
 // SetOptOutRatePercent sets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
-func (m *PhoneNumberOptOutMetricsResponse) SetOptOutRatePercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.optOutRatePercent = value
+func (m *PhoneNumberOptOutMetricsResponse) SetOptOutRatePercent(value *float64) {
+	m.optOutRatePercent = value
 }
+
 // SetWindowDays sets the windowDays property value. Number of days included in the metrics reporting window.
-func (m *PhoneNumberOptOutMetricsResponse) SetWindowDays(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.windowDays = value
+func (m *PhoneNumberOptOutMetricsResponse) SetWindowDays(value *int32) {
+	m.windowDays = value
 }
+
 // SetWindowStartedAt sets the windowStartedAt property value. UTC timestamp when the metrics reporting window starts.
-func (m *PhoneNumberOptOutMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.windowStartedAt = value
+func (m *PhoneNumberOptOutMetricsResponse) SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.windowStartedAt = value
 }
+
 type PhoneNumberOptOutMetricsResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDistinctContactedCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetOptOutCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetOptOutRatePercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWindowDays()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWindowStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetDistinctContactedCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetOptOutCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetOptOutRatePercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWindowDays(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDistinctContactedCount() *int32
+	GetOptOutCount() *int32
+	GetOptOutRatePercent() *float64
+	GetWindowDays() *int32
+	GetWindowStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetDistinctContactedCount(value *int32)
+	SetOptOutCount(value *int32)
+	SetOptOutRatePercent(value *float64)
+	SetWindowDays(value *int32)
+	SetWindowStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

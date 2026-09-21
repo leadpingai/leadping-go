@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Launch Review Status values.
+
+// Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
 type ActivationLaunchReviewStatus int
 
 const (
-    NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS ActivationLaunchReviewStatus = iota
-    PENDING_ACTIVATIONLAUNCHREVIEWSTATUS
-    APPROVED_ACTIVATIONLAUNCHREVIEWSTATUS
-    NOTREQUIRED_ACTIVATIONLAUNCHREVIEWSTATUS
-    BLOCKED_ACTIVATIONLAUNCHREVIEWSTATUS
+	NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS ActivationLaunchReviewStatus = iota
+	PENDING_ACTIVATIONLAUNCHREVIEWSTATUS
+	APPROVED_ACTIVATIONLAUNCHREVIEWSTATUS
+	NOTREQUIRED_ACTIVATIONLAUNCHREVIEWSTATUS
+	BLOCKED_ACTIVATIONLAUNCHREVIEWSTATUS
 )
 
 func (i ActivationLaunchReviewStatus) String() string {
-    return []string{"NotReady", "Pending", "Approved", "NotRequired", "Blocked"}[i]
+	return []string{"NotReady", "Pending", "Approved", "NotRequired", "Blocked"}[i]
 }
+
 func ParseActivationLaunchReviewStatus(v string) (any, error) {
-    result := NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS
-    switch v {
-        case "NotReady":
-            result = NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS
-        case "Pending":
-            result = PENDING_ACTIVATIONLAUNCHREVIEWSTATUS
-        case "Approved":
-            result = APPROVED_ACTIVATIONLAUNCHREVIEWSTATUS
-        case "NotRequired":
-            result = NOTREQUIRED_ACTIVATIONLAUNCHREVIEWSTATUS
-        case "Blocked":
-            result = BLOCKED_ACTIVATIONLAUNCHREVIEWSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS
+	switch v {
+	case "NotReady":
+		result = NOTREADY_ACTIVATIONLAUNCHREVIEWSTATUS
+	case "Pending":
+		result = PENDING_ACTIVATIONLAUNCHREVIEWSTATUS
+	case "Approved":
+		result = APPROVED_ACTIVATIONLAUNCHREVIEWSTATUS
+	case "NotRequired":
+		result = NOTREQUIRED_ACTIVATIONLAUNCHREVIEWSTATUS
+	case "Blocked":
+		result = BLOCKED_ACTIVATIONLAUNCHREVIEWSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeActivationLaunchReviewStatus(values []ActivationLaunchReviewStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i ActivationLaunchReviewStatus) isMultiValue() bool {
-    return false
+	return false
 }

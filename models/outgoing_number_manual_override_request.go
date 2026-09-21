@@ -4,110 +4,120 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OutgoingNumberManualOverrideRequest defines the fields clients can send when working with outgoing number manual override.
 type OutgoingNumberManualOverrideRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // Selected outgoing number and selection rationale returned by Leadping.
-    selection OutgoingNumberSelectionRequestable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Defines the fields clients can send when working with outgoing number selection.
+	selection OutgoingNumberSelectionRequestable
 }
+
 // NewOutgoingNumberManualOverrideRequest instantiates a new OutgoingNumberManualOverrideRequest and sets the default values.
-func NewOutgoingNumberManualOverrideRequest()(*OutgoingNumberManualOverrideRequest) {
-    m := &OutgoingNumberManualOverrideRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOutgoingNumberManualOverrideRequest() *OutgoingNumberManualOverrideRequest {
+	m := &OutgoingNumberManualOverrideRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOutgoingNumberManualOverrideRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOutgoingNumberManualOverrideRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOutgoingNumberManualOverrideRequest(), nil
+func CreateOutgoingNumberManualOverrideRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOutgoingNumberManualOverrideRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OutgoingNumberManualOverrideRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OutgoingNumberManualOverrideRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OutgoingNumberManualOverrideRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["selection"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOutgoingNumberSelectionRequestFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelection(val.(OutgoingNumberSelectionRequestable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OutgoingNumberManualOverrideRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["selection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOutgoingNumberSelectionRequestFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelection(val.(OutgoingNumberSelectionRequestable))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *OutgoingNumberManualOverrideRequest) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *OutgoingNumberManualOverrideRequest) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
-// GetSelection gets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
+
+// GetSelection gets the selection property value. Defines the fields clients can send when working with outgoing number selection.
 // returns a OutgoingNumberSelectionRequestable when successful
-func (m *OutgoingNumberManualOverrideRequest) GetSelection()(OutgoingNumberSelectionRequestable) {
-    return m.selection
+func (m *OutgoingNumberManualOverrideRequest) GetSelection() OutgoingNumberSelectionRequestable {
+	return m.selection
 }
+
 // Serialize serializes information the current object
-func (m *OutgoingNumberManualOverrideRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("selection", m.GetSelection())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OutgoingNumberManualOverrideRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("selection", m.GetSelection())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OutgoingNumberManualOverrideRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OutgoingNumberManualOverrideRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *OutgoingNumberManualOverrideRequest) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *OutgoingNumberManualOverrideRequest) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
-// SetSelection sets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
-func (m *OutgoingNumberManualOverrideRequest) SetSelection(value OutgoingNumberSelectionRequestable)() {
-    m.selection = value
+
+// SetSelection sets the selection property value. Defines the fields clients can send when working with outgoing number selection.
+func (m *OutgoingNumberManualOverrideRequest) SetSelection(value OutgoingNumberSelectionRequestable) {
+	m.selection = value
 }
+
 type OutgoingNumberManualOverrideRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetFromPhoneNumberId()(*string)
-    GetSelection()(OutgoingNumberSelectionRequestable)
-    SetFromPhoneNumberId(value *string)()
-    SetSelection(value OutgoingNumberSelectionRequestable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetFromPhoneNumberId() *string
+	GetSelection() OutgoingNumberSelectionRequestable
+	SetFromPhoneNumberId(value *string)
+	SetSelection(value OutgoingNumberSelectionRequestable)
 }

@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Onboarding Status values.
+
+// Describes completion and blocking state for an organization's core Leadping onboarding requirements.
 type ActivationOnboardingStatus int
 
 const (
-    DRAFT_ACTIVATIONONBOARDINGSTATUS ActivationOnboardingStatus = iota
-    SUBMITTED_ACTIVATIONONBOARDINGSTATUS
-    FAILED_ACTIVATIONONBOARDINGSTATUS
+	DRAFT_ACTIVATIONONBOARDINGSTATUS ActivationOnboardingStatus = iota
+	SUBMITTED_ACTIVATIONONBOARDINGSTATUS
+	FAILED_ACTIVATIONONBOARDINGSTATUS
 )
 
 func (i ActivationOnboardingStatus) String() string {
-    return []string{"Draft", "Submitted", "Failed"}[i]
+	return []string{"Draft", "Submitted", "Failed"}[i]
 }
+
 func ParseActivationOnboardingStatus(v string) (any, error) {
-    result := DRAFT_ACTIVATIONONBOARDINGSTATUS
-    switch v {
-        case "Draft":
-            result = DRAFT_ACTIVATIONONBOARDINGSTATUS
-        case "Submitted":
-            result = SUBMITTED_ACTIVATIONONBOARDINGSTATUS
-        case "Failed":
-            result = FAILED_ACTIVATIONONBOARDINGSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := DRAFT_ACTIVATIONONBOARDINGSTATUS
+	switch v {
+	case "Draft":
+		result = DRAFT_ACTIVATIONONBOARDINGSTATUS
+	case "Submitted":
+		result = SUBMITTED_ACTIVATIONONBOARDINGSTATUS
+	case "Failed":
+		result = FAILED_ACTIVATIONONBOARDINGSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeActivationOnboardingStatus(values []ActivationOnboardingStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i ActivationOnboardingStatus) isMultiValue() bool {
-    return false
+	return false
 }

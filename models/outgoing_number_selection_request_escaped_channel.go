@@ -2,36 +2,40 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Outgoing Number Channel values.
+
+// Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
 type OutgoingNumberSelectionRequest_channel int
 
 const (
-    SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL OutgoingNumberSelectionRequest_channel = iota
-    CALL_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
+	SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL OutgoingNumberSelectionRequest_channel = iota
+	CALL_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
 )
 
 func (i OutgoingNumberSelectionRequest_channel) String() string {
-    return []string{"sms", "call"}[i]
+	return []string{"sms", "call"}[i]
 }
+
 func ParseOutgoingNumberSelectionRequest_channel(v string) (any, error) {
-    result := SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
-    switch v {
-        case "sms":
-            result = SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
-        case "call":
-            result = CALL_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
+	switch v {
+	case "sms":
+		result = SMS_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
+	case "call":
+		result = CALL_OUTGOINGNUMBERSELECTIONREQUEST_CHANNEL
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOutgoingNumberSelectionRequest_channel(values []OutgoingNumberSelectionRequest_channel) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OutgoingNumberSelectionRequest_channel) isMultiValue() bool {
-    return false
+	return false
 }

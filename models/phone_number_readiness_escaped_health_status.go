@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS readiness health assessments.
+
+// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 type PhoneNumberReadiness_healthStatus int
 
 const (
-    NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS PhoneNumberReadiness_healthStatus = iota
-    EVALUATING_PHONENUMBERREADINESS_HEALTHSTATUS
-    HEALTHY_PHONENUMBERREADINESS_HEALTHSTATUS
-    NEEDSATTENTION_PHONENUMBERREADINESS_HEALTHSTATUS
-    BLOCKED_PHONENUMBERREADINESS_HEALTHSTATUS
+	NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS PhoneNumberReadiness_healthStatus = iota
+	EVALUATING_PHONENUMBERREADINESS_HEALTHSTATUS
+	HEALTHY_PHONENUMBERREADINESS_HEALTHSTATUS
+	NEEDSATTENTION_PHONENUMBERREADINESS_HEALTHSTATUS
+	BLOCKED_PHONENUMBERREADINESS_HEALTHSTATUS
 )
 
 func (i PhoneNumberReadiness_healthStatus) String() string {
-    return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
+	return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
 }
+
 func ParsePhoneNumberReadiness_healthStatus(v string) (any, error) {
-    result := NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS
-    switch v {
-        case "Not Evaluated":
-            result = NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS
-        case "Evaluating":
-            result = EVALUATING_PHONENUMBERREADINESS_HEALTHSTATUS
-        case "Healthy":
-            result = HEALTHY_PHONENUMBERREADINESS_HEALTHSTATUS
-        case "Needs Attention":
-            result = NEEDSATTENTION_PHONENUMBERREADINESS_HEALTHSTATUS
-        case "Blocked":
-            result = BLOCKED_PHONENUMBERREADINESS_HEALTHSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS
+	switch v {
+	case "Not Evaluated":
+		result = NOTEVALUATED_PHONENUMBERREADINESS_HEALTHSTATUS
+	case "Evaluating":
+		result = EVALUATING_PHONENUMBERREADINESS_HEALTHSTATUS
+	case "Healthy":
+		result = HEALTHY_PHONENUMBERREADINESS_HEALTHSTATUS
+	case "Needs Attention":
+		result = NEEDSATTENTION_PHONENUMBERREADINESS_HEALTHSTATUS
+	case "Blocked":
+		result = BLOCKED_PHONENUMBERREADINESS_HEALTHSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializePhoneNumberReadiness_healthStatus(values []PhoneNumberReadiness_healthStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i PhoneNumberReadiness_healthStatus) isMultiValue() bool {
-    return false
+	return false
 }

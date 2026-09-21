@@ -4,349 +4,375 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SendSmsRequest defines the fields clients can send when working with SMS send.
 type SendSmsRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Messaging campaign identifier associated with this SMS send request.
-    campaignId *string
-    // Conversation ID that links this SMS send request to the Leadping inbox thread.
-    conversationId *string
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
-    mediaUrls []string
-    // Idempotency key used to prevent duplicate outbound delivery.
-    outboundIdempotencyKey *string
-    // UTC timestamp when Leadping should send the SMS message.
-    scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Existing SMS event ID to reuse or update when retrying a send request.
-    smsEventId *string
-    // Lead source ID used for attribution and sender selection.
-    sourceId *string
-    // Body text for the SMS message or communication represented by this SMS send request.
-    text *string
-    // Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
-    wasManuallyOverridden *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Messaging campaign identifier associated with this SMS send request.
+	campaignId *string
+	// Conversation ID that links this SMS send request to the Leadping inbox thread.
+	conversationId *string
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+	mediaUrls []string
+	// Idempotency key used to prevent duplicate outbound delivery.
+	outboundIdempotencyKey *string
+	// UTC timestamp when Leadping should send the SMS message.
+	scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Existing SMS event ID to reuse or update when retrying a send request.
+	smsEventId *string
+	// Lead source ID used for attribution and sender selection.
+	sourceId *string
+	// Body text for the SMS message or communication represented by this SMS send request.
+	text *string
+	// Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
+	wasManuallyOverridden *bool
 }
+
 // NewSendSmsRequest instantiates a new SendSmsRequest and sets the default values.
-func NewSendSmsRequest()(*SendSmsRequest) {
-    m := &SendSmsRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSendSmsRequest() *SendSmsRequest {
+	m := &SendSmsRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSendSmsRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSendSmsRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSendSmsRequest(), nil
+func CreateSendSmsRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSendSmsRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SendSmsRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SendSmsRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
 // returns a *string when successful
-func (m *SendSmsRequest) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *SendSmsRequest) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this SMS send request to the Leadping inbox thread.
 // returns a *string when successful
-func (m *SendSmsRequest) GetConversationId()(*string) {
-    return m.conversationId
+func (m *SendSmsRequest) GetConversationId() *string {
+	return m.conversationId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SendSmsRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["mediaUrls"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetMediaUrls(res)
-        }
-        return nil
-    }
-    res["outboundIdempotencyKey"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundIdempotencyKey(val)
-        }
-        return nil
-    }
-    res["scheduledFor"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScheduledFor(val)
-        }
-        return nil
-    }
-    res["smsEventId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsEventId(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["text"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetText(val)
-        }
-        return nil
-    }
-    res["wasManuallyOverridden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWasManuallyOverridden(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SendSmsRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["mediaUrls"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetMediaUrls(res)
+		}
+		return nil
+	}
+	res["outboundIdempotencyKey"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutboundIdempotencyKey(val)
+		}
+		return nil
+	}
+	res["scheduledFor"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScheduledFor(val)
+		}
+		return nil
+	}
+	res["smsEventId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsEventId(val)
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["text"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetText(val)
+		}
+		return nil
+	}
+	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWasManuallyOverridden(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *SendSmsRequest) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *SendSmsRequest) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
+
 // GetMediaUrls gets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
 // returns a []string when successful
-func (m *SendSmsRequest) GetMediaUrls()([]string) {
-    return m.mediaUrls
+func (m *SendSmsRequest) GetMediaUrls() []string {
+	return m.mediaUrls
 }
+
 // GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
-func (m *SendSmsRequest) GetOutboundIdempotencyKey()(*string) {
-    return m.outboundIdempotencyKey
+func (m *SendSmsRequest) GetOutboundIdempotencyKey() *string {
+	return m.outboundIdempotencyKey
 }
+
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 // returns a *Time when successful
-func (m *SendSmsRequest) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.scheduledFor
+func (m *SendSmsRequest) GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.scheduledFor
 }
+
 // GetSmsEventId gets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
 // returns a *string when successful
-func (m *SendSmsRequest) GetSmsEventId()(*string) {
-    return m.smsEventId
+func (m *SendSmsRequest) GetSmsEventId() *string {
+	return m.smsEventId
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used for attribution and sender selection.
 // returns a *string when successful
-func (m *SendSmsRequest) GetSourceId()(*string) {
-    return m.sourceId
+func (m *SendSmsRequest) GetSourceId() *string {
+	return m.sourceId
 }
+
 // GetText gets the text property value. Body text for the SMS message or communication represented by this SMS send request.
 // returns a *string when successful
-func (m *SendSmsRequest) GetText()(*string) {
-    return m.text
+func (m *SendSmsRequest) GetText() *string {
+	return m.text
 }
+
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
 // returns a *bool when successful
-func (m *SendSmsRequest) GetWasManuallyOverridden()(*bool) {
-    return m.wasManuallyOverridden
+func (m *SendSmsRequest) GetWasManuallyOverridden() *bool {
+	return m.wasManuallyOverridden
 }
+
 // Serialize serializes information the current object
-func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMediaUrls() != nil {
-        err := writer.WriteCollectionOfStringValues("mediaUrls", m.GetMediaUrls())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("scheduledFor", m.GetScheduledFor())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("smsEventId", m.GetSmsEventId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("text", m.GetText())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMediaUrls() != nil {
+		err := writer.WriteCollectionOfStringValues("mediaUrls", m.GetMediaUrls())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("scheduledFor", m.GetScheduledFor())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("smsEventId", m.GetSmsEventId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("text", m.GetText())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SendSmsRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SendSmsRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this SMS send request.
-func (m *SendSmsRequest) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *SendSmsRequest) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this SMS send request to the Leadping inbox thread.
-func (m *SendSmsRequest) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *SendSmsRequest) SetConversationId(value *string) {
+	m.conversationId = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *SendSmsRequest) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *SendSmsRequest) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
+
 // SetMediaUrls sets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
-func (m *SendSmsRequest) SetMediaUrls(value []string)() {
-    m.mediaUrls = value
+func (m *SendSmsRequest) SetMediaUrls(value []string) {
+	m.mediaUrls = value
 }
+
 // SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
-func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string)() {
-    m.outboundIdempotencyKey = value
+func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string) {
+	m.outboundIdempotencyKey = value
 }
+
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
-func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.scheduledFor = value
+func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.scheduledFor = value
 }
+
 // SetSmsEventId sets the smsEventId property value. Existing SMS event ID to reuse or update when retrying a send request.
-func (m *SendSmsRequest) SetSmsEventId(value *string)() {
-    m.smsEventId = value
+func (m *SendSmsRequest) SetSmsEventId(value *string) {
+	m.smsEventId = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used for attribution and sender selection.
-func (m *SendSmsRequest) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *SendSmsRequest) SetSourceId(value *string) {
+	m.sourceId = value
 }
+
 // SetText sets the text property value. Body text for the SMS message or communication represented by this SMS send request.
-func (m *SendSmsRequest) SetText(value *string)() {
-    m.text = value
+func (m *SendSmsRequest) SetText(value *string) {
+	m.text = value
 }
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS send request.
-func (m *SendSmsRequest) SetWasManuallyOverridden(value *bool)() {
-    m.wasManuallyOverridden = value
+func (m *SendSmsRequest) SetWasManuallyOverridden(value *bool) {
+	m.wasManuallyOverridden = value
 }
+
 type SendSmsRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCampaignId()(*string)
-    GetConversationId()(*string)
-    GetFromPhoneNumberId()(*string)
-    GetMediaUrls()([]string)
-    GetOutboundIdempotencyKey()(*string)
-    GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsEventId()(*string)
-    GetSourceId()(*string)
-    GetText()(*string)
-    GetWasManuallyOverridden()(*bool)
-    SetCampaignId(value *string)()
-    SetConversationId(value *string)()
-    SetFromPhoneNumberId(value *string)()
-    SetMediaUrls(value []string)()
-    SetOutboundIdempotencyKey(value *string)()
-    SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsEventId(value *string)()
-    SetSourceId(value *string)()
-    SetText(value *string)()
-    SetWasManuallyOverridden(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCampaignId() *string
+	GetConversationId() *string
+	GetFromPhoneNumberId() *string
+	GetMediaUrls() []string
+	GetOutboundIdempotencyKey() *string
+	GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsEventId() *string
+	GetSourceId() *string
+	GetText() *string
+	GetWasManuallyOverridden() *bool
+	SetCampaignId(value *string)
+	SetConversationId(value *string)
+	SetFromPhoneNumberId(value *string)
+	SetMediaUrls(value []string)
+	SetOutboundIdempotencyKey(value *string)
+	SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsEventId(value *string)
+	SetSourceId(value *string)
+	SetText(value *string)
+	SetWasManuallyOverridden(value *bool)
 }

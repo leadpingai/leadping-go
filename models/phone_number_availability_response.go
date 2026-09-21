@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberAvailabilityResponse reports whether a phone number is available for purchase or assignment and explains any blocking condition.
 type PhoneNumberAvailabilityResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // ISO currency code used for the monetary amounts in this phone number availability result.
-    currency *string
-    // Indicates whether this phone number is available for purchase or assignment.
-    isAvailable *bool
-    // Geographic location metadata for the phone number, lead, or lookup result.
-    location PhoneNumberAvailabilityResponse_locationable
-    // Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
-    phoneNumber *string
-    // Lead price or transaction price supplied to the Leadping API.
-    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// ISO currency code used for the monetary amounts in this phone number availability result.
+	currency *string
+	// Indicates whether this phone number is available for purchase or assignment.
+	isAvailable *bool
+	// Public Leadping API schema for phone number location data.
+	location PhoneNumberAvailabilityResponse_locationable
+	// Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
+	phoneNumber *string
+	// Lead price or transaction price supplied to the Leadping API.
+	price *float64
 }
+
 // NewPhoneNumberAvailabilityResponse instantiates a new PhoneNumberAvailabilityResponse and sets the default values.
-func NewPhoneNumberAvailabilityResponse()(*PhoneNumberAvailabilityResponse) {
-    m := &PhoneNumberAvailabilityResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberAvailabilityResponse() *PhoneNumberAvailabilityResponse {
+	m := &PhoneNumberAvailabilityResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberAvailabilityResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberAvailabilityResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberAvailabilityResponse(), nil
+func CreatePhoneNumberAvailabilityResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberAvailabilityResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberAvailabilityResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberAvailabilityResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCurrency gets the currency property value. ISO currency code used for the monetary amounts in this phone number availability result.
 // returns a *string when successful
-func (m *PhoneNumberAvailabilityResponse) GetCurrency()(*string) {
-    return m.currency
+func (m *PhoneNumberAvailabilityResponse) GetCurrency() *string {
+	return m.currency
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberAvailabilityResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["currency"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrency(val)
-        }
-        return nil
-    }
-    res["isAvailable"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsAvailable(val)
-        }
-        return nil
-    }
-    res["location"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberAvailabilityResponse_locationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLocation(val.(PhoneNumberAvailabilityResponse_locationable))
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberAvailabilityResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["currency"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrency(val)
+		}
+		return nil
+	}
+	res["isAvailable"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsAvailable(val)
+		}
+		return nil
+	}
+	res["location"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberAvailabilityResponse_locationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLocation(val.(PhoneNumberAvailabilityResponse_locationable))
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	res["price"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrice(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetIsAvailable gets the isAvailable property value. Indicates whether this phone number is available for purchase or assignment.
 // returns a *bool when successful
-func (m *PhoneNumberAvailabilityResponse) GetIsAvailable()(*bool) {
-    return m.isAvailable
+func (m *PhoneNumberAvailabilityResponse) GetIsAvailable() *bool {
+	return m.isAvailable
 }
-// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+
+// GetLocation gets the location property value. Public Leadping API schema for phone number location data.
 // returns a PhoneNumberAvailabilityResponse_locationable when successful
-func (m *PhoneNumberAvailabilityResponse) GetLocation()(PhoneNumberAvailabilityResponse_locationable) {
-    return m.location
+func (m *PhoneNumberAvailabilityResponse) GetLocation() PhoneNumberAvailabilityResponse_locationable {
+	return m.location
 }
+
 // GetPhoneNumber gets the phoneNumber property value. Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
 // returns a *string when successful
-func (m *PhoneNumberAvailabilityResponse) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *PhoneNumberAvailabilityResponse) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberAvailabilityResponse) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.price
+// returns a *float64 when successful
+func (m *PhoneNumberAvailabilityResponse) GetPrice() *float64 {
+	return m.price
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberAvailabilityResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("currency", m.GetCurrency())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isAvailable", m.GetIsAvailable())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("location", m.GetLocation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("price", m.GetPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberAvailabilityResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("currency", m.GetCurrency())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isAvailable", m.GetIsAvailable())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("location", m.GetLocation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("price", m.GetPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberAvailabilityResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberAvailabilityResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCurrency sets the currency property value. ISO currency code used for the monetary amounts in this phone number availability result.
-func (m *PhoneNumberAvailabilityResponse) SetCurrency(value *string)() {
-    m.currency = value
+func (m *PhoneNumberAvailabilityResponse) SetCurrency(value *string) {
+	m.currency = value
 }
+
 // SetIsAvailable sets the isAvailable property value. Indicates whether this phone number is available for purchase or assignment.
-func (m *PhoneNumberAvailabilityResponse) SetIsAvailable(value *bool)() {
-    m.isAvailable = value
+func (m *PhoneNumberAvailabilityResponse) SetIsAvailable(value *bool) {
+	m.isAvailable = value
 }
-// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-func (m *PhoneNumberAvailabilityResponse) SetLocation(value PhoneNumberAvailabilityResponse_locationable)() {
-    m.location = value
+
+// SetLocation sets the location property value. Public Leadping API schema for phone number location data.
+func (m *PhoneNumberAvailabilityResponse) SetLocation(value PhoneNumberAvailabilityResponse_locationable) {
+	m.location = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number used by this phone number availability result for calls, SMS, lookup, or routing.
-func (m *PhoneNumberAvailabilityResponse) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *PhoneNumberAvailabilityResponse) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *PhoneNumberAvailabilityResponse) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.price = value
+func (m *PhoneNumberAvailabilityResponse) SetPrice(value *float64) {
+	m.price = value
 }
+
 type PhoneNumberAvailabilityResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCurrency()(*string)
-    GetIsAvailable()(*bool)
-    GetLocation()(PhoneNumberAvailabilityResponse_locationable)
-    GetPhoneNumber()(*string)
-    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetCurrency(value *string)()
-    SetIsAvailable(value *bool)()
-    SetLocation(value PhoneNumberAvailabilityResponse_locationable)()
-    SetPhoneNumber(value *string)()
-    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCurrency() *string
+	GetIsAvailable() *bool
+	GetLocation() PhoneNumberAvailabilityResponse_locationable
+	GetPhoneNumber() *string
+	GetPrice() *float64
+	SetCurrency(value *string)
+	SetIsAvailable(value *bool)
+	SetLocation(value PhoneNumberAvailabilityResponse_locationable)
+	SetPhoneNumber(value *string)
+	SetPrice(value *float64)
 }

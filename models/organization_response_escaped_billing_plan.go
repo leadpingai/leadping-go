@@ -2,36 +2,40 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Billing Plan values.
+
+// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 type OrganizationResponse_billingPlan int
 
 const (
-    ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN OrganizationResponse_billingPlan = iota
-    MONTHLY_ORGANIZATIONRESPONSE_BILLINGPLAN
+	ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN OrganizationResponse_billingPlan = iota
+	MONTHLY_ORGANIZATIONRESPONSE_BILLINGPLAN
 )
 
 func (i OrganizationResponse_billingPlan) String() string {
-    return []string{"Annual", "Monthly"}[i]
+	return []string{"Annual", "Monthly"}[i]
 }
+
 func ParseOrganizationResponse_billingPlan(v string) (any, error) {
-    result := ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN
-    switch v {
-        case "Annual":
-            result = ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN
-        case "Monthly":
-            result = MONTHLY_ORGANIZATIONRESPONSE_BILLINGPLAN
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN
+	switch v {
+	case "Annual":
+		result = ANNUAL_ORGANIZATIONRESPONSE_BILLINGPLAN
+	case "Monthly":
+		result = MONTHLY_ORGANIZATIONRESPONSE_BILLINGPLAN
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationResponse_billingPlan(values []OrganizationResponse_billingPlan) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationResponse_billingPlan) isMultiValue() bool {
-    return false
+	return false
 }

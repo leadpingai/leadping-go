@@ -4,28 +4,44 @@
 package organizations
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // ApiKeysRequestBuilder builds and executes requests for operations under \organizations\api-keys
 type ApiKeysRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
+// ById gets an item from the github.com/leadpingai/leadping-go.organizations.apiKeys.item collection
+// returns a *ApiKeysApiKeysItemRequestBuilder when successful
+func (m *ApiKeysRequestBuilder) ById(id string) *ApiKeysApiKeysItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if id != "" {
+		urlTplParams["id"] = id
+	}
+	return NewApiKeysApiKeysItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // NewApiKeysRequestBuilderInternal instantiates a new ApiKeysRequestBuilder and sets the default values.
-func NewApiKeysRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ApiKeysRequestBuilder) {
-    m := &ApiKeysRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/organizations/api-keys", pathParameters),
-    }
-    return m
+func NewApiKeysRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ApiKeysRequestBuilder {
+	m := &ApiKeysRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/organizations/api-keys", pathParameters),
+	}
+	return m
 }
+
 // NewApiKeysRequestBuilder instantiates a new ApiKeysRequestBuilder and sets the default values.
-func NewApiKeysRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ApiKeysRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewApiKeysRequestBuilderInternal(urlParams, requestAdapter)
+func NewApiKeysRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ApiKeysRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewApiKeysRequestBuilderInternal(urlParams, requestAdapter)
 }
+
 // My the my property
 // returns a *ApiKeysMyRequestBuilder when successful
-func (m *ApiKeysRequestBuilder) My()(*ApiKeysMyRequestBuilder) {
-    return NewApiKeysMyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *ApiKeysRequestBuilder) My() *ApiKeysMyRequestBuilder {
+	return NewApiKeysMyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

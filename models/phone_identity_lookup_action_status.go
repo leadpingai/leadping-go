@@ -2,36 +2,40 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Identifies the outcome of a phone identity lookup action.
 type PhoneIdentityLookupActionStatus int
 
 const (
-    SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS PhoneIdentityLookupActionStatus = iota
-    FAILED_PHONEIDENTITYLOOKUPACTIONSTATUS
+	SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS PhoneIdentityLookupActionStatus = iota
+	FAILED_PHONEIDENTITYLOOKUPACTIONSTATUS
 )
 
 func (i PhoneIdentityLookupActionStatus) String() string {
-    return []string{"succeeded", "failed"}[i]
+	return []string{"succeeded", "failed"}[i]
 }
+
 func ParsePhoneIdentityLookupActionStatus(v string) (any, error) {
-    result := SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS
-    switch v {
-        case "succeeded":
-            result = SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS
-        case "failed":
-            result = FAILED_PHONEIDENTITYLOOKUPACTIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS
+	switch v {
+	case "succeeded":
+		result = SUCCEEDED_PHONEIDENTITYLOOKUPACTIONSTATUS
+	case "failed":
+		result = FAILED_PHONEIDENTITYLOOKUPACTIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializePhoneIdentityLookupActionStatus(values []PhoneIdentityLookupActionStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i PhoneIdentityLookupActionStatus) isMultiValue() bool {
-    return false
+	return false
 }

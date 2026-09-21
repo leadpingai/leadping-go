@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SourceResponse_modifiedByUser user summary for the person who last modified this lead source response.
+// SourceResponse_modifiedByUser provides a compact API reference to another resource using its stable identifier and human-readable display name.
 type SourceResponse_modifiedByUser struct {
-    IdNamePair
+	IdNamePair
 }
+
 // NewSourceResponse_modifiedByUser instantiates a new SourceResponse_modifiedByUser and sets the default values.
-func NewSourceResponse_modifiedByUser()(*SourceResponse_modifiedByUser) {
-    m := &SourceResponse_modifiedByUser{
-        IdNamePair: *NewIdNamePair(),
-    }
-    return m
+func NewSourceResponse_modifiedByUser() *SourceResponse_modifiedByUser {
+	m := &SourceResponse_modifiedByUser{
+		IdNamePair: *NewIdNamePair(),
+	}
+	return m
 }
+
 // CreateSourceResponse_modifiedByUserFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSourceResponse_modifiedByUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSourceResponse_modifiedByUser(), nil
+func CreateSourceResponse_modifiedByUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSourceResponse_modifiedByUser(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SourceResponse_modifiedByUser) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.IdNamePair.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SourceResponse_modifiedByUser) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.IdNamePair.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *SourceResponse_modifiedByUser) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.IdNamePair.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *SourceResponse_modifiedByUser) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.IdNamePair.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type SourceResponse_modifiedByUserable interface {
-    IdNamePairable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	IdNamePairable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

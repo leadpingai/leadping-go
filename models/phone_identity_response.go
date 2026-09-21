@@ -4,326 +4,381 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneIdentityResponse describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
 type PhoneIdentityResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The unique identifier for the entity.
-    id *string
-    // The most recent time lookup data was enriched.
-    lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Provider lookup and enrichment data for the number.
-    lookup PhoneIdentityResponse_lookupable
-    // Lookup, enrichment, and reputation actions performed for this identity.
-    lookupActions []PhoneIdentityLookupActionable
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
-    name *string
-    // The canonical E.164 phone number.
-    number *string
-    // Lossless provider response retained for administrative diagnostics.
-    providerEnrichment PhoneIdentityResponse_providerEnrichmentable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stable unique identifier of the resource.
+	id *string
+	// The isDemo property
+	isDemo *bool
+	// The most recent time lookup data was enriched.
+	lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Public Leadping API schema for phone lookup result data.
+	lookup PhoneIdentityResponse_lookupable
+	// Lookup, enrichment, and reputation actions performed for this identity.
+	lookupActions []PhoneIdentityLookupActionable
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// The canonical E.164 phone number.
+	number *string
+	// Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
+	providerEnrichment PhoneIdentityResponse_providerEnrichmentable
 }
+
 // NewPhoneIdentityResponse instantiates a new PhoneIdentityResponse and sets the default values.
-func NewPhoneIdentityResponse()(*PhoneIdentityResponse) {
-    m := &PhoneIdentityResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneIdentityResponse() *PhoneIdentityResponse {
+	m := &PhoneIdentityResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneIdentityResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneIdentityResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneIdentityResponse(), nil
+func CreatePhoneIdentityResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneIdentityResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneIdentityResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneIdentityResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *PhoneIdentityResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *PhoneIdentityResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneIdentityResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["lastEnrichedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastEnrichedAt(val)
-        }
-        return nil
-    }
-    res["lookup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneIdentityResponse_lookupFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLookup(val.(PhoneIdentityResponse_lookupable))
-        }
-        return nil
-    }
-    res["lookupActions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreatePhoneIdentityLookupActionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]PhoneIdentityLookupActionable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(PhoneIdentityLookupActionable)
-                }
-            }
-            m.SetLookupActions(res)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["providerEnrichment"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderEnrichment(val.(PhoneIdentityResponse_providerEnrichmentable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneIdentityResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["lastEnrichedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastEnrichedAt(val)
+		}
+		return nil
+	}
+	res["lookup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneIdentityResponse_lookupFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLookup(val.(PhoneIdentityResponse_lookupable))
+		}
+		return nil
+	}
+	res["lookupActions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreatePhoneIdentityLookupActionFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]PhoneIdentityLookupActionable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(PhoneIdentityLookupActionable)
+				}
+			}
+			m.SetLookupActions(res)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["providerEnrichment"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProviderEnrichment(val.(PhoneIdentityResponse_providerEnrichmentable))
+		}
+		return nil
+	}
+	return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *PhoneIdentityResponse) GetId()(*string) {
-    return m.id
+func (m *PhoneIdentityResponse) GetId() *string {
+	return m.id
 }
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneIdentityResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLastEnrichedAt gets the lastEnrichedAt property value. The most recent time lookup data was enriched.
 // returns a *Time when successful
-func (m *PhoneIdentityResponse) GetLastEnrichedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastEnrichedAt
+func (m *PhoneIdentityResponse) GetLastEnrichedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastEnrichedAt
 }
-// GetLookup gets the lookup property value. Provider lookup and enrichment data for the number.
+
+// GetLookup gets the lookup property value. Public Leadping API schema for phone lookup result data.
 // returns a PhoneIdentityResponse_lookupable when successful
-func (m *PhoneIdentityResponse) GetLookup()(PhoneIdentityResponse_lookupable) {
-    return m.lookup
+func (m *PhoneIdentityResponse) GetLookup() PhoneIdentityResponse_lookupable {
+	return m.lookup
 }
+
 // GetLookupActions gets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
 // returns a []PhoneIdentityLookupActionable when successful
-func (m *PhoneIdentityResponse) GetLookupActions()([]PhoneIdentityLookupActionable) {
-    return m.lookupActions
+func (m *PhoneIdentityResponse) GetLookupActions() []PhoneIdentityLookupActionable {
+	return m.lookupActions
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *PhoneIdentityResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *PhoneIdentityResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *PhoneIdentityResponse) GetName()(*string) {
-    return m.name
+func (m *PhoneIdentityResponse) GetName() *string {
+	return m.name
 }
+
 // GetNumber gets the number property value. The canonical E.164 phone number.
 // returns a *string when successful
-func (m *PhoneIdentityResponse) GetNumber()(*string) {
-    return m.number
+func (m *PhoneIdentityResponse) GetNumber() *string {
+	return m.number
 }
-// GetProviderEnrichment gets the providerEnrichment property value. Lossless provider response retained for administrative diagnostics.
+
+// GetProviderEnrichment gets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
 // returns a PhoneIdentityResponse_providerEnrichmentable when successful
-func (m *PhoneIdentityResponse) GetProviderEnrichment()(PhoneIdentityResponse_providerEnrichmentable) {
-    return m.providerEnrichment
+func (m *PhoneIdentityResponse) GetProviderEnrichment() PhoneIdentityResponse_providerEnrichmentable {
+	return m.providerEnrichment
 }
+
 // Serialize serializes information the current object
-func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastEnrichedAt", m.GetLastEnrichedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("lookup", m.GetLookup())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLookupActions() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLookupActions()))
-        for i, v := range m.GetLookupActions() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("lookupActions", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("providerEnrichment", m.GetProviderEnrichment())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastEnrichedAt", m.GetLastEnrichedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("lookup", m.GetLookup())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLookupActions() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLookupActions()))
+		for i, v := range m.GetLookupActions() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("lookupActions", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("providerEnrichment", m.GetProviderEnrichment())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneIdentityResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneIdentityResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *PhoneIdentityResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *PhoneIdentityResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *PhoneIdentityResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *PhoneIdentityResponse) SetId(value *string) {
+	m.id = value
 }
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneIdentityResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastEnrichedAt sets the lastEnrichedAt property value. The most recent time lookup data was enriched.
-func (m *PhoneIdentityResponse) SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastEnrichedAt = value
+func (m *PhoneIdentityResponse) SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastEnrichedAt = value
 }
-// SetLookup sets the lookup property value. Provider lookup and enrichment data for the number.
-func (m *PhoneIdentityResponse) SetLookup(value PhoneIdentityResponse_lookupable)() {
-    m.lookup = value
+
+// SetLookup sets the lookup property value. Public Leadping API schema for phone lookup result data.
+func (m *PhoneIdentityResponse) SetLookup(value PhoneIdentityResponse_lookupable) {
+	m.lookup = value
 }
+
 // SetLookupActions sets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
-func (m *PhoneIdentityResponse) SetLookupActions(value []PhoneIdentityLookupActionable)() {
-    m.lookupActions = value
+func (m *PhoneIdentityResponse) SetLookupActions(value []PhoneIdentityLookupActionable) {
+	m.lookupActions = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *PhoneIdentityResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *PhoneIdentityResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
-func (m *PhoneIdentityResponse) SetName(value *string)() {
-    m.name = value
+
+// SetName sets the name property value. Human-readable display name of the resource.
+func (m *PhoneIdentityResponse) SetName(value *string) {
+	m.name = value
 }
+
 // SetNumber sets the number property value. The canonical E.164 phone number.
-func (m *PhoneIdentityResponse) SetNumber(value *string)() {
-    m.number = value
+func (m *PhoneIdentityResponse) SetNumber(value *string) {
+	m.number = value
 }
-// SetProviderEnrichment sets the providerEnrichment property value. Lossless provider response retained for administrative diagnostics.
-func (m *PhoneIdentityResponse) SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable)() {
-    m.providerEnrichment = value
+
+// SetProviderEnrichment sets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
+func (m *PhoneIdentityResponse) SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable) {
+	m.providerEnrichment = value
 }
+
 type PhoneIdentityResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetId()(*string)
-    GetLastEnrichedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLookup()(PhoneIdentityResponse_lookupable)
-    GetLookupActions()([]PhoneIdentityLookupActionable)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetNumber()(*string)
-    GetProviderEnrichment()(PhoneIdentityResponse_providerEnrichmentable)
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetId(value *string)()
-    SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLookup(value PhoneIdentityResponse_lookupable)()
-    SetLookupActions(value []PhoneIdentityLookupActionable)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetNumber(value *string)()
-    SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetId() *string
+	GetIsDemo() *bool
+	GetLastEnrichedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLookup() PhoneIdentityResponse_lookupable
+	GetLookupActions() []PhoneIdentityLookupActionable
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetNumber() *string
+	GetProviderEnrichment() PhoneIdentityResponse_providerEnrichmentable
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetId(value *string)
+	SetIsDemo(value *bool)
+	SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLookup(value PhoneIdentityResponse_lookupable)
+	SetLookupActions(value []PhoneIdentityLookupActionable)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetNumber(value *string)
+	SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable)
 }

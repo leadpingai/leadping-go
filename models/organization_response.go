@@ -4,998 +4,1099 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // OrganizationResponse describes organization profile data returned by Leadping.
 type OrganizationResponse struct {
-    // Current wallet balance available to the organization.
-    accountBalance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Organization activation state covering site, billing, compliance, and telephony readiness.
-    activation OrganizationResponse_activationable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Postal address for the organization, lead, or contact represented by this organization profile response.
-    address OrganizationResponse_addressable
-    // Wallet refill amount charged when automatic refill is triggered.
-    autoRefillAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Indicates whether automatic wallet refill is enabled for the organization.
-    autoRefillEnabled *bool
-    // Wallet balance threshold that triggers automatic refill.
-    autoRefillTrigger i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Postal address used for invoices, receipts, and payment processor billing records.
-    billingAddress OrganizationResponse_billingAddressable
-    // Name used for invoices, receipts, and payment processor billing records.
-    billingName *string
-    // Defines the supported Billing Plan values.
-    billingPlan *OrganizationResponse_billingPlan
-    // Customer-safe billing state for this organization.
-    billingState OrganizationResponse_billingStateable
-    // Tax identifier printed on billing documents. This may differ from the organization verification EIN.
-    billingTaxId *string
-    // Compliance policy configuration for the organization.
-    compliancePolicy OrganizationResponse_compliancePolicyable
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Human-readable description that explains this organization profile response to API users.
-    description *string
-    // Domain name connected to the organization website or activation workflow.
-    domain *string
-    // Employer Identification Number used for organization and 10DLC verification.
-    ein *string
-    // Uploaded EIN document reference used for organization verification.
-    einDocument OrganizationResponse_einDocumentable
-    // Indicates whether this organization profile response is active and available in the Leadping API.
-    enabled *bool
-    // The unique identifier for the entity.
-    id *string
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
-    name *string
-    // Phone details for the lead, user, or organization represented by this organization profile response.
-    phone *string
-    // Phone numbers assigned to this organization.
-    phones []IdNameValueable
-    // Alternate organization name or DBA shown in Leadping.
-    secondaryName *string
-    // Defines the supported User Setup Status values.
-    setupStatus *OrganizationResponse_setupStatus
-    // Defines the supported Organization Setup Step values.
-    setupStep *OrganizationResponse_setupStep
-    // Leadping website record connected to this organization.
-    site OrganizationResponse_siteable
-    // Defines the supported Organization Status values.
-    status *OrganizationResponse_status
-    // Defines the supported Subscription Status values.
-    subscriptionStatus *OrganizationResponse_subscriptionStatus
-    // User summary connected to this organization profile response.
-    user OrganizationResponse_userable
-    // Industry vertical used for lead routing, compliance review, and reporting.
-    vertical *string
-    // Organization website URL used for compliance, brand review, and lead attribution.
-    website *string
+	// Current wallet balance available to the organization.
+	accountBalance *float64
+	// Describes organization activation state data used in Leadping API requests and responses.
+	activation OrganizationResponse_activationable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	address OrganizationResponse_addressable
+	// Wallet refill amount charged when automatic refill is triggered.
+	autoRefillAmount *float64
+	// Indicates whether automatic wallet refill is enabled for the organization.
+	autoRefillEnabled *bool
+	// Wallet balance threshold that triggers automatic refill.
+	autoRefillTrigger *float64
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	billingAddress OrganizationResponse_billingAddressable
+	// Name used for invoices, receipts, and payment processor billing records.
+	billingName *string
+	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+	billingPlan *OrganizationResponse_billingPlan
+	// Customer-safe billing state for a Leadping organization.
+	billingState OrganizationResponse_billingStateable
+	// Tax identifier printed on billing documents. This may differ from the organization verification EIN.
+	billingTaxId *string
+	// Describes organization compliance policy data used in Leadping API requests and responses.
+	compliancePolicy OrganizationResponse_compliancePolicyable
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable description that explains this organization profile response to API users.
+	description *string
+	// Domain name connected to the organization website or activation workflow.
+	domain *string
+	// Employer Identification Number used for organization and 10DLC verification.
+	ein *string
+	// Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
+	einDocument OrganizationResponse_einDocumentable
+	// Indicates whether this organization profile response is active and available in the Leadping API.
+	enabled *bool
+	// Stable unique identifier of the resource.
+	id *string
+	// The isDemo property
+	isDemo *bool
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// Phone details for the lead, user, or organization represented by this organization profile response.
+	phone *string
+	// Phone numbers assigned to this organization.
+	phones []IdNameValueable
+	// Alternate organization name or DBA shown in Leadping.
+	secondaryName *string
+	// Describes a user's progress through required Leadping profile and account setup tasks.
+	setupStatus *OrganizationResponse_setupStatus
+	// Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
+	setupStep *OrganizationResponse_setupStep
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	site OrganizationResponse_siteable
+	// Describes an organization's account lifecycle and whether it can actively use Leadping services.
+	status *OrganizationResponse_status
+	// Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
+	subscriptionStatus *OrganizationResponse_subscriptionStatus
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	user OrganizationResponse_userable
+	// Industry vertical used for lead routing, compliance review, and reporting.
+	vertical *string
+	// Organization website URL used for compliance, brand review, and lead attribution.
+	website *string
 }
+
 // NewOrganizationResponse instantiates a new OrganizationResponse and sets the default values.
-func NewOrganizationResponse()(*OrganizationResponse) {
-    m := &OrganizationResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationResponse() *OrganizationResponse {
+	m := &OrganizationResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationResponse(), nil
+func CreateOrganizationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationResponse(), nil
 }
+
 // GetAccountBalance gets the accountBalance property value. Current wallet balance available to the organization.
-// returns a UntypedNodeable when successful
-func (m *OrganizationResponse) GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.accountBalance
+// returns a *float64 when successful
+func (m *OrganizationResponse) GetAccountBalance() *float64 {
+	return m.accountBalance
 }
-// GetActivation gets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
+
+// GetActivation gets the activation property value. Describes organization activation state data used in Leadping API requests and responses.
 // returns a OrganizationResponse_activationable when successful
-func (m *OrganizationResponse) GetActivation()(OrganizationResponse_activationable) {
-    return m.activation
+func (m *OrganizationResponse) GetActivation() OrganizationResponse_activationable {
+	return m.activation
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetAddress gets the address property value. Postal address for the organization, lead, or contact represented by this organization profile response.
+
+// GetAddress gets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 // returns a OrganizationResponse_addressable when successful
-func (m *OrganizationResponse) GetAddress()(OrganizationResponse_addressable) {
-    return m.address
+func (m *OrganizationResponse) GetAddress() OrganizationResponse_addressable {
+	return m.address
 }
+
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-// returns a UntypedNodeable when successful
-func (m *OrganizationResponse) GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.autoRefillAmount
+// returns a *float64 when successful
+func (m *OrganizationResponse) GetAutoRefillAmount() *float64 {
+	return m.autoRefillAmount
 }
+
 // GetAutoRefillEnabled gets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the organization.
 // returns a *bool when successful
-func (m *OrganizationResponse) GetAutoRefillEnabled()(*bool) {
-    return m.autoRefillEnabled
+func (m *OrganizationResponse) GetAutoRefillEnabled() *bool {
+	return m.autoRefillEnabled
 }
+
 // GetAutoRefillTrigger gets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-// returns a UntypedNodeable when successful
-func (m *OrganizationResponse) GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.autoRefillTrigger
+// returns a *float64 when successful
+func (m *OrganizationResponse) GetAutoRefillTrigger() *float64 {
+	return m.autoRefillTrigger
 }
-// GetBillingAddress gets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+
+// GetBillingAddress gets the billingAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 // returns a OrganizationResponse_billingAddressable when successful
-func (m *OrganizationResponse) GetBillingAddress()(OrganizationResponse_billingAddressable) {
-    return m.billingAddress
+func (m *OrganizationResponse) GetBillingAddress() OrganizationResponse_billingAddressable {
+	return m.billingAddress
 }
+
 // GetBillingName gets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
 // returns a *string when successful
-func (m *OrganizationResponse) GetBillingName()(*string) {
-    return m.billingName
+func (m *OrganizationResponse) GetBillingName() *string {
+	return m.billingName
 }
-// GetBillingPlan gets the billingPlan property value. Defines the supported Billing Plan values.
+
+// GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *OrganizationResponse_billingPlan when successful
-func (m *OrganizationResponse) GetBillingPlan()(*OrganizationResponse_billingPlan) {
-    return m.billingPlan
+func (m *OrganizationResponse) GetBillingPlan() *OrganizationResponse_billingPlan {
+	return m.billingPlan
 }
-// GetBillingState gets the billingState property value. Customer-safe billing state for this organization.
+
+// GetBillingState gets the billingState property value. Customer-safe billing state for a Leadping organization.
 // returns a OrganizationResponse_billingStateable when successful
-func (m *OrganizationResponse) GetBillingState()(OrganizationResponse_billingStateable) {
-    return m.billingState
+func (m *OrganizationResponse) GetBillingState() OrganizationResponse_billingStateable {
+	return m.billingState
 }
+
 // GetBillingTaxId gets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the organization verification EIN.
 // returns a *string when successful
-func (m *OrganizationResponse) GetBillingTaxId()(*string) {
-    return m.billingTaxId
+func (m *OrganizationResponse) GetBillingTaxId() *string {
+	return m.billingTaxId
 }
-// GetCompliancePolicy gets the compliancePolicy property value. Compliance policy configuration for the organization.
+
+// GetCompliancePolicy gets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
 // returns a OrganizationResponse_compliancePolicyable when successful
-func (m *OrganizationResponse) GetCompliancePolicy()(OrganizationResponse_compliancePolicyable) {
-    return m.compliancePolicy
+func (m *OrganizationResponse) GetCompliancePolicy() OrganizationResponse_compliancePolicyable {
+	return m.compliancePolicy
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *OrganizationResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *OrganizationResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDescription gets the description property value. Human-readable description that explains this organization profile response to API users.
 // returns a *string when successful
-func (m *OrganizationResponse) GetDescription()(*string) {
-    return m.description
+func (m *OrganizationResponse) GetDescription() *string {
+	return m.description
 }
+
 // GetDomain gets the domain property value. Domain name connected to the organization website or activation workflow.
 // returns a *string when successful
-func (m *OrganizationResponse) GetDomain()(*string) {
-    return m.domain
+func (m *OrganizationResponse) GetDomain() *string {
+	return m.domain
 }
+
 // GetEin gets the ein property value. Employer Identification Number used for organization and 10DLC verification.
 // returns a *string when successful
-func (m *OrganizationResponse) GetEin()(*string) {
-    return m.ein
+func (m *OrganizationResponse) GetEin() *string {
+	return m.ein
 }
-// GetEinDocument gets the einDocument property value. Uploaded EIN document reference used for organization verification.
+
+// GetEinDocument gets the einDocument property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 // returns a OrganizationResponse_einDocumentable when successful
-func (m *OrganizationResponse) GetEinDocument()(OrganizationResponse_einDocumentable) {
-    return m.einDocument
+func (m *OrganizationResponse) GetEinDocument() OrganizationResponse_einDocumentable {
+	return m.einDocument
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this organization profile response is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *OrganizationResponse) GetEnabled()(*bool) {
-    return m.enabled
+func (m *OrganizationResponse) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["accountBalance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAccountBalance(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["activation"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_activationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivation(val.(OrganizationResponse_activationable))
-        }
-        return nil
-    }
-    res["address"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_addressFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAddress(val.(OrganizationResponse_addressable))
-        }
-        return nil
-    }
-    res["autoRefillAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutoRefillAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["autoRefillEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutoRefillEnabled(val)
-        }
-        return nil
-    }
-    res["autoRefillTrigger"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutoRefillTrigger(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["billingAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_billingAddressFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingAddress(val.(OrganizationResponse_billingAddressable))
-        }
-        return nil
-    }
-    res["billingName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingName(val)
-        }
-        return nil
-    }
-    res["billingPlan"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationResponse_billingPlan)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingPlan(val.(*OrganizationResponse_billingPlan))
-        }
-        return nil
-    }
-    res["billingState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_billingStateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingState(val.(OrganizationResponse_billingStateable))
-        }
-        return nil
-    }
-    res["billingTaxId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingTaxId(val)
-        }
-        return nil
-    }
-    res["compliancePolicy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_compliancePolicyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompliancePolicy(val.(OrganizationResponse_compliancePolicyable))
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDescription(val)
-        }
-        return nil
-    }
-    res["domain"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDomain(val)
-        }
-        return nil
-    }
-    res["ein"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEin(val)
-        }
-        return nil
-    }
-    res["einDocument"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_einDocumentFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEinDocument(val.(OrganizationResponse_einDocumentable))
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["phones"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateIdNameValueFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]IdNameValueable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(IdNameValueable)
-                }
-            }
-            m.SetPhones(res)
-        }
-        return nil
-    }
-    res["secondaryName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSecondaryName(val)
-        }
-        return nil
-    }
-    res["setupStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationResponse_setupStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSetupStatus(val.(*OrganizationResponse_setupStatus))
-        }
-        return nil
-    }
-    res["setupStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationResponse_setupStep)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSetupStep(val.(*OrganizationResponse_setupStep))
-        }
-        return nil
-    }
-    res["site"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_siteFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSite(val.(OrganizationResponse_siteable))
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationResponse_status)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*OrganizationResponse_status))
-        }
-        return nil
-    }
-    res["subscriptionStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationResponse_subscriptionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubscriptionStatus(val.(*OrganizationResponse_subscriptionStatus))
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateOrganizationResponse_userFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val.(OrganizationResponse_userable))
-        }
-        return nil
-    }
-    res["vertical"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVertical(val)
-        }
-        return nil
-    }
-    res["website"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsite(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["accountBalance"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAccountBalance(val)
+		}
+		return nil
+	}
+	res["activation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_activationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActivation(val.(OrganizationResponse_activationable))
+		}
+		return nil
+	}
+	res["address"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_addressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAddress(val.(OrganizationResponse_addressable))
+		}
+		return nil
+	}
+	res["autoRefillAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutoRefillAmount(val)
+		}
+		return nil
+	}
+	res["autoRefillEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutoRefillEnabled(val)
+		}
+		return nil
+	}
+	res["autoRefillTrigger"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutoRefillTrigger(val)
+		}
+		return nil
+	}
+	res["billingAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_billingAddressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingAddress(val.(OrganizationResponse_billingAddressable))
+		}
+		return nil
+	}
+	res["billingName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingName(val)
+		}
+		return nil
+	}
+	res["billingPlan"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationResponse_billingPlan)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingPlan(val.(*OrganizationResponse_billingPlan))
+		}
+		return nil
+	}
+	res["billingState"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_billingStateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingState(val.(OrganizationResponse_billingStateable))
+		}
+		return nil
+	}
+	res["billingTaxId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingTaxId(val)
+		}
+		return nil
+	}
+	res["compliancePolicy"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_compliancePolicyFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompliancePolicy(val.(OrganizationResponse_compliancePolicyable))
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
+		}
+		return nil
+	}
+	res["domain"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDomain(val)
+		}
+		return nil
+	}
+	res["ein"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEin(val)
+		}
+		return nil
+	}
+	res["einDocument"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_einDocumentFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEinDocument(val.(OrganizationResponse_einDocumentable))
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["phones"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateIdNameValueFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]IdNameValueable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(IdNameValueable)
+				}
+			}
+			m.SetPhones(res)
+		}
+		return nil
+	}
+	res["secondaryName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSecondaryName(val)
+		}
+		return nil
+	}
+	res["setupStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationResponse_setupStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSetupStatus(val.(*OrganizationResponse_setupStatus))
+		}
+		return nil
+	}
+	res["setupStep"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationResponse_setupStep)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSetupStep(val.(*OrganizationResponse_setupStep))
+		}
+		return nil
+	}
+	res["site"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_siteFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSite(val.(OrganizationResponse_siteable))
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationResponse_status)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*OrganizationResponse_status))
+		}
+		return nil
+	}
+	res["subscriptionStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationResponse_subscriptionStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriptionStatus(val.(*OrganizationResponse_subscriptionStatus))
+		}
+		return nil
+	}
+	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationResponse_userFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUser(val.(OrganizationResponse_userable))
+		}
+		return nil
+	}
+	res["vertical"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVertical(val)
+		}
+		return nil
+	}
+	res["website"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsite(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *OrganizationResponse) GetId()(*string) {
-    return m.id
+func (m *OrganizationResponse) GetId() *string {
+	return m.id
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *OrganizationResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *OrganizationResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *OrganizationResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *OrganizationResponse) GetName()(*string) {
-    return m.name
+func (m *OrganizationResponse) GetName() *string {
+	return m.name
 }
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this organization profile response.
 // returns a *string when successful
-func (m *OrganizationResponse) GetPhone()(*string) {
-    return m.phone
+func (m *OrganizationResponse) GetPhone() *string {
+	return m.phone
 }
+
 // GetPhones gets the phones property value. Phone numbers assigned to this organization.
 // returns a []IdNameValueable when successful
-func (m *OrganizationResponse) GetPhones()([]IdNameValueable) {
-    return m.phones
+func (m *OrganizationResponse) GetPhones() []IdNameValueable {
+	return m.phones
 }
+
 // GetSecondaryName gets the secondaryName property value. Alternate organization name or DBA shown in Leadping.
 // returns a *string when successful
-func (m *OrganizationResponse) GetSecondaryName()(*string) {
-    return m.secondaryName
+func (m *OrganizationResponse) GetSecondaryName() *string {
+	return m.secondaryName
 }
-// GetSetupStatus gets the setupStatus property value. Defines the supported User Setup Status values.
+
+// GetSetupStatus gets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
 // returns a *OrganizationResponse_setupStatus when successful
-func (m *OrganizationResponse) GetSetupStatus()(*OrganizationResponse_setupStatus) {
-    return m.setupStatus
+func (m *OrganizationResponse) GetSetupStatus() *OrganizationResponse_setupStatus {
+	return m.setupStatus
 }
-// GetSetupStep gets the setupStep property value. Defines the supported Organization Setup Step values.
+
+// GetSetupStep gets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
 // returns a *OrganizationResponse_setupStep when successful
-func (m *OrganizationResponse) GetSetupStep()(*OrganizationResponse_setupStep) {
-    return m.setupStep
+func (m *OrganizationResponse) GetSetupStep() *OrganizationResponse_setupStep {
+	return m.setupStep
 }
-// GetSite gets the site property value. Leadping website record connected to this organization.
+
+// GetSite gets the site property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a OrganizationResponse_siteable when successful
-func (m *OrganizationResponse) GetSite()(OrganizationResponse_siteable) {
-    return m.site
+func (m *OrganizationResponse) GetSite() OrganizationResponse_siteable {
+	return m.site
 }
-// GetStatus gets the status property value. Defines the supported Organization Status values.
+
+// GetStatus gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
 // returns a *OrganizationResponse_status when successful
-func (m *OrganizationResponse) GetStatus()(*OrganizationResponse_status) {
-    return m.status
+func (m *OrganizationResponse) GetStatus() *OrganizationResponse_status {
+	return m.status
 }
-// GetSubscriptionStatus gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+
+// GetSubscriptionStatus gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 // returns a *OrganizationResponse_subscriptionStatus when successful
-func (m *OrganizationResponse) GetSubscriptionStatus()(*OrganizationResponse_subscriptionStatus) {
-    return m.subscriptionStatus
+func (m *OrganizationResponse) GetSubscriptionStatus() *OrganizationResponse_subscriptionStatus {
+	return m.subscriptionStatus
 }
-// GetUser gets the user property value. User summary connected to this organization profile response.
+
+// GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a OrganizationResponse_userable when successful
-func (m *OrganizationResponse) GetUser()(OrganizationResponse_userable) {
-    return m.user
+func (m *OrganizationResponse) GetUser() OrganizationResponse_userable {
+	return m.user
 }
+
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
-func (m *OrganizationResponse) GetVertical()(*string) {
-    return m.vertical
+func (m *OrganizationResponse) GetVertical() *string {
+	return m.vertical
 }
+
 // GetWebsite gets the website property value. Organization website URL used for compliance, brand review, and lead attribution.
 // returns a *string when successful
-func (m *OrganizationResponse) GetWebsite()(*string) {
-    return m.website
+func (m *OrganizationResponse) GetWebsite() *string {
+	return m.website
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("accountBalance", m.GetAccountBalance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("activation", m.GetActivation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("address", m.GetAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("autoRefillAmount", m.GetAutoRefillAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("autoRefillEnabled", m.GetAutoRefillEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("autoRefillTrigger", m.GetAutoRefillTrigger())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("billingAddress", m.GetBillingAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingName", m.GetBillingName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetBillingPlan() != nil {
-        cast := (*m.GetBillingPlan()).String()
-        err := writer.WriteStringValue("billingPlan", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("billingState", m.GetBillingState())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingTaxId", m.GetBillingTaxId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("compliancePolicy", m.GetCompliancePolicy())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("description", m.GetDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("domain", m.GetDomain())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ein", m.GetEin())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("einDocument", m.GetEinDocument())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPhones() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPhones()))
-        for i, v := range m.GetPhones() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("phones", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("secondaryName", m.GetSecondaryName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSetupStatus() != nil {
-        cast := (*m.GetSetupStatus()).String()
-        err := writer.WriteStringValue("setupStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSetupStep() != nil {
-        cast := (*m.GetSetupStep()).String()
-        err := writer.WriteStringValue("setupStep", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("site", m.GetSite())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSubscriptionStatus() != nil {
-        cast := (*m.GetSubscriptionStatus()).String()
-        err := writer.WriteStringValue("subscriptionStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("vertical", m.GetVertical())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("website", m.GetWebsite())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("accountBalance", m.GetAccountBalance())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("activation", m.GetActivation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("address", m.GetAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("autoRefillAmount", m.GetAutoRefillAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("autoRefillEnabled", m.GetAutoRefillEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("autoRefillTrigger", m.GetAutoRefillTrigger())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("billingAddress", m.GetBillingAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingName", m.GetBillingName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetBillingPlan() != nil {
+		cast := (*m.GetBillingPlan()).String()
+		err := writer.WriteStringValue("billingPlan", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("billingState", m.GetBillingState())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingTaxId", m.GetBillingTaxId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("compliancePolicy", m.GetCompliancePolicy())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("domain", m.GetDomain())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ein", m.GetEin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("einDocument", m.GetEinDocument())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPhones() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPhones()))
+		for i, v := range m.GetPhones() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("phones", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("secondaryName", m.GetSecondaryName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSetupStatus() != nil {
+		cast := (*m.GetSetupStatus()).String()
+		err := writer.WriteStringValue("setupStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSetupStep() != nil {
+		cast := (*m.GetSetupStep()).String()
+		err := writer.WriteStringValue("setupStep", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("site", m.GetSite())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSubscriptionStatus() != nil {
+		cast := (*m.GetSubscriptionStatus()).String()
+		err := writer.WriteStringValue("subscriptionStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("user", m.GetUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("vertical", m.GetVertical())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("website", m.GetWebsite())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAccountBalance sets the accountBalance property value. Current wallet balance available to the organization.
-func (m *OrganizationResponse) SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.accountBalance = value
+func (m *OrganizationResponse) SetAccountBalance(value *float64) {
+	m.accountBalance = value
 }
-// SetActivation sets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
-func (m *OrganizationResponse) SetActivation(value OrganizationResponse_activationable)() {
-    m.activation = value
+
+// SetActivation sets the activation property value. Describes organization activation state data used in Leadping API requests and responses.
+func (m *OrganizationResponse) SetActivation(value OrganizationResponse_activationable) {
+	m.activation = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetAddress sets the address property value. Postal address for the organization, lead, or contact represented by this organization profile response.
-func (m *OrganizationResponse) SetAddress(value OrganizationResponse_addressable)() {
-    m.address = value
+
+// SetAddress sets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *OrganizationResponse) SetAddress(value OrganizationResponse_addressable) {
+	m.address = value
 }
+
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-func (m *OrganizationResponse) SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.autoRefillAmount = value
+func (m *OrganizationResponse) SetAutoRefillAmount(value *float64) {
+	m.autoRefillAmount = value
 }
+
 // SetAutoRefillEnabled sets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the organization.
-func (m *OrganizationResponse) SetAutoRefillEnabled(value *bool)() {
-    m.autoRefillEnabled = value
+func (m *OrganizationResponse) SetAutoRefillEnabled(value *bool) {
+	m.autoRefillEnabled = value
 }
+
 // SetAutoRefillTrigger sets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-func (m *OrganizationResponse) SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.autoRefillTrigger = value
+func (m *OrganizationResponse) SetAutoRefillTrigger(value *float64) {
+	m.autoRefillTrigger = value
 }
-// SetBillingAddress sets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
-func (m *OrganizationResponse) SetBillingAddress(value OrganizationResponse_billingAddressable)() {
-    m.billingAddress = value
+
+// SetBillingAddress sets the billingAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *OrganizationResponse) SetBillingAddress(value OrganizationResponse_billingAddressable) {
+	m.billingAddress = value
 }
+
 // SetBillingName sets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
-func (m *OrganizationResponse) SetBillingName(value *string)() {
-    m.billingName = value
+func (m *OrganizationResponse) SetBillingName(value *string) {
+	m.billingName = value
 }
-// SetBillingPlan sets the billingPlan property value. Defines the supported Billing Plan values.
-func (m *OrganizationResponse) SetBillingPlan(value *OrganizationResponse_billingPlan)() {
-    m.billingPlan = value
+
+// SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
+func (m *OrganizationResponse) SetBillingPlan(value *OrganizationResponse_billingPlan) {
+	m.billingPlan = value
 }
-// SetBillingState sets the billingState property value. Customer-safe billing state for this organization.
-func (m *OrganizationResponse) SetBillingState(value OrganizationResponse_billingStateable)() {
-    m.billingState = value
+
+// SetBillingState sets the billingState property value. Customer-safe billing state for a Leadping organization.
+func (m *OrganizationResponse) SetBillingState(value OrganizationResponse_billingStateable) {
+	m.billingState = value
 }
+
 // SetBillingTaxId sets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the organization verification EIN.
-func (m *OrganizationResponse) SetBillingTaxId(value *string)() {
-    m.billingTaxId = value
+func (m *OrganizationResponse) SetBillingTaxId(value *string) {
+	m.billingTaxId = value
 }
-// SetCompliancePolicy sets the compliancePolicy property value. Compliance policy configuration for the organization.
-func (m *OrganizationResponse) SetCompliancePolicy(value OrganizationResponse_compliancePolicyable)() {
-    m.compliancePolicy = value
+
+// SetCompliancePolicy sets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
+func (m *OrganizationResponse) SetCompliancePolicy(value OrganizationResponse_compliancePolicyable) {
+	m.compliancePolicy = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *OrganizationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *OrganizationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDescription sets the description property value. Human-readable description that explains this organization profile response to API users.
-func (m *OrganizationResponse) SetDescription(value *string)() {
-    m.description = value
+func (m *OrganizationResponse) SetDescription(value *string) {
+	m.description = value
 }
+
 // SetDomain sets the domain property value. Domain name connected to the organization website or activation workflow.
-func (m *OrganizationResponse) SetDomain(value *string)() {
-    m.domain = value
+func (m *OrganizationResponse) SetDomain(value *string) {
+	m.domain = value
 }
+
 // SetEin sets the ein property value. Employer Identification Number used for organization and 10DLC verification.
-func (m *OrganizationResponse) SetEin(value *string)() {
-    m.ein = value
+func (m *OrganizationResponse) SetEin(value *string) {
+	m.ein = value
 }
-// SetEinDocument sets the einDocument property value. Uploaded EIN document reference used for organization verification.
-func (m *OrganizationResponse) SetEinDocument(value OrganizationResponse_einDocumentable)() {
-    m.einDocument = value
+
+// SetEinDocument sets the einDocument property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
+func (m *OrganizationResponse) SetEinDocument(value OrganizationResponse_einDocumentable) {
+	m.einDocument = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this organization profile response is active and available in the Leadping API.
-func (m *OrganizationResponse) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *OrganizationResponse) SetEnabled(value *bool) {
+	m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *OrganizationResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *OrganizationResponse) SetId(value *string) {
+	m.id = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *OrganizationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *OrganizationResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
 }
-// SetName sets the name property value. The display name for the entity.
-func (m *OrganizationResponse) SetName(value *string)() {
-    m.name = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *OrganizationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
+// SetName sets the name property value. Human-readable display name of the resource.
+func (m *OrganizationResponse) SetName(value *string) {
+	m.name = value
+}
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this organization profile response.
-func (m *OrganizationResponse) SetPhone(value *string)() {
-    m.phone = value
+func (m *OrganizationResponse) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetPhones sets the phones property value. Phone numbers assigned to this organization.
-func (m *OrganizationResponse) SetPhones(value []IdNameValueable)() {
-    m.phones = value
+func (m *OrganizationResponse) SetPhones(value []IdNameValueable) {
+	m.phones = value
 }
+
 // SetSecondaryName sets the secondaryName property value. Alternate organization name or DBA shown in Leadping.
-func (m *OrganizationResponse) SetSecondaryName(value *string)() {
-    m.secondaryName = value
+func (m *OrganizationResponse) SetSecondaryName(value *string) {
+	m.secondaryName = value
 }
-// SetSetupStatus sets the setupStatus property value. Defines the supported User Setup Status values.
-func (m *OrganizationResponse) SetSetupStatus(value *OrganizationResponse_setupStatus)() {
-    m.setupStatus = value
+
+// SetSetupStatus sets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
+func (m *OrganizationResponse) SetSetupStatus(value *OrganizationResponse_setupStatus) {
+	m.setupStatus = value
 }
-// SetSetupStep sets the setupStep property value. Defines the supported Organization Setup Step values.
-func (m *OrganizationResponse) SetSetupStep(value *OrganizationResponse_setupStep)() {
-    m.setupStep = value
+
+// SetSetupStep sets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
+func (m *OrganizationResponse) SetSetupStep(value *OrganizationResponse_setupStep) {
+	m.setupStep = value
 }
-// SetSite sets the site property value. Leadping website record connected to this organization.
-func (m *OrganizationResponse) SetSite(value OrganizationResponse_siteable)() {
-    m.site = value
+
+// SetSite sets the site property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *OrganizationResponse) SetSite(value OrganizationResponse_siteable) {
+	m.site = value
 }
-// SetStatus sets the status property value. Defines the supported Organization Status values.
-func (m *OrganizationResponse) SetStatus(value *OrganizationResponse_status)() {
-    m.status = value
+
+// SetStatus sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
+func (m *OrganizationResponse) SetStatus(value *OrganizationResponse_status) {
+	m.status = value
 }
-// SetSubscriptionStatus sets the subscriptionStatus property value. Defines the supported Subscription Status values.
-func (m *OrganizationResponse) SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus)() {
-    m.subscriptionStatus = value
+
+// SetSubscriptionStatus sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
+func (m *OrganizationResponse) SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus) {
+	m.subscriptionStatus = value
 }
-// SetUser sets the user property value. User summary connected to this organization profile response.
-func (m *OrganizationResponse) SetUser(value OrganizationResponse_userable)() {
-    m.user = value
+
+// SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *OrganizationResponse) SetUser(value OrganizationResponse_userable) {
+	m.user = value
 }
+
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
-func (m *OrganizationResponse) SetVertical(value *string)() {
-    m.vertical = value
+func (m *OrganizationResponse) SetVertical(value *string) {
+	m.vertical = value
 }
+
 // SetWebsite sets the website property value. Organization website URL used for compliance, brand review, and lead attribution.
-func (m *OrganizationResponse) SetWebsite(value *string)() {
-    m.website = value
+func (m *OrganizationResponse) SetWebsite(value *string) {
+	m.website = value
 }
+
 type OrganizationResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAccountBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetActivation()(OrganizationResponse_activationable)
-    GetAddress()(OrganizationResponse_addressable)
-    GetAutoRefillAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetAutoRefillEnabled()(*bool)
-    GetAutoRefillTrigger()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillingAddress()(OrganizationResponse_billingAddressable)
-    GetBillingName()(*string)
-    GetBillingPlan()(*OrganizationResponse_billingPlan)
-    GetBillingState()(OrganizationResponse_billingStateable)
-    GetBillingTaxId()(*string)
-    GetCompliancePolicy()(OrganizationResponse_compliancePolicyable)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDescription()(*string)
-    GetDomain()(*string)
-    GetEin()(*string)
-    GetEinDocument()(OrganizationResponse_einDocumentable)
-    GetEnabled()(*bool)
-    GetId()(*string)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetPhone()(*string)
-    GetPhones()([]IdNameValueable)
-    GetSecondaryName()(*string)
-    GetSetupStatus()(*OrganizationResponse_setupStatus)
-    GetSetupStep()(*OrganizationResponse_setupStep)
-    GetSite()(OrganizationResponse_siteable)
-    GetStatus()(*OrganizationResponse_status)
-    GetSubscriptionStatus()(*OrganizationResponse_subscriptionStatus)
-    GetUser()(OrganizationResponse_userable)
-    GetVertical()(*string)
-    GetWebsite()(*string)
-    SetAccountBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetActivation(value OrganizationResponse_activationable)()
-    SetAddress(value OrganizationResponse_addressable)()
-    SetAutoRefillAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetAutoRefillEnabled(value *bool)()
-    SetAutoRefillTrigger(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillingAddress(value OrganizationResponse_billingAddressable)()
-    SetBillingName(value *string)()
-    SetBillingPlan(value *OrganizationResponse_billingPlan)()
-    SetBillingState(value OrganizationResponse_billingStateable)()
-    SetBillingTaxId(value *string)()
-    SetCompliancePolicy(value OrganizationResponse_compliancePolicyable)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDescription(value *string)()
-    SetDomain(value *string)()
-    SetEin(value *string)()
-    SetEinDocument(value OrganizationResponse_einDocumentable)()
-    SetEnabled(value *bool)()
-    SetId(value *string)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetPhone(value *string)()
-    SetPhones(value []IdNameValueable)()
-    SetSecondaryName(value *string)()
-    SetSetupStatus(value *OrganizationResponse_setupStatus)()
-    SetSetupStep(value *OrganizationResponse_setupStep)()
-    SetSite(value OrganizationResponse_siteable)()
-    SetStatus(value *OrganizationResponse_status)()
-    SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus)()
-    SetUser(value OrganizationResponse_userable)()
-    SetVertical(value *string)()
-    SetWebsite(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAccountBalance() *float64
+	GetActivation() OrganizationResponse_activationable
+	GetAddress() OrganizationResponse_addressable
+	GetAutoRefillAmount() *float64
+	GetAutoRefillEnabled() *bool
+	GetAutoRefillTrigger() *float64
+	GetBillingAddress() OrganizationResponse_billingAddressable
+	GetBillingName() *string
+	GetBillingPlan() *OrganizationResponse_billingPlan
+	GetBillingState() OrganizationResponse_billingStateable
+	GetBillingTaxId() *string
+	GetCompliancePolicy() OrganizationResponse_compliancePolicyable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDescription() *string
+	GetDomain() *string
+	GetEin() *string
+	GetEinDocument() OrganizationResponse_einDocumentable
+	GetEnabled() *bool
+	GetId() *string
+	GetIsDemo() *bool
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetPhone() *string
+	GetPhones() []IdNameValueable
+	GetSecondaryName() *string
+	GetSetupStatus() *OrganizationResponse_setupStatus
+	GetSetupStep() *OrganizationResponse_setupStep
+	GetSite() OrganizationResponse_siteable
+	GetStatus() *OrganizationResponse_status
+	GetSubscriptionStatus() *OrganizationResponse_subscriptionStatus
+	GetUser() OrganizationResponse_userable
+	GetVertical() *string
+	GetWebsite() *string
+	SetAccountBalance(value *float64)
+	SetActivation(value OrganizationResponse_activationable)
+	SetAddress(value OrganizationResponse_addressable)
+	SetAutoRefillAmount(value *float64)
+	SetAutoRefillEnabled(value *bool)
+	SetAutoRefillTrigger(value *float64)
+	SetBillingAddress(value OrganizationResponse_billingAddressable)
+	SetBillingName(value *string)
+	SetBillingPlan(value *OrganizationResponse_billingPlan)
+	SetBillingState(value OrganizationResponse_billingStateable)
+	SetBillingTaxId(value *string)
+	SetCompliancePolicy(value OrganizationResponse_compliancePolicyable)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDescription(value *string)
+	SetDomain(value *string)
+	SetEin(value *string)
+	SetEinDocument(value OrganizationResponse_einDocumentable)
+	SetEnabled(value *bool)
+	SetId(value *string)
+	SetIsDemo(value *bool)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetPhone(value *string)
+	SetPhones(value []IdNameValueable)
+	SetSecondaryName(value *string)
+	SetSetupStatus(value *OrganizationResponse_setupStatus)
+	SetSetupStep(value *OrganizationResponse_setupStep)
+	SetSite(value OrganizationResponse_siteable)
+	SetStatus(value *OrganizationResponse_status)
+	SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus)
+	SetUser(value OrganizationResponse_userable)
+	SetVertical(value *string)
+	SetWebsite(value *string)
 }

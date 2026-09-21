@@ -4,35 +4,38 @@
 package events
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // ConversationsRequestBuilder builds and executes requests for operations under \events\conversations
 type ConversationsRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByConversationId gets an item from the github.com/leadpingai/leadping-go.events.conversations.item collection
 // returns a *ConversationsWithConversationItemRequestBuilder when successful
-func (m *ConversationsRequestBuilder) ByConversationId(conversationId string)(*ConversationsWithConversationItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if conversationId != "" {
-        urlTplParams["conversationId"] = conversationId
-    }
-    return NewConversationsWithConversationItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *ConversationsRequestBuilder) ByConversationId(conversationId string) *ConversationsWithConversationItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if conversationId != "" {
+		urlTplParams["conversationId"] = conversationId
+	}
+	return NewConversationsWithConversationItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewConversationsRequestBuilderInternal instantiates a new ConversationsRequestBuilder and sets the default values.
-func NewConversationsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConversationsRequestBuilder) {
-    m := &ConversationsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/conversations", pathParameters),
-    }
-    return m
+func NewConversationsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsRequestBuilder {
+	m := &ConversationsRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/conversations", pathParameters),
+	}
+	return m
 }
+
 // NewConversationsRequestBuilder instantiates a new ConversationsRequestBuilder and sets the default values.
-func NewConversationsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConversationsRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewConversationsRequestBuilderInternal(urlParams, requestAdapter)
+func NewConversationsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewConversationsRequestBuilderInternal(urlParams, requestAdapter)
 }

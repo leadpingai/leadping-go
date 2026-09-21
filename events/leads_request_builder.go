@@ -4,35 +4,38 @@
 package events
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // LeadsRequestBuilder builds and executes requests for operations under \events\leads
 type LeadsRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByLeadId gets an item from the github.com/leadpingai/leadping-go.events.leads.item collection
 // returns a *LeadsWithLeadItemRequestBuilder when successful
-func (m *LeadsRequestBuilder) ByLeadId(leadId string)(*LeadsWithLeadItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if leadId != "" {
-        urlTplParams["leadId"] = leadId
-    }
-    return NewLeadsWithLeadItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadsRequestBuilder) ByLeadId(leadId string) *LeadsWithLeadItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if leadId != "" {
+		urlTplParams["leadId"] = leadId
+	}
+	return NewLeadsWithLeadItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewLeadsRequestBuilderInternal instantiates a new LeadsRequestBuilder and sets the default values.
-func NewLeadsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadsRequestBuilder) {
-    m := &LeadsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/leads", pathParameters),
-    }
-    return m
+func NewLeadsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *LeadsRequestBuilder {
+	m := &LeadsRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/leads", pathParameters),
+	}
+	return m
 }
+
 // NewLeadsRequestBuilder instantiates a new LeadsRequestBuilder and sets the default values.
-func NewLeadsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadsRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewLeadsRequestBuilderInternal(urlParams, requestAdapter)
+func NewLeadsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *LeadsRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewLeadsRequestBuilderInternal(urlParams, requestAdapter)
 }

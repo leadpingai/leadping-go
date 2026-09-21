@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported voice call warmup stages for a Leadping-managed phone number.
+
+// Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
 type PhoneNumberReadiness_callStage int
 
 const (
-    STAGE0_PHONENUMBERREADINESS_CALLSTAGE PhoneNumberReadiness_callStage = iota
-    STAGE1_PHONENUMBERREADINESS_CALLSTAGE
-    STAGE2_PHONENUMBERREADINESS_CALLSTAGE
-    STAGE3_PHONENUMBERREADINESS_CALLSTAGE
-    STAGE4_PHONENUMBERREADINESS_CALLSTAGE
+	STAGE0_PHONENUMBERREADINESS_CALLSTAGE PhoneNumberReadiness_callStage = iota
+	STAGE1_PHONENUMBERREADINESS_CALLSTAGE
+	STAGE2_PHONENUMBERREADINESS_CALLSTAGE
+	STAGE3_PHONENUMBERREADINESS_CALLSTAGE
+	STAGE4_PHONENUMBERREADINESS_CALLSTAGE
 )
 
 func (i PhoneNumberReadiness_callStage) String() string {
-    return []string{"Stage 0", "Stage 1", "Stage 2", "Stage 3", "Stage 4"}[i]
+	return []string{"Stage 0", "Stage 1", "Stage 2", "Stage 3", "Stage 4"}[i]
 }
+
 func ParsePhoneNumberReadiness_callStage(v string) (any, error) {
-    result := STAGE0_PHONENUMBERREADINESS_CALLSTAGE
-    switch v {
-        case "Stage 0":
-            result = STAGE0_PHONENUMBERREADINESS_CALLSTAGE
-        case "Stage 1":
-            result = STAGE1_PHONENUMBERREADINESS_CALLSTAGE
-        case "Stage 2":
-            result = STAGE2_PHONENUMBERREADINESS_CALLSTAGE
-        case "Stage 3":
-            result = STAGE3_PHONENUMBERREADINESS_CALLSTAGE
-        case "Stage 4":
-            result = STAGE4_PHONENUMBERREADINESS_CALLSTAGE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := STAGE0_PHONENUMBERREADINESS_CALLSTAGE
+	switch v {
+	case "Stage 0":
+		result = STAGE0_PHONENUMBERREADINESS_CALLSTAGE
+	case "Stage 1":
+		result = STAGE1_PHONENUMBERREADINESS_CALLSTAGE
+	case "Stage 2":
+		result = STAGE2_PHONENUMBERREADINESS_CALLSTAGE
+	case "Stage 3":
+		result = STAGE3_PHONENUMBERREADINESS_CALLSTAGE
+	case "Stage 4":
+		result = STAGE4_PHONENUMBERREADINESS_CALLSTAGE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializePhoneNumberReadiness_callStage(values []PhoneNumberReadiness_callStage) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i PhoneNumberReadiness_callStage) isMultiValue() bool {
-    return false
+	return false
 }

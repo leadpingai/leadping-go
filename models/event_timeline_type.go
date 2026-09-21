@@ -2,66 +2,70 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Event timeline type values.
+
+// Classifies the kind of activity displayed in a lead or conversation event timeline.
 type EventTimelineType int
 
 const (
-    MESSAGE_EVENTTIMELINETYPE EventTimelineType = iota
-    SMS_EVENTTIMELINETYPE
-    MMS_EVENTTIMELINETYPE
-    CALL_EVENTTIMELINETYPE
-    VOICEMAIL_EVENTTIMELINETYPE
-    NOTE_EVENTTIMELINETYPE
-    LEADSTATUSCHANGE_EVENTTIMELINETYPE
-    LEADCREATED_EVENTTIMELINETYPE
-    LEADUPDATED_EVENTTIMELINETYPE
-    NOTIFICATION_EVENTTIMELINETYPE
-    PAYMENT_EVENTTIMELINETYPE
-    WARMUP_EVENTTIMELINETYPE
+	MESSAGE_EVENTTIMELINETYPE EventTimelineType = iota
+	SMS_EVENTTIMELINETYPE
+	MMS_EVENTTIMELINETYPE
+	CALL_EVENTTIMELINETYPE
+	VOICEMAIL_EVENTTIMELINETYPE
+	NOTE_EVENTTIMELINETYPE
+	LEADSTATUSCHANGE_EVENTTIMELINETYPE
+	LEADCREATED_EVENTTIMELINETYPE
+	LEADUPDATED_EVENTTIMELINETYPE
+	NOTIFICATION_EVENTTIMELINETYPE
+	PAYMENT_EVENTTIMELINETYPE
+	WARMUP_EVENTTIMELINETYPE
 )
 
 func (i EventTimelineType) String() string {
-    return []string{"Message", "Sms", "Mms", "Call", "Voicemail", "Note", "LeadStatusChange", "LeadCreated", "LeadUpdated", "Notification", "Payment", "Warmup"}[i]
+	return []string{"Message", "Sms", "Mms", "Call", "Voicemail", "Note", "LeadStatusChange", "LeadCreated", "LeadUpdated", "Notification", "Payment", "Warmup"}[i]
 }
+
 func ParseEventTimelineType(v string) (any, error) {
-    result := MESSAGE_EVENTTIMELINETYPE
-    switch v {
-        case "Message":
-            result = MESSAGE_EVENTTIMELINETYPE
-        case "Sms":
-            result = SMS_EVENTTIMELINETYPE
-        case "Mms":
-            result = MMS_EVENTTIMELINETYPE
-        case "Call":
-            result = CALL_EVENTTIMELINETYPE
-        case "Voicemail":
-            result = VOICEMAIL_EVENTTIMELINETYPE
-        case "Note":
-            result = NOTE_EVENTTIMELINETYPE
-        case "LeadStatusChange":
-            result = LEADSTATUSCHANGE_EVENTTIMELINETYPE
-        case "LeadCreated":
-            result = LEADCREATED_EVENTTIMELINETYPE
-        case "LeadUpdated":
-            result = LEADUPDATED_EVENTTIMELINETYPE
-        case "Notification":
-            result = NOTIFICATION_EVENTTIMELINETYPE
-        case "Payment":
-            result = PAYMENT_EVENTTIMELINETYPE
-        case "Warmup":
-            result = WARMUP_EVENTTIMELINETYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := MESSAGE_EVENTTIMELINETYPE
+	switch v {
+	case "Message":
+		result = MESSAGE_EVENTTIMELINETYPE
+	case "Sms":
+		result = SMS_EVENTTIMELINETYPE
+	case "Mms":
+		result = MMS_EVENTTIMELINETYPE
+	case "Call":
+		result = CALL_EVENTTIMELINETYPE
+	case "Voicemail":
+		result = VOICEMAIL_EVENTTIMELINETYPE
+	case "Note":
+		result = NOTE_EVENTTIMELINETYPE
+	case "LeadStatusChange":
+		result = LEADSTATUSCHANGE_EVENTTIMELINETYPE
+	case "LeadCreated":
+		result = LEADCREATED_EVENTTIMELINETYPE
+	case "LeadUpdated":
+		result = LEADUPDATED_EVENTTIMELINETYPE
+	case "Notification":
+		result = NOTIFICATION_EVENTTIMELINETYPE
+	case "Payment":
+		result = PAYMENT_EVENTTIMELINETYPE
+	case "Warmup":
+		result = WARMUP_EVENTTIMELINETYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeEventTimelineType(values []EventTimelineType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i EventTimelineType) isMultiValue() bool {
-    return false
+	return false
 }

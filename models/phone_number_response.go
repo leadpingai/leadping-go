@@ -4,372 +4,524 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberResponse describes a Leadping-managed phone number, including capabilities, messaging registration, health, and assignment details.
 type PhoneNumberResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether this phone number is active and available in the Leadping API.
-    enabled *bool
-    // The unique identifier for the entity.
-    id *string
-    // Indicates whether Leadping provisions and manages this phone number.
-    leadpingOwned *bool
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
-    name *string
-    // E.164 phone number exposed by this phone number.
-    number *string
-    // Organization summary connected to this phone number.
-    organization PhoneNumberResponse_organizationable
-    // Identifier of the canonical phone identity for this number.
-    phoneIdentityId *string
-    // Routing metadata that connects this phone number to teams, campaigns, and sources.
-    routing PhoneNumberRoutingMetadataable
-    // SMS and call warmup for this phone number.
-    warmup PhoneNumberReadinessable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether this phone number is active and available in the Leadping API.
+	enabled *bool
+	// Stable unique identifier of the resource.
+	id *string
+	// The isDemo property
+	isDemo *bool
+	// Indicates whether Leadping provisions and manages this phone number.
+	leadpingOwned *bool
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// E.164 phone number exposed by this phone number.
+	number *string
+	// Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+	numberHealthEnabled *bool
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization PhoneNumberResponse_organizationable
+	// Identifier of the canonical phone identity for this number.
+	phoneIdentityId *string
+	// Public Leadping API schema for phone number routing metadata data.
+	routing PhoneNumberRoutingMetadataable
+	// Whether provider, routing, and health checks allow SMS.
+	smsReady *bool
+	// Whether provider, routing, and health checks allow calls.
+	voiceReady *bool
+	// Messaging and calling warmup for a Leadping phone number.
+	warmup PhoneNumberReadinessable
 }
+
 // NewPhoneNumberResponse instantiates a new PhoneNumberResponse and sets the default values.
-func NewPhoneNumberResponse()(*PhoneNumberResponse) {
-    m := &PhoneNumberResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberResponse() *PhoneNumberResponse {
+	m := &PhoneNumberResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberResponse(), nil
+func CreatePhoneNumberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *PhoneNumberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *PhoneNumberResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetEnabled gets the enabled property value. Indicates whether this phone number is active and available in the Leadping API.
 // returns a *bool when successful
-func (m *PhoneNumberResponse) GetEnabled()(*bool) {
-    return m.enabled
+func (m *PhoneNumberResponse) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["leadpingOwned"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadpingOwned(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberResponse_organizationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(PhoneNumberResponse_organizationable))
-        }
-        return nil
-    }
-    res["phoneIdentityId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneIdentityId(val)
-        }
-        return nil
-    }
-    res["routing"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberRoutingMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRouting(val.(PhoneNumberRoutingMetadataable))
-        }
-        return nil
-    }
-    res["warmup"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmup(val.(PhoneNumberReadinessable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["leadpingOwned"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadpingOwned(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["numberHealthEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumberHealthEnabled(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberResponse_organizationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(PhoneNumberResponse_organizationable))
+		}
+		return nil
+	}
+	res["phoneIdentityId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneIdentityId(val)
+		}
+		return nil
+	}
+	res["routing"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberRoutingMetadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRouting(val.(PhoneNumberRoutingMetadataable))
+		}
+		return nil
+	}
+	res["smsReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsReady(val)
+		}
+		return nil
+	}
+	res["voiceReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceReady(val)
+		}
+		return nil
+	}
+	res["warmup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberReadinessFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWarmup(val.(PhoneNumberReadinessable))
+		}
+		return nil
+	}
+	return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *PhoneNumberResponse) GetId()(*string) {
-    return m.id
+func (m *PhoneNumberResponse) GetId() *string {
+	return m.id
 }
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadpingOwned gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 // returns a *bool when successful
-func (m *PhoneNumberResponse) GetLeadpingOwned()(*bool) {
-    return m.leadpingOwned
+func (m *PhoneNumberResponse) GetLeadpingOwned() *bool {
+	return m.leadpingOwned
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *PhoneNumberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *PhoneNumberResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *PhoneNumberResponse) GetName()(*string) {
-    return m.name
+func (m *PhoneNumberResponse) GetName() *string {
+	return m.name
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this phone number.
 // returns a *string when successful
-func (m *PhoneNumberResponse) GetNumber()(*string) {
-    return m.number
+func (m *PhoneNumberResponse) GetNumber() *string {
+	return m.number
 }
-// GetOrganization gets the organization property value. Organization summary connected to this phone number.
+
+// GetNumberHealthEnabled gets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetNumberHealthEnabled() *bool {
+	return m.numberHealthEnabled
+}
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a PhoneNumberResponse_organizationable when successful
-func (m *PhoneNumberResponse) GetOrganization()(PhoneNumberResponse_organizationable) {
-    return m.organization
+func (m *PhoneNumberResponse) GetOrganization() PhoneNumberResponse_organizationable {
+	return m.organization
 }
+
 // GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
 // returns a *string when successful
-func (m *PhoneNumberResponse) GetPhoneIdentityId()(*string) {
-    return m.phoneIdentityId
+func (m *PhoneNumberResponse) GetPhoneIdentityId() *string {
+	return m.phoneIdentityId
 }
-// GetRouting gets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
+
+// GetRouting gets the routing property value. Public Leadping API schema for phone number routing metadata data.
 // returns a PhoneNumberRoutingMetadataable when successful
-func (m *PhoneNumberResponse) GetRouting()(PhoneNumberRoutingMetadataable) {
-    return m.routing
+func (m *PhoneNumberResponse) GetRouting() PhoneNumberRoutingMetadataable {
+	return m.routing
 }
-// GetWarmup gets the warmup property value. SMS and call warmup for this phone number.
+
+// GetSmsReady gets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetSmsReady() *bool {
+	return m.smsReady
+}
+
+// GetVoiceReady gets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetVoiceReady() *bool {
+	return m.voiceReady
+}
+
+// GetWarmup gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
 // returns a PhoneNumberReadinessable when successful
-func (m *PhoneNumberResponse) GetWarmup()(PhoneNumberReadinessable) {
-    return m.warmup
+func (m *PhoneNumberResponse) GetWarmup() PhoneNumberReadinessable {
+	return m.warmup
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("leadpingOwned", m.GetLeadpingOwned())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("routing", m.GetRouting())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("warmup", m.GetWarmup())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("leadpingOwned", m.GetLeadpingOwned())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("numberHealthEnabled", m.GetNumberHealthEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneIdentityId", m.GetPhoneIdentityId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("routing", m.GetRouting())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("voiceReady", m.GetVoiceReady())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("warmup", m.GetWarmup())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *PhoneNumberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether this phone number is active and available in the Leadping API.
-func (m *PhoneNumberResponse) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *PhoneNumberResponse) SetEnabled(value *bool) {
+	m.enabled = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *PhoneNumberResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *PhoneNumberResponse) SetId(value *string) {
+	m.id = value
 }
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneNumberResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadpingOwned sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
-func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool)() {
-    m.leadpingOwned = value
+func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool) {
+	m.leadpingOwned = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
-func (m *PhoneNumberResponse) SetName(value *string)() {
-    m.name = value
+
+// SetName sets the name property value. Human-readable display name of the resource.
+func (m *PhoneNumberResponse) SetName(value *string) {
+	m.name = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this phone number.
-func (m *PhoneNumberResponse) SetNumber(value *string)() {
-    m.number = value
+func (m *PhoneNumberResponse) SetNumber(value *string) {
+	m.number = value
 }
-// SetOrganization sets the organization property value. Organization summary connected to this phone number.
-func (m *PhoneNumberResponse) SetOrganization(value PhoneNumberResponse_organizationable)() {
-    m.organization = value
+
+// SetNumberHealthEnabled sets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+func (m *PhoneNumberResponse) SetNumberHealthEnabled(value *bool) {
+	m.numberHealthEnabled = value
 }
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *PhoneNumberResponse) SetOrganization(value PhoneNumberResponse_organizationable) {
+	m.organization = value
+}
+
 // SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
-func (m *PhoneNumberResponse) SetPhoneIdentityId(value *string)() {
-    m.phoneIdentityId = value
+func (m *PhoneNumberResponse) SetPhoneIdentityId(value *string) {
+	m.phoneIdentityId = value
 }
-// SetRouting sets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
-func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable)() {
-    m.routing = value
+
+// SetRouting sets the routing property value. Public Leadping API schema for phone number routing metadata data.
+func (m *PhoneNumberResponse) SetRouting(value PhoneNumberRoutingMetadataable) {
+	m.routing = value
 }
-// SetWarmup sets the warmup property value. SMS and call warmup for this phone number.
-func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberReadinessable)() {
-    m.warmup = value
+
+// SetSmsReady sets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+func (m *PhoneNumberResponse) SetSmsReady(value *bool) {
+	m.smsReady = value
 }
+
+// SetVoiceReady sets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+func (m *PhoneNumberResponse) SetVoiceReady(value *bool) {
+	m.voiceReady = value
+}
+
+// SetWarmup sets the warmup property value. Messaging and calling warmup for a Leadping phone number.
+func (m *PhoneNumberResponse) SetWarmup(value PhoneNumberReadinessable) {
+	m.warmup = value
+}
+
 type PhoneNumberResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetEnabled()(*bool)
-    GetId()(*string)
-    GetLeadpingOwned()(*bool)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetNumber()(*string)
-    GetOrganization()(PhoneNumberResponse_organizationable)
-    GetPhoneIdentityId()(*string)
-    GetRouting()(PhoneNumberRoutingMetadataable)
-    GetWarmup()(PhoneNumberReadinessable)
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetEnabled(value *bool)()
-    SetId(value *string)()
-    SetLeadpingOwned(value *bool)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetNumber(value *string)()
-    SetOrganization(value PhoneNumberResponse_organizationable)()
-    SetPhoneIdentityId(value *string)()
-    SetRouting(value PhoneNumberRoutingMetadataable)()
-    SetWarmup(value PhoneNumberReadinessable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetEnabled() *bool
+	GetId() *string
+	GetIsDemo() *bool
+	GetLeadpingOwned() *bool
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetNumber() *string
+	GetNumberHealthEnabled() *bool
+	GetOrganization() PhoneNumberResponse_organizationable
+	GetPhoneIdentityId() *string
+	GetRouting() PhoneNumberRoutingMetadataable
+	GetSmsReady() *bool
+	GetVoiceReady() *bool
+	GetWarmup() PhoneNumberReadinessable
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetEnabled(value *bool)
+	SetId(value *string)
+	SetIsDemo(value *bool)
+	SetLeadpingOwned(value *bool)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetNumber(value *string)
+	SetNumberHealthEnabled(value *bool)
+	SetOrganization(value PhoneNumberResponse_organizationable)
+	SetPhoneIdentityId(value *string)
+	SetRouting(value PhoneNumberRoutingMetadataable)
+	SetSmsReady(value *bool)
+	SetVoiceReady(value *bool)
+	SetWarmup(value PhoneNumberReadinessable)
 }

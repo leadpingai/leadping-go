@@ -4,183 +4,237 @@
 package leadpinggo
 
 import (
-    i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488 "github.com/microsoft/kiota-serialization-json-go"
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347 "github.com/microsoft/kiota-serialization-form-go"
-    i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426 "github.com/microsoft/kiota-serialization-multipart-go"
-    i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83 "github.com/microsoft/kiota-serialization-text-go"
-    i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa "github.com/leadpingai/leadping-go/contact"
-    i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf "github.com/leadpingai/leadping-go/reports"
-    i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7 "github.com/leadpingai/leadping-go/leads"
-    i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad "github.com/leadpingai/leadping-go/users"
-    i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7 "github.com/leadpingai/leadping-go/conversations"
-    i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c "github.com/leadpingai/leadping-go/phonecall"
-    i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443 "github.com/leadpingai/leadping-go/leadstatuses"
-    i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
-    i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
-    i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
-    i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b "github.com/leadpingai/leadping-go/events"
-    i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b "github.com/leadpingai/leadping-go/tags"
-    i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3 "github.com/leadpingai/leadping-go/sources"
-    i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67 "github.com/leadpingai/leadping-go/feedback"
-    i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef "github.com/leadpingai/leadping-go/organizations"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
-    i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e "github.com/leadpingai/leadping-go/transactions"
-    ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5 "github.com/leadpingai/leadping-go/leadstatuschanges"
-    ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500 "github.com/leadpingai/leadping-go/wallets"
-    iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a "github.com/leadpingai/leadping-go/usage"
-    ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf "github.com/leadpingai/leadping-go/paymentmethods"
-    ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c "github.com/leadpingai/leadping-go/suppressions"
-    idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7 "github.com/leadpingai/leadping-go/automations"
-    ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df "github.com/leadpingai/leadping-go/sms"
-    ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa "github.com/leadpingai/leadping-go/phonenumbers"
-    ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0 "github.com/leadpingai/leadping-go/telephony"
+	i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe "github.com/leadpingai/leadping-go/a2a"
+	i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
+	idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7 "github.com/leadpingai/leadping-go/automations"
+	i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3 "github.com/leadpingai/leadping-go/blog"
+	i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7 "github.com/leadpingai/leadping-go/conversations"
+	i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b "github.com/leadpingai/leadping-go/events"
+	i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67 "github.com/leadpingai/leadping-go/feedback"
+	i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7 "github.com/leadpingai/leadping-go/leads"
+	ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5 "github.com/leadpingai/leadping-go/leadstatuschanges"
+	i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443 "github.com/leadpingai/leadping-go/leadstatuses"
+	i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
+	i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef "github.com/leadpingai/leadping-go/organizations"
+	i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
+	ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf "github.com/leadpingai/leadping-go/paymentmethods"
+	i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c "github.com/leadpingai/leadping-go/phonecall"
+	ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa "github.com/leadpingai/leadping-go/phonenumbers"
+	i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf "github.com/leadpingai/leadping-go/reports"
+	ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df "github.com/leadpingai/leadping-go/sms"
+	i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3 "github.com/leadpingai/leadping-go/sources"
+	ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c "github.com/leadpingai/leadping-go/suppressions"
+	i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b "github.com/leadpingai/leadping-go/tags"
+	ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0 "github.com/leadpingai/leadping-go/telephony"
+	i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e "github.com/leadpingai/leadping-go/transactions"
+	iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a "github.com/leadpingai/leadping-go/usage"
+	i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad "github.com/leadpingai/leadping-go/users"
+	ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500 "github.com/leadpingai/leadping-go/wallets"
+	ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7 "github.com/leadpingai/leadping-go/wellknown"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347 "github.com/microsoft/kiota-serialization-form-go"
+	i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488 "github.com/microsoft/kiota-serialization-json-go"
+	i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426 "github.com/microsoft/kiota-serialization-multipart-go"
+	i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83 "github.com/microsoft/kiota-serialization-text-go"
 )
 
 // LeadpingOpenApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
 type LeadpingOpenApiClient struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
+// A2a the a2a property
+// returns a *A2aRequestBuilder when successful
+func (m *LeadpingOpenApiClient) A2a() *i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe.A2aRequestBuilder {
+	return i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe.NewA2aRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Analytics the analytics property
 // returns a *AnalyticsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Analytics()(*i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.AnalyticsRequestBuilder) {
-    return i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.NewAnalyticsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Analytics() *i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.AnalyticsRequestBuilder {
+	return i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.NewAnalyticsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Automations the automations property
 // returns a *AutomationsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Automations()(*idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.AutomationsRequestBuilder) {
-    return idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.NewAutomationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Automations() *idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.AutomationsRequestBuilder {
+	return idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7.NewAutomationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
+// Blog the blog property
+// returns a *BlogRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Blog() *i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3.BlogRequestBuilder {
+	return i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3.NewBlogRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // NewLeadpingOpenApiClient instantiates a new LeadpingOpenApiClient and sets the default values.
-func NewLeadpingOpenApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*LeadpingOpenApiClient) {
-    m := &LeadpingOpenApiClient{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}", map[string]string{}),
-    }
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory { return i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488.NewJsonSerializationWriterFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory { return i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83.NewTextSerializationWriterFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory { return i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347.NewFormSerializationWriterFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory { return i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426.NewMultipartSerializationWriterFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory { return i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488.NewJsonParseNodeFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory { return i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83.NewTextParseNodeFactory() })
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory { return i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347.NewFormParseNodeFactory() })
-    if m.BaseRequestBuilder.RequestAdapter.GetBaseUrl() == "" {
-        m.BaseRequestBuilder.RequestAdapter.SetBaseUrl("https://api.leadping.ai")
-    }
-    m.BaseRequestBuilder.PathParameters["baseurl"] = m.BaseRequestBuilder.RequestAdapter.GetBaseUrl()
-    return m
+func NewLeadpingOpenApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *LeadpingOpenApiClient {
+	m := &LeadpingOpenApiClient{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}", map[string]string{}),
+	}
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory {
+		return i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488.NewJsonSerializationWriterFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory {
+		return i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83.NewTextSerializationWriterFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory {
+		return i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347.NewFormSerializationWriterFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultSerializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriterFactory {
+		return i56887720f41ac882814261620b1c8459c4a992a0207af547c4453dd39fabc426.NewMultipartSerializationWriterFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory {
+		return i25911dc319edd61cbac496af7eab5ef20b6069a42515e22ec6a9bc97bf598488.NewJsonParseNodeFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory {
+		return i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83.NewTextParseNodeFactory()
+	})
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RegisterDefaultDeserializer(func() i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNodeFactory {
+		return i4bcdc892e61ac17e2afc10b5e2b536b29f4fd6c1ad30f4a5a68df47495db3347.NewFormParseNodeFactory()
+	})
+	if m.BaseRequestBuilder.RequestAdapter.GetBaseUrl() == "" {
+		m.BaseRequestBuilder.RequestAdapter.SetBaseUrl("https://api.leadping.ai")
+	}
+	m.BaseRequestBuilder.PathParameters["baseurl"] = m.BaseRequestBuilder.RequestAdapter.GetBaseUrl()
+	return m
 }
-// Contact the contact property
-// returns a *ContactRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Contact()(*i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa.ContactRequestBuilder) {
-    return i030ff393e2b9426e4ee3335a8e4a0156e12c01201b7a47118a28b7f74bd777fa.NewContactRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
+
 // Conversations the conversations property
 // returns a *ConversationsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Conversations()(*i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.ConversationsRequestBuilder) {
-    return i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.NewConversationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Conversations() *i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.ConversationsRequestBuilder {
+	return i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7.NewConversationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Events the events property
 // returns a *EventsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Events()(*i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b.EventsRequestBuilder) {
-    return i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b.NewEventsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Events() *i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b.EventsRequestBuilder {
+	return i4dfef82b33aeef2956bdc9a0cc0ab44e419de4d3afeea28715703d8f54f3222b.NewEventsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Feedback the feedback property
 // returns a *FeedbackRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Feedback()(*i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67.FeedbackRequestBuilder) {
-    return i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67.NewFeedbackRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Feedback() *i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67.FeedbackRequestBuilder {
+	return i6dd7ba29a5b5bbde963c24314b7f1b4b0ad3c73fa23d0720fb81b7cf5d36df67.NewFeedbackRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Leads the leads property
 // returns a *LeadsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Leads()(*i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.LeadsRequestBuilder) {
-    return i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.NewLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Leads() *i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.LeadsRequestBuilder {
+	return i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7.NewLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // LeadStatusChanges the leadStatusChanges property
 // returns a *LeadStatusChangesRequestBuilder when successful
-func (m *LeadpingOpenApiClient) LeadStatusChanges()(*ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.LeadStatusChangesRequestBuilder) {
-    return ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.NewLeadStatusChangesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) LeadStatusChanges() *ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.LeadStatusChangesRequestBuilder {
+	return ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5.NewLeadStatusChangesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // LeadStatuses the leadStatuses property
 // returns a *LeadStatusesRequestBuilder when successful
-func (m *LeadpingOpenApiClient) LeadStatuses()(*i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.LeadStatusesRequestBuilder) {
-    return i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.NewLeadStatusesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) LeadStatuses() *i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.LeadStatusesRequestBuilder {
+	return i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.NewLeadStatusesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Notifications the notifications property
 // returns a *NotificationsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Notifications()(*i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NotificationsRequestBuilder) {
-    return i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NewNotificationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Notifications() *i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NotificationsRequestBuilder {
+	return i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49.NewNotificationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Organizations the organizations property
 // returns a *OrganizationsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Organizations()(*i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.OrganizationsRequestBuilder) {
-    return i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.NewOrganizationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Organizations() *i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.OrganizationsRequestBuilder {
+	return i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef.NewOrganizationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Outbound the outbound property
 // returns a *OutboundRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Outbound()(*i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde.OutboundRequestBuilder) {
-    return i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde.NewOutboundRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Outbound() *i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde.OutboundRequestBuilder {
+	return i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde.NewOutboundRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // PaymentMethods the paymentMethods property
 // returns a *PaymentMethodsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) PaymentMethods()(*ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.PaymentMethodsRequestBuilder) {
-    return ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.NewPaymentMethodsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) PaymentMethods() *ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.PaymentMethodsRequestBuilder {
+	return ib55cede451589c43312a6c225fe867b421b62a589a03b67a2a88d57124809fbf.NewPaymentMethodsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // PhoneCall the phoneCall property
 // returns a *PhoneCallRequestBuilder when successful
-func (m *LeadpingOpenApiClient) PhoneCall()(*i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.PhoneCallRequestBuilder) {
-    return i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.NewPhoneCallRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) PhoneCall() *i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.PhoneCallRequestBuilder {
+	return i248b10f81c883f87af03993579a7ff3d0301d958d4dda15b255fb28c8654f27c.NewPhoneCallRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // PhoneNumbers the phoneNumbers property
 // returns a *PhoneNumbersRequestBuilder when successful
-func (m *LeadpingOpenApiClient) PhoneNumbers()(*ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa.PhoneNumbersRequestBuilder) {
-    return ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa.NewPhoneNumbersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) PhoneNumbers() *ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa.PhoneNumbersRequestBuilder {
+	return ie1d9f0b8413d89c774ac8aad32f10d5799d40585b00431bc85cc0b4d116a5daa.NewPhoneNumbersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Reports the reports property
 // returns a *ReportsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Reports()(*i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf.ReportsRequestBuilder) {
-    return i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf.NewReportsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Reports() *i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf.ReportsRequestBuilder {
+	return i0cffa5a85b6e11152d1d206968085476e548ef22ccc019a5b58dae844a61ecbf.NewReportsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Sms the sms property
 // returns a *SmsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Sms()(*ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df.SmsRequestBuilder) {
-    return ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df.NewSmsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Sms() *ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df.SmsRequestBuilder {
+	return ie1c865592d857e5d0ccc4d4dc79742dabdbbfdcaf2114d40be5fc7ec94c569df.NewSmsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Sources the sources property
 // returns a *SourcesRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Sources()(*i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.SourcesRequestBuilder) {
-    return i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.NewSourcesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Sources() *i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.SourcesRequestBuilder {
+	return i583216e48784431f3c465e3e31efdbb7e212cc329a000809dfc34a9238aba5d3.NewSourcesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Suppressions the suppressions property
 // returns a *SuppressionsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Suppressions()(*ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.SuppressionsRequestBuilder) {
-    return ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.NewSuppressionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Suppressions() *ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.SuppressionsRequestBuilder {
+	return ib6cc47da5c27cbd6ec8879c02ebd33e6a87be5fe1d83886cec56db645e5cd72c.NewSuppressionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Tags the tags property
 // returns a *TagsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Tags()(*i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.TagsRequestBuilder) {
-    return i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.NewTagsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Tags() *i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.TagsRequestBuilder {
+	return i51ee19a533af1f36c2f658abc6e7076bddf65bc17705d70a36d9972192d2702b.NewTagsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Telephony the telephony property
 // returns a *TelephonyRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Telephony()(*ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.TelephonyRequestBuilder) {
-    return ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.NewTelephonyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Telephony() *ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.TelephonyRequestBuilder {
+	return ie8614c794ef95413cca33158e55b4a1a62c7cde73f886fe4a33c28df809291b0.NewTelephonyRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Transactions the transactions property
 // returns a *TransactionsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Transactions()(*i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e.TransactionsRequestBuilder) {
-    return i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e.NewTransactionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Transactions() *i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e.TransactionsRequestBuilder {
+	return i8b9b11bc644bce3a6f8c7916a90748602369a89464edca2b96dcf24191b4dd7e.NewTransactionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Usage the usage property
 // returns a *UsageRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Usage()(*iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a.UsageRequestBuilder) {
-    return iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a.NewUsageRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Usage() *iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a.UsageRequestBuilder {
+	return iaea3bd303a1151c6a74ab295e029420bcebf2cff43d782dce452fe666921a76a.NewUsageRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Users the users property
 // returns a *UsersRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Users()(*i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad.UsersRequestBuilder) {
-    return i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad.NewUsersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Users() *i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad.UsersRequestBuilder {
+	return i1ce310f37fa769e9eaae2b424f6823e8872c15e12db771c5d4794a1a399cbfad.NewUsersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Wallets the wallets property
 // returns a *WalletsRequestBuilder when successful
-func (m *LeadpingOpenApiClient) Wallets()(*ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.WalletsRequestBuilder) {
-    return ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.NewWalletsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *LeadpingOpenApiClient) Wallets() *ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.WalletsRequestBuilder {
+	return ia93b0a5ca7b77cdaf071836b59e94b6ffb1d9376036675ae2e85ed838a83f500.NewWalletsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// WellKnown the wellKnown property
+// returns a *WellKnownRequestBuilder when successful
+func (m *LeadpingOpenApiClient) WellKnown() *ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7.WellKnownRequestBuilder {
+	return ibd7b77cf3994639ea1f10ce39d133abfeebf0d0a69233bc9ef2d4ad3f18780b7.NewWellKnownRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

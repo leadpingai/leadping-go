@@ -4,45 +4,50 @@
 package sms
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // SmsRequestBuilder builds and executes requests for operations under \sms
 type SmsRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // BySmsEventId gets an item from the github.com/leadpingai/leadping-go.sms.item collection
 // returns a *WithSmsEventItemRequestBuilder when successful
-func (m *SmsRequestBuilder) BySmsEventId(smsEventId string)(*WithSmsEventItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if smsEventId != "" {
-        urlTplParams["smsEventId"] = smsEventId
-    }
-    return NewWithSmsEventItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *SmsRequestBuilder) BySmsEventId(smsEventId string) *WithSmsEventItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if smsEventId != "" {
+		urlTplParams["smsEventId"] = smsEventId
+	}
+	return NewWithSmsEventItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewSmsRequestBuilderInternal instantiates a new SmsRequestBuilder and sets the default values.
-func NewSmsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsRequestBuilder) {
-    m := &SmsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sms", pathParameters),
-    }
-    return m
+func NewSmsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsRequestBuilder {
+	m := &SmsRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sms", pathParameters),
+	}
+	return m
 }
+
 // NewSmsRequestBuilder instantiates a new SmsRequestBuilder and sets the default values.
-func NewSmsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SmsRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewSmsRequestBuilderInternal(urlParams, requestAdapter)
+func NewSmsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *SmsRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewSmsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Media the media property
-// returns a *MediaRequestBuilder when successful
-func (m *SmsRequestBuilder) Media()(*MediaRequestBuilder) {
-    return NewMediaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+
+// Files the files property
+// returns a *FilesRequestBuilder when successful
+func (m *SmsRequestBuilder) Files() *FilesRequestBuilder {
+	return NewFilesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // Send the send property
 // returns a *SendRequestBuilder when successful
-func (m *SmsRequestBuilder) Send()(*SendRequestBuilder) {
-    return NewSendRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+func (m *SmsRequestBuilder) Send() *SendRequestBuilder {
+	return NewSendRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

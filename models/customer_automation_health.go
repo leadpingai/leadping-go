@@ -4,267 +4,330 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerAutomationHealth represents customer automation health data exposed by Leadping analytics.
+// CustomerAutomationHealth summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
 type CustomerAutomationHealth struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Total number of automation records represented by this Leadping customer automation health.
-    automationCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Total number of enabled records represented by this Leadping customer automation health.
-    enabledCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of executions represented by this Leadping customer automation health.
-    executions i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Collection of failing automations included with this Leadping customer automation health.
-    failingAutomations []CustomerFailingAutomationable
-    // Total number of failure records represented by this Leadping customer automation health.
-    failureCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Last failure associated with this Leadping customer automation health.
-    lastFailure CustomerAutomationHealth_lastFailureable
-    // Total number of success records represented by this Leadping customer automation health.
-    successCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Total number of automation records represented by this Leadping customer automation health.
+	automationCount *int32
+	// Total number of enabled records represented by this Leadping customer automation health.
+	enabledCount *int32
+	// Number of executions represented by this Leadping customer automation health.
+	executions *int32
+	// Collection of failing automations included with this Leadping customer automation health.
+	failingAutomations []CustomerFailingAutomationable
+	// Total number of failure records represented by this Leadping customer automation health.
+	failureCount *int32
+	// Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
+	lastFailure CustomerAutomationHealth_lastFailureable
+	// Total number of success records represented by this Leadping customer automation health.
+	successCount *int32
+	// Automation execution activity over the reporting period.
+	trend []CustomerAutomationHealthPointable
 }
+
 // NewCustomerAutomationHealth instantiates a new CustomerAutomationHealth and sets the default values.
-func NewCustomerAutomationHealth()(*CustomerAutomationHealth) {
-    m := &CustomerAutomationHealth{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerAutomationHealth() *CustomerAutomationHealth {
+	m := &CustomerAutomationHealth{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerAutomationHealthFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerAutomationHealthFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerAutomationHealth(), nil
+func CreateCustomerAutomationHealthFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerAutomationHealth(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerAutomationHealth) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerAutomationHealth) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAutomationCount gets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
-// returns a UntypedNodeable when successful
-func (m *CustomerAutomationHealth) GetAutomationCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.automationCount
+// returns a *int32 when successful
+func (m *CustomerAutomationHealth) GetAutomationCount() *int32 {
+	return m.automationCount
 }
+
 // GetEnabledCount gets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
-// returns a UntypedNodeable when successful
-func (m *CustomerAutomationHealth) GetEnabledCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.enabledCount
+// returns a *int32 when successful
+func (m *CustomerAutomationHealth) GetEnabledCount() *int32 {
+	return m.enabledCount
 }
+
 // GetExecutions gets the executions property value. Number of executions represented by this Leadping customer automation health.
-// returns a UntypedNodeable when successful
-func (m *CustomerAutomationHealth) GetExecutions()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.executions
+// returns a *int32 when successful
+func (m *CustomerAutomationHealth) GetExecutions() *int32 {
+	return m.executions
 }
+
 // GetFailingAutomations gets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
 // returns a []CustomerFailingAutomationable when successful
-func (m *CustomerAutomationHealth) GetFailingAutomations()([]CustomerFailingAutomationable) {
-    return m.failingAutomations
+func (m *CustomerAutomationHealth) GetFailingAutomations() []CustomerFailingAutomationable {
+	return m.failingAutomations
 }
+
 // GetFailureCount gets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
-// returns a UntypedNodeable when successful
-func (m *CustomerAutomationHealth) GetFailureCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.failureCount
+// returns a *int32 when successful
+func (m *CustomerAutomationHealth) GetFailureCount() *int32 {
+	return m.failureCount
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerAutomationHealth) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["automationCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["enabledCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabledCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["executions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExecutions(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["failingAutomations"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCustomerFailingAutomationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CustomerFailingAutomationable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CustomerFailingAutomationable)
-                }
-            }
-            m.SetFailingAutomations(res)
-        }
-        return nil
-    }
-    res["failureCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailureCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["lastFailure"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerAutomationHealth_lastFailureFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastFailure(val.(CustomerAutomationHealth_lastFailureable))
-        }
-        return nil
-    }
-    res["successCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSuccessCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerAutomationHealth) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["automationCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationCount(val)
+		}
+		return nil
+	}
+	res["enabledCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabledCount(val)
+		}
+		return nil
+	}
+	res["executions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExecutions(val)
+		}
+		return nil
+	}
+	res["failingAutomations"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCustomerFailingAutomationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CustomerFailingAutomationable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CustomerFailingAutomationable)
+				}
+			}
+			m.SetFailingAutomations(res)
+		}
+		return nil
+	}
+	res["failureCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailureCount(val)
+		}
+		return nil
+	}
+	res["lastFailure"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerAutomationHealth_lastFailureFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastFailure(val.(CustomerAutomationHealth_lastFailureable))
+		}
+		return nil
+	}
+	res["successCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSuccessCount(val)
+		}
+		return nil
+	}
+	res["trend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCustomerAutomationHealthPointFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CustomerAutomationHealthPointable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CustomerAutomationHealthPointable)
+				}
+			}
+			m.SetTrend(res)
+		}
+		return nil
+	}
+	return res
 }
-// GetLastFailure gets the lastFailure property value. Last failure associated with this Leadping customer automation health.
+
+// GetLastFailure gets the lastFailure property value. Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
 // returns a CustomerAutomationHealth_lastFailureable when successful
-func (m *CustomerAutomationHealth) GetLastFailure()(CustomerAutomationHealth_lastFailureable) {
-    return m.lastFailure
+func (m *CustomerAutomationHealth) GetLastFailure() CustomerAutomationHealth_lastFailureable {
+	return m.lastFailure
 }
+
 // GetSuccessCount gets the successCount property value. Total number of success records represented by this Leadping customer automation health.
-// returns a UntypedNodeable when successful
-func (m *CustomerAutomationHealth) GetSuccessCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.successCount
+// returns a *int32 when successful
+func (m *CustomerAutomationHealth) GetSuccessCount() *int32 {
+	return m.successCount
 }
+
+// GetTrend gets the trend property value. Automation execution activity over the reporting period.
+// returns a []CustomerAutomationHealthPointable when successful
+func (m *CustomerAutomationHealth) GetTrend() []CustomerAutomationHealthPointable {
+	return m.trend
+}
+
 // Serialize serializes information the current object
-func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("automationCount", m.GetAutomationCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("enabledCount", m.GetEnabledCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("executions", m.GetExecutions())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetFailingAutomations() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFailingAutomations()))
-        for i, v := range m.GetFailingAutomations() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("failingAutomations", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("failureCount", m.GetFailureCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("lastFailure", m.GetLastFailure())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("successCount", m.GetSuccessCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("automationCount", m.GetAutomationCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("enabledCount", m.GetEnabledCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("executions", m.GetExecutions())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetFailingAutomations() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFailingAutomations()))
+		for i, v := range m.GetFailingAutomations() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("failingAutomations", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("failureCount", m.GetFailureCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("lastFailure", m.GetLastFailure())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("successCount", m.GetSuccessCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTrend() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrend()))
+		for i, v := range m.GetTrend() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("trend", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerAutomationHealth) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerAutomationHealth) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAutomationCount sets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetAutomationCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.automationCount = value
+func (m *CustomerAutomationHealth) SetAutomationCount(value *int32) {
+	m.automationCount = value
 }
+
 // SetEnabledCount sets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetEnabledCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.enabledCount = value
+func (m *CustomerAutomationHealth) SetEnabledCount(value *int32) {
+	m.enabledCount = value
 }
+
 // SetExecutions sets the executions property value. Number of executions represented by this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetExecutions(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.executions = value
+func (m *CustomerAutomationHealth) SetExecutions(value *int32) {
+	m.executions = value
 }
+
 // SetFailingAutomations sets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetFailingAutomations(value []CustomerFailingAutomationable)() {
-    m.failingAutomations = value
+func (m *CustomerAutomationHealth) SetFailingAutomations(value []CustomerFailingAutomationable) {
+	m.failingAutomations = value
 }
+
 // SetFailureCount sets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetFailureCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.failureCount = value
+func (m *CustomerAutomationHealth) SetFailureCount(value *int32) {
+	m.failureCount = value
 }
-// SetLastFailure sets the lastFailure property value. Last failure associated with this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetLastFailure(value CustomerAutomationHealth_lastFailureable)() {
-    m.lastFailure = value
+
+// SetLastFailure sets the lastFailure property value. Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
+func (m *CustomerAutomationHealth) SetLastFailure(value CustomerAutomationHealth_lastFailureable) {
+	m.lastFailure = value
 }
+
 // SetSuccessCount sets the successCount property value. Total number of success records represented by this Leadping customer automation health.
-func (m *CustomerAutomationHealth) SetSuccessCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.successCount = value
+func (m *CustomerAutomationHealth) SetSuccessCount(value *int32) {
+	m.successCount = value
 }
+
+// SetTrend sets the trend property value. Automation execution activity over the reporting period.
+func (m *CustomerAutomationHealth) SetTrend(value []CustomerAutomationHealthPointable) {
+	m.trend = value
+}
+
 type CustomerAutomationHealthable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAutomationCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetEnabledCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetExecutions()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetFailingAutomations()([]CustomerFailingAutomationable)
-    GetFailureCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetLastFailure()(CustomerAutomationHealth_lastFailureable)
-    GetSuccessCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetAutomationCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetEnabledCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetExecutions(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetFailingAutomations(value []CustomerFailingAutomationable)()
-    SetFailureCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetLastFailure(value CustomerAutomationHealth_lastFailureable)()
-    SetSuccessCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAutomationCount() *int32
+	GetEnabledCount() *int32
+	GetExecutions() *int32
+	GetFailingAutomations() []CustomerFailingAutomationable
+	GetFailureCount() *int32
+	GetLastFailure() CustomerAutomationHealth_lastFailureable
+	GetSuccessCount() *int32
+	GetTrend() []CustomerAutomationHealthPointable
+	SetAutomationCount(value *int32)
+	SetEnabledCount(value *int32)
+	SetExecutions(value *int32)
+	SetFailingAutomations(value []CustomerFailingAutomationable)
+	SetFailureCount(value *int32)
+	SetLastFailure(value CustomerAutomationHealth_lastFailureable)
+	SetSuccessCount(value *int32)
+	SetTrend(value []CustomerAutomationHealthPointable)
 }

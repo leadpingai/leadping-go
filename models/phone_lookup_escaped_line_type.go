@@ -2,48 +2,52 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// An enumerator describing phone line types
+
+// Classifies the access technology or service type associated with a telephone number.
 type PhoneLookup_lineType int
 
 const (
-    WIRELINE_PHONELOOKUP_LINETYPE PhoneLookup_lineType = iota
-    WIRELESS_PHONELOOKUP_LINETYPE
-    VOWIFI_PHONELOOKUP_LINETYPE
-    VOIP_PHONELOOKUP_LINETYPE
-    PREPAIDWIRELESS_PHONELOOKUP_LINETYPE
-    UNKNOWN_PHONELOOKUP_LINETYPE
+	WIRELINE_PHONELOOKUP_LINETYPE PhoneLookup_lineType = iota
+	WIRELESS_PHONELOOKUP_LINETYPE
+	VOWIFI_PHONELOOKUP_LINETYPE
+	VOIP_PHONELOOKUP_LINETYPE
+	PREPAIDWIRELESS_PHONELOOKUP_LINETYPE
+	UNKNOWN_PHONELOOKUP_LINETYPE
 )
 
 func (i PhoneLookup_lineType) String() string {
-    return []string{"Wireline", "Wireless", "VoWiFi", "VoIP", "PrePaidWireless", "Unknown"}[i]
+	return []string{"Wireline", "Wireless", "VoWiFi", "VoIP", "PrePaidWireless", "Unknown"}[i]
 }
+
 func ParsePhoneLookup_lineType(v string) (any, error) {
-    result := WIRELINE_PHONELOOKUP_LINETYPE
-    switch v {
-        case "Wireline":
-            result = WIRELINE_PHONELOOKUP_LINETYPE
-        case "Wireless":
-            result = WIRELESS_PHONELOOKUP_LINETYPE
-        case "VoWiFi":
-            result = VOWIFI_PHONELOOKUP_LINETYPE
-        case "VoIP":
-            result = VOIP_PHONELOOKUP_LINETYPE
-        case "PrePaidWireless":
-            result = PREPAIDWIRELESS_PHONELOOKUP_LINETYPE
-        case "Unknown":
-            result = UNKNOWN_PHONELOOKUP_LINETYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := WIRELINE_PHONELOOKUP_LINETYPE
+	switch v {
+	case "Wireline":
+		result = WIRELINE_PHONELOOKUP_LINETYPE
+	case "Wireless":
+		result = WIRELESS_PHONELOOKUP_LINETYPE
+	case "VoWiFi":
+		result = VOWIFI_PHONELOOKUP_LINETYPE
+	case "VoIP":
+		result = VOIP_PHONELOOKUP_LINETYPE
+	case "PrePaidWireless":
+		result = PREPAIDWIRELESS_PHONELOOKUP_LINETYPE
+	case "Unknown":
+		result = UNKNOWN_PHONELOOKUP_LINETYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializePhoneLookup_lineType(values []PhoneLookup_lineType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i PhoneLookup_lineType) isMultiValue() bool {
-    return false
+	return false
 }

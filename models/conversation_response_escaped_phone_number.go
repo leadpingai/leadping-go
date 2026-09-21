@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ConversationResponse_phoneNumber phone number used by this conversation response for calls, SMS, lookup, or routing.
+// ConversationResponse_phoneNumber extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 type ConversationResponse_phoneNumber struct {
-    IdNameValue
+	IdNameValue
 }
+
 // NewConversationResponse_phoneNumber instantiates a new ConversationResponse_phoneNumber and sets the default values.
-func NewConversationResponse_phoneNumber()(*ConversationResponse_phoneNumber) {
-    m := &ConversationResponse_phoneNumber{
-        IdNameValue: *NewIdNameValue(),
-    }
-    return m
+func NewConversationResponse_phoneNumber() *ConversationResponse_phoneNumber {
+	m := &ConversationResponse_phoneNumber{
+		IdNameValue: *NewIdNameValue(),
+	}
+	return m
 }
+
 // CreateConversationResponse_phoneNumberFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateConversationResponse_phoneNumberFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewConversationResponse_phoneNumber(), nil
+func CreateConversationResponse_phoneNumberFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewConversationResponse_phoneNumber(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ConversationResponse_phoneNumber) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.IdNameValue.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ConversationResponse_phoneNumber) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.IdNameValue.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *ConversationResponse_phoneNumber) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.IdNameValue.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *ConversationResponse_phoneNumber) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.IdNameValue.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type ConversationResponse_phoneNumberable interface {
-    IdNameValueable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	IdNameValueable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

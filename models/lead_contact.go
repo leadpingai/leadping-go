@@ -4,284 +4,306 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // LeadContact public Leadping API schema for lead contact profile data.
 type LeadContact struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
-    avatarUrl *string
-    // Latitude and longitude coordinate for this lead contact profile.
-    coordinate LeadContact_coordinateable
-    // Email address for the person represented by this lead contact profile.
-    email *string
-    // First name of the lead, user, or contact represented by this lead contact profile.
-    firstName *string
-    // Last name of the lead, user, or contact represented by this lead contact profile.
-    lastName *string
-    // Phone details for the lead, user, or organization represented by this lead contact profile.
-    phone LeadContact_phoneable
-    // Postal street address for the lead contact profile.
-    streetAddress LeadContact_streetAddressable
-    // IANA or Windows time zone identifier used for local scheduling and reporting.
-    timeZoneId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
+	avatarUrl *string
+	// Latitude and longitude coordinate for this lead contact profile.
+	coordinate LeadContact_coordinateable
+	// Email address for the person represented by this lead contact profile.
+	email *string
+	// First name of the lead, user, or contact represented by this lead contact profile.
+	firstName *string
+	// Last name of the lead, user, or contact represented by this lead contact profile.
+	lastName *string
+	// Public Leadping API schema for lead phone number data.
+	phone LeadContact_phoneable
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	streetAddress LeadContact_streetAddressable
+	// IANA or Windows time zone identifier used for local scheduling and reporting.
+	timeZoneId *string
 }
+
 // NewLeadContact instantiates a new LeadContact and sets the default values.
-func NewLeadContact()(*LeadContact) {
-    m := &LeadContact{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadContact() *LeadContact {
+	m := &LeadContact{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadContactFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadContactFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadContact(), nil
+func CreateLeadContactFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadContact(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadContact) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadContact) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAvatarUrl gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
 // returns a *string when successful
-func (m *LeadContact) GetAvatarUrl()(*string) {
-    return m.avatarUrl
+func (m *LeadContact) GetAvatarUrl() *string {
+	return m.avatarUrl
 }
+
 // GetCoordinate gets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
 // returns a LeadContact_coordinateable when successful
-func (m *LeadContact) GetCoordinate()(LeadContact_coordinateable) {
-    return m.coordinate
+func (m *LeadContact) GetCoordinate() LeadContact_coordinateable {
+	return m.coordinate
 }
+
 // GetEmail gets the email property value. Email address for the person represented by this lead contact profile.
 // returns a *string when successful
-func (m *LeadContact) GetEmail()(*string) {
-    return m.email
+func (m *LeadContact) GetEmail() *string {
+	return m.email
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadContact) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAvatarUrl(val)
-        }
-        return nil
-    }
-    res["coordinate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadContact_coordinateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCoordinate(val.(LeadContact_coordinateable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadContact_phoneFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val.(LeadContact_phoneable))
-        }
-        return nil
-    }
-    res["streetAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadContact_streetAddressFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStreetAddress(val.(LeadContact_streetAddressable))
-        }
-        return nil
-    }
-    res["timeZoneId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimeZoneId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadContact) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["avatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAvatarUrl(val)
+		}
+		return nil
+	}
+	res["coordinate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadContact_coordinateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCoordinate(val.(LeadContact_coordinateable))
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadContact_phoneFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val.(LeadContact_phoneable))
+		}
+		return nil
+	}
+	res["streetAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadContact_streetAddressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStreetAddress(val.(LeadContact_streetAddressable))
+		}
+		return nil
+	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead contact profile.
 // returns a *string when successful
-func (m *LeadContact) GetFirstName()(*string) {
-    return m.firstName
+func (m *LeadContact) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead contact profile.
 // returns a *string when successful
-func (m *LeadContact) GetLastName()(*string) {
-    return m.lastName
+func (m *LeadContact) GetLastName() *string {
+	return m.lastName
 }
-// GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
+
+// GetPhone gets the phone property value. Public Leadping API schema for lead phone number data.
 // returns a LeadContact_phoneable when successful
-func (m *LeadContact) GetPhone()(LeadContact_phoneable) {
-    return m.phone
+func (m *LeadContact) GetPhone() LeadContact_phoneable {
+	return m.phone
 }
-// GetStreetAddress gets the streetAddress property value. Postal street address for the lead contact profile.
+
+// GetStreetAddress gets the streetAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 // returns a LeadContact_streetAddressable when successful
-func (m *LeadContact) GetStreetAddress()(LeadContact_streetAddressable) {
-    return m.streetAddress
+func (m *LeadContact) GetStreetAddress() LeadContact_streetAddressable {
+	return m.streetAddress
 }
+
 // GetTimeZoneId gets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
 // returns a *string when successful
-func (m *LeadContact) GetTimeZoneId()(*string) {
-    return m.timeZoneId
+func (m *LeadContact) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
+
 // Serialize serializes information the current object
-func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("coordinate", m.GetCoordinate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("streetAddress", m.GetStreetAddress())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("coordinate", m.GetCoordinate())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("streetAddress", m.GetStreetAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadContact) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadContact) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAvatarUrl sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
-func (m *LeadContact) SetAvatarUrl(value *string)() {
-    m.avatarUrl = value
+func (m *LeadContact) SetAvatarUrl(value *string) {
+	m.avatarUrl = value
 }
+
 // SetCoordinate sets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
-func (m *LeadContact) SetCoordinate(value LeadContact_coordinateable)() {
-    m.coordinate = value
+func (m *LeadContact) SetCoordinate(value LeadContact_coordinateable) {
+	m.coordinate = value
 }
+
 // SetEmail sets the email property value. Email address for the person represented by this lead contact profile.
-func (m *LeadContact) SetEmail(value *string)() {
-    m.email = value
+func (m *LeadContact) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead contact profile.
-func (m *LeadContact) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *LeadContact) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead contact profile.
-func (m *LeadContact) SetLastName(value *string)() {
-    m.lastName = value
+func (m *LeadContact) SetLastName(value *string) {
+	m.lastName = value
 }
-// SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
-func (m *LeadContact) SetPhone(value LeadContact_phoneable)() {
-    m.phone = value
+
+// SetPhone sets the phone property value. Public Leadping API schema for lead phone number data.
+func (m *LeadContact) SetPhone(value LeadContact_phoneable) {
+	m.phone = value
 }
-// SetStreetAddress sets the streetAddress property value. Postal street address for the lead contact profile.
-func (m *LeadContact) SetStreetAddress(value LeadContact_streetAddressable)() {
-    m.streetAddress = value
+
+// SetStreetAddress sets the streetAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *LeadContact) SetStreetAddress(value LeadContact_streetAddressable) {
+	m.streetAddress = value
 }
+
 // SetTimeZoneId sets the timeZoneId property value. IANA or Windows time zone identifier used for local scheduling and reporting.
-func (m *LeadContact) SetTimeZoneId(value *string)() {
-    m.timeZoneId = value
+func (m *LeadContact) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
 }
+
 type LeadContactable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAvatarUrl()(*string)
-    GetCoordinate()(LeadContact_coordinateable)
-    GetEmail()(*string)
-    GetFirstName()(*string)
-    GetLastName()(*string)
-    GetPhone()(LeadContact_phoneable)
-    GetStreetAddress()(LeadContact_streetAddressable)
-    GetTimeZoneId()(*string)
-    SetAvatarUrl(value *string)()
-    SetCoordinate(value LeadContact_coordinateable)()
-    SetEmail(value *string)()
-    SetFirstName(value *string)()
-    SetLastName(value *string)()
-    SetPhone(value LeadContact_phoneable)()
-    SetStreetAddress(value LeadContact_streetAddressable)()
-    SetTimeZoneId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAvatarUrl() *string
+	GetCoordinate() LeadContact_coordinateable
+	GetEmail() *string
+	GetFirstName() *string
+	GetLastName() *string
+	GetPhone() LeadContact_phoneable
+	GetStreetAddress() LeadContact_streetAddressable
+	GetTimeZoneId() *string
+	SetAvatarUrl(value *string)
+	SetCoordinate(value LeadContact_coordinateable)
+	SetEmail(value *string)
+	SetFirstName(value *string)
+	SetLastName(value *string)
+	SetPhone(value LeadContact_phoneable)
+	SetStreetAddress(value LeadContact_streetAddressable)
+	SetTimeZoneId(value *string)
 }

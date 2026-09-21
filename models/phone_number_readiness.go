@@ -4,229 +4,247 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // PhoneNumberReadiness messaging and calling warmup for a Leadping phone number.
 type PhoneNumberReadiness struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Defines the supported voice call warmup stages for a Leadping-managed phone number.
-    callStage *PhoneNumberReadiness_callStage
-    // Indicates whether phone number warmup is enabled in Leadping.
-    enabled *bool
-    // Current warmup health score used to assess phone number warmup.
-    healthScore i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Defines the supported SMS readiness health assessments.
-    healthStatus *PhoneNumberReadiness_healthStatus
-    // Warmup completion percentage, from 0 through 100.
-    progressPercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Defines the supported SMS readiness states.
-    state *PhoneNumberReadiness_state
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
+	callStage *PhoneNumberReadiness_callStage
+	// Indicates whether phone number warmup is enabled in Leadping.
+	enabled *bool
+	// Current warmup health score used to assess phone number warmup.
+	healthScore *int32
+	// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
+	healthStatus *PhoneNumberReadiness_healthStatus
+	// Warmup completion percentage, from 0 through 100.
+	progressPercent *int32
+	// Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+	state *PhoneNumberReadiness_state
 }
+
 // NewPhoneNumberReadiness instantiates a new PhoneNumberReadiness and sets the default values.
-func NewPhoneNumberReadiness()(*PhoneNumberReadiness) {
-    m := &PhoneNumberReadiness{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneNumberReadiness() *PhoneNumberReadiness {
+	m := &PhoneNumberReadiness{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneNumberReadinessFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneNumberReadinessFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneNumberReadiness(), nil
+func CreatePhoneNumberReadinessFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneNumberReadiness(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneNumberReadiness) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneNumberReadiness) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCallStage gets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+
+// GetCallStage gets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
 // returns a *PhoneNumberReadiness_callStage when successful
-func (m *PhoneNumberReadiness) GetCallStage()(*PhoneNumberReadiness_callStage) {
-    return m.callStage
+func (m *PhoneNumberReadiness) GetCallStage() *PhoneNumberReadiness_callStage {
+	return m.callStage
 }
+
 // GetEnabled gets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
 // returns a *bool when successful
-func (m *PhoneNumberReadiness) GetEnabled()(*bool) {
-    return m.enabled
+func (m *PhoneNumberReadiness) GetEnabled() *bool {
+	return m.enabled
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneNumberReadiness) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callStage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_callStage)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallStage(val.(*PhoneNumberReadiness_callStage))
-        }
-        return nil
-    }
-    res["enabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEnabled(val)
-        }
-        return nil
-    }
-    res["healthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthScore(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_healthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*PhoneNumberReadiness_healthStatus))
-        }
-        return nil
-    }
-    res["progressPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProgressPercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["state"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberReadiness_state)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetState(val.(*PhoneNumberReadiness_state))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneNumberReadiness) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callStage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberReadiness_callStage)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallStage(val.(*PhoneNumberReadiness_callStage))
+		}
+		return nil
+	}
+	res["enabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["healthScore"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthScore(val)
+		}
+		return nil
+	}
+	res["healthStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberReadiness_healthStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthStatus(val.(*PhoneNumberReadiness_healthStatus))
+		}
+		return nil
+	}
+	res["progressPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProgressPercent(val)
+		}
+		return nil
+	}
+	res["state"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberReadiness_state)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetState(val.(*PhoneNumberReadiness_state))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthScore gets the healthScore property value. Current warmup health score used to assess phone number warmup.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberReadiness) GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.healthScore
+// returns a *int32 when successful
+func (m *PhoneNumberReadiness) GetHealthScore() *int32 {
+	return m.healthScore
 }
-// GetHealthStatus gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+
+// GetHealthStatus gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 // returns a *PhoneNumberReadiness_healthStatus when successful
-func (m *PhoneNumberReadiness) GetHealthStatus()(*PhoneNumberReadiness_healthStatus) {
-    return m.healthStatus
+func (m *PhoneNumberReadiness) GetHealthStatus() *PhoneNumberReadiness_healthStatus {
+	return m.healthStatus
 }
+
 // GetProgressPercent gets the progressPercent property value. Warmup completion percentage, from 0 through 100.
-// returns a UntypedNodeable when successful
-func (m *PhoneNumberReadiness) GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.progressPercent
+// returns a *int32 when successful
+func (m *PhoneNumberReadiness) GetProgressPercent() *int32 {
+	return m.progressPercent
 }
-// GetState gets the state property value. Defines the supported SMS readiness states.
+
+// GetState gets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 // returns a *PhoneNumberReadiness_state when successful
-func (m *PhoneNumberReadiness) GetState()(*PhoneNumberReadiness_state) {
-    return m.state
+func (m *PhoneNumberReadiness) GetState() *PhoneNumberReadiness_state {
+	return m.state
 }
+
 // Serialize serializes information the current object
-func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetCallStage() != nil {
-        cast := (*m.GetCallStage()).String()
-        err := writer.WriteStringValue("callStage", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("enabled", m.GetEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("healthScore", m.GetHealthScore())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("progressPercent", m.GetProgressPercent())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetState() != nil {
-        cast := (*m.GetState()).String()
-        err := writer.WriteStringValue("state", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetCallStage() != nil {
+		cast := (*m.GetCallStage()).String()
+		err := writer.WriteStringValue("callStage", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("healthScore", m.GetHealthScore())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetHealthStatus() != nil {
+		cast := (*m.GetHealthStatus()).String()
+		err := writer.WriteStringValue("healthStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("progressPercent", m.GetProgressPercent())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetState() != nil {
+		cast := (*m.GetState()).String()
+		err := writer.WriteStringValue("state", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneNumberReadiness) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneNumberReadiness) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCallStage sets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
-func (m *PhoneNumberReadiness) SetCallStage(value *PhoneNumberReadiness_callStage)() {
-    m.callStage = value
+
+// SetCallStage sets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
+func (m *PhoneNumberReadiness) SetCallStage(value *PhoneNumberReadiness_callStage) {
+	m.callStage = value
 }
+
 // SetEnabled sets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
-func (m *PhoneNumberReadiness) SetEnabled(value *bool)() {
-    m.enabled = value
+func (m *PhoneNumberReadiness) SetEnabled(value *bool) {
+	m.enabled = value
 }
+
 // SetHealthScore sets the healthScore property value. Current warmup health score used to assess phone number warmup.
-func (m *PhoneNumberReadiness) SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.healthScore = value
+func (m *PhoneNumberReadiness) SetHealthScore(value *int32) {
+	m.healthScore = value
 }
-// SetHealthStatus sets the healthStatus property value. Defines the supported SMS readiness health assessments.
-func (m *PhoneNumberReadiness) SetHealthStatus(value *PhoneNumberReadiness_healthStatus)() {
-    m.healthStatus = value
+
+// SetHealthStatus sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
+func (m *PhoneNumberReadiness) SetHealthStatus(value *PhoneNumberReadiness_healthStatus) {
+	m.healthStatus = value
 }
+
 // SetProgressPercent sets the progressPercent property value. Warmup completion percentage, from 0 through 100.
-func (m *PhoneNumberReadiness) SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.progressPercent = value
+func (m *PhoneNumberReadiness) SetProgressPercent(value *int32) {
+	m.progressPercent = value
 }
-// SetState sets the state property value. Defines the supported SMS readiness states.
-func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state)() {
-    m.state = value
+
+// SetState sets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state) {
+	m.state = value
 }
+
 type PhoneNumberReadinessable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallStage()(*PhoneNumberReadiness_callStage)
-    GetEnabled()(*bool)
-    GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetHealthStatus()(*PhoneNumberReadiness_healthStatus)
-    GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetState()(*PhoneNumberReadiness_state)
-    SetCallStage(value *PhoneNumberReadiness_callStage)()
-    SetEnabled(value *bool)()
-    SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetHealthStatus(value *PhoneNumberReadiness_healthStatus)()
-    SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetState(value *PhoneNumberReadiness_state)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallStage() *PhoneNumberReadiness_callStage
+	GetEnabled() *bool
+	GetHealthScore() *int32
+	GetHealthStatus() *PhoneNumberReadiness_healthStatus
+	GetProgressPercent() *int32
+	GetState() *PhoneNumberReadiness_state
+	SetCallStage(value *PhoneNumberReadiness_callStage)
+	SetEnabled(value *bool)
+	SetHealthScore(value *int32)
+	SetHealthStatus(value *PhoneNumberReadiness_healthStatus)
+	SetProgressPercent(value *int32)
+	SetState(value *PhoneNumberReadiness_state)
 }

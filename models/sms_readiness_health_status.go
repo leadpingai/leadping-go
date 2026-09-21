@@ -2,45 +2,49 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported SMS readiness health assessments.
+
+// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 type SmsReadinessHealthStatus int
 
 const (
-    NOTEVALUATED_SMSREADINESSHEALTHSTATUS SmsReadinessHealthStatus = iota
-    EVALUATING_SMSREADINESSHEALTHSTATUS
-    HEALTHY_SMSREADINESSHEALTHSTATUS
-    NEEDSATTENTION_SMSREADINESSHEALTHSTATUS
-    BLOCKED_SMSREADINESSHEALTHSTATUS
+	NOTEVALUATED_SMSREADINESSHEALTHSTATUS SmsReadinessHealthStatus = iota
+	EVALUATING_SMSREADINESSHEALTHSTATUS
+	HEALTHY_SMSREADINESSHEALTHSTATUS
+	NEEDSATTENTION_SMSREADINESSHEALTHSTATUS
+	BLOCKED_SMSREADINESSHEALTHSTATUS
 )
 
 func (i SmsReadinessHealthStatus) String() string {
-    return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
+	return []string{"Not Evaluated", "Evaluating", "Healthy", "Needs Attention", "Blocked"}[i]
 }
+
 func ParseSmsReadinessHealthStatus(v string) (any, error) {
-    result := NOTEVALUATED_SMSREADINESSHEALTHSTATUS
-    switch v {
-        case "Not Evaluated":
-            result = NOTEVALUATED_SMSREADINESSHEALTHSTATUS
-        case "Evaluating":
-            result = EVALUATING_SMSREADINESSHEALTHSTATUS
-        case "Healthy":
-            result = HEALTHY_SMSREADINESSHEALTHSTATUS
-        case "Needs Attention":
-            result = NEEDSATTENTION_SMSREADINESSHEALTHSTATUS
-        case "Blocked":
-            result = BLOCKED_SMSREADINESSHEALTHSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := NOTEVALUATED_SMSREADINESSHEALTHSTATUS
+	switch v {
+	case "Not Evaluated":
+		result = NOTEVALUATED_SMSREADINESSHEALTHSTATUS
+	case "Evaluating":
+		result = EVALUATING_SMSREADINESSHEALTHSTATUS
+	case "Healthy":
+		result = HEALTHY_SMSREADINESSHEALTHSTATUS
+	case "Needs Attention":
+		result = NEEDSATTENTION_SMSREADINESSHEALTHSTATUS
+	case "Blocked":
+		result = BLOCKED_SMSREADINESSHEALTHSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeSmsReadinessHealthStatus(values []SmsReadinessHealthStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i SmsReadinessHealthStatus) isMultiValue() bool {
-    return false
+	return false
 }

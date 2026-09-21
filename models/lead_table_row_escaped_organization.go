@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// LeadTableRow_organization identifier and display name of the related organization.
+// LeadTableRow_organization provides a compact API reference to another resource using its stable identifier and human-readable display name.
 type LeadTableRow_organization struct {
-    IdNamePair
+	IdNamePair
 }
+
 // NewLeadTableRow_organization instantiates a new LeadTableRow_organization and sets the default values.
-func NewLeadTableRow_organization()(*LeadTableRow_organization) {
-    m := &LeadTableRow_organization{
-        IdNamePair: *NewIdNamePair(),
-    }
-    return m
+func NewLeadTableRow_organization() *LeadTableRow_organization {
+	m := &LeadTableRow_organization{
+		IdNamePair: *NewIdNamePair(),
+	}
+	return m
 }
+
 // CreateLeadTableRow_organizationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadTableRow_organizationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadTableRow_organization(), nil
+func CreateLeadTableRow_organizationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadTableRow_organization(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadTableRow_organization) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.IdNamePair.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadTableRow_organization) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.IdNamePair.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *LeadTableRow_organization) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.IdNamePair.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *LeadTableRow_organization) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.IdNamePair.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type LeadTableRow_organizationable interface {
-    IdNamePairable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	IdNamePairable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

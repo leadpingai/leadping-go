@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerAutomationHealth_lastFailure last failure associated with this Leadping customer automation health.
+// CustomerAutomationHealth_lastFailure identifies an automation with recent execution failures and summarizes its affected leads and failure context.
 type CustomerAutomationHealth_lastFailure struct {
-    CustomerFailingAutomation
+	CustomerFailingAutomation
 }
+
 // NewCustomerAutomationHealth_lastFailure instantiates a new CustomerAutomationHealth_lastFailure and sets the default values.
-func NewCustomerAutomationHealth_lastFailure()(*CustomerAutomationHealth_lastFailure) {
-    m := &CustomerAutomationHealth_lastFailure{
-        CustomerFailingAutomation: *NewCustomerFailingAutomation(),
-    }
-    return m
+func NewCustomerAutomationHealth_lastFailure() *CustomerAutomationHealth_lastFailure {
+	m := &CustomerAutomationHealth_lastFailure{
+		CustomerFailingAutomation: *NewCustomerFailingAutomation(),
+	}
+	return m
 }
+
 // CreateCustomerAutomationHealth_lastFailureFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerAutomationHealth_lastFailureFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerAutomationHealth_lastFailure(), nil
+func CreateCustomerAutomationHealth_lastFailureFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerAutomationHealth_lastFailure(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerAutomationHealth_lastFailure) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.CustomerFailingAutomation.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerAutomationHealth_lastFailure) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.CustomerFailingAutomation.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *CustomerAutomationHealth_lastFailure) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.CustomerFailingAutomation.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *CustomerAutomationHealth_lastFailure) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.CustomerFailingAutomation.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type CustomerAutomationHealth_lastFailureable interface {
-    CustomerFailingAutomationable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	CustomerFailingAutomationable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

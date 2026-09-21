@@ -2,36 +2,40 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Billing Plan values.
+
+// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 type BillingPlan int
 
 const (
-    ANNUAL_BILLINGPLAN BillingPlan = iota
-    MONTHLY_BILLINGPLAN
+	ANNUAL_BILLINGPLAN BillingPlan = iota
+	MONTHLY_BILLINGPLAN
 )
 
 func (i BillingPlan) String() string {
-    return []string{"Annual", "Monthly"}[i]
+	return []string{"Annual", "Monthly"}[i]
 }
+
 func ParseBillingPlan(v string) (any, error) {
-    result := ANNUAL_BILLINGPLAN
-    switch v {
-        case "Annual":
-            result = ANNUAL_BILLINGPLAN
-        case "Monthly":
-            result = MONTHLY_BILLINGPLAN
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := ANNUAL_BILLINGPLAN
+	switch v {
+	case "Annual":
+		result = ANNUAL_BILLINGPLAN
+	case "Monthly":
+		result = MONTHLY_BILLINGPLAN
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeBillingPlan(values []BillingPlan) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i BillingPlan) isMultiValue() bool {
-    return false
+	return false
 }

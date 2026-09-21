@@ -4,367 +4,393 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// CustomerAnalyticsResponse response model containing customer analytics data returned by the Leadping API.
+// CustomerAnalyticsResponse aggregates an organization's lead performance, response speed, communication usage, automation health, and activation insights.
 type CustomerAnalyticsResponse struct {
-    // Activation health associated with this Leadping customer analytics.
-    activationHealth CustomerActivationHealthable
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Automation health associated with this Leadping customer analytics.
-    automationHealth CustomerAutomationHealthable
-    // Communication usage associated with this Leadping customer analytics.
-    communicationUsage CustomerCommunicationUsageable
-    // Date and time when this Leadping customer analytics was generated.
-    generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Collection of lead sources included with this Leadping customer analytics.
-    leadSources []CustomerLeadSourceBreakdownable
-    // Lead trend associated with this Leadping customer analytics.
-    leadTrend CustomerLeadTrendable
-    // Date and time when this Leadping customer analytics was needs attention.
-    needsAttention []CustomerNeedsAttentionItemable
-    // Range associated with this Leadping customer analytics.
-    rangeEscaped AnalyticsDateRangeable
-    // Response metrics associated with this Leadping customer analytics.
-    responseMetrics CustomerResponseMetricsable
-    // Human-readable summary for this Leadping customer analytics.
-    summary CustomerAnalyticsSummaryable
+	// Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
+	activationHealth CustomerActivationHealthable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
+	automationHealth CustomerAutomationHealthable
+	// Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
+	communicationUsage CustomerCommunicationUsageable
+	// Date and time when this Leadping customer analytics was generated.
+	generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Collection of lead sources included with this Leadping customer analytics.
+	leadSources []CustomerLeadSourceBreakdownable
+	// Measures lead creation, qualification, and conversion activity within one reporting time bucket.
+	leadTrend CustomerLeadTrendable
+	// Date and time when this Leadping customer analytics was needs attention.
+	needsAttention []CustomerNeedsAttentionItemable
+	// Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
+	rangeEscaped AnalyticsDateRangeable
+	// Measures how quickly and consistently an organization responds to leads across supported communication channels.
+	responseMetrics CustomerResponseMetricsable
+	// Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
+	summary CustomerAnalyticsSummaryable
 }
+
 // NewCustomerAnalyticsResponse instantiates a new CustomerAnalyticsResponse and sets the default values.
-func NewCustomerAnalyticsResponse()(*CustomerAnalyticsResponse) {
-    m := &CustomerAnalyticsResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerAnalyticsResponse() *CustomerAnalyticsResponse {
+	m := &CustomerAnalyticsResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerAnalyticsResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerAnalyticsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerAnalyticsResponse(), nil
+func CreateCustomerAnalyticsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerAnalyticsResponse(), nil
 }
-// GetActivationHealth gets the activationHealth property value. Activation health associated with this Leadping customer analytics.
+
+// GetActivationHealth gets the activationHealth property value. Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
 // returns a CustomerActivationHealthable when successful
-func (m *CustomerAnalyticsResponse) GetActivationHealth()(CustomerActivationHealthable) {
-    return m.activationHealth
+func (m *CustomerAnalyticsResponse) GetActivationHealth() CustomerActivationHealthable {
+	return m.activationHealth
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerAnalyticsResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerAnalyticsResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetAutomationHealth gets the automationHealth property value. Automation health associated with this Leadping customer analytics.
+
+// GetAutomationHealth gets the automationHealth property value. Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
 // returns a CustomerAutomationHealthable when successful
-func (m *CustomerAnalyticsResponse) GetAutomationHealth()(CustomerAutomationHealthable) {
-    return m.automationHealth
+func (m *CustomerAnalyticsResponse) GetAutomationHealth() CustomerAutomationHealthable {
+	return m.automationHealth
 }
-// GetCommunicationUsage gets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
+
+// GetCommunicationUsage gets the communicationUsage property value. Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
 // returns a CustomerCommunicationUsageable when successful
-func (m *CustomerAnalyticsResponse) GetCommunicationUsage()(CustomerCommunicationUsageable) {
-    return m.communicationUsage
+func (m *CustomerAnalyticsResponse) GetCommunicationUsage() CustomerCommunicationUsageable {
+	return m.communicationUsage
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerAnalyticsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["activationHealth"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerActivationHealthFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActivationHealth(val.(CustomerActivationHealthable))
-        }
-        return nil
-    }
-    res["automationHealth"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerAutomationHealthFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationHealth(val.(CustomerAutomationHealthable))
-        }
-        return nil
-    }
-    res["communicationUsage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerCommunicationUsageFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCommunicationUsage(val.(CustomerCommunicationUsageable))
-        }
-        return nil
-    }
-    res["generatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGeneratedAt(val)
-        }
-        return nil
-    }
-    res["leadSources"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCustomerLeadSourceBreakdownFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CustomerLeadSourceBreakdownable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CustomerLeadSourceBreakdownable)
-                }
-            }
-            m.SetLeadSources(res)
-        }
-        return nil
-    }
-    res["leadTrend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerLeadTrendFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadTrend(val.(CustomerLeadTrendable))
-        }
-        return nil
-    }
-    res["needsAttention"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCustomerNeedsAttentionItemFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CustomerNeedsAttentionItemable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CustomerNeedsAttentionItemable)
-                }
-            }
-            m.SetNeedsAttention(res)
-        }
-        return nil
-    }
-    res["range"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAnalyticsDateRangeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRangeEscaped(val.(AnalyticsDateRangeable))
-        }
-        return nil
-    }
-    res["responseMetrics"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerResponseMetricsFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetResponseMetrics(val.(CustomerResponseMetricsable))
-        }
-        return nil
-    }
-    res["summary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateCustomerAnalyticsSummaryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSummary(val.(CustomerAnalyticsSummaryable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerAnalyticsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["activationHealth"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerActivationHealthFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActivationHealth(val.(CustomerActivationHealthable))
+		}
+		return nil
+	}
+	res["automationHealth"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerAutomationHealthFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationHealth(val.(CustomerAutomationHealthable))
+		}
+		return nil
+	}
+	res["communicationUsage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerCommunicationUsageFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCommunicationUsage(val.(CustomerCommunicationUsageable))
+		}
+		return nil
+	}
+	res["generatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetGeneratedAt(val)
+		}
+		return nil
+	}
+	res["leadSources"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCustomerLeadSourceBreakdownFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CustomerLeadSourceBreakdownable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CustomerLeadSourceBreakdownable)
+				}
+			}
+			m.SetLeadSources(res)
+		}
+		return nil
+	}
+	res["leadTrend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerLeadTrendFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadTrend(val.(CustomerLeadTrendable))
+		}
+		return nil
+	}
+	res["needsAttention"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCustomerNeedsAttentionItemFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CustomerNeedsAttentionItemable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CustomerNeedsAttentionItemable)
+				}
+			}
+			m.SetNeedsAttention(res)
+		}
+		return nil
+	}
+	res["range"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAnalyticsDateRangeFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRangeEscaped(val.(AnalyticsDateRangeable))
+		}
+		return nil
+	}
+	res["responseMetrics"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerResponseMetricsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetResponseMetrics(val.(CustomerResponseMetricsable))
+		}
+		return nil
+	}
+	res["summary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerAnalyticsSummaryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSummary(val.(CustomerAnalyticsSummaryable))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetGeneratedAt gets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
 // returns a *Time when successful
-func (m *CustomerAnalyticsResponse) GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.generatedAt
+func (m *CustomerAnalyticsResponse) GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.generatedAt
 }
+
 // GetLeadSources gets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
 // returns a []CustomerLeadSourceBreakdownable when successful
-func (m *CustomerAnalyticsResponse) GetLeadSources()([]CustomerLeadSourceBreakdownable) {
-    return m.leadSources
+func (m *CustomerAnalyticsResponse) GetLeadSources() []CustomerLeadSourceBreakdownable {
+	return m.leadSources
 }
-// GetLeadTrend gets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
+
+// GetLeadTrend gets the leadTrend property value. Measures lead creation, qualification, and conversion activity within one reporting time bucket.
 // returns a CustomerLeadTrendable when successful
-func (m *CustomerAnalyticsResponse) GetLeadTrend()(CustomerLeadTrendable) {
-    return m.leadTrend
+func (m *CustomerAnalyticsResponse) GetLeadTrend() CustomerLeadTrendable {
+	return m.leadTrend
 }
+
 // GetNeedsAttention gets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
 // returns a []CustomerNeedsAttentionItemable when successful
-func (m *CustomerAnalyticsResponse) GetNeedsAttention()([]CustomerNeedsAttentionItemable) {
-    return m.needsAttention
+func (m *CustomerAnalyticsResponse) GetNeedsAttention() []CustomerNeedsAttentionItemable {
+	return m.needsAttention
 }
-// GetRangeEscaped gets the range property value. Range associated with this Leadping customer analytics.
+
+// GetRangeEscaped gets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
 // returns a AnalyticsDateRangeable when successful
-func (m *CustomerAnalyticsResponse) GetRangeEscaped()(AnalyticsDateRangeable) {
-    return m.rangeEscaped
+func (m *CustomerAnalyticsResponse) GetRangeEscaped() AnalyticsDateRangeable {
+	return m.rangeEscaped
 }
-// GetResponseMetrics gets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
+
+// GetResponseMetrics gets the responseMetrics property value. Measures how quickly and consistently an organization responds to leads across supported communication channels.
 // returns a CustomerResponseMetricsable when successful
-func (m *CustomerAnalyticsResponse) GetResponseMetrics()(CustomerResponseMetricsable) {
-    return m.responseMetrics
+func (m *CustomerAnalyticsResponse) GetResponseMetrics() CustomerResponseMetricsable {
+	return m.responseMetrics
 }
-// GetSummary gets the summary property value. Human-readable summary for this Leadping customer analytics.
+
+// GetSummary gets the summary property value. Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
 // returns a CustomerAnalyticsSummaryable when successful
-func (m *CustomerAnalyticsResponse) GetSummary()(CustomerAnalyticsSummaryable) {
-    return m.summary
+func (m *CustomerAnalyticsResponse) GetSummary() CustomerAnalyticsSummaryable {
+	return m.summary
 }
+
 // Serialize serializes information the current object
-func (m *CustomerAnalyticsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("activationHealth", m.GetActivationHealth())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("automationHealth", m.GetAutomationHealth())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("communicationUsage", m.GetCommunicationUsage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLeadSources() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLeadSources()))
-        for i, v := range m.GetLeadSources() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("leadSources", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("leadTrend", m.GetLeadTrend())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetNeedsAttention() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetNeedsAttention()))
-        for i, v := range m.GetNeedsAttention() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("needsAttention", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("range", m.GetRangeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("responseMetrics", m.GetResponseMetrics())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("summary", m.GetSummary())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerAnalyticsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("activationHealth", m.GetActivationHealth())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("automationHealth", m.GetAutomationHealth())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("communicationUsage", m.GetCommunicationUsage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLeadSources() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetLeadSources()))
+		for i, v := range m.GetLeadSources() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("leadSources", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("leadTrend", m.GetLeadTrend())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetNeedsAttention() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetNeedsAttention()))
+		for i, v := range m.GetNeedsAttention() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("needsAttention", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("range", m.GetRangeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("responseMetrics", m.GetResponseMetrics())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("summary", m.GetSummary())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
-// SetActivationHealth sets the activationHealth property value. Activation health associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetActivationHealth(value CustomerActivationHealthable)() {
-    m.activationHealth = value
+
+// SetActivationHealth sets the activationHealth property value. Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
+func (m *CustomerAnalyticsResponse) SetActivationHealth(value CustomerActivationHealthable) {
+	m.activationHealth = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerAnalyticsResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerAnalyticsResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetAutomationHealth sets the automationHealth property value. Automation health associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetAutomationHealth(value CustomerAutomationHealthable)() {
-    m.automationHealth = value
+
+// SetAutomationHealth sets the automationHealth property value. Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
+func (m *CustomerAnalyticsResponse) SetAutomationHealth(value CustomerAutomationHealthable) {
+	m.automationHealth = value
 }
-// SetCommunicationUsage sets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetCommunicationUsage(value CustomerCommunicationUsageable)() {
-    m.communicationUsage = value
+
+// SetCommunicationUsage sets the communicationUsage property value. Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
+func (m *CustomerAnalyticsResponse) SetCommunicationUsage(value CustomerCommunicationUsageable) {
+	m.communicationUsage = value
 }
+
 // SetGeneratedAt sets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
-func (m *CustomerAnalyticsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.generatedAt = value
+func (m *CustomerAnalyticsResponse) SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.generatedAt = value
 }
+
 // SetLeadSources sets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetLeadSources(value []CustomerLeadSourceBreakdownable)() {
-    m.leadSources = value
+func (m *CustomerAnalyticsResponse) SetLeadSources(value []CustomerLeadSourceBreakdownable) {
+	m.leadSources = value
 }
-// SetLeadTrend sets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetLeadTrend(value CustomerLeadTrendable)() {
-    m.leadTrend = value
+
+// SetLeadTrend sets the leadTrend property value. Measures lead creation, qualification, and conversion activity within one reporting time bucket.
+func (m *CustomerAnalyticsResponse) SetLeadTrend(value CustomerLeadTrendable) {
+	m.leadTrend = value
 }
+
 // SetNeedsAttention sets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
-func (m *CustomerAnalyticsResponse) SetNeedsAttention(value []CustomerNeedsAttentionItemable)() {
-    m.needsAttention = value
+func (m *CustomerAnalyticsResponse) SetNeedsAttention(value []CustomerNeedsAttentionItemable) {
+	m.needsAttention = value
 }
-// SetRangeEscaped sets the range property value. Range associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetRangeEscaped(value AnalyticsDateRangeable)() {
-    m.rangeEscaped = value
+
+// SetRangeEscaped sets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
+func (m *CustomerAnalyticsResponse) SetRangeEscaped(value AnalyticsDateRangeable) {
+	m.rangeEscaped = value
 }
-// SetResponseMetrics sets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetResponseMetrics(value CustomerResponseMetricsable)() {
-    m.responseMetrics = value
+
+// SetResponseMetrics sets the responseMetrics property value. Measures how quickly and consistently an organization responds to leads across supported communication channels.
+func (m *CustomerAnalyticsResponse) SetResponseMetrics(value CustomerResponseMetricsable) {
+	m.responseMetrics = value
 }
-// SetSummary sets the summary property value. Human-readable summary for this Leadping customer analytics.
-func (m *CustomerAnalyticsResponse) SetSummary(value CustomerAnalyticsSummaryable)() {
-    m.summary = value
+
+// SetSummary sets the summary property value. Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
+func (m *CustomerAnalyticsResponse) SetSummary(value CustomerAnalyticsSummaryable) {
+	m.summary = value
 }
+
 type CustomerAnalyticsResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActivationHealth()(CustomerActivationHealthable)
-    GetAutomationHealth()(CustomerAutomationHealthable)
-    GetCommunicationUsage()(CustomerCommunicationUsageable)
-    GetGeneratedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLeadSources()([]CustomerLeadSourceBreakdownable)
-    GetLeadTrend()(CustomerLeadTrendable)
-    GetNeedsAttention()([]CustomerNeedsAttentionItemable)
-    GetRangeEscaped()(AnalyticsDateRangeable)
-    GetResponseMetrics()(CustomerResponseMetricsable)
-    GetSummary()(CustomerAnalyticsSummaryable)
-    SetActivationHealth(value CustomerActivationHealthable)()
-    SetAutomationHealth(value CustomerAutomationHealthable)()
-    SetCommunicationUsage(value CustomerCommunicationUsageable)()
-    SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLeadSources(value []CustomerLeadSourceBreakdownable)()
-    SetLeadTrend(value CustomerLeadTrendable)()
-    SetNeedsAttention(value []CustomerNeedsAttentionItemable)()
-    SetRangeEscaped(value AnalyticsDateRangeable)()
-    SetResponseMetrics(value CustomerResponseMetricsable)()
-    SetSummary(value CustomerAnalyticsSummaryable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActivationHealth() CustomerActivationHealthable
+	GetAutomationHealth() CustomerAutomationHealthable
+	GetCommunicationUsage() CustomerCommunicationUsageable
+	GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLeadSources() []CustomerLeadSourceBreakdownable
+	GetLeadTrend() CustomerLeadTrendable
+	GetNeedsAttention() []CustomerNeedsAttentionItemable
+	GetRangeEscaped() AnalyticsDateRangeable
+	GetResponseMetrics() CustomerResponseMetricsable
+	GetSummary() CustomerAnalyticsSummaryable
+	SetActivationHealth(value CustomerActivationHealthable)
+	SetAutomationHealth(value CustomerAutomationHealthable)
+	SetCommunicationUsage(value CustomerCommunicationUsageable)
+	SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLeadSources(value []CustomerLeadSourceBreakdownable)
+	SetLeadTrend(value CustomerLeadTrendable)
+	SetNeedsAttention(value []CustomerNeedsAttentionItemable)
+	SetRangeEscaped(value AnalyticsDateRangeable)
+	SetResponseMetrics(value CustomerResponseMetricsable)
+	SetSummary(value CustomerAnalyticsSummaryable)
 }

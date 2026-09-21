@@ -4,256 +4,276 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SuppressionEntryAudit records one auditable change to a recipient suppression entry.
 type SuppressionEntryAudit struct {
-    // Identifier of the user or system actor responsible for the change.
-    actorId *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Unique identifier for this suppression audit record.
-    id *string
-    // Human-readable reason recorded for the suppression change.
-    reason *string
-    // Non-sensitive metadata that provides additional audit context.
-    safeMetadata SuppressionEntryAudit_safeMetadataable
-    // System or workflow that initiated the change.
-    source *string
-    // Suppression status established by this change, such as active or released.
-    status *string
-    // UTC timestamp when the suppression change occurred.
-    timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Identifier of the user or system actor responsible for the change.
+	actorId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Unique identifier for this suppression audit record.
+	id *string
+	// Human-readable reason recorded for the suppression change.
+	reason *string
+	// Non-sensitive metadata that provides additional audit context.
+	safeMetadata SuppressionEntryAudit_safeMetadataable
+	// System or workflow that initiated the change.
+	source *string
+	// Suppression status established by this change, such as active or released.
+	status *string
+	// UTC timestamp when the suppression change occurred.
+	timestamp *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
+
 // NewSuppressionEntryAudit instantiates a new SuppressionEntryAudit and sets the default values.
-func NewSuppressionEntryAudit()(*SuppressionEntryAudit) {
-    m := &SuppressionEntryAudit{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSuppressionEntryAudit() *SuppressionEntryAudit {
+	m := &SuppressionEntryAudit{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSuppressionEntryAuditFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSuppressionEntryAuditFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSuppressionEntryAudit(), nil
+func CreateSuppressionEntryAuditFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSuppressionEntryAudit(), nil
 }
+
 // GetActorId gets the actorId property value. Identifier of the user or system actor responsible for the change.
 // returns a *string when successful
-func (m *SuppressionEntryAudit) GetActorId()(*string) {
-    return m.actorId
+func (m *SuppressionEntryAudit) GetActorId() *string {
+	return m.actorId
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SuppressionEntryAudit) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SuppressionEntryAudit) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SuppressionEntryAudit) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actorId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActorId(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["reason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReason(val)
-        }
-        return nil
-    }
-    res["safeMetadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSuppressionEntryAudit_safeMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSafeMetadata(val.(SuppressionEntryAudit_safeMetadataable))
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    res["timestamp"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTimestamp(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SuppressionEntryAudit) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actorId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActorId(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["reason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReason(val)
+		}
+		return nil
+	}
+	res["safeMetadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSuppressionEntryAudit_safeMetadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSafeMetadata(val.(SuppressionEntryAudit_safeMetadataable))
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	res["timestamp"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimestamp(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique identifier for this suppression audit record.
 // returns a *string when successful
-func (m *SuppressionEntryAudit) GetId()(*string) {
-    return m.id
+func (m *SuppressionEntryAudit) GetId() *string {
+	return m.id
 }
+
 // GetReason gets the reason property value. Human-readable reason recorded for the suppression change.
 // returns a *string when successful
-func (m *SuppressionEntryAudit) GetReason()(*string) {
-    return m.reason
+func (m *SuppressionEntryAudit) GetReason() *string {
+	return m.reason
 }
+
 // GetSafeMetadata gets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
 // returns a SuppressionEntryAudit_safeMetadataable when successful
-func (m *SuppressionEntryAudit) GetSafeMetadata()(SuppressionEntryAudit_safeMetadataable) {
-    return m.safeMetadata
+func (m *SuppressionEntryAudit) GetSafeMetadata() SuppressionEntryAudit_safeMetadataable {
+	return m.safeMetadata
 }
+
 // GetSource gets the source property value. System or workflow that initiated the change.
 // returns a *string when successful
-func (m *SuppressionEntryAudit) GetSource()(*string) {
-    return m.source
+func (m *SuppressionEntryAudit) GetSource() *string {
+	return m.source
 }
+
 // GetStatus gets the status property value. Suppression status established by this change, such as active or released.
 // returns a *string when successful
-func (m *SuppressionEntryAudit) GetStatus()(*string) {
-    return m.status
+func (m *SuppressionEntryAudit) GetStatus() *string {
+	return m.status
 }
+
 // GetTimestamp gets the timestamp property value. UTC timestamp when the suppression change occurred.
 // returns a *Time when successful
-func (m *SuppressionEntryAudit) GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.timestamp
+func (m *SuppressionEntryAudit) GetTimestamp() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.timestamp
 }
+
 // Serialize serializes information the current object
-func (m *SuppressionEntryAudit) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actorId", m.GetActorId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("reason", m.GetReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("safeMetadata", m.GetSafeMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("timestamp", m.GetTimestamp())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SuppressionEntryAudit) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actorId", m.GetActorId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("reason", m.GetReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("safeMetadata", m.GetSafeMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("timestamp", m.GetTimestamp())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActorId sets the actorId property value. Identifier of the user or system actor responsible for the change.
-func (m *SuppressionEntryAudit) SetActorId(value *string)() {
-    m.actorId = value
+func (m *SuppressionEntryAudit) SetActorId(value *string) {
+	m.actorId = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SuppressionEntryAudit) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SuppressionEntryAudit) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetId sets the id property value. Unique identifier for this suppression audit record.
-func (m *SuppressionEntryAudit) SetId(value *string)() {
-    m.id = value
+func (m *SuppressionEntryAudit) SetId(value *string) {
+	m.id = value
 }
+
 // SetReason sets the reason property value. Human-readable reason recorded for the suppression change.
-func (m *SuppressionEntryAudit) SetReason(value *string)() {
-    m.reason = value
+func (m *SuppressionEntryAudit) SetReason(value *string) {
+	m.reason = value
 }
+
 // SetSafeMetadata sets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
-func (m *SuppressionEntryAudit) SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable)() {
-    m.safeMetadata = value
+func (m *SuppressionEntryAudit) SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable) {
+	m.safeMetadata = value
 }
+
 // SetSource sets the source property value. System or workflow that initiated the change.
-func (m *SuppressionEntryAudit) SetSource(value *string)() {
-    m.source = value
+func (m *SuppressionEntryAudit) SetSource(value *string) {
+	m.source = value
 }
+
 // SetStatus sets the status property value. Suppression status established by this change, such as active or released.
-func (m *SuppressionEntryAudit) SetStatus(value *string)() {
-    m.status = value
+func (m *SuppressionEntryAudit) SetStatus(value *string) {
+	m.status = value
 }
+
 // SetTimestamp sets the timestamp property value. UTC timestamp when the suppression change occurred.
-func (m *SuppressionEntryAudit) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.timestamp = value
+func (m *SuppressionEntryAudit) SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.timestamp = value
 }
+
 type SuppressionEntryAuditable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActorId()(*string)
-    GetId()(*string)
-    GetReason()(*string)
-    GetSafeMetadata()(SuppressionEntryAudit_safeMetadataable)
-    GetSource()(*string)
-    GetStatus()(*string)
-    GetTimestamp()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    SetActorId(value *string)()
-    SetId(value *string)()
-    SetReason(value *string)()
-    SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable)()
-    SetSource(value *string)()
-    SetStatus(value *string)()
-    SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActorId() *string
+	GetId() *string
+	GetReason() *string
+	GetSafeMetadata() SuppressionEntryAudit_safeMetadataable
+	GetSource() *string
+	GetStatus() *string
+	GetTimestamp() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	SetActorId(value *string)
+	SetId(value *string)
+	SetReason(value *string)
+	SetSafeMetadata(value SuppressionEntryAudit_safeMetadataable)
+	SetSource(value *string)
+	SetStatus(value *string)
+	SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }

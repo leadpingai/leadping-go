@@ -4,1021 +4,1093 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // LeadIntakeRequest defines the fields clients can send when working with lead intake.
 type LeadIntakeRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // First street address line submitted by the lead intake source.
-    address1 *string
-    // Second street address line submitted by the lead intake source.
-    address2 *string
-    // Lead birth date used for demographic matching and insurance intake workflows.
-    birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // City for the lead or organization postal address.
-    city *string
-    // Lead date of birth supplied by intake sources and normalized into the lead profile.
-    dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // Direct-post price supplied by the lead source during intake.
-    directPostPrice i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Email address for the person represented by this lead intake request.
-    email *string
-    // External system identifier used to reconcile this lead intake request across integrations.
-    externalId *string
-    // First name of the lead, user, or contact represented by this lead intake request.
-    firstName *string
-    // Lead gender supplied by intake sources and normalized when possible.
-    gender *string
-    // Landing page URL where the lead submitted their information.
-    landingPage *string
-    // Last name of the lead, user, or contact represented by this lead intake request.
-    lastName *string
-    // Phone details for the lead, user, or organization represented by this lead intake request.
-    phone *string
-    // Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
-    phoneType *string
-    // Postal code for the lead or organization address.
-    postalCode *string
-    // Lead price or transaction price supplied to the Leadping API.
-    price i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Product or offer associated with the lead or source.
-    product *string
-    // Referring page or traffic source that sent the lead into Leadping.
-    referrer *string
-    // Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
-    sellerLeadId *string
-    // Alternate seller-provided lead identifier used during intake normalization.
-    sellerLeadIdentifier *string
-    // Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-    sourceMetadata LeadIntakeRequest_sourceMetadataable
-    // State, province, or region for the lead or organization postal address.
-    state *string
-    // Affiliate or publisher sub ID captured for lead attribution.
-    subId *string
-    // Tag IDs assigned to or filtered against this lead.
-    tagIds []string
-    // Tag names assigned to this lead when matching existing tags by name.
-    tagNames []string
-    // TrustedForm certificate URL used as proof of consumer consent.
-    trustedFormUrl *string
-    // UTM campaign parameter captured for lead attribution reporting.
-    utmCampaign *string
-    // UTM content parameter captured for lead attribution reporting.
-    utmContent *string
-    // UTM medium parameter captured for lead attribution reporting.
-    utmMedium *string
-    // UTM source parameter captured for lead attribution reporting.
-    utmSource *string
-    // UTM term parameter captured for lead attribution reporting.
-    utmTerm *string
-    // Industry vertical used for lead routing, compliance review, and reporting.
-    vertical *string
-    // ZIP code submitted by the lead intake source.
-    zip *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// First street address line submitted by the lead intake source.
+	address1 *string
+	// Second street address line submitted by the lead intake source.
+	address2 *string
+	// Lead birth date used for demographic matching and insurance intake workflows.
+	birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	// City for the lead or organization postal address.
+	city *string
+	// Lead date of birth supplied by intake sources and normalized into the lead profile.
+	dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	// Direct-post price supplied by the lead source during intake.
+	directPostPrice *float64
+	// Email address for the person represented by this lead intake request.
+	email *string
+	// External system identifier used to reconcile this lead intake request across integrations.
+	externalId *string
+	// First name of the lead, user, or contact represented by this lead intake request.
+	firstName *string
+	// Lead gender supplied by intake sources and normalized when possible.
+	gender *string
+	// Landing page URL where the lead submitted their information.
+	landingPage *string
+	// Last name of the lead, user, or contact represented by this lead intake request.
+	lastName *string
+	// Phone details for the lead, user, or organization represented by this lead intake request.
+	phone *string
+	// Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
+	phoneType *string
+	// Postal code for the lead or organization address.
+	postalCode *string
+	// Lead price or transaction price supplied to the Leadping API.
+	price *float64
+	// Product or offer associated with the lead or source.
+	product *string
+	// Referring page or traffic source that sent the lead into Leadping.
+	referrer *string
+	// Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
+	sellerLeadId *string
+	// Alternate seller-provided lead identifier used during intake normalization.
+	sellerLeadIdentifier *string
+	// Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
+	sourceMetadata LeadIntakeRequest_sourceMetadataable
+	// State, province, or region for the lead or organization postal address.
+	state *string
+	// Affiliate or publisher sub ID captured for lead attribution.
+	subId *string
+	// Tag IDs assigned to or filtered against this lead.
+	tagIds []string
+	// Tag names assigned to this lead when matching existing tags by name.
+	tagNames []string
+	// TrustedForm certificate URL used as proof of consumer consent.
+	trustedFormUrl *string
+	// UTM campaign parameter captured for lead attribution reporting.
+	utmCampaign *string
+	// UTM content parameter captured for lead attribution reporting.
+	utmContent *string
+	// UTM medium parameter captured for lead attribution reporting.
+	utmMedium *string
+	// UTM source parameter captured for lead attribution reporting.
+	utmSource *string
+	// UTM term parameter captured for lead attribution reporting.
+	utmTerm *string
+	// Industry vertical used for lead routing, compliance review, and reporting.
+	vertical *string
+	// ZIP code submitted by the lead intake source.
+	zip *string
 }
+
 // NewLeadIntakeRequest instantiates a new LeadIntakeRequest and sets the default values.
-func NewLeadIntakeRequest()(*LeadIntakeRequest) {
-    m := &LeadIntakeRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadIntakeRequest() *LeadIntakeRequest {
+	m := &LeadIntakeRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadIntakeRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadIntakeRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadIntakeRequest(), nil
+func CreateLeadIntakeRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadIntakeRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadIntakeRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadIntakeRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAddress1 gets the address1 property value. First street address line submitted by the lead intake source.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetAddress1()(*string) {
-    return m.address1
+func (m *LeadIntakeRequest) GetAddress1() *string {
+	return m.address1
 }
+
 // GetAddress2 gets the address2 property value. Second street address line submitted by the lead intake source.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetAddress2()(*string) {
-    return m.address2
+func (m *LeadIntakeRequest) GetAddress2() *string {
+	return m.address2
 }
+
 // GetBirthDate gets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 // returns a *DateOnly when successful
-func (m *LeadIntakeRequest) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
-    return m.birthDate
+func (m *LeadIntakeRequest) GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly {
+	return m.birthDate
 }
+
 // GetCity gets the city property value. City for the lead or organization postal address.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetCity()(*string) {
-    return m.city
+func (m *LeadIntakeRequest) GetCity() *string {
+	return m.city
 }
+
 // GetDateOfBirth gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
 // returns a *DateOnly when successful
-func (m *LeadIntakeRequest) GetDateOfBirth()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
-    return m.dateOfBirth
+func (m *LeadIntakeRequest) GetDateOfBirth() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly {
+	return m.dateOfBirth
 }
+
 // GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-// returns a UntypedNodeable when successful
-func (m *LeadIntakeRequest) GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.directPostPrice
+// returns a *float64 when successful
+func (m *LeadIntakeRequest) GetDirectPostPrice() *float64 {
+	return m.directPostPrice
 }
+
 // GetEmail gets the email property value. Email address for the person represented by this lead intake request.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetEmail()(*string) {
-    return m.email
+func (m *LeadIntakeRequest) GetEmail() *string {
+	return m.email
 }
+
 // GetExternalId gets the externalId property value. External system identifier used to reconcile this lead intake request across integrations.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetExternalId()(*string) {
-    return m.externalId
+func (m *LeadIntakeRequest) GetExternalId() *string {
+	return m.externalId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadIntakeRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["address1"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAddress1(val)
-        }
-        return nil
-    }
-    res["address2"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAddress2(val)
-        }
-        return nil
-    }
-    res["birthDate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetDateOnlyValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBirthDate(val)
-        }
-        return nil
-    }
-    res["city"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCity(val)
-        }
-        return nil
-    }
-    res["dateOfBirth"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetDateOnlyValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDateOfBirth(val)
-        }
-        return nil
-    }
-    res["directPostPrice"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirectPostPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["externalId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExternalId(val)
-        }
-        return nil
-    }
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["gender"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGender(val)
-        }
-        return nil
-    }
-    res["landingPage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLandingPage(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["phone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhone(val)
-        }
-        return nil
-    }
-    res["phoneType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneType(val)
-        }
-        return nil
-    }
-    res["postalCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPostalCode(val)
-        }
-        return nil
-    }
-    res["price"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrice(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["product"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProduct(val)
-        }
-        return nil
-    }
-    res["referrer"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReferrer(val)
-        }
-        return nil
-    }
-    res["sellerLeadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSellerLeadId(val)
-        }
-        return nil
-    }
-    res["sellerLeadIdentifier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSellerLeadIdentifier(val)
-        }
-        return nil
-    }
-    res["sourceMetadata"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLeadIntakeRequest_sourceMetadataFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceMetadata(val.(LeadIntakeRequest_sourceMetadataable))
-        }
-        return nil
-    }
-    res["state"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetState(val)
-        }
-        return nil
-    }
-    res["subId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubId(val)
-        }
-        return nil
-    }
-    res["tagIds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetTagIds(res)
-        }
-        return nil
-    }
-    res["tagNames"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetTagNames(res)
-        }
-        return nil
-    }
-    res["trustedFormUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTrustedFormUrl(val)
-        }
-        return nil
-    }
-    res["utmCampaign"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmCampaign(val)
-        }
-        return nil
-    }
-    res["utmContent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmContent(val)
-        }
-        return nil
-    }
-    res["utmMedium"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmMedium(val)
-        }
-        return nil
-    }
-    res["utmSource"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmSource(val)
-        }
-        return nil
-    }
-    res["utmTerm"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUtmTerm(val)
-        }
-        return nil
-    }
-    res["vertical"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVertical(val)
-        }
-        return nil
-    }
-    res["zip"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetZip(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["address1"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAddress1(val)
+		}
+		return nil
+	}
+	res["address2"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAddress2(val)
+		}
+		return nil
+	}
+	res["birthDate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetDateOnlyValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBirthDate(val)
+		}
+		return nil
+	}
+	res["city"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCity(val)
+		}
+		return nil
+	}
+	res["dateOfBirth"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetDateOnlyValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDateOfBirth(val)
+		}
+		return nil
+	}
+	res["directPostPrice"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirectPostPrice(val)
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["externalId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExternalId(val)
+		}
+		return nil
+	}
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["gender"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetGender(val)
+		}
+		return nil
+	}
+	res["landingPage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLandingPage(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhone(val)
+		}
+		return nil
+	}
+	res["phoneType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneType(val)
+		}
+		return nil
+	}
+	res["postalCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPostalCode(val)
+		}
+		return nil
+	}
+	res["price"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrice(val)
+		}
+		return nil
+	}
+	res["product"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProduct(val)
+		}
+		return nil
+	}
+	res["referrer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReferrer(val)
+		}
+		return nil
+	}
+	res["sellerLeadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSellerLeadId(val)
+		}
+		return nil
+	}
+	res["sellerLeadIdentifier"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSellerLeadIdentifier(val)
+		}
+		return nil
+	}
+	res["sourceMetadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_sourceMetadataFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceMetadata(val.(LeadIntakeRequest_sourceMetadataable))
+		}
+		return nil
+	}
+	res["state"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetState(val)
+		}
+		return nil
+	}
+	res["subId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubId(val)
+		}
+		return nil
+	}
+	res["tagIds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetTagIds(res)
+		}
+		return nil
+	}
+	res["tagNames"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetTagNames(res)
+		}
+		return nil
+	}
+	res["trustedFormUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrustedFormUrl(val)
+		}
+		return nil
+	}
+	res["utmCampaign"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmCampaign(val)
+		}
+		return nil
+	}
+	res["utmContent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmContent(val)
+		}
+		return nil
+	}
+	res["utmMedium"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmMedium(val)
+		}
+		return nil
+	}
+	res["utmSource"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmSource(val)
+		}
+		return nil
+	}
+	res["utmTerm"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUtmTerm(val)
+		}
+		return nil
+	}
+	res["vertical"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVertical(val)
+		}
+		return nil
+	}
+	res["zip"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetZip(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this lead intake request.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetFirstName()(*string) {
-    return m.firstName
+func (m *LeadIntakeRequest) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetGender gets the gender property value. Lead gender supplied by intake sources and normalized when possible.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetGender()(*string) {
-    return m.gender
+func (m *LeadIntakeRequest) GetGender() *string {
+	return m.gender
 }
+
 // GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetLandingPage()(*string) {
-    return m.landingPage
+func (m *LeadIntakeRequest) GetLandingPage() *string {
+	return m.landingPage
 }
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead intake request.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetLastName()(*string) {
-    return m.lastName
+func (m *LeadIntakeRequest) GetLastName() *string {
+	return m.lastName
 }
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetPhone()(*string) {
-    return m.phone
+func (m *LeadIntakeRequest) GetPhone() *string {
+	return m.phone
 }
+
 // GetPhoneType gets the phoneType property value. Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetPhoneType()(*string) {
-    return m.phoneType
+func (m *LeadIntakeRequest) GetPhoneType() *string {
+	return m.phoneType
 }
+
 // GetPostalCode gets the postalCode property value. Postal code for the lead or organization address.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetPostalCode()(*string) {
-    return m.postalCode
+func (m *LeadIntakeRequest) GetPostalCode() *string {
+	return m.postalCode
 }
+
 // GetPrice gets the price property value. Lead price or transaction price supplied to the Leadping API.
-// returns a UntypedNodeable when successful
-func (m *LeadIntakeRequest) GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.price
+// returns a *float64 when successful
+func (m *LeadIntakeRequest) GetPrice() *float64 {
+	return m.price
 }
+
 // GetProduct gets the product property value. Product or offer associated with the lead or source.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetProduct()(*string) {
-    return m.product
+func (m *LeadIntakeRequest) GetProduct() *string {
+	return m.product
 }
+
 // GetReferrer gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetReferrer()(*string) {
-    return m.referrer
+func (m *LeadIntakeRequest) GetReferrer() *string {
+	return m.referrer
 }
+
 // GetSellerLeadId gets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetSellerLeadId()(*string) {
-    return m.sellerLeadId
+func (m *LeadIntakeRequest) GetSellerLeadId() *string {
+	return m.sellerLeadId
 }
+
 // GetSellerLeadIdentifier gets the sellerLeadIdentifier property value. Alternate seller-provided lead identifier used during intake normalization.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetSellerLeadIdentifier()(*string) {
-    return m.sellerLeadIdentifier
+func (m *LeadIntakeRequest) GetSellerLeadIdentifier() *string {
+	return m.sellerLeadIdentifier
 }
+
 // GetSourceMetadata gets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 // returns a LeadIntakeRequest_sourceMetadataable when successful
-func (m *LeadIntakeRequest) GetSourceMetadata()(LeadIntakeRequest_sourceMetadataable) {
-    return m.sourceMetadata
+func (m *LeadIntakeRequest) GetSourceMetadata() LeadIntakeRequest_sourceMetadataable {
+	return m.sourceMetadata
 }
+
 // GetState gets the state property value. State, province, or region for the lead or organization postal address.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetState()(*string) {
-    return m.state
+func (m *LeadIntakeRequest) GetState() *string {
+	return m.state
 }
+
 // GetSubId gets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetSubId()(*string) {
-    return m.subId
+func (m *LeadIntakeRequest) GetSubId() *string {
+	return m.subId
 }
+
 // GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
 // returns a []string when successful
-func (m *LeadIntakeRequest) GetTagIds()([]string) {
-    return m.tagIds
+func (m *LeadIntakeRequest) GetTagIds() []string {
+	return m.tagIds
 }
+
 // GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 // returns a []string when successful
-func (m *LeadIntakeRequest) GetTagNames()([]string) {
-    return m.tagNames
+func (m *LeadIntakeRequest) GetTagNames() []string {
+	return m.tagNames
 }
+
 // GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetTrustedFormUrl()(*string) {
-    return m.trustedFormUrl
+func (m *LeadIntakeRequest) GetTrustedFormUrl() *string {
+	return m.trustedFormUrl
 }
+
 // GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetUtmCampaign()(*string) {
-    return m.utmCampaign
+func (m *LeadIntakeRequest) GetUtmCampaign() *string {
+	return m.utmCampaign
 }
+
 // GetUtmContent gets the utmContent property value. UTM content parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetUtmContent()(*string) {
-    return m.utmContent
+func (m *LeadIntakeRequest) GetUtmContent() *string {
+	return m.utmContent
 }
+
 // GetUtmMedium gets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetUtmMedium()(*string) {
-    return m.utmMedium
+func (m *LeadIntakeRequest) GetUtmMedium() *string {
+	return m.utmMedium
 }
+
 // GetUtmSource gets the utmSource property value. UTM source parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetUtmSource()(*string) {
-    return m.utmSource
+func (m *LeadIntakeRequest) GetUtmSource() *string {
+	return m.utmSource
 }
+
 // GetUtmTerm gets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetUtmTerm()(*string) {
-    return m.utmTerm
+func (m *LeadIntakeRequest) GetUtmTerm() *string {
+	return m.utmTerm
 }
+
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetVertical()(*string) {
-    return m.vertical
+func (m *LeadIntakeRequest) GetVertical() *string {
+	return m.vertical
 }
+
 // GetZip gets the zip property value. ZIP code submitted by the lead intake source.
 // returns a *string when successful
-func (m *LeadIntakeRequest) GetZip()(*string) {
-    return m.zip
+func (m *LeadIntakeRequest) GetZip() *string {
+	return m.zip
 }
+
 // Serialize serializes information the current object
-func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("address1", m.GetAddress1())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("address2", m.GetAddress2())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteDateOnlyValue("birthDate", m.GetBirthDate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("city", m.GetCity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteDateOnlyValue("dateOfBirth", m.GetDateOfBirth())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("directPostPrice", m.GetDirectPostPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("externalId", m.GetExternalId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("gender", m.GetGender())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("landingPage", m.GetLandingPage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phone", m.GetPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneType", m.GetPhoneType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("postalCode", m.GetPostalCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("price", m.GetPrice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("product", m.GetProduct())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("referrer", m.GetReferrer())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sellerLeadId", m.GetSellerLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sellerLeadIdentifier", m.GetSellerLeadIdentifier())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("sourceMetadata", m.GetSourceMetadata())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("state", m.GetState())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("subId", m.GetSubId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTagIds() != nil {
-        err := writer.WriteCollectionOfStringValues("tagIds", m.GetTagIds())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTagNames() != nil {
-        err := writer.WriteCollectionOfStringValues("tagNames", m.GetTagNames())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmContent", m.GetUtmContent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmMedium", m.GetUtmMedium())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmSource", m.GetUtmSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("utmTerm", m.GetUtmTerm())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("vertical", m.GetVertical())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("zip", m.GetZip())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("address1", m.GetAddress1())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("address2", m.GetAddress2())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteDateOnlyValue("birthDate", m.GetBirthDate())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("city", m.GetCity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteDateOnlyValue("dateOfBirth", m.GetDateOfBirth())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("directPostPrice", m.GetDirectPostPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("externalId", m.GetExternalId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("gender", m.GetGender())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("landingPage", m.GetLandingPage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phone", m.GetPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneType", m.GetPhoneType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("postalCode", m.GetPostalCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("price", m.GetPrice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("product", m.GetProduct())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("referrer", m.GetReferrer())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sellerLeadId", m.GetSellerLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sellerLeadIdentifier", m.GetSellerLeadIdentifier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("sourceMetadata", m.GetSourceMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("state", m.GetState())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("subId", m.GetSubId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTagIds() != nil {
+		err := writer.WriteCollectionOfStringValues("tagIds", m.GetTagIds())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTagNames() != nil {
+		err := writer.WriteCollectionOfStringValues("tagNames", m.GetTagNames())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmContent", m.GetUtmContent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmMedium", m.GetUtmMedium())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmSource", m.GetUtmSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("utmTerm", m.GetUtmTerm())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("vertical", m.GetVertical())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("zip", m.GetZip())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadIntakeRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadIntakeRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAddress1 sets the address1 property value. First street address line submitted by the lead intake source.
-func (m *LeadIntakeRequest) SetAddress1(value *string)() {
-    m.address1 = value
+func (m *LeadIntakeRequest) SetAddress1(value *string) {
+	m.address1 = value
 }
+
 // SetAddress2 sets the address2 property value. Second street address line submitted by the lead intake source.
-func (m *LeadIntakeRequest) SetAddress2(value *string)() {
-    m.address2 = value
+func (m *LeadIntakeRequest) SetAddress2(value *string) {
+	m.address2 = value
 }
+
 // SetBirthDate sets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
-func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
-    m.birthDate = value
+func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
+	m.birthDate = value
 }
+
 // SetCity sets the city property value. City for the lead or organization postal address.
-func (m *LeadIntakeRequest) SetCity(value *string)() {
-    m.city = value
+func (m *LeadIntakeRequest) SetCity(value *string) {
+	m.city = value
 }
+
 // SetDateOfBirth sets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
-func (m *LeadIntakeRequest) SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
-    m.dateOfBirth = value
+func (m *LeadIntakeRequest) SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
+	m.dateOfBirth = value
 }
+
 // SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-func (m *LeadIntakeRequest) SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.directPostPrice = value
+func (m *LeadIntakeRequest) SetDirectPostPrice(value *float64) {
+	m.directPostPrice = value
 }
+
 // SetEmail sets the email property value. Email address for the person represented by this lead intake request.
-func (m *LeadIntakeRequest) SetEmail(value *string)() {
-    m.email = value
+func (m *LeadIntakeRequest) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetExternalId sets the externalId property value. External system identifier used to reconcile this lead intake request across integrations.
-func (m *LeadIntakeRequest) SetExternalId(value *string)() {
-    m.externalId = value
+func (m *LeadIntakeRequest) SetExternalId(value *string) {
+	m.externalId = value
 }
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this lead intake request.
-func (m *LeadIntakeRequest) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *LeadIntakeRequest) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetGender sets the gender property value. Lead gender supplied by intake sources and normalized when possible.
-func (m *LeadIntakeRequest) SetGender(value *string)() {
-    m.gender = value
+func (m *LeadIntakeRequest) SetGender(value *string) {
+	m.gender = value
 }
+
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
-func (m *LeadIntakeRequest) SetLandingPage(value *string)() {
-    m.landingPage = value
+func (m *LeadIntakeRequest) SetLandingPage(value *string) {
+	m.landingPage = value
 }
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead intake request.
-func (m *LeadIntakeRequest) SetLastName(value *string)() {
-    m.lastName = value
+func (m *LeadIntakeRequest) SetLastName(value *string) {
+	m.lastName = value
 }
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
-func (m *LeadIntakeRequest) SetPhone(value *string)() {
-    m.phone = value
+func (m *LeadIntakeRequest) SetPhone(value *string) {
+	m.phone = value
 }
+
 // SetPhoneType sets the phoneType property value. Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
-func (m *LeadIntakeRequest) SetPhoneType(value *string)() {
-    m.phoneType = value
+func (m *LeadIntakeRequest) SetPhoneType(value *string) {
+	m.phoneType = value
 }
+
 // SetPostalCode sets the postalCode property value. Postal code for the lead or organization address.
-func (m *LeadIntakeRequest) SetPostalCode(value *string)() {
-    m.postalCode = value
+func (m *LeadIntakeRequest) SetPostalCode(value *string) {
+	m.postalCode = value
 }
+
 // SetPrice sets the price property value. Lead price or transaction price supplied to the Leadping API.
-func (m *LeadIntakeRequest) SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.price = value
+func (m *LeadIntakeRequest) SetPrice(value *float64) {
+	m.price = value
 }
+
 // SetProduct sets the product property value. Product or offer associated with the lead or source.
-func (m *LeadIntakeRequest) SetProduct(value *string)() {
-    m.product = value
+func (m *LeadIntakeRequest) SetProduct(value *string) {
+	m.product = value
 }
+
 // SetReferrer sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
-func (m *LeadIntakeRequest) SetReferrer(value *string)() {
-    m.referrer = value
+func (m *LeadIntakeRequest) SetReferrer(value *string) {
+	m.referrer = value
 }
+
 // SetSellerLeadId sets the sellerLeadId property value. Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
-func (m *LeadIntakeRequest) SetSellerLeadId(value *string)() {
-    m.sellerLeadId = value
+func (m *LeadIntakeRequest) SetSellerLeadId(value *string) {
+	m.sellerLeadId = value
 }
+
 // SetSellerLeadIdentifier sets the sellerLeadIdentifier property value. Alternate seller-provided lead identifier used during intake normalization.
-func (m *LeadIntakeRequest) SetSellerLeadIdentifier(value *string)() {
-    m.sellerLeadIdentifier = value
+func (m *LeadIntakeRequest) SetSellerLeadIdentifier(value *string) {
+	m.sellerLeadIdentifier = value
 }
+
 // SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-func (m *LeadIntakeRequest) SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)() {
-    m.sourceMetadata = value
+func (m *LeadIntakeRequest) SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable) {
+	m.sourceMetadata = value
 }
+
 // SetState sets the state property value. State, province, or region for the lead or organization postal address.
-func (m *LeadIntakeRequest) SetState(value *string)() {
-    m.state = value
+func (m *LeadIntakeRequest) SetState(value *string) {
+	m.state = value
 }
+
 // SetSubId sets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
-func (m *LeadIntakeRequest) SetSubId(value *string)() {
-    m.subId = value
+func (m *LeadIntakeRequest) SetSubId(value *string) {
+	m.subId = value
 }
+
 // SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
-func (m *LeadIntakeRequest) SetTagIds(value []string)() {
-    m.tagIds = value
+func (m *LeadIntakeRequest) SetTagIds(value []string) {
+	m.tagIds = value
 }
+
 // SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
-func (m *LeadIntakeRequest) SetTagNames(value []string)() {
-    m.tagNames = value
+func (m *LeadIntakeRequest) SetTagNames(value []string) {
+	m.tagNames = value
 }
+
 // SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-func (m *LeadIntakeRequest) SetTrustedFormUrl(value *string)() {
-    m.trustedFormUrl = value
+func (m *LeadIntakeRequest) SetTrustedFormUrl(value *string) {
+	m.trustedFormUrl = value
 }
+
 // SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
-func (m *LeadIntakeRequest) SetUtmCampaign(value *string)() {
-    m.utmCampaign = value
+func (m *LeadIntakeRequest) SetUtmCampaign(value *string) {
+	m.utmCampaign = value
 }
+
 // SetUtmContent sets the utmContent property value. UTM content parameter captured for lead attribution reporting.
-func (m *LeadIntakeRequest) SetUtmContent(value *string)() {
-    m.utmContent = value
+func (m *LeadIntakeRequest) SetUtmContent(value *string) {
+	m.utmContent = value
 }
+
 // SetUtmMedium sets the utmMedium property value. UTM medium parameter captured for lead attribution reporting.
-func (m *LeadIntakeRequest) SetUtmMedium(value *string)() {
-    m.utmMedium = value
+func (m *LeadIntakeRequest) SetUtmMedium(value *string) {
+	m.utmMedium = value
 }
+
 // SetUtmSource sets the utmSource property value. UTM source parameter captured for lead attribution reporting.
-func (m *LeadIntakeRequest) SetUtmSource(value *string)() {
-    m.utmSource = value
+func (m *LeadIntakeRequest) SetUtmSource(value *string) {
+	m.utmSource = value
 }
+
 // SetUtmTerm sets the utmTerm property value. UTM term parameter captured for lead attribution reporting.
-func (m *LeadIntakeRequest) SetUtmTerm(value *string)() {
-    m.utmTerm = value
+func (m *LeadIntakeRequest) SetUtmTerm(value *string) {
+	m.utmTerm = value
 }
+
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
-func (m *LeadIntakeRequest) SetVertical(value *string)() {
-    m.vertical = value
+func (m *LeadIntakeRequest) SetVertical(value *string) {
+	m.vertical = value
 }
+
 // SetZip sets the zip property value. ZIP code submitted by the lead intake source.
-func (m *LeadIntakeRequest) SetZip(value *string)() {
-    m.zip = value
+func (m *LeadIntakeRequest) SetZip(value *string) {
+	m.zip = value
 }
+
 type LeadIntakeRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAddress1()(*string)
-    GetAddress2()(*string)
-    GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
-    GetCity()(*string)
-    GetDateOfBirth()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
-    GetDirectPostPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetEmail()(*string)
-    GetExternalId()(*string)
-    GetFirstName()(*string)
-    GetGender()(*string)
-    GetLandingPage()(*string)
-    GetLastName()(*string)
-    GetPhone()(*string)
-    GetPhoneType()(*string)
-    GetPostalCode()(*string)
-    GetPrice()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetProduct()(*string)
-    GetReferrer()(*string)
-    GetSellerLeadId()(*string)
-    GetSellerLeadIdentifier()(*string)
-    GetSourceMetadata()(LeadIntakeRequest_sourceMetadataable)
-    GetState()(*string)
-    GetSubId()(*string)
-    GetTagIds()([]string)
-    GetTagNames()([]string)
-    GetTrustedFormUrl()(*string)
-    GetUtmCampaign()(*string)
-    GetUtmContent()(*string)
-    GetUtmMedium()(*string)
-    GetUtmSource()(*string)
-    GetUtmTerm()(*string)
-    GetVertical()(*string)
-    GetZip()(*string)
-    SetAddress1(value *string)()
-    SetAddress2(value *string)()
-    SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)()
-    SetCity(value *string)()
-    SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)()
-    SetDirectPostPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetEmail(value *string)()
-    SetExternalId(value *string)()
-    SetFirstName(value *string)()
-    SetGender(value *string)()
-    SetLandingPage(value *string)()
-    SetLastName(value *string)()
-    SetPhone(value *string)()
-    SetPhoneType(value *string)()
-    SetPostalCode(value *string)()
-    SetPrice(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetProduct(value *string)()
-    SetReferrer(value *string)()
-    SetSellerLeadId(value *string)()
-    SetSellerLeadIdentifier(value *string)()
-    SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)()
-    SetState(value *string)()
-    SetSubId(value *string)()
-    SetTagIds(value []string)()
-    SetTagNames(value []string)()
-    SetTrustedFormUrl(value *string)()
-    SetUtmCampaign(value *string)()
-    SetUtmContent(value *string)()
-    SetUtmMedium(value *string)()
-    SetUtmSource(value *string)()
-    SetUtmTerm(value *string)()
-    SetVertical(value *string)()
-    SetZip(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAddress1() *string
+	GetAddress2() *string
+	GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	GetCity() *string
+	GetDateOfBirth() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	GetDirectPostPrice() *float64
+	GetEmail() *string
+	GetExternalId() *string
+	GetFirstName() *string
+	GetGender() *string
+	GetLandingPage() *string
+	GetLastName() *string
+	GetPhone() *string
+	GetPhoneType() *string
+	GetPostalCode() *string
+	GetPrice() *float64
+	GetProduct() *string
+	GetReferrer() *string
+	GetSellerLeadId() *string
+	GetSellerLeadIdentifier() *string
+	GetSourceMetadata() LeadIntakeRequest_sourceMetadataable
+	GetState() *string
+	GetSubId() *string
+	GetTagIds() []string
+	GetTagNames() []string
+	GetTrustedFormUrl() *string
+	GetUtmCampaign() *string
+	GetUtmContent() *string
+	GetUtmMedium() *string
+	GetUtmSource() *string
+	GetUtmTerm() *string
+	GetVertical() *string
+	GetZip() *string
+	SetAddress1(value *string)
+	SetAddress2(value *string)
+	SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
+	SetCity(value *string)
+	SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
+	SetDirectPostPrice(value *float64)
+	SetEmail(value *string)
+	SetExternalId(value *string)
+	SetFirstName(value *string)
+	SetGender(value *string)
+	SetLandingPage(value *string)
+	SetLastName(value *string)
+	SetPhone(value *string)
+	SetPhoneType(value *string)
+	SetPostalCode(value *string)
+	SetPrice(value *float64)
+	SetProduct(value *string)
+	SetReferrer(value *string)
+	SetSellerLeadId(value *string)
+	SetSellerLeadIdentifier(value *string)
+	SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)
+	SetState(value *string)
+	SetSubId(value *string)
+	SetTagIds(value []string)
+	SetTagNames(value []string)
+	SetTrustedFormUrl(value *string)
+	SetUtmCampaign(value *string)
+	SetUtmContent(value *string)
+	SetUtmMedium(value *string)
+	SetUtmSource(value *string)
+	SetUtmTerm(value *string)
+	SetVertical(value *string)
+	SetZip(value *string)
 }

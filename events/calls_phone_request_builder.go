@@ -4,35 +4,38 @@
 package events
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
 // CallsPhoneRequestBuilder builds and executes requests for operations under \events\calls\phone
 type CallsPhoneRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
+
 // ByPhoneNumber gets an item from the github.com/leadpingai/leadping-go.events.calls.phone.item collection
 // returns a *CallsPhoneWithPhoneNumberItemRequestBuilder when successful
-func (m *CallsPhoneRequestBuilder) ByPhoneNumber(phoneNumber string)(*CallsPhoneWithPhoneNumberItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if phoneNumber != "" {
-        urlTplParams["phoneNumber"] = phoneNumber
-    }
-    return NewCallsPhoneWithPhoneNumberItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+func (m *CallsPhoneRequestBuilder) ByPhoneNumber(phoneNumber string) *CallsPhoneWithPhoneNumberItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if phoneNumber != "" {
+		urlTplParams["phoneNumber"] = phoneNumber
+	}
+	return NewCallsPhoneWithPhoneNumberItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
+
 // NewCallsPhoneRequestBuilderInternal instantiates a new CallsPhoneRequestBuilder and sets the default values.
-func NewCallsPhoneRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*CallsPhoneRequestBuilder) {
-    m := &CallsPhoneRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/calls/phone", pathParameters),
-    }
-    return m
+func NewCallsPhoneRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *CallsPhoneRequestBuilder {
+	m := &CallsPhoneRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/events/calls/phone", pathParameters),
+	}
+	return m
 }
+
 // NewCallsPhoneRequestBuilder instantiates a new CallsPhoneRequestBuilder and sets the default values.
-func NewCallsPhoneRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*CallsPhoneRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewCallsPhoneRequestBuilderInternal(urlParams, requestAdapter)
+func NewCallsPhoneRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *CallsPhoneRequestBuilder {
+	urlParams := make(map[string]string)
+	urlParams["request-raw-url"] = rawUrl
+	return NewCallsPhoneRequestBuilderInternal(urlParams, requestAdapter)
 }

@@ -4,489 +4,525 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // OrganizationMemberResponse describes organization user data returned by Leadping.
 type OrganizationMemberResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The created by user ID associated with this organization user.
-    createdByUserId *string
-    // The unique identifier for the entity.
-    id *string
-    // UTC timestamp for last used at on this organization user.
-    lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The billing status for this user's organization license.
-    licenseBillingStatus *string
-    // The quantity on the shared organization user license item after this change.
-    licenseQuantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The renewal date used for this user's license proration.
-    licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The display name for the entity.
-    name *string
-    // Organization for this organization user.
-    organization IdNamePairable
-    // UTC timestamp for removed at on this organization user.
-    removedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The removed by user ID associated with this organization user.
-    removedByUserId *string
-    // Role for this organization user.
-    role *OrganizationMemberRole
-    // User for this organization user.
-    user IdNamePairable
-    // User email for this organization user.
-    userEmail *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The created by user ID associated with this organization user.
+	createdByUserId *string
+	// Stable unique identifier of the resource.
+	id *string
+	// UTC timestamp for last used at on this organization user.
+	lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The billing status for this user's organization license.
+	licenseBillingStatus *string
+	// The quantity on the shared organization user license item after this change.
+	licenseQuantity *int64
+	// The renewal date used for this user's license proration.
+	licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Human-readable display name of the resource.
+	name *string
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	organization IdNamePairable
+	// UTC timestamp for removed at on this organization user.
+	removedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The removed by user ID associated with this organization user.
+	removedByUserId *string
+	// Identifies an organization member's access level and permission scope within Leadping.
+	role *OrganizationMemberRole
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	user IdNamePairable
+	// User email for this organization user.
+	userEmail *string
 }
+
 // NewOrganizationMemberResponse instantiates a new OrganizationMemberResponse and sets the default values.
-func NewOrganizationMemberResponse()(*OrganizationMemberResponse) {
-    m := &OrganizationMemberResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationMemberResponse() *OrganizationMemberResponse {
+	m := &OrganizationMemberResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationMemberResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationMemberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationMemberResponse(), nil
+func CreateOrganizationMemberResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationMemberResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationMemberResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationMemberResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *OrganizationMemberResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *OrganizationMemberResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetCreatedByUserId gets the createdByUserId property value. The created by user ID associated with this organization user.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetCreatedByUserId()(*string) {
-    return m.createdByUserId
+func (m *OrganizationMemberResponse) GetCreatedByUserId() *string {
+	return m.createdByUserId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationMemberResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["createdByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedByUserId(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["lastUsedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastUsedAt(val)
-        }
-        return nil
-    }
-    res["licenseBillingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLicenseBillingStatus(val)
-        }
-        return nil
-    }
-    res["licenseQuantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLicenseQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["licenseRenewalDate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLicenseRenewalDate(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["organization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganization(val.(IdNamePairable))
-        }
-        return nil
-    }
-    res["removedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRemovedAt(val)
-        }
-        return nil
-    }
-    res["removedByUserId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRemovedByUserId(val)
-        }
-        return nil
-    }
-    res["role"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationMemberRole)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRole(val.(*OrganizationMemberRole))
-        }
-        return nil
-    }
-    res["user"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUser(val.(IdNamePairable))
-        }
-        return nil
-    }
-    res["userEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUserEmail(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationMemberResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["createdByUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedByUserId(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["lastUsedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastUsedAt(val)
+		}
+		return nil
+	}
+	res["licenseBillingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLicenseBillingStatus(val)
+		}
+		return nil
+	}
+	res["licenseQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLicenseQuantity(val)
+		}
+		return nil
+	}
+	res["licenseRenewalDate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLicenseRenewalDate(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganization(val.(IdNamePairable))
+		}
+		return nil
+	}
+	res["removedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRemovedAt(val)
+		}
+		return nil
+	}
+	res["removedByUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRemovedByUserId(val)
+		}
+		return nil
+	}
+	res["role"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationMemberRole)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRole(val.(*OrganizationMemberRole))
+		}
+		return nil
+	}
+	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUser(val.(IdNamePairable))
+		}
+		return nil
+	}
+	res["userEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUserEmail(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetId()(*string) {
-    return m.id
+func (m *OrganizationMemberResponse) GetId() *string {
+	return m.id
 }
+
 // GetLastUsedAt gets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
 // returns a *Time when successful
-func (m *OrganizationMemberResponse) GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastUsedAt
+func (m *OrganizationMemberResponse) GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastUsedAt
 }
+
 // GetLicenseBillingStatus gets the licenseBillingStatus property value. The billing status for this user's organization license.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetLicenseBillingStatus()(*string) {
-    return m.licenseBillingStatus
+func (m *OrganizationMemberResponse) GetLicenseBillingStatus() *string {
+	return m.licenseBillingStatus
 }
+
 // GetLicenseQuantity gets the licenseQuantity property value. The quantity on the shared organization user license item after this change.
-// returns a UntypedNodeable when successful
-func (m *OrganizationMemberResponse) GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.licenseQuantity
+// returns a *int64 when successful
+func (m *OrganizationMemberResponse) GetLicenseQuantity() *int64 {
+	return m.licenseQuantity
 }
+
 // GetLicenseRenewalDate gets the licenseRenewalDate property value. The renewal date used for this user's license proration.
 // returns a *Time when successful
-func (m *OrganizationMemberResponse) GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.licenseRenewalDate
+func (m *OrganizationMemberResponse) GetLicenseRenewalDate() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.licenseRenewalDate
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *OrganizationMemberResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *OrganizationMemberResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
-// GetName gets the name property value. The display name for the entity.
+
+// GetName gets the name property value. Human-readable display name of the resource.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetName()(*string) {
-    return m.name
+func (m *OrganizationMemberResponse) GetName() *string {
+	return m.name
 }
-// GetOrganization gets the organization property value. Organization for this organization user.
+
+// GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a IdNamePairable when successful
-func (m *OrganizationMemberResponse) GetOrganization()(IdNamePairable) {
-    return m.organization
+func (m *OrganizationMemberResponse) GetOrganization() IdNamePairable {
+	return m.organization
 }
+
 // GetRemovedAt gets the removedAt property value. UTC timestamp for removed at on this organization user.
 // returns a *Time when successful
-func (m *OrganizationMemberResponse) GetRemovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.removedAt
+func (m *OrganizationMemberResponse) GetRemovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.removedAt
 }
+
 // GetRemovedByUserId gets the removedByUserId property value. The removed by user ID associated with this organization user.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetRemovedByUserId()(*string) {
-    return m.removedByUserId
+func (m *OrganizationMemberResponse) GetRemovedByUserId() *string {
+	return m.removedByUserId
 }
-// GetRole gets the role property value. Role for this organization user.
+
+// GetRole gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
 // returns a *OrganizationMemberRole when successful
-func (m *OrganizationMemberResponse) GetRole()(*OrganizationMemberRole) {
-    return m.role
+func (m *OrganizationMemberResponse) GetRole() *OrganizationMemberRole {
+	return m.role
 }
-// GetUser gets the user property value. User for this organization user.
+
+// GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a IdNamePairable when successful
-func (m *OrganizationMemberResponse) GetUser()(IdNamePairable) {
-    return m.user
+func (m *OrganizationMemberResponse) GetUser() IdNamePairable {
+	return m.user
 }
+
 // GetUserEmail gets the userEmail property value. User email for this organization user.
 // returns a *string when successful
-func (m *OrganizationMemberResponse) GetUserEmail()(*string) {
-    return m.userEmail
+func (m *OrganizationMemberResponse) GetUserEmail() *string {
+	return m.userEmail
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationMemberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastUsedAt", m.GetLastUsedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("licenseBillingStatus", m.GetLicenseBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("licenseQuantity", m.GetLicenseQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("licenseRenewalDate", m.GetLicenseRenewalDate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("organization", m.GetOrganization())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("removedAt", m.GetRemovedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("removedByUserId", m.GetRemovedByUserId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRole() != nil {
-        cast := (*m.GetRole()).String()
-        err := writer.WriteStringValue("role", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("user", m.GetUser())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("userEmail", m.GetUserEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationMemberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("createdByUserId", m.GetCreatedByUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastUsedAt", m.GetLastUsedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("licenseBillingStatus", m.GetLicenseBillingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("licenseQuantity", m.GetLicenseQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("licenseRenewalDate", m.GetLicenseRenewalDate())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("removedAt", m.GetRemovedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("removedByUserId", m.GetRemovedByUserId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRole() != nil {
+		cast := (*m.GetRole()).String()
+		err := writer.WriteStringValue("role", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("user", m.GetUser())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("userEmail", m.GetUserEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationMemberResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationMemberResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *OrganizationMemberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *OrganizationMemberResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetCreatedByUserId sets the createdByUserId property value. The created by user ID associated with this organization user.
-func (m *OrganizationMemberResponse) SetCreatedByUserId(value *string)() {
-    m.createdByUserId = value
+func (m *OrganizationMemberResponse) SetCreatedByUserId(value *string) {
+	m.createdByUserId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *OrganizationMemberResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *OrganizationMemberResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetLastUsedAt sets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
-func (m *OrganizationMemberResponse) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastUsedAt = value
+func (m *OrganizationMemberResponse) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastUsedAt = value
 }
+
 // SetLicenseBillingStatus sets the licenseBillingStatus property value. The billing status for this user's organization license.
-func (m *OrganizationMemberResponse) SetLicenseBillingStatus(value *string)() {
-    m.licenseBillingStatus = value
+func (m *OrganizationMemberResponse) SetLicenseBillingStatus(value *string) {
+	m.licenseBillingStatus = value
 }
+
 // SetLicenseQuantity sets the licenseQuantity property value. The quantity on the shared organization user license item after this change.
-func (m *OrganizationMemberResponse) SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.licenseQuantity = value
+func (m *OrganizationMemberResponse) SetLicenseQuantity(value *int64) {
+	m.licenseQuantity = value
 }
+
 // SetLicenseRenewalDate sets the licenseRenewalDate property value. The renewal date used for this user's license proration.
-func (m *OrganizationMemberResponse) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.licenseRenewalDate = value
+func (m *OrganizationMemberResponse) SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.licenseRenewalDate = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *OrganizationMemberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *OrganizationMemberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
-// SetName sets the name property value. The display name for the entity.
-func (m *OrganizationMemberResponse) SetName(value *string)() {
-    m.name = value
+
+// SetName sets the name property value. Human-readable display name of the resource.
+func (m *OrganizationMemberResponse) SetName(value *string) {
+	m.name = value
 }
-// SetOrganization sets the organization property value. Organization for this organization user.
-func (m *OrganizationMemberResponse) SetOrganization(value IdNamePairable)() {
-    m.organization = value
+
+// SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *OrganizationMemberResponse) SetOrganization(value IdNamePairable) {
+	m.organization = value
 }
+
 // SetRemovedAt sets the removedAt property value. UTC timestamp for removed at on this organization user.
-func (m *OrganizationMemberResponse) SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.removedAt = value
+func (m *OrganizationMemberResponse) SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.removedAt = value
 }
+
 // SetRemovedByUserId sets the removedByUserId property value. The removed by user ID associated with this organization user.
-func (m *OrganizationMemberResponse) SetRemovedByUserId(value *string)() {
-    m.removedByUserId = value
+func (m *OrganizationMemberResponse) SetRemovedByUserId(value *string) {
+	m.removedByUserId = value
 }
-// SetRole sets the role property value. Role for this organization user.
-func (m *OrganizationMemberResponse) SetRole(value *OrganizationMemberRole)() {
-    m.role = value
+
+// SetRole sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
+func (m *OrganizationMemberResponse) SetRole(value *OrganizationMemberRole) {
+	m.role = value
 }
-// SetUser sets the user property value. User for this organization user.
-func (m *OrganizationMemberResponse) SetUser(value IdNamePairable)() {
-    m.user = value
+
+// SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *OrganizationMemberResponse) SetUser(value IdNamePairable) {
+	m.user = value
 }
+
 // SetUserEmail sets the userEmail property value. User email for this organization user.
-func (m *OrganizationMemberResponse) SetUserEmail(value *string)() {
-    m.userEmail = value
+func (m *OrganizationMemberResponse) SetUserEmail(value *string) {
+	m.userEmail = value
 }
+
 type OrganizationMemberResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCreatedByUserId()(*string)
-    GetId()(*string)
-    GetLastUsedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLicenseBillingStatus()(*string)
-    GetLicenseQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetLicenseRenewalDate()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetOrganization()(IdNamePairable)
-    GetRemovedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRemovedByUserId()(*string)
-    GetRole()(*OrganizationMemberRole)
-    GetUser()(IdNamePairable)
-    GetUserEmail()(*string)
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCreatedByUserId(value *string)()
-    SetId(value *string)()
-    SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLicenseBillingStatus(value *string)()
-    SetLicenseQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetOrganization(value IdNamePairable)()
-    SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRemovedByUserId(value *string)()
-    SetRole(value *OrganizationMemberRole)()
-    SetUser(value IdNamePairable)()
-    SetUserEmail(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCreatedByUserId() *string
+	GetId() *string
+	GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLicenseBillingStatus() *string
+	GetLicenseQuantity() *int64
+	GetLicenseRenewalDate() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetOrganization() IdNamePairable
+	GetRemovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetRemovedByUserId() *string
+	GetRole() *OrganizationMemberRole
+	GetUser() IdNamePairable
+	GetUserEmail() *string
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCreatedByUserId(value *string)
+	SetId(value *string)
+	SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLicenseBillingStatus(value *string)
+	SetLicenseQuantity(value *int64)
+	SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetOrganization(value IdNamePairable)
+	SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetRemovedByUserId(value *string)
+	SetRole(value *OrganizationMemberRole)
+	SetUser(value IdNamePairable)
+	SetUserEmail(value *string)
 }

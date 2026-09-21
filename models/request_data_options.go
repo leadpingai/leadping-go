@@ -4,326 +4,348 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// RequestDataOptions options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+// RequestDataOptions defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
 type RequestDataOptions struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
-    continuationToken *string
-    // Key-value exact match filters (e.g., Status = Active).
-    filters []ExactMatchFilterable
-    // Whether to include the total count in the response (for pagination).
-    includeCount *bool
-    // List of sort instructions, in priority order.
-    orderBy []OrderByOptionable
-    // Maximum items to return in one page
-    pageSize i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Advanced range-based filters (e.g., Price > 50 and Price <= 200).
-    rangeFilters []RangeFilterable
-    // The search term to filter results (applied to ).
-    search *string
-    // The list of fields to apply the Search term to (must be string properties).
-    searchFields []string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
+	continuationToken *string
+	// Exact-match conditions that require each named field to equal its supplied value.
+	filters []ExactMatchFilterable
+	// Whether the response should include the total number of matching records; counting may increase query cost or latency.
+	includeCount *bool
+	// Sort instructions applied in priority order, with the first entry acting as the primary sort.
+	orderBy []OrderByOptionable
+	// Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
+	pageSize *int32
+	// Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
+	rangeFilters []RangeFilterable
+	// Free-text search term applied to the configured SearchFields.
+	search *string
+	// Serializable string field names searched for Search; supported names are determined by the queried resource.
+	searchFields []string
 }
+
 // NewRequestDataOptions instantiates a new RequestDataOptions and sets the default values.
-func NewRequestDataOptions()(*RequestDataOptions) {
-    m := &RequestDataOptions{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewRequestDataOptions() *RequestDataOptions {
+	m := &RequestDataOptions{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateRequestDataOptionsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateRequestDataOptionsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewRequestDataOptions(), nil
+func CreateRequestDataOptionsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewRequestDataOptions(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *RequestDataOptions) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *RequestDataOptions) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetContinuationToken gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+
+// GetContinuationToken gets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
 // returns a *string when successful
-func (m *RequestDataOptions) GetContinuationToken()(*string) {
-    return m.continuationToken
+func (m *RequestDataOptions) GetContinuationToken() *string {
+	return m.continuationToken
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *RequestDataOptions) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["continuationToken"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContinuationToken(val)
-        }
-        return nil
-    }
-    res["filters"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateExactMatchFilterFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]ExactMatchFilterable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(ExactMatchFilterable)
-                }
-            }
-            m.SetFilters(res)
-        }
-        return nil
-    }
-    res["includeCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIncludeCount(val)
-        }
-        return nil
-    }
-    res["orderBy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateOrderByOptionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]OrderByOptionable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(OrderByOptionable)
-                }
-            }
-            m.SetOrderBy(res)
-        }
-        return nil
-    }
-    res["pageSize"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPageSize(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["rangeFilters"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRangeFilterFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]RangeFilterable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(RangeFilterable)
-                }
-            }
-            m.SetRangeFilters(res)
-        }
-        return nil
-    }
-    res["search"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSearch(val)
-        }
-        return nil
-    }
-    res["searchFields"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetSearchFields(res)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *RequestDataOptions) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["continuationToken"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContinuationToken(val)
+		}
+		return nil
+	}
+	res["filters"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateExactMatchFilterFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]ExactMatchFilterable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(ExactMatchFilterable)
+				}
+			}
+			m.SetFilters(res)
+		}
+		return nil
+	}
+	res["includeCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncludeCount(val)
+		}
+		return nil
+	}
+	res["orderBy"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateOrderByOptionFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]OrderByOptionable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(OrderByOptionable)
+				}
+			}
+			m.SetOrderBy(res)
+		}
+		return nil
+	}
+	res["pageSize"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPageSize(val)
+		}
+		return nil
+	}
+	res["rangeFilters"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateRangeFilterFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]RangeFilterable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(RangeFilterable)
+				}
+			}
+			m.SetRangeFilters(res)
+		}
+		return nil
+	}
+	res["search"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSearch(val)
+		}
+		return nil
+	}
+	res["searchFields"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetSearchFields(res)
+		}
+		return nil
+	}
+	return res
 }
-// GetFilters gets the filters property value. Key-value exact match filters (e.g., Status = Active).
+
+// GetFilters gets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
 // returns a []ExactMatchFilterable when successful
-func (m *RequestDataOptions) GetFilters()([]ExactMatchFilterable) {
-    return m.filters
+func (m *RequestDataOptions) GetFilters() []ExactMatchFilterable {
+	return m.filters
 }
-// GetIncludeCount gets the includeCount property value. Whether to include the total count in the response (for pagination).
+
+// GetIncludeCount gets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
 // returns a *bool when successful
-func (m *RequestDataOptions) GetIncludeCount()(*bool) {
-    return m.includeCount
+func (m *RequestDataOptions) GetIncludeCount() *bool {
+	return m.includeCount
 }
-// GetOrderBy gets the orderBy property value. List of sort instructions, in priority order.
+
+// GetOrderBy gets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
 // returns a []OrderByOptionable when successful
-func (m *RequestDataOptions) GetOrderBy()([]OrderByOptionable) {
-    return m.orderBy
+func (m *RequestDataOptions) GetOrderBy() []OrderByOptionable {
+	return m.orderBy
 }
-// GetPageSize gets the pageSize property value. Maximum items to return in one page
-// returns a UntypedNodeable when successful
-func (m *RequestDataOptions) GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.pageSize
+
+// GetPageSize gets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
+// returns a *int32 when successful
+func (m *RequestDataOptions) GetPageSize() *int32 {
+	return m.pageSize
 }
-// GetRangeFilters gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+
+// GetRangeFilters gets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
 // returns a []RangeFilterable when successful
-func (m *RequestDataOptions) GetRangeFilters()([]RangeFilterable) {
-    return m.rangeFilters
+func (m *RequestDataOptions) GetRangeFilters() []RangeFilterable {
+	return m.rangeFilters
 }
-// GetSearch gets the search property value. The search term to filter results (applied to ).
+
+// GetSearch gets the search property value. Free-text search term applied to the configured SearchFields.
 // returns a *string when successful
-func (m *RequestDataOptions) GetSearch()(*string) {
-    return m.search
+func (m *RequestDataOptions) GetSearch() *string {
+	return m.search
 }
-// GetSearchFields gets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
+
+// GetSearchFields gets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
 // returns a []string when successful
-func (m *RequestDataOptions) GetSearchFields()([]string) {
-    return m.searchFields
+func (m *RequestDataOptions) GetSearchFields() []string {
+	return m.searchFields
 }
+
 // Serialize serializes information the current object
-func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("continuationToken", m.GetContinuationToken())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetFilters() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFilters()))
-        for i, v := range m.GetFilters() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("filters", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("includeCount", m.GetIncludeCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetOrderBy() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetOrderBy()))
-        for i, v := range m.GetOrderBy() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("orderBy", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("pageSize", m.GetPageSize())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRangeFilters() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRangeFilters()))
-        for i, v := range m.GetRangeFilters() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("rangeFilters", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("search", m.GetSearch())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSearchFields() != nil {
-        err := writer.WriteCollectionOfStringValues("searchFields", m.GetSearchFields())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *RequestDataOptions) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("continuationToken", m.GetContinuationToken())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetFilters() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFilters()))
+		for i, v := range m.GetFilters() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("filters", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("includeCount", m.GetIncludeCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetOrderBy() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetOrderBy()))
+		for i, v := range m.GetOrderBy() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("orderBy", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("pageSize", m.GetPageSize())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRangeFilters() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRangeFilters()))
+		for i, v := range m.GetRangeFilters() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("rangeFilters", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("search", m.GetSearch())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSearchFields() != nil {
+		err := writer.WriteCollectionOfStringValues("searchFields", m.GetSearchFields())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *RequestDataOptions) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *RequestDataOptions) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetContinuationToken sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
-func (m *RequestDataOptions) SetContinuationToken(value *string)() {
-    m.continuationToken = value
+
+// SetContinuationToken sets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
+func (m *RequestDataOptions) SetContinuationToken(value *string) {
+	m.continuationToken = value
 }
-// SetFilters sets the filters property value. Key-value exact match filters (e.g., Status = Active).
-func (m *RequestDataOptions) SetFilters(value []ExactMatchFilterable)() {
-    m.filters = value
+
+// SetFilters sets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
+func (m *RequestDataOptions) SetFilters(value []ExactMatchFilterable) {
+	m.filters = value
 }
-// SetIncludeCount sets the includeCount property value. Whether to include the total count in the response (for pagination).
-func (m *RequestDataOptions) SetIncludeCount(value *bool)() {
-    m.includeCount = value
+
+// SetIncludeCount sets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
+func (m *RequestDataOptions) SetIncludeCount(value *bool) {
+	m.includeCount = value
 }
-// SetOrderBy sets the orderBy property value. List of sort instructions, in priority order.
-func (m *RequestDataOptions) SetOrderBy(value []OrderByOptionable)() {
-    m.orderBy = value
+
+// SetOrderBy sets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
+func (m *RequestDataOptions) SetOrderBy(value []OrderByOptionable) {
+	m.orderBy = value
 }
-// SetPageSize sets the pageSize property value. Maximum items to return in one page
-func (m *RequestDataOptions) SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.pageSize = value
+
+// SetPageSize sets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
+func (m *RequestDataOptions) SetPageSize(value *int32) {
+	m.pageSize = value
 }
-// SetRangeFilters sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
-func (m *RequestDataOptions) SetRangeFilters(value []RangeFilterable)() {
-    m.rangeFilters = value
+
+// SetRangeFilters sets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
+func (m *RequestDataOptions) SetRangeFilters(value []RangeFilterable) {
+	m.rangeFilters = value
 }
-// SetSearch sets the search property value. The search term to filter results (applied to ).
-func (m *RequestDataOptions) SetSearch(value *string)() {
-    m.search = value
+
+// SetSearch sets the search property value. Free-text search term applied to the configured SearchFields.
+func (m *RequestDataOptions) SetSearch(value *string) {
+	m.search = value
 }
-// SetSearchFields sets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
-func (m *RequestDataOptions) SetSearchFields(value []string)() {
-    m.searchFields = value
+
+// SetSearchFields sets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
+func (m *RequestDataOptions) SetSearchFields(value []string) {
+	m.searchFields = value
 }
+
 type RequestDataOptionsable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetContinuationToken()(*string)
-    GetFilters()([]ExactMatchFilterable)
-    GetIncludeCount()(*bool)
-    GetOrderBy()([]OrderByOptionable)
-    GetPageSize()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetRangeFilters()([]RangeFilterable)
-    GetSearch()(*string)
-    GetSearchFields()([]string)
-    SetContinuationToken(value *string)()
-    SetFilters(value []ExactMatchFilterable)()
-    SetIncludeCount(value *bool)()
-    SetOrderBy(value []OrderByOptionable)()
-    SetPageSize(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetRangeFilters(value []RangeFilterable)()
-    SetSearch(value *string)()
-    SetSearchFields(value []string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetContinuationToken() *string
+	GetFilters() []ExactMatchFilterable
+	GetIncludeCount() *bool
+	GetOrderBy() []OrderByOptionable
+	GetPageSize() *int32
+	GetRangeFilters() []RangeFilterable
+	GetSearch() *string
+	GetSearchFields() []string
+	SetContinuationToken(value *string)
+	SetFilters(value []ExactMatchFilterable)
+	SetIncludeCount(value *bool)
+	SetOrderBy(value []OrderByOptionable)
+	SetPageSize(value *int32)
+	SetRangeFilters(value []RangeFilterable)
+	SetSearch(value *string)
+	SetSearchFields(value []string)
 }

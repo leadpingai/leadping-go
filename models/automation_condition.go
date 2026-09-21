@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationCondition public Leadping API schema for automation condition data.
 type AutomationCondition struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Unique Leadping identifier for this automation condition.
-    id *string
-    // Indicates whether this automation condition is active and allowed to run.
-    isEnabled *bool
-    // Automation comparison operator used by this condition.
-    operator *string
-    // Key-value settings that configure how this automation condition behaves.
-    settings AutomationCondition_settingsable
-    // Type classification used to route and interpret this automation condition in the Leadping API.
-    typeEscaped *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Unique Leadping identifier for this automation condition.
+	id *string
+	// Indicates whether this automation condition is active and allowed to run.
+	isEnabled *bool
+	// Automation comparison operator used by this condition.
+	operator *string
+	// Key-value settings that configure how this automation condition behaves.
+	settings AutomationCondition_settingsable
+	// Type classification used to route and interpret this automation condition in the Leadping API.
+	typeEscaped *string
 }
+
 // NewAutomationCondition instantiates a new AutomationCondition and sets the default values.
-func NewAutomationCondition()(*AutomationCondition) {
-    m := &AutomationCondition{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationCondition() *AutomationCondition {
+	m := &AutomationCondition{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationConditionFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationConditionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationCondition(), nil
+func CreateAutomationConditionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationCondition(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationCondition) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationCondition) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationCondition) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsEnabled(val)
-        }
-        return nil
-    }
-    res["operator"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOperator(val)
-        }
-        return nil
-    }
-    res["settings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAutomationCondition_settingsFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSettings(val.(AutomationCondition_settingsable))
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationCondition) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsEnabled(val)
+		}
+		return nil
+	}
+	res["operator"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOperator(val)
+		}
+		return nil
+	}
+	res["settings"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationCondition_settingsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSettings(val.(AutomationCondition_settingsable))
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this automation condition.
 // returns a *string when successful
-func (m *AutomationCondition) GetId()(*string) {
-    return m.id
+func (m *AutomationCondition) GetId() *string {
+	return m.id
 }
+
 // GetIsEnabled gets the isEnabled property value. Indicates whether this automation condition is active and allowed to run.
 // returns a *bool when successful
-func (m *AutomationCondition) GetIsEnabled()(*bool) {
-    return m.isEnabled
+func (m *AutomationCondition) GetIsEnabled() *bool {
+	return m.isEnabled
 }
+
 // GetOperator gets the operator property value. Automation comparison operator used by this condition.
 // returns a *string when successful
-func (m *AutomationCondition) GetOperator()(*string) {
-    return m.operator
+func (m *AutomationCondition) GetOperator() *string {
+	return m.operator
 }
+
 // GetSettings gets the settings property value. Key-value settings that configure how this automation condition behaves.
 // returns a AutomationCondition_settingsable when successful
-func (m *AutomationCondition) GetSettings()(AutomationCondition_settingsable) {
-    return m.settings
+func (m *AutomationCondition) GetSettings() AutomationCondition_settingsable {
+	return m.settings
 }
+
 // GetTypeEscaped gets the type property value. Type classification used to route and interpret this automation condition in the Leadping API.
 // returns a *string when successful
-func (m *AutomationCondition) GetTypeEscaped()(*string) {
-    return m.typeEscaped
+func (m *AutomationCondition) GetTypeEscaped() *string {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *AutomationCondition) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isEnabled", m.GetIsEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("operator", m.GetOperator())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("settings", m.GetSettings())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("type", m.GetTypeEscaped())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationCondition) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isEnabled", m.GetIsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("operator", m.GetOperator())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("settings", m.GetSettings())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationCondition) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationCondition) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this automation condition.
-func (m *AutomationCondition) SetId(value *string)() {
-    m.id = value
+func (m *AutomationCondition) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsEnabled sets the isEnabled property value. Indicates whether this automation condition is active and allowed to run.
-func (m *AutomationCondition) SetIsEnabled(value *bool)() {
-    m.isEnabled = value
+func (m *AutomationCondition) SetIsEnabled(value *bool) {
+	m.isEnabled = value
 }
+
 // SetOperator sets the operator property value. Automation comparison operator used by this condition.
-func (m *AutomationCondition) SetOperator(value *string)() {
-    m.operator = value
+func (m *AutomationCondition) SetOperator(value *string) {
+	m.operator = value
 }
+
 // SetSettings sets the settings property value. Key-value settings that configure how this automation condition behaves.
-func (m *AutomationCondition) SetSettings(value AutomationCondition_settingsable)() {
-    m.settings = value
+func (m *AutomationCondition) SetSettings(value AutomationCondition_settingsable) {
+	m.settings = value
 }
+
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this automation condition in the Leadping API.
-func (m *AutomationCondition) SetTypeEscaped(value *string)() {
-    m.typeEscaped = value
+func (m *AutomationCondition) SetTypeEscaped(value *string) {
+	m.typeEscaped = value
 }
+
 type AutomationConditionable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetId()(*string)
-    GetIsEnabled()(*bool)
-    GetOperator()(*string)
-    GetSettings()(AutomationCondition_settingsable)
-    GetTypeEscaped()(*string)
-    SetId(value *string)()
-    SetIsEnabled(value *bool)()
-    SetOperator(value *string)()
-    SetSettings(value AutomationCondition_settingsable)()
-    SetTypeEscaped(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetId() *string
+	GetIsEnabled() *bool
+	GetOperator() *string
+	GetSettings() AutomationCondition_settingsable
+	GetTypeEscaped() *string
+	SetId(value *string)
+	SetIsEnabled(value *bool)
+	SetOperator(value *string)
+	SetSettings(value AutomationCondition_settingsable)
+	SetTypeEscaped(value *string)
 }

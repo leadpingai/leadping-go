@@ -2,42 +2,46 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Activation Subscription Status values.
+
+// Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
 type ActivationSubscriptionStatus int
 
 const (
-    PENDING_ACTIVATIONSUBSCRIPTIONSTATUS ActivationSubscriptionStatus = iota
-    ACTIVE_ACTIVATIONSUBSCRIPTIONSTATUS
-    FAILED_ACTIVATIONSUBSCRIPTIONSTATUS
-    CANCELED_ACTIVATIONSUBSCRIPTIONSTATUS
+	PENDING_ACTIVATIONSUBSCRIPTIONSTATUS ActivationSubscriptionStatus = iota
+	ACTIVE_ACTIVATIONSUBSCRIPTIONSTATUS
+	FAILED_ACTIVATIONSUBSCRIPTIONSTATUS
+	CANCELED_ACTIVATIONSUBSCRIPTIONSTATUS
 )
 
 func (i ActivationSubscriptionStatus) String() string {
-    return []string{"Pending", "Active", "Failed", "Canceled"}[i]
+	return []string{"Pending", "Active", "Failed", "Canceled"}[i]
 }
+
 func ParseActivationSubscriptionStatus(v string) (any, error) {
-    result := PENDING_ACTIVATIONSUBSCRIPTIONSTATUS
-    switch v {
-        case "Pending":
-            result = PENDING_ACTIVATIONSUBSCRIPTIONSTATUS
-        case "Active":
-            result = ACTIVE_ACTIVATIONSUBSCRIPTIONSTATUS
-        case "Failed":
-            result = FAILED_ACTIVATIONSUBSCRIPTIONSTATUS
-        case "Canceled":
-            result = CANCELED_ACTIVATIONSUBSCRIPTIONSTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := PENDING_ACTIVATIONSUBSCRIPTIONSTATUS
+	switch v {
+	case "Pending":
+		result = PENDING_ACTIVATIONSUBSCRIPTIONSTATUS
+	case "Active":
+		result = ACTIVE_ACTIVATIONSUBSCRIPTIONSTATUS
+	case "Failed":
+		result = FAILED_ACTIVATIONSUBSCRIPTIONSTATUS
+	case "Canceled":
+		result = CANCELED_ACTIVATIONSUBSCRIPTIONSTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeActivationSubscriptionStatus(values []ActivationSubscriptionStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i ActivationSubscriptionStatus) isMultiValue() bool {
-    return false
+	return false
 }

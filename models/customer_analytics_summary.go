@@ -4,545 +4,896 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// CustomerAnalyticsSummary represents customer analytics summary data exposed by Leadping analytics.
+// CustomerAnalyticsSummary summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
 type CustomerAnalyticsSummary struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Average time, in minutes, before a lead receives a response.
-    averageResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Current billing status for this Leadping customer analytics summary.
-    billingStatus *string
-    // Total connected call duration, in minutes, during the reporting period.
-    callMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of outbound calls placed during the reporting period.
-    callsPlaced i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of inbound calls received during the reporting period.
-    callsReceived i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of leads represented by this Leadping customer analytics summary.
-    leads i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Date and time when this Leadping customer analytics summary was leads comparison.
-    leadsComparison AnalyticsComparisonable
-    // Median response minutes measured in minutes.
-    medianResponseMinutes i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of calls missed during the reporting period.
-    missedCalls i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of missed leads represented by this Leadping customer analytics summary.
-    missedLeads i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Responded within five minutes percent expressed as a percentage.
-    respondedWithinFiveMinutesPercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of SMS messages received during the reporting period.
-    smsReceived i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of SMS messages sent during the reporting period.
-    smsSent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of unread messages represented by this Leadping customer analytics summary.
-    unreadMessages i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Usage spend represented by this Leadping customer analytics summary.
-    usageSpend i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Wallet balance represented by this Leadping customer analytics summary.
-    walletBalance i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Current wallet status for this Leadping customer analytics summary.
-    walletStatus *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Average time, in minutes, before a lead receives a response.
+	averageResponseMinutes *float64
+	// Current billing status for this Leadping customer analytics summary.
+	billingStatus *string
+	// Total connected call duration, in minutes, during the reporting period.
+	callMinutes *float64
+	// Number of outbound calls placed during the reporting period.
+	callsPlaced *int32
+	// Number of inbound calls received during the reporting period.
+	callsReceived *int32
+	// Manual provider-accepted SMS messages; automated messages are excluded.
+	humanResponses *int32
+	// Number of leads represented by this Leadping customer analytics summary.
+	leads *int32
+	// Compares a metric with the preceding period and reports its absolute and percentage change.
+	leadsComparison AnalyticsComparisonable
+	// Median response minutes measured in minutes.
+	medianResponseMinutes *float64
+	// Number of calls missed during the reporting period.
+	missedCalls *int32
+	// Number of missed leads represented by this Leadping customer analytics summary.
+	missedLeads *int32
+	// Responses observed through this instant; min(report end plus five minutes, generation time).
+	observedThrough *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Timely human responses divided by all mature eligible leads, including unanswered leads.
+	overallFiveMinuteSlaPercent *float64
+	// Received prospect messages excluding consent and help commands.
+	prospectReplies *int32
+	// Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
+	respondedWithinFiveMinutesPercent *float64
+	// Non-deleted leads created in the cohort with a full five-minute observation window.
+	slaEligibleLeads *int32
+	// Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+	slaPendingLeads *int32
+	// Mature eligible leads with a human response within exactly five minutes.
+	slaTimelyLeads *int32
+	// Mature eligible leads without a human response by ObservedThrough.
+	slaUnrespondedLeads *int32
+	// Messages whose send execution started; queued and scheduled messages are excluded.
+	smsAttempted *int32
+	// Messages confirmed delivered, counted at delivery time.
+	smsDelivered *int32
+	// Number of SMS messages received during the reporting period.
+	smsReceived *int32
+	// Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
+	smsSent *int32
+	// Number of unread messages represented by this Leadping customer analytics summary.
+	unreadMessages *int32
+	// Usage spend represented by this Leadping customer analytics summary.
+	usageSpend *float64
+	// Wallet balance represented by this Leadping customer analytics summary.
+	walletBalance *float64
+	// Current wallet status for this Leadping customer analytics summary.
+	walletStatus *string
 }
+
 // NewCustomerAnalyticsSummary instantiates a new CustomerAnalyticsSummary and sets the default values.
-func NewCustomerAnalyticsSummary()(*CustomerAnalyticsSummary) {
-    m := &CustomerAnalyticsSummary{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerAnalyticsSummary() *CustomerAnalyticsSummary {
+	m := &CustomerAnalyticsSummary{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerAnalyticsSummaryFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerAnalyticsSummaryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerAnalyticsSummary(), nil
+func CreateCustomerAnalyticsSummaryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerAnalyticsSummary(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerAnalyticsSummary) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerAnalyticsSummary) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAverageResponseMinutes gets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetAverageResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.averageResponseMinutes
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetAverageResponseMinutes() *float64 {
+	return m.averageResponseMinutes
 }
+
 // GetBillingStatus gets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
 // returns a *string when successful
-func (m *CustomerAnalyticsSummary) GetBillingStatus()(*string) {
-    return m.billingStatus
+func (m *CustomerAnalyticsSummary) GetBillingStatus() *string {
+	return m.billingStatus
 }
+
 // GetCallMinutes gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetCallMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.callMinutes
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetCallMinutes() *float64 {
+	return m.callMinutes
 }
+
 // GetCallsPlaced gets the callsPlaced property value. Number of outbound calls placed during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetCallsPlaced()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.callsPlaced
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetCallsPlaced() *int32 {
+	return m.callsPlaced
 }
+
 // GetCallsReceived gets the callsReceived property value. Number of inbound calls received during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetCallsReceived()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.callsReceived
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetCallsReceived() *int32 {
+	return m.callsReceived
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerAnalyticsSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["averageResponseMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAverageResponseMinutes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["billingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingStatus(val)
-        }
-        return nil
-    }
-    res["callMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallMinutes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["callsPlaced"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallsPlaced(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["callsReceived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallsReceived(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["leads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeads(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["leadsComparison"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAnalyticsComparisonFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadsComparison(val.(AnalyticsComparisonable))
-        }
-        return nil
-    }
-    res["medianResponseMinutes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMedianResponseMinutes(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["missedCalls"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedCalls(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["missedLeads"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMissedLeads(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["respondedWithinFiveMinutesPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRespondedWithinFiveMinutesPercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsReceived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsReceived(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsSent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsSent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["unreadMessages"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadMessages(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["usageSpend"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUsageSpend(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["walletBalance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWalletBalance(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["walletStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWalletStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerAnalyticsSummary) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["averageResponseMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAverageResponseMinutes(val)
+		}
+		return nil
+	}
+	res["billingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingStatus(val)
+		}
+		return nil
+	}
+	res["callMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallMinutes(val)
+		}
+		return nil
+	}
+	res["callsPlaced"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallsPlaced(val)
+		}
+		return nil
+	}
+	res["callsReceived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallsReceived(val)
+		}
+		return nil
+	}
+	res["humanResponses"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHumanResponses(val)
+		}
+		return nil
+	}
+	res["leads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeads(val)
+		}
+		return nil
+	}
+	res["leadsComparison"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAnalyticsComparisonFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadsComparison(val.(AnalyticsComparisonable))
+		}
+		return nil
+	}
+	res["medianResponseMinutes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMedianResponseMinutes(val)
+		}
+		return nil
+	}
+	res["missedCalls"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedCalls(val)
+		}
+		return nil
+	}
+	res["missedLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMissedLeads(val)
+		}
+		return nil
+	}
+	res["observedThrough"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetObservedThrough(val)
+		}
+		return nil
+	}
+	res["overallFiveMinuteSlaPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOverallFiveMinuteSlaPercent(val)
+		}
+		return nil
+	}
+	res["prospectReplies"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProspectReplies(val)
+		}
+		return nil
+	}
+	res["respondedWithinFiveMinutesPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRespondedWithinFiveMinutesPercent(val)
+		}
+		return nil
+	}
+	res["slaEligibleLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaEligibleLeads(val)
+		}
+		return nil
+	}
+	res["slaPendingLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaPendingLeads(val)
+		}
+		return nil
+	}
+	res["slaTimelyLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaTimelyLeads(val)
+		}
+		return nil
+	}
+	res["slaUnrespondedLeads"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSlaUnrespondedLeads(val)
+		}
+		return nil
+	}
+	res["smsAttempted"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsAttempted(val)
+		}
+		return nil
+	}
+	res["smsDelivered"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivered(val)
+		}
+		return nil
+	}
+	res["smsReceived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsReceived(val)
+		}
+		return nil
+	}
+	res["smsSent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsSent(val)
+		}
+		return nil
+	}
+	res["unreadMessages"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnreadMessages(val)
+		}
+		return nil
+	}
+	res["usageSpend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUsageSpend(val)
+		}
+		return nil
+	}
+	res["walletBalance"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWalletBalance(val)
+		}
+		return nil
+	}
+	res["walletStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWalletStatus(val)
+		}
+		return nil
+	}
+	return res
 }
+
+// GetHumanResponses gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetHumanResponses() *int32 {
+	return m.humanResponses
+}
+
 // GetLeads gets the leads property value. Number of leads represented by this Leadping customer analytics summary.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.leads
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetLeads() *int32 {
+	return m.leads
 }
-// GetLeadsComparison gets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
+
+// GetLeadsComparison gets the leadsComparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
 // returns a AnalyticsComparisonable when successful
-func (m *CustomerAnalyticsSummary) GetLeadsComparison()(AnalyticsComparisonable) {
-    return m.leadsComparison
+func (m *CustomerAnalyticsSummary) GetLeadsComparison() AnalyticsComparisonable {
+	return m.leadsComparison
 }
+
 // GetMedianResponseMinutes gets the medianResponseMinutes property value. Median response minutes measured in minutes.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetMedianResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.medianResponseMinutes
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetMedianResponseMinutes() *float64 {
+	return m.medianResponseMinutes
 }
+
 // GetMissedCalls gets the missedCalls property value. Number of calls missed during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetMissedCalls()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.missedCalls
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetMissedCalls() *int32 {
+	return m.missedCalls
 }
+
 // GetMissedLeads gets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetMissedLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.missedLeads
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetMissedLeads() *int32 {
+	return m.missedLeads
 }
-// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetRespondedWithinFiveMinutesPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.respondedWithinFiveMinutesPercent
+
+// GetObservedThrough gets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+// returns a *Time when successful
+func (m *CustomerAnalyticsSummary) GetObservedThrough() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.observedThrough
 }
+
+// GetOverallFiveMinuteSlaPercent gets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetOverallFiveMinuteSlaPercent() *float64 {
+	return m.overallFiveMinuteSlaPercent
+}
+
+// GetProspectReplies gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetProspectReplies() *int32 {
+	return m.prospectReplies
+}
+
+// GetRespondedWithinFiveMinutesPercent gets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetRespondedWithinFiveMinutesPercent() *float64 {
+	return m.respondedWithinFiveMinutesPercent
+}
+
+// GetSlaEligibleLeads gets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaEligibleLeads() *int32 {
+	return m.slaEligibleLeads
+}
+
+// GetSlaPendingLeads gets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaPendingLeads() *int32 {
+	return m.slaPendingLeads
+}
+
+// GetSlaTimelyLeads gets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaTimelyLeads() *int32 {
+	return m.slaTimelyLeads
+}
+
+// GetSlaUnrespondedLeads gets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSlaUnrespondedLeads() *int32 {
+	return m.slaUnrespondedLeads
+}
+
+// GetSmsAttempted gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsAttempted() *int32 {
+	return m.smsAttempted
+}
+
+// GetSmsDelivered gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsDelivered() *int32 {
+	return m.smsDelivered
+}
+
 // GetSmsReceived gets the smsReceived property value. Number of SMS messages received during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetSmsReceived()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsReceived
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsReceived() *int32 {
+	return m.smsReceived
 }
-// GetSmsSent gets the smsSent property value. Number of SMS messages sent during the reporting period.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetSmsSent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsSent
+
+// GetSmsSent gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetSmsSent() *int32 {
+	return m.smsSent
 }
+
 // GetUnreadMessages gets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetUnreadMessages()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.unreadMessages
+// returns a *int32 when successful
+func (m *CustomerAnalyticsSummary) GetUnreadMessages() *int32 {
+	return m.unreadMessages
 }
+
 // GetUsageSpend gets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetUsageSpend()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.usageSpend
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetUsageSpend() *float64 {
+	return m.usageSpend
 }
+
 // GetWalletBalance gets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
-// returns a UntypedNodeable when successful
-func (m *CustomerAnalyticsSummary) GetWalletBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.walletBalance
+// returns a *float64 when successful
+func (m *CustomerAnalyticsSummary) GetWalletBalance() *float64 {
+	return m.walletBalance
 }
+
 // GetWalletStatus gets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
 // returns a *string when successful
-func (m *CustomerAnalyticsSummary) GetWalletStatus()(*string) {
-    return m.walletStatus
+func (m *CustomerAnalyticsSummary) GetWalletStatus() *string {
+	return m.walletStatus
 }
+
 // Serialize serializes information the current object
-func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("averageResponseMinutes", m.GetAverageResponseMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("callMinutes", m.GetCallMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("callsPlaced", m.GetCallsPlaced())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("callsReceived", m.GetCallsReceived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("leads", m.GetLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("leadsComparison", m.GetLeadsComparison())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("medianResponseMinutes", m.GetMedianResponseMinutes())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("missedCalls", m.GetMissedCalls())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("missedLeads", m.GetMissedLeads())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("respondedWithinFiveMinutesPercent", m.GetRespondedWithinFiveMinutesPercent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsReceived", m.GetSmsReceived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsSent", m.GetSmsSent())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("unreadMessages", m.GetUnreadMessages())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("usageSpend", m.GetUsageSpend())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("walletBalance", m.GetWalletBalance())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("walletStatus", m.GetWalletStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerAnalyticsSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("averageResponseMinutes", m.GetAverageResponseMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("callMinutes", m.GetCallMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callsPlaced", m.GetCallsPlaced())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("callsReceived", m.GetCallsReceived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("humanResponses", m.GetHumanResponses())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("leads", m.GetLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("leadsComparison", m.GetLeadsComparison())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("medianResponseMinutes", m.GetMedianResponseMinutes())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("missedCalls", m.GetMissedCalls())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("missedLeads", m.GetMissedLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("observedThrough", m.GetObservedThrough())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("overallFiveMinuteSlaPercent", m.GetOverallFiveMinuteSlaPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("prospectReplies", m.GetProspectReplies())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("respondedWithinFiveMinutesPercent", m.GetRespondedWithinFiveMinutesPercent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaEligibleLeads", m.GetSlaEligibleLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaPendingLeads", m.GetSlaPendingLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaTimelyLeads", m.GetSlaTimelyLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("slaUnrespondedLeads", m.GetSlaUnrespondedLeads())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsAttempted", m.GetSmsAttempted())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsDelivered", m.GetSmsDelivered())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsReceived", m.GetSmsReceived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsSent", m.GetSmsSent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("unreadMessages", m.GetUnreadMessages())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("usageSpend", m.GetUsageSpend())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("walletBalance", m.GetWalletBalance())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("walletStatus", m.GetWalletStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerAnalyticsSummary) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerAnalyticsSummary) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAverageResponseMinutes sets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
-func (m *CustomerAnalyticsSummary) SetAverageResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.averageResponseMinutes = value
+func (m *CustomerAnalyticsSummary) SetAverageResponseMinutes(value *float64) {
+	m.averageResponseMinutes = value
 }
+
 // SetBillingStatus sets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetBillingStatus(value *string)() {
-    m.billingStatus = value
+func (m *CustomerAnalyticsSummary) SetBillingStatus(value *string) {
+	m.billingStatus = value
 }
+
 // SetCallMinutes sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
-func (m *CustomerAnalyticsSummary) SetCallMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.callMinutes = value
+func (m *CustomerAnalyticsSummary) SetCallMinutes(value *float64) {
+	m.callMinutes = value
 }
+
 // SetCallsPlaced sets the callsPlaced property value. Number of outbound calls placed during the reporting period.
-func (m *CustomerAnalyticsSummary) SetCallsPlaced(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.callsPlaced = value
+func (m *CustomerAnalyticsSummary) SetCallsPlaced(value *int32) {
+	m.callsPlaced = value
 }
+
 // SetCallsReceived sets the callsReceived property value. Number of inbound calls received during the reporting period.
-func (m *CustomerAnalyticsSummary) SetCallsReceived(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.callsReceived = value
+func (m *CustomerAnalyticsSummary) SetCallsReceived(value *int32) {
+	m.callsReceived = value
 }
+
+// SetHumanResponses sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+func (m *CustomerAnalyticsSummary) SetHumanResponses(value *int32) {
+	m.humanResponses = value
+}
+
 // SetLeads sets the leads property value. Number of leads represented by this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.leads = value
+func (m *CustomerAnalyticsSummary) SetLeads(value *int32) {
+	m.leads = value
 }
-// SetLeadsComparison sets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
-func (m *CustomerAnalyticsSummary) SetLeadsComparison(value AnalyticsComparisonable)() {
-    m.leadsComparison = value
+
+// SetLeadsComparison sets the leadsComparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
+func (m *CustomerAnalyticsSummary) SetLeadsComparison(value AnalyticsComparisonable) {
+	m.leadsComparison = value
 }
+
 // SetMedianResponseMinutes sets the medianResponseMinutes property value. Median response minutes measured in minutes.
-func (m *CustomerAnalyticsSummary) SetMedianResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.medianResponseMinutes = value
+func (m *CustomerAnalyticsSummary) SetMedianResponseMinutes(value *float64) {
+	m.medianResponseMinutes = value
 }
+
 // SetMissedCalls sets the missedCalls property value. Number of calls missed during the reporting period.
-func (m *CustomerAnalyticsSummary) SetMissedCalls(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.missedCalls = value
+func (m *CustomerAnalyticsSummary) SetMissedCalls(value *int32) {
+	m.missedCalls = value
 }
+
 // SetMissedLeads sets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetMissedLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.missedLeads = value
+func (m *CustomerAnalyticsSummary) SetMissedLeads(value *int32) {
+	m.missedLeads = value
 }
-// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
-func (m *CustomerAnalyticsSummary) SetRespondedWithinFiveMinutesPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.respondedWithinFiveMinutesPercent = value
+
+// SetObservedThrough sets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+func (m *CustomerAnalyticsSummary) SetObservedThrough(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.observedThrough = value
 }
+
+// SetOverallFiveMinuteSlaPercent sets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+func (m *CustomerAnalyticsSummary) SetOverallFiveMinuteSlaPercent(value *float64) {
+	m.overallFiveMinuteSlaPercent = value
+}
+
+// SetProspectReplies sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+func (m *CustomerAnalyticsSummary) SetProspectReplies(value *int32) {
+	m.prospectReplies = value
+}
+
+// SetRespondedWithinFiveMinutesPercent sets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
+func (m *CustomerAnalyticsSummary) SetRespondedWithinFiveMinutesPercent(value *float64) {
+	m.respondedWithinFiveMinutesPercent = value
+}
+
+// SetSlaEligibleLeads sets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+func (m *CustomerAnalyticsSummary) SetSlaEligibleLeads(value *int32) {
+	m.slaEligibleLeads = value
+}
+
+// SetSlaPendingLeads sets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+func (m *CustomerAnalyticsSummary) SetSlaPendingLeads(value *int32) {
+	m.slaPendingLeads = value
+}
+
+// SetSlaTimelyLeads sets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+func (m *CustomerAnalyticsSummary) SetSlaTimelyLeads(value *int32) {
+	m.slaTimelyLeads = value
+}
+
+// SetSlaUnrespondedLeads sets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+func (m *CustomerAnalyticsSummary) SetSlaUnrespondedLeads(value *int32) {
+	m.slaUnrespondedLeads = value
+}
+
+// SetSmsAttempted sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+func (m *CustomerAnalyticsSummary) SetSmsAttempted(value *int32) {
+	m.smsAttempted = value
+}
+
+// SetSmsDelivered sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+func (m *CustomerAnalyticsSummary) SetSmsDelivered(value *int32) {
+	m.smsDelivered = value
+}
+
 // SetSmsReceived sets the smsReceived property value. Number of SMS messages received during the reporting period.
-func (m *CustomerAnalyticsSummary) SetSmsReceived(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsReceived = value
+func (m *CustomerAnalyticsSummary) SetSmsReceived(value *int32) {
+	m.smsReceived = value
 }
-// SetSmsSent sets the smsSent property value. Number of SMS messages sent during the reporting period.
-func (m *CustomerAnalyticsSummary) SetSmsSent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsSent = value
+
+// SetSmsSent sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
+func (m *CustomerAnalyticsSummary) SetSmsSent(value *int32) {
+	m.smsSent = value
 }
+
 // SetUnreadMessages sets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetUnreadMessages(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.unreadMessages = value
+func (m *CustomerAnalyticsSummary) SetUnreadMessages(value *int32) {
+	m.unreadMessages = value
 }
+
 // SetUsageSpend sets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetUsageSpend(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.usageSpend = value
+func (m *CustomerAnalyticsSummary) SetUsageSpend(value *float64) {
+	m.usageSpend = value
 }
+
 // SetWalletBalance sets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetWalletBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.walletBalance = value
+func (m *CustomerAnalyticsSummary) SetWalletBalance(value *float64) {
+	m.walletBalance = value
 }
+
 // SetWalletStatus sets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
-func (m *CustomerAnalyticsSummary) SetWalletStatus(value *string)() {
-    m.walletStatus = value
+func (m *CustomerAnalyticsSummary) SetWalletStatus(value *string) {
+	m.walletStatus = value
 }
+
 type CustomerAnalyticsSummaryable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAverageResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillingStatus()(*string)
-    GetCallMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetCallsPlaced()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetCallsReceived()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetLeadsComparison()(AnalyticsComparisonable)
-    GetMedianResponseMinutes()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetMissedCalls()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetMissedLeads()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetRespondedWithinFiveMinutesPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsReceived()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsSent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetUnreadMessages()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetUsageSpend()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWalletBalance()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWalletStatus()(*string)
-    SetAverageResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillingStatus(value *string)()
-    SetCallMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetCallsPlaced(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetCallsReceived(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetLeadsComparison(value AnalyticsComparisonable)()
-    SetMedianResponseMinutes(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetMissedCalls(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetMissedLeads(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetRespondedWithinFiveMinutesPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsReceived(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsSent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetUnreadMessages(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetUsageSpend(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWalletBalance(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWalletStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAverageResponseMinutes() *float64
+	GetBillingStatus() *string
+	GetCallMinutes() *float64
+	GetCallsPlaced() *int32
+	GetCallsReceived() *int32
+	GetHumanResponses() *int32
+	GetLeads() *int32
+	GetLeadsComparison() AnalyticsComparisonable
+	GetMedianResponseMinutes() *float64
+	GetMissedCalls() *int32
+	GetMissedLeads() *int32
+	GetObservedThrough() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOverallFiveMinuteSlaPercent() *float64
+	GetProspectReplies() *int32
+	GetRespondedWithinFiveMinutesPercent() *float64
+	GetSlaEligibleLeads() *int32
+	GetSlaPendingLeads() *int32
+	GetSlaTimelyLeads() *int32
+	GetSlaUnrespondedLeads() *int32
+	GetSmsAttempted() *int32
+	GetSmsDelivered() *int32
+	GetSmsReceived() *int32
+	GetSmsSent() *int32
+	GetUnreadMessages() *int32
+	GetUsageSpend() *float64
+	GetWalletBalance() *float64
+	GetWalletStatus() *string
+	SetAverageResponseMinutes(value *float64)
+	SetBillingStatus(value *string)
+	SetCallMinutes(value *float64)
+	SetCallsPlaced(value *int32)
+	SetCallsReceived(value *int32)
+	SetHumanResponses(value *int32)
+	SetLeads(value *int32)
+	SetLeadsComparison(value AnalyticsComparisonable)
+	SetMedianResponseMinutes(value *float64)
+	SetMissedCalls(value *int32)
+	SetMissedLeads(value *int32)
+	SetObservedThrough(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOverallFiveMinuteSlaPercent(value *float64)
+	SetProspectReplies(value *int32)
+	SetRespondedWithinFiveMinutesPercent(value *float64)
+	SetSlaEligibleLeads(value *int32)
+	SetSlaPendingLeads(value *int32)
+	SetSlaTimelyLeads(value *int32)
+	SetSlaUnrespondedLeads(value *int32)
+	SetSmsAttempted(value *int32)
+	SetSmsDelivered(value *int32)
+	SetSmsReceived(value *int32)
+	SetSmsSent(value *int32)
+	SetUnreadMessages(value *int32)
+	SetUsageSpend(value *float64)
+	SetWalletBalance(value *float64)
+	SetWalletStatus(value *string)
 }

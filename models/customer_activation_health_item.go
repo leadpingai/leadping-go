@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerActivationHealthItem represents customer activation health item data exposed by Leadping analytics.
+// CustomerActivationHealthItem describes the state, severity, and recommended next action for one organization activation requirement.
 type CustomerActivationHealthItem struct {
-    // Relative URL for the recommended follow-up action.
-    actionHref *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Human-readable detail for this Leadping customer activation health item.
-    detail *string
-    // Key associated with this Leadping customer activation health item.
-    key *string
-    // Human-readable label for this Leadping customer activation health item.
-    label *string
-    // Current status for this Leadping customer activation health item.
-    status *string
+	// Relative URL for the recommended follow-up action.
+	actionHref *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Human-readable detail for this Leadping customer activation health item.
+	detail *string
+	// Key associated with this Leadping customer activation health item.
+	key *string
+	// Human-readable label for this Leadping customer activation health item.
+	label *string
+	// Current status for this Leadping customer activation health item.
+	status *string
 }
+
 // NewCustomerActivationHealthItem instantiates a new CustomerActivationHealthItem and sets the default values.
-func NewCustomerActivationHealthItem()(*CustomerActivationHealthItem) {
-    m := &CustomerActivationHealthItem{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerActivationHealthItem() *CustomerActivationHealthItem {
+	m := &CustomerActivationHealthItem{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerActivationHealthItemFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerActivationHealthItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerActivationHealthItem(), nil
+func CreateCustomerActivationHealthItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerActivationHealthItem(), nil
 }
+
 // GetActionHref gets the actionHref property value. Relative URL for the recommended follow-up action.
 // returns a *string when successful
-func (m *CustomerActivationHealthItem) GetActionHref()(*string) {
-    return m.actionHref
+func (m *CustomerActivationHealthItem) GetActionHref() *string {
+	return m.actionHref
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerActivationHealthItem) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerActivationHealthItem) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetDetail gets the detail property value. Human-readable detail for this Leadping customer activation health item.
 // returns a *string when successful
-func (m *CustomerActivationHealthItem) GetDetail()(*string) {
-    return m.detail
+func (m *CustomerActivationHealthItem) GetDetail() *string {
+	return m.detail
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerActivationHealthItem) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionHref"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionHref(val)
-        }
-        return nil
-    }
-    res["detail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDetail(val)
-        }
-        return nil
-    }
-    res["key"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetKey(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerActivationHealthItem) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionHref"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionHref(val)
+		}
+		return nil
+	}
+	res["detail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDetail(val)
+		}
+		return nil
+	}
+	res["key"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetKey(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetKey gets the key property value. Key associated with this Leadping customer activation health item.
 // returns a *string when successful
-func (m *CustomerActivationHealthItem) GetKey()(*string) {
-    return m.key
+func (m *CustomerActivationHealthItem) GetKey() *string {
+	return m.key
 }
+
 // GetLabel gets the label property value. Human-readable label for this Leadping customer activation health item.
 // returns a *string when successful
-func (m *CustomerActivationHealthItem) GetLabel()(*string) {
-    return m.label
+func (m *CustomerActivationHealthItem) GetLabel() *string {
+	return m.label
 }
+
 // GetStatus gets the status property value. Current status for this Leadping customer activation health item.
 // returns a *string when successful
-func (m *CustomerActivationHealthItem) GetStatus()(*string) {
-    return m.status
+func (m *CustomerActivationHealthItem) GetStatus() *string {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *CustomerActivationHealthItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionHref", m.GetActionHref())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("detail", m.GetDetail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("key", m.GetKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerActivationHealthItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionHref", m.GetActionHref())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("detail", m.GetDetail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("key", m.GetKey())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionHref sets the actionHref property value. Relative URL for the recommended follow-up action.
-func (m *CustomerActivationHealthItem) SetActionHref(value *string)() {
-    m.actionHref = value
+func (m *CustomerActivationHealthItem) SetActionHref(value *string) {
+	m.actionHref = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerActivationHealthItem) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerActivationHealthItem) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetDetail sets the detail property value. Human-readable detail for this Leadping customer activation health item.
-func (m *CustomerActivationHealthItem) SetDetail(value *string)() {
-    m.detail = value
+func (m *CustomerActivationHealthItem) SetDetail(value *string) {
+	m.detail = value
 }
+
 // SetKey sets the key property value. Key associated with this Leadping customer activation health item.
-func (m *CustomerActivationHealthItem) SetKey(value *string)() {
-    m.key = value
+func (m *CustomerActivationHealthItem) SetKey(value *string) {
+	m.key = value
 }
+
 // SetLabel sets the label property value. Human-readable label for this Leadping customer activation health item.
-func (m *CustomerActivationHealthItem) SetLabel(value *string)() {
-    m.label = value
+func (m *CustomerActivationHealthItem) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetStatus sets the status property value. Current status for this Leadping customer activation health item.
-func (m *CustomerActivationHealthItem) SetStatus(value *string)() {
-    m.status = value
+func (m *CustomerActivationHealthItem) SetStatus(value *string) {
+	m.status = value
 }
+
 type CustomerActivationHealthItemable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionHref()(*string)
-    GetDetail()(*string)
-    GetKey()(*string)
-    GetLabel()(*string)
-    GetStatus()(*string)
-    SetActionHref(value *string)()
-    SetDetail(value *string)()
-    SetKey(value *string)()
-    SetLabel(value *string)()
-    SetStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionHref() *string
+	GetDetail() *string
+	GetKey() *string
+	GetLabel() *string
+	GetStatus() *string
+	SetActionHref(value *string)
+	SetDetail(value *string)
+	SetKey(value *string)
+	SetLabel(value *string)
+	SetStatus(value *string)
 }

@@ -4,740 +4,792 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// TenDlcApplicationDraft describes ten dlc application draft data used in Leadping API requests and responses.
+// TenDlcApplicationDraft describes 10DLC application draft data used in Leadping API requests and responses.
 type TenDlcApplicationDraft struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The current provider review status for the submitted brand.
-    brandStatus *TenDlcRegistrationStatus
-    // The current provider review status for the submitted campaign.
-    campaignStatus *TenDlcRegistrationStatus
-    // Company name for this 10DLC application draft.
-    companyName *string
-    // The compliance warnings included with this 10DLC application draft.
-    complianceWarnings []string
-    // Contact email for this 10DLC application draft.
-    contactEmail *string
-    // Contact name for this 10DLC application draft.
-    contactName *string
-    // Contact phone for this 10DLC application draft.
-    contactPhone *string
-    // EIN for this 10DLC application draft.
-    ein *string
-    // Expected monthly volume for this 10DLC application draft.
-    expectedMonthlyVolume i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
-    industry *string
-    // UTC timestamp for last submitted at on this 10DLC application draft.
-    lastSubmittedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The message examples included with this 10DLC application draft.
-    messageExamples []string
-    // The missing fields included with this 10DLC application draft.
-    missingFields []string
-    // Opt in language for this 10DLC application draft.
-    optInLanguage *string
-    // Public privacy-policy URL that explains how messaging recipient data is handled.
-    privacyPolicyUrl *string
-    // The human-readable rejection reason explaining this 10DLC application draft.
-    rejectionReason *string
-    // Public terms-of-service URL governing the messaging program.
-    termsUrl *string
-    // Whether TrustedForm required applies to this 10DLC application draft.
-    trustedFormRequired *bool
-    // UTC timestamp for updated at on this 10DLC application draft.
-    updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Use case for this 10DLC application draft.
-    useCase *string
-    // Use case description for this 10DLC application draft.
-    useCaseDescription *string
-    // Version for this 10DLC application draft.
-    version i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Public business website URL submitted to carriers during brand review.
-    websiteUrl *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Defines the provider lifecycle for an individual 10DLC brand or campaign.
+	brandStatus *TenDlcRegistrationStatus
+	// Defines the provider lifecycle for an individual 10DLC brand or campaign.
+	campaignStatus *TenDlcRegistrationStatus
+	// Company name for this 10DLC application draft.
+	companyName *string
+	// The compliance warnings included with this 10DLC application draft.
+	complianceWarnings []string
+	// Contact email for this 10DLC application draft.
+	contactEmail *string
+	// Contact name for this 10DLC application draft.
+	contactName *string
+	// Contact phone for this 10DLC application draft.
+	contactPhone *string
+	// EIN for this 10DLC application draft.
+	ein *string
+	// Expected monthly volume for this 10DLC application draft.
+	expectedMonthlyVolume *int32
+	// The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
+	industry *string
+	// UTC timestamp for last submitted at on this 10DLC application draft.
+	lastSubmittedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The message examples included with this 10DLC application draft.
+	messageExamples []string
+	// The missing fields included with this 10DLC application draft.
+	missingFields []string
+	// Opt in language for this 10DLC application draft.
+	optInLanguage *string
+	// Public privacy-policy URL that explains how messaging recipient data is handled.
+	privacyPolicyUrl *string
+	// The human-readable rejection reason explaining this 10DLC application draft.
+	rejectionReason *string
+	// Public terms-of-service URL governing the messaging program.
+	termsUrl *string
+	// Whether TrustedForm required applies to this 10DLC application draft.
+	trustedFormRequired *bool
+	// UTC timestamp for updated at on this 10DLC application draft.
+	updatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Use case for this 10DLC application draft.
+	useCase *string
+	// Use case description for this 10DLC application draft.
+	useCaseDescription *string
+	// Version for this 10DLC application draft.
+	version *int32
+	// Public business website URL submitted to carriers during brand review.
+	websiteUrl *string
 }
+
 // NewTenDlcApplicationDraft instantiates a new TenDlcApplicationDraft and sets the default values.
-func NewTenDlcApplicationDraft()(*TenDlcApplicationDraft) {
-    m := &TenDlcApplicationDraft{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewTenDlcApplicationDraft() *TenDlcApplicationDraft {
+	m := &TenDlcApplicationDraft{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateTenDlcApplicationDraftFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTenDlcApplicationDraftFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewTenDlcApplicationDraft(), nil
+func CreateTenDlcApplicationDraftFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewTenDlcApplicationDraft(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TenDlcApplicationDraft) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *TenDlcApplicationDraft) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetBrandStatus gets the brandStatus property value. The current provider review status for the submitted brand.
+
+// GetBrandStatus gets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 // returns a *TenDlcRegistrationStatus when successful
-func (m *TenDlcApplicationDraft) GetBrandStatus()(*TenDlcRegistrationStatus) {
-    return m.brandStatus
+func (m *TenDlcApplicationDraft) GetBrandStatus() *TenDlcRegistrationStatus {
+	return m.brandStatus
 }
-// GetCampaignStatus gets the campaignStatus property value. The current provider review status for the submitted campaign.
+
+// GetCampaignStatus gets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 // returns a *TenDlcRegistrationStatus when successful
-func (m *TenDlcApplicationDraft) GetCampaignStatus()(*TenDlcRegistrationStatus) {
-    return m.campaignStatus
+func (m *TenDlcApplicationDraft) GetCampaignStatus() *TenDlcRegistrationStatus {
+	return m.campaignStatus
 }
+
 // GetCompanyName gets the companyName property value. Company name for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetCompanyName()(*string) {
-    return m.companyName
+func (m *TenDlcApplicationDraft) GetCompanyName() *string {
+	return m.companyName
 }
+
 // GetComplianceWarnings gets the complianceWarnings property value. The compliance warnings included with this 10DLC application draft.
 // returns a []string when successful
-func (m *TenDlcApplicationDraft) GetComplianceWarnings()([]string) {
-    return m.complianceWarnings
+func (m *TenDlcApplicationDraft) GetComplianceWarnings() []string {
+	return m.complianceWarnings
 }
+
 // GetContactEmail gets the contactEmail property value. Contact email for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetContactEmail()(*string) {
-    return m.contactEmail
+func (m *TenDlcApplicationDraft) GetContactEmail() *string {
+	return m.contactEmail
 }
+
 // GetContactName gets the contactName property value. Contact name for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetContactName()(*string) {
-    return m.contactName
+func (m *TenDlcApplicationDraft) GetContactName() *string {
+	return m.contactName
 }
+
 // GetContactPhone gets the contactPhone property value. Contact phone for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetContactPhone()(*string) {
-    return m.contactPhone
+func (m *TenDlcApplicationDraft) GetContactPhone() *string {
+	return m.contactPhone
 }
+
 // GetEin gets the ein property value. EIN for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetEin()(*string) {
-    return m.ein
+func (m *TenDlcApplicationDraft) GetEin() *string {
+	return m.ein
 }
+
 // GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
-// returns a UntypedNodeable when successful
-func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.expectedMonthlyVolume
+// returns a *int32 when successful
+func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume() *int32 {
+	return m.expectedMonthlyVolume
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *TenDlcApplicationDraft) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["brandStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBrandStatus(val.(*TenDlcRegistrationStatus))
-        }
-        return nil
-    }
-    res["campaignStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignStatus(val.(*TenDlcRegistrationStatus))
-        }
-        return nil
-    }
-    res["companyName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompanyName(val)
-        }
-        return nil
-    }
-    res["complianceWarnings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetComplianceWarnings(res)
-        }
-        return nil
-    }
-    res["contactEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContactEmail(val)
-        }
-        return nil
-    }
-    res["contactName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContactName(val)
-        }
-        return nil
-    }
-    res["contactPhone"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetContactPhone(val)
-        }
-        return nil
-    }
-    res["ein"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEin(val)
-        }
-        return nil
-    }
-    res["expectedMonthlyVolume"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExpectedMonthlyVolume(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["industry"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIndustry(val)
-        }
-        return nil
-    }
-    res["lastSubmittedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastSubmittedAt(val)
-        }
-        return nil
-    }
-    res["messageExamples"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetMessageExamples(res)
-        }
-        return nil
-    }
-    res["missingFields"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetMissingFields(res)
-        }
-        return nil
-    }
-    res["optInLanguage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOptInLanguage(val)
-        }
-        return nil
-    }
-    res["privacyPolicyUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPrivacyPolicyUrl(val)
-        }
-        return nil
-    }
-    res["rejectionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRejectionReason(val)
-        }
-        return nil
-    }
-    res["termsUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTermsUrl(val)
-        }
-        return nil
-    }
-    res["trustedFormRequired"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTrustedFormRequired(val)
-        }
-        return nil
-    }
-    res["updatedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUpdatedAt(val)
-        }
-        return nil
-    }
-    res["useCase"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUseCase(val)
-        }
-        return nil
-    }
-    res["useCaseDescription"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUseCaseDescription(val)
-        }
-        return nil
-    }
-    res["version"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVersion(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["websiteUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebsiteUrl(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["brandStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBrandStatus(val.(*TenDlcRegistrationStatus))
+		}
+		return nil
+	}
+	res["campaignStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignStatus(val.(*TenDlcRegistrationStatus))
+		}
+		return nil
+	}
+	res["companyName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompanyName(val)
+		}
+		return nil
+	}
+	res["complianceWarnings"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetComplianceWarnings(res)
+		}
+		return nil
+	}
+	res["contactEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContactEmail(val)
+		}
+		return nil
+	}
+	res["contactName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContactName(val)
+		}
+		return nil
+	}
+	res["contactPhone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContactPhone(val)
+		}
+		return nil
+	}
+	res["ein"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEin(val)
+		}
+		return nil
+	}
+	res["expectedMonthlyVolume"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExpectedMonthlyVolume(val)
+		}
+		return nil
+	}
+	res["industry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIndustry(val)
+		}
+		return nil
+	}
+	res["lastSubmittedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastSubmittedAt(val)
+		}
+		return nil
+	}
+	res["messageExamples"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetMessageExamples(res)
+		}
+		return nil
+	}
+	res["missingFields"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetMissingFields(res)
+		}
+		return nil
+	}
+	res["optInLanguage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptInLanguage(val)
+		}
+		return nil
+	}
+	res["privacyPolicyUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPrivacyPolicyUrl(val)
+		}
+		return nil
+	}
+	res["rejectionReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRejectionReason(val)
+		}
+		return nil
+	}
+	res["termsUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTermsUrl(val)
+		}
+		return nil
+	}
+	res["trustedFormRequired"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrustedFormRequired(val)
+		}
+		return nil
+	}
+	res["updatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUpdatedAt(val)
+		}
+		return nil
+	}
+	res["useCase"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUseCase(val)
+		}
+		return nil
+	}
+	res["useCaseDescription"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUseCaseDescription(val)
+		}
+		return nil
+	}
+	res["version"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVersion(val)
+		}
+		return nil
+	}
+	res["websiteUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWebsiteUrl(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetIndustry gets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetIndustry()(*string) {
-    return m.industry
+func (m *TenDlcApplicationDraft) GetIndustry() *string {
+	return m.industry
 }
+
 // GetLastSubmittedAt gets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
 // returns a *Time when successful
-func (m *TenDlcApplicationDraft) GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastSubmittedAt
+func (m *TenDlcApplicationDraft) GetLastSubmittedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastSubmittedAt
 }
+
 // GetMessageExamples gets the messageExamples property value. The message examples included with this 10DLC application draft.
 // returns a []string when successful
-func (m *TenDlcApplicationDraft) GetMessageExamples()([]string) {
-    return m.messageExamples
+func (m *TenDlcApplicationDraft) GetMessageExamples() []string {
+	return m.messageExamples
 }
+
 // GetMissingFields gets the missingFields property value. The missing fields included with this 10DLC application draft.
 // returns a []string when successful
-func (m *TenDlcApplicationDraft) GetMissingFields()([]string) {
-    return m.missingFields
+func (m *TenDlcApplicationDraft) GetMissingFields() []string {
+	return m.missingFields
 }
+
 // GetOptInLanguage gets the optInLanguage property value. Opt in language for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetOptInLanguage()(*string) {
-    return m.optInLanguage
+func (m *TenDlcApplicationDraft) GetOptInLanguage() *string {
+	return m.optInLanguage
 }
+
 // GetPrivacyPolicyUrl gets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetPrivacyPolicyUrl()(*string) {
-    return m.privacyPolicyUrl
+func (m *TenDlcApplicationDraft) GetPrivacyPolicyUrl() *string {
+	return m.privacyPolicyUrl
 }
+
 // GetRejectionReason gets the rejectionReason property value. The human-readable rejection reason explaining this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetRejectionReason()(*string) {
-    return m.rejectionReason
+func (m *TenDlcApplicationDraft) GetRejectionReason() *string {
+	return m.rejectionReason
 }
+
 // GetTermsUrl gets the termsUrl property value. Public terms-of-service URL governing the messaging program.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetTermsUrl()(*string) {
-    return m.termsUrl
+func (m *TenDlcApplicationDraft) GetTermsUrl() *string {
+	return m.termsUrl
 }
+
 // GetTrustedFormRequired gets the trustedFormRequired property value. Whether TrustedForm required applies to this 10DLC application draft.
 // returns a *bool when successful
-func (m *TenDlcApplicationDraft) GetTrustedFormRequired()(*bool) {
-    return m.trustedFormRequired
+func (m *TenDlcApplicationDraft) GetTrustedFormRequired() *bool {
+	return m.trustedFormRequired
 }
+
 // GetUpdatedAt gets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
 // returns a *Time when successful
-func (m *TenDlcApplicationDraft) GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.updatedAt
+func (m *TenDlcApplicationDraft) GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.updatedAt
 }
+
 // GetUseCase gets the useCase property value. Use case for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetUseCase()(*string) {
-    return m.useCase
+func (m *TenDlcApplicationDraft) GetUseCase() *string {
+	return m.useCase
 }
+
 // GetUseCaseDescription gets the useCaseDescription property value. Use case description for this 10DLC application draft.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetUseCaseDescription()(*string) {
-    return m.useCaseDescription
+func (m *TenDlcApplicationDraft) GetUseCaseDescription() *string {
+	return m.useCaseDescription
 }
+
 // GetVersion gets the version property value. Version for this 10DLC application draft.
-// returns a UntypedNodeable when successful
-func (m *TenDlcApplicationDraft) GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.version
+// returns a *int32 when successful
+func (m *TenDlcApplicationDraft) GetVersion() *int32 {
+	return m.version
 }
+
 // GetWebsiteUrl gets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
 // returns a *string when successful
-func (m *TenDlcApplicationDraft) GetWebsiteUrl()(*string) {
-    return m.websiteUrl
+func (m *TenDlcApplicationDraft) GetWebsiteUrl() *string {
+	return m.websiteUrl
 }
+
 // Serialize serializes information the current object
-func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetBrandStatus() != nil {
-        cast := (*m.GetBrandStatus()).String()
-        err := writer.WriteStringValue("brandStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetCampaignStatus() != nil {
-        cast := (*m.GetCampaignStatus()).String()
-        err := writer.WriteStringValue("campaignStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("companyName", m.GetCompanyName())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetComplianceWarnings() != nil {
-        err := writer.WriteCollectionOfStringValues("complianceWarnings", m.GetComplianceWarnings())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("contactEmail", m.GetContactEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("contactName", m.GetContactName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("contactPhone", m.GetContactPhone())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("ein", m.GetEin())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("industry", m.GetIndustry())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastSubmittedAt", m.GetLastSubmittedAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMessageExamples() != nil {
-        err := writer.WriteCollectionOfStringValues("messageExamples", m.GetMessageExamples())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMissingFields() != nil {
-        err := writer.WriteCollectionOfStringValues("missingFields", m.GetMissingFields())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("optInLanguage", m.GetOptInLanguage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("privacyPolicyUrl", m.GetPrivacyPolicyUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("rejectionReason", m.GetRejectionReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("termsUrl", m.GetTermsUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("trustedFormRequired", m.GetTrustedFormRequired())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("useCase", m.GetUseCase())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("useCaseDescription", m.GetUseCaseDescription())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("version", m.GetVersion())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("websiteUrl", m.GetWebsiteUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetBrandStatus() != nil {
+		cast := (*m.GetBrandStatus()).String()
+		err := writer.WriteStringValue("brandStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetCampaignStatus() != nil {
+		cast := (*m.GetCampaignStatus()).String()
+		err := writer.WriteStringValue("campaignStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("companyName", m.GetCompanyName())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetComplianceWarnings() != nil {
+		err := writer.WriteCollectionOfStringValues("complianceWarnings", m.GetComplianceWarnings())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("contactEmail", m.GetContactEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("contactName", m.GetContactName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("contactPhone", m.GetContactPhone())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("ein", m.GetEin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("expectedMonthlyVolume", m.GetExpectedMonthlyVolume())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("industry", m.GetIndustry())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastSubmittedAt", m.GetLastSubmittedAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMessageExamples() != nil {
+		err := writer.WriteCollectionOfStringValues("messageExamples", m.GetMessageExamples())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMissingFields() != nil {
+		err := writer.WriteCollectionOfStringValues("missingFields", m.GetMissingFields())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("optInLanguage", m.GetOptInLanguage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("privacyPolicyUrl", m.GetPrivacyPolicyUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("rejectionReason", m.GetRejectionReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("termsUrl", m.GetTermsUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("trustedFormRequired", m.GetTrustedFormRequired())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("updatedAt", m.GetUpdatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("useCase", m.GetUseCase())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("useCaseDescription", m.GetUseCaseDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("version", m.GetVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("websiteUrl", m.GetWebsiteUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TenDlcApplicationDraft) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *TenDlcApplicationDraft) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetBrandStatus sets the brandStatus property value. The current provider review status for the submitted brand.
-func (m *TenDlcApplicationDraft) SetBrandStatus(value *TenDlcRegistrationStatus)() {
-    m.brandStatus = value
+
+// SetBrandStatus sets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
+func (m *TenDlcApplicationDraft) SetBrandStatus(value *TenDlcRegistrationStatus) {
+	m.brandStatus = value
 }
-// SetCampaignStatus sets the campaignStatus property value. The current provider review status for the submitted campaign.
-func (m *TenDlcApplicationDraft) SetCampaignStatus(value *TenDlcRegistrationStatus)() {
-    m.campaignStatus = value
+
+// SetCampaignStatus sets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
+func (m *TenDlcApplicationDraft) SetCampaignStatus(value *TenDlcRegistrationStatus) {
+	m.campaignStatus = value
 }
+
 // SetCompanyName sets the companyName property value. Company name for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetCompanyName(value *string)() {
-    m.companyName = value
+func (m *TenDlcApplicationDraft) SetCompanyName(value *string) {
+	m.companyName = value
 }
+
 // SetComplianceWarnings sets the complianceWarnings property value. The compliance warnings included with this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetComplianceWarnings(value []string)() {
-    m.complianceWarnings = value
+func (m *TenDlcApplicationDraft) SetComplianceWarnings(value []string) {
+	m.complianceWarnings = value
 }
+
 // SetContactEmail sets the contactEmail property value. Contact email for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetContactEmail(value *string)() {
-    m.contactEmail = value
+func (m *TenDlcApplicationDraft) SetContactEmail(value *string) {
+	m.contactEmail = value
 }
+
 // SetContactName sets the contactName property value. Contact name for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetContactName(value *string)() {
-    m.contactName = value
+func (m *TenDlcApplicationDraft) SetContactName(value *string) {
+	m.contactName = value
 }
+
 // SetContactPhone sets the contactPhone property value. Contact phone for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetContactPhone(value *string)() {
-    m.contactPhone = value
+func (m *TenDlcApplicationDraft) SetContactPhone(value *string) {
+	m.contactPhone = value
 }
+
 // SetEin sets the ein property value. EIN for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetEin(value *string)() {
-    m.ein = value
+func (m *TenDlcApplicationDraft) SetEin(value *string) {
+	m.ein = value
 }
+
 // SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.expectedMonthlyVolume = value
+func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32) {
+	m.expectedMonthlyVolume = value
 }
+
 // SetIndustry sets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
-func (m *TenDlcApplicationDraft) SetIndustry(value *string)() {
-    m.industry = value
+func (m *TenDlcApplicationDraft) SetIndustry(value *string) {
+	m.industry = value
 }
+
 // SetLastSubmittedAt sets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastSubmittedAt = value
+func (m *TenDlcApplicationDraft) SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastSubmittedAt = value
 }
+
 // SetMessageExamples sets the messageExamples property value. The message examples included with this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetMessageExamples(value []string)() {
-    m.messageExamples = value
+func (m *TenDlcApplicationDraft) SetMessageExamples(value []string) {
+	m.messageExamples = value
 }
+
 // SetMissingFields sets the missingFields property value. The missing fields included with this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetMissingFields(value []string)() {
-    m.missingFields = value
+func (m *TenDlcApplicationDraft) SetMissingFields(value []string) {
+	m.missingFields = value
 }
+
 // SetOptInLanguage sets the optInLanguage property value. Opt in language for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetOptInLanguage(value *string)() {
-    m.optInLanguage = value
+func (m *TenDlcApplicationDraft) SetOptInLanguage(value *string) {
+	m.optInLanguage = value
 }
+
 // SetPrivacyPolicyUrl sets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
-func (m *TenDlcApplicationDraft) SetPrivacyPolicyUrl(value *string)() {
-    m.privacyPolicyUrl = value
+func (m *TenDlcApplicationDraft) SetPrivacyPolicyUrl(value *string) {
+	m.privacyPolicyUrl = value
 }
+
 // SetRejectionReason sets the rejectionReason property value. The human-readable rejection reason explaining this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetRejectionReason(value *string)() {
-    m.rejectionReason = value
+func (m *TenDlcApplicationDraft) SetRejectionReason(value *string) {
+	m.rejectionReason = value
 }
+
 // SetTermsUrl sets the termsUrl property value. Public terms-of-service URL governing the messaging program.
-func (m *TenDlcApplicationDraft) SetTermsUrl(value *string)() {
-    m.termsUrl = value
+func (m *TenDlcApplicationDraft) SetTermsUrl(value *string) {
+	m.termsUrl = value
 }
+
 // SetTrustedFormRequired sets the trustedFormRequired property value. Whether TrustedForm required applies to this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetTrustedFormRequired(value *bool)() {
-    m.trustedFormRequired = value
+func (m *TenDlcApplicationDraft) SetTrustedFormRequired(value *bool) {
+	m.trustedFormRequired = value
 }
+
 // SetUpdatedAt sets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.updatedAt = value
+func (m *TenDlcApplicationDraft) SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.updatedAt = value
 }
+
 // SetUseCase sets the useCase property value. Use case for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetUseCase(value *string)() {
-    m.useCase = value
+func (m *TenDlcApplicationDraft) SetUseCase(value *string) {
+	m.useCase = value
 }
+
 // SetUseCaseDescription sets the useCaseDescription property value. Use case description for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetUseCaseDescription(value *string)() {
-    m.useCaseDescription = value
+func (m *TenDlcApplicationDraft) SetUseCaseDescription(value *string) {
+	m.useCaseDescription = value
 }
+
 // SetVersion sets the version property value. Version for this 10DLC application draft.
-func (m *TenDlcApplicationDraft) SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.version = value
+func (m *TenDlcApplicationDraft) SetVersion(value *int32) {
+	m.version = value
 }
+
 // SetWebsiteUrl sets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
-func (m *TenDlcApplicationDraft) SetWebsiteUrl(value *string)() {
-    m.websiteUrl = value
+func (m *TenDlcApplicationDraft) SetWebsiteUrl(value *string) {
+	m.websiteUrl = value
 }
+
 type TenDlcApplicationDraftable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBrandStatus()(*TenDlcRegistrationStatus)
-    GetCampaignStatus()(*TenDlcRegistrationStatus)
-    GetCompanyName()(*string)
-    GetComplianceWarnings()([]string)
-    GetContactEmail()(*string)
-    GetContactName()(*string)
-    GetContactPhone()(*string)
-    GetEin()(*string)
-    GetExpectedMonthlyVolume()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetIndustry()(*string)
-    GetLastSubmittedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetMessageExamples()([]string)
-    GetMissingFields()([]string)
-    GetOptInLanguage()(*string)
-    GetPrivacyPolicyUrl()(*string)
-    GetRejectionReason()(*string)
-    GetTermsUrl()(*string)
-    GetTrustedFormRequired()(*bool)
-    GetUpdatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetUseCase()(*string)
-    GetUseCaseDescription()(*string)
-    GetVersion()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWebsiteUrl()(*string)
-    SetBrandStatus(value *TenDlcRegistrationStatus)()
-    SetCampaignStatus(value *TenDlcRegistrationStatus)()
-    SetCompanyName(value *string)()
-    SetComplianceWarnings(value []string)()
-    SetContactEmail(value *string)()
-    SetContactName(value *string)()
-    SetContactPhone(value *string)()
-    SetEin(value *string)()
-    SetExpectedMonthlyVolume(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetIndustry(value *string)()
-    SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetMessageExamples(value []string)()
-    SetMissingFields(value []string)()
-    SetOptInLanguage(value *string)()
-    SetPrivacyPolicyUrl(value *string)()
-    SetRejectionReason(value *string)()
-    SetTermsUrl(value *string)()
-    SetTrustedFormRequired(value *bool)()
-    SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetUseCase(value *string)()
-    SetUseCaseDescription(value *string)()
-    SetVersion(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWebsiteUrl(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBrandStatus() *TenDlcRegistrationStatus
+	GetCampaignStatus() *TenDlcRegistrationStatus
+	GetCompanyName() *string
+	GetComplianceWarnings() []string
+	GetContactEmail() *string
+	GetContactName() *string
+	GetContactPhone() *string
+	GetEin() *string
+	GetExpectedMonthlyVolume() *int32
+	GetIndustry() *string
+	GetLastSubmittedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetMessageExamples() []string
+	GetMissingFields() []string
+	GetOptInLanguage() *string
+	GetPrivacyPolicyUrl() *string
+	GetRejectionReason() *string
+	GetTermsUrl() *string
+	GetTrustedFormRequired() *bool
+	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetUseCase() *string
+	GetUseCaseDescription() *string
+	GetVersion() *int32
+	GetWebsiteUrl() *string
+	SetBrandStatus(value *TenDlcRegistrationStatus)
+	SetCampaignStatus(value *TenDlcRegistrationStatus)
+	SetCompanyName(value *string)
+	SetComplianceWarnings(value []string)
+	SetContactEmail(value *string)
+	SetContactName(value *string)
+	SetContactPhone(value *string)
+	SetEin(value *string)
+	SetExpectedMonthlyVolume(value *int32)
+	SetIndustry(value *string)
+	SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetMessageExamples(value []string)
+	SetMissingFields(value []string)
+	SetOptInLanguage(value *string)
+	SetPrivacyPolicyUrl(value *string)
+	SetRejectionReason(value *string)
+	SetTermsUrl(value *string)
+	SetTrustedFormRequired(value *bool)
+	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetUseCase(value *string)
+	SetUseCaseDescription(value *string)
+	SetVersion(value *int32)
+	SetWebsiteUrl(value *string)
 }

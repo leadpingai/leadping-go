@@ -2,42 +2,46 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Notification Priority values.
+
+// Ranks the urgency and presentation importance of a Leadping user notification.
 type NotificationPriority int
 
 const (
-    LOW_NOTIFICATIONPRIORITY NotificationPriority = iota
-    MEDIUM_NOTIFICATIONPRIORITY
-    HIGH_NOTIFICATIONPRIORITY
-    CRITICAL_NOTIFICATIONPRIORITY
+	LOW_NOTIFICATIONPRIORITY NotificationPriority = iota
+	MEDIUM_NOTIFICATIONPRIORITY
+	HIGH_NOTIFICATIONPRIORITY
+	CRITICAL_NOTIFICATIONPRIORITY
 )
 
 func (i NotificationPriority) String() string {
-    return []string{"Low", "Medium", "High", "Critical"}[i]
+	return []string{"Low", "Medium", "High", "Critical"}[i]
 }
+
 func ParseNotificationPriority(v string) (any, error) {
-    result := LOW_NOTIFICATIONPRIORITY
-    switch v {
-        case "Low":
-            result = LOW_NOTIFICATIONPRIORITY
-        case "Medium":
-            result = MEDIUM_NOTIFICATIONPRIORITY
-        case "High":
-            result = HIGH_NOTIFICATIONPRIORITY
-        case "Critical":
-            result = CRITICAL_NOTIFICATIONPRIORITY
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := LOW_NOTIFICATIONPRIORITY
+	switch v {
+	case "Low":
+		result = LOW_NOTIFICATIONPRIORITY
+	case "Medium":
+		result = MEDIUM_NOTIFICATIONPRIORITY
+	case "High":
+		result = HIGH_NOTIFICATIONPRIORITY
+	case "Critical":
+		result = CRITICAL_NOTIFICATIONPRIORITY
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeNotificationPriority(values []NotificationPriority) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i NotificationPriority) isMultiValue() bool {
-    return false
+	return false
 }

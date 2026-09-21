@@ -4,203 +4,219 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // AutomationPreviewActionResult result schema for the Leadping API automation preview action result returned by lookup and validation endpoints.
 type AutomationPreviewActionResult struct {
-    // Automation action ID executed or evaluated by this automation preview action result.
-    actionId *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Rendered preview output produced by this automation preview action result.
-    renderedOutput *string
-    // Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
-    summary *string
-    // Warnings returned for this automation preview action result that do not necessarily block processing.
-    warnings []string
-    // Indicates whether the automation preview would perform an external action if executed live.
-    wouldHaveSideEffect *bool
+	// Automation action ID executed or evaluated by this automation preview action result.
+	actionId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Rendered preview output produced by this automation preview action result.
+	renderedOutput *string
+	// Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
+	summary *string
+	// Warnings returned for this automation preview action result that do not necessarily block processing.
+	warnings []string
+	// Indicates whether the automation preview would perform an external action if executed live.
+	wouldHaveSideEffect *bool
 }
+
 // NewAutomationPreviewActionResult instantiates a new AutomationPreviewActionResult and sets the default values.
-func NewAutomationPreviewActionResult()(*AutomationPreviewActionResult) {
-    m := &AutomationPreviewActionResult{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationPreviewActionResult() *AutomationPreviewActionResult {
+	m := &AutomationPreviewActionResult{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationPreviewActionResultFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationPreviewActionResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationPreviewActionResult(), nil
+func CreateAutomationPreviewActionResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationPreviewActionResult(), nil
 }
+
 // GetActionId gets the actionId property value. Automation action ID executed or evaluated by this automation preview action result.
 // returns a *string when successful
-func (m *AutomationPreviewActionResult) GetActionId()(*string) {
-    return m.actionId
+func (m *AutomationPreviewActionResult) GetActionId() *string {
+	return m.actionId
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationPreviewActionResult) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationPreviewActionResult) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationPreviewActionResult) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionId(val)
-        }
-        return nil
-    }
-    res["renderedOutput"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRenderedOutput(val)
-        }
-        return nil
-    }
-    res["summary"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSummary(val)
-        }
-        return nil
-    }
-    res["warnings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = *(v.(*string))
-                }
-            }
-            m.SetWarnings(res)
-        }
-        return nil
-    }
-    res["wouldHaveSideEffect"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWouldHaveSideEffect(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationPreviewActionResult) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionId(val)
+		}
+		return nil
+	}
+	res["renderedOutput"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRenderedOutput(val)
+		}
+		return nil
+	}
+	res["summary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSummary(val)
+		}
+		return nil
+	}
+	res["warnings"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetWarnings(res)
+		}
+		return nil
+	}
+	res["wouldHaveSideEffect"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWouldHaveSideEffect(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetRenderedOutput gets the renderedOutput property value. Rendered preview output produced by this automation preview action result.
 // returns a *string when successful
-func (m *AutomationPreviewActionResult) GetRenderedOutput()(*string) {
-    return m.renderedOutput
+func (m *AutomationPreviewActionResult) GetRenderedOutput() *string {
+	return m.renderedOutput
 }
+
 // GetSummary gets the summary property value. Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
 // returns a *string when successful
-func (m *AutomationPreviewActionResult) GetSummary()(*string) {
-    return m.summary
+func (m *AutomationPreviewActionResult) GetSummary() *string {
+	return m.summary
 }
+
 // GetWarnings gets the warnings property value. Warnings returned for this automation preview action result that do not necessarily block processing.
 // returns a []string when successful
-func (m *AutomationPreviewActionResult) GetWarnings()([]string) {
-    return m.warnings
+func (m *AutomationPreviewActionResult) GetWarnings() []string {
+	return m.warnings
 }
+
 // GetWouldHaveSideEffect gets the wouldHaveSideEffect property value. Indicates whether the automation preview would perform an external action if executed live.
 // returns a *bool when successful
-func (m *AutomationPreviewActionResult) GetWouldHaveSideEffect()(*bool) {
-    return m.wouldHaveSideEffect
+func (m *AutomationPreviewActionResult) GetWouldHaveSideEffect() *bool {
+	return m.wouldHaveSideEffect
 }
+
 // Serialize serializes information the current object
-func (m *AutomationPreviewActionResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionId", m.GetActionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("renderedOutput", m.GetRenderedOutput())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("summary", m.GetSummary())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetWarnings() != nil {
-        err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("wouldHaveSideEffect", m.GetWouldHaveSideEffect())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationPreviewActionResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionId", m.GetActionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("renderedOutput", m.GetRenderedOutput())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("summary", m.GetSummary())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetWarnings() != nil {
+		err := writer.WriteCollectionOfStringValues("warnings", m.GetWarnings())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("wouldHaveSideEffect", m.GetWouldHaveSideEffect())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionId sets the actionId property value. Automation action ID executed or evaluated by this automation preview action result.
-func (m *AutomationPreviewActionResult) SetActionId(value *string)() {
-    m.actionId = value
+func (m *AutomationPreviewActionResult) SetActionId(value *string) {
+	m.actionId = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationPreviewActionResult) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationPreviewActionResult) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetRenderedOutput sets the renderedOutput property value. Rendered preview output produced by this automation preview action result.
-func (m *AutomationPreviewActionResult) SetRenderedOutput(value *string)() {
-    m.renderedOutput = value
+func (m *AutomationPreviewActionResult) SetRenderedOutput(value *string) {
+	m.renderedOutput = value
 }
+
 // SetSummary sets the summary property value. Short human-readable summary of this automation preview action result for lists, timelines, and notifications.
-func (m *AutomationPreviewActionResult) SetSummary(value *string)() {
-    m.summary = value
+func (m *AutomationPreviewActionResult) SetSummary(value *string) {
+	m.summary = value
 }
+
 // SetWarnings sets the warnings property value. Warnings returned for this automation preview action result that do not necessarily block processing.
-func (m *AutomationPreviewActionResult) SetWarnings(value []string)() {
-    m.warnings = value
+func (m *AutomationPreviewActionResult) SetWarnings(value []string) {
+	m.warnings = value
 }
+
 // SetWouldHaveSideEffect sets the wouldHaveSideEffect property value. Indicates whether the automation preview would perform an external action if executed live.
-func (m *AutomationPreviewActionResult) SetWouldHaveSideEffect(value *bool)() {
-    m.wouldHaveSideEffect = value
+func (m *AutomationPreviewActionResult) SetWouldHaveSideEffect(value *bool) {
+	m.wouldHaveSideEffect = value
 }
+
 type AutomationPreviewActionResultable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionId()(*string)
-    GetRenderedOutput()(*string)
-    GetSummary()(*string)
-    GetWarnings()([]string)
-    GetWouldHaveSideEffect()(*bool)
-    SetActionId(value *string)()
-    SetRenderedOutput(value *string)()
-    SetSummary(value *string)()
-    SetWarnings(value []string)()
-    SetWouldHaveSideEffect(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionId() *string
+	GetRenderedOutput() *string
+	GetSummary() *string
+	GetWarnings() []string
+	GetWouldHaveSideEffect() *bool
+	SetActionId(value *string)
+	SetRenderedOutput(value *string)
+	SetSummary(value *string)
+	SetWarnings(value []string)
+	SetWouldHaveSideEffect(value *bool)
 }

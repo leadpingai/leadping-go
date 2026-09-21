@@ -4,151 +4,237 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// CustomerLeadTrend represents customer lead trend data exposed by Leadping analytics.
+// CustomerLeadTrend measures lead creation, qualification, and conversion activity within one reporting time bucket.
 type CustomerLeadTrend struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Date and time when this Leadping customer lead trend was comparison.
-    comparison AnalyticsComparisonable
-    // Collection of points included with this Leadping customer lead trend.
-    points []AnalyticsTrendPointOfintable
-    // Total number of total records represented by this Leadping customer lead trend.
-    total i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Compares a metric with the preceding period and reports its absolute and percentage change.
+	comparison AnalyticsComparisonable
+	// Lead intake errors grouped into the same reporting buckets as Points.
+	errorPoints []AnalyticsTrendPointOfintable
+	// Collection of points included with this Leadping customer lead trend.
+	points []AnalyticsTrendPointOfintable
+	// Total number of total records represented by this Leadping customer lead trend.
+	total *int32
+	// Total number of lead submissions rejected during intake.
+	totalErrors *int32
 }
+
 // NewCustomerLeadTrend instantiates a new CustomerLeadTrend and sets the default values.
-func NewCustomerLeadTrend()(*CustomerLeadTrend) {
-    m := &CustomerLeadTrend{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCustomerLeadTrend() *CustomerLeadTrend {
+	m := &CustomerLeadTrend{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCustomerLeadTrendFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCustomerLeadTrendFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCustomerLeadTrend(), nil
+func CreateCustomerLeadTrendFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCustomerLeadTrend(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CustomerLeadTrend) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CustomerLeadTrend) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetComparison gets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
+
+// GetComparison gets the comparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
 // returns a AnalyticsComparisonable when successful
-func (m *CustomerLeadTrend) GetComparison()(AnalyticsComparisonable) {
-    return m.comparison
+func (m *CustomerLeadTrend) GetComparison() AnalyticsComparisonable {
+	return m.comparison
 }
+
+// GetErrorPoints gets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+// returns a []AnalyticsTrendPointOfintable when successful
+func (m *CustomerLeadTrend) GetErrorPoints() []AnalyticsTrendPointOfintable {
+	return m.errorPoints
+}
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CustomerLeadTrend) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["comparison"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateAnalyticsComparisonFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComparison(val.(AnalyticsComparisonable))
-        }
-        return nil
-    }
-    res["points"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]AnalyticsTrendPointOfintable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(AnalyticsTrendPointOfintable)
-                }
-            }
-            m.SetPoints(res)
-        }
-        return nil
-    }
-    res["total"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTotal(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CustomerLeadTrend) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["comparison"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAnalyticsComparisonFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComparison(val.(AnalyticsComparisonable))
+		}
+		return nil
+	}
+	res["errorPoints"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AnalyticsTrendPointOfintable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AnalyticsTrendPointOfintable)
+				}
+			}
+			m.SetErrorPoints(res)
+		}
+		return nil
+	}
+	res["points"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateAnalyticsTrendPointOfintFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]AnalyticsTrendPointOfintable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(AnalyticsTrendPointOfintable)
+				}
+			}
+			m.SetPoints(res)
+		}
+		return nil
+	}
+	res["total"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTotal(val)
+		}
+		return nil
+	}
+	res["totalErrors"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTotalErrors(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetPoints gets the points property value. Collection of points included with this Leadping customer lead trend.
 // returns a []AnalyticsTrendPointOfintable when successful
-func (m *CustomerLeadTrend) GetPoints()([]AnalyticsTrendPointOfintable) {
-    return m.points
+func (m *CustomerLeadTrend) GetPoints() []AnalyticsTrendPointOfintable {
+	return m.points
 }
+
 // GetTotal gets the total property value. Total number of total records represented by this Leadping customer lead trend.
-// returns a UntypedNodeable when successful
-func (m *CustomerLeadTrend) GetTotal()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.total
+// returns a *int32 when successful
+func (m *CustomerLeadTrend) GetTotal() *int32 {
+	return m.total
 }
+
+// GetTotalErrors gets the totalErrors property value. Total number of lead submissions rejected during intake.
+// returns a *int32 when successful
+func (m *CustomerLeadTrend) GetTotalErrors() *int32 {
+	return m.totalErrors
+}
+
 // Serialize serializes information the current object
-func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("comparison", m.GetComparison())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetPoints() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPoints()))
-        for i, v := range m.GetPoints() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("points", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("total", m.GetTotal())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CustomerLeadTrend) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("comparison", m.GetComparison())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetErrorPoints() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetErrorPoints()))
+		for i, v := range m.GetErrorPoints() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("errorPoints", cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetPoints() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetPoints()))
+		for i, v := range m.GetPoints() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("points", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("total", m.GetTotal())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("totalErrors", m.GetTotalErrors())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CustomerLeadTrend) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CustomerLeadTrend) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetComparison sets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
-func (m *CustomerLeadTrend) SetComparison(value AnalyticsComparisonable)() {
-    m.comparison = value
+
+// SetComparison sets the comparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
+func (m *CustomerLeadTrend) SetComparison(value AnalyticsComparisonable) {
+	m.comparison = value
 }
+
+// SetErrorPoints sets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+func (m *CustomerLeadTrend) SetErrorPoints(value []AnalyticsTrendPointOfintable) {
+	m.errorPoints = value
+}
+
 // SetPoints sets the points property value. Collection of points included with this Leadping customer lead trend.
-func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable)() {
-    m.points = value
+func (m *CustomerLeadTrend) SetPoints(value []AnalyticsTrendPointOfintable) {
+	m.points = value
 }
+
 // SetTotal sets the total property value. Total number of total records represented by this Leadping customer lead trend.
-func (m *CustomerLeadTrend) SetTotal(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.total = value
+func (m *CustomerLeadTrend) SetTotal(value *int32) {
+	m.total = value
 }
+
+// SetTotalErrors sets the totalErrors property value. Total number of lead submissions rejected during intake.
+func (m *CustomerLeadTrend) SetTotalErrors(value *int32) {
+	m.totalErrors = value
+}
+
 type CustomerLeadTrendable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetComparison()(AnalyticsComparisonable)
-    GetPoints()([]AnalyticsTrendPointOfintable)
-    GetTotal()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetComparison(value AnalyticsComparisonable)()
-    SetPoints(value []AnalyticsTrendPointOfintable)()
-    SetTotal(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetComparison() AnalyticsComparisonable
+	GetErrorPoints() []AnalyticsTrendPointOfintable
+	GetPoints() []AnalyticsTrendPointOfintable
+	GetTotal() *int32
+	GetTotalErrors() *int32
+	SetComparison(value AnalyticsComparisonable)
+	SetErrorPoints(value []AnalyticsTrendPointOfintable)
+	SetPoints(value []AnalyticsTrendPointOfintable)
+	SetTotal(value *int32)
+	SetTotalErrors(value *int32)
 }

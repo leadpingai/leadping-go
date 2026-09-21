@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationActivationState_tenDlcDraft 10DLC draft for this organization activation state.
+// OrganizationActivationState_tenDlcDraft describes 10DLC application draft data used in Leadping API requests and responses.
 type OrganizationActivationState_tenDlcDraft struct {
-    TenDlcApplicationDraft
+	TenDlcApplicationDraft
 }
+
 // NewOrganizationActivationState_tenDlcDraft instantiates a new OrganizationActivationState_tenDlcDraft and sets the default values.
-func NewOrganizationActivationState_tenDlcDraft()(*OrganizationActivationState_tenDlcDraft) {
-    m := &OrganizationActivationState_tenDlcDraft{
-        TenDlcApplicationDraft: *NewTenDlcApplicationDraft(),
-    }
-    return m
+func NewOrganizationActivationState_tenDlcDraft() *OrganizationActivationState_tenDlcDraft {
+	m := &OrganizationActivationState_tenDlcDraft{
+		TenDlcApplicationDraft: *NewTenDlcApplicationDraft(),
+	}
+	return m
 }
+
 // CreateOrganizationActivationState_tenDlcDraftFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationActivationState_tenDlcDraftFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationActivationState_tenDlcDraft(), nil
+func CreateOrganizationActivationState_tenDlcDraftFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationActivationState_tenDlcDraft(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationActivationState_tenDlcDraft) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.TenDlcApplicationDraft.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationActivationState_tenDlcDraft) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.TenDlcApplicationDraft.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationActivationState_tenDlcDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.TenDlcApplicationDraft.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *OrganizationActivationState_tenDlcDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.TenDlcApplicationDraft.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type OrganizationActivationState_tenDlcDraftable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    TenDlcApplicationDraftable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	TenDlcApplicationDraftable
 }

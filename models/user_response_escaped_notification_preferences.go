@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// UserResponse_notificationPreferences notification preferences for this user.
+// UserResponse_notificationPreferences describes user notification preferences data used in Leadping API requests and responses.
 type UserResponse_notificationPreferences struct {
-    UserNotificationPreferences
+	UserNotificationPreferences
 }
+
 // NewUserResponse_notificationPreferences instantiates a new UserResponse_notificationPreferences and sets the default values.
-func NewUserResponse_notificationPreferences()(*UserResponse_notificationPreferences) {
-    m := &UserResponse_notificationPreferences{
-        UserNotificationPreferences: *NewUserNotificationPreferences(),
-    }
-    return m
+func NewUserResponse_notificationPreferences() *UserResponse_notificationPreferences {
+	m := &UserResponse_notificationPreferences{
+		UserNotificationPreferences: *NewUserNotificationPreferences(),
+	}
+	return m
 }
+
 // CreateUserResponse_notificationPreferencesFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUserResponse_notificationPreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUserResponse_notificationPreferences(), nil
+func CreateUserResponse_notificationPreferencesFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUserResponse_notificationPreferences(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UserResponse_notificationPreferences) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.UserNotificationPreferences.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UserResponse_notificationPreferences) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.UserNotificationPreferences.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *UserResponse_notificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.UserNotificationPreferences.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *UserResponse_notificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.UserNotificationPreferences.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type UserResponse_notificationPreferencesable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    UserNotificationPreferencesable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	UserNotificationPreferencesable
 }

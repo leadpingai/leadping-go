@@ -4,256 +4,276 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OutgoingNumberSelectionRequest defines the fields clients can send when working with outgoing number selection.
 type OutgoingNumberSelectionRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Messaging campaign identifier associated with this outgoing number selection request.
-    campaignId *string
-    // Defines the supported Outgoing Number Channel values.
-    channel *OutgoingNumberSelectionRequest_channel
-    // Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
-    conversationId *string
-    // Lead ID used to choose the best outgoing sender number.
-    leadId *string
-    // Recipient phone number that receives the outbound message or call.
-    recipientPhoneNumber *string
-    // Lead source ID used to choose the best outgoing sender number.
-    sourceId *string
-    // Organization ID used to choose the best outgoing sender number.
-    teamId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Messaging campaign identifier associated with this outgoing number selection request.
+	campaignId *string
+	// Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
+	channel *OutgoingNumberSelectionRequest_channel
+	// Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
+	conversationId *string
+	// Lead ID used to choose the best outgoing sender number.
+	leadId *string
+	// Recipient phone number that receives the outbound message or call.
+	recipientPhoneNumber *string
+	// Lead source ID used to choose the best outgoing sender number.
+	sourceId *string
+	// Organization ID used to choose the best outgoing sender number.
+	teamId *string
 }
+
 // NewOutgoingNumberSelectionRequest instantiates a new OutgoingNumberSelectionRequest and sets the default values.
-func NewOutgoingNumberSelectionRequest()(*OutgoingNumberSelectionRequest) {
-    m := &OutgoingNumberSelectionRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOutgoingNumberSelectionRequest() *OutgoingNumberSelectionRequest {
+	m := &OutgoingNumberSelectionRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOutgoingNumberSelectionRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOutgoingNumberSelectionRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOutgoingNumberSelectionRequest(), nil
+func CreateOutgoingNumberSelectionRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOutgoingNumberSelectionRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OutgoingNumberSelectionRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OutgoingNumberSelectionRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this outgoing number selection request.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *OutgoingNumberSelectionRequest) GetCampaignId() *string {
+	return m.campaignId
 }
-// GetChannel gets the channel property value. Defines the supported Outgoing Number Channel values.
+
+// GetChannel gets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
 // returns a *OutgoingNumberSelectionRequest_channel when successful
-func (m *OutgoingNumberSelectionRequest) GetChannel()(*OutgoingNumberSelectionRequest_channel) {
-    return m.channel
+func (m *OutgoingNumberSelectionRequest) GetChannel() *OutgoingNumberSelectionRequest_channel {
+	return m.channel
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetConversationId()(*string) {
-    return m.conversationId
+func (m *OutgoingNumberSelectionRequest) GetConversationId() *string {
+	return m.conversationId
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OutgoingNumberSelectionRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["channel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOutgoingNumberSelectionRequest_channel)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChannel(val.(*OutgoingNumberSelectionRequest_channel))
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["recipientPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecipientPhoneNumber(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["teamId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTeamId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OutgoingNumberSelectionRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["channel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutgoingNumberSelectionRequest_channel)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetChannel(val.(*OutgoingNumberSelectionRequest_channel))
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["recipientPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRecipientPhoneNumber(val)
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["teamId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTeamId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetLeadId gets the leadId property value. Lead ID used to choose the best outgoing sender number.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetLeadId()(*string) {
-    return m.leadId
+func (m *OutgoingNumberSelectionRequest) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetRecipientPhoneNumber gets the recipientPhoneNumber property value. Recipient phone number that receives the outbound message or call.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetRecipientPhoneNumber()(*string) {
-    return m.recipientPhoneNumber
+func (m *OutgoingNumberSelectionRequest) GetRecipientPhoneNumber() *string {
+	return m.recipientPhoneNumber
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used to choose the best outgoing sender number.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetSourceId()(*string) {
-    return m.sourceId
+func (m *OutgoingNumberSelectionRequest) GetSourceId() *string {
+	return m.sourceId
 }
+
 // GetTeamId gets the teamId property value. Organization ID used to choose the best outgoing sender number.
 // returns a *string when successful
-func (m *OutgoingNumberSelectionRequest) GetTeamId()(*string) {
-    return m.teamId
+func (m *OutgoingNumberSelectionRequest) GetTeamId() *string {
+	return m.teamId
 }
+
 // Serialize serializes information the current object
-func (m *OutgoingNumberSelectionRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetChannel() != nil {
-        cast := (*m.GetChannel()).String()
-        err := writer.WriteStringValue("channel", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("recipientPhoneNumber", m.GetRecipientPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("teamId", m.GetTeamId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OutgoingNumberSelectionRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetChannel() != nil {
+		cast := (*m.GetChannel()).String()
+		err := writer.WriteStringValue("channel", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("recipientPhoneNumber", m.GetRecipientPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("teamId", m.GetTeamId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OutgoingNumberSelectionRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OutgoingNumberSelectionRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this outgoing number selection request.
-func (m *OutgoingNumberSelectionRequest) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *OutgoingNumberSelectionRequest) SetCampaignId(value *string) {
+	m.campaignId = value
 }
-// SetChannel sets the channel property value. Defines the supported Outgoing Number Channel values.
-func (m *OutgoingNumberSelectionRequest) SetChannel(value *OutgoingNumberSelectionRequest_channel)() {
-    m.channel = value
+
+// SetChannel sets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
+func (m *OutgoingNumberSelectionRequest) SetChannel(value *OutgoingNumberSelectionRequest_channel) {
+	m.channel = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this outgoing number selection request to the Leadping inbox thread.
-func (m *OutgoingNumberSelectionRequest) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *OutgoingNumberSelectionRequest) SetConversationId(value *string) {
+	m.conversationId = value
 }
+
 // SetLeadId sets the leadId property value. Lead ID used to choose the best outgoing sender number.
-func (m *OutgoingNumberSelectionRequest) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *OutgoingNumberSelectionRequest) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetRecipientPhoneNumber sets the recipientPhoneNumber property value. Recipient phone number that receives the outbound message or call.
-func (m *OutgoingNumberSelectionRequest) SetRecipientPhoneNumber(value *string)() {
-    m.recipientPhoneNumber = value
+func (m *OutgoingNumberSelectionRequest) SetRecipientPhoneNumber(value *string) {
+	m.recipientPhoneNumber = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used to choose the best outgoing sender number.
-func (m *OutgoingNumberSelectionRequest) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *OutgoingNumberSelectionRequest) SetSourceId(value *string) {
+	m.sourceId = value
 }
+
 // SetTeamId sets the teamId property value. Organization ID used to choose the best outgoing sender number.
-func (m *OutgoingNumberSelectionRequest) SetTeamId(value *string)() {
-    m.teamId = value
+func (m *OutgoingNumberSelectionRequest) SetTeamId(value *string) {
+	m.teamId = value
 }
+
 type OutgoingNumberSelectionRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCampaignId()(*string)
-    GetChannel()(*OutgoingNumberSelectionRequest_channel)
-    GetConversationId()(*string)
-    GetLeadId()(*string)
-    GetRecipientPhoneNumber()(*string)
-    GetSourceId()(*string)
-    GetTeamId()(*string)
-    SetCampaignId(value *string)()
-    SetChannel(value *OutgoingNumberSelectionRequest_channel)()
-    SetConversationId(value *string)()
-    SetLeadId(value *string)()
-    SetRecipientPhoneNumber(value *string)()
-    SetSourceId(value *string)()
-    SetTeamId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCampaignId() *string
+	GetChannel() *OutgoingNumberSelectionRequest_channel
+	GetConversationId() *string
+	GetLeadId() *string
+	GetRecipientPhoneNumber() *string
+	GetSourceId() *string
+	GetTeamId() *string
+	SetCampaignId(value *string)
+	SetChannel(value *OutgoingNumberSelectionRequest_channel)
+	SetConversationId(value *string)
+	SetLeadId(value *string)
+	SetRecipientPhoneNumber(value *string)
+	SetSourceId(value *string)
+	SetTeamId(value *string)
 }

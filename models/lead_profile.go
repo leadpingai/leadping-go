@@ -4,432 +4,464 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // LeadProfile public Leadping API schema for lead demographic profile data.
 type LeadProfile struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Lead birth date used for demographic matching and insurance intake workflows.
-    birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-    // Lead credit score range or score supplied by the intake source.
-    creditScore i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Defines the supported Employment Type values.
-    employmentType *LeadProfile_employmentType
-    // Represents a gender classification used for demographic or identification purposes.
-    gender *LeadProfile_gender
-    // Indicates whether the lead reported bankruptcy history.
-    hasBankruptcy *bool
-    // Indicates whether the lead reported a medical condition relevant to qualification.
-    hasMedicalCondition *bool
-    // Lead height provided for qualification workflows that require demographic details.
-    height i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Lead income amount or range supplied for qualification workflows.
-    income i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Indicates whether the lead owns their home.
-    isHomeowner *bool
-    // Defines the supported Marital Status Type values.
-    maritalStatus *LeadProfile_maritalStatus
-    // Number of months the lead has lived at the current residence.
-    monthsAtResidence i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of dependents reported by the lead.
-    numberOfDependents i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Relative weighting used to rank or score this lead demographic profile.
-    weight i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Lead birth date used for demographic matching and insurance intake workflows.
+	birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	// Lead credit score range or score supplied by the intake source.
+	creditScore *int32
+	// Classifies a lead's reported employment arrangement for qualification and demographic workflows.
+	employmentType *LeadProfile_employmentType
+	// Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
+	gender *LeadProfile_gender
+	// Indicates whether the lead reported bankruptcy history.
+	hasBankruptcy *bool
+	// Indicates whether the lead reported a medical condition relevant to qualification.
+	hasMedicalCondition *bool
+	// Lead height provided for qualification workflows that require demographic details.
+	height *int32
+	// Lead income amount or range supplied for qualification workflows.
+	income *int32
+	// Indicates whether the lead owns their home.
+	isHomeowner *bool
+	// Classifies a lead's reported marital status when required by a qualification or integration workflow.
+	maritalStatus *LeadProfile_maritalStatus
+	// Number of months the lead has lived at the current residence.
+	monthsAtResidence *int32
+	// Number of dependents reported by the lead.
+	numberOfDependents *int32
+	// Relative weighting used to rank or score this lead demographic profile.
+	weight *int32
 }
+
 // NewLeadProfile instantiates a new LeadProfile and sets the default values.
-func NewLeadProfile()(*LeadProfile) {
-    m := &LeadProfile{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadProfile() *LeadProfile {
+	m := &LeadProfile{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadProfileFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadProfileFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadProfile(), nil
+func CreateLeadProfileFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadProfile(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadProfile) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadProfile) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBirthDate gets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
 // returns a *DateOnly when successful
-func (m *LeadProfile) GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
-    return m.birthDate
+func (m *LeadProfile) GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly {
+	return m.birthDate
 }
+
 // GetCreditScore gets the creditScore property value. Lead credit score range or score supplied by the intake source.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetCreditScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.creditScore
+// returns a *int32 when successful
+func (m *LeadProfile) GetCreditScore() *int32 {
+	return m.creditScore
 }
-// GetEmploymentType gets the employmentType property value. Defines the supported Employment Type values.
+
+// GetEmploymentType gets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
 // returns a *LeadProfile_employmentType when successful
-func (m *LeadProfile) GetEmploymentType()(*LeadProfile_employmentType) {
-    return m.employmentType
+func (m *LeadProfile) GetEmploymentType() *LeadProfile_employmentType {
+	return m.employmentType
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadProfile) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["birthDate"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetDateOnlyValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBirthDate(val)
-        }
-        return nil
-    }
-    res["creditScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreditScore(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["employmentType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadProfile_employmentType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmploymentType(val.(*LeadProfile_employmentType))
-        }
-        return nil
-    }
-    res["gender"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadProfile_gender)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetGender(val.(*LeadProfile_gender))
-        }
-        return nil
-    }
-    res["hasBankruptcy"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasBankruptcy(val)
-        }
-        return nil
-    }
-    res["hasMedicalCondition"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasMedicalCondition(val)
-        }
-        return nil
-    }
-    res["height"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHeight(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["income"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIncome(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["isHomeowner"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsHomeowner(val)
-        }
-        return nil
-    }
-    res["maritalStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadProfile_maritalStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMaritalStatus(val.(*LeadProfile_maritalStatus))
-        }
-        return nil
-    }
-    res["monthsAtResidence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMonthsAtResidence(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["numberOfDependents"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumberOfDependents(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["weight"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWeight(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadProfile) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["birthDate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetDateOnlyValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBirthDate(val)
+		}
+		return nil
+	}
+	res["creditScore"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreditScore(val)
+		}
+		return nil
+	}
+	res["employmentType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadProfile_employmentType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmploymentType(val.(*LeadProfile_employmentType))
+		}
+		return nil
+	}
+	res["gender"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadProfile_gender)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetGender(val.(*LeadProfile_gender))
+		}
+		return nil
+	}
+	res["hasBankruptcy"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasBankruptcy(val)
+		}
+		return nil
+	}
+	res["hasMedicalCondition"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasMedicalCondition(val)
+		}
+		return nil
+	}
+	res["height"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHeight(val)
+		}
+		return nil
+	}
+	res["income"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncome(val)
+		}
+		return nil
+	}
+	res["isHomeowner"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsHomeowner(val)
+		}
+		return nil
+	}
+	res["maritalStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadProfile_maritalStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMaritalStatus(val.(*LeadProfile_maritalStatus))
+		}
+		return nil
+	}
+	res["monthsAtResidence"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMonthsAtResidence(val)
+		}
+		return nil
+	}
+	res["numberOfDependents"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumberOfDependents(val)
+		}
+		return nil
+	}
+	res["weight"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWeight(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetGender gets the gender property value. Represents a gender classification used for demographic or identification purposes.
+
+// GetGender gets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
 // returns a *LeadProfile_gender when successful
-func (m *LeadProfile) GetGender()(*LeadProfile_gender) {
-    return m.gender
+func (m *LeadProfile) GetGender() *LeadProfile_gender {
+	return m.gender
 }
+
 // GetHasBankruptcy gets the hasBankruptcy property value. Indicates whether the lead reported bankruptcy history.
 // returns a *bool when successful
-func (m *LeadProfile) GetHasBankruptcy()(*bool) {
-    return m.hasBankruptcy
+func (m *LeadProfile) GetHasBankruptcy() *bool {
+	return m.hasBankruptcy
 }
+
 // GetHasMedicalCondition gets the hasMedicalCondition property value. Indicates whether the lead reported a medical condition relevant to qualification.
 // returns a *bool when successful
-func (m *LeadProfile) GetHasMedicalCondition()(*bool) {
-    return m.hasMedicalCondition
+func (m *LeadProfile) GetHasMedicalCondition() *bool {
+	return m.hasMedicalCondition
 }
+
 // GetHeight gets the height property value. Lead height provided for qualification workflows that require demographic details.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetHeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.height
+// returns a *int32 when successful
+func (m *LeadProfile) GetHeight() *int32 {
+	return m.height
 }
+
 // GetIncome gets the income property value. Lead income amount or range supplied for qualification workflows.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetIncome()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.income
+// returns a *int32 when successful
+func (m *LeadProfile) GetIncome() *int32 {
+	return m.income
 }
+
 // GetIsHomeowner gets the isHomeowner property value. Indicates whether the lead owns their home.
 // returns a *bool when successful
-func (m *LeadProfile) GetIsHomeowner()(*bool) {
-    return m.isHomeowner
+func (m *LeadProfile) GetIsHomeowner() *bool {
+	return m.isHomeowner
 }
-// GetMaritalStatus gets the maritalStatus property value. Defines the supported Marital Status Type values.
+
+// GetMaritalStatus gets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
 // returns a *LeadProfile_maritalStatus when successful
-func (m *LeadProfile) GetMaritalStatus()(*LeadProfile_maritalStatus) {
-    return m.maritalStatus
+func (m *LeadProfile) GetMaritalStatus() *LeadProfile_maritalStatus {
+	return m.maritalStatus
 }
+
 // GetMonthsAtResidence gets the monthsAtResidence property value. Number of months the lead has lived at the current residence.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetMonthsAtResidence()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.monthsAtResidence
+// returns a *int32 when successful
+func (m *LeadProfile) GetMonthsAtResidence() *int32 {
+	return m.monthsAtResidence
 }
+
 // GetNumberOfDependents gets the numberOfDependents property value. Number of dependents reported by the lead.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetNumberOfDependents()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.numberOfDependents
+// returns a *int32 when successful
+func (m *LeadProfile) GetNumberOfDependents() *int32 {
+	return m.numberOfDependents
 }
+
 // GetWeight gets the weight property value. Relative weighting used to rank or score this lead demographic profile.
-// returns a UntypedNodeable when successful
-func (m *LeadProfile) GetWeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.weight
+// returns a *int32 when successful
+func (m *LeadProfile) GetWeight() *int32 {
+	return m.weight
 }
+
 // Serialize serializes information the current object
-func (m *LeadProfile) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteDateOnlyValue("birthDate", m.GetBirthDate())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("creditScore", m.GetCreditScore())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetEmploymentType() != nil {
-        cast := (*m.GetEmploymentType()).String()
-        err := writer.WriteStringValue("employmentType", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetGender() != nil {
-        cast := (*m.GetGender()).String()
-        err := writer.WriteStringValue("gender", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasBankruptcy", m.GetHasBankruptcy())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("hasMedicalCondition", m.GetHasMedicalCondition())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("height", m.GetHeight())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("income", m.GetIncome())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isHomeowner", m.GetIsHomeowner())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMaritalStatus() != nil {
-        cast := (*m.GetMaritalStatus()).String()
-        err := writer.WriteStringValue("maritalStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("monthsAtResidence", m.GetMonthsAtResidence())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("numberOfDependents", m.GetNumberOfDependents())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("weight", m.GetWeight())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadProfile) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteDateOnlyValue("birthDate", m.GetBirthDate())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("creditScore", m.GetCreditScore())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetEmploymentType() != nil {
+		cast := (*m.GetEmploymentType()).String()
+		err := writer.WriteStringValue("employmentType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetGender() != nil {
+		cast := (*m.GetGender()).String()
+		err := writer.WriteStringValue("gender", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasBankruptcy", m.GetHasBankruptcy())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasMedicalCondition", m.GetHasMedicalCondition())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("height", m.GetHeight())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("income", m.GetIncome())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isHomeowner", m.GetIsHomeowner())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMaritalStatus() != nil {
+		cast := (*m.GetMaritalStatus()).String()
+		err := writer.WriteStringValue("maritalStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("monthsAtResidence", m.GetMonthsAtResidence())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("numberOfDependents", m.GetNumberOfDependents())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("weight", m.GetWeight())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadProfile) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadProfile) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBirthDate sets the birthDate property value. Lead birth date used for demographic matching and insurance intake workflows.
-func (m *LeadProfile) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)() {
-    m.birthDate = value
+func (m *LeadProfile) SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
+	m.birthDate = value
 }
+
 // SetCreditScore sets the creditScore property value. Lead credit score range or score supplied by the intake source.
-func (m *LeadProfile) SetCreditScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.creditScore = value
+func (m *LeadProfile) SetCreditScore(value *int32) {
+	m.creditScore = value
 }
-// SetEmploymentType sets the employmentType property value. Defines the supported Employment Type values.
-func (m *LeadProfile) SetEmploymentType(value *LeadProfile_employmentType)() {
-    m.employmentType = value
+
+// SetEmploymentType sets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
+func (m *LeadProfile) SetEmploymentType(value *LeadProfile_employmentType) {
+	m.employmentType = value
 }
-// SetGender sets the gender property value. Represents a gender classification used for demographic or identification purposes.
-func (m *LeadProfile) SetGender(value *LeadProfile_gender)() {
-    m.gender = value
+
+// SetGender sets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
+func (m *LeadProfile) SetGender(value *LeadProfile_gender) {
+	m.gender = value
 }
+
 // SetHasBankruptcy sets the hasBankruptcy property value. Indicates whether the lead reported bankruptcy history.
-func (m *LeadProfile) SetHasBankruptcy(value *bool)() {
-    m.hasBankruptcy = value
+func (m *LeadProfile) SetHasBankruptcy(value *bool) {
+	m.hasBankruptcy = value
 }
+
 // SetHasMedicalCondition sets the hasMedicalCondition property value. Indicates whether the lead reported a medical condition relevant to qualification.
-func (m *LeadProfile) SetHasMedicalCondition(value *bool)() {
-    m.hasMedicalCondition = value
+func (m *LeadProfile) SetHasMedicalCondition(value *bool) {
+	m.hasMedicalCondition = value
 }
+
 // SetHeight sets the height property value. Lead height provided for qualification workflows that require demographic details.
-func (m *LeadProfile) SetHeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.height = value
+func (m *LeadProfile) SetHeight(value *int32) {
+	m.height = value
 }
+
 // SetIncome sets the income property value. Lead income amount or range supplied for qualification workflows.
-func (m *LeadProfile) SetIncome(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.income = value
+func (m *LeadProfile) SetIncome(value *int32) {
+	m.income = value
 }
+
 // SetIsHomeowner sets the isHomeowner property value. Indicates whether the lead owns their home.
-func (m *LeadProfile) SetIsHomeowner(value *bool)() {
-    m.isHomeowner = value
+func (m *LeadProfile) SetIsHomeowner(value *bool) {
+	m.isHomeowner = value
 }
-// SetMaritalStatus sets the maritalStatus property value. Defines the supported Marital Status Type values.
-func (m *LeadProfile) SetMaritalStatus(value *LeadProfile_maritalStatus)() {
-    m.maritalStatus = value
+
+// SetMaritalStatus sets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
+func (m *LeadProfile) SetMaritalStatus(value *LeadProfile_maritalStatus) {
+	m.maritalStatus = value
 }
+
 // SetMonthsAtResidence sets the monthsAtResidence property value. Number of months the lead has lived at the current residence.
-func (m *LeadProfile) SetMonthsAtResidence(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.monthsAtResidence = value
+func (m *LeadProfile) SetMonthsAtResidence(value *int32) {
+	m.monthsAtResidence = value
 }
+
 // SetNumberOfDependents sets the numberOfDependents property value. Number of dependents reported by the lead.
-func (m *LeadProfile) SetNumberOfDependents(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.numberOfDependents = value
+func (m *LeadProfile) SetNumberOfDependents(value *int32) {
+	m.numberOfDependents = value
 }
+
 // SetWeight sets the weight property value. Relative weighting used to rank or score this lead demographic profile.
-func (m *LeadProfile) SetWeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.weight = value
+func (m *LeadProfile) SetWeight(value *int32) {
+	m.weight = value
 }
+
 type LeadProfileable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBirthDate()(*i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
-    GetCreditScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetEmploymentType()(*LeadProfile_employmentType)
-    GetGender()(*LeadProfile_gender)
-    GetHasBankruptcy()(*bool)
-    GetHasMedicalCondition()(*bool)
-    GetHeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetIncome()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetIsHomeowner()(*bool)
-    GetMaritalStatus()(*LeadProfile_maritalStatus)
-    GetMonthsAtResidence()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetNumberOfDependents()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetWeight()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)()
-    SetCreditScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetEmploymentType(value *LeadProfile_employmentType)()
-    SetGender(value *LeadProfile_gender)()
-    SetHasBankruptcy(value *bool)()
-    SetHasMedicalCondition(value *bool)()
-    SetHeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetIncome(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetIsHomeowner(value *bool)()
-    SetMaritalStatus(value *LeadProfile_maritalStatus)()
-    SetMonthsAtResidence(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetNumberOfDependents(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetWeight(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	GetCreditScore() *int32
+	GetEmploymentType() *LeadProfile_employmentType
+	GetGender() *LeadProfile_gender
+	GetHasBankruptcy() *bool
+	GetHasMedicalCondition() *bool
+	GetHeight() *int32
+	GetIncome() *int32
+	GetIsHomeowner() *bool
+	GetMaritalStatus() *LeadProfile_maritalStatus
+	GetMonthsAtResidence() *int32
+	GetNumberOfDependents() *int32
+	GetWeight() *int32
+	SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
+	SetCreditScore(value *int32)
+	SetEmploymentType(value *LeadProfile_employmentType)
+	SetGender(value *LeadProfile_gender)
+	SetHasBankruptcy(value *bool)
+	SetHasMedicalCondition(value *bool)
+	SetHeight(value *int32)
+	SetIncome(value *int32)
+	SetIsHomeowner(value *bool)
+	SetMaritalStatus(value *LeadProfile_maritalStatus)
+	SetMonthsAtResidence(value *int32)
+	SetNumberOfDependents(value *int32)
+	SetWeight(value *int32)
 }

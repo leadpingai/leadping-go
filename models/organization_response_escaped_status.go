@@ -2,39 +2,43 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Organization Status values.
+
+// Describes an organization's account lifecycle and whether it can actively use Leadping services.
 type OrganizationResponse_status int
 
 const (
-    SETTINGUP_ORGANIZATIONRESPONSE_STATUS OrganizationResponse_status = iota
-    SETUPCOMPLETED_ORGANIZATIONRESPONSE_STATUS
-    ACTIVE_ORGANIZATIONRESPONSE_STATUS
+	SETTINGUP_ORGANIZATIONRESPONSE_STATUS OrganizationResponse_status = iota
+	SETUPCOMPLETED_ORGANIZATIONRESPONSE_STATUS
+	ACTIVE_ORGANIZATIONRESPONSE_STATUS
 )
 
 func (i OrganizationResponse_status) String() string {
-    return []string{"SettingUp", "SetupCompleted", "Active"}[i]
+	return []string{"SettingUp", "SetupCompleted", "Active"}[i]
 }
+
 func ParseOrganizationResponse_status(v string) (any, error) {
-    result := SETTINGUP_ORGANIZATIONRESPONSE_STATUS
-    switch v {
-        case "SettingUp":
-            result = SETTINGUP_ORGANIZATIONRESPONSE_STATUS
-        case "SetupCompleted":
-            result = SETUPCOMPLETED_ORGANIZATIONRESPONSE_STATUS
-        case "Active":
-            result = ACTIVE_ORGANIZATIONRESPONSE_STATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := SETTINGUP_ORGANIZATIONRESPONSE_STATUS
+	switch v {
+	case "SettingUp":
+		result = SETTINGUP_ORGANIZATIONRESPONSE_STATUS
+	case "SetupCompleted":
+		result = SETUPCOMPLETED_ORGANIZATIONRESPONSE_STATUS
+	case "Active":
+		result = ACTIVE_ORGANIZATIONRESPONSE_STATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOrganizationResponse_status(values []OrganizationResponse_status) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OrganizationResponse_status) isMultiValue() bool {
-    return false
+	return false
 }

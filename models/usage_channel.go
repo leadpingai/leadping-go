@@ -2,72 +2,76 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Usage Channel values.
+
+// Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 type UsageChannel int
 
 const (
-    LEAD_USAGECHANNEL UsageChannel = iota
-    SMS_USAGECHANNEL
-    MMS_USAGECHANNEL
-    EMAIL_USAGECHANNEL
-    VOICE_USAGECHANNEL
-    PHONE_NUMBER_USAGECHANNEL
-    WARMUP_USAGECHANNEL
-    WEBSITE_USAGECHANNEL
-    OPENAI_USAGECHANNEL
-    DOMAIN_USAGECHANNEL
-    ONEZERODLC_USAGECHANNEL
-    PAYMENT_USAGECHANNEL
-    CONNECTION_USAGECHANNEL
-    AUTOMATION_USAGECHANNEL
+	LEAD_USAGECHANNEL UsageChannel = iota
+	SMS_USAGECHANNEL
+	MMS_USAGECHANNEL
+	EMAIL_USAGECHANNEL
+	VOICE_USAGECHANNEL
+	PHONE_NUMBER_USAGECHANNEL
+	WARMUP_USAGECHANNEL
+	WEBSITE_USAGECHANNEL
+	OPENAI_USAGECHANNEL
+	DOMAIN_USAGECHANNEL
+	ONEZERODLC_USAGECHANNEL
+	PAYMENT_USAGECHANNEL
+	CONNECTION_USAGECHANNEL
+	AUTOMATION_USAGECHANNEL
 )
 
 func (i UsageChannel) String() string {
-    return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "payment", "connection", "automation"}[i]
+	return []string{"lead", "sms", "mms", "email", "voice", "phone_number", "warmup", "website", "openai", "domain", "10dlc", "payment", "connection", "automation"}[i]
 }
+
 func ParseUsageChannel(v string) (any, error) {
-    result := LEAD_USAGECHANNEL
-    switch v {
-        case "lead":
-            result = LEAD_USAGECHANNEL
-        case "sms":
-            result = SMS_USAGECHANNEL
-        case "mms":
-            result = MMS_USAGECHANNEL
-        case "email":
-            result = EMAIL_USAGECHANNEL
-        case "voice":
-            result = VOICE_USAGECHANNEL
-        case "phone_number":
-            result = PHONE_NUMBER_USAGECHANNEL
-        case "warmup":
-            result = WARMUP_USAGECHANNEL
-        case "website":
-            result = WEBSITE_USAGECHANNEL
-        case "openai":
-            result = OPENAI_USAGECHANNEL
-        case "domain":
-            result = DOMAIN_USAGECHANNEL
-        case "10dlc":
-            result = ONEZERODLC_USAGECHANNEL
-        case "payment":
-            result = PAYMENT_USAGECHANNEL
-        case "connection":
-            result = CONNECTION_USAGECHANNEL
-        case "automation":
-            result = AUTOMATION_USAGECHANNEL
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := LEAD_USAGECHANNEL
+	switch v {
+	case "lead":
+		result = LEAD_USAGECHANNEL
+	case "sms":
+		result = SMS_USAGECHANNEL
+	case "mms":
+		result = MMS_USAGECHANNEL
+	case "email":
+		result = EMAIL_USAGECHANNEL
+	case "voice":
+		result = VOICE_USAGECHANNEL
+	case "phone_number":
+		result = PHONE_NUMBER_USAGECHANNEL
+	case "warmup":
+		result = WARMUP_USAGECHANNEL
+	case "website":
+		result = WEBSITE_USAGECHANNEL
+	case "openai":
+		result = OPENAI_USAGECHANNEL
+	case "domain":
+		result = DOMAIN_USAGECHANNEL
+	case "10dlc":
+		result = ONEZERODLC_USAGECHANNEL
+	case "payment":
+		result = PAYMENT_USAGECHANNEL
+	case "connection":
+		result = CONNECTION_USAGECHANNEL
+	case "automation":
+		result = AUTOMATION_USAGECHANNEL
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeUsageChannel(values []UsageChannel) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i UsageChannel) isMultiValue() bool {
-    return false
+	return false
 }

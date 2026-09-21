@@ -4,343 +4,369 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SuppressionCheckResult reports whether Leadping may contact a recipient and identifies the active suppression when contact is blocked.
 type SuppressionCheckResult struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Whether outreach to the recipient is allowed for the requested channel.
-    allowed *bool
-    // Communication channel evaluated by the suppression check.
-    channel *string
-    // Customer-safe explanation of why contact is blocked or allowed.
-    customerReason *string
-    // Email address used for matching, normalized for comparison.
-    normalizedEmail *string
-    // Phone number used for matching, normalized to a consistent format.
-    normalizedPhoneNumber *string
-    // Identifier of the organization whose suppression list was checked.
-    organizationId *string
-    // Provider or customer identifier used to match the recipient.
-    recipientIdentifier *string
-    // The source value on the active suppression entry that blocked this check.
-    source *string
-    // The date and time the blocking suppression became active.
-    suppressedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Identifier of the active suppression that blocked contact, when one matched.
-    suppressionEntryId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Whether outreach to the recipient is allowed for the requested channel.
+	allowed *bool
+	// Communication channel evaluated by the suppression check.
+	channel *string
+	// Customer-safe explanation of why contact is blocked or allowed.
+	customerReason *string
+	// Email address used for matching, normalized for comparison.
+	normalizedEmail *string
+	// Phone number used for matching, normalized to a consistent format.
+	normalizedPhoneNumber *string
+	// Identifier of the organization whose suppression list was checked.
+	organizationId *string
+	// Provider or customer identifier used to match the recipient.
+	recipientIdentifier *string
+	// The source value on the active suppression entry that blocked this check.
+	source *string
+	// The date and time the blocking suppression became active.
+	suppressedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Identifier of the active suppression that blocked contact, when one matched.
+	suppressionEntryId *string
 }
+
 // NewSuppressionCheckResult instantiates a new SuppressionCheckResult and sets the default values.
-func NewSuppressionCheckResult()(*SuppressionCheckResult) {
-    m := &SuppressionCheckResult{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSuppressionCheckResult() *SuppressionCheckResult {
+	m := &SuppressionCheckResult{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSuppressionCheckResultFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSuppressionCheckResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSuppressionCheckResult(), nil
+func CreateSuppressionCheckResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSuppressionCheckResult(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SuppressionCheckResult) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SuppressionCheckResult) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAllowed gets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
 // returns a *bool when successful
-func (m *SuppressionCheckResult) GetAllowed()(*bool) {
-    return m.allowed
+func (m *SuppressionCheckResult) GetAllowed() *bool {
+	return m.allowed
 }
+
 // GetChannel gets the channel property value. Communication channel evaluated by the suppression check.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetChannel()(*string) {
-    return m.channel
+func (m *SuppressionCheckResult) GetChannel() *string {
+	return m.channel
 }
+
 // GetCustomerReason gets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetCustomerReason()(*string) {
-    return m.customerReason
+func (m *SuppressionCheckResult) GetCustomerReason() *string {
+	return m.customerReason
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SuppressionCheckResult) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["allowed"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAllowed(val)
-        }
-        return nil
-    }
-    res["channel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChannel(val)
-        }
-        return nil
-    }
-    res["customerReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCustomerReason(val)
-        }
-        return nil
-    }
-    res["normalizedEmail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNormalizedEmail(val)
-        }
-        return nil
-    }
-    res["normalizedPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNormalizedPhoneNumber(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["recipientIdentifier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecipientIdentifier(val)
-        }
-        return nil
-    }
-    res["source"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSource(val)
-        }
-        return nil
-    }
-    res["suppressedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSuppressedAt(val)
-        }
-        return nil
-    }
-    res["suppressionEntryId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSuppressionEntryId(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SuppressionCheckResult) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["allowed"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAllowed(val)
+		}
+		return nil
+	}
+	res["channel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetChannel(val)
+		}
+		return nil
+	}
+	res["customerReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomerReason(val)
+		}
+		return nil
+	}
+	res["normalizedEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNormalizedEmail(val)
+		}
+		return nil
+	}
+	res["normalizedPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNormalizedPhoneNumber(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["recipientIdentifier"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRecipientIdentifier(val)
+		}
+		return nil
+	}
+	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSource(val)
+		}
+		return nil
+	}
+	res["suppressedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSuppressedAt(val)
+		}
+		return nil
+	}
+	res["suppressionEntryId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSuppressionEntryId(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetNormalizedEmail gets the normalizedEmail property value. Email address used for matching, normalized for comparison.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetNormalizedEmail()(*string) {
-    return m.normalizedEmail
+func (m *SuppressionCheckResult) GetNormalizedEmail() *string {
+	return m.normalizedEmail
 }
+
 // GetNormalizedPhoneNumber gets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetNormalizedPhoneNumber()(*string) {
-    return m.normalizedPhoneNumber
+func (m *SuppressionCheckResult) GetNormalizedPhoneNumber() *string {
+	return m.normalizedPhoneNumber
 }
+
 // GetOrganizationId gets the organizationId property value. Identifier of the organization whose suppression list was checked.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *SuppressionCheckResult) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetRecipientIdentifier gets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetRecipientIdentifier()(*string) {
-    return m.recipientIdentifier
+func (m *SuppressionCheckResult) GetRecipientIdentifier() *string {
+	return m.recipientIdentifier
 }
+
 // GetSource gets the source property value. The source value on the active suppression entry that blocked this check.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetSource()(*string) {
-    return m.source
+func (m *SuppressionCheckResult) GetSource() *string {
+	return m.source
 }
+
 // GetSuppressedAt gets the suppressedAt property value. The date and time the blocking suppression became active.
 // returns a *Time when successful
-func (m *SuppressionCheckResult) GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.suppressedAt
+func (m *SuppressionCheckResult) GetSuppressedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.suppressedAt
 }
+
 // GetSuppressionEntryId gets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
 // returns a *string when successful
-func (m *SuppressionCheckResult) GetSuppressionEntryId()(*string) {
-    return m.suppressionEntryId
+func (m *SuppressionCheckResult) GetSuppressionEntryId() *string {
+	return m.suppressionEntryId
 }
+
 // Serialize serializes information the current object
-func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("allowed", m.GetAllowed())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("channel", m.GetChannel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("customerReason", m.GetCustomerReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("normalizedEmail", m.GetNormalizedEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("normalizedPhoneNumber", m.GetNormalizedPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("recipientIdentifier", m.GetRecipientIdentifier())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("source", m.GetSource())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("suppressedAt", m.GetSuppressedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("suppressionEntryId", m.GetSuppressionEntryId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SuppressionCheckResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("allowed", m.GetAllowed())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("channel", m.GetChannel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("customerReason", m.GetCustomerReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("normalizedEmail", m.GetNormalizedEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("normalizedPhoneNumber", m.GetNormalizedPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("recipientIdentifier", m.GetRecipientIdentifier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("source", m.GetSource())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("suppressedAt", m.GetSuppressedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("suppressionEntryId", m.GetSuppressionEntryId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SuppressionCheckResult) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SuppressionCheckResult) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAllowed sets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
-func (m *SuppressionCheckResult) SetAllowed(value *bool)() {
-    m.allowed = value
+func (m *SuppressionCheckResult) SetAllowed(value *bool) {
+	m.allowed = value
 }
+
 // SetChannel sets the channel property value. Communication channel evaluated by the suppression check.
-func (m *SuppressionCheckResult) SetChannel(value *string)() {
-    m.channel = value
+func (m *SuppressionCheckResult) SetChannel(value *string) {
+	m.channel = value
 }
+
 // SetCustomerReason sets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
-func (m *SuppressionCheckResult) SetCustomerReason(value *string)() {
-    m.customerReason = value
+func (m *SuppressionCheckResult) SetCustomerReason(value *string) {
+	m.customerReason = value
 }
+
 // SetNormalizedEmail sets the normalizedEmail property value. Email address used for matching, normalized for comparison.
-func (m *SuppressionCheckResult) SetNormalizedEmail(value *string)() {
-    m.normalizedEmail = value
+func (m *SuppressionCheckResult) SetNormalizedEmail(value *string) {
+	m.normalizedEmail = value
 }
+
 // SetNormalizedPhoneNumber sets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
-func (m *SuppressionCheckResult) SetNormalizedPhoneNumber(value *string)() {
-    m.normalizedPhoneNumber = value
+func (m *SuppressionCheckResult) SetNormalizedPhoneNumber(value *string) {
+	m.normalizedPhoneNumber = value
 }
+
 // SetOrganizationId sets the organizationId property value. Identifier of the organization whose suppression list was checked.
-func (m *SuppressionCheckResult) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *SuppressionCheckResult) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetRecipientIdentifier sets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
-func (m *SuppressionCheckResult) SetRecipientIdentifier(value *string)() {
-    m.recipientIdentifier = value
+func (m *SuppressionCheckResult) SetRecipientIdentifier(value *string) {
+	m.recipientIdentifier = value
 }
+
 // SetSource sets the source property value. The source value on the active suppression entry that blocked this check.
-func (m *SuppressionCheckResult) SetSource(value *string)() {
-    m.source = value
+func (m *SuppressionCheckResult) SetSource(value *string) {
+	m.source = value
 }
+
 // SetSuppressedAt sets the suppressedAt property value. The date and time the blocking suppression became active.
-func (m *SuppressionCheckResult) SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.suppressedAt = value
+func (m *SuppressionCheckResult) SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.suppressedAt = value
 }
+
 // SetSuppressionEntryId sets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
-func (m *SuppressionCheckResult) SetSuppressionEntryId(value *string)() {
-    m.suppressionEntryId = value
+func (m *SuppressionCheckResult) SetSuppressionEntryId(value *string) {
+	m.suppressionEntryId = value
 }
+
 type SuppressionCheckResultable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAllowed()(*bool)
-    GetChannel()(*string)
-    GetCustomerReason()(*string)
-    GetNormalizedEmail()(*string)
-    GetNormalizedPhoneNumber()(*string)
-    GetOrganizationId()(*string)
-    GetRecipientIdentifier()(*string)
-    GetSource()(*string)
-    GetSuppressedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSuppressionEntryId()(*string)
-    SetAllowed(value *bool)()
-    SetChannel(value *string)()
-    SetCustomerReason(value *string)()
-    SetNormalizedEmail(value *string)()
-    SetNormalizedPhoneNumber(value *string)()
-    SetOrganizationId(value *string)()
-    SetRecipientIdentifier(value *string)()
-    SetSource(value *string)()
-    SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSuppressionEntryId(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAllowed() *bool
+	GetChannel() *string
+	GetCustomerReason() *string
+	GetNormalizedEmail() *string
+	GetNormalizedPhoneNumber() *string
+	GetOrganizationId() *string
+	GetRecipientIdentifier() *string
+	GetSource() *string
+	GetSuppressedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSuppressionEntryId() *string
+	SetAllowed(value *bool)
+	SetChannel(value *string)
+	SetCustomerReason(value *string)
+	SetNormalizedEmail(value *string)
+	SetNormalizedPhoneNumber(value *string)
+	SetOrganizationId(value *string)
+	SetRecipientIdentifier(value *string)
+	SetSource(value *string)
+	SetSuppressedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSuppressionEntryId(value *string)
 }

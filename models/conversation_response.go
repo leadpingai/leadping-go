@@ -4,663 +4,742 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // ConversationResponse describes conversation data returned by Leadping.
 type ConversationResponse struct {
-    // Phone number ID currently active for outbound delivery.
-    activeOutboundPhoneNumberId *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when this record was archived.
-    archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines why a lead was removed from the active working pipeline.
-    archiveReason *int32
-    // Optional profile image URL explicitly associated with the lead.
-    avatarUrl *string
-    // Current lead status change summary that describes the lead outcome.
-    currentLeadStatus ConversationResponse_currentLeadStatusable
-    // Email address used to resolve the lead's avatar when available.
-    email *string
-    // First name of the lead, user, or contact represented by this conversation response.
-    firstName *string
-    // Unique Leadping identifier for this conversation response.
-    id *string
-    // Indicates whether the Leadping conversation has been archived.
-    isArchived *bool
-    // Indicates whether the current user has unread activity in the conversation.
-    isUnread *bool
-    // UTC timestamp when the most recent conversation event occurred.
-    lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates that the most recent conversation activity is an internal note.
-    lastEventIsInternalNote *bool
-    // Last name of the lead, user, or contact represented by this conversation response.
-    lastName *string
-    // Most recent message preview shown for the conversation.
-    lastSnippet *string
-    // Lead ID associated with this inbox conversation.
-    leadId *string
-    // Lead's phone number used for conversation matching and outreach.
-    leadPhoneNumber *string
-    // Recommended next step to move this conversation response forward.
-    nextStep *string
-    // Phone number ID manually chosen to override automatic outbound selection.
-    outboundPhoneNumberOverrideId *string
-    // Phone number used by this conversation response for calls, SMS, lookup, or routing.
-    phoneNumber ConversationResponse_phoneNumberable
-    // Defines the customer-facing operational status for an inbox conversation.
-    status *ConversationResponse_status
-    // Human-readable reason explaining the current status of this conversation response.
-    statusReason *string
+	// Phone number ID currently active for outbound delivery.
+	activeOutboundPhoneNumberId *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when this record was archived.
+	archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Defines why a lead was removed from the active working pipeline.
+	archiveReason *int32
+	// Optional profile image URL explicitly associated with the lead.
+	avatarUrl *string
+	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
+	currentLeadStatus ConversationResponse_currentLeadStatusable
+	// Email address used to resolve the lead's avatar when available.
+	email *string
+	// First name of the lead, user, or contact represented by this conversation response.
+	firstName *string
+	// Unique Leadping identifier for this conversation response.
+	id *string
+	// Indicates whether the Leadping conversation has been archived.
+	isArchived *bool
+	// The isDemo property
+	isDemo *bool
+	// Indicates whether the current user has unread activity in the conversation.
+	isUnread *bool
+	// UTC timestamp when the most recent conversation event occurred.
+	lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates that the most recent conversation activity is an internal note.
+	lastEventIsInternalNote *bool
+	// Last name of the lead, user, or contact represented by this conversation response.
+	lastName *string
+	// Most recent message preview shown for the conversation.
+	lastSnippet *string
+	// Lead ID associated with this inbox conversation.
+	leadId *string
+	// Lead's phone number used for conversation matching and outreach.
+	leadPhoneNumber *string
+	// Recommended next step to move this conversation response forward.
+	nextStep *string
+	// Phone number ID manually chosen to override automatic outbound selection.
+	outboundPhoneNumberOverrideId *string
+	// Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
+	phoneNumber ConversationResponse_phoneNumberable
+	// Defines the customer-facing operational status for an inbox conversation.
+	status *ConversationResponse_status
+	// Human-readable reason explaining the current status of this conversation response.
+	statusReason *string
 }
+
 // NewConversationResponse instantiates a new ConversationResponse and sets the default values.
-func NewConversationResponse()(*ConversationResponse) {
-    m := &ConversationResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewConversationResponse() *ConversationResponse {
+	m := &ConversationResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateConversationResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateConversationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewConversationResponse(), nil
+func CreateConversationResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewConversationResponse(), nil
 }
+
 // GetActiveOutboundPhoneNumberId gets the activeOutboundPhoneNumberId property value. Phone number ID currently active for outbound delivery.
 // returns a *string when successful
-func (m *ConversationResponse) GetActiveOutboundPhoneNumberId()(*string) {
-    return m.activeOutboundPhoneNumberId
+func (m *ConversationResponse) GetActiveOutboundPhoneNumberId() *string {
+	return m.activeOutboundPhoneNumberId
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ConversationResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *ConversationResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetArchivedAt gets the archivedAt property value. UTC timestamp when this record was archived.
 // returns a *Time when successful
-func (m *ConversationResponse) GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.archivedAt
+func (m *ConversationResponse) GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.archivedAt
 }
+
 // GetArchiveReason gets the archiveReason property value. Defines why a lead was removed from the active working pipeline.
 // returns a *int32 when successful
-func (m *ConversationResponse) GetArchiveReason()(*int32) {
-    return m.archiveReason
+func (m *ConversationResponse) GetArchiveReason() *int32 {
+	return m.archiveReason
 }
+
 // GetAvatarUrl gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
 // returns a *string when successful
-func (m *ConversationResponse) GetAvatarUrl()(*string) {
-    return m.avatarUrl
+func (m *ConversationResponse) GetAvatarUrl() *string {
+	return m.avatarUrl
 }
-// GetCurrentLeadStatus gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+
+// GetCurrentLeadStatus gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 // returns a ConversationResponse_currentLeadStatusable when successful
-func (m *ConversationResponse) GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable) {
-    return m.currentLeadStatus
+func (m *ConversationResponse) GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable {
+	return m.currentLeadStatus
 }
+
 // GetEmail gets the email property value. Email address used to resolve the lead's avatar when available.
 // returns a *string when successful
-func (m *ConversationResponse) GetEmail()(*string) {
-    return m.email
+func (m *ConversationResponse) GetEmail() *string {
+	return m.email
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ConversationResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["activeOutboundPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActiveOutboundPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["archivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArchivedAt(val)
-        }
-        return nil
-    }
-    res["archiveReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetArchiveReason(val)
-        }
-        return nil
-    }
-    res["avatarUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAvatarUrl(val)
-        }
-        return nil
-    }
-    res["currentLeadStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateConversationResponse_currentLeadStatusFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCurrentLeadStatus(val.(ConversationResponse_currentLeadStatusable))
-        }
-        return nil
-    }
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["firstName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFirstName(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isArchived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsArchived(val)
-        }
-        return nil
-    }
-    res["isUnread"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsUnread(val)
-        }
-        return nil
-    }
-    res["lastEventAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastEventAt(val)
-        }
-        return nil
-    }
-    res["lastEventIsInternalNote"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastEventIsInternalNote(val)
-        }
-        return nil
-    }
-    res["lastName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastName(val)
-        }
-        return nil
-    }
-    res["lastSnippet"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLastSnippet(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["leadPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadPhoneNumber(val)
-        }
-        return nil
-    }
-    res["nextStep"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextStep(val)
-        }
-        return nil
-    }
-    res["outboundPhoneNumberOverrideId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundPhoneNumberOverrideId(val)
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateConversationResponse_phoneNumberFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val.(ConversationResponse_phoneNumberable))
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseConversationResponse_status)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*ConversationResponse_status))
-        }
-        return nil
-    }
-    res["statusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusReason(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["activeOutboundPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActiveOutboundPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["archivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArchivedAt(val)
+		}
+		return nil
+	}
+	res["archiveReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetArchiveReason(val)
+		}
+		return nil
+	}
+	res["avatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAvatarUrl(val)
+		}
+		return nil
+	}
+	res["currentLeadStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateConversationResponse_currentLeadStatusFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrentLeadStatus(val.(ConversationResponse_currentLeadStatusable))
+		}
+		return nil
+	}
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["firstName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFirstName(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isArchived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsArchived(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["isUnread"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsUnread(val)
+		}
+		return nil
+	}
+	res["lastEventAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastEventAt(val)
+		}
+		return nil
+	}
+	res["lastEventIsInternalNote"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastEventIsInternalNote(val)
+		}
+		return nil
+	}
+	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastName(val)
+		}
+		return nil
+	}
+	res["lastSnippet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastSnippet(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["leadPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadPhoneNumber(val)
+		}
+		return nil
+	}
+	res["nextStep"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextStep(val)
+		}
+		return nil
+	}
+	res["outboundPhoneNumberOverrideId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutboundPhoneNumberOverrideId(val)
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateConversationResponse_phoneNumberFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val.(ConversationResponse_phoneNumberable))
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseConversationResponse_status)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*ConversationResponse_status))
+		}
+		return nil
+	}
+	res["statusReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusReason(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFirstName gets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
-func (m *ConversationResponse) GetFirstName()(*string) {
-    return m.firstName
+func (m *ConversationResponse) GetFirstName() *string {
+	return m.firstName
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this conversation response.
 // returns a *string when successful
-func (m *ConversationResponse) GetId()(*string) {
-    return m.id
+func (m *ConversationResponse) GetId() *string {
+	return m.id
 }
+
 // GetIsArchived gets the isArchived property value. Indicates whether the Leadping conversation has been archived.
 // returns a *bool when successful
-func (m *ConversationResponse) GetIsArchived()(*bool) {
-    return m.isArchived
+func (m *ConversationResponse) GetIsArchived() *bool {
+	return m.isArchived
 }
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *ConversationResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsUnread gets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 // returns a *bool when successful
-func (m *ConversationResponse) GetIsUnread()(*bool) {
-    return m.isUnread
+func (m *ConversationResponse) GetIsUnread() *bool {
+	return m.isUnread
 }
+
 // GetLastEventAt gets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
 // returns a *Time when successful
-func (m *ConversationResponse) GetLastEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastEventAt
+func (m *ConversationResponse) GetLastEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastEventAt
 }
+
 // GetLastEventIsInternalNote gets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
 // returns a *bool when successful
-func (m *ConversationResponse) GetLastEventIsInternalNote()(*bool) {
-    return m.lastEventIsInternalNote
+func (m *ConversationResponse) GetLastEventIsInternalNote() *bool {
+	return m.lastEventIsInternalNote
 }
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
-func (m *ConversationResponse) GetLastName()(*string) {
-    return m.lastName
+func (m *ConversationResponse) GetLastName() *string {
+	return m.lastName
 }
+
 // GetLastSnippet gets the lastSnippet property value. Most recent message preview shown for the conversation.
 // returns a *string when successful
-func (m *ConversationResponse) GetLastSnippet()(*string) {
-    return m.lastSnippet
+func (m *ConversationResponse) GetLastSnippet() *string {
+	return m.lastSnippet
 }
+
 // GetLeadId gets the leadId property value. Lead ID associated with this inbox conversation.
 // returns a *string when successful
-func (m *ConversationResponse) GetLeadId()(*string) {
-    return m.leadId
+func (m *ConversationResponse) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetLeadPhoneNumber gets the leadPhoneNumber property value. Lead's phone number used for conversation matching and outreach.
 // returns a *string when successful
-func (m *ConversationResponse) GetLeadPhoneNumber()(*string) {
-    return m.leadPhoneNumber
+func (m *ConversationResponse) GetLeadPhoneNumber() *string {
+	return m.leadPhoneNumber
 }
+
 // GetNextStep gets the nextStep property value. Recommended next step to move this conversation response forward.
 // returns a *string when successful
-func (m *ConversationResponse) GetNextStep()(*string) {
-    return m.nextStep
+func (m *ConversationResponse) GetNextStep() *string {
+	return m.nextStep
 }
+
 // GetOutboundPhoneNumberOverrideId gets the outboundPhoneNumberOverrideId property value. Phone number ID manually chosen to override automatic outbound selection.
 // returns a *string when successful
-func (m *ConversationResponse) GetOutboundPhoneNumberOverrideId()(*string) {
-    return m.outboundPhoneNumberOverrideId
+func (m *ConversationResponse) GetOutboundPhoneNumberOverrideId() *string {
+	return m.outboundPhoneNumberOverrideId
 }
-// GetPhoneNumber gets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
+
+// GetPhoneNumber gets the phoneNumber property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 // returns a ConversationResponse_phoneNumberable when successful
-func (m *ConversationResponse) GetPhoneNumber()(ConversationResponse_phoneNumberable) {
-    return m.phoneNumber
+func (m *ConversationResponse) GetPhoneNumber() ConversationResponse_phoneNumberable {
+	return m.phoneNumber
 }
+
 // GetStatus gets the status property value. Defines the customer-facing operational status for an inbox conversation.
 // returns a *ConversationResponse_status when successful
-func (m *ConversationResponse) GetStatus()(*ConversationResponse_status) {
-    return m.status
+func (m *ConversationResponse) GetStatus() *ConversationResponse_status {
+	return m.status
 }
+
 // GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this conversation response.
 // returns a *string when successful
-func (m *ConversationResponse) GetStatusReason()(*string) {
-    return m.statusReason
+func (m *ConversationResponse) GetStatusReason() *string {
+	return m.statusReason
 }
+
 // Serialize serializes information the current object
-func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("activeOutboundPhoneNumberId", m.GetActiveOutboundPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteInt32Value("archiveReason", m.GetArchiveReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("firstName", m.GetFirstName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isUnread", m.GetIsUnread())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("lastEventAt", m.GetLastEventAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("lastEventIsInternalNote", m.GetLastEventIsInternalNote())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastName", m.GetLastName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("lastSnippet", m.GetLastSnippet())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadPhoneNumber", m.GetLeadPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("nextStep", m.GetNextStep())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundPhoneNumberOverrideId", m.GetOutboundPhoneNumberOverrideId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("activeOutboundPhoneNumberId", m.GetActiveOutboundPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("archivedAt", m.GetArchivedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("archiveReason", m.GetArchiveReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("avatarUrl", m.GetAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("firstName", m.GetFirstName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isUnread", m.GetIsUnread())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastEventAt", m.GetLastEventAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("lastEventIsInternalNote", m.GetLastEventIsInternalNote())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastName", m.GetLastName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastSnippet", m.GetLastSnippet())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadPhoneNumber", m.GetLeadPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("nextStep", m.GetNextStep())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("outboundPhoneNumberOverrideId", m.GetOutboundPhoneNumberOverrideId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusReason", m.GetStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActiveOutboundPhoneNumberId sets the activeOutboundPhoneNumberId property value. Phone number ID currently active for outbound delivery.
-func (m *ConversationResponse) SetActiveOutboundPhoneNumberId(value *string)() {
-    m.activeOutboundPhoneNumberId = value
+func (m *ConversationResponse) SetActiveOutboundPhoneNumberId(value *string) {
+	m.activeOutboundPhoneNumberId = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ConversationResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *ConversationResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetArchivedAt sets the archivedAt property value. UTC timestamp when this record was archived.
-func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.archivedAt = value
+func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.archivedAt = value
 }
+
 // SetArchiveReason sets the archiveReason property value. Defines why a lead was removed from the active working pipeline.
-func (m *ConversationResponse) SetArchiveReason(value *int32)() {
-    m.archiveReason = value
+func (m *ConversationResponse) SetArchiveReason(value *int32) {
+	m.archiveReason = value
 }
+
 // SetAvatarUrl sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
-func (m *ConversationResponse) SetAvatarUrl(value *string)() {
-    m.avatarUrl = value
+func (m *ConversationResponse) SetAvatarUrl(value *string) {
+	m.avatarUrl = value
 }
-// SetCurrentLeadStatus sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
-func (m *ConversationResponse) SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)() {
-    m.currentLeadStatus = value
+
+// SetCurrentLeadStatus sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
+func (m *ConversationResponse) SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable) {
+	m.currentLeadStatus = value
 }
+
 // SetEmail sets the email property value. Email address used to resolve the lead's avatar when available.
-func (m *ConversationResponse) SetEmail(value *string)() {
-    m.email = value
+func (m *ConversationResponse) SetEmail(value *string) {
+	m.email = value
 }
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
-func (m *ConversationResponse) SetFirstName(value *string)() {
-    m.firstName = value
+func (m *ConversationResponse) SetFirstName(value *string) {
+	m.firstName = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this conversation response.
-func (m *ConversationResponse) SetId(value *string)() {
-    m.id = value
+func (m *ConversationResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsArchived sets the isArchived property value. Indicates whether the Leadping conversation has been archived.
-func (m *ConversationResponse) SetIsArchived(value *bool)() {
-    m.isArchived = value
+func (m *ConversationResponse) SetIsArchived(value *bool) {
+	m.isArchived = value
 }
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *ConversationResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsUnread sets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
-func (m *ConversationResponse) SetIsUnread(value *bool)() {
-    m.isUnread = value
+func (m *ConversationResponse) SetIsUnread(value *bool) {
+	m.isUnread = value
 }
+
 // SetLastEventAt sets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
-func (m *ConversationResponse) SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.lastEventAt = value
+func (m *ConversationResponse) SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastEventAt = value
 }
+
 // SetLastEventIsInternalNote sets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
-func (m *ConversationResponse) SetLastEventIsInternalNote(value *bool)() {
-    m.lastEventIsInternalNote = value
+func (m *ConversationResponse) SetLastEventIsInternalNote(value *bool) {
+	m.lastEventIsInternalNote = value
 }
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
-func (m *ConversationResponse) SetLastName(value *string)() {
-    m.lastName = value
+func (m *ConversationResponse) SetLastName(value *string) {
+	m.lastName = value
 }
+
 // SetLastSnippet sets the lastSnippet property value. Most recent message preview shown for the conversation.
-func (m *ConversationResponse) SetLastSnippet(value *string)() {
-    m.lastSnippet = value
+func (m *ConversationResponse) SetLastSnippet(value *string) {
+	m.lastSnippet = value
 }
+
 // SetLeadId sets the leadId property value. Lead ID associated with this inbox conversation.
-func (m *ConversationResponse) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *ConversationResponse) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetLeadPhoneNumber sets the leadPhoneNumber property value. Lead's phone number used for conversation matching and outreach.
-func (m *ConversationResponse) SetLeadPhoneNumber(value *string)() {
-    m.leadPhoneNumber = value
+func (m *ConversationResponse) SetLeadPhoneNumber(value *string) {
+	m.leadPhoneNumber = value
 }
+
 // SetNextStep sets the nextStep property value. Recommended next step to move this conversation response forward.
-func (m *ConversationResponse) SetNextStep(value *string)() {
-    m.nextStep = value
+func (m *ConversationResponse) SetNextStep(value *string) {
+	m.nextStep = value
 }
+
 // SetOutboundPhoneNumberOverrideId sets the outboundPhoneNumberOverrideId property value. Phone number ID manually chosen to override automatic outbound selection.
-func (m *ConversationResponse) SetOutboundPhoneNumberOverrideId(value *string)() {
-    m.outboundPhoneNumberOverrideId = value
+func (m *ConversationResponse) SetOutboundPhoneNumberOverrideId(value *string) {
+	m.outboundPhoneNumberOverrideId = value
 }
-// SetPhoneNumber sets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
-func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNumberable)() {
-    m.phoneNumber = value
+
+// SetPhoneNumber sets the phoneNumber property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
+func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNumberable) {
+	m.phoneNumber = value
 }
+
 // SetStatus sets the status property value. Defines the customer-facing operational status for an inbox conversation.
-func (m *ConversationResponse) SetStatus(value *ConversationResponse_status)() {
-    m.status = value
+func (m *ConversationResponse) SetStatus(value *ConversationResponse_status) {
+	m.status = value
 }
+
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this conversation response.
-func (m *ConversationResponse) SetStatusReason(value *string)() {
-    m.statusReason = value
+func (m *ConversationResponse) SetStatusReason(value *string) {
+	m.statusReason = value
 }
+
 type ConversationResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActiveOutboundPhoneNumberId()(*string)
-    GetArchivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetArchiveReason()(*int32)
-    GetAvatarUrl()(*string)
-    GetCurrentLeadStatus()(ConversationResponse_currentLeadStatusable)
-    GetEmail()(*string)
-    GetFirstName()(*string)
-    GetId()(*string)
-    GetIsArchived()(*bool)
-    GetIsUnread()(*bool)
-    GetLastEventAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetLastEventIsInternalNote()(*bool)
-    GetLastName()(*string)
-    GetLastSnippet()(*string)
-    GetLeadId()(*string)
-    GetLeadPhoneNumber()(*string)
-    GetNextStep()(*string)
-    GetOutboundPhoneNumberOverrideId()(*string)
-    GetPhoneNumber()(ConversationResponse_phoneNumberable)
-    GetStatus()(*ConversationResponse_status)
-    GetStatusReason()(*string)
-    SetActiveOutboundPhoneNumberId(value *string)()
-    SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetArchiveReason(value *int32)()
-    SetAvatarUrl(value *string)()
-    SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)()
-    SetEmail(value *string)()
-    SetFirstName(value *string)()
-    SetId(value *string)()
-    SetIsArchived(value *bool)()
-    SetIsUnread(value *bool)()
-    SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetLastEventIsInternalNote(value *bool)()
-    SetLastName(value *string)()
-    SetLastSnippet(value *string)()
-    SetLeadId(value *string)()
-    SetLeadPhoneNumber(value *string)()
-    SetNextStep(value *string)()
-    SetOutboundPhoneNumberOverrideId(value *string)()
-    SetPhoneNumber(value ConversationResponse_phoneNumberable)()
-    SetStatus(value *ConversationResponse_status)()
-    SetStatusReason(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActiveOutboundPhoneNumberId() *string
+	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetArchiveReason() *int32
+	GetAvatarUrl() *string
+	GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable
+	GetEmail() *string
+	GetFirstName() *string
+	GetId() *string
+	GetIsArchived() *bool
+	GetIsDemo() *bool
+	GetIsUnread() *bool
+	GetLastEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLastEventIsInternalNote() *bool
+	GetLastName() *string
+	GetLastSnippet() *string
+	GetLeadId() *string
+	GetLeadPhoneNumber() *string
+	GetNextStep() *string
+	GetOutboundPhoneNumberOverrideId() *string
+	GetPhoneNumber() ConversationResponse_phoneNumberable
+	GetStatus() *ConversationResponse_status
+	GetStatusReason() *string
+	SetActiveOutboundPhoneNumberId(value *string)
+	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetArchiveReason(value *int32)
+	SetAvatarUrl(value *string)
+	SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)
+	SetEmail(value *string)
+	SetFirstName(value *string)
+	SetId(value *string)
+	SetIsArchived(value *bool)
+	SetIsDemo(value *bool)
+	SetIsUnread(value *bool)
+	SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLastEventIsInternalNote(value *bool)
+	SetLastName(value *string)
+	SetLastSnippet(value *string)
+	SetLeadId(value *string)
+	SetLeadPhoneNumber(value *string)
+	SetNextStep(value *string)
+	SetOutboundPhoneNumberOverrideId(value *string)
+	SetPhoneNumber(value ConversationResponse_phoneNumberable)
+	SetStatus(value *ConversationResponse_status)
+	SetStatusReason(value *string)
 }

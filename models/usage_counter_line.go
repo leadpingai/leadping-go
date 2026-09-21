@@ -4,197 +4,213 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UsageCounterLine describes one named usage total displayed in organization billing and activity summaries.
 type UsageCounterLine struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The stable key for this usage counter.
-    key *string
-    // The human-readable label for this usage counter.
-    label *string
-    // The display order for this usage counter.
-    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The unit label for this usage counter.
-    unit *string
-    // Numeric for this usage counter.
-    value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The stable key for this usage counter.
+	key *string
+	// The human-readable label for this usage counter.
+	label *string
+	// The display order for this usage counter.
+	sortOrder *int32
+	// The unit label for this usage counter.
+	unit *string
+	// Numeric for this usage counter.
+	value *float64
 }
+
 // NewUsageCounterLine instantiates a new UsageCounterLine and sets the default values.
-func NewUsageCounterLine()(*UsageCounterLine) {
-    m := &UsageCounterLine{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUsageCounterLine() *UsageCounterLine {
+	m := &UsageCounterLine{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUsageCounterLineFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUsageCounterLineFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUsageCounterLine(), nil
+func CreateUsageCounterLineFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUsageCounterLine(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UsageCounterLine) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UsageCounterLine) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UsageCounterLine) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["key"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetKey(val)
-        }
-        return nil
-    }
-    res["label"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLabel(val)
-        }
-        return nil
-    }
-    res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["unit"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnit(val)
-        }
-        return nil
-    }
-    res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetValue(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UsageCounterLine) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["key"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetKey(val)
+		}
+		return nil
+	}
+	res["label"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLabel(val)
+		}
+		return nil
+	}
+	res["sortOrder"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSortOrder(val)
+		}
+		return nil
+	}
+	res["unit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUnit(val)
+		}
+		return nil
+	}
+	res["value"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetValue(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetKey gets the key property value. The stable key for this usage counter.
 // returns a *string when successful
-func (m *UsageCounterLine) GetKey()(*string) {
-    return m.key
+func (m *UsageCounterLine) GetKey() *string {
+	return m.key
 }
+
 // GetLabel gets the label property value. The human-readable label for this usage counter.
 // returns a *string when successful
-func (m *UsageCounterLine) GetLabel()(*string) {
-    return m.label
+func (m *UsageCounterLine) GetLabel() *string {
+	return m.label
 }
+
 // GetSortOrder gets the sortOrder property value. The display order for this usage counter.
-// returns a UntypedNodeable when successful
-func (m *UsageCounterLine) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.sortOrder
+// returns a *int32 when successful
+func (m *UsageCounterLine) GetSortOrder() *int32 {
+	return m.sortOrder
 }
+
 // GetUnit gets the unit property value. The unit label for this usage counter.
 // returns a *string when successful
-func (m *UsageCounterLine) GetUnit()(*string) {
-    return m.unit
+func (m *UsageCounterLine) GetUnit() *string {
+	return m.unit
 }
+
 // GetValue gets the value property value. Numeric for this usage counter.
-// returns a UntypedNodeable when successful
-func (m *UsageCounterLine) GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.value
+// returns a *float64 when successful
+func (m *UsageCounterLine) GetValue() *float64 {
+	return m.value
 }
+
 // Serialize serializes information the current object
-func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("key", m.GetKey())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("label", m.GetLabel())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("unit", m.GetUnit())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("value", m.GetValue())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UsageCounterLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("key", m.GetKey())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("label", m.GetLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("unit", m.GetUnit())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("value", m.GetValue())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UsageCounterLine) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UsageCounterLine) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetKey sets the key property value. The stable key for this usage counter.
-func (m *UsageCounterLine) SetKey(value *string)() {
-    m.key = value
+func (m *UsageCounterLine) SetKey(value *string) {
+	m.key = value
 }
+
 // SetLabel sets the label property value. The human-readable label for this usage counter.
-func (m *UsageCounterLine) SetLabel(value *string)() {
-    m.label = value
+func (m *UsageCounterLine) SetLabel(value *string) {
+	m.label = value
 }
+
 // SetSortOrder sets the sortOrder property value. The display order for this usage counter.
-func (m *UsageCounterLine) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.sortOrder = value
+func (m *UsageCounterLine) SetSortOrder(value *int32) {
+	m.sortOrder = value
 }
+
 // SetUnit sets the unit property value. The unit label for this usage counter.
-func (m *UsageCounterLine) SetUnit(value *string)() {
-    m.unit = value
+func (m *UsageCounterLine) SetUnit(value *string) {
+	m.unit = value
 }
+
 // SetValue sets the value property value. Numeric for this usage counter.
-func (m *UsageCounterLine) SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.value = value
+func (m *UsageCounterLine) SetValue(value *float64) {
+	m.value = value
 }
+
 type UsageCounterLineable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetKey()(*string)
-    GetLabel()(*string)
-    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetUnit()(*string)
-    GetValue()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetKey(value *string)()
-    SetLabel(value *string)()
-    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetUnit(value *string)()
-    SetValue(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetKey() *string
+	GetLabel() *string
+	GetSortOrder() *int32
+	GetUnit() *string
+	GetValue() *float64
+	SetKey(value *string)
+	SetLabel(value *string)
+	SetSortOrder(value *int32)
+	SetUnit(value *string)
+	SetValue(value *float64)
 }

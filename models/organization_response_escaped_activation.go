@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationResponse_activation organization activation state covering site, billing, compliance, and telephony readiness.
+// OrganizationResponse_activation describes organization activation state data used in Leadping API requests and responses.
 type OrganizationResponse_activation struct {
-    OrganizationActivationState
+	OrganizationActivationState
 }
+
 // NewOrganizationResponse_activation instantiates a new OrganizationResponse_activation and sets the default values.
-func NewOrganizationResponse_activation()(*OrganizationResponse_activation) {
-    m := &OrganizationResponse_activation{
-        OrganizationActivationState: *NewOrganizationActivationState(),
-    }
-    return m
+func NewOrganizationResponse_activation() *OrganizationResponse_activation {
+	m := &OrganizationResponse_activation{
+		OrganizationActivationState: *NewOrganizationActivationState(),
+	}
+	return m
 }
+
 // CreateOrganizationResponse_activationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationResponse_activationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationResponse_activation(), nil
+func CreateOrganizationResponse_activationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationResponse_activation(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationResponse_activation) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.OrganizationActivationState.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationResponse_activation) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.OrganizationActivationState.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationResponse_activation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.OrganizationActivationState.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *OrganizationResponse_activation) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.OrganizationActivationState.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type OrganizationResponse_activationable interface {
-    OrganizationActivationStateable
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	OrganizationActivationStateable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 }

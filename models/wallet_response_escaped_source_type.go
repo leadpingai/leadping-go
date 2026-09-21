@@ -2,48 +2,52 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
+
 // Defines the source that created a wallet credit lot.
 type WalletResponse_sourceType int
 
 const (
-    PURCHASE_WALLETRESPONSE_SOURCETYPE WalletResponse_sourceType = iota
-    PROMO_WALLETRESPONSE_SOURCETYPE
-    ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-    REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-    CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
-    COMPROMISE_RESTORATION_WALLETRESPONSE_SOURCETYPE
+	PURCHASE_WALLETRESPONSE_SOURCETYPE WalletResponse_sourceType = iota
+	PROMO_WALLETRESPONSE_SOURCETYPE
+	ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
+	REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
+	CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
+	COMPROMISE_RESTORATION_WALLETRESPONSE_SOURCETYPE
 )
 
 func (i WalletResponse_sourceType) String() string {
-    return []string{"purchase", "promo", "admin_adjustment", "refund_adjustment", "chargeback_reversal", "compromise_restoration"}[i]
+	return []string{"purchase", "promo", "admin_adjustment", "refund_adjustment", "chargeback_reversal", "compromise_restoration"}[i]
 }
+
 func ParseWalletResponse_sourceType(v string) (any, error) {
-    result := PURCHASE_WALLETRESPONSE_SOURCETYPE
-    switch v {
-        case "purchase":
-            result = PURCHASE_WALLETRESPONSE_SOURCETYPE
-        case "promo":
-            result = PROMO_WALLETRESPONSE_SOURCETYPE
-        case "admin_adjustment":
-            result = ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-        case "refund_adjustment":
-            result = REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
-        case "chargeback_reversal":
-            result = CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
-        case "compromise_restoration":
-            result = COMPROMISE_RESTORATION_WALLETRESPONSE_SOURCETYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := PURCHASE_WALLETRESPONSE_SOURCETYPE
+	switch v {
+	case "purchase":
+		result = PURCHASE_WALLETRESPONSE_SOURCETYPE
+	case "promo":
+		result = PROMO_WALLETRESPONSE_SOURCETYPE
+	case "admin_adjustment":
+		result = ADMIN_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
+	case "refund_adjustment":
+		result = REFUND_ADJUSTMENT_WALLETRESPONSE_SOURCETYPE
+	case "chargeback_reversal":
+		result = CHARGEBACK_REVERSAL_WALLETRESPONSE_SOURCETYPE
+	case "compromise_restoration":
+		result = COMPROMISE_RESTORATION_WALLETRESPONSE_SOURCETYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeWalletResponse_sourceType(values []WalletResponse_sourceType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i WalletResponse_sourceType) isMultiValue() bool {
-    return false
+	return false
 }

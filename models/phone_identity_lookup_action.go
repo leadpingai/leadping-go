@@ -4,258 +4,278 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneIdentityLookupAction an auditable lookup, enrichment, or reputation check performed for a phone identity.
 type PhoneIdentityLookupAction struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The unique identifier of this phone identity lookup action.
-    id *string
-    // The UTC timestamp when the lookup action occurred.
-    occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The provider that performed the phone identity lookup.
-    provider *string
-    // The provider cost incurred by this lookup action, in USD.
-    providerCostAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The provider pricing version used to calculate the lookup cost.
-    providerPricingVersion *string
-    // Identifies the outcome of a phone identity lookup action.
-    status *PhoneIdentityLookupActionStatus
-    // Identifies the kind of lookup action performed for a phone identity.
-    typeEscaped *PhoneIdentityLookupActionType
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The unique identifier of this phone identity lookup action.
+	id *string
+	// The UTC timestamp when the lookup action occurred.
+	occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The provider that performed the phone identity lookup.
+	provider *string
+	// The provider cost incurred by this lookup action, in USD.
+	providerCostAmount *float64
+	// The provider pricing version used to calculate the lookup cost.
+	providerPricingVersion *string
+	// Identifies the outcome of a phone identity lookup action.
+	status *PhoneIdentityLookupActionStatus
+	// Identifies the kind of lookup action performed for a phone identity.
+	typeEscaped *PhoneIdentityLookupActionType
 }
+
 // NewPhoneIdentityLookupAction instantiates a new PhoneIdentityLookupAction and sets the default values.
-func NewPhoneIdentityLookupAction()(*PhoneIdentityLookupAction) {
-    m := &PhoneIdentityLookupAction{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneIdentityLookupAction() *PhoneIdentityLookupAction {
+	m := &PhoneIdentityLookupAction{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneIdentityLookupActionFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneIdentityLookupActionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneIdentityLookupAction(), nil
+func CreatePhoneIdentityLookupActionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneIdentityLookupAction(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneIdentityLookupAction) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneIdentityLookupAction) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneIdentityLookupAction) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["occurredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOccurredAt(val)
-        }
-        return nil
-    }
-    res["provider"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProvider(val)
-        }
-        return nil
-    }
-    res["providerCostAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderCostAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["providerPricingVersion"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProviderPricingVersion(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneIdentityLookupActionStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*PhoneIdentityLookupActionStatus))
-        }
-        return nil
-    }
-    res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneIdentityLookupActionType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTypeEscaped(val.(*PhoneIdentityLookupActionType))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneIdentityLookupAction) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["occurredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOccurredAt(val)
+		}
+		return nil
+	}
+	res["provider"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProvider(val)
+		}
+		return nil
+	}
+	res["providerCostAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProviderCostAmount(val)
+		}
+		return nil
+	}
+	res["providerPricingVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProviderPricingVersion(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneIdentityLookupActionStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*PhoneIdentityLookupActionStatus))
+		}
+		return nil
+	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneIdentityLookupActionType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val.(*PhoneIdentityLookupActionType))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. The unique identifier of this phone identity lookup action.
 // returns a *string when successful
-func (m *PhoneIdentityLookupAction) GetId()(*string) {
-    return m.id
+func (m *PhoneIdentityLookupAction) GetId() *string {
+	return m.id
 }
+
 // GetOccurredAt gets the occurredAt property value. The UTC timestamp when the lookup action occurred.
 // returns a *Time when successful
-func (m *PhoneIdentityLookupAction) GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.occurredAt
+func (m *PhoneIdentityLookupAction) GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.occurredAt
 }
+
 // GetProvider gets the provider property value. The provider that performed the phone identity lookup.
 // returns a *string when successful
-func (m *PhoneIdentityLookupAction) GetProvider()(*string) {
-    return m.provider
+func (m *PhoneIdentityLookupAction) GetProvider() *string {
+	return m.provider
 }
+
 // GetProviderCostAmount gets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-// returns a UntypedNodeable when successful
-func (m *PhoneIdentityLookupAction) GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.providerCostAmount
+// returns a *float64 when successful
+func (m *PhoneIdentityLookupAction) GetProviderCostAmount() *float64 {
+	return m.providerCostAmount
 }
+
 // GetProviderPricingVersion gets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
 // returns a *string when successful
-func (m *PhoneIdentityLookupAction) GetProviderPricingVersion()(*string) {
-    return m.providerPricingVersion
+func (m *PhoneIdentityLookupAction) GetProviderPricingVersion() *string {
+	return m.providerPricingVersion
 }
+
 // GetStatus gets the status property value. Identifies the outcome of a phone identity lookup action.
 // returns a *PhoneIdentityLookupActionStatus when successful
-func (m *PhoneIdentityLookupAction) GetStatus()(*PhoneIdentityLookupActionStatus) {
-    return m.status
+func (m *PhoneIdentityLookupAction) GetStatus() *PhoneIdentityLookupActionStatus {
+	return m.status
 }
+
 // GetTypeEscaped gets the type property value. Identifies the kind of lookup action performed for a phone identity.
 // returns a *PhoneIdentityLookupActionType when successful
-func (m *PhoneIdentityLookupAction) GetTypeEscaped()(*PhoneIdentityLookupActionType) {
-    return m.typeEscaped
+func (m *PhoneIdentityLookupAction) GetTypeEscaped() *PhoneIdentityLookupActionType {
+	return m.typeEscaped
 }
+
 // Serialize serializes information the current object
-func (m *PhoneIdentityLookupAction) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("provider", m.GetProvider())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("providerCostAmount", m.GetProviderCostAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("providerPricingVersion", m.GetProviderPricingVersion())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTypeEscaped() != nil {
-        cast := (*m.GetTypeEscaped()).String()
-        err := writer.WriteStringValue("type", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneIdentityLookupAction) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("provider", m.GetProvider())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("providerCostAmount", m.GetProviderCostAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("providerPricingVersion", m.GetProviderPricingVersion())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTypeEscaped() != nil {
+		cast := (*m.GetTypeEscaped()).String()
+		err := writer.WriteStringValue("type", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneIdentityLookupAction) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneIdentityLookupAction) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetId sets the id property value. The unique identifier of this phone identity lookup action.
-func (m *PhoneIdentityLookupAction) SetId(value *string)() {
-    m.id = value
+func (m *PhoneIdentityLookupAction) SetId(value *string) {
+	m.id = value
 }
+
 // SetOccurredAt sets the occurredAt property value. The UTC timestamp when the lookup action occurred.
-func (m *PhoneIdentityLookupAction) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.occurredAt = value
+func (m *PhoneIdentityLookupAction) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.occurredAt = value
 }
+
 // SetProvider sets the provider property value. The provider that performed the phone identity lookup.
-func (m *PhoneIdentityLookupAction) SetProvider(value *string)() {
-    m.provider = value
+func (m *PhoneIdentityLookupAction) SetProvider(value *string) {
+	m.provider = value
 }
+
 // SetProviderCostAmount sets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-func (m *PhoneIdentityLookupAction) SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.providerCostAmount = value
+func (m *PhoneIdentityLookupAction) SetProviderCostAmount(value *float64) {
+	m.providerCostAmount = value
 }
+
 // SetProviderPricingVersion sets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
-func (m *PhoneIdentityLookupAction) SetProviderPricingVersion(value *string)() {
-    m.providerPricingVersion = value
+func (m *PhoneIdentityLookupAction) SetProviderPricingVersion(value *string) {
+	m.providerPricingVersion = value
 }
+
 // SetStatus sets the status property value. Identifies the outcome of a phone identity lookup action.
-func (m *PhoneIdentityLookupAction) SetStatus(value *PhoneIdentityLookupActionStatus)() {
-    m.status = value
+func (m *PhoneIdentityLookupAction) SetStatus(value *PhoneIdentityLookupActionStatus) {
+	m.status = value
 }
+
 // SetTypeEscaped sets the type property value. Identifies the kind of lookup action performed for a phone identity.
-func (m *PhoneIdentityLookupAction) SetTypeEscaped(value *PhoneIdentityLookupActionType)() {
-    m.typeEscaped = value
+func (m *PhoneIdentityLookupAction) SetTypeEscaped(value *PhoneIdentityLookupActionType) {
+	m.typeEscaped = value
 }
+
 type PhoneIdentityLookupActionable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetId()(*string)
-    GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetProvider()(*string)
-    GetProviderCostAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetProviderPricingVersion()(*string)
-    GetStatus()(*PhoneIdentityLookupActionStatus)
-    GetTypeEscaped()(*PhoneIdentityLookupActionType)
-    SetId(value *string)()
-    SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetProvider(value *string)()
-    SetProviderCostAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetProviderPricingVersion(value *string)()
-    SetStatus(value *PhoneIdentityLookupActionStatus)()
-    SetTypeEscaped(value *PhoneIdentityLookupActionType)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetId() *string
+	GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetProvider() *string
+	GetProviderCostAmount() *float64
+	GetProviderPricingVersion() *string
+	GetStatus() *PhoneIdentityLookupActionStatus
+	GetTypeEscaped() *PhoneIdentityLookupActionType
+	SetId(value *string)
+	SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetProvider(value *string)
+	SetProviderCostAmount(value *float64)
+	SetProviderPricingVersion(value *string)
+	SetStatus(value *PhoneIdentityLookupActionStatus)
+	SetTypeEscaped(value *PhoneIdentityLookupActionType)
 }

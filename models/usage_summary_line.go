@@ -4,229 +4,247 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // UsageSummaryLine describes usage summary line data used in Leadping API requests and responses.
 type UsageSummaryLine struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Billable unit for this usage summary line.
-    billableUnit *BillableUnit
-    // Channel for this usage summary line.
-    channel *UsageChannel
-    // The monetary customer charge amount for this usage summary line.
-    customerChargeAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Quantity for this usage summary line.
-    quantity i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The record count for this usage summary line.
-    recordCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current status for this usage summary line.
-    status *UsageStatus
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
+	billableUnit *BillableUnit
+	// Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
+	channel *UsageChannel
+	// The monetary customer charge amount for this usage summary line.
+	customerChargeAmount *float64
+	// Quantity for this usage summary line.
+	quantity *float64
+	// The record count for this usage summary line.
+	recordCount *int32
+	// Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
+	status *UsageStatus
 }
+
 // NewUsageSummaryLine instantiates a new UsageSummaryLine and sets the default values.
-func NewUsageSummaryLine()(*UsageSummaryLine) {
-    m := &UsageSummaryLine{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewUsageSummaryLine() *UsageSummaryLine {
+	m := &UsageSummaryLine{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateUsageSummaryLineFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateUsageSummaryLineFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewUsageSummaryLine(), nil
+func CreateUsageSummaryLineFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewUsageSummaryLine(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *UsageSummaryLine) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *UsageSummaryLine) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetBillableUnit gets the billableUnit property value. Billable unit for this usage summary line.
+
+// GetBillableUnit gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
 // returns a *BillableUnit when successful
-func (m *UsageSummaryLine) GetBillableUnit()(*BillableUnit) {
-    return m.billableUnit
+func (m *UsageSummaryLine) GetBillableUnit() *BillableUnit {
+	return m.billableUnit
 }
-// GetChannel gets the channel property value. Channel for this usage summary line.
+
+// GetChannel gets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
 // returns a *UsageChannel when successful
-func (m *UsageSummaryLine) GetChannel()(*UsageChannel) {
-    return m.channel
+func (m *UsageSummaryLine) GetChannel() *UsageChannel {
+	return m.channel
 }
+
 // GetCustomerChargeAmount gets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.customerChargeAmount
+// returns a *float64 when successful
+func (m *UsageSummaryLine) GetCustomerChargeAmount() *float64 {
+	return m.customerChargeAmount
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *UsageSummaryLine) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billableUnit"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseBillableUnit)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableUnit(val.(*BillableUnit))
-        }
-        return nil
-    }
-    res["channel"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUsageChannel)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChannel(val.(*UsageChannel))
-        }
-        return nil
-    }
-    res["customerChargeAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCustomerChargeAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["quantity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetQuantity(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["recordCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecordCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseUsageStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*UsageStatus))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *UsageSummaryLine) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billableUnit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseBillableUnit)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableUnit(val.(*BillableUnit))
+		}
+		return nil
+	}
+	res["channel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseUsageChannel)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetChannel(val.(*UsageChannel))
+		}
+		return nil
+	}
+	res["customerChargeAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomerChargeAmount(val)
+		}
+		return nil
+	}
+	res["quantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuantity(val)
+		}
+		return nil
+	}
+	res["recordCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRecordCount(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseUsageStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*UsageStatus))
+		}
+		return nil
+	}
+	return res
 }
+
 // GetQuantity gets the quantity property value. Quantity for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.quantity
+// returns a *float64 when successful
+func (m *UsageSummaryLine) GetQuantity() *float64 {
+	return m.quantity
 }
+
 // GetRecordCount gets the recordCount property value. The record count for this usage summary line.
-// returns a UntypedNodeable when successful
-func (m *UsageSummaryLine) GetRecordCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.recordCount
+// returns a *int32 when successful
+func (m *UsageSummaryLine) GetRecordCount() *int32 {
+	return m.recordCount
 }
-// GetStatus gets the status property value. The current status for this usage summary line.
+
+// GetStatus gets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
 // returns a *UsageStatus when successful
-func (m *UsageSummaryLine) GetStatus()(*UsageStatus) {
-    return m.status
+func (m *UsageSummaryLine) GetStatus() *UsageStatus {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *UsageSummaryLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetBillableUnit() != nil {
-        cast := (*m.GetBillableUnit()).String()
-        err := writer.WriteStringValue("billableUnit", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetChannel() != nil {
-        cast := (*m.GetChannel()).String()
-        err := writer.WriteStringValue("channel", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("customerChargeAmount", m.GetCustomerChargeAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("quantity", m.GetQuantity())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("recordCount", m.GetRecordCount())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *UsageSummaryLine) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetBillableUnit() != nil {
+		cast := (*m.GetBillableUnit()).String()
+		err := writer.WriteStringValue("billableUnit", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetChannel() != nil {
+		cast := (*m.GetChannel()).String()
+		err := writer.WriteStringValue("channel", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("customerChargeAmount", m.GetCustomerChargeAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("quantity", m.GetQuantity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("recordCount", m.GetRecordCount())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *UsageSummaryLine) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *UsageSummaryLine) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetBillableUnit sets the billableUnit property value. Billable unit for this usage summary line.
-func (m *UsageSummaryLine) SetBillableUnit(value *BillableUnit)() {
-    m.billableUnit = value
+
+// SetBillableUnit sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
+func (m *UsageSummaryLine) SetBillableUnit(value *BillableUnit) {
+	m.billableUnit = value
 }
-// SetChannel sets the channel property value. Channel for this usage summary line.
-func (m *UsageSummaryLine) SetChannel(value *UsageChannel)() {
-    m.channel = value
+
+// SetChannel sets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
+func (m *UsageSummaryLine) SetChannel(value *UsageChannel) {
+	m.channel = value
 }
+
 // SetCustomerChargeAmount sets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-func (m *UsageSummaryLine) SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.customerChargeAmount = value
+func (m *UsageSummaryLine) SetCustomerChargeAmount(value *float64) {
+	m.customerChargeAmount = value
 }
+
 // SetQuantity sets the quantity property value. Quantity for this usage summary line.
-func (m *UsageSummaryLine) SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.quantity = value
+func (m *UsageSummaryLine) SetQuantity(value *float64) {
+	m.quantity = value
 }
+
 // SetRecordCount sets the recordCount property value. The record count for this usage summary line.
-func (m *UsageSummaryLine) SetRecordCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.recordCount = value
+func (m *UsageSummaryLine) SetRecordCount(value *int32) {
+	m.recordCount = value
 }
-// SetStatus sets the status property value. The current status for this usage summary line.
-func (m *UsageSummaryLine) SetStatus(value *UsageStatus)() {
-    m.status = value
+
+// SetStatus sets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
+func (m *UsageSummaryLine) SetStatus(value *UsageStatus) {
+	m.status = value
 }
+
 type UsageSummaryLineable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableUnit()(*BillableUnit)
-    GetChannel()(*UsageChannel)
-    GetCustomerChargeAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetQuantity()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetRecordCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetStatus()(*UsageStatus)
-    SetBillableUnit(value *BillableUnit)()
-    SetChannel(value *UsageChannel)()
-    SetCustomerChargeAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetQuantity(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetRecordCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetStatus(value *UsageStatus)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillableUnit() *BillableUnit
+	GetChannel() *UsageChannel
+	GetCustomerChargeAmount() *float64
+	GetQuantity() *float64
+	GetRecordCount() *int32
+	GetStatus() *UsageStatus
+	SetBillableUnit(value *BillableUnit)
+	SetChannel(value *UsageChannel)
+	SetCustomerChargeAmount(value *float64)
+	SetQuantity(value *float64)
+	SetRecordCount(value *int32)
+	SetStatus(value *UsageStatus)
 }

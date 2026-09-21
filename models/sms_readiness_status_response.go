@@ -4,286 +4,308 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // SmsReadinessStatusResponse describes SMS warmup status data returned by Leadping.
 type SmsReadinessStatusResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The health score metric for this SMS warmup status.
-    healthScore i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current delivery-health assessment for this SMS warmup status.
-    healthStatus *SmsReadinessHealthStatus
-    // The phone number associated with this SMS warmup status.
-    phoneNumber *string
-    // The phone number ID associated with this SMS warmup status.
-    phoneNumberId *string
-    // The progress percent metric for this SMS warmup status.
-    progressPercent i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The current state for this SMS warmup status.
-    status *SmsReadinessState
-    // The current UI state for this SMS warmup status.
-    uiState SmsReadinessUiStateable
-    // Whether warmup is enabled for this SMS warmup status.
-    warmupEnabled *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The health score metric for this SMS warmup status.
+	healthScore *int32
+	// Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
+	healthStatus *SmsReadinessHealthStatus
+	// The phone number associated with this SMS warmup status.
+	phoneNumber *string
+	// The phone number ID associated with this SMS warmup status.
+	phoneNumberId *string
+	// The progress percent metric for this SMS warmup status.
+	progressPercent *int32
+	// Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+	status *SmsReadinessState
+	// Describes SMS readiness UI state data used in Leadping API requests and responses.
+	uiState SmsReadinessUiStateable
+	// Whether warmup is enabled for this SMS warmup status.
+	warmupEnabled *bool
 }
+
 // NewSmsReadinessStatusResponse instantiates a new SmsReadinessStatusResponse and sets the default values.
-func NewSmsReadinessStatusResponse()(*SmsReadinessStatusResponse) {
-    m := &SmsReadinessStatusResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSmsReadinessStatusResponse() *SmsReadinessStatusResponse {
+	m := &SmsReadinessStatusResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSmsReadinessStatusResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSmsReadinessStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSmsReadinessStatusResponse(), nil
+func CreateSmsReadinessStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSmsReadinessStatusResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SmsReadinessStatusResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SmsReadinessStatusResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SmsReadinessStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["healthScore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthScore(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsReadinessHealthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*SmsReadinessHealthStatus))
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    res["phoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["progressPercent"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProgressPercent(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsReadinessState)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*SmsReadinessState))
-        }
-        return nil
-    }
-    res["uiState"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSmsReadinessUiStateFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUiState(val.(SmsReadinessUiStateable))
-        }
-        return nil
-    }
-    res["warmupEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWarmupEnabled(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SmsReadinessStatusResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["healthScore"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthScore(val)
+		}
+		return nil
+	}
+	res["healthStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsReadinessHealthStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthStatus(val.(*SmsReadinessHealthStatus))
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	res["phoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["progressPercent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProgressPercent(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsReadinessState)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*SmsReadinessState))
+		}
+		return nil
+	}
+	res["uiState"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSmsReadinessUiStateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUiState(val.(SmsReadinessUiStateable))
+		}
+		return nil
+	}
+	res["warmupEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWarmupEnabled(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthScore gets the healthScore property value. The health score metric for this SMS warmup status.
-// returns a UntypedNodeable when successful
-func (m *SmsReadinessStatusResponse) GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.healthScore
+// returns a *int32 when successful
+func (m *SmsReadinessStatusResponse) GetHealthScore() *int32 {
+	return m.healthScore
 }
-// GetHealthStatus gets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
+
+// GetHealthStatus gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
 // returns a *SmsReadinessHealthStatus when successful
-func (m *SmsReadinessStatusResponse) GetHealthStatus()(*SmsReadinessHealthStatus) {
-    return m.healthStatus
+func (m *SmsReadinessStatusResponse) GetHealthStatus() *SmsReadinessHealthStatus {
+	return m.healthStatus
 }
+
 // GetPhoneNumber gets the phoneNumber property value. The phone number associated with this SMS warmup status.
 // returns a *string when successful
-func (m *SmsReadinessStatusResponse) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *SmsReadinessStatusResponse) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // GetPhoneNumberId gets the phoneNumberId property value. The phone number ID associated with this SMS warmup status.
 // returns a *string when successful
-func (m *SmsReadinessStatusResponse) GetPhoneNumberId()(*string) {
-    return m.phoneNumberId
+func (m *SmsReadinessStatusResponse) GetPhoneNumberId() *string {
+	return m.phoneNumberId
 }
+
 // GetProgressPercent gets the progressPercent property value. The progress percent metric for this SMS warmup status.
-// returns a UntypedNodeable when successful
-func (m *SmsReadinessStatusResponse) GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.progressPercent
+// returns a *int32 when successful
+func (m *SmsReadinessStatusResponse) GetProgressPercent() *int32 {
+	return m.progressPercent
 }
-// GetStatus gets the status property value. The current state for this SMS warmup status.
+
+// GetStatus gets the status property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 // returns a *SmsReadinessState when successful
-func (m *SmsReadinessStatusResponse) GetStatus()(*SmsReadinessState) {
-    return m.status
+func (m *SmsReadinessStatusResponse) GetStatus() *SmsReadinessState {
+	return m.status
 }
-// GetUiState gets the uiState property value. The current UI state for this SMS warmup status.
+
+// GetUiState gets the uiState property value. Describes SMS readiness UI state data used in Leadping API requests and responses.
 // returns a SmsReadinessUiStateable when successful
-func (m *SmsReadinessStatusResponse) GetUiState()(SmsReadinessUiStateable) {
-    return m.uiState
+func (m *SmsReadinessStatusResponse) GetUiState() SmsReadinessUiStateable {
+	return m.uiState
 }
+
 // GetWarmupEnabled gets the warmupEnabled property value. Whether warmup is enabled for this SMS warmup status.
 // returns a *bool when successful
-func (m *SmsReadinessStatusResponse) GetWarmupEnabled()(*bool) {
-    return m.warmupEnabled
+func (m *SmsReadinessStatusResponse) GetWarmupEnabled() *bool {
+	return m.warmupEnabled
 }
+
 // Serialize serializes information the current object
-func (m *SmsReadinessStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("healthScore", m.GetHealthScore())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("progressPercent", m.GetProgressPercent())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("uiState", m.GetUiState())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("warmupEnabled", m.GetWarmupEnabled())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SmsReadinessStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteInt32Value("healthScore", m.GetHealthScore())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetHealthStatus() != nil {
+		cast := (*m.GetHealthStatus()).String()
+		err := writer.WriteStringValue("healthStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("progressPercent", m.GetProgressPercent())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("uiState", m.GetUiState())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("warmupEnabled", m.GetWarmupEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SmsReadinessStatusResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SmsReadinessStatusResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetHealthScore sets the healthScore property value. The health score metric for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.healthScore = value
+func (m *SmsReadinessStatusResponse) SetHealthScore(value *int32) {
+	m.healthScore = value
 }
-// SetHealthStatus sets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetHealthStatus(value *SmsReadinessHealthStatus)() {
-    m.healthStatus = value
+
+// SetHealthStatus sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
+func (m *SmsReadinessStatusResponse) SetHealthStatus(value *SmsReadinessHealthStatus) {
+	m.healthStatus = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. The phone number associated with this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *SmsReadinessStatusResponse) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 // SetPhoneNumberId sets the phoneNumberId property value. The phone number ID associated with this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetPhoneNumberId(value *string)() {
-    m.phoneNumberId = value
+func (m *SmsReadinessStatusResponse) SetPhoneNumberId(value *string) {
+	m.phoneNumberId = value
 }
+
 // SetProgressPercent sets the progressPercent property value. The progress percent metric for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.progressPercent = value
+func (m *SmsReadinessStatusResponse) SetProgressPercent(value *int32) {
+	m.progressPercent = value
 }
-// SetStatus sets the status property value. The current state for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetStatus(value *SmsReadinessState)() {
-    m.status = value
+
+// SetStatus sets the status property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
+func (m *SmsReadinessStatusResponse) SetStatus(value *SmsReadinessState) {
+	m.status = value
 }
-// SetUiState sets the uiState property value. The current UI state for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetUiState(value SmsReadinessUiStateable)() {
-    m.uiState = value
+
+// SetUiState sets the uiState property value. Describes SMS readiness UI state data used in Leadping API requests and responses.
+func (m *SmsReadinessStatusResponse) SetUiState(value SmsReadinessUiStateable) {
+	m.uiState = value
 }
+
 // SetWarmupEnabled sets the warmupEnabled property value. Whether warmup is enabled for this SMS warmup status.
-func (m *SmsReadinessStatusResponse) SetWarmupEnabled(value *bool)() {
-    m.warmupEnabled = value
+func (m *SmsReadinessStatusResponse) SetWarmupEnabled(value *bool) {
+	m.warmupEnabled = value
 }
+
 type SmsReadinessStatusResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetHealthScore()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetHealthStatus()(*SmsReadinessHealthStatus)
-    GetPhoneNumber()(*string)
-    GetPhoneNumberId()(*string)
-    GetProgressPercent()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetStatus()(*SmsReadinessState)
-    GetUiState()(SmsReadinessUiStateable)
-    GetWarmupEnabled()(*bool)
-    SetHealthScore(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetHealthStatus(value *SmsReadinessHealthStatus)()
-    SetPhoneNumber(value *string)()
-    SetPhoneNumberId(value *string)()
-    SetProgressPercent(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetStatus(value *SmsReadinessState)()
-    SetUiState(value SmsReadinessUiStateable)()
-    SetWarmupEnabled(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetHealthScore() *int32
+	GetHealthStatus() *SmsReadinessHealthStatus
+	GetPhoneNumber() *string
+	GetPhoneNumberId() *string
+	GetProgressPercent() *int32
+	GetStatus() *SmsReadinessState
+	GetUiState() SmsReadinessUiStateable
+	GetWarmupEnabled() *bool
+	SetHealthScore(value *int32)
+	SetHealthStatus(value *SmsReadinessHealthStatus)
+	SetPhoneNumber(value *string)
+	SetPhoneNumberId(value *string)
+	SetProgressPercent(value *int32)
+	SetStatus(value *SmsReadinessState)
+	SetUiState(value SmsReadinessUiStateable)
+	SetWarmupEnabled(value *bool)
 }

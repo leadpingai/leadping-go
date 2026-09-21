@@ -4,40 +4,45 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// OrganizationResponse_address postal address for the organization, lead, or contact represented by this organization profile response.
+// OrganizationResponse_address describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 type OrganizationResponse_address struct {
-    StreetAddress
+	StreetAddress
 }
+
 // NewOrganizationResponse_address instantiates a new OrganizationResponse_address and sets the default values.
-func NewOrganizationResponse_address()(*OrganizationResponse_address) {
-    m := &OrganizationResponse_address{
-        StreetAddress: *NewStreetAddress(),
-    }
-    return m
+func NewOrganizationResponse_address() *OrganizationResponse_address {
+	m := &OrganizationResponse_address{
+		StreetAddress: *NewStreetAddress(),
+	}
+	return m
 }
+
 // CreateOrganizationResponse_addressFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationResponse_addressFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationResponse_address(), nil
+func CreateOrganizationResponse_addressFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationResponse_address(), nil
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationResponse_address) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.StreetAddress.GetFieldDeserializers()
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationResponse_address) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := m.StreetAddress.GetFieldDeserializers()
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationResponse_address) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.StreetAddress.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    return nil
+func (m *OrganizationResponse_address) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	err := m.StreetAddress.Serialize(writer)
+	if err != nil {
+		return err
+	}
+	return nil
 }
+
 type OrganizationResponse_addressable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    StreetAddressable
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	StreetAddressable
 }

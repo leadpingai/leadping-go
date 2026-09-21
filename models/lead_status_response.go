@@ -4,286 +4,308 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// LeadStatusResponse represents a configurable status that can be assigned to leads.
+// LeadStatusResponse describes an organization-defined lead status used to classify pipeline progress, drive automation, and report lifecycle outcomes.
 type LeadStatusResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // LeadStatusChange category represented by the lead status.
-    category *LeadStatusCategory
-    // Display color assigned to the lead status.
-    color *string
-    // Unique identifier for the lead status.
-    id *string
-    // Indicates whether the lead status has been archived.
-    isArchived *bool
-    // Date and time when the lead status was last modified.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Display name of the lead status.
-    name *string
-    // Identifier of the organization that owns the lead status.
-    organizationId *string
-    // Relative display order of the lead status.
-    sortOrder i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Controlled lead status change categories used for reporting, automation, and analytics.
+	category *LeadStatusCategory
+	// Display color assigned to the lead status.
+	color *string
+	// Unique identifier for the lead status.
+	id *string
+	// Indicates whether the lead status has been archived.
+	isArchived *bool
+	// Date and time when the lead status was last modified.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Display name of the lead status.
+	name *string
+	// Identifier of the organization that owns the lead status.
+	organizationId *string
+	// Relative display order of the lead status.
+	sortOrder *int32
 }
+
 // NewLeadStatusResponse instantiates a new LeadStatusResponse and sets the default values.
-func NewLeadStatusResponse()(*LeadStatusResponse) {
-    m := &LeadStatusResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewLeadStatusResponse() *LeadStatusResponse {
+	m := &LeadStatusResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateLeadStatusResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateLeadStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewLeadStatusResponse(), nil
+func CreateLeadStatusResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadStatusResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *LeadStatusResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *LeadStatusResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCategory gets the category property value. LeadStatusChange category represented by the lead status.
+
+// GetCategory gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 // returns a *LeadStatusCategory when successful
-func (m *LeadStatusResponse) GetCategory()(*LeadStatusCategory) {
-    return m.category
+func (m *LeadStatusResponse) GetCategory() *LeadStatusCategory {
+	return m.category
 }
+
 // GetColor gets the color property value. Display color assigned to the lead status.
 // returns a *string when successful
-func (m *LeadStatusResponse) GetColor()(*string) {
-    return m.color
+func (m *LeadStatusResponse) GetColor() *string {
+	return m.color
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *LeadStatusResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["category"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseLeadStatusCategory)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCategory(val.(*LeadStatusCategory))
-        }
-        return nil
-    }
-    res["color"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetColor(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isArchived"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsArchived(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["name"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetName(val)
-        }
-        return nil
-    }
-    res["organizationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrganizationId(val)
-        }
-        return nil
-    }
-    res["sortOrder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSortOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *LeadStatusResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["category"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadStatusCategory)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCategory(val.(*LeadStatusCategory))
+		}
+		return nil
+	}
+	res["color"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetColor(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isArchived"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsArchived(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetName(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
+	res["sortOrder"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSortOrder(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique identifier for the lead status.
 // returns a *string when successful
-func (m *LeadStatusResponse) GetId()(*string) {
-    return m.id
+func (m *LeadStatusResponse) GetId() *string {
+	return m.id
 }
+
 // GetIsArchived gets the isArchived property value. Indicates whether the lead status has been archived.
 // returns a *bool when successful
-func (m *LeadStatusResponse) GetIsArchived()(*bool) {
-    return m.isArchived
+func (m *LeadStatusResponse) GetIsArchived() *bool {
+	return m.isArchived
 }
+
 // GetModifiedAt gets the modifiedAt property value. Date and time when the lead status was last modified.
 // returns a *Time when successful
-func (m *LeadStatusResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *LeadStatusResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetName gets the name property value. Display name of the lead status.
 // returns a *string when successful
-func (m *LeadStatusResponse) GetName()(*string) {
-    return m.name
+func (m *LeadStatusResponse) GetName() *string {
+	return m.name
 }
+
 // GetOrganizationId gets the organizationId property value. Identifier of the organization that owns the lead status.
 // returns a *string when successful
-func (m *LeadStatusResponse) GetOrganizationId()(*string) {
-    return m.organizationId
+func (m *LeadStatusResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
+
 // GetSortOrder gets the sortOrder property value. Relative display order of the lead status.
-// returns a UntypedNodeable when successful
-func (m *LeadStatusResponse) GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.sortOrder
+// returns a *int32 when successful
+func (m *LeadStatusResponse) GetSortOrder() *int32 {
+	return m.sortOrder
 }
+
 // Serialize serializes information the current object
-func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetCategory() != nil {
-        cast := (*m.GetCategory()).String()
-        err := writer.WriteStringValue("category", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("color", m.GetColor())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("name", m.GetName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("sortOrder", m.GetSortOrder())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	if m.GetCategory() != nil {
+		cast := (*m.GetCategory()).String()
+		err := writer.WriteStringValue("category", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("color", m.GetColor())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("sortOrder", m.GetSortOrder())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *LeadStatusResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *LeadStatusResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCategory sets the category property value. LeadStatusChange category represented by the lead status.
-func (m *LeadStatusResponse) SetCategory(value *LeadStatusCategory)() {
-    m.category = value
+
+// SetCategory sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
+func (m *LeadStatusResponse) SetCategory(value *LeadStatusCategory) {
+	m.category = value
 }
+
 // SetColor sets the color property value. Display color assigned to the lead status.
-func (m *LeadStatusResponse) SetColor(value *string)() {
-    m.color = value
+func (m *LeadStatusResponse) SetColor(value *string) {
+	m.color = value
 }
+
 // SetId sets the id property value. Unique identifier for the lead status.
-func (m *LeadStatusResponse) SetId(value *string)() {
-    m.id = value
+func (m *LeadStatusResponse) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsArchived sets the isArchived property value. Indicates whether the lead status has been archived.
-func (m *LeadStatusResponse) SetIsArchived(value *bool)() {
-    m.isArchived = value
+func (m *LeadStatusResponse) SetIsArchived(value *bool) {
+	m.isArchived = value
 }
+
 // SetModifiedAt sets the modifiedAt property value. Date and time when the lead status was last modified.
-func (m *LeadStatusResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+func (m *LeadStatusResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetName sets the name property value. Display name of the lead status.
-func (m *LeadStatusResponse) SetName(value *string)() {
-    m.name = value
+func (m *LeadStatusResponse) SetName(value *string) {
+	m.name = value
 }
+
 // SetOrganizationId sets the organizationId property value. Identifier of the organization that owns the lead status.
-func (m *LeadStatusResponse) SetOrganizationId(value *string)() {
-    m.organizationId = value
+func (m *LeadStatusResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
+
 // SetSortOrder sets the sortOrder property value. Relative display order of the lead status.
-func (m *LeadStatusResponse) SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.sortOrder = value
+func (m *LeadStatusResponse) SetSortOrder(value *int32) {
+	m.sortOrder = value
 }
+
 type LeadStatusResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCategory()(*LeadStatusCategory)
-    GetColor()(*string)
-    GetId()(*string)
-    GetIsArchived()(*bool)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetName()(*string)
-    GetOrganizationId()(*string)
-    GetSortOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetCategory(value *LeadStatusCategory)()
-    SetColor(value *string)()
-    SetId(value *string)()
-    SetIsArchived(value *bool)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetName(value *string)()
-    SetOrganizationId(value *string)()
-    SetSortOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCategory() *LeadStatusCategory
+	GetColor() *string
+	GetId() *string
+	GetIsArchived() *bool
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetName() *string
+	GetOrganizationId() *string
+	GetSortOrder() *int32
+	SetCategory(value *LeadStatusCategory)
+	SetColor(value *string)
+	SetId(value *string)
+	SetIsArchived(value *bool)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetName(value *string)
+	SetOrganizationId(value *string)
+	SetSortOrder(value *int32)
 }

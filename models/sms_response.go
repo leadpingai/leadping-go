@@ -4,1153 +4,1264 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // SmsResponse describes an SMS or MMS message, including participants, delivery state, scheduling, media, and billing details.
 type SmsResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Billing state for this communication, charge, or transaction.
-    billingStatus *string
-    // UTC timestamp when Leadping blocked this communication.
-    blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Messaging campaign identifier associated with this SMS message.
-    campaignId *string
-    // UTC timestamp when this delivery or workflow was canceled.
-    canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Reason this delivery, run, or request was canceled.
-    cancelReason *string
-    // Compliance action applied to this message, lead, or sender.
-    complianceAction *string
-    // Ordered diagnostic entries recorded while Leadping processed this message.
-    consoleEntries []CommunicationConsoleEntryable
-    // Conversation ID that links this SMS message to the Leadping inbox thread.
-    conversationId *string
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when the provider confirmed delivery.
-    deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Machine-readable error code returned while processing this SMS message.
-    errorCode *string
-    // Human-readable error message returned while processing this SMS message.
-    errorMessage *string
-    // UTC timestamp when processing failed for this SMS message.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Sender phone number used for this communication.
-    fromPhoneNumber *string
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // The unique identifier for the entity.
-    id *string
-    // Lead ID associated with the SMS conversation or outreach attempt.
-    leadId *string
-    // Media attached to this message. A non-empty collection identifies an MMS message.
-    media []MessageMediaAttachmentable
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when Leadping will retry this SMS message.
-    nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Phone number ID selected for outbound delivery.
-    outboundPhoneNumberId *string
-    // UTC timestamp when Leadping queued this SMS message for processing.
-    queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when Leadping received this inbound event or message.
-    receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Number of retry attempts already made for this SMS message.
-    retryCount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // UTC timestamp when Leadping is scheduled to send this SMS message.
-    scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Reason Leadping scheduled this delivery for a later time.
-    scheduledReason *string
-    // Defines the supported Outgoing Number Selection Reason values.
-    selectionReason *SmsResponse_selectionReason
-    // UTC timestamp when Leadping began sending this message.
-    sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when Leadping sent this message to the provider.
-    sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Lead source ID used for attribution and sender selection on this SMS message.
-    sourceId *string
-    // Defines the supported SMS Message Status values.
-    status *SmsResponse_status
-    // Human-readable reason explaining the current status of this SMS message.
-    statusReason *string
-    // Body text for the SMS message or communication represented by this SMS message.
-    text *string
-    // Defines the supported SMS Traffic Type values.
-    trafficType *SmsResponse_trafficType
-    // UTC timestamp when the provider marked the message undeliverable.
-    undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
-    wasManuallyOverridden *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Monetary amount billed for this Leadping communication or transaction.
+	billableAmount *float64
+	// Billing state for this communication, charge, or transaction.
+	billingStatus *string
+	// UTC timestamp when Leadping blocked this communication.
+	blockedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Messaging campaign identifier associated with this SMS message.
+	campaignId *string
+	// UTC timestamp when this delivery or workflow was canceled.
+	canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Reason this delivery, run, or request was canceled.
+	cancelReason *string
+	// Compliance action applied to this message, lead, or sender.
+	complianceAction *string
+	// Ordered diagnostic entries recorded while Leadping processed this message.
+	consoleEntries []CommunicationConsoleEntryable
+	// Conversation ID that links this SMS message to the Leadping inbox thread.
+	conversationId *string
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the provider confirmed delivery.
+	deliveredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Machine-readable error code returned while processing this SMS message.
+	errorCode *string
+	// Human-readable error message returned while processing this SMS message.
+	errorMessage *string
+	// UTC timestamp when processing failed for this SMS message.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Sender phone number used for this communication.
+	fromPhoneNumber *string
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Stable unique identifier of the resource.
+	id *string
+	// The isDemo property
+	isDemo *bool
+	// Lead ID associated with the SMS conversation or outreach attempt.
+	leadId *string
+	// Media attached to this message. A non-empty collection identifies an MMS message.
+	media []MessageMediaAttachmentable
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when Leadping will retry this SMS message.
+	nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Phone number ID selected for outbound delivery.
+	outboundPhoneNumberId *string
+	// UTC timestamp when Leadping queued this SMS message for processing.
+	queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when Leadping received this inbound event or message.
+	receivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Number of retry attempts already made for this SMS message.
+	retryCount *int32
+	// UTC timestamp when Leadping is scheduled to send this SMS message.
+	scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Reason Leadping scheduled this delivery for a later time.
+	scheduledReason *string
+	// Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+	selectionReason *SmsResponse_selectionReason
+	// UTC timestamp when Leadping began sending this message.
+	sendingStartedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when Leadping sent this message to the provider.
+	sentAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Lead source ID used for attribution and sender selection on this SMS message.
+	sourceId *string
+	// Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
+	status *SmsResponse_status
+	// Human-readable reason explaining the current status of this SMS message.
+	statusReason *string
+	// Body text for the SMS message or communication represented by this SMS message.
+	text *string
+	// Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
+	trafficType *SmsResponse_trafficType
+	// UTC timestamp when the provider marked the message undeliverable.
+	undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
+	wasManuallyOverridden *bool
 }
+
 // NewSmsResponse instantiates a new SmsResponse and sets the default values.
-func NewSmsResponse()(*SmsResponse) {
-    m := &SmsResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewSmsResponse() *SmsResponse {
+	m := &SmsResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateSmsResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateSmsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewSmsResponse(), nil
+func CreateSmsResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewSmsResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *SmsResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *SmsResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *SmsResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.billableAmount
+// returns a *float64 when successful
+func (m *SmsResponse) GetBillableAmount() *float64 {
+	return m.billableAmount
 }
+
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
-func (m *SmsResponse) GetBillingStatus()(*string) {
-    return m.billingStatus
+func (m *SmsResponse) GetBillingStatus() *string {
+	return m.billingStatus
 }
+
 // GetBlockedAt gets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
 // returns a *Time when successful
-func (m *SmsResponse) GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.blockedAt
+func (m *SmsResponse) GetBlockedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.blockedAt
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *SmsResponse) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetCanceledAt gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
 // returns a *Time when successful
-func (m *SmsResponse) GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.canceledAt
+func (m *SmsResponse) GetCanceledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.canceledAt
 }
+
 // GetCancelReason gets the cancelReason property value. Reason this delivery, run, or request was canceled.
 // returns a *string when successful
-func (m *SmsResponse) GetCancelReason()(*string) {
-    return m.cancelReason
+func (m *SmsResponse) GetCancelReason() *string {
+	return m.cancelReason
 }
+
 // GetComplianceAction gets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 // returns a *string when successful
-func (m *SmsResponse) GetComplianceAction()(*string) {
-    return m.complianceAction
+func (m *SmsResponse) GetComplianceAction() *string {
+	return m.complianceAction
 }
+
 // GetConsoleEntries gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
 // returns a []CommunicationConsoleEntryable when successful
-func (m *SmsResponse) GetConsoleEntries()([]CommunicationConsoleEntryable) {
-    return m.consoleEntries
+func (m *SmsResponse) GetConsoleEntries() []CommunicationConsoleEntryable {
+	return m.consoleEntries
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
 // returns a *string when successful
-func (m *SmsResponse) GetConversationId()(*string) {
-    return m.conversationId
+func (m *SmsResponse) GetConversationId() *string {
+	return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *SmsResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *SmsResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDeliveredAt gets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
 // returns a *Time when successful
-func (m *SmsResponse) GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.deliveredAt
+func (m *SmsResponse) GetDeliveredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.deliveredAt
 }
+
 // GetErrorCode gets the errorCode property value. Machine-readable error code returned while processing this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetErrorCode()(*string) {
-    return m.errorCode
+func (m *SmsResponse) GetErrorCode() *string {
+	return m.errorCode
 }
+
 // GetErrorMessage gets the errorMessage property value. Human-readable error message returned while processing this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetErrorMessage()(*string) {
-    return m.errorMessage
+func (m *SmsResponse) GetErrorMessage() *string {
+	return m.errorMessage
 }
+
 // GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this SMS message.
 // returns a *Time when successful
-func (m *SmsResponse) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *SmsResponse) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *SmsResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["billingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingStatus(val)
-        }
-        return nil
-    }
-    res["blockedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBlockedAt(val)
-        }
-        return nil
-    }
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["canceledAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCanceledAt(val)
-        }
-        return nil
-    }
-    res["cancelReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCancelReason(val)
-        }
-        return nil
-    }
-    res["complianceAction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetComplianceAction(val)
-        }
-        return nil
-    }
-    res["consoleEntries"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CommunicationConsoleEntryable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CommunicationConsoleEntryable)
-                }
-            }
-            m.SetConsoleEntries(res)
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["deliveredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDeliveredAt(val)
-        }
-        return nil
-    }
-    res["errorCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetErrorCode(val)
-        }
-        return nil
-    }
-    res["errorMessage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetErrorMessage(val)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumber(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["media"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMessageMediaAttachmentFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MessageMediaAttachmentable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(MessageMediaAttachmentable)
-                }
-            }
-            m.SetMedia(res)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["nextRetryAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextRetryAt(val)
-        }
-        return nil
-    }
-    res["outboundPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOutboundPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["queuedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetQueuedAt(val)
-        }
-        return nil
-    }
-    res["receivedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReceivedAt(val)
-        }
-        return nil
-    }
-    res["retryCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRetryCount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["scheduledFor"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScheduledFor(val)
-        }
-        return nil
-    }
-    res["scheduledReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScheduledReason(val)
-        }
-        return nil
-    }
-    res["selectionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsResponse_selectionReason)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelectionReason(val.(*SmsResponse_selectionReason))
-        }
-        return nil
-    }
-    res["sendingStartedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSendingStartedAt(val)
-        }
-        return nil
-    }
-    res["sentAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentAt(val)
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsResponse_status)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*SmsResponse_status))
-        }
-        return nil
-    }
-    res["statusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusReason(val)
-        }
-        return nil
-    }
-    res["text"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetText(val)
-        }
-        return nil
-    }
-    res["trafficType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSmsResponse_trafficType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTrafficType(val.(*SmsResponse_trafficType))
-        }
-        return nil
-    }
-    res["undeliverableAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUndeliverableAt(val)
-        }
-        return nil
-    }
-    res["wasManuallyOverridden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWasManuallyOverridden(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *SmsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["billableAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableAmount(val)
+		}
+		return nil
+	}
+	res["billingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingStatus(val)
+		}
+		return nil
+	}
+	res["blockedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBlockedAt(val)
+		}
+		return nil
+	}
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["canceledAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanceledAt(val)
+		}
+		return nil
+	}
+	res["cancelReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCancelReason(val)
+		}
+		return nil
+	}
+	res["complianceAction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceAction(val)
+		}
+		return nil
+	}
+	res["consoleEntries"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CommunicationConsoleEntryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CommunicationConsoleEntryable)
+				}
+			}
+			m.SetConsoleEntries(res)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["deliveredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDeliveredAt(val)
+		}
+		return nil
+	}
+	res["errorCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetErrorCode(val)
+		}
+		return nil
+	}
+	res["errorMessage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetErrorMessage(val)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumber(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["media"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateMessageMediaAttachmentFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]MessageMediaAttachmentable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(MessageMediaAttachmentable)
+				}
+			}
+			m.SetMedia(res)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["nextRetryAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextRetryAt(val)
+		}
+		return nil
+	}
+	res["outboundPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOutboundPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["queuedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQueuedAt(val)
+		}
+		return nil
+	}
+	res["receivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReceivedAt(val)
+		}
+		return nil
+	}
+	res["retryCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRetryCount(val)
+		}
+		return nil
+	}
+	res["scheduledFor"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScheduledFor(val)
+		}
+		return nil
+	}
+	res["scheduledReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScheduledReason(val)
+		}
+		return nil
+	}
+	res["selectionReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsResponse_selectionReason)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectionReason(val.(*SmsResponse_selectionReason))
+		}
+		return nil
+	}
+	res["sendingStartedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSendingStartedAt(val)
+		}
+		return nil
+	}
+	res["sentAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSentAt(val)
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsResponse_status)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*SmsResponse_status))
+		}
+		return nil
+	}
+	res["statusReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusReason(val)
+		}
+		return nil
+	}
+	res["text"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetText(val)
+		}
+		return nil
+	}
+	res["trafficType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSmsResponse_trafficType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrafficType(val.(*SmsResponse_trafficType))
+		}
+		return nil
+	}
+	res["undeliverableAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUndeliverableAt(val)
+		}
+		return nil
+	}
+	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWasManuallyOverridden(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
-func (m *SmsResponse) GetFromPhoneNumber()(*string) {
-    return m.fromPhoneNumber
+func (m *SmsResponse) GetFromPhoneNumber() *string {
+	return m.fromPhoneNumber
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *SmsResponse) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *SmsResponse) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *SmsResponse) GetId()(*string) {
-    return m.id
+func (m *SmsResponse) GetId() *string {
+	return m.id
 }
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *SmsResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadId gets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 // returns a *string when successful
-func (m *SmsResponse) GetLeadId()(*string) {
-    return m.leadId
+func (m *SmsResponse) GetLeadId() *string {
+	return m.leadId
 }
+
 // GetMedia gets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
 // returns a []MessageMediaAttachmentable when successful
-func (m *SmsResponse) GetMedia()([]MessageMediaAttachmentable) {
-    return m.media
+func (m *SmsResponse) GetMedia() []MessageMediaAttachmentable {
+	return m.media
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *SmsResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *SmsResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetNextRetryAt gets the nextRetryAt property value. UTC timestamp when Leadping will retry this SMS message.
 // returns a *Time when successful
-func (m *SmsResponse) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.nextRetryAt
+func (m *SmsResponse) GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextRetryAt
 }
+
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
-func (m *SmsResponse) GetOutboundPhoneNumberId()(*string) {
-    return m.outboundPhoneNumberId
+func (m *SmsResponse) GetOutboundPhoneNumberId() *string {
+	return m.outboundPhoneNumberId
 }
+
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
 // returns a *Time when successful
-func (m *SmsResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.queuedAt
+func (m *SmsResponse) GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.queuedAt
 }
+
 // GetReceivedAt gets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
 // returns a *Time when successful
-func (m *SmsResponse) GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.receivedAt
+func (m *SmsResponse) GetReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.receivedAt
 }
+
 // GetRetryCount gets the retryCount property value. Number of retry attempts already made for this SMS message.
-// returns a UntypedNodeable when successful
-func (m *SmsResponse) GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.retryCount
+// returns a *int32 when successful
+func (m *SmsResponse) GetRetryCount() *int32 {
+	return m.retryCount
 }
+
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
 // returns a *Time when successful
-func (m *SmsResponse) GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.scheduledFor
+func (m *SmsResponse) GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.scheduledFor
 }
+
 // GetScheduledReason gets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
 // returns a *string when successful
-func (m *SmsResponse) GetScheduledReason()(*string) {
-    return m.scheduledReason
+func (m *SmsResponse) GetScheduledReason() *string {
+	return m.scheduledReason
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *SmsResponse_selectionReason when successful
-func (m *SmsResponse) GetSelectionReason()(*SmsResponse_selectionReason) {
-    return m.selectionReason
+func (m *SmsResponse) GetSelectionReason() *SmsResponse_selectionReason {
+	return m.selectionReason
 }
+
 // GetSendingStartedAt gets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
 // returns a *Time when successful
-func (m *SmsResponse) GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.sendingStartedAt
+func (m *SmsResponse) GetSendingStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.sendingStartedAt
 }
+
 // GetSentAt gets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
 // returns a *Time when successful
-func (m *SmsResponse) GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.sentAt
+func (m *SmsResponse) GetSentAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.sentAt
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used for attribution and sender selection on this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetSourceId()(*string) {
-    return m.sourceId
+func (m *SmsResponse) GetSourceId() *string {
+	return m.sourceId
 }
-// GetStatus gets the status property value. Defines the supported SMS Message Status values.
+
+// GetStatus gets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
 // returns a *SmsResponse_status when successful
-func (m *SmsResponse) GetStatus()(*SmsResponse_status) {
-    return m.status
+func (m *SmsResponse) GetStatus() *SmsResponse_status {
+	return m.status
 }
+
 // GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetStatusReason()(*string) {
-    return m.statusReason
+func (m *SmsResponse) GetStatusReason() *string {
+	return m.statusReason
 }
+
 // GetText gets the text property value. Body text for the SMS message or communication represented by this SMS message.
 // returns a *string when successful
-func (m *SmsResponse) GetText()(*string) {
-    return m.text
+func (m *SmsResponse) GetText() *string {
+	return m.text
 }
-// GetTrafficType gets the trafficType property value. Defines the supported SMS Traffic Type values.
+
+// GetTrafficType gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
 // returns a *SmsResponse_trafficType when successful
-func (m *SmsResponse) GetTrafficType()(*SmsResponse_trafficType) {
-    return m.trafficType
+func (m *SmsResponse) GetTrafficType() *SmsResponse_trafficType {
+	return m.trafficType
 }
+
 // GetUndeliverableAt gets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
 // returns a *Time when successful
-func (m *SmsResponse) GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.undeliverableAt
+func (m *SmsResponse) GetUndeliverableAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.undeliverableAt
 }
+
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
 // returns a *bool when successful
-func (m *SmsResponse) GetWasManuallyOverridden()(*bool) {
-    return m.wasManuallyOverridden
+func (m *SmsResponse) GetWasManuallyOverridden() *bool {
+	return m.wasManuallyOverridden
 }
+
 // Serialize serializes information the current object
-func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("blockedAt", m.GetBlockedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("canceledAt", m.GetCanceledAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("cancelReason", m.GetCancelReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("complianceAction", m.GetComplianceAction())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConsoleEntries() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
-        for i, v := range m.GetConsoleEntries() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("deliveredAt", m.GetDeliveredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("errorCode", m.GetErrorCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("errorMessage", m.GetErrorMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetMedia() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMedia()))
-        for i, v := range m.GetMedia() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("media", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("outboundPhoneNumberId", m.GetOutboundPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("queuedAt", m.GetQueuedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("receivedAt", m.GetReceivedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("retryCount", m.GetRetryCount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("scheduledFor", m.GetScheduledFor())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("scheduledReason", m.GetScheduledReason())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSelectionReason() != nil {
-        cast := (*m.GetSelectionReason()).String()
-        err := writer.WriteStringValue("selectionReason", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("sendingStartedAt", m.GetSendingStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("sentAt", m.GetSentAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("text", m.GetText())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetTrafficType() != nil {
-        cast := (*m.GetTrafficType()).String()
-        err := writer.WriteStringValue("trafficType", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("undeliverableAt", m.GetUndeliverableAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("blockedAt", m.GetBlockedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("canceledAt", m.GetCanceledAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("cancelReason", m.GetCancelReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("complianceAction", m.GetComplianceAction())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConsoleEntries() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
+		for i, v := range m.GetConsoleEntries() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("deliveredAt", m.GetDeliveredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("errorCode", m.GetErrorCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("errorMessage", m.GetErrorMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetMedia() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMedia()))
+		for i, v := range m.GetMedia() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("media", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("outboundPhoneNumberId", m.GetOutboundPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("queuedAt", m.GetQueuedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("receivedAt", m.GetReceivedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("retryCount", m.GetRetryCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("scheduledFor", m.GetScheduledFor())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("scheduledReason", m.GetScheduledReason())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSelectionReason() != nil {
+		cast := (*m.GetSelectionReason()).String()
+		err := writer.WriteStringValue("selectionReason", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("sendingStartedAt", m.GetSendingStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("sentAt", m.GetSentAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusReason", m.GetStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("text", m.GetText())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTrafficType() != nil {
+		cast := (*m.GetTrafficType()).String()
+		err := writer.WriteStringValue("trafficType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("undeliverableAt", m.GetUndeliverableAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *SmsResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *SmsResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *SmsResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.billableAmount = value
+func (m *SmsResponse) SetBillableAmount(value *float64) {
+	m.billableAmount = value
 }
+
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
-func (m *SmsResponse) SetBillingStatus(value *string)() {
-    m.billingStatus = value
+func (m *SmsResponse) SetBillingStatus(value *string) {
+	m.billingStatus = value
 }
+
 // SetBlockedAt sets the blockedAt property value. UTC timestamp when Leadping blocked this communication.
-func (m *SmsResponse) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.blockedAt = value
+func (m *SmsResponse) SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.blockedAt = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this SMS message.
-func (m *SmsResponse) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *SmsResponse) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetCanceledAt sets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
-func (m *SmsResponse) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.canceledAt = value
+func (m *SmsResponse) SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.canceledAt = value
 }
+
 // SetCancelReason sets the cancelReason property value. Reason this delivery, run, or request was canceled.
-func (m *SmsResponse) SetCancelReason(value *string)() {
-    m.cancelReason = value
+func (m *SmsResponse) SetCancelReason(value *string) {
+	m.cancelReason = value
 }
+
 // SetComplianceAction sets the complianceAction property value. Compliance action applied to this message, lead, or sender.
-func (m *SmsResponse) SetComplianceAction(value *string)() {
-    m.complianceAction = value
+func (m *SmsResponse) SetComplianceAction(value *string) {
+	m.complianceAction = value
 }
+
 // SetConsoleEntries sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
-func (m *SmsResponse) SetConsoleEntries(value []CommunicationConsoleEntryable)() {
-    m.consoleEntries = value
+func (m *SmsResponse) SetConsoleEntries(value []CommunicationConsoleEntryable) {
+	m.consoleEntries = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this SMS message to the Leadping inbox thread.
-func (m *SmsResponse) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *SmsResponse) SetConversationId(value *string) {
+	m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *SmsResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *SmsResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDeliveredAt sets the deliveredAt property value. UTC timestamp when the provider confirmed delivery.
-func (m *SmsResponse) SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.deliveredAt = value
+func (m *SmsResponse) SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.deliveredAt = value
 }
+
 // SetErrorCode sets the errorCode property value. Machine-readable error code returned while processing this SMS message.
-func (m *SmsResponse) SetErrorCode(value *string)() {
-    m.errorCode = value
+func (m *SmsResponse) SetErrorCode(value *string) {
+	m.errorCode = value
 }
+
 // SetErrorMessage sets the errorMessage property value. Human-readable error message returned while processing this SMS message.
-func (m *SmsResponse) SetErrorMessage(value *string)() {
-    m.errorMessage = value
+func (m *SmsResponse) SetErrorMessage(value *string) {
+	m.errorMessage = value
 }
+
 // SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this SMS message.
-func (m *SmsResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *SmsResponse) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
-func (m *SmsResponse) SetFromPhoneNumber(value *string)() {
-    m.fromPhoneNumber = value
+func (m *SmsResponse) SetFromPhoneNumber(value *string) {
+	m.fromPhoneNumber = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *SmsResponse) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *SmsResponse) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *SmsResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *SmsResponse) SetId(value *string) {
+	m.id = value
 }
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *SmsResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
-func (m *SmsResponse) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *SmsResponse) SetLeadId(value *string) {
+	m.leadId = value
 }
+
 // SetMedia sets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
-func (m *SmsResponse) SetMedia(value []MessageMediaAttachmentable)() {
-    m.media = value
+func (m *SmsResponse) SetMedia(value []MessageMediaAttachmentable) {
+	m.media = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *SmsResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *SmsResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this SMS message.
-func (m *SmsResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.nextRetryAt = value
+func (m *SmsResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextRetryAt = value
 }
+
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
-func (m *SmsResponse) SetOutboundPhoneNumberId(value *string)() {
-    m.outboundPhoneNumberId = value
+func (m *SmsResponse) SetOutboundPhoneNumberId(value *string) {
+	m.outboundPhoneNumberId = value
 }
+
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this SMS message for processing.
-func (m *SmsResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.queuedAt = value
+func (m *SmsResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.queuedAt = value
 }
+
 // SetReceivedAt sets the receivedAt property value. UTC timestamp when Leadping received this inbound event or message.
-func (m *SmsResponse) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.receivedAt = value
+func (m *SmsResponse) SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.receivedAt = value
 }
+
 // SetRetryCount sets the retryCount property value. Number of retry attempts already made for this SMS message.
-func (m *SmsResponse) SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.retryCount = value
+func (m *SmsResponse) SetRetryCount(value *int32) {
+	m.retryCount = value
 }
+
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping is scheduled to send this SMS message.
-func (m *SmsResponse) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.scheduledFor = value
+func (m *SmsResponse) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.scheduledFor = value
 }
+
 // SetScheduledReason sets the scheduledReason property value. Reason Leadping scheduled this delivery for a later time.
-func (m *SmsResponse) SetScheduledReason(value *string)() {
-    m.scheduledReason = value
+func (m *SmsResponse) SetScheduledReason(value *string) {
+	m.scheduledReason = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
-func (m *SmsResponse) SetSelectionReason(value *SmsResponse_selectionReason)() {
-    m.selectionReason = value
+
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+func (m *SmsResponse) SetSelectionReason(value *SmsResponse_selectionReason) {
+	m.selectionReason = value
 }
+
 // SetSendingStartedAt sets the sendingStartedAt property value. UTC timestamp when Leadping began sending this message.
-func (m *SmsResponse) SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.sendingStartedAt = value
+func (m *SmsResponse) SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.sendingStartedAt = value
 }
+
 // SetSentAt sets the sentAt property value. UTC timestamp when Leadping sent this message to the provider.
-func (m *SmsResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.sentAt = value
+func (m *SmsResponse) SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.sentAt = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used for attribution and sender selection on this SMS message.
-func (m *SmsResponse) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *SmsResponse) SetSourceId(value *string) {
+	m.sourceId = value
 }
-// SetStatus sets the status property value. Defines the supported SMS Message Status values.
-func (m *SmsResponse) SetStatus(value *SmsResponse_status)() {
-    m.status = value
+
+// SetStatus sets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
+func (m *SmsResponse) SetStatus(value *SmsResponse_status) {
+	m.status = value
 }
+
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this SMS message.
-func (m *SmsResponse) SetStatusReason(value *string)() {
-    m.statusReason = value
+func (m *SmsResponse) SetStatusReason(value *string) {
+	m.statusReason = value
 }
+
 // SetText sets the text property value. Body text for the SMS message or communication represented by this SMS message.
-func (m *SmsResponse) SetText(value *string)() {
-    m.text = value
+func (m *SmsResponse) SetText(value *string) {
+	m.text = value
 }
-// SetTrafficType sets the trafficType property value. Defines the supported SMS Traffic Type values.
-func (m *SmsResponse) SetTrafficType(value *SmsResponse_trafficType)() {
-    m.trafficType = value
+
+// SetTrafficType sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
+func (m *SmsResponse) SetTrafficType(value *SmsResponse_trafficType) {
+	m.trafficType = value
 }
+
 // SetUndeliverableAt sets the undeliverableAt property value. UTC timestamp when the provider marked the message undeliverable.
-func (m *SmsResponse) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.undeliverableAt = value
+func (m *SmsResponse) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.undeliverableAt = value
 }
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this SMS message.
-func (m *SmsResponse) SetWasManuallyOverridden(value *bool)() {
-    m.wasManuallyOverridden = value
+func (m *SmsResponse) SetWasManuallyOverridden(value *bool) {
+	m.wasManuallyOverridden = value
 }
+
 type SmsResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillingStatus()(*string)
-    GetBlockedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCampaignId()(*string)
-    GetCanceledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetCancelReason()(*string)
-    GetComplianceAction()(*string)
-    GetConsoleEntries()([]CommunicationConsoleEntryable)
-    GetConversationId()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDeliveredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetErrorCode()(*string)
-    GetErrorMessage()(*string)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFromPhoneNumber()(*string)
-    GetFromPhoneNumberId()(*string)
-    GetId()(*string)
-    GetLeadId()(*string)
-    GetMedia()([]MessageMediaAttachmentable)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOutboundPhoneNumberId()(*string)
-    GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetReceivedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRetryCount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetScheduledFor()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetScheduledReason()(*string)
-    GetSelectionReason()(*SmsResponse_selectionReason)
-    GetSendingStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSentAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSourceId()(*string)
-    GetStatus()(*SmsResponse_status)
-    GetStatusReason()(*string)
-    GetText()(*string)
-    GetTrafficType()(*SmsResponse_trafficType)
-    GetUndeliverableAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetWasManuallyOverridden()(*bool)
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillingStatus(value *string)()
-    SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCampaignId(value *string)()
-    SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetCancelReason(value *string)()
-    SetComplianceAction(value *string)()
-    SetConsoleEntries(value []CommunicationConsoleEntryable)()
-    SetConversationId(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetErrorCode(value *string)()
-    SetErrorMessage(value *string)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFromPhoneNumber(value *string)()
-    SetFromPhoneNumberId(value *string)()
-    SetId(value *string)()
-    SetLeadId(value *string)()
-    SetMedia(value []MessageMediaAttachmentable)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOutboundPhoneNumberId(value *string)()
-    SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRetryCount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetScheduledReason(value *string)()
-    SetSelectionReason(value *SmsResponse_selectionReason)()
-    SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSourceId(value *string)()
-    SetStatus(value *SmsResponse_status)()
-    SetStatusReason(value *string)()
-    SetText(value *string)()
-    SetTrafficType(value *SmsResponse_trafficType)()
-    SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetWasManuallyOverridden(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetBillableAmount() *float64
+	GetBillingStatus() *string
+	GetBlockedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCampaignId() *string
+	GetCanceledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCancelReason() *string
+	GetComplianceAction() *string
+	GetConsoleEntries() []CommunicationConsoleEntryable
+	GetConversationId() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDeliveredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetErrorCode() *string
+	GetErrorMessage() *string
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFromPhoneNumber() *string
+	GetFromPhoneNumberId() *string
+	GetId() *string
+	GetIsDemo() *bool
+	GetLeadId() *string
+	GetMedia() []MessageMediaAttachmentable
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOutboundPhoneNumberId() *string
+	GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetRetryCount() *int32
+	GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetScheduledReason() *string
+	GetSelectionReason() *SmsResponse_selectionReason
+	GetSendingStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSentAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSourceId() *string
+	GetStatus() *SmsResponse_status
+	GetStatusReason() *string
+	GetText() *string
+	GetTrafficType() *SmsResponse_trafficType
+	GetUndeliverableAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetWasManuallyOverridden() *bool
+	SetBillableAmount(value *float64)
+	SetBillingStatus(value *string)
+	SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCampaignId(value *string)
+	SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCancelReason(value *string)
+	SetComplianceAction(value *string)
+	SetConsoleEntries(value []CommunicationConsoleEntryable)
+	SetConversationId(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetErrorCode(value *string)
+	SetErrorMessage(value *string)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFromPhoneNumber(value *string)
+	SetFromPhoneNumberId(value *string)
+	SetId(value *string)
+	SetIsDemo(value *bool)
+	SetLeadId(value *string)
+	SetMedia(value []MessageMediaAttachmentable)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOutboundPhoneNumberId(value *string)
+	SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetRetryCount(value *int32)
+	SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetScheduledReason(value *string)
+	SetSelectionReason(value *SmsResponse_selectionReason)
+	SetSendingStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSentAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSourceId(value *string)
+	SetStatus(value *SmsResponse_status)
+	SetStatusReason(value *string)
+	SetText(value *string)
+	SetTrafficType(value *SmsResponse_trafficType)
+	SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetWasManuallyOverridden(value *bool)
 }

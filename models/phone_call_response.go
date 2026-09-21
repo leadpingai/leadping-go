@@ -4,821 +4,910 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// PhoneCallResponse describes a Leadping phone call, including participants, direction, provider state, timing, recording, and billing details.
+// PhoneCallResponse describes a Leadping phone call, including participants, direction, provider state, timing, voicemail, and billing details.
 type PhoneCallResponse struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // UTC timestamp when the call was answered.
-    answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Monetary amount billed for this Leadping communication or transaction.
-    billableAmount i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Billing state for this communication, charge, or transaction.
-    billingStatus *string
-    // Caller ID phone number presented during the outbound call.
-    callerId *string
-    // Messaging campaign identifier associated with this phone call.
-    campaignId *string
-    // Ordered diagnostic entries recorded while Leadping processed this call.
-    consoleEntries []CommunicationConsoleEntryable
-    // Conversation ID that links this phone call to the Leadping inbox thread.
-    conversationId *string
-    // The date and time when the entity was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Communication direction for this phone call, such as inbound or outbound.
-    direction *string
-    // Call duration in seconds.
-    durationSeconds i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // UTC timestamp when the call ended.
-    endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Sender phone number used for this communication.
-    fromPhoneNumber *string
-    // Sender phone number ID used for this outbound SMS or call.
-    fromPhoneNumberId *string
-    // The unique identifier for the entity.
-    id *string
-    // Lead ID associated with the call conversation or outreach attempt.
-    leadId *string
-    // The date and time when the entity was last modified, if applicable.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Phone number used by this phone call for calls, SMS, lookup, or routing.
-    phoneNumber *string
-    // UTC timestamp when Leadping queued this phone call for processing.
-    queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // URL for the call recording, when the provider makes one available.
-    recordingUrl *string
-    // UTC timestamp when the call started ringing.
-    ringingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Defines the supported Outgoing Number Selection Reason values.
-    selectionReason *PhoneCallResponse_selectionReason
-    // Lead source ID used for attribution and routing on this call.
-    sourceId *string
-    // Current lifecycle status for this phone call in the Leadping API.
-    status *PhoneCallStatus
-    // Human-readable reason explaining the current status of this phone call.
-    statusReason *string
-    // Recipient phone number used for this communication.
-    toPhoneNumber *string
-    // Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
-    wasManuallyOverridden *bool
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// UTC timestamp when the call was answered.
+	answeredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Monetary amount billed for this Leadping communication or transaction.
+	billableAmount *float64
+	// Billing state for this communication, charge, or transaction.
+	billingStatus *string
+	// Caller ID phone number presented during the outbound call.
+	callerId *string
+	// Messaging campaign identifier associated with this phone call.
+	campaignId *string
+	// Ordered diagnostic entries recorded while Leadping processed this call.
+	consoleEntries []CommunicationConsoleEntryable
+	// Conversation ID that links this phone call to the Leadping inbox thread.
+	conversationId *string
+	// UTC timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Communication direction for this phone call, such as inbound or outbound.
+	direction *string
+	// Call duration in seconds.
+	durationSeconds *int32
+	// UTC timestamp when the call ended.
+	endedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Sender phone number used for this communication.
+	fromPhoneNumber *string
+	// Sender phone number ID used for this outbound SMS or call.
+	fromPhoneNumberId *string
+	// Stable unique identifier of the resource.
+	id *string
+	// The isDemo property
+	isDemo *bool
+	// Lead ID associated with the call conversation or outreach attempt.
+	leadId *string
+	// UTC timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Phone number used by this phone call for calls, SMS, lookup, or routing.
+	phoneNumber *string
+	// UTC timestamp when Leadping queued this phone call for processing.
+	queuedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when the call started ringing.
+	ringingAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+	selectionReason *PhoneCallResponse_selectionReason
+	// Lead source ID used for attribution and routing on this call.
+	sourceId *string
+	// Describes the durable business outcome of a Leadping phone call after provider status normalization.
+	status *PhoneCallStatus
+	// Human-readable reason explaining the current status of this phone call.
+	statusReason *string
+	// Recipient phone number used for this communication.
+	toPhoneNumber *string
+	// URL for voicemail audio, when the call resulted in a voicemail.
+	voicemailUrl *string
+	// Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
+	wasManuallyOverridden *bool
 }
+
 // NewPhoneCallResponse instantiates a new PhoneCallResponse and sets the default values.
-func NewPhoneCallResponse()(*PhoneCallResponse) {
-    m := &PhoneCallResponse{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneCallResponse() *PhoneCallResponse {
+	m := &PhoneCallResponse{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneCallResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneCallResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneCallResponse(), nil
+func CreatePhoneCallResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneCallResponse(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneCallResponse) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneCallResponse) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAnsweredAt gets the answeredAt property value. UTC timestamp when the call was answered.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.answeredAt
+func (m *PhoneCallResponse) GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.answeredAt
 }
+
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-// returns a UntypedNodeable when successful
-func (m *PhoneCallResponse) GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.billableAmount
+// returns a *float64 when successful
+func (m *PhoneCallResponse) GetBillableAmount() *float64 {
+	return m.billableAmount
 }
+
 // GetBillingStatus gets the billingStatus property value. Billing state for this communication, charge, or transaction.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetBillingStatus()(*string) {
-    return m.billingStatus
+func (m *PhoneCallResponse) GetBillingStatus() *string {
+	return m.billingStatus
 }
+
 // GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetCallerId()(*string) {
-    return m.callerId
+func (m *PhoneCallResponse) GetCallerId() *string {
+	return m.callerId
 }
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone call.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetCampaignId()(*string) {
-    return m.campaignId
+func (m *PhoneCallResponse) GetCampaignId() *string {
+	return m.campaignId
 }
+
 // GetConsoleEntries gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
 // returns a []CommunicationConsoleEntryable when successful
-func (m *PhoneCallResponse) GetConsoleEntries()([]CommunicationConsoleEntryable) {
-    return m.consoleEntries
+func (m *PhoneCallResponse) GetConsoleEntries() []CommunicationConsoleEntryable {
+	return m.consoleEntries
 }
+
 // GetConversationId gets the conversationId property value. Conversation ID that links this phone call to the Leadping inbox thread.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetConversationId()(*string) {
-    return m.conversationId
+func (m *PhoneCallResponse) GetConversationId() *string {
+	return m.conversationId
 }
-// GetCreatedAt gets the createdAt property value. The date and time when the entity was created.
+
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *PhoneCallResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetDirection gets the direction property value. Communication direction for this phone call, such as inbound or outbound.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetDirection()(*string) {
-    return m.direction
+func (m *PhoneCallResponse) GetDirection() *string {
+	return m.direction
 }
+
 // GetDurationSeconds gets the durationSeconds property value. Call duration in seconds.
-// returns a UntypedNodeable when successful
-func (m *PhoneCallResponse) GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.durationSeconds
+// returns a *int32 when successful
+func (m *PhoneCallResponse) GetDurationSeconds() *int32 {
+	return m.durationSeconds
 }
+
 // GetEndedAt gets the endedAt property value. UTC timestamp when the call ended.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.endedAt
+func (m *PhoneCallResponse) GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endedAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneCallResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["answeredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAnsweredAt(val)
-        }
-        return nil
-    }
-    res["billableAmount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillableAmount(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["billingStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBillingStatus(val)
-        }
-        return nil
-    }
-    res["callerId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallerId(val)
-        }
-        return nil
-    }
-    res["campaignId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCampaignId(val)
-        }
-        return nil
-    }
-    res["consoleEntries"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]CommunicationConsoleEntryable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(CommunicationConsoleEntryable)
-                }
-            }
-            m.SetConsoleEntries(res)
-        }
-        return nil
-    }
-    res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["direction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDirection(val)
-        }
-        return nil
-    }
-    res["durationSeconds"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDurationSeconds(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["endedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEndedAt(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumber(val)
-        }
-        return nil
-    }
-    res["fromPhoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFromPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["leadId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLeadId(val)
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    res["queuedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetQueuedAt(val)
-        }
-        return nil
-    }
-    res["recordingUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecordingUrl(val)
-        }
-        return nil
-    }
-    res["ringingAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRingingAt(val)
-        }
-        return nil
-    }
-    res["selectionReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneCallResponse_selectionReason)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSelectionReason(val.(*PhoneCallResponse_selectionReason))
-        }
-        return nil
-    }
-    res["sourceId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSourceId(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneCallStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val.(*PhoneCallStatus))
-        }
-        return nil
-    }
-    res["statusReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatusReason(val)
-        }
-        return nil
-    }
-    res["toPhoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetToPhoneNumber(val)
-        }
-        return nil
-    }
-    res["wasManuallyOverridden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWasManuallyOverridden(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneCallResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["answeredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAnsweredAt(val)
+		}
+		return nil
+	}
+	res["billableAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillableAmount(val)
+		}
+		return nil
+	}
+	res["billingStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingStatus(val)
+		}
+		return nil
+	}
+	res["callerId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallerId(val)
+		}
+		return nil
+	}
+	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCampaignId(val)
+		}
+		return nil
+	}
+	res["consoleEntries"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateCommunicationConsoleEntryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]CommunicationConsoleEntryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(CommunicationConsoleEntryable)
+				}
+			}
+			m.SetConsoleEntries(res)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["direction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirection(val)
+		}
+		return nil
+	}
+	res["durationSeconds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDurationSeconds(val)
+		}
+		return nil
+	}
+	res["endedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndedAt(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumber(val)
+		}
+		return nil
+	}
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	res["queuedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQueuedAt(val)
+		}
+		return nil
+	}
+	res["ringingAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRingingAt(val)
+		}
+		return nil
+	}
+	res["selectionReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneCallResponse_selectionReason)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectionReason(val.(*PhoneCallResponse_selectionReason))
+		}
+		return nil
+	}
+	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceId(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneCallStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val.(*PhoneCallStatus))
+		}
+		return nil
+	}
+	res["statusReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatusReason(val)
+		}
+		return nil
+	}
+	res["toPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetToPhoneNumber(val)
+		}
+		return nil
+	}
+	res["voicemailUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoicemailUrl(val)
+		}
+		return nil
+	}
+	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWasManuallyOverridden(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFromPhoneNumber gets the fromPhoneNumber property value. Sender phone number used for this communication.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetFromPhoneNumber()(*string) {
-    return m.fromPhoneNumber
+func (m *PhoneCallResponse) GetFromPhoneNumber() *string {
+	return m.fromPhoneNumber
 }
+
 // GetFromPhoneNumberId gets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetFromPhoneNumberId()(*string) {
-    return m.fromPhoneNumberId
+func (m *PhoneCallResponse) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
 }
-// GetId gets the id property value. The unique identifier for the entity.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetId()(*string) {
-    return m.id
+func (m *PhoneCallResponse) GetId() *string {
+	return m.id
 }
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneCallResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadId gets the leadId property value. Lead ID associated with the call conversation or outreach attempt.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetLeadId()(*string) {
-    return m.leadId
+func (m *PhoneCallResponse) GetLeadId() *string {
+	return m.leadId
 }
-// GetModifiedAt gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *PhoneCallResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetPhoneNumber gets the phoneNumber property value. Phone number used by this phone call for calls, SMS, lookup, or routing.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *PhoneCallResponse) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // GetQueuedAt gets the queuedAt property value. UTC timestamp when Leadping queued this phone call for processing.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.queuedAt
+func (m *PhoneCallResponse) GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.queuedAt
 }
-// GetRecordingUrl gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-// returns a *string when successful
-func (m *PhoneCallResponse) GetRecordingUrl()(*string) {
-    return m.recordingUrl
-}
+
 // GetRingingAt gets the ringingAt property value. UTC timestamp when the call started ringing.
 // returns a *Time when successful
-func (m *PhoneCallResponse) GetRingingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.ringingAt
+func (m *PhoneCallResponse) GetRingingAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.ringingAt
 }
-// GetSelectionReason gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+
+// GetSelectionReason gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 // returns a *PhoneCallResponse_selectionReason when successful
-func (m *PhoneCallResponse) GetSelectionReason()(*PhoneCallResponse_selectionReason) {
-    return m.selectionReason
+func (m *PhoneCallResponse) GetSelectionReason() *PhoneCallResponse_selectionReason {
+	return m.selectionReason
 }
+
 // GetSourceId gets the sourceId property value. Lead source ID used for attribution and routing on this call.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetSourceId()(*string) {
-    return m.sourceId
+func (m *PhoneCallResponse) GetSourceId() *string {
+	return m.sourceId
 }
-// GetStatus gets the status property value. Current lifecycle status for this phone call in the Leadping API.
+
+// GetStatus gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
 // returns a *PhoneCallStatus when successful
-func (m *PhoneCallResponse) GetStatus()(*PhoneCallStatus) {
-    return m.status
+func (m *PhoneCallResponse) GetStatus() *PhoneCallStatus {
+	return m.status
 }
+
 // GetStatusReason gets the statusReason property value. Human-readable reason explaining the current status of this phone call.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetStatusReason()(*string) {
-    return m.statusReason
+func (m *PhoneCallResponse) GetStatusReason() *string {
+	return m.statusReason
 }
+
 // GetToPhoneNumber gets the toPhoneNumber property value. Recipient phone number used for this communication.
 // returns a *string when successful
-func (m *PhoneCallResponse) GetToPhoneNumber()(*string) {
-    return m.toPhoneNumber
+func (m *PhoneCallResponse) GetToPhoneNumber() *string {
+	return m.toPhoneNumber
 }
+
+// GetVoicemailUrl gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+// returns a *string when successful
+func (m *PhoneCallResponse) GetVoicemailUrl() *string {
+	return m.voicemailUrl
+}
+
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
 // returns a *bool when successful
-func (m *PhoneCallResponse) GetWasManuallyOverridden()(*bool) {
-    return m.wasManuallyOverridden
+func (m *PhoneCallResponse) GetWasManuallyOverridden() *bool {
+	return m.wasManuallyOverridden
 }
+
 // Serialize serializes information the current object
-func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteTimeValue("answeredAt", m.GetAnsweredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("billableAmount", m.GetBillableAmount())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("callerId", m.GetCallerId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("campaignId", m.GetCampaignId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetConsoleEntries() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
-        for i, v := range m.GetConsoleEntries() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("conversationId", m.GetConversationId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("direction", m.GetDirection())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("durationSeconds", m.GetDurationSeconds())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("endedAt", m.GetEndedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("leadId", m.GetLeadId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("queuedAt", m.GetQueuedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("recordingUrl", m.GetRecordingUrl())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("ringingAt", m.GetRingingAt())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetSelectionReason() != nil {
-        cast := (*m.GetSelectionReason()).String()
-        err := writer.WriteStringValue("selectionReason", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("sourceId", m.GetSourceId())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetStatus() != nil {
-        cast := (*m.GetStatus()).String()
-        err := writer.WriteStringValue("status", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("statusReason", m.GetStatusReason())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("answeredAt", m.GetAnsweredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("billingStatus", m.GetBillingStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("callerId", m.GetCallerId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConsoleEntries() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsoleEntries()))
+		for i, v := range m.GetConsoleEntries() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("consoleEntries", cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("direction", m.GetDirection())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("durationSeconds", m.GetDurationSeconds())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("endedAt", m.GetEndedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumber", m.GetFromPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("queuedAt", m.GetQueuedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("ringingAt", m.GetRingingAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSelectionReason() != nil {
+		cast := (*m.GetSelectionReason()).String()
+		err := writer.WriteStringValue("selectionReason", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetStatus() != nil {
+		cast := (*m.GetStatus()).String()
+		err := writer.WriteStringValue("status", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("statusReason", m.GetStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("toPhoneNumber", m.GetToPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneCallResponse) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneCallResponse) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAnsweredAt sets the answeredAt property value. UTC timestamp when the call was answered.
-func (m *PhoneCallResponse) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.answeredAt = value
+func (m *PhoneCallResponse) SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.answeredAt = value
 }
+
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-func (m *PhoneCallResponse) SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.billableAmount = value
+func (m *PhoneCallResponse) SetBillableAmount(value *float64) {
+	m.billableAmount = value
 }
+
 // SetBillingStatus sets the billingStatus property value. Billing state for this communication, charge, or transaction.
-func (m *PhoneCallResponse) SetBillingStatus(value *string)() {
-    m.billingStatus = value
+func (m *PhoneCallResponse) SetBillingStatus(value *string) {
+	m.billingStatus = value
 }
+
 // SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
-func (m *PhoneCallResponse) SetCallerId(value *string)() {
-    m.callerId = value
+func (m *PhoneCallResponse) SetCallerId(value *string) {
+	m.callerId = value
 }
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone call.
-func (m *PhoneCallResponse) SetCampaignId(value *string)() {
-    m.campaignId = value
+func (m *PhoneCallResponse) SetCampaignId(value *string) {
+	m.campaignId = value
 }
+
 // SetConsoleEntries sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
-func (m *PhoneCallResponse) SetConsoleEntries(value []CommunicationConsoleEntryable)() {
-    m.consoleEntries = value
+func (m *PhoneCallResponse) SetConsoleEntries(value []CommunicationConsoleEntryable) {
+	m.consoleEntries = value
 }
+
 // SetConversationId sets the conversationId property value. Conversation ID that links this phone call to the Leadping inbox thread.
-func (m *PhoneCallResponse) SetConversationId(value *string)() {
-    m.conversationId = value
+func (m *PhoneCallResponse) SetConversationId(value *string) {
+	m.conversationId = value
 }
-// SetCreatedAt sets the createdAt property value. The date and time when the entity was created.
-func (m *PhoneCallResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
+func (m *PhoneCallResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetDirection sets the direction property value. Communication direction for this phone call, such as inbound or outbound.
-func (m *PhoneCallResponse) SetDirection(value *string)() {
-    m.direction = value
+func (m *PhoneCallResponse) SetDirection(value *string) {
+	m.direction = value
 }
+
 // SetDurationSeconds sets the durationSeconds property value. Call duration in seconds.
-func (m *PhoneCallResponse) SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.durationSeconds = value
+func (m *PhoneCallResponse) SetDurationSeconds(value *int32) {
+	m.durationSeconds = value
 }
+
 // SetEndedAt sets the endedAt property value. UTC timestamp when the call ended.
-func (m *PhoneCallResponse) SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.endedAt = value
+func (m *PhoneCallResponse) SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endedAt = value
 }
+
 // SetFromPhoneNumber sets the fromPhoneNumber property value. Sender phone number used for this communication.
-func (m *PhoneCallResponse) SetFromPhoneNumber(value *string)() {
-    m.fromPhoneNumber = value
+func (m *PhoneCallResponse) SetFromPhoneNumber(value *string) {
+	m.fromPhoneNumber = value
 }
+
 // SetFromPhoneNumberId sets the fromPhoneNumberId property value. Sender phone number ID used for this outbound SMS or call.
-func (m *PhoneCallResponse) SetFromPhoneNumberId(value *string)() {
-    m.fromPhoneNumberId = value
+func (m *PhoneCallResponse) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
 }
-// SetId sets the id property value. The unique identifier for the entity.
-func (m *PhoneCallResponse) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *PhoneCallResponse) SetId(value *string) {
+	m.id = value
 }
+
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneCallResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with the call conversation or outreach attempt.
-func (m *PhoneCallResponse) SetLeadId(value *string)() {
-    m.leadId = value
+func (m *PhoneCallResponse) SetLeadId(value *string) {
+	m.leadId = value
 }
-// SetModifiedAt sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
-func (m *PhoneCallResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+func (m *PhoneCallResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number used by this phone call for calls, SMS, lookup, or routing.
-func (m *PhoneCallResponse) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *PhoneCallResponse) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 // SetQueuedAt sets the queuedAt property value. UTC timestamp when Leadping queued this phone call for processing.
-func (m *PhoneCallResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.queuedAt = value
+func (m *PhoneCallResponse) SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.queuedAt = value
 }
-// SetRecordingUrl sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-func (m *PhoneCallResponse) SetRecordingUrl(value *string)() {
-    m.recordingUrl = value
-}
+
 // SetRingingAt sets the ringingAt property value. UTC timestamp when the call started ringing.
-func (m *PhoneCallResponse) SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.ringingAt = value
+func (m *PhoneCallResponse) SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.ringingAt = value
 }
-// SetSelectionReason sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
-func (m *PhoneCallResponse) SetSelectionReason(value *PhoneCallResponse_selectionReason)() {
-    m.selectionReason = value
+
+// SetSelectionReason sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
+func (m *PhoneCallResponse) SetSelectionReason(value *PhoneCallResponse_selectionReason) {
+	m.selectionReason = value
 }
+
 // SetSourceId sets the sourceId property value. Lead source ID used for attribution and routing on this call.
-func (m *PhoneCallResponse) SetSourceId(value *string)() {
-    m.sourceId = value
+func (m *PhoneCallResponse) SetSourceId(value *string) {
+	m.sourceId = value
 }
-// SetStatus sets the status property value. Current lifecycle status for this phone call in the Leadping API.
-func (m *PhoneCallResponse) SetStatus(value *PhoneCallStatus)() {
-    m.status = value
+
+// SetStatus sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
+func (m *PhoneCallResponse) SetStatus(value *PhoneCallStatus) {
+	m.status = value
 }
+
 // SetStatusReason sets the statusReason property value. Human-readable reason explaining the current status of this phone call.
-func (m *PhoneCallResponse) SetStatusReason(value *string)() {
-    m.statusReason = value
+func (m *PhoneCallResponse) SetStatusReason(value *string) {
+	m.statusReason = value
 }
+
 // SetToPhoneNumber sets the toPhoneNumber property value. Recipient phone number used for this communication.
-func (m *PhoneCallResponse) SetToPhoneNumber(value *string)() {
-    m.toPhoneNumber = value
+func (m *PhoneCallResponse) SetToPhoneNumber(value *string) {
+	m.toPhoneNumber = value
 }
+
+// SetVoicemailUrl sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+func (m *PhoneCallResponse) SetVoicemailUrl(value *string) {
+	m.voicemailUrl = value
+}
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
-func (m *PhoneCallResponse) SetWasManuallyOverridden(value *bool)() {
-    m.wasManuallyOverridden = value
+func (m *PhoneCallResponse) SetWasManuallyOverridden(value *bool) {
+	m.wasManuallyOverridden = value
 }
+
 type PhoneCallResponseable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAnsweredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetBillableAmount()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetBillingStatus()(*string)
-    GetCallerId()(*string)
-    GetCampaignId()(*string)
-    GetConsoleEntries()([]CommunicationConsoleEntryable)
-    GetConversationId()(*string)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetDirection()(*string)
-    GetDurationSeconds()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetEndedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFromPhoneNumber()(*string)
-    GetFromPhoneNumberId()(*string)
-    GetId()(*string)
-    GetLeadId()(*string)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetPhoneNumber()(*string)
-    GetQueuedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetRecordingUrl()(*string)
-    GetRingingAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSelectionReason()(*PhoneCallResponse_selectionReason)
-    GetSourceId()(*string)
-    GetStatus()(*PhoneCallStatus)
-    GetStatusReason()(*string)
-    GetToPhoneNumber()(*string)
-    GetWasManuallyOverridden()(*bool)
-    SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetBillableAmount(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetBillingStatus(value *string)()
-    SetCallerId(value *string)()
-    SetCampaignId(value *string)()
-    SetConsoleEntries(value []CommunicationConsoleEntryable)()
-    SetConversationId(value *string)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetDirection(value *string)()
-    SetDurationSeconds(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFromPhoneNumber(value *string)()
-    SetFromPhoneNumberId(value *string)()
-    SetId(value *string)()
-    SetLeadId(value *string)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetPhoneNumber(value *string)()
-    SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetRecordingUrl(value *string)()
-    SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSelectionReason(value *PhoneCallResponse_selectionReason)()
-    SetSourceId(value *string)()
-    SetStatus(value *PhoneCallStatus)()
-    SetStatusReason(value *string)()
-    SetToPhoneNumber(value *string)()
-    SetWasManuallyOverridden(value *bool)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetBillableAmount() *float64
+	GetBillingStatus() *string
+	GetCallerId() *string
+	GetCampaignId() *string
+	GetConsoleEntries() []CommunicationConsoleEntryable
+	GetConversationId() *string
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDirection() *string
+	GetDurationSeconds() *int32
+	GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFromPhoneNumber() *string
+	GetFromPhoneNumberId() *string
+	GetId() *string
+	GetIsDemo() *bool
+	GetLeadId() *string
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetPhoneNumber() *string
+	GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetRingingAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSelectionReason() *PhoneCallResponse_selectionReason
+	GetSourceId() *string
+	GetStatus() *PhoneCallStatus
+	GetStatusReason() *string
+	GetToPhoneNumber() *string
+	GetVoicemailUrl() *string
+	GetWasManuallyOverridden() *bool
+	SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetBillableAmount(value *float64)
+	SetBillingStatus(value *string)
+	SetCallerId(value *string)
+	SetCampaignId(value *string)
+	SetConsoleEntries(value []CommunicationConsoleEntryable)
+	SetConversationId(value *string)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDirection(value *string)
+	SetDurationSeconds(value *int32)
+	SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFromPhoneNumber(value *string)
+	SetFromPhoneNumberId(value *string)
+	SetId(value *string)
+	SetIsDemo(value *bool)
+	SetLeadId(value *string)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetPhoneNumber(value *string)
+	SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSelectionReason(value *PhoneCallResponse_selectionReason)
+	SetSourceId(value *string)
+	SetStatus(value *PhoneCallStatus)
+	SetStatusReason(value *string)
+	SetToPhoneNumber(value *string)
+	SetVoicemailUrl(value *string)
+	SetWasManuallyOverridden(value *bool)
 }

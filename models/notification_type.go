@@ -2,66 +2,70 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Notification Type values.
+
+// Identifies the Leadping workflow or account event communicated by a user notification.
 type NotificationType int
 
 const (
-    GENERAL_NOTIFICATIONTYPE NotificationType = iota
-    LEAD_NOTIFICATIONTYPE
-    CALL_NOTIFICATIONTYPE
-    SMS_NOTIFICATIONTYPE
-    BILLING_NOTIFICATIONTYPE
-    SYSTEM_NOTIFICATIONTYPE
-    SUCCESS_NOTIFICATIONTYPE
-    WARNING_NOTIFICATIONTYPE
-    ERROR_NOTIFICATIONTYPE
-    INFO_NOTIFICATIONTYPE
-    ANNOUNCEMENT_NOTIFICATIONTYPE
-    ACTIVATION_NOTIFICATIONTYPE
+	GENERAL_NOTIFICATIONTYPE NotificationType = iota
+	LEAD_NOTIFICATIONTYPE
+	CALL_NOTIFICATIONTYPE
+	SMS_NOTIFICATIONTYPE
+	BILLING_NOTIFICATIONTYPE
+	SYSTEM_NOTIFICATIONTYPE
+	SUCCESS_NOTIFICATIONTYPE
+	WARNING_NOTIFICATIONTYPE
+	ERROR_NOTIFICATIONTYPE
+	INFO_NOTIFICATIONTYPE
+	ANNOUNCEMENT_NOTIFICATIONTYPE
+	ACTIVATION_NOTIFICATIONTYPE
 )
 
 func (i NotificationType) String() string {
-    return []string{"General", "Lead", "Call", "Sms", "Billing", "System", "Success", "Warning", "Error", "Info", "Announcement", "Activation"}[i]
+	return []string{"General", "Lead", "Call", "Sms", "Billing", "System", "Success", "Warning", "Error", "Info", "Announcement", "Activation"}[i]
 }
+
 func ParseNotificationType(v string) (any, error) {
-    result := GENERAL_NOTIFICATIONTYPE
-    switch v {
-        case "General":
-            result = GENERAL_NOTIFICATIONTYPE
-        case "Lead":
-            result = LEAD_NOTIFICATIONTYPE
-        case "Call":
-            result = CALL_NOTIFICATIONTYPE
-        case "Sms":
-            result = SMS_NOTIFICATIONTYPE
-        case "Billing":
-            result = BILLING_NOTIFICATIONTYPE
-        case "System":
-            result = SYSTEM_NOTIFICATIONTYPE
-        case "Success":
-            result = SUCCESS_NOTIFICATIONTYPE
-        case "Warning":
-            result = WARNING_NOTIFICATIONTYPE
-        case "Error":
-            result = ERROR_NOTIFICATIONTYPE
-        case "Info":
-            result = INFO_NOTIFICATIONTYPE
-        case "Announcement":
-            result = ANNOUNCEMENT_NOTIFICATIONTYPE
-        case "Activation":
-            result = ACTIVATION_NOTIFICATIONTYPE
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := GENERAL_NOTIFICATIONTYPE
+	switch v {
+	case "General":
+		result = GENERAL_NOTIFICATIONTYPE
+	case "Lead":
+		result = LEAD_NOTIFICATIONTYPE
+	case "Call":
+		result = CALL_NOTIFICATIONTYPE
+	case "Sms":
+		result = SMS_NOTIFICATIONTYPE
+	case "Billing":
+		result = BILLING_NOTIFICATIONTYPE
+	case "System":
+		result = SYSTEM_NOTIFICATIONTYPE
+	case "Success":
+		result = SUCCESS_NOTIFICATIONTYPE
+	case "Warning":
+		result = WARNING_NOTIFICATIONTYPE
+	case "Error":
+		result = ERROR_NOTIFICATIONTYPE
+	case "Info":
+		result = INFO_NOTIFICATIONTYPE
+	case "Announcement":
+		result = ANNOUNCEMENT_NOTIFICATIONTYPE
+	case "Activation":
+		result = ACTIVATION_NOTIFICATIONTYPE
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeNotificationType(values []NotificationType) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i NotificationType) isMultiValue() bool {
-    return false
+	return false
 }

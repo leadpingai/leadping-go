@@ -4,430 +4,524 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // AutomationActionRunRecord history record schema for Leadping API automation action run record data exposed in automation and audit views.
 type AutomationActionRunRecord struct {
-    // Automation action ID executed or evaluated by this automation action run record.
-    actionId *string
-    // Automation action type, such as send SMS or create task.
-    actionType *string
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Automation run ID connected to this action or event record.
-    automationRunId *string
-    // UTC timestamp when processing completed for this automation action run record.
-    completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when processing failed for this automation action run record.
-    failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Machine-readable failure code for troubleshooting this automation action run record.
-    failureCode *string
-    // Unique Leadping identifier for this automation action run record.
-    id *string
-    // UTC timestamp when Leadping will retry this automation action run record.
-    nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Sort order used to evaluate or display this automation action run record.
-    order i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of processing attempts made for this workflow or delivery request.
-    processingAttempts i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // UTC timestamp when this automation action run record was scheduled.
-    scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // UTC timestamp when processing started for this automation action run record.
-    startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Current lifecycle status for this automation action run record in the Leadping API.
-    status *string
+	// Automation action ID executed or evaluated by this automation action run record.
+	actionId *string
+	// Automation action type, such as send SMS or create task.
+	actionType *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Automation run ID connected to this action or event record.
+	automationRunId *string
+	// UTC timestamp when processing completed for this automation action run record.
+	completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// UTC timestamp when processing failed for this automation action run record.
+	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Machine-readable failure code for troubleshooting this automation action run record.
+	failureCode *string
+	// Unique Leadping identifier for this automation action run record.
+	id *string
+	// UTC timestamp when Leadping will retry this automation action run record.
+	nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Sort order used to evaluate or display this automation action run record.
+	order *int32
+	// Number of processing attempts made for this workflow or delivery request.
+	processingAttempts *int32
+	// UTC timestamp when this automation action run record was scheduled.
+	scheduledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Connection selected by a control-flow action such as a weighted random split.
+	selectedConnectionId *string
+	// Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+	smsDelivery AutomationActionRunRecord_smsDeliveryable
+	// UTC timestamp when processing started for this automation action run record.
+	startedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Current lifecycle status for this automation action run record in the Leadping API.
+	status *string
 }
+
 // NewAutomationActionRunRecord instantiates a new AutomationActionRunRecord and sets the default values.
-func NewAutomationActionRunRecord()(*AutomationActionRunRecord) {
-    m := &AutomationActionRunRecord{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewAutomationActionRunRecord() *AutomationActionRunRecord {
+	m := &AutomationActionRunRecord{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateAutomationActionRunRecordFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateAutomationActionRunRecordFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewAutomationActionRunRecord(), nil
+func CreateAutomationActionRunRecordFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewAutomationActionRunRecord(), nil
 }
+
 // GetActionId gets the actionId property value. Automation action ID executed or evaluated by this automation action run record.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetActionId()(*string) {
-    return m.actionId
+func (m *AutomationActionRunRecord) GetActionId() *string {
+	return m.actionId
 }
+
 // GetActionType gets the actionType property value. Automation action type, such as send SMS or create task.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetActionType()(*string) {
-    return m.actionType
+func (m *AutomationActionRunRecord) GetActionType() *string {
+	return m.actionType
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *AutomationActionRunRecord) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *AutomationActionRunRecord) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetAutomationRunId gets the automationRunId property value. Automation run ID connected to this action or event record.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetAutomationRunId()(*string) {
-    return m.automationRunId
+func (m *AutomationActionRunRecord) GetAutomationRunId() *string {
+	return m.automationRunId
 }
+
 // GetCompletedAt gets the completedAt property value. UTC timestamp when processing completed for this automation action run record.
 // returns a *Time when successful
-func (m *AutomationActionRunRecord) GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.completedAt
+func (m *AutomationActionRunRecord) GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.completedAt
 }
+
 // GetFailedAt gets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
 // returns a *Time when successful
-func (m *AutomationActionRunRecord) GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.failedAt
+func (m *AutomationActionRunRecord) GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.failedAt
 }
+
 // GetFailureCode gets the failureCode property value. Machine-readable failure code for troubleshooting this automation action run record.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetFailureCode()(*string) {
-    return m.failureCode
+func (m *AutomationActionRunRecord) GetFailureCode() *string {
+	return m.failureCode
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *AutomationActionRunRecord) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["actionId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionId(val)
-        }
-        return nil
-    }
-    res["actionType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActionType(val)
-        }
-        return nil
-    }
-    res["automationRunId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetAutomationRunId(val)
-        }
-        return nil
-    }
-    res["completedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompletedAt(val)
-        }
-        return nil
-    }
-    res["failedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailedAt(val)
-        }
-        return nil
-    }
-    res["failureCode"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFailureCode(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["nextRetryAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNextRetryAt(val)
-        }
-        return nil
-    }
-    res["order"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOrder(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["processingAttempts"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetProcessingAttempts(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["scheduledAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetScheduledAt(val)
-        }
-        return nil
-    }
-    res["startedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartedAt(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *AutomationActionRunRecord) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionId(val)
+		}
+		return nil
+	}
+	res["actionType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActionType(val)
+		}
+		return nil
+	}
+	res["automationRunId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationRunId(val)
+		}
+		return nil
+	}
+	res["completedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompletedAt(val)
+		}
+		return nil
+	}
+	res["failedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailedAt(val)
+		}
+		return nil
+	}
+	res["failureCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFailureCode(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["nextRetryAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextRetryAt(val)
+		}
+		return nil
+	}
+	res["order"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrder(val)
+		}
+		return nil
+	}
+	res["processingAttempts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProcessingAttempts(val)
+		}
+		return nil
+	}
+	res["scheduledAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetScheduledAt(val)
+		}
+		return nil
+	}
+	res["selectedConnectionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectedConnectionId(val)
+		}
+		return nil
+	}
+	res["smsDelivery"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationActionRunRecord_smsDeliveryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDelivery(val.(AutomationActionRunRecord_smsDeliveryable))
+		}
+		return nil
+	}
+	res["startedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStartedAt(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetId gets the id property value. Unique Leadping identifier for this automation action run record.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetId()(*string) {
-    return m.id
+func (m *AutomationActionRunRecord) GetId() *string {
+	return m.id
 }
+
 // GetNextRetryAt gets the nextRetryAt property value. UTC timestamp when Leadping will retry this automation action run record.
 // returns a *Time when successful
-func (m *AutomationActionRunRecord) GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.nextRetryAt
+func (m *AutomationActionRunRecord) GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextRetryAt
 }
+
 // GetOrder gets the order property value. Sort order used to evaluate or display this automation action run record.
-// returns a UntypedNodeable when successful
-func (m *AutomationActionRunRecord) GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.order
+// returns a *int32 when successful
+func (m *AutomationActionRunRecord) GetOrder() *int32 {
+	return m.order
 }
+
 // GetProcessingAttempts gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-// returns a UntypedNodeable when successful
-func (m *AutomationActionRunRecord) GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.processingAttempts
+// returns a *int32 when successful
+func (m *AutomationActionRunRecord) GetProcessingAttempts() *int32 {
+	return m.processingAttempts
 }
+
 // GetScheduledAt gets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
 // returns a *Time when successful
-func (m *AutomationActionRunRecord) GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.scheduledAt
+func (m *AutomationActionRunRecord) GetScheduledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.scheduledAt
 }
+
+// GetSelectedConnectionId gets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+// returns a *string when successful
+func (m *AutomationActionRunRecord) GetSelectedConnectionId() *string {
+	return m.selectedConnectionId
+}
+
+// GetSmsDelivery gets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+// returns a AutomationActionRunRecord_smsDeliveryable when successful
+func (m *AutomationActionRunRecord) GetSmsDelivery() AutomationActionRunRecord_smsDeliveryable {
+	return m.smsDelivery
+}
+
 // GetStartedAt gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
 // returns a *Time when successful
-func (m *AutomationActionRunRecord) GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.startedAt
+func (m *AutomationActionRunRecord) GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.startedAt
 }
+
 // GetStatus gets the status property value. Current lifecycle status for this automation action run record in the Leadping API.
 // returns a *string when successful
-func (m *AutomationActionRunRecord) GetStatus()(*string) {
-    return m.status
+func (m *AutomationActionRunRecord) GetStatus() *string {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("actionId", m.GetActionId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("actionType", m.GetActionType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("automationRunId", m.GetAutomationRunId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("failureCode", m.GetFailureCode())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("order", m.GetOrder())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("processingAttempts", m.GetProcessingAttempts())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("scheduledAt", m.GetScheduledAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *AutomationActionRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("actionId", m.GetActionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("actionType", m.GetActionType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("automationRunId", m.GetAutomationRunId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("failedAt", m.GetFailedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("failureCode", m.GetFailureCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("order", m.GetOrder())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("processingAttempts", m.GetProcessingAttempts())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("scheduledAt", m.GetScheduledAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("selectedConnectionId", m.GetSelectedConnectionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("smsDelivery", m.GetSmsDelivery())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("startedAt", m.GetStartedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetActionId sets the actionId property value. Automation action ID executed or evaluated by this automation action run record.
-func (m *AutomationActionRunRecord) SetActionId(value *string)() {
-    m.actionId = value
+func (m *AutomationActionRunRecord) SetActionId(value *string) {
+	m.actionId = value
 }
+
 // SetActionType sets the actionType property value. Automation action type, such as send SMS or create task.
-func (m *AutomationActionRunRecord) SetActionType(value *string)() {
-    m.actionType = value
+func (m *AutomationActionRunRecord) SetActionType(value *string) {
+	m.actionType = value
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *AutomationActionRunRecord) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *AutomationActionRunRecord) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetAutomationRunId sets the automationRunId property value. Automation run ID connected to this action or event record.
-func (m *AutomationActionRunRecord) SetAutomationRunId(value *string)() {
-    m.automationRunId = value
+func (m *AutomationActionRunRecord) SetAutomationRunId(value *string) {
+	m.automationRunId = value
 }
+
 // SetCompletedAt sets the completedAt property value. UTC timestamp when processing completed for this automation action run record.
-func (m *AutomationActionRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.completedAt = value
+func (m *AutomationActionRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.completedAt = value
 }
+
 // SetFailedAt sets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
-func (m *AutomationActionRunRecord) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.failedAt = value
+func (m *AutomationActionRunRecord) SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.failedAt = value
 }
+
 // SetFailureCode sets the failureCode property value. Machine-readable failure code for troubleshooting this automation action run record.
-func (m *AutomationActionRunRecord) SetFailureCode(value *string)() {
-    m.failureCode = value
+func (m *AutomationActionRunRecord) SetFailureCode(value *string) {
+	m.failureCode = value
 }
+
 // SetId sets the id property value. Unique Leadping identifier for this automation action run record.
-func (m *AutomationActionRunRecord) SetId(value *string)() {
-    m.id = value
+func (m *AutomationActionRunRecord) SetId(value *string) {
+	m.id = value
 }
+
 // SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this automation action run record.
-func (m *AutomationActionRunRecord) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.nextRetryAt = value
+func (m *AutomationActionRunRecord) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextRetryAt = value
 }
+
 // SetOrder sets the order property value. Sort order used to evaluate or display this automation action run record.
-func (m *AutomationActionRunRecord) SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.order = value
+func (m *AutomationActionRunRecord) SetOrder(value *int32) {
+	m.order = value
 }
+
 // SetProcessingAttempts sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-func (m *AutomationActionRunRecord) SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.processingAttempts = value
+func (m *AutomationActionRunRecord) SetProcessingAttempts(value *int32) {
+	m.processingAttempts = value
 }
+
 // SetScheduledAt sets the scheduledAt property value. UTC timestamp when this automation action run record was scheduled.
-func (m *AutomationActionRunRecord) SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.scheduledAt = value
+func (m *AutomationActionRunRecord) SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.scheduledAt = value
 }
+
+// SetSelectedConnectionId sets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+func (m *AutomationActionRunRecord) SetSelectedConnectionId(value *string) {
+	m.selectedConnectionId = value
+}
+
+// SetSmsDelivery sets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+func (m *AutomationActionRunRecord) SetSmsDelivery(value AutomationActionRunRecord_smsDeliveryable) {
+	m.smsDelivery = value
+}
+
 // SetStartedAt sets the startedAt property value. UTC timestamp when processing started for this automation action run record.
-func (m *AutomationActionRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.startedAt = value
+func (m *AutomationActionRunRecord) SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.startedAt = value
 }
+
 // SetStatus sets the status property value. Current lifecycle status for this automation action run record in the Leadping API.
-func (m *AutomationActionRunRecord) SetStatus(value *string)() {
-    m.status = value
+func (m *AutomationActionRunRecord) SetStatus(value *string) {
+	m.status = value
 }
+
 type AutomationActionRunRecordable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetActionId()(*string)
-    GetActionType()(*string)
-    GetAutomationRunId()(*string)
-    GetCompletedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFailedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFailureCode()(*string)
-    GetId()(*string)
-    GetNextRetryAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetOrder()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetProcessingAttempts()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetScheduledAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetStartedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetStatus()(*string)
-    SetActionId(value *string)()
-    SetActionType(value *string)()
-    SetAutomationRunId(value *string)()
-    SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFailureCode(value *string)()
-    SetId(value *string)()
-    SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetOrder(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetProcessingAttempts(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActionId() *string
+	GetActionType() *string
+	GetAutomationRunId() *string
+	GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFailureCode() *string
+	GetId() *string
+	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOrder() *int32
+	GetProcessingAttempts() *int32
+	GetScheduledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSelectedConnectionId() *string
+	GetSmsDelivery() AutomationActionRunRecord_smsDeliveryable
+	GetStartedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetStatus() *string
+	SetActionId(value *string)
+	SetActionType(value *string)
+	SetAutomationRunId(value *string)
+	SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFailureCode(value *string)
+	SetId(value *string)
+	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOrder(value *int32)
+	SetProcessingAttempts(value *int32)
+	SetScheduledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSelectedConnectionId(value *string)
+	SetSmsDelivery(value AutomationActionRunRecord_smsDeliveryable)
+	SetStartedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetStatus(value *string)
 }

@@ -2,54 +2,58 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Outgoing Number Selection Reason values.
+
+// Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
 type OutgoingNumberSelectionReason int
 
 const (
-    STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON OutgoingNumberSelectionReason = iota
-    LEADASSIGNED_OUTGOINGNUMBERSELECTIONREASON
-    CAMPAIGNORSOURCE_OUTGOINGNUMBERSELECTIONREASON
-    PREFERRED_OUTGOINGNUMBERSELECTIONREASON
-    LOCALAREA_OUTGOINGNUMBERSELECTIONREASON
-    HEALTHYPOOL_OUTGOINGNUMBERSELECTIONREASON
-    FALLBACKDEFAULT_OUTGOINGNUMBERSELECTIONREASON
-    MANUALOVERRIDE_OUTGOINGNUMBERSELECTIONREASON
+	STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON OutgoingNumberSelectionReason = iota
+	LEADASSIGNED_OUTGOINGNUMBERSELECTIONREASON
+	CAMPAIGNORSOURCE_OUTGOINGNUMBERSELECTIONREASON
+	PREFERRED_OUTGOINGNUMBERSELECTIONREASON
+	LOCALAREA_OUTGOINGNUMBERSELECTIONREASON
+	HEALTHYPOOL_OUTGOINGNUMBERSELECTIONREASON
+	FALLBACKDEFAULT_OUTGOINGNUMBERSELECTIONREASON
+	MANUALOVERRIDE_OUTGOINGNUMBERSELECTIONREASON
 )
 
 func (i OutgoingNumberSelectionReason) String() string {
-    return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
+	return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
 }
+
 func ParseOutgoingNumberSelectionReason(v string) (any, error) {
-    result := STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON
-    switch v {
-        case "StickyConversation":
-            result = STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON
-        case "LeadAssigned":
-            result = LEADASSIGNED_OUTGOINGNUMBERSELECTIONREASON
-        case "CampaignOrSource":
-            result = CAMPAIGNORSOURCE_OUTGOINGNUMBERSELECTIONREASON
-        case "Preferred":
-            result = PREFERRED_OUTGOINGNUMBERSELECTIONREASON
-        case "LocalArea":
-            result = LOCALAREA_OUTGOINGNUMBERSELECTIONREASON
-        case "HealthyPool":
-            result = HEALTHYPOOL_OUTGOINGNUMBERSELECTIONREASON
-        case "FallbackDefault":
-            result = FALLBACKDEFAULT_OUTGOINGNUMBERSELECTIONREASON
-        case "ManualOverride":
-            result = MANUALOVERRIDE_OUTGOINGNUMBERSELECTIONREASON
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON
+	switch v {
+	case "StickyConversation":
+		result = STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONREASON
+	case "LeadAssigned":
+		result = LEADASSIGNED_OUTGOINGNUMBERSELECTIONREASON
+	case "CampaignOrSource":
+		result = CAMPAIGNORSOURCE_OUTGOINGNUMBERSELECTIONREASON
+	case "Preferred":
+		result = PREFERRED_OUTGOINGNUMBERSELECTIONREASON
+	case "LocalArea":
+		result = LOCALAREA_OUTGOINGNUMBERSELECTIONREASON
+	case "HealthyPool":
+		result = HEALTHYPOOL_OUTGOINGNUMBERSELECTIONREASON
+	case "FallbackDefault":
+		result = FALLBACKDEFAULT_OUTGOINGNUMBERSELECTIONREASON
+	case "ManualOverride":
+		result = MANUALOVERRIDE_OUTGOINGNUMBERSELECTIONREASON
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeOutgoingNumberSelectionReason(values []OutgoingNumberSelectionReason) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i OutgoingNumberSelectionReason) isMultiValue() bool {
-    return false
+	return false
 }

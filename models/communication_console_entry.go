@@ -4,198 +4,214 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // CommunicationConsoleEntry describes one durable diagnostic entry from the processing of a communication.
 type CommunicationConsoleEntry struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The id property
-    id *string
-    // The message property
-    message *string
-    // The occurredAt property
-    occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // The stage property
-    stage *string
-    // The status property
-    status *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Unique identifier of this diagnostic console entry.
+	id *string
+	// User-safe diagnostic message describing what occurred at this stage.
+	message *string
+	// UTC timestamp when this communication-processing event occurred.
+	occurredAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
+	stage *string
+	// Outcome or state recorded for this processing stage.
+	status *string
 }
+
 // NewCommunicationConsoleEntry instantiates a new CommunicationConsoleEntry and sets the default values.
-func NewCommunicationConsoleEntry()(*CommunicationConsoleEntry) {
-    m := &CommunicationConsoleEntry{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewCommunicationConsoleEntry() *CommunicationConsoleEntry {
+	m := &CommunicationConsoleEntry{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateCommunicationConsoleEntryFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateCommunicationConsoleEntryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewCommunicationConsoleEntry(), nil
+func CreateCommunicationConsoleEntryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewCommunicationConsoleEntry(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *CommunicationConsoleEntry) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *CommunicationConsoleEntry) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *CommunicationConsoleEntry) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["message"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessage(val)
-        }
-        return nil
-    }
-    res["occurredAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetOccurredAt(val)
-        }
-        return nil
-    }
-    res["stage"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStage(val)
-        }
-        return nil
-    }
-    res["status"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStatus(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *CommunicationConsoleEntry) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["message"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessage(val)
+		}
+		return nil
+	}
+	res["occurredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOccurredAt(val)
+		}
+		return nil
+	}
+	res["stage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStage(val)
+		}
+		return nil
+	}
+	res["status"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStatus(val)
+		}
+		return nil
+	}
+	return res
 }
-// GetId gets the id property value. The id property
+
+// GetId gets the id property value. Unique identifier of this diagnostic console entry.
 // returns a *string when successful
-func (m *CommunicationConsoleEntry) GetId()(*string) {
-    return m.id
+func (m *CommunicationConsoleEntry) GetId() *string {
+	return m.id
 }
-// GetMessage gets the message property value. The message property
+
+// GetMessage gets the message property value. User-safe diagnostic message describing what occurred at this stage.
 // returns a *string when successful
-func (m *CommunicationConsoleEntry) GetMessage()(*string) {
-    return m.message
+func (m *CommunicationConsoleEntry) GetMessage() *string {
+	return m.message
 }
-// GetOccurredAt gets the occurredAt property value. The occurredAt property
+
+// GetOccurredAt gets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
 // returns a *Time when successful
-func (m *CommunicationConsoleEntry) GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.occurredAt
+func (m *CommunicationConsoleEntry) GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.occurredAt
 }
-// GetStage gets the stage property value. The stage property
+
+// GetStage gets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
 // returns a *string when successful
-func (m *CommunicationConsoleEntry) GetStage()(*string) {
-    return m.stage
+func (m *CommunicationConsoleEntry) GetStage() *string {
+	return m.stage
 }
-// GetStatus gets the status property value. The status property
+
+// GetStatus gets the status property value. Outcome or state recorded for this processing stage.
 // returns a *string when successful
-func (m *CommunicationConsoleEntry) GetStatus()(*string) {
-    return m.status
+func (m *CommunicationConsoleEntry) GetStatus() *string {
+	return m.status
 }
+
 // Serialize serializes information the current object
-func (m *CommunicationConsoleEntry) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("message", m.GetMessage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("stage", m.GetStage())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("status", m.GetStatus())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *CommunicationConsoleEntry) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("message", m.GetMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("occurredAt", m.GetOccurredAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("stage", m.GetStage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("status", m.GetStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *CommunicationConsoleEntry) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *CommunicationConsoleEntry) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetId sets the id property value. The id property
-func (m *CommunicationConsoleEntry) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Unique identifier of this diagnostic console entry.
+func (m *CommunicationConsoleEntry) SetId(value *string) {
+	m.id = value
 }
-// SetMessage sets the message property value. The message property
-func (m *CommunicationConsoleEntry) SetMessage(value *string)() {
-    m.message = value
+
+// SetMessage sets the message property value. User-safe diagnostic message describing what occurred at this stage.
+func (m *CommunicationConsoleEntry) SetMessage(value *string) {
+	m.message = value
 }
-// SetOccurredAt sets the occurredAt property value. The occurredAt property
-func (m *CommunicationConsoleEntry) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.occurredAt = value
+
+// SetOccurredAt sets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
+func (m *CommunicationConsoleEntry) SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.occurredAt = value
 }
-// SetStage sets the stage property value. The stage property
-func (m *CommunicationConsoleEntry) SetStage(value *string)() {
-    m.stage = value
+
+// SetStage sets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
+func (m *CommunicationConsoleEntry) SetStage(value *string) {
+	m.stage = value
 }
-// SetStatus sets the status property value. The status property
-func (m *CommunicationConsoleEntry) SetStatus(value *string)() {
-    m.status = value
+
+// SetStatus sets the status property value. Outcome or state recorded for this processing stage.
+func (m *CommunicationConsoleEntry) SetStatus(value *string) {
+	m.status = value
 }
+
 type CommunicationConsoleEntryable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetId()(*string)
-    GetMessage()(*string)
-    GetOccurredAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetStage()(*string)
-    GetStatus()(*string)
-    SetId(value *string)()
-    SetMessage(value *string)()
-    SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetStage(value *string)()
-    SetStatus(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetId() *string
+	GetMessage() *string
+	GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetStage() *string
+	GetStatus() *string
+	SetId(value *string)
+	SetMessage(value *string)
+	SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetStage(value *string)
+	SetStatus(value *string)
 }

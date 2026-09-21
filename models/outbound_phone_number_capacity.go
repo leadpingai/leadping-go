@@ -4,982 +4,1116 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// OutboundPhoneNumberCapacity represents outbound phone number capacity data used by Leadping.
+// OutboundPhoneNumberCapacity reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
 type OutboundPhoneNumberCapacity struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Indicates whether Leadping successfully calculated capacity for this phone number.
-    capacityAvailable *bool
-    // Human-readable reason for the current phone-number health state.
-    healthReason *string
-    // Current health status for this Leadping outbound phone number capacity.
-    healthStatus *PhoneNumberOutboundHealthStatus
-    // Phone number associated with this Leadping outbound phone number capacity.
-    phoneNumber *string
-    // Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
-    phoneNumberId *string
-    // Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
-    smsApproved *bool
-    // Next midnight Eastern time, when SMS daily capacity resets.
-    smsDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Start of the next Eastern time hour, when SMS hourly capacity resets.
-    smsHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
-    smsLimitThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS limit for one rolling minute.
-    smsLimitThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Number of SMS limit today represented by this Leadping outbound phone number capacity.
-    smsLimitToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The next time SMS capacity becomes available in the rolling minute window.
-    smsMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether SMS limits for this phone number are still ramping up.
-    smsRamping *bool
-    // SMS remaining this hour for the applicable messaging or voice capacity window.
-    smsRemainingThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS remaining in the current rolling minute.
-    smsRemainingThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS remaining today for the applicable messaging or voice capacity window.
-    smsRemainingToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS used this hour for the applicable messaging or voice capacity window.
-    smsUsedThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS used in the current rolling minute.
-    smsUsedThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // SMS used today for the applicable messaging or voice capacity window.
-    smsUsedToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Next midnight Eastern time, when voice daily capacity resets.
-    voiceDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Start of the next Eastern time hour, when voice hourly capacity resets.
-    voiceHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Voice limit this hour associated with this Leadping outbound phone number capacity.
-    voiceLimitThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice limit for one rolling minute.
-    voiceLimitThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice limit today associated with this Leadping outbound phone number capacity.
-    voiceLimitToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // The next time voice capacity becomes available in the rolling minute window.
-    voiceMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Indicates whether call limits for this phone number are still ramping up.
-    voiceRamping *bool
-    // Voice remaining this hour for the applicable messaging or voice capacity window.
-    voiceRemainingThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice remaining in the current rolling minute.
-    voiceRemainingThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice remaining today for the applicable messaging or voice capacity window.
-    voiceRemainingToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice used this hour for the applicable messaging or voice capacity window.
-    voiceUsedThisHour i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice used in the current rolling minute.
-    voiceUsedThisMinute i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
-    // Voice used today for the applicable messaging or voice capacity window.
-    voiceUsedToday i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Indicates whether Leadping successfully calculated capacity for this phone number.
+	capacityAvailable *bool
+	// Human-readable reason for the current phone-number health state.
+	healthReason *string
+	// Defines phone-number outbound health states used by pacing.
+	healthStatus *PhoneNumberOutboundHealthStatus
+	// Phone number associated with this Leadping outbound phone number capacity.
+	phoneNumber *string
+	// Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
+	phoneNumberId *string
+	// Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+	smsApproved *bool
+	// Next midnight Eastern time, when SMS daily capacity resets.
+	smsDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Start of the next Eastern time hour, when SMS hourly capacity resets.
+	smsHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
+	smsLimitThisHour *int32
+	// SMS limit for one rolling minute.
+	smsLimitThisMinute *int32
+	// Number of SMS limit today represented by this Leadping outbound phone number capacity.
+	smsLimitToday *int32
+	// The next time SMS capacity becomes available in the rolling minute window.
+	smsMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	smsRampDirection *OutboundPhoneNumberCapacity_smsRampDirection
+	// Indicates whether SMS limits for this phone number are still ramping up.
+	smsRamping *bool
+	// SMS remaining this hour for the applicable messaging or voice capacity window.
+	smsRemainingThisHour *int32
+	// SMS remaining in the current rolling minute.
+	smsRemainingThisMinute *int32
+	// SMS remaining today for the applicable messaging or voice capacity window.
+	smsRemainingToday *int32
+	// SMS used this hour for the applicable messaging or voice capacity window.
+	smsUsedThisHour *int32
+	// SMS used in the current rolling minute.
+	smsUsedThisMinute *int32
+	// SMS used today for the applicable messaging or voice capacity window.
+	smsUsedToday *int32
+	// Next midnight Eastern time, when voice daily capacity resets.
+	voiceDailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Start of the next Eastern time hour, when voice hourly capacity resets.
+	voiceHourlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Voice limit this hour associated with this Leadping outbound phone number capacity.
+	voiceLimitThisHour *int32
+	// Voice limit for one rolling minute.
+	voiceLimitThisMinute *int32
+	// Voice limit today associated with this Leadping outbound phone number capacity.
+	voiceLimitToday *int32
+	// The next time voice capacity becomes available in the rolling minute window.
+	voiceMinutelyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	voiceRampDirection *OutboundPhoneNumberCapacity_voiceRampDirection
+	// Indicates whether call limits for this phone number are still ramping up.
+	voiceRamping *bool
+	// Voice remaining this hour for the applicable messaging or voice capacity window.
+	voiceRemainingThisHour *int32
+	// Voice remaining in the current rolling minute.
+	voiceRemainingThisMinute *int32
+	// Voice remaining today for the applicable messaging or voice capacity window.
+	voiceRemainingToday *int32
+	// Voice used this hour for the applicable messaging or voice capacity window.
+	voiceUsedThisHour *int32
+	// Voice used in the current rolling minute.
+	voiceUsedThisMinute *int32
+	// Voice used today for the applicable messaging or voice capacity window.
+	voiceUsedToday *int32
 }
+
 // NewOutboundPhoneNumberCapacity instantiates a new OutboundPhoneNumberCapacity and sets the default values.
-func NewOutboundPhoneNumberCapacity()(*OutboundPhoneNumberCapacity) {
-    m := &OutboundPhoneNumberCapacity{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOutboundPhoneNumberCapacity() *OutboundPhoneNumberCapacity {
+	m := &OutboundPhoneNumberCapacity{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOutboundPhoneNumberCapacityFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOutboundPhoneNumberCapacityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOutboundPhoneNumberCapacity(), nil
+func CreateOutboundPhoneNumberCapacityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOutboundPhoneNumberCapacity(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OutboundPhoneNumberCapacity) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OutboundPhoneNumberCapacity) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetCapacityAvailable gets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
 // returns a *bool when successful
-func (m *OutboundPhoneNumberCapacity) GetCapacityAvailable()(*bool) {
-    return m.capacityAvailable
+func (m *OutboundPhoneNumberCapacity) GetCapacityAvailable() *bool {
+	return m.capacityAvailable
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["capacityAvailable"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCapacityAvailable(val)
-        }
-        return nil
-    }
-    res["healthReason"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthReason(val)
-        }
-        return nil
-    }
-    res["healthStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneNumberOutboundHealthStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHealthStatus(val.(*PhoneNumberOutboundHealthStatus))
-        }
-        return nil
-    }
-    res["phoneNumber"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumber(val)
-        }
-        return nil
-    }
-    res["phoneNumberId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPhoneNumberId(val)
-        }
-        return nil
-    }
-    res["smsApproved"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsApproved(val)
-        }
-        return nil
-    }
-    res["smsDailyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsDailyResetsAt(val)
-        }
-        return nil
-    }
-    res["smsHourlyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsHourlyResetsAt(val)
-        }
-        return nil
-    }
-    res["smsLimitThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsLimitThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsLimitThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsLimitThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsLimitToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsLimitToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsMinutelyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsMinutelyResetsAt(val)
-        }
-        return nil
-    }
-    res["smsRamping"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsRamping(val)
-        }
-        return nil
-    }
-    res["smsRemainingThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsRemainingThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsRemainingThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsRemainingThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsRemainingToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsUsedThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsUsedThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsUsedThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsUsedThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["smsUsedToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSmsUsedToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceDailyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceDailyResetsAt(val)
-        }
-        return nil
-    }
-    res["voiceHourlyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceHourlyResetsAt(val)
-        }
-        return nil
-    }
-    res["voiceLimitThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceLimitThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceLimitThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceLimitThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceLimitToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceLimitToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceMinutelyResetsAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceMinutelyResetsAt(val)
-        }
-        return nil
-    }
-    res["voiceRamping"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceRamping(val)
-        }
-        return nil
-    }
-    res["voiceRemainingThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceRemainingThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceRemainingThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceRemainingThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceRemainingToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceRemainingToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceUsedThisHour"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceUsedThisHour(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceUsedThisMinute"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceUsedThisMinute(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    res["voiceUsedToday"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.CreateUntypedNodeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetVoiceUsedToday(val.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["capacityAvailable"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCapacityAvailable(val)
+		}
+		return nil
+	}
+	res["healthReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthReason(val)
+		}
+		return nil
+	}
+	res["healthStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberOutboundHealthStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHealthStatus(val.(*PhoneNumberOutboundHealthStatus))
+		}
+		return nil
+	}
+	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumber(val)
+		}
+		return nil
+	}
+	res["phoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["smsApproved"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsApproved(val)
+		}
+		return nil
+	}
+	res["smsDailyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsDailyResetsAt(val)
+		}
+		return nil
+	}
+	res["smsHourlyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsHourlyResetsAt(val)
+		}
+		return nil
+	}
+	res["smsLimitThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsLimitThisHour(val)
+		}
+		return nil
+	}
+	res["smsLimitThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsLimitThisMinute(val)
+		}
+		return nil
+	}
+	res["smsLimitToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsLimitToday(val)
+		}
+		return nil
+	}
+	res["smsMinutelyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsMinutelyResetsAt(val)
+		}
+		return nil
+	}
+	res["smsRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutboundPhoneNumberCapacity_smsRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRampDirection(val.(*OutboundPhoneNumberCapacity_smsRampDirection))
+		}
+		return nil
+	}
+	res["smsRamping"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRamping(val)
+		}
+		return nil
+	}
+	res["smsRemainingThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRemainingThisHour(val)
+		}
+		return nil
+	}
+	res["smsRemainingThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRemainingThisMinute(val)
+		}
+		return nil
+	}
+	res["smsRemainingToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRemainingToday(val)
+		}
+		return nil
+	}
+	res["smsUsedThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsUsedThisHour(val)
+		}
+		return nil
+	}
+	res["smsUsedThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsUsedThisMinute(val)
+		}
+		return nil
+	}
+	res["smsUsedToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsUsedToday(val)
+		}
+		return nil
+	}
+	res["voiceDailyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceDailyResetsAt(val)
+		}
+		return nil
+	}
+	res["voiceHourlyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceHourlyResetsAt(val)
+		}
+		return nil
+	}
+	res["voiceLimitThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceLimitThisHour(val)
+		}
+		return nil
+	}
+	res["voiceLimitThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceLimitThisMinute(val)
+		}
+		return nil
+	}
+	res["voiceLimitToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceLimitToday(val)
+		}
+		return nil
+	}
+	res["voiceMinutelyResetsAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceMinutelyResetsAt(val)
+		}
+		return nil
+	}
+	res["voiceRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOutboundPhoneNumberCapacity_voiceRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRampDirection(val.(*OutboundPhoneNumberCapacity_voiceRampDirection))
+		}
+		return nil
+	}
+	res["voiceRamping"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRamping(val)
+		}
+		return nil
+	}
+	res["voiceRemainingThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRemainingThisHour(val)
+		}
+		return nil
+	}
+	res["voiceRemainingThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRemainingThisMinute(val)
+		}
+		return nil
+	}
+	res["voiceRemainingToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRemainingToday(val)
+		}
+		return nil
+	}
+	res["voiceUsedThisHour"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceUsedThisHour(val)
+		}
+		return nil
+	}
+	res["voiceUsedThisMinute"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceUsedThisMinute(val)
+		}
+		return nil
+	}
+	res["voiceUsedToday"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceUsedToday(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetHealthReason gets the healthReason property value. Human-readable reason for the current phone-number health state.
 // returns a *string when successful
-func (m *OutboundPhoneNumberCapacity) GetHealthReason()(*string) {
-    return m.healthReason
+func (m *OutboundPhoneNumberCapacity) GetHealthReason() *string {
+	return m.healthReason
 }
-// GetHealthStatus gets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
+
+// GetHealthStatus gets the healthStatus property value. Defines phone-number outbound health states used by pacing.
 // returns a *PhoneNumberOutboundHealthStatus when successful
-func (m *OutboundPhoneNumberCapacity) GetHealthStatus()(*PhoneNumberOutboundHealthStatus) {
-    return m.healthStatus
+func (m *OutboundPhoneNumberCapacity) GetHealthStatus() *PhoneNumberOutboundHealthStatus {
+	return m.healthStatus
 }
+
 // GetPhoneNumber gets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
 // returns a *string when successful
-func (m *OutboundPhoneNumberCapacity) GetPhoneNumber()(*string) {
-    return m.phoneNumber
+func (m *OutboundPhoneNumberCapacity) GetPhoneNumber() *string {
+	return m.phoneNumber
 }
+
 // GetPhoneNumberId gets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
 // returns a *string when successful
-func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId()(*string) {
-    return m.phoneNumberId
+func (m *OutboundPhoneNumberCapacity) GetPhoneNumberId() *string {
+	return m.phoneNumberId
 }
+
 // GetSmsApproved gets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
 // returns a *bool when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsApproved()(*bool) {
-    return m.smsApproved
+func (m *OutboundPhoneNumberCapacity) GetSmsApproved() *bool {
+	return m.smsApproved
 }
+
 // GetSmsDailyResetsAt gets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsDailyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetSmsDailyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsDailyResetsAt
 }
+
 // GetSmsHourlyResetsAt gets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsHourlyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetSmsHourlyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsHourlyResetsAt
 }
+
 // GetSmsLimitThisHour gets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsLimitThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisHour() *int32 {
+	return m.smsLimitThisHour
 }
+
 // GetSmsLimitThisMinute gets the smsLimitThisMinute property value. SMS limit for one rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsLimitThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsLimitThisMinute() *int32 {
+	return m.smsLimitThisMinute
 }
+
 // GetSmsLimitToday gets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsLimitToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsLimitToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsLimitToday() *int32 {
+	return m.smsLimitToday
 }
+
 // GetSmsMinutelyResetsAt gets the smsMinutelyResetsAt property value. The next time SMS capacity becomes available in the rolling minute window.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.smsMinutelyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetSmsMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.smsMinutelyResetsAt
 }
+
+// GetSmsRampDirection gets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *OutboundPhoneNumberCapacity_smsRampDirection when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRampDirection() *OutboundPhoneNumberCapacity_smsRampDirection {
+	return m.smsRampDirection
+}
+
 // GetSmsRamping gets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
 // returns a *bool when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsRamping()(*bool) {
-    return m.smsRamping
+func (m *OutboundPhoneNumberCapacity) GetSmsRamping() *bool {
+	return m.smsRamping
 }
+
 // GetSmsRemainingThisHour gets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsRemainingThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisHour() *int32 {
+	return m.smsRemainingThisHour
 }
+
 // GetSmsRemainingThisMinute gets the smsRemainingThisMinute property value. SMS remaining in the current rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsRemainingThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRemainingThisMinute() *int32 {
+	return m.smsRemainingThisMinute
 }
+
 // GetSmsRemainingToday gets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsRemainingToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsRemainingToday() *int32 {
+	return m.smsRemainingToday
 }
+
 // GetSmsUsedThisHour gets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsUsedThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisHour() *int32 {
+	return m.smsUsedThisHour
 }
+
 // GetSmsUsedThisMinute gets the smsUsedThisMinute property value. SMS used in the current rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsUsedThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsUsedThisMinute() *int32 {
+	return m.smsUsedThisMinute
 }
+
 // GetSmsUsedToday gets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetSmsUsedToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.smsUsedToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetSmsUsedToday() *int32 {
+	return m.smsUsedToday
 }
+
 // GetVoiceDailyResetsAt gets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.voiceDailyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetVoiceDailyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.voiceDailyResetsAt
 }
+
 // GetVoiceHourlyResetsAt gets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.voiceHourlyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetVoiceHourlyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.voiceHourlyResetsAt
 }
+
 // GetVoiceLimitThisHour gets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceLimitThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisHour() *int32 {
+	return m.voiceLimitThisHour
 }
+
 // GetVoiceLimitThisMinute gets the voiceLimitThisMinute property value. Voice limit for one rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceLimitThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceLimitThisMinute() *int32 {
+	return m.voiceLimitThisMinute
 }
+
 // GetVoiceLimitToday gets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceLimitToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceLimitToday() *int32 {
+	return m.voiceLimitToday
 }
+
 // GetVoiceMinutelyResetsAt gets the voiceMinutelyResetsAt property value. The next time voice capacity becomes available in the rolling minute window.
 // returns a *Time when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.voiceMinutelyResetsAt
+func (m *OutboundPhoneNumberCapacity) GetVoiceMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.voiceMinutelyResetsAt
 }
+
+// GetVoiceRampDirection gets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *OutboundPhoneNumberCapacity_voiceRampDirection when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRampDirection() *OutboundPhoneNumberCapacity_voiceRampDirection {
+	return m.voiceRampDirection
+}
+
 // GetVoiceRamping gets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
 // returns a *bool when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceRamping()(*bool) {
-    return m.voiceRamping
+func (m *OutboundPhoneNumberCapacity) GetVoiceRamping() *bool {
+	return m.voiceRamping
 }
+
 // GetVoiceRemainingThisHour gets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceRemainingThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisHour() *int32 {
+	return m.voiceRemainingThisHour
 }
+
 // GetVoiceRemainingThisMinute gets the voiceRemainingThisMinute property value. Voice remaining in the current rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceRemainingThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingThisMinute() *int32 {
+	return m.voiceRemainingThisMinute
 }
+
 // GetVoiceRemainingToday gets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceRemainingToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceRemainingToday() *int32 {
+	return m.voiceRemainingToday
 }
+
 // GetVoiceUsedThisHour gets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceUsedThisHour
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisHour() *int32 {
+	return m.voiceUsedThisHour
 }
+
 // GetVoiceUsedThisMinute gets the voiceUsedThisMinute property value. Voice used in the current rolling minute.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceUsedThisMinute
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceUsedThisMinute() *int32 {
+	return m.voiceUsedThisMinute
 }
+
 // GetVoiceUsedToday gets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
-// returns a UntypedNodeable when successful
-func (m *OutboundPhoneNumberCapacity) GetVoiceUsedToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable) {
-    return m.voiceUsedToday
+// returns a *int32 when successful
+func (m *OutboundPhoneNumberCapacity) GetVoiceUsedToday() *int32 {
+	return m.voiceUsedToday
 }
+
 // Serialize serializes information the current object
-func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteBoolValue("capacityAvailable", m.GetCapacityAvailable())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("healthReason", m.GetHealthReason())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetHealthStatus() != nil {
-        cast := (*m.GetHealthStatus()).String()
-        err := writer.WriteStringValue("healthStatus", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsApproved", m.GetSmsApproved())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsDailyResetsAt", m.GetSmsDailyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsHourlyResetsAt", m.GetSmsHourlyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsLimitThisHour", m.GetSmsLimitThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsLimitThisMinute", m.GetSmsLimitThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsLimitToday", m.GetSmsLimitToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("smsMinutelyResetsAt", m.GetSmsMinutelyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("smsRamping", m.GetSmsRamping())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsRemainingThisHour", m.GetSmsRemainingThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsRemainingThisMinute", m.GetSmsRemainingThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsRemainingToday", m.GetSmsRemainingToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsUsedThisHour", m.GetSmsUsedThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsUsedThisMinute", m.GetSmsUsedThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("smsUsedToday", m.GetSmsUsedToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("voiceDailyResetsAt", m.GetVoiceDailyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("voiceHourlyResetsAt", m.GetVoiceHourlyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceLimitThisHour", m.GetVoiceLimitThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceLimitThisMinute", m.GetVoiceLimitThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceLimitToday", m.GetVoiceLimitToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("voiceMinutelyResetsAt", m.GetVoiceMinutelyResetsAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("voiceRamping", m.GetVoiceRamping())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceRemainingThisHour", m.GetVoiceRemainingThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceRemainingThisMinute", m.GetVoiceRemainingThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceRemainingToday", m.GetVoiceRemainingToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceUsedThisHour", m.GetVoiceUsedThisHour())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceUsedThisMinute", m.GetVoiceUsedThisMinute())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("voiceUsedToday", m.GetVoiceUsedToday())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("capacityAvailable", m.GetCapacityAvailable())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("healthReason", m.GetHealthReason())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetHealthStatus() != nil {
+		cast := (*m.GetHealthStatus()).String()
+		err := writer.WriteStringValue("healthStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("phoneNumberId", m.GetPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsApproved", m.GetSmsApproved())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsDailyResetsAt", m.GetSmsDailyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsHourlyResetsAt", m.GetSmsHourlyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsLimitThisHour", m.GetSmsLimitThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsLimitThisMinute", m.GetSmsLimitThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsLimitToday", m.GetSmsLimitToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("smsMinutelyResetsAt", m.GetSmsMinutelyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSmsRampDirection() != nil {
+		cast := (*m.GetSmsRampDirection()).String()
+		err := writer.WriteStringValue("smsRampDirection", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("smsRamping", m.GetSmsRamping())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsRemainingThisHour", m.GetSmsRemainingThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsRemainingThisMinute", m.GetSmsRemainingThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsRemainingToday", m.GetSmsRemainingToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsUsedThisHour", m.GetSmsUsedThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsUsedThisMinute", m.GetSmsUsedThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("smsUsedToday", m.GetSmsUsedToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("voiceDailyResetsAt", m.GetVoiceDailyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("voiceHourlyResetsAt", m.GetVoiceHourlyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceLimitThisHour", m.GetVoiceLimitThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceLimitThisMinute", m.GetVoiceLimitThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceLimitToday", m.GetVoiceLimitToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("voiceMinutelyResetsAt", m.GetVoiceMinutelyResetsAt())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetVoiceRampDirection() != nil {
+		cast := (*m.GetVoiceRampDirection()).String()
+		err := writer.WriteStringValue("voiceRampDirection", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("voiceRamping", m.GetVoiceRamping())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceRemainingThisHour", m.GetVoiceRemainingThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceRemainingThisMinute", m.GetVoiceRemainingThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceRemainingToday", m.GetVoiceRemainingToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceUsedThisHour", m.GetVoiceUsedThisHour())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceUsedThisMinute", m.GetVoiceUsedThisMinute())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("voiceUsedToday", m.GetVoiceUsedToday())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OutboundPhoneNumberCapacity) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OutboundPhoneNumberCapacity) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetCapacityAvailable sets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
-func (m *OutboundPhoneNumberCapacity) SetCapacityAvailable(value *bool)() {
-    m.capacityAvailable = value
+func (m *OutboundPhoneNumberCapacity) SetCapacityAvailable(value *bool) {
+	m.capacityAvailable = value
 }
+
 // SetHealthReason sets the healthReason property value. Human-readable reason for the current phone-number health state.
-func (m *OutboundPhoneNumberCapacity) SetHealthReason(value *string)() {
-    m.healthReason = value
+func (m *OutboundPhoneNumberCapacity) SetHealthReason(value *string) {
+	m.healthReason = value
 }
-// SetHealthStatus sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutboundHealthStatus)() {
-    m.healthStatus = value
+
+// SetHealthStatus sets the healthStatus property value. Defines phone-number outbound health states used by pacing.
+func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutboundHealthStatus) {
+	m.healthStatus = value
 }
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string)() {
-    m.phoneNumber = value
+func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string) {
+	m.phoneNumber = value
 }
+
 // SetPhoneNumberId sets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string)() {
-    m.phoneNumberId = value
+func (m *OutboundPhoneNumberCapacity) SetPhoneNumberId(value *string) {
+	m.phoneNumberId = value
 }
+
 // SetSmsApproved sets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
-func (m *OutboundPhoneNumberCapacity) SetSmsApproved(value *bool)() {
-    m.smsApproved = value
+func (m *OutboundPhoneNumberCapacity) SetSmsApproved(value *bool) {
+	m.smsApproved = value
 }
+
 // SetSmsDailyResetsAt sets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
-func (m *OutboundPhoneNumberCapacity) SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsDailyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsDailyResetsAt = value
 }
+
 // SetSmsHourlyResetsAt sets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
-func (m *OutboundPhoneNumberCapacity) SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsHourlyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsHourlyResetsAt = value
 }
+
 // SetSmsLimitThisHour sets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsLimitThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisHour(value *int32) {
+	m.smsLimitThisHour = value
 }
+
 // SetSmsLimitThisMinute sets the smsLimitThisMinute property value. SMS limit for one rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsLimitThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetSmsLimitThisMinute(value *int32) {
+	m.smsLimitThisMinute = value
 }
+
 // SetSmsLimitToday sets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetSmsLimitToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsLimitToday = value
+func (m *OutboundPhoneNumberCapacity) SetSmsLimitToday(value *int32) {
+	m.smsLimitToday = value
 }
+
 // SetSmsMinutelyResetsAt sets the smsMinutelyResetsAt property value. The next time SMS capacity becomes available in the rolling minute window.
-func (m *OutboundPhoneNumberCapacity) SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.smsMinutelyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.smsMinutelyResetsAt = value
 }
+
+// SetSmsRampDirection sets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *OutboundPhoneNumberCapacity) SetSmsRampDirection(value *OutboundPhoneNumberCapacity_smsRampDirection) {
+	m.smsRampDirection = value
+}
+
 // SetSmsRamping sets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
-func (m *OutboundPhoneNumberCapacity) SetSmsRamping(value *bool)() {
-    m.smsRamping = value
+func (m *OutboundPhoneNumberCapacity) SetSmsRamping(value *bool) {
+	m.smsRamping = value
 }
+
 // SetSmsRemainingThisHour sets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsRemainingThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisHour(value *int32) {
+	m.smsRemainingThisHour = value
 }
+
 // SetSmsRemainingThisMinute sets the smsRemainingThisMinute property value. SMS remaining in the current rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsRemainingThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetSmsRemainingThisMinute(value *int32) {
+	m.smsRemainingThisMinute = value
 }
+
 // SetSmsRemainingToday sets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetSmsRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsRemainingToday = value
+func (m *OutboundPhoneNumberCapacity) SetSmsRemainingToday(value *int32) {
+	m.smsRemainingToday = value
 }
+
 // SetSmsUsedThisHour sets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsUsedThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisHour(value *int32) {
+	m.smsUsedThisHour = value
 }
+
 // SetSmsUsedThisMinute sets the smsUsedThisMinute property value. SMS used in the current rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsUsedThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetSmsUsedThisMinute(value *int32) {
+	m.smsUsedThisMinute = value
 }
+
 // SetSmsUsedToday sets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetSmsUsedToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.smsUsedToday = value
+func (m *OutboundPhoneNumberCapacity) SetSmsUsedToday(value *int32) {
+	m.smsUsedToday = value
 }
+
 // SetVoiceDailyResetsAt sets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
-func (m *OutboundPhoneNumberCapacity) SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.voiceDailyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.voiceDailyResetsAt = value
 }
+
 // SetVoiceHourlyResetsAt sets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
-func (m *OutboundPhoneNumberCapacity) SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.voiceHourlyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.voiceHourlyResetsAt = value
 }
+
 // SetVoiceLimitThisHour sets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceLimitThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisHour(value *int32) {
+	m.voiceLimitThisHour = value
 }
+
 // SetVoiceLimitThisMinute sets the voiceLimitThisMinute property value. Voice limit for one rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceLimitThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceLimitThisMinute(value *int32) {
+	m.voiceLimitThisMinute = value
 }
+
 // SetVoiceLimitToday sets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
-func (m *OutboundPhoneNumberCapacity) SetVoiceLimitToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceLimitToday = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceLimitToday(value *int32) {
+	m.voiceLimitToday = value
 }
+
 // SetVoiceMinutelyResetsAt sets the voiceMinutelyResetsAt property value. The next time voice capacity becomes available in the rolling minute window.
-func (m *OutboundPhoneNumberCapacity) SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.voiceMinutelyResetsAt = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.voiceMinutelyResetsAt = value
 }
+
+// SetVoiceRampDirection sets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *OutboundPhoneNumberCapacity) SetVoiceRampDirection(value *OutboundPhoneNumberCapacity_voiceRampDirection) {
+	m.voiceRampDirection = value
+}
+
 // SetVoiceRamping sets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
-func (m *OutboundPhoneNumberCapacity) SetVoiceRamping(value *bool)() {
-    m.voiceRamping = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceRamping(value *bool) {
+	m.voiceRamping = value
 }
+
 // SetVoiceRemainingThisHour sets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceRemainingThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisHour(value *int32) {
+	m.voiceRemainingThisHour = value
 }
+
 // SetVoiceRemainingThisMinute sets the voiceRemainingThisMinute property value. Voice remaining in the current rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceRemainingThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingThisMinute(value *int32) {
+	m.voiceRemainingThisMinute = value
 }
+
 // SetVoiceRemainingToday sets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceRemainingToday = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceRemainingToday(value *int32) {
+	m.voiceRemainingToday = value
 }
+
 // SetVoiceUsedThisHour sets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceUsedThisHour = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisHour(value *int32) {
+	m.voiceUsedThisHour = value
 }
+
 // SetVoiceUsedThisMinute sets the voiceUsedThisMinute property value. Voice used in the current rolling minute.
-func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceUsedThisMinute = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceUsedThisMinute(value *int32) {
+	m.voiceUsedThisMinute = value
 }
+
 // SetVoiceUsedToday sets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
-func (m *OutboundPhoneNumberCapacity) SetVoiceUsedToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)() {
-    m.voiceUsedToday = value
+func (m *OutboundPhoneNumberCapacity) SetVoiceUsedToday(value *int32) {
+	m.voiceUsedToday = value
 }
+
 type OutboundPhoneNumberCapacityable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCapacityAvailable()(*bool)
-    GetHealthReason()(*string)
-    GetHealthStatus()(*PhoneNumberOutboundHealthStatus)
-    GetPhoneNumber()(*string)
-    GetPhoneNumberId()(*string)
-    GetSmsApproved()(*bool)
-    GetSmsDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsLimitThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsLimitThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsLimitToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetSmsRamping()(*bool)
-    GetSmsRemainingThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsRemainingThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsUsedThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsUsedThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetSmsUsedToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceDailyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetVoiceHourlyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetVoiceLimitThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceLimitThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceLimitToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceMinutelyResetsAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetVoiceRamping()(*bool)
-    GetVoiceRemainingThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceRemainingThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceRemainingToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceUsedThisHour()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceUsedThisMinute()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    GetVoiceUsedToday()(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)
-    SetCapacityAvailable(value *bool)()
-    SetHealthReason(value *string)()
-    SetHealthStatus(value *PhoneNumberOutboundHealthStatus)()
-    SetPhoneNumber(value *string)()
-    SetPhoneNumberId(value *string)()
-    SetSmsApproved(value *bool)()
-    SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsLimitThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsLimitThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsLimitToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetSmsRamping(value *bool)()
-    SetSmsRemainingThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsRemainingThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsUsedThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsUsedThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetSmsUsedToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetVoiceLimitThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceLimitThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceLimitToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetVoiceRamping(value *bool)()
-    SetVoiceRemainingThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceRemainingThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceRemainingToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceUsedThisHour(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceUsedThisMinute(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
-    SetVoiceUsedToday(value i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCapacityAvailable() *bool
+	GetHealthReason() *string
+	GetHealthStatus() *PhoneNumberOutboundHealthStatus
+	GetPhoneNumber() *string
+	GetPhoneNumberId() *string
+	GetSmsApproved() *bool
+	GetSmsDailyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsHourlyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsLimitThisHour() *int32
+	GetSmsLimitThisMinute() *int32
+	GetSmsLimitToday() *int32
+	GetSmsMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSmsRampDirection() *OutboundPhoneNumberCapacity_smsRampDirection
+	GetSmsRamping() *bool
+	GetSmsRemainingThisHour() *int32
+	GetSmsRemainingThisMinute() *int32
+	GetSmsRemainingToday() *int32
+	GetSmsUsedThisHour() *int32
+	GetSmsUsedThisMinute() *int32
+	GetSmsUsedToday() *int32
+	GetVoiceDailyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetVoiceHourlyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetVoiceLimitThisHour() *int32
+	GetVoiceLimitThisMinute() *int32
+	GetVoiceLimitToday() *int32
+	GetVoiceMinutelyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetVoiceRampDirection() *OutboundPhoneNumberCapacity_voiceRampDirection
+	GetVoiceRamping() *bool
+	GetVoiceRemainingThisHour() *int32
+	GetVoiceRemainingThisMinute() *int32
+	GetVoiceRemainingToday() *int32
+	GetVoiceUsedThisHour() *int32
+	GetVoiceUsedThisMinute() *int32
+	GetVoiceUsedToday() *int32
+	SetCapacityAvailable(value *bool)
+	SetHealthReason(value *string)
+	SetHealthStatus(value *PhoneNumberOutboundHealthStatus)
+	SetPhoneNumber(value *string)
+	SetPhoneNumberId(value *string)
+	SetSmsApproved(value *bool)
+	SetSmsDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsLimitThisHour(value *int32)
+	SetSmsLimitThisMinute(value *int32)
+	SetSmsLimitToday(value *int32)
+	SetSmsMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSmsRampDirection(value *OutboundPhoneNumberCapacity_smsRampDirection)
+	SetSmsRamping(value *bool)
+	SetSmsRemainingThisHour(value *int32)
+	SetSmsRemainingThisMinute(value *int32)
+	SetSmsRemainingToday(value *int32)
+	SetSmsUsedThisHour(value *int32)
+	SetSmsUsedThisMinute(value *int32)
+	SetSmsUsedToday(value *int32)
+	SetVoiceDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetVoiceHourlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetVoiceLimitThisHour(value *int32)
+	SetVoiceLimitThisMinute(value *int32)
+	SetVoiceLimitToday(value *int32)
+	SetVoiceMinutelyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetVoiceRampDirection(value *OutboundPhoneNumberCapacity_voiceRampDirection)
+	SetVoiceRamping(value *bool)
+	SetVoiceRemainingThisHour(value *int32)
+	SetVoiceRemainingThisMinute(value *int32)
+	SetVoiceRemainingToday(value *int32)
+	SetVoiceUsedThisHour(value *int32)
+	SetVoiceUsedThisMinute(value *int32)
+	SetVoiceUsedToday(value *int32)
 }

@@ -4,111 +4,121 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // OrganizationInvitationRequest defines the input used for organization invitation.
 type OrganizationInvitationRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // The email address associated with this organization invitation.
-    email *string
-    // Role for this organization invitation.
-    role *OrganizationMemberRole
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// The email address associated with this organization invitation.
+	email *string
+	// Identifies an organization member's access level and permission scope within Leadping.
+	role *OrganizationMemberRole
 }
+
 // NewOrganizationInvitationRequest instantiates a new OrganizationInvitationRequest and sets the default values.
-func NewOrganizationInvitationRequest()(*OrganizationInvitationRequest) {
-    m := &OrganizationInvitationRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewOrganizationInvitationRequest() *OrganizationInvitationRequest {
+	m := &OrganizationInvitationRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateOrganizationInvitationRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateOrganizationInvitationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewOrganizationInvitationRequest(), nil
+func CreateOrganizationInvitationRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewOrganizationInvitationRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *OrganizationInvitationRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *OrganizationInvitationRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
+
 // GetEmail gets the email property value. The email address associated with this organization invitation.
 // returns a *string when successful
-func (m *OrganizationInvitationRequest) GetEmail()(*string) {
-    return m.email
+func (m *OrganizationInvitationRequest) GetEmail() *string {
+	return m.email
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *OrganizationInvitationRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetEmail(val)
-        }
-        return nil
-    }
-    res["role"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseOrganizationMemberRole)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRole(val.(*OrganizationMemberRole))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *OrganizationInvitationRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["email"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["role"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseOrganizationMemberRole)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRole(val.(*OrganizationMemberRole))
+		}
+		return nil
+	}
+	return res
 }
-// GetRole gets the role property value. Role for this organization invitation.
+
+// GetRole gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
 // returns a *OrganizationMemberRole when successful
-func (m *OrganizationInvitationRequest) GetRole()(*OrganizationMemberRole) {
-    return m.role
+func (m *OrganizationInvitationRequest) GetRole() *OrganizationMemberRole {
+	return m.role
 }
+
 // Serialize serializes information the current object
-func (m *OrganizationInvitationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteStringValue("email", m.GetEmail())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetRole() != nil {
-        cast := (*m.GetRole()).String()
-        err := writer.WriteStringValue("role", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *OrganizationInvitationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("email", m.GetEmail())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetRole() != nil {
+		cast := (*m.GetRole()).String()
+		err := writer.WriteStringValue("role", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *OrganizationInvitationRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *OrganizationInvitationRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
+
 // SetEmail sets the email property value. The email address associated with this organization invitation.
-func (m *OrganizationInvitationRequest) SetEmail(value *string)() {
-    m.email = value
+func (m *OrganizationInvitationRequest) SetEmail(value *string) {
+	m.email = value
 }
-// SetRole sets the role property value. Role for this organization invitation.
-func (m *OrganizationInvitationRequest) SetRole(value *OrganizationMemberRole)() {
-    m.role = value
+
+// SetRole sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
+func (m *OrganizationInvitationRequest) SetRole(value *OrganizationMemberRole) {
+	m.role = value
 }
+
 type OrganizationInvitationRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetEmail()(*string)
-    GetRole()(*OrganizationMemberRole)
-    SetEmail(value *string)()
-    SetRole(value *OrganizationMemberRole)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetEmail() *string
+	GetRole() *OrganizationMemberRole
+	SetEmail(value *string)
+	SetRole(value *OrganizationMemberRole)
 }

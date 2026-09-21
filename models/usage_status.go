@@ -2,57 +2,61 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 package models
-// Defines the supported Usage Record Status values.
+
+// Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
 type UsageStatus int
 
 const (
-    RECORDED_USAGESTATUS UsageStatus = iota
-    RATED_USAGESTATUS
-    PENDING_INVOICE_USAGESTATUS
-    INVOICED_USAGESTATUS
-    CHARGED_USAGESTATUS
-    FAILED_USAGESTATUS
-    REFUNDED_CREDITED_USAGESTATUS
-    NON_BILLABLE_INTERNAL_USAGESTATUS
-    BLOCKED_DUE_TO_BILLING_USAGESTATUS
+	RECORDED_USAGESTATUS UsageStatus = iota
+	RATED_USAGESTATUS
+	PENDING_INVOICE_USAGESTATUS
+	INVOICED_USAGESTATUS
+	CHARGED_USAGESTATUS
+	FAILED_USAGESTATUS
+	REFUNDED_CREDITED_USAGESTATUS
+	NON_BILLABLE_INTERNAL_USAGESTATUS
+	BLOCKED_DUE_TO_BILLING_USAGESTATUS
 )
 
 func (i UsageStatus) String() string {
-    return []string{"recorded", "rated", "pending_invoice", "invoiced", "charged", "failed", "refunded_credited", "non_billable_internal", "blocked_due_to_billing"}[i]
+	return []string{"recorded", "rated", "pending_invoice", "invoiced", "charged", "failed", "refunded_credited", "non_billable_internal", "blocked_due_to_billing"}[i]
 }
+
 func ParseUsageStatus(v string) (any, error) {
-    result := RECORDED_USAGESTATUS
-    switch v {
-        case "recorded":
-            result = RECORDED_USAGESTATUS
-        case "rated":
-            result = RATED_USAGESTATUS
-        case "pending_invoice":
-            result = PENDING_INVOICE_USAGESTATUS
-        case "invoiced":
-            result = INVOICED_USAGESTATUS
-        case "charged":
-            result = CHARGED_USAGESTATUS
-        case "failed":
-            result = FAILED_USAGESTATUS
-        case "refunded_credited":
-            result = REFUNDED_CREDITED_USAGESTATUS
-        case "non_billable_internal":
-            result = NON_BILLABLE_INTERNAL_USAGESTATUS
-        case "blocked_due_to_billing":
-            result = BLOCKED_DUE_TO_BILLING_USAGESTATUS
-        default:
-            return nil, nil
-    }
-    return &result, nil
+	result := RECORDED_USAGESTATUS
+	switch v {
+	case "recorded":
+		result = RECORDED_USAGESTATUS
+	case "rated":
+		result = RATED_USAGESTATUS
+	case "pending_invoice":
+		result = PENDING_INVOICE_USAGESTATUS
+	case "invoiced":
+		result = INVOICED_USAGESTATUS
+	case "charged":
+		result = CHARGED_USAGESTATUS
+	case "failed":
+		result = FAILED_USAGESTATUS
+	case "refunded_credited":
+		result = REFUNDED_CREDITED_USAGESTATUS
+	case "non_billable_internal":
+		result = NON_BILLABLE_INTERNAL_USAGESTATUS
+	case "blocked_due_to_billing":
+		result = BLOCKED_DUE_TO_BILLING_USAGESTATUS
+	default:
+		return nil, nil
+	}
+	return &result, nil
 }
+
 func SerializeUsageStatus(values []UsageStatus) []string {
-    result := make([]string, len(values))
-    for i, v := range values {
-        result[i] = v.String()
-    }
-    return result
+	result := make([]string, len(values))
+	for i, v := range values {
+		result[i] = v.String()
+	}
+	return result
 }
+
 func (i UsageStatus) isMultiValue() bool {
-    return false
+	return false
 }

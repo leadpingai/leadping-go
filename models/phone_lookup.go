@@ -4,431 +4,463 @@
 package models
 
 import (
-    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneLookup public Leadping API schema for phone lookup result data.
 type PhoneLookup struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Caller-name data returned by the provider.
-    callerName PhoneLookup_callerNameable
-    // Complete carrier metadata reported for this phone number.
-    carrier PhoneLookup_carrierable
-    // UTC timestamp when the phone lookup record was created.
-    createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Fraud value returned by the provider, when available.
-    fraud *string
-    // Unique Leadping identifier for the saved phone lookup record.
-    id *string
-    // Indicates whether this phone lookup result passed validation.
-    isValid *bool
-    // An enumerator describing phone line types
-    lineType *PhoneLookup_lineType
-    // Geographic location metadata for the phone number, lead, or lookup result.
-    location PhoneLookup_locationable
-    // UTC timestamp when the phone lookup record was last updated.
-    modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // Provider-formatted national phone number.
-    nationalFormat *string
-    // E.164 phone number exposed by this phone lookup result.
-    number *string
-    // Complete portability data returned by Telnyx.
-    portability PhoneLookup_portabilityable
-    // Provider record discriminator.
-    recordType *string
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Caller-name data returned by the phone lookup provider.
+	callerName PhoneLookup_callerNameable
+	// Complete carrier metadata returned by a phone number lookup provider.
+	carrier PhoneLookup_carrierable
+	// Timestamp when the resource was created.
+	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Fraud value returned by the provider, when available.
+	fraud *string
+	// Stable unique identifier of the resource.
+	id *string
+	// Indicates whether this phone lookup result passed validation.
+	isValid *bool
+	// Classifies the access technology or service type associated with a telephone number.
+	lineType *PhoneLookup_lineType
+	// Public Leadping API schema for phone number location data.
+	location PhoneLookup_locationable
+	// Timestamp when the resource was last modified, or null when it has not been updated.
+	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Provider-formatted national phone number.
+	nationalFormat *string
+	// E.164 phone number exposed by this phone lookup result.
+	number *string
+	// Number-portability and routing data returned by Telnyx.
+	portability PhoneLookup_portabilityable
+	// Provider record discriminator.
+	recordType *string
 }
+
 // NewPhoneLookup instantiates a new PhoneLookup and sets the default values.
-func NewPhoneLookup()(*PhoneLookup) {
-    m := &PhoneLookup{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewPhoneLookup() *PhoneLookup {
+	m := &PhoneLookup{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreatePhoneLookupFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreatePhoneLookupFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewPhoneLookup(), nil
+func CreatePhoneLookupFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewPhoneLookup(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *PhoneLookup) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *PhoneLookup) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetCallerName gets the callerName property value. Caller-name data returned by the provider.
+
+// GetCallerName gets the callerName property value. Caller-name data returned by the phone lookup provider.
 // returns a PhoneLookup_callerNameable when successful
-func (m *PhoneLookup) GetCallerName()(PhoneLookup_callerNameable) {
-    return m.callerName
+func (m *PhoneLookup) GetCallerName() PhoneLookup_callerNameable {
+	return m.callerName
 }
-// GetCarrier gets the carrier property value. Complete carrier metadata reported for this phone number.
+
+// GetCarrier gets the carrier property value. Complete carrier metadata returned by a phone number lookup provider.
 // returns a PhoneLookup_carrierable when successful
-func (m *PhoneLookup) GetCarrier()(PhoneLookup_carrierable) {
-    return m.carrier
+func (m *PhoneLookup) GetCarrier() PhoneLookup_carrierable {
+	return m.carrier
 }
-// GetCreatedAt gets the createdAt property value. UTC timestamp when the phone lookup record was created.
+
+// GetCreatedAt gets the createdAt property value. Timestamp when the resource was created.
 // returns a *Time when successful
-func (m *PhoneLookup) GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdAt
+func (m *PhoneLookup) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.createdAt
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *PhoneLookup) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["callerName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneLookup_callerNameFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCallerName(val.(PhoneLookup_callerNameable))
-        }
-        return nil
-    }
-    res["carrier"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneLookup_carrierFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCarrier(val.(PhoneLookup_carrierable))
-        }
-        return nil
-    }
-    res["createdAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCreatedAt(val)
-        }
-        return nil
-    }
-    res["fraud"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFraud(val)
-        }
-        return nil
-    }
-    res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetId(val)
-        }
-        return nil
-    }
-    res["isValid"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsValid(val)
-        }
-        return nil
-    }
-    res["lineType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParsePhoneLookup_lineType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLineType(val.(*PhoneLookup_lineType))
-        }
-        return nil
-    }
-    res["location"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneLookup_locationFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetLocation(val.(PhoneLookup_locationable))
-        }
-        return nil
-    }
-    res["modifiedAt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetModifiedAt(val)
-        }
-        return nil
-    }
-    res["nationalFormat"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNationalFormat(val)
-        }
-        return nil
-    }
-    res["number"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNumber(val)
-        }
-        return nil
-    }
-    res["portability"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreatePhoneLookup_portabilityFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetPortability(val.(PhoneLookup_portabilityable))
-        }
-        return nil
-    }
-    res["recordType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetRecordType(val)
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *PhoneLookup) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callerName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneLookup_callerNameFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallerName(val.(PhoneLookup_callerNameable))
+		}
+		return nil
+	}
+	res["carrier"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneLookup_carrierFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCarrier(val.(PhoneLookup_carrierable))
+		}
+		return nil
+	}
+	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["fraud"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFraud(val)
+		}
+		return nil
+	}
+	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetId(val)
+		}
+		return nil
+	}
+	res["isValid"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsValid(val)
+		}
+		return nil
+	}
+	res["lineType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneLookup_lineType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLineType(val.(*PhoneLookup_lineType))
+		}
+		return nil
+	}
+	res["location"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneLookup_locationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLocation(val.(PhoneLookup_locationable))
+		}
+		return nil
+	}
+	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetModifiedAt(val)
+		}
+		return nil
+	}
+	res["nationalFormat"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNationalFormat(val)
+		}
+		return nil
+	}
+	res["number"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumber(val)
+		}
+		return nil
+	}
+	res["portability"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneLookup_portabilityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPortability(val.(PhoneLookup_portabilityable))
+		}
+		return nil
+	}
+	res["recordType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRecordType(val)
+		}
+		return nil
+	}
+	return res
 }
+
 // GetFraud gets the fraud property value. Fraud value returned by the provider, when available.
 // returns a *string when successful
-func (m *PhoneLookup) GetFraud()(*string) {
-    return m.fraud
+func (m *PhoneLookup) GetFraud() *string {
+	return m.fraud
 }
-// GetId gets the id property value. Unique Leadping identifier for the saved phone lookup record.
+
+// GetId gets the id property value. Stable unique identifier of the resource.
 // returns a *string when successful
-func (m *PhoneLookup) GetId()(*string) {
-    return m.id
+func (m *PhoneLookup) GetId() *string {
+	return m.id
 }
+
 // GetIsValid gets the isValid property value. Indicates whether this phone lookup result passed validation.
 // returns a *bool when successful
-func (m *PhoneLookup) GetIsValid()(*bool) {
-    return m.isValid
+func (m *PhoneLookup) GetIsValid() *bool {
+	return m.isValid
 }
-// GetLineType gets the lineType property value. An enumerator describing phone line types
+
+// GetLineType gets the lineType property value. Classifies the access technology or service type associated with a telephone number.
 // returns a *PhoneLookup_lineType when successful
-func (m *PhoneLookup) GetLineType()(*PhoneLookup_lineType) {
-    return m.lineType
+func (m *PhoneLookup) GetLineType() *PhoneLookup_lineType {
+	return m.lineType
 }
-// GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+
+// GetLocation gets the location property value. Public Leadping API schema for phone number location data.
 // returns a PhoneLookup_locationable when successful
-func (m *PhoneLookup) GetLocation()(PhoneLookup_locationable) {
-    return m.location
+func (m *PhoneLookup) GetLocation() PhoneLookup_locationable {
+	return m.location
 }
-// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
+
+// GetModifiedAt gets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
-func (m *PhoneLookup) GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.modifiedAt
+func (m *PhoneLookup) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.modifiedAt
 }
+
 // GetNationalFormat gets the nationalFormat property value. Provider-formatted national phone number.
 // returns a *string when successful
-func (m *PhoneLookup) GetNationalFormat()(*string) {
-    return m.nationalFormat
+func (m *PhoneLookup) GetNationalFormat() *string {
+	return m.nationalFormat
 }
+
 // GetNumber gets the number property value. E.164 phone number exposed by this phone lookup result.
 // returns a *string when successful
-func (m *PhoneLookup) GetNumber()(*string) {
-    return m.number
+func (m *PhoneLookup) GetNumber() *string {
+	return m.number
 }
-// GetPortability gets the portability property value. Complete portability data returned by Telnyx.
+
+// GetPortability gets the portability property value. Number-portability and routing data returned by Telnyx.
 // returns a PhoneLookup_portabilityable when successful
-func (m *PhoneLookup) GetPortability()(PhoneLookup_portabilityable) {
-    return m.portability
+func (m *PhoneLookup) GetPortability() PhoneLookup_portabilityable {
+	return m.portability
 }
+
 // GetRecordType gets the recordType property value. Provider record discriminator.
 // returns a *string when successful
-func (m *PhoneLookup) GetRecordType()(*string) {
-    return m.recordType
+func (m *PhoneLookup) GetRecordType() *string {
+	return m.recordType
 }
+
 // Serialize serializes information the current object
-func (m *PhoneLookup) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("callerName", m.GetCallerName())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("carrier", m.GetCarrier())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("fraud", m.GetFraud())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("id", m.GetId())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteBoolValue("isValid", m.GetIsValid())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetLineType() != nil {
-        cast := (*m.GetLineType()).String()
-        err := writer.WriteStringValue("lineType", &cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("location", m.GetLocation())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("nationalFormat", m.GetNationalFormat())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("number", m.GetNumber())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("portability", m.GetPortability())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteStringValue("recordType", m.GetRecordType())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *PhoneLookup) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("callerName", m.GetCallerName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("carrier", m.GetCarrier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("fraud", m.GetFraud())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isValid", m.GetIsValid())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetLineType() != nil {
+		cast := (*m.GetLineType()).String()
+		err := writer.WriteStringValue("lineType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("location", m.GetLocation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("nationalFormat", m.GetNationalFormat())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("number", m.GetNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("portability", m.GetPortability())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("recordType", m.GetRecordType())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *PhoneLookup) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *PhoneLookup) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetCallerName sets the callerName property value. Caller-name data returned by the provider.
-func (m *PhoneLookup) SetCallerName(value PhoneLookup_callerNameable)() {
-    m.callerName = value
+
+// SetCallerName sets the callerName property value. Caller-name data returned by the phone lookup provider.
+func (m *PhoneLookup) SetCallerName(value PhoneLookup_callerNameable) {
+	m.callerName = value
 }
-// SetCarrier sets the carrier property value. Complete carrier metadata reported for this phone number.
-func (m *PhoneLookup) SetCarrier(value PhoneLookup_carrierable)() {
-    m.carrier = value
+
+// SetCarrier sets the carrier property value. Complete carrier metadata returned by a phone number lookup provider.
+func (m *PhoneLookup) SetCarrier(value PhoneLookup_carrierable) {
+	m.carrier = value
 }
-// SetCreatedAt sets the createdAt property value. UTC timestamp when the phone lookup record was created.
-func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.createdAt = value
+
+// SetCreatedAt sets the createdAt property value. Timestamp when the resource was created.
+func (m *PhoneLookup) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.createdAt = value
 }
+
 // SetFraud sets the fraud property value. Fraud value returned by the provider, when available.
-func (m *PhoneLookup) SetFraud(value *string)() {
-    m.fraud = value
+func (m *PhoneLookup) SetFraud(value *string) {
+	m.fraud = value
 }
-// SetId sets the id property value. Unique Leadping identifier for the saved phone lookup record.
-func (m *PhoneLookup) SetId(value *string)() {
-    m.id = value
+
+// SetId sets the id property value. Stable unique identifier of the resource.
+func (m *PhoneLookup) SetId(value *string) {
+	m.id = value
 }
+
 // SetIsValid sets the isValid property value. Indicates whether this phone lookup result passed validation.
-func (m *PhoneLookup) SetIsValid(value *bool)() {
-    m.isValid = value
+func (m *PhoneLookup) SetIsValid(value *bool) {
+	m.isValid = value
 }
-// SetLineType sets the lineType property value. An enumerator describing phone line types
-func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType)() {
-    m.lineType = value
+
+// SetLineType sets the lineType property value. Classifies the access technology or service type associated with a telephone number.
+func (m *PhoneLookup) SetLineType(value *PhoneLookup_lineType) {
+	m.lineType = value
 }
-// SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable)() {
-    m.location = value
+
+// SetLocation sets the location property value. Public Leadping API schema for phone number location data.
+func (m *PhoneLookup) SetLocation(value PhoneLookup_locationable) {
+	m.location = value
 }
-// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
-func (m *PhoneLookup) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    m.modifiedAt = value
+
+// SetModifiedAt sets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
+func (m *PhoneLookup) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.modifiedAt = value
 }
+
 // SetNationalFormat sets the nationalFormat property value. Provider-formatted national phone number.
-func (m *PhoneLookup) SetNationalFormat(value *string)() {
-    m.nationalFormat = value
+func (m *PhoneLookup) SetNationalFormat(value *string) {
+	m.nationalFormat = value
 }
+
 // SetNumber sets the number property value. E.164 phone number exposed by this phone lookup result.
-func (m *PhoneLookup) SetNumber(value *string)() {
-    m.number = value
+func (m *PhoneLookup) SetNumber(value *string) {
+	m.number = value
 }
-// SetPortability sets the portability property value. Complete portability data returned by Telnyx.
-func (m *PhoneLookup) SetPortability(value PhoneLookup_portabilityable)() {
-    m.portability = value
+
+// SetPortability sets the portability property value. Number-portability and routing data returned by Telnyx.
+func (m *PhoneLookup) SetPortability(value PhoneLookup_portabilityable) {
+	m.portability = value
 }
+
 // SetRecordType sets the recordType property value. Provider record discriminator.
-func (m *PhoneLookup) SetRecordType(value *string)() {
-    m.recordType = value
+func (m *PhoneLookup) SetRecordType(value *string) {
+	m.recordType = value
 }
+
 type PhoneLookupable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetCallerName()(PhoneLookup_callerNameable)
-    GetCarrier()(PhoneLookup_carrierable)
-    GetCreatedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetFraud()(*string)
-    GetId()(*string)
-    GetIsValid()(*bool)
-    GetLineType()(*PhoneLookup_lineType)
-    GetLocation()(PhoneLookup_locationable)
-    GetModifiedAt()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    GetNationalFormat()(*string)
-    GetNumber()(*string)
-    GetPortability()(PhoneLookup_portabilityable)
-    GetRecordType()(*string)
-    SetCallerName(value PhoneLookup_callerNameable)()
-    SetCarrier(value PhoneLookup_carrierable)()
-    SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetFraud(value *string)()
-    SetId(value *string)()
-    SetIsValid(value *bool)()
-    SetLineType(value *PhoneLookup_lineType)()
-    SetLocation(value PhoneLookup_locationable)()
-    SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
-    SetNationalFormat(value *string)()
-    SetNumber(value *string)()
-    SetPortability(value PhoneLookup_portabilityable)()
-    SetRecordType(value *string)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallerName() PhoneLookup_callerNameable
+	GetCarrier() PhoneLookup_carrierable
+	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFraud() *string
+	GetId() *string
+	GetIsValid() *bool
+	GetLineType() *PhoneLookup_lineType
+	GetLocation() PhoneLookup_locationable
+	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetNationalFormat() *string
+	GetNumber() *string
+	GetPortability() PhoneLookup_portabilityable
+	GetRecordType() *string
+	SetCallerName(value PhoneLookup_callerNameable)
+	SetCarrier(value PhoneLookup_carrierable)
+	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFraud(value *string)
+	SetId(value *string)
+	SetIsValid(value *bool)
+	SetLineType(value *PhoneLookup_lineType)
+	SetLocation(value PhoneLookup_locationable)
+	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetNationalFormat(value *string)
+	SetNumber(value *string)
+	SetPortability(value PhoneLookup_portabilityable)
+	SetRecordType(value *string)
 }

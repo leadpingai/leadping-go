@@ -4,81 +4,89 @@
 package models
 
 import (
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// TelephonyLoginRequest request model for telephony login token generation.
+// TelephonyLoginRequest identifies the Leadping user and calling context for which a short-lived telephony client token should be issued.
 type TelephonyLoginRequest struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]any
-    // Identifier and display name of the related device.
-    device TelephonyLoginRequest_deviceable
+	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+	additionalData map[string]any
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	device TelephonyLoginRequest_deviceable
 }
+
 // NewTelephonyLoginRequest instantiates a new TelephonyLoginRequest and sets the default values.
-func NewTelephonyLoginRequest()(*TelephonyLoginRequest) {
-    m := &TelephonyLoginRequest{
-    }
-    m.SetAdditionalData(make(map[string]any))
-    return m
+func NewTelephonyLoginRequest() *TelephonyLoginRequest {
+	m := &TelephonyLoginRequest{}
+	m.SetAdditionalData(make(map[string]any))
+	return m
 }
+
 // CreateTelephonyLoginRequestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTelephonyLoginRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewTelephonyLoginRequest(), nil
+func CreateTelephonyLoginRequestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewTelephonyLoginRequest(), nil
 }
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TelephonyLoginRequest) GetAdditionalData()(map[string]any) {
-    return m.additionalData
+func (m *TelephonyLoginRequest) GetAdditionalData() map[string]any {
+	return m.additionalData
 }
-// GetDevice gets the device property value. Identifier and display name of the related device.
+
+// GetDevice gets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TelephonyLoginRequest_deviceable when successful
-func (m *TelephonyLoginRequest) GetDevice()(TelephonyLoginRequest_deviceable) {
-    return m.device
+func (m *TelephonyLoginRequest) GetDevice() TelephonyLoginRequest_deviceable {
+	return m.device
 }
+
 // GetFieldDeserializers the deserialization information for the current model
-// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *TelephonyLoginRequest) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["device"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTelephonyLoginRequest_deviceFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDevice(val.(TelephonyLoginRequest_deviceable))
-        }
-        return nil
-    }
-    return res
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
+func (m *TelephonyLoginRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["device"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateTelephonyLoginRequest_deviceFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDevice(val.(TelephonyLoginRequest_deviceable))
+		}
+		return nil
+	}
+	return res
 }
+
 // Serialize serializes information the current object
-func (m *TelephonyLoginRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    {
-        err := writer.WriteObjectValue("device", m.GetDevice())
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+func (m *TelephonyLoginRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("device", m.GetDevice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteAdditionalData(m.GetAdditionalData())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TelephonyLoginRequest) SetAdditionalData(value map[string]any)() {
-    m.additionalData = value
+func (m *TelephonyLoginRequest) SetAdditionalData(value map[string]any) {
+	m.additionalData = value
 }
-// SetDevice sets the device property value. Identifier and display name of the related device.
-func (m *TelephonyLoginRequest) SetDevice(value TelephonyLoginRequest_deviceable)() {
-    m.device = value
+
+// SetDevice sets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *TelephonyLoginRequest) SetDevice(value TelephonyLoginRequest_deviceable) {
+	m.device = value
 }
+
 type TelephonyLoginRequestable interface {
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
-    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetDevice()(TelephonyLoginRequest_deviceable)
-    SetDevice(value TelephonyLoginRequest_deviceable)()
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetDevice() TelephonyLoginRequest_deviceable
+	SetDevice(value TelephonyLoginRequest_deviceable)
 }
