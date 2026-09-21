@@ -22,8 +22,12 @@ type BlogArticleResponse struct {
 	contentUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The coverImageAlt property
 	coverImageAlt *string
+	// The processed cover image height in pixels, when known.
+	coverImageHeight *int32
 	// The coverImageUrl property
 	coverImageUrl *string
+	// The processed cover image width in pixels, when known.
+	coverImageWidth *int32
 	// The createdAt property
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The excerpt property
@@ -105,10 +109,22 @@ func (m *BlogArticleResponse) GetCoverImageAlt() *string {
 	return m.coverImageAlt
 }
 
+// GetCoverImageHeight gets the coverImageHeight property value. The processed cover image height in pixels, when known.
+// returns a *int32 when successful
+func (m *BlogArticleResponse) GetCoverImageHeight() *int32 {
+	return m.coverImageHeight
+}
+
 // GetCoverImageUrl gets the coverImageUrl property value. The coverImageUrl property
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCoverImageUrl() *string {
 	return m.coverImageUrl
+}
+
+// GetCoverImageWidth gets the coverImageWidth property value. The processed cover image width in pixels, when known.
+// returns a *int32 when successful
+func (m *BlogArticleResponse) GetCoverImageWidth() *int32 {
+	return m.coverImageWidth
 }
 
 // GetCreatedAt gets the createdAt property value. The createdAt property
@@ -177,6 +193,16 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["coverImageHeight"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCoverImageHeight(val)
+		}
+		return nil
+	}
 	res["coverImageUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -184,6 +210,16 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetCoverImageUrl(val)
+		}
+		return nil
+	}
+	res["coverImageWidth"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCoverImageWidth(val)
 		}
 		return nil
 	}
@@ -451,7 +487,19 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteInt32Value("coverImageHeight", m.GetCoverImageHeight())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("coverImageUrl", m.GetCoverImageUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("coverImageWidth", m.GetCoverImageWidth())
 		if err != nil {
 			return err
 		}
@@ -585,9 +633,19 @@ func (m *BlogArticleResponse) SetCoverImageAlt(value *string) {
 	m.coverImageAlt = value
 }
 
+// SetCoverImageHeight sets the coverImageHeight property value. The processed cover image height in pixels, when known.
+func (m *BlogArticleResponse) SetCoverImageHeight(value *int32) {
+	m.coverImageHeight = value
+}
+
 // SetCoverImageUrl sets the coverImageUrl property value. The coverImageUrl property
 func (m *BlogArticleResponse) SetCoverImageUrl(value *string) {
 	m.coverImageUrl = value
+}
+
+// SetCoverImageWidth sets the coverImageWidth property value. The processed cover image width in pixels, when known.
+func (m *BlogArticleResponse) SetCoverImageWidth(value *int32) {
+	m.coverImageWidth = value
 }
 
 // SetCreatedAt sets the createdAt property value. The createdAt property
@@ -673,7 +731,9 @@ type BlogArticleResponseable interface {
 	GetContent() *string
 	GetContentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCoverImageAlt() *string
+	GetCoverImageHeight() *int32
 	GetCoverImageUrl() *string
+	GetCoverImageWidth() *int32
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetExcerpt() *string
 	GetId() *string
@@ -694,7 +754,9 @@ type BlogArticleResponseable interface {
 	SetContent(value *string)
 	SetContentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCoverImageAlt(value *string)
+	SetCoverImageHeight(value *int32)
 	SetCoverImageUrl(value *string)
+	SetCoverImageWidth(value *int32)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetExcerpt(value *string)
 	SetId(value *string)
