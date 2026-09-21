@@ -38,6 +38,8 @@ type EventDetailResponse struct {
 	fromPhoneNumberId *string
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Lead ID associated with this event detail record.
 	leadId *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -291,6 +293,16 @@ func (m *EventDetailResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -502,6 +514,12 @@ func (m *EventDetailResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *EventDetailResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadId gets the leadId property value. Lead ID associated with this event detail record.
 // returns a *string when successful
 func (m *EventDetailResponse) GetLeadId() *string {
@@ -692,6 +710,12 @@ func (m *EventDetailResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -891,6 +915,11 @@ func (m *EventDetailResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *EventDetailResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this event detail record.
 func (m *EventDetailResponse) SetLeadId(value *string) {
 	m.leadId = value
@@ -1002,6 +1031,7 @@ type EventDetailResponseable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadId() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetOutboundPhoneNumberId() *string
@@ -1034,6 +1064,7 @@ type EventDetailResponseable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetOutboundPhoneNumberId(value *string)

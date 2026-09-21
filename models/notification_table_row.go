@@ -22,6 +22,8 @@ type NotificationTableRow struct {
 	details *string
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Whether this notification is read.
 	isRead *bool
 	// Message for this notification.
@@ -139,6 +141,16 @@ func (m *NotificationTableRow) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["isRead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -238,6 +250,12 @@ func (m *NotificationTableRow) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *NotificationTableRow) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsRead gets the isRead property value. Whether this notification is read.
 // returns a *bool when successful
 func (m *NotificationTableRow) GetIsRead() *bool {
@@ -320,6 +338,12 @@ func (m *NotificationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -419,6 +443,11 @@ func (m *NotificationTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *NotificationTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsRead sets the isRead property value. Whether this notification is read.
 func (m *NotificationTableRow) SetIsRead(value *bool) {
 	m.isRead = value
@@ -472,6 +501,7 @@ type NotificationTableRowable interface {
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDetails() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetIsRead() *bool
 	GetMessage() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -486,6 +516,7 @@ type NotificationTableRowable interface {
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDetails(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetIsRead(value *bool)
 	SetMessage(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

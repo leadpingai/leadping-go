@@ -46,6 +46,8 @@ type SmsResponse struct {
 	fromPhoneNumberId *string
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Lead ID associated with the SMS conversation or outreach attempt.
 	leadId *string
 	// Media attached to this message. A non-empty collection identifies an MMS message.
@@ -371,6 +373,16 @@ func (m *SmsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -596,6 +608,12 @@ func (m *SmsResponse) GetFromPhoneNumberId() *string {
 // returns a *string when successful
 func (m *SmsResponse) GetId() *string {
 	return m.id
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *SmsResponse) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetLeadId gets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
@@ -829,6 +847,12 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -1056,6 +1080,11 @@ func (m *SmsResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *SmsResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with the SMS conversation or outreach attempt.
 func (m *SmsResponse) SetLeadId(value *string) {
 	m.leadId = value
@@ -1176,6 +1205,7 @@ type SmsResponseable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadId() *string
 	GetMedia() []MessageMediaAttachmentable
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1213,6 +1243,7 @@ type SmsResponseable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetMedia(value []MessageMediaAttachmentable)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

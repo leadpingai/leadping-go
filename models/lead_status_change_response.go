@@ -38,6 +38,8 @@ type LeadStatusChangeResponse struct {
 	followUpStatus *string
 	// Unique Leadping identifier for this lead status change.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Whether this lead status change is missed call follow up.
 	isMissedCallFollowUp *bool
 	// The lead's profile image URL, when available.
@@ -295,6 +297,16 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["isMissedCallFollowUp"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -490,6 +502,12 @@ func (m *LeadStatusChangeResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *LeadStatusChangeResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsMissedCallFollowUp gets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
 // returns a *bool when successful
 func (m *LeadStatusChangeResponse) GetIsMissedCallFollowUp() *bool {
@@ -681,6 +699,12 @@ func (m *LeadStatusChangeResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("isMissedCallFollowUp", m.GetIsMissedCallFollowUp())
 		if err != nil {
 			return err
@@ -867,6 +891,11 @@ func (m *LeadStatusChangeResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *LeadStatusChangeResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsMissedCallFollowUp sets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
 func (m *LeadStatusChangeResponse) SetIsMissedCallFollowUp(value *bool) {
 	m.isMissedCallFollowUp = value
@@ -973,6 +1002,7 @@ type LeadStatusChangeResponseable interface {
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetFollowUpStatus() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetIsMissedCallFollowUp() *bool
 	GetLeadAvatarUrl() *string
 	GetLeadEmail() *string
@@ -1004,6 +1034,7 @@ type LeadStatusChangeResponseable interface {
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetFollowUpStatus(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetIsMissedCallFollowUp(value *bool)
 	SetLeadAvatarUrl(value *string)
 	SetLeadEmail(value *string)

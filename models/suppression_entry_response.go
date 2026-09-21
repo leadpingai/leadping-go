@@ -18,6 +18,8 @@ type SuppressionEntryResponse struct {
 	channel *string
 	// Unique Leadping identifier for the suppression entry.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// The associated lead's profile image URL, when available.
 	leadAvatarUrl *string
 	// The associated lead's email address, used for Gravatar fallback.
@@ -112,6 +114,16 @@ func (m *SuppressionEntryResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
 		}
 		return nil
 	}
@@ -244,6 +256,12 @@ func (m *SuppressionEntryResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *SuppressionEntryResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadAvatarUrl gets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
 // returns a *string when successful
 func (m *SuppressionEntryResponse) GetLeadAvatarUrl() *string {
@@ -338,6 +356,12 @@ func (m *SuppressionEntryResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -443,6 +467,11 @@ func (m *SuppressionEntryResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *SuppressionEntryResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadAvatarUrl sets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
 func (m *SuppressionEntryResponse) SetLeadAvatarUrl(value *string) {
 	m.leadAvatarUrl = value
@@ -509,6 +538,7 @@ type SuppressionEntryResponseable interface {
 	GetAudit() []SuppressionEntryAuditable
 	GetChannel() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadAvatarUrl() *string
 	GetLeadEmail() *string
 	GetLeadName() *string
@@ -524,6 +554,7 @@ type SuppressionEntryResponseable interface {
 	SetAudit(value []SuppressionEntryAuditable)
 	SetChannel(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadAvatarUrl(value *string)
 	SetLeadEmail(value *string)
 	SetLeadName(value *string)

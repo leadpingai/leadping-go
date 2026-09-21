@@ -22,6 +22,8 @@ type PhoneNumberMessagingEventResponse struct {
 	fromPhoneNumber *string
 	// Unique Leadping identifier for this phone number messaging event.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Indicates whether the recipient has opted out of further SMS communication.
 	isOptOut *bool
 	// Short display label for this phone number messaging event, formatted for charts, filters, or list views.
@@ -123,6 +125,16 @@ func (m *PhoneNumberMessagingEventResponse) GetFieldDeserializers() map[string]f
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["isOptOut"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -178,6 +190,12 @@ func (m *PhoneNumberMessagingEventResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneNumberMessagingEventResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsOptOut gets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
 // returns a *bool when successful
 func (m *PhoneNumberMessagingEventResponse) GetIsOptOut() *bool {
@@ -230,6 +248,12 @@ func (m *PhoneNumberMessagingEventResponse) Serialize(writer i878a80d2330e89d268
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -297,6 +321,11 @@ func (m *PhoneNumberMessagingEventResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneNumberMessagingEventResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsOptOut sets the isOptOut property value. Indicates whether the recipient has opted out of further SMS communication.
 func (m *PhoneNumberMessagingEventResponse) SetIsOptOut(value *bool) {
 	m.isOptOut = value
@@ -325,6 +354,7 @@ type PhoneNumberMessagingEventResponseable interface {
 	GetEventType() *string
 	GetFromPhoneNumber() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetIsOptOut() *bool
 	GetLabel() *string
 	GetTextPreview() *string
@@ -334,6 +364,7 @@ type PhoneNumberMessagingEventResponseable interface {
 	SetEventType(value *string)
 	SetFromPhoneNumber(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetIsOptOut(value *bool)
 	SetLabel(value *string)
 	SetTextPreview(value *string)

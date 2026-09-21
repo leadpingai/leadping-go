@@ -38,6 +38,8 @@ type LeadTableRow struct {
 	id *string
 	// Whether this lead is archived.
 	isArchived *bool
+	// The isDemo property
+	isDemo *bool
 	// Last name of the lead, user, or contact represented by this lead table row.
 	lastName *string
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -279,6 +281,16 @@ func (m *LeadTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -436,6 +448,12 @@ func (m *LeadTableRow) GetIsArchived() *bool {
 	return m.isArchived
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *LeadTableRow) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
 // returns a *string when successful
 func (m *LeadTableRow) GetLastName() *string {
@@ -590,6 +608,12 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -758,6 +782,11 @@ func (m *LeadTableRow) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *LeadTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this lead table row.
 func (m *LeadTableRow) SetLastName(value *string) {
 	m.lastName = value
@@ -839,6 +868,7 @@ type LeadTableRowable interface {
 	GetFirstName() *string
 	GetId() *string
 	GetIsArchived() *bool
+	GetIsDemo() *bool
 	GetLastName() *string
 	GetOrganization() LeadTableRow_organizationable
 	GetPhone() *string
@@ -865,6 +895,7 @@ type LeadTableRowable interface {
 	SetFirstName(value *string)
 	SetId(value *string)
 	SetIsArchived(value *bool)
+	SetIsDemo(value *bool)
 	SetLastName(value *string)
 	SetOrganization(value LeadTableRow_organizationable)
 	SetPhone(value *string)

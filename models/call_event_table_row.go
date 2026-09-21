@@ -40,6 +40,8 @@ type CallEventTableRow struct {
 	fromPhoneNumberId *string
 	// Unique Leadping identifier for this call event table row.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Lead ID associated with this call event.
 	leadId *string
 	// Display name for the lead associated with this call event.
@@ -305,6 +307,16 @@ func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -464,6 +476,12 @@ func (m *CallEventTableRow) GetFromPhoneNumberId() *string {
 // returns a *string when successful
 func (m *CallEventTableRow) GetId() *string {
 	return m.id
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *CallEventTableRow) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetLeadId gets the leadId property value. Lead ID associated with this call event.
@@ -643,6 +661,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -812,6 +836,11 @@ func (m *CallEventTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *CallEventTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this call event.
 func (m *CallEventTableRow) SetLeadId(value *string) {
 	m.leadId = value
@@ -899,6 +928,7 @@ type CallEventTableRowable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadId() *string
 	GetLeadName() *string
 	GetOrganization() *string
@@ -927,6 +957,7 @@ type CallEventTableRowable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetLeadName(value *string)
 	SetOrganization(value *string)

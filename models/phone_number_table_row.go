@@ -15,6 +15,8 @@ type PhoneNumberTableRow struct {
 	enabled *bool
 	// Unique Leadping identifier for this phone number table row.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Optional display label for this phone number table row in the Leadping API.
 	name *string
 	// E.164 phone number exposed by this phone number table row.
@@ -85,6 +87,16 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
 		}
 		return nil
 	}
@@ -207,6 +219,12 @@ func (m *PhoneNumberTableRow) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneNumberTableRow) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetName gets the name property value. Optional display label for this phone number table row in the Leadping API.
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetName() *string {
@@ -283,6 +301,12 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -377,6 +401,11 @@ func (m *PhoneNumberTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneNumberTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetName sets the name property value. Optional display label for this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetName(value *string) {
 	m.name = value
@@ -437,6 +466,7 @@ type PhoneNumberTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetEnabled() *bool
 	GetId() *string
+	GetIsDemo() *bool
 	GetName() *string
 	GetNumber() *string
 	GetOrganization() *string
@@ -450,6 +480,7 @@ type PhoneNumberTableRowable interface {
 	GetWarmup() PhoneNumberReadinessable
 	SetEnabled(value *bool)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetName(value *string)
 	SetNumber(value *string)
 	SetOrganization(value *string)

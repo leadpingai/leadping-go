@@ -26,6 +26,8 @@ type AutomationTableRow struct {
 	healthSummary *string
 	// Unique Leadping identifier for this automation table row.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Indicates whether Leadping manages this automation table row automatically instead of a user.
 	isSystemManaged *bool
 	// UTC timestamp when this automation last ran.
@@ -176,6 +178,16 @@ func (m *AutomationTableRow) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
 		}
 		return nil
 	}
@@ -334,6 +346,12 @@ func (m *AutomationTableRow) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *AutomationTableRow) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
 // returns a *bool when successful
 func (m *AutomationTableRow) GetIsSystemManaged() *bool {
@@ -458,6 +476,12 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -595,6 +619,11 @@ func (m *AutomationTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *AutomationTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation table row automatically instead of a user.
 func (m *AutomationTableRow) SetIsSystemManaged(value *bool) {
 	m.isSystemManaged = value
@@ -675,6 +704,7 @@ type AutomationTableRowable interface {
 	GetEnabled() *bool
 	GetHealthSummary() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetIsSystemManaged() *bool
 	GetLastRunAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastRunStatus() *string
@@ -696,6 +726,7 @@ type AutomationTableRowable interface {
 	SetEnabled(value *bool)
 	SetHealthSummary(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetIsSystemManaged(value *bool)
 	SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastRunStatus(value *string)

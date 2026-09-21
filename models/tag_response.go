@@ -26,6 +26,8 @@ type TagResponse struct {
 	id *string
 	// Indicates whether this lead or record is archived.
 	isArchived *bool
+	// The isDemo property
+	isDemo *bool
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Display name for this tag response in the Leadping API.
@@ -159,6 +161,16 @@ func (m *TagResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -212,6 +224,12 @@ func (m *TagResponse) GetId() *string {
 // returns a *bool when successful
 func (m *TagResponse) GetIsArchived() *bool {
 	return m.isArchived
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *TagResponse) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -278,6 +296,12 @@ func (m *TagResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 	}
 	{
 		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -355,6 +379,11 @@ func (m *TagResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *TagResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *TagResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
@@ -385,6 +414,7 @@ type TagResponseable interface {
 	GetDescription() *string
 	GetId() *string
 	GetIsArchived() *bool
+	GetIsDemo() *bool
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetNormalizedName() *string
@@ -396,6 +426,7 @@ type TagResponseable interface {
 	SetDescription(value *string)
 	SetId(value *string)
 	SetIsArchived(value *bool)
+	SetIsDemo(value *bool)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetNormalizedName(value *string)

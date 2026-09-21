@@ -44,6 +44,8 @@ type SourceTableRow struct {
 	firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for this lead source table row.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// UTC timestamp when this source most recently delivered a lead to Leadping.
 	lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// UTC timestamp when this lead source table row was last modified.
@@ -353,6 +355,16 @@ func (m *SourceTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lastLeadReceivedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -446,6 +458,12 @@ func (m *SourceTableRow) GetFirstLeadReceivedAt() *i336074805fc853987abe6f7fe3ad
 // returns a *string when successful
 func (m *SourceTableRow) GetId() *string {
 	return m.id
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *SourceTableRow) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetLastLeadReceivedAt gets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
@@ -601,6 +619,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeValue("lastLeadReceivedAt", m.GetLastLeadReceivedAt())
 		if err != nil {
 			return err
@@ -742,6 +766,11 @@ func (m *SourceTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *SourceTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastLeadReceivedAt sets the lastLeadReceivedAt property value. UTC timestamp when this source most recently delivered a lead to Leadping.
 func (m *SourceTableRow) SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastLeadReceivedAt = value
@@ -801,6 +830,7 @@ type SourceTableRowable interface {
 	GetEnabled() *bool
 	GetFirstLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
+	GetIsDemo() *bool
 	GetLastLeadReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetModifiedByUser() SourceTableRow_modifiedByUserable
@@ -825,6 +855,7 @@ type SourceTableRowable interface {
 	SetEnabled(value *bool)
 	SetFirstLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLastLeadReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetModifiedByUser(value SourceTableRow_modifiedByUserable)

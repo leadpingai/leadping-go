@@ -52,6 +52,8 @@ type SmsEventTableRow struct {
 	id *string
 	// Indicates whether automation created or triggered this SMS event table row.
 	isAutomated *bool
+	// The isDemo property
+	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead IdNamePairable
 	// Media attached to this SMS/MMS event.
@@ -421,6 +423,16 @@ func (m *SmsEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
 		if err != nil {
@@ -662,6 +674,12 @@ func (m *SmsEventTableRow) GetId() *string {
 // returns a *bool when successful
 func (m *SmsEventTableRow) GetIsAutomated() *bool {
 	return m.isAutomated
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *SmsEventTableRow) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetLead gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -919,6 +937,12 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("lead", m.GetLead())
 		if err != nil {
 			return err
@@ -1167,6 +1191,11 @@ func (m *SmsEventTableRow) SetIsAutomated(value *bool) {
 	m.isAutomated = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *SmsEventTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLead sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *SmsEventTableRow) SetLead(value IdNamePairable) {
 	m.lead = value
@@ -1295,6 +1324,7 @@ type SmsEventTableRowable interface {
 	GetFromPhoneNumberId() *string
 	GetId() *string
 	GetIsAutomated() *bool
+	GetIsDemo() *bool
 	GetLead() IdNamePairable
 	GetMedia() []MessageMediaAttachmentable
 	GetOrganization() *string
@@ -1336,6 +1366,7 @@ type SmsEventTableRowable interface {
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
 	SetIsAutomated(value *bool)
+	SetIsDemo(value *bool)
 	SetLead(value IdNamePairable)
 	SetMedia(value []MessageMediaAttachmentable)
 	SetOrganization(value *string)

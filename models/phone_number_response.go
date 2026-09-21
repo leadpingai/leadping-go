@@ -18,6 +18,8 @@ type PhoneNumberResponse struct {
 	enabled *bool
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Indicates whether Leadping provisions and manages this phone number.
 	leadpingOwned *bool
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -104,6 +106,16 @@ func (m *PhoneNumberResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
 		}
 		return nil
 	}
@@ -226,6 +238,12 @@ func (m *PhoneNumberResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneNumberResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLeadpingOwned gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 // returns a *bool when successful
 func (m *PhoneNumberResponse) GetLeadpingOwned() *bool {
@@ -308,6 +326,12 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -407,6 +431,11 @@ func (m *PhoneNumberResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneNumberResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadpingOwned sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
 func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool) {
 	m.leadpingOwned = value
@@ -468,6 +497,7 @@ type PhoneNumberResponseable interface {
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetEnabled() *bool
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadpingOwned() *bool
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
@@ -482,6 +512,7 @@ type PhoneNumberResponseable interface {
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetEnabled(value *bool)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadpingOwned(value *bool)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)

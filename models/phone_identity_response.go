@@ -16,6 +16,8 @@ type PhoneIdentityResponse struct {
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// The most recent time lookup data was enriched.
 	lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Public Leadping API schema for phone lookup result data.
@@ -78,6 +80,16 @@ func (m *PhoneIdentityResponse) GetFieldDeserializers() map[string]func(i878a80d
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
 		}
 		return nil
 	}
@@ -166,6 +178,12 @@ func (m *PhoneIdentityResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *PhoneIdentityResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLastEnrichedAt gets the lastEnrichedAt property value. The most recent time lookup data was enriched.
 // returns a *Time when successful
 func (m *PhoneIdentityResponse) GetLastEnrichedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -218,6 +236,12 @@ func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -294,6 +318,11 @@ func (m *PhoneIdentityResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *PhoneIdentityResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastEnrichedAt sets the lastEnrichedAt property value. The most recent time lookup data was enriched.
 func (m *PhoneIdentityResponse) SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastEnrichedAt = value
@@ -334,6 +363,7 @@ type PhoneIdentityResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
+	GetIsDemo() *bool
 	GetLastEnrichedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLookup() PhoneIdentityResponse_lookupable
 	GetLookupActions() []PhoneIdentityLookupActionable
@@ -343,6 +373,7 @@ type PhoneIdentityResponseable interface {
 	GetProviderEnrichment() PhoneIdentityResponse_providerEnrichmentable
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLastEnrichedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLookup(value PhoneIdentityResponse_lookupable)
 	SetLookupActions(value []PhoneIdentityLookupActionable)

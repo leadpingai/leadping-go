@@ -30,6 +30,8 @@ type ConversationResponse struct {
 	id *string
 	// Indicates whether the Leadping conversation has been archived.
 	isArchived *bool
+	// The isDemo property
+	isDemo *bool
 	// Indicates whether the current user has unread activity in the conversation.
 	isUnread *bool
 	// UTC timestamp when the most recent conversation event occurred.
@@ -205,6 +207,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["isUnread"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -346,6 +358,12 @@ func (m *ConversationResponse) GetIsArchived() *bool {
 	return m.isArchived
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *ConversationResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetIsUnread gets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsUnread() *bool {
@@ -470,6 +488,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -606,6 +630,11 @@ func (m *ConversationResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *ConversationResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsUnread sets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 func (m *ConversationResponse) SetIsUnread(value *bool) {
 	m.isUnread = value
@@ -678,6 +707,7 @@ type ConversationResponseable interface {
 	GetFirstName() *string
 	GetId() *string
 	GetIsArchived() *bool
+	GetIsDemo() *bool
 	GetIsUnread() *bool
 	GetLastEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastEventIsInternalNote() *bool
@@ -699,6 +729,7 @@ type ConversationResponseable interface {
 	SetFirstName(value *string)
 	SetId(value *string)
 	SetIsArchived(value *bool)
+	SetIsDemo(value *bool)
 	SetIsUnread(value *bool)
 	SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastEventIsInternalNote(value *bool)

@@ -30,6 +30,8 @@ type AutomationWorkflowRunResponse struct {
 	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for the automation workflow run.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Human-readable last action summary for this Leadping automation workflow run.
 	lastActionSummary *string
 	// Machine-readable code for the most recent workflow execution error.
@@ -241,6 +243,16 @@ func (m *AutomationWorkflowRunResponse) GetFieldDeserializers() map[string]func(
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lastActionSummary"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -430,6 +442,12 @@ func (m *AutomationWorkflowRunResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *AutomationWorkflowRunResponse) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLastActionSummary gets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
 // returns a *string when successful
 func (m *AutomationWorkflowRunResponse) GetLastActionSummary() *string {
@@ -607,6 +625,12 @@ func (m *AutomationWorkflowRunResponse) Serialize(writer i878a80d2330e89d2689638
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("lastActionSummary", m.GetLastActionSummary())
 		if err != nil {
 			return err
@@ -773,6 +797,11 @@ func (m *AutomationWorkflowRunResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *AutomationWorkflowRunResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastActionSummary sets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
 func (m *AutomationWorkflowRunResponse) SetLastActionSummary(value *string) {
 	m.lastActionSummary = value
@@ -875,6 +904,7 @@ type AutomationWorkflowRunResponseable interface {
 	GetEvents() []AutomationWorkflowEventResponseable
 	GetFailedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
+	GetIsDemo() *bool
 	GetLastActionSummary() *string
 	GetLastErrorCode() *string
 	GetLastErrorMessage() *string
@@ -902,6 +932,7 @@ type AutomationWorkflowRunResponseable interface {
 	SetEvents(value []AutomationWorkflowEventResponseable)
 	SetFailedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLastActionSummary(value *string)
 	SetLastErrorCode(value *string)
 	SetLastErrorMessage(value *string)

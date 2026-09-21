@@ -60,6 +60,8 @@ type EventTableRow struct {
 	fromPhoneNumberId *string
 	// Unique Leadping identifier for this event timeline table row.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Lead ID associated with this timeline event.
 	leadId *string
 	// Media attached to an MMS timeline event.
@@ -499,6 +501,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -764,6 +776,12 @@ func (m *EventTableRow) GetFromPhoneNumberId() *string {
 // returns a *string when successful
 func (m *EventTableRow) GetId() *string {
 	return m.id
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *EventTableRow) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetLeadId gets the leadId property value. Lead ID associated with this timeline event.
@@ -1057,6 +1075,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -1344,6 +1368,11 @@ func (m *EventTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *EventTableRow) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this timeline event.
 func (m *EventTableRow) SetLeadId(value *string) {
 	m.leadId = value
@@ -1491,6 +1520,7 @@ type EventTableRowable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsDemo() *bool
 	GetLeadId() *string
 	GetMedia() []MessageMediaAttachmentable
 	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1539,6 +1569,7 @@ type EventTableRowable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetMedia(value []MessageMediaAttachmentable)
 	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

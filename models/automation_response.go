@@ -28,6 +28,8 @@ type AutomationResponse struct {
 	enabled *bool
 	// Stable unique identifier of the resource.
 	id *string
+	// The isDemo property
+	isDemo *bool
 	// Indicates whether Leadping manages this automation configuration response automatically instead of a user.
 	isSystemManaged *bool
 	// UTC timestamp when this automation last ran.
@@ -219,6 +221,16 @@ func (m *AutomationResponse) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["isSystemManaged"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -362,6 +374,12 @@ func (m *AutomationResponse) GetFieldDeserializers() map[string]func(i878a80d233
 // returns a *string when successful
 func (m *AutomationResponse) GetId() *string {
 	return m.id
+}
+
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *AutomationResponse) GetIsDemo() *bool {
+	return m.isDemo
 }
 
 // GetIsSystemManaged gets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration response automatically instead of a user.
@@ -511,6 +529,12 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("isSystemManaged", m.GetIsSystemManaged())
 		if err != nil {
 			return err
@@ -648,6 +672,11 @@ func (m *AutomationResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *AutomationResponse) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetIsSystemManaged sets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration response automatically instead of a user.
 func (m *AutomationResponse) SetIsSystemManaged(value *bool) {
 	m.isSystemManaged = value
@@ -724,6 +753,7 @@ type AutomationResponseable interface {
 	GetDescription() *string
 	GetEnabled() *bool
 	GetId() *string
+	GetIsDemo() *bool
 	GetIsSystemManaged() *bool
 	GetLastRunAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastRunStatus() *string
@@ -745,6 +775,7 @@ type AutomationResponseable interface {
 	SetDescription(value *string)
 	SetEnabled(value *bool)
 	SetId(value *string)
+	SetIsDemo(value *bool)
 	SetIsSystemManaged(value *bool)
 	SetLastRunAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastRunStatus(value *string)
