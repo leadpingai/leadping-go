@@ -38,6 +38,8 @@ type BlogArticleResponse struct {
 	isFeatured *bool
 	// The isPublished property
 	isPublished *bool
+	// The lastPublishedAt property
+	lastPublishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The metaDescription property
 	metaDescription *string
 	// The modifiedAt property
@@ -255,6 +257,16 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["lastPublishedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastPublishedAt(val)
+		}
+		return nil
+	}
 	res["metaDescription"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -356,6 +368,12 @@ func (m *BlogArticleResponse) GetIsFeatured() *bool {
 // returns a *bool when successful
 func (m *BlogArticleResponse) GetIsPublished() *bool {
 	return m.isPublished
+}
+
+// GetLastPublishedAt gets the lastPublishedAt property value. The lastPublishedAt property
+// returns a *Time when successful
+func (m *BlogArticleResponse) GetLastPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastPublishedAt
 }
 
 // GetMetaDescription gets the metaDescription property value. The metaDescription property
@@ -481,6 +499,12 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteTimeValue("lastPublishedAt", m.GetLastPublishedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("metaDescription", m.GetMetaDescription())
 		if err != nil {
 			return err
@@ -601,6 +625,11 @@ func (m *BlogArticleResponse) SetIsPublished(value *bool) {
 	m.isPublished = value
 }
 
+// SetLastPublishedAt sets the lastPublishedAt property value. The lastPublishedAt property
+func (m *BlogArticleResponse) SetLastPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastPublishedAt = value
+}
+
 // SetMetaDescription sets the metaDescription property value. The metaDescription property
 func (m *BlogArticleResponse) SetMetaDescription(value *string) {
 	m.metaDescription = value
@@ -652,6 +681,7 @@ type BlogArticleResponseable interface {
 	GetImagesProcessing() *bool
 	GetIsFeatured() *bool
 	GetIsPublished() *bool
+	GetLastPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetMetaDescription() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -672,6 +702,7 @@ type BlogArticleResponseable interface {
 	SetImagesProcessing(value *bool)
 	SetIsFeatured(value *bool)
 	SetIsPublished(value *bool)
+	SetLastPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetMetaDescription(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
