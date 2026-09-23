@@ -28,8 +28,6 @@ type UserResponse struct {
 	firstName *string
 	// Stable unique identifier of the resource.
 	id *string
-	// The identities included with this user.
-	identities []UserIdentityable
 	// The isDemo property
 	isDemo *bool
 	// The date and time when this user last completed the Leadping sign-in flow.
@@ -198,22 +196,6 @@ func (m *UserResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetId(val)
-		}
-		return nil
-	}
-	res["identities"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfObjectValues(CreateUserIdentityFromDiscriminatorValue)
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]UserIdentityable, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = v.(UserIdentityable)
-				}
-			}
-			m.SetIdentities(res)
 		}
 		return nil
 	}
@@ -394,12 +376,6 @@ func (m *UserResponse) GetId() *string {
 	return m.id
 }
 
-// GetIdentities gets the identities property value. The identities included with this user.
-// returns a []UserIdentityable when successful
-func (m *UserResponse) GetIdentities() []UserIdentityable {
-	return m.identities
-}
-
 // GetIsDemo gets the isDemo property value. The isDemo property
 // returns a *bool when successful
 func (m *UserResponse) GetIsDemo() *bool {
@@ -537,18 +513,6 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
-		if err != nil {
-			return err
-		}
-	}
-	if m.GetIdentities() != nil {
-		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetIdentities()))
-		for i, v := range m.GetIdentities() {
-			if v != nil {
-				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-			}
-		}
-		err := writer.WriteCollectionOfObjectValues("identities", cast)
 		if err != nil {
 			return err
 		}
@@ -704,11 +668,6 @@ func (m *UserResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIdentities sets the identities property value. The identities included with this user.
-func (m *UserResponse) SetIdentities(value []UserIdentityable) {
-	m.identities = value
-}
-
 // SetIsDemo sets the isDemo property value. The isDemo property
 func (m *UserResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
@@ -795,7 +754,6 @@ type UserResponseable interface {
 	GetEmail() *string
 	GetFirstName() *string
 	GetId() *string
-	GetIdentities() []UserIdentityable
 	GetIsDemo() *bool
 	GetLastLoggedInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastName() *string
@@ -819,7 +777,6 @@ type UserResponseable interface {
 	SetEmail(value *string)
 	SetFirstName(value *string)
 	SetId(value *string)
-	SetIdentities(value []UserIdentityable)
 	SetIsDemo(value *bool)
 	SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastName(value *string)
