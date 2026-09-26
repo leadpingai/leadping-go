@@ -50,6 +50,8 @@ type BlogArticleResponse struct {
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The publishedAt property
 	publishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The renderedHtml property
+	renderedHtml *string
 	// The seoTitle property
 	seoTitle *string
 	// The slug property
@@ -333,6 +335,16 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["renderedHtml"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRenderedHtml(val)
+		}
+		return nil
+	}
 	res["seoTitle"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -428,6 +440,12 @@ func (m *BlogArticleResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.publishedAt
+}
+
+// GetRenderedHtml gets the renderedHtml property value. The renderedHtml property
+// returns a *string when successful
+func (m *BlogArticleResponse) GetRenderedHtml() *string {
+	return m.renderedHtml
 }
 
 // GetSeoTitle gets the seoTitle property value. The seoTitle property
@@ -571,6 +589,12 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteStringValue("renderedHtml", m.GetRenderedHtml())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("seoTitle", m.GetSeoTitle())
 		if err != nil {
 			return err
@@ -703,6 +727,11 @@ func (m *BlogArticleResponse) SetPublishedAt(value *i336074805fc853987abe6f7fe3a
 	m.publishedAt = value
 }
 
+// SetRenderedHtml sets the renderedHtml property value. The renderedHtml property
+func (m *BlogArticleResponse) SetRenderedHtml(value *string) {
+	m.renderedHtml = value
+}
+
 // SetSeoTitle sets the seoTitle property value. The seoTitle property
 func (m *BlogArticleResponse) SetSeoTitle(value *string) {
 	m.seoTitle = value
@@ -745,6 +774,7 @@ type BlogArticleResponseable interface {
 	GetMetaDescription() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetRenderedHtml() *string
 	GetSeoTitle() *string
 	GetSlug() *string
 	GetTitle() *string
@@ -768,6 +798,7 @@ type BlogArticleResponseable interface {
 	SetMetaDescription(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetRenderedHtml(value *string)
 	SetSeoTitle(value *string)
 	SetSlug(value *string)
 	SetTitle(value *string)
