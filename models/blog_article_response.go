@@ -54,8 +54,18 @@ type BlogArticleResponse struct {
 	renderedHtml *string
 	// The seoTitle property
 	seoTitle *string
+	// Whether to create a Facebook post after publication.
+	shareOnFacebook *bool
+	// Whether to create a Instagram post after publication.
+	shareOnInstagram *bool
+	// Whether to create a LinkedIn post after publication.
+	shareOnLinkedIn *bool
+	// Whether to create a X post after publication.
+	shareOnX *bool
 	// The slug property
 	slug *string
+	// The socialPosts property
+	socialPosts []BlogSocialPostable
 	// The title property
 	title *string
 	// The unpublishedAt property
@@ -355,6 +365,46 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["shareOnFacebook"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetShareOnFacebook(val)
+		}
+		return nil
+	}
+	res["shareOnInstagram"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetShareOnInstagram(val)
+		}
+		return nil
+	}
+	res["shareOnLinkedIn"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetShareOnLinkedIn(val)
+		}
+		return nil
+	}
+	res["shareOnX"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetShareOnX(val)
+		}
+		return nil
+	}
 	res["slug"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -362,6 +412,22 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetSlug(val)
+		}
+		return nil
+	}
+	res["socialPosts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateBlogSocialPostFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]BlogSocialPostable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(BlogSocialPostable)
+				}
+			}
+			m.SetSocialPosts(res)
 		}
 		return nil
 	}
@@ -454,10 +520,40 @@ func (m *BlogArticleResponse) GetSeoTitle() *string {
 	return m.seoTitle
 }
 
+// GetShareOnFacebook gets the shareOnFacebook property value. Whether to create a Facebook post after publication.
+// returns a *bool when successful
+func (m *BlogArticleResponse) GetShareOnFacebook() *bool {
+	return m.shareOnFacebook
+}
+
+// GetShareOnInstagram gets the shareOnInstagram property value. Whether to create a Instagram post after publication.
+// returns a *bool when successful
+func (m *BlogArticleResponse) GetShareOnInstagram() *bool {
+	return m.shareOnInstagram
+}
+
+// GetShareOnLinkedIn gets the shareOnLinkedIn property value. Whether to create a LinkedIn post after publication.
+// returns a *bool when successful
+func (m *BlogArticleResponse) GetShareOnLinkedIn() *bool {
+	return m.shareOnLinkedIn
+}
+
+// GetShareOnX gets the shareOnX property value. Whether to create a X post after publication.
+// returns a *bool when successful
+func (m *BlogArticleResponse) GetShareOnX() *bool {
+	return m.shareOnX
+}
+
 // GetSlug gets the slug property value. The slug property
 // returns a *string when successful
 func (m *BlogArticleResponse) GetSlug() *string {
 	return m.slug
+}
+
+// GetSocialPosts gets the socialPosts property value. The socialPosts property
+// returns a []BlogSocialPostable when successful
+func (m *BlogArticleResponse) GetSocialPosts() []BlogSocialPostable {
+	return m.socialPosts
 }
 
 // GetTitle gets the title property value. The title property
@@ -601,7 +697,43 @@ func (m *BlogArticleResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteBoolValue("shareOnFacebook", m.GetShareOnFacebook())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("shareOnInstagram", m.GetShareOnInstagram())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("shareOnLinkedIn", m.GetShareOnLinkedIn())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("shareOnX", m.GetShareOnX())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("slug", m.GetSlug())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSocialPosts() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetSocialPosts()))
+		for i, v := range m.GetSocialPosts() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("socialPosts", cast)
 		if err != nil {
 			return err
 		}
@@ -737,9 +869,34 @@ func (m *BlogArticleResponse) SetSeoTitle(value *string) {
 	m.seoTitle = value
 }
 
+// SetShareOnFacebook sets the shareOnFacebook property value. Whether to create a Facebook post after publication.
+func (m *BlogArticleResponse) SetShareOnFacebook(value *bool) {
+	m.shareOnFacebook = value
+}
+
+// SetShareOnInstagram sets the shareOnInstagram property value. Whether to create a Instagram post after publication.
+func (m *BlogArticleResponse) SetShareOnInstagram(value *bool) {
+	m.shareOnInstagram = value
+}
+
+// SetShareOnLinkedIn sets the shareOnLinkedIn property value. Whether to create a LinkedIn post after publication.
+func (m *BlogArticleResponse) SetShareOnLinkedIn(value *bool) {
+	m.shareOnLinkedIn = value
+}
+
+// SetShareOnX sets the shareOnX property value. Whether to create a X post after publication.
+func (m *BlogArticleResponse) SetShareOnX(value *bool) {
+	m.shareOnX = value
+}
+
 // SetSlug sets the slug property value. The slug property
 func (m *BlogArticleResponse) SetSlug(value *string) {
 	m.slug = value
+}
+
+// SetSocialPosts sets the socialPosts property value. The socialPosts property
+func (m *BlogArticleResponse) SetSocialPosts(value []BlogSocialPostable) {
+	m.socialPosts = value
 }
 
 // SetTitle sets the title property value. The title property
@@ -776,7 +933,12 @@ type BlogArticleResponseable interface {
 	GetPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRenderedHtml() *string
 	GetSeoTitle() *string
+	GetShareOnFacebook() *bool
+	GetShareOnInstagram() *bool
+	GetShareOnLinkedIn() *bool
+	GetShareOnX() *bool
 	GetSlug() *string
+	GetSocialPosts() []BlogSocialPostable
 	GetTitle() *string
 	GetUnpublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	SetAuthorName(value *string)
@@ -800,7 +962,12 @@ type BlogArticleResponseable interface {
 	SetPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRenderedHtml(value *string)
 	SetSeoTitle(value *string)
+	SetShareOnFacebook(value *bool)
+	SetShareOnInstagram(value *bool)
+	SetShareOnLinkedIn(value *bool)
+	SetShareOnX(value *bool)
 	SetSlug(value *string)
+	SetSocialPosts(value []BlogSocialPostable)
 	SetTitle(value *string)
 	SetUnpublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 }
