@@ -62,7 +62,7 @@ type LeadMetadata struct {
 	sourceMetadata LeadMetadata_sourceMetadataable
 	// Affiliate or publisher sub ID captured for lead attribution.
 	subId *string
-	// UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+	// UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
 	trustedFormCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// TrustedForm certificate URL used as proof of consumer consent.
 	trustedFormUrl *string
@@ -610,7 +610,7 @@ func (m *LeadMetadata) GetSubId() *string {
 	return m.subId
 }
 
-// GetTrustedFormCheckedAt gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+// GetTrustedFormCheckedAt gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
 // returns a *Time when successful
 func (m *LeadMetadata) GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.trustedFormCheckedAt
@@ -1021,7 +1021,7 @@ func (m *LeadMetadata) SetSubId(value *string) {
 	m.subId = value
 }
 
-// SetTrustedFormCheckedAt sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+// SetTrustedFormCheckedAt sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
 func (m *LeadMetadata) SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.trustedFormCheckedAt = value
 }
