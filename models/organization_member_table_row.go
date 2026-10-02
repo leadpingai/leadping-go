@@ -22,6 +22,8 @@ type OrganizationMemberTableRow struct {
 	licenseRenewalDate *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Identifies an organization member's access level and permission scope within Leadping.
 	role *OrganizationMemberRole
+	// Defines the states an organization member can work; this is not verification of professional licensing.
+	stateEligibility OrganizationMemberStateEligibilityable
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	user IdNamePairable
 	// User email for this organization user.
@@ -107,6 +109,16 @@ func (m *OrganizationMemberTableRow) GetFieldDeserializers() map[string]func(i87
 		}
 		return nil
 	}
+	res["stateEligibility"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationMemberStateEligibilityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStateEligibility(val.(OrganizationMemberStateEligibilityable))
+		}
+		return nil
+	}
 	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
 		if err != nil {
@@ -154,6 +166,12 @@ func (m *OrganizationMemberTableRow) GetRole() *OrganizationMemberRole {
 	return m.role
 }
 
+// GetStateEligibility gets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+// returns a OrganizationMemberStateEligibilityable when successful
+func (m *OrganizationMemberTableRow) GetStateEligibility() OrganizationMemberStateEligibilityable {
+	return m.stateEligibility
+}
+
 // GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a IdNamePairable when successful
 func (m *OrganizationMemberTableRow) GetUser() IdNamePairable {
@@ -195,6 +213,12 @@ func (m *OrganizationMemberTableRow) Serialize(writer i878a80d2330e89d26896388a3
 	if m.GetRole() != nil {
 		cast := (*m.GetRole()).String()
 		err := writer.WriteStringValue("role", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("stateEligibility", m.GetStateEligibility())
 		if err != nil {
 			return err
 		}
@@ -250,6 +274,11 @@ func (m *OrganizationMemberTableRow) SetRole(value *OrganizationMemberRole) {
 	m.role = value
 }
 
+// SetStateEligibility sets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+func (m *OrganizationMemberTableRow) SetStateEligibility(value OrganizationMemberStateEligibilityable) {
+	m.stateEligibility = value
+}
+
 // SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *OrganizationMemberTableRow) SetUser(value IdNamePairable) {
 	m.user = value
@@ -268,6 +297,7 @@ type OrganizationMemberTableRowable interface {
 	GetLicenseBillingStatus() *string
 	GetLicenseRenewalDate() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRole() *OrganizationMemberRole
+	GetStateEligibility() OrganizationMemberStateEligibilityable
 	GetUser() IdNamePairable
 	GetUserEmail() *string
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -275,6 +305,7 @@ type OrganizationMemberTableRowable interface {
 	SetLicenseBillingStatus(value *string)
 	SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRole(value *OrganizationMemberRole)
+	SetStateEligibility(value OrganizationMemberStateEligibilityable)
 	SetUser(value IdNamePairable)
 	SetUserEmail(value *string)
 }

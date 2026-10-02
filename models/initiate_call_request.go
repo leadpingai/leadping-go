@@ -23,6 +23,8 @@ type InitiateCallRequest struct {
 	outboundIdempotencyKey *string
 	// Lead source ID used for call attribution and sender selection.
 	sourceId *string
+	// Connect the authenticated user's browser phone to the server-controlled destination call.
+	useBrowserPhone *bool
 	// Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
 	wasManuallyOverridden *bool
 }
@@ -122,6 +124,16 @@ func (m *InitiateCallRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["useBrowserPhone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetUseBrowserPhone(val)
+		}
+		return nil
+	}
 	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -157,6 +169,12 @@ func (m *InitiateCallRequest) GetOutboundIdempotencyKey() *string {
 // returns a *string when successful
 func (m *InitiateCallRequest) GetSourceId() *string {
 	return m.sourceId
+}
+
+// GetUseBrowserPhone gets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+// returns a *bool when successful
+func (m *InitiateCallRequest) GetUseBrowserPhone() *bool {
+	return m.useBrowserPhone
 }
 
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
@@ -199,6 +217,12 @@ func (m *InitiateCallRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("sourceId", m.GetSourceId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("useBrowserPhone", m.GetUseBrowserPhone())
 		if err != nil {
 			return err
 		}
@@ -253,6 +277,11 @@ func (m *InitiateCallRequest) SetSourceId(value *string) {
 	m.sourceId = value
 }
 
+// SetUseBrowserPhone sets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+func (m *InitiateCallRequest) SetUseBrowserPhone(value *bool) {
+	m.useBrowserPhone = value
+}
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
 func (m *InitiateCallRequest) SetWasManuallyOverridden(value *bool) {
 	m.wasManuallyOverridden = value
@@ -267,6 +296,7 @@ type InitiateCallRequestable interface {
 	GetLeadId() *string
 	GetOutboundIdempotencyKey() *string
 	GetSourceId() *string
+	GetUseBrowserPhone() *bool
 	GetWasManuallyOverridden() *bool
 	SetCampaignId(value *string)
 	SetConversationId(value *string)
@@ -274,5 +304,6 @@ type InitiateCallRequestable interface {
 	SetLeadId(value *string)
 	SetOutboundIdempotencyKey(value *string)
 	SetSourceId(value *string)
+	SetUseBrowserPhone(value *bool)
 	SetWasManuallyOverridden(value *bool)
 }

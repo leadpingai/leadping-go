@@ -15,6 +15,8 @@ type OrganizationMemberRequest struct {
 	email *string
 	// Identifies an organization member's access level and permission scope within Leadping.
 	role *OrganizationMemberRole
+	// Defines the states an organization member can work; this is not verification of professional licensing.
+	stateEligibility OrganizationMemberRequest_stateEligibilityable
 	// User ID to add, update, or remove from the organization.
 	userId *string
 }
@@ -68,6 +70,16 @@ func (m *OrganizationMemberRequest) GetFieldDeserializers() map[string]func(i878
 		}
 		return nil
 	}
+	res["stateEligibility"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationMemberRequest_stateEligibilityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStateEligibility(val.(OrganizationMemberRequest_stateEligibilityable))
+		}
+		return nil
+	}
 	res["userId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -87,6 +99,12 @@ func (m *OrganizationMemberRequest) GetRole() *OrganizationMemberRole {
 	return m.role
 }
 
+// GetStateEligibility gets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+// returns a OrganizationMemberRequest_stateEligibilityable when successful
+func (m *OrganizationMemberRequest) GetStateEligibility() OrganizationMemberRequest_stateEligibilityable {
+	return m.stateEligibility
+}
+
 // GetUserId gets the userId property value. User ID to add, update, or remove from the organization.
 // returns a *string when successful
 func (m *OrganizationMemberRequest) GetUserId() *string {
@@ -104,6 +122,12 @@ func (m *OrganizationMemberRequest) Serialize(writer i878a80d2330e89d26896388a3f
 	if m.GetRole() != nil {
 		cast := (*m.GetRole()).String()
 		err := writer.WriteStringValue("role", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("stateEligibility", m.GetStateEligibility())
 		if err != nil {
 			return err
 		}
@@ -138,6 +162,11 @@ func (m *OrganizationMemberRequest) SetRole(value *OrganizationMemberRole) {
 	m.role = value
 }
 
+// SetStateEligibility sets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+func (m *OrganizationMemberRequest) SetStateEligibility(value OrganizationMemberRequest_stateEligibilityable) {
+	m.stateEligibility = value
+}
+
 // SetUserId sets the userId property value. User ID to add, update, or remove from the organization.
 func (m *OrganizationMemberRequest) SetUserId(value *string) {
 	m.userId = value
@@ -148,8 +177,10 @@ type OrganizationMemberRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetEmail() *string
 	GetRole() *OrganizationMemberRole
+	GetStateEligibility() OrganizationMemberRequest_stateEligibilityable
 	GetUserId() *string
 	SetEmail(value *string)
 	SetRole(value *OrganizationMemberRole)
+	SetStateEligibility(value OrganizationMemberRequest_stateEligibilityable)
 	SetUserId(value *string)
 }

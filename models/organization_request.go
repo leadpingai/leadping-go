@@ -21,10 +21,14 @@ type OrganizationRequest struct {
 	isYoungerThan90 *bool
 	// Primary organization name.
 	name *string
+	// Main service or offer described during organization setup.
+	offer *string
 	// Phone details for the lead, user, or organization represented by this organization profile request.
 	phone *string
 	// Alternate organization name or DBA shown in Leadping.
 	secondaryName *string
+	// Intended audience described during organization setup.
+	targetAudience *string
 	// Industry vertical used for lead routing, compliance review, and reporting.
 	vertical *string
 	// Organization website URL used for compliance, brand review, and lead attribution.
@@ -122,6 +126,16 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["offer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOffer(val)
+		}
+		return nil
+	}
 	res["phone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -139,6 +153,16 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetSecondaryName(val)
+		}
+		return nil
+	}
+	res["targetAudience"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTargetAudience(val)
 		}
 		return nil
 	}
@@ -177,6 +201,12 @@ func (m *OrganizationRequest) GetName() *string {
 	return m.name
 }
 
+// GetOffer gets the offer property value. Main service or offer described during organization setup.
+// returns a *string when successful
+func (m *OrganizationRequest) GetOffer() *string {
+	return m.offer
+}
+
 // GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
 // returns a *string when successful
 func (m *OrganizationRequest) GetPhone() *string {
@@ -187,6 +217,12 @@ func (m *OrganizationRequest) GetPhone() *string {
 // returns a *string when successful
 func (m *OrganizationRequest) GetSecondaryName() *string {
 	return m.secondaryName
+}
+
+// GetTargetAudience gets the targetAudience property value. Intended audience described during organization setup.
+// returns a *string when successful
+func (m *OrganizationRequest) GetTargetAudience() *string {
+	return m.targetAudience
 }
 
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
@@ -234,6 +270,12 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteStringValue("offer", m.GetOffer())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("phone", m.GetPhone())
 		if err != nil {
 			return err
@@ -241,6 +283,12 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("secondaryName", m.GetSecondaryName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("targetAudience", m.GetTargetAudience())
 		if err != nil {
 			return err
 		}
@@ -296,6 +344,11 @@ func (m *OrganizationRequest) SetName(value *string) {
 	m.name = value
 }
 
+// SetOffer sets the offer property value. Main service or offer described during organization setup.
+func (m *OrganizationRequest) SetOffer(value *string) {
+	m.offer = value
+}
+
 // SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
 func (m *OrganizationRequest) SetPhone(value *string) {
 	m.phone = value
@@ -304,6 +357,11 @@ func (m *OrganizationRequest) SetPhone(value *string) {
 // SetSecondaryName sets the secondaryName property value. Alternate organization name or DBA shown in Leadping.
 func (m *OrganizationRequest) SetSecondaryName(value *string) {
 	m.secondaryName = value
+}
+
+// SetTargetAudience sets the targetAudience property value. Intended audience described during organization setup.
+func (m *OrganizationRequest) SetTargetAudience(value *string) {
+	m.targetAudience = value
 }
 
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
@@ -324,8 +382,10 @@ type OrganizationRequestable interface {
 	GetEin() *string
 	GetIsYoungerThan90() *bool
 	GetName() *string
+	GetOffer() *string
 	GetPhone() *string
 	GetSecondaryName() *string
+	GetTargetAudience() *string
 	GetVertical() *string
 	GetWebsite() *string
 	SetAddress(value OrganizationRequest_addressable)
@@ -333,8 +393,10 @@ type OrganizationRequestable interface {
 	SetEin(value *string)
 	SetIsYoungerThan90(value *bool)
 	SetName(value *string)
+	SetOffer(value *string)
 	SetPhone(value *string)
 	SetSecondaryName(value *string)
+	SetTargetAudience(value *string)
 	SetVertical(value *string)
 	SetWebsite(value *string)
 }

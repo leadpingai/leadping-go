@@ -38,6 +38,8 @@ type OrganizationMemberResponse struct {
 	removedByUserId *string
 	// Identifies an organization member's access level and permission scope within Leadping.
 	role *OrganizationMemberRole
+	// Defines the states an organization member can work; this is not verification of professional licensing.
+	stateEligibility OrganizationMemberStateEligibilityable
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	user IdNamePairable
 	// User email for this organization user.
@@ -209,6 +211,16 @@ func (m *OrganizationMemberResponse) GetFieldDeserializers() map[string]func(i87
 		}
 		return nil
 	}
+	res["stateEligibility"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateOrganizationMemberStateEligibilityFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStateEligibility(val.(OrganizationMemberStateEligibilityable))
+		}
+		return nil
+	}
 	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateIdNamePairFromDiscriminatorValue)
 		if err != nil {
@@ -296,6 +308,12 @@ func (m *OrganizationMemberResponse) GetRemovedByUserId() *string {
 // returns a *OrganizationMemberRole when successful
 func (m *OrganizationMemberResponse) GetRole() *OrganizationMemberRole {
 	return m.role
+}
+
+// GetStateEligibility gets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+// returns a OrganizationMemberStateEligibilityable when successful
+func (m *OrganizationMemberResponse) GetStateEligibility() OrganizationMemberStateEligibilityable {
+	return m.stateEligibility
 }
 
 // GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -392,6 +410,12 @@ func (m *OrganizationMemberResponse) Serialize(writer i878a80d2330e89d26896388a3
 		}
 	}
 	{
+		err := writer.WriteObjectValue("stateEligibility", m.GetStateEligibility())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("user", m.GetUser())
 		if err != nil {
 			return err
@@ -482,6 +506,11 @@ func (m *OrganizationMemberResponse) SetRole(value *OrganizationMemberRole) {
 	m.role = value
 }
 
+// SetStateEligibility sets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+func (m *OrganizationMemberResponse) SetStateEligibility(value OrganizationMemberStateEligibilityable) {
+	m.stateEligibility = value
+}
+
 // SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *OrganizationMemberResponse) SetUser(value IdNamePairable) {
 	m.user = value
@@ -508,6 +537,7 @@ type OrganizationMemberResponseable interface {
 	GetRemovedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRemovedByUserId() *string
 	GetRole() *OrganizationMemberRole
+	GetStateEligibility() OrganizationMemberStateEligibilityable
 	GetUser() IdNamePairable
 	GetUserEmail() *string
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -523,6 +553,7 @@ type OrganizationMemberResponseable interface {
 	SetRemovedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRemovedByUserId(value *string)
 	SetRole(value *OrganizationMemberRole)
+	SetStateEligibility(value OrganizationMemberStateEligibilityable)
 	SetUser(value IdNamePairable)
 	SetUserEmail(value *string)
 }
