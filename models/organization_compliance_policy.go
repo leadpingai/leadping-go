@@ -25,7 +25,7 @@ type OrganizationCompliancePolicy struct {
 	requireProduct *bool
 	// Whether this organization compliance policy requires source compliance approval.
 	requireSourceComplianceApproval *bool
-	// Whether this organization compliance policy requires TrustedForm for automations.
+	// Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
 	requireTrustedFormForAutomations *bool
 }
 
@@ -189,7 +189,7 @@ func (m *OrganizationCompliancePolicy) GetRequireSourceComplianceApproval() *boo
 	return m.requireSourceComplianceApproval
 }
 
-// GetRequireTrustedFormForAutomations gets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm for automations.
+// GetRequireTrustedFormForAutomations gets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
 // returns a *bool when successful
 func (m *OrganizationCompliancePolicy) GetRequireTrustedFormForAutomations() *bool {
 	return m.requireTrustedFormForAutomations
@@ -294,7 +294,7 @@ func (m *OrganizationCompliancePolicy) SetRequireSourceComplianceApproval(value 
 	m.requireSourceComplianceApproval = value
 }
 
-// SetRequireTrustedFormForAutomations sets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm for automations.
+// SetRequireTrustedFormForAutomations sets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
 func (m *OrganizationCompliancePolicy) SetRequireTrustedFormForAutomations(value *bool) {
 	m.requireTrustedFormForAutomations = value
 }

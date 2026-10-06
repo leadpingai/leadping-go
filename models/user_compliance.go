@@ -21,8 +21,8 @@ type UserCompliance struct {
 	acceptedToSubscription *bool
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The TrustedForm certificates included with this user compliance.
-	trustedFormCertificates []TrustedFormCertificateable
+	// The Leadping Consent certificates included with this user compliance.
+	consentCertificates []LeadpingConsentCertificateable
 }
 
 // NewUserCompliance instantiates a new UserCompliance and sets the default values.
@@ -72,6 +72,12 @@ func (m *UserCompliance) GetAcceptedToSubscription() *bool {
 // returns a map[string]any when successful
 func (m *UserCompliance) GetAdditionalData() map[string]any {
 	return m.additionalData
+}
+
+// GetConsentCertificates gets the consentCertificates property value. The Leadping Consent certificates included with this user compliance.
+// returns a []LeadpingConsentCertificateable when successful
+func (m *UserCompliance) GetConsentCertificates() []LeadpingConsentCertificateable {
+	return m.consentCertificates
 }
 
 // GetFieldDeserializers the deserialization information for the current model
@@ -128,29 +134,23 @@ func (m *UserCompliance) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		return nil
 	}
-	res["trustedFormCertificates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfObjectValues(CreateTrustedFormCertificateFromDiscriminatorValue)
+	res["consentCertificates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateLeadpingConsentCertificateFromDiscriminatorValue)
 		if err != nil {
 			return err
 		}
 		if val != nil {
-			res := make([]TrustedFormCertificateable, len(val))
+			res := make([]LeadpingConsentCertificateable, len(val))
 			for i, v := range val {
 				if v != nil {
-					res[i] = v.(TrustedFormCertificateable)
+					res[i] = v.(LeadpingConsentCertificateable)
 				}
 			}
-			m.SetTrustedFormCertificates(res)
+			m.SetConsentCertificates(res)
 		}
 		return nil
 	}
 	return res
-}
-
-// GetTrustedFormCertificates gets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
-// returns a []TrustedFormCertificateable when successful
-func (m *UserCompliance) GetTrustedFormCertificates() []TrustedFormCertificateable {
-	return m.trustedFormCertificates
 }
 
 // Serialize serializes information the current object
@@ -185,14 +185,14 @@ func (m *UserCompliance) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 			return err
 		}
 	}
-	if m.GetTrustedFormCertificates() != nil {
-		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTrustedFormCertificates()))
-		for i, v := range m.GetTrustedFormCertificates() {
+	if m.GetConsentCertificates() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetConsentCertificates()))
+		for i, v := range m.GetConsentCertificates() {
 			if v != nil {
 				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
 			}
 		}
-		err := writer.WriteCollectionOfObjectValues("trustedFormCertificates", cast)
+		err := writer.WriteCollectionOfObjectValues("consentCertificates", cast)
 		if err != nil {
 			return err
 		}
@@ -236,9 +236,9 @@ func (m *UserCompliance) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetTrustedFormCertificates sets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
-func (m *UserCompliance) SetTrustedFormCertificates(value []TrustedFormCertificateable) {
-	m.trustedFormCertificates = value
+// SetConsentCertificates sets the consentCertificates property value. The Leadping Consent certificates included with this user compliance.
+func (m *UserCompliance) SetConsentCertificates(value []LeadpingConsentCertificateable) {
+	m.consentCertificates = value
 }
 
 type UserComplianceable interface {
@@ -249,11 +249,11 @@ type UserComplianceable interface {
 	GetAcceptedSms() *bool
 	GetAcceptedTerms() *bool
 	GetAcceptedToSubscription() *bool
-	GetTrustedFormCertificates() []TrustedFormCertificateable
+	GetConsentCertificates() []LeadpingConsentCertificateable
 	SetAcceptedBaa(value *bool)
 	SetAcceptedEmail(value *bool)
 	SetAcceptedSms(value *bool)
 	SetAcceptedTerms(value *bool)
 	SetAcceptedToSubscription(value *bool)
-	SetTrustedFormCertificates(value []TrustedFormCertificateable)
+	SetConsentCertificates(value []LeadpingConsentCertificateable)
 }

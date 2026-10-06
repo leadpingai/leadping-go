@@ -44,10 +44,10 @@ type UserNotificationPreferences struct {
 	paymentFailedEnabled *bool
 	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 	paymentFailedSmsEnabled *bool
+	// Describes Leadping Consent certificate data used in Leadping API requests and responses.
+	smsConsentCertificate UserNotificationPreferences_smsConsentCertificateable
 	// Whether the user has consented to receive Leadping account notification SMS messages.
 	smsConsentOptedIn *bool
-	// Describes trusted form certificate data used in Leadping API requests and responses.
-	smsConsentTrustedFormCertificate UserNotificationPreferences_smsConsentTrustedFormCertificateable
 	// When the user's Leadping notification SMS consent was last changed.
 	smsConsentUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
@@ -281,6 +281,16 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["smsConsentCertificate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserNotificationPreferences_smsConsentCertificateFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsConsentCertificate(val.(UserNotificationPreferences_smsConsentCertificateable))
+		}
+		return nil
+	}
 	res["smsConsentOptedIn"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -288,16 +298,6 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		if val != nil {
 			m.SetSmsConsentOptedIn(val)
-		}
-		return nil
-	}
-	res["smsConsentTrustedFormCertificate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetObjectValue(CreateUserNotificationPreferences_smsConsentTrustedFormCertificateFromDiscriminatorValue)
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetSmsConsentTrustedFormCertificate(val.(UserNotificationPreferences_smsConsentTrustedFormCertificateable))
 		}
 		return nil
 	}
@@ -460,16 +460,16 @@ func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
 	return m.paymentFailedSmsEnabled
 }
 
+// GetSmsConsentCertificate gets the smsConsentCertificate property value. Describes Leadping Consent certificate data used in Leadping API requests and responses.
+// returns a UserNotificationPreferences_smsConsentCertificateable when successful
+func (m *UserNotificationPreferences) GetSmsConsentCertificate() UserNotificationPreferences_smsConsentCertificateable {
+	return m.smsConsentCertificate
+}
+
 // GetSmsConsentOptedIn gets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetSmsConsentOptedIn() *bool {
 	return m.smsConsentOptedIn
-}
-
-// GetSmsConsentTrustedFormCertificate gets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
-// returns a UserNotificationPreferences_smsConsentTrustedFormCertificateable when successful
-func (m *UserNotificationPreferences) GetSmsConsentTrustedFormCertificate() UserNotificationPreferences_smsConsentTrustedFormCertificateable {
-	return m.smsConsentTrustedFormCertificate
 }
 
 // GetSmsConsentUpdatedAt gets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
@@ -625,13 +625,13 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 		}
 	}
 	{
-		err := writer.WriteBoolValue("smsConsentOptedIn", m.GetSmsConsentOptedIn())
+		err := writer.WriteObjectValue("smsConsentCertificate", m.GetSmsConsentCertificate())
 		if err != nil {
 			return err
 		}
 	}
 	{
-		err := writer.WriteObjectValue("smsConsentTrustedFormCertificate", m.GetSmsConsentTrustedFormCertificate())
+		err := writer.WriteBoolValue("smsConsentOptedIn", m.GetSmsConsentOptedIn())
 		if err != nil {
 			return err
 		}
@@ -784,14 +784,14 @@ func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
 	m.paymentFailedSmsEnabled = value
 }
 
+// SetSmsConsentCertificate sets the smsConsentCertificate property value. Describes Leadping Consent certificate data used in Leadping API requests and responses.
+func (m *UserNotificationPreferences) SetSmsConsentCertificate(value UserNotificationPreferences_smsConsentCertificateable) {
+	m.smsConsentCertificate = value
+}
+
 // SetSmsConsentOptedIn sets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
 func (m *UserNotificationPreferences) SetSmsConsentOptedIn(value *bool) {
 	m.smsConsentOptedIn = value
-}
-
-// SetSmsConsentTrustedFormCertificate sets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
-func (m *UserNotificationPreferences) SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable) {
-	m.smsConsentTrustedFormCertificate = value
 }
 
 // SetSmsConsentUpdatedAt sets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
@@ -858,8 +858,8 @@ type UserNotificationPreferencesable interface {
 	GetNewLeadSmsEnabled() *bool
 	GetPaymentFailedEnabled() *bool
 	GetPaymentFailedSmsEnabled() *bool
+	GetSmsConsentCertificate() UserNotificationPreferences_smsConsentCertificateable
 	GetSmsConsentOptedIn() *bool
-	GetSmsConsentTrustedFormCertificate() UserNotificationPreferences_smsConsentTrustedFormCertificateable
 	GetSmsConsentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSubscriptionRenewingEmailEnabled() *bool
 	GetSubscriptionRenewingEnabled() *bool
@@ -885,8 +885,8 @@ type UserNotificationPreferencesable interface {
 	SetNewLeadSmsEnabled(value *bool)
 	SetPaymentFailedEnabled(value *bool)
 	SetPaymentFailedSmsEnabled(value *bool)
+	SetSmsConsentCertificate(value UserNotificationPreferences_smsConsentCertificateable)
 	SetSmsConsentOptedIn(value *bool)
-	SetSmsConsentTrustedFormCertificate(value UserNotificationPreferences_smsConsentTrustedFormCertificateable)
 	SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSubscriptionRenewingEmailEnabled(value *bool)
 	SetSubscriptionRenewingEnabled(value *bool)

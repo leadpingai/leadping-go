@@ -23,7 +23,7 @@ type SourceRequest struct {
 	description *string
 	// Human-readable source name.
 	name *string
-	// Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+	// Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 	requiresTrustedForm *bool
 }
 
@@ -183,7 +183,7 @@ func (m *SourceRequest) GetName() *string {
 	return m.name
 }
 
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceRequest) GetRequiresTrustedForm() *bool {
 	return m.requiresTrustedForm
@@ -277,7 +277,7 @@ func (m *SourceRequest) SetName(value *string) {
 	m.name = value
 }
 
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 func (m *SourceRequest) SetRequiresTrustedForm(value *bool) {
 	m.requiresTrustedForm = value
 }

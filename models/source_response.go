@@ -54,7 +54,7 @@ type SourceResponse struct {
 	name *string
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	organization SourceResponse_organizationable
-	// Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+	// Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 	requiresTrustedForm *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	user SourceResponse_userable
@@ -466,7 +466,7 @@ func (m *SourceResponse) GetOrganization() SourceResponse_organizationable {
 	return m.organization
 }
 
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceResponse) GetRequiresTrustedForm() *bool {
 	return m.requiresTrustedForm
@@ -743,7 +743,7 @@ func (m *SourceResponse) SetOrganization(value SourceResponse_organizationable) 
 	m.organization = value
 }
 
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 func (m *SourceResponse) SetRequiresTrustedForm(value *bool) {
 	m.requiresTrustedForm = value
 }

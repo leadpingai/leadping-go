@@ -58,7 +58,7 @@ type SourceTableRow struct {
 	organization SourceTableRow_organizationable
 	// Organization ID that owns this lead source.
 	organizationId *string
-	// Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+	// Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 	requiresTrustedForm *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	user SourceTableRow_userable
@@ -502,7 +502,7 @@ func (m *SourceTableRow) GetOrganizationId() *string {
 	return m.organizationId
 }
 
-// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// GetRequiresTrustedForm gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 // returns a *bool when successful
 func (m *SourceTableRow) GetRequiresTrustedForm() *bool {
 	return m.requiresTrustedForm
@@ -801,7 +801,7 @@ func (m *SourceTableRow) SetOrganizationId(value *string) {
 	m.organizationId = value
 }
 
-// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+// SetRequiresTrustedForm sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
 func (m *SourceTableRow) SetRequiresTrustedForm(value *bool) {
 	m.requiresTrustedForm = value
 }

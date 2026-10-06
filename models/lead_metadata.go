@@ -32,6 +32,10 @@ type LeadMetadata struct {
 	isImported *bool
 	// Landing page URL where the lead submitted their information.
 	landingPage *string
+	// Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+	leadpingConsentCertificateId *string
+	// Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+	leadpingConsentCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Organization ID that owns this lead's attribution metadata.
 	organizationId *string
 	// System or workflow that created this event.
@@ -240,6 +244,26 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetLandingPage(val)
+		}
+		return nil
+	}
+	res["leadpingConsentCertificateId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadpingConsentCertificateId(val)
+		}
+		return nil
+	}
+	res["leadpingConsentCheckedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadpingConsentCheckedAt(val)
 		}
 		return nil
 	}
@@ -520,6 +544,18 @@ func (m *LeadMetadata) GetLandingPage() *string {
 	return m.landingPage
 }
 
+// GetLeadpingConsentCertificateId gets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+// returns a *string when successful
+func (m *LeadMetadata) GetLeadpingConsentCertificateId() *string {
+	return m.leadpingConsentCertificateId
+}
+
+// GetLeadpingConsentCheckedAt gets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+// returns a *Time when successful
+func (m *LeadMetadata) GetLeadpingConsentCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.leadpingConsentCheckedAt
+}
+
 // GetOrganizationId gets the organizationId property value. Organization ID that owns this lead's attribution metadata.
 // returns a *string when successful
 func (m *LeadMetadata) GetOrganizationId() *string {
@@ -728,6 +764,18 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("landingPage", m.GetLandingPage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadpingConsentCertificateId", m.GetLeadpingConsentCertificateId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("leadpingConsentCheckedAt", m.GetLeadpingConsentCheckedAt())
 		if err != nil {
 			return err
 		}
@@ -946,6 +994,16 @@ func (m *LeadMetadata) SetLandingPage(value *string) {
 	m.landingPage = value
 }
 
+// SetLeadpingConsentCertificateId sets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+func (m *LeadMetadata) SetLeadpingConsentCertificateId(value *string) {
+	m.leadpingConsentCertificateId = value
+}
+
+// SetLeadpingConsentCheckedAt sets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+func (m *LeadMetadata) SetLeadpingConsentCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.leadpingConsentCheckedAt = value
+}
+
 // SetOrganizationId sets the organizationId property value. Organization ID that owns this lead's attribution metadata.
 func (m *LeadMetadata) SetOrganizationId(value *string) {
 	m.organizationId = value
@@ -1084,6 +1142,8 @@ type LeadMetadataable interface {
 	GetIpAddress() *string
 	GetIsImported() *bool
 	GetLandingPage() *string
+	GetLeadpingConsentCertificateId() *string
+	GetLeadpingConsentCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetOrganizationId() *string
 	GetOrigin() *string
 	GetPrice() *float64
@@ -1119,6 +1179,8 @@ type LeadMetadataable interface {
 	SetIpAddress(value *string)
 	SetIsImported(value *bool)
 	SetLandingPage(value *string)
+	SetLeadpingConsentCertificateId(value *string)
+	SetLeadpingConsentCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetOrganizationId(value *string)
 	SetOrigin(value *string)
 	SetPrice(value *float64)

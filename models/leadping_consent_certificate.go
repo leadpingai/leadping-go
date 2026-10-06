@@ -8,48 +8,46 @@ import (
 	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
-// TrustedFormCertificate describes trusted form certificate data used in Leadping API requests and responses.
-type TrustedFormCertificate struct {
+// LeadpingConsentCertificate describes Leadping Consent certificate data used in Leadping API requests and responses.
+type LeadpingConsentCertificate struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// UTC timestamp for created at on this TrustedForm certificate.
+	// UTC timestamp for created at on this Leadping Consent certificate.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// Unique Leadping identifier for this TrustedForm certificate.
+	// Unique Leadping identifier for this Leadping Consent certificate.
 	id *string
-	// Source for this TrustedForm certificate.
+	// Source for this Leadping Consent certificate.
 	source *string
-	// The URL associated with this TrustedForm certificate.
-	url *string
 }
 
-// NewTrustedFormCertificate instantiates a new TrustedFormCertificate and sets the default values.
-func NewTrustedFormCertificate() *TrustedFormCertificate {
-	m := &TrustedFormCertificate{}
+// NewLeadpingConsentCertificate instantiates a new LeadpingConsentCertificate and sets the default values.
+func NewLeadpingConsentCertificate() *LeadpingConsentCertificate {
+	m := &LeadpingConsentCertificate{}
 	m.SetAdditionalData(make(map[string]any))
 	return m
 }
 
-// CreateTrustedFormCertificateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateLeadpingConsentCertificateFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateTrustedFormCertificateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-	return NewTrustedFormCertificate(), nil
+func CreateLeadpingConsentCertificateFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+	return NewLeadpingConsentCertificate(), nil
 }
 
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *TrustedFormCertificate) GetAdditionalData() map[string]any {
+func (m *LeadpingConsentCertificate) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
+// GetCreatedAt gets the createdAt property value. UTC timestamp for created at on this Leadping Consent certificate.
 // returns a *Time when successful
-func (m *TrustedFormCertificate) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+func (m *LeadpingConsentCertificate) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.createdAt
 }
 
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
-func (m *TrustedFormCertificate) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+func (m *LeadpingConsentCertificate) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
 	res["createdAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
@@ -81,39 +79,23 @@ func (m *TrustedFormCertificate) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
-	res["url"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetUrl(val)
-		}
-		return nil
-	}
 	return res
 }
 
-// GetId gets the id property value. Unique Leadping identifier for this TrustedForm certificate.
+// GetId gets the id property value. Unique Leadping identifier for this Leadping Consent certificate.
 // returns a *string when successful
-func (m *TrustedFormCertificate) GetId() *string {
+func (m *LeadpingConsentCertificate) GetId() *string {
 	return m.id
 }
 
-// GetSource gets the source property value. Source for this TrustedForm certificate.
+// GetSource gets the source property value. Source for this Leadping Consent certificate.
 // returns a *string when successful
-func (m *TrustedFormCertificate) GetSource() *string {
+func (m *LeadpingConsentCertificate) GetSource() *string {
 	return m.source
 }
 
-// GetUrl gets the url property value. The URL associated with this TrustedForm certificate.
-// returns a *string when successful
-func (m *TrustedFormCertificate) GetUrl() *string {
-	return m.url
-}
-
 // Serialize serializes information the current object
-func (m *TrustedFormCertificate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+func (m *LeadpingConsentCertificate) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
 		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
 		if err != nil {
@@ -133,12 +115,6 @@ func (m *TrustedFormCertificate) Serialize(writer i878a80d2330e89d26896388a3f487
 		}
 	}
 	{
-		err := writer.WriteStringValue("url", m.GetUrl())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteAdditionalData(m.GetAdditionalData())
 		if err != nil {
 			return err
@@ -148,39 +124,32 @@ func (m *TrustedFormCertificate) Serialize(writer i878a80d2330e89d26896388a3f487
 }
 
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *TrustedFormCertificate) SetAdditionalData(value map[string]any) {
+func (m *LeadpingConsentCertificate) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
-func (m *TrustedFormCertificate) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+// SetCreatedAt sets the createdAt property value. UTC timestamp for created at on this Leadping Consent certificate.
+func (m *LeadpingConsentCertificate) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.createdAt = value
 }
 
-// SetId sets the id property value. Unique Leadping identifier for this TrustedForm certificate.
-func (m *TrustedFormCertificate) SetId(value *string) {
+// SetId sets the id property value. Unique Leadping identifier for this Leadping Consent certificate.
+func (m *LeadpingConsentCertificate) SetId(value *string) {
 	m.id = value
 }
 
-// SetSource sets the source property value. Source for this TrustedForm certificate.
-func (m *TrustedFormCertificate) SetSource(value *string) {
+// SetSource sets the source property value. Source for this Leadping Consent certificate.
+func (m *LeadpingConsentCertificate) SetSource(value *string) {
 	m.source = value
 }
 
-// SetUrl sets the url property value. The URL associated with this TrustedForm certificate.
-func (m *TrustedFormCertificate) SetUrl(value *string) {
-	m.url = value
-}
-
-type TrustedFormCertificateable interface {
+type LeadpingConsentCertificateable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
 	GetSource() *string
-	GetUrl() *string
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
 	SetSource(value *string)
-	SetUrl(value *string)
 }
