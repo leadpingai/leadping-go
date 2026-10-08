@@ -31,6 +31,8 @@ type LeadIntakeRequest struct {
 	firstName *string
 	// Lead gender supplied by intake sources and normalized when possible.
 	gender *string
+	// Stable delivery key reused when retrying the same lead submission to this source.
+	idempotencyKey *string
 	// Landing page URL where the lead submitted their information.
 	landingPage *string
 	// Last name of the lead, user, or contact represented by this lead intake request.
@@ -247,6 +249,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetGender(val)
+		}
+		return nil
+	}
+	res["idempotencyKey"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIdempotencyKey(val)
 		}
 		return nil
 	}
@@ -507,6 +519,12 @@ func (m *LeadIntakeRequest) GetGender() *string {
 	return m.gender
 }
 
+// GetIdempotencyKey gets the idempotencyKey property value. Stable delivery key reused when retrying the same lead submission to this source.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetIdempotencyKey() *string {
+	return m.idempotencyKey
+}
+
 // GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetLandingPage() *string {
@@ -703,6 +721,12 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	{
 		err := writer.WriteStringValue("gender", m.GetGender())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("idempotencyKey", m.GetIdempotencyKey())
 		if err != nil {
 			return err
 		}
@@ -909,6 +933,11 @@ func (m *LeadIntakeRequest) SetGender(value *string) {
 	m.gender = value
 }
 
+// SetIdempotencyKey sets the idempotencyKey property value. Stable delivery key reused when retrying the same lead submission to this source.
+func (m *LeadIntakeRequest) SetIdempotencyKey(value *string) {
+	m.idempotencyKey = value
+}
+
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadIntakeRequest) SetLandingPage(value *string) {
 	m.landingPage = value
@@ -1037,6 +1066,7 @@ type LeadIntakeRequestable interface {
 	GetExternalId() *string
 	GetFirstName() *string
 	GetGender() *string
+	GetIdempotencyKey() *string
 	GetLandingPage() *string
 	GetLastName() *string
 	GetPhone() *string
@@ -1070,6 +1100,7 @@ type LeadIntakeRequestable interface {
 	SetExternalId(value *string)
 	SetFirstName(value *string)
 	SetGender(value *string)
+	SetIdempotencyKey(value *string)
 	SetLandingPage(value *string)
 	SetLastName(value *string)
 	SetPhone(value *string)

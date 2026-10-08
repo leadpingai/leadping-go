@@ -26,6 +26,8 @@ type LeadMetadata struct {
 	externalId *string
 	// Bulk import batch ID that created or updated this lead.
 	importBatchId *string
+	// Stable source operation key. Reuse for retries, and change for a new submission.
+	intakeIdempotencyKey *string
 	// IP address captured with the request for audit and compliance review.
 	ipAddress *string
 	// Indicates whether this lead was imported rather than captured through a live source.
@@ -214,6 +216,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetImportBatchId(val)
+		}
+		return nil
+	}
+	res["intakeIdempotencyKey"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIntakeIdempotencyKey(val)
 		}
 		return nil
 	}
@@ -526,6 +538,12 @@ func (m *LeadMetadata) GetImportBatchId() *string {
 	return m.importBatchId
 }
 
+// GetIntakeIdempotencyKey gets the intakeIdempotencyKey property value. Stable source operation key. Reuse for retries, and change for a new submission.
+// returns a *string when successful
+func (m *LeadMetadata) GetIntakeIdempotencyKey() *string {
+	return m.intakeIdempotencyKey
+}
+
 // GetIpAddress gets the ipAddress property value. IP address captured with the request for audit and compliance review.
 // returns a *string when successful
 func (m *LeadMetadata) GetIpAddress() *string {
@@ -746,6 +764,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("importBatchId", m.GetImportBatchId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("intakeIdempotencyKey", m.GetIntakeIdempotencyKey())
 		if err != nil {
 			return err
 		}
@@ -979,6 +1003,11 @@ func (m *LeadMetadata) SetImportBatchId(value *string) {
 	m.importBatchId = value
 }
 
+// SetIntakeIdempotencyKey sets the intakeIdempotencyKey property value. Stable source operation key. Reuse for retries, and change for a new submission.
+func (m *LeadMetadata) SetIntakeIdempotencyKey(value *string) {
+	m.intakeIdempotencyKey = value
+}
+
 // SetIpAddress sets the ipAddress property value. IP address captured with the request for audit and compliance review.
 func (m *LeadMetadata) SetIpAddress(value *string) {
 	m.ipAddress = value
@@ -1139,6 +1168,7 @@ type LeadMetadataable interface {
 	GetDirectPostPrice() *float64
 	GetExternalId() *string
 	GetImportBatchId() *string
+	GetIntakeIdempotencyKey() *string
 	GetIpAddress() *string
 	GetIsImported() *bool
 	GetLandingPage() *string
@@ -1176,6 +1206,7 @@ type LeadMetadataable interface {
 	SetDirectPostPrice(value *float64)
 	SetExternalId(value *string)
 	SetImportBatchId(value *string)
+	SetIntakeIdempotencyKey(value *string)
 	SetIpAddress(value *string)
 	SetIsImported(value *bool)
 	SetLandingPage(value *string)
