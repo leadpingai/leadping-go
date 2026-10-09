@@ -48,6 +48,8 @@ type AutomationResponse struct {
 	organizationId *string
 	// Scope that limits where this automation configuration response applies in Leadping.
 	scope *string
+	// Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+	timeZoneId *string
 	// Automation triggers that can start this workflow.
 	triggers []AutomationTriggerable
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -321,6 +323,16 @@ func (m *AutomationResponse) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		return nil
 	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
 	res["triggers"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfObjectValues(CreateAutomationTriggerFromDiscriminatorValue)
 		if err != nil {
@@ -434,6 +446,12 @@ func (m *AutomationResponse) GetOrganizationId() *string {
 // returns a *string when successful
 func (m *AutomationResponse) GetScope() *string {
 	return m.scope
+}
+
+// GetTimeZoneId gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+// returns a *string when successful
+func (m *AutomationResponse) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
 
 // GetTriggers gets the triggers property value. Automation triggers that can start this workflow.
@@ -588,6 +606,12 @@ func (m *AutomationResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 			return err
 		}
 	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetTriggers() != nil {
 		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTriggers()))
 		for i, v := range m.GetTriggers() {
@@ -722,6 +746,11 @@ func (m *AutomationResponse) SetScope(value *string) {
 	m.scope = value
 }
 
+// SetTimeZoneId sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+func (m *AutomationResponse) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
+}
+
 // SetTriggers sets the triggers property value. Automation triggers that can start this workflow.
 func (m *AutomationResponse) SetTriggers(value []AutomationTriggerable) {
 	m.triggers = value
@@ -763,6 +792,7 @@ type AutomationResponseable interface {
 	GetOrganization() AutomationResponse_organizationable
 	GetOrganizationId() *string
 	GetScope() *string
+	GetTimeZoneId() *string
 	GetTriggers() []AutomationTriggerable
 	GetUser() AutomationResponse_userable
 	GetVersion() *int32
@@ -785,6 +815,7 @@ type AutomationResponseable interface {
 	SetOrganization(value AutomationResponse_organizationable)
 	SetOrganizationId(value *string)
 	SetScope(value *string)
+	SetTimeZoneId(value *string)
 	SetTriggers(value []AutomationTriggerable)
 	SetUser(value AutomationResponse_userable)
 	SetVersion(value *int32)
