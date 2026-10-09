@@ -16,6 +16,8 @@ type AutomationRunRecord struct {
 	additionalData map[string]any
 	// Automation ID connected to this workflow, run, or event.
 	automationId *string
+	// Persisted origin of an automation run and the events produced by its actions.
+	automationLineage AutomationRunRecord_automationLineageable
 	// UTC timestamp when processing completed for this automation run record.
 	completedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Results of condition nodes already visited by this run, preserved across waits and retries.
@@ -77,6 +79,12 @@ func (m *AutomationRunRecord) GetAutomationId() *string {
 	return m.automationId
 }
 
+// GetAutomationLineage gets the automationLineage property value. Persisted origin of an automation run and the events produced by its actions.
+// returns a AutomationRunRecord_automationLineageable when successful
+func (m *AutomationRunRecord) GetAutomationLineage() AutomationRunRecord_automationLineageable {
+	return m.automationLineage
+}
+
 // GetCompletedAt gets the completedAt property value. UTC timestamp when processing completed for this automation run record.
 // returns a *Time when successful
 func (m *AutomationRunRecord) GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -128,6 +136,16 @@ func (m *AutomationRunRecord) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetAutomationId(val)
+		}
+		return nil
+	}
+	res["automationLineage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAutomationRunRecord_automationLineageFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationLineage(val.(AutomationRunRecord_automationLineageable))
 		}
 		return nil
 	}
@@ -355,6 +373,12 @@ func (m *AutomationRunRecord) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteObjectValue("automationLineage", m.GetAutomationLineage())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeValue("completedAt", m.GetCompletedAt())
 		if err != nil {
 			return err
@@ -462,6 +486,11 @@ func (m *AutomationRunRecord) SetAutomationId(value *string) {
 	m.automationId = value
 }
 
+// SetAutomationLineage sets the automationLineage property value. Persisted origin of an automation run and the events produced by its actions.
+func (m *AutomationRunRecord) SetAutomationLineage(value AutomationRunRecord_automationLineageable) {
+	m.automationLineage = value
+}
+
 // SetCompletedAt sets the completedAt property value. UTC timestamp when processing completed for this automation run record.
 func (m *AutomationRunRecord) SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.completedAt = value
@@ -537,6 +566,7 @@ type AutomationRunRecordable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetActions() []AutomationActionRunRecordable
 	GetAutomationId() *string
+	GetAutomationLineage() AutomationRunRecord_automationLineageable
 	GetCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetConditionResults() AutomationRunRecord_conditionResultsable
 	GetExecutionMode() *string
@@ -553,6 +583,7 @@ type AutomationRunRecordable interface {
 	GetTriggerType() *string
 	SetActions(value []AutomationActionRunRecordable)
 	SetAutomationId(value *string)
+	SetAutomationLineage(value AutomationRunRecord_automationLineageable)
 	SetCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetConditionResults(value AutomationRunRecord_conditionResultsable)
 	SetExecutionMode(value *string)
