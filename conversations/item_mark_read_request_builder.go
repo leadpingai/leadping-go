@@ -14,10 +14,16 @@ type ItemMarkReadRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// ItemMarkReadRequestBuilderPostQueryParameters clears unread state only at the observed event version. Returns false if the conversation changed or is inaccessible.
+type ItemMarkReadRequestBuilderPostQueryParameters struct {
+	// The event version observed by the reader.
+	EventVersion *int64 "uriparametername:\"eventVersion\""
+}
+
 // NewItemMarkReadRequestBuilderInternal instantiates a new ItemMarkReadRequestBuilder and sets the default values.
 func NewItemMarkReadRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ItemMarkReadRequestBuilder {
 	m := &ItemMarkReadRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}/mark-read", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}/mark-read?eventVersion={eventVersion}", pathParameters),
 	}
 	return m
 }
@@ -29,13 +35,12 @@ func NewItemMarkReadRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
 	return NewItemMarkReadRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post updates the conversation's read state for the current user's inbox and returns whether the conversation was found.
+// Post clears unread state only at the observed event version. Returns false if the conversation changed or is inaccessible.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
-// returns a ProblemDetails error when the service returns a 404 status code
 // returns a ProblemDetails error when the service returns a 429 status code
-func (m *ItemMarkReadRequestBuilder) Post(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*bool, error) {
+func (m *ItemMarkReadRequestBuilder) Post(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemMarkReadRequestBuilderPostQueryParameters]) (*bool, error) {
 	requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration)
 	if err != nil {
 		return nil, err
@@ -43,7 +48,6 @@ func (m *ItemMarkReadRequestBuilder) Post(ctx context.Context, requestConfigurat
 	errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings{
 		"401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
 		"403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
-		"404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
 		"429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
 	}
 	res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "bool", errorMapping)
@@ -56,9 +60,9 @@ func (m *ItemMarkReadRequestBuilder) Post(ctx context.Context, requestConfigurat
 	return res.(*bool), nil
 }
 
-// ToPostRequestInformation updates the conversation's read state for the current user's inbox and returns whether the conversation was found.
+// ToPostRequestInformation clears unread state only at the observed event version. Returns false if the conversation changed or is inaccessible.
 // returns a *RequestInformation when successful
-func (m *ItemMarkReadRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *ItemMarkReadRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[ItemMarkReadRequestBuilderPostQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
 	requestInfo.Headers.TryAdd("Accept", "text/plain;q=0.9")

@@ -46,6 +46,8 @@ type PhoneCallResponse struct {
 	leadId *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The organization context required to handle this call on a mobile device.
+	organizationId *string
 	// Phone number used by this phone call for calls, SMS, lookup, or routing.
 	phoneNumber *string
 	// UTC timestamp when Leadping queued this phone call for processing.
@@ -333,6 +335,16 @@ func (m *PhoneCallResponse) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
 	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -470,6 +482,12 @@ func (m *PhoneCallResponse) GetLeadId() *string {
 // returns a *Time when successful
 func (m *PhoneCallResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.modifiedAt
+}
+
+// GetOrganizationId gets the organizationId property value. The organization context required to handle this call on a mobile device.
+// returns a *string when successful
+func (m *PhoneCallResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
 
 // GetPhoneNumber gets the phoneNumber property value. Phone number used by this phone call for calls, SMS, lookup, or routing.
@@ -643,6 +661,12 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
 		if err != nil {
 			return err
@@ -803,6 +827,11 @@ func (m *PhoneCallResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97
 	m.modifiedAt = value
 }
 
+// SetOrganizationId sets the organizationId property value. The organization context required to handle this call on a mobile device.
+func (m *PhoneCallResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
+}
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number used by this phone call for calls, SMS, lookup, or routing.
 func (m *PhoneCallResponse) SetPhoneNumber(value *string) {
 	m.phoneNumber = value
@@ -873,6 +902,7 @@ type PhoneCallResponseable interface {
 	GetIsDemo() *bool
 	GetLeadId() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOrganizationId() *string
 	GetPhoneNumber() *string
 	GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRingingAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -900,6 +930,7 @@ type PhoneCallResponseable interface {
 	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOrganizationId(value *string)
 	SetPhoneNumber(value *string)
 	SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRingingAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

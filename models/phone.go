@@ -13,7 +13,7 @@ type Phone struct {
 	additionalData map[string]any
 	// E.164 phone number exposed by this lead phone number.
 	number *string
-	// Identifier of the canonical phone identity stored by Leadping.
+	// Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
 	phoneIdentityId *string
 	// Type classification used to route and interpret this lead phone number in the Leadping API.
 	typeEscaped *string
@@ -81,7 +81,7 @@ func (m *Phone) GetNumber() *string {
 	return m.number
 }
 
-// GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+// GetPhoneIdentityId gets the phoneIdentityId property value. Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
 // returns a *string when successful
 func (m *Phone) GetPhoneIdentityId() *string {
 	return m.phoneIdentityId
@@ -132,7 +132,7 @@ func (m *Phone) SetNumber(value *string) {
 	m.number = value
 }
 
-// SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+// SetPhoneIdentityId sets the phoneIdentityId property value. Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
 func (m *Phone) SetPhoneIdentityId(value *string) {
 	m.phoneIdentityId = value
 }

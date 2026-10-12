@@ -4,6 +4,8 @@
 package conversations
 
 import (
+	"context"
+	i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811 "github.com/leadpingai/leadping-go/models"
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
@@ -27,8 +29,56 @@ func NewConversationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
 	return NewConversationsItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 
+// Get returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
+// returns a ConversationResponseable when successful
+// returns a ProblemDetails error when the service returns a 401 status code
+// returns a ProblemDetails error when the service returns a 403 status code
+// returns a ProblemDetails error when the service returns a 404 status code
+// returns a ProblemDetails error when the service returns a 429 status code
+func (m *ConversationsItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationResponseable, error) {
+	requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration)
+	if err != nil {
+		return nil, err
+	}
+	errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings{
+		"401": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"403": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"404": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+		"429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
+	}
+	res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateConversationResponseFromDiscriminatorValue, errorMapping)
+	if err != nil {
+		return nil, err
+	}
+	if res == nil {
+		return nil, nil
+	}
+	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationResponseable), nil
+}
+
 // MarkRead the markRead property
 // returns a *ItemMarkReadRequestBuilder when successful
 func (m *ConversationsItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder {
 	return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// OutboundReadiness the outboundReadiness property
+// returns a *ItemOutboundReadinessRequestBuilder when successful
+func (m *ConversationsItemRequestBuilder) OutboundReadiness() *ItemOutboundReadinessRequestBuilder {
+	return NewItemOutboundReadinessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// ToGetRequestInformation returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
+// returns a *RequestInformation when successful
+func (m *ConversationsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
+	requestInfo.Headers.TryAdd("Accept", "text/plain;q=0.9")
+	return requestInfo, nil
+}
+
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ConversationsItemRequestBuilder when successful
+func (m *ConversationsItemRequestBuilder) WithUrl(rawUrl string) *ConversationsItemRequestBuilder {
+	return NewConversationsItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
 }

@@ -4,6 +4,7 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/pr
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/email - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/avatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/EventDetailResponse/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/EventTableRow/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/EventTableRow/properties/actorEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/InvoicePdfAccessResponse/properties/url - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/LeadContact/properties/email - The format email is not supported by Kiota and the string type will be used.

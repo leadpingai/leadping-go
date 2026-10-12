@@ -34,6 +34,8 @@ type LeadStatusChangeResponse struct {
 	changeSource *LeadStatusChangeResponse_changeSource
 	// UTC timestamp for created at on this lead status change.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// When this follow-up was completed; email/call activity alone does not complete it.
+	followUpCompletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The current follow up status for this lead status change.
 	followUpStatus *string
 	// Unique Leadping identifier for this lead status change.
@@ -66,6 +68,8 @@ type LeadStatusChangeResponse struct {
 	reason *string
 	// The related call event ID associated with this lead status change.
 	relatedCallEventId *string
+	// Monotonic revision of the lead's current status and scheduling state.
+	revision *int64
 	// The source ID associated with this lead status change.
 	sourceId *string
 	// UTC timestamp for task due at on this lead status change.
@@ -277,6 +281,16 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["followUpCompletedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFollowUpCompletedAt(val)
+		}
+		return nil
+	}
 	res["followUpStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -437,6 +451,16 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["revision"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRevision(val)
+		}
+		return nil
+	}
 	res["sourceId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -488,6 +512,12 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers() map[string]func(i878a
 		return nil
 	}
 	return res
+}
+
+// GetFollowUpCompletedAt gets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+// returns a *Time when successful
+func (m *LeadStatusChangeResponse) GetFollowUpCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.followUpCompletedAt
 }
 
 // GetFollowUpStatus gets the followUpStatus property value. The current follow up status for this lead status change.
@@ -584,6 +614,12 @@ func (m *LeadStatusChangeResponse) GetReason() *string {
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetRelatedCallEventId() *string {
 	return m.relatedCallEventId
+}
+
+// GetRevision gets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+// returns a *int64 when successful
+func (m *LeadStatusChangeResponse) GetRevision() *int64 {
+	return m.revision
 }
 
 // GetSourceId gets the sourceId property value. The source ID associated with this lead status change.
@@ -687,6 +723,12 @@ func (m *LeadStatusChangeResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteTimeValue("followUpCompletedAt", m.GetFollowUpCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
 		if err != nil {
 			return err
@@ -778,6 +820,12 @@ func (m *LeadStatusChangeResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteStringValue("relatedCallEventId", m.GetRelatedCallEventId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("revision", m.GetRevision())
 		if err != nil {
 			return err
 		}
@@ -881,6 +929,11 @@ func (m *LeadStatusChangeResponse) SetCreatedAt(value *i336074805fc853987abe6f7f
 	m.createdAt = value
 }
 
+// SetFollowUpCompletedAt sets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+func (m *LeadStatusChangeResponse) SetFollowUpCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.followUpCompletedAt = value
+}
+
 // SetFollowUpStatus sets the followUpStatus property value. The current follow up status for this lead status change.
 func (m *LeadStatusChangeResponse) SetFollowUpStatus(value *string) {
 	m.followUpStatus = value
@@ -961,6 +1014,11 @@ func (m *LeadStatusChangeResponse) SetRelatedCallEventId(value *string) {
 	m.relatedCallEventId = value
 }
 
+// SetRevision sets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+func (m *LeadStatusChangeResponse) SetRevision(value *int64) {
+	m.revision = value
+}
+
 // SetSourceId sets the sourceId property value. The source ID associated with this lead status change.
 func (m *LeadStatusChangeResponse) SetSourceId(value *string) {
 	m.sourceId = value
@@ -1000,6 +1058,7 @@ type LeadStatusChangeResponseable interface {
 	GetChangedByUserId() *string
 	GetChangeSource() *LeadStatusChangeResponse_changeSource
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFollowUpCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetFollowUpStatus() *string
 	GetId() *string
 	GetIsDemo() *bool
@@ -1016,6 +1075,7 @@ type LeadStatusChangeResponseable interface {
 	GetOutcome() *string
 	GetReason() *string
 	GetRelatedCallEventId() *string
+	GetRevision() *int64
 	GetSourceId() *string
 	GetTaskDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetTimestamp() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1032,6 +1092,7 @@ type LeadStatusChangeResponseable interface {
 	SetChangedByUserId(value *string)
 	SetChangeSource(value *LeadStatusChangeResponse_changeSource)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFollowUpCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetFollowUpStatus(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
@@ -1048,6 +1109,7 @@ type LeadStatusChangeResponseable interface {
 	SetOutcome(value *string)
 	SetReason(value *string)
 	SetRelatedCallEventId(value *string)
+	SetRevision(value *int64)
 	SetSourceId(value *string)
 	SetTaskDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetTimestamp(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

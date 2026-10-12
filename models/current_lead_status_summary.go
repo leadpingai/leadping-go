@@ -22,10 +22,16 @@ type CurrentLeadStatusSummary struct {
 	changedByUserId *string
 	// Human-readable display name shown for this current lead status change summary.
 	displayName *string
+	// When this follow-up was completed; email/call activity alone does not complete it.
+	followUpCompletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The earliest callback or task time for the current status.
+	followUpDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for this current lead status change summary.
 	id *string
 	// Current lead status change outcome assigned to the lead.
 	outcome *string
+	// Monotonic revision of the lead's current status and scheduling state.
+	revision *int64
 	// Known sources that can change a lead's current lead status change.
 	source *CurrentLeadStatusSummary_source
 }
@@ -133,6 +139,26 @@ func (m *CurrentLeadStatusSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["followUpCompletedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFollowUpCompletedAt(val)
+		}
+		return nil
+	}
+	res["followUpDueAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFollowUpDueAt(val)
+		}
+		return nil
+	}
 	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -153,6 +179,16 @@ func (m *CurrentLeadStatusSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["revision"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetRevision(val)
+		}
+		return nil
+	}
 	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseCurrentLeadStatusSummary_source)
 		if err != nil {
@@ -166,6 +202,18 @@ func (m *CurrentLeadStatusSummary) GetFieldDeserializers() map[string]func(i878a
 	return res
 }
 
+// GetFollowUpCompletedAt gets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+// returns a *Time when successful
+func (m *CurrentLeadStatusSummary) GetFollowUpCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.followUpCompletedAt
+}
+
+// GetFollowUpDueAt gets the followUpDueAt property value. The earliest callback or task time for the current status.
+// returns a *Time when successful
+func (m *CurrentLeadStatusSummary) GetFollowUpDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.followUpDueAt
+}
+
 // GetId gets the id property value. Unique Leadping identifier for this current lead status change summary.
 // returns a *string when successful
 func (m *CurrentLeadStatusSummary) GetId() *string {
@@ -176,6 +224,12 @@ func (m *CurrentLeadStatusSummary) GetId() *string {
 // returns a *string when successful
 func (m *CurrentLeadStatusSummary) GetOutcome() *string {
 	return m.outcome
+}
+
+// GetRevision gets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+// returns a *int64 when successful
+func (m *CurrentLeadStatusSummary) GetRevision() *int64 {
+	return m.revision
 }
 
 // GetSource gets the source property value. Known sources that can change a lead's current lead status change.
@@ -218,6 +272,18 @@ func (m *CurrentLeadStatusSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteTimeValue("followUpCompletedAt", m.GetFollowUpCompletedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("followUpDueAt", m.GetFollowUpDueAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("id", m.GetId())
 		if err != nil {
 			return err
@@ -225,6 +291,12 @@ func (m *CurrentLeadStatusSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteStringValue("outcome", m.GetOutcome())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("revision", m.GetRevision())
 		if err != nil {
 			return err
 		}
@@ -275,6 +347,16 @@ func (m *CurrentLeadStatusSummary) SetDisplayName(value *string) {
 	m.displayName = value
 }
 
+// SetFollowUpCompletedAt sets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+func (m *CurrentLeadStatusSummary) SetFollowUpCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.followUpCompletedAt = value
+}
+
+// SetFollowUpDueAt sets the followUpDueAt property value. The earliest callback or task time for the current status.
+func (m *CurrentLeadStatusSummary) SetFollowUpDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.followUpDueAt = value
+}
+
 // SetId sets the id property value. Unique Leadping identifier for this current lead status change summary.
 func (m *CurrentLeadStatusSummary) SetId(value *string) {
 	m.id = value
@@ -283,6 +365,11 @@ func (m *CurrentLeadStatusSummary) SetId(value *string) {
 // SetOutcome sets the outcome property value. Current lead status change outcome assigned to the lead.
 func (m *CurrentLeadStatusSummary) SetOutcome(value *string) {
 	m.outcome = value
+}
+
+// SetRevision sets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+func (m *CurrentLeadStatusSummary) SetRevision(value *int64) {
+	m.revision = value
 }
 
 // SetSource sets the source property value. Known sources that can change a lead's current lead status change.
@@ -298,15 +385,21 @@ type CurrentLeadStatusSummaryable interface {
 	GetChangedByAutomationId() *string
 	GetChangedByUserId() *string
 	GetDisplayName() *string
+	GetFollowUpCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetFollowUpDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
 	GetOutcome() *string
+	GetRevision() *int64
 	GetSource() *CurrentLeadStatusSummary_source
 	SetCategory(value *CurrentLeadStatusSummary_category)
 	SetChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetChangedByAutomationId(value *string)
 	SetChangedByUserId(value *string)
 	SetDisplayName(value *string)
+	SetFollowUpCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetFollowUpDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
 	SetOutcome(value *string)
+	SetRevision(value *int64)
 	SetSource(value *CurrentLeadStatusSummary_source)
 }

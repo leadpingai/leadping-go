@@ -13,6 +13,8 @@ type CustomerAutomationHealth struct {
 	additionalData map[string]any
 	// Total number of automation records represented by this Leadping customer automation health.
 	automationCount *int32
+	// States whether missing historical evidence can make reported counts incomplete.
+	coverage AnalyticsCoverageable
 	// Total number of enabled records represented by this Leadping customer automation health.
 	enabledCount *int32
 	// Number of executions represented by this Leadping customer automation health.
@@ -54,6 +56,12 @@ func (m *CustomerAutomationHealth) GetAutomationCount() *int32 {
 	return m.automationCount
 }
 
+// GetCoverage gets the coverage property value. States whether missing historical evidence can make reported counts incomplete.
+// returns a AnalyticsCoverageable when successful
+func (m *CustomerAutomationHealth) GetCoverage() AnalyticsCoverageable {
+	return m.coverage
+}
+
 // GetEnabledCount gets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
 // returns a *int32 when successful
 func (m *CustomerAutomationHealth) GetEnabledCount() *int32 {
@@ -89,6 +97,16 @@ func (m *CustomerAutomationHealth) GetFieldDeserializers() map[string]func(i878a
 		}
 		if val != nil {
 			m.SetAutomationCount(val)
+		}
+		return nil
+	}
+	res["coverage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateAnalyticsCoverageFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCoverage(val.(AnalyticsCoverageable))
 		}
 		return nil
 	}
@@ -204,6 +222,12 @@ func (m *CustomerAutomationHealth) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteObjectValue("coverage", m.GetCoverage())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteInt32Value("enabledCount", m.GetEnabledCount())
 		if err != nil {
 			return err
@@ -276,6 +300,11 @@ func (m *CustomerAutomationHealth) SetAutomationCount(value *int32) {
 	m.automationCount = value
 }
 
+// SetCoverage sets the coverage property value. States whether missing historical evidence can make reported counts incomplete.
+func (m *CustomerAutomationHealth) SetCoverage(value AnalyticsCoverageable) {
+	m.coverage = value
+}
+
 // SetEnabledCount sets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
 func (m *CustomerAutomationHealth) SetEnabledCount(value *int32) {
 	m.enabledCount = value
@@ -315,6 +344,7 @@ type CustomerAutomationHealthable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetAutomationCount() *int32
+	GetCoverage() AnalyticsCoverageable
 	GetEnabledCount() *int32
 	GetExecutions() *int32
 	GetFailingAutomations() []CustomerFailingAutomationable
@@ -323,6 +353,7 @@ type CustomerAutomationHealthable interface {
 	GetSuccessCount() *int32
 	GetTrend() []CustomerAutomationHealthPointable
 	SetAutomationCount(value *int32)
+	SetCoverage(value AnalyticsCoverageable)
 	SetEnabledCount(value *int32)
 	SetExecutions(value *int32)
 	SetFailingAutomations(value []CustomerFailingAutomationable)

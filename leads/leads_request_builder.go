@@ -48,6 +48,12 @@ func NewLeadsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
 	return NewLeadsRequestBuilderInternal(urlParams, requestAdapter)
 }
 
+// FollowUps the followUps property
+// returns a *FollowUpsRequestBuilder when successful
+func (m *LeadsRequestBuilder) FollowUps() *FollowUpsRequestBuilder {
+	return NewFollowUpsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Intake the intake property
 // returns a *IntakeRequestBuilder when successful
 func (m *LeadsRequestBuilder) Intake() *IntakeRequestBuilder {

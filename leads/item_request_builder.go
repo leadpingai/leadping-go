@@ -64,6 +64,12 @@ func (m *ItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *i
 	return nil
 }
 
+// FollowUp the followUp property
+// returns a *ItemFollowUpRequestBuilder when successful
+func (m *ItemRequestBuilder) FollowUp() *ItemFollowUpRequestBuilder {
+	return NewItemFollowUpRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Get returns one lead visible to the current user, including communication details, status, source, and follow-up context.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code

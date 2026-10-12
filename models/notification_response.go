@@ -16,6 +16,8 @@ type NotificationResponse struct {
 	actionUrl *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// The mobile conversation destination.
+	conversationId *string
 	// UTC timestamp when the resource was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Optional supporting details displayed beneath the notification message.
@@ -26,12 +28,16 @@ type NotificationResponse struct {
 	isDemo *bool
 	// Whether this notification is read.
 	isRead *bool
+	// The lead used to resolve the conversation.
+	leadId *string
 	// Message for this notification.
 	message *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Human-readable display name of the resource.
 	name *string
+	// The organization selected before opening this notification.
+	organizationId *string
 	// Ranks the urgency and presentation importance of a Leadping user notification.
 	priority *NotificationPriority
 	// Whether this notification should also be delivered as a device push notification.
@@ -79,6 +85,12 @@ func (m *NotificationResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetConversationId gets the conversationId property value. The mobile conversation destination.
+// returns a *string when successful
+func (m *NotificationResponse) GetConversationId() *string {
+	return m.conversationId
+}
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
 // returns a *Time when successful
 func (m *NotificationResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -112,6 +124,16 @@ func (m *NotificationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetActionUrl(val)
+		}
+		return nil
+	}
+	res["conversationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConversationId(val)
 		}
 		return nil
 	}
@@ -165,6 +187,16 @@ func (m *NotificationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadId(val)
+		}
+		return nil
+	}
 	res["message"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -192,6 +224,16 @@ func (m *NotificationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetName(val)
+		}
+		return nil
+	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
 		}
 		return nil
 	}
@@ -286,6 +328,12 @@ func (m *NotificationResponse) GetIsRead() *bool {
 	return m.isRead
 }
 
+// GetLeadId gets the leadId property value. The lead used to resolve the conversation.
+// returns a *string when successful
+func (m *NotificationResponse) GetLeadId() *string {
+	return m.leadId
+}
+
 // GetMessage gets the message property value. Message for this notification.
 // returns a *string when successful
 func (m *NotificationResponse) GetMessage() *string {
@@ -302,6 +350,12 @@ func (m *NotificationResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a
 // returns a *string when successful
 func (m *NotificationResponse) GetName() *string {
 	return m.name
+}
+
+// GetOrganizationId gets the organizationId property value. The organization selected before opening this notification.
+// returns a *string when successful
+func (m *NotificationResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
 
 // GetPriority gets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
@@ -361,6 +415,12 @@ func (m *NotificationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteStringValue("conversationId", m.GetConversationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
 		if err != nil {
 			return err
@@ -391,6 +451,12 @@ func (m *NotificationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("message", m.GetMessage())
 		if err != nil {
 			return err
@@ -404,6 +470,12 @@ func (m *NotificationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteStringValue("name", m.GetName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
 		if err != nil {
 			return err
 		}
@@ -476,6 +548,11 @@ func (m *NotificationResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetConversationId sets the conversationId property value. The mobile conversation destination.
+func (m *NotificationResponse) SetConversationId(value *string) {
+	m.conversationId = value
+}
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
 func (m *NotificationResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.createdAt = value
@@ -501,6 +578,11 @@ func (m *NotificationResponse) SetIsRead(value *bool) {
 	m.isRead = value
 }
 
+// SetLeadId sets the leadId property value. The lead used to resolve the conversation.
+func (m *NotificationResponse) SetLeadId(value *string) {
+	m.leadId = value
+}
+
 // SetMessage sets the message property value. Message for this notification.
 func (m *NotificationResponse) SetMessage(value *string) {
 	m.message = value
@@ -514,6 +596,11 @@ func (m *NotificationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3a
 // SetName sets the name property value. Human-readable display name of the resource.
 func (m *NotificationResponse) SetName(value *string) {
 	m.name = value
+}
+
+// SetOrganizationId sets the organizationId property value. The organization selected before opening this notification.
+func (m *NotificationResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
 }
 
 // SetPriority sets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
@@ -556,14 +643,17 @@ type NotificationResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetActionButtonText() *string
 	GetActionUrl() *string
+	GetConversationId() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDetails() *string
 	GetId() *string
 	GetIsDemo() *bool
 	GetIsRead() *bool
+	GetLeadId() *string
 	GetMessage() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
+	GetOrganizationId() *string
 	GetPriority() *NotificationPriority
 	GetPushEnabled() *bool
 	GetReadAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -573,14 +663,17 @@ type NotificationResponseable interface {
 	GetUserId() *string
 	SetActionButtonText(value *string)
 	SetActionUrl(value *string)
+	SetConversationId(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDetails(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
 	SetIsRead(value *bool)
+	SetLeadId(value *string)
 	SetMessage(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
+	SetOrganizationId(value *string)
 	SetPriority(value *NotificationPriority)
 	SetPushEnabled(value *bool)
 	SetReadAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

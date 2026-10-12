@@ -22,6 +22,12 @@ type LeadStatusChangeRequest struct {
 	callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Controlled lead status change categories used for reporting, automation, and analytics.
 	category *LeadStatusChangeRequest_category
+	// Whether the scheduled follow-up is explicitly complete.
+	completeFollowUp *bool
+	// Optional optimistic concurrency guard for the status currently displayed by the client.
+	expectedCurrentStatusId *string
+	// Optional revision guard, including when the lead has no persisted status history yet.
+	expectedRevision *int64
 	// The current follow up status for this lead status change.
 	followUpStatus *string
 	// The operator or customer notes recorded for this lead status change.
@@ -85,6 +91,24 @@ func (m *LeadStatusChangeRequest) GetCategory() *LeadStatusChangeRequest_categor
 	return m.category
 }
 
+// GetCompleteFollowUp gets the completeFollowUp property value. Whether the scheduled follow-up is explicitly complete.
+// returns a *bool when successful
+func (m *LeadStatusChangeRequest) GetCompleteFollowUp() *bool {
+	return m.completeFollowUp
+}
+
+// GetExpectedCurrentStatusId gets the expectedCurrentStatusId property value. Optional optimistic concurrency guard for the status currently displayed by the client.
+// returns a *string when successful
+func (m *LeadStatusChangeRequest) GetExpectedCurrentStatusId() *string {
+	return m.expectedCurrentStatusId
+}
+
+// GetExpectedRevision gets the expectedRevision property value. Optional revision guard, including when the lead has no persisted status history yet.
+// returns a *int64 when successful
+func (m *LeadStatusChangeRequest) GetExpectedRevision() *int64 {
+	return m.expectedRevision
+}
+
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *LeadStatusChangeRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -136,6 +160,36 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers() map[string]func(i878a8
 		}
 		if val != nil {
 			m.SetCategory(val.(*LeadStatusChangeRequest_category))
+		}
+		return nil
+	}
+	res["completeFollowUp"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompleteFollowUp(val)
+		}
+		return nil
+	}
+	res["expectedCurrentStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExpectedCurrentStatusId(val)
+		}
+		return nil
+	}
+	res["expectedRevision"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetExpectedRevision(val)
 		}
 		return nil
 	}
@@ -272,6 +326,24 @@ func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 		}
 	}
 	{
+		err := writer.WriteBoolValue("completeFollowUp", m.GetCompleteFollowUp())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("expectedCurrentStatusId", m.GetExpectedCurrentStatusId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("expectedRevision", m.GetExpectedRevision())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
 		if err != nil {
 			return err
@@ -346,6 +418,21 @@ func (m *LeadStatusChangeRequest) SetCategory(value *LeadStatusChangeRequest_cat
 	m.category = value
 }
 
+// SetCompleteFollowUp sets the completeFollowUp property value. Whether the scheduled follow-up is explicitly complete.
+func (m *LeadStatusChangeRequest) SetCompleteFollowUp(value *bool) {
+	m.completeFollowUp = value
+}
+
+// SetExpectedCurrentStatusId sets the expectedCurrentStatusId property value. Optional optimistic concurrency guard for the status currently displayed by the client.
+func (m *LeadStatusChangeRequest) SetExpectedCurrentStatusId(value *string) {
+	m.expectedCurrentStatusId = value
+}
+
+// SetExpectedRevision sets the expectedRevision property value. Optional revision guard, including when the lead has no persisted status history yet.
+func (m *LeadStatusChangeRequest) SetExpectedRevision(value *int64) {
+	m.expectedRevision = value
+}
+
 // SetFollowUpStatus sets the followUpStatus property value. The current follow up status for this lead status change.
 func (m *LeadStatusChangeRequest) SetFollowUpStatus(value *string) {
 	m.followUpStatus = value
@@ -384,6 +471,9 @@ type LeadStatusChangeRequestable interface {
 	GetAppointmentStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCallbackAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCategory() *LeadStatusChangeRequest_category
+	GetCompleteFollowUp() *bool
+	GetExpectedCurrentStatusId() *string
+	GetExpectedRevision() *int64
 	GetFollowUpStatus() *string
 	GetNotes() *string
 	GetOutcome() *string
@@ -395,6 +485,9 @@ type LeadStatusChangeRequestable interface {
 	SetAppointmentStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCategory(value *LeadStatusChangeRequest_category)
+	SetCompleteFollowUp(value *bool)
+	SetExpectedCurrentStatusId(value *string)
+	SetExpectedRevision(value *int64)
 	SetFollowUpStatus(value *string)
 	SetNotes(value *string)
 	SetOutcome(value *string)

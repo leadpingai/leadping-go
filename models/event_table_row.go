@@ -108,6 +108,8 @@ type EventTableRow struct {
 	trafficType *EventTableRow_trafficType
 	// UTC timestamp when the provider marked the message undeliverable.
 	undeliverableAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Playable recording URL for voicemail events.
+	voicemailUrl *string
 	// Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
 	wasManuallyOverridden *bool
 }
@@ -747,6 +749,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		return nil
 	}
+	res["voicemailUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoicemailUrl(val)
+		}
+		return nil
+	}
 	res["wasManuallyOverridden"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -920,6 +932,12 @@ func (m *EventTableRow) GetTrafficType() *EventTableRow_trafficType {
 // returns a *Time when successful
 func (m *EventTableRow) GetUndeliverableAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.undeliverableAt
+}
+
+// GetVoicemailUrl gets the voicemailUrl property value. Playable recording URL for voicemail events.
+// returns a *string when successful
+func (m *EventTableRow) GetVoicemailUrl() *string {
+	return m.voicemailUrl
 }
 
 // GetWasManuallyOverridden gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
@@ -1229,6 +1247,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteStringValue("voicemailUrl", m.GetVoicemailUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("wasManuallyOverridden", m.GetWasManuallyOverridden())
 		if err != nil {
 			return err
@@ -1488,6 +1512,11 @@ func (m *EventTableRow) SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad9
 	m.undeliverableAt = value
 }
 
+// SetVoicemailUrl sets the voicemailUrl property value. Playable recording URL for voicemail events.
+func (m *EventTableRow) SetVoicemailUrl(value *string) {
+	m.voicemailUrl = value
+}
+
 // SetWasManuallyOverridden sets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
 func (m *EventTableRow) SetWasManuallyOverridden(value *bool) {
 	m.wasManuallyOverridden = value
@@ -1544,6 +1573,7 @@ type EventTableRowable interface {
 	GetToPhoneNumber() *string
 	GetTrafficType() *EventTableRow_trafficType
 	GetUndeliverableAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetVoicemailUrl() *string
 	GetWasManuallyOverridden() *bool
 	SetActorDisplayName(value *string)
 	SetActorEmail(value *string)
@@ -1593,5 +1623,6 @@ type EventTableRowable interface {
 	SetToPhoneNumber(value *string)
 	SetTrafficType(value *EventTableRow_trafficType)
 	SetUndeliverableAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetVoicemailUrl(value *string)
 	SetWasManuallyOverridden(value *bool)
 }

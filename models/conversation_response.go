@@ -24,6 +24,8 @@ type ConversationResponse struct {
 	currentLeadStatus ConversationResponse_currentLeadStatusable
 	// Email address used to resolve the lead's avatar when available.
 	email *string
+	// Monotonic event boundary. Mark-read requests must send the version the reader observed.
+	eventVersion *int64
 	// First name of the lead, user, or contact represented by this conversation response.
 	firstName *string
 	// Unique Leadping identifier for this conversation response.
@@ -113,6 +115,12 @@ func (m *ConversationResponse) GetEmail() *string {
 	return m.email
 }
 
+// GetEventVersion gets the eventVersion property value. Monotonic event boundary. Mark-read requests must send the version the reader observed.
+// returns a *int64 when successful
+func (m *ConversationResponse) GetEventVersion() *int64 {
+	return m.eventVersion
+}
+
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -174,6 +182,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetEmail(val)
+		}
+		return nil
+	}
+	res["eventVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEventVersion(val)
 		}
 		return nil
 	}
@@ -475,6 +493,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteInt64Value("eventVersion", m.GetEventVersion())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("firstName", m.GetFirstName())
 		if err != nil {
 			return err
@@ -615,6 +639,11 @@ func (m *ConversationResponse) SetEmail(value *string) {
 	m.email = value
 }
 
+// SetEventVersion sets the eventVersion property value. Monotonic event boundary. Mark-read requests must send the version the reader observed.
+func (m *ConversationResponse) SetEventVersion(value *int64) {
+	m.eventVersion = value
+}
+
 // SetFirstName sets the firstName property value. First name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetFirstName(value *string) {
 	m.firstName = value
@@ -704,6 +733,7 @@ type ConversationResponseable interface {
 	GetAvatarUrl() *string
 	GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable
 	GetEmail() *string
+	GetEventVersion() *int64
 	GetFirstName() *string
 	GetId() *string
 	GetIsArchived() *bool
@@ -726,6 +756,7 @@ type ConversationResponseable interface {
 	SetAvatarUrl(value *string)
 	SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)
 	SetEmail(value *string)
+	SetEventVersion(value *int64)
 	SetFirstName(value *string)
 	SetId(value *string)
 	SetIsArchived(value *bool)
