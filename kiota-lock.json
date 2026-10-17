@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E34F1D2ED5F653B8798F841F6AA5077025D8411E5B21B542D6AAF8749B7C4225840258CB42ECB4450C3F5127D772374D58EF001E1B247D441F85729ADDA42941",
+  "descriptionHash": "2648160C355242D79740274B77C77532E2CB5EC12FD3C21880BFD84627D7E00E68CBCF837CB128482DAA07152D4854C559A23547655CF8E5E82AB2CA8FC2FAB1",
   "descriptionLocation": "../openapi/openapi.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.36.0",
+  "kiotaVersion": "1.36.1",
   "clientClassName": "LeadpingOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "github.com/leadpingai/leadping-go",

@@ -40,6 +40,10 @@ type ConversationResponse struct {
 	lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Indicates that the most recent conversation activity is an internal note.
 	lastEventIsInternalNote *bool
+	// UTC timestamp of the latest inbound customer activity.
+	lastInboundAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Preview of the latest inbound customer activity, preserved across outbound updates.
+	lastInboundSnippet *string
 	// Last name of the lead, user, or contact represented by this conversation response.
 	lastName *string
 	// Most recent message preview shown for the conversation.
@@ -48,12 +52,16 @@ type ConversationResponse struct {
 	leadId *string
 	// Lead's phone number used for conversation matching and outreach.
 	leadPhoneNumber *string
+	// Whether a customer reply is awaiting a manual response or acknowledgement.
+	needsReply *bool
 	// Recommended next step to move this conversation response forward.
 	nextStep *string
 	// Phone number ID manually chosen to override automatic outbound selection.
 	outboundPhoneNumberOverrideId *string
 	// Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 	phoneNumber ConversationResponse_phoneNumberable
+	// Monotonic inbound reply boundary used when marking a conversation handled.
+	replyVersion *int64
 	// Defines the customer-facing operational status for an inbox conversation.
 	status *ConversationResponse_status
 	// Human-readable reason explaining the current status of this conversation response.
@@ -265,6 +273,26 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["lastInboundAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastInboundAt(val)
+		}
+		return nil
+	}
+	res["lastInboundSnippet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastInboundSnippet(val)
+		}
+		return nil
+	}
 	res["lastName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -305,6 +333,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["needsReply"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNeedsReply(val)
+		}
+		return nil
+	}
 	res["nextStep"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -332,6 +370,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetPhoneNumber(val.(ConversationResponse_phoneNumberable))
+		}
+		return nil
+	}
+	res["replyVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReplyVersion(val)
 		}
 		return nil
 	}
@@ -400,6 +448,18 @@ func (m *ConversationResponse) GetLastEventIsInternalNote() *bool {
 	return m.lastEventIsInternalNote
 }
 
+// GetLastInboundAt gets the lastInboundAt property value. UTC timestamp of the latest inbound customer activity.
+// returns a *Time when successful
+func (m *ConversationResponse) GetLastInboundAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastInboundAt
+}
+
+// GetLastInboundSnippet gets the lastInboundSnippet property value. Preview of the latest inbound customer activity, preserved across outbound updates.
+// returns a *string when successful
+func (m *ConversationResponse) GetLastInboundSnippet() *string {
+	return m.lastInboundSnippet
+}
+
 // GetLastName gets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 // returns a *string when successful
 func (m *ConversationResponse) GetLastName() *string {
@@ -424,6 +484,12 @@ func (m *ConversationResponse) GetLeadPhoneNumber() *string {
 	return m.leadPhoneNumber
 }
 
+// GetNeedsReply gets the needsReply property value. Whether a customer reply is awaiting a manual response or acknowledgement.
+// returns a *bool when successful
+func (m *ConversationResponse) GetNeedsReply() *bool {
+	return m.needsReply
+}
+
 // GetNextStep gets the nextStep property value. Recommended next step to move this conversation response forward.
 // returns a *string when successful
 func (m *ConversationResponse) GetNextStep() *string {
@@ -440,6 +506,12 @@ func (m *ConversationResponse) GetOutboundPhoneNumberOverrideId() *string {
 // returns a ConversationResponse_phoneNumberable when successful
 func (m *ConversationResponse) GetPhoneNumber() ConversationResponse_phoneNumberable {
 	return m.phoneNumber
+}
+
+// GetReplyVersion gets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
+// returns a *int64 when successful
+func (m *ConversationResponse) GetReplyVersion() *int64 {
+	return m.replyVersion
 }
 
 // GetStatus gets the status property value. Defines the customer-facing operational status for an inbox conversation.
@@ -541,6 +613,18 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteTimeValue("lastInboundAt", m.GetLastInboundAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("lastInboundSnippet", m.GetLastInboundSnippet())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("lastName", m.GetLastName())
 		if err != nil {
 			return err
@@ -565,6 +649,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteBoolValue("needsReply", m.GetNeedsReply())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("nextStep", m.GetNextStep())
 		if err != nil {
 			return err
@@ -578,6 +668,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteObjectValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("replyVersion", m.GetReplyVersion())
 		if err != nil {
 			return err
 		}
@@ -679,6 +775,16 @@ func (m *ConversationResponse) SetLastEventIsInternalNote(value *bool) {
 	m.lastEventIsInternalNote = value
 }
 
+// SetLastInboundAt sets the lastInboundAt property value. UTC timestamp of the latest inbound customer activity.
+func (m *ConversationResponse) SetLastInboundAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastInboundAt = value
+}
+
+// SetLastInboundSnippet sets the lastInboundSnippet property value. Preview of the latest inbound customer activity, preserved across outbound updates.
+func (m *ConversationResponse) SetLastInboundSnippet(value *string) {
+	m.lastInboundSnippet = value
+}
+
 // SetLastName sets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
 func (m *ConversationResponse) SetLastName(value *string) {
 	m.lastName = value
@@ -699,6 +805,11 @@ func (m *ConversationResponse) SetLeadPhoneNumber(value *string) {
 	m.leadPhoneNumber = value
 }
 
+// SetNeedsReply sets the needsReply property value. Whether a customer reply is awaiting a manual response or acknowledgement.
+func (m *ConversationResponse) SetNeedsReply(value *bool) {
+	m.needsReply = value
+}
+
 // SetNextStep sets the nextStep property value. Recommended next step to move this conversation response forward.
 func (m *ConversationResponse) SetNextStep(value *string) {
 	m.nextStep = value
@@ -712,6 +823,11 @@ func (m *ConversationResponse) SetOutboundPhoneNumberOverrideId(value *string) {
 // SetPhoneNumber sets the phoneNumber property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNumberable) {
 	m.phoneNumber = value
+}
+
+// SetReplyVersion sets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
+func (m *ConversationResponse) SetReplyVersion(value *int64) {
+	m.replyVersion = value
 }
 
 // SetStatus sets the status property value. Defines the customer-facing operational status for an inbox conversation.
@@ -741,13 +857,17 @@ type ConversationResponseable interface {
 	GetIsUnread() *bool
 	GetLastEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastEventIsInternalNote() *bool
+	GetLastInboundAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLastInboundSnippet() *string
 	GetLastName() *string
 	GetLastSnippet() *string
 	GetLeadId() *string
 	GetLeadPhoneNumber() *string
+	GetNeedsReply() *bool
 	GetNextStep() *string
 	GetOutboundPhoneNumberOverrideId() *string
 	GetPhoneNumber() ConversationResponse_phoneNumberable
+	GetReplyVersion() *int64
 	GetStatus() *ConversationResponse_status
 	GetStatusReason() *string
 	SetActiveOutboundPhoneNumberId(value *string)
@@ -764,13 +884,17 @@ type ConversationResponseable interface {
 	SetIsUnread(value *bool)
 	SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastEventIsInternalNote(value *bool)
+	SetLastInboundAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLastInboundSnippet(value *string)
 	SetLastName(value *string)
 	SetLastSnippet(value *string)
 	SetLeadId(value *string)
 	SetLeadPhoneNumber(value *string)
+	SetNeedsReply(value *bool)
 	SetNextStep(value *string)
 	SetOutboundPhoneNumberOverrideId(value *string)
 	SetPhoneNumber(value ConversationResponse_phoneNumberable)
+	SetReplyVersion(value *int64)
 	SetStatus(value *ConversationResponse_status)
 	SetStatusReason(value *string)
 }

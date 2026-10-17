@@ -56,6 +56,12 @@ func (m *ConversationsItemRequestBuilder) Get(ctx context.Context, requestConfig
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationResponseable), nil
 }
 
+// MarkHandled the markHandled property
+// returns a *ItemMarkHandledRequestBuilder when successful
+func (m *ConversationsItemRequestBuilder) MarkHandled() *ItemMarkHandledRequestBuilder {
+	return NewItemMarkHandledRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // MarkRead the markRead property
 // returns a *ItemMarkReadRequestBuilder when successful
 func (m *ConversationsItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder {
