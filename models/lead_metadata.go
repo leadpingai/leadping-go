@@ -18,6 +18,10 @@ type LeadMetadata struct {
 	complianceBlockedReason *string
 	// Compliance status used to decide whether Leadping can send messages.
 	complianceStatus *string
+	// The provider responsible for a lead's consent certificate.
+	consentCertificateType *LeadMetadata_consentCertificateType
+	// Certificate URL used as proof of consumer consent.
+	consentCertificateUrl *string
 	// UTC timestamp when this lead attribution metadata was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Direct-post price supplied by the lead source during intake.
@@ -34,8 +38,6 @@ type LeadMetadata struct {
 	isImported *bool
 	// Landing page URL where the lead submitted their information.
 	landingPage *string
-	// Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-	leadpingConsentCertificateId *string
 	// Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
 	leadpingConsentCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Organization ID that owns this lead's attribution metadata.
@@ -70,8 +72,6 @@ type LeadMetadata struct {
 	subId *string
 	// UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
 	trustedFormCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// TrustedForm certificate URL used as proof of consumer consent.
-	trustedFormUrl *string
 	// Browser or client user agent captured when this lead attribution metadata was submitted.
 	userAgent *string
 	// User ID associated with this lead's attribution metadata.
@@ -127,6 +127,18 @@ func (m *LeadMetadata) GetComplianceStatus() *string {
 	return m.complianceStatus
 }
 
+// GetConsentCertificateType gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+// returns a *LeadMetadata_consentCertificateType when successful
+func (m *LeadMetadata) GetConsentCertificateType() *LeadMetadata_consentCertificateType {
+	return m.consentCertificateType
+}
+
+// GetConsentCertificateUrl gets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+// returns a *string when successful
+func (m *LeadMetadata) GetConsentCertificateUrl() *string {
+	return m.consentCertificateUrl
+}
+
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
 // returns a *Time when successful
 func (m *LeadMetadata) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -176,6 +188,26 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetComplianceStatus(val)
+		}
+		return nil
+	}
+	res["consentCertificateType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadMetadata_consentCertificateType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentCertificateType(val.(*LeadMetadata_consentCertificateType))
+		}
+		return nil
+	}
+	res["consentCertificateUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentCertificateUrl(val)
 		}
 		return nil
 	}
@@ -256,16 +288,6 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetLandingPage(val)
-		}
-		return nil
-	}
-	res["leadpingConsentCertificateId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetLeadpingConsentCertificateId(val)
 		}
 		return nil
 	}
@@ -439,16 +461,6 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
-	res["trustedFormUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetTrustedFormUrl(val)
-		}
-		return nil
-	}
 	res["userAgent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -562,12 +574,6 @@ func (m *LeadMetadata) GetLandingPage() *string {
 	return m.landingPage
 }
 
-// GetLeadpingConsentCertificateId gets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-// returns a *string when successful
-func (m *LeadMetadata) GetLeadpingConsentCertificateId() *string {
-	return m.leadpingConsentCertificateId
-}
-
 // GetLeadpingConsentCheckedAt gets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
 // returns a *Time when successful
 func (m *LeadMetadata) GetLeadpingConsentCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -670,12 +676,6 @@ func (m *LeadMetadata) GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad9
 	return m.trustedFormCheckedAt
 }
 
-// GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-// returns a *string when successful
-func (m *LeadMetadata) GetTrustedFormUrl() *string {
-	return m.trustedFormUrl
-}
-
 // GetUserAgent gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 // returns a *string when successful
 func (m *LeadMetadata) GetUserAgent() *string {
@@ -744,6 +744,19 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 			return err
 		}
 	}
+	if m.GetConsentCertificateType() != nil {
+		cast := (*m.GetConsentCertificateType()).String()
+		err := writer.WriteStringValue("consentCertificateType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("consentCertificateUrl", m.GetConsentCertificateUrl())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
 		if err != nil {
@@ -788,12 +801,6 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("landingPage", m.GetLandingPage())
-		if err != nil {
-			return err
-		}
-	}
-	{
-		err := writer.WriteStringValue("leadpingConsentCertificateId", m.GetLeadpingConsentCertificateId())
 		if err != nil {
 			return err
 		}
@@ -901,12 +908,6 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
-		err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteStringValue("userAgent", m.GetUserAgent())
 		if err != nil {
 			return err
@@ -983,6 +984,16 @@ func (m *LeadMetadata) SetComplianceStatus(value *string) {
 	m.complianceStatus = value
 }
 
+// SetConsentCertificateType sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+func (m *LeadMetadata) SetConsentCertificateType(value *LeadMetadata_consentCertificateType) {
+	m.consentCertificateType = value
+}
+
+// SetConsentCertificateUrl sets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+func (m *LeadMetadata) SetConsentCertificateUrl(value *string) {
+	m.consentCertificateUrl = value
+}
+
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
 func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.createdAt = value
@@ -1021,11 +1032,6 @@ func (m *LeadMetadata) SetIsImported(value *bool) {
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadMetadata) SetLandingPage(value *string) {
 	m.landingPage = value
-}
-
-// SetLeadpingConsentCertificateId sets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-func (m *LeadMetadata) SetLeadpingConsentCertificateId(value *string) {
-	m.leadpingConsentCertificateId = value
 }
 
 // SetLeadpingConsentCheckedAt sets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
@@ -1113,11 +1119,6 @@ func (m *LeadMetadata) SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe
 	m.trustedFormCheckedAt = value
 }
 
-// SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-func (m *LeadMetadata) SetTrustedFormUrl(value *string) {
-	m.trustedFormUrl = value
-}
-
 // SetUserAgent sets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 func (m *LeadMetadata) SetUserAgent(value *string) {
 	m.userAgent = value
@@ -1164,6 +1165,8 @@ type LeadMetadataable interface {
 	GetAssignedPhoneNumberId() *string
 	GetComplianceBlockedReason() *string
 	GetComplianceStatus() *string
+	GetConsentCertificateType() *LeadMetadata_consentCertificateType
+	GetConsentCertificateUrl() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDirectPostPrice() *float64
 	GetExternalId() *string
@@ -1172,7 +1175,6 @@ type LeadMetadataable interface {
 	GetIpAddress() *string
 	GetIsImported() *bool
 	GetLandingPage() *string
-	GetLeadpingConsentCertificateId() *string
 	GetLeadpingConsentCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetOrganizationId() *string
 	GetOrigin() *string
@@ -1190,7 +1192,6 @@ type LeadMetadataable interface {
 	GetSourceMetadata() LeadMetadata_sourceMetadataable
 	GetSubId() *string
 	GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	GetTrustedFormUrl() *string
 	GetUserAgent() *string
 	GetUserId() *string
 	GetUtmCampaign() *string
@@ -1202,6 +1203,8 @@ type LeadMetadataable interface {
 	SetAssignedPhoneNumberId(value *string)
 	SetComplianceBlockedReason(value *string)
 	SetComplianceStatus(value *string)
+	SetConsentCertificateType(value *LeadMetadata_consentCertificateType)
+	SetConsentCertificateUrl(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDirectPostPrice(value *float64)
 	SetExternalId(value *string)
@@ -1210,7 +1213,6 @@ type LeadMetadataable interface {
 	SetIpAddress(value *string)
 	SetIsImported(value *bool)
 	SetLandingPage(value *string)
-	SetLeadpingConsentCertificateId(value *string)
 	SetLeadpingConsentCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetOrganizationId(value *string)
 	SetOrigin(value *string)
@@ -1228,7 +1230,6 @@ type LeadMetadataable interface {
 	SetSourceMetadata(value LeadMetadata_sourceMetadataable)
 	SetSubId(value *string)
 	SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-	SetTrustedFormUrl(value *string)
 	SetUserAgent(value *string)
 	SetUserId(value *string)
 	SetUtmCampaign(value *string)

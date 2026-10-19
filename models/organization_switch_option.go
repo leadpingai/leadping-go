@@ -22,6 +22,8 @@ type OrganizationSwitchOption struct {
 	id *string
 	// Whether this organization switch option is current.
 	isCurrent *bool
+	// The isDemo property
+	isDemo *bool
 	// UTC timestamp for last used at on this organization switch option.
 	lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The human-readable name shown for this organization switch option.
@@ -123,6 +125,16 @@ func (m *OrganizationSwitchOption) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDemo(val)
+		}
+		return nil
+	}
 	res["lastUsedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -214,6 +226,12 @@ func (m *OrganizationSwitchOption) GetIsCurrent() *bool {
 	return m.isCurrent
 }
 
+// GetIsDemo gets the isDemo property value. The isDemo property
+// returns a *bool when successful
+func (m *OrganizationSwitchOption) GetIsDemo() *bool {
+	return m.isDemo
+}
+
 // GetLastUsedAt gets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
 // returns a *Time when successful
 func (m *OrganizationSwitchOption) GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -285,6 +303,12 @@ func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteBoolValue("isCurrent", m.GetIsCurrent())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
 		}
@@ -373,6 +397,11 @@ func (m *OrganizationSwitchOption) SetIsCurrent(value *bool) {
 	m.isCurrent = value
 }
 
+// SetIsDemo sets the isDemo property value. The isDemo property
+func (m *OrganizationSwitchOption) SetIsDemo(value *bool) {
+	m.isDemo = value
+}
+
 // SetLastUsedAt sets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
 func (m *OrganizationSwitchOption) SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastUsedAt = value
@@ -416,6 +445,7 @@ type OrganizationSwitchOptionable interface {
 	GetHasPaymentMethod() *bool
 	GetId() *string
 	GetIsCurrent() *bool
+	GetIsDemo() *bool
 	GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetNeedsAdminReview() *bool
@@ -428,6 +458,7 @@ type OrganizationSwitchOptionable interface {
 	SetHasPaymentMethod(value *bool)
 	SetId(value *string)
 	SetIsCurrent(value *bool)
+	SetIsDemo(value *bool)
 	SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetNeedsAdminReview(value *bool)

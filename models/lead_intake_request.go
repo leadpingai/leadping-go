@@ -19,6 +19,10 @@ type LeadIntakeRequest struct {
 	birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
 	// City for the lead or organization postal address.
 	city *string
+	// The provider responsible for a lead's consent certificate.
+	consentCertificateType *LeadIntakeRequest_consentCertificateType
+	// Certificate URL used as proof of consumer consent.
+	consentCertificateUrl *string
 	// Lead date of birth supplied by intake sources and normalized into the lead profile.
 	dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
 	// Direct-post price supplied by the lead source during intake.
@@ -63,8 +67,6 @@ type LeadIntakeRequest struct {
 	tagIds []string
 	// Tag names assigned to this lead when matching existing tags by name.
 	tagNames []string
-	// TrustedForm certificate URL used as proof of consumer consent.
-	trustedFormUrl *string
 	// UTM campaign parameter captured for lead attribution reporting.
 	utmCampaign *string
 	// UTM content parameter captured for lead attribution reporting.
@@ -122,6 +124,18 @@ func (m *LeadIntakeRequest) GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetCity() *string {
 	return m.city
+}
+
+// GetConsentCertificateType gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+// returns a *LeadIntakeRequest_consentCertificateType when successful
+func (m *LeadIntakeRequest) GetConsentCertificateType() *LeadIntakeRequest_consentCertificateType {
+	return m.consentCertificateType
+}
+
+// GetConsentCertificateUrl gets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetConsentCertificateUrl() *string {
+	return m.consentCertificateUrl
 }
 
 // GetDateOfBirth gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
@@ -189,6 +203,26 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetCity(val)
+		}
+		return nil
+	}
+	res["consentCertificateType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadIntakeRequest_consentCertificateType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentCertificateType(val.(*LeadIntakeRequest_consentCertificateType))
+		}
+		return nil
+	}
+	res["consentCertificateUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentCertificateUrl(val)
 		}
 		return nil
 	}
@@ -424,16 +458,6 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
-	res["trustedFormUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetTrustedFormUrl(val)
-		}
-		return nil
-	}
 	res["utmCampaign"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -615,12 +639,6 @@ func (m *LeadIntakeRequest) GetTagNames() []string {
 	return m.tagNames
 }
 
-// GetTrustedFormUrl gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-// returns a *string when successful
-func (m *LeadIntakeRequest) GetTrustedFormUrl() *string {
-	return m.trustedFormUrl
-}
-
 // GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetUtmCampaign() *string {
@@ -685,6 +703,19 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	{
 		err := writer.WriteStringValue("city", m.GetCity())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConsentCertificateType() != nil {
+		cast := (*m.GetConsentCertificateType()).String()
+		err := writer.WriteStringValue("consentCertificateType", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("consentCertificateUrl", m.GetConsentCertificateUrl())
 		if err != nil {
 			return err
 		}
@@ -822,12 +853,6 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
-		err := writer.WriteStringValue("trustedFormUrl", m.GetTrustedFormUrl())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
 		if err != nil {
 			return err
@@ -901,6 +926,16 @@ func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487ee
 // SetCity sets the city property value. City for the lead or organization postal address.
 func (m *LeadIntakeRequest) SetCity(value *string) {
 	m.city = value
+}
+
+// SetConsentCertificateType sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+func (m *LeadIntakeRequest) SetConsentCertificateType(value *LeadIntakeRequest_consentCertificateType) {
+	m.consentCertificateType = value
+}
+
+// SetConsentCertificateUrl sets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+func (m *LeadIntakeRequest) SetConsentCertificateUrl(value *string) {
+	m.consentCertificateUrl = value
 }
 
 // SetDateOfBirth sets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
@@ -1013,11 +1048,6 @@ func (m *LeadIntakeRequest) SetTagNames(value []string) {
 	m.tagNames = value
 }
 
-// SetTrustedFormUrl sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-func (m *LeadIntakeRequest) SetTrustedFormUrl(value *string) {
-	m.trustedFormUrl = value
-}
-
 // SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 func (m *LeadIntakeRequest) SetUtmCampaign(value *string) {
 	m.utmCampaign = value
@@ -1060,6 +1090,8 @@ type LeadIntakeRequestable interface {
 	GetAddress2() *string
 	GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
 	GetCity() *string
+	GetConsentCertificateType() *LeadIntakeRequest_consentCertificateType
+	GetConsentCertificateUrl() *string
 	GetDateOfBirth() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
 	GetDirectPostPrice() *float64
 	GetEmail() *string
@@ -1082,7 +1114,6 @@ type LeadIntakeRequestable interface {
 	GetSubId() *string
 	GetTagIds() []string
 	GetTagNames() []string
-	GetTrustedFormUrl() *string
 	GetUtmCampaign() *string
 	GetUtmContent() *string
 	GetUtmMedium() *string
@@ -1094,6 +1125,8 @@ type LeadIntakeRequestable interface {
 	SetAddress2(value *string)
 	SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
 	SetCity(value *string)
+	SetConsentCertificateType(value *LeadIntakeRequest_consentCertificateType)
+	SetConsentCertificateUrl(value *string)
 	SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
 	SetDirectPostPrice(value *float64)
 	SetEmail(value *string)
@@ -1116,7 +1149,6 @@ type LeadIntakeRequestable interface {
 	SetSubId(value *string)
 	SetTagIds(value []string)
 	SetTagNames(value []string)
-	SetTrustedFormUrl(value *string)
 	SetUtmCampaign(value *string)
 	SetUtmContent(value *string)
 	SetUtmMedium(value *string)
