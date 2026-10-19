@@ -12,14 +12,14 @@ import (
 type SourceResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// Product allowlist used to accept or route leads from this source.
-	allowedProducts []string
 	// State or region allowlist used to accept leads from this source.
 	allowedStates []string
 	// Masked preview of the source API key for compact display.
 	apiKeyPreview *string
 	// UTC timestamp when the source credential was most recently rotated.
 	apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+	automaticPhoneLookup *bool
 	// Indicates whether the organization or sender passed compliance review.
 	complianceApproved *bool
 	// Configured cost charged when this source creates a billable lead.
@@ -79,12 +79,6 @@ func (m *SourceResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-// returns a []string when successful
-func (m *SourceResponse) GetAllowedProducts() []string {
-	return m.allowedProducts
-}
-
 // GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
 func (m *SourceResponse) GetAllowedStates() []string {
@@ -101,6 +95,12 @@ func (m *SourceResponse) GetApiKeyPreview() *string {
 // returns a *Time when successful
 func (m *SourceResponse) GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.apiKeyRotatedAt
+}
+
+// GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+// returns a *bool when successful
+func (m *SourceResponse) GetAutomaticPhoneLookup() *bool {
+	return m.automaticPhoneLookup
 }
 
 // GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -161,22 +161,6 @@ func (m *SourceResponse) GetEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
-	res["allowedProducts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfPrimitiveValues("string")
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]string, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = *(v.(*string))
-				}
-			}
-			m.SetAllowedProducts(res)
-		}
-		return nil
-	}
 	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfPrimitiveValues("string")
 		if err != nil {
@@ -210,6 +194,16 @@ func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		if val != nil {
 			m.SetApiKeyRotatedAt(val)
+		}
+		return nil
+	}
+	res["automaticPhoneLookup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticPhoneLookup(val)
 		}
 		return nil
 	}
@@ -480,12 +474,6 @@ func (m *SourceResponse) GetUser() SourceResponse_userable {
 
 // Serialize serializes information the current object
 func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
-	if m.GetAllowedProducts() != nil {
-		err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
-		if err != nil {
-			return err
-		}
-	}
 	if m.GetAllowedStates() != nil {
 		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
 		if err != nil {
@@ -500,6 +488,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 	}
 	{
 		err := writer.WriteTimeValue("apiKeyRotatedAt", m.GetApiKeyRotatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
 			return err
 		}
@@ -638,11 +632,6 @@ func (m *SourceResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-func (m *SourceResponse) SetAllowedProducts(value []string) {
-	m.allowedProducts = value
-}
-
 // SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceResponse) SetAllowedStates(value []string) {
 	m.allowedStates = value
@@ -656,6 +645,11 @@ func (m *SourceResponse) SetApiKeyPreview(value *string) {
 // SetApiKeyRotatedAt sets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
 func (m *SourceResponse) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.apiKeyRotatedAt = value
+}
+
+// SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+func (m *SourceResponse) SetAutomaticPhoneLookup(value *bool) {
+	m.automaticPhoneLookup = value
 }
 
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -756,10 +750,10 @@ func (m *SourceResponse) SetUser(value SourceResponse_userable) {
 type SourceResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-	GetAllowedProducts() []string
 	GetAllowedStates() []string
 	GetApiKeyPreview() *string
 	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetAutomaticPhoneLookup() *bool
 	GetComplianceApproved() *bool
 	GetCostPerLead() *float64
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -779,10 +773,10 @@ type SourceResponseable interface {
 	GetOrganization() SourceResponse_organizationable
 	GetRequiresTrustedForm() *bool
 	GetUser() SourceResponse_userable
-	SetAllowedProducts(value []string)
 	SetAllowedStates(value []string)
 	SetApiKeyPreview(value *string)
 	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetAutomaticPhoneLookup(value *bool)
 	SetComplianceApproved(value *bool)
 	SetCostPerLead(value *float64)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

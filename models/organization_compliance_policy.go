@@ -11,8 +11,6 @@ import (
 type OrganizationCompliancePolicy struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The allowed products included with this organization compliance policy.
-	allowedProducts []string
 	// The allowed states included with this organization compliance policy.
 	allowedStates []string
 	// Whether this organization compliance policy is enabled.
@@ -48,12 +46,6 @@ func (m *OrganizationCompliancePolicy) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAllowedProducts gets the allowedProducts property value. The allowed products included with this organization compliance policy.
-// returns a []string when successful
-func (m *OrganizationCompliancePolicy) GetAllowedProducts() []string {
-	return m.allowedProducts
-}
-
 // GetAllowedStates gets the allowedStates property value. The allowed states included with this organization compliance policy.
 // returns a []string when successful
 func (m *OrganizationCompliancePolicy) GetAllowedStates() []string {
@@ -70,22 +62,6 @@ func (m *OrganizationCompliancePolicy) GetEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *OrganizationCompliancePolicy) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
-	res["allowedProducts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfPrimitiveValues("string")
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]string, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = *(v.(*string))
-				}
-			}
-			m.SetAllowedProducts(res)
-		}
-		return nil
-	}
 	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfPrimitiveValues("string")
 		if err != nil {
@@ -197,12 +173,6 @@ func (m *OrganizationCompliancePolicy) GetRequireTrustedFormForAutomations() *bo
 
 // Serialize serializes information the current object
 func (m *OrganizationCompliancePolicy) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
-	if m.GetAllowedProducts() != nil {
-		err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
-		if err != nil {
-			return err
-		}
-	}
 	if m.GetAllowedStates() != nil {
 		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
 		if err != nil {
@@ -259,11 +229,6 @@ func (m *OrganizationCompliancePolicy) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAllowedProducts sets the allowedProducts property value. The allowed products included with this organization compliance policy.
-func (m *OrganizationCompliancePolicy) SetAllowedProducts(value []string) {
-	m.allowedProducts = value
-}
-
 // SetAllowedStates sets the allowedStates property value. The allowed states included with this organization compliance policy.
 func (m *OrganizationCompliancePolicy) SetAllowedStates(value []string) {
 	m.allowedStates = value
@@ -302,7 +267,6 @@ func (m *OrganizationCompliancePolicy) SetRequireTrustedFormForAutomations(value
 type OrganizationCompliancePolicyable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-	GetAllowedProducts() []string
 	GetAllowedStates() []string
 	GetEnabled() *bool
 	GetRequireAgentLicenseState() *bool
@@ -310,7 +274,6 @@ type OrganizationCompliancePolicyable interface {
 	GetRequireProduct() *bool
 	GetRequireSourceComplianceApproval() *bool
 	GetRequireTrustedFormForAutomations() *bool
-	SetAllowedProducts(value []string)
 	SetAllowedStates(value []string)
 	SetEnabled(value *bool)
 	SetRequireAgentLicenseState(value *bool)

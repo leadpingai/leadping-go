@@ -12,8 +12,6 @@ import (
 type SourceTableRow struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// Product allowlist used to accept or route leads from this source.
-	allowedProducts []string
 	// State or region allowlist used to accept leads from this source.
 	allowedStates []string
 	// UTC timestamp when the source API key was last used.
@@ -24,6 +22,8 @@ type SourceTableRow struct {
 	apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Total number of authenticated requests made with this source API key.
 	apiKeyTotalUses *int64
+	// Whether lead phone numbers are looked up automatically during intake.
+	automaticPhoneLookup *bool
 	// Indicates whether the organization or sender passed compliance review.
 	complianceApproved *bool
 	// Configured cost charged when this source creates a billable lead.
@@ -83,12 +83,6 @@ func (m *SourceTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAllowedProducts gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-// returns a []string when successful
-func (m *SourceTableRow) GetAllowedProducts() []string {
-	return m.allowedProducts
-}
-
 // GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
 // returns a []string when successful
 func (m *SourceTableRow) GetAllowedStates() []string {
@@ -117,6 +111,12 @@ func (m *SourceTableRow) GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6
 // returns a *int64 when successful
 func (m *SourceTableRow) GetApiKeyTotalUses() *int64 {
 	return m.apiKeyTotalUses
+}
+
+// GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
+// returns a *bool when successful
+func (m *SourceTableRow) GetAutomaticPhoneLookup() *bool {
+	return m.automaticPhoneLookup
 }
 
 // GetComplianceApproved gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -171,22 +171,6 @@ func (m *SourceTableRow) GetEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SourceTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
-	res["allowedProducts"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfPrimitiveValues("string")
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]string, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = *(v.(*string))
-				}
-			}
-			m.SetAllowedProducts(res)
-		}
-		return nil
-	}
 	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfPrimitiveValues("string")
 		if err != nil {
@@ -240,6 +224,16 @@ func (m *SourceTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		if val != nil {
 			m.SetApiKeyTotalUses(val)
+		}
+		return nil
+	}
+	res["automaticPhoneLookup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticPhoneLookup(val)
 		}
 		return nil
 	}
@@ -516,12 +510,6 @@ func (m *SourceTableRow) GetUser() SourceTableRow_userable {
 
 // Serialize serializes information the current object
 func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
-	if m.GetAllowedProducts() != nil {
-		err := writer.WriteCollectionOfStringValues("allowedProducts", m.GetAllowedProducts())
-		if err != nil {
-			return err
-		}
-	}
 	if m.GetAllowedStates() != nil {
 		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
 		if err != nil {
@@ -548,6 +536,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 	}
 	{
 		err := writer.WriteInt64Value("apiKeyTotalUses", m.GetApiKeyTotalUses())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
 			return err
 		}
@@ -686,11 +680,6 @@ func (m *SourceTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAllowedProducts sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-func (m *SourceTableRow) SetAllowedProducts(value []string) {
-	m.allowedProducts = value
-}
-
 // SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
 func (m *SourceTableRow) SetAllowedStates(value []string) {
 	m.allowedStates = value
@@ -714,6 +703,11 @@ func (m *SourceTableRow) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad
 // SetApiKeyTotalUses sets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
 func (m *SourceTableRow) SetApiKeyTotalUses(value *int64) {
 	m.apiKeyTotalUses = value
+}
+
+// SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
+func (m *SourceTableRow) SetAutomaticPhoneLookup(value *bool) {
+	m.automaticPhoneLookup = value
 }
 
 // SetComplianceApproved sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
@@ -814,12 +808,12 @@ func (m *SourceTableRow) SetUser(value SourceTableRow_userable) {
 type SourceTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-	GetAllowedProducts() []string
 	GetAllowedStates() []string
 	GetApiKeyLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetApiKeyPreview() *string
 	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetApiKeyTotalUses() *int64
+	GetAutomaticPhoneLookup() *bool
 	GetComplianceApproved() *bool
 	GetCostPerLead() *float64
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -839,12 +833,12 @@ type SourceTableRowable interface {
 	GetOrganizationId() *string
 	GetRequiresTrustedForm() *bool
 	GetUser() SourceTableRow_userable
-	SetAllowedProducts(value []string)
 	SetAllowedStates(value []string)
 	SetApiKeyLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetApiKeyPreview(value *string)
 	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetApiKeyTotalUses(value *int64)
+	SetAutomaticPhoneLookup(value *bool)
 	SetComplianceApproved(value *bool)
 	SetCostPerLead(value *float64)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
