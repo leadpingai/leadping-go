@@ -12,8 +12,6 @@ import (
 type SourceResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// State or region allowlist used to accept leads from this source.
-	allowedStates []string
 	// Masked preview of the source API key for compact display.
 	apiKeyPreview *string
 	// UTC timestamp when the source credential was most recently rotated.
@@ -77,12 +75,6 @@ func CreateSourceResponseFromDiscriminatorValue(parseNode i878a80d2330e89d268963
 // returns a map[string]any when successful
 func (m *SourceResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
-}
-
-// GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
-// returns a []string when successful
-func (m *SourceResponse) GetAllowedStates() []string {
-	return m.allowedStates
 }
 
 // GetApiKeyPreview gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
@@ -161,22 +153,6 @@ func (m *SourceResponse) GetEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
-	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfPrimitiveValues("string")
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]string, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = *(v.(*string))
-				}
-			}
-			m.SetAllowedStates(res)
-		}
-		return nil
-	}
 	res["apiKeyPreview"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -474,12 +450,6 @@ func (m *SourceResponse) GetUser() SourceResponse_userable {
 
 // Serialize serializes information the current object
 func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
-	if m.GetAllowedStates() != nil {
-		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-		if err != nil {
-			return err
-		}
-	}
 	{
 		err := writer.WriteStringValue("apiKeyPreview", m.GetApiKeyPreview())
 		if err != nil {
@@ -632,11 +602,6 @@ func (m *SourceResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
-func (m *SourceResponse) SetAllowedStates(value []string) {
-	m.allowedStates = value
-}
-
 // SetApiKeyPreview sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
 func (m *SourceResponse) SetApiKeyPreview(value *string) {
 	m.apiKeyPreview = value
@@ -750,7 +715,6 @@ func (m *SourceResponse) SetUser(value SourceResponse_userable) {
 type SourceResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-	GetAllowedStates() []string
 	GetApiKeyPreview() *string
 	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetAutomaticPhoneLookup() *bool
@@ -773,7 +737,6 @@ type SourceResponseable interface {
 	GetOrganization() SourceResponse_organizationable
 	GetRequiresTrustedForm() *bool
 	GetUser() SourceResponse_userable
-	SetAllowedStates(value []string)
 	SetApiKeyPreview(value *string)
 	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetAutomaticPhoneLookup(value *bool)

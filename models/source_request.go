@@ -11,8 +11,6 @@ import (
 type SourceRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// State or region allowlist used to accept leads from this source.
-	allowedStates []string
 	// Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 	automaticPhoneLookup *bool
 	// Tag IDs automatically assigned to leads created by this source.
@@ -46,12 +44,6 @@ func (m *SourceRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAllowedStates gets the allowedStates property value. State or region allowlist used to accept leads from this source.
-// returns a []string when successful
-func (m *SourceRequest) GetAllowedStates() []string {
-	return m.allowedStates
-}
-
 // GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 // returns a *bool when successful
 func (m *SourceRequest) GetAutomaticPhoneLookup() *bool {
@@ -80,22 +72,6 @@ func (m *SourceRequest) GetDescription() *string {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SourceRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
-	res["allowedStates"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetCollectionOfPrimitiveValues("string")
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			res := make([]string, len(val))
-			for i, v := range val {
-				if v != nil {
-					res[i] = *(v.(*string))
-				}
-			}
-			m.SetAllowedStates(res)
-		}
-		return nil
-	}
 	res["automaticPhoneLookup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -185,12 +161,6 @@ func (m *SourceRequest) GetRequiresTrustedForm() *bool {
 
 // Serialize serializes information the current object
 func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
-	if m.GetAllowedStates() != nil {
-		err := writer.WriteCollectionOfStringValues("allowedStates", m.GetAllowedStates())
-		if err != nil {
-			return err
-		}
-	}
 	{
 		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
@@ -241,11 +211,6 @@ func (m *SourceRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAllowedStates sets the allowedStates property value. State or region allowlist used to accept leads from this source.
-func (m *SourceRequest) SetAllowedStates(value []string) {
-	m.allowedStates = value
-}
-
 // SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 func (m *SourceRequest) SetAutomaticPhoneLookup(value *bool) {
 	m.automaticPhoneLookup = value
@@ -279,14 +244,12 @@ func (m *SourceRequest) SetRequiresTrustedForm(value *bool) {
 type SourceRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-	GetAllowedStates() []string
 	GetAutomaticPhoneLookup() *bool
 	GetDefaultTagIds() []string
 	GetDefaultTagNames() []string
 	GetDescription() *string
 	GetName() *string
 	GetRequiresTrustedForm() *bool
-	SetAllowedStates(value []string)
 	SetAutomaticPhoneLookup(value *bool)
 	SetDefaultTagIds(value []string)
 	SetDefaultTagNames(value []string)

@@ -44,6 +44,14 @@ type UserNotificationPreferences struct {
 	paymentFailedEnabled *bool
 	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 	paymentFailedSmsEnabled *bool
+	// Whether push and automation alerts wait until the user's daily quiet hours end.
+	quietHoursEnabled *bool
+	// The exclusive local end of daily quiet hours.
+	quietHoursEnd *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	// The inclusive local start of daily quiet hours.
+	quietHoursStart *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	// The time zone used for quiet hours, including daylight saving changes.
+	quietHoursTimeZoneId *string
 	// Describes Leadping Consent certificate data used in Leadping API requests and responses.
 	smsConsentCertificate UserNotificationPreferences_smsConsentCertificateable
 	// Whether the user has consented to receive Leadping account notification SMS messages.
@@ -281,6 +289,46 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["quietHoursEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuietHoursEnabled(val)
+		}
+		return nil
+	}
+	res["quietHoursEnd"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeOnlyValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuietHoursEnd(val)
+		}
+		return nil
+	}
+	res["quietHoursStart"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeOnlyValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuietHoursStart(val)
+		}
+		return nil
+	}
+	res["quietHoursTimeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuietHoursTimeZoneId(val)
+		}
+		return nil
+	}
 	res["smsConsentCertificate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateUserNotificationPreferences_smsConsentCertificateFromDiscriminatorValue)
 		if err != nil {
@@ -460,6 +508,30 @@ func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
 	return m.paymentFailedSmsEnabled
 }
 
+// GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetQuietHoursEnabled() *bool {
+	return m.quietHoursEnabled
+}
+
+// GetQuietHoursEnd gets the quietHoursEnd property value. The exclusive local end of daily quiet hours.
+// returns a *TimeOnly when successful
+func (m *UserNotificationPreferences) GetQuietHoursEnd() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly {
+	return m.quietHoursEnd
+}
+
+// GetQuietHoursStart gets the quietHoursStart property value. The inclusive local start of daily quiet hours.
+// returns a *TimeOnly when successful
+func (m *UserNotificationPreferences) GetQuietHoursStart() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly {
+	return m.quietHoursStart
+}
+
+// GetQuietHoursTimeZoneId gets the quietHoursTimeZoneId property value. The time zone used for quiet hours, including daylight saving changes.
+// returns a *string when successful
+func (m *UserNotificationPreferences) GetQuietHoursTimeZoneId() *string {
+	return m.quietHoursTimeZoneId
+}
+
 // GetSmsConsentCertificate gets the smsConsentCertificate property value. Describes Leadping Consent certificate data used in Leadping API requests and responses.
 // returns a UserNotificationPreferences_smsConsentCertificateable when successful
 func (m *UserNotificationPreferences) GetSmsConsentCertificate() UserNotificationPreferences_smsConsentCertificateable {
@@ -625,6 +697,30 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("quietHoursEnabled", m.GetQuietHoursEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeOnlyValue("quietHoursEnd", m.GetQuietHoursEnd())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeOnlyValue("quietHoursStart", m.GetQuietHoursStart())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("quietHoursTimeZoneId", m.GetQuietHoursTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("smsConsentCertificate", m.GetSmsConsentCertificate())
 		if err != nil {
 			return err
@@ -784,6 +880,26 @@ func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
 	m.paymentFailedSmsEnabled = value
 }
 
+// SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+func (m *UserNotificationPreferences) SetQuietHoursEnabled(value *bool) {
+	m.quietHoursEnabled = value
+}
+
+// SetQuietHoursEnd sets the quietHoursEnd property value. The exclusive local end of daily quiet hours.
+func (m *UserNotificationPreferences) SetQuietHoursEnd(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly) {
+	m.quietHoursEnd = value
+}
+
+// SetQuietHoursStart sets the quietHoursStart property value. The inclusive local start of daily quiet hours.
+func (m *UserNotificationPreferences) SetQuietHoursStart(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly) {
+	m.quietHoursStart = value
+}
+
+// SetQuietHoursTimeZoneId sets the quietHoursTimeZoneId property value. The time zone used for quiet hours, including daylight saving changes.
+func (m *UserNotificationPreferences) SetQuietHoursTimeZoneId(value *string) {
+	m.quietHoursTimeZoneId = value
+}
+
 // SetSmsConsentCertificate sets the smsConsentCertificate property value. Describes Leadping Consent certificate data used in Leadping API requests and responses.
 func (m *UserNotificationPreferences) SetSmsConsentCertificate(value UserNotificationPreferences_smsConsentCertificateable) {
 	m.smsConsentCertificate = value
@@ -858,6 +974,10 @@ type UserNotificationPreferencesable interface {
 	GetNewLeadSmsEnabled() *bool
 	GetPaymentFailedEnabled() *bool
 	GetPaymentFailedSmsEnabled() *bool
+	GetQuietHoursEnabled() *bool
+	GetQuietHoursEnd() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	GetQuietHoursStart() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	GetQuietHoursTimeZoneId() *string
 	GetSmsConsentCertificate() UserNotificationPreferences_smsConsentCertificateable
 	GetSmsConsentOptedIn() *bool
 	GetSmsConsentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -885,6 +1005,10 @@ type UserNotificationPreferencesable interface {
 	SetNewLeadSmsEnabled(value *bool)
 	SetPaymentFailedEnabled(value *bool)
 	SetPaymentFailedSmsEnabled(value *bool)
+	SetQuietHoursEnabled(value *bool)
+	SetQuietHoursEnd(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly)
+	SetQuietHoursStart(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly)
+	SetQuietHoursTimeZoneId(value *string)
 	SetSmsConsentCertificate(value UserNotificationPreferences_smsConsentCertificateable)
 	SetSmsConsentOptedIn(value *bool)
 	SetSmsConsentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

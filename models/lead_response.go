@@ -24,22 +24,28 @@ type LeadResponse struct {
 	assignedTo LeadResponse_assignedToable
 	// Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
 	assignedToUserId *string
+	// Business represented by a lead contact.
+	company LeadResponse_companyable
 	// Public Leadping API schema for lead contact profile data.
 	contact LeadContactable
+	// Preferred contact language, channel, and callback windows; does not grant consent.
+	contactPreferences LeadResponse_contactPreferencesable
 	// UTC timestamp when the resource was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 	currentLeadStatus LeadResponse_currentLeadStatusable
-	// Public Leadping API schema for lead demographic profile data.
-	customer LeadProfileable
+	// Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+	customFields LeadResponse_customFieldsable
 	// UTC timestamp when this lead was soft deleted.
 	deletedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// User ID of the person who soft deleted this lead.
 	deletedByUserId *string
-	// Indicates whether this lead response is active and available in the Leadping API.
+	// Whether the lead is enabled.
 	enabled *bool
 	// Stable unique identifier of the resource.
 	id *string
+	// The service or purchase requested by a lead.
+	inquiry LeadResponse_inquiryable
 	// Indicates whether the lead has been archived in Leadping.
 	isArchived *bool
 	// The isDemo property
@@ -56,6 +62,10 @@ type LeadResponse struct {
 	processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Explanation when asynchronous lead processing is blocked or fails.
 	processingStatusReason *string
+	// Public Leadping API schema for lead demographic profile data.
+	profile LeadResponse_profileable
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	serviceAddress LeadResponse_serviceAddressable
 	// Tags currently attached to this lead, source, or record.
 	tags []TagSummaryable
 }
@@ -115,10 +125,22 @@ func (m *LeadResponse) GetAssignedToUserId() *string {
 	return m.assignedToUserId
 }
 
+// GetCompany gets the company property value. Business represented by a lead contact.
+// returns a LeadResponse_companyable when successful
+func (m *LeadResponse) GetCompany() LeadResponse_companyable {
+	return m.company
+}
+
 // GetContact gets the contact property value. Public Leadping API schema for lead contact profile data.
 // returns a LeadContactable when successful
 func (m *LeadResponse) GetContact() LeadContactable {
 	return m.contact
+}
+
+// GetContactPreferences gets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+// returns a LeadResponse_contactPreferencesable when successful
+func (m *LeadResponse) GetContactPreferences() LeadResponse_contactPreferencesable {
+	return m.contactPreferences
 }
 
 // GetCreatedAt gets the createdAt property value. UTC timestamp when the resource was created.
@@ -133,10 +155,10 @@ func (m *LeadResponse) GetCurrentLeadStatus() LeadResponse_currentLeadStatusable
 	return m.currentLeadStatus
 }
 
-// GetCustomer gets the customer property value. Public Leadping API schema for lead demographic profile data.
-// returns a LeadProfileable when successful
-func (m *LeadResponse) GetCustomer() LeadProfileable {
-	return m.customer
+// GetCustomFields gets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+// returns a LeadResponse_customFieldsable when successful
+func (m *LeadResponse) GetCustomFields() LeadResponse_customFieldsable {
+	return m.customFields
 }
 
 // GetDeletedAt gets the deletedAt property value. UTC timestamp when this lead was soft deleted.
@@ -151,7 +173,7 @@ func (m *LeadResponse) GetDeletedByUserId() *string {
 	return m.deletedByUserId
 }
 
-// GetEnabled gets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
+// GetEnabled gets the enabled property value. Whether the lead is enabled.
 // returns a *bool when successful
 func (m *LeadResponse) GetEnabled() *bool {
 	return m.enabled
@@ -221,6 +243,16 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["company"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_companyFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompany(val.(LeadResponse_companyable))
+		}
+		return nil
+	}
 	res["contact"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateLeadContactFromDiscriminatorValue)
 		if err != nil {
@@ -228,6 +260,16 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetContact(val.(LeadContactable))
+		}
+		return nil
+	}
+	res["contactPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_contactPreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContactPreferences(val.(LeadResponse_contactPreferencesable))
 		}
 		return nil
 	}
@@ -251,13 +293,13 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
-	res["customer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetObjectValue(CreateLeadProfileFromDiscriminatorValue)
+	res["customFields"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_customFieldsFromDiscriminatorValue)
 		if err != nil {
 			return err
 		}
 		if val != nil {
-			m.SetCustomer(val.(LeadProfileable))
+			m.SetCustomFields(val.(LeadResponse_customFieldsable))
 		}
 		return nil
 	}
@@ -298,6 +340,16 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["inquiry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_inquiryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInquiry(val.(LeadResponse_inquiryable))
 		}
 		return nil
 	}
@@ -381,6 +433,26 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["profile"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_profileFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProfile(val.(LeadResponse_profileable))
+		}
+		return nil
+	}
+	res["serviceAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadResponse_serviceAddressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetServiceAddress(val.(LeadResponse_serviceAddressable))
+		}
+		return nil
+	}
 	res["tags"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
 		if err != nil {
@@ -404,6 +476,12 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 // returns a *string when successful
 func (m *LeadResponse) GetId() *string {
 	return m.id
+}
+
+// GetInquiry gets the inquiry property value. The service or purchase requested by a lead.
+// returns a LeadResponse_inquiryable when successful
+func (m *LeadResponse) GetInquiry() LeadResponse_inquiryable {
+	return m.inquiry
 }
 
 // GetIsArchived gets the isArchived property value. Indicates whether the lead has been archived in Leadping.
@@ -454,6 +532,18 @@ func (m *LeadResponse) GetProcessingStatusReason() *string {
 	return m.processingStatusReason
 }
 
+// GetProfile gets the profile property value. Public Leadping API schema for lead demographic profile data.
+// returns a LeadResponse_profileable when successful
+func (m *LeadResponse) GetProfile() LeadResponse_profileable {
+	return m.profile
+}
+
+// GetServiceAddress gets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+// returns a LeadResponse_serviceAddressable when successful
+func (m *LeadResponse) GetServiceAddress() LeadResponse_serviceAddressable {
+	return m.serviceAddress
+}
+
 // GetTags gets the tags property value. Tags currently attached to this lead, source, or record.
 // returns a []TagSummaryable when successful
 func (m *LeadResponse) GetTags() []TagSummaryable {
@@ -499,7 +589,19 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
+		err := writer.WriteObjectValue("company", m.GetCompany())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("contact", m.GetContact())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("contactPreferences", m.GetContactPreferences())
 		if err != nil {
 			return err
 		}
@@ -517,7 +619,7 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
-		err := writer.WriteObjectValue("customer", m.GetCustomer())
+		err := writer.WriteObjectValue("customFields", m.GetCustomFields())
 		if err != nil {
 			return err
 		}
@@ -542,6 +644,12 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("inquiry", m.GetInquiry())
 		if err != nil {
 			return err
 		}
@@ -591,6 +699,18 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("processingStatusReason", m.GetProcessingStatusReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("profile", m.GetProfile())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("serviceAddress", m.GetServiceAddress())
 		if err != nil {
 			return err
 		}
@@ -651,9 +771,19 @@ func (m *LeadResponse) SetAssignedToUserId(value *string) {
 	m.assignedToUserId = value
 }
 
+// SetCompany sets the company property value. Business represented by a lead contact.
+func (m *LeadResponse) SetCompany(value LeadResponse_companyable) {
+	m.company = value
+}
+
 // SetContact sets the contact property value. Public Leadping API schema for lead contact profile data.
 func (m *LeadResponse) SetContact(value LeadContactable) {
 	m.contact = value
+}
+
+// SetContactPreferences sets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+func (m *LeadResponse) SetContactPreferences(value LeadResponse_contactPreferencesable) {
+	m.contactPreferences = value
 }
 
 // SetCreatedAt sets the createdAt property value. UTC timestamp when the resource was created.
@@ -666,9 +796,9 @@ func (m *LeadResponse) SetCurrentLeadStatus(value LeadResponse_currentLeadStatus
 	m.currentLeadStatus = value
 }
 
-// SetCustomer sets the customer property value. Public Leadping API schema for lead demographic profile data.
-func (m *LeadResponse) SetCustomer(value LeadProfileable) {
-	m.customer = value
+// SetCustomFields sets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+func (m *LeadResponse) SetCustomFields(value LeadResponse_customFieldsable) {
+	m.customFields = value
 }
 
 // SetDeletedAt sets the deletedAt property value. UTC timestamp when this lead was soft deleted.
@@ -681,7 +811,7 @@ func (m *LeadResponse) SetDeletedByUserId(value *string) {
 	m.deletedByUserId = value
 }
 
-// SetEnabled sets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
+// SetEnabled sets the enabled property value. Whether the lead is enabled.
 func (m *LeadResponse) SetEnabled(value *bool) {
 	m.enabled = value
 }
@@ -689,6 +819,11 @@ func (m *LeadResponse) SetEnabled(value *bool) {
 // SetId sets the id property value. Stable unique identifier of the resource.
 func (m *LeadResponse) SetId(value *string) {
 	m.id = value
+}
+
+// SetInquiry sets the inquiry property value. The service or purchase requested by a lead.
+func (m *LeadResponse) SetInquiry(value LeadResponse_inquiryable) {
+	m.inquiry = value
 }
 
 // SetIsArchived sets the isArchived property value. Indicates whether the lead has been archived in Leadping.
@@ -731,6 +866,16 @@ func (m *LeadResponse) SetProcessingStatusReason(value *string) {
 	m.processingStatusReason = value
 }
 
+// SetProfile sets the profile property value. Public Leadping API schema for lead demographic profile data.
+func (m *LeadResponse) SetProfile(value LeadResponse_profileable) {
+	m.profile = value
+}
+
+// SetServiceAddress sets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *LeadResponse) SetServiceAddress(value LeadResponse_serviceAddressable) {
+	m.serviceAddress = value
+}
+
 // SetTags sets the tags property value. Tags currently attached to this lead, source, or record.
 func (m *LeadResponse) SetTags(value []TagSummaryable) {
 	m.tags = value
@@ -745,14 +890,17 @@ type LeadResponseable interface {
 	GetArchiveReason() *int32
 	GetAssignedTo() LeadResponse_assignedToable
 	GetAssignedToUserId() *string
+	GetCompany() LeadResponse_companyable
 	GetContact() LeadContactable
+	GetContactPreferences() LeadResponse_contactPreferencesable
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCurrentLeadStatus() LeadResponse_currentLeadStatusable
-	GetCustomer() LeadProfileable
+	GetCustomFields() LeadResponse_customFieldsable
 	GetDeletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDeletedByUserId() *string
 	GetEnabled() *bool
 	GetId() *string
+	GetInquiry() LeadResponse_inquiryable
 	GetIsArchived() *bool
 	GetIsDemo() *bool
 	GetMetadata() LeadMetadataable
@@ -761,6 +909,8 @@ type LeadResponseable interface {
 	GetProcessingStatus() *LeadResponse_processingStatus
 	GetProcessingStatusChangedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetProcessingStatusReason() *string
+	GetProfile() LeadResponse_profileable
+	GetServiceAddress() LeadResponse_serviceAddressable
 	GetTags() []TagSummaryable
 	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetArchivedByUserId(value *string)
@@ -768,14 +918,17 @@ type LeadResponseable interface {
 	SetArchiveReason(value *int32)
 	SetAssignedTo(value LeadResponse_assignedToable)
 	SetAssignedToUserId(value *string)
+	SetCompany(value LeadResponse_companyable)
 	SetContact(value LeadContactable)
+	SetContactPreferences(value LeadResponse_contactPreferencesable)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCurrentLeadStatus(value LeadResponse_currentLeadStatusable)
-	SetCustomer(value LeadProfileable)
+	SetCustomFields(value LeadResponse_customFieldsable)
 	SetDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDeletedByUserId(value *string)
 	SetEnabled(value *bool)
 	SetId(value *string)
+	SetInquiry(value LeadResponse_inquiryable)
 	SetIsArchived(value *bool)
 	SetIsDemo(value *bool)
 	SetMetadata(value LeadMetadataable)
@@ -784,5 +937,7 @@ type LeadResponseable interface {
 	SetProcessingStatus(value *LeadResponse_processingStatus)
 	SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetProcessingStatusReason(value *string)
+	SetProfile(value LeadResponse_profileable)
+	SetServiceAddress(value LeadResponse_serviceAddressable)
 	SetTags(value []TagSummaryable)
 }

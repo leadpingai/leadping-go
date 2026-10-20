@@ -5,6 +5,7 @@ package models
 
 import (
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // LeadIntakeRequest defines the fields clients can send when working with lead intake.
@@ -17,15 +18,31 @@ type LeadIntakeRequest struct {
 	address2 *string
 	// Lead birth date used for demographic matching and insurance intake workflows.
 	birthDate *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	// Original source capture timestamp.
+	capturedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Original visitor IP as reported by the source.
+	captureIpAddress *string
+	// Original visitor user agent as reported by the source.
+	captureUserAgent *string
 	// City for the lead or organization postal address.
 	city *string
+	// Business represented by a lead contact.
+	company LeadIntakeRequest_companyable
 	// The provider responsible for a lead's consent certificate.
 	consentCertificateType *LeadIntakeRequest_consentCertificateType
 	// Certificate URL used as proof of consumer consent.
 	consentCertificateUrl *string
+	// Preferred contact language, channel, and callback windows; does not grant consent.
+	contactPreferences LeadIntakeRequest_contactPreferencesable
+	// ISO 3166-1 alpha-2 contact address country code.
+	country *string
+	// ISO 4217 acquisition price currency.
+	currency *string
+	// Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+	customFields LeadIntakeRequest_customFieldsable
 	// Lead date of birth supplied by intake sources and normalized into the lead profile.
 	dateOfBirth *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
-	// Direct-post price supplied by the lead source during intake.
+	// Alias for price. When both are supplied, their amounts must agree.
 	directPostPrice *float64
 	// Email address for the person represented by this lead intake request.
 	email *string
@@ -37,11 +54,13 @@ type LeadIntakeRequest struct {
 	gender *string
 	// Stable delivery key reused when retrying the same lead submission to this source.
 	idempotencyKey *string
+	// The service or purchase requested by a lead.
+	inquiry LeadIntakeRequest_inquiryable
 	// Landing page URL where the lead submitted their information.
 	landingPage *string
 	// Last name of the lead, user, or contact represented by this lead intake request.
 	lastName *string
-	// Phone details for the lead, user, or organization represented by this lead intake request.
+	// Contact phone number. Use E.164 with a leading + for international numbers.
 	phone *string
 	// Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
 	phoneType *string
@@ -51,12 +70,18 @@ type LeadIntakeRequest struct {
 	price *float64
 	// Product or offer associated with the lead or source.
 	product *string
+	// Public Leadping API schema for lead demographic profile data.
+	profile LeadIntakeRequest_profileable
+	// Publisher identifier.
+	pubId *string
 	// Referring page or traffic source that sent the lead into Leadping.
 	referrer *string
 	// Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 	sellerLeadId *string
 	// Alternate seller-provided lead identifier used during intake normalization.
 	sellerLeadIdentifier *string
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	serviceAddress LeadIntakeRequest_serviceAddressable
 	// Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 	sourceMetadata LeadIntakeRequest_sourceMetadataable
 	// State, province, or region for the lead or organization postal address.
@@ -67,6 +92,8 @@ type LeadIntakeRequest struct {
 	tagIds []string
 	// Tag names assigned to this lead when matching existing tags by name.
 	tagNames []string
+	// Contact time zone identifier.
+	timeZoneId *string
 	// UTM campaign parameter captured for lead attribution reporting.
 	utmCampaign *string
 	// UTM content parameter captured for lead attribution reporting.
@@ -120,10 +147,34 @@ func (m *LeadIntakeRequest) GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b
 	return m.birthDate
 }
 
+// GetCapturedAt gets the capturedAt property value. Original source capture timestamp.
+// returns a *Time when successful
+func (m *LeadIntakeRequest) GetCapturedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.capturedAt
+}
+
+// GetCaptureIpAddress gets the captureIpAddress property value. Original visitor IP as reported by the source.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetCaptureIpAddress() *string {
+	return m.captureIpAddress
+}
+
+// GetCaptureUserAgent gets the captureUserAgent property value. Original visitor user agent as reported by the source.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetCaptureUserAgent() *string {
+	return m.captureUserAgent
+}
+
 // GetCity gets the city property value. City for the lead or organization postal address.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetCity() *string {
 	return m.city
+}
+
+// GetCompany gets the company property value. Business represented by a lead contact.
+// returns a LeadIntakeRequest_companyable when successful
+func (m *LeadIntakeRequest) GetCompany() LeadIntakeRequest_companyable {
+	return m.company
 }
 
 // GetConsentCertificateType gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
@@ -138,13 +189,37 @@ func (m *LeadIntakeRequest) GetConsentCertificateUrl() *string {
 	return m.consentCertificateUrl
 }
 
+// GetContactPreferences gets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+// returns a LeadIntakeRequest_contactPreferencesable when successful
+func (m *LeadIntakeRequest) GetContactPreferences() LeadIntakeRequest_contactPreferencesable {
+	return m.contactPreferences
+}
+
+// GetCountry gets the country property value. ISO 3166-1 alpha-2 contact address country code.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetCountry() *string {
+	return m.country
+}
+
+// GetCurrency gets the currency property value. ISO 4217 acquisition price currency.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetCurrency() *string {
+	return m.currency
+}
+
+// GetCustomFields gets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+// returns a LeadIntakeRequest_customFieldsable when successful
+func (m *LeadIntakeRequest) GetCustomFields() LeadIntakeRequest_customFieldsable {
+	return m.customFields
+}
+
 // GetDateOfBirth gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
 // returns a *DateOnly when successful
 func (m *LeadIntakeRequest) GetDateOfBirth() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly {
 	return m.dateOfBirth
 }
 
-// GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+// GetDirectPostPrice gets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
 // returns a *float64 when successful
 func (m *LeadIntakeRequest) GetDirectPostPrice() *float64 {
 	return m.directPostPrice
@@ -196,6 +271,36 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["capturedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCapturedAt(val)
+		}
+		return nil
+	}
+	res["captureIpAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCaptureIpAddress(val)
+		}
+		return nil
+	}
+	res["captureUserAgent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCaptureUserAgent(val)
+		}
+		return nil
+	}
 	res["city"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -203,6 +308,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetCity(val)
+		}
+		return nil
+	}
+	res["company"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_companyFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompany(val.(LeadIntakeRequest_companyable))
 		}
 		return nil
 	}
@@ -223,6 +338,46 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetConsentCertificateUrl(val)
+		}
+		return nil
+	}
+	res["contactPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_contactPreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetContactPreferences(val.(LeadIntakeRequest_contactPreferencesable))
+		}
+		return nil
+	}
+	res["country"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCountry(val)
+		}
+		return nil
+	}
+	res["currency"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrency(val)
+		}
+		return nil
+	}
+	res["customFields"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_customFieldsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomFields(val.(LeadIntakeRequest_customFieldsable))
 		}
 		return nil
 	}
@@ -296,6 +451,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["inquiry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_inquiryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInquiry(val.(LeadIntakeRequest_inquiryable))
+		}
+		return nil
+	}
 	res["landingPage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -366,6 +531,26 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["profile"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_profileFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProfile(val.(LeadIntakeRequest_profileable))
+		}
+		return nil
+	}
+	res["pubId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPubId(val)
+		}
+		return nil
+	}
 	res["referrer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -393,6 +578,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetSellerLeadIdentifier(val)
+		}
+		return nil
+	}
+	res["serviceAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadIntakeRequest_serviceAddressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetServiceAddress(val.(LeadIntakeRequest_serviceAddressable))
 		}
 		return nil
 	}
@@ -455,6 +650,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 				}
 			}
 			m.SetTagNames(res)
+		}
+		return nil
+	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
 		}
 		return nil
 	}
@@ -549,6 +754,12 @@ func (m *LeadIntakeRequest) GetIdempotencyKey() *string {
 	return m.idempotencyKey
 }
 
+// GetInquiry gets the inquiry property value. The service or purchase requested by a lead.
+// returns a LeadIntakeRequest_inquiryable when successful
+func (m *LeadIntakeRequest) GetInquiry() LeadIntakeRequest_inquiryable {
+	return m.inquiry
+}
+
 // GetLandingPage gets the landingPage property value. Landing page URL where the lead submitted their information.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetLandingPage() *string {
@@ -561,7 +772,7 @@ func (m *LeadIntakeRequest) GetLastName() *string {
 	return m.lastName
 }
 
-// GetPhone gets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
+// GetPhone gets the phone property value. Contact phone number. Use E.164 with a leading + for international numbers.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetPhone() *string {
 	return m.phone
@@ -591,6 +802,18 @@ func (m *LeadIntakeRequest) GetProduct() *string {
 	return m.product
 }
 
+// GetProfile gets the profile property value. Public Leadping API schema for lead demographic profile data.
+// returns a LeadIntakeRequest_profileable when successful
+func (m *LeadIntakeRequest) GetProfile() LeadIntakeRequest_profileable {
+	return m.profile
+}
+
+// GetPubId gets the pubId property value. Publisher identifier.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetPubId() *string {
+	return m.pubId
+}
+
 // GetReferrer gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetReferrer() *string {
@@ -607,6 +830,12 @@ func (m *LeadIntakeRequest) GetSellerLeadId() *string {
 // returns a *string when successful
 func (m *LeadIntakeRequest) GetSellerLeadIdentifier() *string {
 	return m.sellerLeadIdentifier
+}
+
+// GetServiceAddress gets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+// returns a LeadIntakeRequest_serviceAddressable when successful
+func (m *LeadIntakeRequest) GetServiceAddress() LeadIntakeRequest_serviceAddressable {
+	return m.serviceAddress
 }
 
 // GetSourceMetadata gets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
@@ -637,6 +866,12 @@ func (m *LeadIntakeRequest) GetTagIds() []string {
 // returns a []string when successful
 func (m *LeadIntakeRequest) GetTagNames() []string {
 	return m.tagNames
+}
+
+// GetTimeZoneId gets the timeZoneId property value. Contact time zone identifier.
+// returns a *string when successful
+func (m *LeadIntakeRequest) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
 
 // GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
@@ -702,7 +937,31 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteTimeValue("capturedAt", m.GetCapturedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("captureIpAddress", m.GetCaptureIpAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("captureUserAgent", m.GetCaptureUserAgent())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("city", m.GetCity())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("company", m.GetCompany())
 		if err != nil {
 			return err
 		}
@@ -716,6 +975,30 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	{
 		err := writer.WriteStringValue("consentCertificateUrl", m.GetConsentCertificateUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("contactPreferences", m.GetContactPreferences())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("country", m.GetCountry())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("currency", m.GetCurrency())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("customFields", m.GetCustomFields())
 		if err != nil {
 			return err
 		}
@@ -763,6 +1046,12 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteObjectValue("inquiry", m.GetInquiry())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("landingPage", m.GetLandingPage())
 		if err != nil {
 			return err
@@ -805,6 +1094,18 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteObjectValue("profile", m.GetProfile())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("pubId", m.GetPubId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("referrer", m.GetReferrer())
 		if err != nil {
 			return err
@@ -818,6 +1119,12 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	{
 		err := writer.WriteStringValue("sellerLeadIdentifier", m.GetSellerLeadIdentifier())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("serviceAddress", m.GetServiceAddress())
 		if err != nil {
 			return err
 		}
@@ -848,6 +1155,12 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	if m.GetTagNames() != nil {
 		err := writer.WriteCollectionOfStringValues("tagNames", m.GetTagNames())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
 		if err != nil {
 			return err
 		}
@@ -923,9 +1236,29 @@ func (m *LeadIntakeRequest) SetBirthDate(value *i878a80d2330e89d26896388a3f487ee
 	m.birthDate = value
 }
 
+// SetCapturedAt sets the capturedAt property value. Original source capture timestamp.
+func (m *LeadIntakeRequest) SetCapturedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.capturedAt = value
+}
+
+// SetCaptureIpAddress sets the captureIpAddress property value. Original visitor IP as reported by the source.
+func (m *LeadIntakeRequest) SetCaptureIpAddress(value *string) {
+	m.captureIpAddress = value
+}
+
+// SetCaptureUserAgent sets the captureUserAgent property value. Original visitor user agent as reported by the source.
+func (m *LeadIntakeRequest) SetCaptureUserAgent(value *string) {
+	m.captureUserAgent = value
+}
+
 // SetCity sets the city property value. City for the lead or organization postal address.
 func (m *LeadIntakeRequest) SetCity(value *string) {
 	m.city = value
+}
+
+// SetCompany sets the company property value. Business represented by a lead contact.
+func (m *LeadIntakeRequest) SetCompany(value LeadIntakeRequest_companyable) {
+	m.company = value
 }
 
 // SetConsentCertificateType sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
@@ -938,12 +1271,32 @@ func (m *LeadIntakeRequest) SetConsentCertificateUrl(value *string) {
 	m.consentCertificateUrl = value
 }
 
+// SetContactPreferences sets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+func (m *LeadIntakeRequest) SetContactPreferences(value LeadIntakeRequest_contactPreferencesable) {
+	m.contactPreferences = value
+}
+
+// SetCountry sets the country property value. ISO 3166-1 alpha-2 contact address country code.
+func (m *LeadIntakeRequest) SetCountry(value *string) {
+	m.country = value
+}
+
+// SetCurrency sets the currency property value. ISO 4217 acquisition price currency.
+func (m *LeadIntakeRequest) SetCurrency(value *string) {
+	m.currency = value
+}
+
+// SetCustomFields sets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+func (m *LeadIntakeRequest) SetCustomFields(value LeadIntakeRequest_customFieldsable) {
+	m.customFields = value
+}
+
 // SetDateOfBirth sets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
 func (m *LeadIntakeRequest) SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly) {
 	m.dateOfBirth = value
 }
 
-// SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+// SetDirectPostPrice sets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
 func (m *LeadIntakeRequest) SetDirectPostPrice(value *float64) {
 	m.directPostPrice = value
 }
@@ -973,6 +1326,11 @@ func (m *LeadIntakeRequest) SetIdempotencyKey(value *string) {
 	m.idempotencyKey = value
 }
 
+// SetInquiry sets the inquiry property value. The service or purchase requested by a lead.
+func (m *LeadIntakeRequest) SetInquiry(value LeadIntakeRequest_inquiryable) {
+	m.inquiry = value
+}
+
 // SetLandingPage sets the landingPage property value. Landing page URL where the lead submitted their information.
 func (m *LeadIntakeRequest) SetLandingPage(value *string) {
 	m.landingPage = value
@@ -983,7 +1341,7 @@ func (m *LeadIntakeRequest) SetLastName(value *string) {
 	m.lastName = value
 }
 
-// SetPhone sets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
+// SetPhone sets the phone property value. Contact phone number. Use E.164 with a leading + for international numbers.
 func (m *LeadIntakeRequest) SetPhone(value *string) {
 	m.phone = value
 }
@@ -1008,6 +1366,16 @@ func (m *LeadIntakeRequest) SetProduct(value *string) {
 	m.product = value
 }
 
+// SetProfile sets the profile property value. Public Leadping API schema for lead demographic profile data.
+func (m *LeadIntakeRequest) SetProfile(value LeadIntakeRequest_profileable) {
+	m.profile = value
+}
+
+// SetPubId sets the pubId property value. Publisher identifier.
+func (m *LeadIntakeRequest) SetPubId(value *string) {
+	m.pubId = value
+}
+
 // SetReferrer sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
 func (m *LeadIntakeRequest) SetReferrer(value *string) {
 	m.referrer = value
@@ -1021,6 +1389,11 @@ func (m *LeadIntakeRequest) SetSellerLeadId(value *string) {
 // SetSellerLeadIdentifier sets the sellerLeadIdentifier property value. Alternate seller-provided lead identifier used during intake normalization.
 func (m *LeadIntakeRequest) SetSellerLeadIdentifier(value *string) {
 	m.sellerLeadIdentifier = value
+}
+
+// SetServiceAddress sets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *LeadIntakeRequest) SetServiceAddress(value LeadIntakeRequest_serviceAddressable) {
+	m.serviceAddress = value
 }
 
 // SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
@@ -1046,6 +1419,11 @@ func (m *LeadIntakeRequest) SetTagIds(value []string) {
 // SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
 func (m *LeadIntakeRequest) SetTagNames(value []string) {
 	m.tagNames = value
+}
+
+// SetTimeZoneId sets the timeZoneId property value. Contact time zone identifier.
+func (m *LeadIntakeRequest) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
 }
 
 // SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
@@ -1089,9 +1467,17 @@ type LeadIntakeRequestable interface {
 	GetAddress1() *string
 	GetAddress2() *string
 	GetBirthDate() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
+	GetCapturedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCaptureIpAddress() *string
+	GetCaptureUserAgent() *string
 	GetCity() *string
+	GetCompany() LeadIntakeRequest_companyable
 	GetConsentCertificateType() *LeadIntakeRequest_consentCertificateType
 	GetConsentCertificateUrl() *string
+	GetContactPreferences() LeadIntakeRequest_contactPreferencesable
+	GetCountry() *string
+	GetCurrency() *string
+	GetCustomFields() LeadIntakeRequest_customFieldsable
 	GetDateOfBirth() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly
 	GetDirectPostPrice() *float64
 	GetEmail() *string
@@ -1099,6 +1485,7 @@ type LeadIntakeRequestable interface {
 	GetFirstName() *string
 	GetGender() *string
 	GetIdempotencyKey() *string
+	GetInquiry() LeadIntakeRequest_inquiryable
 	GetLandingPage() *string
 	GetLastName() *string
 	GetPhone() *string
@@ -1106,14 +1493,18 @@ type LeadIntakeRequestable interface {
 	GetPostalCode() *string
 	GetPrice() *float64
 	GetProduct() *string
+	GetProfile() LeadIntakeRequest_profileable
+	GetPubId() *string
 	GetReferrer() *string
 	GetSellerLeadId() *string
 	GetSellerLeadIdentifier() *string
+	GetServiceAddress() LeadIntakeRequest_serviceAddressable
 	GetSourceMetadata() LeadIntakeRequest_sourceMetadataable
 	GetState() *string
 	GetSubId() *string
 	GetTagIds() []string
 	GetTagNames() []string
+	GetTimeZoneId() *string
 	GetUtmCampaign() *string
 	GetUtmContent() *string
 	GetUtmMedium() *string
@@ -1124,9 +1515,17 @@ type LeadIntakeRequestable interface {
 	SetAddress1(value *string)
 	SetAddress2(value *string)
 	SetBirthDate(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
+	SetCapturedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCaptureIpAddress(value *string)
+	SetCaptureUserAgent(value *string)
 	SetCity(value *string)
+	SetCompany(value LeadIntakeRequest_companyable)
 	SetConsentCertificateType(value *LeadIntakeRequest_consentCertificateType)
 	SetConsentCertificateUrl(value *string)
+	SetContactPreferences(value LeadIntakeRequest_contactPreferencesable)
+	SetCountry(value *string)
+	SetCurrency(value *string)
+	SetCustomFields(value LeadIntakeRequest_customFieldsable)
 	SetDateOfBirth(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.DateOnly)
 	SetDirectPostPrice(value *float64)
 	SetEmail(value *string)
@@ -1134,6 +1533,7 @@ type LeadIntakeRequestable interface {
 	SetFirstName(value *string)
 	SetGender(value *string)
 	SetIdempotencyKey(value *string)
+	SetInquiry(value LeadIntakeRequest_inquiryable)
 	SetLandingPage(value *string)
 	SetLastName(value *string)
 	SetPhone(value *string)
@@ -1141,14 +1541,18 @@ type LeadIntakeRequestable interface {
 	SetPostalCode(value *string)
 	SetPrice(value *float64)
 	SetProduct(value *string)
+	SetProfile(value LeadIntakeRequest_profileable)
+	SetPubId(value *string)
 	SetReferrer(value *string)
 	SetSellerLeadId(value *string)
 	SetSellerLeadIdentifier(value *string)
+	SetServiceAddress(value LeadIntakeRequest_serviceAddressable)
 	SetSourceMetadata(value LeadIntakeRequest_sourceMetadataable)
 	SetState(value *string)
 	SetSubId(value *string)
 	SetTagIds(value []string)
 	SetTagNames(value []string)
+	SetTimeZoneId(value *string)
 	SetUtmCampaign(value *string)
 	SetUtmContent(value *string)
 	SetUtmMedium(value *string)

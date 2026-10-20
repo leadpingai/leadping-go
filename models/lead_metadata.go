@@ -14,6 +14,12 @@ type LeadMetadata struct {
 	additionalData map[string]any
 	// Phone number ID assigned to the lead, organization, or source.
 	assignedPhoneNumberId *string
+	// Timestamp when the source originally captured the inquiry.
+	capturedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Source-reported IP address of the original visitor.
+	captureIpAddress *string
+	// Source-reported user agent of the original visitor.
+	captureUserAgent *string
 	// Reason Leadping blocked this operation for compliance.
 	complianceBlockedReason *string
 	// Compliance status used to decide whether Leadping can send messages.
@@ -24,7 +30,9 @@ type LeadMetadata struct {
 	consentCertificateUrl *string
 	// UTC timestamp when this lead attribution metadata was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// Direct-post price supplied by the lead source during intake.
+	// ISO 4217 currency code for the lead acquisition price.
+	currency *string
+	// Alias for price. When both are supplied, their amounts must agree.
 	directPostPrice *float64
 	// External system identifier used to reconcile this lead attribution metadata across integrations.
 	externalId *string
@@ -115,6 +123,24 @@ func (m *LeadMetadata) GetAssignedPhoneNumberId() *string {
 	return m.assignedPhoneNumberId
 }
 
+// GetCapturedAt gets the capturedAt property value. Timestamp when the source originally captured the inquiry.
+// returns a *Time when successful
+func (m *LeadMetadata) GetCapturedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.capturedAt
+}
+
+// GetCaptureIpAddress gets the captureIpAddress property value. Source-reported IP address of the original visitor.
+// returns a *string when successful
+func (m *LeadMetadata) GetCaptureIpAddress() *string {
+	return m.captureIpAddress
+}
+
+// GetCaptureUserAgent gets the captureUserAgent property value. Source-reported user agent of the original visitor.
+// returns a *string when successful
+func (m *LeadMetadata) GetCaptureUserAgent() *string {
+	return m.captureUserAgent
+}
+
 // GetComplianceBlockedReason gets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 // returns a *string when successful
 func (m *LeadMetadata) GetComplianceBlockedReason() *string {
@@ -145,7 +171,13 @@ func (m *LeadMetadata) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a
 	return m.createdAt
 }
 
-// GetDirectPostPrice gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+// GetCurrency gets the currency property value. ISO 4217 currency code for the lead acquisition price.
+// returns a *string when successful
+func (m *LeadMetadata) GetCurrency() *string {
+	return m.currency
+}
+
+// GetDirectPostPrice gets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
 // returns a *float64 when successful
 func (m *LeadMetadata) GetDirectPostPrice() *float64 {
 	return m.directPostPrice
@@ -168,6 +200,36 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetAssignedPhoneNumberId(val)
+		}
+		return nil
+	}
+	res["capturedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCapturedAt(val)
+		}
+		return nil
+	}
+	res["captureIpAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCaptureIpAddress(val)
+		}
+		return nil
+	}
+	res["captureUserAgent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCaptureUserAgent(val)
 		}
 		return nil
 	}
@@ -218,6 +280,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["currency"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCurrency(val)
 		}
 		return nil
 	}
@@ -733,6 +805,24 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
+		err := writer.WriteTimeValue("capturedAt", m.GetCapturedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("captureIpAddress", m.GetCaptureIpAddress())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("captureUserAgent", m.GetCaptureUserAgent())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("complianceBlockedReason", m.GetComplianceBlockedReason())
 		if err != nil {
 			return err
@@ -759,6 +849,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteTimeValue("createdAt", m.GetCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("currency", m.GetCurrency())
 		if err != nil {
 			return err
 		}
@@ -974,6 +1070,21 @@ func (m *LeadMetadata) SetAssignedPhoneNumberId(value *string) {
 	m.assignedPhoneNumberId = value
 }
 
+// SetCapturedAt sets the capturedAt property value. Timestamp when the source originally captured the inquiry.
+func (m *LeadMetadata) SetCapturedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.capturedAt = value
+}
+
+// SetCaptureIpAddress sets the captureIpAddress property value. Source-reported IP address of the original visitor.
+func (m *LeadMetadata) SetCaptureIpAddress(value *string) {
+	m.captureIpAddress = value
+}
+
+// SetCaptureUserAgent sets the captureUserAgent property value. Source-reported user agent of the original visitor.
+func (m *LeadMetadata) SetCaptureUserAgent(value *string) {
+	m.captureUserAgent = value
+}
+
 // SetComplianceBlockedReason sets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
 func (m *LeadMetadata) SetComplianceBlockedReason(value *string) {
 	m.complianceBlockedReason = value
@@ -999,7 +1110,12 @@ func (m *LeadMetadata) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
 	m.createdAt = value
 }
 
-// SetDirectPostPrice sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+// SetCurrency sets the currency property value. ISO 4217 currency code for the lead acquisition price.
+func (m *LeadMetadata) SetCurrency(value *string) {
+	m.currency = value
+}
+
+// SetDirectPostPrice sets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
 func (m *LeadMetadata) SetDirectPostPrice(value *float64) {
 	m.directPostPrice = value
 }
@@ -1163,11 +1279,15 @@ type LeadMetadataable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetAssignedPhoneNumberId() *string
+	GetCapturedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCaptureIpAddress() *string
+	GetCaptureUserAgent() *string
 	GetComplianceBlockedReason() *string
 	GetComplianceStatus() *string
 	GetConsentCertificateType() *LeadMetadata_consentCertificateType
 	GetConsentCertificateUrl() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetCurrency() *string
 	GetDirectPostPrice() *float64
 	GetExternalId() *string
 	GetImportBatchId() *string
@@ -1201,11 +1321,15 @@ type LeadMetadataable interface {
 	GetUtmTerm() *string
 	GetVertical() *string
 	SetAssignedPhoneNumberId(value *string)
+	SetCapturedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCaptureIpAddress(value *string)
+	SetCaptureUserAgent(value *string)
 	SetComplianceBlockedReason(value *string)
 	SetComplianceStatus(value *string)
 	SetConsentCertificateType(value *LeadMetadata_consentCertificateType)
 	SetConsentCertificateUrl(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetCurrency(value *string)
 	SetDirectPostPrice(value *float64)
 	SetExternalId(value *string)
 	SetImportBatchId(value *string)

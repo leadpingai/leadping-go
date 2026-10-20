@@ -11,19 +11,29 @@ import (
 type LeadRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Business represented by a lead contact.
+	company LeadRequest_companyable
 	// Public Leadping API schema for lead contact profile data.
 	contact LeadContactable
-	// Public Leadping API schema for lead demographic profile data.
-	customer LeadProfileable
-	// Indicates whether this lead request is active and available in the Leadping API.
+	// Preferred contact language, channel, and callback windows; does not grant consent.
+	contactPreferences LeadRequest_contactPreferencesable
+	// Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+	customFields LeadRequest_customFieldsable
+	// Whether the lead is enabled.
 	enabled *bool
 	// Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
 	id *string
+	// The service or purchase requested by a lead.
+	inquiry LeadRequest_inquiryable
 	// Public Leadping API schema for lead attribution metadata data.
 	metadata LeadMetadataable
-	// Tag IDs assigned to or filtered against this lead.
+	// Public Leadping API schema for lead demographic profile data.
+	profile LeadRequest_profileable
+	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+	serviceAddress LeadRequest_serviceAddressable
+	// Optional tag IDs assigned to this lead. Defaults to an empty list when omitted.
 	tagIds []string
-	// Tag names assigned to this lead when matching existing tags by name.
+	// Optional tag names matched against existing tags. Defaults to an empty list when omitted.
 	tagNames []string
 }
 
@@ -46,19 +56,31 @@ func (m *LeadRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCompany gets the company property value. Business represented by a lead contact.
+// returns a LeadRequest_companyable when successful
+func (m *LeadRequest) GetCompany() LeadRequest_companyable {
+	return m.company
+}
+
 // GetContact gets the contact property value. Public Leadping API schema for lead contact profile data.
 // returns a LeadContactable when successful
 func (m *LeadRequest) GetContact() LeadContactable {
 	return m.contact
 }
 
-// GetCustomer gets the customer property value. Public Leadping API schema for lead demographic profile data.
-// returns a LeadProfileable when successful
-func (m *LeadRequest) GetCustomer() LeadProfileable {
-	return m.customer
+// GetContactPreferences gets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+// returns a LeadRequest_contactPreferencesable when successful
+func (m *LeadRequest) GetContactPreferences() LeadRequest_contactPreferencesable {
+	return m.contactPreferences
 }
 
-// GetEnabled gets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
+// GetCustomFields gets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+// returns a LeadRequest_customFieldsable when successful
+func (m *LeadRequest) GetCustomFields() LeadRequest_customFieldsable {
+	return m.customFields
+}
+
+// GetEnabled gets the enabled property value. Whether the lead is enabled.
 // returns a *bool when successful
 func (m *LeadRequest) GetEnabled() *bool {
 	return m.enabled
@@ -68,6 +90,16 @@ func (m *LeadRequest) GetEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *LeadRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["company"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_companyFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCompany(val.(LeadRequest_companyable))
+		}
+		return nil
+	}
 	res["contact"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateLeadContactFromDiscriminatorValue)
 		if err != nil {
@@ -78,13 +110,23 @@ func (m *LeadRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
-	res["customer"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetObjectValue(CreateLeadProfileFromDiscriminatorValue)
+	res["contactPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_contactPreferencesFromDiscriminatorValue)
 		if err != nil {
 			return err
 		}
 		if val != nil {
-			m.SetCustomer(val.(LeadProfileable))
+			m.SetContactPreferences(val.(LeadRequest_contactPreferencesable))
+		}
+		return nil
+	}
+	res["customFields"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_customFieldsFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCustomFields(val.(LeadRequest_customFieldsable))
 		}
 		return nil
 	}
@@ -108,6 +150,16 @@ func (m *LeadRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
+	res["inquiry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_inquiryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInquiry(val.(LeadRequest_inquiryable))
+		}
+		return nil
+	}
 	res["metadata"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateLeadMetadataFromDiscriminatorValue)
 		if err != nil {
@@ -115,6 +167,26 @@ func (m *LeadRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		if val != nil {
 			m.SetMetadata(val.(LeadMetadataable))
+		}
+		return nil
+	}
+	res["profile"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_profileFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetProfile(val.(LeadRequest_profileable))
+		}
+		return nil
+	}
+	res["serviceAddress"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateLeadRequest_serviceAddressFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetServiceAddress(val.(LeadRequest_serviceAddressable))
 		}
 		return nil
 	}
@@ -159,19 +231,37 @@ func (m *LeadRequest) GetId() *string {
 	return m.id
 }
 
+// GetInquiry gets the inquiry property value. The service or purchase requested by a lead.
+// returns a LeadRequest_inquiryable when successful
+func (m *LeadRequest) GetInquiry() LeadRequest_inquiryable {
+	return m.inquiry
+}
+
 // GetMetadata gets the metadata property value. Public Leadping API schema for lead attribution metadata data.
 // returns a LeadMetadataable when successful
 func (m *LeadRequest) GetMetadata() LeadMetadataable {
 	return m.metadata
 }
 
-// GetTagIds gets the tagIds property value. Tag IDs assigned to or filtered against this lead.
+// GetProfile gets the profile property value. Public Leadping API schema for lead demographic profile data.
+// returns a LeadRequest_profileable when successful
+func (m *LeadRequest) GetProfile() LeadRequest_profileable {
+	return m.profile
+}
+
+// GetServiceAddress gets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+// returns a LeadRequest_serviceAddressable when successful
+func (m *LeadRequest) GetServiceAddress() LeadRequest_serviceAddressable {
+	return m.serviceAddress
+}
+
+// GetTagIds gets the tagIds property value. Optional tag IDs assigned to this lead. Defaults to an empty list when omitted.
 // returns a []string when successful
 func (m *LeadRequest) GetTagIds() []string {
 	return m.tagIds
 }
 
-// GetTagNames gets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
+// GetTagNames gets the tagNames property value. Optional tag names matched against existing tags. Defaults to an empty list when omitted.
 // returns a []string when successful
 func (m *LeadRequest) GetTagNames() []string {
 	return m.tagNames
@@ -180,13 +270,25 @@ func (m *LeadRequest) GetTagNames() []string {
 // Serialize serializes information the current object
 func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
+		err := writer.WriteObjectValue("company", m.GetCompany())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("contact", m.GetContact())
 		if err != nil {
 			return err
 		}
 	}
 	{
-		err := writer.WriteObjectValue("customer", m.GetCustomer())
+		err := writer.WriteObjectValue("contactPreferences", m.GetContactPreferences())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("customFields", m.GetCustomFields())
 		if err != nil {
 			return err
 		}
@@ -204,7 +306,25 @@ func (m *LeadRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 		}
 	}
 	{
+		err := writer.WriteObjectValue("inquiry", m.GetInquiry())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("metadata", m.GetMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("profile", m.GetProfile())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("serviceAddress", m.GetServiceAddress())
 		if err != nil {
 			return err
 		}
@@ -235,17 +355,27 @@ func (m *LeadRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetCompany sets the company property value. Business represented by a lead contact.
+func (m *LeadRequest) SetCompany(value LeadRequest_companyable) {
+	m.company = value
+}
+
 // SetContact sets the contact property value. Public Leadping API schema for lead contact profile data.
 func (m *LeadRequest) SetContact(value LeadContactable) {
 	m.contact = value
 }
 
-// SetCustomer sets the customer property value. Public Leadping API schema for lead demographic profile data.
-func (m *LeadRequest) SetCustomer(value LeadProfileable) {
-	m.customer = value
+// SetContactPreferences sets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+func (m *LeadRequest) SetContactPreferences(value LeadRequest_contactPreferencesable) {
+	m.contactPreferences = value
 }
 
-// SetEnabled sets the enabled property value. Indicates whether this lead request is active and available in the Leadping API.
+// SetCustomFields sets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+func (m *LeadRequest) SetCustomFields(value LeadRequest_customFieldsable) {
+	m.customFields = value
+}
+
+// SetEnabled sets the enabled property value. Whether the lead is enabled.
 func (m *LeadRequest) SetEnabled(value *bool) {
 	m.enabled = value
 }
@@ -255,17 +385,32 @@ func (m *LeadRequest) SetId(value *string) {
 	m.id = value
 }
 
+// SetInquiry sets the inquiry property value. The service or purchase requested by a lead.
+func (m *LeadRequest) SetInquiry(value LeadRequest_inquiryable) {
+	m.inquiry = value
+}
+
 // SetMetadata sets the metadata property value. Public Leadping API schema for lead attribution metadata data.
 func (m *LeadRequest) SetMetadata(value LeadMetadataable) {
 	m.metadata = value
 }
 
-// SetTagIds sets the tagIds property value. Tag IDs assigned to or filtered against this lead.
+// SetProfile sets the profile property value. Public Leadping API schema for lead demographic profile data.
+func (m *LeadRequest) SetProfile(value LeadRequest_profileable) {
+	m.profile = value
+}
+
+// SetServiceAddress sets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+func (m *LeadRequest) SetServiceAddress(value LeadRequest_serviceAddressable) {
+	m.serviceAddress = value
+}
+
+// SetTagIds sets the tagIds property value. Optional tag IDs assigned to this lead. Defaults to an empty list when omitted.
 func (m *LeadRequest) SetTagIds(value []string) {
 	m.tagIds = value
 }
 
-// SetTagNames sets the tagNames property value. Tag names assigned to this lead when matching existing tags by name.
+// SetTagNames sets the tagNames property value. Optional tag names matched against existing tags. Defaults to an empty list when omitted.
 func (m *LeadRequest) SetTagNames(value []string) {
 	m.tagNames = value
 }
@@ -273,18 +418,28 @@ func (m *LeadRequest) SetTagNames(value []string) {
 type LeadRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCompany() LeadRequest_companyable
 	GetContact() LeadContactable
-	GetCustomer() LeadProfileable
+	GetContactPreferences() LeadRequest_contactPreferencesable
+	GetCustomFields() LeadRequest_customFieldsable
 	GetEnabled() *bool
 	GetId() *string
+	GetInquiry() LeadRequest_inquiryable
 	GetMetadata() LeadMetadataable
+	GetProfile() LeadRequest_profileable
+	GetServiceAddress() LeadRequest_serviceAddressable
 	GetTagIds() []string
 	GetTagNames() []string
+	SetCompany(value LeadRequest_companyable)
 	SetContact(value LeadContactable)
-	SetCustomer(value LeadProfileable)
+	SetContactPreferences(value LeadRequest_contactPreferencesable)
+	SetCustomFields(value LeadRequest_customFieldsable)
 	SetEnabled(value *bool)
 	SetId(value *string)
+	SetInquiry(value LeadRequest_inquiryable)
 	SetMetadata(value LeadMetadataable)
+	SetProfile(value LeadRequest_profileable)
+	SetServiceAddress(value LeadRequest_serviceAddressable)
 	SetTagIds(value []string)
 	SetTagNames(value []string)
 }
