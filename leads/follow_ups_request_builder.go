@@ -14,7 +14,7 @@ type FollowUpsRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// FollowUpsRequestBuilderGetQueryParameters returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+// FollowUpsRequestBuilderGetQueryParameters returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
 type FollowUpsRequestBuilderGetQueryParameters struct {
 	// The continuation token from a previous response, or null to retrieve the first page.
 	Continuation *string "uriparametername:\"continuation\""
@@ -37,7 +37,7 @@ func NewFollowUpsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 	return NewFollowUpsRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Get returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+// Get returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -62,7 +62,7 @@ func (m *FollowUpsRequestBuilder) Get(ctx context.Context, requestConfiguration 
 	return res.([]byte), nil
 }
 
-// ToGetRequestInformation returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+// ToGetRequestInformation returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
 // returns a *RequestInformation when successful
 func (m *FollowUpsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[FollowUpsRequestBuilderGetQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
