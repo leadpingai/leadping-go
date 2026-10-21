@@ -24,10 +24,14 @@ type LeadMetadata struct {
 	complianceBlockedReason *string
 	// Compliance status used to decide whether Leadping can send messages.
 	complianceStatus *string
+	// User attestation of SMS consent from another source; does not establish independent verification.
+	consentAttested *bool
 	// The provider responsible for a lead's consent certificate.
 	consentCertificateType *LeadMetadata_consentCertificateType
 	// Certificate URL used as proof of consumer consent.
 	consentCertificateUrl *string
+	// Leadping's assessment of the supporting consent evidence.
+	consentVerificationStatus *ConsentVerificationStatus
 	// UTC timestamp when this lead attribution metadata was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// ISO 4217 currency code for the lead acquisition price.
@@ -153,6 +157,12 @@ func (m *LeadMetadata) GetComplianceStatus() *string {
 	return m.complianceStatus
 }
 
+// GetConsentAttested gets the consentAttested property value. User attestation of SMS consent from another source; does not establish independent verification.
+// returns a *bool when successful
+func (m *LeadMetadata) GetConsentAttested() *bool {
+	return m.consentAttested
+}
+
 // GetConsentCertificateType gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
 // returns a *LeadMetadata_consentCertificateType when successful
 func (m *LeadMetadata) GetConsentCertificateType() *LeadMetadata_consentCertificateType {
@@ -163,6 +173,12 @@ func (m *LeadMetadata) GetConsentCertificateType() *LeadMetadata_consentCertific
 // returns a *string when successful
 func (m *LeadMetadata) GetConsentCertificateUrl() *string {
 	return m.consentCertificateUrl
+}
+
+// GetConsentVerificationStatus gets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
+// returns a *ConsentVerificationStatus when successful
+func (m *LeadMetadata) GetConsentVerificationStatus() *ConsentVerificationStatus {
+	return m.consentVerificationStatus
 }
 
 // GetCreatedAt gets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
@@ -253,6 +269,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["consentAttested"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentAttested(val)
+		}
+		return nil
+	}
 	res["consentCertificateType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseLeadMetadata_consentCertificateType)
 		if err != nil {
@@ -270,6 +296,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetConsentCertificateUrl(val)
+		}
+		return nil
+	}
+	res["consentVerificationStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseConsentVerificationStatus)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentVerificationStatus(val.(*ConsentVerificationStatus))
 		}
 		return nil
 	}
@@ -834,6 +870,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 			return err
 		}
 	}
+	{
+		err := writer.WriteBoolValue("consentAttested", m.GetConsentAttested())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetConsentCertificateType() != nil {
 		cast := (*m.GetConsentCertificateType()).String()
 		err := writer.WriteStringValue("consentCertificateType", &cast)
@@ -843,6 +885,13 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteStringValue("consentCertificateUrl", m.GetConsentCertificateUrl())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetConsentVerificationStatus() != nil {
+		cast := (*m.GetConsentVerificationStatus()).String()
+		err := writer.WriteStringValue("consentVerificationStatus", &cast)
 		if err != nil {
 			return err
 		}
@@ -1095,6 +1144,11 @@ func (m *LeadMetadata) SetComplianceStatus(value *string) {
 	m.complianceStatus = value
 }
 
+// SetConsentAttested sets the consentAttested property value. User attestation of SMS consent from another source; does not establish independent verification.
+func (m *LeadMetadata) SetConsentAttested(value *bool) {
+	m.consentAttested = value
+}
+
 // SetConsentCertificateType sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
 func (m *LeadMetadata) SetConsentCertificateType(value *LeadMetadata_consentCertificateType) {
 	m.consentCertificateType = value
@@ -1103,6 +1157,11 @@ func (m *LeadMetadata) SetConsentCertificateType(value *LeadMetadata_consentCert
 // SetConsentCertificateUrl sets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
 func (m *LeadMetadata) SetConsentCertificateUrl(value *string) {
 	m.consentCertificateUrl = value
+}
+
+// SetConsentVerificationStatus sets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
+func (m *LeadMetadata) SetConsentVerificationStatus(value *ConsentVerificationStatus) {
+	m.consentVerificationStatus = value
 }
 
 // SetCreatedAt sets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
@@ -1284,8 +1343,10 @@ type LeadMetadataable interface {
 	GetCaptureUserAgent() *string
 	GetComplianceBlockedReason() *string
 	GetComplianceStatus() *string
+	GetConsentAttested() *bool
 	GetConsentCertificateType() *LeadMetadata_consentCertificateType
 	GetConsentCertificateUrl() *string
+	GetConsentVerificationStatus() *ConsentVerificationStatus
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCurrency() *string
 	GetDirectPostPrice() *float64
@@ -1326,8 +1387,10 @@ type LeadMetadataable interface {
 	SetCaptureUserAgent(value *string)
 	SetComplianceBlockedReason(value *string)
 	SetComplianceStatus(value *string)
+	SetConsentAttested(value *bool)
 	SetConsentCertificateType(value *LeadMetadata_consentCertificateType)
 	SetConsentCertificateUrl(value *string)
+	SetConsentVerificationStatus(value *ConsentVerificationStatus)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCurrency(value *string)
 	SetDirectPostPrice(value *float64)

@@ -28,6 +28,8 @@ type LeadIntakeRequest struct {
 	city *string
 	// Business represented by a lead contact.
 	company LeadIntakeRequest_companyable
+	// Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+	consentAttested *bool
 	// The provider responsible for a lead's consent certificate.
 	consentCertificateType *LeadIntakeRequest_consentCertificateType
 	// Certificate URL used as proof of consumer consent.
@@ -177,6 +179,12 @@ func (m *LeadIntakeRequest) GetCompany() LeadIntakeRequest_companyable {
 	return m.company
 }
 
+// GetConsentAttested gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+// returns a *bool when successful
+func (m *LeadIntakeRequest) GetConsentAttested() *bool {
+	return m.consentAttested
+}
+
 // GetConsentCertificateType gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
 // returns a *LeadIntakeRequest_consentCertificateType when successful
 func (m *LeadIntakeRequest) GetConsentCertificateType() *LeadIntakeRequest_consentCertificateType {
@@ -318,6 +326,16 @@ func (m *LeadIntakeRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetCompany(val.(LeadIntakeRequest_companyable))
+		}
+		return nil
+	}
+	res["consentAttested"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentAttested(val)
 		}
 		return nil
 	}
@@ -966,6 +984,12 @@ func (m *LeadIntakeRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 			return err
 		}
 	}
+	{
+		err := writer.WriteBoolValue("consentAttested", m.GetConsentAttested())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetConsentCertificateType() != nil {
 		cast := (*m.GetConsentCertificateType()).String()
 		err := writer.WriteStringValue("consentCertificateType", &cast)
@@ -1261,6 +1285,11 @@ func (m *LeadIntakeRequest) SetCompany(value LeadIntakeRequest_companyable) {
 	m.company = value
 }
 
+// SetConsentAttested sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+func (m *LeadIntakeRequest) SetConsentAttested(value *bool) {
+	m.consentAttested = value
+}
+
 // SetConsentCertificateType sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
 func (m *LeadIntakeRequest) SetConsentCertificateType(value *LeadIntakeRequest_consentCertificateType) {
 	m.consentCertificateType = value
@@ -1472,6 +1501,7 @@ type LeadIntakeRequestable interface {
 	GetCaptureUserAgent() *string
 	GetCity() *string
 	GetCompany() LeadIntakeRequest_companyable
+	GetConsentAttested() *bool
 	GetConsentCertificateType() *LeadIntakeRequest_consentCertificateType
 	GetConsentCertificateUrl() *string
 	GetContactPreferences() LeadIntakeRequest_contactPreferencesable
@@ -1520,6 +1550,7 @@ type LeadIntakeRequestable interface {
 	SetCaptureUserAgent(value *string)
 	SetCity(value *string)
 	SetCompany(value LeadIntakeRequest_companyable)
+	SetConsentAttested(value *bool)
 	SetConsentCertificateType(value *LeadIntakeRequest_consentCertificateType)
 	SetConsentCertificateUrl(value *string)
 	SetContactPreferences(value LeadIntakeRequest_contactPreferencesable)
