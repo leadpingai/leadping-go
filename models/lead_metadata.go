@@ -84,6 +84,8 @@ type LeadMetadata struct {
 	subId *string
 	// UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
 	trustedFormCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+	trustedFormRejectedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Browser or client user agent captured when this lead attribution metadata was submitted.
 	userAgent *string
 	// User ID associated with this lead's attribution metadata.
@@ -569,6 +571,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["trustedFormRejectedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrustedFormRejectedAt(val)
+		}
+		return nil
+	}
 	res["userAgent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -782,6 +794,12 @@ func (m *LeadMetadata) GetSubId() *string {
 // returns a *Time when successful
 func (m *LeadMetadata) GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.trustedFormCheckedAt
+}
+
+// GetTrustedFormRejectedAt gets the trustedFormRejectedAt property value. Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+// returns a *Time when successful
+func (m *LeadMetadata) GetTrustedFormRejectedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.trustedFormRejectedAt
 }
 
 // GetUserAgent gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
@@ -1053,6 +1071,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
+		err := writer.WriteTimeValue("trustedFormRejectedAt", m.GetTrustedFormRejectedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("userAgent", m.GetUserAgent())
 		if err != nil {
 			return err
@@ -1294,6 +1318,11 @@ func (m *LeadMetadata) SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe
 	m.trustedFormCheckedAt = value
 }
 
+// SetTrustedFormRejectedAt sets the trustedFormRejectedAt property value. Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+func (m *LeadMetadata) SetTrustedFormRejectedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.trustedFormRejectedAt = value
+}
+
 // SetUserAgent sets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
 func (m *LeadMetadata) SetUserAgent(value *string) {
 	m.userAgent = value
@@ -1373,6 +1402,7 @@ type LeadMetadataable interface {
 	GetSourceMetadata() LeadMetadata_sourceMetadataable
 	GetSubId() *string
 	GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetTrustedFormRejectedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetUserAgent() *string
 	GetUserId() *string
 	GetUtmCampaign() *string
@@ -1417,6 +1447,7 @@ type LeadMetadataable interface {
 	SetSourceMetadata(value LeadMetadata_sourceMetadataable)
 	SetSubId(value *string)
 	SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetTrustedFormRejectedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetUserAgent(value *string)
 	SetUserId(value *string)
 	SetUtmCampaign(value *string)
