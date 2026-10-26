@@ -28,6 +28,8 @@ type SourceResponse struct {
 	createdByUser SourceResponse_createdByUserable
 	// Email used to resolve the creator's avatar.
 	createdByUserEmail *string
+	// Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+	dailyLeadLimit *int32
 	// Tag IDs automatically assigned to leads created by this source.
 	defaultTagIds []string
 	// Default tag summaries automatically applied to leads from this source.
@@ -123,6 +125,12 @@ func (m *SourceResponse) GetCreatedByUser() SourceResponse_createdByUserable {
 // returns a *string when successful
 func (m *SourceResponse) GetCreatedByUserEmail() *string {
 	return m.createdByUserEmail
+}
+
+// GetDailyLeadLimit gets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+// returns a *int32 when successful
+func (m *SourceResponse) GetDailyLeadLimit() *int32 {
+	return m.dailyLeadLimit
 }
 
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
@@ -230,6 +238,16 @@ func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		if val != nil {
 			m.SetCreatedByUserEmail(val)
+		}
+		return nil
+	}
+	res["dailyLeadLimit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDailyLeadLimit(val)
 		}
 		return nil
 	}
@@ -498,6 +516,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 			return err
 		}
 	}
+	{
+		err := writer.WriteInt32Value("dailyLeadLimit", m.GetDailyLeadLimit())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetDefaultTagIds() != nil {
 		err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
 		if err != nil {
@@ -642,6 +666,11 @@ func (m *SourceResponse) SetCreatedByUserEmail(value *string) {
 	m.createdByUserEmail = value
 }
 
+// SetDailyLeadLimit sets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+func (m *SourceResponse) SetDailyLeadLimit(value *int32) {
+	m.dailyLeadLimit = value
+}
+
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceResponse) SetDefaultTagIds(value []string) {
 	m.defaultTagIds = value
@@ -723,6 +752,7 @@ type SourceResponseable interface {
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCreatedByUser() SourceResponse_createdByUserable
 	GetCreatedByUserEmail() *string
+	GetDailyLeadLimit() *int32
 	GetDefaultTagIds() []string
 	GetDefaultTags() []TagSummaryable
 	GetDescription() *string
@@ -745,6 +775,7 @@ type SourceResponseable interface {
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCreatedByUser(value SourceResponse_createdByUserable)
 	SetCreatedByUserEmail(value *string)
+	SetDailyLeadLimit(value *int32)
 	SetDefaultTagIds(value []string)
 	SetDefaultTags(value []TagSummaryable)
 	SetDescription(value *string)

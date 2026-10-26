@@ -13,6 +13,8 @@ type SourceRequest struct {
 	additionalData map[string]any
 	// Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 	automaticPhoneLookup *bool
+	// Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+	dailyLeadLimit *int32
 	// Tag IDs automatically assigned to leads created by this source.
 	defaultTagIds []string
 	// Tag names automatically assigned to leads created by this source.
@@ -50,6 +52,12 @@ func (m *SourceRequest) GetAutomaticPhoneLookup() *bool {
 	return m.automaticPhoneLookup
 }
 
+// GetDailyLeadLimit gets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+// returns a *int32 when successful
+func (m *SourceRequest) GetDailyLeadLimit() *int32 {
+	return m.dailyLeadLimit
+}
+
 // GetDefaultTagIds gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 // returns a []string when successful
 func (m *SourceRequest) GetDefaultTagIds() []string {
@@ -79,6 +87,16 @@ func (m *SourceRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetAutomaticPhoneLookup(val)
+		}
+		return nil
+	}
+	res["dailyLeadLimit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDailyLeadLimit(val)
 		}
 		return nil
 	}
@@ -167,6 +185,12 @@ func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 			return err
 		}
 	}
+	{
+		err := writer.WriteInt32Value("dailyLeadLimit", m.GetDailyLeadLimit())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetDefaultTagIds() != nil {
 		err := writer.WriteCollectionOfStringValues("defaultTagIds", m.GetDefaultTagIds())
 		if err != nil {
@@ -216,6 +240,11 @@ func (m *SourceRequest) SetAutomaticPhoneLookup(value *bool) {
 	m.automaticPhoneLookup = value
 }
 
+// SetDailyLeadLimit sets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+func (m *SourceRequest) SetDailyLeadLimit(value *int32) {
+	m.dailyLeadLimit = value
+}
+
 // SetDefaultTagIds sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
 func (m *SourceRequest) SetDefaultTagIds(value []string) {
 	m.defaultTagIds = value
@@ -245,12 +274,14 @@ type SourceRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetAutomaticPhoneLookup() *bool
+	GetDailyLeadLimit() *int32
 	GetDefaultTagIds() []string
 	GetDefaultTagNames() []string
 	GetDescription() *string
 	GetName() *string
 	GetRequiresTrustedForm() *bool
 	SetAutomaticPhoneLookup(value *bool)
+	SetDailyLeadLimit(value *int32)
 	SetDefaultTagIds(value []string)
 	SetDefaultTagNames(value []string)
 	SetDescription(value *string)

@@ -20,8 +20,6 @@ type PhoneNumberResponse struct {
 	id *string
 	// The isDemo property
 	isDemo *bool
-	// Indicates whether Leadping provisions and manages this phone number.
-	leadpingOwned *bool
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Human-readable display name of the resource.
@@ -32,6 +30,8 @@ type PhoneNumberResponse struct {
 	numberHealthEnabled *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	organization PhoneNumberResponse_organizationable
+	// Identifies whose traffic a phone number serves, independently of provider control.
+	ownership *PhoneNumberOwnership
 	// Identifier of the canonical phone identity for this number.
 	phoneIdentityId *string
 	// Public Leadping API schema for phone number routing metadata data.
@@ -119,16 +119,6 @@ func (m *PhoneNumberResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
-	res["leadpingOwned"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetBoolValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetLeadpingOwned(val)
-		}
-		return nil
-	}
 	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -176,6 +166,16 @@ func (m *PhoneNumberResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetOrganization(val.(PhoneNumberResponse_organizationable))
+		}
+		return nil
+	}
+	res["ownership"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberOwnership)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOwnership(val.(*PhoneNumberOwnership))
 		}
 		return nil
 	}
@@ -244,12 +244,6 @@ func (m *PhoneNumberResponse) GetIsDemo() *bool {
 	return m.isDemo
 }
 
-// GetLeadpingOwned gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
-// returns a *bool when successful
-func (m *PhoneNumberResponse) GetLeadpingOwned() *bool {
-	return m.leadpingOwned
-}
-
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneNumberResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -278,6 +272,12 @@ func (m *PhoneNumberResponse) GetNumberHealthEnabled() *bool {
 // returns a PhoneNumberResponse_organizationable when successful
 func (m *PhoneNumberResponse) GetOrganization() PhoneNumberResponse_organizationable {
 	return m.organization
+}
+
+// GetOwnership gets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+// returns a *PhoneNumberOwnership when successful
+func (m *PhoneNumberResponse) GetOwnership() *PhoneNumberOwnership {
+	return m.ownership
 }
 
 // GetPhoneIdentityId gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
@@ -337,12 +337,6 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
-		err := writer.WriteBoolValue("leadpingOwned", m.GetLeadpingOwned())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteTimeValue("modifiedAt", m.GetModifiedAt())
 		if err != nil {
 			return err
@@ -368,6 +362,13 @@ func (m *PhoneNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteObjectValue("organization", m.GetOrganization())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetOwnership() != nil {
+		cast := (*m.GetOwnership()).String()
+		err := writer.WriteStringValue("ownership", &cast)
 		if err != nil {
 			return err
 		}
@@ -436,11 +437,6 @@ func (m *PhoneNumberResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
-// SetLeadpingOwned sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
-func (m *PhoneNumberResponse) SetLeadpingOwned(value *bool) {
-	m.leadpingOwned = value
-}
-
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *PhoneNumberResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
@@ -464,6 +460,11 @@ func (m *PhoneNumberResponse) SetNumberHealthEnabled(value *bool) {
 // SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *PhoneNumberResponse) SetOrganization(value PhoneNumberResponse_organizationable) {
 	m.organization = value
+}
+
+// SetOwnership sets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+func (m *PhoneNumberResponse) SetOwnership(value *PhoneNumberOwnership) {
+	m.ownership = value
 }
 
 // SetPhoneIdentityId sets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
@@ -498,12 +499,12 @@ type PhoneNumberResponseable interface {
 	GetEnabled() *bool
 	GetId() *string
 	GetIsDemo() *bool
-	GetLeadpingOwned() *bool
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetNumber() *string
 	GetNumberHealthEnabled() *bool
 	GetOrganization() PhoneNumberResponse_organizationable
+	GetOwnership() *PhoneNumberOwnership
 	GetPhoneIdentityId() *string
 	GetRouting() PhoneNumberRoutingMetadataable
 	GetSmsReady() *bool
@@ -513,12 +514,12 @@ type PhoneNumberResponseable interface {
 	SetEnabled(value *bool)
 	SetId(value *string)
 	SetIsDemo(value *bool)
-	SetLeadpingOwned(value *bool)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetNumber(value *string)
 	SetNumberHealthEnabled(value *bool)
 	SetOrganization(value PhoneNumberResponse_organizationable)
+	SetOwnership(value *PhoneNumberOwnership)
 	SetPhoneIdentityId(value *string)
 	SetRouting(value PhoneNumberRoutingMetadataable)
 	SetSmsReady(value *bool)

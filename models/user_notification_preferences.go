@@ -44,7 +44,7 @@ type UserNotificationPreferences struct {
 	paymentFailedEnabled *bool
 	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 	paymentFailedSmsEnabled *bool
-	// Whether push and automation alerts wait until the user's daily quiet hours end.
+	// Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
 	quietHoursEnabled *bool
 	// The exclusive local end of daily quiet hours.
 	quietHoursEnd *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
@@ -508,7 +508,7 @@ func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
 	return m.paymentFailedSmsEnabled
 }
 
-// GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+// GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetQuietHoursEnabled() *bool {
 	return m.quietHoursEnabled
@@ -880,7 +880,7 @@ func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
 	m.paymentFailedSmsEnabled = value
 }
 
-// SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+// SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
 func (m *UserNotificationPreferences) SetQuietHoursEnabled(value *bool) {
 	m.quietHoursEnabled = value
 }

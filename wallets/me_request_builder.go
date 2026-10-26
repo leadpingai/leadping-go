@@ -58,6 +58,12 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae41
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.WalletResponseable), nil
 }
 
+// SpendLimits the spendLimits property
+// returns a *MeSpendLimitsRequestBuilder when successful
+func (m *MeRequestBuilder) SpendLimits() *MeSpendLimitsRequestBuilder {
+	return NewMeSpendLimitsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // ToGetRequestInformation returns the current organization wallet, including balance and funding status used for communication delivery and billing.
 // returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {

@@ -27,8 +27,8 @@ type PhoneNumberTableRow struct {
 	organization *string
 	// Unique Leadping organization identifier connected to this phone number table row.
 	organizationId *string
-	// Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-	ownership *string
+	// Identifies whose traffic a phone number serves, independently of provider control.
+	ownership *PhoneNumberOwnership
 	// Human-readable routing summary for this phone number.
 	routingSummary *string
 	// Indicates whether SMS messaging is ready for this organization or phone number.
@@ -153,12 +153,12 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		return nil
 	}
 	res["ownership"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
+		val, err := n.GetEnumValue(ParsePhoneNumberOwnership)
 		if err != nil {
 			return err
 		}
 		if val != nil {
-			m.SetOwnership(val)
+			m.SetOwnership(val.(*PhoneNumberOwnership))
 		}
 		return nil
 	}
@@ -267,9 +267,9 @@ func (m *PhoneNumberTableRow) GetOrganizationId() *string {
 	return m.organizationId
 }
 
-// GetOwnership gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-// returns a *string when successful
-func (m *PhoneNumberTableRow) GetOwnership() *string {
+// GetOwnership gets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+// returns a *PhoneNumberOwnership when successful
+func (m *PhoneNumberTableRow) GetOwnership() *PhoneNumberOwnership {
 	return m.ownership
 }
 
@@ -359,8 +359,9 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 			return err
 		}
 	}
-	{
-		err := writer.WriteStringValue("ownership", m.GetOwnership())
+	if m.GetOwnership() != nil {
+		cast := (*m.GetOwnership()).String()
+		err := writer.WriteStringValue("ownership", &cast)
 		if err != nil {
 			return err
 		}
@@ -455,8 +456,8 @@ func (m *PhoneNumberTableRow) SetOrganizationId(value *string) {
 	m.organizationId = value
 }
 
-// SetOwnership sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-func (m *PhoneNumberTableRow) SetOwnership(value *string) {
+// SetOwnership sets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+func (m *PhoneNumberTableRow) SetOwnership(value *PhoneNumberOwnership) {
 	m.ownership = value
 }
 
@@ -501,7 +502,7 @@ type PhoneNumberTableRowable interface {
 	GetNumber() *string
 	GetOrganization() *string
 	GetOrganizationId() *string
-	GetOwnership() *string
+	GetOwnership() *PhoneNumberOwnership
 	GetRoutingSummary() *string
 	GetSmsReady() *bool
 	GetTenDlcCampaignStatus() *string
@@ -516,7 +517,7 @@ type PhoneNumberTableRowable interface {
 	SetNumber(value *string)
 	SetOrganization(value *string)
 	SetOrganizationId(value *string)
-	SetOwnership(value *string)
+	SetOwnership(value *PhoneNumberOwnership)
 	SetRoutingSummary(value *string)
 	SetSmsReady(value *bool)
 	SetTenDlcCampaignStatus(value *string)

@@ -12,6 +12,8 @@ import (
 type SmsEventTableRow struct {
 	// Display name for the actor that performed the action.
 	actorDisplayName *string
+	// The lead who performed this action.
+	actorLeadId *string
 	// User ID for the actor that performed the action.
 	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -115,6 +117,12 @@ func CreateSmsEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d2689
 // returns a *string when successful
 func (m *SmsEventTableRow) GetActorDisplayName() *string {
 	return m.actorDisplayName
+}
+
+// GetActorLeadId gets the actorLeadId property value. The lead who performed this action.
+// returns a *string when successful
+func (m *SmsEventTableRow) GetActorLeadId() *string {
+	return m.actorLeadId
 }
 
 // GetActorUserId gets the actorUserId property value. User ID for the actor that performed the action.
@@ -224,6 +232,16 @@ func (m *SmsEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		if val != nil {
 			m.SetActorDisplayName(val)
+		}
+		return nil
+	}
+	res["actorLeadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActorLeadId(val)
 		}
 		return nil
 	}
@@ -817,6 +835,12 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 		}
 	}
 	{
+		err := writer.WriteStringValue("actorLeadId", m.GetActorLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("actorUserId", m.GetActorUserId())
 		if err != nil {
 			return err
@@ -1091,6 +1115,11 @@ func (m *SmsEventTableRow) SetActorDisplayName(value *string) {
 	m.actorDisplayName = value
 }
 
+// SetActorLeadId sets the actorLeadId property value. The lead who performed this action.
+func (m *SmsEventTableRow) SetActorLeadId(value *string) {
+	m.actorLeadId = value
+}
+
 // SetActorUserId sets the actorUserId property value. User ID for the actor that performed the action.
 func (m *SmsEventTableRow) SetActorUserId(value *string) {
 	m.actorUserId = value
@@ -1305,6 +1334,7 @@ type SmsEventTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetActorDisplayName() *string
+	GetActorLeadId() *string
 	GetActorUserId() *string
 	GetBillableAmount() *float64
 	GetBillingStatus() *string
@@ -1347,6 +1377,7 @@ type SmsEventTableRowable interface {
 	GetUser() *string
 	GetUserName() *string
 	SetActorDisplayName(value *string)
+	SetActorLeadId(value *string)
 	SetActorUserId(value *string)
 	SetBillableAmount(value *float64)
 	SetBillingStatus(value *string)

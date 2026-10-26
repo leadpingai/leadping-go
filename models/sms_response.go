@@ -56,6 +56,8 @@ type SmsResponse struct {
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// UTC timestamp when Leadping will retry this SMS message.
 	nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The organization receiving this message status update.
+	organizationId *string
 	// Phone number ID selected for outbound delivery.
 	outboundPhoneNumberId *string
 	// UTC timestamp when Leadping queued this SMS message for processing.
@@ -429,6 +431,16 @@ func (m *SmsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
+	res["organizationId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationId(val)
+		}
+		return nil
+	}
 	res["outboundPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -638,6 +650,12 @@ func (m *SmsResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a
 // returns a *Time when successful
 func (m *SmsResponse) GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.nextRetryAt
+}
+
+// GetOrganizationId gets the organizationId property value. The organization receiving this message status update.
+// returns a *string when successful
+func (m *SmsResponse) GetOrganizationId() *string {
+	return m.organizationId
 }
 
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
@@ -883,6 +901,12 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 		}
 	}
 	{
+		err := writer.WriteStringValue("organizationId", m.GetOrganizationId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("outboundPhoneNumberId", m.GetOutboundPhoneNumberId())
 		if err != nil {
 			return err
@@ -1105,6 +1129,11 @@ func (m *SmsResponse) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f
 	m.nextRetryAt = value
 }
 
+// SetOrganizationId sets the organizationId property value. The organization receiving this message status update.
+func (m *SmsResponse) SetOrganizationId(value *string) {
+	m.organizationId = value
+}
+
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 func (m *SmsResponse) SetOutboundPhoneNumberId(value *string) {
 	m.outboundPhoneNumberId = value
@@ -1210,6 +1239,7 @@ type SmsResponseable interface {
 	GetMedia() []MessageMediaAttachmentable
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetOrganizationId() *string
 	GetOutboundPhoneNumberId() *string
 	GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1248,6 +1278,7 @@ type SmsResponseable interface {
 	SetMedia(value []MessageMediaAttachmentable)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetOrganizationId(value *string)
 	SetOutboundPhoneNumberId(value *string)
 	SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

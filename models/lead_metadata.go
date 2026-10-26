@@ -88,8 +88,6 @@ type LeadMetadata struct {
 	trustedFormRejectedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Browser or client user agent captured when this lead attribution metadata was submitted.
 	userAgent *string
-	// User ID associated with this lead's attribution metadata.
-	userId *string
 	// UTM campaign parameter captured for lead attribution reporting.
 	utmCampaign *string
 	// UTM content parameter captured for lead attribution reporting.
@@ -591,16 +589,6 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
-	res["userId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetStringValue()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetUserId(val)
-		}
-		return nil
-	}
 	res["utmCampaign"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -806,12 +794,6 @@ func (m *LeadMetadata) GetTrustedFormRejectedAt() *i336074805fc853987abe6f7fe3ad
 // returns a *string when successful
 func (m *LeadMetadata) GetUserAgent() *string {
 	return m.userAgent
-}
-
-// GetUserId gets the userId property value. User ID associated with this lead's attribution metadata.
-// returns a *string when successful
-func (m *LeadMetadata) GetUserId() *string {
-	return m.userId
 }
 
 // GetUtmCampaign gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
@@ -1083,12 +1065,6 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
-		err := writer.WriteStringValue("userId", m.GetUserId())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteStringValue("utmCampaign", m.GetUtmCampaign())
 		if err != nil {
 			return err
@@ -1328,11 +1304,6 @@ func (m *LeadMetadata) SetUserAgent(value *string) {
 	m.userAgent = value
 }
 
-// SetUserId sets the userId property value. User ID associated with this lead's attribution metadata.
-func (m *LeadMetadata) SetUserId(value *string) {
-	m.userId = value
-}
-
 // SetUtmCampaign sets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
 func (m *LeadMetadata) SetUtmCampaign(value *string) {
 	m.utmCampaign = value
@@ -1404,7 +1375,6 @@ type LeadMetadataable interface {
 	GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetTrustedFormRejectedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetUserAgent() *string
-	GetUserId() *string
 	GetUtmCampaign() *string
 	GetUtmContent() *string
 	GetUtmMedium() *string
@@ -1449,7 +1419,6 @@ type LeadMetadataable interface {
 	SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetTrustedFormRejectedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetUserAgent(value *string)
-	SetUserId(value *string)
 	SetUtmCampaign(value *string)
 	SetUtmContent(value *string)
 	SetUtmMedium(value *string)
