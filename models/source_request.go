@@ -11,6 +11,8 @@ import (
 type SourceRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+	automaticConsentValidation *bool
 	// Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 	automaticPhoneLookup *bool
 	// Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
@@ -44,6 +46,12 @@ func CreateSourceRequestFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
 // returns a map[string]any when successful
 func (m *SourceRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
+}
+
+// GetAutomaticConsentValidation gets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+// returns a *bool when successful
+func (m *SourceRequest) GetAutomaticConsentValidation() *bool {
+	return m.automaticConsentValidation
 }
 
 // GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
@@ -80,6 +88,16 @@ func (m *SourceRequest) GetDescription() *string {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SourceRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["automaticConsentValidation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticConsentValidation(val)
+		}
+		return nil
+	}
 	res["automaticPhoneLookup"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -180,6 +198,12 @@ func (m *SourceRequest) GetRequiresTrustedForm() *bool {
 // Serialize serializes information the current object
 func (m *SourceRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
+		err := writer.WriteBoolValue("automaticConsentValidation", m.GetAutomaticConsentValidation())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
 			return err
@@ -235,6 +259,11 @@ func (m *SourceRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAutomaticConsentValidation sets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+func (m *SourceRequest) SetAutomaticConsentValidation(value *bool) {
+	m.automaticConsentValidation = value
+}
+
 // SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 func (m *SourceRequest) SetAutomaticPhoneLookup(value *bool) {
 	m.automaticPhoneLookup = value
@@ -273,6 +302,7 @@ func (m *SourceRequest) SetRequiresTrustedForm(value *bool) {
 type SourceRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAutomaticConsentValidation() *bool
 	GetAutomaticPhoneLookup() *bool
 	GetDailyLeadLimit() *int32
 	GetDefaultTagIds() []string
@@ -280,6 +310,7 @@ type SourceRequestable interface {
 	GetDescription() *string
 	GetName() *string
 	GetRequiresTrustedForm() *bool
+	SetAutomaticConsentValidation(value *bool)
 	SetAutomaticPhoneLookup(value *bool)
 	SetDailyLeadLimit(value *int32)
 	SetDefaultTagIds(value []string)

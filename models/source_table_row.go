@@ -20,6 +20,8 @@ type SourceTableRow struct {
 	apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Total number of authenticated requests made with this source API key.
 	apiKeyTotalUses *int64
+	// Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+	automaticConsentValidation *bool
 	// Whether lead phone numbers are looked up automatically during intake.
 	automaticPhoneLookup *bool
 	// Indicates whether the organization or sender passed compliance review.
@@ -103,6 +105,12 @@ func (m *SourceTableRow) GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6
 // returns a *int64 when successful
 func (m *SourceTableRow) GetApiKeyTotalUses() *int64 {
 	return m.apiKeyTotalUses
+}
+
+// GetAutomaticConsentValidation gets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+// returns a *bool when successful
+func (m *SourceTableRow) GetAutomaticConsentValidation() *bool {
+	return m.automaticConsentValidation
 }
 
 // GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
@@ -200,6 +208,16 @@ func (m *SourceTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		if val != nil {
 			m.SetApiKeyTotalUses(val)
+		}
+		return nil
+	}
+	res["automaticConsentValidation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticConsentValidation(val)
 		}
 		return nil
 	}
@@ -511,6 +529,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticConsentValidation", m.GetAutomaticConsentValidation())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
 			return err
@@ -670,6 +694,11 @@ func (m *SourceTableRow) SetApiKeyTotalUses(value *int64) {
 	m.apiKeyTotalUses = value
 }
 
+// SetAutomaticConsentValidation sets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+func (m *SourceTableRow) SetAutomaticConsentValidation(value *bool) {
+	m.automaticConsentValidation = value
+}
+
 // SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
 func (m *SourceTableRow) SetAutomaticPhoneLookup(value *bool) {
 	m.automaticPhoneLookup = value
@@ -777,6 +806,7 @@ type SourceTableRowable interface {
 	GetApiKeyPreview() *string
 	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetApiKeyTotalUses() *int64
+	GetAutomaticConsentValidation() *bool
 	GetAutomaticPhoneLookup() *bool
 	GetComplianceApproved() *bool
 	GetCostPerLead() *float64
@@ -801,6 +831,7 @@ type SourceTableRowable interface {
 	SetApiKeyPreview(value *string)
 	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetApiKeyTotalUses(value *int64)
+	SetAutomaticConsentValidation(value *bool)
 	SetAutomaticPhoneLookup(value *bool)
 	SetComplianceApproved(value *bool)
 	SetCostPerLead(value *float64)

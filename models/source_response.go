@@ -16,6 +16,8 @@ type SourceResponse struct {
 	apiKeyPreview *string
 	// UTC timestamp when the source credential was most recently rotated.
 	apiKeyRotatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+	automaticConsentValidation *bool
 	// Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 	automaticPhoneLookup *bool
 	// Indicates whether the organization or sender passed compliance review.
@@ -89,6 +91,12 @@ func (m *SourceResponse) GetApiKeyPreview() *string {
 // returns a *Time when successful
 func (m *SourceResponse) GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.apiKeyRotatedAt
+}
+
+// GetAutomaticConsentValidation gets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+// returns a *bool when successful
+func (m *SourceResponse) GetAutomaticConsentValidation() *bool {
+	return m.automaticConsentValidation
 }
 
 // GetAutomaticPhoneLookup gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
@@ -178,6 +186,16 @@ func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		if val != nil {
 			m.SetApiKeyRotatedAt(val)
+		}
+		return nil
+	}
+	res["automaticConsentValidation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticConsentValidation(val)
 		}
 		return nil
 	}
@@ -481,6 +499,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticConsentValidation", m.GetAutomaticConsentValidation())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("automaticPhoneLookup", m.GetAutomaticPhoneLookup())
 		if err != nil {
 			return err
@@ -636,6 +660,11 @@ func (m *SourceResponse) SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad
 	m.apiKeyRotatedAt = value
 }
 
+// SetAutomaticConsentValidation sets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+func (m *SourceResponse) SetAutomaticConsentValidation(value *bool) {
+	m.automaticConsentValidation = value
+}
+
 // SetAutomaticPhoneLookup sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
 func (m *SourceResponse) SetAutomaticPhoneLookup(value *bool) {
 	m.automaticPhoneLookup = value
@@ -746,6 +775,7 @@ type SourceResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetApiKeyPreview() *string
 	GetApiKeyRotatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetAutomaticConsentValidation() *bool
 	GetAutomaticPhoneLookup() *bool
 	GetComplianceApproved() *bool
 	GetCostPerLead() *float64
@@ -769,6 +799,7 @@ type SourceResponseable interface {
 	GetUser() SourceResponse_userable
 	SetApiKeyPreview(value *string)
 	SetApiKeyRotatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetAutomaticConsentValidation(value *bool)
 	SetAutomaticPhoneLookup(value *bool)
 	SetComplianceApproved(value *bool)
 	SetCostPerLead(value *float64)

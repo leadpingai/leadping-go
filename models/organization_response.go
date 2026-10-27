@@ -72,6 +72,8 @@ type OrganizationResponse struct {
 	status *OrganizationResponse_status
 	// Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
 	subscriptionStatus *OrganizationResponse_subscriptionStatus
+	// Default timezone for organization reporting and display when a user has no personal preference.
+	timeZoneId *string
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	user OrganizationResponse_userable
 	// Industry vertical used for lead routing, compliance review, and reporting.
@@ -517,6 +519,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
 	res["user"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateOrganizationResponse_userFromDiscriminatorValue)
 		if err != nil {
@@ -620,6 +632,12 @@ func (m *OrganizationResponse) GetStatus() *OrganizationResponse_status {
 // returns a *OrganizationResponse_subscriptionStatus when successful
 func (m *OrganizationResponse) GetSubscriptionStatus() *OrganizationResponse_subscriptionStatus {
 	return m.subscriptionStatus
+}
+
+// GetTimeZoneId gets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+// returns a *string when successful
+func (m *OrganizationResponse) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
 
 // GetUser gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -834,6 +852,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("user", m.GetUser())
 		if err != nil {
 			return err
@@ -1015,6 +1039,11 @@ func (m *OrganizationResponse) SetSubscriptionStatus(value *OrganizationResponse
 	m.subscriptionStatus = value
 }
 
+// SetTimeZoneId sets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+func (m *OrganizationResponse) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
+}
+
 // SetUser sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *OrganizationResponse) SetUser(value OrganizationResponse_userable) {
 	m.user = value
@@ -1063,6 +1092,7 @@ type OrganizationResponseable interface {
 	GetSite() OrganizationResponse_siteable
 	GetStatus() *OrganizationResponse_status
 	GetSubscriptionStatus() *OrganizationResponse_subscriptionStatus
+	GetTimeZoneId() *string
 	GetUser() OrganizationResponse_userable
 	GetVertical() *string
 	GetWebsite() *string
@@ -1096,6 +1126,7 @@ type OrganizationResponseable interface {
 	SetSite(value OrganizationResponse_siteable)
 	SetStatus(value *OrganizationResponse_status)
 	SetSubscriptionStatus(value *OrganizationResponse_subscriptionStatus)
+	SetTimeZoneId(value *string)
 	SetUser(value OrganizationResponse_userable)
 	SetVertical(value *string)
 	SetWebsite(value *string)

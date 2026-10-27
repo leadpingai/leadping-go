@@ -30,6 +30,8 @@ type LeadMetadata struct {
 	consentCertificateType *LeadMetadata_consentCertificateType
 	// Certificate URL used as proof of consumer consent.
 	consentCertificateUrl *string
+	// Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+	consentValidationSkippedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Leadping's assessment of the supporting consent evidence.
 	consentVerificationStatus *ConsentVerificationStatus
 	// UTC timestamp when this lead attribution metadata was created.
@@ -175,6 +177,12 @@ func (m *LeadMetadata) GetConsentCertificateUrl() *string {
 	return m.consentCertificateUrl
 }
 
+// GetConsentValidationSkippedAt gets the consentValidationSkippedAt property value. Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+// returns a *Time when successful
+func (m *LeadMetadata) GetConsentValidationSkippedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.consentValidationSkippedAt
+}
+
 // GetConsentVerificationStatus gets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
 // returns a *ConsentVerificationStatus when successful
 func (m *LeadMetadata) GetConsentVerificationStatus() *ConsentVerificationStatus {
@@ -296,6 +304,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetConsentCertificateUrl(val)
+		}
+		return nil
+	}
+	res["consentValidationSkippedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetConsentValidationSkippedAt(val)
 		}
 		return nil
 	}
@@ -889,6 +907,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 			return err
 		}
 	}
+	{
+		err := writer.WriteTimeValue("consentValidationSkippedAt", m.GetConsentValidationSkippedAt())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetConsentVerificationStatus() != nil {
 		cast := (*m.GetConsentVerificationStatus()).String()
 		err := writer.WriteStringValue("consentVerificationStatus", &cast)
@@ -1159,6 +1183,11 @@ func (m *LeadMetadata) SetConsentCertificateUrl(value *string) {
 	m.consentCertificateUrl = value
 }
 
+// SetConsentValidationSkippedAt sets the consentValidationSkippedAt property value. Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+func (m *LeadMetadata) SetConsentValidationSkippedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.consentValidationSkippedAt = value
+}
+
 // SetConsentVerificationStatus sets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
 func (m *LeadMetadata) SetConsentVerificationStatus(value *ConsentVerificationStatus) {
 	m.consentVerificationStatus = value
@@ -1346,6 +1375,7 @@ type LeadMetadataable interface {
 	GetConsentAttested() *bool
 	GetConsentCertificateType() *LeadMetadata_consentCertificateType
 	GetConsentCertificateUrl() *string
+	GetConsentValidationSkippedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetConsentVerificationStatus() *ConsentVerificationStatus
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCurrency() *string
@@ -1390,6 +1420,7 @@ type LeadMetadataable interface {
 	SetConsentAttested(value *bool)
 	SetConsentCertificateType(value *LeadMetadata_consentCertificateType)
 	SetConsentCertificateUrl(value *string)
+	SetConsentValidationSkippedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetConsentVerificationStatus(value *ConsentVerificationStatus)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCurrency(value *string)

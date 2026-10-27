@@ -29,6 +29,8 @@ type OrganizationRequest struct {
 	secondaryName *string
 	// Intended audience described during organization setup.
 	targetAudience *string
+	// Default timezone for organization reporting and display when a user has no personal preference.
+	timeZoneId *string
 	// Industry vertical used for lead routing, compliance review, and reporting.
 	vertical *string
 	// Organization website URL used for compliance, brand review, and lead attribution.
@@ -166,6 +168,16 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["timeZoneId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTimeZoneId(val)
+		}
+		return nil
+	}
 	res["vertical"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -223,6 +235,12 @@ func (m *OrganizationRequest) GetSecondaryName() *string {
 // returns a *string when successful
 func (m *OrganizationRequest) GetTargetAudience() *string {
 	return m.targetAudience
+}
+
+// GetTimeZoneId gets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+// returns a *string when successful
+func (m *OrganizationRequest) GetTimeZoneId() *string {
+	return m.timeZoneId
 }
 
 // GetVertical gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
@@ -289,6 +307,12 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("targetAudience", m.GetTargetAudience())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("timeZoneId", m.GetTimeZoneId())
 		if err != nil {
 			return err
 		}
@@ -364,6 +388,11 @@ func (m *OrganizationRequest) SetTargetAudience(value *string) {
 	m.targetAudience = value
 }
 
+// SetTimeZoneId sets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+func (m *OrganizationRequest) SetTimeZoneId(value *string) {
+	m.timeZoneId = value
+}
+
 // SetVertical sets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
 func (m *OrganizationRequest) SetVertical(value *string) {
 	m.vertical = value
@@ -386,6 +415,7 @@ type OrganizationRequestable interface {
 	GetPhone() *string
 	GetSecondaryName() *string
 	GetTargetAudience() *string
+	GetTimeZoneId() *string
 	GetVertical() *string
 	GetWebsite() *string
 	SetAddress(value OrganizationRequest_addressable)
@@ -397,6 +427,7 @@ type OrganizationRequestable interface {
 	SetPhone(value *string)
 	SetSecondaryName(value *string)
 	SetTargetAudience(value *string)
+	SetTimeZoneId(value *string)
 	SetVertical(value *string)
 	SetWebsite(value *string)
 }
