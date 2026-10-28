@@ -56,6 +56,8 @@ type LeadMetadata struct {
 	leadpingConsentCheckedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Organization ID that owns this lead's attribution metadata.
 	organizationId *string
+	// Organization name captured at intake for searching lead attribution.
+	organizationName *string
 	// System or workflow that created this event.
 	origin *string
 	// Lead price or transaction price supplied to the Leadping API.
@@ -82,6 +84,8 @@ type LeadMetadata struct {
 	smsOptOutAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 	sourceMetadata LeadMetadata_sourceMetadataable
+	// Source name captured at intake for searching lead attribution.
+	sourceName *string
 	// Affiliate or publisher sub ID captured for lead attribution.
 	subId *string
 	// UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
@@ -437,6 +441,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["organizationName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOrganizationName(val)
+		}
+		return nil
+	}
 	res["origin"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -564,6 +578,16 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		if val != nil {
 			m.SetSourceMetadata(val.(LeadMetadata_sourceMetadataable))
+		}
+		return nil
+	}
+	res["sourceName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSourceName(val)
 		}
 		return nil
 	}
@@ -712,6 +736,12 @@ func (m *LeadMetadata) GetOrganizationId() *string {
 	return m.organizationId
 }
 
+// GetOrganizationName gets the organizationName property value. Organization name captured at intake for searching lead attribution.
+// returns a *string when successful
+func (m *LeadMetadata) GetOrganizationName() *string {
+	return m.organizationName
+}
+
 // GetOrigin gets the origin property value. System or workflow that created this event.
 // returns a *string when successful
 func (m *LeadMetadata) GetOrigin() *string {
@@ -788,6 +818,12 @@ func (m *LeadMetadata) GetSmsOptOutAt() *i336074805fc853987abe6f7fe3ad97a6a6f307
 // returns a LeadMetadata_sourceMetadataable when successful
 func (m *LeadMetadata) GetSourceMetadata() LeadMetadata_sourceMetadataable {
 	return m.sourceMetadata
+}
+
+// GetSourceName gets the sourceName property value. Source name captured at intake for searching lead attribution.
+// returns a *string when successful
+func (m *LeadMetadata) GetSourceName() *string {
+	return m.sourceName
 }
 
 // GetSubId gets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
@@ -987,6 +1023,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 		}
 	}
 	{
+		err := writer.WriteStringValue("organizationName", m.GetOrganizationName())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("origin", m.GetOrigin())
 		if err != nil {
 			return err
@@ -1060,6 +1102,12 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteObjectValue("sourceMetadata", m.GetSourceMetadata())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sourceName", m.GetSourceName())
 		if err != nil {
 			return err
 		}
@@ -1248,6 +1296,11 @@ func (m *LeadMetadata) SetOrganizationId(value *string) {
 	m.organizationId = value
 }
 
+// SetOrganizationName sets the organizationName property value. Organization name captured at intake for searching lead attribution.
+func (m *LeadMetadata) SetOrganizationName(value *string) {
+	m.organizationName = value
+}
+
 // SetOrigin sets the origin property value. System or workflow that created this event.
 func (m *LeadMetadata) SetOrigin(value *string) {
 	m.origin = value
@@ -1311,6 +1364,11 @@ func (m *LeadMetadata) SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6
 // SetSourceMetadata sets the sourceMetadata property value. Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
 func (m *LeadMetadata) SetSourceMetadata(value LeadMetadata_sourceMetadataable) {
 	m.sourceMetadata = value
+}
+
+// SetSourceName sets the sourceName property value. Source name captured at intake for searching lead attribution.
+func (m *LeadMetadata) SetSourceName(value *string) {
+	m.sourceName = value
 }
 
 // SetSubId sets the subId property value. Affiliate or publisher sub ID captured for lead attribution.
@@ -1388,6 +1446,7 @@ type LeadMetadataable interface {
 	GetLandingPage() *string
 	GetLeadpingConsentCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetOrganizationId() *string
+	GetOrganizationName() *string
 	GetOrigin() *string
 	GetPrice() *float64
 	GetProduct() *string
@@ -1401,6 +1460,7 @@ type LeadMetadataable interface {
 	GetSmsOptInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSmsOptOutAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSourceMetadata() LeadMetadata_sourceMetadataable
+	GetSourceName() *string
 	GetSubId() *string
 	GetTrustedFormCheckedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetTrustedFormRejectedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1433,6 +1493,7 @@ type LeadMetadataable interface {
 	SetLandingPage(value *string)
 	SetLeadpingConsentCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetOrganizationId(value *string)
+	SetOrganizationName(value *string)
 	SetOrigin(value *string)
 	SetPrice(value *float64)
 	SetProduct(value *string)
@@ -1446,6 +1507,7 @@ type LeadMetadataable interface {
 	SetSmsOptInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSmsOptOutAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSourceMetadata(value LeadMetadata_sourceMetadataable)
+	SetSourceName(value *string)
 	SetSubId(value *string)
 	SetTrustedFormCheckedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetTrustedFormRejectedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

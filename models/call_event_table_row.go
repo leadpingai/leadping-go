@@ -28,6 +28,8 @@ type CallEventTableRow struct {
 	conversationId *string
 	// UTC timestamp when this call event table row was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Stored description of the call event.
+	description *string
 	// Communication direction for this call event table row, such as inbound or outbound.
 	direction *string
 	// Call duration or processing duration represented by this call event table row.
@@ -139,6 +141,12 @@ func (m *CallEventTableRow) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f
 	return m.createdAt
 }
 
+// GetDescription gets the description property value. Stored description of the call event.
+// returns a *string when successful
+func (m *CallEventTableRow) GetDescription() *string {
+	return m.description
+}
+
 // GetDirection gets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
 // returns a *string when successful
 func (m *CallEventTableRow) GetDirection() *string {
@@ -244,6 +252,16 @@ func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetCreatedAt(val)
+		}
+		return nil
+	}
+	res["description"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDescription(val)
 		}
 		return nil
 	}
@@ -625,6 +643,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteStringValue("description", m.GetDescription())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("direction", m.GetDirection())
 		if err != nil {
 			return err
@@ -806,6 +830,11 @@ func (m *CallEventTableRow) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a
 	m.createdAt = value
 }
 
+// SetDescription sets the description property value. Stored description of the call event.
+func (m *CallEventTableRow) SetDescription(value *string) {
+	m.description = value
+}
+
 // SetDirection sets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
 func (m *CallEventTableRow) SetDirection(value *string) {
 	m.direction = value
@@ -922,6 +951,7 @@ type CallEventTableRowable interface {
 	GetConsoleEntries() []CommunicationConsoleEntryable
 	GetConversationId() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetDescription() *string
 	GetDirection() *string
 	GetDuration() *int32
 	GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -951,6 +981,7 @@ type CallEventTableRowable interface {
 	SetConsoleEntries(value []CommunicationConsoleEntryable)
 	SetConversationId(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetDescription(value *string)
 	SetDirection(value *string)
 	SetDuration(value *int32)
 	SetEndedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

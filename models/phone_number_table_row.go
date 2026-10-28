@@ -31,12 +31,16 @@ type PhoneNumberTableRow struct {
 	ownership *PhoneNumberOwnership
 	// Human-readable routing summary for this phone number.
 	routingSummary *string
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	smsRampDirection *PhoneNumberTableRow_smsRampDirection
 	// Indicates whether SMS messaging is ready for this organization or phone number.
 	smsReady *bool
 	// 10DLC campaign status associated with this sender or SMS event.
 	tenDlcCampaignStatus *string
 	// Type classification used to route and interpret this phone number table row in the Leadping API.
 	typeEscaped *string
+	// Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+	voiceRampDirection *PhoneNumberTableRow_voiceRampDirection
 	// Indicates whether voice calling is ready for this organization or phone number.
 	voiceReady *bool
 	// Messaging and calling warmup for a Leadping phone number.
@@ -172,6 +176,16 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["smsRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberTableRow_smsRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSmsRampDirection(val.(*PhoneNumberTableRow_smsRampDirection))
+		}
+		return nil
+	}
 	res["smsReady"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -199,6 +213,16 @@ func (m *PhoneNumberTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetTypeEscaped(val)
+		}
+		return nil
+	}
+	res["voiceRampDirection"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParsePhoneNumberTableRow_voiceRampDirection)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetVoiceRampDirection(val.(*PhoneNumberTableRow_voiceRampDirection))
 		}
 		return nil
 	}
@@ -279,6 +303,12 @@ func (m *PhoneNumberTableRow) GetRoutingSummary() *string {
 	return m.routingSummary
 }
 
+// GetSmsRampDirection gets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *PhoneNumberTableRow_smsRampDirection when successful
+func (m *PhoneNumberTableRow) GetSmsRampDirection() *PhoneNumberTableRow_smsRampDirection {
+	return m.smsRampDirection
+}
+
 // GetSmsReady gets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
 // returns a *bool when successful
 func (m *PhoneNumberTableRow) GetSmsReady() *bool {
@@ -295,6 +325,12 @@ func (m *PhoneNumberTableRow) GetTenDlcCampaignStatus() *string {
 // returns a *string when successful
 func (m *PhoneNumberTableRow) GetTypeEscaped() *string {
 	return m.typeEscaped
+}
+
+// GetVoiceRampDirection gets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+// returns a *PhoneNumberTableRow_voiceRampDirection when successful
+func (m *PhoneNumberTableRow) GetVoiceRampDirection() *PhoneNumberTableRow_voiceRampDirection {
+	return m.voiceRampDirection
 }
 
 // GetVoiceReady gets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
@@ -372,6 +408,13 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 			return err
 		}
 	}
+	if m.GetSmsRampDirection() != nil {
+		cast := (*m.GetSmsRampDirection()).String()
+		err := writer.WriteStringValue("smsRampDirection", &cast)
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteBoolValue("smsReady", m.GetSmsReady())
 		if err != nil {
@@ -386,6 +429,13 @@ func (m *PhoneNumberTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("type", m.GetTypeEscaped())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetVoiceRampDirection() != nil {
+		cast := (*m.GetVoiceRampDirection()).String()
+		err := writer.WriteStringValue("voiceRampDirection", &cast)
 		if err != nil {
 			return err
 		}
@@ -466,6 +516,11 @@ func (m *PhoneNumberTableRow) SetRoutingSummary(value *string) {
 	m.routingSummary = value
 }
 
+// SetSmsRampDirection sets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *PhoneNumberTableRow) SetSmsRampDirection(value *PhoneNumberTableRow_smsRampDirection) {
+	m.smsRampDirection = value
+}
+
 // SetSmsReady sets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
 func (m *PhoneNumberTableRow) SetSmsReady(value *bool) {
 	m.smsReady = value
@@ -479,6 +534,11 @@ func (m *PhoneNumberTableRow) SetTenDlcCampaignStatus(value *string) {
 // SetTypeEscaped sets the type property value. Type classification used to route and interpret this phone number table row in the Leadping API.
 func (m *PhoneNumberTableRow) SetTypeEscaped(value *string) {
 	m.typeEscaped = value
+}
+
+// SetVoiceRampDirection sets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+func (m *PhoneNumberTableRow) SetVoiceRampDirection(value *PhoneNumberTableRow_voiceRampDirection) {
+	m.voiceRampDirection = value
 }
 
 // SetVoiceReady sets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
@@ -504,9 +564,11 @@ type PhoneNumberTableRowable interface {
 	GetOrganizationId() *string
 	GetOwnership() *PhoneNumberOwnership
 	GetRoutingSummary() *string
+	GetSmsRampDirection() *PhoneNumberTableRow_smsRampDirection
 	GetSmsReady() *bool
 	GetTenDlcCampaignStatus() *string
 	GetTypeEscaped() *string
+	GetVoiceRampDirection() *PhoneNumberTableRow_voiceRampDirection
 	GetVoiceReady() *bool
 	GetWarmup() PhoneNumberReadinessable
 	SetEnabled(value *bool)
@@ -519,9 +581,11 @@ type PhoneNumberTableRowable interface {
 	SetOrganizationId(value *string)
 	SetOwnership(value *PhoneNumberOwnership)
 	SetRoutingSummary(value *string)
+	SetSmsRampDirection(value *PhoneNumberTableRow_smsRampDirection)
 	SetSmsReady(value *bool)
 	SetTenDlcCampaignStatus(value *string)
 	SetTypeEscaped(value *string)
+	SetVoiceRampDirection(value *PhoneNumberTableRow_voiceRampDirection)
 	SetVoiceReady(value *bool)
 	SetWarmup(value PhoneNumberReadinessable)
 }

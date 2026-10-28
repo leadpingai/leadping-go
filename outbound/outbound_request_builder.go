@@ -12,6 +12,19 @@ type OutboundRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// ByPhoneNumberId gets an item from the github.com/leadpingai/leadping-go.outbound.item collection
+// returns a *WithPhoneNumberItemRequestBuilder when successful
+func (m *OutboundRequestBuilder) ByPhoneNumberId(phoneNumberId string) *WithPhoneNumberItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if phoneNumberId != "" {
+		urlTplParams["phoneNumberId"] = phoneNumberId
+	}
+	return NewWithPhoneNumberItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // NewOutboundRequestBuilderInternal instantiates a new OutboundRequestBuilder and sets the default values.
 func NewOutboundRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *OutboundRequestBuilder {
 	m := &OutboundRequestBuilder{

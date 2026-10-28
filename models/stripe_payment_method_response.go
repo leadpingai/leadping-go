@@ -26,6 +26,10 @@ type StripePaymentMethodResponse struct {
 	isDefault *bool
 	// Last four digits of the payment card number.
 	last4 *string
+	// Reusable payment types supported for immediate billing payments.
+	typeEscaped *BillingPaymentMethodType
+	// The wallet name when supplied by a digital wallet.
+	walletName *string
 }
 
 // NewStripePaymentMethodResponse instantiates a new StripePaymentMethodResponse and sets the default values.
@@ -145,6 +149,26 @@ func (m *StripePaymentMethodResponse) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["type"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseBillingPaymentMethodType)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTypeEscaped(val.(*BillingPaymentMethodType))
+		}
+		return nil
+	}
+	res["walletName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWalletName(val)
+		}
+		return nil
+	}
 	return res
 }
 
@@ -164,6 +188,18 @@ func (m *StripePaymentMethodResponse) GetIsDefault() *bool {
 // returns a *string when successful
 func (m *StripePaymentMethodResponse) GetLast4() *string {
 	return m.last4
+}
+
+// GetTypeEscaped gets the type property value. Reusable payment types supported for immediate billing payments.
+// returns a *BillingPaymentMethodType when successful
+func (m *StripePaymentMethodResponse) GetTypeEscaped() *BillingPaymentMethodType {
+	return m.typeEscaped
+}
+
+// GetWalletName gets the walletName property value. The wallet name when supplied by a digital wallet.
+// returns a *string when successful
+func (m *StripePaymentMethodResponse) GetWalletName() *string {
+	return m.walletName
 }
 
 // Serialize serializes information the current object
@@ -206,6 +242,19 @@ func (m *StripePaymentMethodResponse) Serialize(writer i878a80d2330e89d26896388a
 	}
 	{
 		err := writer.WriteStringValue("last4", m.GetLast4())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTypeEscaped() != nil {
+		cast := (*m.GetTypeEscaped()).String()
+		err := writer.WriteStringValue("type", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("walletName", m.GetWalletName())
 		if err != nil {
 			return err
 		}
@@ -259,6 +308,16 @@ func (m *StripePaymentMethodResponse) SetLast4(value *string) {
 	m.last4 = value
 }
 
+// SetTypeEscaped sets the type property value. Reusable payment types supported for immediate billing payments.
+func (m *StripePaymentMethodResponse) SetTypeEscaped(value *BillingPaymentMethodType) {
+	m.typeEscaped = value
+}
+
+// SetWalletName sets the walletName property value. The wallet name when supplied by a digital wallet.
+func (m *StripePaymentMethodResponse) SetWalletName(value *string) {
+	m.walletName = value
+}
+
 type StripePaymentMethodResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -269,6 +328,8 @@ type StripePaymentMethodResponseable interface {
 	GetId() *string
 	GetIsDefault() *bool
 	GetLast4() *string
+	GetTypeEscaped() *BillingPaymentMethodType
+	GetWalletName() *string
 	SetBrand(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetExpMonth(value *int32)
@@ -276,4 +337,6 @@ type StripePaymentMethodResponseable interface {
 	SetId(value *string)
 	SetIsDefault(value *bool)
 	SetLast4(value *string)
+	SetTypeEscaped(value *BillingPaymentMethodType)
+	SetWalletName(value *string)
 }

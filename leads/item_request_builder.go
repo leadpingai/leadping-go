@@ -97,6 +97,12 @@ func (m *ItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
 }
 
+// PhoneLookup the phoneLookup property
+// returns a *ItemPhoneLookupRequestBuilder when successful
+func (m *ItemRequestBuilder) PhoneLookup() *ItemPhoneLookupRequestBuilder {
+	return NewItemPhoneLookupRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Put updates lead details for the current organization, keeping contact data, status, source, and follow-up context current.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
