@@ -20,6 +20,8 @@ type CustomerAnalyticsResponse struct {
 	communicationUsage CustomerCommunicationUsageable
 	// Date and time when this Leadping customer analytics was generated.
 	generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Current outcomes for non-deleted, non-demo leads created in the selected period.
+	leadOutcomes CustomerLeadOutcomesable
 	// Collection of lead sources included with this Leadping customer analytics.
 	leadSources []CustomerLeadSourceBreakdownable
 	// Measures lead creation, qualification, and conversion activity within one reporting time bucket.
@@ -115,6 +117,16 @@ func (m *CustomerAnalyticsResponse) GetFieldDeserializers() map[string]func(i878
 		}
 		return nil
 	}
+	res["leadOutcomes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateCustomerLeadOutcomesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadOutcomes(val.(CustomerLeadOutcomesable))
+		}
+		return nil
+	}
 	res["leadSources"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfObjectValues(CreateCustomerLeadSourceBreakdownFromDiscriminatorValue)
 		if err != nil {
@@ -196,6 +208,12 @@ func (m *CustomerAnalyticsResponse) GetGeneratedAt() *i336074805fc853987abe6f7fe
 	return m.generatedAt
 }
 
+// GetLeadOutcomes gets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
+// returns a CustomerLeadOutcomesable when successful
+func (m *CustomerAnalyticsResponse) GetLeadOutcomes() CustomerLeadOutcomesable {
+	return m.leadOutcomes
+}
+
 // GetLeadSources gets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
 // returns a []CustomerLeadSourceBreakdownable when successful
 func (m *CustomerAnalyticsResponse) GetLeadSources() []CustomerLeadSourceBreakdownable {
@@ -254,6 +272,12 @@ func (m *CustomerAnalyticsResponse) Serialize(writer i878a80d2330e89d26896388a3f
 	}
 	{
 		err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("leadOutcomes", m.GetLeadOutcomes())
 		if err != nil {
 			return err
 		}
@@ -340,6 +364,11 @@ func (m *CustomerAnalyticsResponse) SetGeneratedAt(value *i336074805fc853987abe6
 	m.generatedAt = value
 }
 
+// SetLeadOutcomes sets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
+func (m *CustomerAnalyticsResponse) SetLeadOutcomes(value CustomerLeadOutcomesable) {
+	m.leadOutcomes = value
+}
+
 // SetLeadSources sets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
 func (m *CustomerAnalyticsResponse) SetLeadSources(value []CustomerLeadSourceBreakdownable) {
 	m.leadSources = value
@@ -377,6 +406,7 @@ type CustomerAnalyticsResponseable interface {
 	GetAutomationHealth() CustomerAutomationHealthable
 	GetCommunicationUsage() CustomerCommunicationUsageable
 	GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLeadOutcomes() CustomerLeadOutcomesable
 	GetLeadSources() []CustomerLeadSourceBreakdownable
 	GetLeadTrend() CustomerLeadTrendable
 	GetNeedsAttention() []CustomerNeedsAttentionItemable
@@ -387,6 +417,7 @@ type CustomerAnalyticsResponseable interface {
 	SetAutomationHealth(value CustomerAutomationHealthable)
 	SetCommunicationUsage(value CustomerCommunicationUsageable)
 	SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLeadOutcomes(value CustomerLeadOutcomesable)
 	SetLeadSources(value []CustomerLeadSourceBreakdownable)
 	SetLeadTrend(value CustomerLeadTrendable)
 	SetNeedsAttention(value []CustomerNeedsAttentionItemable)

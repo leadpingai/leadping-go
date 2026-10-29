@@ -68,6 +68,12 @@ func (m *ConversationsItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder
 	return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
+// MarkReplyNeeded the markReplyNeeded property
+// returns a *ItemMarkReplyNeededRequestBuilder when successful
+func (m *ConversationsItemRequestBuilder) MarkReplyNeeded() *ItemMarkReplyNeededRequestBuilder {
+	return NewItemMarkReplyNeededRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // OutboundReadiness the outboundReadiness property
 // returns a *ItemOutboundReadinessRequestBuilder when successful
 func (m *ConversationsItemRequestBuilder) OutboundReadiness() *ItemOutboundReadinessRequestBuilder {
