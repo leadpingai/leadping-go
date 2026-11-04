@@ -28,7 +28,7 @@ type LeadIntakeRequest struct {
 	city *string
 	// Business represented by a lead contact.
 	company LeadIntakeRequest_companyable
-	// Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+	// Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
 	consentAttested *bool
 	// The provider responsible for a lead's consent certificate.
 	consentCertificateType *LeadIntakeRequest_consentCertificateType
@@ -179,7 +179,7 @@ func (m *LeadIntakeRequest) GetCompany() LeadIntakeRequest_companyable {
 	return m.company
 }
 
-// GetConsentAttested gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+// GetConsentAttested gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
 // returns a *bool when successful
 func (m *LeadIntakeRequest) GetConsentAttested() *bool {
 	return m.consentAttested
@@ -1285,7 +1285,7 @@ func (m *LeadIntakeRequest) SetCompany(value LeadIntakeRequest_companyable) {
 	m.company = value
 }
 
-// SetConsentAttested sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+// SetConsentAttested sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
 func (m *LeadIntakeRequest) SetConsentAttested(value *bool) {
 	m.consentAttested = value
 }

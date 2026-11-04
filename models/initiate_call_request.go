@@ -19,11 +19,13 @@ type InitiateCallRequest struct {
 	fromPhoneNumberId *string
 	// Lead ID associated with the outbound call request.
 	leadId *string
+	// Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+	originateFromBrowser *bool
 	// Idempotency key used to prevent duplicate outbound delivery.
 	outboundIdempotencyKey *string
 	// Lead source ID used for call attribution and sender selection.
 	sourceId *string
-	// Connect the authenticated user's browser phone to the server-controlled destination call.
+	// Connect the authenticated user's phone to a server-controlled destination call.
 	useBrowserPhone *bool
 	// Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
 	wasManuallyOverridden *bool
@@ -104,6 +106,16 @@ func (m *InitiateCallRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["originateFromBrowser"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOriginateFromBrowser(val)
+		}
+		return nil
+	}
 	res["outboundIdempotencyKey"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -159,6 +171,12 @@ func (m *InitiateCallRequest) GetLeadId() *string {
 	return m.leadId
 }
 
+// GetOriginateFromBrowser gets the originateFromBrowser property value. Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+// returns a *bool when successful
+func (m *InitiateCallRequest) GetOriginateFromBrowser() *bool {
+	return m.originateFromBrowser
+}
+
 // GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 // returns a *string when successful
 func (m *InitiateCallRequest) GetOutboundIdempotencyKey() *string {
@@ -171,7 +189,7 @@ func (m *InitiateCallRequest) GetSourceId() *string {
 	return m.sourceId
 }
 
-// GetUseBrowserPhone gets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+// GetUseBrowserPhone gets the useBrowserPhone property value. Connect the authenticated user's phone to a server-controlled destination call.
 // returns a *bool when successful
 func (m *InitiateCallRequest) GetUseBrowserPhone() *bool {
 	return m.useBrowserPhone
@@ -205,6 +223,12 @@ func (m *InitiateCallRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("originateFromBrowser", m.GetOriginateFromBrowser())
 		if err != nil {
 			return err
 		}
@@ -267,6 +291,11 @@ func (m *InitiateCallRequest) SetLeadId(value *string) {
 	m.leadId = value
 }
 
+// SetOriginateFromBrowser sets the originateFromBrowser property value. Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+func (m *InitiateCallRequest) SetOriginateFromBrowser(value *bool) {
+	m.originateFromBrowser = value
+}
+
 // SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
 func (m *InitiateCallRequest) SetOutboundIdempotencyKey(value *string) {
 	m.outboundIdempotencyKey = value
@@ -277,7 +306,7 @@ func (m *InitiateCallRequest) SetSourceId(value *string) {
 	m.sourceId = value
 }
 
-// SetUseBrowserPhone sets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+// SetUseBrowserPhone sets the useBrowserPhone property value. Connect the authenticated user's phone to a server-controlled destination call.
 func (m *InitiateCallRequest) SetUseBrowserPhone(value *bool) {
 	m.useBrowserPhone = value
 }
@@ -294,6 +323,7 @@ type InitiateCallRequestable interface {
 	GetConversationId() *string
 	GetFromPhoneNumberId() *string
 	GetLeadId() *string
+	GetOriginateFromBrowser() *bool
 	GetOutboundIdempotencyKey() *string
 	GetSourceId() *string
 	GetUseBrowserPhone() *bool
@@ -302,6 +332,7 @@ type InitiateCallRequestable interface {
 	SetConversationId(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetLeadId(value *string)
+	SetOriginateFromBrowser(value *bool)
 	SetOutboundIdempotencyKey(value *string)
 	SetSourceId(value *string)
 	SetUseBrowserPhone(value *bool)

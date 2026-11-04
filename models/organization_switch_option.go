@@ -26,6 +26,8 @@ type OrganizationSwitchOption struct {
 	isDemo *bool
 	// UTC timestamp for last used at on this organization switch option.
 	lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Number of active members in this organization, excluding pending invitations.
+	memberCount *int32
 	// The human-readable name shown for this organization switch option.
 	name *string
 	// Whether needs admin review applies to this organization switch option.
@@ -147,6 +149,16 @@ func (m *OrganizationSwitchOption) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["memberCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMemberCount(val)
+		}
+		return nil
+	}
 	res["name"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -250,6 +262,12 @@ func (m *OrganizationSwitchOption) GetLastUsedAt() *i336074805fc853987abe6f7fe3a
 	return m.lastUsedAt
 }
 
+// GetMemberCount gets the memberCount property value. Number of active members in this organization, excluding pending invitations.
+// returns a *int32 when successful
+func (m *OrganizationSwitchOption) GetMemberCount() *int32 {
+	return m.memberCount
+}
+
 // GetName gets the name property value. The human-readable name shown for this organization switch option.
 // returns a *string when successful
 func (m *OrganizationSwitchOption) GetName() *string {
@@ -333,6 +351,12 @@ func (m *OrganizationSwitchOption) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteTimeValue("lastUsedAt", m.GetLastUsedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("memberCount", m.GetMemberCount())
 		if err != nil {
 			return err
 		}
@@ -431,6 +455,11 @@ func (m *OrganizationSwitchOption) SetLastUsedAt(value *i336074805fc853987abe6f7
 	m.lastUsedAt = value
 }
 
+// SetMemberCount sets the memberCount property value. Number of active members in this organization, excluding pending invitations.
+func (m *OrganizationSwitchOption) SetMemberCount(value *int32) {
+	m.memberCount = value
+}
+
 // SetName sets the name property value. The human-readable name shown for this organization switch option.
 func (m *OrganizationSwitchOption) SetName(value *string) {
 	m.name = value
@@ -476,6 +505,7 @@ type OrganizationSwitchOptionable interface {
 	GetIsCurrent() *bool
 	GetIsDemo() *bool
 	GetLastUsedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetMemberCount() *int32
 	GetName() *string
 	GetNeedsAdminReview() *bool
 	GetOrganizationStatus() *OrganizationSwitchOption_organizationStatus
@@ -490,6 +520,7 @@ type OrganizationSwitchOptionable interface {
 	SetIsCurrent(value *bool)
 	SetIsDemo(value *bool)
 	SetLastUsedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetMemberCount(value *int32)
 	SetName(value *string)
 	SetNeedsAdminReview(value *bool)
 	SetOrganizationStatus(value *OrganizationSwitchOption_organizationStatus)

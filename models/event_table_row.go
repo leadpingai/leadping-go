@@ -48,6 +48,8 @@ type EventTableRow struct {
 	description *string
 	// Communication direction for this event timeline table row, such as inbound or outbound.
 	direction *string
+	// Confirmed call talk time in seconds, when available.
+	durationSeconds *int32
 	// Machine-readable error code returned while processing this event timeline table row.
 	errorCode *string
 	// High-level category used to group this Leadping event.
@@ -241,6 +243,12 @@ func (m *EventTableRow) GetDescription() *string {
 // returns a *string when successful
 func (m *EventTableRow) GetDirection() *string {
 	return m.direction
+}
+
+// GetDurationSeconds gets the durationSeconds property value. Confirmed call talk time in seconds, when available.
+// returns a *int32 when successful
+func (m *EventTableRow) GetDurationSeconds() *int32 {
+	return m.durationSeconds
 }
 
 // GetErrorCode gets the errorCode property value. Machine-readable error code returned while processing this event timeline table row.
@@ -448,6 +456,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetDirection(val)
+		}
+		return nil
+	}
+	res["durationSeconds"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDurationSeconds(val)
 		}
 		return nil
 	}
@@ -1075,6 +1093,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteInt32Value("durationSeconds", m.GetDurationSeconds())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("errorCode", m.GetErrorCode())
 		if err != nil {
 			return err
@@ -1386,6 +1410,11 @@ func (m *EventTableRow) SetDirection(value *string) {
 	m.direction = value
 }
 
+// SetDurationSeconds sets the durationSeconds property value. Confirmed call talk time in seconds, when available.
+func (m *EventTableRow) SetDurationSeconds(value *int32) {
+	m.durationSeconds = value
+}
+
 // SetErrorCode sets the errorCode property value. Machine-readable error code returned while processing this event timeline table row.
 func (m *EventTableRow) SetErrorCode(value *string) {
 	m.errorCode = value
@@ -1572,6 +1601,7 @@ type EventTableRowable interface {
 	GetDeliveredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDescription() *string
 	GetDirection() *string
+	GetDurationSeconds() *int32
 	GetErrorCode() *string
 	GetEventCategory() *string
 	GetEventType() *string
@@ -1623,6 +1653,7 @@ type EventTableRowable interface {
 	SetDeliveredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDescription(value *string)
 	SetDirection(value *string)
+	SetDurationSeconds(value *int32)
 	SetErrorCode(value *string)
 	SetEventCategory(value *string)
 	SetEventType(value *string)

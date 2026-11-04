@@ -18,6 +18,8 @@ type PhoneCallResponse struct {
 	billableAmount *float64
 	// Billing state for this communication, charge, or transaction.
 	billingStatus *string
+	// Server-approved parameters for one outbound browser call.
+	browserCallApproval PhoneCallResponse_browserCallApprovalable
 	// Caller ID phone number presented during the outbound call.
 	callerId *string
 	// Messaging campaign identifier associated with this phone call.
@@ -107,6 +109,12 @@ func (m *PhoneCallResponse) GetBillingStatus() *string {
 	return m.billingStatus
 }
 
+// GetBrowserCallApproval gets the browserCallApproval property value. Server-approved parameters for one outbound browser call.
+// returns a PhoneCallResponse_browserCallApprovalable when successful
+func (m *PhoneCallResponse) GetBrowserCallApproval() PhoneCallResponse_browserCallApprovalable {
+	return m.browserCallApproval
+}
+
 // GetCallerId gets the callerId property value. Caller ID phone number presented during the outbound call.
 // returns a *string when successful
 func (m *PhoneCallResponse) GetCallerId() *string {
@@ -186,6 +194,16 @@ func (m *PhoneCallResponse) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetBillingStatus(val)
+		}
+		return nil
+	}
+	res["browserCallApproval"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneCallResponse_browserCallApprovalFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBrowserCallApproval(val.(PhoneCallResponse_browserCallApprovalable))
 		}
 		return nil
 	}
@@ -571,6 +589,12 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteObjectValue("browserCallApproval", m.GetBrowserCallApproval())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("callerId", m.GetCallerId())
 		if err != nil {
 			return err
@@ -757,6 +781,11 @@ func (m *PhoneCallResponse) SetBillingStatus(value *string) {
 	m.billingStatus = value
 }
 
+// SetBrowserCallApproval sets the browserCallApproval property value. Server-approved parameters for one outbound browser call.
+func (m *PhoneCallResponse) SetBrowserCallApproval(value PhoneCallResponse_browserCallApprovalable) {
+	m.browserCallApproval = value
+}
+
 // SetCallerId sets the callerId property value. Caller ID phone number presented during the outbound call.
 func (m *PhoneCallResponse) SetCallerId(value *string) {
 	m.callerId = value
@@ -888,6 +917,7 @@ type PhoneCallResponseable interface {
 	GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetBillableAmount() *float64
 	GetBillingStatus() *string
+	GetBrowserCallApproval() PhoneCallResponse_browserCallApprovalable
 	GetCallerId() *string
 	GetCampaignId() *string
 	GetConsoleEntries() []CommunicationConsoleEntryable
@@ -916,6 +946,7 @@ type PhoneCallResponseable interface {
 	SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetBillableAmount(value *float64)
 	SetBillingStatus(value *string)
+	SetBrowserCallApproval(value PhoneCallResponse_browserCallApprovalable)
 	SetCallerId(value *string)
 	SetCampaignId(value *string)
 	SetConsoleEntries(value []CommunicationConsoleEntryable)
