@@ -13,6 +13,8 @@ type TelephonyLoginRequest struct {
 	additionalData map[string]any
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	device TelephonyLoginRequest_deviceable
+	// Includes credentials for receiving calls to the authenticated organization.
+	includeIncoming *bool
 }
 
 // NewTelephonyLoginRequest instantiates a new TelephonyLoginRequest and sets the default values.
@@ -54,13 +56,35 @@ func (m *TelephonyLoginRequest) GetFieldDeserializers() map[string]func(i878a80d
 		}
 		return nil
 	}
+	res["includeIncoming"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncludeIncoming(val)
+		}
+		return nil
+	}
 	return res
+}
+
+// GetIncludeIncoming gets the includeIncoming property value. Includes credentials for receiving calls to the authenticated organization.
+// returns a *bool when successful
+func (m *TelephonyLoginRequest) GetIncludeIncoming() *bool {
+	return m.includeIncoming
 }
 
 // Serialize serializes information the current object
 func (m *TelephonyLoginRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
 		err := writer.WriteObjectValue("device", m.GetDevice())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("includeIncoming", m.GetIncludeIncoming())
 		if err != nil {
 			return err
 		}
@@ -84,9 +108,16 @@ func (m *TelephonyLoginRequest) SetDevice(value TelephonyLoginRequest_deviceable
 	m.device = value
 }
 
+// SetIncludeIncoming sets the includeIncoming property value. Includes credentials for receiving calls to the authenticated organization.
+func (m *TelephonyLoginRequest) SetIncludeIncoming(value *bool) {
+	m.includeIncoming = value
+}
+
 type TelephonyLoginRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetDevice() TelephonyLoginRequest_deviceable
+	GetIncludeIncoming() *bool
 	SetDevice(value TelephonyLoginRequest_deviceable)
+	SetIncludeIncoming(value *bool)
 }

@@ -22,6 +22,8 @@ type PhoneCallResponse struct {
 	browserCallApproval PhoneCallResponse_browserCallApprovalable
 	// Caller ID phone number presented during the outbound call.
 	callerId *string
+	// Provider session identity used to correlate device invitations and server lifecycle events.
+	callSessionId *string
 	// Messaging campaign identifier associated with this phone call.
 	campaignId *string
 	// Ordered diagnostic entries recorded while Leadping processed this call.
@@ -46,6 +48,8 @@ type PhoneCallResponse struct {
 	isDemo *bool
 	// Lead ID associated with the call conversation or outreach attempt.
 	leadId *string
+	// The matched lead's display name, when the caller belongs to a known lead.
+	leadName *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The organization context required to handle this call on a mobile device.
@@ -119,6 +123,12 @@ func (m *PhoneCallResponse) GetBrowserCallApproval() PhoneCallResponse_browserCa
 // returns a *string when successful
 func (m *PhoneCallResponse) GetCallerId() *string {
 	return m.callerId
+}
+
+// GetCallSessionId gets the callSessionId property value. Provider session identity used to correlate device invitations and server lifecycle events.
+// returns a *string when successful
+func (m *PhoneCallResponse) GetCallSessionId() *string {
+	return m.callSessionId
 }
 
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this phone call.
@@ -214,6 +224,16 @@ func (m *PhoneCallResponse) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetCallerId(val)
+		}
+		return nil
+	}
+	res["callSessionId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallSessionId(val)
 		}
 		return nil
 	}
@@ -340,6 +360,16 @@ func (m *PhoneCallResponse) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		if val != nil {
 			m.SetLeadId(val)
+		}
+		return nil
+	}
+	res["leadName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadName(val)
 		}
 		return nil
 	}
@@ -496,6 +526,12 @@ func (m *PhoneCallResponse) GetLeadId() *string {
 	return m.leadId
 }
 
+// GetLeadName gets the leadName property value. The matched lead's display name, when the caller belongs to a known lead.
+// returns a *string when successful
+func (m *PhoneCallResponse) GetLeadName() *string {
+	return m.leadName
+}
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *PhoneCallResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -601,6 +637,12 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteStringValue("callSessionId", m.GetCallSessionId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
 		if err != nil {
 			return err
@@ -674,6 +716,12 @@ func (m *PhoneCallResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	}
 	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadName", m.GetLeadName())
 		if err != nil {
 			return err
 		}
@@ -791,6 +839,11 @@ func (m *PhoneCallResponse) SetCallerId(value *string) {
 	m.callerId = value
 }
 
+// SetCallSessionId sets the callSessionId property value. Provider session identity used to correlate device invitations and server lifecycle events.
+func (m *PhoneCallResponse) SetCallSessionId(value *string) {
+	m.callSessionId = value
+}
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this phone call.
 func (m *PhoneCallResponse) SetCampaignId(value *string) {
 	m.campaignId = value
@@ -849,6 +902,11 @@ func (m *PhoneCallResponse) SetIsDemo(value *bool) {
 // SetLeadId sets the leadId property value. Lead ID associated with the call conversation or outreach attempt.
 func (m *PhoneCallResponse) SetLeadId(value *string) {
 	m.leadId = value
+}
+
+// SetLeadName sets the leadName property value. The matched lead's display name, when the caller belongs to a known lead.
+func (m *PhoneCallResponse) SetLeadName(value *string) {
+	m.leadName = value
 }
 
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -919,6 +977,7 @@ type PhoneCallResponseable interface {
 	GetBillingStatus() *string
 	GetBrowserCallApproval() PhoneCallResponse_browserCallApprovalable
 	GetCallerId() *string
+	GetCallSessionId() *string
 	GetCampaignId() *string
 	GetConsoleEntries() []CommunicationConsoleEntryable
 	GetConversationId() *string
@@ -931,6 +990,7 @@ type PhoneCallResponseable interface {
 	GetId() *string
 	GetIsDemo() *bool
 	GetLeadId() *string
+	GetLeadName() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetOrganizationId() *string
 	GetPhoneNumber() *string
@@ -948,6 +1008,7 @@ type PhoneCallResponseable interface {
 	SetBillingStatus(value *string)
 	SetBrowserCallApproval(value PhoneCallResponse_browserCallApprovalable)
 	SetCallerId(value *string)
+	SetCallSessionId(value *string)
 	SetCampaignId(value *string)
 	SetConsoleEntries(value []CommunicationConsoleEntryable)
 	SetConversationId(value *string)
@@ -960,6 +1021,7 @@ type PhoneCallResponseable interface {
 	SetId(value *string)
 	SetIsDemo(value *bool)
 	SetLeadId(value *string)
+	SetLeadName(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetOrganizationId(value *string)
 	SetPhoneNumber(value *string)

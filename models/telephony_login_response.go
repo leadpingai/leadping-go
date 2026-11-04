@@ -16,6 +16,10 @@ type TelephonyLoginResponse struct {
 	callbackToken *string
 	// UTC timestamp for expires at on this telephony login.
 	expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Password for the organization's incoming SIP connection, when requested and configured.
+	incomingPassword *string
+	// Username for the organization's incoming SIP connection, when requested and configured.
+	incomingUsername *string
 	// Password for this telephony login.
 	password *string
 	// Username for this telephony login.
@@ -77,6 +81,26 @@ func (m *TelephonyLoginResponse) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
+	res["incomingPassword"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncomingPassword(val)
+		}
+		return nil
+	}
+	res["incomingUsername"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncomingUsername(val)
+		}
+		return nil
+	}
 	res["password"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -98,6 +122,18 @@ func (m *TelephonyLoginResponse) GetFieldDeserializers() map[string]func(i878a80
 		return nil
 	}
 	return res
+}
+
+// GetIncomingPassword gets the incomingPassword property value. Password for the organization's incoming SIP connection, when requested and configured.
+// returns a *string when successful
+func (m *TelephonyLoginResponse) GetIncomingPassword() *string {
+	return m.incomingPassword
+}
+
+// GetIncomingUsername gets the incomingUsername property value. Username for the organization's incoming SIP connection, when requested and configured.
+// returns a *string when successful
+func (m *TelephonyLoginResponse) GetIncomingUsername() *string {
+	return m.incomingUsername
 }
 
 // GetPassword gets the password property value. Password for this telephony login.
@@ -122,6 +158,18 @@ func (m *TelephonyLoginResponse) Serialize(writer i878a80d2330e89d26896388a3f487
 	}
 	{
 		err := writer.WriteTimeValue("expiresAt", m.GetExpiresAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("incomingPassword", m.GetIncomingPassword())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("incomingUsername", m.GetIncomingUsername())
 		if err != nil {
 			return err
 		}
@@ -162,6 +210,16 @@ func (m *TelephonyLoginResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3
 	m.expiresAt = value
 }
 
+// SetIncomingPassword sets the incomingPassword property value. Password for the organization's incoming SIP connection, when requested and configured.
+func (m *TelephonyLoginResponse) SetIncomingPassword(value *string) {
+	m.incomingPassword = value
+}
+
+// SetIncomingUsername sets the incomingUsername property value. Username for the organization's incoming SIP connection, when requested and configured.
+func (m *TelephonyLoginResponse) SetIncomingUsername(value *string) {
+	m.incomingUsername = value
+}
+
 // SetPassword sets the password property value. Password for this telephony login.
 func (m *TelephonyLoginResponse) SetPassword(value *string) {
 	m.password = value
@@ -177,10 +235,14 @@ type TelephonyLoginResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetCallbackToken() *string
 	GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetIncomingPassword() *string
+	GetIncomingUsername() *string
 	GetPassword() *string
 	GetUsername() *string
 	SetCallbackToken(value *string)
 	SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetIncomingPassword(value *string)
+	SetIncomingUsername(value *string)
 	SetPassword(value *string)
 	SetUsername(value *string)
 }

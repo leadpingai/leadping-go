@@ -12,6 +12,12 @@ type TelephonyRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// Availability the availability property
+// returns a *AvailabilityRequestBuilder when successful
+func (m *TelephonyRequestBuilder) Availability() *AvailabilityRequestBuilder {
+	return NewAvailabilityRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // NewTelephonyRequestBuilderInternal instantiates a new TelephonyRequestBuilder and sets the default values.
 func NewTelephonyRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *TelephonyRequestBuilder {
 	m := &TelephonyRequestBuilder{
@@ -25,6 +31,12 @@ func NewTelephonyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 	urlParams := make(map[string]string)
 	urlParams["request-raw-url"] = rawUrl
 	return NewTelephonyRequestBuilderInternal(urlParams, requestAdapter)
+}
+
+// IncomingCaller the incomingCaller property
+// returns a *IncomingCallerRequestBuilder when successful
+func (m *TelephonyRequestBuilder) IncomingCaller() *IncomingCallerRequestBuilder {
+	return NewIncomingCallerRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // Login the login property
