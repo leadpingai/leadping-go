@@ -12,6 +12,8 @@ import (
 type UserResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Controls demo presentation for an individual platform admin.
+	adminDemoPreferences UserResponse_adminDemoPreferencesable
 	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 	billingPlan *UserResponse_billingPlan
 	// Customer-safe billing state for a Leadping organization.
@@ -79,6 +81,12 @@ func (m *UserResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetAdminDemoPreferences gets the adminDemoPreferences property value. Controls demo presentation for an individual platform admin.
+// returns a UserResponse_adminDemoPreferencesable when successful
+func (m *UserResponse) GetAdminDemoPreferences() UserResponse_adminDemoPreferencesable {
+	return m.adminDemoPreferences
+}
+
 // GetBillingPlan gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 // returns a *UserResponse_billingPlan when successful
 func (m *UserResponse) GetBillingPlan() *UserResponse_billingPlan {
@@ -119,6 +127,16 @@ func (m *UserResponse) GetEmail() *string {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *UserResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["adminDemoPreferences"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateUserResponse_adminDemoPreferencesFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAdminDemoPreferences(val.(UserResponse_adminDemoPreferencesable))
+		}
+		return nil
+	}
 	res["billingPlan"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseUserResponse_billingPlan)
 		if err != nil {
@@ -468,6 +486,12 @@ func (m *UserResponse) GetTimeZoneId() *string {
 
 // Serialize serializes information the current object
 func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteObjectValue("adminDemoPreferences", m.GetAdminDemoPreferences())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetBillingPlan() != nil {
 		cast := (*m.GetBillingPlan()).String()
 		err := writer.WriteStringValue("billingPlan", &cast)
@@ -628,6 +652,11 @@ func (m *UserResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAdminDemoPreferences sets the adminDemoPreferences property value. Controls demo presentation for an individual platform admin.
+func (m *UserResponse) SetAdminDemoPreferences(value UserResponse_adminDemoPreferencesable) {
+	m.adminDemoPreferences = value
+}
+
 // SetBillingPlan sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
 func (m *UserResponse) SetBillingPlan(value *UserResponse_billingPlan) {
 	m.billingPlan = value
@@ -746,6 +775,7 @@ func (m *UserResponse) SetTimeZoneId(value *string) {
 type UserResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAdminDemoPreferences() UserResponse_adminDemoPreferencesable
 	GetBillingPlan() *UserResponse_billingPlan
 	GetBillingState() UserResponse_billingStateable
 	GetCompliance() UserResponse_complianceable
@@ -769,6 +799,7 @@ type UserResponseable interface {
 	GetRoles() []string
 	GetSubscriptionStatus() *UserResponse_subscriptionStatus
 	GetTimeZoneId() *string
+	SetAdminDemoPreferences(value UserResponse_adminDemoPreferencesable)
 	SetBillingPlan(value *UserResponse_billingPlan)
 	SetBillingState(value UserResponse_billingStateable)
 	SetCompliance(value UserResponse_complianceable)
