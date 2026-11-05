@@ -20,6 +20,8 @@ type CustomerAnalyticsResponse struct {
 	communicationUsage CustomerCommunicationUsageable
 	// Date and time when this Leadping customer analytics was generated.
 	generatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Whether the report includes demo data, subject to the current display preference.
+	includesDemoData *bool
 	// Current outcomes for non-deleted, non-demo leads created in the selected period.
 	leadOutcomes CustomerLeadOutcomesable
 	// Collection of lead sources included with this Leadping customer analytics.
@@ -117,6 +119,16 @@ func (m *CustomerAnalyticsResponse) GetFieldDeserializers() map[string]func(i878
 		}
 		return nil
 	}
+	res["includesDemoData"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncludesDemoData(val)
+		}
+		return nil
+	}
 	res["leadOutcomes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateCustomerLeadOutcomesFromDiscriminatorValue)
 		if err != nil {
@@ -208,6 +220,12 @@ func (m *CustomerAnalyticsResponse) GetGeneratedAt() *i336074805fc853987abe6f7fe
 	return m.generatedAt
 }
 
+// GetIncludesDemoData gets the includesDemoData property value. Whether the report includes demo data, subject to the current display preference.
+// returns a *bool when successful
+func (m *CustomerAnalyticsResponse) GetIncludesDemoData() *bool {
+	return m.includesDemoData
+}
+
 // GetLeadOutcomes gets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
 // returns a CustomerLeadOutcomesable when successful
 func (m *CustomerAnalyticsResponse) GetLeadOutcomes() CustomerLeadOutcomesable {
@@ -272,6 +290,12 @@ func (m *CustomerAnalyticsResponse) Serialize(writer i878a80d2330e89d26896388a3f
 	}
 	{
 		err := writer.WriteTimeValue("generatedAt", m.GetGeneratedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("includesDemoData", m.GetIncludesDemoData())
 		if err != nil {
 			return err
 		}
@@ -364,6 +388,11 @@ func (m *CustomerAnalyticsResponse) SetGeneratedAt(value *i336074805fc853987abe6
 	m.generatedAt = value
 }
 
+// SetIncludesDemoData sets the includesDemoData property value. Whether the report includes demo data, subject to the current display preference.
+func (m *CustomerAnalyticsResponse) SetIncludesDemoData(value *bool) {
+	m.includesDemoData = value
+}
+
 // SetLeadOutcomes sets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
 func (m *CustomerAnalyticsResponse) SetLeadOutcomes(value CustomerLeadOutcomesable) {
 	m.leadOutcomes = value
@@ -406,6 +435,7 @@ type CustomerAnalyticsResponseable interface {
 	GetAutomationHealth() CustomerAutomationHealthable
 	GetCommunicationUsage() CustomerCommunicationUsageable
 	GetGeneratedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetIncludesDemoData() *bool
 	GetLeadOutcomes() CustomerLeadOutcomesable
 	GetLeadSources() []CustomerLeadSourceBreakdownable
 	GetLeadTrend() CustomerLeadTrendable
@@ -417,6 +447,7 @@ type CustomerAnalyticsResponseable interface {
 	SetAutomationHealth(value CustomerAutomationHealthable)
 	SetCommunicationUsage(value CustomerCommunicationUsageable)
 	SetGeneratedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetIncludesDemoData(value *bool)
 	SetLeadOutcomes(value CustomerLeadOutcomesable)
 	SetLeadSources(value []CustomerLeadSourceBreakdownable)
 	SetLeadTrend(value CustomerLeadTrendable)
