@@ -10,6 +10,10 @@ import (
 
 // CallEventTableRow summarizes call event data in paginated and searchable results.
 type CallEventTableRow struct {
+	// The recorded display name of the actor who performed this action.
+	actorDisplayName *string
+	// The user who performed this action.
+	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
 	// UTC timestamp when the call was answered.
@@ -85,6 +89,18 @@ func NewCallEventTableRow() *CallEventTableRow {
 // returns a Parsable when successful
 func CreateCallEventTableRowFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) (i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
 	return NewCallEventTableRow(), nil
+}
+
+// GetActorDisplayName gets the actorDisplayName property value. The recorded display name of the actor who performed this action.
+// returns a *string when successful
+func (m *CallEventTableRow) GetActorDisplayName() *string {
+	return m.actorDisplayName
+}
+
+// GetActorUserId gets the actorUserId property value. The user who performed this action.
+// returns a *string when successful
+func (m *CallEventTableRow) GetActorUserId() *string {
+	return m.actorUserId
 }
 
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -169,6 +185,26 @@ func (m *CallEventTableRow) GetEndedAt() *i336074805fc853987abe6f7fe3ad97a6a6f30
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["actorDisplayName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActorDisplayName(val)
+		}
+		return nil
+	}
+	res["actorUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetActorUserId(val)
+		}
+		return nil
+	}
 	res["answeredAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -589,6 +625,18 @@ func (m *CallEventTableRow) GetVoicemailUrl() *string {
 // Serialize serializes information the current object
 func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
+		err := writer.WriteStringValue("actorDisplayName", m.GetActorDisplayName())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("actorUserId", m.GetActorUserId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeValue("answeredAt", m.GetAnsweredAt())
 		if err != nil {
 			return err
@@ -785,6 +833,16 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	return nil
 }
 
+// SetActorDisplayName sets the actorDisplayName property value. The recorded display name of the actor who performed this action.
+func (m *CallEventTableRow) SetActorDisplayName(value *string) {
+	m.actorDisplayName = value
+}
+
+// SetActorUserId sets the actorUserId property value. The user who performed this action.
+func (m *CallEventTableRow) SetActorUserId(value *string) {
+	m.actorUserId = value
+}
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *CallEventTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
@@ -943,6 +1001,8 @@ func (m *CallEventTableRow) SetVoicemailUrl(value *string) {
 type CallEventTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetActorDisplayName() *string
+	GetActorUserId() *string
 	GetAnsweredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetBillableAmount() *float64
 	GetBillableSeconds() *int32
@@ -973,6 +1033,8 @@ type CallEventTableRowable interface {
 	GetUserId() *string
 	GetUserName() *string
 	GetVoicemailUrl() *string
+	SetActorDisplayName(value *string)
+	SetActorUserId(value *string)
 	SetAnsweredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetBillableAmount(value *float64)
 	SetBillableSeconds(value *int32)
