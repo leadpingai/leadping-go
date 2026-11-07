@@ -26,6 +26,8 @@ type OrganizationResponse struct {
 	autoRefillTrigger *float64
 	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 	billingAddress OrganizationResponse_billingAddressable
+	// Stored billing contact email for the organization.
+	billingContactEmail *string
 	// Name used for invoices, receipts, and payment processor billing records.
 	billingName *string
 	// Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
@@ -141,6 +143,12 @@ func (m *OrganizationResponse) GetAutoRefillTrigger() *float64 {
 // returns a OrganizationResponse_billingAddressable when successful
 func (m *OrganizationResponse) GetBillingAddress() OrganizationResponse_billingAddressable {
 	return m.billingAddress
+}
+
+// GetBillingContactEmail gets the billingContactEmail property value. Stored billing contact email for the organization.
+// returns a *string when successful
+func (m *OrganizationResponse) GetBillingContactEmail() *string {
+	return m.billingContactEmail
 }
 
 // GetBillingName gets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
@@ -280,6 +288,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetBillingAddress(val.(OrganizationResponse_billingAddressable))
+		}
+		return nil
+	}
+	res["billingContactEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBillingContactEmail(val)
 		}
 		return nil
 	}
@@ -703,6 +721,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteStringValue("billingContactEmail", m.GetBillingContactEmail())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("billingName", m.GetBillingName())
 		if err != nil {
 			return err
@@ -924,6 +948,11 @@ func (m *OrganizationResponse) SetBillingAddress(value OrganizationResponse_bill
 	m.billingAddress = value
 }
 
+// SetBillingContactEmail sets the billingContactEmail property value. Stored billing contact email for the organization.
+func (m *OrganizationResponse) SetBillingContactEmail(value *string) {
+	m.billingContactEmail = value
+}
+
 // SetBillingName sets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
 func (m *OrganizationResponse) SetBillingName(value *string) {
 	m.billingName = value
@@ -1069,6 +1098,7 @@ type OrganizationResponseable interface {
 	GetAutoRefillEnabled() *bool
 	GetAutoRefillTrigger() *float64
 	GetBillingAddress() OrganizationResponse_billingAddressable
+	GetBillingContactEmail() *string
 	GetBillingName() *string
 	GetBillingPlan() *OrganizationResponse_billingPlan
 	GetBillingState() OrganizationResponse_billingStateable
@@ -1103,6 +1133,7 @@ type OrganizationResponseable interface {
 	SetAutoRefillEnabled(value *bool)
 	SetAutoRefillTrigger(value *float64)
 	SetBillingAddress(value OrganizationResponse_billingAddressable)
+	SetBillingContactEmail(value *string)
 	SetBillingName(value *string)
 	SetBillingPlan(value *OrganizationResponse_billingPlan)
 	SetBillingState(value OrganizationResponse_billingStateable)

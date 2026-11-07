@@ -26,6 +26,8 @@ type OrganizationBillingState struct {
 	lastPaymentMethodEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// UTC timestamp when Leadping last processed a subscription event for the organization.
 	lastSubscriptionEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Number of billable phone numbers with Number Health enabled.
+	numberHealthQuantity *int64
 	// Number of user licenses currently assigned to organization members.
 	organizationMemberAssignedQuantity *int64
 	// Number of user licenses included in the organization's subscription plan.
@@ -151,6 +153,16 @@ func (m *OrganizationBillingState) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["numberHealthQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumberHealthQuantity(val)
+		}
+		return nil
+	}
 	res["organizationMemberAssignedQuantity"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetInt64Value()
 		if err != nil {
@@ -238,6 +250,12 @@ func (m *OrganizationBillingState) GetLastSubscriptionEventAt() *i336074805fc853
 	return m.lastSubscriptionEventAt
 }
 
+// GetNumberHealthQuantity gets the numberHealthQuantity property value. Number of billable phone numbers with Number Health enabled.
+// returns a *int64 when successful
+func (m *OrganizationBillingState) GetNumberHealthQuantity() *int64 {
+	return m.numberHealthQuantity
+}
+
 // GetOrganizationMemberAssignedQuantity gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
 // returns a *int64 when successful
 func (m *OrganizationBillingState) GetOrganizationMemberAssignedQuantity() *int64 {
@@ -314,6 +332,12 @@ func (m *OrganizationBillingState) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteTimeValue("lastSubscriptionEventAt", m.GetLastSubscriptionEventAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("numberHealthQuantity", m.GetNumberHealthQuantity())
 		if err != nil {
 			return err
 		}
@@ -404,6 +428,11 @@ func (m *OrganizationBillingState) SetLastSubscriptionEventAt(value *i336074805f
 	m.lastSubscriptionEventAt = value
 }
 
+// SetNumberHealthQuantity sets the numberHealthQuantity property value. Number of billable phone numbers with Number Health enabled.
+func (m *OrganizationBillingState) SetNumberHealthQuantity(value *int64) {
+	m.numberHealthQuantity = value
+}
+
 // SetOrganizationMemberAssignedQuantity sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
 func (m *OrganizationBillingState) SetOrganizationMemberAssignedQuantity(value *int64) {
 	m.organizationMemberAssignedQuantity = value
@@ -444,6 +473,7 @@ type OrganizationBillingStateable interface {
 	GetHasStripeCustomer() *bool
 	GetLastPaymentMethodEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastSubscriptionEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetNumberHealthQuantity() *int64
 	GetOrganizationMemberAssignedQuantity() *int64
 	GetOrganizationMemberQuantity() *int64
 	GetPendingBillingPlan() *OrganizationBillingState_pendingBillingPlan
@@ -457,6 +487,7 @@ type OrganizationBillingStateable interface {
 	SetHasStripeCustomer(value *bool)
 	SetLastPaymentMethodEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastSubscriptionEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetNumberHealthQuantity(value *int64)
 	SetOrganizationMemberAssignedQuantity(value *int64)
 	SetOrganizationMemberQuantity(value *int64)
 	SetPendingBillingPlan(value *OrganizationBillingState_pendingBillingPlan)
