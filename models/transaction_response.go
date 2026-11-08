@@ -32,6 +32,8 @@ type TransactionResponse struct {
 	id *string
 	// Indicates sample activity for app review that must not count toward real financial totals.
 	isDemo *bool
+	// Indicates a temporary credit hold, not a settled charge.
+	isUsageReservation *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead TransactionResponse_leadable
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -211,6 +213,16 @@ func (m *TransactionResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["isUsageReservation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsUsageReservation(val)
+		}
+		return nil
+	}
 	res["lead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateTransactionResponse_leadFromDiscriminatorValue)
 		if err != nil {
@@ -328,6 +340,12 @@ func (m *TransactionResponse) GetIsDemo() *bool {
 	return m.isDemo
 }
 
+// GetIsUsageReservation gets the isUsageReservation property value. Indicates a temporary credit hold, not a settled charge.
+// returns a *bool when successful
+func (m *TransactionResponse) GetIsUsageReservation() *bool {
+	return m.isUsageReservation
+}
+
 // GetLead gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionResponse_leadable when successful
 func (m *TransactionResponse) GetLead() TransactionResponse_leadable {
@@ -442,6 +460,12 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isUsageReservation", m.GetIsUsageReservation())
 		if err != nil {
 			return err
 		}
@@ -566,6 +590,11 @@ func (m *TransactionResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
+// SetIsUsageReservation sets the isUsageReservation property value. Indicates a temporary credit hold, not a settled charge.
+func (m *TransactionResponse) SetIsUsageReservation(value *bool) {
+	m.isUsageReservation = value
+}
+
 // SetLead sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *TransactionResponse) SetLead(value TransactionResponse_leadable) {
 	m.lead = value
@@ -624,6 +653,7 @@ type TransactionResponseable interface {
 	GetGatewayStatus() *string
 	GetId() *string
 	GetIsDemo() *bool
+	GetIsUsageReservation() *bool
 	GetLead() TransactionResponse_leadable
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetNetAmount() *float64
@@ -643,6 +673,7 @@ type TransactionResponseable interface {
 	SetGatewayStatus(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
+	SetIsUsageReservation(value *bool)
 	SetLead(value TransactionResponse_leadable)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetNetAmount(value *float64)
