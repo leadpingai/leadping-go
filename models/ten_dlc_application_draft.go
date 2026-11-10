@@ -12,10 +12,20 @@ import (
 type TenDlcApplicationDraft struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Whether campaign content is age gated.
+	ageGated *bool
+	// Whether the campaign subscription renews automatically.
+	autoRenewal *bool
+	// Legal entity type registered with Telnyx.
+	brandEntityType *string
 	// Defines the provider lifecycle for an individual 10DLC brand or campaign.
 	brandStatus *TenDlcRegistrationStatus
+	// Individual representative email required for public-company verification.
+	businessContactEmail *string
 	// Defines the provider lifecycle for an individual 10DLC brand or campaign.
 	campaignStatus *TenDlcRegistrationStatus
+	// Legal business city.
+	city *string
 	// Company name for this 10DLC application draft.
 	companyName *string
 	// The compliance warnings included with this 10DLC application draft.
@@ -26,24 +36,72 @@ type TenDlcApplicationDraft struct {
 	contactName *string
 	// Contact phone for this 10DLC application draft.
 	contactPhone *string
+	// ISO two-letter country of registration.
+	country *string
+	// Whether messages concern direct lending or loan arrangements.
+	directLending *bool
+	// Customer-facing brand or DBA name.
+	displayName *string
 	// EIN for this 10DLC application draft.
 	ein *string
+	// Whether campaign messages contain links.
+	embeddedLink *bool
+	// Representative embedded link submitted for review.
+	embeddedLinkSample *string
+	// Whether campaign messages contain phone numbers.
+	embeddedPhone *bool
 	// Expected monthly volume for this 10DLC application draft.
 	expectedMonthlyVolume *int32
+	// Comma-separated help keywords.
+	helpKeywords *string
+	// Help response with customer-care information.
+	helpMessage *string
 	// The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 	industry *string
+	// Whether the brand resells services to other businesses.
+	isReseller *bool
 	// UTC timestamp for last submitted at on this 10DLC application draft.
 	lastSubmittedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The message examples included with this 10DLC application draft.
 	messageExamples []string
 	// The missing fields included with this 10DLC application draft.
 	missingFields []string
+	// Whether the campaign uses a number pool.
+	numberPool *bool
+	// Comma-separated opt-in keywords.
+	optinKeywords *string
 	// Opt in language for this 10DLC application draft.
 	optInLanguage *string
+	// Opt-in confirmation response.
+	optinMessage *string
+	// Comma-separated opt-out keywords.
+	optoutKeywords *string
+	// Opt-out confirmation response.
+	optoutMessage *string
+	// Legal business postal code.
+	postalCode *string
 	// Public privacy-policy URL that explains how messaging recipient data is handled.
 	privacyPolicyUrl *string
 	// The human-readable rejection reason explaining this 10DLC application draft.
 	rejectionReason *string
+	// Legal business state or region.
+	state *string
+	// Public-company stock exchange.
+	stockExchange *string
+	// Public-company stock ticker.
+	stockSymbol *string
+	// Legal business street address.
+	street *string
+	// Whether the program responds to help keywords.
+	subscriberHelp *bool
+	// Whether subscribers opt in before messaging.
+	subscriberOptin *bool
+	// Whether the program supports opt-out keywords.
+	subscriberOptout *bool
+	// Selected sub-use cases for a mixed campaign.
+	subUseCases []string
+	// Acceptance of the carrier campaign terms.
+	termsAndConditions *bool
 	// Public terms-of-service URL governing the messaging program.
 	termsUrl *string
 	// Whether TrustedForm required applies to this 10DLC application draft.
@@ -79,16 +137,46 @@ func (m *TenDlcApplicationDraft) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetAgeGated gets the ageGated property value. Whether campaign content is age gated.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetAgeGated() *bool {
+	return m.ageGated
+}
+
+// GetAutoRenewal gets the autoRenewal property value. Whether the campaign subscription renews automatically.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetAutoRenewal() *bool {
+	return m.autoRenewal
+}
+
+// GetBrandEntityType gets the brandEntityType property value. Legal entity type registered with Telnyx.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetBrandEntityType() *string {
+	return m.brandEntityType
+}
+
 // GetBrandStatus gets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 // returns a *TenDlcRegistrationStatus when successful
 func (m *TenDlcApplicationDraft) GetBrandStatus() *TenDlcRegistrationStatus {
 	return m.brandStatus
 }
 
+// GetBusinessContactEmail gets the businessContactEmail property value. Individual representative email required for public-company verification.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetBusinessContactEmail() *string {
+	return m.businessContactEmail
+}
+
 // GetCampaignStatus gets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 // returns a *TenDlcRegistrationStatus when successful
 func (m *TenDlcApplicationDraft) GetCampaignStatus() *TenDlcRegistrationStatus {
 	return m.campaignStatus
+}
+
+// GetCity gets the city property value. Legal business city.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetCity() *string {
+	return m.city
 }
 
 // GetCompanyName gets the companyName property value. Company name for this 10DLC application draft.
@@ -121,10 +209,46 @@ func (m *TenDlcApplicationDraft) GetContactPhone() *string {
 	return m.contactPhone
 }
 
+// GetCountry gets the country property value. ISO two-letter country of registration.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetCountry() *string {
+	return m.country
+}
+
+// GetDirectLending gets the directLending property value. Whether messages concern direct lending or loan arrangements.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetDirectLending() *bool {
+	return m.directLending
+}
+
+// GetDisplayName gets the displayName property value. Customer-facing brand or DBA name.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetDisplayName() *string {
+	return m.displayName
+}
+
 // GetEin gets the ein property value. EIN for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetEin() *string {
 	return m.ein
+}
+
+// GetEmbeddedLink gets the embeddedLink property value. Whether campaign messages contain links.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetEmbeddedLink() *bool {
+	return m.embeddedLink
+}
+
+// GetEmbeddedLinkSample gets the embeddedLinkSample property value. Representative embedded link submitted for review.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetEmbeddedLinkSample() *string {
+	return m.embeddedLinkSample
+}
+
+// GetEmbeddedPhone gets the embeddedPhone property value. Whether campaign messages contain phone numbers.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetEmbeddedPhone() *bool {
+	return m.embeddedPhone
 }
 
 // GetExpectedMonthlyVolume gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
@@ -137,6 +261,36 @@ func (m *TenDlcApplicationDraft) GetExpectedMonthlyVolume() *int32 {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["ageGated"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAgeGated(val)
+		}
+		return nil
+	}
+	res["autoRenewal"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutoRenewal(val)
+		}
+		return nil
+	}
+	res["brandEntityType"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBrandEntityType(val)
+		}
+		return nil
+	}
 	res["brandStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
 		if err != nil {
@@ -147,6 +301,16 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
+	res["businessContactEmail"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetBusinessContactEmail(val)
+		}
+		return nil
+	}
 	res["campaignStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseTenDlcRegistrationStatus)
 		if err != nil {
@@ -154,6 +318,16 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetCampaignStatus(val.(*TenDlcRegistrationStatus))
+		}
+		return nil
+	}
+	res["city"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCity(val)
 		}
 		return nil
 	}
@@ -213,6 +387,36 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
+	res["country"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCountry(val)
+		}
+		return nil
+	}
+	res["directLending"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDirectLending(val)
+		}
+		return nil
+	}
+	res["displayName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetDisplayName(val)
+		}
+		return nil
+	}
 	res["ein"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -220,6 +424,36 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetEin(val)
+		}
+		return nil
+	}
+	res["embeddedLink"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmbeddedLink(val)
+		}
+		return nil
+	}
+	res["embeddedLinkSample"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmbeddedLinkSample(val)
+		}
+		return nil
+	}
+	res["embeddedPhone"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEmbeddedPhone(val)
 		}
 		return nil
 	}
@@ -233,6 +467,26 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
+	res["helpKeywords"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHelpKeywords(val)
+		}
+		return nil
+	}
+	res["helpMessage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHelpMessage(val)
+		}
+		return nil
+	}
 	res["industry"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -240,6 +494,16 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetIndustry(val)
+		}
+		return nil
+	}
+	res["isReseller"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsReseller(val)
 		}
 		return nil
 	}
@@ -285,6 +549,26 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		return nil
 	}
+	res["numberPool"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNumberPool(val)
+		}
+		return nil
+	}
+	res["optinKeywords"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptinKeywords(val)
+		}
+		return nil
+	}
 	res["optInLanguage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -292,6 +576,46 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetOptInLanguage(val)
+		}
+		return nil
+	}
+	res["optinMessage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptinMessage(val)
+		}
+		return nil
+	}
+	res["optoutKeywords"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptoutKeywords(val)
+		}
+		return nil
+	}
+	res["optoutMessage"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetOptoutMessage(val)
+		}
+		return nil
+	}
+	res["postalCode"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPostalCode(val)
 		}
 		return nil
 	}
@@ -312,6 +636,102 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 		}
 		if val != nil {
 			m.SetRejectionReason(val)
+		}
+		return nil
+	}
+	res["state"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetState(val)
+		}
+		return nil
+	}
+	res["stockExchange"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStockExchange(val)
+		}
+		return nil
+	}
+	res["stockSymbol"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStockSymbol(val)
+		}
+		return nil
+	}
+	res["street"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetStreet(val)
+		}
+		return nil
+	}
+	res["subscriberHelp"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriberHelp(val)
+		}
+		return nil
+	}
+	res["subscriberOptin"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriberOptin(val)
+		}
+		return nil
+	}
+	res["subscriberOptout"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSubscriberOptout(val)
+		}
+		return nil
+	}
+	res["subUseCases"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfPrimitiveValues("string")
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]string, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = *(v.(*string))
+				}
+			}
+			m.SetSubUseCases(res)
+		}
+		return nil
+	}
+	res["termsAndConditions"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTermsAndConditions(val)
 		}
 		return nil
 	}
@@ -388,10 +808,28 @@ func (m *TenDlcApplicationDraft) GetFieldDeserializers() map[string]func(i878a80
 	return res
 }
 
+// GetHelpKeywords gets the helpKeywords property value. Comma-separated help keywords.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetHelpKeywords() *string {
+	return m.helpKeywords
+}
+
+// GetHelpMessage gets the helpMessage property value. Help response with customer-care information.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetHelpMessage() *string {
+	return m.helpMessage
+}
+
 // GetIndustry gets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetIndustry() *string {
 	return m.industry
+}
+
+// GetIsReseller gets the isReseller property value. Whether the brand resells services to other businesses.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetIsReseller() *bool {
+	return m.isReseller
 }
 
 // GetLastSubmittedAt gets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
@@ -412,10 +850,46 @@ func (m *TenDlcApplicationDraft) GetMissingFields() []string {
 	return m.missingFields
 }
 
+// GetNumberPool gets the numberPool property value. Whether the campaign uses a number pool.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetNumberPool() *bool {
+	return m.numberPool
+}
+
+// GetOptinKeywords gets the optinKeywords property value. Comma-separated opt-in keywords.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetOptinKeywords() *string {
+	return m.optinKeywords
+}
+
 // GetOptInLanguage gets the optInLanguage property value. Opt in language for this 10DLC application draft.
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetOptInLanguage() *string {
 	return m.optInLanguage
+}
+
+// GetOptinMessage gets the optinMessage property value. Opt-in confirmation response.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetOptinMessage() *string {
+	return m.optinMessage
+}
+
+// GetOptoutKeywords gets the optoutKeywords property value. Comma-separated opt-out keywords.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetOptoutKeywords() *string {
+	return m.optoutKeywords
+}
+
+// GetOptoutMessage gets the optoutMessage property value. Opt-out confirmation response.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetOptoutMessage() *string {
+	return m.optoutMessage
+}
+
+// GetPostalCode gets the postalCode property value. Legal business postal code.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetPostalCode() *string {
+	return m.postalCode
 }
 
 // GetPrivacyPolicyUrl gets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
@@ -428,6 +902,60 @@ func (m *TenDlcApplicationDraft) GetPrivacyPolicyUrl() *string {
 // returns a *string when successful
 func (m *TenDlcApplicationDraft) GetRejectionReason() *string {
 	return m.rejectionReason
+}
+
+// GetState gets the state property value. Legal business state or region.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetState() *string {
+	return m.state
+}
+
+// GetStockExchange gets the stockExchange property value. Public-company stock exchange.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetStockExchange() *string {
+	return m.stockExchange
+}
+
+// GetStockSymbol gets the stockSymbol property value. Public-company stock ticker.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetStockSymbol() *string {
+	return m.stockSymbol
+}
+
+// GetStreet gets the street property value. Legal business street address.
+// returns a *string when successful
+func (m *TenDlcApplicationDraft) GetStreet() *string {
+	return m.street
+}
+
+// GetSubscriberHelp gets the subscriberHelp property value. Whether the program responds to help keywords.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetSubscriberHelp() *bool {
+	return m.subscriberHelp
+}
+
+// GetSubscriberOptin gets the subscriberOptin property value. Whether subscribers opt in before messaging.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetSubscriberOptin() *bool {
+	return m.subscriberOptin
+}
+
+// GetSubscriberOptout gets the subscriberOptout property value. Whether the program supports opt-out keywords.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetSubscriberOptout() *bool {
+	return m.subscriberOptout
+}
+
+// GetSubUseCases gets the subUseCases property value. Selected sub-use cases for a mixed campaign.
+// returns a []string when successful
+func (m *TenDlcApplicationDraft) GetSubUseCases() []string {
+	return m.subUseCases
+}
+
+// GetTermsAndConditions gets the termsAndConditions property value. Acceptance of the carrier campaign terms.
+// returns a *bool when successful
+func (m *TenDlcApplicationDraft) GetTermsAndConditions() *bool {
+	return m.termsAndConditions
 }
 
 // GetTermsUrl gets the termsUrl property value. Public terms-of-service URL governing the messaging program.
@@ -474,6 +1002,24 @@ func (m *TenDlcApplicationDraft) GetWebsiteUrl() *string {
 
 // Serialize serializes information the current object
 func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("ageGated", m.GetAgeGated())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("autoRenewal", m.GetAutoRenewal())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("brandEntityType", m.GetBrandEntityType())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetBrandStatus() != nil {
 		cast := (*m.GetBrandStatus()).String()
 		err := writer.WriteStringValue("brandStatus", &cast)
@@ -481,9 +1027,21 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 			return err
 		}
 	}
+	{
+		err := writer.WriteStringValue("businessContactEmail", m.GetBusinessContactEmail())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetCampaignStatus() != nil {
 		cast := (*m.GetCampaignStatus()).String()
 		err := writer.WriteStringValue("campaignStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("city", m.GetCity())
 		if err != nil {
 			return err
 		}
@@ -519,7 +1077,43 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 		}
 	}
 	{
+		err := writer.WriteStringValue("country", m.GetCountry())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("directLending", m.GetDirectLending())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("displayName", m.GetDisplayName())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("ein", m.GetEin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("embeddedLink", m.GetEmbeddedLink())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("embeddedLinkSample", m.GetEmbeddedLinkSample())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("embeddedPhone", m.GetEmbeddedPhone())
 		if err != nil {
 			return err
 		}
@@ -531,7 +1125,25 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 		}
 	}
 	{
+		err := writer.WriteStringValue("helpKeywords", m.GetHelpKeywords())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("helpMessage", m.GetHelpMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("industry", m.GetIndustry())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isReseller", m.GetIsReseller())
 		if err != nil {
 			return err
 		}
@@ -555,7 +1167,43 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 		}
 	}
 	{
+		err := writer.WriteBoolValue("numberPool", m.GetNumberPool())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("optinKeywords", m.GetOptinKeywords())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("optInLanguage", m.GetOptInLanguage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("optinMessage", m.GetOptinMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("optoutKeywords", m.GetOptoutKeywords())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("optoutMessage", m.GetOptoutMessage())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("postalCode", m.GetPostalCode())
 		if err != nil {
 			return err
 		}
@@ -568,6 +1216,60 @@ func (m *TenDlcApplicationDraft) Serialize(writer i878a80d2330e89d26896388a3f487
 	}
 	{
 		err := writer.WriteStringValue("rejectionReason", m.GetRejectionReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("state", m.GetState())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("stockExchange", m.GetStockExchange())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("stockSymbol", m.GetStockSymbol())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("street", m.GetStreet())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriberHelp", m.GetSubscriberHelp())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriberOptin", m.GetSubscriberOptin())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("subscriberOptout", m.GetSubscriberOptout())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetSubUseCases() != nil {
+		err := writer.WriteCollectionOfStringValues("subUseCases", m.GetSubUseCases())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("termsAndConditions", m.GetTermsAndConditions())
 		if err != nil {
 			return err
 		}
@@ -628,14 +1330,39 @@ func (m *TenDlcApplicationDraft) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAgeGated sets the ageGated property value. Whether campaign content is age gated.
+func (m *TenDlcApplicationDraft) SetAgeGated(value *bool) {
+	m.ageGated = value
+}
+
+// SetAutoRenewal sets the autoRenewal property value. Whether the campaign subscription renews automatically.
+func (m *TenDlcApplicationDraft) SetAutoRenewal(value *bool) {
+	m.autoRenewal = value
+}
+
+// SetBrandEntityType sets the brandEntityType property value. Legal entity type registered with Telnyx.
+func (m *TenDlcApplicationDraft) SetBrandEntityType(value *string) {
+	m.brandEntityType = value
+}
+
 // SetBrandStatus sets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 func (m *TenDlcApplicationDraft) SetBrandStatus(value *TenDlcRegistrationStatus) {
 	m.brandStatus = value
 }
 
+// SetBusinessContactEmail sets the businessContactEmail property value. Individual representative email required for public-company verification.
+func (m *TenDlcApplicationDraft) SetBusinessContactEmail(value *string) {
+	m.businessContactEmail = value
+}
+
 // SetCampaignStatus sets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
 func (m *TenDlcApplicationDraft) SetCampaignStatus(value *TenDlcRegistrationStatus) {
 	m.campaignStatus = value
+}
+
+// SetCity sets the city property value. Legal business city.
+func (m *TenDlcApplicationDraft) SetCity(value *string) {
+	m.city = value
 }
 
 // SetCompanyName sets the companyName property value. Company name for this 10DLC application draft.
@@ -663,9 +1390,39 @@ func (m *TenDlcApplicationDraft) SetContactPhone(value *string) {
 	m.contactPhone = value
 }
 
+// SetCountry sets the country property value. ISO two-letter country of registration.
+func (m *TenDlcApplicationDraft) SetCountry(value *string) {
+	m.country = value
+}
+
+// SetDirectLending sets the directLending property value. Whether messages concern direct lending or loan arrangements.
+func (m *TenDlcApplicationDraft) SetDirectLending(value *bool) {
+	m.directLending = value
+}
+
+// SetDisplayName sets the displayName property value. Customer-facing brand or DBA name.
+func (m *TenDlcApplicationDraft) SetDisplayName(value *string) {
+	m.displayName = value
+}
+
 // SetEin sets the ein property value. EIN for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetEin(value *string) {
 	m.ein = value
+}
+
+// SetEmbeddedLink sets the embeddedLink property value. Whether campaign messages contain links.
+func (m *TenDlcApplicationDraft) SetEmbeddedLink(value *bool) {
+	m.embeddedLink = value
+}
+
+// SetEmbeddedLinkSample sets the embeddedLinkSample property value. Representative embedded link submitted for review.
+func (m *TenDlcApplicationDraft) SetEmbeddedLinkSample(value *string) {
+	m.embeddedLinkSample = value
+}
+
+// SetEmbeddedPhone sets the embeddedPhone property value. Whether campaign messages contain phone numbers.
+func (m *TenDlcApplicationDraft) SetEmbeddedPhone(value *bool) {
+	m.embeddedPhone = value
 }
 
 // SetExpectedMonthlyVolume sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
@@ -673,9 +1430,24 @@ func (m *TenDlcApplicationDraft) SetExpectedMonthlyVolume(value *int32) {
 	m.expectedMonthlyVolume = value
 }
 
+// SetHelpKeywords sets the helpKeywords property value. Comma-separated help keywords.
+func (m *TenDlcApplicationDraft) SetHelpKeywords(value *string) {
+	m.helpKeywords = value
+}
+
+// SetHelpMessage sets the helpMessage property value. Help response with customer-care information.
+func (m *TenDlcApplicationDraft) SetHelpMessage(value *string) {
+	m.helpMessage = value
+}
+
 // SetIndustry sets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
 func (m *TenDlcApplicationDraft) SetIndustry(value *string) {
 	m.industry = value
+}
+
+// SetIsReseller sets the isReseller property value. Whether the brand resells services to other businesses.
+func (m *TenDlcApplicationDraft) SetIsReseller(value *bool) {
+	m.isReseller = value
 }
 
 // SetLastSubmittedAt sets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
@@ -693,9 +1465,39 @@ func (m *TenDlcApplicationDraft) SetMissingFields(value []string) {
 	m.missingFields = value
 }
 
+// SetNumberPool sets the numberPool property value. Whether the campaign uses a number pool.
+func (m *TenDlcApplicationDraft) SetNumberPool(value *bool) {
+	m.numberPool = value
+}
+
+// SetOptinKeywords sets the optinKeywords property value. Comma-separated opt-in keywords.
+func (m *TenDlcApplicationDraft) SetOptinKeywords(value *string) {
+	m.optinKeywords = value
+}
+
 // SetOptInLanguage sets the optInLanguage property value. Opt in language for this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetOptInLanguage(value *string) {
 	m.optInLanguage = value
+}
+
+// SetOptinMessage sets the optinMessage property value. Opt-in confirmation response.
+func (m *TenDlcApplicationDraft) SetOptinMessage(value *string) {
+	m.optinMessage = value
+}
+
+// SetOptoutKeywords sets the optoutKeywords property value. Comma-separated opt-out keywords.
+func (m *TenDlcApplicationDraft) SetOptoutKeywords(value *string) {
+	m.optoutKeywords = value
+}
+
+// SetOptoutMessage sets the optoutMessage property value. Opt-out confirmation response.
+func (m *TenDlcApplicationDraft) SetOptoutMessage(value *string) {
+	m.optoutMessage = value
+}
+
+// SetPostalCode sets the postalCode property value. Legal business postal code.
+func (m *TenDlcApplicationDraft) SetPostalCode(value *string) {
+	m.postalCode = value
 }
 
 // SetPrivacyPolicyUrl sets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
@@ -706,6 +1508,51 @@ func (m *TenDlcApplicationDraft) SetPrivacyPolicyUrl(value *string) {
 // SetRejectionReason sets the rejectionReason property value. The human-readable rejection reason explaining this 10DLC application draft.
 func (m *TenDlcApplicationDraft) SetRejectionReason(value *string) {
 	m.rejectionReason = value
+}
+
+// SetState sets the state property value. Legal business state or region.
+func (m *TenDlcApplicationDraft) SetState(value *string) {
+	m.state = value
+}
+
+// SetStockExchange sets the stockExchange property value. Public-company stock exchange.
+func (m *TenDlcApplicationDraft) SetStockExchange(value *string) {
+	m.stockExchange = value
+}
+
+// SetStockSymbol sets the stockSymbol property value. Public-company stock ticker.
+func (m *TenDlcApplicationDraft) SetStockSymbol(value *string) {
+	m.stockSymbol = value
+}
+
+// SetStreet sets the street property value. Legal business street address.
+func (m *TenDlcApplicationDraft) SetStreet(value *string) {
+	m.street = value
+}
+
+// SetSubscriberHelp sets the subscriberHelp property value. Whether the program responds to help keywords.
+func (m *TenDlcApplicationDraft) SetSubscriberHelp(value *bool) {
+	m.subscriberHelp = value
+}
+
+// SetSubscriberOptin sets the subscriberOptin property value. Whether subscribers opt in before messaging.
+func (m *TenDlcApplicationDraft) SetSubscriberOptin(value *bool) {
+	m.subscriberOptin = value
+}
+
+// SetSubscriberOptout sets the subscriberOptout property value. Whether the program supports opt-out keywords.
+func (m *TenDlcApplicationDraft) SetSubscriberOptout(value *bool) {
+	m.subscriberOptout = value
+}
+
+// SetSubUseCases sets the subUseCases property value. Selected sub-use cases for a mixed campaign.
+func (m *TenDlcApplicationDraft) SetSubUseCases(value []string) {
+	m.subUseCases = value
+}
+
+// SetTermsAndConditions sets the termsAndConditions property value. Acceptance of the carrier campaign terms.
+func (m *TenDlcApplicationDraft) SetTermsAndConditions(value *bool) {
+	m.termsAndConditions = value
 }
 
 // SetTermsUrl sets the termsUrl property value. Public terms-of-service URL governing the messaging program.
@@ -746,22 +1593,51 @@ func (m *TenDlcApplicationDraft) SetWebsiteUrl(value *string) {
 type TenDlcApplicationDraftable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAgeGated() *bool
+	GetAutoRenewal() *bool
+	GetBrandEntityType() *string
 	GetBrandStatus() *TenDlcRegistrationStatus
+	GetBusinessContactEmail() *string
 	GetCampaignStatus() *TenDlcRegistrationStatus
+	GetCity() *string
 	GetCompanyName() *string
 	GetComplianceWarnings() []string
 	GetContactEmail() *string
 	GetContactName() *string
 	GetContactPhone() *string
+	GetCountry() *string
+	GetDirectLending() *bool
+	GetDisplayName() *string
 	GetEin() *string
+	GetEmbeddedLink() *bool
+	GetEmbeddedLinkSample() *string
+	GetEmbeddedPhone() *bool
 	GetExpectedMonthlyVolume() *int32
+	GetHelpKeywords() *string
+	GetHelpMessage() *string
 	GetIndustry() *string
+	GetIsReseller() *bool
 	GetLastSubmittedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetMessageExamples() []string
 	GetMissingFields() []string
+	GetNumberPool() *bool
+	GetOptinKeywords() *string
 	GetOptInLanguage() *string
+	GetOptinMessage() *string
+	GetOptoutKeywords() *string
+	GetOptoutMessage() *string
+	GetPostalCode() *string
 	GetPrivacyPolicyUrl() *string
 	GetRejectionReason() *string
+	GetState() *string
+	GetStockExchange() *string
+	GetStockSymbol() *string
+	GetStreet() *string
+	GetSubscriberHelp() *bool
+	GetSubscriberOptin() *bool
+	GetSubscriberOptout() *bool
+	GetSubUseCases() []string
+	GetTermsAndConditions() *bool
 	GetTermsUrl() *string
 	GetTrustedFormRequired() *bool
 	GetUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -769,22 +1645,51 @@ type TenDlcApplicationDraftable interface {
 	GetUseCaseDescription() *string
 	GetVersion() *int32
 	GetWebsiteUrl() *string
+	SetAgeGated(value *bool)
+	SetAutoRenewal(value *bool)
+	SetBrandEntityType(value *string)
 	SetBrandStatus(value *TenDlcRegistrationStatus)
+	SetBusinessContactEmail(value *string)
 	SetCampaignStatus(value *TenDlcRegistrationStatus)
+	SetCity(value *string)
 	SetCompanyName(value *string)
 	SetComplianceWarnings(value []string)
 	SetContactEmail(value *string)
 	SetContactName(value *string)
 	SetContactPhone(value *string)
+	SetCountry(value *string)
+	SetDirectLending(value *bool)
+	SetDisplayName(value *string)
 	SetEin(value *string)
+	SetEmbeddedLink(value *bool)
+	SetEmbeddedLinkSample(value *string)
+	SetEmbeddedPhone(value *bool)
 	SetExpectedMonthlyVolume(value *int32)
+	SetHelpKeywords(value *string)
+	SetHelpMessage(value *string)
 	SetIndustry(value *string)
+	SetIsReseller(value *bool)
 	SetLastSubmittedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetMessageExamples(value []string)
 	SetMissingFields(value []string)
+	SetNumberPool(value *bool)
+	SetOptinKeywords(value *string)
 	SetOptInLanguage(value *string)
+	SetOptinMessage(value *string)
+	SetOptoutKeywords(value *string)
+	SetOptoutMessage(value *string)
+	SetPostalCode(value *string)
 	SetPrivacyPolicyUrl(value *string)
 	SetRejectionReason(value *string)
+	SetState(value *string)
+	SetStockExchange(value *string)
+	SetStockSymbol(value *string)
+	SetStreet(value *string)
+	SetSubscriberHelp(value *bool)
+	SetSubscriberOptin(value *bool)
+	SetSubscriberOptout(value *bool)
+	SetSubUseCases(value []string)
+	SetTermsAndConditions(value *bool)
 	SetTermsUrl(value *string)
 	SetTrustedFormRequired(value *bool)
 	SetUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

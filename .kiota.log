@@ -32,6 +32,7 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryRequ
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryResponse/properties/leadEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryResponse/properties/leadAvatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryResponse/properties/normalizedEmail - The format email is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/businessContactEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/contactEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/websiteUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/TenDlcApplicationDraft/properties/privacyPolicyUrl - The format uri is not supported by Kiota and the string type will be used.
