@@ -21,6 +21,8 @@ type PhoneNumberLocation struct {
 	coordinateSource PhoneNumberLocation_coordinateSourceable
 	// Country code for the phone number or location represented by this phone number location.
 	countryCode *string
+	// Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+	isCoordinateApproximate *bool
 	// Geographic location metadata for the phone number, lead, or lookup result.
 	location *string
 	// State, province, or region for the lead or organization postal address.
@@ -134,6 +136,16 @@ func (m *PhoneNumberLocation) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["isCoordinateApproximate"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsCoordinateApproximate(val)
+		}
+		return nil
+	}
 	res["location"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -175,6 +187,12 @@ func (m *PhoneNumberLocation) GetFieldDeserializers() map[string]func(i878a80d23
 		return nil
 	}
 	return res
+}
+
+// GetIsCoordinateApproximate gets the isCoordinateApproximate property value. Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+// returns a *bool when successful
+func (m *PhoneNumberLocation) GetIsCoordinateApproximate() *bool {
+	return m.isCoordinateApproximate
 }
 
 // GetLocation gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
@@ -229,6 +247,12 @@ func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("countryCode", m.GetCountryCode())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isCoordinateApproximate", m.GetIsCoordinateApproximate())
 		if err != nil {
 			return err
 		}
@@ -296,6 +320,11 @@ func (m *PhoneNumberLocation) SetCountryCode(value *string) {
 	m.countryCode = value
 }
 
+// SetIsCoordinateApproximate sets the isCoordinateApproximate property value. Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+func (m *PhoneNumberLocation) SetIsCoordinateApproximate(value *bool) {
+	m.isCoordinateApproximate = value
+}
+
 // SetLocation sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
 func (m *PhoneNumberLocation) SetLocation(value *string) {
 	m.location = value
@@ -324,6 +353,7 @@ type PhoneNumberLocationable interface {
 	GetCoordinate() PhoneNumberLocation_coordinateable
 	GetCoordinateSource() PhoneNumberLocation_coordinateSourceable
 	GetCountryCode() *string
+	GetIsCoordinateApproximate() *bool
 	GetLocation() *string
 	GetState() *string
 	GetTimeZoneId() *string
@@ -333,6 +363,7 @@ type PhoneNumberLocationable interface {
 	SetCoordinate(value PhoneNumberLocation_coordinateable)
 	SetCoordinateSource(value PhoneNumberLocation_coordinateSourceable)
 	SetCountryCode(value *string)
+	SetIsCoordinateApproximate(value *bool)
 	SetLocation(value *string)
 	SetState(value *string)
 	SetTimeZoneId(value *string)

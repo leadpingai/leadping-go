@@ -7,7 +7,8 @@ package models
 type SmsResponse_selectionReason int
 
 const (
-	STICKYCONVERSATION_SMSRESPONSE_SELECTIONREASON SmsResponse_selectionReason = iota
+	NEARESTLOCATION_SMSRESPONSE_SELECTIONREASON SmsResponse_selectionReason = iota
+	STICKYCONVERSATION_SMSRESPONSE_SELECTIONREASON
 	LEADASSIGNED_SMSRESPONSE_SELECTIONREASON
 	CAMPAIGNORSOURCE_SMSRESPONSE_SELECTIONREASON
 	PREFERRED_SMSRESPONSE_SELECTIONREASON
@@ -18,12 +19,14 @@ const (
 )
 
 func (i SmsResponse_selectionReason) String() string {
-	return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
+	return []string{"NearestLocation", "StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
 }
 
 func ParseSmsResponse_selectionReason(v string) (any, error) {
-	result := STICKYCONVERSATION_SMSRESPONSE_SELECTIONREASON
+	result := NEARESTLOCATION_SMSRESPONSE_SELECTIONREASON
 	switch v {
+	case "NearestLocation":
+		result = NEARESTLOCATION_SMSRESPONSE_SELECTIONREASON
 	case "StickyConversation":
 		result = STICKYCONVERSATION_SMSRESPONSE_SELECTIONREASON
 	case "LeadAssigned":

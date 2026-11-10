@@ -7,7 +7,8 @@ package models
 type OutgoingNumberSelectionResponse_selectionReason int
 
 const (
-	STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON OutgoingNumberSelectionResponse_selectionReason = iota
+	NEARESTLOCATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON OutgoingNumberSelectionResponse_selectionReason = iota
+	STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	LEADASSIGNED_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	CAMPAIGNORSOURCE_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	PREFERRED_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
@@ -18,12 +19,14 @@ const (
 )
 
 func (i OutgoingNumberSelectionResponse_selectionReason) String() string {
-	return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
+	return []string{"NearestLocation", "StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
 }
 
 func ParseOutgoingNumberSelectionResponse_selectionReason(v string) (any, error) {
-	result := STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
+	result := NEARESTLOCATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	switch v {
+	case "NearestLocation":
+		result = NEARESTLOCATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	case "StickyConversation":
 		result = STICKYCONVERSATION_OUTGOINGNUMBERSELECTIONRESPONSE_SELECTIONREASON
 	case "LeadAssigned":

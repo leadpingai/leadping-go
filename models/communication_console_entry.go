@@ -12,6 +12,8 @@ import (
 type CommunicationConsoleEntry struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Restricts this diagnostic entry to platform administrators.
+	adminOnly *bool
 	// Unique identifier of this diagnostic console entry.
 	id *string
 	// User-safe diagnostic message describing what occurred at this stage.
@@ -43,10 +45,26 @@ func (m *CommunicationConsoleEntry) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetAdminOnly gets the adminOnly property value. Restricts this diagnostic entry to platform administrators.
+// returns a *bool when successful
+func (m *CommunicationConsoleEntry) GetAdminOnly() *bool {
+	return m.adminOnly
+}
+
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *CommunicationConsoleEntry) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["adminOnly"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAdminOnly(val)
+		}
+		return nil
+	}
 	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -133,6 +151,12 @@ func (m *CommunicationConsoleEntry) GetStatus() *string {
 // Serialize serializes information the current object
 func (m *CommunicationConsoleEntry) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
+		err := writer.WriteBoolValue("adminOnly", m.GetAdminOnly())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("id", m.GetId())
 		if err != nil {
 			return err
@@ -176,6 +200,11 @@ func (m *CommunicationConsoleEntry) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAdminOnly sets the adminOnly property value. Restricts this diagnostic entry to platform administrators.
+func (m *CommunicationConsoleEntry) SetAdminOnly(value *bool) {
+	m.adminOnly = value
+}
+
 // SetId sets the id property value. Unique identifier of this diagnostic console entry.
 func (m *CommunicationConsoleEntry) SetId(value *string) {
 	m.id = value
@@ -204,11 +233,13 @@ func (m *CommunicationConsoleEntry) SetStatus(value *string) {
 type CommunicationConsoleEntryable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAdminOnly() *bool
 	GetId() *string
 	GetMessage() *string
 	GetOccurredAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetStage() *string
 	GetStatus() *string
+	SetAdminOnly(value *bool)
 	SetId(value *string)
 	SetMessage(value *string)
 	SetOccurredAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

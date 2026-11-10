@@ -7,7 +7,8 @@ package models
 type PhoneCallResponse_selectionReason int
 
 const (
-	STICKYCONVERSATION_PHONECALLRESPONSE_SELECTIONREASON PhoneCallResponse_selectionReason = iota
+	NEARESTLOCATION_PHONECALLRESPONSE_SELECTIONREASON PhoneCallResponse_selectionReason = iota
+	STICKYCONVERSATION_PHONECALLRESPONSE_SELECTIONREASON
 	LEADASSIGNED_PHONECALLRESPONSE_SELECTIONREASON
 	CAMPAIGNORSOURCE_PHONECALLRESPONSE_SELECTIONREASON
 	PREFERRED_PHONECALLRESPONSE_SELECTIONREASON
@@ -18,12 +19,14 @@ const (
 )
 
 func (i PhoneCallResponse_selectionReason) String() string {
-	return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
+	return []string{"NearestLocation", "StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
 }
 
 func ParsePhoneCallResponse_selectionReason(v string) (any, error) {
-	result := STICKYCONVERSATION_PHONECALLRESPONSE_SELECTIONREASON
+	result := NEARESTLOCATION_PHONECALLRESPONSE_SELECTIONREASON
 	switch v {
+	case "NearestLocation":
+		result = NEARESTLOCATION_PHONECALLRESPONSE_SELECTIONREASON
 	case "StickyConversation":
 		result = STICKYCONVERSATION_PHONECALLRESPONSE_SELECTIONREASON
 	case "LeadAssigned":

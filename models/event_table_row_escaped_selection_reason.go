@@ -7,7 +7,8 @@ package models
 type EventTableRow_selectionReason int
 
 const (
-	STICKYCONVERSATION_EVENTTABLEROW_SELECTIONREASON EventTableRow_selectionReason = iota
+	NEARESTLOCATION_EVENTTABLEROW_SELECTIONREASON EventTableRow_selectionReason = iota
+	STICKYCONVERSATION_EVENTTABLEROW_SELECTIONREASON
 	LEADASSIGNED_EVENTTABLEROW_SELECTIONREASON
 	CAMPAIGNORSOURCE_EVENTTABLEROW_SELECTIONREASON
 	PREFERRED_EVENTTABLEROW_SELECTIONREASON
@@ -18,12 +19,14 @@ const (
 )
 
 func (i EventTableRow_selectionReason) String() string {
-	return []string{"StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
+	return []string{"NearestLocation", "StickyConversation", "LeadAssigned", "CampaignOrSource", "Preferred", "LocalArea", "HealthyPool", "FallbackDefault", "ManualOverride"}[i]
 }
 
 func ParseEventTableRow_selectionReason(v string) (any, error) {
-	result := STICKYCONVERSATION_EVENTTABLEROW_SELECTIONREASON
+	result := NEARESTLOCATION_EVENTTABLEROW_SELECTIONREASON
 	switch v {
+	case "NearestLocation":
+		result = NEARESTLOCATION_EVENTTABLEROW_SELECTIONREASON
 	case "StickyConversation":
 		result = STICKYCONVERSATION_EVENTTABLEROW_SELECTIONREASON
 	case "LeadAssigned":
