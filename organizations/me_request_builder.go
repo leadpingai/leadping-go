@@ -60,6 +60,12 @@ func (m *MeRequestBuilder) Invitations() *MeInvitationsRequestBuilder {
 	return NewMeInvitationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
+// LeadAssignees the leadAssignees property
+// returns a *MeLeadAssigneesRequestBuilder when successful
+func (m *MeRequestBuilder) LeadAssignees() *MeLeadAssigneesRequestBuilder {
+	return NewMeLeadAssigneesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Members the members property
 // returns a *MeMembersRequestBuilder when successful
 func (m *MeRequestBuilder) Members() *MeMembersRequestBuilder {

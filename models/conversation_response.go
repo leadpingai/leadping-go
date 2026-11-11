@@ -20,6 +20,8 @@ type ConversationResponse struct {
 	archiveReason *int32
 	// Optional profile image URL explicitly associated with the lead.
 	avatarUrl *string
+	// Stored compliance status of the associated lead; not a live call-readiness guarantee.
+	complianceStatus *string
 	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 	currentLeadStatus ConversationResponse_currentLeadStatusable
 	// Email address used to resolve the lead's avatar when available.
@@ -111,6 +113,12 @@ func (m *ConversationResponse) GetAvatarUrl() *string {
 	return m.avatarUrl
 }
 
+// GetComplianceStatus gets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+// returns a *string when successful
+func (m *ConversationResponse) GetComplianceStatus() *string {
+	return m.complianceStatus
+}
+
 // GetCurrentLeadStatus gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 // returns a ConversationResponse_currentLeadStatusable when successful
 func (m *ConversationResponse) GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable {
@@ -170,6 +178,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetAvatarUrl(val)
+		}
+		return nil
+	}
+	res["complianceStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetComplianceStatus(val)
 		}
 		return nil
 	}
@@ -553,6 +571,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteStringValue("complianceStatus", m.GetComplianceStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("currentLeadStatus", m.GetCurrentLeadStatus())
 		if err != nil {
 			return err
@@ -725,6 +749,11 @@ func (m *ConversationResponse) SetAvatarUrl(value *string) {
 	m.avatarUrl = value
 }
 
+// SetComplianceStatus sets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+func (m *ConversationResponse) SetComplianceStatus(value *string) {
+	m.complianceStatus = value
+}
+
 // SetCurrentLeadStatus sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 func (m *ConversationResponse) SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable) {
 	m.currentLeadStatus = value
@@ -847,6 +876,7 @@ type ConversationResponseable interface {
 	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetArchiveReason() *int32
 	GetAvatarUrl() *string
+	GetComplianceStatus() *string
 	GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable
 	GetEmail() *string
 	GetEventVersion() *int64
@@ -874,6 +904,7 @@ type ConversationResponseable interface {
 	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetArchiveReason(value *int32)
 	SetAvatarUrl(value *string)
+	SetComplianceStatus(value *string)
 	SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)
 	SetEmail(value *string)
 	SetEventVersion(value *int64)

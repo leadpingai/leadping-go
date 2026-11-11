@@ -32,6 +32,8 @@ type UserResponse struct {
 	id *string
 	// The isDemo property
 	isDemo *bool
+	// The lastActiveAt property
+	lastActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The date and time when this user last completed the Leadping sign-in flow.
 	lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Last name of the Leadping user.
@@ -227,6 +229,16 @@ func (m *UserResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["lastActiveAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastActiveAt(val)
+		}
+		return nil
+	}
 	res["lastLoggedInAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -400,6 +412,12 @@ func (m *UserResponse) GetIsDemo() *bool {
 	return m.isDemo
 }
 
+// GetLastActiveAt gets the lastActiveAt property value. The lastActiveAt property
+// returns a *Time when successful
+func (m *UserResponse) GetLastActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastActiveAt
+}
+
 // GetLastLoggedInAt gets the lastLoggedInAt property value. The date and time when this user last completed the Leadping sign-in flow.
 // returns a *Time when successful
 func (m *UserResponse) GetLastLoggedInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -543,6 +561,12 @@ func (m *UserResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastActiveAt", m.GetLastActiveAt())
 		if err != nil {
 			return err
 		}
@@ -702,6 +726,11 @@ func (m *UserResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
+// SetLastActiveAt sets the lastActiveAt property value. The lastActiveAt property
+func (m *UserResponse) SetLastActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastActiveAt = value
+}
+
 // SetLastLoggedInAt sets the lastLoggedInAt property value. The date and time when this user last completed the Leadping sign-in flow.
 func (m *UserResponse) SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastLoggedInAt = value
@@ -785,6 +814,7 @@ type UserResponseable interface {
 	GetFirstName() *string
 	GetId() *string
 	GetIsDemo() *bool
+	GetLastActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastLoggedInAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastName() *string
 	GetMobileDevicePreferences() []MobileDevicePreferencesable
@@ -809,6 +839,7 @@ type UserResponseable interface {
 	SetFirstName(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
+	SetLastActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastLoggedInAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastName(value *string)
 	SetMobileDevicePreferences(value []MobileDevicePreferencesable)

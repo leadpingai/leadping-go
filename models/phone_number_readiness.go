@@ -23,6 +23,8 @@ type PhoneNumberReadiness struct {
 	progressPercent *int32
 	// Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
 	state *PhoneNumberReadiness_state
+	// Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+	trafficHealth PhoneNumberReadiness_trafficHealthable
 }
 
 // NewPhoneNumberReadiness instantiates a new PhoneNumberReadiness and sets the default values.
@@ -120,6 +122,16 @@ func (m *PhoneNumberReadiness) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["trafficHealth"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreatePhoneNumberReadiness_trafficHealthFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTrafficHealth(val.(PhoneNumberReadiness_trafficHealthable))
+		}
+		return nil
+	}
 	return res
 }
 
@@ -145,6 +157,12 @@ func (m *PhoneNumberReadiness) GetProgressPercent() *int32 {
 // returns a *PhoneNumberReadiness_state when successful
 func (m *PhoneNumberReadiness) GetState() *PhoneNumberReadiness_state {
 	return m.state
+}
+
+// GetTrafficHealth gets the trafficHealth property value. Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+// returns a PhoneNumberReadiness_trafficHealthable when successful
+func (m *PhoneNumberReadiness) GetTrafficHealth() PhoneNumberReadiness_trafficHealthable {
+	return m.trafficHealth
 }
 
 // Serialize serializes information the current object
@@ -184,6 +202,12 @@ func (m *PhoneNumberReadiness) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	if m.GetState() != nil {
 		cast := (*m.GetState()).String()
 		err := writer.WriteStringValue("state", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("trafficHealth", m.GetTrafficHealth())
 		if err != nil {
 			return err
 		}
@@ -232,6 +256,11 @@ func (m *PhoneNumberReadiness) SetState(value *PhoneNumberReadiness_state) {
 	m.state = value
 }
 
+// SetTrafficHealth sets the trafficHealth property value. Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+func (m *PhoneNumberReadiness) SetTrafficHealth(value PhoneNumberReadiness_trafficHealthable) {
+	m.trafficHealth = value
+}
+
 type PhoneNumberReadinessable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -241,10 +270,12 @@ type PhoneNumberReadinessable interface {
 	GetHealthStatus() *PhoneNumberReadiness_healthStatus
 	GetProgressPercent() *int32
 	GetState() *PhoneNumberReadiness_state
+	GetTrafficHealth() PhoneNumberReadiness_trafficHealthable
 	SetCallStage(value *PhoneNumberReadiness_callStage)
 	SetEnabled(value *bool)
 	SetHealthScore(value *int32)
 	SetHealthStatus(value *PhoneNumberReadiness_healthStatus)
 	SetProgressPercent(value *int32)
 	SetState(value *PhoneNumberReadiness_state)
+	SetTrafficHealth(value PhoneNumberReadiness_trafficHealthable)
 }
