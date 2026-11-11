@@ -102,6 +102,8 @@ type EventTableRow struct {
 	statusReason *string
 	// Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
 	summary *string
+	// Tags affected by this event, including their display colors.
+	tags []TagSummaryable
 	// Timeline category used to group events for display and filtering.
 	timelineCategory *string
 	// Classifies the kind of activity displayed in a lead or conversation event timeline.
@@ -735,6 +737,22 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		return nil
 	}
+	res["tags"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetCollectionOfObjectValues(CreateTagSummaryFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			res := make([]TagSummaryable, len(val))
+			for i, v := range val {
+				if v != nil {
+					res[i] = v.(TagSummaryable)
+				}
+			}
+			m.SetTags(res)
+		}
+		return nil
+	}
 	res["timelineCategory"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -938,6 +956,12 @@ func (m *EventTableRow) GetStatusReason() *string {
 // returns a *string when successful
 func (m *EventTableRow) GetSummary() *string {
 	return m.summary
+}
+
+// GetTags gets the tags property value. Tags affected by this event, including their display colors.
+// returns a []TagSummaryable when successful
+func (m *EventTableRow) GetTags() []TagSummaryable {
+	return m.tags
 }
 
 // GetTimelineCategory gets the timelineCategory property value. Timeline category used to group events for display and filtering.
@@ -1262,6 +1286,18 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 			return err
 		}
 	}
+	if m.GetTags() != nil {
+		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTags()))
+		for i, v := range m.GetTags() {
+			if v != nil {
+				cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+			}
+		}
+		err := writer.WriteCollectionOfObjectValues("tags", cast)
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteStringValue("timelineCategory", m.GetTimelineCategory())
 		if err != nil {
@@ -1545,6 +1581,11 @@ func (m *EventTableRow) SetSummary(value *string) {
 	m.summary = value
 }
 
+// SetTags sets the tags property value. Tags affected by this event, including their display colors.
+func (m *EventTableRow) SetTags(value []TagSummaryable) {
+	m.tags = value
+}
+
 // SetTimelineCategory sets the timelineCategory property value. Timeline category used to group events for display and filtering.
 func (m *EventTableRow) SetTimelineCategory(value *string) {
 	m.timelineCategory = value
@@ -1628,6 +1669,7 @@ type EventTableRowable interface {
 	GetStatus() *EventTableRow_status
 	GetStatusReason() *string
 	GetSummary() *string
+	GetTags() []TagSummaryable
 	GetTimelineCategory() *string
 	GetTimelineType() *EventTimelineType
 	GetToPhoneNumber() *string
@@ -1680,6 +1722,7 @@ type EventTableRowable interface {
 	SetStatus(value *EventTableRow_status)
 	SetStatusReason(value *string)
 	SetSummary(value *string)
+	SetTags(value []TagSummaryable)
 	SetTimelineCategory(value *string)
 	SetTimelineType(value *EventTimelineType)
 	SetToPhoneNumber(value *string)
