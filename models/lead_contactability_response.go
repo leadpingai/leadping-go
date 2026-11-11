@@ -11,10 +11,14 @@ import (
 type LeadContactabilityResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Customer-safe explanation when calling is unavailable.
+	callBlockedReason *string
 	// Whether the lead can currently be called after evaluating applicable contact hours, suppression, and consent rules.
 	canCall *bool
 	// Whether the lead can currently be texted after evaluating applicable contact hours, suppression, and consent rules.
 	canText *bool
+	// Customer-safe explanation when texting is unavailable.
+	textBlockedReason *string
 }
 
 // NewLeadContactabilityResponse instantiates a new LeadContactabilityResponse and sets the default values.
@@ -36,6 +40,12 @@ func (m *LeadContactabilityResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCallBlockedReason gets the callBlockedReason property value. Customer-safe explanation when calling is unavailable.
+// returns a *string when successful
+func (m *LeadContactabilityResponse) GetCallBlockedReason() *string {
+	return m.callBlockedReason
+}
+
 // GetCanCall gets the canCall property value. Whether the lead can currently be called after evaluating applicable contact hours, suppression, and consent rules.
 // returns a *bool when successful
 func (m *LeadContactabilityResponse) GetCanCall() *bool {
@@ -52,6 +62,16 @@ func (m *LeadContactabilityResponse) GetCanText() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *LeadContactabilityResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callBlockedReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallBlockedReason(val)
+		}
+		return nil
+	}
 	res["canCall"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -72,11 +92,33 @@ func (m *LeadContactabilityResponse) GetFieldDeserializers() map[string]func(i87
 		}
 		return nil
 	}
+	res["textBlockedReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTextBlockedReason(val)
+		}
+		return nil
+	}
 	return res
+}
+
+// GetTextBlockedReason gets the textBlockedReason property value. Customer-safe explanation when texting is unavailable.
+// returns a *string when successful
+func (m *LeadContactabilityResponse) GetTextBlockedReason() *string {
+	return m.textBlockedReason
 }
 
 // Serialize serializes information the current object
 func (m *LeadContactabilityResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("callBlockedReason", m.GetCallBlockedReason())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteBoolValue("canCall", m.GetCanCall())
 		if err != nil {
@@ -85,6 +127,12 @@ func (m *LeadContactabilityResponse) Serialize(writer i878a80d2330e89d26896388a3
 	}
 	{
 		err := writer.WriteBoolValue("canText", m.GetCanText())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("textBlockedReason", m.GetTextBlockedReason())
 		if err != nil {
 			return err
 		}
@@ -103,6 +151,11 @@ func (m *LeadContactabilityResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetCallBlockedReason sets the callBlockedReason property value. Customer-safe explanation when calling is unavailable.
+func (m *LeadContactabilityResponse) SetCallBlockedReason(value *string) {
+	m.callBlockedReason = value
+}
+
 // SetCanCall sets the canCall property value. Whether the lead can currently be called after evaluating applicable contact hours, suppression, and consent rules.
 func (m *LeadContactabilityResponse) SetCanCall(value *bool) {
 	m.canCall = value
@@ -113,11 +166,20 @@ func (m *LeadContactabilityResponse) SetCanText(value *bool) {
 	m.canText = value
 }
 
+// SetTextBlockedReason sets the textBlockedReason property value. Customer-safe explanation when texting is unavailable.
+func (m *LeadContactabilityResponse) SetTextBlockedReason(value *string) {
+	m.textBlockedReason = value
+}
+
 type LeadContactabilityResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallBlockedReason() *string
 	GetCanCall() *bool
 	GetCanText() *bool
+	GetTextBlockedReason() *string
+	SetCallBlockedReason(value *string)
 	SetCanCall(value *bool)
 	SetCanText(value *bool)
+	SetTextBlockedReason(value *string)
 }
