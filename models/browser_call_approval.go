@@ -12,15 +12,15 @@ import (
 type BrowserCallApproval struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The callerNumber property
+	// Approved caller ID phone number for this outbound call.
 	callerNumber *string
-	// The clientState property
+	// Opaque server-issued state to pass unchanged when initiating the approved call.
 	clientState *string
-	// The destinationNumber property
+	// Approved destination phone number for this outbound call.
 	destinationNumber *string
-	// The expiresAt property
+	// UTC timestamp after which this call approval is no longer valid.
 	expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The maximumDurationSeconds property
+	// Maximum permitted duration of the call, in seconds.
 	maximumDurationSeconds *int32
 }
 
@@ -43,25 +43,25 @@ func (m *BrowserCallApproval) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetCallerNumber gets the callerNumber property value. The callerNumber property
+// GetCallerNumber gets the callerNumber property value. Approved caller ID phone number for this outbound call.
 // returns a *string when successful
 func (m *BrowserCallApproval) GetCallerNumber() *string {
 	return m.callerNumber
 }
 
-// GetClientState gets the clientState property value. The clientState property
+// GetClientState gets the clientState property value. Opaque server-issued state to pass unchanged when initiating the approved call.
 // returns a *string when successful
 func (m *BrowserCallApproval) GetClientState() *string {
 	return m.clientState
 }
 
-// GetDestinationNumber gets the destinationNumber property value. The destinationNumber property
+// GetDestinationNumber gets the destinationNumber property value. Approved destination phone number for this outbound call.
 // returns a *string when successful
 func (m *BrowserCallApproval) GetDestinationNumber() *string {
 	return m.destinationNumber
 }
 
-// GetExpiresAt gets the expiresAt property value. The expiresAt property
+// GetExpiresAt gets the expiresAt property value. UTC timestamp after which this call approval is no longer valid.
 // returns a *Time when successful
 func (m *BrowserCallApproval) GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.expiresAt
@@ -124,7 +124,7 @@ func (m *BrowserCallApproval) GetFieldDeserializers() map[string]func(i878a80d23
 	return res
 }
 
-// GetMaximumDurationSeconds gets the maximumDurationSeconds property value. The maximumDurationSeconds property
+// GetMaximumDurationSeconds gets the maximumDurationSeconds property value. Maximum permitted duration of the call, in seconds.
 // returns a *int32 when successful
 func (m *BrowserCallApproval) GetMaximumDurationSeconds() *int32 {
 	return m.maximumDurationSeconds
@@ -176,27 +176,27 @@ func (m *BrowserCallApproval) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetCallerNumber sets the callerNumber property value. The callerNumber property
+// SetCallerNumber sets the callerNumber property value. Approved caller ID phone number for this outbound call.
 func (m *BrowserCallApproval) SetCallerNumber(value *string) {
 	m.callerNumber = value
 }
 
-// SetClientState sets the clientState property value. The clientState property
+// SetClientState sets the clientState property value. Opaque server-issued state to pass unchanged when initiating the approved call.
 func (m *BrowserCallApproval) SetClientState(value *string) {
 	m.clientState = value
 }
 
-// SetDestinationNumber sets the destinationNumber property value. The destinationNumber property
+// SetDestinationNumber sets the destinationNumber property value. Approved destination phone number for this outbound call.
 func (m *BrowserCallApproval) SetDestinationNumber(value *string) {
 	m.destinationNumber = value
 }
 
-// SetExpiresAt sets the expiresAt property value. The expiresAt property
+// SetExpiresAt sets the expiresAt property value. UTC timestamp after which this call approval is no longer valid.
 func (m *BrowserCallApproval) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.expiresAt = value
 }
 
-// SetMaximumDurationSeconds sets the maximumDurationSeconds property value. The maximumDurationSeconds property
+// SetMaximumDurationSeconds sets the maximumDurationSeconds property value. Maximum permitted duration of the call, in seconds.
 func (m *BrowserCallApproval) SetMaximumDurationSeconds(value *int32) {
 	m.maximumDurationSeconds = value
 }

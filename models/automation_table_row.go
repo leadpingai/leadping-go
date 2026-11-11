@@ -26,7 +26,7 @@ type AutomationTableRow struct {
 	healthSummary *string
 	// Unique Leadping identifier for this automation table row.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Indicates whether Leadping manages this automation table row automatically instead of a user.
 	isSystemManaged *bool
@@ -346,7 +346,7 @@ func (m *AutomationTableRow) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *AutomationTableRow) GetIsDemo() *bool {
 	return m.isDemo
@@ -619,7 +619,7 @@ func (m *AutomationTableRow) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *AutomationTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

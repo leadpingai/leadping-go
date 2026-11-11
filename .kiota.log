@@ -1,3 +1,13 @@
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1automations/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1feedback/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1leads/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1leads~1intake/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1lead-statuses/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1sources/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1suppressions/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1tags/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1organizations~1me/post/responses/201/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/paths/~1reports~1exports~1{exportId}~1download/get/responses/302/headers/Location/schema - The format uri-reference is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/BlogArticleResponse/properties/coverImageUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.

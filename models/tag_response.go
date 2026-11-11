@@ -26,7 +26,7 @@ type TagResponse struct {
 	id *string
 	// Indicates whether this lead or record is archived.
 	isArchived *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -226,7 +226,7 @@ func (m *TagResponse) GetIsArchived() *bool {
 	return m.isArchived
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *TagResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -379,7 +379,7 @@ func (m *TagResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *TagResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

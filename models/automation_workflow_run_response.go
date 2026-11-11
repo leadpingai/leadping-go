@@ -30,7 +30,7 @@ type AutomationWorkflowRunResponse struct {
 	failedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for the automation workflow run.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Human-readable last action summary for this Leadping automation workflow run.
 	lastActionSummary *string
@@ -442,7 +442,7 @@ func (m *AutomationWorkflowRunResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *AutomationWorkflowRunResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -797,7 +797,7 @@ func (m *AutomationWorkflowRunResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *AutomationWorkflowRunResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

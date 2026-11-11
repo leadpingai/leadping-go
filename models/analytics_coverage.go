@@ -12,11 +12,11 @@ import (
 type AnalyticsCoverage struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The completeFrom property
+	// Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
 	completeFrom *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The detail property
+	// Explanation of the available evidence and any gaps in coverage.
 	detail *string
-	// The isPartial property
+	// Whether missing historical evidence may make the reported metrics incomplete.
 	isPartial *bool
 }
 
@@ -39,13 +39,13 @@ func (m *AnalyticsCoverage) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetCompleteFrom gets the completeFrom property value. The completeFrom property
+// GetCompleteFrom gets the completeFrom property value. Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
 // returns a *Time when successful
 func (m *AnalyticsCoverage) GetCompleteFrom() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.completeFrom
 }
 
-// GetDetail gets the detail property value. The detail property
+// GetDetail gets the detail property value. Explanation of the available evidence and any gaps in coverage.
 // returns a *string when successful
 func (m *AnalyticsCoverage) GetDetail() *string {
 	return m.detail
@@ -88,7 +88,7 @@ func (m *AnalyticsCoverage) GetFieldDeserializers() map[string]func(i878a80d2330
 	return res
 }
 
-// GetIsPartial gets the isPartial property value. The isPartial property
+// GetIsPartial gets the isPartial property value. Whether missing historical evidence may make the reported metrics incomplete.
 // returns a *bool when successful
 func (m *AnalyticsCoverage) GetIsPartial() *bool {
 	return m.isPartial
@@ -128,17 +128,17 @@ func (m *AnalyticsCoverage) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetCompleteFrom sets the completeFrom property value. The completeFrom property
+// SetCompleteFrom sets the completeFrom property value. Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
 func (m *AnalyticsCoverage) SetCompleteFrom(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.completeFrom = value
 }
 
-// SetDetail sets the detail property value. The detail property
+// SetDetail sets the detail property value. Explanation of the available evidence and any gaps in coverage.
 func (m *AnalyticsCoverage) SetDetail(value *string) {
 	m.detail = value
 }
 
-// SetIsPartial sets the isPartial property value. The isPartial property
+// SetIsPartial sets the isPartial property value. Whether missing historical evidence may make the reported metrics incomplete.
 func (m *AnalyticsCoverage) SetIsPartial(value *bool) {
 	m.isPartial = value
 }

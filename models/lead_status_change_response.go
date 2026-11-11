@@ -40,7 +40,7 @@ type LeadStatusChangeResponse struct {
 	followUpStatus *string
 	// Unique Leadping identifier for this lead status change.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Whether this lead status change is missed call follow up.
 	isMissedCallFollowUp *bool
@@ -52,6 +52,8 @@ type LeadStatusChangeResponse struct {
 	leadId *string
 	// The display name of the lead associated with this lead status change.
 	leadName *string
+	// Configured organization status ID, independent of its display name and history entry ID.
+	leadStatusId *string
 	// Unique identifier of the new lead status change associated with this Leadping lead status change.
 	newLeadStatusChangeId *string
 	// The operator or customer notes recorded for this lead status change.
@@ -371,6 +373,16 @@ func (m *LeadStatusChangeResponse) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["leadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadStatusId(val)
+		}
+		return nil
+	}
 	res["newLeadStatusChangeId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -532,7 +544,7 @@ func (m *LeadStatusChangeResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *LeadStatusChangeResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -566,6 +578,12 @@ func (m *LeadStatusChangeResponse) GetLeadId() *string {
 // returns a *string when successful
 func (m *LeadStatusChangeResponse) GetLeadName() *string {
 	return m.leadName
+}
+
+// GetLeadStatusId gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+// returns a *string when successful
+func (m *LeadStatusChangeResponse) GetLeadStatusId() *string {
+	return m.leadStatusId
 }
 
 // GetNewLeadStatusChangeId gets the newLeadStatusChangeId property value. Unique identifier of the new lead status change associated with this Leadping lead status change.
@@ -777,6 +795,12 @@ func (m *LeadStatusChangeResponse) Serialize(writer i878a80d2330e89d26896388a3f4
 		}
 	}
 	{
+		err := writer.WriteStringValue("leadStatusId", m.GetLeadStatusId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("newLeadStatusChangeId", m.GetNewLeadStatusChangeId())
 		if err != nil {
 			return err
@@ -944,7 +968,7 @@ func (m *LeadStatusChangeResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *LeadStatusChangeResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
@@ -972,6 +996,11 @@ func (m *LeadStatusChangeResponse) SetLeadId(value *string) {
 // SetLeadName sets the leadName property value. The display name of the lead associated with this lead status change.
 func (m *LeadStatusChangeResponse) SetLeadName(value *string) {
 	m.leadName = value
+}
+
+// SetLeadStatusId sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+func (m *LeadStatusChangeResponse) SetLeadStatusId(value *string) {
+	m.leadStatusId = value
 }
 
 // SetNewLeadStatusChangeId sets the newLeadStatusChangeId property value. Unique identifier of the new lead status change associated with this Leadping lead status change.
@@ -1067,6 +1096,7 @@ type LeadStatusChangeResponseable interface {
 	GetLeadEmail() *string
 	GetLeadId() *string
 	GetLeadName() *string
+	GetLeadStatusId() *string
 	GetNewLeadStatusChangeId() *string
 	GetNotes() *string
 	GetOldLeadStatusChangeId() *string
@@ -1101,6 +1131,7 @@ type LeadStatusChangeResponseable interface {
 	SetLeadEmail(value *string)
 	SetLeadId(value *string)
 	SetLeadName(value *string)
+	SetLeadStatusId(value *string)
 	SetNewLeadStatusChangeId(value *string)
 	SetNotes(value *string)
 	SetOldLeadStatusChangeId(value *string)

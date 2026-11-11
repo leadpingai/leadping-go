@@ -46,7 +46,7 @@ type SmsResponse struct {
 	fromPhoneNumberId *string
 	// Stable unique identifier of the resource.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Lead ID associated with the SMS conversation or outreach attempt.
 	leadId *string
@@ -622,7 +622,7 @@ func (m *SmsResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *SmsResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -1104,7 +1104,7 @@ func (m *SmsResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SmsResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

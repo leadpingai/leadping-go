@@ -9,17 +9,17 @@ import (
 
 // AutomationLineage persisted origin of an automation run and the events produced by its actions.
 type AutomationLineage struct {
-	// The actionId property
+	// Identifier of the action that produced the event, when applicable.
 	actionId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
 	// Automation IDs in execution order, including the run that produced this event.
 	automationIds []string
-	// The rootEventId property
+	// Identifier of the original event that started the automation chain.
 	rootEventId *string
-	// The runId property
+	// Identifier of the automation run that produced the event.
 	runId *string
-	// The triggerEventId property
+	// Identifier of the event that directly triggered this run.
 	triggerEventId *string
 }
 
@@ -36,7 +36,7 @@ func CreateAutomationLineageFromDiscriminatorValue(parseNode i878a80d2330e89d268
 	return NewAutomationLineage(), nil
 }
 
-// GetActionId gets the actionId property value. The actionId property
+// GetActionId gets the actionId property value. Identifier of the action that produced the event, when applicable.
 // returns a *string when successful
 func (m *AutomationLineage) GetActionId() *string {
 	return m.actionId
@@ -117,19 +117,19 @@ func (m *AutomationLineage) GetFieldDeserializers() map[string]func(i878a80d2330
 	return res
 }
 
-// GetRootEventId gets the rootEventId property value. The rootEventId property
+// GetRootEventId gets the rootEventId property value. Identifier of the original event that started the automation chain.
 // returns a *string when successful
 func (m *AutomationLineage) GetRootEventId() *string {
 	return m.rootEventId
 }
 
-// GetRunId gets the runId property value. The runId property
+// GetRunId gets the runId property value. Identifier of the automation run that produced the event.
 // returns a *string when successful
 func (m *AutomationLineage) GetRunId() *string {
 	return m.runId
 }
 
-// GetTriggerEventId gets the triggerEventId property value. The triggerEventId property
+// GetTriggerEventId gets the triggerEventId property value. Identifier of the event that directly triggered this run.
 // returns a *string when successful
 func (m *AutomationLineage) GetTriggerEventId() *string {
 	return m.triggerEventId
@@ -176,7 +176,7 @@ func (m *AutomationLineage) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 	return nil
 }
 
-// SetActionId sets the actionId property value. The actionId property
+// SetActionId sets the actionId property value. Identifier of the action that produced the event, when applicable.
 func (m *AutomationLineage) SetActionId(value *string) {
 	m.actionId = value
 }
@@ -191,17 +191,17 @@ func (m *AutomationLineage) SetAutomationIds(value []string) {
 	m.automationIds = value
 }
 
-// SetRootEventId sets the rootEventId property value. The rootEventId property
+// SetRootEventId sets the rootEventId property value. Identifier of the original event that started the automation chain.
 func (m *AutomationLineage) SetRootEventId(value *string) {
 	m.rootEventId = value
 }
 
-// SetRunId sets the runId property value. The runId property
+// SetRunId sets the runId property value. Identifier of the automation run that produced the event.
 func (m *AutomationLineage) SetRunId(value *string) {
 	m.runId = value
 }
 
-// SetTriggerEventId sets the triggerEventId property value. The triggerEventId property
+// SetTriggerEventId sets the triggerEventId property value. Identifier of the event that directly triggered this run.
 func (m *AutomationLineage) SetTriggerEventId(value *string) {
 	m.triggerEventId = value
 }

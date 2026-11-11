@@ -16,7 +16,7 @@ type PhoneIdentityResponse struct {
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Stable unique identifier of the resource.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// The most recent time lookup data was enriched.
 	lastEnrichedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -178,7 +178,7 @@ func (m *PhoneIdentityResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *PhoneIdentityResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -318,7 +318,7 @@ func (m *PhoneIdentityResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *PhoneIdentityResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

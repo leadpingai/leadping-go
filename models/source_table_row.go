@@ -44,7 +44,7 @@ type SourceTableRow struct {
 	firstLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for this lead source table row.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// UTC timestamp when this source most recently delivered a lead to Leadping.
 	lastLeadReceivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -448,7 +448,7 @@ func (m *SourceTableRow) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *SourceTableRow) GetIsDemo() *bool {
 	return m.isDemo
@@ -754,7 +754,7 @@ func (m *SourceTableRow) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SourceTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

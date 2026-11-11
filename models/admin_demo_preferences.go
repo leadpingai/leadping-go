@@ -11,9 +11,9 @@ import (
 type AdminDemoPreferences struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The showDemoData property
+	// Whether demo records are included in the administrator's views.
 	showDemoData *bool
-	// The showDemoMarkers property
+	// Whether demo records display a demo indicator.
 	showDemoMarkers *bool
 }
 
@@ -63,13 +63,13 @@ func (m *AdminDemoPreferences) GetFieldDeserializers() map[string]func(i878a80d2
 	return res
 }
 
-// GetShowDemoData gets the showDemoData property value. The showDemoData property
+// GetShowDemoData gets the showDemoData property value. Whether demo records are included in the administrator's views.
 // returns a *bool when successful
 func (m *AdminDemoPreferences) GetShowDemoData() *bool {
 	return m.showDemoData
 }
 
-// GetShowDemoMarkers gets the showDemoMarkers property value. The showDemoMarkers property
+// GetShowDemoMarkers gets the showDemoMarkers property value. Whether demo records display a demo indicator.
 // returns a *bool when successful
 func (m *AdminDemoPreferences) GetShowDemoMarkers() *bool {
 	return m.showDemoMarkers
@@ -103,12 +103,12 @@ func (m *AdminDemoPreferences) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetShowDemoData sets the showDemoData property value. The showDemoData property
+// SetShowDemoData sets the showDemoData property value. Whether demo records are included in the administrator's views.
 func (m *AdminDemoPreferences) SetShowDemoData(value *bool) {
 	m.showDemoData = value
 }
 
-// SetShowDemoMarkers sets the showDemoMarkers property value. The showDemoMarkers property
+// SetShowDemoMarkers sets the showDemoMarkers property value. Whether demo records display a demo indicator.
 func (m *AdminDemoPreferences) SetShowDemoMarkers(value *bool) {
 	m.showDemoMarkers = value
 }

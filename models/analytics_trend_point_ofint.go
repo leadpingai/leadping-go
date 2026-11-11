@@ -12,11 +12,11 @@ import (
 type AnalyticsTrendPointOfint struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// Date and time when this Leadping analytics trend point was end.
+	// Exclusive UTC end of the analytics time bucket.
 	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Human-readable label for this Leadping analytics trend point.
 	label *string
-	// Date and time when this Leadping analytics trend point was start.
+	// Inclusive UTC start of the analytics time bucket.
 	startAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Value associated with this Leadping analytics trend point.
 	value *int32
@@ -41,7 +41,7 @@ func (m *AnalyticsTrendPointOfint) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetEndAt gets the endAt property value. Date and time when this Leadping analytics trend point was end.
+// GetEndAt gets the endAt property value. Exclusive UTC end of the analytics time bucket.
 // returns a *Time when successful
 func (m *AnalyticsTrendPointOfint) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.endAt
@@ -100,7 +100,7 @@ func (m *AnalyticsTrendPointOfint) GetLabel() *string {
 	return m.label
 }
 
-// GetStartAt gets the startAt property value. Date and time when this Leadping analytics trend point was start.
+// GetStartAt gets the startAt property value. Inclusive UTC start of the analytics time bucket.
 // returns a *Time when successful
 func (m *AnalyticsTrendPointOfint) GetStartAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.startAt
@@ -152,7 +152,7 @@ func (m *AnalyticsTrendPointOfint) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetEndAt sets the endAt property value. Date and time when this Leadping analytics trend point was end.
+// SetEndAt sets the endAt property value. Exclusive UTC end of the analytics time bucket.
 func (m *AnalyticsTrendPointOfint) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.endAt = value
 }
@@ -162,7 +162,7 @@ func (m *AnalyticsTrendPointOfint) SetLabel(value *string) {
 	m.label = value
 }
 
-// SetStartAt sets the startAt property value. Date and time when this Leadping analytics trend point was start.
+// SetStartAt sets the startAt property value. Inclusive UTC start of the analytics time bucket.
 func (m *AnalyticsTrendPointOfint) SetStartAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.startAt = value
 }

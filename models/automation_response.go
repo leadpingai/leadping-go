@@ -28,7 +28,7 @@ type AutomationResponse struct {
 	enabled *bool
 	// Stable unique identifier of the resource.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Indicates whether Leadping manages this automation configuration response automatically instead of a user.
 	isSystemManaged *bool
@@ -388,7 +388,7 @@ func (m *AutomationResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *AutomationResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -696,7 +696,7 @@ func (m *AutomationResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *AutomationResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

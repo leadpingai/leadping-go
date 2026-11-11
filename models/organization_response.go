@@ -18,6 +18,8 @@ type OrganizationResponse struct {
 	additionalData map[string]any
 	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 	address OrganizationResponse_addressable
+	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+	automaticallyMarkLeadsCalled *bool
 	// Wallet refill amount charged when automatic refill is triggered.
 	autoRefillAmount *float64
 	// Indicates whether automatic wallet refill is enabled for the organization.
@@ -36,6 +38,8 @@ type OrganizationResponse struct {
 	billingState OrganizationResponse_billingStateable
 	// Tax identifier printed on billing documents. This may differ from the organization verification EIN.
 	billingTaxId *string
+	// Destination status for outbound call attempts. Null uses the built-in Called status.
+	calledLeadStatusId *string
 	// Describes organization compliance policy data used in Leadping API requests and responses.
 	compliancePolicy OrganizationResponse_compliancePolicyable
 	// UTC timestamp when the resource was created.
@@ -52,7 +56,7 @@ type OrganizationResponse struct {
 	enabled *bool
 	// Stable unique identifier of the resource.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -121,6 +125,12 @@ func (m *OrganizationResponse) GetAddress() OrganizationResponse_addressable {
 	return m.address
 }
 
+// GetAutomaticallyMarkLeadsCalled gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+// returns a *bool when successful
+func (m *OrganizationResponse) GetAutomaticallyMarkLeadsCalled() *bool {
+	return m.automaticallyMarkLeadsCalled
+}
+
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 // returns a *float64 when successful
 func (m *OrganizationResponse) GetAutoRefillAmount() *float64 {
@@ -173,6 +183,12 @@ func (m *OrganizationResponse) GetBillingState() OrganizationResponse_billingSta
 // returns a *string when successful
 func (m *OrganizationResponse) GetBillingTaxId() *string {
 	return m.billingTaxId
+}
+
+// GetCalledLeadStatusId gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+// returns a *string when successful
+func (m *OrganizationResponse) GetCalledLeadStatusId() *string {
+	return m.calledLeadStatusId
 }
 
 // GetCompliancePolicy gets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
@@ -248,6 +264,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetAddress(val.(OrganizationResponse_addressable))
+		}
+		return nil
+	}
+	res["automaticallyMarkLeadsCalled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkLeadsCalled(val)
 		}
 		return nil
 	}
@@ -338,6 +364,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetBillingTaxId(val)
+		}
+		return nil
+	}
+	res["calledLeadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCalledLeadStatusId(val)
 		}
 		return nil
 	}
@@ -586,7 +622,7 @@ func (m *OrganizationResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *OrganizationResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -697,6 +733,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyMarkLeadsCalled", m.GetAutomaticallyMarkLeadsCalled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteFloat64Value("autoRefillAmount", m.GetAutoRefillAmount())
 		if err != nil {
 			return err
@@ -747,6 +789,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteStringValue("billingTaxId", m.GetBillingTaxId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("calledLeadStatusId", m.GetCalledLeadStatusId())
 		if err != nil {
 			return err
 		}
@@ -928,6 +976,11 @@ func (m *OrganizationResponse) SetAddress(value OrganizationResponse_addressable
 	m.address = value
 }
 
+// SetAutomaticallyMarkLeadsCalled sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+func (m *OrganizationResponse) SetAutomaticallyMarkLeadsCalled(value *bool) {
+	m.automaticallyMarkLeadsCalled = value
+}
+
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 func (m *OrganizationResponse) SetAutoRefillAmount(value *float64) {
 	m.autoRefillAmount = value
@@ -973,6 +1026,11 @@ func (m *OrganizationResponse) SetBillingTaxId(value *string) {
 	m.billingTaxId = value
 }
 
+// SetCalledLeadStatusId sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+func (m *OrganizationResponse) SetCalledLeadStatusId(value *string) {
+	m.calledLeadStatusId = value
+}
+
 // SetCompliancePolicy sets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
 func (m *OrganizationResponse) SetCompliancePolicy(value OrganizationResponse_compliancePolicyable) {
 	m.compliancePolicy = value
@@ -1013,7 +1071,7 @@ func (m *OrganizationResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *OrganizationResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
@@ -1094,6 +1152,7 @@ type OrganizationResponseable interface {
 	GetAccountBalance() *float64
 	GetActivation() OrganizationResponse_activationable
 	GetAddress() OrganizationResponse_addressable
+	GetAutomaticallyMarkLeadsCalled() *bool
 	GetAutoRefillAmount() *float64
 	GetAutoRefillEnabled() *bool
 	GetAutoRefillTrigger() *float64
@@ -1103,6 +1162,7 @@ type OrganizationResponseable interface {
 	GetBillingPlan() *OrganizationResponse_billingPlan
 	GetBillingState() OrganizationResponse_billingStateable
 	GetBillingTaxId() *string
+	GetCalledLeadStatusId() *string
 	GetCompliancePolicy() OrganizationResponse_compliancePolicyable
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDescription() *string
@@ -1129,6 +1189,7 @@ type OrganizationResponseable interface {
 	SetAccountBalance(value *float64)
 	SetActivation(value OrganizationResponse_activationable)
 	SetAddress(value OrganizationResponse_addressable)
+	SetAutomaticallyMarkLeadsCalled(value *bool)
 	SetAutoRefillAmount(value *float64)
 	SetAutoRefillEnabled(value *bool)
 	SetAutoRefillTrigger(value *float64)
@@ -1138,6 +1199,7 @@ type OrganizationResponseable interface {
 	SetBillingPlan(value *OrganizationResponse_billingPlan)
 	SetBillingState(value OrganizationResponse_billingStateable)
 	SetBillingTaxId(value *string)
+	SetCalledLeadStatusId(value *string)
 	SetCompliancePolicy(value OrganizationResponse_compliancePolicyable)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDescription(value *string)

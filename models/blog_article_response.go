@@ -12,47 +12,47 @@ import (
 type BlogArticleResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The authorName property
+	// Public display name of the article author, when provided.
 	authorName *string
-	// The category property
+	// Editorial category assigned to the article, when present.
 	category *string
-	// The content property
+	// Saved article body before server-side rendering.
 	content *string
-	// The contentUpdatedAt property
+	// UTC timestamp of the most recent editorial content update.
 	contentUpdatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The coverImageAlt property
+	// Alternative text describing the cover image.
 	coverImageAlt *string
 	// The processed cover image height in pixels, when known.
 	coverImageHeight *int32
-	// The coverImageUrl property
+	// URL of the article's cover image, when available.
 	coverImageUrl *string
 	// The processed cover image width in pixels, when known.
 	coverImageWidth *int32
-	// The createdAt property
+	// UTC timestamp when the article was created.
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The excerpt property
+	// Short plain-language preview of the article.
 	excerpt *string
-	// The id property
+	// Unique Leadping identifier of the blog article.
 	id *string
 	// The latest background image processing failure, when present.
 	imageProcessingError *string
 	// Whether saved image references are awaiting Engine processing.
 	imagesProcessing *bool
-	// The isFeatured property
+	// Whether the article is selected for featured placement.
 	isFeatured *bool
-	// The isPublished property
+	// Whether the article is currently published and available to public readers.
 	isPublished *bool
-	// The lastPublishedAt property
+	// UTC timestamp when the article last changed from unpublished to published.
 	lastPublishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The metaDescription property
+	// Optional article description used in search-engine metadata.
 	metaDescription *string
-	// The modifiedAt property
+	// UTC timestamp when the article was last modified.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The publishedAt property
+	// UTC publication timestamp shown for the article, when set.
 	publishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The renderedHtml property
+	// Server-rendered and sanitized HTML for displaying the article.
 	renderedHtml *string
-	// The seoTitle property
+	// Optional title used in search-engine metadata.
 	seoTitle *string
 	// Whether to create a Facebook post after publication.
 	shareOnFacebook *bool
@@ -62,13 +62,13 @@ type BlogArticleResponse struct {
 	shareOnLinkedIn *bool
 	// Whether to create a X post after publication.
 	shareOnX *bool
-	// The slug property
+	// URL slug used to retrieve the published article.
 	slug *string
-	// The socialPosts property
+	// Publication attempts and provider post identifiers for each social platform.
 	socialPosts []BlogSocialPostable
-	// The title property
+	// Public title of the article.
 	title *string
-	// The unpublishedAt property
+	// UTC timestamp when the article last changed from published to unpublished.
 	unpublishedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
 
@@ -91,31 +91,31 @@ func (m *BlogArticleResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAuthorName gets the authorName property value. The authorName property
+// GetAuthorName gets the authorName property value. Public display name of the article author, when provided.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetAuthorName() *string {
 	return m.authorName
 }
 
-// GetCategory gets the category property value. The category property
+// GetCategory gets the category property value. Editorial category assigned to the article, when present.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCategory() *string {
 	return m.category
 }
 
-// GetContent gets the content property value. The content property
+// GetContent gets the content property value. Saved article body before server-side rendering.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetContent() *string {
 	return m.content
 }
 
-// GetContentUpdatedAt gets the contentUpdatedAt property value. The contentUpdatedAt property
+// GetContentUpdatedAt gets the contentUpdatedAt property value. UTC timestamp of the most recent editorial content update.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetContentUpdatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.contentUpdatedAt
 }
 
-// GetCoverImageAlt gets the coverImageAlt property value. The coverImageAlt property
+// GetCoverImageAlt gets the coverImageAlt property value. Alternative text describing the cover image.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCoverImageAlt() *string {
 	return m.coverImageAlt
@@ -127,7 +127,7 @@ func (m *BlogArticleResponse) GetCoverImageHeight() *int32 {
 	return m.coverImageHeight
 }
 
-// GetCoverImageUrl gets the coverImageUrl property value. The coverImageUrl property
+// GetCoverImageUrl gets the coverImageUrl property value. URL of the article's cover image, when available.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetCoverImageUrl() *string {
 	return m.coverImageUrl
@@ -139,13 +139,13 @@ func (m *BlogArticleResponse) GetCoverImageWidth() *int32 {
 	return m.coverImageWidth
 }
 
-// GetCreatedAt gets the createdAt property value. The createdAt property
+// GetCreatedAt gets the createdAt property value. UTC timestamp when the article was created.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.createdAt
 }
 
-// GetExcerpt gets the excerpt property value. The excerpt property
+// GetExcerpt gets the excerpt property value. Short plain-language preview of the article.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetExcerpt() *string {
 	return m.excerpt
@@ -454,7 +454,7 @@ func (m *BlogArticleResponse) GetFieldDeserializers() map[string]func(i878a80d23
 	return res
 }
 
-// GetId gets the id property value. The id property
+// GetId gets the id property value. Unique Leadping identifier of the blog article.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetId() *string {
 	return m.id
@@ -472,49 +472,49 @@ func (m *BlogArticleResponse) GetImagesProcessing() *bool {
 	return m.imagesProcessing
 }
 
-// GetIsFeatured gets the isFeatured property value. The isFeatured property
+// GetIsFeatured gets the isFeatured property value. Whether the article is selected for featured placement.
 // returns a *bool when successful
 func (m *BlogArticleResponse) GetIsFeatured() *bool {
 	return m.isFeatured
 }
 
-// GetIsPublished gets the isPublished property value. The isPublished property
+// GetIsPublished gets the isPublished property value. Whether the article is currently published and available to public readers.
 // returns a *bool when successful
 func (m *BlogArticleResponse) GetIsPublished() *bool {
 	return m.isPublished
 }
 
-// GetLastPublishedAt gets the lastPublishedAt property value. The lastPublishedAt property
+// GetLastPublishedAt gets the lastPublishedAt property value. UTC timestamp when the article last changed from unpublished to published.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetLastPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.lastPublishedAt
 }
 
-// GetMetaDescription gets the metaDescription property value. The metaDescription property
+// GetMetaDescription gets the metaDescription property value. Optional article description used in search-engine metadata.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetMetaDescription() *string {
 	return m.metaDescription
 }
 
-// GetModifiedAt gets the modifiedAt property value. The modifiedAt property
+// GetModifiedAt gets the modifiedAt property value. UTC timestamp when the article was last modified.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.modifiedAt
 }
 
-// GetPublishedAt gets the publishedAt property value. The publishedAt property
+// GetPublishedAt gets the publishedAt property value. UTC publication timestamp shown for the article, when set.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetPublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.publishedAt
 }
 
-// GetRenderedHtml gets the renderedHtml property value. The renderedHtml property
+// GetRenderedHtml gets the renderedHtml property value. Server-rendered and sanitized HTML for displaying the article.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetRenderedHtml() *string {
 	return m.renderedHtml
 }
 
-// GetSeoTitle gets the seoTitle property value. The seoTitle property
+// GetSeoTitle gets the seoTitle property value. Optional title used in search-engine metadata.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetSeoTitle() *string {
 	return m.seoTitle
@@ -544,25 +544,25 @@ func (m *BlogArticleResponse) GetShareOnX() *bool {
 	return m.shareOnX
 }
 
-// GetSlug gets the slug property value. The slug property
+// GetSlug gets the slug property value. URL slug used to retrieve the published article.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetSlug() *string {
 	return m.slug
 }
 
-// GetSocialPosts gets the socialPosts property value. The socialPosts property
+// GetSocialPosts gets the socialPosts property value. Publication attempts and provider post identifiers for each social platform.
 // returns a []BlogSocialPostable when successful
 func (m *BlogArticleResponse) GetSocialPosts() []BlogSocialPostable {
 	return m.socialPosts
 }
 
-// GetTitle gets the title property value. The title property
+// GetTitle gets the title property value. Public title of the article.
 // returns a *string when successful
 func (m *BlogArticleResponse) GetTitle() *string {
 	return m.title
 }
 
-// GetUnpublishedAt gets the unpublishedAt property value. The unpublishedAt property
+// GetUnpublishedAt gets the unpublishedAt property value. UTC timestamp when the article last changed from published to unpublished.
 // returns a *Time when successful
 func (m *BlogArticleResponse) GetUnpublishedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.unpublishedAt
@@ -764,27 +764,27 @@ func (m *BlogArticleResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAuthorName sets the authorName property value. The authorName property
+// SetAuthorName sets the authorName property value. Public display name of the article author, when provided.
 func (m *BlogArticleResponse) SetAuthorName(value *string) {
 	m.authorName = value
 }
 
-// SetCategory sets the category property value. The category property
+// SetCategory sets the category property value. Editorial category assigned to the article, when present.
 func (m *BlogArticleResponse) SetCategory(value *string) {
 	m.category = value
 }
 
-// SetContent sets the content property value. The content property
+// SetContent sets the content property value. Saved article body before server-side rendering.
 func (m *BlogArticleResponse) SetContent(value *string) {
 	m.content = value
 }
 
-// SetContentUpdatedAt sets the contentUpdatedAt property value. The contentUpdatedAt property
+// SetContentUpdatedAt sets the contentUpdatedAt property value. UTC timestamp of the most recent editorial content update.
 func (m *BlogArticleResponse) SetContentUpdatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.contentUpdatedAt = value
 }
 
-// SetCoverImageAlt sets the coverImageAlt property value. The coverImageAlt property
+// SetCoverImageAlt sets the coverImageAlt property value. Alternative text describing the cover image.
 func (m *BlogArticleResponse) SetCoverImageAlt(value *string) {
 	m.coverImageAlt = value
 }
@@ -794,7 +794,7 @@ func (m *BlogArticleResponse) SetCoverImageHeight(value *int32) {
 	m.coverImageHeight = value
 }
 
-// SetCoverImageUrl sets the coverImageUrl property value. The coverImageUrl property
+// SetCoverImageUrl sets the coverImageUrl property value. URL of the article's cover image, when available.
 func (m *BlogArticleResponse) SetCoverImageUrl(value *string) {
 	m.coverImageUrl = value
 }
@@ -804,17 +804,17 @@ func (m *BlogArticleResponse) SetCoverImageWidth(value *int32) {
 	m.coverImageWidth = value
 }
 
-// SetCreatedAt sets the createdAt property value. The createdAt property
+// SetCreatedAt sets the createdAt property value. UTC timestamp when the article was created.
 func (m *BlogArticleResponse) SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.createdAt = value
 }
 
-// SetExcerpt sets the excerpt property value. The excerpt property
+// SetExcerpt sets the excerpt property value. Short plain-language preview of the article.
 func (m *BlogArticleResponse) SetExcerpt(value *string) {
 	m.excerpt = value
 }
 
-// SetId sets the id property value. The id property
+// SetId sets the id property value. Unique Leadping identifier of the blog article.
 func (m *BlogArticleResponse) SetId(value *string) {
 	m.id = value
 }
@@ -829,42 +829,42 @@ func (m *BlogArticleResponse) SetImagesProcessing(value *bool) {
 	m.imagesProcessing = value
 }
 
-// SetIsFeatured sets the isFeatured property value. The isFeatured property
+// SetIsFeatured sets the isFeatured property value. Whether the article is selected for featured placement.
 func (m *BlogArticleResponse) SetIsFeatured(value *bool) {
 	m.isFeatured = value
 }
 
-// SetIsPublished sets the isPublished property value. The isPublished property
+// SetIsPublished sets the isPublished property value. Whether the article is currently published and available to public readers.
 func (m *BlogArticleResponse) SetIsPublished(value *bool) {
 	m.isPublished = value
 }
 
-// SetLastPublishedAt sets the lastPublishedAt property value. The lastPublishedAt property
+// SetLastPublishedAt sets the lastPublishedAt property value. UTC timestamp when the article last changed from unpublished to published.
 func (m *BlogArticleResponse) SetLastPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastPublishedAt = value
 }
 
-// SetMetaDescription sets the metaDescription property value. The metaDescription property
+// SetMetaDescription sets the metaDescription property value. Optional article description used in search-engine metadata.
 func (m *BlogArticleResponse) SetMetaDescription(value *string) {
 	m.metaDescription = value
 }
 
-// SetModifiedAt sets the modifiedAt property value. The modifiedAt property
+// SetModifiedAt sets the modifiedAt property value. UTC timestamp when the article was last modified.
 func (m *BlogArticleResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
 }
 
-// SetPublishedAt sets the publishedAt property value. The publishedAt property
+// SetPublishedAt sets the publishedAt property value. UTC publication timestamp shown for the article, when set.
 func (m *BlogArticleResponse) SetPublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.publishedAt = value
 }
 
-// SetRenderedHtml sets the renderedHtml property value. The renderedHtml property
+// SetRenderedHtml sets the renderedHtml property value. Server-rendered and sanitized HTML for displaying the article.
 func (m *BlogArticleResponse) SetRenderedHtml(value *string) {
 	m.renderedHtml = value
 }
 
-// SetSeoTitle sets the seoTitle property value. The seoTitle property
+// SetSeoTitle sets the seoTitle property value. Optional title used in search-engine metadata.
 func (m *BlogArticleResponse) SetSeoTitle(value *string) {
 	m.seoTitle = value
 }
@@ -889,22 +889,22 @@ func (m *BlogArticleResponse) SetShareOnX(value *bool) {
 	m.shareOnX = value
 }
 
-// SetSlug sets the slug property value. The slug property
+// SetSlug sets the slug property value. URL slug used to retrieve the published article.
 func (m *BlogArticleResponse) SetSlug(value *string) {
 	m.slug = value
 }
 
-// SetSocialPosts sets the socialPosts property value. The socialPosts property
+// SetSocialPosts sets the socialPosts property value. Publication attempts and provider post identifiers for each social platform.
 func (m *BlogArticleResponse) SetSocialPosts(value []BlogSocialPostable) {
 	m.socialPosts = value
 }
 
-// SetTitle sets the title property value. The title property
+// SetTitle sets the title property value. Public title of the article.
 func (m *BlogArticleResponse) SetTitle(value *string) {
 	m.title = value
 }
 
-// SetUnpublishedAt sets the unpublishedAt property value. The unpublishedAt property
+// SetUnpublishedAt sets the unpublishedAt property value. UTC timestamp when the article last changed from published to unpublished.
 func (m *BlogArticleResponse) SetUnpublishedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.unpublishedAt = value
 }

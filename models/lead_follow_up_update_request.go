@@ -14,9 +14,9 @@ type LeadFollowUpUpdateRequest struct {
 	additionalData map[string]any
 	// The new time, or null to complete the follow-up.
 	dueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The expectedRevision property
+	// Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
 	expectedRevision *int64
-	// The expectedStatusId property
+	// Identifier of the current status observed by the client; a mismatch causes a conflict.
 	expectedStatusId *string
 }
 
@@ -45,13 +45,13 @@ func (m *LeadFollowUpUpdateRequest) GetDueAt() *i336074805fc853987abe6f7fe3ad97a
 	return m.dueAt
 }
 
-// GetExpectedRevision gets the expectedRevision property value. The expectedRevision property
+// GetExpectedRevision gets the expectedRevision property value. Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
 // returns a *int64 when successful
 func (m *LeadFollowUpUpdateRequest) GetExpectedRevision() *int64 {
 	return m.expectedRevision
 }
 
-// GetExpectedStatusId gets the expectedStatusId property value. The expectedStatusId property
+// GetExpectedStatusId gets the expectedStatusId property value. Identifier of the current status observed by the client; a mismatch causes a conflict.
 // returns a *string when successful
 func (m *LeadFollowUpUpdateRequest) GetExpectedStatusId() *string {
 	return m.expectedStatusId
@@ -133,12 +133,12 @@ func (m *LeadFollowUpUpdateRequest) SetDueAt(value *i336074805fc853987abe6f7fe3a
 	m.dueAt = value
 }
 
-// SetExpectedRevision sets the expectedRevision property value. The expectedRevision property
+// SetExpectedRevision sets the expectedRevision property value. Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
 func (m *LeadFollowUpUpdateRequest) SetExpectedRevision(value *int64) {
 	m.expectedRevision = value
 }
 
-// SetExpectedStatusId sets the expectedStatusId property value. The expectedStatusId property
+// SetExpectedStatusId sets the expectedStatusId property value. Identifier of the current status observed by the client; a mismatch causes a conflict.
 func (m *LeadFollowUpUpdateRequest) SetExpectedStatusId(value *string) {
 	m.expectedStatusId = value
 }

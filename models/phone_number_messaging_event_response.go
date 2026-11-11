@@ -22,7 +22,7 @@ type PhoneNumberMessagingEventResponse struct {
 	fromPhoneNumber *string
 	// Unique Leadping identifier for this phone number messaging event.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Indicates whether the recipient has opted out of further SMS communication.
 	isOptOut *bool
@@ -190,7 +190,7 @@ func (m *PhoneNumberMessagingEventResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *PhoneNumberMessagingEventResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -321,7 +321,7 @@ func (m *PhoneNumberMessagingEventResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *PhoneNumberMessagingEventResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

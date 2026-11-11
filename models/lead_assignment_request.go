@@ -11,7 +11,7 @@ import (
 type LeadAssignmentRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The assignedToUserId property
+	// Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
 	assignedToUserId *string
 }
 
@@ -34,7 +34,7 @@ func (m *LeadAssignmentRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAssignedToUserId gets the assignedToUserId property value. The assignedToUserId property
+// GetAssignedToUserId gets the assignedToUserId property value. Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
 // returns a *string when successful
 func (m *LeadAssignmentRequest) GetAssignedToUserId() *string {
 	return m.assignedToUserId
@@ -79,7 +79,7 @@ func (m *LeadAssignmentRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAssignedToUserId sets the assignedToUserId property value. The assignedToUserId property
+// SetAssignedToUserId sets the assignedToUserId property value. Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
 func (m *LeadAssignmentRequest) SetAssignedToUserId(value *string) {
 	m.assignedToUserId = value
 }

@@ -12,13 +12,13 @@ import (
 type BlogSocialPost struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The attemptedAt property
+	// UTC timestamp of the publication attempt, or null if no attempt has been recorded.
 	attemptedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The error property
+	// Details of the publication failure, when present.
 	error *string
-	// The platform property
+	// Social platform supported for publishing a blog article.
 	platform *BlogSocialPlatform
-	// The postId property
+	// Identifier assigned to the published post by the social platform, when available.
 	postId *string
 }
 
@@ -41,13 +41,13 @@ func (m *BlogSocialPost) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAttemptedAt gets the attemptedAt property value. The attemptedAt property
+// GetAttemptedAt gets the attemptedAt property value. UTC timestamp of the publication attempt, or null if no attempt has been recorded.
 // returns a *Time when successful
 func (m *BlogSocialPost) GetAttemptedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.attemptedAt
 }
 
-// GetError gets the error property value. The error property
+// GetError gets the error property value. Details of the publication failure, when present.
 // returns a *string when successful
 func (m *BlogSocialPost) GetError() *string {
 	return m.error
@@ -100,13 +100,13 @@ func (m *BlogSocialPost) GetFieldDeserializers() map[string]func(i878a80d2330e89
 	return res
 }
 
-// GetPlatform gets the platform property value. The platform property
+// GetPlatform gets the platform property value. Social platform supported for publishing a blog article.
 // returns a *BlogSocialPlatform when successful
 func (m *BlogSocialPost) GetPlatform() *BlogSocialPlatform {
 	return m.platform
 }
 
-// GetPostId gets the postId property value. The postId property
+// GetPostId gets the postId property value. Identifier assigned to the published post by the social platform, when available.
 // returns a *string when successful
 func (m *BlogSocialPost) GetPostId() *string {
 	return m.postId
@@ -153,22 +153,22 @@ func (m *BlogSocialPost) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAttemptedAt sets the attemptedAt property value. The attemptedAt property
+// SetAttemptedAt sets the attemptedAt property value. UTC timestamp of the publication attempt, or null if no attempt has been recorded.
 func (m *BlogSocialPost) SetAttemptedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.attemptedAt = value
 }
 
-// SetError sets the error property value. The error property
+// SetError sets the error property value. Details of the publication failure, when present.
 func (m *BlogSocialPost) SetError(value *string) {
 	m.error = value
 }
 
-// SetPlatform sets the platform property value. The platform property
+// SetPlatform sets the platform property value. Social platform supported for publishing a blog article.
 func (m *BlogSocialPost) SetPlatform(value *BlogSocialPlatform) {
 	m.platform = value
 }
 
-// SetPostId sets the postId property value. The postId property
+// SetPostId sets the postId property value. Identifier assigned to the published post by the social platform, when available.
 func (m *BlogSocialPost) SetPostId(value *string) {
 	m.postId = value
 }

@@ -13,6 +13,10 @@ type OrganizationRequest struct {
 	additionalData map[string]any
 	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 	address OrganizationRequest_addressable
+	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+	automaticallyMarkLeadsCalled *bool
+	// Destination status for outbound call attempts. Null uses the built-in Called status.
+	calledLeadStatusId *string
 	// Human-readable description that explains this organization profile request to API users.
 	description *string
 	// Employer Identification Number used for organization and 10DLC verification.
@@ -62,6 +66,18 @@ func (m *OrganizationRequest) GetAddress() OrganizationRequest_addressable {
 	return m.address
 }
 
+// GetAutomaticallyMarkLeadsCalled gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+// returns a *bool when successful
+func (m *OrganizationRequest) GetAutomaticallyMarkLeadsCalled() *bool {
+	return m.automaticallyMarkLeadsCalled
+}
+
+// GetCalledLeadStatusId gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+// returns a *string when successful
+func (m *OrganizationRequest) GetCalledLeadStatusId() *string {
+	return m.calledLeadStatusId
+}
+
 // GetDescription gets the description property value. Human-readable description that explains this organization profile request to API users.
 // returns a *string when successful
 func (m *OrganizationRequest) GetDescription() *string {
@@ -85,6 +101,26 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetAddress(val.(OrganizationRequest_addressable))
+		}
+		return nil
+	}
+	res["automaticallyMarkLeadsCalled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkLeadsCalled(val)
+		}
+		return nil
+	}
+	res["calledLeadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCalledLeadStatusId(val)
 		}
 		return nil
 	}
@@ -264,6 +300,18 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyMarkLeadsCalled", m.GetAutomaticallyMarkLeadsCalled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("calledLeadStatusId", m.GetCalledLeadStatusId())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("description", m.GetDescription())
 		if err != nil {
 			return err
@@ -348,6 +396,16 @@ func (m *OrganizationRequest) SetAddress(value OrganizationRequest_addressable) 
 	m.address = value
 }
 
+// SetAutomaticallyMarkLeadsCalled sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+func (m *OrganizationRequest) SetAutomaticallyMarkLeadsCalled(value *bool) {
+	m.automaticallyMarkLeadsCalled = value
+}
+
+// SetCalledLeadStatusId sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+func (m *OrganizationRequest) SetCalledLeadStatusId(value *string) {
+	m.calledLeadStatusId = value
+}
+
 // SetDescription sets the description property value. Human-readable description that explains this organization profile request to API users.
 func (m *OrganizationRequest) SetDescription(value *string) {
 	m.description = value
@@ -407,6 +465,8 @@ type OrganizationRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetAddress() OrganizationRequest_addressable
+	GetAutomaticallyMarkLeadsCalled() *bool
+	GetCalledLeadStatusId() *string
 	GetDescription() *string
 	GetEin() *string
 	GetIsYoungerThan90() *bool
@@ -419,6 +479,8 @@ type OrganizationRequestable interface {
 	GetVertical() *string
 	GetWebsite() *string
 	SetAddress(value OrganizationRequest_addressable)
+	SetAutomaticallyMarkLeadsCalled(value *bool)
+	SetCalledLeadStatusId(value *string)
 	SetDescription(value *string)
 	SetEin(value *string)
 	SetIsYoungerThan90(value *bool)

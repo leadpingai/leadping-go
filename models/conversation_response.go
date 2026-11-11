@@ -38,7 +38,7 @@ type ConversationResponse struct {
 	id *string
 	// Indicates whether the Leadping conversation has been archived.
 	isArchived *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Indicates whether the current user has unread activity in the conversation.
 	isUnread *bool
@@ -478,7 +478,7 @@ func (m *ConversationResponse) GetIsArchived() *bool {
 	return m.isArchived
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -842,7 +842,7 @@ func (m *ConversationResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *ConversationResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

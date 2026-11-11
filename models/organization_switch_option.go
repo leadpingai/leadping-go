@@ -22,7 +22,7 @@ type OrganizationSwitchOption struct {
 	id *string
 	// Whether this organization switch option is current.
 	isCurrent *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// UTC timestamp for last used at on this organization switch option.
 	lastUsedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -250,7 +250,7 @@ func (m *OrganizationSwitchOption) GetIsCurrent() *bool {
 	return m.isCurrent
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *OrganizationSwitchOption) GetIsDemo() *bool {
 	return m.isDemo
@@ -445,7 +445,7 @@ func (m *OrganizationSwitchOption) SetIsCurrent(value *bool) {
 	m.isCurrent = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *OrganizationSwitchOption) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

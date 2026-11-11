@@ -54,7 +54,7 @@ type SmsEventTableRow struct {
 	id *string
 	// Indicates whether automation created or triggered this SMS event table row.
 	isAutomated *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead IdNamePairable
@@ -694,7 +694,7 @@ func (m *SmsEventTableRow) GetIsAutomated() *bool {
 	return m.isAutomated
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *SmsEventTableRow) GetIsDemo() *bool {
 	return m.isDemo
@@ -1220,7 +1220,7 @@ func (m *SmsEventTableRow) SetIsAutomated(value *bool) {
 	m.isAutomated = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SmsEventTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

@@ -20,6 +20,10 @@ type LeadStatusResponse struct {
 	id *string
 	// Indicates whether the lead status has been archived.
 	isArchived *bool
+	// Whether this is the default destination for outbound call attempts.
+	isDefaultCalledStatus *bool
+	// Whether this is the built-in initial status for new leads.
+	isInitialStatus *bool
 	// Date and time when the lead status was last modified.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Display name of the lead status.
@@ -105,6 +109,26 @@ func (m *LeadStatusResponse) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		return nil
 	}
+	res["isDefaultCalledStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsDefaultCalledStatus(val)
+		}
+		return nil
+	}
+	res["isInitialStatus"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsInitialStatus(val)
+		}
+		return nil
+	}
 	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -160,6 +184,18 @@ func (m *LeadStatusResponse) GetIsArchived() *bool {
 	return m.isArchived
 }
 
+// GetIsDefaultCalledStatus gets the isDefaultCalledStatus property value. Whether this is the default destination for outbound call attempts.
+// returns a *bool when successful
+func (m *LeadStatusResponse) GetIsDefaultCalledStatus() *bool {
+	return m.isDefaultCalledStatus
+}
+
+// GetIsInitialStatus gets the isInitialStatus property value. Whether this is the built-in initial status for new leads.
+// returns a *bool when successful
+func (m *LeadStatusResponse) GetIsInitialStatus() *bool {
+	return m.isInitialStatus
+}
+
 // GetModifiedAt gets the modifiedAt property value. Date and time when the lead status was last modified.
 // returns a *Time when successful
 func (m *LeadStatusResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -207,6 +243,18 @@ func (m *LeadStatusResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 	}
 	{
 		err := writer.WriteBoolValue("isArchived", m.GetIsArchived())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isDefaultCalledStatus", m.GetIsDefaultCalledStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isInitialStatus", m.GetIsInitialStatus())
 		if err != nil {
 			return err
 		}
@@ -269,6 +317,16 @@ func (m *LeadStatusResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
+// SetIsDefaultCalledStatus sets the isDefaultCalledStatus property value. Whether this is the default destination for outbound call attempts.
+func (m *LeadStatusResponse) SetIsDefaultCalledStatus(value *bool) {
+	m.isDefaultCalledStatus = value
+}
+
+// SetIsInitialStatus sets the isInitialStatus property value. Whether this is the built-in initial status for new leads.
+func (m *LeadStatusResponse) SetIsInitialStatus(value *bool) {
+	m.isInitialStatus = value
+}
+
 // SetModifiedAt sets the modifiedAt property value. Date and time when the lead status was last modified.
 func (m *LeadStatusResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
@@ -296,6 +354,8 @@ type LeadStatusResponseable interface {
 	GetColor() *string
 	GetId() *string
 	GetIsArchived() *bool
+	GetIsDefaultCalledStatus() *bool
+	GetIsInitialStatus() *bool
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetOrganizationId() *string
@@ -304,6 +364,8 @@ type LeadStatusResponseable interface {
 	SetColor(value *string)
 	SetId(value *string)
 	SetIsArchived(value *bool)
+	SetIsDefaultCalledStatus(value *bool)
+	SetIsInitialStatus(value *bool)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetOrganizationId(value *string)

@@ -38,7 +38,7 @@ type LeadTableRow struct {
 	id *string
 	// Whether this lead is archived.
 	isArchived *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Last name of the lead, user, or contact represented by this lead table row.
 	lastName *string
@@ -448,7 +448,7 @@ func (m *LeadTableRow) GetIsArchived() *bool {
 	return m.isArchived
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *LeadTableRow) GetIsDemo() *bool {
 	return m.isDemo
@@ -782,7 +782,7 @@ func (m *LeadTableRow) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *LeadTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

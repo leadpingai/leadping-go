@@ -18,7 +18,7 @@ type SuppressionEntryResponse struct {
 	channel *string
 	// Unique Leadping identifier for the suppression entry.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// The associated lead's profile image URL, when available.
 	leadAvatarUrl *string
@@ -256,7 +256,7 @@ func (m *SuppressionEntryResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *SuppressionEntryResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -467,7 +467,7 @@ func (m *SuppressionEntryResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SuppressionEntryResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

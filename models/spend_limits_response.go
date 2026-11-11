@@ -12,19 +12,19 @@ import (
 type SpendLimitsResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The dailyLimit property
+	// Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
 	dailyLimit *float64
-	// The dailyResetsAt property
+	// UTC timestamp when the next calendar day begins and daily spending resets.
 	dailyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The dailySpent property
+	// Settled usage spending in USD for the current UTC calendar day.
 	dailySpent *float64
-	// The monthlyLimit property
+	// Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
 	monthlyLimit *float64
-	// The monthlyResetsAt property
+	// UTC timestamp when the next calendar month begins and monthly spending resets.
 	monthlyResetsAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-	// The monthlySpent property
+	// Settled usage spending in USD for the current UTC calendar month.
 	monthlySpent *float64
-	// The reserved property
+	// Pending usage reservations in USD.
 	reserved *float64
 }
 
@@ -47,19 +47,19 @@ func (m *SpendLimitsResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetDailyLimit gets the dailyLimit property value. The dailyLimit property
+// GetDailyLimit gets the dailyLimit property value. Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
 // returns a *float64 when successful
 func (m *SpendLimitsResponse) GetDailyLimit() *float64 {
 	return m.dailyLimit
 }
 
-// GetDailyResetsAt gets the dailyResetsAt property value. The dailyResetsAt property
+// GetDailyResetsAt gets the dailyResetsAt property value. UTC timestamp when the next calendar day begins and daily spending resets.
 // returns a *Time when successful
 func (m *SpendLimitsResponse) GetDailyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.dailyResetsAt
 }
 
-// GetDailySpent gets the dailySpent property value. The dailySpent property
+// GetDailySpent gets the dailySpent property value. Settled usage spending in USD for the current UTC calendar day.
 // returns a *float64 when successful
 func (m *SpendLimitsResponse) GetDailySpent() *float64 {
 	return m.dailySpent
@@ -142,25 +142,25 @@ func (m *SpendLimitsResponse) GetFieldDeserializers() map[string]func(i878a80d23
 	return res
 }
 
-// GetMonthlyLimit gets the monthlyLimit property value. The monthlyLimit property
+// GetMonthlyLimit gets the monthlyLimit property value. Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
 // returns a *float64 when successful
 func (m *SpendLimitsResponse) GetMonthlyLimit() *float64 {
 	return m.monthlyLimit
 }
 
-// GetMonthlyResetsAt gets the monthlyResetsAt property value. The monthlyResetsAt property
+// GetMonthlyResetsAt gets the monthlyResetsAt property value. UTC timestamp when the next calendar month begins and monthly spending resets.
 // returns a *Time when successful
 func (m *SpendLimitsResponse) GetMonthlyResetsAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.monthlyResetsAt
 }
 
-// GetMonthlySpent gets the monthlySpent property value. The monthlySpent property
+// GetMonthlySpent gets the monthlySpent property value. Settled usage spending in USD for the current UTC calendar month.
 // returns a *float64 when successful
 func (m *SpendLimitsResponse) GetMonthlySpent() *float64 {
 	return m.monthlySpent
 }
 
-// GetReserved gets the reserved property value. The reserved property
+// GetReserved gets the reserved property value. Pending usage reservations in USD.
 // returns a *float64 when successful
 func (m *SpendLimitsResponse) GetReserved() *float64 {
 	return m.reserved
@@ -224,37 +224,37 @@ func (m *SpendLimitsResponse) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetDailyLimit sets the dailyLimit property value. The dailyLimit property
+// SetDailyLimit sets the dailyLimit property value. Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
 func (m *SpendLimitsResponse) SetDailyLimit(value *float64) {
 	m.dailyLimit = value
 }
 
-// SetDailyResetsAt sets the dailyResetsAt property value. The dailyResetsAt property
+// SetDailyResetsAt sets the dailyResetsAt property value. UTC timestamp when the next calendar day begins and daily spending resets.
 func (m *SpendLimitsResponse) SetDailyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.dailyResetsAt = value
 }
 
-// SetDailySpent sets the dailySpent property value. The dailySpent property
+// SetDailySpent sets the dailySpent property value. Settled usage spending in USD for the current UTC calendar day.
 func (m *SpendLimitsResponse) SetDailySpent(value *float64) {
 	m.dailySpent = value
 }
 
-// SetMonthlyLimit sets the monthlyLimit property value. The monthlyLimit property
+// SetMonthlyLimit sets the monthlyLimit property value. Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
 func (m *SpendLimitsResponse) SetMonthlyLimit(value *float64) {
 	m.monthlyLimit = value
 }
 
-// SetMonthlyResetsAt sets the monthlyResetsAt property value. The monthlyResetsAt property
+// SetMonthlyResetsAt sets the monthlyResetsAt property value. UTC timestamp when the next calendar month begins and monthly spending resets.
 func (m *SpendLimitsResponse) SetMonthlyResetsAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.monthlyResetsAt = value
 }
 
-// SetMonthlySpent sets the monthlySpent property value. The monthlySpent property
+// SetMonthlySpent sets the monthlySpent property value. Settled usage spending in USD for the current UTC calendar month.
 func (m *SpendLimitsResponse) SetMonthlySpent(value *float64) {
 	m.monthlySpent = value
 }
 
-// SetReserved sets the reserved property value. The reserved property
+// SetReserved sets the reserved property value. Pending usage reservations in USD.
 func (m *SpendLimitsResponse) SetReserved(value *float64) {
 	m.reserved = value
 }

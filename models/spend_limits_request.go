@@ -11,9 +11,9 @@ import (
 type SpendLimitsRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The dailyLimit property
+	// Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 	dailyLimit *float64
-	// The monthlyLimit property
+	// Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
 	monthlyLimit *float64
 }
 
@@ -36,7 +36,7 @@ func (m *SpendLimitsRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetDailyLimit gets the dailyLimit property value. The dailyLimit property
+// GetDailyLimit gets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 // returns a *float64 when successful
 func (m *SpendLimitsRequest) GetDailyLimit() *float64 {
 	return m.dailyLimit
@@ -69,7 +69,7 @@ func (m *SpendLimitsRequest) GetFieldDeserializers() map[string]func(i878a80d233
 	return res
 }
 
-// GetMonthlyLimit gets the monthlyLimit property value. The monthlyLimit property
+// GetMonthlyLimit gets the monthlyLimit property value. Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
 // returns a *float64 when successful
 func (m *SpendLimitsRequest) GetMonthlyLimit() *float64 {
 	return m.monthlyLimit
@@ -103,12 +103,12 @@ func (m *SpendLimitsRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetDailyLimit sets the dailyLimit property value. The dailyLimit property
+// SetDailyLimit sets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 func (m *SpendLimitsRequest) SetDailyLimit(value *float64) {
 	m.dailyLimit = value
 }
 
-// SetMonthlyLimit sets the monthlyLimit property value. The monthlyLimit property
+// SetMonthlyLimit sets the monthlyLimit property value. Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
 func (m *SpendLimitsRequest) SetMonthlyLimit(value *float64) {
 	m.monthlyLimit = value
 }

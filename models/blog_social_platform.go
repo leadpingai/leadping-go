@@ -3,6 +3,7 @@
 
 package models
 
+// Social platform supported for publishing a blog article.
 type BlogSocialPlatform int
 
 const (

@@ -64,7 +64,7 @@ type EventTableRow struct {
 	fromPhoneNumberId *string
 	// Unique Leadping identifier for this event timeline table row.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Lead ID associated with this timeline event.
 	leadId *string
@@ -826,7 +826,7 @@ func (m *EventTableRow) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *EventTableRow) GetIsDemo() *bool {
 	return m.isDemo
@@ -1450,7 +1450,7 @@ func (m *EventTableRow) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *EventTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

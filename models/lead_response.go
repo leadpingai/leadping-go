@@ -48,7 +48,7 @@ type LeadResponse struct {
 	inquiry LeadResponse_inquiryable
 	// Indicates whether the lead has been archived in Leadping.
 	isArchived *bool
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Public Leadping API schema for lead attribution metadata data.
 	metadata LeadMetadataable
@@ -490,7 +490,7 @@ func (m *LeadResponse) GetIsArchived() *bool {
 	return m.isArchived
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *LeadResponse) GetIsDemo() *bool {
 	return m.isDemo
@@ -831,7 +831,7 @@ func (m *LeadResponse) SetIsArchived(value *bool) {
 	m.isArchived = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *LeadResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }

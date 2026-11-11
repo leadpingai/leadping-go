@@ -28,6 +28,8 @@ type CurrentLeadStatusSummary struct {
 	followUpDueAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for this current lead status change summary.
 	id *string
+	// Configured organization status ID, independent of its display name and history entry ID.
+	leadStatusId *string
 	// Current lead status change outcome assigned to the lead.
 	outcome *string
 	// Monotonic revision of the lead's current status and scheduling state.
@@ -169,6 +171,16 @@ func (m *CurrentLeadStatusSummary) GetFieldDeserializers() map[string]func(i878a
 		}
 		return nil
 	}
+	res["leadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadStatusId(val)
+		}
+		return nil
+	}
 	res["outcome"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -218,6 +230,12 @@ func (m *CurrentLeadStatusSummary) GetFollowUpDueAt() *i336074805fc853987abe6f7f
 // returns a *string when successful
 func (m *CurrentLeadStatusSummary) GetId() *string {
 	return m.id
+}
+
+// GetLeadStatusId gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+// returns a *string when successful
+func (m *CurrentLeadStatusSummary) GetLeadStatusId() *string {
+	return m.leadStatusId
 }
 
 // GetOutcome gets the outcome property value. Current lead status change outcome assigned to the lead.
@@ -285,6 +303,12 @@ func (m *CurrentLeadStatusSummary) Serialize(writer i878a80d2330e89d26896388a3f4
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadStatusId", m.GetLeadStatusId())
 		if err != nil {
 			return err
 		}
@@ -362,6 +386,11 @@ func (m *CurrentLeadStatusSummary) SetId(value *string) {
 	m.id = value
 }
 
+// SetLeadStatusId sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+func (m *CurrentLeadStatusSummary) SetLeadStatusId(value *string) {
+	m.leadStatusId = value
+}
+
 // SetOutcome sets the outcome property value. Current lead status change outcome assigned to the lead.
 func (m *CurrentLeadStatusSummary) SetOutcome(value *string) {
 	m.outcome = value
@@ -388,6 +417,7 @@ type CurrentLeadStatusSummaryable interface {
 	GetFollowUpCompletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetFollowUpDueAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
+	GetLeadStatusId() *string
 	GetOutcome() *string
 	GetRevision() *int64
 	GetSource() *CurrentLeadStatusSummary_source
@@ -399,6 +429,7 @@ type CurrentLeadStatusSummaryable interface {
 	SetFollowUpCompletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetFollowUpDueAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
+	SetLeadStatusId(value *string)
 	SetOutcome(value *string)
 	SetRevision(value *int64)
 	SetSource(value *CurrentLeadStatusSummary_source)

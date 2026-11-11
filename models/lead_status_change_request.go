@@ -30,6 +30,8 @@ type LeadStatusChangeRequest struct {
 	expectedRevision *int64
 	// The current follow up status for this lead status change.
 	followUpStatus *string
+	// Configured organization status ID, independent of its display name and history entry ID.
+	leadStatusId *string
 	// The operator or customer notes recorded for this lead status change.
 	notes *string
 	// Result of the interaction or workflow step that caused the status change.
@@ -203,6 +205,16 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers() map[string]func(i878a8
 		}
 		return nil
 	}
+	res["leadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadStatusId(val)
+		}
+		return nil
+	}
 	res["notes"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -260,6 +272,12 @@ func (m *LeadStatusChangeRequest) GetFieldDeserializers() map[string]func(i878a8
 // returns a *string when successful
 func (m *LeadStatusChangeRequest) GetFollowUpStatus() *string {
 	return m.followUpStatus
+}
+
+// GetLeadStatusId gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+// returns a *string when successful
+func (m *LeadStatusChangeRequest) GetLeadStatusId() *string {
+	return m.leadStatusId
 }
 
 // GetNotes gets the notes property value. The operator or customer notes recorded for this lead status change.
@@ -345,6 +363,12 @@ func (m *LeadStatusChangeRequest) Serialize(writer i878a80d2330e89d26896388a3f48
 	}
 	{
 		err := writer.WriteStringValue("followUpStatus", m.GetFollowUpStatus())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("leadStatusId", m.GetLeadStatusId())
 		if err != nil {
 			return err
 		}
@@ -438,6 +462,11 @@ func (m *LeadStatusChangeRequest) SetFollowUpStatus(value *string) {
 	m.followUpStatus = value
 }
 
+// SetLeadStatusId sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+func (m *LeadStatusChangeRequest) SetLeadStatusId(value *string) {
+	m.leadStatusId = value
+}
+
 // SetNotes sets the notes property value. The operator or customer notes recorded for this lead status change.
 func (m *LeadStatusChangeRequest) SetNotes(value *string) {
 	m.notes = value
@@ -475,6 +504,7 @@ type LeadStatusChangeRequestable interface {
 	GetExpectedCurrentStatusId() *string
 	GetExpectedRevision() *int64
 	GetFollowUpStatus() *string
+	GetLeadStatusId() *string
 	GetNotes() *string
 	GetOutcome() *string
 	GetReason() *string
@@ -489,6 +519,7 @@ type LeadStatusChangeRequestable interface {
 	SetExpectedCurrentStatusId(value *string)
 	SetExpectedRevision(value *int64)
 	SetFollowUpStatus(value *string)
+	SetLeadStatusId(value *string)
 	SetNotes(value *string)
 	SetOutcome(value *string)
 	SetReason(value *string)

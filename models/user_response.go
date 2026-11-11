@@ -30,9 +30,9 @@ type UserResponse struct {
 	firstName *string
 	// Stable unique identifier of the resource.
 	id *string
-	// The isDemo property
+	// Whether this record belongs to demo data.
 	isDemo *bool
-	// The lastActiveAt property
+	// UTC timestamp of the user's most recently recorded activity, when available.
 	lastActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The date and time when this user last completed the Leadping sign-in flow.
 	lastLoggedInAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -406,13 +406,13 @@ func (m *UserResponse) GetId() *string {
 	return m.id
 }
 
-// GetIsDemo gets the isDemo property value. The isDemo property
+// GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *UserResponse) GetIsDemo() *bool {
 	return m.isDemo
 }
 
-// GetLastActiveAt gets the lastActiveAt property value. The lastActiveAt property
+// GetLastActiveAt gets the lastActiveAt property value. UTC timestamp of the user's most recently recorded activity, when available.
 // returns a *Time when successful
 func (m *UserResponse) GetLastActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.lastActiveAt
@@ -721,12 +721,12 @@ func (m *UserResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetIsDemo sets the isDemo property value. The isDemo property
+// SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *UserResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
-// SetLastActiveAt sets the lastActiveAt property value. The lastActiveAt property
+// SetLastActiveAt sets the lastActiveAt property value. UTC timestamp of the user's most recently recorded activity, when available.
 func (m *UserResponse) SetLastActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.lastActiveAt = value
 }
