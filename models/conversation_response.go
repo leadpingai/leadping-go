@@ -20,7 +20,7 @@ type ConversationResponse struct {
 	archiveReason *int32
 	// Optional profile image URL explicitly associated with the lead.
 	avatarUrl *string
-	// Stored compliance status of the associated lead; not a live call-readiness guarantee.
+	// Consent verification status of the associated lead; not a live call-readiness guarantee.
 	complianceStatus *string
 	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 	currentLeadStatus ConversationResponse_currentLeadStatusable
@@ -113,7 +113,7 @@ func (m *ConversationResponse) GetAvatarUrl() *string {
 	return m.avatarUrl
 }
 
-// GetComplianceStatus gets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+// GetComplianceStatus gets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
 // returns a *string when successful
 func (m *ConversationResponse) GetComplianceStatus() *string {
 	return m.complianceStatus
@@ -749,7 +749,7 @@ func (m *ConversationResponse) SetAvatarUrl(value *string) {
 	m.avatarUrl = value
 }
 
-// SetComplianceStatus sets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+// SetComplianceStatus sets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
 func (m *ConversationResponse) SetComplianceStatus(value *string) {
 	m.complianceStatus = value
 }
