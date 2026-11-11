@@ -20,6 +20,10 @@ type ConversationResponse struct {
 	archiveReason *int32
 	// Optional profile image URL explicitly associated with the lead.
 	avatarUrl *string
+	// Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+	canCallNow *bool
+	// Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+	canTextNow *bool
 	// Consent verification status of the associated lead; not a live call-readiness guarantee.
 	complianceStatus *string
 	// Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
@@ -113,6 +117,18 @@ func (m *ConversationResponse) GetAvatarUrl() *string {
 	return m.avatarUrl
 }
 
+// GetCanCallNow gets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+// returns a *bool when successful
+func (m *ConversationResponse) GetCanCallNow() *bool {
+	return m.canCallNow
+}
+
+// GetCanTextNow gets the canTextNow property value. Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+// returns a *bool when successful
+func (m *ConversationResponse) GetCanTextNow() *bool {
+	return m.canTextNow
+}
+
 // GetComplianceStatus gets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
 // returns a *string when successful
 func (m *ConversationResponse) GetComplianceStatus() *string {
@@ -178,6 +194,26 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetAvatarUrl(val)
+		}
+		return nil
+	}
+	res["canCallNow"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanCallNow(val)
+		}
+		return nil
+	}
+	res["canTextNow"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanTextNow(val)
 		}
 		return nil
 	}
@@ -571,6 +607,18 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteBoolValue("canCallNow", m.GetCanCallNow())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("canTextNow", m.GetCanTextNow())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("complianceStatus", m.GetComplianceStatus())
 		if err != nil {
 			return err
@@ -749,6 +797,16 @@ func (m *ConversationResponse) SetAvatarUrl(value *string) {
 	m.avatarUrl = value
 }
 
+// SetCanCallNow sets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+func (m *ConversationResponse) SetCanCallNow(value *bool) {
+	m.canCallNow = value
+}
+
+// SetCanTextNow sets the canTextNow property value. Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+func (m *ConversationResponse) SetCanTextNow(value *bool) {
+	m.canTextNow = value
+}
+
 // SetComplianceStatus sets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
 func (m *ConversationResponse) SetComplianceStatus(value *string) {
 	m.complianceStatus = value
@@ -876,6 +934,8 @@ type ConversationResponseable interface {
 	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetArchiveReason() *int32
 	GetAvatarUrl() *string
+	GetCanCallNow() *bool
+	GetCanTextNow() *bool
 	GetComplianceStatus() *string
 	GetCurrentLeadStatus() ConversationResponse_currentLeadStatusable
 	GetEmail() *string
@@ -904,6 +964,8 @@ type ConversationResponseable interface {
 	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetArchiveReason(value *int32)
 	SetAvatarUrl(value *string)
+	SetCanCallNow(value *bool)
+	SetCanTextNow(value *bool)
 	SetComplianceStatus(value *string)
 	SetCurrentLeadStatus(value ConversationResponse_currentLeadStatusable)
 	SetEmail(value *string)
