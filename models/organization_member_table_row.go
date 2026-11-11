@@ -16,6 +16,8 @@ type OrganizationMemberTableRow struct {
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Unique Leadping identifier for this organization user.
 	id *string
+	// UTC timestamp of the user's most recent activity in Leadping.
+	lastActiveAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The billing status for this user's organization license.
 	licenseBillingStatus *string
 	// The renewal date used for this user's license proration.
@@ -76,6 +78,16 @@ func (m *OrganizationMemberTableRow) GetFieldDeserializers() map[string]func(i87
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["lastActiveAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastActiveAt(val)
 		}
 		return nil
 	}
@@ -148,6 +160,12 @@ func (m *OrganizationMemberTableRow) GetId() *string {
 	return m.id
 }
 
+// GetLastActiveAt gets the lastActiveAt property value. UTC timestamp of the user's most recent activity in Leadping.
+// returns a *Time when successful
+func (m *OrganizationMemberTableRow) GetLastActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastActiveAt
+}
+
 // GetLicenseBillingStatus gets the licenseBillingStatus property value. The billing status for this user's organization license.
 // returns a *string when successful
 func (m *OrganizationMemberTableRow) GetLicenseBillingStatus() *string {
@@ -194,6 +212,12 @@ func (m *OrganizationMemberTableRow) Serialize(writer i878a80d2330e89d26896388a3
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("lastActiveAt", m.GetLastActiveAt())
 		if err != nil {
 			return err
 		}
@@ -259,6 +283,11 @@ func (m *OrganizationMemberTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetLastActiveAt sets the lastActiveAt property value. UTC timestamp of the user's most recent activity in Leadping.
+func (m *OrganizationMemberTableRow) SetLastActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastActiveAt = value
+}
+
 // SetLicenseBillingStatus sets the licenseBillingStatus property value. The billing status for this user's organization license.
 func (m *OrganizationMemberTableRow) SetLicenseBillingStatus(value *string) {
 	m.licenseBillingStatus = value
@@ -294,6 +323,7 @@ type OrganizationMemberTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetId() *string
+	GetLastActiveAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLicenseBillingStatus() *string
 	GetLicenseRenewalDate() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRole() *OrganizationMemberRole
@@ -302,6 +332,7 @@ type OrganizationMemberTableRowable interface {
 	GetUserEmail() *string
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
+	SetLastActiveAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLicenseBillingStatus(value *string)
 	SetLicenseRenewalDate(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRole(value *OrganizationMemberRole)
