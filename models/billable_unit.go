@@ -13,6 +13,7 @@ const (
 	MMS_MESSAGE_BILLABLEUNIT
 	EMAIL_MESSAGE_BILLABLEUNIT
 	VOICE_MINUTE_BILLABLEUNIT
+	CALL_ATTEMPT_BILLABLEUNIT
 	PHONE_NUMBER_MONTH_BILLABLEUNIT
 	WARMUP_SMS_SEGMENT_BILLABLEUNIT
 	WARMUP_VOICE_MINUTE_BILLABLEUNIT
@@ -27,7 +28,7 @@ const (
 )
 
 func (i BillableUnit) String() string {
-	return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
+	return []string{"lead_received", "phone_identity_lookup", "sms_segment", "mms_message", "email_message", "voice_minute", "call_attempt", "phone_number_month", "warmup_sms_segment", "warmup_voice_minute", "website_setup", "openai_operation", "domain_registration", "10dlc_application", "10dlc_campaign_month", "payment_processing_fee", "connection_action", "automation_run"}[i]
 }
 
 func ParseBillableUnit(v string) (any, error) {
@@ -45,6 +46,8 @@ func ParseBillableUnit(v string) (any, error) {
 		result = EMAIL_MESSAGE_BILLABLEUNIT
 	case "voice_minute":
 		result = VOICE_MINUTE_BILLABLEUNIT
+	case "call_attempt":
+		result = CALL_ATTEMPT_BILLABLEUNIT
 	case "phone_number_month":
 		result = PHONE_NUMBER_MONTH_BILLABLEUNIT
 	case "warmup_sms_segment":
