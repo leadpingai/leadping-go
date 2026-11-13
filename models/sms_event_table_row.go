@@ -18,6 +18,8 @@ type SmsEventTableRow struct {
 	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+	automation SmsEventTableRow_automationable
 	// Monetary amount billed for this Leadping communication or transaction.
 	billableAmount *float64
 	// Billing state for this communication, charge, or transaction.
@@ -137,6 +139,12 @@ func (m *SmsEventTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetAutomation gets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+// returns a SmsEventTableRow_automationable when successful
+func (m *SmsEventTableRow) GetAutomation() SmsEventTableRow_automationable {
+	return m.automation
+}
+
 // GetBillableAmount gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 // returns a *float64 when successful
 func (m *SmsEventTableRow) GetBillableAmount() *float64 {
@@ -252,6 +260,16 @@ func (m *SmsEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		if val != nil {
 			m.SetActorUserId(val)
+		}
+		return nil
+	}
+	res["automation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateSmsEventTableRow_automationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomation(val.(SmsEventTableRow_automationable))
 		}
 		return nil
 	}
@@ -847,6 +865,12 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 		}
 	}
 	{
+		err := writer.WriteObjectValue("automation", m.GetAutomation())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteFloat64Value("billableAmount", m.GetBillableAmount())
 		if err != nil {
 			return err
@@ -1130,6 +1154,11 @@ func (m *SmsEventTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAutomation sets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+func (m *SmsEventTableRow) SetAutomation(value SmsEventTableRow_automationable) {
+	m.automation = value
+}
+
 // SetBillableAmount sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
 func (m *SmsEventTableRow) SetBillableAmount(value *float64) {
 	m.billableAmount = value
@@ -1336,6 +1365,7 @@ type SmsEventTableRowable interface {
 	GetActorDisplayName() *string
 	GetActorLeadId() *string
 	GetActorUserId() *string
+	GetAutomation() SmsEventTableRow_automationable
 	GetBillableAmount() *float64
 	GetBillingStatus() *string
 	GetBlockedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1379,6 +1409,7 @@ type SmsEventTableRowable interface {
 	SetActorDisplayName(value *string)
 	SetActorLeadId(value *string)
 	SetActorUserId(value *string)
+	SetAutomation(value SmsEventTableRow_automationable)
 	SetBillableAmount(value *float64)
 	SetBillingStatus(value *string)
 	SetBlockedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
