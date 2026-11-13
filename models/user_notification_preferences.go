@@ -12,6 +12,14 @@ import (
 type UserNotificationPreferences struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Email the assigned agent when a callback is due.
+	appointmentReminderEmailEnabled *bool
+	// Send push notifications for due callback appointments.
+	appointmentReminderEnabled *bool
+	// Show callback reminder dialogs in the Portal.
+	appointmentReminderInAppEnabled *bool
+	// Text the assigned agent when a callback is due, subject to SMS consent.
+	appointmentReminderSmsEnabled *bool
 	// Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 	automationFailedEmailEnabled *bool
 	// Whether automation failed notifications are enabled for this user notification preferences.
@@ -44,10 +52,12 @@ type UserNotificationPreferences struct {
 	paymentFailedEnabled *bool
 	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 	paymentFailedSmsEnabled *bool
-	// Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+	// Whether notification delivery respects the user's daily quiet hours.
 	quietHoursEnabled *bool
 	// The exclusive local end of daily quiet hours.
 	quietHoursEnd *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	// Queue notifications until quiet hours end; when false, skip their external delivery.
+	quietHoursQueueEnabled *bool
 	// The inclusive local start of daily quiet hours.
 	quietHoursStart *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
 	// The time zone used for quiet hours, including daylight saving changes.
@@ -95,6 +105,30 @@ func (m *UserNotificationPreferences) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetAppointmentReminderEmailEnabled gets the appointmentReminderEmailEnabled property value. Email the assigned agent when a callback is due.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetAppointmentReminderEmailEnabled() *bool {
+	return m.appointmentReminderEmailEnabled
+}
+
+// GetAppointmentReminderEnabled gets the appointmentReminderEnabled property value. Send push notifications for due callback appointments.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetAppointmentReminderEnabled() *bool {
+	return m.appointmentReminderEnabled
+}
+
+// GetAppointmentReminderInAppEnabled gets the appointmentReminderInAppEnabled property value. Show callback reminder dialogs in the Portal.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetAppointmentReminderInAppEnabled() *bool {
+	return m.appointmentReminderInAppEnabled
+}
+
+// GetAppointmentReminderSmsEnabled gets the appointmentReminderSmsEnabled property value. Text the assigned agent when a callback is due, subject to SMS consent.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetAppointmentReminderSmsEnabled() *bool {
+	return m.appointmentReminderSmsEnabled
+}
+
 // GetAutomationFailedEmailEnabled gets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetAutomationFailedEmailEnabled() *bool {
@@ -129,6 +163,46 @@ func (m *UserNotificationPreferences) GetBillingSmsEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["appointmentReminderEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentReminderEmailEnabled(val)
+		}
+		return nil
+	}
+	res["appointmentReminderEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentReminderEnabled(val)
+		}
+		return nil
+	}
+	res["appointmentReminderInAppEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentReminderInAppEnabled(val)
+		}
+		return nil
+	}
+	res["appointmentReminderSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAppointmentReminderSmsEnabled(val)
+		}
+		return nil
+	}
 	res["automationFailedEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -306,6 +380,16 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		if val != nil {
 			m.SetQuietHoursEnd(val)
+		}
+		return nil
+	}
+	res["quietHoursQueueEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetQuietHoursQueueEnabled(val)
 		}
 		return nil
 	}
@@ -508,7 +592,7 @@ func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
 	return m.paymentFailedSmsEnabled
 }
 
-// GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+// GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetQuietHoursEnabled() *bool {
 	return m.quietHoursEnabled
@@ -518,6 +602,12 @@ func (m *UserNotificationPreferences) GetQuietHoursEnabled() *bool {
 // returns a *TimeOnly when successful
 func (m *UserNotificationPreferences) GetQuietHoursEnd() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly {
 	return m.quietHoursEnd
+}
+
+// GetQuietHoursQueueEnabled gets the quietHoursQueueEnabled property value. Queue notifications until quiet hours end; when false, skip their external delivery.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetQuietHoursQueueEnabled() *bool {
+	return m.quietHoursQueueEnabled
 }
 
 // GetQuietHoursStart gets the quietHoursStart property value. The inclusive local start of daily quiet hours.
@@ -600,6 +690,30 @@ func (m *UserNotificationPreferences) GetUsageLimitHitEnabled() *bool {
 
 // Serialize serializes information the current object
 func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteBoolValue("appointmentReminderEmailEnabled", m.GetAppointmentReminderEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("appointmentReminderEnabled", m.GetAppointmentReminderEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("appointmentReminderInAppEnabled", m.GetAppointmentReminderInAppEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("appointmentReminderSmsEnabled", m.GetAppointmentReminderSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteBoolValue("automationFailedEmailEnabled", m.GetAutomationFailedEmailEnabled())
 		if err != nil {
@@ -709,6 +823,12 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("quietHoursQueueEnabled", m.GetQuietHoursQueueEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeOnlyValue("quietHoursStart", m.GetQuietHoursStart())
 		if err != nil {
 			return err
@@ -800,6 +920,26 @@ func (m *UserNotificationPreferences) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAppointmentReminderEmailEnabled sets the appointmentReminderEmailEnabled property value. Email the assigned agent when a callback is due.
+func (m *UserNotificationPreferences) SetAppointmentReminderEmailEnabled(value *bool) {
+	m.appointmentReminderEmailEnabled = value
+}
+
+// SetAppointmentReminderEnabled sets the appointmentReminderEnabled property value. Send push notifications for due callback appointments.
+func (m *UserNotificationPreferences) SetAppointmentReminderEnabled(value *bool) {
+	m.appointmentReminderEnabled = value
+}
+
+// SetAppointmentReminderInAppEnabled sets the appointmentReminderInAppEnabled property value. Show callback reminder dialogs in the Portal.
+func (m *UserNotificationPreferences) SetAppointmentReminderInAppEnabled(value *bool) {
+	m.appointmentReminderInAppEnabled = value
+}
+
+// SetAppointmentReminderSmsEnabled sets the appointmentReminderSmsEnabled property value. Text the assigned agent when a callback is due, subject to SMS consent.
+func (m *UserNotificationPreferences) SetAppointmentReminderSmsEnabled(value *bool) {
+	m.appointmentReminderSmsEnabled = value
+}
+
 // SetAutomationFailedEmailEnabled sets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetAutomationFailedEmailEnabled(value *bool) {
 	m.automationFailedEmailEnabled = value
@@ -880,7 +1020,7 @@ func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
 	m.paymentFailedSmsEnabled = value
 }
 
-// SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+// SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
 func (m *UserNotificationPreferences) SetQuietHoursEnabled(value *bool) {
 	m.quietHoursEnabled = value
 }
@@ -888,6 +1028,11 @@ func (m *UserNotificationPreferences) SetQuietHoursEnabled(value *bool) {
 // SetQuietHoursEnd sets the quietHoursEnd property value. The exclusive local end of daily quiet hours.
 func (m *UserNotificationPreferences) SetQuietHoursEnd(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly) {
 	m.quietHoursEnd = value
+}
+
+// SetQuietHoursQueueEnabled sets the quietHoursQueueEnabled property value. Queue notifications until quiet hours end; when false, skip their external delivery.
+func (m *UserNotificationPreferences) SetQuietHoursQueueEnabled(value *bool) {
+	m.quietHoursQueueEnabled = value
 }
 
 // SetQuietHoursStart sets the quietHoursStart property value. The inclusive local start of daily quiet hours.
@@ -958,6 +1103,10 @@ func (m *UserNotificationPreferences) SetUsageLimitHitEnabled(value *bool) {
 type UserNotificationPreferencesable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAppointmentReminderEmailEnabled() *bool
+	GetAppointmentReminderEnabled() *bool
+	GetAppointmentReminderInAppEnabled() *bool
+	GetAppointmentReminderSmsEnabled() *bool
 	GetAutomationFailedEmailEnabled() *bool
 	GetAutomationFailedEnabled() *bool
 	GetAutomationFailedSmsEnabled() *bool
@@ -976,6 +1125,7 @@ type UserNotificationPreferencesable interface {
 	GetPaymentFailedSmsEnabled() *bool
 	GetQuietHoursEnabled() *bool
 	GetQuietHoursEnd() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
+	GetQuietHoursQueueEnabled() *bool
 	GetQuietHoursStart() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
 	GetQuietHoursTimeZoneId() *string
 	GetSmsConsentCertificate() UserNotificationPreferences_smsConsentCertificateable
@@ -989,6 +1139,10 @@ type UserNotificationPreferencesable interface {
 	GetUnreadSmsEnabled() *bool
 	GetUnreadSmsSmsEnabled() *bool
 	GetUsageLimitHitEnabled() *bool
+	SetAppointmentReminderEmailEnabled(value *bool)
+	SetAppointmentReminderEnabled(value *bool)
+	SetAppointmentReminderInAppEnabled(value *bool)
+	SetAppointmentReminderSmsEnabled(value *bool)
 	SetAutomationFailedEmailEnabled(value *bool)
 	SetAutomationFailedEnabled(value *bool)
 	SetAutomationFailedSmsEnabled(value *bool)
@@ -1007,6 +1161,7 @@ type UserNotificationPreferencesable interface {
 	SetPaymentFailedSmsEnabled(value *bool)
 	SetQuietHoursEnabled(value *bool)
 	SetQuietHoursEnd(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly)
+	SetQuietHoursQueueEnabled(value *bool)
 	SetQuietHoursStart(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly)
 	SetQuietHoursTimeZoneId(value *string)
 	SetSmsConsentCertificate(value UserNotificationPreferences_smsConsentCertificateable)

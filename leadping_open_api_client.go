@@ -6,6 +6,7 @@ package leadpinggo
 import (
 	i699f352318a473bc617588d97ab30767f5ffb4fd2e5f088a90d724322d24babe "github.com/leadpingai/leadping-go/a2a"
 	i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b "github.com/leadpingai/leadping-go/analytics"
+	ica2494096ef8b36f391a14371544bfd132d8266b25927b78c4162ff6d2533f3c "github.com/leadpingai/leadping-go/appointments"
 	idb8b0f4f4cfddf777b5e5fb0e5c9d849bc8f165e58d64bf0ff29fbcc3e6e14b7 "github.com/leadpingai/leadping-go/automations"
 	i355f78d99fd780a1320e12f45bc7001c58c125ecb170cac7b4a22c5a0dc27ad3 "github.com/leadpingai/leadping-go/blog"
 	i2447f44aa8bd7a202c2fca1a089be26665d4610f257cf170157de636252b41c7 "github.com/leadpingai/leadping-go/conversations"
@@ -54,6 +55,12 @@ func (m *LeadpingOpenApiClient) A2a() *i699f352318a473bc617588d97ab30767f5ffb4fd
 // returns a *AnalyticsRequestBuilder when successful
 func (m *LeadpingOpenApiClient) Analytics() *i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.AnalyticsRequestBuilder {
 	return i34516b56a10fcbbab4a4a54729850b2a71d73f44b31f8c5f4c1f75f948167d5b.NewAnalyticsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// Appointments the appointments property
+// returns a *AppointmentsRequestBuilder when successful
+func (m *LeadpingOpenApiClient) Appointments() *ica2494096ef8b36f391a14371544bfd132d8266b25927b78c4162ff6d2533f3c.AppointmentsRequestBuilder {
+	return ica2494096ef8b36f391a14371544bfd132d8266b25927b78c4162ff6d2533f3c.NewAppointmentsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // Automations the automations property

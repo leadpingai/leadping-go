@@ -15,6 +15,7 @@ const (
 	NOTE_EVENTTIMELINETYPE
 	LEADSTATUSCHANGE_EVENTTIMELINETYPE
 	LEADCREATED_EVENTTIMELINETYPE
+	APPOINTMENT_EVENTTIMELINETYPE
 	LEADUPDATED_EVENTTIMELINETYPE
 	NOTIFICATION_EVENTTIMELINETYPE
 	PAYMENT_EVENTTIMELINETYPE
@@ -22,7 +23,7 @@ const (
 )
 
 func (i EventTimelineType) String() string {
-	return []string{"Message", "Sms", "Mms", "Call", "Voicemail", "Note", "LeadStatusChange", "LeadCreated", "LeadUpdated", "Notification", "Payment", "Warmup"}[i]
+	return []string{"Message", "Sms", "Mms", "Call", "Voicemail", "Note", "LeadStatusChange", "LeadCreated", "Appointment", "LeadUpdated", "Notification", "Payment", "Warmup"}[i]
 }
 
 func ParseEventTimelineType(v string) (any, error) {
@@ -44,6 +45,8 @@ func ParseEventTimelineType(v string) (any, error) {
 		result = LEADSTATUSCHANGE_EVENTTIMELINETYPE
 	case "LeadCreated":
 		result = LEADCREATED_EVENTTIMELINETYPE
+	case "Appointment":
+		result = APPOINTMENT_EVENTTIMELINETYPE
 	case "LeadUpdated":
 		result = LEADUPDATED_EVENTTIMELINETYPE
 	case "Notification":
