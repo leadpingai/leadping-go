@@ -18,6 +18,10 @@ type OrganizationResponse struct {
 	additionalData map[string]any
 	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 	address OrganizationResponse_addressable
+	// Restores the previous status after the last upcoming appointment completes or becomes overdue.
+	automaticallyClearAppointmentSet *bool
+	// Sets the lead to Appointment set when an appointment is created.
+	automaticallyMarkAppointmentSet *bool
 	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 	automaticallyMarkLeadsCalled *bool
 	// Wallet refill amount charged when automatic refill is triggered.
@@ -123,6 +127,18 @@ func (m *OrganizationResponse) GetAdditionalData() map[string]any {
 // returns a OrganizationResponse_addressable when successful
 func (m *OrganizationResponse) GetAddress() OrganizationResponse_addressable {
 	return m.address
+}
+
+// GetAutomaticallyClearAppointmentSet gets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+// returns a *bool when successful
+func (m *OrganizationResponse) GetAutomaticallyClearAppointmentSet() *bool {
+	return m.automaticallyClearAppointmentSet
+}
+
+// GetAutomaticallyMarkAppointmentSet gets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+// returns a *bool when successful
+func (m *OrganizationResponse) GetAutomaticallyMarkAppointmentSet() *bool {
+	return m.automaticallyMarkAppointmentSet
 }
 
 // GetAutomaticallyMarkLeadsCalled gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
@@ -264,6 +280,26 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetAddress(val.(OrganizationResponse_addressable))
+		}
+		return nil
+	}
+	res["automaticallyClearAppointmentSet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyClearAppointmentSet(val)
+		}
+		return nil
+	}
+	res["automaticallyMarkAppointmentSet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkAppointmentSet(val)
 		}
 		return nil
 	}
@@ -733,6 +769,18 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyClearAppointmentSet", m.GetAutomaticallyClearAppointmentSet())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automaticallyMarkAppointmentSet", m.GetAutomaticallyMarkAppointmentSet())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("automaticallyMarkLeadsCalled", m.GetAutomaticallyMarkLeadsCalled())
 		if err != nil {
 			return err
@@ -976,6 +1024,16 @@ func (m *OrganizationResponse) SetAddress(value OrganizationResponse_addressable
 	m.address = value
 }
 
+// SetAutomaticallyClearAppointmentSet sets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+func (m *OrganizationResponse) SetAutomaticallyClearAppointmentSet(value *bool) {
+	m.automaticallyClearAppointmentSet = value
+}
+
+// SetAutomaticallyMarkAppointmentSet sets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+func (m *OrganizationResponse) SetAutomaticallyMarkAppointmentSet(value *bool) {
+	m.automaticallyMarkAppointmentSet = value
+}
+
 // SetAutomaticallyMarkLeadsCalled sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 func (m *OrganizationResponse) SetAutomaticallyMarkLeadsCalled(value *bool) {
 	m.automaticallyMarkLeadsCalled = value
@@ -1152,6 +1210,8 @@ type OrganizationResponseable interface {
 	GetAccountBalance() *float64
 	GetActivation() OrganizationResponse_activationable
 	GetAddress() OrganizationResponse_addressable
+	GetAutomaticallyClearAppointmentSet() *bool
+	GetAutomaticallyMarkAppointmentSet() *bool
 	GetAutomaticallyMarkLeadsCalled() *bool
 	GetAutoRefillAmount() *float64
 	GetAutoRefillEnabled() *bool
@@ -1189,6 +1249,8 @@ type OrganizationResponseable interface {
 	SetAccountBalance(value *float64)
 	SetActivation(value OrganizationResponse_activationable)
 	SetAddress(value OrganizationResponse_addressable)
+	SetAutomaticallyClearAppointmentSet(value *bool)
+	SetAutomaticallyMarkAppointmentSet(value *bool)
 	SetAutomaticallyMarkLeadsCalled(value *bool)
 	SetAutoRefillAmount(value *float64)
 	SetAutoRefillEnabled(value *bool)

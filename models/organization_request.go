@@ -13,6 +13,10 @@ type OrganizationRequest struct {
 	additionalData map[string]any
 	// Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 	address OrganizationRequest_addressable
+	// Restores the previous status after the last upcoming appointment completes or becomes overdue.
+	automaticallyClearAppointmentSet *bool
+	// Sets the lead to Appointment set when an appointment is created.
+	automaticallyMarkAppointmentSet *bool
 	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 	automaticallyMarkLeadsCalled *bool
 	// Destination status for outbound call attempts. Null uses the built-in Called status.
@@ -66,6 +70,18 @@ func (m *OrganizationRequest) GetAddress() OrganizationRequest_addressable {
 	return m.address
 }
 
+// GetAutomaticallyClearAppointmentSet gets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+// returns a *bool when successful
+func (m *OrganizationRequest) GetAutomaticallyClearAppointmentSet() *bool {
+	return m.automaticallyClearAppointmentSet
+}
+
+// GetAutomaticallyMarkAppointmentSet gets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+// returns a *bool when successful
+func (m *OrganizationRequest) GetAutomaticallyMarkAppointmentSet() *bool {
+	return m.automaticallyMarkAppointmentSet
+}
+
 // GetAutomaticallyMarkLeadsCalled gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 // returns a *bool when successful
 func (m *OrganizationRequest) GetAutomaticallyMarkLeadsCalled() *bool {
@@ -101,6 +117,26 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetAddress(val.(OrganizationRequest_addressable))
+		}
+		return nil
+	}
+	res["automaticallyClearAppointmentSet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyClearAppointmentSet(val)
+		}
+		return nil
+	}
+	res["automaticallyMarkAppointmentSet"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkAppointmentSet(val)
 		}
 		return nil
 	}
@@ -300,6 +336,18 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyClearAppointmentSet", m.GetAutomaticallyClearAppointmentSet())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("automaticallyMarkAppointmentSet", m.GetAutomaticallyMarkAppointmentSet())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("automaticallyMarkLeadsCalled", m.GetAutomaticallyMarkLeadsCalled())
 		if err != nil {
 			return err
@@ -396,6 +444,16 @@ func (m *OrganizationRequest) SetAddress(value OrganizationRequest_addressable) 
 	m.address = value
 }
 
+// SetAutomaticallyClearAppointmentSet sets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+func (m *OrganizationRequest) SetAutomaticallyClearAppointmentSet(value *bool) {
+	m.automaticallyClearAppointmentSet = value
+}
+
+// SetAutomaticallyMarkAppointmentSet sets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+func (m *OrganizationRequest) SetAutomaticallyMarkAppointmentSet(value *bool) {
+	m.automaticallyMarkAppointmentSet = value
+}
+
 // SetAutomaticallyMarkLeadsCalled sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 func (m *OrganizationRequest) SetAutomaticallyMarkLeadsCalled(value *bool) {
 	m.automaticallyMarkLeadsCalled = value
@@ -465,6 +523,8 @@ type OrganizationRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetAddress() OrganizationRequest_addressable
+	GetAutomaticallyClearAppointmentSet() *bool
+	GetAutomaticallyMarkAppointmentSet() *bool
 	GetAutomaticallyMarkLeadsCalled() *bool
 	GetCalledLeadStatusId() *string
 	GetDescription() *string
@@ -479,6 +539,8 @@ type OrganizationRequestable interface {
 	GetVertical() *string
 	GetWebsite() *string
 	SetAddress(value OrganizationRequest_addressable)
+	SetAutomaticallyClearAppointmentSet(value *bool)
+	SetAutomaticallyMarkAppointmentSet(value *bool)
 	SetAutomaticallyMarkLeadsCalled(value *bool)
 	SetCalledLeadStatusId(value *string)
 	SetDescription(value *string)
