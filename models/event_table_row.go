@@ -34,6 +34,8 @@ type EventTableRow struct {
 	canceledAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Reason this delivery, run, or request was canceled.
 	cancelReason *string
+	// Whether the current user authored this editable note.
+	canEditNote *bool
 	// Compliance action applied to this message, lead, or sender.
 	complianceAction *string
 	// Conversation ID that links this event timeline table row to the Leadping inbox thread.
@@ -72,6 +74,8 @@ type EventTableRow struct {
 	media []MessageMediaAttachmentable
 	// UTC timestamp when Leadping will retry this event timeline table row.
 	nextRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Whether the note has been edited.
+	noteEdited *bool
 	// Phone number ID selected for outbound delivery.
 	outboundPhoneNumberId *string
 	// UTC timestamp when Leadping queued this event timeline table row for processing.
@@ -203,6 +207,12 @@ func (m *EventTableRow) GetCanceledAt() *i336074805fc853987abe6f7fe3ad97a6a6f307
 // returns a *string when successful
 func (m *EventTableRow) GetCancelReason() *string {
 	return m.cancelReason
+}
+
+// GetCanEditNote gets the canEditNote property value. Whether the current user authored this editable note.
+// returns a *bool when successful
+func (m *EventTableRow) GetCanEditNote() *bool {
+	return m.canEditNote
 }
 
 // GetComplianceAction gets the complianceAction property value. Compliance action applied to this message, lead, or sender.
@@ -388,6 +398,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetCancelReason(val)
+		}
+		return nil
+	}
+	res["canEditNote"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanEditNote(val)
 		}
 		return nil
 	}
@@ -584,6 +604,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetNextRetryAt(val)
+		}
+		return nil
+	}
+	res["noteEdited"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNoteEdited(val)
 		}
 		return nil
 	}
@@ -868,6 +898,12 @@ func (m *EventTableRow) GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f30
 	return m.nextRetryAt
 }
 
+// GetNoteEdited gets the noteEdited property value. Whether the note has been edited.
+// returns a *bool when successful
+func (m *EventTableRow) GetNoteEdited() *bool {
+	return m.noteEdited
+}
+
 // GetOutboundPhoneNumberId gets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
 // returns a *string when successful
 func (m *EventTableRow) GetOutboundPhoneNumberId() *string {
@@ -1075,6 +1111,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteBoolValue("canEditNote", m.GetCanEditNote())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("complianceAction", m.GetComplianceAction())
 		if err != nil {
 			return err
@@ -1190,6 +1232,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 	}
 	{
 		err := writer.WriteTimeValue("nextRetryAt", m.GetNextRetryAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("noteEdited", m.GetNoteEdited())
 		if err != nil {
 			return err
 		}
@@ -1411,6 +1459,11 @@ func (m *EventTableRow) SetCancelReason(value *string) {
 	m.cancelReason = value
 }
 
+// SetCanEditNote sets the canEditNote property value. Whether the current user authored this editable note.
+func (m *EventTableRow) SetCanEditNote(value *bool) {
+	m.canEditNote = value
+}
+
 // SetComplianceAction sets the complianceAction property value. Compliance action applied to this message, lead, or sender.
 func (m *EventTableRow) SetComplianceAction(value *string) {
 	m.complianceAction = value
@@ -1504,6 +1557,11 @@ func (m *EventTableRow) SetMedia(value []MessageMediaAttachmentable) {
 // SetNextRetryAt sets the nextRetryAt property value. UTC timestamp when Leadping will retry this event timeline table row.
 func (m *EventTableRow) SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.nextRetryAt = value
+}
+
+// SetNoteEdited sets the noteEdited property value. Whether the note has been edited.
+func (m *EventTableRow) SetNoteEdited(value *bool) {
+	m.noteEdited = value
 }
 
 // SetOutboundPhoneNumberId sets the outboundPhoneNumberId property value. Phone number ID selected for outbound delivery.
@@ -1635,6 +1693,7 @@ type EventTableRowable interface {
 	GetCampaignId() *string
 	GetCanceledAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCancelReason() *string
+	GetCanEditNote() *bool
 	GetComplianceAction() *string
 	GetConversationId() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1654,6 +1713,7 @@ type EventTableRowable interface {
 	GetLeadId() *string
 	GetMedia() []MessageMediaAttachmentable
 	GetNextRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetNoteEdited() *bool
 	GetOutboundPhoneNumberId() *string
 	GetQueuedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetReceivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1688,6 +1748,7 @@ type EventTableRowable interface {
 	SetCampaignId(value *string)
 	SetCanceledAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCancelReason(value *string)
+	SetCanEditNote(value *bool)
 	SetComplianceAction(value *string)
 	SetConversationId(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1707,6 +1768,7 @@ type EventTableRowable interface {
 	SetLeadId(value *string)
 	SetMedia(value []MessageMediaAttachmentable)
 	SetNextRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetNoteEdited(value *bool)
 	SetOutboundPhoneNumberId(value *string)
 	SetQueuedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetReceivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

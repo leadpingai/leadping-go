@@ -14,6 +14,19 @@ type ConversationsItemNotesRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// ByEventId gets an item from the github.com/leadpingai/leadping-go.events.conversations.item.notes.item collection
+// returns a *ConversationsItemNotesWithEventItemRequestBuilder when successful
+func (m *ConversationsItemNotesRequestBuilder) ByEventId(eventId string) *ConversationsItemNotesWithEventItemRequestBuilder {
+	urlTplParams := make(map[string]string)
+	for idx, item := range m.BaseRequestBuilder.PathParameters {
+		urlTplParams[idx] = item
+	}
+	if eventId != "" {
+		urlTplParams["eventId"] = eventId
+	}
+	return NewConversationsItemNotesWithEventItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // NewConversationsItemNotesRequestBuilderInternal instantiates a new ConversationsItemNotesRequestBuilder and sets the default values.
 func NewConversationsItemNotesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsItemNotesRequestBuilder {
 	m := &ConversationsItemNotesRequestBuilder{
