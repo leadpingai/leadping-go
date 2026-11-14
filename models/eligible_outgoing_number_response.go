@@ -37,6 +37,8 @@ type EligibleOutgoingNumberResponse struct {
 	selectionReason *OutgoingNumberSelectionReason
 	// Lead source ID used to determine this phone number's outbound eligibility.
 	sourceId *string
+	// Geographic state or region associated with the phone number.
+	state *string
 	// Organization ID used to determine this phone number's outbound eligibility.
 	teamId *string
 }
@@ -212,6 +214,16 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func
 		}
 		return nil
 	}
+	res["state"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetState(val)
+		}
+		return nil
+	}
 	res["teamId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -283,6 +295,12 @@ func (m *EligibleOutgoingNumberResponse) GetSelectionReason() *OutgoingNumberSel
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetSourceId() *string {
 	return m.sourceId
+}
+
+// GetState gets the state property value. Geographic state or region associated with the phone number.
+// returns a *string when successful
+func (m *EligibleOutgoingNumberResponse) GetState() *string {
+	return m.state
 }
 
 // GetTeamId gets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
@@ -374,6 +392,12 @@ func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d268963
 		}
 	}
 	{
+		err := writer.WriteStringValue("state", m.GetState())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("teamId", m.GetTeamId())
 		if err != nil {
 			return err
@@ -458,6 +482,11 @@ func (m *EligibleOutgoingNumberResponse) SetSourceId(value *string) {
 	m.sourceId = value
 }
 
+// SetState sets the state property value. Geographic state or region associated with the phone number.
+func (m *EligibleOutgoingNumberResponse) SetState(value *string) {
+	m.state = value
+}
+
 // SetTeamId sets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
 func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string) {
 	m.teamId = value
@@ -479,6 +508,7 @@ type EligibleOutgoingNumberResponseable interface {
 	GetReasonLabel() *string
 	GetSelectionReason() *OutgoingNumberSelectionReason
 	GetSourceId() *string
+	GetState() *string
 	GetTeamId() *string
 	SetCampaignId(value *string)
 	SetCanSend(value *bool)
@@ -493,5 +523,6 @@ type EligibleOutgoingNumberResponseable interface {
 	SetReasonLabel(value *string)
 	SetSelectionReason(value *OutgoingNumberSelectionReason)
 	SetSourceId(value *string)
+	SetState(value *string)
 	SetTeamId(value *string)
 }
