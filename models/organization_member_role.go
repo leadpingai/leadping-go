@@ -7,18 +7,21 @@ package models
 type OrganizationMemberRole int
 
 const (
-	OWNER_ORGANIZATIONMEMBERROLE OrganizationMemberRole = iota
+	ACCOUNTADMIN_ORGANIZATIONMEMBERROLE OrganizationMemberRole = iota
+	OWNER_ORGANIZATIONMEMBERROLE
 	ADMIN_ORGANIZATIONMEMBERROLE
 	AGENT_ORGANIZATIONMEMBERROLE
 )
 
 func (i OrganizationMemberRole) String() string {
-	return []string{"Owner", "Admin", "Agent"}[i]
+	return []string{"Account Admin", "Owner", "Admin", "Agent"}[i]
 }
 
 func ParseOrganizationMemberRole(v string) (any, error) {
-	result := OWNER_ORGANIZATIONMEMBERROLE
+	result := ACCOUNTADMIN_ORGANIZATIONMEMBERROLE
 	switch v {
+	case "Account Admin":
+		result = ACCOUNTADMIN_ORGANIZATIONMEMBERROLE
 	case "Owner":
 		result = OWNER_ORGANIZATIONMEMBERROLE
 	case "Admin":
