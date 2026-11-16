@@ -56,6 +56,8 @@ type LeadTableRow struct {
 	processingStatusChangedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Explanation when asynchronous lead processing is blocked or fails.
 	processingStatusReason *string
+	// Interest expressed in the lead's first inbound text reply, independent of contact consent.
+	sentiment *LeadTableRow_sentiment
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	source LeadTableRow_sourceable
 	// Current lifecycle status for this lead table row in the Leadping API.
@@ -371,6 +373,16 @@ func (m *LeadTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["sentiment"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadTableRow_sentiment)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSentiment(val.(*LeadTableRow_sentiment))
+		}
+		return nil
+	}
 	res["source"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateLeadTableRow_sourceFromDiscriminatorValue)
 		if err != nil {
@@ -500,6 +512,12 @@ func (m *LeadTableRow) GetProcessingStatusChangedAt() *i336074805fc853987abe6f7f
 // returns a *string when successful
 func (m *LeadTableRow) GetProcessingStatusReason() *string {
 	return m.processingStatusReason
+}
+
+// GetSentiment gets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+// returns a *LeadTableRow_sentiment when successful
+func (m *LeadTableRow) GetSentiment() *LeadTableRow_sentiment {
+	return m.sentiment
 }
 
 // GetSource gets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -667,6 +685,13 @@ func (m *LeadTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 			return err
 		}
 	}
+	if m.GetSentiment() != nil {
+		cast := (*m.GetSentiment()).String()
+		err := writer.WriteStringValue("sentiment", &cast)
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteObjectValue("source", m.GetSource())
 		if err != nil {
@@ -827,6 +852,11 @@ func (m *LeadTableRow) SetProcessingStatusReason(value *string) {
 	m.processingStatusReason = value
 }
 
+// SetSentiment sets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+func (m *LeadTableRow) SetSentiment(value *LeadTableRow_sentiment) {
+	m.sentiment = value
+}
+
 // SetSource sets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *LeadTableRow) SetSource(value LeadTableRow_sourceable) {
 	m.source = value
@@ -877,6 +907,7 @@ type LeadTableRowable interface {
 	GetProcessingStatus() *LeadTableRow_processingStatus
 	GetProcessingStatusChangedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetProcessingStatusReason() *string
+	GetSentiment() *LeadTableRow_sentiment
 	GetSource() LeadTableRow_sourceable
 	GetStatus() *string
 	GetStatusTone() *string
@@ -904,6 +935,7 @@ type LeadTableRowable interface {
 	SetProcessingStatus(value *LeadTableRow_processingStatus)
 	SetProcessingStatusChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetProcessingStatusReason(value *string)
+	SetSentiment(value *LeadTableRow_sentiment)
 	SetSource(value LeadTableRow_sourceable)
 	SetStatus(value *string)
 	SetStatusTone(value *string)

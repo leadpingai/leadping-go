@@ -7,7 +7,8 @@ package models
 type NotificationType int
 
 const (
-	APPOINTMENT_NOTIFICATIONTYPE NotificationType = iota
+	POSITIVESENTIMENT_NOTIFICATIONTYPE NotificationType = iota
+	APPOINTMENT_NOTIFICATIONTYPE
 	GENERAL_NOTIFICATIONTYPE
 	LEAD_NOTIFICATIONTYPE
 	CALL_NOTIFICATIONTYPE
@@ -23,12 +24,14 @@ const (
 )
 
 func (i NotificationType) String() string {
-	return []string{"Appointment", "General", "Lead", "Call", "Sms", "Billing", "System", "Success", "Warning", "Error", "Info", "Announcement", "Activation"}[i]
+	return []string{"PositiveSentiment", "Appointment", "General", "Lead", "Call", "Sms", "Billing", "System", "Success", "Warning", "Error", "Info", "Announcement", "Activation"}[i]
 }
 
 func ParseNotificationType(v string) (any, error) {
-	result := APPOINTMENT_NOTIFICATIONTYPE
+	result := POSITIVESENTIMENT_NOTIFICATIONTYPE
 	switch v {
+	case "PositiveSentiment":
+		result = POSITIVESENTIMENT_NOTIFICATIONTYPE
 	case "Appointment":
 		result = APPOINTMENT_NOTIFICATIONTYPE
 	case "General":

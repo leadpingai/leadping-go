@@ -70,6 +70,12 @@ type LeadMetadata struct {
 	referrer *string
 	// Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
 	sellerLeadId *string
+	// Interest expressed in the lead's first inbound text reply, independent of contact consent.
+	sentiment *LeadMetadata_sentiment
+	// Completion time, including a first reply that has no positive or negative sentiment.
+	sentimentAnalyzedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+	sentimentMessageId *string
 	// Phone number where SMS consent was captured or evaluated.
 	smsConsentPhoneNumber *string
 	// Current SMS consent status recorded for this lead.
@@ -511,6 +517,36 @@ func (m *LeadMetadata) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["sentiment"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseLeadMetadata_sentiment)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSentiment(val.(*LeadMetadata_sentiment))
+		}
+		return nil
+	}
+	res["sentimentAnalyzedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSentimentAnalyzedAt(val)
+		}
+		return nil
+	}
+	res["sentimentMessageId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSentimentMessageId(val)
+		}
+		return nil
+	}
 	res["smsConsentPhoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -776,6 +812,24 @@ func (m *LeadMetadata) GetReferrer() *string {
 // returns a *string when successful
 func (m *LeadMetadata) GetSellerLeadId() *string {
 	return m.sellerLeadId
+}
+
+// GetSentiment gets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+// returns a *LeadMetadata_sentiment when successful
+func (m *LeadMetadata) GetSentiment() *LeadMetadata_sentiment {
+	return m.sentiment
+}
+
+// GetSentimentAnalyzedAt gets the sentimentAnalyzedAt property value. Completion time, including a first reply that has no positive or negative sentiment.
+// returns a *Time when successful
+func (m *LeadMetadata) GetSentimentAnalyzedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.sentimentAnalyzedAt
+}
+
+// GetSentimentMessageId gets the sentimentMessageId property value. First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+// returns a *string when successful
+func (m *LeadMetadata) GetSentimentMessageId() *string {
+	return m.sentimentMessageId
 }
 
 // GetSmsConsentPhoneNumber gets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
@@ -1064,6 +1118,25 @@ func (m *LeadMetadata) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 			return err
 		}
 	}
+	if m.GetSentiment() != nil {
+		cast := (*m.GetSentiment()).String()
+		err := writer.WriteStringValue("sentiment", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("sentimentAnalyzedAt", m.GetSentimentAnalyzedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("sentimentMessageId", m.GetSentimentMessageId())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteStringValue("smsConsentPhoneNumber", m.GetSmsConsentPhoneNumber())
 		if err != nil {
@@ -1331,6 +1404,21 @@ func (m *LeadMetadata) SetSellerLeadId(value *string) {
 	m.sellerLeadId = value
 }
 
+// SetSentiment sets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+func (m *LeadMetadata) SetSentiment(value *LeadMetadata_sentiment) {
+	m.sentiment = value
+}
+
+// SetSentimentAnalyzedAt sets the sentimentAnalyzedAt property value. Completion time, including a first reply that has no positive or negative sentiment.
+func (m *LeadMetadata) SetSentimentAnalyzedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.sentimentAnalyzedAt = value
+}
+
+// SetSentimentMessageId sets the sentimentMessageId property value. First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+func (m *LeadMetadata) SetSentimentMessageId(value *string) {
+	m.sentimentMessageId = value
+}
+
 // SetSmsConsentPhoneNumber sets the smsConsentPhoneNumber property value. Phone number where SMS consent was captured or evaluated.
 func (m *LeadMetadata) SetSmsConsentPhoneNumber(value *string) {
 	m.smsConsentPhoneNumber = value
@@ -1453,6 +1541,9 @@ type LeadMetadataable interface {
 	GetPubId() *string
 	GetReferrer() *string
 	GetSellerLeadId() *string
+	GetSentiment() *LeadMetadata_sentiment
+	GetSentimentAnalyzedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetSentimentMessageId() *string
 	GetSmsConsentPhoneNumber() *string
 	GetSmsConsentStatus() *string
 	GetSmsHelpRequestedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1500,6 +1591,9 @@ type LeadMetadataable interface {
 	SetPubId(value *string)
 	SetReferrer(value *string)
 	SetSellerLeadId(value *string)
+	SetSentiment(value *LeadMetadata_sentiment)
+	SetSentimentAnalyzedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetSentimentMessageId(value *string)
 	SetSmsConsentPhoneNumber(value *string)
 	SetSmsConsentStatus(value *string)
 	SetSmsHelpRequestedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)

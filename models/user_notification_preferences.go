@@ -52,6 +52,12 @@ type UserNotificationPreferences struct {
 	paymentFailedEnabled *bool
 	// Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
 	paymentFailedSmsEnabled *bool
+	// Email alerts when a lead's first text reply has positive sentiment.
+	positiveSentimentEmailEnabled *bool
+	// Send push alerts when a lead's first text reply has positive sentiment.
+	positiveSentimentEnabled *bool
+	// Text alerts for positive first replies, subject to notification SMS consent.
+	positiveSentimentSmsEnabled *bool
 	// Whether notification delivery respects the user's daily quiet hours.
 	quietHoursEnabled *bool
 	// The exclusive local end of daily quiet hours.
@@ -363,6 +369,36 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["positiveSentimentEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPositiveSentimentEmailEnabled(val)
+		}
+		return nil
+	}
+	res["positiveSentimentEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPositiveSentimentEnabled(val)
+		}
+		return nil
+	}
+	res["positiveSentimentSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPositiveSentimentSmsEnabled(val)
+		}
+		return nil
+	}
 	res["quietHoursEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -592,6 +628,24 @@ func (m *UserNotificationPreferences) GetPaymentFailedSmsEnabled() *bool {
 	return m.paymentFailedSmsEnabled
 }
 
+// GetPositiveSentimentEmailEnabled gets the positiveSentimentEmailEnabled property value. Email alerts when a lead's first text reply has positive sentiment.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetPositiveSentimentEmailEnabled() *bool {
+	return m.positiveSentimentEmailEnabled
+}
+
+// GetPositiveSentimentEnabled gets the positiveSentimentEnabled property value. Send push alerts when a lead's first text reply has positive sentiment.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetPositiveSentimentEnabled() *bool {
+	return m.positiveSentimentEnabled
+}
+
+// GetPositiveSentimentSmsEnabled gets the positiveSentimentSmsEnabled property value. Text alerts for positive first replies, subject to notification SMS consent.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetPositiveSentimentSmsEnabled() *bool {
+	return m.positiveSentimentSmsEnabled
+}
+
 // GetQuietHoursEnabled gets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetQuietHoursEnabled() *bool {
@@ -811,6 +865,24 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("positiveSentimentEmailEnabled", m.GetPositiveSentimentEmailEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("positiveSentimentEnabled", m.GetPositiveSentimentEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("positiveSentimentSmsEnabled", m.GetPositiveSentimentSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("quietHoursEnabled", m.GetQuietHoursEnabled())
 		if err != nil {
 			return err
@@ -1020,6 +1092,21 @@ func (m *UserNotificationPreferences) SetPaymentFailedSmsEnabled(value *bool) {
 	m.paymentFailedSmsEnabled = value
 }
 
+// SetPositiveSentimentEmailEnabled sets the positiveSentimentEmailEnabled property value. Email alerts when a lead's first text reply has positive sentiment.
+func (m *UserNotificationPreferences) SetPositiveSentimentEmailEnabled(value *bool) {
+	m.positiveSentimentEmailEnabled = value
+}
+
+// SetPositiveSentimentEnabled sets the positiveSentimentEnabled property value. Send push alerts when a lead's first text reply has positive sentiment.
+func (m *UserNotificationPreferences) SetPositiveSentimentEnabled(value *bool) {
+	m.positiveSentimentEnabled = value
+}
+
+// SetPositiveSentimentSmsEnabled sets the positiveSentimentSmsEnabled property value. Text alerts for positive first replies, subject to notification SMS consent.
+func (m *UserNotificationPreferences) SetPositiveSentimentSmsEnabled(value *bool) {
+	m.positiveSentimentSmsEnabled = value
+}
+
 // SetQuietHoursEnabled sets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
 func (m *UserNotificationPreferences) SetQuietHoursEnabled(value *bool) {
 	m.quietHoursEnabled = value
@@ -1123,6 +1210,9 @@ type UserNotificationPreferencesable interface {
 	GetNewLeadSmsEnabled() *bool
 	GetPaymentFailedEnabled() *bool
 	GetPaymentFailedSmsEnabled() *bool
+	GetPositiveSentimentEmailEnabled() *bool
+	GetPositiveSentimentEnabled() *bool
+	GetPositiveSentimentSmsEnabled() *bool
 	GetQuietHoursEnabled() *bool
 	GetQuietHoursEnd() *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly
 	GetQuietHoursQueueEnabled() *bool
@@ -1159,6 +1249,9 @@ type UserNotificationPreferencesable interface {
 	SetNewLeadSmsEnabled(value *bool)
 	SetPaymentFailedEnabled(value *bool)
 	SetPaymentFailedSmsEnabled(value *bool)
+	SetPositiveSentimentEmailEnabled(value *bool)
+	SetPositiveSentimentEnabled(value *bool)
+	SetPositiveSentimentSmsEnabled(value *bool)
 	SetQuietHoursEnabled(value *bool)
 	SetQuietHoursEnd(value *i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.TimeOnly)
 	SetQuietHoursQueueEnabled(value *bool)
