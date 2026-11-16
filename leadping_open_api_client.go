@@ -16,6 +16,7 @@ import (
 	i0d2ac3dfc9fc18cec7ee43a805353b5a39a11157855cd2b8cd48f5df80737bc7 "github.com/leadpingai/leadping-go/leads"
 	ia911e69c25930b614e2519bdecab321e85b773f1706899a445af288f610466b5 "github.com/leadpingai/leadping-go/leadstatuschanges"
 	i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443 "github.com/leadpingai/leadping-go/leadstatuses"
+	if9bb5286a2a407c8ac7aca97b726e8fbd94578071e5b58003d432cf3058a3bcf "github.com/leadpingai/leadping-go/messagetemplates"
 	i3a788f3f87b35ed5c08d3c2854d9b564cc9c1414fec47da0af95a062e7781b49 "github.com/leadpingai/leadping-go/notifications"
 	i70617d7fcbdf009053fb9980b0f5b06df2954483bec7221c2cd5beec79f173ef "github.com/leadpingai/leadping-go/organizations"
 	i27b355d98f0b224eb13f630f35f620f34d5eae315b36e8d5ccb9ea6e20b02cde "github.com/leadpingai/leadping-go/outbound"
@@ -149,6 +150,12 @@ func (m *LeadpingOpenApiClient) LeadStatusChanges() *ia911e69c25930b614e2519bdec
 // returns a *LeadStatusesRequestBuilder when successful
 func (m *LeadpingOpenApiClient) LeadStatuses() *i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.LeadStatusesRequestBuilder {
 	return i24c67ea8c73b4fa413df95e940f21369994ea5d8dee02e49c9b7c189c23e0443.NewLeadStatusesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// MessageTemplates the messageTemplates property
+// returns a *MessageTemplatesRequestBuilder when successful
+func (m *LeadpingOpenApiClient) MessageTemplates() *if9bb5286a2a407c8ac7aca97b726e8fbd94578071e5b58003d432cf3058a3bcf.MessageTemplatesRequestBuilder {
+	return if9bb5286a2a407c8ac7aca97b726e8fbd94578071e5b58003d432cf3058a3bcf.NewMessageTemplatesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // Notifications the notifications property
