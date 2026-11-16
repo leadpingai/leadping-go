@@ -11,10 +11,16 @@ import (
 type EligibleOutgoingNumberResponse struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Explains why outbound calls are unavailable for this sender.
+	callUnavailableReason *string
 	// Messaging campaign identifier associated with this eligible outgoing phone number.
 	campaignId *string
+	// Whether this sender is ready for outbound calls.
+	canCall *bool
 	// Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 	canSend *bool
+	// Whether this sender is ready for outbound texts.
+	canText *bool
 	// Human-readable phone number shown in Leadping UI and API responses.
 	displayNumber *string
 	// Short label describing the health state for display in dashboards.
@@ -41,6 +47,8 @@ type EligibleOutgoingNumberResponse struct {
 	state *string
 	// Organization ID used to determine this phone number's outbound eligibility.
 	teamId *string
+	// Explains why outbound texts are unavailable for this sender.
+	textUnavailableReason *string
 }
 
 // NewEligibleOutgoingNumberResponse instantiates a new EligibleOutgoingNumberResponse and sets the default values.
@@ -62,16 +70,34 @@ func (m *EligibleOutgoingNumberResponse) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCallUnavailableReason gets the callUnavailableReason property value. Explains why outbound calls are unavailable for this sender.
+// returns a *string when successful
+func (m *EligibleOutgoingNumberResponse) GetCallUnavailableReason() *string {
+	return m.callUnavailableReason
+}
+
 // GetCampaignId gets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
 // returns a *string when successful
 func (m *EligibleOutgoingNumberResponse) GetCampaignId() *string {
 	return m.campaignId
 }
 
+// GetCanCall gets the canCall property value. Whether this sender is ready for outbound calls.
+// returns a *bool when successful
+func (m *EligibleOutgoingNumberResponse) GetCanCall() *bool {
+	return m.canCall
+}
+
 // GetCanSend gets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 // returns a *bool when successful
 func (m *EligibleOutgoingNumberResponse) GetCanSend() *bool {
 	return m.canSend
+}
+
+// GetCanText gets the canText property value. Whether this sender is ready for outbound texts.
+// returns a *bool when successful
+func (m *EligibleOutgoingNumberResponse) GetCanText() *bool {
+	return m.canText
 }
 
 // GetDisplayNumber gets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
@@ -84,6 +110,16 @@ func (m *EligibleOutgoingNumberResponse) GetDisplayNumber() *string {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callUnavailableReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallUnavailableReason(val)
+		}
+		return nil
+	}
 	res["campaignId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -94,6 +130,16 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func
 		}
 		return nil
 	}
+	res["canCall"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanCall(val)
+		}
+		return nil
+	}
 	res["canSend"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -101,6 +147,16 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func
 		}
 		if val != nil {
 			m.SetCanSend(val)
+		}
+		return nil
+	}
+	res["canText"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanText(val)
 		}
 		return nil
 	}
@@ -234,6 +290,16 @@ func (m *EligibleOutgoingNumberResponse) GetFieldDeserializers() map[string]func
 		}
 		return nil
 	}
+	res["textUnavailableReason"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTextUnavailableReason(val)
+		}
+		return nil
+	}
 	return res
 }
 
@@ -309,8 +375,20 @@ func (m *EligibleOutgoingNumberResponse) GetTeamId() *string {
 	return m.teamId
 }
 
+// GetTextUnavailableReason gets the textUnavailableReason property value. Explains why outbound texts are unavailable for this sender.
+// returns a *string when successful
+func (m *EligibleOutgoingNumberResponse) GetTextUnavailableReason() *string {
+	return m.textUnavailableReason
+}
+
 // Serialize serializes information the current object
 func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("callUnavailableReason", m.GetCallUnavailableReason())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteStringValue("campaignId", m.GetCampaignId())
 		if err != nil {
@@ -318,7 +396,19 @@ func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d268963
 		}
 	}
 	{
+		err := writer.WriteBoolValue("canCall", m.GetCanCall())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("canSend", m.GetCanSend())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("canText", m.GetCanText())
 		if err != nil {
 			return err
 		}
@@ -404,6 +494,12 @@ func (m *EligibleOutgoingNumberResponse) Serialize(writer i878a80d2330e89d268963
 		}
 	}
 	{
+		err := writer.WriteStringValue("textUnavailableReason", m.GetTextUnavailableReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteAdditionalData(m.GetAdditionalData())
 		if err != nil {
 			return err
@@ -417,14 +513,29 @@ func (m *EligibleOutgoingNumberResponse) SetAdditionalData(value map[string]any)
 	m.additionalData = value
 }
 
+// SetCallUnavailableReason sets the callUnavailableReason property value. Explains why outbound calls are unavailable for this sender.
+func (m *EligibleOutgoingNumberResponse) SetCallUnavailableReason(value *string) {
+	m.callUnavailableReason = value
+}
+
 // SetCampaignId sets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetCampaignId(value *string) {
 	m.campaignId = value
 }
 
+// SetCanCall sets the canCall property value. Whether this sender is ready for outbound calls.
+func (m *EligibleOutgoingNumberResponse) SetCanCall(value *bool) {
+	m.canCall = value
+}
+
 // SetCanSend sets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
 func (m *EligibleOutgoingNumberResponse) SetCanSend(value *bool) {
 	m.canSend = value
+}
+
+// SetCanText sets the canText property value. Whether this sender is ready for outbound texts.
+func (m *EligibleOutgoingNumberResponse) SetCanText(value *bool) {
+	m.canText = value
 }
 
 // SetDisplayNumber sets the displayNumber property value. Human-readable phone number shown in Leadping UI and API responses.
@@ -492,11 +603,19 @@ func (m *EligibleOutgoingNumberResponse) SetTeamId(value *string) {
 	m.teamId = value
 }
 
+// SetTextUnavailableReason sets the textUnavailableReason property value. Explains why outbound texts are unavailable for this sender.
+func (m *EligibleOutgoingNumberResponse) SetTextUnavailableReason(value *string) {
+	m.textUnavailableReason = value
+}
+
 type EligibleOutgoingNumberResponseable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallUnavailableReason() *string
 	GetCampaignId() *string
+	GetCanCall() *bool
 	GetCanSend() *bool
+	GetCanText() *bool
 	GetDisplayNumber() *string
 	GetHealthLabel() *string
 	GetHealthStatus() *EligibleOutgoingNumberResponse_healthStatus
@@ -510,8 +629,12 @@ type EligibleOutgoingNumberResponseable interface {
 	GetSourceId() *string
 	GetState() *string
 	GetTeamId() *string
+	GetTextUnavailableReason() *string
+	SetCallUnavailableReason(value *string)
 	SetCampaignId(value *string)
+	SetCanCall(value *bool)
 	SetCanSend(value *bool)
+	SetCanText(value *bool)
 	SetDisplayNumber(value *string)
 	SetHealthLabel(value *string)
 	SetHealthStatus(value *EligibleOutgoingNumberResponse_healthStatus)
@@ -525,4 +648,5 @@ type EligibleOutgoingNumberResponseable interface {
 	SetSourceId(value *string)
 	SetState(value *string)
 	SetTeamId(value *string)
+	SetTextUnavailableReason(value *string)
 }
