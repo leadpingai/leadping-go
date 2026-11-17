@@ -5,6 +5,7 @@ package models
 
 import (
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // PhoneNumberLocation public Leadping API schema for phone number location data.
@@ -25,6 +26,8 @@ type PhoneNumberLocation struct {
 	isCoordinateApproximate *bool
 	// Geographic location metadata for the phone number, lead, or lookup result.
 	location *string
+	// When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+	resolvedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// State, province, or region for the lead or organization postal address.
 	state *string
 	// IANA or Windows time zone identifier used for local scheduling and reporting.
@@ -156,6 +159,16 @@ func (m *PhoneNumberLocation) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["resolvedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetResolvedAt(val)
+		}
+		return nil
+	}
 	res["state"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -199,6 +212,12 @@ func (m *PhoneNumberLocation) GetIsCoordinateApproximate() *bool {
 // returns a *string when successful
 func (m *PhoneNumberLocation) GetLocation() *string {
 	return m.location
+}
+
+// GetResolvedAt gets the resolvedAt property value. When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+// returns a *Time when successful
+func (m *PhoneNumberLocation) GetResolvedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.resolvedAt
 }
 
 // GetState gets the state property value. State, province, or region for the lead or organization postal address.
@@ -259,6 +278,12 @@ func (m *PhoneNumberLocation) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteStringValue("location", m.GetLocation())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("resolvedAt", m.GetResolvedAt())
 		if err != nil {
 			return err
 		}
@@ -330,6 +355,11 @@ func (m *PhoneNumberLocation) SetLocation(value *string) {
 	m.location = value
 }
 
+// SetResolvedAt sets the resolvedAt property value. When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+func (m *PhoneNumberLocation) SetResolvedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.resolvedAt = value
+}
+
 // SetState sets the state property value. State, province, or region for the lead or organization postal address.
 func (m *PhoneNumberLocation) SetState(value *string) {
 	m.state = value
@@ -355,6 +385,7 @@ type PhoneNumberLocationable interface {
 	GetCountryCode() *string
 	GetIsCoordinateApproximate() *bool
 	GetLocation() *string
+	GetResolvedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetState() *string
 	GetTimeZoneId() *string
 	GetTimeZoneSource() PhoneNumberLocation_timeZoneSourceable
@@ -365,6 +396,7 @@ type PhoneNumberLocationable interface {
 	SetCountryCode(value *string)
 	SetIsCoordinateApproximate(value *bool)
 	SetLocation(value *string)
+	SetResolvedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetState(value *string)
 	SetTimeZoneId(value *string)
 	SetTimeZoneSource(value PhoneNumberLocation_timeZoneSourceable)
