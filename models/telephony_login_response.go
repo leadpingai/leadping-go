@@ -14,7 +14,7 @@ type TelephonyLoginResponse struct {
 	additionalData map[string]any
 	// Callback token for this telephony login.
 	callbackToken *string
-	// UTC timestamp for expires at on this telephony login.
+	// UTC deadline for refreshing this authorized phone login.
 	expiresAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Password for the organization's incoming SIP connection, when requested and configured.
 	incomingPassword *string
@@ -51,7 +51,7 @@ func (m *TelephonyLoginResponse) GetCallbackToken() *string {
 	return m.callbackToken
 }
 
-// GetExpiresAt gets the expiresAt property value. UTC timestamp for expires at on this telephony login.
+// GetExpiresAt gets the expiresAt property value. UTC deadline for refreshing this authorized phone login.
 // returns a *Time when successful
 func (m *TelephonyLoginResponse) GetExpiresAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
 	return m.expiresAt
@@ -205,7 +205,7 @@ func (m *TelephonyLoginResponse) SetCallbackToken(value *string) {
 	m.callbackToken = value
 }
 
-// SetExpiresAt sets the expiresAt property value. UTC timestamp for expires at on this telephony login.
+// SetExpiresAt sets the expiresAt property value. UTC deadline for refreshing this authorized phone login.
 func (m *TelephonyLoginResponse) SetExpiresAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.expiresAt = value
 }

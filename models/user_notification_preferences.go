@@ -10,6 +10,8 @@ import (
 
 // UserNotificationPreferences describes user notification preferences data used in Leadping API requests and responses.
 type UserNotificationPreferences struct {
+	// The accountSmsAlertsEnabled property
+	accountSmsAlertsEnabled *bool
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
 	// Email the assigned agent when a callback is due.
@@ -105,6 +107,12 @@ func CreateUserNotificationPreferencesFromDiscriminatorValue(parseNode i878a80d2
 	return NewUserNotificationPreferences(), nil
 }
 
+// GetAccountSmsAlertsEnabled gets the accountSmsAlertsEnabled property value. The accountSmsAlertsEnabled property
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetAccountSmsAlertsEnabled() *bool {
+	return m.accountSmsAlertsEnabled
+}
+
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
 func (m *UserNotificationPreferences) GetAdditionalData() map[string]any {
@@ -169,6 +177,16 @@ func (m *UserNotificationPreferences) GetBillingSmsEnabled() *bool {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["accountSmsAlertsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAccountSmsAlertsEnabled(val)
+		}
+		return nil
+	}
 	res["appointmentReminderEmailEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -745,6 +763,12 @@ func (m *UserNotificationPreferences) GetUsageLimitHitEnabled() *bool {
 // Serialize serializes information the current object
 func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
+		err := writer.WriteBoolValue("accountSmsAlertsEnabled", m.GetAccountSmsAlertsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("appointmentReminderEmailEnabled", m.GetAppointmentReminderEmailEnabled())
 		if err != nil {
 			return err
@@ -987,6 +1011,11 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 	return nil
 }
 
+// SetAccountSmsAlertsEnabled sets the accountSmsAlertsEnabled property value. The accountSmsAlertsEnabled property
+func (m *UserNotificationPreferences) SetAccountSmsAlertsEnabled(value *bool) {
+	m.accountSmsAlertsEnabled = value
+}
+
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *UserNotificationPreferences) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
@@ -1190,6 +1219,7 @@ func (m *UserNotificationPreferences) SetUsageLimitHitEnabled(value *bool) {
 type UserNotificationPreferencesable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetAccountSmsAlertsEnabled() *bool
 	GetAppointmentReminderEmailEnabled() *bool
 	GetAppointmentReminderEnabled() *bool
 	GetAppointmentReminderInAppEnabled() *bool
@@ -1229,6 +1259,7 @@ type UserNotificationPreferencesable interface {
 	GetUnreadSmsEnabled() *bool
 	GetUnreadSmsSmsEnabled() *bool
 	GetUsageLimitHitEnabled() *bool
+	SetAccountSmsAlertsEnabled(value *bool)
 	SetAppointmentReminderEmailEnabled(value *bool)
 	SetAppointmentReminderEnabled(value *bool)
 	SetAppointmentReminderInAppEnabled(value *bool)

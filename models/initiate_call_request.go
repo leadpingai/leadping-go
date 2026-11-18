@@ -21,7 +21,7 @@ type InitiateCallRequest struct {
 	leadId *string
 	// Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
 	originateFromBrowser *bool
-	// Idempotency key used to prevent duplicate outbound delivery.
+	// Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
 	outboundIdempotencyKey *string
 	// Lead source ID used for call attribution and sender selection.
 	sourceId *string
@@ -177,7 +177,7 @@ func (m *InitiateCallRequest) GetOriginateFromBrowser() *bool {
 	return m.originateFromBrowser
 }
 
-// GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
+// GetOutboundIdempotencyKey gets the outboundIdempotencyKey property value. Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
 // returns a *string when successful
 func (m *InitiateCallRequest) GetOutboundIdempotencyKey() *string {
 	return m.outboundIdempotencyKey
@@ -296,7 +296,7 @@ func (m *InitiateCallRequest) SetOriginateFromBrowser(value *bool) {
 	m.originateFromBrowser = value
 }
 
-// SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
+// SetOutboundIdempotencyKey sets the outboundIdempotencyKey property value. Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
 func (m *InitiateCallRequest) SetOutboundIdempotencyKey(value *string) {
 	m.outboundIdempotencyKey = value
 }
