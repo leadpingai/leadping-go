@@ -20,6 +20,8 @@ type AppointmentActivity struct {
 	assignedToName *string
 	// The at property
 	at *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The endAt property
+	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The notes property
 	notes *string
 	// The reminderAt property
@@ -77,6 +79,12 @@ func (m *AppointmentActivity) GetAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a
 	return m.at
 }
 
+// GetEndAt gets the endAt property value. The endAt property
+// returns a *Time when successful
+func (m *AppointmentActivity) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endAt
+}
+
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *AppointmentActivity) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -118,6 +126,16 @@ func (m *AppointmentActivity) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetAt(val)
+		}
+		return nil
+	}
+	res["endAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndAt(val)
 		}
 		return nil
 	}
@@ -247,6 +265,12 @@ func (m *AppointmentActivity) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteTimeValue("endAt", m.GetEndAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("notes", m.GetNotes())
 		if err != nil {
 			return err
@@ -316,6 +340,11 @@ func (m *AppointmentActivity) SetAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3
 	m.at = value
 }
 
+// SetEndAt sets the endAt property value. The endAt property
+func (m *AppointmentActivity) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endAt = value
+}
+
 // SetNotes sets the notes property value. The notes property
 func (m *AppointmentActivity) SetNotes(value *string) {
 	m.notes = value
@@ -353,6 +382,7 @@ type AppointmentActivityable interface {
 	GetActorName() *string
 	GetAssignedToName() *string
 	GetAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetNotes() *string
 	GetReminderAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetRevision() *int64
@@ -363,6 +393,7 @@ type AppointmentActivityable interface {
 	SetActorName(value *string)
 	SetAssignedToName(value *string)
 	SetAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetNotes(value *string)
 	SetReminderAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetRevision(value *int64)

@@ -20,6 +20,8 @@ type AppointmentResponse struct {
 	createdAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The dismissedAt property
 	dismissedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// The endAt property
+	endAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// The history property
 	history []AppointmentActivityable
 	// The id property
@@ -103,6 +105,12 @@ func (m *AppointmentResponse) GetDismissedAt() *i336074805fc853987abe6f7fe3ad97a
 	return m.dismissedAt
 }
 
+// GetEndAt gets the endAt property value. The endAt property
+// returns a *Time when successful
+func (m *AppointmentResponse) GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.endAt
+}
+
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *AppointmentResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -144,6 +152,16 @@ func (m *AppointmentResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetDismissedAt(val)
+		}
+		return nil
+	}
+	res["endAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEndAt(val)
 		}
 		return nil
 	}
@@ -486,6 +504,12 @@ func (m *AppointmentResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 			return err
 		}
 	}
+	{
+		err := writer.WriteTimeValue("endAt", m.GetEndAt())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetHistory() != nil {
 		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetHistory()))
 		for i, v := range m.GetHistory() {
@@ -640,6 +664,11 @@ func (m *AppointmentResponse) SetDismissedAt(value *i336074805fc853987abe6f7fe3a
 	m.dismissedAt = value
 }
 
+// SetEndAt sets the endAt property value. The endAt property
+func (m *AppointmentResponse) SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.endAt = value
+}
+
 // SetHistory sets the history property value. The history property
 func (m *AppointmentResponse) SetHistory(value []AppointmentActivityable) {
 	m.history = value
@@ -742,6 +771,7 @@ type AppointmentResponseable interface {
 	GetAssignedToUserId() *string
 	GetCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDismissedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetEndAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetHistory() []AppointmentActivityable
 	GetId() *string
 	GetIsDemo() *bool
@@ -765,6 +795,7 @@ type AppointmentResponseable interface {
 	SetAssignedToUserId(value *string)
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDismissedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetEndAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetHistory(value []AppointmentActivityable)
 	SetId(value *string)
 	SetIsDemo(value *bool)

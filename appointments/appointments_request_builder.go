@@ -26,6 +26,12 @@ type AppointmentsRequestBuilderGetQueryParameters struct {
 	LeadId *string "uriparametername:\"leadId\""
 }
 
+// BookedTimes the bookedTimes property
+// returns a *BookedTimesRequestBuilder when successful
+func (m *AppointmentsRequestBuilder) BookedTimes() *BookedTimesRequestBuilder {
+	return NewBookedTimesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // ById gets an item from the github.com/leadpingai/leadping-go.appointments.item collection
 // returns a *AppointmentsItemRequestBuilder when successful
 func (m *AppointmentsRequestBuilder) ById(id string) *AppointmentsItemRequestBuilder {
