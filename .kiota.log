@@ -11,6 +11,7 @@ Warning: KiotaBuilder OpenAPI warning: #/paths/~1reports~1exports~1{exportId}~1d
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/AppointmentResponse/properties/leadEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/AppointmentResponse/properties/leadAvatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/BlogArticleResponse/properties/coverImageUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/leadAvatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/CallEventTableRow/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/ConversationResponse/properties/email - The format email is not supported by Kiota and the string type will be used.
@@ -38,6 +39,7 @@ Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationMemberRe
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationMemberTableRow/properties/userEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/OrganizationResponse/properties/billingContactEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/PhoneCallResponse/properties/voicemailUrl - The format uri is not supported by Kiota and the string type will be used.
+Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SmsEventTableRow/properties/leadAvatarUrl - The format uri is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SourceResponse/properties/createdByUserEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionCheckResult/properties/normalizedEmail - The format email is not supported by Kiota and the string type will be used.
 Warning: KiotaBuilder OpenAPI warning: #/components/schemas/SuppressionEntryRequest/properties/email - The format email is not supported by Kiota and the string type will be used.

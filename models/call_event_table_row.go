@@ -48,6 +48,8 @@ type CallEventTableRow struct {
 	id *string
 	// Whether this record belongs to demo data.
 	isDemo *bool
+	// The leadAvatarUrl property
+	leadAvatarUrl *string
 	// Lead ID associated with this call event.
 	leadId *string
 	// Display name for the lead associated with this call event.
@@ -371,6 +373,16 @@ func (m *CallEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330
 		}
 		return nil
 	}
+	res["leadAvatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadAvatarUrl(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -536,6 +548,12 @@ func (m *CallEventTableRow) GetId() *string {
 // returns a *bool when successful
 func (m *CallEventTableRow) GetIsDemo() *bool {
 	return m.isDemo
+}
+
+// GetLeadAvatarUrl gets the leadAvatarUrl property value. The leadAvatarUrl property
+// returns a *string when successful
+func (m *CallEventTableRow) GetLeadAvatarUrl() *string {
+	return m.leadAvatarUrl
 }
 
 // GetLeadId gets the leadId property value. Lead ID associated with this call event.
@@ -739,6 +757,12 @@ func (m *CallEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27
 		}
 	}
 	{
+		err := writer.WriteStringValue("leadAvatarUrl", m.GetLeadAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -928,6 +952,11 @@ func (m *CallEventTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
+// SetLeadAvatarUrl sets the leadAvatarUrl property value. The leadAvatarUrl property
+func (m *CallEventTableRow) SetLeadAvatarUrl(value *string) {
+	m.leadAvatarUrl = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this call event.
 func (m *CallEventTableRow) SetLeadId(value *string) {
 	m.leadId = value
@@ -1019,6 +1048,7 @@ type CallEventTableRowable interface {
 	GetFromPhoneNumberId() *string
 	GetId() *string
 	GetIsDemo() *bool
+	GetLeadAvatarUrl() *string
 	GetLeadId() *string
 	GetLeadName() *string
 	GetOrganization() *string
@@ -1051,6 +1081,7 @@ type CallEventTableRowable interface {
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
+	SetLeadAvatarUrl(value *string)
 	SetLeadId(value *string)
 	SetLeadName(value *string)
 	SetOrganization(value *string)

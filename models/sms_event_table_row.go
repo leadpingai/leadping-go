@@ -60,6 +60,8 @@ type SmsEventTableRow struct {
 	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead IdNamePairable
+	// The leadAvatarUrl property
+	leadAvatarUrl *string
 	// Media attached to this SMS/MMS event.
 	media []MessageMediaAttachmentable
 	// Organization summary connected to this SMS event table row.
@@ -479,6 +481,16 @@ func (m *SmsEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		return nil
 	}
+	res["leadAvatarUrl"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadAvatarUrl(val)
+		}
+		return nil
+	}
 	res["media"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetCollectionOfObjectValues(CreateMessageMediaAttachmentFromDiscriminatorValue)
 		if err != nil {
@@ -722,6 +734,12 @@ func (m *SmsEventTableRow) GetIsDemo() *bool {
 // returns a IdNamePairable when successful
 func (m *SmsEventTableRow) GetLead() IdNamePairable {
 	return m.lead
+}
+
+// GetLeadAvatarUrl gets the leadAvatarUrl property value. The leadAvatarUrl property
+// returns a *string when successful
+func (m *SmsEventTableRow) GetLeadAvatarUrl() *string {
+	return m.leadAvatarUrl
 }
 
 // GetMedia gets the media property value. Media attached to this SMS/MMS event.
@@ -996,6 +1014,12 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 			return err
 		}
 	}
+	{
+		err := writer.WriteStringValue("leadAvatarUrl", m.GetLeadAvatarUrl())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetMedia() != nil {
 		cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetMedia()))
 		for i, v := range m.GetMedia() {
@@ -1259,6 +1283,11 @@ func (m *SmsEventTableRow) SetLead(value IdNamePairable) {
 	m.lead = value
 }
 
+// SetLeadAvatarUrl sets the leadAvatarUrl property value. The leadAvatarUrl property
+func (m *SmsEventTableRow) SetLeadAvatarUrl(value *string) {
+	m.leadAvatarUrl = value
+}
+
 // SetMedia sets the media property value. Media attached to this SMS/MMS event.
 func (m *SmsEventTableRow) SetMedia(value []MessageMediaAttachmentable) {
 	m.media = value
@@ -1386,6 +1415,7 @@ type SmsEventTableRowable interface {
 	GetIsAutomated() *bool
 	GetIsDemo() *bool
 	GetLead() IdNamePairable
+	GetLeadAvatarUrl() *string
 	GetMedia() []MessageMediaAttachmentable
 	GetOrganization() *string
 	GetOrganizationName() *string
@@ -1430,6 +1460,7 @@ type SmsEventTableRowable interface {
 	SetIsAutomated(value *bool)
 	SetIsDemo(value *bool)
 	SetLead(value IdNamePairable)
+	SetLeadAvatarUrl(value *string)
 	SetMedia(value []MessageMediaAttachmentable)
 	SetOrganization(value *string)
 	SetOrganizationName(value *string)
