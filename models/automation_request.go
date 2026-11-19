@@ -27,7 +27,7 @@ type AutomationRequest struct {
 	name *string
 	// Scope that limits where this automation configuration request applies in Leadping.
 	scope *string
-	// Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+	// Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
 	timeZoneId *string
 	// Automation triggers that can start this workflow.
 	triggers []AutomationTriggerable
@@ -255,7 +255,7 @@ func (m *AutomationRequest) GetScope() *string {
 	return m.scope
 }
 
-// GetTimeZoneId gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+// GetTimeZoneId gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
 // returns a *string when successful
 func (m *AutomationRequest) GetTimeZoneId() *string {
 	return m.timeZoneId
@@ -431,7 +431,7 @@ func (m *AutomationRequest) SetScope(value *string) {
 	m.scope = value
 }
 
-// SetTimeZoneId sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+// SetTimeZoneId sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
 func (m *AutomationRequest) SetTimeZoneId(value *string) {
 	m.timeZoneId = value
 }
