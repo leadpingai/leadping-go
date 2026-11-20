@@ -18,14 +18,16 @@ type MyRequestBuilder struct {
 type MyRequestBuilderPostQueryParameters struct {
 	// Optional filter selecting active, archived, or all lead conversations.
 	ArchiveFilter *string "uriparametername:\"archiveFilter\""
-	// Whether to include only conversations with contactable leads.
+	// Whether to include only conversations where calling is available.
 	Contactable *bool "uriparametername:\"contactable\""
+	// Whether to include only conversations where texting is available.
+	TextingAvailable *bool "uriparametername:\"textingAvailable\""
 }
 
 // NewMyRequestBuilderInternal instantiates a new MyRequestBuilder and sets the default values.
 func NewMyRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *MyRequestBuilder {
 	m := &MyRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*,textingAvailable*}", pathParameters),
 	}
 	return m
 }

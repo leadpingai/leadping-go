@@ -18,6 +18,8 @@ type OutboundPhoneNumberCapacity struct {
 	healthReason *string
 	// Defines phone-number outbound health states used by pacing.
 	healthStatus *PhoneNumberOutboundHealthStatus
+	// Next time an active reservation starts or expires and may change the reported usage.
+	nextReservationChangeAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Phone number associated with this Leadping outbound phone number capacity.
 	phoneNumber *string
 	// Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
@@ -138,6 +140,16 @@ func (m *OutboundPhoneNumberCapacity) GetFieldDeserializers() map[string]func(i8
 		}
 		if val != nil {
 			m.SetHealthStatus(val.(*PhoneNumberOutboundHealthStatus))
+		}
+		return nil
+	}
+	res["nextReservationChangeAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextReservationChangeAt(val)
 		}
 		return nil
 	}
@@ -466,6 +478,12 @@ func (m *OutboundPhoneNumberCapacity) GetHealthStatus() *PhoneNumberOutboundHeal
 	return m.healthStatus
 }
 
+// GetNextReservationChangeAt gets the nextReservationChangeAt property value. Next time an active reservation starts or expires and may change the reported usage.
+// returns a *Time when successful
+func (m *OutboundPhoneNumberCapacity) GetNextReservationChangeAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextReservationChangeAt
+}
+
 // GetPhoneNumber gets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
 // returns a *string when successful
 func (m *OutboundPhoneNumberCapacity) GetPhoneNumber() *string {
@@ -669,6 +687,12 @@ func (m *OutboundPhoneNumberCapacity) Serialize(writer i878a80d2330e89d26896388a
 	if m.GetHealthStatus() != nil {
 		cast := (*m.GetHealthStatus()).String()
 		err := writer.WriteStringValue("healthStatus", &cast)
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextReservationChangeAt", m.GetNextReservationChangeAt())
 		if err != nil {
 			return err
 		}
@@ -890,6 +914,11 @@ func (m *OutboundPhoneNumberCapacity) SetHealthStatus(value *PhoneNumberOutbound
 	m.healthStatus = value
 }
 
+// SetNextReservationChangeAt sets the nextReservationChangeAt property value. Next time an active reservation starts or expires and may change the reported usage.
+func (m *OutboundPhoneNumberCapacity) SetNextReservationChangeAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextReservationChangeAt = value
+}
+
 // SetPhoneNumber sets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
 func (m *OutboundPhoneNumberCapacity) SetPhoneNumber(value *string) {
 	m.phoneNumber = value
@@ -1051,6 +1080,7 @@ type OutboundPhoneNumberCapacityable interface {
 	GetCapacityAvailable() *bool
 	GetHealthReason() *string
 	GetHealthStatus() *PhoneNumberOutboundHealthStatus
+	GetNextReservationChangeAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetPhoneNumber() *string
 	GetPhoneNumberId() *string
 	GetSmsApproved() *bool
@@ -1085,6 +1115,7 @@ type OutboundPhoneNumberCapacityable interface {
 	SetCapacityAvailable(value *bool)
 	SetHealthReason(value *string)
 	SetHealthStatus(value *PhoneNumberOutboundHealthStatus)
+	SetNextReservationChangeAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetPhoneNumber(value *string)
 	SetPhoneNumberId(value *string)
 	SetSmsApproved(value *bool)

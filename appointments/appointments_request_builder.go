@@ -20,7 +20,7 @@ type AppointmentsRequestBuilderGetQueryParameters struct {
 	AdminMode *bool "uriparametername:\"adminMode\""
 	// Whether to return only due, undismissed reminders assigned to the current agent.
 	DueOnly *bool "uriparametername:\"dueOnly\""
-	// Whether to include completed and cancelled appointments. Ignored when dueOnly is true.
+	// Whether to include completed, cancelled, and archived appointments. Ignored when dueOnly is true.
 	IncludeClosed *bool "uriparametername:\"includeClosed\""
 	// An optional lead identifier to filter appointments.
 	LeadId *string "uriparametername:\"leadId\""
