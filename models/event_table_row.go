@@ -20,6 +20,8 @@ type EventTableRow struct {
 	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Name of the automation when it started.
+	automationName *string
 	// Automation run ID opened from this automation event.
 	automationRunId *string
 	// Monetary amount billed for this Leadping communication or transaction.
@@ -165,6 +167,12 @@ func (m *EventTableRow) GetActorUserId() *string {
 // returns a map[string]any when successful
 func (m *EventTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
+}
+
+// GetAutomationName gets the automationName property value. Name of the automation when it started.
+// returns a *string when successful
+func (m *EventTableRow) GetAutomationName() *string {
+	return m.automationName
 }
 
 // GetAutomationRunId gets the automationRunId property value. Automation run ID opened from this automation event.
@@ -328,6 +336,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		if val != nil {
 			m.SetActorUserId(val)
+		}
+		return nil
+	}
+	res["automationName"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomationName(val)
 		}
 		return nil
 	}
@@ -1069,6 +1087,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 		}
 	}
 	{
+		err := writer.WriteStringValue("automationName", m.GetAutomationName())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("automationRunId", m.GetAutomationRunId())
 		if err != nil {
 			return err
@@ -1424,6 +1448,11 @@ func (m *EventTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetAutomationName sets the automationName property value. Name of the automation when it started.
+func (m *EventTableRow) SetAutomationName(value *string) {
+	m.automationName = value
+}
+
 // SetAutomationRunId sets the automationRunId property value. Automation run ID opened from this automation event.
 func (m *EventTableRow) SetAutomationRunId(value *string) {
 	m.automationRunId = value
@@ -1686,6 +1715,7 @@ type EventTableRowable interface {
 	GetActorEmail() *string
 	GetActorLeadId() *string
 	GetActorUserId() *string
+	GetAutomationName() *string
 	GetAutomationRunId() *string
 	GetBillableAmount() *float64
 	GetBillingStatus() *string
@@ -1741,6 +1771,7 @@ type EventTableRowable interface {
 	SetActorEmail(value *string)
 	SetActorLeadId(value *string)
 	SetActorUserId(value *string)
+	SetAutomationName(value *string)
 	SetAutomationRunId(value *string)
 	SetBillableAmount(value *float64)
 	SetBillingStatus(value *string)
