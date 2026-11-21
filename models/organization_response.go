@@ -24,6 +24,8 @@ type OrganizationResponse struct {
 	automaticallyMarkAppointmentSet *bool
 	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 	automaticallyMarkLeadsCalled *bool
+	// Automatically advances new leads when an outbound message is delivered.
+	automaticallyMarkLeadsMessaged *bool
 	// Wallet refill amount charged when automatic refill is triggered.
 	autoRefillAmount *float64
 	// Indicates whether automatic wallet refill is enabled for the organization.
@@ -62,6 +64,8 @@ type OrganizationResponse struct {
 	id *string
 	// Whether this record belongs to demo data.
 	isDemo *bool
+	// Destination status for delivered outbound messages.
+	messagedLeadStatusId *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Human-readable display name of the resource.
@@ -145,6 +149,12 @@ func (m *OrganizationResponse) GetAutomaticallyMarkAppointmentSet() *bool {
 // returns a *bool when successful
 func (m *OrganizationResponse) GetAutomaticallyMarkLeadsCalled() *bool {
 	return m.automaticallyMarkLeadsCalled
+}
+
+// GetAutomaticallyMarkLeadsMessaged gets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+// returns a *bool when successful
+func (m *OrganizationResponse) GetAutomaticallyMarkLeadsMessaged() *bool {
+	return m.automaticallyMarkLeadsMessaged
 }
 
 // GetAutoRefillAmount gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
@@ -310,6 +320,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetAutomaticallyMarkLeadsCalled(val)
+		}
+		return nil
+	}
+	res["automaticallyMarkLeadsMessaged"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkLeadsMessaged(val)
 		}
 		return nil
 	}
@@ -503,6 +523,16 @@ func (m *OrganizationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["messagedLeadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessagedLeadStatusId(val)
+		}
+		return nil
+	}
 	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -664,6 +694,12 @@ func (m *OrganizationResponse) GetIsDemo() *bool {
 	return m.isDemo
 }
 
+// GetMessagedLeadStatusId gets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+// returns a *string when successful
+func (m *OrganizationResponse) GetMessagedLeadStatusId() *string {
+	return m.messagedLeadStatusId
+}
+
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 // returns a *Time when successful
 func (m *OrganizationResponse) GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -787,6 +823,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyMarkLeadsMessaged", m.GetAutomaticallyMarkLeadsMessaged())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteFloat64Value("autoRefillAmount", m.GetAutoRefillAmount())
 		if err != nil {
 			return err
@@ -897,6 +939,12 @@ func (m *OrganizationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("messagedLeadStatusId", m.GetMessagedLeadStatusId())
 		if err != nil {
 			return err
 		}
@@ -1039,6 +1087,11 @@ func (m *OrganizationResponse) SetAutomaticallyMarkLeadsCalled(value *bool) {
 	m.automaticallyMarkLeadsCalled = value
 }
 
+// SetAutomaticallyMarkLeadsMessaged sets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+func (m *OrganizationResponse) SetAutomaticallyMarkLeadsMessaged(value *bool) {
+	m.automaticallyMarkLeadsMessaged = value
+}
+
 // SetAutoRefillAmount sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
 func (m *OrganizationResponse) SetAutoRefillAmount(value *float64) {
 	m.autoRefillAmount = value
@@ -1134,6 +1187,11 @@ func (m *OrganizationResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
 }
 
+// SetMessagedLeadStatusId sets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+func (m *OrganizationResponse) SetMessagedLeadStatusId(value *string) {
+	m.messagedLeadStatusId = value
+}
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *OrganizationResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
@@ -1213,6 +1271,7 @@ type OrganizationResponseable interface {
 	GetAutomaticallyClearAppointmentSet() *bool
 	GetAutomaticallyMarkAppointmentSet() *bool
 	GetAutomaticallyMarkLeadsCalled() *bool
+	GetAutomaticallyMarkLeadsMessaged() *bool
 	GetAutoRefillAmount() *float64
 	GetAutoRefillEnabled() *bool
 	GetAutoRefillTrigger() *float64
@@ -1232,6 +1291,7 @@ type OrganizationResponseable interface {
 	GetEnabled() *bool
 	GetId() *string
 	GetIsDemo() *bool
+	GetMessagedLeadStatusId() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetPhone() *string
@@ -1252,6 +1312,7 @@ type OrganizationResponseable interface {
 	SetAutomaticallyClearAppointmentSet(value *bool)
 	SetAutomaticallyMarkAppointmentSet(value *bool)
 	SetAutomaticallyMarkLeadsCalled(value *bool)
+	SetAutomaticallyMarkLeadsMessaged(value *bool)
 	SetAutoRefillAmount(value *float64)
 	SetAutoRefillEnabled(value *bool)
 	SetAutoRefillTrigger(value *float64)
@@ -1271,6 +1332,7 @@ type OrganizationResponseable interface {
 	SetEnabled(value *bool)
 	SetId(value *string)
 	SetIsDemo(value *bool)
+	SetMessagedLeadStatusId(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetPhone(value *string)

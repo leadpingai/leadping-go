@@ -19,6 +19,8 @@ type OrganizationRequest struct {
 	automaticallyMarkAppointmentSet *bool
 	// Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
 	automaticallyMarkLeadsCalled *bool
+	// Automatically advances new leads when an outbound message is delivered.
+	automaticallyMarkLeadsMessaged *bool
 	// Destination status for outbound call attempts. Null uses the built-in Called status.
 	calledLeadStatusId *string
 	// Human-readable description that explains this organization profile request to API users.
@@ -27,6 +29,8 @@ type OrganizationRequest struct {
 	ein *string
 	// Whether the organization was formed less than 90 days ago.
 	isYoungerThan90 *bool
+	// Destination status for delivered outbound messages.
+	messagedLeadStatusId *string
 	// Primary organization name.
 	name *string
 	// Main service or offer described during organization setup.
@@ -86,6 +90,12 @@ func (m *OrganizationRequest) GetAutomaticallyMarkAppointmentSet() *bool {
 // returns a *bool when successful
 func (m *OrganizationRequest) GetAutomaticallyMarkLeadsCalled() *bool {
 	return m.automaticallyMarkLeadsCalled
+}
+
+// GetAutomaticallyMarkLeadsMessaged gets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+// returns a *bool when successful
+func (m *OrganizationRequest) GetAutomaticallyMarkLeadsMessaged() *bool {
+	return m.automaticallyMarkLeadsMessaged
 }
 
 // GetCalledLeadStatusId gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
@@ -150,6 +160,16 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["automaticallyMarkLeadsMessaged"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAutomaticallyMarkLeadsMessaged(val)
+		}
+		return nil
+	}
 	res["calledLeadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -187,6 +207,16 @@ func (m *OrganizationRequest) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		if val != nil {
 			m.SetIsYoungerThan90(val)
+		}
+		return nil
+	}
+	res["messagedLeadStatusId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessagedLeadStatusId(val)
 		}
 		return nil
 	}
@@ -279,6 +309,12 @@ func (m *OrganizationRequest) GetIsYoungerThan90() *bool {
 	return m.isYoungerThan90
 }
 
+// GetMessagedLeadStatusId gets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+// returns a *string when successful
+func (m *OrganizationRequest) GetMessagedLeadStatusId() *string {
+	return m.messagedLeadStatusId
+}
+
 // GetName gets the name property value. Primary organization name.
 // returns a *string when successful
 func (m *OrganizationRequest) GetName() *string {
@@ -354,6 +390,12 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 		}
 	}
 	{
+		err := writer.WriteBoolValue("automaticallyMarkLeadsMessaged", m.GetAutomaticallyMarkLeadsMessaged())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("calledLeadStatusId", m.GetCalledLeadStatusId())
 		if err != nil {
 			return err
@@ -373,6 +415,12 @@ func (m *OrganizationRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteBoolValue("isYoungerThan90", m.GetIsYoungerThan90())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("messagedLeadStatusId", m.GetMessagedLeadStatusId())
 		if err != nil {
 			return err
 		}
@@ -459,6 +507,11 @@ func (m *OrganizationRequest) SetAutomaticallyMarkLeadsCalled(value *bool) {
 	m.automaticallyMarkLeadsCalled = value
 }
 
+// SetAutomaticallyMarkLeadsMessaged sets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+func (m *OrganizationRequest) SetAutomaticallyMarkLeadsMessaged(value *bool) {
+	m.automaticallyMarkLeadsMessaged = value
+}
+
 // SetCalledLeadStatusId sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
 func (m *OrganizationRequest) SetCalledLeadStatusId(value *string) {
 	m.calledLeadStatusId = value
@@ -477,6 +530,11 @@ func (m *OrganizationRequest) SetEin(value *string) {
 // SetIsYoungerThan90 sets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
 func (m *OrganizationRequest) SetIsYoungerThan90(value *bool) {
 	m.isYoungerThan90 = value
+}
+
+// SetMessagedLeadStatusId sets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+func (m *OrganizationRequest) SetMessagedLeadStatusId(value *string) {
+	m.messagedLeadStatusId = value
 }
 
 // SetName sets the name property value. Primary organization name.
@@ -526,10 +584,12 @@ type OrganizationRequestable interface {
 	GetAutomaticallyClearAppointmentSet() *bool
 	GetAutomaticallyMarkAppointmentSet() *bool
 	GetAutomaticallyMarkLeadsCalled() *bool
+	GetAutomaticallyMarkLeadsMessaged() *bool
 	GetCalledLeadStatusId() *string
 	GetDescription() *string
 	GetEin() *string
 	GetIsYoungerThan90() *bool
+	GetMessagedLeadStatusId() *string
 	GetName() *string
 	GetOffer() *string
 	GetPhone() *string
@@ -542,10 +602,12 @@ type OrganizationRequestable interface {
 	SetAutomaticallyClearAppointmentSet(value *bool)
 	SetAutomaticallyMarkAppointmentSet(value *bool)
 	SetAutomaticallyMarkLeadsCalled(value *bool)
+	SetAutomaticallyMarkLeadsMessaged(value *bool)
 	SetCalledLeadStatusId(value *string)
 	SetDescription(value *string)
 	SetEin(value *string)
 	SetIsYoungerThan90(value *bool)
+	SetMessagedLeadStatusId(value *string)
 	SetName(value *string)
 	SetOffer(value *string)
 	SetPhone(value *string)
