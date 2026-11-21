@@ -54,6 +54,8 @@ type ConversationResponse struct {
 	lastName *string
 	// Most recent message preview shown for the conversation.
 	lastSnippet *string
+	// Timestamp of the conversation activity shown in LastSnippet.
+	lastSnippetAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Lead ID associated with this inbox conversation.
 	leadId *string
 	// Lead's phone number used for conversation matching and outreach.
@@ -367,6 +369,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["lastSnippetAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastSnippetAt(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -524,6 +536,12 @@ func (m *ConversationResponse) GetLastName() *string {
 // returns a *string when successful
 func (m *ConversationResponse) GetLastSnippet() *string {
 	return m.lastSnippet
+}
+
+// GetLastSnippetAt gets the lastSnippetAt property value. Timestamp of the conversation activity shown in LastSnippet.
+// returns a *Time when successful
+func (m *ConversationResponse) GetLastSnippetAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastSnippetAt
 }
 
 // GetLeadId gets the leadId property value. Lead ID associated with this inbox conversation.
@@ -709,6 +727,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteTimeValue("lastSnippetAt", m.GetLastSnippetAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -882,6 +906,11 @@ func (m *ConversationResponse) SetLastSnippet(value *string) {
 	m.lastSnippet = value
 }
 
+// SetLastSnippetAt sets the lastSnippetAt property value. Timestamp of the conversation activity shown in LastSnippet.
+func (m *ConversationResponse) SetLastSnippetAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastSnippetAt = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this inbox conversation.
 func (m *ConversationResponse) SetLeadId(value *string) {
 	m.leadId = value
@@ -951,6 +980,7 @@ type ConversationResponseable interface {
 	GetLastInboundSnippet() *string
 	GetLastName() *string
 	GetLastSnippet() *string
+	GetLastSnippetAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLeadId() *string
 	GetLeadPhoneNumber() *string
 	GetNeedsReply() *bool
@@ -981,6 +1011,7 @@ type ConversationResponseable interface {
 	SetLastInboundSnippet(value *string)
 	SetLastName(value *string)
 	SetLastSnippet(value *string)
+	SetLastSnippetAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLeadId(value *string)
 	SetLeadPhoneNumber(value *string)
 	SetNeedsReply(value *bool)
