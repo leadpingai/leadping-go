@@ -20,6 +20,8 @@ type ConversationResponse struct {
 	archiveReason *int32
 	// Optional profile image URL explicitly associated with the lead.
 	avatarUrl *string
+	// Rep-selected time for the next call attempt.
+	callRetryAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
 	canCallNow *bool
 	// Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
@@ -36,6 +38,10 @@ type ConversationResponse struct {
 	firstName *string
 	// Unique Leadping identifier for this conversation response.
 	id *string
+	// The next action for a conversation, in inbox priority order.
+	inboxAction *int32
+	// Customer reply time, due time, or request time explaining the action.
+	inboxActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Indicates whether the Leadping conversation has been archived.
 	isArchived *bool
 	// Whether this record belongs to demo data.
@@ -119,6 +125,12 @@ func (m *ConversationResponse) GetAvatarUrl() *string {
 	return m.avatarUrl
 }
 
+// GetCallRetryAt gets the callRetryAt property value. Rep-selected time for the next call attempt.
+// returns a *Time when successful
+func (m *ConversationResponse) GetCallRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.callRetryAt
+}
+
 // GetCanCallNow gets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
 // returns a *bool when successful
 func (m *ConversationResponse) GetCanCallNow() *bool {
@@ -199,6 +211,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["callRetryAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallRetryAt(val)
+		}
+		return nil
+	}
 	res["canCallNow"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -276,6 +298,26 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetId(val)
+		}
+		return nil
+	}
+	res["inboxAction"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInboxAction(val)
+		}
+		return nil
+	}
+	res["inboxActionAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetInboxActionAt(val)
 		}
 		return nil
 	}
@@ -484,6 +526,18 @@ func (m *ConversationResponse) GetId() *string {
 	return m.id
 }
 
+// GetInboxAction gets the inboxAction property value. The next action for a conversation, in inbox priority order.
+// returns a *int32 when successful
+func (m *ConversationResponse) GetInboxAction() *int32 {
+	return m.inboxAction
+}
+
+// GetInboxActionAt gets the inboxActionAt property value. Customer reply time, due time, or request time explaining the action.
+// returns a *Time when successful
+func (m *ConversationResponse) GetInboxActionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.inboxActionAt
+}
+
 // GetIsArchived gets the isArchived property value. Indicates whether the Leadping conversation has been archived.
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsArchived() *bool {
@@ -625,6 +679,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteTimeValue("callRetryAt", m.GetCallRetryAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("canCallNow", m.GetCanCallNow())
 		if err != nil {
 			return err
@@ -668,6 +728,18 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("inboxAction", m.GetInboxAction())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("inboxActionAt", m.GetInboxActionAt())
 		if err != nil {
 			return err
 		}
@@ -821,6 +893,11 @@ func (m *ConversationResponse) SetAvatarUrl(value *string) {
 	m.avatarUrl = value
 }
 
+// SetCallRetryAt sets the callRetryAt property value. Rep-selected time for the next call attempt.
+func (m *ConversationResponse) SetCallRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.callRetryAt = value
+}
+
 // SetCanCallNow sets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
 func (m *ConversationResponse) SetCanCallNow(value *bool) {
 	m.canCallNow = value
@@ -859,6 +936,16 @@ func (m *ConversationResponse) SetFirstName(value *string) {
 // SetId sets the id property value. Unique Leadping identifier for this conversation response.
 func (m *ConversationResponse) SetId(value *string) {
 	m.id = value
+}
+
+// SetInboxAction sets the inboxAction property value. The next action for a conversation, in inbox priority order.
+func (m *ConversationResponse) SetInboxAction(value *int32) {
+	m.inboxAction = value
+}
+
+// SetInboxActionAt sets the inboxActionAt property value. Customer reply time, due time, or request time explaining the action.
+func (m *ConversationResponse) SetInboxActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.inboxActionAt = value
 }
 
 // SetIsArchived sets the isArchived property value. Indicates whether the Leadping conversation has been archived.
@@ -963,6 +1050,7 @@ type ConversationResponseable interface {
 	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetArchiveReason() *int32
 	GetAvatarUrl() *string
+	GetCallRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCanCallNow() *bool
 	GetCanTextNow() *bool
 	GetComplianceStatus() *string
@@ -971,6 +1059,8 @@ type ConversationResponseable interface {
 	GetEventVersion() *int64
 	GetFirstName() *string
 	GetId() *string
+	GetInboxAction() *int32
+	GetInboxActionAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetIsArchived() *bool
 	GetIsDemo() *bool
 	GetIsUnread() *bool
@@ -994,6 +1084,7 @@ type ConversationResponseable interface {
 	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetArchiveReason(value *int32)
 	SetAvatarUrl(value *string)
+	SetCallRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCanCallNow(value *bool)
 	SetCanTextNow(value *bool)
 	SetComplianceStatus(value *string)
@@ -1002,6 +1093,8 @@ type ConversationResponseable interface {
 	SetEventVersion(value *int64)
 	SetFirstName(value *string)
 	SetId(value *string)
+	SetInboxAction(value *int32)
+	SetInboxActionAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetIsArchived(value *bool)
 	SetIsDemo(value *bool)
 	SetIsUnread(value *bool)

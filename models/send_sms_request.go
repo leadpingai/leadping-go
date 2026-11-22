@@ -22,6 +22,8 @@ type SendSmsRequest struct {
 	mediaUrls []string
 	// Idempotency key used to prevent duplicate outbound delivery.
 	outboundIdempotencyKey *string
+	// Version of the incoming conversation reply displayed to the agent when composing this response.
+	replyVersion *int64
 	// UTC timestamp when Leadping should send the SMS message.
 	scheduledFor *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Existing SMS event ID to reuse or update when retrying a send request.
@@ -125,6 +127,16 @@ func (m *SendSmsRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		return nil
 	}
+	res["replyVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetReplyVersion(val)
+		}
+		return nil
+	}
 	res["scheduledFor"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -196,6 +208,12 @@ func (m *SendSmsRequest) GetOutboundIdempotencyKey() *string {
 	return m.outboundIdempotencyKey
 }
 
+// GetReplyVersion gets the replyVersion property value. Version of the incoming conversation reply displayed to the agent when composing this response.
+// returns a *int64 when successful
+func (m *SendSmsRequest) GetReplyVersion() *int64 {
+	return m.replyVersion
+}
+
 // GetScheduledFor gets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 // returns a *Time when successful
 func (m *SendSmsRequest) GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
@@ -254,6 +272,12 @@ func (m *SendSmsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 	}
 	{
 		err := writer.WriteStringValue("outboundIdempotencyKey", m.GetOutboundIdempotencyKey())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt64Value("replyVersion", m.GetReplyVersion())
 		if err != nil {
 			return err
 		}
@@ -327,6 +351,11 @@ func (m *SendSmsRequest) SetOutboundIdempotencyKey(value *string) {
 	m.outboundIdempotencyKey = value
 }
 
+// SetReplyVersion sets the replyVersion property value. Version of the incoming conversation reply displayed to the agent when composing this response.
+func (m *SendSmsRequest) SetReplyVersion(value *int64) {
+	m.replyVersion = value
+}
+
 // SetScheduledFor sets the scheduledFor property value. UTC timestamp when Leadping should send the SMS message.
 func (m *SendSmsRequest) SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.scheduledFor = value
@@ -360,6 +389,7 @@ type SendSmsRequestable interface {
 	GetFromPhoneNumberId() *string
 	GetMediaUrls() []string
 	GetOutboundIdempotencyKey() *string
+	GetReplyVersion() *int64
 	GetScheduledFor() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSmsEventId() *string
 	GetSourceId() *string
@@ -370,6 +400,7 @@ type SendSmsRequestable interface {
 	SetFromPhoneNumberId(value *string)
 	SetMediaUrls(value []string)
 	SetOutboundIdempotencyKey(value *string)
+	SetReplyVersion(value *int64)
 	SetScheduledFor(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSmsEventId(value *string)
 	SetSourceId(value *string)

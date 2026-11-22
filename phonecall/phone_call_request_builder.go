@@ -45,3 +45,9 @@ func NewPhoneCallRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 func (m *PhoneCallRequestBuilder) Initiate() *InitiateRequestBuilder {
 	return NewInitiateRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+
+// Next the next property
+// returns a *NextRequestBuilder when successful
+func (m *PhoneCallRequestBuilder) Next() *NextRequestBuilder {
+	return NewNextRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}

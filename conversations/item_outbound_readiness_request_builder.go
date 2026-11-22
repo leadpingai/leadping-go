@@ -9,7 +9,7 @@ import (
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// ItemOutboundReadinessRequestBuilder builds and executes requests for operations under \conversations\{id}\outbound-readiness
+// ItemOutboundReadinessRequestBuilder builds and executes requests for operations under \conversations\{conversation-id}\outbound-readiness
 type ItemOutboundReadinessRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -23,7 +23,7 @@ type ItemOutboundReadinessRequestBuilderGetQueryParameters struct {
 // NewItemOutboundReadinessRequestBuilderInternal instantiates a new ItemOutboundReadinessRequestBuilder and sets the default values.
 func NewItemOutboundReadinessRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ItemOutboundReadinessRequestBuilder {
 	m := &ItemOutboundReadinessRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}/outbound-readiness{?voice*}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{conversation%2Did}/outbound-readiness{?voice*}", pathParameters),
 	}
 	return m
 }

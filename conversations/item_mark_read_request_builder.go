@@ -9,7 +9,7 @@ import (
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// ItemMarkReadRequestBuilder builds and executes requests for operations under \conversations\{id}\mark-read
+// ItemMarkReadRequestBuilder builds and executes requests for operations under \conversations\{conversation-id}\mark-read
 type ItemMarkReadRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -23,7 +23,7 @@ type ItemMarkReadRequestBuilderPostQueryParameters struct {
 // NewItemMarkReadRequestBuilderInternal instantiates a new ItemMarkReadRequestBuilder and sets the default values.
 func NewItemMarkReadRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ItemMarkReadRequestBuilder {
 	m := &ItemMarkReadRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}/mark-read?eventVersion={eventVersion}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{conversation%2Did}/mark-read?eventVersion={eventVersion}", pathParameters),
 	}
 	return m
 }

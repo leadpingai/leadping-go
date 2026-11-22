@@ -12,6 +12,8 @@ import (
 type CurrentLeadStatusSummary struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// The promised callback time, independent of a general follow-up task.
+	callbackAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Controlled lead status change categories used for reporting, automation, and analytics.
 	category *CurrentLeadStatusSummary_category
 	// UTC timestamp when the lead status change last changed.
@@ -57,6 +59,12 @@ func (m *CurrentLeadStatusSummary) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCallbackAt gets the callbackAt property value. The promised callback time, independent of a general follow-up task.
+// returns a *Time when successful
+func (m *CurrentLeadStatusSummary) GetCallbackAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.callbackAt
+}
+
 // GetCategory gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 // returns a *CurrentLeadStatusSummary_category when successful
 func (m *CurrentLeadStatusSummary) GetCategory() *CurrentLeadStatusSummary_category {
@@ -91,6 +99,16 @@ func (m *CurrentLeadStatusSummary) GetDisplayName() *string {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *CurrentLeadStatusSummary) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callbackAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallbackAt(val)
+		}
+		return nil
+	}
 	res["category"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetEnumValue(ParseCurrentLeadStatusSummary_category)
 		if err != nil {
@@ -258,6 +276,12 @@ func (m *CurrentLeadStatusSummary) GetSource() *CurrentLeadStatusSummary_source 
 
 // Serialize serializes information the current object
 func (m *CurrentLeadStatusSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteTimeValue("callbackAt", m.GetCallbackAt())
+		if err != nil {
+			return err
+		}
+	}
 	if m.GetCategory() != nil {
 		cast := (*m.GetCategory()).String()
 		err := writer.WriteStringValue("category", &cast)
@@ -346,6 +370,11 @@ func (m *CurrentLeadStatusSummary) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetCallbackAt sets the callbackAt property value. The promised callback time, independent of a general follow-up task.
+func (m *CurrentLeadStatusSummary) SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.callbackAt = value
+}
+
 // SetCategory sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
 func (m *CurrentLeadStatusSummary) SetCategory(value *CurrentLeadStatusSummary_category) {
 	m.category = value
@@ -409,6 +438,7 @@ func (m *CurrentLeadStatusSummary) SetSource(value *CurrentLeadStatusSummary_sou
 type CurrentLeadStatusSummaryable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallbackAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCategory() *CurrentLeadStatusSummary_category
 	GetChangedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetChangedByAutomationId() *string
@@ -421,6 +451,7 @@ type CurrentLeadStatusSummaryable interface {
 	GetOutcome() *string
 	GetRevision() *int64
 	GetSource() *CurrentLeadStatusSummary_source
+	SetCallbackAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCategory(value *CurrentLeadStatusSummary_category)
 	SetChangedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetChangedByAutomationId(value *string)

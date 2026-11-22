@@ -9,7 +9,7 @@ import (
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// ItemMarkHandledRequestBuilder builds and executes requests for operations under \conversations\{id}\mark-handled
+// ItemMarkHandledRequestBuilder builds and executes requests for operations under \conversations\{conversation-id}\mark-handled
 type ItemMarkHandledRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -23,7 +23,7 @@ type ItemMarkHandledRequestBuilderPostQueryParameters struct {
 // NewItemMarkHandledRequestBuilderInternal instantiates a new ItemMarkHandledRequestBuilder and sets the default values.
 func NewItemMarkHandledRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ItemMarkHandledRequestBuilder {
 	m := &ItemMarkHandledRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}/mark-handled?replyVersion={replyVersion}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{conversation%2Did}/mark-handled?replyVersion={replyVersion}", pathParameters),
 	}
 	return m
 }

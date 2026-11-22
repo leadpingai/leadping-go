@@ -20,6 +20,8 @@ type MyRequestBuilderPostQueryParameters struct {
 	ArchiveFilter *string "uriparametername:\"archiveFilter\""
 	// Whether to include only conversations where calling is available.
 	Contactable *bool "uriparametername:\"contactable\""
+	// Orders the full filtered inbox by the next action before paging.
+	Priority *bool "uriparametername:\"priority\""
 	// Whether to include only conversations where texting is available.
 	TextingAvailable *bool "uriparametername:\"textingAvailable\""
 }
@@ -27,7 +29,7 @@ type MyRequestBuilderPostQueryParameters struct {
 // NewMyRequestBuilderInternal instantiates a new MyRequestBuilder and sets the default values.
 func NewMyRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *MyRequestBuilder {
 	m := &MyRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*,textingAvailable*}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*,priority*,textingAvailable*}", pathParameters),
 	}
 	return m
 }
@@ -40,7 +42,7 @@ func NewMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
 }
 
 // Post lists the current user's lead conversations with paging and sorting for inbox views, recent follow-up, and communication history.
-// returns a PagedResultOfConversationResponseable when successful
+// returns a ConversationPageable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -48,7 +50,7 @@ func NewMyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
 // returns a ProblemDetails error when the service returns a 415 status code
 // returns a ProblemDetails error when the service returns a 429 status code
 // returns a ProblemDetails error when the service returns a 500 status code
-func (m *MyRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.RequestDataOptionsable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[MyRequestBuilderPostQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PagedResultOfConversationResponseable, error) {
+func (m *MyRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.RequestDataOptionsable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[MyRequestBuilderPostQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationPageable, error) {
 	requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration)
 	if err != nil {
 		return nil, err
@@ -62,14 +64,14 @@ func (m *MyRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7a
 		"429": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
 		"500": i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateProblemDetailsFromDiscriminatorValue,
 	}
-	res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreatePagedResultOfConversationResponseFromDiscriminatorValue, errorMapping)
+	res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateConversationPageFromDiscriminatorValue, errorMapping)
 	if err != nil {
 		return nil, err
 	}
 	if res == nil {
 		return nil, nil
 	}
-	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.PagedResultOfConversationResponseable), nil
+	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationPageable), nil
 }
 
 // ToPostRequestInformation lists the current user's lead conversations with paging and sorting for inbox views, recent follow-up, and communication history.

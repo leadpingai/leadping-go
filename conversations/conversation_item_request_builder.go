@@ -9,24 +9,24 @@ import (
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// ConversationsItemRequestBuilder builds and executes requests for operations under \conversations\{id}
-type ConversationsItemRequestBuilder struct {
+// ConversationItemRequestBuilder builds and executes requests for operations under \conversations\{conversation-id}
+type ConversationItemRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// NewConversationsItemRequestBuilderInternal instantiates a new ConversationsItemRequestBuilder and sets the default values.
-func NewConversationsItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsItemRequestBuilder {
-	m := &ConversationsItemRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{id}", pathParameters),
+// NewConversationItemRequestBuilderInternal instantiates a new ConversationItemRequestBuilder and sets the default values.
+func NewConversationItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationItemRequestBuilder {
+	m := &ConversationItemRequestBuilder{
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/{conversation%2Did}", pathParameters),
 	}
 	return m
 }
 
-// NewConversationsItemRequestBuilder instantiates a new ConversationsItemRequestBuilder and sets the default values.
-func NewConversationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationsItemRequestBuilder {
+// NewConversationItemRequestBuilder instantiates a new ConversationItemRequestBuilder and sets the default values.
+func NewConversationItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ConversationItemRequestBuilder {
 	urlParams := make(map[string]string)
 	urlParams["request-raw-url"] = rawUrl
-	return NewConversationsItemRequestBuilderInternal(urlParams, requestAdapter)
+	return NewConversationItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 
 // Get returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
@@ -37,7 +37,7 @@ func NewConversationsItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
 // returns a ProblemDetails error when the service returns a 404 status code
 // returns a ProblemDetails error when the service returns a 429 status code
 // returns a ProblemDetails error when the service returns a 500 status code
-func (m *ConversationsItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationResponseable, error) {
+func (m *ConversationItemRequestBuilder) Get(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.ConversationResponseable, error) {
 	requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration)
 	if err != nil {
 		return nil, err
@@ -62,31 +62,37 @@ func (m *ConversationsItemRequestBuilder) Get(ctx context.Context, requestConfig
 
 // MarkHandled the markHandled property
 // returns a *ItemMarkHandledRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) MarkHandled() *ItemMarkHandledRequestBuilder {
+func (m *ConversationItemRequestBuilder) MarkHandled() *ItemMarkHandledRequestBuilder {
 	return NewItemMarkHandledRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // MarkRead the markRead property
 // returns a *ItemMarkReadRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder {
+func (m *ConversationItemRequestBuilder) MarkRead() *ItemMarkReadRequestBuilder {
 	return NewItemMarkReadRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // MarkReplyNeeded the markReplyNeeded property
 // returns a *ItemMarkReplyNeededRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) MarkReplyNeeded() *ItemMarkReplyNeededRequestBuilder {
+func (m *ConversationItemRequestBuilder) MarkReplyNeeded() *ItemMarkReplyNeededRequestBuilder {
 	return NewItemMarkReplyNeededRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // OutboundReadiness the outboundReadiness property
 // returns a *ItemOutboundReadinessRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) OutboundReadiness() *ItemOutboundReadinessRequestBuilder {
+func (m *ConversationItemRequestBuilder) OutboundReadiness() *ItemOutboundReadinessRequestBuilder {
 	return NewItemOutboundReadinessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// Retry the retry property
+// returns a *ItemRetryRequestBuilder when successful
+func (m *ConversationItemRequestBuilder) Retry() *ItemRetryRequestBuilder {
+	return NewItemRetryRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // ToGetRequestInformation returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
 // returns a *RequestInformation when successful
-func (m *ConversationsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *ConversationItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ConfigureRequestInformation(requestInfo, requestConfiguration)
 	requestInfo.Headers.TryAdd("Accept", "application/json")
@@ -94,7 +100,7 @@ func (m *ConversationsItemRequestBuilder) ToGetRequestInformation(ctx context.Co
 }
 
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *ConversationsItemRequestBuilder when successful
-func (m *ConversationsItemRequestBuilder) WithUrl(rawUrl string) *ConversationsItemRequestBuilder {
-	return NewConversationsItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
+// returns a *ConversationItemRequestBuilder when successful
+func (m *ConversationItemRequestBuilder) WithUrl(rawUrl string) *ConversationItemRequestBuilder {
+	return NewConversationItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter)
 }
