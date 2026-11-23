@@ -42,6 +42,8 @@ type LeadResponse struct {
 	deletedByUserId *string
 	// Whether the lead is enabled.
 	enabled *bool
+	// Whether the source covers SMS consent for the current recipient.
+	hasSourceSmsConsent *bool
 	// Stable unique identifier of the resource.
 	id *string
 	// The service or purchase requested by a lead.
@@ -333,6 +335,16 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		}
 		return nil
 	}
+	res["hasSourceSmsConsent"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetHasSourceSmsConsent(val)
+		}
+		return nil
+	}
 	res["id"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -470,6 +482,12 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 		return nil
 	}
 	return res
+}
+
+// GetHasSourceSmsConsent gets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+// returns a *bool when successful
+func (m *LeadResponse) GetHasSourceSmsConsent() *bool {
+	return m.hasSourceSmsConsent
 }
 
 // GetId gets the id property value. Stable unique identifier of the resource.
@@ -638,6 +656,12 @@ func (m *LeadResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 	}
 	{
 		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("hasSourceSmsConsent", m.GetHasSourceSmsConsent())
 		if err != nil {
 			return err
 		}
@@ -816,6 +840,11 @@ func (m *LeadResponse) SetEnabled(value *bool) {
 	m.enabled = value
 }
 
+// SetHasSourceSmsConsent sets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+func (m *LeadResponse) SetHasSourceSmsConsent(value *bool) {
+	m.hasSourceSmsConsent = value
+}
+
 // SetId sets the id property value. Stable unique identifier of the resource.
 func (m *LeadResponse) SetId(value *string) {
 	m.id = value
@@ -899,6 +928,7 @@ type LeadResponseable interface {
 	GetDeletedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetDeletedByUserId() *string
 	GetEnabled() *bool
+	GetHasSourceSmsConsent() *bool
 	GetId() *string
 	GetInquiry() LeadResponse_inquiryable
 	GetIsArchived() *bool
@@ -927,6 +957,7 @@ type LeadResponseable interface {
 	SetDeletedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetDeletedByUserId(value *string)
 	SetEnabled(value *bool)
+	SetHasSourceSmsConsent(value *bool)
 	SetId(value *string)
 	SetInquiry(value LeadResponse_inquiryable)
 	SetIsArchived(value *bool)
