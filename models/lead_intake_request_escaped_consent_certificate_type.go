@@ -9,11 +9,12 @@ type LeadIntakeRequest_consentCertificateType int
 const (
 	TRUSTEDFORM_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE LeadIntakeRequest_consentCertificateType = iota
 	LEADPING_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
+	MANUALVOICE_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
 	OTHER_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
 )
 
 func (i LeadIntakeRequest_consentCertificateType) String() string {
-	return []string{"TrustedForm", "Leadping", "Other"}[i]
+	return []string{"TrustedForm", "Leadping", "ManualVoice", "Other"}[i]
 }
 
 func ParseLeadIntakeRequest_consentCertificateType(v string) (any, error) {
@@ -23,6 +24,8 @@ func ParseLeadIntakeRequest_consentCertificateType(v string) (any, error) {
 		result = TRUSTEDFORM_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
 	case "Leadping":
 		result = LEADPING_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
+	case "ManualVoice":
+		result = MANUALVOICE_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
 	case "Other":
 		result = OTHER_LEADINTAKEREQUEST_CONSENTCERTIFICATETYPE
 	default:

@@ -5,6 +5,7 @@ package models
 
 import (
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+	i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
 
 // LeadContactabilityResponse current call and text eligibility for a lead under the applicable contact rules.
@@ -17,6 +18,8 @@ type LeadContactabilityResponse struct {
 	canCall *bool
 	// Whether the lead can currently be texted after evaluating applicable contact hours, suppression, and consent rules.
 	canText *bool
+	// Next opening or closing of a contact window that can change this result.
+	nextWindowChangeAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Whether the stored phone lookup rules out texting this recipient.
 	smsLineRestricted *bool
 	// Customer-safe explanation when texting is unavailable.
@@ -94,6 +97,16 @@ func (m *LeadContactabilityResponse) GetFieldDeserializers() map[string]func(i87
 		}
 		return nil
 	}
+	res["nextWindowChangeAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNextWindowChangeAt(val)
+		}
+		return nil
+	}
 	res["smsLineRestricted"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -115,6 +128,12 @@ func (m *LeadContactabilityResponse) GetFieldDeserializers() map[string]func(i87
 		return nil
 	}
 	return res
+}
+
+// GetNextWindowChangeAt gets the nextWindowChangeAt property value. Next opening or closing of a contact window that can change this result.
+// returns a *Time when successful
+func (m *LeadContactabilityResponse) GetNextWindowChangeAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.nextWindowChangeAt
 }
 
 // GetSmsLineRestricted gets the smsLineRestricted property value. Whether the stored phone lookup rules out texting this recipient.
@@ -145,6 +164,12 @@ func (m *LeadContactabilityResponse) Serialize(writer i878a80d2330e89d26896388a3
 	}
 	{
 		err := writer.WriteBoolValue("canText", m.GetCanText())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteTimeValue("nextWindowChangeAt", m.GetNextWindowChangeAt())
 		if err != nil {
 			return err
 		}
@@ -190,6 +215,11 @@ func (m *LeadContactabilityResponse) SetCanText(value *bool) {
 	m.canText = value
 }
 
+// SetNextWindowChangeAt sets the nextWindowChangeAt property value. Next opening or closing of a contact window that can change this result.
+func (m *LeadContactabilityResponse) SetNextWindowChangeAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.nextWindowChangeAt = value
+}
+
 // SetSmsLineRestricted sets the smsLineRestricted property value. Whether the stored phone lookup rules out texting this recipient.
 func (m *LeadContactabilityResponse) SetSmsLineRestricted(value *bool) {
 	m.smsLineRestricted = value
@@ -206,11 +236,13 @@ type LeadContactabilityResponseable interface {
 	GetCallBlockedReason() *string
 	GetCanCall() *bool
 	GetCanText() *bool
+	GetNextWindowChangeAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetSmsLineRestricted() *bool
 	GetTextBlockedReason() *string
 	SetCallBlockedReason(value *string)
 	SetCanCall(value *bool)
 	SetCanText(value *bool)
+	SetNextWindowChangeAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetSmsLineRestricted(value *bool)
 	SetTextBlockedReason(value *string)
 }

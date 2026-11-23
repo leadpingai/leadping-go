@@ -40,6 +40,12 @@ func NewPhoneCallRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 	return NewPhoneCallRequestBuilderInternal(urlParams, requestAdapter)
 }
 
+// Dial the dial property
+// returns a *DialRequestBuilder when successful
+func (m *PhoneCallRequestBuilder) Dial() *DialRequestBuilder {
+	return NewDialRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Initiate the initiate property
 // returns a *InitiateRequestBuilder when successful
 func (m *PhoneCallRequestBuilder) Initiate() *InitiateRequestBuilder {
