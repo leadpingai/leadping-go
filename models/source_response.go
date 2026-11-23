@@ -54,6 +54,8 @@ type SourceResponse struct {
 	modifiedByUser SourceResponse_modifiedByUserable
 	// Human-readable display name of the resource.
 	name *string
+	// Whether to normalize capitalization in incoming lead names and cities.
+	normalizeIncomingData *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	organization SourceResponse_organizationable
 	// Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
@@ -391,6 +393,16 @@ func (m *SourceResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		return nil
 	}
+	res["normalizeIncomingData"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNormalizeIncomingData(val)
+		}
+		return nil
+	}
 	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateSourceResponse_organizationFromDiscriminatorValue)
 		if err != nil {
@@ -464,6 +476,12 @@ func (m *SourceResponse) GetModifiedByUser() SourceResponse_modifiedByUserable {
 // returns a *string when successful
 func (m *SourceResponse) GetName() *string {
 	return m.name
+}
+
+// GetNormalizeIncomingData gets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+// returns a *bool when successful
+func (m *SourceResponse) GetNormalizeIncomingData() *bool {
+	return m.normalizeIncomingData
 }
 
 // GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -619,6 +637,12 @@ func (m *SourceResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("normalizeIncomingData", m.GetNormalizeIncomingData())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("organization", m.GetOrganization())
 		if err != nil {
 			return err
@@ -755,6 +779,11 @@ func (m *SourceResponse) SetName(value *string) {
 	m.name = value
 }
 
+// SetNormalizeIncomingData sets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+func (m *SourceResponse) SetNormalizeIncomingData(value *bool) {
+	m.normalizeIncomingData = value
+}
+
 // SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *SourceResponse) SetOrganization(value SourceResponse_organizationable) {
 	m.organization = value
@@ -794,6 +823,7 @@ type SourceResponseable interface {
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetModifiedByUser() SourceResponse_modifiedByUserable
 	GetName() *string
+	GetNormalizeIncomingData() *bool
 	GetOrganization() SourceResponse_organizationable
 	GetRequiresTrustedForm() *bool
 	GetUser() SourceResponse_userable
@@ -818,6 +848,7 @@ type SourceResponseable interface {
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetModifiedByUser(value SourceResponse_modifiedByUserable)
 	SetName(value *string)
+	SetNormalizeIncomingData(value *bool)
 	SetOrganization(value SourceResponse_organizationable)
 	SetRequiresTrustedForm(value *bool)
 	SetUser(value SourceResponse_userable)

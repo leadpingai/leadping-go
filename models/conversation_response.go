@@ -18,6 +18,8 @@ type ConversationResponse struct {
 	archivedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Defines why a lead was removed from the active working pipeline.
 	archiveReason *int32
+	// The lead assignee used for inbox audience selection.
+	assignedToUserId *string
 	// Optional profile image URL explicitly associated with the lead.
 	avatarUrl *string
 	// Rep-selected time for the next call attempt.
@@ -62,6 +64,10 @@ type ConversationResponse struct {
 	lastSnippet *string
 	// Timestamp of the conversation activity shown in LastSnippet.
 	lastSnippetAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// When the associated lead was created.
+	leadCreatedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	// Whether the associated lead is enabled for selection.
+	leadEnabled *bool
 	// Lead ID associated with this inbox conversation.
 	leadId *string
 	// Lead's phone number used for conversation matching and outreach.
@@ -117,6 +123,12 @@ func (m *ConversationResponse) GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a
 // returns a *int32 when successful
 func (m *ConversationResponse) GetArchiveReason() *int32 {
 	return m.archiveReason
+}
+
+// GetAssignedToUserId gets the assignedToUserId property value. The lead assignee used for inbox audience selection.
+// returns a *string when successful
+func (m *ConversationResponse) GetAssignedToUserId() *string {
+	return m.assignedToUserId
 }
 
 // GetAvatarUrl gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
@@ -198,6 +210,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		if val != nil {
 			m.SetArchiveReason(val)
+		}
+		return nil
+	}
+	res["assignedToUserId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetAssignedToUserId(val)
 		}
 		return nil
 	}
@@ -421,6 +443,26 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["leadCreatedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadCreatedAt(val)
+		}
+		return nil
+	}
+	res["leadEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLeadEnabled(val)
+		}
+		return nil
+	}
 	res["leadId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -598,6 +640,18 @@ func (m *ConversationResponse) GetLastSnippetAt() *i336074805fc853987abe6f7fe3ad
 	return m.lastSnippetAt
 }
 
+// GetLeadCreatedAt gets the leadCreatedAt property value. When the associated lead was created.
+// returns a *Time when successful
+func (m *ConversationResponse) GetLeadCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.leadCreatedAt
+}
+
+// GetLeadEnabled gets the leadEnabled property value. Whether the associated lead is enabled for selection.
+// returns a *bool when successful
+func (m *ConversationResponse) GetLeadEnabled() *bool {
+	return m.leadEnabled
+}
+
 // GetLeadId gets the leadId property value. Lead ID associated with this inbox conversation.
 // returns a *string when successful
 func (m *ConversationResponse) GetLeadId() *string {
@@ -668,6 +722,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteInt32Value("archiveReason", m.GetArchiveReason())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("assignedToUserId", m.GetAssignedToUserId())
 		if err != nil {
 			return err
 		}
@@ -805,6 +865,18 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteTimeValue("leadCreatedAt", m.GetLeadCreatedAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("leadEnabled", m.GetLeadEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("leadId", m.GetLeadId())
 		if err != nil {
 			return err
@@ -886,6 +958,11 @@ func (m *ConversationResponse) SetArchivedAt(value *i336074805fc853987abe6f7fe3a
 // SetArchiveReason sets the archiveReason property value. Defines why a lead was removed from the active working pipeline.
 func (m *ConversationResponse) SetArchiveReason(value *int32) {
 	m.archiveReason = value
+}
+
+// SetAssignedToUserId sets the assignedToUserId property value. The lead assignee used for inbox audience selection.
+func (m *ConversationResponse) SetAssignedToUserId(value *string) {
+	m.assignedToUserId = value
 }
 
 // SetAvatarUrl sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
@@ -998,6 +1075,16 @@ func (m *ConversationResponse) SetLastSnippetAt(value *i336074805fc853987abe6f7f
 	m.lastSnippetAt = value
 }
 
+// SetLeadCreatedAt sets the leadCreatedAt property value. When the associated lead was created.
+func (m *ConversationResponse) SetLeadCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.leadCreatedAt = value
+}
+
+// SetLeadEnabled sets the leadEnabled property value. Whether the associated lead is enabled for selection.
+func (m *ConversationResponse) SetLeadEnabled(value *bool) {
+	m.leadEnabled = value
+}
+
 // SetLeadId sets the leadId property value. Lead ID associated with this inbox conversation.
 func (m *ConversationResponse) SetLeadId(value *string) {
 	m.leadId = value
@@ -1049,6 +1136,7 @@ type ConversationResponseable interface {
 	GetActiveOutboundPhoneNumberId() *string
 	GetArchivedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetArchiveReason() *int32
+	GetAssignedToUserId() *string
 	GetAvatarUrl() *string
 	GetCallRetryAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetCanCallNow() *bool
@@ -1071,6 +1159,8 @@ type ConversationResponseable interface {
 	GetLastName() *string
 	GetLastSnippet() *string
 	GetLastSnippetAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLeadCreatedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+	GetLeadEnabled() *bool
 	GetLeadId() *string
 	GetLeadPhoneNumber() *string
 	GetNeedsReply() *bool
@@ -1083,6 +1173,7 @@ type ConversationResponseable interface {
 	SetActiveOutboundPhoneNumberId(value *string)
 	SetArchivedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetArchiveReason(value *int32)
+	SetAssignedToUserId(value *string)
 	SetAvatarUrl(value *string)
 	SetCallRetryAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetCanCallNow(value *bool)
@@ -1105,6 +1196,8 @@ type ConversationResponseable interface {
 	SetLastName(value *string)
 	SetLastSnippet(value *string)
 	SetLastSnippetAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLeadCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
+	SetLeadEnabled(value *bool)
 	SetLeadId(value *string)
 	SetLeadPhoneNumber(value *string)
 	SetNeedsReply(value *bool)

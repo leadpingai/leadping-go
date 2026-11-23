@@ -91,6 +91,12 @@ func (m *AutomationsItemRequestBuilder) Get(ctx context.Context, requestConfigur
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AutomationResponseable), nil
 }
 
+// Leads the leads property
+// returns a *ItemLeadsRequestBuilder when successful
+func (m *AutomationsItemRequestBuilder) Leads() *ItemLeadsRequestBuilder {
+	return NewItemLeadsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Put updates an automation for current-organization leads, changing triggers, message steps, routing, or active follow-up settings.
 // returns a AutomationResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
@@ -128,6 +134,12 @@ func (m *AutomationsItemRequestBuilder) Put(ctx context.Context, body i01c1fcf10
 // returns a *ItemRunRequestBuilder when successful
 func (m *AutomationsItemRequestBuilder) Run() *ItemRunRequestBuilder {
 	return NewItemRunRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
+// RunForAudience the runForAudience property
+// returns a *ItemRunForAudienceRequestBuilder when successful
+func (m *AutomationsItemRequestBuilder) RunForAudience() *ItemRunForAudienceRequestBuilder {
+	return NewItemRunForAudienceRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
 // Runs the runs property

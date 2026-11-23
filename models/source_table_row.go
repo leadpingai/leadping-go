@@ -54,6 +54,8 @@ type SourceTableRow struct {
 	modifiedByUser SourceTableRow_modifiedByUserable
 	// Display name for this lead source table row in the Leadping API.
 	name *string
+	// Whether to normalize capitalization in incoming lead names and cities.
+	normalizeIncomingData *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	organization SourceTableRow_organizationable
 	// Organization ID that owns this lead source.
@@ -393,6 +395,16 @@ func (m *SourceTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89
 		}
 		return nil
 	}
+	res["normalizeIncomingData"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetNormalizeIncomingData(val)
+		}
+		return nil
+	}
 	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateSourceTableRow_organizationFromDiscriminatorValue)
 		if err != nil {
@@ -476,6 +488,12 @@ func (m *SourceTableRow) GetModifiedByUser() SourceTableRow_modifiedByUserable {
 // returns a *string when successful
 func (m *SourceTableRow) GetName() *string {
 	return m.name
+}
+
+// GetNormalizeIncomingData gets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+// returns a *bool when successful
+func (m *SourceTableRow) GetNormalizeIncomingData() *bool {
+	return m.normalizeIncomingData
 }
 
 // GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -637,6 +655,12 @@ func (m *SourceTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("normalizeIncomingData", m.GetNormalizeIncomingData())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteObjectValue("organization", m.GetOrganization())
 		if err != nil {
 			return err
@@ -779,6 +803,11 @@ func (m *SourceTableRow) SetName(value *string) {
 	m.name = value
 }
 
+// SetNormalizeIncomingData sets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+func (m *SourceTableRow) SetNormalizeIncomingData(value *bool) {
+	m.normalizeIncomingData = value
+}
+
 // SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *SourceTableRow) SetOrganization(value SourceTableRow_organizationable) {
 	m.organization = value
@@ -823,6 +852,7 @@ type SourceTableRowable interface {
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetModifiedByUser() SourceTableRow_modifiedByUserable
 	GetName() *string
+	GetNormalizeIncomingData() *bool
 	GetOrganization() SourceTableRow_organizationable
 	GetOrganizationId() *string
 	GetRequiresTrustedForm() *bool
@@ -848,6 +878,7 @@ type SourceTableRowable interface {
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetModifiedByUser(value SourceTableRow_modifiedByUserable)
 	SetName(value *string)
+	SetNormalizeIncomingData(value *bool)
 	SetOrganization(value SourceTableRow_organizationable)
 	SetOrganizationId(value *string)
 	SetRequiresTrustedForm(value *bool)

@@ -48,6 +48,12 @@ func NewAutomationsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 	return NewAutomationsRequestBuilderInternal(urlParams, requestAdapter)
 }
 
+// LeadAudience the leadAudience property
+// returns a *LeadAudienceRequestBuilder when successful
+func (m *AutomationsRequestBuilder) LeadAudience() *LeadAudienceRequestBuilder {
+	return NewLeadAudienceRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // Post creates an automation for current-organization leads, configuring triggers, message steps, and follow-up behavior.
 // returns a AutomationResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code

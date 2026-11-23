@@ -14,6 +14,8 @@ type AutomationTableRow struct {
 	actionSummary *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Whether the current user can start this automation for a selected inbox lead.
+	canRunForLead *bool
 	// Human-readable summary of the automation condition evaluation.
 	conditionSummary *string
 	// User ID of the person who created this automation table row.
@@ -83,6 +85,12 @@ func (m *AutomationTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCanRunForLead gets the canRunForLead property value. Whether the current user can start this automation for a selected inbox lead.
+// returns a *bool when successful
+func (m *AutomationTableRow) GetCanRunForLead() *bool {
+	return m.canRunForLead
+}
+
 // GetConditionSummary gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 // returns a *string when successful
 func (m *AutomationTableRow) GetConditionSummary() *string {
@@ -118,6 +126,16 @@ func (m *AutomationTableRow) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		if val != nil {
 			m.SetActionSummary(val)
+		}
+		return nil
+	}
+	res["canRunForLead"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCanRunForLead(val)
 		}
 		return nil
 	}
@@ -445,6 +463,12 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 		}
 	}
 	{
+		err := writer.WriteBoolValue("canRunForLead", m.GetCanRunForLead())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteStringValue("conditionSummary", m.GetConditionSummary())
 		if err != nil {
 			return err
@@ -589,6 +613,11 @@ func (m *AutomationTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetCanRunForLead sets the canRunForLead property value. Whether the current user can start this automation for a selected inbox lead.
+func (m *AutomationTableRow) SetCanRunForLead(value *bool) {
+	m.canRunForLead = value
+}
+
 // SetConditionSummary sets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
 func (m *AutomationTableRow) SetConditionSummary(value *string) {
 	m.conditionSummary = value
@@ -698,6 +727,7 @@ type AutomationTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
 	GetActionSummary() *string
+	GetCanRunForLead() *bool
 	GetConditionSummary() *string
 	GetCreatedByUserId() *string
 	GetDescription() *string
@@ -720,6 +750,7 @@ type AutomationTableRowable interface {
 	GetUser() AutomationTableRow_userable
 	GetVisibility() *string
 	SetActionSummary(value *string)
+	SetCanRunForLead(value *bool)
 	SetConditionSummary(value *string)
 	SetCreatedByUserId(value *string)
 	SetDescription(value *string)
