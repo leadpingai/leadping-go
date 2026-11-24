@@ -29,7 +29,7 @@ func NewItemDismissRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 	return NewItemDismissRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post dismisses the reminder without completing the appointment, using the expected revision.
+// Post dismiss a callback reminder in Leadping while leaving the appointment open. Include the expected revision to apply the change to the reminder you reviewed.
 // returns a AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -56,7 +56,7 @@ func (m *ItemDismissRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentResponseable), nil
 }
 
-// ToPostRequestInformation dismisses the reminder without completing the appointment, using the expected revision.
+// ToPostRequestInformation dismiss a callback reminder in Leadping while leaving the appointment open. Include the expected revision to apply the change to the reminder you reviewed.
 // returns a *RequestInformation when successful
 func (m *ItemDismissRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentActionRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

@@ -29,7 +29,7 @@ func NewDeclineRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
 	return NewDeclineRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post decline with token
+// Post decline a Leadping organization invitation without signing in. Submit the token from the invitation link to identify the invite you want to decline.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 429 status code
 func (m *DeclineRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationInvitationTokenRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) ([]byte, error) {
@@ -50,7 +50,7 @@ func (m *DeclineRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c6ee
 	return res.([]byte), nil
 }
 
-// ToPostRequestInformation decline with token
+// ToPostRequestInformation decline a Leadping organization invitation without signing in. Submit the token from the invitation link to identify the invite you want to decline.
 // returns a *RequestInformation when successful
 func (m *DeclineRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.OrganizationInvitationTokenRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

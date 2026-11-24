@@ -14,7 +14,7 @@ type InvitationsRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// InvitationsRequestBuilderGetQueryParameters get
+// InvitationsRequestBuilderGetQueryParameters list open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
 type InvitationsRequestBuilderGetQueryParameters struct {
 	Token *string "uriparametername:\"token\""
 }
@@ -53,7 +53,7 @@ func (m *InvitationsRequestBuilder) Decline() *DeclineRequestBuilder {
 	return NewDeclineRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
-// Get get
+// Get list open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
 // returns a []OrganizationInvitationTableRowable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -81,7 +81,7 @@ func (m *InvitationsRequestBuilder) Get(ctx context.Context, requestConfiguratio
 	return val, nil
 }
 
-// ToGetRequestInformation get
+// ToGetRequestInformation list open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
 // returns a *RequestInformation when successful
 func (m *InvitationsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[InvitationsRequestBuilderGetQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

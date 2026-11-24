@@ -14,7 +14,7 @@ type AppointmentsRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// AppointmentsRequestBuilderGetQueryParameters returns appointments visible to the current user, with optional lead, reminder, and status filters.
+// AppointmentsRequestBuilderGetQueryParameters list callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
 type AppointmentsRequestBuilderGetQueryParameters struct {
 	// Whether to browse across organizations. Requires a platform administrator; due-only results remain limited to the current agent.
 	AdminMode *bool "uriparametername:\"adminMode\""
@@ -60,7 +60,7 @@ func NewAppointmentsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
 	return NewAppointmentsRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Get returns appointments visible to the current user, with optional lead, reminder, and status filters.
+// Get list callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
 // returns a []AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -88,7 +88,7 @@ func (m *AppointmentsRequestBuilder) Get(ctx context.Context, requestConfigurati
 	return val, nil
 }
 
-// Post schedules a callback appointment for a lead and configures its assigned agent and reminder.
+// Post schedule a callback for a lead through the Leadping API. Set the appointment time, assign the agent responsible for the call, and configure its reminder.
 // returns a AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -113,7 +113,7 @@ func (m *AppointmentsRequestBuilder) Post(ctx context.Context, body i01c1fcf104a
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentResponseable), nil
 }
 
-// ToGetRequestInformation returns appointments visible to the current user, with optional lead, reminder, and status filters.
+// ToGetRequestInformation list callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
 // returns a *RequestInformation when successful
 func (m *AppointmentsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[AppointmentsRequestBuilderGetQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -122,7 +122,7 @@ func (m *AppointmentsRequestBuilder) ToGetRequestInformation(ctx context.Context
 	return requestInfo, nil
 }
 
-// ToPostRequestInformation schedules a callback appointment for a lead and configures its assigned agent and reminder.
+// ToPostRequestInformation schedule a callback for a lead through the Leadping API. Set the appointment time, assign the agent responsible for the call, and configure its reminder.
 // returns a *RequestInformation when successful
 func (m *AppointmentsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

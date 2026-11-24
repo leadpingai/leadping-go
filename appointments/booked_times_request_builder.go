@@ -14,7 +14,7 @@ type BookedTimesRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// BookedTimesRequestBuilderGetQueryParameters gets occupied appointment times for a lead's selected assignee.
+// BookedTimesRequestBuilderGetQueryParameters look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
 type BookedTimesRequestBuilderGetQueryParameters struct {
 	AppointmentId *string "uriparametername:\"appointmentId\""
 	LeadId        *string "uriparametername:\"leadId\""
@@ -36,7 +36,7 @@ func NewBookedTimesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 	return NewBookedTimesRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Get gets occupied appointment times for a lead's selected assignee.
+// Get look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -61,7 +61,7 @@ func (m *BookedTimesRequestBuilder) Get(ctx context.Context, requestConfiguratio
 	return res.([]byte), nil
 }
 
-// ToGetRequestInformation gets occupied appointment times for a lead's selected assignee.
+// ToGetRequestInformation look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
 // returns a *RequestInformation when successful
 func (m *BookedTimesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[BookedTimesRequestBuilderGetQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

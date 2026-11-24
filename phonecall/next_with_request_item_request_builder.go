@@ -14,7 +14,7 @@ type NextWithRequestItemRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
-// NextWithRequestItemRequestBuilderPostQueryParameters starts the next eligible call in the rep's filtered inbox.
+// NextWithRequestItemRequestBuilderPostQueryParameters start the next eligible call from a rep’s Leadping inbox. Supply the inbox filters so the next call comes from the leads in the rep’s current view.
 type NextWithRequestItemRequestBuilderPostQueryParameters struct {
 	Texting *bool "uriparametername:\"texting\""
 }
@@ -34,7 +34,7 @@ func NewNextWithRequestItemRequestBuilder(rawUrl string, requestAdapter i2ae4187
 	return NewNextWithRequestItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post starts the next eligible call in the rep's filtered inbox.
+// Post start the next eligible call from a rep’s Leadping inbox. Supply the inbox filters so the next call comes from the leads in the rep’s current view.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -59,7 +59,7 @@ func (m *NextWithRequestItemRequestBuilder) Post(ctx context.Context, body i01c1
 	return res.([]byte), nil
 }
 
-// ToPostRequestInformation starts the next eligible call in the rep's filtered inbox.
+// ToPostRequestInformation start the next eligible call from a rep’s Leadping inbox. Supply the inbox filters so the next call comes from the leads in the rep’s current view.
 // returns a *RequestInformation when successful
 func (m *NextWithRequestItemRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.RequestDataOptionsable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[NextWithRequestItemRequestBuilderPostQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

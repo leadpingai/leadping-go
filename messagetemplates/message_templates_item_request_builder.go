@@ -29,7 +29,7 @@ func NewMessageTemplatesItemRequestBuilder(rawUrl string, requestAdapter i2ae418
 	return NewMessageTemplatesItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Delete permanently deletes an organization template.
+// Delete permanently remove a message template from your Leadping organization by ID. To keep the template for later use, disable it with the update endpoint.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -54,7 +54,7 @@ func (m *MessageTemplatesItemRequestBuilder) Delete(ctx context.Context, request
 	return res.(*bool), nil
 }
 
-// Put updates an organization template's name, message, and enabled state.
+// Put update a Leadping message template by ID. Change its name or message text, or enable or disable the template for use in your organization.
 // returns a MessageTemplateable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -79,7 +79,7 @@ func (m *MessageTemplatesItemRequestBuilder) Put(ctx context.Context, body i01c1
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageTemplateable), nil
 }
 
-// ToDeleteRequestInformation permanently deletes an organization template.
+// ToDeleteRequestInformation permanently remove a message template from your Leadping organization by ID. To keep the template for later use, disable it with the update endpoint.
 // returns a *RequestInformation when successful
 func (m *MessageTemplatesItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -88,7 +88,7 @@ func (m *MessageTemplatesItemRequestBuilder) ToDeleteRequestInformation(ctx cont
 	return requestInfo, nil
 }
 
-// ToPutRequestInformation updates an organization template's name, message, and enabled state.
+// ToPutRequestInformation update a Leadping message template by ID. Change its name or message text, or enable or disable the template for use in your organization.
 // returns a *RequestInformation when successful
 func (m *MessageTemplatesItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageTemplateRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

@@ -29,7 +29,7 @@ func NewItemSnoozeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
 	return NewItemSnoozeRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post defers the reminder for ten minutes without moving the appointment, using the expected revision.
+// Post delay a Leadping appointment reminder by ten minutes while keeping the callback time unchanged. Send the expected revision to detect conflicting updates.
 // returns a AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -56,7 +56,7 @@ func (m *ItemSnoozeRequestBuilder) Post(ctx context.Context, body i01c1fcf104a8c
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentResponseable), nil
 }
 
-// ToPostRequestInformation defers the reminder for ten minutes without moving the appointment, using the expected revision.
+// ToPostRequestInformation delay a Leadping appointment reminder by ten minutes while keeping the callback time unchanged. Send the expected revision to detect conflicting updates.
 // returns a *RequestInformation when successful
 func (m *ItemSnoozeRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentActionRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

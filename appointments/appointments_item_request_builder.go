@@ -47,7 +47,7 @@ func (m *AppointmentsItemRequestBuilder) Dismiss() *ItemDismissRequestBuilder {
 	return NewItemDismissRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
-// Get returns an appointment and its history, subject to lead and organization access.
+// Get retrieve a callback appointment and its history by ID in Leadping. The signed-in user must have access to the associated lead and organization.
 // returns a AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -72,7 +72,7 @@ func (m *AppointmentsItemRequestBuilder) Get(ctx context.Context, requestConfigu
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentResponseable), nil
 }
 
-// Put updates an appointment using the expected revision to detect concurrent changes.
+// Put edit an existing callback appointment in Leadping. Include the revision you last retrieved so the API can detect changes made since you viewed it.
 // returns a AppointmentResponseable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -103,7 +103,7 @@ func (m *AppointmentsItemRequestBuilder) Snooze() *ItemSnoozeRequestBuilder {
 	return NewItemSnoozeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 
-// ToGetRequestInformation returns an appointment and its history, subject to lead and organization access.
+// ToGetRequestInformation retrieve a callback appointment and its history by ID in Leadping. The signed-in user must have access to the associated lead and organization.
 // returns a *RequestInformation when successful
 func (m *AppointmentsItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -112,7 +112,7 @@ func (m *AppointmentsItemRequestBuilder) ToGetRequestInformation(ctx context.Con
 	return requestInfo, nil
 }
 
-// ToPutRequestInformation updates an appointment using the expected revision to detect concurrent changes.
+// ToPutRequestInformation edit an existing callback appointment in Leadping. Include the revision you last retrieved so the API can detect changes made since you viewed it.
 // returns a *RequestInformation when successful
 func (m *AppointmentsItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.AppointmentRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

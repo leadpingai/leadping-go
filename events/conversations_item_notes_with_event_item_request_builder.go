@@ -29,7 +29,7 @@ func NewConversationsItemNotesWithEventItemRequestBuilder(rawUrl string, request
 	return NewConversationsItemNotesWithEventItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Put the event table row.
+// Put edit an internal note you authored in Leadping. Submit the revised note text and use the returned event row to display the updated entry in the timeline.
 // returns a EventTableRowable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -58,7 +58,7 @@ func (m *ConversationsItemNotesWithEventItemRequestBuilder) Put(ctx context.Cont
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.EventTableRowable), nil
 }
 
-// ToPutRequestInformation the event table row.
+// ToPutRequestInformation edit an internal note you authored in Leadping. Submit the revised note text and use the returned event row to display the updated entry in the timeline.
 // returns a *RequestInformation when successful
 func (m *ConversationsItemNotesWithEventItemRequestBuilder) ToPutRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.CreateNoteRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

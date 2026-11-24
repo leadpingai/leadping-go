@@ -29,7 +29,7 @@ func NewItemDeclineRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 	return NewItemDeclineRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post decline
+// Post decline a pending Leadping organization invitation by ID while signed in as the recipient. Use this endpoint to turn down the invitation to join.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -54,7 +54,7 @@ func (m *ItemDeclineRequestBuilder) Post(ctx context.Context, requestConfigurati
 	return res.([]byte), nil
 }
 
-// ToPostRequestInformation decline
+// ToPostRequestInformation decline a pending Leadping organization invitation by ID while signed in as the recipient. Use this endpoint to turn down the invitation to join.
 // returns a *RequestInformation when successful
 func (m *ItemDeclineRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

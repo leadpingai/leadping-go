@@ -29,7 +29,7 @@ func NewItemAcceptRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
 	return NewItemAcceptRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post accept
+// Post accept a pending organization invitation in Leadping. Sign in as the invited recipient and submit the invitation ID to join the organization.
 // returns a []byte when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -54,7 +54,7 @@ func (m *ItemAcceptRequestBuilder) Post(ctx context.Context, requestConfiguratio
 	return res.([]byte), nil
 }
 
-// ToPostRequestInformation accept
+// ToPostRequestInformation accept a pending organization invitation in Leadping. Sign in as the invited recipient and submit the invitation ID to join the organization.
 // returns a *RequestInformation when successful
 func (m *ItemAcceptRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

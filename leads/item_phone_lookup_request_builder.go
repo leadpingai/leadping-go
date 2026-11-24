@@ -29,7 +29,7 @@ func NewItemPhoneLookupRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 	return NewItemPhoneLookupRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Post queues a phone identity lookup for a lead visible to the current user and returns the lead after the lookup request is accepted.The lookup runs asynchronously and incurs a charge.
+// Post queue a new, billable phone identity lookup for a lead you can access. The API returns the lead once the request is accepted and runs the lookup asynchronously.
 // returns a LeadResponseable when successful
 // returns a ProblemDetails error when the service returns a 400 status code
 // returns a ProblemDetails error when the service returns a 401 status code
@@ -60,7 +60,7 @@ func (m *ItemPhoneLookupRequestBuilder) Post(ctx context.Context, requestConfigu
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.LeadResponseable), nil
 }
 
-// ToPostRequestInformation queues a phone identity lookup for a lead visible to the current user and returns the lead after the lookup request is accepted.The lookup runs asynchronously and incurs a charge.
+// ToPostRequestInformation queue a new, billable phone identity lookup for a lead you can access. The API returns the lead once the request is accepted and runs the lookup asynchronously.
 // returns a *RequestInformation when successful
 func (m *ItemPhoneLookupRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

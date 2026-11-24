@@ -42,7 +42,7 @@ func NewAvailabilityRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
 	return NewAvailabilityRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Get returns whether the authenticated user can currently receive an incoming call.
+// Get check whether the signed-in Leadping user can receive an incoming call right now. Use the result to show their current availability in a calling workflow.
 // returns a *bool when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -71,7 +71,7 @@ func (m *AvailabilityRequestBuilder) Get(ctx context.Context, requestConfigurati
 	return res.(*bool), nil
 }
 
-// ToGetRequestInformation returns whether the authenticated user can currently receive an incoming call.
+// ToGetRequestInformation check whether the signed-in Leadping user can receive an incoming call right now. Use the result to show their current availability in a calling workflow.
 // returns a *RequestInformation when successful
 func (m *AvailabilityRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)

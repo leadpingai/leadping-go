@@ -42,7 +42,7 @@ func NewMessageTemplatesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7d
 	return NewMessageTemplatesRequestBuilderInternal(urlParams, requestAdapter)
 }
 
-// Get lists organization templates, including disabled templates.
+// Get retrieve your organization’s Leadping message templates in one request. The list includes enabled templates as well as templates that are currently disabled.
 // returns a []MessageTemplateable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -70,7 +70,7 @@ func (m *MessageTemplatesRequestBuilder) Get(ctx context.Context, requestConfigu
 	return val, nil
 }
 
-// Post creates a disabled organization template.
+// Post create a reusable message template for your Leadping organization. New templates start disabled, so you can review the message before enabling it.
 // returns a MessageTemplateable when successful
 // returns a ProblemDetails error when the service returns a 401 status code
 // returns a ProblemDetails error when the service returns a 403 status code
@@ -95,7 +95,7 @@ func (m *MessageTemplatesRequestBuilder) Post(ctx context.Context, body i01c1fcf
 	return res.(i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageTemplateable), nil
 }
 
-// ToGetRequestInformation lists organization templates, including disabled templates.
+// ToGetRequestInformation retrieve your organization’s Leadping message templates in one request. The list includes enabled templates as well as templates that are currently disabled.
 // returns a *RequestInformation when successful
 func (m *MessageTemplatesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -104,7 +104,7 @@ func (m *MessageTemplatesRequestBuilder) ToGetRequestInformation(ctx context.Con
 	return requestInfo, nil
 }
 
-// ToPostRequestInformation creates a disabled organization template.
+// ToPostRequestInformation create a reusable message template for your Leadping organization. New templates start disabled, so you can review the message before enabling it.
 // returns a *RequestInformation when successful
 func (m *MessageTemplatesRequestBuilder) ToPostRequestInformation(ctx context.Context, body i01c1fcf104a8c6ee60f7ac9622055caa34c4bc3debe751d81944bd1693855811.MessageTemplateRequestable, requestConfiguration *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestConfiguration[i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DefaultQueryParameters]) (*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
 	requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
