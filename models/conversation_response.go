@@ -40,7 +40,7 @@ type ConversationResponse struct {
 	firstName *string
 	// Unique Leadping identifier for this conversation response.
 	id *string
-	// The next action for a conversation, in inbox priority order.
+	// The reason a conversation appears in the priority inbox.
 	inboxAction *int32
 	// Customer reply time, due time, or request time explaining the action.
 	inboxActionAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -50,6 +50,8 @@ type ConversationResponse struct {
 	isDemo *bool
 	// Indicates whether the current user has unread activity in the conversation.
 	isUnread *bool
+	// The lastAgentReplyAt property
+	lastAgentReplyAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// UTC timestamp when the most recent conversation event occurred.
 	lastEventAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Indicates that the most recent conversation activity is an internal note.
@@ -80,6 +82,10 @@ type ConversationResponse struct {
 	outboundPhoneNumberOverrideId *string
 	// Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 	phoneNumber ConversationResponse_phoneNumberable
+	// The priorityLabel property
+	priorityLabel *string
+	// The priorityPreview property
+	priorityPreview *string
 	// Monotonic inbound reply boundary used when marking a conversation handled.
 	replyVersion *int64
 	// Defines the customer-facing operational status for an inbox conversation.
@@ -373,6 +379,16 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["lastAgentReplyAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetTimeValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetLastAgentReplyAt(val)
+		}
+		return nil
+	}
 	res["lastEventAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -523,6 +539,26 @@ func (m *ConversationResponse) GetFieldDeserializers() map[string]func(i878a80d2
 		}
 		return nil
 	}
+	res["priorityLabel"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPriorityLabel(val)
+		}
+		return nil
+	}
+	res["priorityPreview"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetPriorityPreview(val)
+		}
+		return nil
+	}
 	res["replyVersion"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetInt64Value()
 		if err != nil {
@@ -568,7 +604,7 @@ func (m *ConversationResponse) GetId() *string {
 	return m.id
 }
 
-// GetInboxAction gets the inboxAction property value. The next action for a conversation, in inbox priority order.
+// GetInboxAction gets the inboxAction property value. The reason a conversation appears in the priority inbox.
 // returns a *int32 when successful
 func (m *ConversationResponse) GetInboxAction() *int32 {
 	return m.inboxAction
@@ -596,6 +632,12 @@ func (m *ConversationResponse) GetIsDemo() *bool {
 // returns a *bool when successful
 func (m *ConversationResponse) GetIsUnread() *bool {
 	return m.isUnread
+}
+
+// GetLastAgentReplyAt gets the lastAgentReplyAt property value. The lastAgentReplyAt property
+// returns a *Time when successful
+func (m *ConversationResponse) GetLastAgentReplyAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time {
+	return m.lastAgentReplyAt
 }
 
 // GetLastEventAt gets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
@@ -686,6 +728,18 @@ func (m *ConversationResponse) GetOutboundPhoneNumberOverrideId() *string {
 // returns a ConversationResponse_phoneNumberable when successful
 func (m *ConversationResponse) GetPhoneNumber() ConversationResponse_phoneNumberable {
 	return m.phoneNumber
+}
+
+// GetPriorityLabel gets the priorityLabel property value. The priorityLabel property
+// returns a *string when successful
+func (m *ConversationResponse) GetPriorityLabel() *string {
+	return m.priorityLabel
+}
+
+// GetPriorityPreview gets the priorityPreview property value. The priorityPreview property
+// returns a *string when successful
+func (m *ConversationResponse) GetPriorityPreview() *string {
+	return m.priorityPreview
 }
 
 // GetReplyVersion gets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
@@ -823,6 +877,12 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 		}
 	}
 	{
+		err := writer.WriteTimeValue("lastAgentReplyAt", m.GetLastAgentReplyAt())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteTimeValue("lastEventAt", m.GetLastEventAt())
 		if err != nil {
 			return err
@@ -908,6 +968,18 @@ func (m *ConversationResponse) Serialize(writer i878a80d2330e89d26896388a3f487ee
 	}
 	{
 		err := writer.WriteObjectValue("phoneNumber", m.GetPhoneNumber())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("priorityLabel", m.GetPriorityLabel())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("priorityPreview", m.GetPriorityPreview())
 		if err != nil {
 			return err
 		}
@@ -1015,7 +1087,7 @@ func (m *ConversationResponse) SetId(value *string) {
 	m.id = value
 }
 
-// SetInboxAction sets the inboxAction property value. The next action for a conversation, in inbox priority order.
+// SetInboxAction sets the inboxAction property value. The reason a conversation appears in the priority inbox.
 func (m *ConversationResponse) SetInboxAction(value *int32) {
 	m.inboxAction = value
 }
@@ -1038,6 +1110,11 @@ func (m *ConversationResponse) SetIsDemo(value *bool) {
 // SetIsUnread sets the isUnread property value. Indicates whether the current user has unread activity in the conversation.
 func (m *ConversationResponse) SetIsUnread(value *bool) {
 	m.isUnread = value
+}
+
+// SetLastAgentReplyAt sets the lastAgentReplyAt property value. The lastAgentReplyAt property
+func (m *ConversationResponse) SetLastAgentReplyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+	m.lastAgentReplyAt = value
 }
 
 // SetLastEventAt sets the lastEventAt property value. UTC timestamp when the most recent conversation event occurred.
@@ -1115,6 +1192,16 @@ func (m *ConversationResponse) SetPhoneNumber(value ConversationResponse_phoneNu
 	m.phoneNumber = value
 }
 
+// SetPriorityLabel sets the priorityLabel property value. The priorityLabel property
+func (m *ConversationResponse) SetPriorityLabel(value *string) {
+	m.priorityLabel = value
+}
+
+// SetPriorityPreview sets the priorityPreview property value. The priorityPreview property
+func (m *ConversationResponse) SetPriorityPreview(value *string) {
+	m.priorityPreview = value
+}
+
 // SetReplyVersion sets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
 func (m *ConversationResponse) SetReplyVersion(value *int64) {
 	m.replyVersion = value
@@ -1152,6 +1239,7 @@ type ConversationResponseable interface {
 	GetIsArchived() *bool
 	GetIsDemo() *bool
 	GetIsUnread() *bool
+	GetLastAgentReplyAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastEventAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetLastEventIsInternalNote() *bool
 	GetLastInboundAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
@@ -1167,6 +1255,8 @@ type ConversationResponseable interface {
 	GetNextStep() *string
 	GetOutboundPhoneNumberOverrideId() *string
 	GetPhoneNumber() ConversationResponse_phoneNumberable
+	GetPriorityLabel() *string
+	GetPriorityPreview() *string
 	GetReplyVersion() *int64
 	GetStatus() *ConversationResponse_status
 	GetStatusReason() *string
@@ -1189,6 +1279,7 @@ type ConversationResponseable interface {
 	SetIsArchived(value *bool)
 	SetIsDemo(value *bool)
 	SetIsUnread(value *bool)
+	SetLastAgentReplyAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastEventAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetLastEventIsInternalNote(value *bool)
 	SetLastInboundAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1204,6 +1295,8 @@ type ConversationResponseable interface {
 	SetNextStep(value *string)
 	SetOutboundPhoneNumberOverrideId(value *string)
 	SetPhoneNumber(value ConversationResponse_phoneNumberable)
+	SetPriorityLabel(value *string)
+	SetPriorityPreview(value *string)
 	SetReplyVersion(value *int64)
 	SetStatus(value *ConversationResponse_status)
 	SetStatusReason(value *string)

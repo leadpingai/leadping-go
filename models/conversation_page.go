@@ -21,6 +21,8 @@ type ConversationPage struct {
 	pageSize *int32
 	// Time remaining until a scheduled action or contact window could change this page, measured on the server.
 	refreshAfter *string
+	// Describes conversation data returned by Leadping.
+	selectedConversation ConversationPage_selectedConversationable
 	// The totalCount property
 	totalCount *int32
 }
@@ -110,6 +112,16 @@ func (m *ConversationPage) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		return nil
 	}
+	res["selectedConversation"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetObjectValue(CreateConversationPage_selectedConversationFromDiscriminatorValue)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetSelectedConversation(val.(ConversationPage_selectedConversationable))
+		}
+		return nil
+	}
 	res["totalCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetInt32Value()
 		if err != nil {
@@ -145,6 +157,12 @@ func (m *ConversationPage) GetPageSize() *int32 {
 // returns a *string when successful
 func (m *ConversationPage) GetRefreshAfter() *string {
 	return m.refreshAfter
+}
+
+// GetSelectedConversation gets the selectedConversation property value. Describes conversation data returned by Leadping.
+// returns a ConversationPage_selectedConversationable when successful
+func (m *ConversationPage) GetSelectedConversation() ConversationPage_selectedConversationable {
+	return m.selectedConversation
 }
 
 // GetTotalCount gets the totalCount property value. The totalCount property
@@ -187,6 +205,12 @@ func (m *ConversationPage) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 	}
 	{
 		err := writer.WriteStringValue("refreshAfter", m.GetRefreshAfter())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteObjectValue("selectedConversation", m.GetSelectedConversation())
 		if err != nil {
 			return err
 		}
@@ -236,6 +260,11 @@ func (m *ConversationPage) SetRefreshAfter(value *string) {
 	m.refreshAfter = value
 }
 
+// SetSelectedConversation sets the selectedConversation property value. Describes conversation data returned by Leadping.
+func (m *ConversationPage) SetSelectedConversation(value ConversationPage_selectedConversationable) {
+	m.selectedConversation = value
+}
+
 // SetTotalCount sets the totalCount property value. The totalCount property
 func (m *ConversationPage) SetTotalCount(value *int32) {
 	m.totalCount = value
@@ -249,11 +278,13 @@ type ConversationPageable interface {
 	GetNeedsReplyCount() *int32
 	GetPageSize() *int32
 	GetRefreshAfter() *string
+	GetSelectedConversation() ConversationPage_selectedConversationable
 	GetTotalCount() *int32
 	SetContinuationToken(value *string)
 	SetItems(value []ConversationResponseable)
 	SetNeedsReplyCount(value *int32)
 	SetPageSize(value *int32)
 	SetRefreshAfter(value *string)
+	SetSelectedConversation(value ConversationPage_selectedConversationable)
 	SetTotalCount(value *int32)
 }

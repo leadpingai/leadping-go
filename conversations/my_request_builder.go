@@ -22,6 +22,8 @@ type MyRequestBuilderPostQueryParameters struct {
 	Contactable *bool "uriparametername:\"contactable\""
 	// Orders the full filtered inbox by the next action before paging.
 	Priority *bool "uriparametername:\"priority\""
+	// Optional selected thread to include when it still matches the priority inbox.
+	SelectedConversationId *string "uriparametername:\"selectedConversationId\""
 	// Whether to include only conversations where texting is available.
 	TextingAvailable *bool "uriparametername:\"textingAvailable\""
 }
@@ -29,7 +31,7 @@ type MyRequestBuilderPostQueryParameters struct {
 // NewMyRequestBuilderInternal instantiates a new MyRequestBuilder and sets the default values.
 func NewMyRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *MyRequestBuilder {
 	m := &MyRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*,priority*,textingAvailable*}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/conversations/my{?archiveFilter*,contactable*,priority*,selectedConversationId*,textingAvailable*}", pathParameters),
 	}
 	return m
 }

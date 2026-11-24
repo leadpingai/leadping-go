@@ -36,6 +36,8 @@ type TransactionResponse struct {
 	isUsageReservation *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead TransactionResponse_leadable
+	// Identifier of the message associated with an SMS or MMS usage entry.
+	messageEventId *string
 	// UTC timestamp when the resource was last modified, or null when it has not been updated.
 	modifiedAt *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	// Net monetary amount after fees, credits, or adjustments.
@@ -233,6 +235,16 @@ func (m *TransactionResponse) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
+	res["messageEventId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetMessageEventId(val)
+		}
+		return nil
+	}
 	res["modifiedAt"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetTimeValue()
 		if err != nil {
@@ -350,6 +362,12 @@ func (m *TransactionResponse) GetIsUsageReservation() *bool {
 // returns a TransactionResponse_leadable when successful
 func (m *TransactionResponse) GetLead() TransactionResponse_leadable {
 	return m.lead
+}
+
+// GetMessageEventId gets the messageEventId property value. Identifier of the message associated with an SMS or MMS usage entry.
+// returns a *string when successful
+func (m *TransactionResponse) GetMessageEventId() *string {
+	return m.messageEventId
 }
 
 // GetModifiedAt gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -472,6 +490,12 @@ func (m *TransactionResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteObjectValue("lead", m.GetLead())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteStringValue("messageEventId", m.GetMessageEventId())
 		if err != nil {
 			return err
 		}
@@ -600,6 +624,11 @@ func (m *TransactionResponse) SetLead(value TransactionResponse_leadable) {
 	m.lead = value
 }
 
+// SetMessageEventId sets the messageEventId property value. Identifier of the message associated with an SMS or MMS usage entry.
+func (m *TransactionResponse) SetMessageEventId(value *string) {
+	m.messageEventId = value
+}
+
 // SetModifiedAt sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
 func (m *TransactionResponse) SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
 	m.modifiedAt = value
@@ -655,6 +684,7 @@ type TransactionResponseable interface {
 	GetIsDemo() *bool
 	GetIsUsageReservation() *bool
 	GetLead() TransactionResponse_leadable
+	GetMessageEventId() *string
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetNetAmount() *float64
 	GetNotes() *string
@@ -675,6 +705,7 @@ type TransactionResponseable interface {
 	SetIsDemo(value *bool)
 	SetIsUsageReservation(value *bool)
 	SetLead(value TransactionResponse_leadable)
+	SetMessageEventId(value *string)
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetNetAmount(value *float64)
 	SetNotes(value *string)
