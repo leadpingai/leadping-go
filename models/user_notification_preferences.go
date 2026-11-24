@@ -92,6 +92,8 @@ type UserNotificationPreferences struct {
 	unreadSmsSmsEnabled *bool
 	// Whether usage limit hit notifications are enabled for this user notification preferences.
 	usageLimitHitEnabled *bool
+	// Text organization admins when their prepaid wallet runs out of funds.
+	walletDepletedSmsEnabled *bool
 }
 
 // NewUserNotificationPreferences instantiates a new UserNotificationPreferences and sets the default values.
@@ -577,6 +579,16 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		return nil
 	}
+	res["walletDepletedSmsEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWalletDepletedSmsEnabled(val)
+		}
+		return nil
+	}
 	return res
 }
 
@@ -758,6 +770,12 @@ func (m *UserNotificationPreferences) GetUnreadSmsSmsEnabled() *bool {
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetUsageLimitHitEnabled() *bool {
 	return m.usageLimitHitEnabled
+}
+
+// GetWalletDepletedSmsEnabled gets the walletDepletedSmsEnabled property value. Text organization admins when their prepaid wallet runs out of funds.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetWalletDepletedSmsEnabled() *bool {
+	return m.walletDepletedSmsEnabled
 }
 
 // Serialize serializes information the current object
@@ -1003,6 +1021,12 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 		}
 	}
 	{
+		err := writer.WriteBoolValue("walletDepletedSmsEnabled", m.GetWalletDepletedSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteAdditionalData(m.GetAdditionalData())
 		if err != nil {
 			return err
@@ -1216,6 +1240,11 @@ func (m *UserNotificationPreferences) SetUsageLimitHitEnabled(value *bool) {
 	m.usageLimitHitEnabled = value
 }
 
+// SetWalletDepletedSmsEnabled sets the walletDepletedSmsEnabled property value. Text organization admins when their prepaid wallet runs out of funds.
+func (m *UserNotificationPreferences) SetWalletDepletedSmsEnabled(value *bool) {
+	m.walletDepletedSmsEnabled = value
+}
+
 type UserNotificationPreferencesable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -1259,6 +1288,7 @@ type UserNotificationPreferencesable interface {
 	GetUnreadSmsEnabled() *bool
 	GetUnreadSmsSmsEnabled() *bool
 	GetUsageLimitHitEnabled() *bool
+	GetWalletDepletedSmsEnabled() *bool
 	SetAccountSmsAlertsEnabled(value *bool)
 	SetAppointmentReminderEmailEnabled(value *bool)
 	SetAppointmentReminderEnabled(value *bool)
@@ -1299,4 +1329,5 @@ type UserNotificationPreferencesable interface {
 	SetUnreadSmsEnabled(value *bool)
 	SetUnreadSmsSmsEnabled(value *bool)
 	SetUsageLimitHitEnabled(value *bool)
+	SetWalletDepletedSmsEnabled(value *bool)
 }
