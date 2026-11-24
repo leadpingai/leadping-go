@@ -11,6 +11,8 @@ import (
 type ManualDialRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// The outgoing number selected in the dialer.
+	fromPhoneNumberId *string
 	// The destination phone number.
 	phoneNumber *string
 }
@@ -38,6 +40,16 @@ func (m *ManualDialRequest) GetAdditionalData() map[string]any {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *ManualDialRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["fromPhoneNumberId"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetStringValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetFromPhoneNumberId(val)
+		}
+		return nil
+	}
 	res["phoneNumber"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetStringValue()
 		if err != nil {
@@ -51,6 +63,12 @@ func (m *ManualDialRequest) GetFieldDeserializers() map[string]func(i878a80d2330
 	return res
 }
 
+// GetFromPhoneNumberId gets the fromPhoneNumberId property value. The outgoing number selected in the dialer.
+// returns a *string when successful
+func (m *ManualDialRequest) GetFromPhoneNumberId() *string {
+	return m.fromPhoneNumberId
+}
+
 // GetPhoneNumber gets the phoneNumber property value. The destination phone number.
 // returns a *string when successful
 func (m *ManualDialRequest) GetPhoneNumber() *string {
@@ -59,6 +77,12 @@ func (m *ManualDialRequest) GetPhoneNumber() *string {
 
 // Serialize serializes information the current object
 func (m *ManualDialRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteStringValue("fromPhoneNumberId", m.GetFromPhoneNumberId())
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteStringValue("phoneNumber", m.GetPhoneNumber())
 		if err != nil {
@@ -79,6 +103,11 @@ func (m *ManualDialRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetFromPhoneNumberId sets the fromPhoneNumberId property value. The outgoing number selected in the dialer.
+func (m *ManualDialRequest) SetFromPhoneNumberId(value *string) {
+	m.fromPhoneNumberId = value
+}
+
 // SetPhoneNumber sets the phoneNumber property value. The destination phone number.
 func (m *ManualDialRequest) SetPhoneNumber(value *string) {
 	m.phoneNumber = value
@@ -87,6 +116,8 @@ func (m *ManualDialRequest) SetPhoneNumber(value *string) {
 type ManualDialRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetFromPhoneNumberId() *string
 	GetPhoneNumber() *string
+	SetFromPhoneNumberId(value *string)
 	SetPhoneNumber(value *string)
 }
