@@ -32,8 +32,6 @@ type TransactionTableRow struct {
 	isUsageReservation *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	lead TransactionTableRow_leadable
-	// Net monetary amount after fees, credits, or adjustments.
-	netAmount *float64
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 	organization TransactionTableRow_organizationable
 	// Masked or human-readable payment method shown for this transaction.
@@ -213,16 +211,6 @@ func (m *TransactionTableRow) GetFieldDeserializers() map[string]func(i878a80d23
 		}
 		return nil
 	}
-	res["netAmount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetFloat64Value()
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetNetAmount(val)
-		}
-		return nil
-	}
 	res["organization"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetObjectValue(CreateTransactionTableRow_organizationFromDiscriminatorValue)
 		if err != nil {
@@ -340,12 +328,6 @@ func (m *TransactionTableRow) GetLead() TransactionTableRow_leadable {
 	return m.lead
 }
 
-// GetNetAmount gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-// returns a *float64 when successful
-func (m *TransactionTableRow) GetNetAmount() *float64 {
-	return m.netAmount
-}
-
 // GetOrganization gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 // returns a TransactionTableRow_organizationable when successful
 func (m *TransactionTableRow) GetOrganization() TransactionTableRow_organizationable {
@@ -460,12 +442,6 @@ func (m *TransactionTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef
 	}
 	{
 		err := writer.WriteObjectValue("lead", m.GetLead())
-		if err != nil {
-			return err
-		}
-	}
-	{
-		err := writer.WriteFloat64Value("netAmount", m.GetNetAmount())
 		if err != nil {
 			return err
 		}
@@ -590,11 +566,6 @@ func (m *TransactionTableRow) SetLead(value TransactionTableRow_leadable) {
 	m.lead = value
 }
 
-// SetNetAmount sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-func (m *TransactionTableRow) SetNetAmount(value *float64) {
-	m.netAmount = value
-}
-
 // SetOrganization sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 func (m *TransactionTableRow) SetOrganization(value TransactionTableRow_organizationable) {
 	m.organization = value
@@ -653,7 +624,6 @@ type TransactionTableRowable interface {
 	GetIsDemo() *bool
 	GetIsUsageReservation() *bool
 	GetLead() TransactionTableRow_leadable
-	GetNetAmount() *float64
 	GetOrganization() TransactionTableRow_organizationable
 	GetPaymentMethodDisplay() *string
 	GetPricingVersion() *string
@@ -673,7 +643,6 @@ type TransactionTableRowable interface {
 	SetIsDemo(value *bool)
 	SetIsUsageReservation(value *bool)
 	SetLead(value TransactionTableRow_leadable)
-	SetNetAmount(value *float64)
 	SetOrganization(value TransactionTableRow_organizationable)
 	SetPaymentMethodDisplay(value *string)
 	SetPricingVersion(value *string)

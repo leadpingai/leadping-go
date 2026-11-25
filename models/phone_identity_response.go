@@ -30,8 +30,6 @@ type PhoneIdentityResponse struct {
 	name *string
 	// The canonical E.164 phone number.
 	number *string
-	// Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-	providerEnrichment PhoneIdentityResponse_providerEnrichmentable
 	// Whether Telnyx rejected SMS routing to this destination with error 40001.
 	smsNotRoutable *bool
 }
@@ -161,16 +159,6 @@ func (m *PhoneIdentityResponse) GetFieldDeserializers() map[string]func(i878a80d
 		}
 		return nil
 	}
-	res["providerEnrichment"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-		val, err := n.GetObjectValue(CreatePhoneIdentityResponse_providerEnrichmentFromDiscriminatorValue)
-		if err != nil {
-			return err
-		}
-		if val != nil {
-			m.SetProviderEnrichment(val.(PhoneIdentityResponse_providerEnrichmentable))
-		}
-		return nil
-	}
 	res["smsNotRoutable"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -230,12 +218,6 @@ func (m *PhoneIdentityResponse) GetName() *string {
 // returns a *string when successful
 func (m *PhoneIdentityResponse) GetNumber() *string {
 	return m.number
-}
-
-// GetProviderEnrichment gets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-// returns a PhoneIdentityResponse_providerEnrichmentable when successful
-func (m *PhoneIdentityResponse) GetProviderEnrichment() PhoneIdentityResponse_providerEnrichmentable {
-	return m.providerEnrichment
 }
 
 // GetSmsNotRoutable gets the smsNotRoutable property value. Whether Telnyx rejected SMS routing to this destination with error 40001.
@@ -307,12 +289,6 @@ func (m *PhoneIdentityResponse) Serialize(writer i878a80d2330e89d26896388a3f487e
 		}
 	}
 	{
-		err := writer.WriteObjectValue("providerEnrichment", m.GetProviderEnrichment())
-		if err != nil {
-			return err
-		}
-	}
-	{
 		err := writer.WriteBoolValue("smsNotRoutable", m.GetSmsNotRoutable())
 		if err != nil {
 			return err
@@ -377,11 +353,6 @@ func (m *PhoneIdentityResponse) SetNumber(value *string) {
 	m.number = value
 }
 
-// SetProviderEnrichment sets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-func (m *PhoneIdentityResponse) SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable) {
-	m.providerEnrichment = value
-}
-
 // SetSmsNotRoutable sets the smsNotRoutable property value. Whether Telnyx rejected SMS routing to this destination with error 40001.
 func (m *PhoneIdentityResponse) SetSmsNotRoutable(value *bool) {
 	m.smsNotRoutable = value
@@ -399,7 +370,6 @@ type PhoneIdentityResponseable interface {
 	GetModifiedAt() *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 	GetName() *string
 	GetNumber() *string
-	GetProviderEnrichment() PhoneIdentityResponse_providerEnrichmentable
 	GetSmsNotRoutable() *bool
 	SetCreatedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetId(value *string)
@@ -410,6 +380,5 @@ type PhoneIdentityResponseable interface {
 	SetModifiedAt(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
 	SetName(value *string)
 	SetNumber(value *string)
-	SetProviderEnrichment(value PhoneIdentityResponse_providerEnrichmentable)
 	SetSmsNotRoutable(value *bool)
 }
