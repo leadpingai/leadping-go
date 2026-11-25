@@ -14,6 +14,12 @@ type SuppressionsRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// Admin the admin property
+// returns a *AdminRequestBuilder when successful
+func (m *SuppressionsRequestBuilder) Admin() *AdminRequestBuilder {
+	return NewAdminRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // All the all property
 // returns a *AllRequestBuilder when successful
 func (m *SuppressionsRequestBuilder) All() *AllRequestBuilder {

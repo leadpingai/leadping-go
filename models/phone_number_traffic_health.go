@@ -11,7 +11,7 @@ import (
 type PhoneNumberTrafficHealth struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// The lower evaluated channel score, or null when neither channel has sufficient evidence.
+	// Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
 	score *int32
 }
 
@@ -51,7 +51,7 @@ func (m *PhoneNumberTrafficHealth) GetFieldDeserializers() map[string]func(i878a
 	return res
 }
 
-// GetScore gets the score property value. The lower evaluated channel score, or null when neither channel has sufficient evidence.
+// GetScore gets the score property value. Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
 // returns a *int32 when successful
 func (m *PhoneNumberTrafficHealth) GetScore() *int32 {
 	return m.score
@@ -79,7 +79,7 @@ func (m *PhoneNumberTrafficHealth) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetScore sets the score property value. The lower evaluated channel score, or null when neither channel has sufficient evidence.
+// SetScore sets the score property value. Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
 func (m *PhoneNumberTrafficHealth) SetScore(value *int32) {
 	m.score = value
 }
