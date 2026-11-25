@@ -42,7 +42,7 @@ type LeadResponse struct {
 	deletedByUserId *string
 	// Whether the lead is enabled.
 	enabled *bool
-	// Whether the source covers SMS consent for the current recipient.
+	// Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
 	hasSourceSmsConsent *bool
 	// Stable unique identifier of the resource.
 	id *string
@@ -484,7 +484,7 @@ func (m *LeadResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d2
 	return res
 }
 
-// GetHasSourceSmsConsent gets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+// GetHasSourceSmsConsent gets the hasSourceSmsConsent property value. Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
 // returns a *bool when successful
 func (m *LeadResponse) GetHasSourceSmsConsent() *bool {
 	return m.hasSourceSmsConsent
@@ -840,7 +840,7 @@ func (m *LeadResponse) SetEnabled(value *bool) {
 	m.enabled = value
 }
 
-// SetHasSourceSmsConsent sets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+// SetHasSourceSmsConsent sets the hasSourceSmsConsent property value. Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
 func (m *LeadResponse) SetHasSourceSmsConsent(value *bool) {
 	m.hasSourceSmsConsent = value
 }
