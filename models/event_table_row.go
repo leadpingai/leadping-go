@@ -20,7 +20,7 @@ type EventTableRow struct {
 	actorUserId *string
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
-	// Name of the automation when it started.
+	// Name of the automation associated with this event.
 	automationName *string
 	// Automation run ID opened from this automation event.
 	automationRunId *string
@@ -169,7 +169,7 @@ func (m *EventTableRow) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
-// GetAutomationName gets the automationName property value. Name of the automation when it started.
+// GetAutomationName gets the automationName property value. Name of the automation associated with this event.
 // returns a *string when successful
 func (m *EventTableRow) GetAutomationName() *string {
 	return m.automationName
@@ -1448,7 +1448,7 @@ func (m *EventTableRow) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
-// SetAutomationName sets the automationName property value. Name of the automation when it started.
+// SetAutomationName sets the automationName property value. Name of the automation associated with this event.
 func (m *EventTableRow) SetAutomationName(value *string) {
 	m.automationName = value
 }

@@ -32,6 +32,8 @@ type UserNotificationPreferences struct {
 	billingEmailEnabled *bool
 	// Whether billing SMS is enabled for this user notification preferences.
 	billingSmsEnabled *bool
+	// Play a sound in the Portal when an incoming text message arrives.
+	incomingMessageSoundEnabled *bool
 	// Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 	lowWalletBalanceEmailEnabled *bool
 	// Whether low wallet balance notifications are enabled for this user notification preferences.
@@ -276,6 +278,16 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 		}
 		if val != nil {
 			m.SetBillingSmsEnabled(val)
+		}
+		return nil
+	}
+	res["incomingMessageSoundEnabled"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIncomingMessageSoundEnabled(val)
 		}
 		return nil
 	}
@@ -592,6 +604,12 @@ func (m *UserNotificationPreferences) GetFieldDeserializers() map[string]func(i8
 	return res
 }
 
+// GetIncomingMessageSoundEnabled gets the incomingMessageSoundEnabled property value. Play a sound in the Portal when an incoming text message arrives.
+// returns a *bool when successful
+func (m *UserNotificationPreferences) GetIncomingMessageSoundEnabled() *bool {
+	return m.incomingMessageSoundEnabled
+}
+
 // GetLowWalletBalanceEmailEnabled gets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 // returns a *bool when successful
 func (m *UserNotificationPreferences) GetLowWalletBalanceEmailEnabled() *bool {
@@ -836,6 +854,12 @@ func (m *UserNotificationPreferences) Serialize(writer i878a80d2330e89d26896388a
 	}
 	{
 		err := writer.WriteBoolValue("billingSmsEnabled", m.GetBillingSmsEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("incomingMessageSoundEnabled", m.GetIncomingMessageSoundEnabled())
 		if err != nil {
 			return err
 		}
@@ -1090,6 +1114,11 @@ func (m *UserNotificationPreferences) SetBillingSmsEnabled(value *bool) {
 	m.billingSmsEnabled = value
 }
 
+// SetIncomingMessageSoundEnabled sets the incomingMessageSoundEnabled property value. Play a sound in the Portal when an incoming text message arrives.
+func (m *UserNotificationPreferences) SetIncomingMessageSoundEnabled(value *bool) {
+	m.incomingMessageSoundEnabled = value
+}
+
 // SetLowWalletBalanceEmailEnabled sets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
 func (m *UserNotificationPreferences) SetLowWalletBalanceEmailEnabled(value *bool) {
 	m.lowWalletBalanceEmailEnabled = value
@@ -1258,6 +1287,7 @@ type UserNotificationPreferencesable interface {
 	GetAutomationFailedSmsEnabled() *bool
 	GetBillingEmailEnabled() *bool
 	GetBillingSmsEnabled() *bool
+	GetIncomingMessageSoundEnabled() *bool
 	GetLowWalletBalanceEmailEnabled() *bool
 	GetLowWalletBalanceEnabled() *bool
 	GetLowWalletBalanceSmsEnabled() *bool
@@ -1299,6 +1329,7 @@ type UserNotificationPreferencesable interface {
 	SetAutomationFailedSmsEnabled(value *bool)
 	SetBillingEmailEnabled(value *bool)
 	SetBillingSmsEnabled(value *bool)
+	SetIncomingMessageSoundEnabled(value *bool)
 	SetLowWalletBalanceEmailEnabled(value *bool)
 	SetLowWalletBalanceEnabled(value *bool)
 	SetLowWalletBalanceSmsEnabled(value *bool)
