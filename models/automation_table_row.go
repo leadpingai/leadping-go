@@ -24,6 +24,8 @@ type AutomationTableRow struct {
 	description *string
 	// Indicates whether this automation table row is active and available in the Leadping API.
 	enabled *bool
+	// Distinct leads with an unfinished workflow in this automation.
+	enrolledLeadCount *int32
 	// Human-readable health summary for this automation table row.
 	healthSummary *string
 	// Unique Leadping identifier for this automation table row.
@@ -58,6 +60,8 @@ type AutomationTableRow struct {
 	user AutomationTableRow_userable
 	// Visibility level that controls who can see this automation table row.
 	visibility *string
+	// Enrolled leads with at least one waiting or scheduled workflow.
+	waitingLeadCount *int32
 }
 
 // NewAutomationTableRow instantiates a new AutomationTableRow and sets the default values.
@@ -113,6 +117,12 @@ func (m *AutomationTableRow) GetDescription() *string {
 // returns a *bool when successful
 func (m *AutomationTableRow) GetEnabled() *bool {
 	return m.enabled
+}
+
+// GetEnrolledLeadCount gets the enrolledLeadCount property value. Distinct leads with an unfinished workflow in this automation.
+// returns a *int32 when successful
+func (m *AutomationTableRow) GetEnrolledLeadCount() *int32 {
+	return m.enrolledLeadCount
 }
 
 // GetFieldDeserializers the deserialization information for the current model
@@ -176,6 +186,16 @@ func (m *AutomationTableRow) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		if val != nil {
 			m.SetEnabled(val)
+		}
+		return nil
+	}
+	res["enrolledLeadCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetEnrolledLeadCount(val)
 		}
 		return nil
 	}
@@ -349,6 +369,16 @@ func (m *AutomationTableRow) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		return nil
 	}
+	res["waitingLeadCount"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetInt32Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetWaitingLeadCount(val)
+		}
+		return nil
+	}
 	return res
 }
 
@@ -454,6 +484,12 @@ func (m *AutomationTableRow) GetVisibility() *string {
 	return m.visibility
 }
 
+// GetWaitingLeadCount gets the waitingLeadCount property value. Enrolled leads with at least one waiting or scheduled workflow.
+// returns a *int32 when successful
+func (m *AutomationTableRow) GetWaitingLeadCount() *int32 {
+	return m.waitingLeadCount
+}
+
 // Serialize serializes information the current object
 func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
 	{
@@ -488,6 +524,12 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 	}
 	{
 		err := writer.WriteBoolValue("enabled", m.GetEnabled())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteInt32Value("enrolledLeadCount", m.GetEnrolledLeadCount())
 		if err != nil {
 			return err
 		}
@@ -595,6 +637,12 @@ func (m *AutomationTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 		}
 	}
 	{
+		err := writer.WriteInt32Value("waitingLeadCount", m.GetWaitingLeadCount())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteAdditionalData(m.GetAdditionalData())
 		if err != nil {
 			return err
@@ -636,6 +684,11 @@ func (m *AutomationTableRow) SetDescription(value *string) {
 // SetEnabled sets the enabled property value. Indicates whether this automation table row is active and available in the Leadping API.
 func (m *AutomationTableRow) SetEnabled(value *bool) {
 	m.enabled = value
+}
+
+// SetEnrolledLeadCount sets the enrolledLeadCount property value. Distinct leads with an unfinished workflow in this automation.
+func (m *AutomationTableRow) SetEnrolledLeadCount(value *int32) {
+	m.enrolledLeadCount = value
 }
 
 // SetHealthSummary sets the healthSummary property value. Human-readable health summary for this automation table row.
@@ -723,6 +776,11 @@ func (m *AutomationTableRow) SetVisibility(value *string) {
 	m.visibility = value
 }
 
+// SetWaitingLeadCount sets the waitingLeadCount property value. Enrolled leads with at least one waiting or scheduled workflow.
+func (m *AutomationTableRow) SetWaitingLeadCount(value *int32) {
+	m.waitingLeadCount = value
+}
+
 type AutomationTableRowable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
@@ -732,6 +790,7 @@ type AutomationTableRowable interface {
 	GetCreatedByUserId() *string
 	GetDescription() *string
 	GetEnabled() *bool
+	GetEnrolledLeadCount() *int32
 	GetHealthSummary() *string
 	GetId() *string
 	GetIsDemo() *bool
@@ -749,12 +808,14 @@ type AutomationTableRowable interface {
 	GetTriggerType() *string
 	GetUser() AutomationTableRow_userable
 	GetVisibility() *string
+	GetWaitingLeadCount() *int32
 	SetActionSummary(value *string)
 	SetCanRunForLead(value *bool)
 	SetConditionSummary(value *string)
 	SetCreatedByUserId(value *string)
 	SetDescription(value *string)
 	SetEnabled(value *bool)
+	SetEnrolledLeadCount(value *int32)
 	SetHealthSummary(value *string)
 	SetId(value *string)
 	SetIsDemo(value *bool)
@@ -772,4 +833,5 @@ type AutomationTableRowable interface {
 	SetTriggerType(value *string)
 	SetUser(value AutomationTableRow_userable)
 	SetVisibility(value *string)
+	SetWaitingLeadCount(value *int32)
 }
