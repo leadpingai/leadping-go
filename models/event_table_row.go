@@ -68,6 +68,8 @@ type EventTableRow struct {
 	fromPhoneNumberId *string
 	// Unique Leadping identifier for this event timeline table row.
 	id *string
+	// Whether the scheduled send is waiting for spending capacity to reset.
+	isBudgetDelayed *bool
 	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Lead ID associated with this timeline event.
@@ -579,6 +581,16 @@ func (m *EventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e89d
 		}
 		return nil
 	}
+	res["isBudgetDelayed"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsBudgetDelayed(val)
+		}
+		return nil
+	}
 	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -890,6 +902,12 @@ func (m *EventTableRow) GetFromPhoneNumberId() *string {
 // returns a *string when successful
 func (m *EventTableRow) GetId() *string {
 	return m.id
+}
+
+// GetIsBudgetDelayed gets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+// returns a *bool when successful
+func (m *EventTableRow) GetIsBudgetDelayed() *bool {
+	return m.isBudgetDelayed
 }
 
 // GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
@@ -1226,6 +1244,12 @@ func (m *EventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isBudgetDelayed", m.GetIsBudgetDelayed())
 		if err != nil {
 			return err
 		}
@@ -1568,6 +1592,11 @@ func (m *EventTableRow) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsBudgetDelayed sets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+func (m *EventTableRow) SetIsBudgetDelayed(value *bool) {
+	m.isBudgetDelayed = value
+}
+
 // SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *EventTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
@@ -1739,6 +1768,7 @@ type EventTableRowable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsBudgetDelayed() *bool
 	GetIsDemo() *bool
 	GetLeadId() *string
 	GetMedia() []MessageMediaAttachmentable
@@ -1795,6 +1825,7 @@ type EventTableRowable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsBudgetDelayed(value *bool)
 	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetMedia(value []MessageMediaAttachmentable)

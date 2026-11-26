@@ -11,10 +11,18 @@ import (
 type SpendLimitsRequest struct {
 	// Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 	additionalData map[string]any
+	// Optional calling budget in USD.
+	callingLimit *float64
+	// Calendar period for an organization channel budget, in UTC.
+	callingPeriod *SpendPeriod
 	// Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 	dailyLimit *float64
 	// Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
 	monthlyLimit *float64
+	// Optional texting budget in USD.
+	textingLimit *float64
+	// Calendar period for an organization channel budget, in UTC.
+	textingPeriod *SpendPeriod
 }
 
 // NewSpendLimitsRequest instantiates a new SpendLimitsRequest and sets the default values.
@@ -36,6 +44,18 @@ func (m *SpendLimitsRequest) GetAdditionalData() map[string]any {
 	return m.additionalData
 }
 
+// GetCallingLimit gets the callingLimit property value. Optional calling budget in USD.
+// returns a *float64 when successful
+func (m *SpendLimitsRequest) GetCallingLimit() *float64 {
+	return m.callingLimit
+}
+
+// GetCallingPeriod gets the callingPeriod property value. Calendar period for an organization channel budget, in UTC.
+// returns a *SpendPeriod when successful
+func (m *SpendLimitsRequest) GetCallingPeriod() *SpendPeriod {
+	return m.callingPeriod
+}
+
 // GetDailyLimit gets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 // returns a *float64 when successful
 func (m *SpendLimitsRequest) GetDailyLimit() *float64 {
@@ -46,6 +66,26 @@ func (m *SpendLimitsRequest) GetDailyLimit() *float64 {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error when successful
 func (m *SpendLimitsRequest) GetFieldDeserializers() map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 	res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error)
+	res["callingLimit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallingLimit(val)
+		}
+		return nil
+	}
+	res["callingPeriod"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSpendPeriod)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetCallingPeriod(val.(*SpendPeriod))
+		}
+		return nil
+	}
 	res["dailyLimit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetFloat64Value()
 		if err != nil {
@@ -66,6 +106,26 @@ func (m *SpendLimitsRequest) GetFieldDeserializers() map[string]func(i878a80d233
 		}
 		return nil
 	}
+	res["textingLimit"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetFloat64Value()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTextingLimit(val)
+		}
+		return nil
+	}
+	res["textingPeriod"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetEnumValue(ParseSpendPeriod)
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetTextingPeriod(val.(*SpendPeriod))
+		}
+		return nil
+	}
 	return res
 }
 
@@ -75,8 +135,33 @@ func (m *SpendLimitsRequest) GetMonthlyLimit() *float64 {
 	return m.monthlyLimit
 }
 
+// GetTextingLimit gets the textingLimit property value. Optional texting budget in USD.
+// returns a *float64 when successful
+func (m *SpendLimitsRequest) GetTextingLimit() *float64 {
+	return m.textingLimit
+}
+
+// GetTextingPeriod gets the textingPeriod property value. Calendar period for an organization channel budget, in UTC.
+// returns a *SpendPeriod when successful
+func (m *SpendLimitsRequest) GetTextingPeriod() *SpendPeriod {
+	return m.textingPeriod
+}
+
 // Serialize serializes information the current object
 func (m *SpendLimitsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter) error {
+	{
+		err := writer.WriteFloat64Value("callingLimit", m.GetCallingLimit())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetCallingPeriod() != nil {
+		cast := (*m.GetCallingPeriod()).String()
+		err := writer.WriteStringValue("callingPeriod", &cast)
+		if err != nil {
+			return err
+		}
+	}
 	{
 		err := writer.WriteFloat64Value("dailyLimit", m.GetDailyLimit())
 		if err != nil {
@@ -85,6 +170,19 @@ func (m *SpendLimitsRequest) Serialize(writer i878a80d2330e89d26896388a3f487eef2
 	}
 	{
 		err := writer.WriteFloat64Value("monthlyLimit", m.GetMonthlyLimit())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteFloat64Value("textingLimit", m.GetTextingLimit())
+		if err != nil {
+			return err
+		}
+	}
+	if m.GetTextingPeriod() != nil {
+		cast := (*m.GetTextingPeriod()).String()
+		err := writer.WriteStringValue("textingPeriod", &cast)
 		if err != nil {
 			return err
 		}
@@ -103,6 +201,16 @@ func (m *SpendLimitsRequest) SetAdditionalData(value map[string]any) {
 	m.additionalData = value
 }
 
+// SetCallingLimit sets the callingLimit property value. Optional calling budget in USD.
+func (m *SpendLimitsRequest) SetCallingLimit(value *float64) {
+	m.callingLimit = value
+}
+
+// SetCallingPeriod sets the callingPeriod property value. Calendar period for an organization channel budget, in UTC.
+func (m *SpendLimitsRequest) SetCallingPeriod(value *SpendPeriod) {
+	m.callingPeriod = value
+}
+
 // SetDailyLimit sets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
 func (m *SpendLimitsRequest) SetDailyLimit(value *float64) {
 	m.dailyLimit = value
@@ -113,11 +221,29 @@ func (m *SpendLimitsRequest) SetMonthlyLimit(value *float64) {
 	m.monthlyLimit = value
 }
 
+// SetTextingLimit sets the textingLimit property value. Optional texting budget in USD.
+func (m *SpendLimitsRequest) SetTextingLimit(value *float64) {
+	m.textingLimit = value
+}
+
+// SetTextingPeriod sets the textingPeriod property value. Calendar period for an organization channel budget, in UTC.
+func (m *SpendLimitsRequest) SetTextingPeriod(value *SpendPeriod) {
+	m.textingPeriod = value
+}
+
 type SpendLimitsRequestable interface {
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
 	i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+	GetCallingLimit() *float64
+	GetCallingPeriod() *SpendPeriod
 	GetDailyLimit() *float64
 	GetMonthlyLimit() *float64
+	GetTextingLimit() *float64
+	GetTextingPeriod() *SpendPeriod
+	SetCallingLimit(value *float64)
+	SetCallingPeriod(value *SpendPeriod)
 	SetDailyLimit(value *float64)
 	SetMonthlyLimit(value *float64)
+	SetTextingLimit(value *float64)
+	SetTextingPeriod(value *SpendPeriod)
 }

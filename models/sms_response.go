@@ -46,6 +46,8 @@ type SmsResponse struct {
 	fromPhoneNumberId *string
 	// Stable unique identifier of the resource.
 	id *string
+	// Whether the scheduled send is waiting for spending capacity to reset.
+	isBudgetDelayed *bool
 	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Lead ID associated with the SMS conversation or outreach attempt.
@@ -375,6 +377,16 @@ func (m *SmsResponse) GetFieldDeserializers() map[string]func(i878a80d2330e89d26
 		}
 		return nil
 	}
+	res["isBudgetDelayed"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsBudgetDelayed(val)
+		}
+		return nil
+	}
 	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -622,6 +634,12 @@ func (m *SmsResponse) GetId() *string {
 	return m.id
 }
 
+// GetIsBudgetDelayed gets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+// returns a *bool when successful
+func (m *SmsResponse) GetIsBudgetDelayed() *bool {
+	return m.isBudgetDelayed
+}
+
 // GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
 // returns a *bool when successful
 func (m *SmsResponse) GetIsDemo() *bool {
@@ -860,6 +878,12 @@ func (m *SmsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 	}
 	{
 		err := writer.WriteStringValue("id", m.GetId())
+		if err != nil {
+			return err
+		}
+	}
+	{
+		err := writer.WriteBoolValue("isBudgetDelayed", m.GetIsBudgetDelayed())
 		if err != nil {
 			return err
 		}
@@ -1104,6 +1128,11 @@ func (m *SmsResponse) SetId(value *string) {
 	m.id = value
 }
 
+// SetIsBudgetDelayed sets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+func (m *SmsResponse) SetIsBudgetDelayed(value *bool) {
+	m.isBudgetDelayed = value
+}
+
 // SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SmsResponse) SetIsDemo(value *bool) {
 	m.isDemo = value
@@ -1234,6 +1263,7 @@ type SmsResponseable interface {
 	GetFromPhoneNumber() *string
 	GetFromPhoneNumberId() *string
 	GetId() *string
+	GetIsBudgetDelayed() *bool
 	GetIsDemo() *bool
 	GetLeadId() *string
 	GetMedia() []MessageMediaAttachmentable
@@ -1273,6 +1303,7 @@ type SmsResponseable interface {
 	SetFromPhoneNumber(value *string)
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
+	SetIsBudgetDelayed(value *bool)
 	SetIsDemo(value *bool)
 	SetLeadId(value *string)
 	SetMedia(value []MessageMediaAttachmentable)

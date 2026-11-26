@@ -12,6 +12,12 @@ type PhoneCallRequestBuilder struct {
 	i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 
+// Budget the budget property
+// returns a *BudgetRequestBuilder when successful
+func (m *PhoneCallRequestBuilder) Budget() *BudgetRequestBuilder {
+	return NewBudgetRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+
 // ByCallId gets an item from the github.com/leadpingai/leadping-go.phoneCall.item collection
 // returns a *WithCallItemRequestBuilder when successful
 func (m *PhoneCallRequestBuilder) ByCallId(callId string) *WithCallItemRequestBuilder {

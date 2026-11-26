@@ -56,6 +56,8 @@ type SmsEventTableRow struct {
 	id *string
 	// Indicates whether automation created or triggered this SMS event table row.
 	isAutomated *bool
+	// Whether the scheduled send is waiting for spending capacity to reset.
+	isBudgetDelayed *bool
 	// Whether this record belongs to demo data.
 	isDemo *bool
 	// Provides a compact API reference to another resource using its stable identifier and human-readable display name.
@@ -461,6 +463,16 @@ func (m *SmsEventTableRow) GetFieldDeserializers() map[string]func(i878a80d2330e
 		}
 		return nil
 	}
+	res["isBudgetDelayed"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+		val, err := n.GetBoolValue()
+		if err != nil {
+			return err
+		}
+		if val != nil {
+			m.SetIsBudgetDelayed(val)
+		}
+		return nil
+	}
 	res["isDemo"] = func(n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
 		val, err := n.GetBoolValue()
 		if err != nil {
@@ -722,6 +734,12 @@ func (m *SmsEventTableRow) GetId() *string {
 // returns a *bool when successful
 func (m *SmsEventTableRow) GetIsAutomated() *bool {
 	return m.isAutomated
+}
+
+// GetIsBudgetDelayed gets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+// returns a *bool when successful
+func (m *SmsEventTableRow) GetIsBudgetDelayed() *bool {
+	return m.isBudgetDelayed
 }
 
 // GetIsDemo gets the isDemo property value. Whether this record belongs to demo data.
@@ -1003,6 +1021,12 @@ func (m *SmsEventTableRow) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 		}
 	}
 	{
+		err := writer.WriteBoolValue("isBudgetDelayed", m.GetIsBudgetDelayed())
+		if err != nil {
+			return err
+		}
+	}
+	{
 		err := writer.WriteBoolValue("isDemo", m.GetIsDemo())
 		if err != nil {
 			return err
@@ -1273,6 +1297,11 @@ func (m *SmsEventTableRow) SetIsAutomated(value *bool) {
 	m.isAutomated = value
 }
 
+// SetIsBudgetDelayed sets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+func (m *SmsEventTableRow) SetIsBudgetDelayed(value *bool) {
+	m.isBudgetDelayed = value
+}
+
 // SetIsDemo sets the isDemo property value. Whether this record belongs to demo data.
 func (m *SmsEventTableRow) SetIsDemo(value *bool) {
 	m.isDemo = value
@@ -1413,6 +1442,7 @@ type SmsEventTableRowable interface {
 	GetFromPhoneNumberId() *string
 	GetId() *string
 	GetIsAutomated() *bool
+	GetIsBudgetDelayed() *bool
 	GetIsDemo() *bool
 	GetLead() IdNamePairable
 	GetLeadAvatarUrl() *string
@@ -1458,6 +1488,7 @@ type SmsEventTableRowable interface {
 	SetFromPhoneNumberId(value *string)
 	SetId(value *string)
 	SetIsAutomated(value *bool)
+	SetIsBudgetDelayed(value *bool)
 	SetIsDemo(value *bool)
 	SetLead(value IdNamePairable)
 	SetLeadAvatarUrl(value *string)
